@@ -35,10 +35,10 @@ from allotropy.parsers.agilent_gen5.constants import (
     MEASUREMENTS_DATA_POINT_KEY,
     MIRROR_KEY,
     MULTIPLATE_FILE_ERROR,
-    READ_DATA_MEASUREMENT_ERROR,
     NAN_EMISSION_EXCITATION,
     OPTICS_KEY,
     PATHLENGTH_CORRECTION_KEY,
+    READ_DATA_MEASUREMENT_ERROR,
     READ_HEIGHT_KEY,
     READ_SPEED_KEY,
     ReadMode,
@@ -282,25 +282,35 @@ class ReadData:
             read_mode = read_modes[read_mode_idx]
             while section < len(read_sections):
                 join_read_section_lines = "\n".join(read_sections[section].lines)
-                device_control_data = DeviceControlData.create(join_read_section_lines, read_mode)
-                measurement_labels = cls._get_measurement_labels(device_control_data, read_mode)
-                number_of_averages = device_control_data.get(MEASUREMENTS_DATA_POINT_KEY)
+                device_control_data = DeviceControlData.create(
+                    join_read_section_lines, read_mode
+                )
+                measurement_labels = cls._get_measurement_labels(
+                    device_control_data, read_mode
+                )
+                number_of_averages = device_control_data.get(
+                    MEASUREMENTS_DATA_POINT_KEY
+                )
                 read_height = device_control_data.get(READ_HEIGHT_KEY) or ""
-                read_data_list.append(ReadData(
-                    read_mode=read_mode,
-                    step_label=device_control_data.step_label,
-                    measurement_labels=measurement_labels,
-                    detector_carriage_speed=device_control_data.get(READ_SPEED_KEY),
-                    # Absorbance attributes
-                    pathlength_correction=device_control_data.get(PATHLENGTH_CORRECTION_KEY),
-                    number_of_averages=try_float_or_none(number_of_averages),
-                    # Luminescence attributes
-                    detector_distance=try_float_or_none(read_height.split(" ")[0]),
-                    # Fluorescence attributes
-                    filter_sets=cls._get_filter_sets(
-                        measurement_labels, device_control_data, read_mode
-                    ),
-                ))
+                read_data_list.append(
+                    ReadData(
+                        read_mode=read_mode,
+                        step_label=device_control_data.step_label,
+                        measurement_labels=measurement_labels,
+                        detector_carriage_speed=device_control_data.get(READ_SPEED_KEY),
+                        # Absorbance attributes
+                        pathlength_correction=device_control_data.get(
+                            PATHLENGTH_CORRECTION_KEY
+                        ),
+                        number_of_averages=try_float_or_none(number_of_averages),
+                        # Luminescence attributes
+                        detector_distance=try_float_or_none(read_height.split(" ")[0]),
+                        # Fluorescence attributes
+                        filter_sets=cls._get_filter_sets(
+                            measurement_labels, device_control_data, read_mode
+                        ),
+                    )
+                )
                 section += 1
                 break
         return read_data_list
@@ -310,7 +320,7 @@ class ReadData:
         read_modes = []
         for read_mode in ReadMode:
             # Construct the regex pattern for the current read mode
-            pattern = r"\t{} Endpoint".format(re.escape(read_mode.value))
+            pattern = fr"\t{re.escape(read_mode.value)} Endpoint"
             # Use regex to find all occurrences of the read mode pattern in the procedure details
             matches = re.findall(pattern, procedure_details)
             if matches:
@@ -464,11 +474,11 @@ class MeasurementData:
 
 
 def create_results(
-        result_lines: list[str],
-        header_data: HeaderData,
-        read_data: list[ReadData],
-        sample_identifiers: dict[str, str],
-        actual_temperature: float | None,
+    result_lines: list[str],
+    header_data: HeaderData,
+    read_data: list[ReadData],
+    sample_identifiers: dict[str, str],
+    actual_temperature: float | None,
 ) -> tuple[list[MeasurementGroup], list[CalculatedDataItem]]:
     if result_lines[0].strip() != "Results":
         msg = f"Expected the first line of the results section '{result_lines[0]}' to be 'Results'."
@@ -539,12 +549,16 @@ def create_results(
     return groups, calculated_data_items
 
 
-def get_read_data_from_measurement(measurement: MeasurementData, read_data_list: list[ReadData]) -> ReadData:
+def get_read_data_from_measurement(
+    measurement: MeasurementData, read_data_list: list[ReadData]
+) -> ReadData:
     for read_data in read_data_list:
         if measurement.label in read_data.measurement_labels:
             return read_data
 
-    raise AllotropeConversionError(READ_DATA_MEASUREMENT_ERROR.format(measurement.label))
+    raise AllotropeConversionError(
+        READ_DATA_MEASUREMENT_ERROR.format(measurement.label)
+    )
 
 
 def _get_sources(

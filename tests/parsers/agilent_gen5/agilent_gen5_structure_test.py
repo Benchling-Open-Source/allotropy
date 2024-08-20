@@ -270,8 +270,8 @@ def test_create_filter_set() -> None:
     assert filterset.excitation_bandwidth_setting == 20
     assert filterset.wavelength_filter_cutoff_setting == 510
     assert (
-            filterset.scan_position_setting
-            == ScanPositionSettingPlateReader.top_scan_position__plate_reader_
+        filterset.scan_position_setting
+        == ScanPositionSettingPlateReader.top_scan_position__plate_reader_
     )
 
 
@@ -290,8 +290,8 @@ def test_create_filter_set_with_mirror() -> None:
     assert filterset.excitation_bandwidth_setting is None
     assert filterset.wavelength_filter_cutoff_setting is None
     assert (
-            filterset.scan_position_setting
-            == ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_
+        filterset.scan_position_setting
+        == ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_
     )
 
 
@@ -305,8 +305,8 @@ def test_create_filter_set_full_light() -> None:
     assert filterset.excitation_bandwidth_setting is None
     assert filterset.gain == "135"
     assert (
-            filterset.scan_position_setting
-            == ScanPositionSettingPlateReader.top_scan_position__plate_reader_
+        filterset.scan_position_setting
+        == ScanPositionSettingPlateReader.top_scan_position__plate_reader_
     )
 
 
@@ -493,6 +493,7 @@ def test_create_three_read_modes() -> None:
     assert file_data[2].detector_carriage_speed == "Normal"
     assert file_data[2].detector_distance == 4.5
 
+
 @pytest.mark.short
 def test_create_two_same_read_modes() -> None:
     multiple_read_modes = [
@@ -509,7 +510,7 @@ def test_create_two_same_read_modes() -> None:
         "\tWavelengths:  260, 280, 230",
         "\tPathlength Correction: 977 / 900",
         "\t    Absorbance at 1 cm: 0.18",
-        "\tRead Speed: Normal,  Delay: 100 msec,  Measurements/Data Point: 8"
+        "\tRead Speed: Normal,  Delay: 100 msec,  Measurements/Data Point: 8",
     ]
     reader = LinesReader(multiple_read_modes)
 
@@ -523,7 +524,12 @@ def test_create_two_same_read_modes() -> None:
     assert file_data[1].read_mode == ReadMode.ABSORBANCE
     assert file_data[1].step_label == "260"
     assert file_data[1].detector_carriage_speed == "Normal"
-    assert file_data[1].measurement_labels == ['260:260', '260:280', '260:230', '260:977 [Test]', '260:900 [Ref]']
+    assert file_data[1].measurement_labels == [
+        "260:260",
+        "260:280",
+        "260:230",
+        "260:977 [Test]",
+        "260:900 [Ref]",
+    ]
     assert file_data[1].number_of_averages == 8
     assert file_data[1].pathlength_correction == "977 / 900"
-
