@@ -63,7 +63,7 @@ class Plate:
         if pivoted.iloc[1, 0] != "A":
             msg = "Column header(s) not found."
             raise AllotropeConversionError(msg)
-        stripped = pivoted.drop(0, axis=0).drop(0, axis=1)
+        stripped = pivoted.drop(0, axis="index").drop(0, axis="columns")
         rows, cols = stripped.shape
         stripped.index = [df.iloc[0, i + 1] for i in range(rows)]  # type: ignore
         stripped.columns = [str(int(df.iloc[i, 0])) for i in range(1, cols + 1)]  # type: ignore

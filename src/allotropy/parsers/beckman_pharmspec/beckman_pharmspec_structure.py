@@ -22,7 +22,7 @@ from allotropy.parsers.beckman_pharmspec.constants import (
     UNIT_LOOKUP,
     VALID_CALCS,
 )
-from allotropy.parsers.utils.pandas import map_rows, read_excel, SeriesData
+from allotropy.parsers.utils.pandas import map_rows, read_excel, SeriesData, set_columns
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
@@ -153,10 +153,10 @@ def _extract_data(df: pd.DataFrame) -> tuple[pd.DataFrame, SeriesData]:
     header = SeriesData(header_data)
 
     data = df.loc[start:end, :]
-    data = data.dropna(how="all").dropna(how="all", axis=1)
+    data = data.dropna(how="all").dropna(how="all", axis="columns")
     data[0] = data[0].ffill()
     data = data.dropna(subset=1).reset_index(drop=True)
-    data.columns = pd.Index([str(x).strip() for x in data.loc[0]])
+    set_columns(data, [str(x).strip() for x in data.loc[0]])
     data = data.loc[1:, :]
 
     return data, header
