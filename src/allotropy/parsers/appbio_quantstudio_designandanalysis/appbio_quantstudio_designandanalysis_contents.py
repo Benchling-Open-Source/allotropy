@@ -11,6 +11,7 @@ from allotropy.parsers.utils.pandas import (
     assert_not_empty_df,
     read_multisheet_excel,
     SeriesData,
+    set_columns,
 )
 from allotropy.parsers.utils.values import (
     assert_not_none,
@@ -69,7 +70,7 @@ class DesignQuantstudioContents:
             # header_size + 1 for empty line between header and data
             header_size = self._get_header_size(sheet) + 1
             data = sheet.iloc[header_size:].reset_index(drop=True)
-            data.columns = pd.Index(data.iloc[0])
+            set_columns(data, data.iloc[0])
             data_structure[name] = data.drop(0)
         return data_structure
 
