@@ -459,7 +459,7 @@ def create_results(
         raise AllotropeConversionError(msg)
 
     # Create dataframe from tabular data and forward fill empty values in index
-    data = pd.read_csv(StringIO("\n".join(result_lines[1:])), sep="\t")
+    data = read_csv(StringIO("\n".join(result_lines[1:])), sep="\t")
     data = data.set_index(data.index.to_series().ffill(axis=0).values)
 
     well_to_measurements: defaultdict[str, list[MeasurementData]] = defaultdict(
