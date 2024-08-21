@@ -109,6 +109,7 @@ def test_create_read_data_absorbance() -> None:
     ]
     read_data = ReadData.create(absorbance_procedure_details)
 
+    assert len(read_data) == 1
     assert read_data[0].read_mode == ReadMode.ABSORBANCE
     assert read_data[0].pathlength_correction == "977 / 900"
     assert read_data[0].step_label == "260"
@@ -121,7 +122,6 @@ def test_create_read_data_absorbance() -> None:
         "260:977 [Test]",
         "260:900 [Ref]",
     ]
-    assert len(read_data) == 1
 
 
 @pytest.mark.short
@@ -141,6 +141,7 @@ def test_create_read_data_luminescence_full_light() -> None:
     ]
     read_data = ReadData.create(absorbance_procedure_details)
 
+    assert len(read_data) == 1
     assert read_data[0].read_mode == ReadMode.LUMINESCENCE
     assert read_data[0].step_label == "LUM"
     assert read_data[0].detector_carriage_speed == "Normal"  # Read Speed
@@ -149,7 +150,6 @@ def test_create_read_data_luminescence_full_light() -> None:
     assert read_data[0].filter_sets == {
         "LUM:Lum": FilterSet(emission="Full light", gain="135", optics="Top")
     }
-    assert len(read_data) == 1
 
 
 @pytest.mark.short
@@ -169,6 +169,7 @@ def test_create_read_data_luminescence_text_settings() -> None:
     ]
     read_data = ReadData.create(absorbance_procedure_details)
 
+    assert len(read_data) == 1
     assert read_data[0].read_mode == ReadMode.LUMINESCENCE
     assert read_data[0].detector_carriage_speed == "Normal"  # Read Speed
     assert read_data[0].detector_distance == 4.5  # Read Height
@@ -176,7 +177,6 @@ def test_create_read_data_luminescence_text_settings() -> None:
     assert read_data[0].filter_sets == {
         "Lum": FilterSet(emission="Hole", gain="135", optics="Top", excitation="Plug")
     }
-    assert len(read_data) == 1
 
 
 @pytest.mark.short
@@ -196,6 +196,7 @@ def test_create_read_data_luminescence_with_filter() -> None:
     ]
     read_data = ReadData.create(absorbance_procedure_details)
 
+    assert len(read_data) == 1
     assert read_data[0].read_mode == ReadMode.LUMINESCENCE
     assert read_data[0].step_label == "LUM"
     assert read_data[0].detector_carriage_speed == "Normal"  # Read Speed
@@ -204,7 +205,6 @@ def test_create_read_data_luminescence_with_filter() -> None:
     assert read_data[0].filter_sets == {
         "LUM:460/40": FilterSet(emission="460/40", gain="136")
     }
-    assert len(read_data) == 1
 
 
 @pytest.mark.short
@@ -226,6 +226,7 @@ def test_create_read_data_fluorescence() -> None:
     ]
     read_data = ReadData.create(absorbance_procedure_details)
 
+    assert len(read_data) == 1
     assert read_data[0].read_mode == ReadMode.FLUORESCENCE
     assert read_data[0].step_label == "DAPI/GFP"
     assert read_data[0].detector_carriage_speed == "Normal"  # Read Speed
@@ -249,7 +250,6 @@ def test_create_read_data_fluorescence() -> None:
             gain="35",
         ),
     }
-    assert len(read_data) == 1
 
 
 @pytest.mark.short
@@ -397,6 +397,8 @@ def test_create_multiple_read_modes() -> None:
     ]
 
     read_data = ReadData.create(multiple_read_modes)
+
+    assert len(read_data) == 2
     assert read_data[0].read_mode == ReadMode.ABSORBANCE
     assert read_data[0].step_label == "od"
     assert read_data[0].measurement_labels == ["od:600"]
@@ -419,7 +421,6 @@ def test_create_multiple_read_modes() -> None:
             gain="extended",
         ),
     }
-    assert len(read_data) == 2
 
 
 @pytest.mark.short
@@ -454,6 +455,8 @@ def test_create_three_read_modes() -> None:
     ]
 
     read_data = ReadData.create(multiple_read_modes)
+
+    assert len(read_data) == 3
     assert read_data[0].read_mode == ReadMode.ABSORBANCE
     assert read_data[0].step_label == "od"
     assert read_data[0].measurement_labels == ["od:600"]
@@ -488,7 +491,6 @@ def test_create_three_read_modes() -> None:
     }
     assert read_data[2].detector_carriage_speed == "Normal"
     assert read_data[2].detector_distance == 4.5
-    assert len(read_data) == 3
 
 
 @pytest.mark.short
@@ -511,6 +513,8 @@ def test_create_two_same_read_modes() -> None:
     ]
 
     read_data = ReadData.create(multiple_read_modes)
+
+    assert len(read_data) == 2
     assert read_data[0].read_mode == ReadMode.ABSORBANCE
     assert read_data[0].step_label == "od"
     assert read_data[0].measurement_labels == ["od:600"]
@@ -529,7 +533,6 @@ def test_create_two_same_read_modes() -> None:
     ]
     assert read_data[1].number_of_averages == 8
     assert read_data[1].pathlength_correction == "977 / 900"
-    assert len(read_data) == 2
 
 
 @pytest.mark.short
@@ -543,7 +546,7 @@ def test_create_two_same_read_modes_from_file() -> None:
 
     read_data = ReadData.create(file_contents)
 
-    # Assertions for the parsed data
+    assert len(read_data) == 2
     assert read_data[0].read_mode == ReadMode.ABSORBANCE
     assert read_data[0].step_label == "od"
     assert read_data[0].measurement_labels == ["od:600"]
@@ -560,7 +563,6 @@ def test_create_two_same_read_modes_from_file() -> None:
     ]
     assert read_data[1].number_of_averages == 8
     assert read_data[1].pathlength_correction == "977 / 900"
-    assert len(read_data) == 2
 
 
 @pytest.mark.short
@@ -572,7 +574,7 @@ def test_create_two_read_modes_from_file() -> None:
 
     read_data = ReadData.create(file_contents)
 
-    # Assertions for the parsed data
+    assert len(read_data) == 2
     assert read_data[0].read_mode == ReadMode.ABSORBANCE
     assert read_data[0].step_label == "od"
     assert read_data[0].measurement_labels == ["od:600"]
@@ -595,4 +597,3 @@ def test_create_two_read_modes_from_file() -> None:
             gain="extended",
         ),
     }
-    assert len(read_data) == 2
