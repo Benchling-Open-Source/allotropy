@@ -98,7 +98,9 @@ class TQuantityValueCountsPerMilliliter(CountsPerMilliliter, TQuantityValue):
 
 
 @dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValueCountsPerMilliliter(CountsPerMilliliter, TNullableQuantityValue):
+class TNullableQuantityValueCountsPerMilliliter(
+    CountsPerMilliliter, TNullableQuantityValue
+):
     pass
 
 
@@ -118,7 +120,9 @@ class TQuantityValueCountsTimesSecond(CountsTimesSecond, TQuantityValue):
 
 
 @dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValueCountsTimesSecond(CountsTimesSecond, TNullableQuantityValue):
+class TNullableQuantityValueCountsTimesSecond(
+    CountsTimesSecond, TNullableQuantityValue
+):
     pass
 
 
@@ -178,7 +182,9 @@ class TQuantityValueMicrogramPerMicroliter(MicrogramPerMicroliter, TQuantityValu
 
 
 @dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValueMicrogramPerMicroliter(MicrogramPerMicroliter, TNullableQuantityValue):
+class TNullableQuantityValueMicrogramPerMicroliter(
+    MicrogramPerMicroliter, TNullableQuantityValue
+):
     pass
 
 
@@ -188,7 +194,9 @@ class TQuantityValueMicrogramPerMilliliter(MicrogramPerMilliliter, TQuantityValu
 
 
 @dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValueMicrogramPerMilliliter(MicrogramPerMilliliter, TNullableQuantityValue):
+class TNullableQuantityValueMicrogramPerMilliliter(
+    MicrogramPerMilliliter, TNullableQuantityValue
+):
     pass
 
 
@@ -218,27 +226,37 @@ class TQuantityValueMilliAbsorbanceUnit(MilliAbsorbanceUnit, TQuantityValue):
 
 
 @dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValueMilliAbsorbanceUnit(MilliAbsorbanceUnit, TNullableQuantityValue):
+class TNullableQuantityValueMilliAbsorbanceUnit(
+    MilliAbsorbanceUnit, TNullableQuantityValue
+):
     pass
 
 
 @dataclass(frozen=True, kw_only=True)
-class TQuantityValueMilliAbsorbanceUnitTimesMilliliter(MilliAbsorbanceUnitTimesMilliliter, TQuantityValue):
+class TQuantityValueMilliAbsorbanceUnitTimesMilliliter(
+    MilliAbsorbanceUnitTimesMilliliter, TQuantityValue
+):
     pass
 
 
 @dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValueMilliAbsorbanceUnitTimesMilliliter(MilliAbsorbanceUnitTimesMilliliter, TNullableQuantityValue):
+class TNullableQuantityValueMilliAbsorbanceUnitTimesMilliliter(
+    MilliAbsorbanceUnitTimesMilliliter, TNullableQuantityValue
+):
     pass
 
 
 @dataclass(frozen=True, kw_only=True)
-class TQuantityValueMilliAbsorbanceUnitTimesSecond(MilliAbsorbanceUnitTimesSecond, TQuantityValue):
+class TQuantityValueMilliAbsorbanceUnitTimesSecond(
+    MilliAbsorbanceUnitTimesSecond, TQuantityValue
+):
     pass
 
 
 @dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValueMilliAbsorbanceUnitTimesSecond(MilliAbsorbanceUnitTimesSecond, TNullableQuantityValue):
+class TNullableQuantityValueMilliAbsorbanceUnitTimesSecond(
+    MilliAbsorbanceUnitTimesSecond, TNullableQuantityValue
+):
     pass
 
 
@@ -248,7 +266,9 @@ class TQuantityValueMilliOsmolesPerKilogram(MilliOsmolesPerKilogram, TQuantityVa
 
 
 @dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValueMilliOsmolesPerKilogram(MilliOsmolesPerKilogram, TNullableQuantityValue):
+class TNullableQuantityValueMilliOsmolesPerKilogram(
+    MilliOsmolesPerKilogram, TNullableQuantityValue
+):
     pass
 
 
@@ -268,7 +288,9 @@ class TQuantityValueMilligramPerMilliliter(MilligramPerMilliliter, TQuantityValu
 
 
 @dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValueMilligramPerMilliliter(MilligramPerMilliliter, TNullableQuantityValue):
+class TNullableQuantityValueMilligramPerMilliliter(
+    MilligramPerMilliliter, TNullableQuantityValue
+):
     pass
 
 
@@ -288,7 +310,9 @@ class TQuantityValueMilliliterPerLiter(MilliliterPerLiter, TQuantityValue):
 
 
 @dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValueMilliliterPerLiter(MilliliterPerLiter, TNullableQuantityValue):
+class TNullableQuantityValueMilliliterPerLiter(
+    MilliliterPerLiter, TNullableQuantityValue
+):
     pass
 
 
@@ -308,7 +332,9 @@ class TQuantityValueMillimeterOfMercury(MillimeterOfMercury, TQuantityValue):
 
 
 @dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValueMillimeterOfMercury(MillimeterOfMercury, TNullableQuantityValue):
+class TNullableQuantityValueMillimeterOfMercury(
+    MillimeterOfMercury, TNullableQuantityValue
+):
     pass
 
 
@@ -318,17 +344,23 @@ class TQuantityValueMillimolePerLiter(MillimolePerLiter, TQuantityValue):
 
 
 @dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValueMillimolePerLiter(MillimolePerLiter, TNullableQuantityValue):
+class TNullableQuantityValueMillimolePerLiter(
+    MillimolePerLiter, TNullableQuantityValue
+):
     pass
 
 
 @dataclass(frozen=True, kw_only=True)
-class TQuantityValueMillionCellsPerMilliliter(MillionCellsPerMilliliter, TQuantityValue):
+class TQuantityValueMillionCellsPerMilliliter(
+    MillionCellsPerMilliliter, TQuantityValue
+):
     pass
 
 
 @dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValueMillionCellsPerMilliliter(MillionCellsPerMilliliter, TNullableQuantityValue):
+class TNullableQuantityValueMillionCellsPerMilliliter(
+    MillionCellsPerMilliliter, TNullableQuantityValue
+):
     pass
 
 
@@ -348,7 +380,9 @@ class TQuantityValueMillivoltTimesSecond(MillivoltTimesSecond, TQuantityValue):
 
 
 @dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValueMillivoltTimesSecond(MillivoltTimesSecond, TNullableQuantityValue):
+class TNullableQuantityValueMillivoltTimesSecond(
+    MillivoltTimesSecond, TNullableQuantityValue
+):
     pass
 
 
@@ -368,7 +402,9 @@ class TQuantityValueNanoCoulombTimesSecond(NanoCoulombTimesSecond, TQuantityValu
 
 
 @dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValueNanoCoulombTimesSecond(NanoCoulombTimesSecond, TNullableQuantityValue):
+class TNullableQuantityValueNanoCoulombTimesSecond(
+    NanoCoulombTimesSecond, TNullableQuantityValue
+):
     pass
 
 
@@ -378,7 +414,9 @@ class TQuantityValueNanogramPerMicroliter(NanogramPerMicroliter, TQuantityValue)
 
 
 @dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValueNanogramPerMicroliter(NanogramPerMicroliter, TNullableQuantityValue):
+class TNullableQuantityValueNanogramPerMicroliter(
+    NanogramPerMicroliter, TNullableQuantityValue
+):
     pass
 
 
@@ -388,7 +426,9 @@ class TQuantityValueNanogramPerMilliliter(NanogramPerMilliliter, TQuantityValue)
 
 
 @dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValueNanogramPerMilliliter(NanogramPerMilliliter, TNullableQuantityValue):
+class TNullableQuantityValueNanogramPerMilliliter(
+    NanogramPerMilliliter, TNullableQuantityValue
+):
     pass
 
 
@@ -418,7 +458,9 @@ class TQuantityValueNumberPerMicroliter(NumberPerMicroliter, TQuantityValue):
 
 
 @dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValueNumberPerMicroliter(NumberPerMicroliter, TNullableQuantityValue):
+class TNullableQuantityValueNumberPerMicroliter(
+    NumberPerMicroliter, TNullableQuantityValue
+):
     pass
 
 
@@ -468,7 +510,9 @@ class TQuantityValuePicoAmpereTimesSecond(PicoAmpereTimesSecond, TQuantityValue)
 
 
 @dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValuePicoAmpereTimesSecond(PicoAmpereTimesSecond, TNullableQuantityValue):
+class TNullableQuantityValuePicoAmpereTimesSecond(
+    PicoAmpereTimesSecond, TNullableQuantityValue
+):
     pass
 
 
@@ -478,7 +522,9 @@ class TQuantityValuePicogramPerMilliliter(PicogramPerMilliliter, TQuantityValue)
 
 
 @dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValuePicogramPerMilliliter(PicogramPerMilliliter, TNullableQuantityValue):
+class TNullableQuantityValuePicogramPerMilliliter(
+    PicogramPerMilliliter, TNullableQuantityValue
+):
     pass
 
 
@@ -488,27 +534,37 @@ class TQuantityValueRelativeFluorescenceUnit(RelativeFluorescenceUnit, TQuantity
 
 
 @dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValueRelativeFluorescenceUnit(RelativeFluorescenceUnit, TNullableQuantityValue):
+class TNullableQuantityValueRelativeFluorescenceUnit(
+    RelativeFluorescenceUnit, TNullableQuantityValue
+):
     pass
 
 
 @dataclass(frozen=True, kw_only=True)
-class TQuantityValueRelativeFluorescenceUnitTimesMilliliter(RelativeFluorescenceUnitTimesMilliliter, TQuantityValue):
+class TQuantityValueRelativeFluorescenceUnitTimesMilliliter(
+    RelativeFluorescenceUnitTimesMilliliter, TQuantityValue
+):
     pass
 
 
 @dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValueRelativeFluorescenceUnitTimesMilliliter(RelativeFluorescenceUnitTimesMilliliter, TNullableQuantityValue):
+class TNullableQuantityValueRelativeFluorescenceUnitTimesMilliliter(
+    RelativeFluorescenceUnitTimesMilliliter, TNullableQuantityValue
+):
     pass
 
 
 @dataclass(frozen=True, kw_only=True)
-class TQuantityValueRelativeFluorescenceUnitTimesSecond(RelativeFluorescenceUnitTimesSecond, TQuantityValue):
+class TQuantityValueRelativeFluorescenceUnitTimesSecond(
+    RelativeFluorescenceUnitTimesSecond, TQuantityValue
+):
     pass
 
 
 @dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValueRelativeFluorescenceUnitTimesSecond(RelativeFluorescenceUnitTimesSecond, TNullableQuantityValue):
+class TNullableQuantityValueRelativeFluorescenceUnitTimesSecond(
+    RelativeFluorescenceUnitTimesSecond, TNullableQuantityValue
+):
     pass
 
 
@@ -518,27 +574,37 @@ class TQuantityValueRelativeLightUnit(RelativeLightUnit, TQuantityValue):
 
 
 @dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValueRelativeLightUnit(RelativeLightUnit, TNullableQuantityValue):
+class TNullableQuantityValueRelativeLightUnit(
+    RelativeLightUnit, TNullableQuantityValue
+):
     pass
 
 
 @dataclass(frozen=True, kw_only=True)
-class TQuantityValueRelativeLightUnitTimesMilliliter(RelativeLightUnitTimesMilliliter, TQuantityValue):
+class TQuantityValueRelativeLightUnitTimesMilliliter(
+    RelativeLightUnitTimesMilliliter, TQuantityValue
+):
     pass
 
 
 @dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValueRelativeLightUnitTimesMilliliter(RelativeLightUnitTimesMilliliter, TNullableQuantityValue):
+class TNullableQuantityValueRelativeLightUnitTimesMilliliter(
+    RelativeLightUnitTimesMilliliter, TNullableQuantityValue
+):
     pass
 
 
 @dataclass(frozen=True, kw_only=True)
-class TQuantityValueRelativeLightUnitTimesSecond(RelativeLightUnitTimesSecond, TQuantityValue):
+class TQuantityValueRelativeLightUnitTimesSecond(
+    RelativeLightUnitTimesSecond, TQuantityValue
+):
     pass
 
 
 @dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValueRelativeLightUnitTimesSecond(RelativeLightUnitTimesSecond, TNullableQuantityValue):
+class TNullableQuantityValueRelativeLightUnitTimesSecond(
+    RelativeLightUnitTimesSecond, TNullableQuantityValue
+):
     pass
 
 
@@ -558,7 +624,9 @@ class TQuantityValueSquareCentimetersPerGram(SquareCentimetersPerGram, TQuantity
 
 
 @dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValueSquareCentimetersPerGram(SquareCentimetersPerGram, TNullableQuantityValue):
+class TNullableQuantityValueSquareCentimetersPerGram(
+    SquareCentimetersPerGram, TNullableQuantityValue
+):
     pass
 
 

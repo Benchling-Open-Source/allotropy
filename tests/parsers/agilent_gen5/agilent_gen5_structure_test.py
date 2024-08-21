@@ -547,7 +547,9 @@ def test_create_two_same_read_modes() -> None:
 
 @pytest.mark.short
 def test_create_two_same_read_modes_from_file() -> None:
-    file_path = "tests/parsers/agilent_gen5/testdata/multi_read_modes/two_same_read_modes.txt"
+    file_path = (
+        "tests/parsers/agilent_gen5/testdata/multi_read_modes/two_same_read_modes.txt"
+    )
 
     with open(file_path) as f:
         file_contents = f.readlines()
@@ -573,6 +575,7 @@ def test_create_two_same_read_modes_from_file() -> None:
     assert read_data[1].number_of_averages == 8
     assert read_data[1].pathlength_correction == "977 / 900"
     assert len(read_data) == 2
+
 
 @pytest.mark.short
 def test_create_two_read_modes_from_file() -> None:
