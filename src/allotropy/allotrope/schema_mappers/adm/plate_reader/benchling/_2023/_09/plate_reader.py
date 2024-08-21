@@ -53,7 +53,6 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropyParserError
-from allotropy.parsers.agilent_gen5.constants import ReadMode
 from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
 
 
@@ -330,7 +329,7 @@ class Mapper:
                 device_control_document=[
                     UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
                         device_type=metadata.device_type,
-                        detection_type=ReadMode.ABSORBANCE.value,
+                        detection_type=metadata.detection_type,
                         detector_wavelength_setting=TQuantityValueNanometer(
                             value=assert_not_none(  # type: ignore[arg-type]
                                 measurement.detector_wavelength_setting,
@@ -365,7 +364,7 @@ class Mapper:
                 device_control_document=[
                     LuminescencePointDetectionDeviceControlDocumentItem(
                         device_type=metadata.device_type,
-                        detection_type=ReadMode.LUMINESCENCE.value,
+                        detection_type=metadata.detection_type,
                         detector_wavelength_setting=quantity_or_none(
                             TQuantityValueNanometer,
                             measurement.detector_wavelength_setting,
@@ -401,7 +400,7 @@ class Mapper:
                 device_control_document=[
                     FluorescencePointDetectionDeviceControlDocumentItem(
                         device_type=metadata.device_type,
-                        detection_type=ReadMode.FLUORESCENCE.value,
+                        detection_type=metadata.detection_type,
                         detector_wavelength_setting=quantity_or_none(
                             TQuantityValueNanometer,
                             measurement.detector_wavelength_setting,

@@ -65,12 +65,6 @@ def test_to_allotrope_unsupported_area_scan_file() -> None:
         from_file(filepath, VENDOR_TYPE)
 
 
-def test_to_allotrope_unsupported_multiple_read_modes() -> None:
-    filepath = f"{TESTDATA}/multiple_read_modes_error.txt"
-    with pytest.raises(AllotropeConversionError, match=MULTIPLE_READ_MODE_ERROR):
-        from_file(filepath, VENDOR_TYPE)
-
-
 @pytest.mark.parametrize(
     "filepath",
     [

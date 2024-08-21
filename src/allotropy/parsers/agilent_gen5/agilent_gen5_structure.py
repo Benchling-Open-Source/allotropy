@@ -536,6 +536,7 @@ def create_results(
                     identifier=measurement.identifier,
                     feature=read_data[0].read_mode.value,
                 )
+
                 for measurement in _get_sources(
                     label, well_to_measurements[well_position]
                 )
@@ -584,6 +585,7 @@ def _get_sources(
 
     # if there are no matches in the measurement labels, use all measurements as source
     return sources or measurements
+
 
 
 def _create_metadata(header_data: HeaderData, read_data: list[ReadData]) -> Metadata:
