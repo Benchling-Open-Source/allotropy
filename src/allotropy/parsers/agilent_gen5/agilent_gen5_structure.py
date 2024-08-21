@@ -270,7 +270,7 @@ class ReadData:
             raise AllotropeConversionError(UNSUPPORTED_READ_TYPE_ERROR)
 
         read_modes = cls.get_read_modes(procedure_details)
-        read_data_list: [ReadData] = []
+        read_data_list: list[ReadData] = []
         full_read_lines: list[str] = procedure_details.splitlines()
 
         section_lines_reader = SectionLinesReader(full_read_lines)
@@ -490,9 +490,13 @@ def create_results(
     data = pd.read_csv(StringIO("\n".join(result_lines[1:])), sep="\t")
     data = data.set_index(data.index.to_series().ffill(axis=0).values)
 
-    well_to_measurements: defaultdict[str, list[MeasurementData]] = defaultdict(list)
-    calculated_data: defaultdict[str, list] = defaultdict(list)
-    measurement_labels = []
+    well_to_measurements: defaultdict[str, list[MeasurementData]] = defaultdict(
+        list[MeasurementData]
+    )
+    calculated_data: defaultdict[str, list[tuple[str, JsonFloat]]] = defaultdict(
+        list[tuple[str, JsonFloat]]
+    )
+    measurement_labels: list[str] = []
     for r_data in read_data:
         measurement_labels.extend(r_data.measurement_labels)
     for row_name, row in data.iterrows():
@@ -587,20 +591,17 @@ def _get_sources(
     return sources or measurements
 
 
-def _create_metadata(header_data: HeaderData, read_data: list[ReadData]) -> Metadata:
-    for item in range(len(read_data)):
-        detection_type = read_data[item].read_mode.value
-        return Metadata(
-            device_type=DEVICE_TYPE,
-            detection_type=detection_type,
-            device_identifier=NOT_APPLICABLE,
-            model_number=header_data.model_number or NOT_APPLICABLE,
-            equipment_serial_number=header_data.equipment_serial_number,
-            software_name=DEFAULT_SOFTWARE_NAME,
-            software_version=header_data.software_version,
-            file_name=header_data.file_name,
-            measurement_time=header_data.datetime,
-        )
+def _create_metadata(header_data: HeaderData) -> Metadata:
+    return Metadata(
+        device_type=DEVICE_TYPE,
+        device_identifier=NOT_APPLICABLE,
+        model_number=header_data.model_number or NOT_APPLICABLE,
+        equipment_serial_number=header_data.equipment_serial_number,
+        software_name=DEFAULT_SOFTWARE_NAME,
+        software_version=header_data.software_version,
+        file_name=header_data.file_name,
+        measurement_time=header_data.datetime,
+    )
 
 
 def _create_measurement(
@@ -702,7 +703,7 @@ def create_data(reader: SectionLinesReader, file_name: str) -> Data:
     )
 
     return Data(
-        metadata=_create_metadata(header_data, read_data),
+        metadata=_create_metadata(header_data),
         measurement_groups=measurement_groups,
         calculated_data=calculated_data,
     )
