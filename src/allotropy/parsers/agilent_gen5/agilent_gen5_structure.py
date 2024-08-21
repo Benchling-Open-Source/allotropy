@@ -48,6 +48,7 @@ from allotropy.parsers.agilent_gen5.constants import (
     WAVELENGTHS_KEY,
 )
 from allotropy.parsers.constants import NOT_APPLICABLE
+from allotropy.parsers.lines_reader import SectionLinesReader
 from allotropy.parsers.utils.pandas import read_csv, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
