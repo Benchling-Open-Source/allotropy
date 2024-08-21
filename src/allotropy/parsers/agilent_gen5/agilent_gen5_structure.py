@@ -263,9 +263,7 @@ class ReadData:
             measurement_labels = cls._get_measurement_labels(
                 device_control_data, read_mode
             )
-            number_of_averages = device_control_data.get(
-                MEASUREMENTS_DATA_POINT_KEY
-            )
+            number_of_averages = device_control_data.get(MEASUREMENTS_DATA_POINT_KEY)
             read_height = device_control_data.get(READ_HEIGHT_KEY) or ""
             read_data_list.append(
                 ReadData(
