@@ -9,6 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+### Fixed
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Security
+
+## [0.1.49] - 2024-08-21
+
+### Added
+
 - Primary analysis experiment type in AppBio Quantstudio Design and Analysis
 - Added ThermoFisher Genesys 30 adapter
 - Added requirement doc for ThermoFisher Genesys 30 adapter
@@ -22,12 +36,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Updated the spectrophotometry mapper script to accommodate absorbance spectrum data cubes
-
-### Deprecated
-
-### Removed
-
-### Security
 
 ## [0.1.48] - 2024-08-15
 

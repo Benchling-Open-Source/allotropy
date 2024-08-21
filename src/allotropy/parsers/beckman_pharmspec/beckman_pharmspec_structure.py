@@ -8,7 +8,6 @@ import pandas as pd
 
 from allotropy.allotrope.schema_mappers.adm.light_obscuration.benchling._2023._12.light_obscuration import (
     CalculatedDataItem,
-    Data,
     DataSource,
     Measurement,
     MeasurementGroup,
@@ -16,13 +15,12 @@ from allotropy.allotrope.schema_mappers.adm.light_obscuration.benchling._2023._1
     ProcessedData,
     ProcessedDataFeature,
 )
-from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.beckman_pharmspec.constants import (
     PHARMSPEC_SOFTWARE_NAME,
     UNIT_LOOKUP,
     VALID_CALCS,
 )
-from allotropy.parsers.utils.pandas import map_rows, read_excel, SeriesData, set_columns
+from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
@@ -57,41 +55,6 @@ class Distribution:
         for g, gdf in df.groupby("Run No."):
             distributions.append(Distribution.create(gdf, str(g)))
         return distributions
-
-
-def _create_calculated_data(
-    distributions: list[Distribution],
-) -> list[CalculatedDataItem]:
-    particle_size_sources = defaultdict(list)
-    for source in [
-        feature
-        for distribution in distributions
-        if not distribution.is_calculated
-        for feature in distribution.features
-    ]:
-        particle_size_sources[source.particle_size].append(source)
-
-    return [
-        CalculatedDataItem(
-            identifier=random_uuid_str(),
-            name=f"{distribution.name}_{name}".lower(),
-            value=value,
-            unit=UNIT_LOOKUP[name],
-            data_sources=[
-                DataSource(
-                    identifier=x.identifier,
-                    feature=name.replace("_", " "),
-                )
-                for x in particle_size_sources[feature.particle_size]
-            ],
-        )
-        for distribution in distributions
-        for feature in distribution.features
-        if distribution.is_calculated
-        # Ignore "identifier" attribute, and skip empty values
-        for name, value in feature.__dict__.items()
-        if name != "identifier" and value is not None
-    ]
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -136,69 +99,73 @@ class Header:
         )
 
 
-def _extract_data(df: pd.DataFrame) -> tuple[pd.DataFrame, SeriesData]:
-    """Find the data in the raw dataframe. We identify the boundary of the data
-    by finding the index first row which contains the word 'Particle' and ending right before
-    the index of the first row containing 'Approver'.
-    """
-    start = df[df[1].str.contains("Particle", na=False)].index.values[0]
-    end = df[df[0].str.contains("Approver_", na=False)].index.values[0] - 1
-
-    # The header data is everything up to the start of the data.
-    # It is stored in two columns spread over the first 6 columns.
-    raw_header = df.loc[: start - 1].T
-    header_data = pd.concat([raw_header.loc[2], raw_header.loc[5]])
-    header_columns = pd.concat([raw_header.loc[0], raw_header.loc[3]])
-    header_data.index = pd.Index(header_columns)
-    header = SeriesData(header_data)
-
-    data = df.loc[start:end, :]
-    data = data.dropna(how="all").dropna(how="all", axis="columns")
-    data[0] = data[0].ffill()
-    data = data.dropna(subset=1).reset_index(drop=True)
-    set_columns(data, [str(x).strip() for x in data.loc[0]])
-    data = data.loc[1:, :]
-
-    return data, header
-
-
-def create_data(named_file_contents: NamedFileContents) -> Data:
-    df = read_excel(named_file_contents.contents, header=None, engine="calamine")
-    dist_data, header_data = _extract_data(df)
-    distributions = Distribution.create_distributions(dist_data)
-    header = Header.create(header_data)
-
-    return Data(
-        Metadata(
-            file_name=named_file_contents.original_file_name,
-            software_name=PHARMSPEC_SOFTWARE_NAME,
-            software_version=header.software_version,
-            detector_identifier=header.detector_identifier,
-            detector_model_number=header.detector_model_number,
-            equipment_serial_number=header.equipment_serial_number,
-        ),
-        measurement_groups=[
-            MeasurementGroup(
-                analyst=header.analyst,
-                measurements=[
-                    Measurement(
-                        identifier=distribution.name,
-                        measurement_time=header.measurement_time,
-                        flush_volume_setting=header.flush_volume_setting,
-                        detector_view_volume=header.detector_view_volume,
-                        repetition_setting=header.repetition_setting,
-                        sample_volume_setting=header.sample_volume_setting,
-                        sample_identifier=header.sample_identifier,
-                        processed_data=ProcessedData(
-                            dilution_factor_setting=header.dilution_factor_setting,
-                            distributions=distribution.features,
-                        ),
-                    )
-                    for distribution in [
-                        x for x in distributions if not x.is_calculated
-                    ]
-                ],
-            )
-        ],
-        calculated_data=_create_calculated_data(distributions),
+def create_metadata(header: Header, file_name: str) -> Metadata:
+    return Metadata(
+        file_name=file_name,
+        software_name=PHARMSPEC_SOFTWARE_NAME,
+        software_version=header.software_version,
+        detector_identifier=header.detector_identifier,
+        detector_model_number=header.detector_model_number,
+        equipment_serial_number=header.equipment_serial_number,
     )
+
+
+def create_measurement_groups(
+    header: Header, distributions: list[Distribution]
+) -> list[MeasurementGroup]:
+    return [
+        MeasurementGroup(
+            analyst=header.analyst,
+            measurements=[
+                Measurement(
+                    identifier=distribution.name,
+                    measurement_time=header.measurement_time,
+                    flush_volume_setting=header.flush_volume_setting,
+                    detector_view_volume=header.detector_view_volume,
+                    repetition_setting=header.repetition_setting,
+                    sample_volume_setting=header.sample_volume_setting,
+                    sample_identifier=header.sample_identifier,
+                    processed_data=ProcessedData(
+                        dilution_factor_setting=header.dilution_factor_setting,
+                        distributions=distribution.features,
+                    ),
+                )
+                for distribution in [x for x in distributions if not x.is_calculated]
+            ],
+        )
+    ]
+
+
+def create_calculated_data(
+    distributions: list[Distribution],
+) -> list[CalculatedDataItem]:
+    particle_size_sources = defaultdict(list)
+    for source in [
+        feature
+        for distribution in distributions
+        if not distribution.is_calculated
+        for feature in distribution.features
+    ]:
+        particle_size_sources[source.particle_size].append(source)
+
+    return [
+        CalculatedDataItem(
+            identifier=random_uuid_str(),
+            name=f"{distribution.name}_{name}".lower(),
+            value=value,
+            unit=UNIT_LOOKUP[name],
+            data_sources=[
+                DataSource(
+                    identifier=x.identifier,
+                    feature=name.replace("_", " "),
+                )
+                for x in particle_size_sources[feature.particle_size]
+            ],
+        )
+        for distribution in distributions
+        for feature in distribution.features
+        if distribution.is_calculated
+        # Ignore "identifier" attribute, and skip empty values
+        for name, value in feature.__dict__.items()
+        if name != "identifier" and value is not None
+    ]

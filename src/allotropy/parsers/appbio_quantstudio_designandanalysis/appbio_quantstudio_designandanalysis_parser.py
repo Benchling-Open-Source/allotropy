@@ -54,13 +54,8 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 
 class AppBioQuantStudioDesignandanalysisParser(VendorParser):
-    @property
-    def display_name(self) -> str:
-        return "AppBio QuantStudio Design & Analysis"
-
-    @property
-    def release_state(self) -> ReleaseState:
-        return ReleaseState.RECOMMENDED
+    DISPLAY_NAME = "AppBio QuantStudio Design & Analysis"
+    RELEASE_STATE = ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         contents = DesignQuantstudioContents.create(named_file_contents)
@@ -82,7 +77,7 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
                     UNC_path="",  # unknown
                     software_name=data.header.software_name,
                     software_version=data.header.software_version,
-                    ASM_converter_name=self.get_asm_converter_name(),
+                    ASM_converter_name=self.asm_converter_name,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 qPCR_document=[
