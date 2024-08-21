@@ -34,7 +34,6 @@ from allotropy.parsers.agilent_gen5.constants import (
     GAIN_KEY,
     MEASUREMENTS_DATA_POINT_KEY,
     MIRROR_KEY,
-    MULTIPLATE_FILE_ERROR,
     NAN_EMISSION_EXCITATION,
     OPTICS_KEY,
     PATHLENGTH_CORRECTION_KEY,
@@ -237,7 +236,7 @@ class ReadData:
     filter_sets: dict[str, FilterSet]
 
     @classmethod
-    def create(cls, lines: list[str]) -> ReadData:
+    def create(cls, lines: list[str]) -> list[ReadData]:
         procedure_details = "\n".join(lines)
         read_type = cls.get_read_type(procedure_details)
         if read_type != ReadType.ENDPOINT:
@@ -565,7 +564,7 @@ def _get_sources(
     return sources or measurements
 
 
-def _create_metadata(header_data: HeaderData) -> Metadata:
+def create_metadata(header_data: HeaderData) -> Metadata:
     return Metadata(
         device_type=DEVICE_TYPE,
         device_identifier=NOT_APPLICABLE,

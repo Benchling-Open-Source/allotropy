@@ -395,9 +395,8 @@ def test_create_multiple_read_modes() -> None:
         "\t\tExcitation: 479,  Emission: 520",
         "\t\tOptics: Top,  Gain: extended",
     ]
-    reader = LinesReader(multiple_read_modes)
 
-    read_data = ReadData.create(reader)
+    read_data = ReadData.create(multiple_read_modes)
     assert read_data[0].read_mode == ReadMode.ABSORBANCE
     assert read_data[0].step_label == "od"
     assert read_data[0].measurement_labels == ["od:600"]
@@ -453,9 +452,8 @@ def test_create_three_read_modes() -> None:
         "\tExtended Dynamic Range",
         "\tRead Height: 4.5 mm",
     ]
-    reader = LinesReader(multiple_read_modes)
 
-    read_data = ReadData.create(reader)
+    read_data = ReadData.create(multiple_read_modes)
     assert read_data[0].read_mode == ReadMode.ABSORBANCE
     assert read_data[0].step_label == "od"
     assert read_data[0].measurement_labels == ["od:600"]
@@ -511,9 +509,8 @@ def test_create_two_same_read_modes() -> None:
         "\t    Absorbance at 1 cm: 0.18",
         "\tRead Speed: Normal,  Delay: 100 msec,  Measurements/Data Point: 8",
     ]
-    reader = LinesReader(multiple_read_modes)
 
-    read_data = ReadData.create(reader)
+    read_data = ReadData.create(multiple_read_modes)
     assert read_data[0].read_mode == ReadMode.ABSORBANCE
     assert read_data[0].step_label == "od"
     assert read_data[0].measurement_labels == ["od:600"]
@@ -544,8 +541,7 @@ def test_create_two_same_read_modes_from_file() -> None:
     with open(file_path) as f:
         file_contents = f.readlines()
 
-    reader = LinesReader(file_contents)
-    read_data = ReadData.create(reader)
+    read_data = ReadData.create(file_contents)
 
     # Assertions for the parsed data
     assert read_data[0].read_mode == ReadMode.ABSORBANCE
@@ -574,8 +570,7 @@ def test_create_two_read_modes_from_file() -> None:
     with open(file_path) as f:
         file_contents = f.readlines()
 
-    reader = LinesReader(file_contents)
-    read_data = ReadData.create(reader)
+    read_data = ReadData.create(file_contents)
 
     # Assertions for the parsed data
     assert read_data[0].read_mode == ReadMode.ABSORBANCE
