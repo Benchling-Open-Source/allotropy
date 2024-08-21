@@ -107,11 +107,11 @@ class Vendor(Enum):
 
     @property
     def display_name(self) -> str:
-        return self.get_parser().display_name
+        return self.get_parser().DISPLAY_NAME
 
     @property
     def release_state(self) -> ReleaseState:
-        return self.get_parser().release_state
+        return self.get_parser().RELEASE_STATE
 
     def get_parser(self, default_timezone: tzinfo | None = None) -> VendorParser:
         timestamp_parser = TimestampParser(default_timezone)

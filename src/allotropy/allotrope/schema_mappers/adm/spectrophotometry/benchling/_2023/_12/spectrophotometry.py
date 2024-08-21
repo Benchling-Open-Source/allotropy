@@ -1,4 +1,3 @@
-from collections.abc import Callable
 from dataclasses import dataclass
 from enum import Enum
 from typing import Any, TypeVar
@@ -44,9 +43,9 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TDatacubeComponent,
     TDatacubeData,
     TDatacubeStructure,
-    TDateTimeValue,
     TQuantityValue,
 )
+from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
 from allotropy.parsers.utils.units import get_quantity_class
@@ -192,14 +191,8 @@ class Data:
     calculated_data: list[CalculatedDataItem] | None = None
 
 
-class Mapper:
+class Mapper(SchemaMapper[Data, Model]):
     MANIFEST = "http://purl.allotrope.org/manifests/spectrophotometry/BENCHLING/2023/12/spectrophotometry.manifest"
-
-    def __init__(
-        self, asm_converter_name: str, get_date_time: Callable[[str], TDateTimeValue]
-    ) -> None:
-        self.converter_name = asm_converter_name
-        self.get_date_time = get_date_time
 
     def map_model(self, data: Data) -> Model:
         return Model(

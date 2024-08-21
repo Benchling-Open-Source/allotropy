@@ -9,7 +9,6 @@ import pandas as pd
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.dpcr import ContainerType
 from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.dpcr import (
     CalculatedDataItem,
-    Data,
     DataSource,
     Measurement,
     MeasurementGroup,
@@ -167,11 +166,8 @@ class Well:
         ]
 
 
-def create_data(data: pd.DataFrame, file_name: str) -> Data:
-    wells = Well.create_wells(data)
-    groups = Group.create_rows(data)
-
-    measurement_groups = [
+def create_measurement_groups(wells: list[Well]) -> list[MeasurementGroup]:
+    return [
         MeasurementGroup(
             experimental_data_identifier=well.items[0].run_identifier,
             plate_well_count=PLATE_WELL_COUNT,
@@ -194,13 +190,17 @@ def create_data(data: pd.DataFrame, file_name: str) -> Data:
         for well in wells
     ]
 
+
+def create_calculated_data(
+    wells: list[Well], groups: list[Group]
+) -> list[CalculatedDataItem]:
     # Map measurement ids to group keys
     group_to_ids = defaultdict(list)
     for well in wells:
         for item in well.items:
             group_to_ids[item.group_key].append(item.measurement_identifier)
 
-    calculated_data_documents = [
+    return [
         CalculatedDataItem(
             identifier=calculated_data.identifier,
             name=calculated_data.name,
@@ -217,16 +217,14 @@ def create_data(data: pd.DataFrame, file_name: str) -> Data:
         for calculated_data in group.calculated_data
     ]
 
-    return Data(
-        Metadata(
-            device_identifier=wells[0].items[0].instrument_identifier,
-            brand_name=BRAND_NAME,
-            device_type=DEVICE_TYPE,
-            container_type=ContainerType.well_plate,
-            software_name=SOFTWARE_NAME,
-            product_manufacturer=PRODUCT_MANUFACTURER,
-            file_name=file_name,
-        ),
-        measurement_groups,
-        calculated_data=calculated_data_documents,
+
+def create_metadata(device_identifier: str, file_name: str) -> Metadata:
+    return Metadata(
+        device_identifier=device_identifier,
+        brand_name=BRAND_NAME,
+        device_type=DEVICE_TYPE,
+        container_type=ContainerType.well_plate,
+        software_name=SOFTWARE_NAME,
+        product_manufacturer=PRODUCT_MANUFACTURER,
+        file_name=file_name,
     )

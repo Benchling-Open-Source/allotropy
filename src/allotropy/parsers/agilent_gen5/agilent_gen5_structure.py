@@ -14,7 +14,6 @@ from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
     CalculatedDataItem,
-    Data,
     DataSource,
     Measurement,
     MeasurementGroup,
@@ -34,7 +33,6 @@ from allotropy.parsers.agilent_gen5.constants import (
     GAIN_KEY,
     MEASUREMENTS_DATA_POINT_KEY,
     MIRROR_KEY,
-    MULTIPLATE_FILE_ERROR,
     MULTIPLE_READ_MODE_ERROR,
     NAN_EMISSION_EXCITATION,
     OPTICS_KEY,
@@ -47,26 +45,14 @@ from allotropy.parsers.agilent_gen5.constants import (
     UNSUPPORTED_READ_TYPE_ERROR,
     WAVELENGTHS_KEY,
 )
-from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
 from allotropy.parsers.constants import NOT_APPLICABLE
-from allotropy.parsers.lines_reader import LinesReader
-from allotropy.parsers.utils.pandas import df_to_series_data, read_csv
+from allotropy.parsers.utils.pandas import read_csv, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
-    assert_not_none,
     try_float,
     try_float_or_nan,
     try_float_or_none,
 )
-
-
-def read_data_section(reader: LinesReader) -> list[str]:
-    data_section = [
-        reader.pop() or "",
-        *reader.pop_until_empty(),
-    ]
-    reader.drop_empty()
-    return data_section
 
 
 @dataclass(frozen=True)
@@ -81,17 +67,7 @@ class HeaderData:
     file_name: str
 
     @classmethod
-    def create(cls, reader: LinesReader, file_name: str) -> HeaderData:
-        assert_not_none(reader.drop_until("^Software Version"), "Software Version")
-        lines = [line for line in reader.pop_until("Procedure Details") if line]
-        df = read_csv(
-            StringIO("\n".join(lines)),
-            header=None,
-            index_col=0,
-            keep_default_na=False,
-            sep="\t",
-        ).T
-        data = df_to_series_data(df, "Failed to parser header data")
+    def create(cls, data: SeriesData, file_name: str) -> HeaderData:
         matches = re.match(FILENAME_REGEX, file_name)
         plate_identifier = matches.groupdict()["plate_identifier"] if matches else None
         date = data.get(str, "Date")
@@ -258,12 +234,8 @@ class ReadData:
     filter_sets: dict[str, FilterSet]
 
     @classmethod
-    def create(cls, reader: LinesReader) -> ReadData:
-        assert_not_none(reader.drop_until("^Procedure Details"), "Procedure Details")
-        reader.pop()
-        reader.drop_empty()
-        procedure_lines = read_data_section(reader)
-        procedure_details = "\n".join(procedure_lines)
+    def create(cls, lines: list[str]) -> ReadData:
+        procedure_details = "\n".join(lines)
         read_type = cls.get_read_type(procedure_details)
         if read_type != ReadType.ENDPOINT:
             raise AllotropeConversionError(UNSUPPORTED_READ_TYPE_ERROR)
@@ -540,7 +512,7 @@ def _get_sources(
     return sources or measurements
 
 
-def _create_metadata(header_data: HeaderData, read_data: ReadData) -> Metadata:
+def create_metadata(header_data: HeaderData, read_data: ReadData) -> Metadata:
     return Metadata(
         device_type=DEVICE_TYPE,
         detection_type=read_data.read_mode.value,
@@ -617,43 +589,4 @@ def _create_measurement(
         if measurement_type == MeasurementType.LUMINESCENCE
         else None,
         compartment_temperature=actual_temperature,
-    )
-
-
-def create_data(reader: SectionLinesReader, file_name: str) -> Data:
-    plates = list(reader.iter_sections("^Software Version"))
-
-    if not plates:
-        msg = "No plate data found in file."
-        raise AllotropeConversionError(msg)
-
-    if len(plates) > 1:
-        raise AllotropeConversionError(MULTIPLATE_FILE_ERROR)
-
-    header_data = HeaderData.create(plates[0], file_name)
-    read_data = ReadData.create(plates[0])
-
-    section_lines = {}
-    while plates[0].current_line_exists():
-        data_section = read_data_section(plates[0])
-        section_lines[data_section[0].strip().split(":")[0]] = data_section
-    if "Results" not in section_lines:
-        msg = "Missing 'Results' section"
-        raise AllotropeConversionError(msg)
-
-    sample_identifiers = get_identifiers(section_lines.get("Layout"))
-    actual_temperature = get_temperature(section_lines.get("Actual Temperature"))
-
-    measurement_groups, calculated_data = create_results(
-        section_lines["Results"],
-        header_data,
-        read_data,
-        sample_identifiers,
-        actual_temperature,
-    )
-
-    return Data(
-        metadata=_create_metadata(header_data, read_data),
-        measurement_groups=measurement_groups,
-        calculated_data=calculated_data,
     )

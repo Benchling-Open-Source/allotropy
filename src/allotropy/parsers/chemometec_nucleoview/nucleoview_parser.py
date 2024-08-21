@@ -35,13 +35,8 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 
 class ChemometecNucleoviewParser(VendorParser):
-    @property
-    def display_name(self) -> str:
-        return "ChemoMetec Nucleoview"
-
-    @property
-    def release_state(self) -> ReleaseState:
-        return ReleaseState.RECOMMENDED
+    DISPLAY_NAME = "ChemoMetec Nucleoview"
+    RELEASE_STATE = ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         contents = named_file_contents.contents
@@ -60,7 +55,7 @@ class ChemometecNucleoviewParser(VendorParser):
                 data_system_document=DataSystemDocument(
                     file_name=filename,
                     software_name=NUCLEOCOUNTER_SOFTWARE_NAME,
-                    ASM_converter_name=self.get_asm_converter_name(),
+                    ASM_converter_name=self.asm_converter_name,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                     software_version=rows[0].software_version,
                 ),
