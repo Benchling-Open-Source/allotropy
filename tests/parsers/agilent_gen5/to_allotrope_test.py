@@ -20,7 +20,7 @@ ABSORBANCE_PATH = f"{TESTDATA}/absorbance"
 
 class TestParser(ParserTest):
     VENDOR = VENDOR_TYPE
-
+    
 
 def test_to_allotrope_absorbance_no_pm_in_time() -> None:
     test_filepath = f"{ABSORBANCE_PATH}/exclude/endpoint_pathlength_correct_singleplate_no_pm_in_time.txt"

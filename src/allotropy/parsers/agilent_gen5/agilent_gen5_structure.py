@@ -585,6 +585,7 @@ def _create_measurement(
     sample_identifier: str | None,
     actual_temperature: float | None,
 ) -> Measurement:
+    print(read_data.read_mode)
     # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
     if read_data.read_mode == ReadMode.ABSORBANCE:
         measurement_type = MeasurementType.ULTRAVIOLET_ABSORBANCE
