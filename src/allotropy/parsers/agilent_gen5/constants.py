@@ -53,6 +53,10 @@ UNSUPPORTED_READ_MODE_ERROR = (
 )
 
 READ_DATA_MEASUREMENT_ERROR = "No read mode found for measurement {}"
+ALPHALISA_FLUORESCENCE_FOUND = (
+    "Both ALPHALISA and FLUORESCENCE read modes detected, which is not supported."
+)
+
 
 class ReadType(str, Enum):
     ENDPOINT = "Endpoint"
