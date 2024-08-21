@@ -4,6 +4,7 @@ from collections.abc import Callable, Iterable
 from enum import Enum
 import re
 from typing import Any, Literal, overload, TypeVar
+import unicodedata
 
 import pandas as pd
 from pandas._typing import FilePath, ReadCsvBuffer
@@ -115,6 +116,14 @@ def split_header_and_data(
     raise AllotropeConversionError(msg)
 
 
+def _normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
+    return df.rename(
+        columns=lambda col: unicodedata.normalize("NFKC", col)
+        if isinstance(col, str)
+        else col
+    )
+
+
 def read_csv(
     # types for filepath_or_buffer match those in pd.read_csv()
     filepath_or_buffer: FilePath | ReadCsvBuffer[bytes] | ReadCsvBuffer[str],
@@ -128,10 +137,12 @@ def read_csv(
     except Exception as e:
         msg = f"Error calling pd.read_csv(): {e}"
         raise AllotropeParsingError(msg) from e
-    return assert_is_type(
-        df_or_reader,
-        pd.DataFrame,
-        "pd.read_csv() returned a TextFileReader, which is not supported.",
+    return _normalize_columns(
+        assert_is_type(
+            df_or_reader,
+            pd.DataFrame,
+            "pd.read_csv() returned a TextFileReader, which is not supported.",
+        )
     )
 
 
@@ -148,8 +159,8 @@ def read_excel(
     except Exception as e:
         msg = f"Error calling pd.read_excel(): {e}"
         raise AllotropeParsingError(msg) from e
-    return assert_is_type(
-        df_or_dict, pd.DataFrame, "Expected a single-sheet Excel file."
+    return _normalize_columns(
+        assert_is_type(df_or_dict, pd.DataFrame, "Expected a single-sheet Excel file.")
     )
 
 
@@ -162,7 +173,15 @@ def read_multisheet_excel(
     except Exception as e:
         msg = f"Error calling pd.read_excel(): {e}"
         raise AllotropeParsingError(msg) from e
-    return assert_is_type(df_or_dict, dict, "Expected a multi-sheet Excel file.")
+    sheets: dict[str, pd.DataFrame] = assert_is_type(
+        df_or_dict, dict, "Expected a multi-sheet Excel file."
+    )
+    return {
+        sheet_name: _normalize_columns(
+            assert_is_type(df, pd.DataFrame, "Expected all sheets to yield dataframes.")
+        )
+        for sheet_name, df in sheets.items()
+    }
 
 
 T = TypeVar("T", bool, float, int, str)

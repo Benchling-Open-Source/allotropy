@@ -46,7 +46,7 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
                 batch_identifier=data.get(str, "Run ID"),
                 sample_identifier=data[str, "Test Name"],
                 sample_volume_setting=data.get(
-                    float, "Sample Volume (µL)", validate=SeriesData.NOT_NAN
+                    float, "Sample Volume (μL)", validate=SeriesData.NOT_NAN
                 ),
                 excitation_wavelength_setting=data.get(str, "Excitation"),
                 emission_wavelength_setting=data[str, "Emission"],
