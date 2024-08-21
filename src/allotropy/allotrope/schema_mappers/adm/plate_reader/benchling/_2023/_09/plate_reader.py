@@ -65,10 +65,10 @@ class MeasurementType(Enum):
 
 
 MeasurementDocumentItems = (
-        UltravioletAbsorbancePointDetectionMeasurementDocumentItems
-        | FluorescencePointDetectionMeasurementDocumentItems
-        | LuminescencePointDetectionMeasurementDocumentItems
-        | OpticalImagingMeasurementDocumentItems
+    UltravioletAbsorbancePointDetectionMeasurementDocumentItems
+    | FluorescencePointDetectionMeasurementDocumentItems
+    | LuminescencePointDetectionMeasurementDocumentItems
+    | OpticalImagingMeasurementDocumentItems
 )
 
 
@@ -156,9 +156,9 @@ class MeasurementGroup:
         if self._measurement_time is not None:
             return self._measurement_time
         if (
-                self.measurements
-                and len({m.measurement_time for m in self.measurements}) == 1
-                and self.measurements[0].measurement_time
+            self.measurements
+            and len({m.measurement_time for m in self.measurements}) == 1
+            and self.measurements[0].measurement_time
         ):
             return self.measurements[0].measurement_time
         return None
@@ -194,7 +194,7 @@ class Mapper:
     MANIFEST = "http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest"
 
     def __init__(
-            self, asm_converter_name: str, get_date_time: Callable[[str], TDateTimeValue]
+        self, asm_converter_name: str, get_date_time: Callable[[str], TDateTimeValue]
     ) -> None:
         self.converter_name = asm_converter_name
         self.get_date_time = get_date_time
@@ -229,7 +229,7 @@ class Mapper:
         )
 
     def _get_technique_document(
-            self, measurement_group: MeasurementGroup, metadata: Metadata
+        self, measurement_group: MeasurementGroup, metadata: Metadata
     ) -> PlateReaderDocumentItem:
         return PlateReaderDocumentItem(
             analyst=metadata.analyst,
@@ -257,7 +257,7 @@ class Mapper:
         )
 
     def _get_measurement_document(
-            self, measurement: Measurement, metadata: Metadata
+        self, measurement: Measurement, metadata: Metadata
     ) -> MeasurementDocumentItems:
         # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
         if measurement.type_ == MeasurementType.OPTICAL_IMAGING:
@@ -275,7 +275,7 @@ class Mapper:
             raise AllotropyParserError(msg)
 
     def _get_optical_imaging_measurement_document(
-            self, measurement: Measurement, metadata: Metadata
+        self, measurement: Measurement, metadata: Metadata
     ) -> OpticalImagingMeasurementDocumentItems:
         return OpticalImagingMeasurementDocumentItems(
             measurement_identifier=measurement.identifier,
@@ -321,7 +321,7 @@ class Mapper:
         )
 
     def _get_ultraviolet_absorbance_measurement_document(
-            self, measurement: Measurement, metadata: Metadata
+        self, measurement: Measurement, metadata: Metadata
     ) -> UltravioletAbsorbancePointDetectionMeasurementDocumentItems:
         return UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
             measurement_identifier=measurement.identifier,
@@ -356,7 +356,7 @@ class Mapper:
         )
 
     def _get_luminescence_measurement_document(
-            self, measurement: Measurement, metadata: Metadata
+        self, measurement: Measurement, metadata: Metadata
     ) -> LuminescencePointDetectionMeasurementDocumentItems:
         return LuminescencePointDetectionMeasurementDocumentItems(
             measurement_identifier=measurement.identifier,
@@ -393,7 +393,7 @@ class Mapper:
         )
 
     def _get_fluorescence_measurement_document(
-            self, measurement: Measurement, metadata: Metadata
+        self, measurement: Measurement, metadata: Metadata
     ) -> FluorescencePointDetectionMeasurementDocumentItems:
         return FluorescencePointDetectionMeasurementDocumentItems(
             measurement_identifier=measurement.identifier,
@@ -455,7 +455,7 @@ class Mapper:
         )
 
     def _get_processed_data_aggregate_document(
-            self, data: ProcessedData | None
+        self, data: ProcessedData | None
     ) -> ProcessedDataAggregateDocument | None:
         if not data:
             return None
@@ -483,7 +483,7 @@ class Mapper:
         )
 
     def _get_calculated_data_aggregate_document(
-            self, calculated_data_items: list[CalculatedDataItem] | None
+        self, calculated_data_items: list[CalculatedDataItem] | None
     ) -> CalculatedDataAggregateDocument | None:
         if not calculated_data_items:
             return None
