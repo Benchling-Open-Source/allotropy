@@ -251,40 +251,41 @@ class ReadData:
         for read_section in section_lines_reader.iter_sections("^Read\t"):
             read_sections.append(read_section)
 
-        section = 0
-        for read_mode in read_modes:
-            if section < len(read_sections):
-                join_read_section_lines = "\n".join(read_sections[section].lines)
-                device_control_data = DeviceControlData.create(
-                    join_read_section_lines, read_mode
+        if len(read_modes) != len(read_sections):
+            msg = "Expected the number of read modes to match the number of read sections."
+            raise AllotropeConversionError(msg)
+
+        for read_mode, read_section in zip(read_modes, read_sections, strict=True):
+            join_read_section_lines = "\n".join(read_section.lines)
+            device_control_data = DeviceControlData.create(
+                join_read_section_lines, read_mode
+            )
+            measurement_labels = cls._get_measurement_labels(
+                device_control_data, read_mode
+            )
+            number_of_averages = device_control_data.get(
+                MEASUREMENTS_DATA_POINT_KEY
+            )
+            read_height = device_control_data.get(READ_HEIGHT_KEY) or ""
+            read_data_list.append(
+                ReadData(
+                    read_mode=read_mode,
+                    step_label=device_control_data.step_label,
+                    measurement_labels=measurement_labels,
+                    detector_carriage_speed=device_control_data.get(READ_SPEED_KEY),
+                    # Absorbance attributes
+                    pathlength_correction=device_control_data.get(
+                        PATHLENGTH_CORRECTION_KEY
+                    ),
+                    number_of_averages=try_float_or_none(number_of_averages),
+                    # Luminescence attributes
+                    detector_distance=try_float_or_none(read_height.split(" ")[0]),
+                    # Fluorescence attributes
+                    filter_sets=cls._get_filter_sets(
+                        measurement_labels, device_control_data, read_mode
+                    ),
                 )
-                measurement_labels = cls._get_measurement_labels(
-                    device_control_data, read_mode
-                )
-                number_of_averages = device_control_data.get(
-                    MEASUREMENTS_DATA_POINT_KEY
-                )
-                read_height = device_control_data.get(READ_HEIGHT_KEY) or ""
-                read_data_list.append(
-                    ReadData(
-                        read_mode=read_mode,
-                        step_label=device_control_data.step_label,
-                        measurement_labels=measurement_labels,
-                        detector_carriage_speed=device_control_data.get(READ_SPEED_KEY),
-                        # Absorbance attributes
-                        pathlength_correction=device_control_data.get(
-                            PATHLENGTH_CORRECTION_KEY
-                        ),
-                        number_of_averages=try_float_or_none(number_of_averages),
-                        # Luminescence attributes
-                        detector_distance=try_float_or_none(read_height.split(" ")[0]),
-                        # Fluorescence attributes
-                        filter_sets=cls._get_filter_sets(
-                            measurement_labels, device_control_data, read_mode
-                        ),
-                    )
-                )
-                section += 1
+            )
         return read_data_list
 
     @staticmethod
