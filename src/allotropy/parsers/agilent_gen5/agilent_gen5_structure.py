@@ -534,11 +534,12 @@ def create_results(
             data_sources=[
                 DataSource(
                     identifier=measurement.identifier,
-                    feature=read_data[0].read_mode.value,
+                    feature=item.read_mode.value.lower(),
                 )
                 for measurement in _get_sources(
                     label, well_to_measurements[well_position]
                 )
+                for item in read_data
             ],
             unit=UNITLESS,
             name=label,

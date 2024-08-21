@@ -1,310 +1,1245 @@
 {
   "$id": "http://purl.allotrope.org/json-schemas/adm/cell-counting/BENCHLING/2023/11/cell-counting.schema",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "allOf": [
-    {
+  "$defs": {
+    "Cell": {
       "properties": {
-        "cell counting aggregate document": {
+        "unit": {
+          "type": "string",
+          "const": "cell",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Cell"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "Centimeter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "cm",
+          "$asm.unit-iri": "http://qudt.org/vocab/unit#Centimeter"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "Counts": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "Counts",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Counts"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "CountsPerMilliliter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "Counts/mL",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#CountsPerMilliliter"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "CountsPerSecond": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "Counts/s",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#CountsPerSecond"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "CountsTimesSecond": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "Counts.s",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#CountsTimesSecond"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "CubicMillimeter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "mm^3",
+          "$asm.unit-iri": "http://qudt.org/vocab/unit#CubicMillimeter"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "DegreeCelsius": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "degC",
+          "$asm.unit-iri": "http://qudt.org/vocab/unit#DegreeCelsius"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "GramPerLiter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "g/L",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#GramPerLiter"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "Hertz": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "Hz",
+          "$asm.unit-iri": "http://qudt.org/vocab/unit#Hertz"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "KiloDalton": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "kDa",
+          "$asm.unit-iri": "TODO"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "MicrogramPerMicroliter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "ug/\u00b5L",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MicrogramPerMicroliter"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "MicrogramPerMilliliter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "ug/mL",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MicrogramPerMilliliter"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "Microliter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "\u03bcL",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Microliter"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "Micrometer": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "\u03bcm",
+          "$asm.unit-iri": "http://qudt.org/vocab/unit#Micrometer"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "MilliAbsorbanceUnit": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "mAU",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MilliAbsorbanceUnit"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "MilliAbsorbanceUnitTimesMilliliter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "mAU.mL",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MilliAbsorbanceUnitTimesMilliliter"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "MilliAbsorbanceUnitTimesSecond": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "mAU.s",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MilliAbsorbanceUnitTimesSecond"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "MilliOsmolesPerKilogram": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "mosm/kg",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MilliOsmolesPerKilogram"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "MilliSecond": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "ms",
+          "$asm.unit-iri": "http://qudt.org/vocab/unit#MilliSecond"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "MilligramPerMilliliter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "mg/mL",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MilligramPerMilliliter"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "Milliliter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "mL",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Milliliter"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "MilliliterPerLiter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "mL/L",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MilliliterPerLiter"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "Millimeter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "mm",
+          "$asm.unit-iri": "http://qudt.org/vocab/unit#Millimeter"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "MillimeterOfMercury": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "mmHg",
+          "$asm.unit-iri": "http://qudt.org/vocab/unit#MillimeterOfMercury"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "MillimolePerLiter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "mmol/L",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MillimolePerLiter"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "MillionCellsPerMilliliter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "10^6 cells/mL",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MillionCellsPerMilliliter"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "Millivolt": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "mV",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Millivolt"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "MillivoltTimesSecond": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "mV.s",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MillivoltTimesSecond"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "NanoCoulomb": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "nC",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#NanoCoulomb"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "NanoCoulombTimesSecond": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "nC.s",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#NanoCoulombTimesSecond"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "NanogramPerMicroliter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "ng/\u00b5L",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#NanogramPerMicroliter"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "NanogramPerMilliliter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "ng/mL",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#NanogramPerMilliliter"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "Nanometer": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "nm",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Nanometer"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "Number": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "#",
+          "$asm.unit-iri": "http://qudt.org/vocab/unit#Number"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "NumberPerMicroliter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "#/\u03bcL",
+          "$asm.unit-iri": "http://qudt.org/vocab/unit#NumberPerMicroliter"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "OpticalDensity": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "OD",
+          "$asm.unit-iri": "TODO"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "PH": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "pH",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#PH"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "Percent": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "%",
+          "$asm.unit-iri": "http://qudt.org/vocab/unit#Percent"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "PicoAmpere": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "pA",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#PicoAmpere"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "PicoAmpereTimesSecond": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "pA.s",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#PicoAmpereTimesSecond"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "PicogramPerMilliliter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "pg/mL",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#PicogramPerMilliliter"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "RelativeFluorescenceUnit": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "RFU",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#RelativeFluorescenceUnit"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "RelativeFluorescenceUnitTimesMilliliter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "RFU.mL",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#RelativeFluorescenceUnitTimesMilliliter"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "RelativeFluorescenceUnitTimesSecond": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "RFU.s",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#RelativeFluorescenceUnitTimesSecond"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "RelativeLightUnit": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "RLU",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#RelativeLightUnit"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "RelativeLightUnitTimesMilliliter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "RLU.mL",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#RelativeLightUnitTimesMilliliter"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "RelativeLightUnitTimesSecond": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "RLU.s",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#RelativeLightUnitTimesSecond"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "SecondTime": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "s",
+          "$asm.unit-iri": "http://qudt.org/vocab/unit#SecondTime"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "SquareCentimetersPerGram": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "cm^2/g",
+          "$asm.unit-iri": "http://qudt.org/vocab/unit#SquareCentimetersPerGram"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "TODO": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "TODO",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#TODO"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "UnitPerLiter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "U/L",
+          "$asm.unit-iri": "TODO"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "Unitless": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "(unitless)",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Unitless"
+        }
+      },
+      "required": [
+        "unit"
+      ]
+    },
+    "tClass": {
+      "description": "A class reference is the SKOS preferred label of a class. This label MUST be unique within the transitive closure of the vocabulary referenced by the manifest.",
+      "type": "string",
+      "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class"
+    },
+    "tUnit": {
+      "description": "A unit is referenced by its QUDT symbol. It MUST be unique within the QUDT units defined in the vocabularies declared in the manifest.",
+      "type": "string",
+      "$asm.lookup-property": "http://purl.allotrope.org/ontology/qudt-ext/schema#symbol",
+      "$asm.type": "http://qudt.org/schema/qudt#Unit"
+    },
+    "tStringValue": {
+      "description": "A literal string in UTF-8 encoding.",
+      "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
           "type": "object",
-          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002859",
-          "$asm.pattern": "aggregate datum",
           "properties": {
-            "device system document": {
-              "type": "object",
-              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002526",
-              "$asm.pattern": "aggregate datum",
-              "properties": {
-                "asset management identifier": {
-                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001976",
-                  "$asm.pattern": "value datum",
-                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                  "$ref": "#/$defs/tStringValue"
-                },
-                "description": {
-                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000922",
-                  "$asm.pattern": "any datum"
-                },
-                "brand name": {
-                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001680",
-                  "$asm.pattern": "value datum",
-                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                  "$ref": "#/$defs/tStringValue"
-                },
-                "product manufacturer": {
-                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001258",
-                  "$asm.pattern": "value datum",
-                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                  "$ref": "#/$defs/tStringValue"
-                },
-                "device identifier": {
-                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002018",
-                  "$asm.pattern": "value datum",
-                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                  "$ref": "#/$defs/tStringValue"
-                },
-                "model number": {
-                  "$asm.property-class": "http://purl.obolibrary.org/obo/IAO_0000017",
-                  "$asm.pattern": "value datum",
-                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                  "$ref": "#/$defs/tStringValue"
-                },
-                "equipment serial number": {
-                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001119",
-                  "$asm.pattern": "value datum",
-                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                  "$ref": "#/$defs/tStringValue"
-                },
-                "firmware version": {
-                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001259",
-                  "$asm.pattern": "value datum",
-                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                  "$ref": "#/$defs/tStringValue"
-                },
-                "device document": {
-                  "type": "array",
-                  "$asm.array-ordered": true,
-                  "$asm.array-mixed": false,
-                  "$asm.pattern": "indexed datum",
-                  "items": {
-                    "allOf": [
-                      {
-                        "type": "object",
-                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002567",
-                        "$asm.pattern": "aggregate datum",
-                        "required": [
-                          "device type"
-                        ],
-                        "properties": {
-                          "device identifier": {
-                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002018",
-                            "$asm.pattern": "value datum",
-                            "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                            "$ref": "#/$defs/tStringValue"
-                          },
-                          "device type": {
-                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002568",
-                            "$asm.pattern": "value datum",
-                            "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                            "$ref": "#/$defs/tStringValue"
-                          },
-                          "model number": {
-                            "$asm.property-class": "http://purl.obolibrary.org/obo/IAO_0000017",
-                            "$asm.pattern": "value datum",
-                            "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                            "$ref": "#/$defs/tStringValue"
-                          },
-                          "product manufacturer": {
-                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001258",
-                            "$asm.pattern": "value datum",
-                            "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                            "$ref": "#/$defs/tStringValue"
-                          },
-                          "brand name": {
-                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001680",
-                            "$asm.pattern": "value datum",
-                            "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                            "$ref": "#/$defs/tStringValue"
-                          },
-                          "equipment serial number": {
-                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001119",
-                            "$asm.pattern": "value datum",
-                            "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                            "$ref": "#/$defs/tStringValue"
-                          },
-                          "firmware version": {
-                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001259",
-                            "$asm.pattern": "value datum",
-                            "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                            "$ref": "#/$defs/tStringValue"
-                          }
-                        }
-                      },
-                      {
-                        "properties": {
-                          "@index": {
-                            "type": "integer",
-                            "minimum": 1,
-                            "maximum": 2147483647
-                          }
-                        }
-                      }
-                    ]
-                  },
-                  "minItems": 1
-                }
-              }
+            "@type": {
+              "$ref": "#/$defs/tClass"
             },
-            "data system document": {
-              "type": "object",
-              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002771",
-              "$asm.pattern": "aggregate datum",
-              "properties": {
-                "data system instance identifier": {
-                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002772",
-                  "$asm.pattern": "value datum",
-                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                  "$ref": "#/$defs/tStringValue"
-                },
-                "file name": {
-                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001926",
-                  "$asm.pattern": "value datum",
-                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                  "$ref": "#/$defs/tStringValue"
-                },
-                "UNC path": {
-                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001906",
-                  "$asm.pattern": "value datum",
-                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                  "$ref": "#/$defs/tStringValue"
-                },
-                "software name": {
-                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002802",
-                  "$asm.pattern": "value datum",
-                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                  "$ref": "#/$defs/tStringValue"
-                },
-                "software version": {
-                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001700",
-                  "$asm.pattern": "value datum",
-                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                  "$ref": "#/$defs/tStringValue"
-                },
-                "ASM converter name": {
-                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002748",
-                  "$asm.pattern": "value datum",
-                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                  "$ref": "#/$defs/tStringValue"
-                },
-                "ASM converter version": {
-                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002749",
-                  "$asm.pattern": "value datum",
-                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                  "$ref": "#/$defs/tStringValue"
-                }
-              }
-            },
-            "processed data aggregate document": {
-              "$ref": "#/$defs/processedDataAggregateDocument"
-            },
-            "calculated data aggregate document": {
-              "$ref": "#/$defs/calculatedDataAggregateDocument"
-            },
-            "statistics aggregate document": {
-              "$ref": "#/$defs/statisticsAggregateDocument"
-            },
-            "cell counting document": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002860",
-                "$asm.pattern": "aggregate datum",
-                "properties": {
-                  "measurement aggregate document": {
-                    "type": "object",
-                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002374",
-                    "$asm.pattern": "aggregate datum",
-                    "properties": {
-                      "measurement document": {
-                        "type": "array",
-                        "$asm.array-ordered": false,
-                        "$asm.array-mixed": false,
-                        "$asm.pattern": "indexed datum",
-                        "items": {
-                          "anyOf": [
-                            {
-                              "$ref": "#/$defs/fluorescenceCellCountingMeasurementDocumentItem"
-                            },
-                            {
-                              "$ref": "#/$defs/cellCountingDetectorMeasurementDocumentItem"
-                            }
-                          ]
-                        },
-                        "minItems": 1
-                      },
-                      "diagnostic trace aggregate document": {
-                        "type": "object",
-                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002705",
-                        "$asm.pattern": "aggregate datum",
-                        "properties": {
-                          "diagnostic trace document": {
-                            "type": "array",
-                            "$asm.array-ordered": false,
-                            "$asm.array-mixed": false,
-                            "$asm.pattern": "indexed datum",
-                            "items": {
-                              "type": "object",
-                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002706",
-                              "$asm.pattern": "aggregate datum",
-                              "required": [
-                                "description"
-                              ],
-                              "properties": {
-                                "description": {
-                                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000922",
-                                  "$asm.pattern": "any datum"
-                                }
-                              },
-                              "patternProperties": {
-                                "data cube$": {
-                                  "$asm.property-class": "http://purl.org/linked-data/cube#DataSet",
-                                  "$asm.pattern": "datacube",
-                                  "$ref": "#/$defs/tDatacube"
-                                }
-                              }
-                            },
-                            "minItems": 0
-                          }
-                        }
-                      },
-                      "processed data aggregate document": {
-                        "$ref": "#/$defs/processedDataAggregateDocument"
-                      },
-                      "calculated data aggregate document": {
-                        "$ref": "#/$defs/calculatedDataAggregateDocument"
-                      },
-                      "statistics aggregate document": {
-                        "$ref": "#/$defs/statisticsAggregateDocument"
-                      }
-                    },
-                    "required": [
-                      "measurement document"
-                    ]
-                  },
-                  "analyst": {
-                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001116",
-                    "$asm.pattern": "value datum",
-                    "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                    "$ref": "#/$defs/tStringValue"
-                  },
-                  "submitter": {
-                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002531",
-                    "$asm.pattern": "value datum",
-                    "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                    "$ref": "#/$defs/tStringValue"
-                  }
-                },
-                "required": [
-                  "measurement aggregate document"
-                ]
-              },
-              "minItems": 1
+            "value": {
+              "type": "string"
             }
           },
           "required": [
-            "cell counting document"
+            "@type",
+            "value"
           ]
+        }
+      ]
+    },
+    "tIntValue": {
+      "$asm.type": "http://www.w3.org/2001/XMLSchema#int",
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": -2147483648,
+          "maximum": 2147483647
+        },
+        {
+          "type": "object",
+          "required": [
+            "@type",
+            "value"
+          ],
+          "properties": {
+            "value": {
+              "type": "integer",
+              "minimum": -2147483648,
+              "maximum": 2147483647
+            },
+            "@type": {
+              "type": "string",
+              "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class",
+              "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel"
+            }
+          }
+        }
+      ]
+    },
+    "tIntegerValue": {
+      "description": "A arbitrary length integer value.",
+      "$asm.type": "http://www.w3.org/2001/XMLSchema#integer",
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "@type": {
+              "$ref": "#/$defs/tClass"
+            },
+            "value": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "@type",
+            "value"
+          ]
+        }
+      ]
+    },
+    "tDecimalValue": {
+      "description": "A number value stored as an XSD decimal.",
+      "$asm.type": "http://www.w3.org/2001/XMLSchema#decimal",
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "@type": {
+              "$ref": "#/$defs/tClass"
+            },
+            "value": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "@type",
+            "value"
+          ]
+        }
+      ]
+    },
+    "tDoubleValue": {
+      "description": "A number value stored as an XSD double.",
+      "$asm.type": "http://www.w3.org/2001/XMLSchema#double",
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "@type": {
+              "$ref": "#/$defs/tClass"
+            },
+            "value": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "@type",
+            "value"
+          ]
+        }
+      ]
+    },
+    "tFloatValue": {
+      "description": "A number value stored as an XSD float.",
+      "$asm.type": "http://www.w3.org/2001/XMLSchema#float",
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "@type": {
+              "$ref": "#/$defs/tClass"
+            },
+            "value": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "@type",
+            "value"
+          ]
+        }
+      ]
+    },
+    "tBooleanValue": {
+      "description": "A boolean value.",
+      "$asm.type": "http://www.w3.org/2001/XMLSchema#boolean",
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "@type": {
+              "$ref": "#/$defs/tClass"
+            },
+            "value": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "@type",
+            "value"
+          ]
+        }
+      ]
+    },
+    "tDateTimeValue": {
+      "description": "All timestamps MUST be in ISO8601 date/time format.",
+      "$asm.type": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "@type": {
+              "$ref": "#/$defs/tClass"
+            },
+            "value": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "required": [
+            "@type",
+            "value"
+          ]
+        }
+      ]
+    },
+    "tDateTimeStampValue": {
+      "description": "All timestamps MUST be in ISO8601 date/time format.",
+      "$asm.type": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "@type": {
+              "$ref": "#/$defs/tClass"
+            },
+            "value": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "required": [
+            "@type",
+            "value"
+          ]
+        }
+      ]
+    },
+    "tStatisticDatumRole": {
+      "description": "A statistic datum role.",
+      "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class",
+      "type": "string",
+      "enum": [
+        "arithmetic mean role",
+        "median role",
+        "relative standard deviation role",
+        "skewness role",
+        "standard deviation role",
+        "variance role",
+        "maximum value role",
+        "minimum value role"
+      ],
+      "$asm.value-sub-class-of": "http://purl.allotrope.org/ontologies/role#AFRL_0000328"
+    },
+    "tQuantityValue": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "enum": [
+                "NaN",
+                "+Infinity",
+                "-Infinity"
+              ]
+            }
+          ]
+        },
+        "unit": {
+          "$ref": "#/$defs/tUnit"
+        },
+        "has statistic datum role": {
+          "$ref": "#/$defs/tStatisticDatumRole"
+        },
+        "@type": {
+          "$ref": "#/$defs/tClass"
+        }
+      },
+      "$asm.type": "http://qudt.org/schema/qudt#QuantityValue",
+      "required": [
+        "value",
+        "unit"
+      ]
+    },
+    "tNullableQuantityValue": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "unit": {
+          "$ref": "#/$defs/tUnit"
+        },
+        "has statistic datum role": {
+          "$ref": "#/$defs/tStatisticDatumRole"
+        },
+        "@type": {
+          "$ref": "#/$defs/tClass"
+        }
+      },
+      "$asm.type": "http://qudt.org/schema/qudt#QuantityValue",
+      "required": [
+        "value",
+        "unit"
+      ]
+    },
+    "tDatacube": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "cube-structure": {
+          "$ref": "#/$defs/tDatacubeStructure"
+        },
+        "data": {
+          "$ref": "#/$defs/tDatacubeData"
         }
       }
     },
-    {
-      "$ref": "#/$defs/asm"
-    }
-  ],
-  "required": [
-    "$asm.manifest"
-  ],
-  "$defs": {
-    "cellCountingDetectorDeviceControlAggregateDocument":{
+    "tDatacubeStructure": {
+      "type": "object",
+      "properties": {
+        "dimensions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/tDatacubeComponent"
+          },
+          "unique": true
+        },
+        "measures": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/tDatacubeComponent"
+          },
+          "unique": true
+        }
+      },
+      "required": [
+        "dimensions",
+        "measures"
+      ]
+    },
+    "tDatacubeComponent": {
+      "type": "object",
+      "properties": {
+        "@componentDatatype": {
+          "description": "Subset of XSD datatypes supported in simple models",
+          "default": "double",
+          "enum": [
+            "double",
+            "float",
+            "decimal",
+            "integer",
+            "byte",
+            "int",
+            "short",
+            "long",
+            "string",
+            "boolean",
+            "dateTime"
+          ]
+        },
+        "concept": {
+          "$ref": "#/$defs/tClass"
+        },
+        "unit": {
+          "$ref": "#/$defs/tUnit"
+        },
+        "scale": {
+          "enum": [
+            "nominal",
+            "ordinal",
+            "cardinal",
+            "interval",
+            "range"
+          ]
+        },
+        "$asm.fill-value": {
+          "type": [
+            "string",
+            "number",
+            "integer",
+            "boolean"
+          ]
+        }
+      },
+      "required": [
+        "@componentDatatype",
+        "concept"
+      ],
+      "allOf": [
+        {
+          "$ref": "#/$defs/cFillValueIEEE"
+        },
+        {
+          "$ref": "#/$defs/cFillValueDecimal"
+        },
+        {
+          "$ref": "#/$defs/cFillValueBoolean"
+        },
+        {
+          "$ref": "#/$defs/cFillValueString"
+        }
+      ]
+    },
+    "cFillValueBoolean": {},
+    "cFillValueIEEE": {},
+    "cFillValueDecimal": {},
+    "cFillValueString": {},
+    "tDatacubeData": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tDimensionData"
+        },
+        {
+          "$ref": "#/$defs/tMeasureData"
+        }
+      ]
+    },
+    "tDimensionData": {
+      "properties": {
+        "dimensions": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/tDimensionArray"
+              },
+              {
+                "$ref": "#/$defs/tFunction"
+              }
+            ]
+          }
+        }
+      },
+      "required": [
+        "dimensions"
+      ]
+    },
+    "tMeasureData": {
+      "oneOf": [
+        {
+          "properties": {
+            "measures": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/tMeasureArray"
+              }
+            }
+          },
+          "required": [
+            "measures"
+          ]
+        },
+        {
+          "properties": {
+            "points": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/tTupleData"
+              }
+            }
+          },
+          "required": [
+            "points"
+          ]
+        }
+      ]
+    },
+    "tTupleData": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "tDimensionArray": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/tNumberArray"
+        },
+        {
+          "$ref": "#/$defs/tBooleanArray"
+        },
+        {
+          "$ref": "#/$defs/tStringArray"
+        }
+      ]
+    },
+    "tMeasureArray": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/tNumberOrNullArray"
+        },
+        {
+          "$ref": "#/$defs/tBooleanOrNullArray"
+        },
+        {
+          "$ref": "#/$defs/tStringOrNullArray"
+        }
+      ]
+    },
+    "tNumberArray": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    },
+    "tNumberOrNullArray": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "tBooleanArray": {
+      "type": "array",
+      "items": {
+        "type": "boolean"
+      }
+    },
+    "tBooleanOrNullArray": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "tStringArray": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "tStringOrNullArray": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "tFunction": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "linear",
+            "logarithmic"
+          ],
+          "default": "linear"
+        },
+        "start": {
+          "type": "number",
+          "default": 1
+        },
+        "length": {
+          "type": "number"
+        },
+        "incr": {
+          "type": "number",
+          "default": 1
+        }
+      }
+    },
+    "cellCountingDetectorDeviceControlAggregateDocument": {
       "required": [
         "device control document"
       ],
@@ -325,8 +1260,7 @@
                 }
               }
             ]
-          },
-          "minItems": 1
+          }
         }
       }
     },
@@ -377,7 +1311,7 @@
               "$asm.array-mixed": false,
               "$asm.pattern": "indexed datum",
               "items": {
-                "allOf":[
+                "allOf": [
                   {
                     "type": "object",
                     "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002659",
@@ -505,8 +1439,7 @@
                     }
                   }
                 ]
-              },
-              "minItems": 1
+              }
             }
           },
           "required": [
@@ -521,7 +1454,7 @@
         }
       }
     },
-    "fluorescenceCellCountingDeviceControlDocument":{
+    "fluorescenceCellCountingDeviceControlDocument": {
       "type": "array",
       "$asm.array-ordered": true,
       "$asm.array-mixed": false,
@@ -566,15 +1499,14 @@
             }
           }
         ]
-      },
-      "minItems": 1
+      }
     },
-    "fluorescenceCellCountingDeviceControlAggregateDocument":{
+    "fluorescenceCellCountingDeviceControlAggregateDocument": {
       "type": "object",
       "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002722",
       "$asm.pattern": "aggregate datum",
       "properties": {
-        "device control document":{
+        "device control document": {
           "$ref": "#/$defs/fluorescenceCellCountingDeviceControlDocument"
         }
       }
@@ -699,8 +1631,7 @@
                     }
                   }
                 ]
-              },
-              "minItems": 1
+              }
             }
           },
           "required": [
@@ -761,8 +1692,7 @@
                 }
               }
             ]
-          },
-          "minItems": 1
+          }
         }
       }
     },
@@ -828,8 +1758,7 @@
                 }
               }
             ]
-          },
-          "minItems": 1
+          }
         }
       }
     },
@@ -881,8 +1810,7 @@
                 }
               }
             ]
-          },
-          "minItems": 1
+          }
         }
       }
     },
@@ -1104,8 +2032,7 @@
             "required": [
               "statistical feature"
             ]
-          },
-          "minItems": 0
+          }
         }
       }
     },
@@ -1279,39 +2206,32 @@
       "properties": {
         "@id": {
           "type": "string",
-          "format": "uri",
-          "minItems": 1,
-          "maxItems": 1
+          "format": "uri"
         },
         "@type": {
           "type": "string",
-          "format": "uri",
-          "minItems": 1,
-          "maxItems": 1
+          "format": "uri"
         },
         "vocabulary": {
           "type": "array",
           "items": {
             "type": "string",
             "format": "uri"
-          },
-          "minItems": 1
+          }
         },
         "shapes": {
           "type": "array",
           "items": {
             "type": "string",
             "format": "uri"
-          },
-          "minItems": 1
+          }
         },
         "json-schemas": {
           "type": "array",
           "items": {
             "type": "string",
             "format": "uri"
-          },
-          "minItems": 1
+          }
         }
       },
       "required": [
@@ -1319,5 +2239,1358 @@
         "json-schemas"
       ]
     }
-  }
+  },
+  "$custom": {
+    "tQuantityValueCell": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/Cell"
+        }
+      ]
+    },
+    "tNullableQuantityValueCell": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/Cell"
+        }
+      ]
+    },
+    "tQuantityValueCentimeter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/Centimeter"
+        }
+      ]
+    },
+    "tNullableQuantityValueCentimeter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/Centimeter"
+        }
+      ]
+    },
+    "tQuantityValueCounts": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/Counts"
+        }
+      ]
+    },
+    "tNullableQuantityValueCounts": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/Counts"
+        }
+      ]
+    },
+    "tQuantityValueCountsPerMilliliter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/CountsPerMilliliter"
+        }
+      ]
+    },
+    "tNullableQuantityValueCountsPerMilliliter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/CountsPerMilliliter"
+        }
+      ]
+    },
+    "tQuantityValueCountsPerSecond": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/CountsPerSecond"
+        }
+      ]
+    },
+    "tNullableQuantityValueCountsPerSecond": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/CountsPerSecond"
+        }
+      ]
+    },
+    "tQuantityValueCountsTimesSecond": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/CountsTimesSecond"
+        }
+      ]
+    },
+    "tNullableQuantityValueCountsTimesSecond": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/CountsTimesSecond"
+        }
+      ]
+    },
+    "tQuantityValueCubicMillimeter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/CubicMillimeter"
+        }
+      ]
+    },
+    "tNullableQuantityValueCubicMillimeter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/CubicMillimeter"
+        }
+      ]
+    },
+    "tQuantityValueDegreeCelsius": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/DegreeCelsius"
+        }
+      ]
+    },
+    "tNullableQuantityValueDegreeCelsius": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/DegreeCelsius"
+        }
+      ]
+    },
+    "tQuantityValueGramPerLiter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/GramPerLiter"
+        }
+      ]
+    },
+    "tNullableQuantityValueGramPerLiter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/GramPerLiter"
+        }
+      ]
+    },
+    "tQuantityValueHertz": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/Hertz"
+        }
+      ]
+    },
+    "tNullableQuantityValueHertz": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/Hertz"
+        }
+      ]
+    },
+    "tQuantityValueKiloDalton": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/KiloDalton"
+        }
+      ]
+    },
+    "tNullableQuantityValueKiloDalton": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/KiloDalton"
+        }
+      ]
+    },
+    "tQuantityValueMicrogramPerMicroliter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/MicrogramPerMicroliter"
+        }
+      ]
+    },
+    "tNullableQuantityValueMicrogramPerMicroliter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/MicrogramPerMicroliter"
+        }
+      ]
+    },
+    "tQuantityValueMicrogramPerMilliliter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/MicrogramPerMilliliter"
+        }
+      ]
+    },
+    "tNullableQuantityValueMicrogramPerMilliliter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/MicrogramPerMilliliter"
+        }
+      ]
+    },
+    "tQuantityValueMicroliter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/Microliter"
+        }
+      ]
+    },
+    "tNullableQuantityValueMicroliter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/Microliter"
+        }
+      ]
+    },
+    "tQuantityValueMicrometer": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/Micrometer"
+        }
+      ]
+    },
+    "tNullableQuantityValueMicrometer": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/Micrometer"
+        }
+      ]
+    },
+    "tQuantityValueMilliAbsorbanceUnit": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/MilliAbsorbanceUnit"
+        }
+      ]
+    },
+    "tNullableQuantityValueMilliAbsorbanceUnit": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/MilliAbsorbanceUnit"
+        }
+      ]
+    },
+    "tQuantityValueMilliAbsorbanceUnitTimesMilliliter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/MilliAbsorbanceUnitTimesMilliliter"
+        }
+      ]
+    },
+    "tNullableQuantityValueMilliAbsorbanceUnitTimesMilliliter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/MilliAbsorbanceUnitTimesMilliliter"
+        }
+      ]
+    },
+    "tQuantityValueMilliAbsorbanceUnitTimesSecond": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/MilliAbsorbanceUnitTimesSecond"
+        }
+      ]
+    },
+    "tNullableQuantityValueMilliAbsorbanceUnitTimesSecond": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/MilliAbsorbanceUnitTimesSecond"
+        }
+      ]
+    },
+    "tQuantityValueMilliOsmolesPerKilogram": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/MilliOsmolesPerKilogram"
+        }
+      ]
+    },
+    "tNullableQuantityValueMilliOsmolesPerKilogram": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/MilliOsmolesPerKilogram"
+        }
+      ]
+    },
+    "tQuantityValueMilliSecond": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/MilliSecond"
+        }
+      ]
+    },
+    "tNullableQuantityValueMilliSecond": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/MilliSecond"
+        }
+      ]
+    },
+    "tQuantityValueMilligramPerMilliliter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/MilligramPerMilliliter"
+        }
+      ]
+    },
+    "tNullableQuantityValueMilligramPerMilliliter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/MilligramPerMilliliter"
+        }
+      ]
+    },
+    "tQuantityValueMilliliter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/Milliliter"
+        }
+      ]
+    },
+    "tNullableQuantityValueMilliliter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/Milliliter"
+        }
+      ]
+    },
+    "tQuantityValueMilliliterPerLiter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/MilliliterPerLiter"
+        }
+      ]
+    },
+    "tNullableQuantityValueMilliliterPerLiter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/MilliliterPerLiter"
+        }
+      ]
+    },
+    "tQuantityValueMillimeter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/Millimeter"
+        }
+      ]
+    },
+    "tNullableQuantityValueMillimeter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/Millimeter"
+        }
+      ]
+    },
+    "tQuantityValueMillimeterOfMercury": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/MillimeterOfMercury"
+        }
+      ]
+    },
+    "tNullableQuantityValueMillimeterOfMercury": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/MillimeterOfMercury"
+        }
+      ]
+    },
+    "tQuantityValueMillimolePerLiter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/MillimolePerLiter"
+        }
+      ]
+    },
+    "tNullableQuantityValueMillimolePerLiter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/MillimolePerLiter"
+        }
+      ]
+    },
+    "tQuantityValueMillionCellsPerMilliliter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/MillionCellsPerMilliliter"
+        }
+      ]
+    },
+    "tNullableQuantityValueMillionCellsPerMilliliter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/MillionCellsPerMilliliter"
+        }
+      ]
+    },
+    "tQuantityValueMillivolt": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/Millivolt"
+        }
+      ]
+    },
+    "tNullableQuantityValueMillivolt": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/Millivolt"
+        }
+      ]
+    },
+    "tQuantityValueMillivoltTimesSecond": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/MillivoltTimesSecond"
+        }
+      ]
+    },
+    "tNullableQuantityValueMillivoltTimesSecond": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/MillivoltTimesSecond"
+        }
+      ]
+    },
+    "tQuantityValueNanoCoulomb": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/NanoCoulomb"
+        }
+      ]
+    },
+    "tNullableQuantityValueNanoCoulomb": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/NanoCoulomb"
+        }
+      ]
+    },
+    "tQuantityValueNanoCoulombTimesSecond": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/NanoCoulombTimesSecond"
+        }
+      ]
+    },
+    "tNullableQuantityValueNanoCoulombTimesSecond": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/NanoCoulombTimesSecond"
+        }
+      ]
+    },
+    "tQuantityValueNanogramPerMicroliter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/NanogramPerMicroliter"
+        }
+      ]
+    },
+    "tNullableQuantityValueNanogramPerMicroliter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/NanogramPerMicroliter"
+        }
+      ]
+    },
+    "tQuantityValueNanogramPerMilliliter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/NanogramPerMilliliter"
+        }
+      ]
+    },
+    "tNullableQuantityValueNanogramPerMilliliter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/NanogramPerMilliliter"
+        }
+      ]
+    },
+    "tQuantityValueNanometer": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/Nanometer"
+        }
+      ]
+    },
+    "tNullableQuantityValueNanometer": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/Nanometer"
+        }
+      ]
+    },
+    "tQuantityValueNumber": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/Number"
+        }
+      ]
+    },
+    "tNullableQuantityValueNumber": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/Number"
+        }
+      ]
+    },
+    "tQuantityValueNumberPerMicroliter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/NumberPerMicroliter"
+        }
+      ]
+    },
+    "tNullableQuantityValueNumberPerMicroliter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/NumberPerMicroliter"
+        }
+      ]
+    },
+    "tQuantityValueOpticalDensity": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/OpticalDensity"
+        }
+      ]
+    },
+    "tNullableQuantityValueOpticalDensity": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/OpticalDensity"
+        }
+      ]
+    },
+    "tQuantityValuePH": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/PH"
+        }
+      ]
+    },
+    "tNullableQuantityValuePH": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/PH"
+        }
+      ]
+    },
+    "tQuantityValuePercent": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/Percent"
+        }
+      ]
+    },
+    "tNullableQuantityValuePercent": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/Percent"
+        }
+      ]
+    },
+    "tQuantityValuePicoAmpere": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/PicoAmpere"
+        }
+      ]
+    },
+    "tNullableQuantityValuePicoAmpere": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/PicoAmpere"
+        }
+      ]
+    },
+    "tQuantityValuePicoAmpereTimesSecond": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/PicoAmpereTimesSecond"
+        }
+      ]
+    },
+    "tNullableQuantityValuePicoAmpereTimesSecond": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/PicoAmpereTimesSecond"
+        }
+      ]
+    },
+    "tQuantityValuePicogramPerMilliliter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/PicogramPerMilliliter"
+        }
+      ]
+    },
+    "tNullableQuantityValuePicogramPerMilliliter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/PicogramPerMilliliter"
+        }
+      ]
+    },
+    "tQuantityValueRelativeFluorescenceUnit": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/RelativeFluorescenceUnit"
+        }
+      ]
+    },
+    "tNullableQuantityValueRelativeFluorescenceUnit": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/RelativeFluorescenceUnit"
+        }
+      ]
+    },
+    "tQuantityValueRelativeFluorescenceUnitTimesMilliliter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/RelativeFluorescenceUnitTimesMilliliter"
+        }
+      ]
+    },
+    "tNullableQuantityValueRelativeFluorescenceUnitTimesMilliliter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/RelativeFluorescenceUnitTimesMilliliter"
+        }
+      ]
+    },
+    "tQuantityValueRelativeFluorescenceUnitTimesSecond": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/RelativeFluorescenceUnitTimesSecond"
+        }
+      ]
+    },
+    "tNullableQuantityValueRelativeFluorescenceUnitTimesSecond": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/RelativeFluorescenceUnitTimesSecond"
+        }
+      ]
+    },
+    "tQuantityValueRelativeLightUnit": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/RelativeLightUnit"
+        }
+      ]
+    },
+    "tNullableQuantityValueRelativeLightUnit": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/RelativeLightUnit"
+        }
+      ]
+    },
+    "tQuantityValueRelativeLightUnitTimesMilliliter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/RelativeLightUnitTimesMilliliter"
+        }
+      ]
+    },
+    "tNullableQuantityValueRelativeLightUnitTimesMilliliter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/RelativeLightUnitTimesMilliliter"
+        }
+      ]
+    },
+    "tQuantityValueRelativeLightUnitTimesSecond": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/RelativeLightUnitTimesSecond"
+        }
+      ]
+    },
+    "tNullableQuantityValueRelativeLightUnitTimesSecond": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/RelativeLightUnitTimesSecond"
+        }
+      ]
+    },
+    "tQuantityValueSecondTime": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/SecondTime"
+        }
+      ]
+    },
+    "tNullableQuantityValueSecondTime": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/SecondTime"
+        }
+      ]
+    },
+    "tQuantityValueSquareCentimetersPerGram": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/SquareCentimetersPerGram"
+        }
+      ]
+    },
+    "tNullableQuantityValueSquareCentimetersPerGram": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/SquareCentimetersPerGram"
+        }
+      ]
+    },
+    "tQuantityValueTODO": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/TODO"
+        }
+      ]
+    },
+    "tNullableQuantityValueTODO": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/TODO"
+        }
+      ]
+    },
+    "tQuantityValueUnitPerLiter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/UnitPerLiter"
+        }
+      ]
+    },
+    "tNullableQuantityValueUnitPerLiter": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/UnitPerLiter"
+        }
+      ]
+    },
+    "tQuantityValueUnitless": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/Unitless"
+        }
+      ]
+    },
+    "tNullableQuantityValueUnitless": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/tNullableQuantityValue"
+        },
+        {
+          "$ref": "#/$defs/Unitless"
+        }
+      ]
+    }
+  },
+  "properties": {
+    "cell counting aggregate document": {
+      "type": "object",
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002859",
+      "$asm.pattern": "aggregate datum",
+      "properties": {
+        "device system document": {
+          "type": "object",
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002526",
+          "$asm.pattern": "aggregate datum",
+          "properties": {
+            "asset management identifier": {
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001976",
+              "$asm.pattern": "value datum",
+              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+              "$ref": "#/$defs/tStringValue"
+            },
+            "description": {
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000922",
+              "$asm.pattern": "any datum"
+            },
+            "brand name": {
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001680",
+              "$asm.pattern": "value datum",
+              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+              "$ref": "#/$defs/tStringValue"
+            },
+            "product manufacturer": {
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001258",
+              "$asm.pattern": "value datum",
+              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+              "$ref": "#/$defs/tStringValue"
+            },
+            "device identifier": {
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002018",
+              "$asm.pattern": "value datum",
+              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+              "$ref": "#/$defs/tStringValue"
+            },
+            "model number": {
+              "$asm.property-class": "http://purl.obolibrary.org/obo/IAO_0000017",
+              "$asm.pattern": "value datum",
+              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+              "$ref": "#/$defs/tStringValue"
+            },
+            "equipment serial number": {
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001119",
+              "$asm.pattern": "value datum",
+              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+              "$ref": "#/$defs/tStringValue"
+            },
+            "firmware version": {
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001259",
+              "$asm.pattern": "value datum",
+              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+              "$ref": "#/$defs/tStringValue"
+            },
+            "device document": {
+              "type": "array",
+              "$asm.array-ordered": true,
+              "$asm.array-mixed": false,
+              "$asm.pattern": "indexed datum",
+              "items": {
+                "properties": {
+                  "device identifier": {
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002018",
+                    "$asm.pattern": "value datum",
+                    "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                    "$ref": "#/$defs/tStringValue"
+                  },
+                  "device type": {
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002568",
+                    "$asm.pattern": "value datum",
+                    "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                    "$ref": "#/$defs/tStringValue"
+                  },
+                  "model number": {
+                    "$asm.property-class": "http://purl.obolibrary.org/obo/IAO_0000017",
+                    "$asm.pattern": "value datum",
+                    "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                    "$ref": "#/$defs/tStringValue"
+                  },
+                  "product manufacturer": {
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001258",
+                    "$asm.pattern": "value datum",
+                    "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                    "$ref": "#/$defs/tStringValue"
+                  },
+                  "brand name": {
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001680",
+                    "$asm.pattern": "value datum",
+                    "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                    "$ref": "#/$defs/tStringValue"
+                  },
+                  "equipment serial number": {
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001119",
+                    "$asm.pattern": "value datum",
+                    "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                    "$ref": "#/$defs/tStringValue"
+                  },
+                  "firmware version": {
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001259",
+                    "$asm.pattern": "value datum",
+                    "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                    "$ref": "#/$defs/tStringValue"
+                  },
+                  "@index": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2147483647
+                  }
+                },
+                "required": [
+                  "device type"
+                ]
+              }
+            }
+          }
+        },
+        "data system document": {
+          "type": "object",
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002771",
+          "$asm.pattern": "aggregate datum",
+          "properties": {
+            "data system instance identifier": {
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002772",
+              "$asm.pattern": "value datum",
+              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+              "$ref": "#/$defs/tStringValue"
+            },
+            "file name": {
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001926",
+              "$asm.pattern": "value datum",
+              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+              "$ref": "#/$defs/tStringValue"
+            },
+            "UNC path": {
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001906",
+              "$asm.pattern": "value datum",
+              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+              "$ref": "#/$defs/tStringValue"
+            },
+            "software name": {
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002802",
+              "$asm.pattern": "value datum",
+              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+              "$ref": "#/$defs/tStringValue"
+            },
+            "software version": {
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001700",
+              "$asm.pattern": "value datum",
+              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+              "$ref": "#/$defs/tStringValue"
+            },
+            "ASM converter name": {
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002748",
+              "$asm.pattern": "value datum",
+              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+              "$ref": "#/$defs/tStringValue"
+            },
+            "ASM converter version": {
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002749",
+              "$asm.pattern": "value datum",
+              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+              "$ref": "#/$defs/tStringValue"
+            }
+          }
+        },
+        "processed data aggregate document": {
+          "$ref": "#/$defs/processedDataAggregateDocument"
+        },
+        "calculated data aggregate document": {
+          "$ref": "#/$defs/calculatedDataAggregateDocument"
+        },
+        "statistics aggregate document": {
+          "$ref": "#/$defs/statisticsAggregateDocument"
+        },
+        "cell counting document": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002860",
+            "$asm.pattern": "aggregate datum",
+            "properties": {
+              "measurement aggregate document": {
+                "type": "object",
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002374",
+                "$asm.pattern": "aggregate datum",
+                "properties": {
+                  "measurement document": {
+                    "type": "array",
+                    "$asm.array-ordered": false,
+                    "$asm.array-mixed": false,
+                    "$asm.pattern": "indexed datum",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "$ref": "#/$defs/fluorescenceCellCountingMeasurementDocumentItem"
+                        },
+                        {
+                          "$ref": "#/$defs/cellCountingDetectorMeasurementDocumentItem"
+                        }
+                      ]
+                    }
+                  },
+                  "diagnostic trace aggregate document": {
+                    "type": "object",
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002705",
+                    "$asm.pattern": "aggregate datum",
+                    "properties": {
+                      "diagnostic trace document": {
+                        "type": "array",
+                        "$asm.array-ordered": false,
+                        "$asm.array-mixed": false,
+                        "$asm.pattern": "indexed datum",
+                        "items": {
+                          "type": "object",
+                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002706",
+                          "$asm.pattern": "aggregate datum",
+                          "required": [
+                            "description"
+                          ],
+                          "properties": {
+                            "description": {
+                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000922",
+                              "$asm.pattern": "any datum"
+                            }
+                          },
+                          "patternProperties": {
+                            "data cube$": {
+                              "$asm.property-class": "http://purl.org/linked-data/cube#DataSet",
+                              "$asm.pattern": "datacube",
+                              "$ref": "#/$defs/tDatacube"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "processed data aggregate document": {
+                    "$ref": "#/$defs/processedDataAggregateDocument"
+                  },
+                  "calculated data aggregate document": {
+                    "$ref": "#/$defs/calculatedDataAggregateDocument"
+                  },
+                  "statistics aggregate document": {
+                    "$ref": "#/$defs/statisticsAggregateDocument"
+                  }
+                },
+                "required": [
+                  "measurement document"
+                ]
+              },
+              "analyst": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001116",
+                "$asm.pattern": "value datum",
+                "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                "$ref": "#/$defs/tStringValue"
+              },
+              "submitter": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002531",
+                "$asm.pattern": "value datum",
+                "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                "$ref": "#/$defs/tStringValue"
+              }
+            },
+            "required": [
+              "measurement aggregate document"
+            ]
+          }
+        }
+      },
+      "required": [
+        "cell counting document"
+      ]
+    },
+    "$asm.manifest": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "iri"
+        },
+        {
+          "$ref": "#/$defs/manifest"
+        }
+      ]
+    }
+  },
+  "required": [
+    "$asm.manifest"
+  ]
 }
