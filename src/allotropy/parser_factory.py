@@ -55,7 +55,6 @@ from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_parser import (
 from allotropy.parsers.roche_cedex_hires.roche_cedex_hires_parser import (
     RocheCedexHiResParser,
 )
-from allotropy.parsers.stender_tech_spectro.stender_tech_spectro_parser import StenderTechSpectroParser
 from allotropy.parsers.thermo_fisher_genesys30.thermo_fisher_genesys30_parser import (
     ThermoFisherGenesys30Parser,
 )
