@@ -32,4 +32,6 @@ class RocheCedexHiResReader:
         # Fix typo found in some source files.
         df.columns = df.columns.str.replace("identifer", "identifier", regex=True)
         self.data = df
-        self.header = df_to_series_data(df.head(1), "Unable to parser header from dataset.")
+        self.header = df_to_series_data(
+            df.head(1), "Unable to parser header from dataset."
+        )
