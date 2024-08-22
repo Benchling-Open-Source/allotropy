@@ -43,13 +43,8 @@ DEFAULT_DEVICE_TYPE = "multi analyte profiling analyzer"
 
 
 class LuminexXponentParser(VendorParser):
-    @property
-    def display_name(self) -> str:
-        return "Luminex xPONENT"
-
-    @property
-    def release_state(self) -> ReleaseState:
-        return ReleaseState.RECOMMENDED
+    DISPLAY_NAME = "Luminex xPONENT"
+    RELEASE_STATE = ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         lines = read_to_lines(named_file_contents)
@@ -83,7 +78,7 @@ class LuminexXponentParser(VendorParser):
                     file_name=file_name,
                     software_name=DEFAULT_SOFTWARE_NAME,
                     software_version=header.software_version,
-                    ASM_converter_name=self.get_asm_converter_name(),
+                    ASM_converter_name=self.asm_converter_name,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 multi_analyte_profiling_document=[

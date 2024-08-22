@@ -39,7 +39,9 @@ from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import Data
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_data_creator import (
-    _create_data,
+    create_calculated_data,
+    create_measurement_groups,
+    create_metadata,
 )
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     AmplificationData,
@@ -96,7 +98,7 @@ def get_data(file_name: str) -> Data:
             ),
         }
     }
-    result_data = {
+    results_data = {
         well_item_id: {
             target1.replace(" ", ""): Result(
                 cycle_threshold_value_setting=0.2,
@@ -154,7 +156,7 @@ def get_data(file_name: str) -> Data:
             ),
         }
     }
-    result_metadata = ResultMetadata(
+    results_metadata = ResultMetadata(
         reference_dna_description=None,
         reference_sample_description=None,
     )
@@ -245,16 +247,12 @@ def get_data(file_name: str) -> Data:
             ],
         ),
     ]
-    return _create_data(
-        file_name,
-        header,
-        wells=[well],
-        amp_data=amp_data,
-        multi_data=multi_data,
-        results_data=result_data,
-        results_metadata=result_metadata,
-        melt_data={},
-        calculated_documents=calculated_documents,
+    return Data(
+        metadata=create_metadata(header, file_name),
+        measurement_groups=create_measurement_groups(
+            header, [well], amp_data, multi_data, results_data, melt_data={}
+        ),
+        calculated_data=create_calculated_data(calculated_documents, results_metadata),
     )
 
 
@@ -286,7 +284,7 @@ def get_data2(file_name: str) -> Data:
             ),
         }
     }
-    result_data = {
+    results_data = {
         well_item_id: {
             target1.replace(" ", ""): Result(
                 cycle_threshold_value_setting=0.277,
@@ -317,7 +315,7 @@ def get_data2(file_name: str) -> Data:
             )
         }
     }
-    result_metadata = ResultMetadata(
+    results_metadata = ResultMetadata(
         reference_dna_description=NOT_APPLICABLE,
         reference_sample_description=NOT_APPLICABLE,
     )
@@ -353,17 +351,12 @@ def get_data2(file_name: str) -> Data:
             )
         ],
     )
-
-    return _create_data(
-        file_name,
-        header,
-        wells=[well],
-        amp_data=amp_data,
-        multi_data=multi_data,
-        results_data=result_data,
-        results_metadata=result_metadata,
-        melt_data=melt_data,
-        calculated_documents=[],
+    return Data(
+        metadata=create_metadata(header, file_name),
+        measurement_groups=create_measurement_groups(
+            header, [well], amp_data, multi_data, results_data, melt_data
+        ),
+        calculated_data=create_calculated_data([], results_metadata),
     )
 
 
@@ -1074,7 +1067,7 @@ def get_genotyping_data(file_name: str) -> Data:
             ),
         }
     }
-    result_data = {
+    results_data = {
         well_item_id: {
             target1.replace(" ", ""): Result(
                 cycle_threshold_value_setting=0.219,
@@ -1132,7 +1125,7 @@ def get_genotyping_data(file_name: str) -> Data:
             ),
         }
     }
-    result_metadata = ResultMetadata(
+    results_metadata = ResultMetadata(
         reference_dna_description=None,
         reference_sample_description=None,
     )
@@ -1163,17 +1156,17 @@ def get_genotyping_data(file_name: str) -> Data:
             ),
         ],
     )
-
-    return _create_data(
-        file_name,
-        header,
-        wells=[well],
-        amp_data=amp_data,
-        multi_data={},
-        results_data=result_data,
-        results_metadata=result_metadata,
-        melt_data={},
-        calculated_documents=[],
+    return Data(
+        metadata=create_metadata(header, file_name),
+        measurement_groups=create_measurement_groups(
+            header,
+            [well],
+            amp_data,
+            multi_data={},
+            results_data=results_data,
+            melt_data={},
+        ),
+        calculated_data=create_calculated_data([], results_metadata),
     )
 
 
@@ -1437,7 +1430,7 @@ def get_rel_std_curve_data(file_name: str) -> Data:
             ),
         },
     }
-    result_data = {
+    results_data = {
         well_item_id_1: {
             target1.replace(" ", ""): Result(
                 cycle_threshold_value_setting=0.133,
@@ -1497,7 +1490,7 @@ def get_rel_std_curve_data(file_name: str) -> Data:
             )
         },
     }
-    result_metadata = ResultMetadata(
+    results_metadata = ResultMetadata(
         reference_dna_description="RNaseP",
         reference_sample_description="800",
     )
@@ -1870,16 +1863,17 @@ def get_rel_std_curve_data(file_name: str) -> Data:
             iterated=True,
         ),
     ]
-    return _create_data(
-        file_name,
-        header,
-        wells=wells,
-        amp_data=amp_data,
-        multi_data={},
-        results_data=result_data,
-        results_metadata=result_metadata,
-        melt_data={},
-        calculated_documents=calculated_documents,
+    return Data(
+        metadata=create_metadata(header, file_name),
+        measurement_groups=create_measurement_groups(
+            header,
+            wells,
+            amp_data,
+            multi_data={},
+            results_data=results_data,
+            melt_data={},
+        ),
+        calculated_data=create_calculated_data(calculated_documents, results_metadata),
     )
 
 
@@ -2455,7 +2449,7 @@ def get_broken_calc_doc_data(file_name: str) -> Data:
             ),
         }
     }
-    result_data = {
+    results_data = {
         well_item_id: {
             target1.replace(" ", ""): Result(
                 cycle_threshold_value_setting=0.133,
@@ -2486,7 +2480,7 @@ def get_broken_calc_doc_data(file_name: str) -> Data:
             )
         }
     }
-    result_metadata = ResultMetadata(
+    results_metadata = ResultMetadata(
         reference_dna_description="RNaseP",
         reference_sample_description="800",
     )
@@ -2536,17 +2530,17 @@ def get_broken_calc_doc_data(file_name: str) -> Data:
             iterated=True,
         ),
     ]
-
-    return _create_data(
-        file_name,
-        header,
-        wells=[well],
-        amp_data=amp_data,
-        multi_data={},
-        results_data=result_data,
-        results_metadata=result_metadata,
-        melt_data={},
-        calculated_documents=calculated_documents,
+    return Data(
+        metadata=create_metadata(header, file_name),
+        measurement_groups=create_measurement_groups(
+            header,
+            [well],
+            amp_data,
+            multi_data={},
+            results_data=results_data,
+            melt_data={},
+        ),
+        calculated_data=create_calculated_data(calculated_documents, results_metadata),
     )
 
 

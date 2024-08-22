@@ -2,23 +2,35 @@ from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._03.solution_ana
     Model,
 )
 from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
+    Data,
     Mapper,
 )
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure import create_data
-from allotropy.parsers.vendor_parser import VendorParser
+from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import (
+    RocheCedexBiohtReader,
+)
+from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure import (
+    create_measurement_groups,
+    create_metadata,
+    Sample,
+    Title,
+)
+from allotropy.parsers.vendor_parser import MapperVendorParser
 
 
-class RocheCedexBiohtParser(VendorParser):
-    @property
-    def display_name(self) -> str:
-        return "Roche Cedex BioHT"
+class RocheCedexBiohtParser(MapperVendorParser[Data, Model]):
+    DISPLAY_NAME = "Roche Cedex BioHT"
+    RELEASE_STATE = ReleaseState.RECOMMENDED
+    SCHEMA_MAPPER = Mapper
 
-    @property
-    def release_state(self) -> ReleaseState:
-        return ReleaseState.RECOMMENDED
+    def create_data(self, named_file_contents: NamedFileContents) -> Data:
+        reader = RocheCedexBiohtReader(named_file_contents.contents)
 
-    def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        data = create_data(named_file_contents)
-        return self._get_mapper(Mapper).map_model(data)
+        title = Title.create(reader.title_data)
+        samples = Sample.create_samples(reader.samples_data)
+
+        return Data(
+            create_metadata(title, named_file_contents.original_file_name),
+            measurement_groups=create_measurement_groups(samples, title),
+        )

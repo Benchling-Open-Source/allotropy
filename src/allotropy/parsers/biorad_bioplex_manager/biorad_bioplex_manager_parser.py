@@ -67,13 +67,8 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 
 class BioradBioplexParser(VendorParser):
-    @property
-    def display_name(self) -> str:
-        return "Bio-Rad Bio-Plex Manager"
-
-    @property
-    def release_state(self) -> ReleaseState:
-        return ReleaseState.RECOMMENDED
+    DISPLAY_NAME = "Bio-Rad Bio-Plex Manager"
+    RELEASE_STATE = ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         contents = named_file_contents.contents.read()
@@ -119,7 +114,7 @@ class BioradBioplexParser(VendorParser):
                 data_system_document=DataSystemDocument(
                     software_name=SOFTWARE_NAME,
                     software_version=software_version_value,
-                    ASM_converter_name=self.get_asm_converter_name(),
+                    ASM_converter_name=self.asm_converter_name,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                     file_name=filename,
                 ),

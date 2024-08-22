@@ -38,8 +38,7 @@ def test_create_read_data() -> None:
         "\tHorizontal offset: 0 µm, Vertical offset: 0 µm",
         "\tMontage rows: 2, columns: 2",
     ]
-    reader = LinesReader(procedure_details)
-    read_data = ReadData.create(reader=reader)
+    read_data = ReadData.create(procedure_details)
 
     assert len(read_data.read_sections) == 2
     assert read_data.read_sections[0].image_mode == DetectionType.SINGLE_IMAGE

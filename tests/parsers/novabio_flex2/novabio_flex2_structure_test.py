@@ -9,12 +9,13 @@ from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._03.solu
 )
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.novabio_flex2.novabio_flex2_parser import NovaBioFlexParser
 from allotropy.parsers.novabio_flex2.novabio_flex2_structure import (
-    create_data,
     Sample,
     SampleList,
     Title,
 )
+from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from tests.parsers.novabio_flex2.novabio_flex2_data import (
     get_data,
     get_input_stream,
@@ -140,4 +141,7 @@ def test_create_data() -> None:
         "allotropy.parsers.novabio_flex2.novabio_flex2_structure.random_uuid_str",
         return_value="dummy_id",
     ):
-        assert create_data(named_file_contents) == get_data()
+        assert (
+            NovaBioFlexParser(TimestampParser()).create_data(named_file_contents)
+            == get_data()
+        )

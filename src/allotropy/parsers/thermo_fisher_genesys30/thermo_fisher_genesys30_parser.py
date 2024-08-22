@@ -1,43 +1,31 @@
-""" Parser file for ThermoFisher Genesys 30 Adapter """
-
 from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
     Model,
 )
 from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
+    Data,
     Mapper,
 )
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.thermo_fisher_genesys30.constants import DISPLAY_NAME
-from allotropy.parsers.thermo_fisher_genesys30.thermo_fisher_genesys30_structure import (
-    create_data,
+from allotropy.parsers.thermo_fisher_genesys30.thermo_fisher_genesys30_reader import (
+    ThermoFisherGenesys30Reader,
 )
-from allotropy.parsers.vendor_parser import VendorParser
+from allotropy.parsers.thermo_fisher_genesys30.thermo_fisher_genesys30_structure import (
+    create_measurement_groups,
+    create_metadata,
+)
+from allotropy.parsers.vendor_parser import MapperVendorParser
 
 
-class ThermoFisherGenesys30Parser(VendorParser):
-    """
-    Parser for the ThermoFisher Genesys 30 spectrophotometer data files.
+class ThermoFisherGenesys30Parser(MapperVendorParser[Data, Model]):
+    DISPLAY_NAME = DISPLAY_NAME
+    RELEASE_STATE = ReleaseState.WORKING_DRAFT
+    SCHEMA_MAPPER = Mapper
 
-    This parser reads data from ThermoFisher Genesys 30 spectrophotometer instrument files and converts it into an Allotrope model. The main functionalities
-    include extracting and converting specific measurement and device control data, as well as handling custom sample and
-    device information.
-    """
-
-    @property
-    def display_name(self) -> str:
-        return DISPLAY_NAME
-
-    @property
-    def release_state(self) -> ReleaseState:
-        return ReleaseState.WORKING_DRAFT
-
-    def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        """
-        Converts the given named file contents to an Allotrope model.
-
-        :param named_file_contents: The contents of the file to convert.
-        :return: The converted Allotrope model.
-        """
-        data = create_data(named_file_contents)
-        return self._get_mapper(Mapper).map_model(data)
+    def create_data(self, named_file_contents: NamedFileContents) -> Data:
+        reader = ThermoFisherGenesys30Reader(named_file_contents)
+        return Data(
+            create_metadata(reader.header, named_file_contents.original_file_name),
+            create_measurement_groups(reader.header, reader.data),
+        )

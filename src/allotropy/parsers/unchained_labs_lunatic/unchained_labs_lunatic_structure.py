@@ -1,14 +1,10 @@
 from __future__ import annotations
 
-from pathlib import PureWindowsPath
-
-import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.models.shared.definitions.definitions import NaN
 from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
     CalculatedDataItem,
-    Data,
     DataSource,
     Measurement,
     MeasurementGroup,
@@ -16,7 +12,6 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
     Metadata,
 )
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.unchained_labs_lunatic.constants import (
     CALCULATED_DATA_LOOKUP,
     INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG,
@@ -27,14 +22,8 @@ from allotropy.parsers.unchained_labs_lunatic.constants import (
     WAVELENGTH_COLUMNS_RE,
 )
 from allotropy.parsers.utils.pandas import (
-    assert_not_empty_df,
-    df_to_series_data,
     map_rows,
-    parse_header_row,
-    read_csv,
-    read_excel,
     SeriesData,
-    split_header_and_data,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none
@@ -118,8 +107,10 @@ def _create_measurement_group(
     )
 
 
-def _create_metadata(data: SeriesData, file_name: str) -> Metadata:
-    device_identifier = data.get(str, "Instrument ID") or data.get(str, "Instrument")
+def create_metadata(header: SeriesData, file_name: str) -> Metadata:
+    device_identifier = header.get(str, "Instrument ID") or header.get(
+        str, "Instrument"
+    )
     return Metadata(
         device_type="plate reader",
         model_number="Lunatic",
@@ -132,31 +123,9 @@ def _create_metadata(data: SeriesData, file_name: str) -> Metadata:
     )
 
 
-def _parse_contents(
-    named_file_contents: NamedFileContents,
-) -> tuple[pd.DataFrame, SeriesData]:
-    extension = PureWindowsPath(named_file_contents.original_file_name).suffix
-    if extension == ".csv":
-        data = read_csv(named_file_contents.contents).replace(np.nan, None)
-        assert_not_empty_df(data, "Unable to parse data from empty dataset.")
-        # Use the first row in the data block for metadata, since it has all required columns.
-        metadata = df_to_series_data(data, index=0)
-    elif extension == ".xlsx":
-        data = read_excel(named_file_contents.contents)
-        header, data = split_header_and_data(data, lambda row: row.iloc[0] == "Table")
-        metadata = df_to_series_data(parse_header_row(header.T))
-        data = parse_header_row(data)
-        data.columns = data.columns.str.replace("\n", " ")
-    else:
-        msg = f"Unsupported file extension: '{extension}' expected one of 'csv' or 'xlsx'."
-        raise AllotropeConversionError(msg)
-
-    return data, metadata
-
-
-def create_data(named_file_contents: NamedFileContents) -> Data:
-    data, metadata_data = _parse_contents(named_file_contents)
-
+def create_measurement_groups(
+    header: SeriesData, data: pd.DataFrame
+) -> tuple[list[MeasurementGroup], list[CalculatedDataItem]]:
     wavelength_columns = list(filter(WAVELENGTH_COLUMNS_RE.match, data.columns))
     if not wavelength_columns:
         raise AllotropeConversionError(NO_WAVELENGTH_COLUMN_ERROR_MSG)
@@ -168,13 +137,7 @@ def create_data(named_file_contents: NamedFileContents) -> Data:
 
     def make_group(data: SeriesData) -> MeasurementGroup:
         return _create_measurement_group(
-            data, wavelength_columns, calculated_data, metadata_data.get(str, "Date")
+            data, wavelength_columns, calculated_data, header.get(str, "Date")
         )
 
-    return Data(
-        metadata=_create_metadata(
-            metadata_data, named_file_contents.original_file_name
-        ),
-        measurement_groups=map_rows(data, make_group),
-        calculated_data=calculated_data,
-    )
+    return map_rows(data, make_group), calculated_data

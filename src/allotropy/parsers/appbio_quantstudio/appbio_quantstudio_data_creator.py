@@ -8,7 +8,6 @@ from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import (
     CalculatedData,
     CalculatedDataItem,
-    Data,
     DataCube,
     DataCubeComponent,
     DataSource,
@@ -17,21 +16,16 @@ from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import 
     Metadata,
     ProcessedData,
 )
-from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_calculated_documents import (
-    iter_calculated_data_documents,
-)
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     AmplificationData,
     Header,
     MeltCurveRawData,
     MulticomponentData,
-    RawData,
     Result,
     ResultMetadata,
     Well,
     WellItem,
 )
-from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
 )
@@ -179,7 +173,7 @@ def _create_measurement(
     )
 
 
-def _create_metadata(header: Header, file_name: str) -> Metadata:
+def create_metadata(header: Header, file_name: str) -> Metadata:
     return Metadata(
         device_identifier=header.device_identifier,
         device_type="qPCR",
@@ -196,7 +190,7 @@ def _create_metadata(header: Header, file_name: str) -> Metadata:
     )
 
 
-def _create_calculated_data(
+def create_calculated_data(
     calculated_data_documents: Iterable[CalculatedDocument],
     results_metadata: ResultMetadata,
 ) -> CalculatedData:
@@ -222,18 +216,15 @@ def _create_calculated_data(
     )
 
 
-def _create_data(
-    file_name: str,
+def create_measurement_groups(
     header: Header,
     wells: list[Well],
     amp_data: dict[int, dict[str, AmplificationData]],
     multi_data: dict[int, MulticomponentData],
     results_data: dict[int, dict[str, Result]],
-    results_metadata: ResultMetadata,
     melt_data: dict[int, MeltCurveRawData],
-    calculated_documents: Iterable[CalculatedDocument],
-) -> Data:
-    measurement_groups = [
+) -> list[MeasurementGroup]:
+    return [
         MeasurementGroup(
             analyst=header.analyst,
             experimental_data_identifier=header.experimental_data_identifier,
@@ -254,40 +245,3 @@ def _create_data(
         )
         for well in wells
     ]
-
-    return Data(
-        metadata=_create_metadata(header, file_name),
-        measurement_groups=measurement_groups,
-        calculated_data=_create_calculated_data(calculated_documents, results_metadata),
-    )
-
-
-def create_data(reader: LinesReader, file_name: str) -> Data:
-    # Data sections must be read in order from the file.
-    header = Header.create(reader)
-    wells = Well.create(reader, header.experiment_type)
-    # Skip raw data section
-    RawData.create(reader)
-    amp_data = AmplificationData.create(reader)
-    multi_data = MulticomponentData.create(reader)
-    results_data, results_metadata = Result.create(reader, header.experiment_type)
-    melt_data = MeltCurveRawData.create(reader)
-
-    calculated_data_documents = iter_calculated_data_documents(
-        [well_item for well in wells for well_item in well.items],
-        header.experiment_type,
-        results_metadata.reference_sample_description,
-        results_metadata.reference_dna_description,
-    )
-
-    return _create_data(
-        file_name,
-        header,
-        wells,
-        amp_data,
-        multi_data,
-        results_data,
-        results_metadata,
-        melt_data,
-        calculated_data_documents,
-    )
