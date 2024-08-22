@@ -1,7 +1,6 @@
-from collections.abc import Callable
 from dataclasses import dataclass
 from enum import Enum
-from typing import Any
+from typing import Any, TypeVar
 
 from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
@@ -25,6 +24,9 @@ from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectr
     UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument,
     UltravioletAbsorbancePointDetectionDeviceControlDocumentItem,
     UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
+    UltravioletAbsorbanceSpectrumDetectionDeviceControlAggregateDocument,
+    UltravioletAbsorbanceSpectrumDetectionDeviceControlDocumentItem,
+    UltravioletAbsorbanceSpectrumDetectionMeasurementDocumentItems,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMicroliter,
@@ -34,13 +36,18 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
+    FieldComponentDatatype,
     InvalidJsonFloat,
     JsonFloat,
-    TDateTimeValue,
+    TDatacube,
+    TDatacubeComponent,
+    TDatacubeData,
+    TDatacubeStructure,
     TQuantityValue,
 )
+from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
-from allotropy.exceptions import AllotropyParserError
+from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
 from allotropy.parsers.utils.units import get_quantity_class
 from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
 
@@ -48,11 +55,13 @@ from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
 class MeasurementType(Enum):
     ULTRAVIOLET_ABSORBANCE = "ULTRAVIOLET_ABSORBANCE"
     FLUORESCENCE = "FLUORESCENCE"
+    ULTRAVIOLET_ABSORBANCE_SPECTRUM = "ULTRAVIOLET_ABSORBANCE_SPECTRUM"
 
 
 MeasurementDocumentItems = (
     UltravioletAbsorbancePointDetectionMeasurementDocumentItems
     | FluorescencePointDetectionMeasurementDocumentItems
+    | UltravioletAbsorbanceSpectrumDetectionMeasurementDocumentItems
 )
 
 
@@ -85,12 +94,32 @@ class CalculatedDataItem:
     data_sources: list[DataSource]
 
 
+@dataclass
+class DataCubeComponent:
+    type_: FieldComponentDatatype
+    concept: str
+    unit: str
+
+
+@dataclass
+class DataCube:
+    label: str
+    structure_dimensions: list[DataCubeComponent]
+    structure_measures: list[DataCubeComponent]
+    dimensions: list[list[float]]
+    measures: list[list[float | None]]
+
+
+CubeClass = TypeVar("CubeClass")
+
+
 @dataclass(frozen=True)
 class Measurement:
     type_: MeasurementType
     # Measurement metadata
     identifier: str
     sample_identifier: str
+    data_cube: DataCube | None = None
     location_identifier: str | None = None
     batch_identifier: str | None = None
     analyst: str | None = None
@@ -103,6 +132,8 @@ class Measurement:
     excitation_wavelength_setting: str | None = None
     emission_wavelength_setting: str | None = None
     dilution_factor_setting: float | None = None
+    operating_minimum: float | None = None
+    operating_maximum: float | None = None
     original_sample_concentration: JsonFloat | None = None
     original_sample_concentration_unit: str | None = None
     qubit_tube_concentration: JsonFloat | None = None
@@ -160,14 +191,8 @@ class Data:
     calculated_data: list[CalculatedDataItem] | None = None
 
 
-class Mapper:
+class Mapper(SchemaMapper[Data, Model]):
     MANIFEST = "http://purl.allotrope.org/manifests/spectrophotometry/BENCHLING/2023/12/spectrophotometry.manifest"
-
-    def __init__(
-        self, asm_converter_name: str, get_date_time: Callable[[str], TDateTimeValue]
-    ) -> None:
-        self.converter_name = asm_converter_name
-        self.get_date_time = get_date_time
 
     def map_model(self, data: Data) -> Model:
         return Model(
@@ -223,8 +248,12 @@ class Mapper:
             )
         elif measurement.type_ == MeasurementType.FLUORESCENCE:
             return self._get_fluorescence_measurement_document(measurement, metadata)
+        elif measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE_SPECTRUM:
+            return self._get_ultraviolet_absorbance_spectrum_measurement_document(
+                measurement, metadata
+            )
         else:
-            msg = f"Invalid measurement type: {measurement.type}"
+            msg = f"Invalid measurement type: {measurement.type_}"
             raise AllotropyParserError(msg)
 
     def _get_ultraviolet_absorbance_measurement_document(
@@ -255,6 +284,58 @@ class Mapper:
             ),
             calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
                 measurement.calculated_data
+            ),
+        )
+
+    def _get_ultraviolet_absorbance_spectrum_measurement_document(
+        self, measurement: Measurement, metadata: Metadata
+    ) -> UltravioletAbsorbanceSpectrumDetectionMeasurementDocumentItems:
+        return UltravioletAbsorbanceSpectrumDetectionMeasurementDocumentItems(
+            measurement_identifier=measurement.identifier,
+            sample_document=self._get_sample_document(measurement),
+            processed_data_aggregate_document=self._get_processed_data_aggregate_document(
+                measurement.processed_data
+            ),
+            device_control_aggregate_document=UltravioletAbsorbanceSpectrumDetectionDeviceControlAggregateDocument(
+                device_control_document=[
+                    add_custom_information_document(
+                        UltravioletAbsorbanceSpectrumDetectionDeviceControlDocumentItem(
+                            device_type=metadata.device_type,
+                            detection_type=metadata.detection_type,
+                        ),
+                        self._get_device_control_custom_document(measurement),
+                    )
+                ]
+            ),
+            absorption_spectrum_data_cube=self._get_data_cube(measurement),
+        )
+
+    def _get_data_cube(self, measurement: Measurement) -> TDatacube:
+        if not measurement.data_cube:
+            msg = "Unable to find UV Absorption Spectrum data"
+            raise AllotropeConversionError(msg)
+        return TDatacube(
+            label=measurement.data_cube.label,
+            cube_structure=TDatacubeStructure(
+                dimensions=[
+                    TDatacubeComponent(
+                        field_componentDatatype=component.type_,
+                        concept=component.concept,
+                        unit=component.unit,
+                    )
+                    for component in measurement.data_cube.structure_dimensions
+                ],
+                measures=[
+                    TDatacubeComponent(
+                        field_componentDatatype=component.type_,
+                        concept=component.concept,
+                        unit=component.unit,
+                    )
+                    for component in measurement.data_cube.structure_measures
+                ],
+            ),
+            data=TDatacubeData(
+                dimensions=measurement.data_cube.dimensions, measures=measurement.data_cube.measures  # type: ignore[arg-type]
             ),
         )
 
@@ -297,6 +378,12 @@ class Mapper:
             "emission setting": measurement.emission_wavelength_setting,
             "dilution factor": quantity_or_none(
                 TQuantityValueUnitless, measurement.dilution_factor_setting
+            ),
+            "operating minimum": quantity_or_none(
+                TQuantityValueNanometer, measurement.operating_minimum
+            ),
+            "operating maximum": quantity_or_none(
+                TQuantityValueNanometer, measurement.operating_maximum
             ),
         }
 

@@ -18,6 +18,8 @@ NON_READY_PARSERS = {
     Vendor.ROCHE_CEDEX_HIRES,
     # Parser is under working draft
     Vendor.BMG_MARS,
+    # Parser is under working draft
+    Vendor.THERMO_FISHER_GENESYS30,
 }
 
 

@@ -6,12 +6,10 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     NaN,
 )
 from allotropy.allotrope.schema_mappers.adm.cell_counting.benchling._2023._11.cell_counting import (
-    Data,
     Measurement,
     MeasurementGroup,
     Metadata,
 )
-from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.chemometec_nucleoview.constants import (
     DEFAULT_ANALYST,
     DEFAULT_EPOCH_TIMESTAMP,
@@ -20,12 +18,11 @@ from allotropy.parsers.chemometec_nucleoview.constants import (
     NUCLEOCOUNTER_DEVICE_TYPE,
     NUCLEOCOUNTER_SOFTWARE_NAME,
 )
-from allotropy.parsers.chemometec_nucleoview.nucleoview_reader import NucleoviewReader
-from allotropy.parsers.utils.pandas import df_to_series_data, map_rows, SeriesData
+from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
-def _create_metadata(data: SeriesData, file_name: str) -> Metadata:
+def create_metadata(data: SeriesData, file_name: str) -> Metadata:
     return Metadata(
         file_name=file_name,
         model_number=data.get(str, "Instrument type", DEFAULT_MODEL_NUMBER),
@@ -37,7 +34,7 @@ def _create_metadata(data: SeriesData, file_name: str) -> Metadata:
     )
 
 
-def _create_measurement_groups(data: SeriesData) -> MeasurementGroup:
+def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
     timestamp = data.get(str, "Date time")
     if timestamp:
         offset = data.get(str, "Time zone offset", "0")
@@ -63,15 +60,4 @@ def _create_measurement_groups(data: SeriesData) -> MeasurementGroup:
                 ),
             )
         ],
-    )
-
-
-def create_data(named_file_contents: NamedFileContents) -> Data:
-    df = NucleoviewReader.read(named_file_contents.contents)
-    return Data(
-        _create_metadata(
-            df_to_series_data(df.head(1), "Unable to parse row in dataset."),
-            named_file_contents.original_file_name,
-        ),
-        map_rows(df, _create_measurement_groups),
     )

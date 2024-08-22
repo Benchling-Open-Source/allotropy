@@ -9,22 +9,17 @@ import pandas as pd
 from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat, NaN
 from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
     Analyte,
-    Data,
     Measurement,
     MeasurementGroup,
     Metadata,
 )
 from allotropy.exceptions import AllotropyParserError
-from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.roche_cedex_bioht.constants import (
     BELOW_TEST_RANGE,
     MAX_MEASUREMENT_TIME_GROUP_DIFFERENCE,
     OPTICAL_DENSITY,
     SOLUTION_ANALYZER,
-)
-from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import (
-    RocheCedexBiohtReader,
 )
 from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
@@ -126,6 +121,16 @@ class Sample:
             batch=batch or None,
         )
 
+    @staticmethod
+    def create_samples(samples_data: pd.DataFrame) -> list[Sample]:
+        return [
+            Sample.create(name, batch, samples_data)
+            for (name, batch), samples_data in samples_data.groupby(
+                # A sample group is defined by both the sample and the batch identifier
+                ["sample identifier", "batch identifier"]
+            )
+        ]
+
 
 def _create_measurements(
     sample: Sample, measurement_time: str, raw_measurements: dict[str, RawMeasurement]
@@ -173,7 +178,7 @@ def _create_measurements(
     return measurements
 
 
-def _create_measurement_groups(
+def create_measurement_groups(
     samples: list[Sample], title: Title
 ) -> list[MeasurementGroup]:
     groups: list[MeasurementGroup] = []
@@ -197,28 +202,14 @@ def _create_measurement_groups(
     return groups
 
 
-def create_data(named_file_contents: NamedFileContents) -> Data:
-    reader = RocheCedexBiohtReader(named_file_contents.contents)
-
-    title = Title.create(reader.title_data)
-    samples = [
-        Sample.create(name, batch, samples_data)
-        for (name, batch), samples_data in reader.samples_data.groupby(
-            # A sample group is defined by both the sample and the batch identifier
-            ["sample identifier", "batch identifier"]
-        )
-    ]
-
-    return Data(
-        Metadata(
-            file_name=named_file_contents.original_file_name,
-            device_type=SOLUTION_ANALYZER,
-            model_number=title.model_number,
-            equipment_serial_number=title.device_serial_number,
-            device_identifier=NOT_APPLICABLE,
-            unc_path="",
-            software_name=title.model_number,
-            software_version=title.software_version,
-        ),
-        measurement_groups=_create_measurement_groups(samples, title),
+def create_metadata(title: Title, file_name: str) -> Metadata:
+    return Metadata(
+        file_name=file_name,
+        device_type=SOLUTION_ANALYZER,
+        model_number=title.model_number,
+        equipment_serial_number=title.device_serial_number,
+        device_identifier=NOT_APPLICABLE,
+        unc_path="",
+        software_name=title.model_number,
+        software_version=title.software_version,
     )

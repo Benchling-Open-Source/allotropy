@@ -3,21 +3,16 @@ from __future__ import annotations
 from decimal import Decimal
 
 from allotropy.allotrope.schema_mappers.adm.cell_counting.benchling._2023._11.cell_counting import (
-    Data,
     Measurement,
     MeasurementGroup,
     Metadata,
 )
-from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.roche_cedex_hires import constants
-from allotropy.parsers.roche_cedex_hires.roche_cedex_hires_reader import (
-    RocheCedexHiResReader,
-)
-from allotropy.parsers.utils.pandas import df_to_series_data, map_rows, SeriesData
+from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
-def _create_metadata(data: SeriesData, file_name: str) -> Metadata:
+def create_metadata(data: SeriesData, file_name: str) -> Metadata:
     return Metadata(
         file_name=file_name,
         device_type=constants.DEVICE_TYPE,
@@ -32,7 +27,7 @@ def _create_metadata(data: SeriesData, file_name: str) -> Metadata:
     )
 
 
-def _create_measurement_groups(data: SeriesData) -> MeasurementGroup:
+def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
     # Cell counts are measured in cells/mL, but reported in millions of cells/mL
     viable_cell_density = float(
         Decimal(data[str, "Viable Cell Conc."]) / Decimal("1000000")
@@ -74,15 +69,4 @@ def _create_measurement_groups(data: SeriesData) -> MeasurementGroup:
                 sample_draw_time=data.get(str, "Sample draw Time"),
             )
         ],
-    )
-
-
-def create_data(named_file_contents: NamedFileContents) -> Data:
-    df = RocheCedexHiResReader.read(named_file_contents)
-    return Data(
-        _create_metadata(
-            df_to_series_data(df.head(1), "Unable to parse first row in dataset."),
-            named_file_contents.original_file_name,
-        ),
-        map_rows(df, _create_measurement_groups),
     )

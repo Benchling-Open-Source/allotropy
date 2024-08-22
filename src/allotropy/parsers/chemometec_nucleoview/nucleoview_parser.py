@@ -2,23 +2,31 @@ from allotropy.allotrope.models.adm.cell_counting.benchling._2023._11.cell_count
     Model,
 )
 from allotropy.allotrope.schema_mappers.adm.cell_counting.benchling._2023._11.cell_counting import (
+    Data,
     Mapper,
 )
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.chemometec_nucleoview.nucleoview_structure import create_data
+from allotropy.parsers.chemometec_nucleoview.nucleoview_reader import NucleoviewReader
+from allotropy.parsers.chemometec_nucleoview.nucleoview_structure import (
+    create_measurement_groups,
+    create_metadata,
+)
 from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.vendor_parser import VendorParser
+from allotropy.parsers.utils.pandas import df_to_series_data, map_rows
+from allotropy.parsers.vendor_parser import MapperVendorParser
 
 
-class ChemometecNucleoviewParser(VendorParser):
-    @property
-    def display_name(self) -> str:
-        return "ChemoMetec Nucleoview"
+class ChemometecNucleoviewParser(MapperVendorParser[Data, Model]):
+    DISPLAY_NAME = "ChemoMetec Nucleoview"
+    RELEASE_STATE = ReleaseState.RECOMMENDED
+    SCHEMA_MAPPER = Mapper
 
-    @property
-    def release_state(self) -> ReleaseState:
-        return ReleaseState.RECOMMENDED
-
-    def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        data = create_data(named_file_contents)
-        return self._get_mapper(Mapper).map_model(data)
+    def create_data(self, named_file_contents: NamedFileContents) -> Data:
+        df = NucleoviewReader.read(named_file_contents.contents)
+        return Data(
+            create_metadata(
+                df_to_series_data(df.head(1), "Unable to parse row in dataset."),
+                named_file_contents.original_file_name,
+            ),
+            map_rows(df, create_measurement_groups),
+        )
