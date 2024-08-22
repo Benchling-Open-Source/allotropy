@@ -463,8 +463,6 @@ def create_results(
     measurement_labels = [
         label for r_data in read_data for label in r_data.measurement_labels
     ]
-    for r_data in read_data:
-        measurement_labels.extend(r_data.measurement_labels)
     for row_name, row in data.iterrows():
         label = row.iloc[-1]
         for col_index, value in enumerate(row.iloc[:-1]):

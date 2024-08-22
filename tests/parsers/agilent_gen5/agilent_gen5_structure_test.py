@@ -567,7 +567,7 @@ def test_create_two_same_read_modes_from_file() -> None:
 
 @pytest.mark.short
 def test_create_two_read_modes_from_file() -> None:
-    file_path = "tests/parsers/agilent_gen5/testdata/multi_read_modes/agile_gen5_multiple_read_modes.txt"
+    file_path = "tests/parsers/agilent_gen5/testdata/multi_read_modes/multiple_read_modes.txt"
 
     with open(file_path) as f:
         file_contents = f.readlines()
