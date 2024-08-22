@@ -102,7 +102,9 @@ def test__parse_field_types() -> None:
 def test__modify_file_removes_skipped_and_unused_classes() -> None:
     classes_to_skip = {"ClassA"}
     imports_to_add = {"definitions": {"Thing1", "Thing2"}}
-    editor = ModelClassEditor("fake_manifest", classes_to_skip, imports_to_add)
+    editor = ModelClassEditor(
+        "fake_manifest", classes_to_skip, imports_to_add, schema_name="dummy_name"
+    )
 
     model_file_contents = """
 import json
@@ -541,7 +543,12 @@ class Item:
 
 
 def test__modify_file_handles_merging_parent_classes_and_removing_unused_parents() -> None:
-    editor = ModelClassEditor("fake_manifest", classes_to_skip=set(), imports_to_add={})
+    editor = ModelClassEditor(
+        "fake_manifest",
+        classes_to_skip=set(),
+        imports_to_add={},
+        schema_name="dummy_name",
+    )
 
     model_file_contents = """
 import json
@@ -587,7 +594,12 @@ class Model:
 
 
 def test__modify_file_handles_does_not_merge_parents_when_not_required() -> None:
-    editor = ModelClassEditor("fake_manifest", classes_to_skip=set(), imports_to_add={})
+    editor = ModelClassEditor(
+        "fake_manifest",
+        classes_to_skip=set(),
+        imports_to_add={},
+        schema_name="dummy_name",
+    )
 
     model_file_contents = """
 import json
@@ -670,7 +682,12 @@ class Model:
 
 
 def test__modify_file_removes_identical_classes() -> None:
-    editor = ModelClassEditor("fake_manifest", classes_to_skip=set(), imports_to_add={})
+    editor = ModelClassEditor(
+        "fake_manifest",
+        classes_to_skip=set(),
+        imports_to_add={},
+        schema_name="dummy_name",
+    )
 
     model_file_contents = """
 import json
@@ -736,7 +753,12 @@ class Model:
 
 
 def test__modify_file_merges_similar_classes() -> None:
-    editor = ModelClassEditor("fake_manifest", classes_to_skip=set(), imports_to_add={})
+    editor = ModelClassEditor(
+        "fake_manifest",
+        classes_to_skip=set(),
+        imports_to_add={},
+        schema_name="dummy_name",
+    )
 
     model_file_contents = """
 import json
