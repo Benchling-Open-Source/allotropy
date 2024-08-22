@@ -10,18 +10,14 @@ ROOT_DIR: Path = ALLOTROPE_DIR.parent.parent.parent
 SCHEMA_DIR_PATH: Path = Path(ALLOTROPE_DIR, "schemas")
 SHARED_SCHEMAS_PATH: Path = Path(SCHEMA_DIR_PATH, "shared")
 SHARED_SCHEMAS_DEFINITIONS_PATH: Path = Path(SHARED_SCHEMAS_PATH, "definitions")
-UNITS_SCHEMAS_PATH: Path = Path(SHARED_SCHEMAS_DEFINITIONS_PATH, "units.json")
-CUSTOM_SCHEMAS_PATH: Path = Path(SHARED_SCHEMAS_DEFINITIONS_PATH, "custom.json")
 MODEL_DIR_PATH: Path = Path(ALLOTROPE_DIR, "models")
 SHARED_MODELS_PATH: Path = Path(MODEL_DIR_PATH, "shared")
 SHARED_MODELS_DEFINITIONS_PATH: Path = Path(SHARED_MODELS_PATH, "definitions")
-UNITS_MODELS_PATH: Path = Path(SHARED_MODELS_DEFINITIONS_PATH, "units.py")
-CUSTOM_MODELS_PATH: Path = Path(SHARED_MODELS_DEFINITIONS_PATH, "custom.py")
 GENERATED_SHARED_PATHS: list[Path] = [
-    UNITS_SCHEMAS_PATH,
-    UNITS_MODELS_PATH,
-    CUSTOM_SCHEMAS_PATH,
-    CUSTOM_MODELS_PATH,
+    Path(SHARED_SCHEMAS_DEFINITIONS_PATH, "units.json"),
+    Path(SHARED_MODELS_DEFINITIONS_PATH, "units.py"),
+    Path(SHARED_SCHEMAS_DEFINITIONS_PATH, "custom.json"),
+    Path(SHARED_MODELS_DEFINITIONS_PATH, "custom.py"),
 ]
 
 
@@ -33,6 +29,16 @@ def get_rel_schema_path(schema_path: Path) -> Path:
             msg = f"Invalid schema path: {schema_path}"
             raise ValueError(msg) from err
         return schema_path
+
+
+def get_rel_model_path(model_path: Path) -> Path:
+    try:
+        return model_path.relative_to(MODEL_DIR_PATH)
+    except ValueError as err:
+        if not Path(MODEL_DIR_PATH, model_path).exists():
+            msg = f"Invalid model path: {model_path}"
+            raise ValueError(msg) from err
+        return model_path
 
 
 def get_full_schema_path(schema_path: Path) -> Path:
@@ -51,6 +57,10 @@ def get_manifest_from_schema_path(schema_path: Path) -> str:
     return f"http://purl.allotrope.org/manifests/{str(PurePosixPath(rel_schema_path))[4:-12]}.manifest"
 
 
+def get_manifest_from_model_path(model_path: Path) -> str:
+    return get_manifest_from_schema_path(get_schema_path_from_model_path(model_path))
+
+
 def get_schema_path_from_manifest(manifest: str) -> Path:
     match = re.match(r"http://purl.allotrope.org/manifests/(.*)\.manifest", manifest)
     if not match:
@@ -67,16 +77,29 @@ def get_schema_path_from_reference(reference: str) -> Path:
     return Path(f"{ref_match.groups()[0]}.json")
 
 
-def get_model_file_from_schema_path(schema_path: Path) -> Path:
+def get_model_path_from_schema_path(schema_path: Path) -> Path:
     rel_schema_path = PureWindowsPath(get_rel_schema_path(schema_path))
     schema_file = rel_schema_path.name
-    model_file = schema_file.replace(".schema.json", ".py").replace("-", "_").lower()
+    model_file = schema_file.replace(".schema.json", ".py").replace("-", "_")
     model_path = Path(
         *[
             re.sub("^([0-9]+)$", r"_\1", part.lower().replace("-", "_"))
             for part in rel_schema_path.parent.parts
         ]
     )
+    return Path(model_path, model_file)
+
+
+def get_schema_path_from_model_path(model_path: Path) -> Path:
+    rel_model_path = PureWindowsPath(get_rel_model_path(model_path))
+    model_file = rel_model_path.name
+    model_file = model_file.replace(".py", ".schema.json").replace("_", "-")
+    model_path_parts = [
+        re.sub("^_([0-9]+)$", r"\1", part).replace("_", "-")
+        for part in rel_model_path.parent.parts
+    ]
+    model_path_parts[2] = model_path_parts[2].upper()
+    model_path = Path(*model_path_parts)
     return Path(model_path, model_file)
 
 
@@ -89,7 +112,7 @@ def get_import_path_from_path(model_path: Path) -> str:
 
 def get_model_class_from_schema(asm: Mapping[str, Any]) -> Any:
     schema_path = get_schema_path_from_manifest(asm["$asm.manifest"])
-    model_file = get_model_file_from_schema_path(Path(schema_path))
-    import_path = get_import_path_from_path(model_file)
+    model_path = get_model_path_from_schema_path(Path(schema_path))
+    import_path = get_import_path_from_path(model_path)
     # NOTE: it is safe to assume that every schema module has Model, as we generate this code.
     return importlib.import_module(import_path).Model
