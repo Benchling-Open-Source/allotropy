@@ -75,30 +75,31 @@ def test_create_header_data_with_well_plate_id_from_filename() -> None:
 def test_create_read_data_with_step_label() -> None:
     absorbance_procedure_details = [
         "Procedure Details",
-        "Read	StepLabel",
+        "Read\tStepLabel",
         "\tAbsorbance Endpoint",
     ]
     read_data = ReadData.create(absorbance_procedure_details)
 
-    assert read_data.step_label == "StepLabel"
+    assert read_data[0].step_label == "StepLabel"
 
 
 @pytest.mark.short
 def test_create_read_data_without_step_label() -> None:
     absorbance_procedure_details = [
         "Procedure Details",
-        "Read	Absorbance Endpoint",
+        "Read\t",
+        "\tAbsorbance Endpoint",
     ]
     read_data = ReadData.create(absorbance_procedure_details)
 
-    assert read_data.step_label is None
+    assert read_data[0].step_label is None
 
 
 @pytest.mark.short
 def test_create_read_data_absorbance() -> None:
     absorbance_procedure_details = [
         "Procedure Details",
-        "Read	260",
+        "Read\t260",
         "\tAbsorbance Endpoint",
         "\tFull Plate",
         "\tWavelengths:  260, 280, 230",
@@ -108,12 +109,13 @@ def test_create_read_data_absorbance() -> None:
     ]
     read_data = ReadData.create(absorbance_procedure_details)
 
-    assert read_data.read_mode == ReadMode.ABSORBANCE
-    assert read_data.pathlength_correction == "977 / 900"
-    assert read_data.step_label == "260"
-    assert read_data.detector_carriage_speed == "Normal"  # Read Speed
-    assert read_data.number_of_averages == 8  # Measurements/Data Point
-    assert read_data.measurement_labels == [
+    assert len(read_data) == 1
+    assert read_data[0].read_mode == ReadMode.ABSORBANCE
+    assert read_data[0].pathlength_correction == "977 / 900"
+    assert read_data[0].step_label == "260"
+    assert read_data[0].detector_carriage_speed == "Normal"  # Read Speed
+    assert read_data[0].number_of_averages == 8  # Measurements/Data Point
+    assert read_data[0].measurement_labels == [
         "260:260",
         "260:280",
         "260:230",
@@ -126,7 +128,7 @@ def test_create_read_data_absorbance() -> None:
 def test_create_read_data_luminescence_full_light() -> None:
     absorbance_procedure_details = [
         "Procedure Details",
-        "Read	LUM",
+        "Read\tLUM",
         "\tLuminescence Endpoint",
         "\tFull Plate",
         "\tIntegration Time: 0:01.00 (MM:SS.ss)",
@@ -139,12 +141,13 @@ def test_create_read_data_luminescence_full_light() -> None:
     ]
     read_data = ReadData.create(absorbance_procedure_details)
 
-    assert read_data.read_mode == ReadMode.LUMINESCENCE
-    assert read_data.step_label == "LUM"
-    assert read_data.detector_carriage_speed == "Normal"  # Read Speed
-    assert read_data.detector_distance == 4.5  # Read Height
-    assert read_data.measurement_labels == ["LUM:Lum"]
-    assert read_data.filter_sets == {
+    assert len(read_data) == 1
+    assert read_data[0].read_mode == ReadMode.LUMINESCENCE
+    assert read_data[0].step_label == "LUM"
+    assert read_data[0].detector_carriage_speed == "Normal"  # Read Speed
+    assert read_data[0].detector_distance == 4.5  # Read Height
+    assert read_data[0].measurement_labels == ["LUM:Lum"]
+    assert read_data[0].filter_sets == {
         "LUM:Lum": FilterSet(emission="Full light", gain="135", optics="Top")
     }
 
@@ -153,7 +156,8 @@ def test_create_read_data_luminescence_full_light() -> None:
 def test_create_read_data_luminescence_text_settings() -> None:
     absorbance_procedure_details = [
         "Procedure Details",
-        "Read	Luminescence Endpoint",
+        "Read\t",
+        "\tLuminescence Endpoint",
         "\tFull Plate",
         "\tIntegration Time: 0:01.00 (MM:SS.ss)",
         "\tFilter Set 1",
@@ -165,11 +169,12 @@ def test_create_read_data_luminescence_text_settings() -> None:
     ]
     read_data = ReadData.create(absorbance_procedure_details)
 
-    assert read_data.read_mode == ReadMode.LUMINESCENCE
-    assert read_data.detector_carriage_speed == "Normal"  # Read Speed
-    assert read_data.detector_distance == 4.5  # Read Height
-    assert read_data.measurement_labels == ["Lum"]
-    assert read_data.filter_sets == {
+    assert len(read_data) == 1
+    assert read_data[0].read_mode == ReadMode.LUMINESCENCE
+    assert read_data[0].detector_carriage_speed == "Normal"  # Read Speed
+    assert read_data[0].detector_distance == 4.5  # Read Height
+    assert read_data[0].measurement_labels == ["Lum"]
+    assert read_data[0].filter_sets == {
         "Lum": FilterSet(emission="Hole", gain="135", optics="Top", excitation="Plug")
     }
 
@@ -178,7 +183,7 @@ def test_create_read_data_luminescence_text_settings() -> None:
 def test_create_read_data_luminescence_with_filter() -> None:
     absorbance_procedure_details = [
         "Procedure Details",
-        "Read	LUM",
+        "Read\tLUM",
         "\tLuminescence Endpoint",
         "\tFull Plate",
         "\tIntegration Time: 0:01.00 (MM:SS.ss)",
@@ -191,12 +196,13 @@ def test_create_read_data_luminescence_with_filter() -> None:
     ]
     read_data = ReadData.create(absorbance_procedure_details)
 
-    assert read_data.read_mode == ReadMode.LUMINESCENCE
-    assert read_data.step_label == "LUM"
-    assert read_data.detector_carriage_speed == "Normal"  # Read Speed
-    assert read_data.detector_distance == 4.5  # Read Height
-    assert read_data.measurement_labels == ["LUM:460/40"]
-    assert read_data.filter_sets == {
+    assert len(read_data) == 1
+    assert read_data[0].read_mode == ReadMode.LUMINESCENCE
+    assert read_data[0].step_label == "LUM"
+    assert read_data[0].detector_carriage_speed == "Normal"  # Read Speed
+    assert read_data[0].detector_distance == 4.5  # Read Height
+    assert read_data[0].measurement_labels == ["LUM:460/40"]
+    assert read_data[0].filter_sets == {
         "LUM:460/40": FilterSet(emission="460/40", gain="136")
     }
 
@@ -205,7 +211,7 @@ def test_create_read_data_luminescence_with_filter() -> None:
 def test_create_read_data_fluorescence() -> None:
     absorbance_procedure_details = [
         "Procedure Details",
-        "Read	DAPI/GFP",
+        "Read\tDAPI/GFP",
         "\tFluorescence Endpoint",
         "\tFull Plate",
         "\tFilter Set 1 (Blue)",
@@ -220,16 +226,17 @@ def test_create_read_data_fluorescence() -> None:
     ]
     read_data = ReadData.create(absorbance_procedure_details)
 
-    assert read_data.read_mode == ReadMode.FLUORESCENCE
-    assert read_data.step_label == "DAPI/GFP"
-    assert read_data.detector_carriage_speed == "Normal"  # Read Speed
-    assert read_data.detector_distance == 7  # Read Height
-    assert read_data.number_of_averages == 10  # Measurements/Data Point
-    assert read_data.measurement_labels == [
+    assert len(read_data) == 1
+    assert read_data[0].read_mode == ReadMode.FLUORESCENCE
+    assert read_data[0].step_label == "DAPI/GFP"
+    assert read_data[0].detector_carriage_speed == "Normal"  # Read Speed
+    assert read_data[0].detector_distance == 7  # Read Height
+    assert read_data[0].number_of_averages == 10  # Measurements/Data Point
+    assert read_data[0].measurement_labels == [
         "DAPI/GFP:360/40,460/40",
         "DAPI/GFP:485/20,528/20",
     ]
-    assert read_data.filter_sets == {
+    assert read_data[0].filter_sets == {
         "DAPI/GFP:360/40,460/40": FilterSet(
             excitation="360/40",
             emission="460/40",
@@ -365,4 +372,230 @@ def test_create_layout_data_with_name_rows_name_row_first() -> None:
         "B1": "Name_B1",
         "B2": "Name_B2",
         "B3": "Name_B3",
+    }
+
+
+@pytest.mark.short
+def test_create_multiple_read_modes() -> None:
+    multiple_read_modes = [
+        "Procedure Details",
+        "Plate Type\t96 WELL PLATE (Use plate lid)",
+        "Read\tod",
+        "\tAbsorbance Endpoint",
+        "\tFull Plate",
+        "\tWavelengths:  600",
+        "\tRead Speed: Normal,  Delay: 100 msec,  Measurements/Data Point: 8",
+        "Read\tfluor",
+        "\tFluorescence Endpoint",
+        "\tFull Plate",
+        "\tFilter Set 1",
+        "\t\tExcitation: 579,  Emission: 616",
+        "\t\tOptics: Top,  Gain: extended",
+        "\tFilter Set 2",
+        "\t\tExcitation: 479,  Emission: 520",
+        "\t\tOptics: Top,  Gain: extended",
+    ]
+
+    read_data = ReadData.create(multiple_read_modes)
+
+    assert len(read_data) == 2
+    assert read_data[0].read_mode == ReadMode.ABSORBANCE
+    assert read_data[0].step_label == "od"
+    assert read_data[0].measurement_labels == ["od:600"]
+    assert read_data[0].number_of_averages == 8
+    assert read_data[0].detector_carriage_speed == "Normal"
+
+    assert read_data[1].read_mode == ReadMode.FLUORESCENCE
+    assert read_data[1].step_label == "fluor"
+    assert read_data[1].filter_sets == {
+        "fluor:579,616": FilterSet(
+            excitation="579",
+            emission="616",
+            optics="Top",
+            gain="extended",
+        ),
+        "fluor:479,520": FilterSet(
+            excitation="479",
+            emission="520",
+            optics="Top",
+            gain="extended",
+        ),
+    }
+
+
+@pytest.mark.short
+def test_create_three_read_modes() -> None:
+    multiple_read_modes = [
+        "Procedure Details",
+        "Plate Type\t96 WELL PLATE (Use plate lid)",
+        "Read\tod",
+        "\tAbsorbance Endpoint",
+        "\tFull Plate",
+        "\tWavelengths:  600",
+        "\tRead Speed: Normal,  Delay: 100 msec,  Measurements/Data Point: 8",
+        "Read\tfluor",
+        "\tFluorescence Endpoint",
+        "\tFull Plate",
+        "\tFilter Set 1",
+        "\t\tExcitation: 579,  Emission: 616",
+        "\t\tOptics: Top,  Gain: extended",
+        "\tFilter Set 2",
+        "\t\tExcitation: 479,  Emission: 520",
+        "\t\tOptics: Top,  Gain: extended",
+        "Read\tLUM",
+        "\tLuminescence Endpoint",
+        "\tFull Plate",
+        "\tIntegration Time: 0:01.00 (MM:SS.ss)",
+        "\tFilter Set 2 (Blue)",
+        "\t    Emission: 460/40",
+        "\t    Mirror: Top 400 nm,  Gain: 136",
+        "\tRead Speed: Normal,  Delay: 100 msec",
+        "\tExtended Dynamic Range",
+        "\tRead Height: 4.5 mm",
+    ]
+
+    read_data = ReadData.create(multiple_read_modes)
+
+    assert len(read_data) == 3
+    assert read_data[0].read_mode == ReadMode.ABSORBANCE
+    assert read_data[0].step_label == "od"
+    assert read_data[0].measurement_labels == ["od:600"]
+    assert read_data[0].number_of_averages == 8
+    assert read_data[0].detector_carriage_speed == "Normal"
+
+    assert read_data[1].read_mode == ReadMode.FLUORESCENCE
+    assert read_data[1].step_label == "fluor"
+    assert read_data[1].filter_sets == {
+        "fluor:579,616": FilterSet(
+            excitation="579",
+            emission="616",
+            optics="Top",
+            gain="extended",
+        ),
+        "fluor:479,520": FilterSet(
+            excitation="479",
+            emission="520",
+            optics="Top",
+            gain="extended",
+        ),
+    }
+
+    assert read_data[2].read_mode == ReadMode.LUMINESCENCE
+    assert read_data[2].step_label == "LUM"
+    assert read_data[2].measurement_labels == ["LUM:460/40"]
+    assert read_data[2].filter_sets == {
+        "LUM:460/40": FilterSet(
+            emission="460/40",
+            gain="136",
+        )
+    }
+    assert read_data[2].detector_carriage_speed == "Normal"
+    assert read_data[2].detector_distance == 4.5
+
+
+@pytest.mark.short
+def test_create_two_same_read_modes() -> None:
+    multiple_read_modes = [
+        "Procedure Details",
+        "Plate Type\t96 WELL PLATE (Use plate lid)",
+        "Read\tod",
+        "\tAbsorbance Endpoint",
+        "\tFull Plate",
+        "\tWavelengths:  600",
+        "\tRead Speed: Normal,  Delay: 100 msec,  Measurements/Data Point: 8",
+        "Read\t260",
+        "\tAbsorbance Endpoint",
+        "\tFull Plate",
+        "\tWavelengths:  260, 280, 230",
+        "\tPathlength Correction: 977 / 900",
+        "\t    Absorbance at 1 cm: 0.18",
+        "\tRead Speed: Normal,  Delay: 100 msec,  Measurements/Data Point: 8",
+    ]
+
+    read_data = ReadData.create(multiple_read_modes)
+
+    assert len(read_data) == 2
+    assert read_data[0].read_mode == ReadMode.ABSORBANCE
+    assert read_data[0].step_label == "od"
+    assert read_data[0].measurement_labels == ["od:600"]
+    assert read_data[0].number_of_averages == 8
+    assert read_data[0].detector_carriage_speed == "Normal"
+
+    assert read_data[1].read_mode == ReadMode.ABSORBANCE
+    assert read_data[1].step_label == "260"
+    assert read_data[1].detector_carriage_speed == "Normal"
+    assert read_data[1].measurement_labels == [
+        "260:260",
+        "260:280",
+        "260:230",
+        "260:977 [Test]",
+        "260:900 [Ref]",
+    ]
+    assert read_data[1].number_of_averages == 8
+    assert read_data[1].pathlength_correction == "977 / 900"
+
+
+@pytest.mark.short
+def test_create_two_same_read_modes_from_file() -> None:
+    file_path = (
+        "tests/parsers/agilent_gen5/testdata/multi_read_modes/two_same_read_modes.txt"
+    )
+
+    with open(file_path) as f:
+        file_contents = f.readlines()
+
+    read_data = ReadData.create(file_contents)
+
+    assert len(read_data) == 2
+    assert read_data[0].read_mode == ReadMode.ABSORBANCE
+    assert read_data[0].step_label == "od"
+    assert read_data[0].measurement_labels == ["od:600"]
+    assert read_data[0].number_of_averages == 8
+    assert read_data[0].detector_carriage_speed == "Normal"
+
+    assert read_data[1].read_mode == ReadMode.ABSORBANCE
+    assert read_data[1].step_label == "260"
+    assert read_data[1].detector_carriage_speed == "Normal"
+    assert read_data[1].measurement_labels == [
+        "260:280",
+        "260:977 [Test]",
+        "260:900 [Ref]",
+    ]
+    assert read_data[1].number_of_averages == 8
+    assert read_data[1].pathlength_correction == "977 / 900"
+
+
+@pytest.mark.short
+def test_create_two_read_modes_from_file() -> None:
+    file_path = (
+        "tests/parsers/agilent_gen5/testdata/multi_read_modes/multiple_read_modes.txt"
+    )
+
+    with open(file_path) as f:
+        file_contents = f.readlines()
+
+    read_data = ReadData.create(file_contents)
+
+    assert len(read_data) == 2
+    assert read_data[0].read_mode == ReadMode.ABSORBANCE
+    assert read_data[0].step_label == "od"
+    assert read_data[0].measurement_labels == ["od:600"]
+    assert read_data[0].number_of_averages == 8
+    assert read_data[0].detector_carriage_speed == "Normal"
+
+    assert read_data[1].read_mode == ReadMode.FLUORESCENCE
+    assert read_data[1].step_label == "fluor"
+    assert read_data[1].filter_sets == {
+        "fluor:579,616": FilterSet(
+            excitation="579",
+            emission="616",
+            optics="Top",
+            gain="extended",
+        ),
+        "fluor:479,520": FilterSet(
+            excitation="479",
+            emission="520",
+            optics="Top",
+            gain="extended",
+        ),
     }

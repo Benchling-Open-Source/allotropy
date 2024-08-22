@@ -25,6 +25,7 @@ from allotropy.exceptions import (
     AllotropyParserError,
 )
 from allotropy.parsers.agilent_gen5.constants import (
+    ALPHALISA_FLUORESCENCE_FOUND,
     DEFAULT_SOFTWARE_NAME,
     DEVICE_TYPE,
     EMISSION_KEY,
@@ -33,10 +34,10 @@ from allotropy.parsers.agilent_gen5.constants import (
     GAIN_KEY,
     MEASUREMENTS_DATA_POINT_KEY,
     MIRROR_KEY,
-    MULTIPLE_READ_MODE_ERROR,
     NAN_EMISSION_EXCITATION,
     OPTICS_KEY,
     PATHLENGTH_CORRECTION_KEY,
+    READ_DATA_MEASUREMENT_ERROR,
     READ_HEIGHT_KEY,
     READ_SPEED_KEY,
     ReadMode,
@@ -46,6 +47,7 @@ from allotropy.parsers.agilent_gen5.constants import (
     WAVELENGTHS_KEY,
 )
 from allotropy.parsers.constants import NOT_APPLICABLE
+from allotropy.parsers.lines_reader import SectionLinesReader
 from allotropy.parsers.utils.pandas import read_csv, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
@@ -183,12 +185,11 @@ class DeviceControlData:
         return self._single_data.get(key)
 
     @classmethod
-    def create(cls, procedure_details: str, read_mode: ReadMode) -> DeviceControlData:
+    def create(cls, lines: list[str], read_mode: ReadMode) -> DeviceControlData:
 
         device_control_data = DeviceControlData()
-        read_lines: list[str] = procedure_details.splitlines()
 
-        for line in read_lines:
+        for line in lines:
             strp_line = str(line.strip())
             if strp_line.startswith("Read\t"):
                 device_control_data.step_label = cls._get_step_label(line, read_mode)
@@ -234,48 +235,74 @@ class ReadData:
     filter_sets: dict[str, FilterSet]
 
     @classmethod
-    def create(cls, lines: list[str]) -> ReadData:
+    def create(cls, lines: list[str]) -> list[ReadData]:
         procedure_details = "\n".join(lines)
         read_type = cls.get_read_type(procedure_details)
         if read_type != ReadType.ENDPOINT:
             raise AllotropeConversionError(UNSUPPORTED_READ_TYPE_ERROR)
 
-        read_mode = cls.get_read_mode(procedure_details)
-        device_control_data = DeviceControlData.create(procedure_details, read_mode)
-        measurement_labels = cls._get_measurement_labels(device_control_data, read_mode)
+        read_modes = cls.get_read_modes(procedure_details)
+        read_sections = list(SectionLinesReader(lines).iter_sections("^Read\t"))
+        if len(read_modes) != len(read_sections):
+            msg = "Expected the number of read modes to match the number of read sections."
+            raise AllotropeConversionError(msg)
 
-        number_of_averages = device_control_data.get(MEASUREMENTS_DATA_POINT_KEY)
-        read_height = device_control_data.get(READ_HEIGHT_KEY) or ""
-
-        return ReadData(
-            read_mode=read_mode,
-            step_label=device_control_data.step_label,
-            measurement_labels=measurement_labels,
-            detector_carriage_speed=device_control_data.get(READ_SPEED_KEY),
-            # Absorbance attributes
-            pathlength_correction=device_control_data.get(PATHLENGTH_CORRECTION_KEY),
-            number_of_averages=try_float_or_none(number_of_averages),
-            # Luminescence attributes
-            detector_distance=try_float_or_none(read_height.split(" ")[0]),
-            # Fluorescence attributes
-            filter_sets=cls._get_filter_sets(
-                measurement_labels, device_control_data, read_mode
-            ),
-        )
+        read_data_list: list[ReadData] = []
+        for read_mode, read_section in zip(read_modes, read_sections, strict=True):
+            device_control_data = DeviceControlData.create(
+                read_section.lines, read_mode
+            )
+            measurement_labels = cls._get_measurement_labels(
+                device_control_data, read_mode
+            )
+            number_of_averages = device_control_data.get(MEASUREMENTS_DATA_POINT_KEY)
+            read_height = device_control_data.get(READ_HEIGHT_KEY) or ""
+            read_data_list.append(
+                ReadData(
+                    read_mode=read_mode,
+                    step_label=device_control_data.step_label,
+                    measurement_labels=measurement_labels,
+                    detector_carriage_speed=device_control_data.get(READ_SPEED_KEY),
+                    # Absorbance attributes
+                    pathlength_correction=device_control_data.get(
+                        PATHLENGTH_CORRECTION_KEY
+                    ),
+                    number_of_averages=try_float_or_none(number_of_averages),
+                    # Luminescence attributes
+                    detector_distance=try_float_or_none(read_height.split(" ")[0]),
+                    # Fluorescence attributes
+                    filter_sets=cls._get_filter_sets(
+                        measurement_labels, device_control_data, read_mode
+                    ),
+                )
+            )
+        return read_data_list
 
     @staticmethod
-    def get_read_mode(procedure_details: str) -> ReadMode:
-        read_modes = [
-            read_mode for read_mode in ReadMode if read_mode.value in procedure_details
-        ]
+    def get_read_modes(procedure_details: str) -> list[ReadMode]:
+        read_modes = []
+        for read_mode in ReadMode:
+            # Construct the regex pattern for the current read mode
+            pattern = fr"\t{re.escape(read_mode.value)} Endpoint"
+            # Use regex to find all occurrences of the read mode pattern in the procedure details
+            matches = re.findall(pattern, procedure_details)
+            if matches:
+                # Add the read_mode to the list for each match found
+                read_modes.extend([read_mode] * len(matches))
+
         if not read_modes:
             raise AllotropeConversionError(UNSUPPORTED_READ_MODE_ERROR)
-        if len(read_modes) > 1:
-            raise AllotropeConversionError(MULTIPLE_READ_MODE_ERROR)
 
-        if read_modes[0] in (ReadMode.FLUORESCENCE, ReadMode.ALPHALISA):
-            return ReadMode.FLUORESCENCE
-        return read_modes[0]
+        if ReadMode.ALPHALISA in read_modes and ReadMode.FLUORESCENCE in read_modes:
+            raise AllotropeConversionError(ALPHALISA_FLUORESCENCE_FOUND)
+
+        # Replace ALPHALISA with FLUORESCENCE
+        read_modes = [
+            ReadMode.FLUORESCENCE if read_mode == ReadMode.ALPHALISA else read_mode
+            for read_mode in read_modes
+        ]
+
+        return read_modes
 
     @staticmethod
     def get_read_type(procedure_details: str) -> ReadType:
@@ -415,7 +442,7 @@ class MeasurementData:
 def create_results(
     result_lines: list[str],
     header_data: HeaderData,
-    read_data: ReadData,
+    read_data: list[ReadData],
     sample_identifiers: dict[str, str],
     actual_temperature: float | None,
 ) -> tuple[list[MeasurementGroup], list[CalculatedDataItem]]:
@@ -433,13 +460,16 @@ def create_results(
     calculated_data: defaultdict[str, list[tuple[str, JsonFloat]]] = defaultdict(
         list[tuple[str, JsonFloat]]
     )
+    measurement_labels = [
+        label for r_data in read_data for label in r_data.measurement_labels
+    ]
     for row_name, row in data.iterrows():
-        label = str(row.iloc[-1])
+        label = row.iloc[-1]
         for col_index, value in enumerate(row.iloc[:-1]):
             well_pos = f"{row_name}{col_index + 1}"
             well_value = try_float_or_nan(value)
 
-            if label in read_data.measurement_labels:
+            if label in measurement_labels:
                 well_to_measurements[well_pos].append(
                     MeasurementData(random_uuid_str(), well_value, label)
                 )
@@ -456,7 +486,7 @@ def create_results(
                     measurement,
                     well_position,
                     header_data,
-                    read_data,
+                    get_read_data_from_measurement(measurement, read_data),
                     sample_identifiers.get(well_position),
                     actual_temperature,
                 )
@@ -472,11 +502,12 @@ def create_results(
             data_sources=[
                 DataSource(
                     identifier=measurement.identifier,
-                    feature=read_data.read_mode.value.lower(),
+                    feature=item.read_mode.value.lower(),
                 )
                 for measurement in _get_sources(
                     label, well_to_measurements[well_position]
                 )
+                for item in read_data
             ],
             unit=UNITLESS,
             name=label,
@@ -487,6 +518,18 @@ def create_results(
     ]
 
     return groups, calculated_data_items
+
+
+def get_read_data_from_measurement(
+    measurement: MeasurementData, read_data_list: list[ReadData]
+) -> ReadData:
+    for read_data in read_data_list:
+        if measurement.label in read_data.measurement_labels:
+            return read_data
+
+    raise AllotropeConversionError(
+        READ_DATA_MEASUREMENT_ERROR.format(measurement.label)
+    )
 
 
 def _get_sources(
@@ -512,10 +555,9 @@ def _get_sources(
     return sources or measurements
 
 
-def create_metadata(header_data: HeaderData, read_data: ReadData) -> Metadata:
+def create_metadata(header_data: HeaderData) -> Metadata:
     return Metadata(
         device_type=DEVICE_TYPE,
-        detection_type=read_data.read_mode.value,
         device_identifier=NOT_APPLICABLE,
         model_number=header_data.model_number or NOT_APPLICABLE,
         equipment_serial_number=header_data.equipment_serial_number,
