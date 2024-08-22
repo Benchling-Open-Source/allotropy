@@ -185,12 +185,11 @@ class DeviceControlData:
         return self._single_data.get(key)
 
     @classmethod
-    def create(cls, procedure_details: str, read_mode: ReadMode) -> DeviceControlData:
+    def create(cls, lines: list[str], read_mode: ReadMode) -> DeviceControlData:
 
         device_control_data = DeviceControlData()
-        read_lines: list[str] = procedure_details.splitlines()
 
-        for line in read_lines:
+        for line in lines:
             strp_line = str(line.strip())
             if strp_line.startswith("Read\t"):
                 device_control_data.step_label = cls._get_step_label(line, read_mode)
@@ -243,22 +242,15 @@ class ReadData:
             raise AllotropeConversionError(UNSUPPORTED_READ_TYPE_ERROR)
 
         read_modes = cls.get_read_modes(procedure_details)
-        read_data_list: list[ReadData] = []
-        full_read_lines: list[str] = procedure_details.splitlines()
-
-        section_lines_reader = SectionLinesReader(full_read_lines)
-        read_sections = []
-        for read_section in section_lines_reader.iter_sections("^Read\t"):
-            read_sections.append(read_section)
-
+        read_sections = list(SectionLinesReader(lines).iter_sections("^Read\t"))
         if len(read_modes) != len(read_sections):
             msg = "Expected the number of read modes to match the number of read sections."
             raise AllotropeConversionError(msg)
 
+        read_data_list: list[ReadData] = []
         for read_mode, read_section in zip(read_modes, read_sections, strict=True):
-            join_read_section_lines = "\n".join(read_section.lines)
             device_control_data = DeviceControlData.create(
-                join_read_section_lines, read_mode
+                read_section.lines, read_mode
             )
             measurement_labels = cls._get_measurement_labels(
                 device_control_data, read_mode
@@ -413,7 +405,7 @@ def get_identifiers(layout_lines: list[str] | None) -> dict[str, str]:
         return {}
     # Create dataframe from tabular data and forward fill empty values in index
     data = read_csv(StringIO("\n".join(layout_lines[1:])), sep="\t")
-    data = data.set_index(data.index.to_series().ffill(axis=0).values)
+    data = data.set_index(data.index.to_series().ffill(axis="index").values)
 
     identifiers = {}
     for row_name, row in data.iterrows():
@@ -460,7 +452,7 @@ def create_results(
 
     # Create dataframe from tabular data and forward fill empty values in index
     data = read_csv(StringIO("\n".join(result_lines[1:])), sep="\t")
-    data = data.set_index(data.index.to_series().ffill(axis=0).values)
+    data = data.set_index(data.index.to_series().ffill(axis="index").values)
 
     well_to_measurements: defaultdict[str, list[MeasurementData]] = defaultdict(
         list[MeasurementData]
@@ -468,7 +460,9 @@ def create_results(
     calculated_data: defaultdict[str, list[tuple[str, JsonFloat]]] = defaultdict(
         list[tuple[str, JsonFloat]]
     )
-    measurement_labels: list[str] = []
+    measurement_labels = [
+        label for r_data in read_data for label in r_data.measurement_labels
+    ]
     for r_data in read_data:
         measurement_labels.extend(r_data.measurement_labels)
     for row_name, row in data.iterrows():
