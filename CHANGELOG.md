@@ -9,13 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Primary analysis experiment type in AppBio Quantstudio Design and Analysis
-- Added support for xlsx exports in Unchained Lunatic parser
-- Add column special character normalization to pandas util (and so most parsers)
-
 ### Fixed
-
-- Fix SoftMax Pro case where some columns were incorrectly identified as not numeric for calculated data documents. Added exceptions for Masked and Range values which will be treated as NaN.
 
 ### Changed
 
@@ -24,6 +18,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 ### Security
+
+## [0.1.49] - 2024-08-21
+
+### Added
+
+- Primary analysis experiment type in AppBio Quantstudio Design and Analysis
+- Added ThermoFisher Genesys 30 adapter
+- Added requirement doc for ThermoFisher Genesys 30 adapter
+- Added support for xlsx exports in Unchained Lunatic parser
+- Add column special character normalization to pandas util (and so most parsers)
+- Added support for multiple read modes in Agilent Gen5 Adapter
+
+### Fixed
+
+- Fix SoftMax Pro case where some columns were incorrectly identified as not numeric for calculated data documents. Added exceptions for Masked and Range values which will be treated as NaN.
+
+### Changed
+- Updated the spectrophotometry mapper script to accommodate absorbance spectrum data cubes
 
 ## [0.1.48] - 2024-08-15
 

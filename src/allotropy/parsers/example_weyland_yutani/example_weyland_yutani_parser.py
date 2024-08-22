@@ -37,14 +37,8 @@ class MyCustomInfoDoc:
 
 
 class ExampleWeylandYutaniParser(VendorParser):
-    @property
-    def display_name(self) -> str:
-        return "Example Weyland Yutani"
-
-    @property
-    def release_state(self) -> ReleaseState:
-        # Example parser should not be used.
-        return ReleaseState.WORKING_DRAFT
+    DISPLAY_NAME = "Example Weyland Yutani"
+    RELEASE_STATE = ReleaseState.WORKING_DRAFT
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         lines = read_to_lines(named_file_contents)

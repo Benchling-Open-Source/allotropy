@@ -5,14 +5,17 @@ import pytest
 
 from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
 from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_parser import (
+    RocheCedexBiohtParser,
+)
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure import (
-    create_data,
     create_measurements,
     RawMeasurement,
     Sample,
     Title,
 )
 from allotropy.parsers.utils.pandas import SeriesData
+from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from tests.parsers.roche_cedex_bioht.roche_cedex_bioht_data import (
     get_data,
     get_data_stream,
@@ -224,5 +227,8 @@ def test_create_data() -> None:
         return_value="dummy_id",
     ):
         assert (
-            create_data(NamedFileContents(get_data_stream(), "dummy.txt")) == get_data()
+            RocheCedexBiohtParser(TimestampParser()).create_data(
+                NamedFileContents(get_data_stream(), "dummy.txt")
+            )
+            == get_data()
         )

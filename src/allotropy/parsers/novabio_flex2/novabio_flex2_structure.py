@@ -4,18 +4,15 @@ from dataclasses import dataclass
 import re
 from typing import Any
 
-import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
     Analyte,
-    Data,
     Measurement,
     MeasurementGroup,
     Metadata,
 )
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.novabio_flex2.constants import (
     ANALYTE_MAPPINGS,
     DETECTION_PROPERTY_MAPPING,
@@ -26,7 +23,7 @@ from allotropy.parsers.novabio_flex2.constants import (
     PRODUCT_MANUFACTURER,
     SOFTWARE_NAME,
 )
-from allotropy.parsers.utils.pandas import read_csv, SeriesData
+from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import try_float_or_none
 
@@ -180,29 +177,25 @@ def _get_measurements(sample: Sample) -> list[Measurement]:
     return measurements
 
 
-def create_data(named_file_contents: NamedFileContents) -> Data:
-    # NOTE: calling parse_dates and removing NaN clears empty rows.
-    data = read_csv(named_file_contents.contents, parse_dates=["Date & Time"]).replace(
-        np.nan, None
+def create_metadata(title: Title, file_name: str) -> Metadata:
+    return Metadata(
+        file_name=file_name,
+        device_type=DEVICE_TYPE,
+        model_number=MODEL_NUMBER,
+        product_manufacturer=PRODUCT_MANUFACTURER,
+        device_identifier=title.device_identifier,
+        software_name=SOFTWARE_NAME,
     )
-    title = Title.create(named_file_contents.original_file_name)
-    sample_list = SampleList.create(data)
 
-    return Data(
-        Metadata(
-            file_name=named_file_contents.original_file_name,
-            device_type=DEVICE_TYPE,
-            model_number=MODEL_NUMBER,
-            product_manufacturer=PRODUCT_MANUFACTURER,
-            device_identifier=title.device_identifier,
-            software_name=SOFTWARE_NAME,
-        ),
-        measurement_groups=[
-            MeasurementGroup(
-                analyst=sample_list.analyst,
-                data_processing_time=title.processing_time,
-                measurements=_get_measurements(sample),
-            )
-            for sample in sample_list.samples
-        ],
-    )
+
+def create_measurement_groups(
+    title: Title, sample_list: SampleList
+) -> list[MeasurementGroup]:
+    return [
+        MeasurementGroup(
+            analyst=sample_list.analyst,
+            data_processing_time=title.processing_time,
+            measurements=_get_measurements(sample),
+        )
+        for sample in sample_list.samples
+    ]

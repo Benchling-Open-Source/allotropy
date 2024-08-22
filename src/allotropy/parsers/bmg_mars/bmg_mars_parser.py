@@ -64,13 +64,8 @@ def safe_value(cls: type[T], value: Any | None) -> T | None:
 
 
 class BmgMarsParser(VendorParser):
-    @property
-    def display_name(self) -> str:
-        return "BMG MARS"
-
-    @property
-    def release_state(self) -> ReleaseState:
-        return ReleaseState.RECOMMENDED
+    DISPLAY_NAME = "BMG MARS"
+    RELEASE_STATE = ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         filename = named_file_contents.original_file_name
@@ -119,7 +114,7 @@ class BmgMarsParser(VendorParser):
                     file_name=filename,
                     UNC_path=header.path,
                     software_name="BMG MARS",
-                    ASM_converter_name=self.get_asm_converter_name(),
+                    ASM_converter_name=self.asm_converter_name,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
             ),

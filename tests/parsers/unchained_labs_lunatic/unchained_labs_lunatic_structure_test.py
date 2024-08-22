@@ -15,10 +15,14 @@ from allotropy.parsers.unchained_labs_lunatic.constants import (
     NO_DATE_OR_TIME_ERROR_MSG,
     NO_MEASUREMENT_IN_PLATE_ERROR_MSG,
 )
+from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_reader import (
+    UnchainedLabsLunaticReader,
+)
 from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_structure import (
     _create_measurement,
     _create_measurement_group,
-    create_data,
+    create_measurement_groups,
+    create_metadata,
 )
 from allotropy.parsers.utils.pandas import SeriesData
 
@@ -186,9 +190,10 @@ Sample name,Plate Position,Application,Date,Time,Instrument ID,A260,A260 Concent
 batch_id,Plate1,dummyApp,2021-05-20,16:55:51,14,23.4,4.5
 """
     )
-    data = create_data(NamedFileContents(contents, "filename.csv"))
-    assert data.calculated_data
-    calculated_data_item = data.calculated_data[0]
+    reader = UnchainedLabsLunaticReader(NamedFileContents(contents, "filename.csv"))
+    _, calculated_data = create_measurement_groups(reader.header, reader.data)
+    assert calculated_data
+    calculated_data_item = calculated_data[0]
 
     assert calculated_data_item.name == "Concentration"
     assert calculated_data_item.value == 4.5
@@ -204,9 +209,9 @@ Sample name,Plate Position,Application,Date,Time,Instrument ID,A260,A260 Concent
 batch_id,Plate1,dummyApp,2021-05-20,16:55:51,14,23.4,4.5,0.523,2.5,24.9
 """
     )
-    data = create_data(NamedFileContents(contents, "filename.csv"))
-    assert data.calculated_data
-    assert len(data.calculated_data) == 4
+    reader = UnchainedLabsLunaticReader(NamedFileContents(contents, "filename.csv"))
+    _, calculated_data = create_measurement_groups(reader.header, reader.data)
+    assert len(calculated_data) == 4
 
 
 @pytest.mark.short
@@ -219,8 +224,9 @@ Sample name,Plate Position,Application,Date,Time,Instrument ID,A260
 batch_id,Plate1,dummyApp,2021-05-20,16:55:51,14,23.4
 """
     )
-    data = create_data(NamedFileContents(contents, "filename.csv"))
-    assert not data.calculated_data
+    reader = UnchainedLabsLunaticReader(NamedFileContents(contents, "filename.csv"))
+    _, calculated_data = create_measurement_groups(reader.header, reader.data)
+    assert not calculated_data
 
 
 @pytest.mark.short
@@ -233,7 +239,9 @@ batch_id,Plate1,dummyApp,2021-05-20,16:55:51,14,32.6
 '',Plate1,dummyApp,2021-05-20,16:55:51,14,439
 """
     )
-    data = create_data(NamedFileContents(contents, "filename.csv"))
+    reader = UnchainedLabsLunaticReader(NamedFileContents(contents, "filename.csv"))
+    measurement_groups, _ = create_measurement_groups(reader.header, reader.data)
+    metadata = create_metadata(reader.header, "filename.csv")
 
-    assert data.metadata.device_identifier == "14"
-    assert len(data.measurement_groups) == 3
+    assert metadata.device_identifier == "14"
+    assert len(measurement_groups) == 3

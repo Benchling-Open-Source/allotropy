@@ -34,13 +34,8 @@ LUMINESCENCE_DETECTOR = "luminescence detector"
 
 
 class MethodicalMindParser(VendorParser):
-    @property
-    def display_name(self) -> str:
-        return "Methodical Mind"
-
-    @property
-    def release_state(self) -> ReleaseState:
-        return ReleaseState.RECOMMENDED
+    DISPLAY_NAME = "Methodical Mind"
+    RELEASE_STATE = ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         file_lines = read_to_lines(named_file_contents)
@@ -77,7 +72,7 @@ class MethodicalMindParser(VendorParser):
             UNC_path=combined_data.file_name,
             software_name=combined_data.version,
             software_version=combined_data.version,
-            ASM_converter_name=self.get_asm_converter_name(),
+            ASM_converter_name=self.asm_converter_name,
             ASM_converter_version=ASM_CONVERTER_VERSION,
         )
 

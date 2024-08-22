@@ -1,4 +1,3 @@
-from collections.abc import Callable
 from dataclasses import dataclass
 
 from allotropy.allotrope.models.adm.cell_counting.benchling._2023._11.cell_counting import (
@@ -23,7 +22,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValuePercent,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
+from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.parsers.utils.values import quantity_or_none
 
@@ -85,14 +84,8 @@ class Data:
     measurement_groups: list[MeasurementGroup]
 
 
-class Mapper:
+class Mapper(SchemaMapper[Data, Model]):
     MANIFEST = "http://purl.allotrope.org/manifests/cell-counting/BENCHLING/2023/11/cell-counting.manifest"
-
-    def __init__(
-        self, asm_converter_name: str, get_date_time: Callable[[str], TDateTimeValue]
-    ) -> None:
-        self.converter_name = asm_converter_name
-        self.get_date_time = get_date_time
 
     def map_model(self, data: Data) -> Model:
         return Model(

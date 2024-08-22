@@ -1,3 +1,5 @@
+DEVICE_TYPE = "brightfield imager (cell counter)"
+DETECTION_TYPE = "brightfield"
 DEFAULT_ANALYST = "Vi-CELL"
 DEFAULT_MODEL_NUMBER = "Vi-Cell BLU"
 VICELL_BLU_SOFTWARE_NAME = "Vi-Cell BLU"
