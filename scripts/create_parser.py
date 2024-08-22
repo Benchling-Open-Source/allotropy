@@ -6,7 +6,7 @@ import click
 from allotropy.allotrope.schema_parser.path_util import (
     get_import_path_from_path,
     get_manifest_from_schema_path,
-    get_model_file_from_schema_path,
+    get_model_path_from_schema_path,
     SCHEMA_DIR_PATH,
 )
 from allotropy.allotrope.schema_parser.schema_model import snake_to_upper_camel
@@ -64,7 +64,7 @@ def create_parser(
     display_name = display_name or name.replace("_", " ").title()
     class_name = f"{snake_to_upper_camel(name)}Parser"
 
-    model_path = get_model_file_from_schema_path(schema_path)
+    model_path = get_model_path_from_schema_path(schema_path)
     import_path = get_import_path_from_path(model_path)
     manifest = get_manifest_from_schema_path(schema_path)
 
