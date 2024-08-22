@@ -55,6 +55,7 @@ from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_parser import (
 from allotropy.parsers.roche_cedex_hires.roche_cedex_hires_parser import (
     RocheCedexHiResParser,
 )
+from allotropy.parsers.stender_tech_spectro.stender_tech_spectro_parser import StenderTechSpectroParser
 from allotropy.parsers.thermo_fisher_genesys30.thermo_fisher_genesys30_parser import (
     ThermoFisherGenesys30Parser,
 )
@@ -99,6 +100,7 @@ class Vendor(Enum):
     REVVITY_KALEIDO = "REVVITY_KALEIDO"
     ROCHE_CEDEX_BIOHT = "ROCHE_CEDEX_BIOHT"
     ROCHE_CEDEX_HIRES = "ROCHE_CEDEX_HIRES"
+    STENDER_TECH_SPECTRO = "STENDER_TECH_SPECTRO"
     THERMO_FISHER_GENESYS30 = "THERMO_FISHER_GENESYS30"
     THERMO_FISHER_NANODROP_EIGHT = "THERMO_FISHER_NANODROP_EIGHT"
     THERMO_FISHER_QUBIT4 = "THERMO_FISHER_QUBIT4"
@@ -143,6 +145,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.REVVITY_KALEIDO: KaleidoParser,
     Vendor.ROCHE_CEDEX_BIOHT: RocheCedexBiohtParser,
     Vendor.ROCHE_CEDEX_HIRES: RocheCedexHiResParser,
+    Vendor.STENDER_TECH_SPECTRO: StenderTechSpectroParser,
     Vendor.THERMO_FISHER_GENESYS30: ThermoFisherGenesys30Parser,
     Vendor.THERMO_FISHER_NANODROP_EIGHT: NanodropEightParser,
     Vendor.THERMO_FISHER_QUBIT4: ThermoFisherQubit4Parser,

@@ -1,38 +1,22 @@
-"""Reader file for Roche Cedex HiRes Instrument"""
-
 import pandas as pd
 
 from allotropy.constants import DEFAULT_ENCODING
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.roche_cedex_hires import constants
-from allotropy.parsers.utils.pandas import read_csv, read_excel
+from allotropy.parsers.utils.pandas import (
+    df_to_series_data,
+    read_csv,
+    read_excel,
+    SeriesData,
+)
 
 
 class RocheCedexHiResReader:
-    """
-    A reader class for parsing Roche Cedex HiRes data files into pandas DataFrames.
+    header: SeriesData
+    data: pd.DataFrame
 
-    Methods:
-    read(named_file_contents: NamedFileContents) -> pd.DataFrame:
-        Reads the content of the provided named file and returns it as a pandas DataFrame.
-    """
-
-    @classmethod
-    def read(cls, named_file_contents: NamedFileContents) -> pd.DataFrame:
-        """
-        Reads the content of the provided named file and returns it as a pandas DataFrame.
-
-        Parameters:
-        named_file_contents (NamedFileContents): The named file contents to read.
-            It includes the original file name, file contents, and encoding.
-
-        Returns:
-        pd.DataFrame: The content of the file as a pandas DataFrame.
-
-        Raises:
-        AllotropeConversionError: If the file format is not supported.
-        """
+    def __init__(self, named_file_contents: NamedFileContents) -> pd.DataFrame:
         if named_file_contents.original_file_name.endswith(".csv"):
             df = read_csv(
                 named_file_contents.contents,
@@ -47,4 +31,5 @@ class RocheCedexHiResReader:
 
         # Fix typo found in some source files.
         df.columns = df.columns.str.replace("identifer", "identifier", regex=True)
-        return df
+        self.data = df
+        self.header = df_to_series_data(df.head(1), "Unable to parser header from dataset.")

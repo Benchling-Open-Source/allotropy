@@ -1,6 +1,5 @@
-""" Constants file for Roche Cedex HiRes Parser"""
-
 # Instrument Software Details
+DISPLAY_NAME = "Roche Cedex HiRes"
 CEDEX_SOFTWARE = "Cedex software"
 MODEL_NUMBER = "Cedex HiRes"
 BRAND_NAME = "Cedex"
