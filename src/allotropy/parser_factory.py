@@ -144,7 +144,6 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.REVVITY_KALEIDO: KaleidoParser,
     Vendor.ROCHE_CEDEX_BIOHT: RocheCedexBiohtParser,
     Vendor.ROCHE_CEDEX_HIRES: RocheCedexHiResParser,
-    Vendor.STENDER_TECH_SPECTRO: StenderTechSpectroParser,
     Vendor.THERMO_FISHER_GENESYS30: ThermoFisherGenesys30Parser,
     Vendor.THERMO_FISHER_NANODROP_EIGHT: NanodropEightParser,
     Vendor.THERMO_FISHER_QUBIT4: ThermoFisherQubit4Parser,
