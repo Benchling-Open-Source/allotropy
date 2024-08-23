@@ -19,6 +19,9 @@ def create_measurement(row: SeriesData, absorbance_col: str) -> Measurement:
         sample_identifier=row[(str, "Sample Name")],
         absorbance=row.get(float, absorbance_col, NaN),
         baseline_absorbance=row.get(float, "Baseline Absorbance"),
+        electronic_absorbance_reference_wavelength_setting=row.get(
+            float, "Baseline Correction (nm)"
+        ),  # question: is this correct, always (nm)
     )
 
 

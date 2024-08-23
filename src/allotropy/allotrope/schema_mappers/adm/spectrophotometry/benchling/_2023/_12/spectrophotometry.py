@@ -111,6 +111,7 @@ class Measurement:
     standard_2_concentration: float | None = None
     standard_3_concentration: float | None = None
     baseline_absorbance: float | None = None
+    electronic_absorbance_reference_wavelength_setting: float | None = None
 
     # Measurements
     absorbance: JsonFloat | None = None
@@ -246,6 +247,10 @@ class Mapper:
                                 detector_wavelength_setting=quantity_or_none(
                                     TQuantityValueNanometer,
                                     measurement.detector_wavelength_setting,
+                                ),
+                                electronic_absorbance_reference_bandwidth_setting=quantity_or_none(
+                                    TQuantityValueNanometer,
+                                    measurement.electronic_absorbance_reference_wavelength_setting,
                                 ),
                             ),
                             self._get_device_control_custom_document(measurement),
