@@ -395,7 +395,9 @@ class Mapper:
                             )
                             for item in calculated_data_item.data_sources
                         ]
-                    ),
+                    )
+                    if calculated_data_item.data_sources
+                    else None,
                 )
                 for calculated_data_item in calculated_data_items
             ]

@@ -1,7 +1,9 @@
 import pandas as pd
 
 from allotropy.allotrope.models.shared.definitions.definitions import NaN
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
+    CalculatedDataItem,
     Data,
     Measurement,
     MeasurementGroup,
@@ -56,6 +58,37 @@ def create_measurement_groups(data: dict[str, pd.DataFrame]) -> list[Measurement
     ]
 
 
+def get_calculated_data_element(
+    row: SeriesData, column: str
+) -> CalculatedDataItem | None:
+    value = row.get(float, column)
+    if value is None:
+        return None
+
+    return CalculatedDataItem(
+        identifier=random_uuid_str(),
+        name=column,
+        value=value,
+        unit=UNITLESS,
+        data_sources=[],
+    )
+
+
+def create_calculated_data(data: dict[str, pd.DataFrame]) -> list[CalculatedDataItem]:
+    sheet_name = next(iter(data.keys()))  # question: is there always only one sheet
+    sheet = data[sheet_name]
+
+    calculated_data = []
+    for _, row in sheet.iterrows():
+        if a260_a230 := get_calculated_data_element(SeriesData(row), "A260/A230"):
+            calculated_data.append(a260_a230)
+
+        if a260_a280 := get_calculated_data_element(SeriesData(row), "A260/A280"):
+            calculated_data.append(a260_a280)
+
+    return calculated_data
+
+
 def create_data(data: dict[str, pd.DataFrame], file_name: str) -> Data:
     return Data(
         metadata=Metadata(
@@ -68,4 +101,5 @@ def create_data(data: dict[str, pd.DataFrame], file_name: str) -> Data:
             software_name="NanoDrop One software",
         ),
         measurement_groups=create_measurement_groups(data),
+        calculated_data=create_calculated_data(data),
     )
