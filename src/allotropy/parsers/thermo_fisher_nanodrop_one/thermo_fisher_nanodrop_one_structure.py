@@ -18,6 +18,7 @@ def create_measurement(row: SeriesData, absorbance_col: str) -> Measurement:
         identifier=random_uuid_str(),
         sample_identifier=row[(str, "Sample Name")],
         absorbance=row.get(float, absorbance_col, NaN),
+        baseline_absorbance=row.get(float, "Baseline Absorbance"),
     )
 
 
