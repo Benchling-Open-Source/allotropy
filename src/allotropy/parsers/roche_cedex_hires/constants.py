@@ -1,5 +1,6 @@
-# Instrument Software Details
 DISPLAY_NAME = "Roche Cedex HiRes"
+
+# Instrument Software Details
 CEDEX_SOFTWARE = "Cedex software"
 MODEL_NUMBER = "Cedex HiRes"
 BRAND_NAME = "Cedex"
