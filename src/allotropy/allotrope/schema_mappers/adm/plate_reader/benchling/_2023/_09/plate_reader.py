@@ -105,7 +105,7 @@ class Measurement:
     type_: MeasurementType
     identifier: str
     sample_identifier: str
-    location_identifier: str | None = None
+    location_identifier: str
     analyst: str | None = None
     measurement_time: str | None = None
     well_plate_identifier: str | None = None

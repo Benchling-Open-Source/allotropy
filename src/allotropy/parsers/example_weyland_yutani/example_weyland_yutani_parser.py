@@ -26,7 +26,7 @@ class ExampleWeylandYutaniParser(MapperVendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.WORKING_DRAFT
     SCHEMA_MAPPER = Mapper
 
-    def create_data(self, named_file_contents: NamedFileContents) -> Model:
+    def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = ExampleWeylandYutaniReader(named_file_contents)
         basic_assay_info = BasicAssayInfo.create(reader.bottom)
         instrument = Instrument.create()

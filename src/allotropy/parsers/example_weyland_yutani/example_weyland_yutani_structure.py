@@ -60,7 +60,7 @@ class Plate:
     results: list[Result]
 
     @property
-    def number_of_wells(self):
+    def number_of_wells(self) -> int:
         return len(self.results)
 
     @staticmethod

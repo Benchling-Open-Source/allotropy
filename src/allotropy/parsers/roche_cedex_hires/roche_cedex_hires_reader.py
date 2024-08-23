@@ -16,7 +16,7 @@ class RocheCedexHiResReader:
     header: SeriesData
     data: pd.DataFrame
 
-    def __init__(self, named_file_contents: NamedFileContents) -> pd.DataFrame:
+    def __init__(self, named_file_contents: NamedFileContents) -> None:
         if named_file_contents.original_file_name.endswith(".csv"):
             df = read_csv(
                 named_file_contents.contents,
