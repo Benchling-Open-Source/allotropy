@@ -160,7 +160,7 @@ def test_header_builder_no_header_then_raise() -> None:
     lines_reader = LinesReader(lines)
     with pytest.raises(
         AllotropeConversionError,
-        match="Expected non-null value for Block Type.",
+        match="Cannot parse data from empty header.",
     ):
         Header.create(lines_reader)
 

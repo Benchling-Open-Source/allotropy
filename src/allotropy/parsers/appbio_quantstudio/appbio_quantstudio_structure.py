@@ -18,6 +18,7 @@ import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.calculated_data_documents.definition import Referenceable
@@ -57,16 +58,17 @@ class Header:
 
     @staticmethod
     def create(reader: LinesReader) -> Header:
-        lines = [line.replace("*", "", 1) for line in reader.pop_until(r"^\[.+\]")]
-        csv_stream = StringIO("\n".join(lines))
-        raw_data = read_csv(csv_stream, header=None, sep="=", names=["index", "values"])
-        series = pd.Series(raw_data["values"].values, index=raw_data["index"]).astype(
-            str
-        )
-        series.index = series.index.str.strip()
-        series = series.str.strip().replace("NA", None)
+        lines = [line.strip() for line in reader.pop_until(r"^\[.+\]") if line.strip()]
+        if not lines:
+            msg = "Cannot parse data from empty header."
+            raise AllotropeConversionError(msg)
 
-        data = SeriesData(series)
+        csv_stream = StringIO("\n".join(lines))
+        raw_data = read_csv(
+            csv_stream, header=None, sep="=", skipinitialspace=True, index_col=0
+        )
+        raw_data.index = raw_data.index.str.replace("*", "")
+        data = df_to_series_data(raw_data.T.replace(np.nan, None))
 
         experiments_type_options = {
             "Standard Curve": ExperimentType.standard_curve_qPCR_experiment,
@@ -404,9 +406,7 @@ class Result:
                 target_dna_description: result
                 for target_id, target_data in well_data.groupby(target_key)
                 for target_dna_description, result in Result.create_result(
-                    df_to_series_data(
-                        target_data, msg="Unable to find parser result data"
-                    ),
+                    df_to_series_data(target_data),
                     experiment_type,
                     str(target_id),
                 ).items()

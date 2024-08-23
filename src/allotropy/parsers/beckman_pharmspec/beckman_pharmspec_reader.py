@@ -1,7 +1,7 @@
 import pandas as pd
 
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.utils.pandas import read_excel, SeriesData
+from allotropy.parsers.utils.pandas import parse_header_row, read_excel, SeriesData
 
 
 class BeckmanPharmspecReader:
@@ -27,9 +27,7 @@ class BeckmanPharmspecReader:
         header_data.index = pd.Index(header_columns)
         self.header = SeriesData(header_data)
 
-        data = df.loc[start:end, :]
-        data = data.dropna(how="all").dropna(how="all", axis=1)
-        data[0] = data[0].ffill()
-        data = data.dropna(subset=1).reset_index(drop=True)
-        data.columns = pd.Index([str(x).strip() for x in data.loc[0]])
-        self.data = data.loc[1:, :]
+        data = df.loc[start:end]
+        data = parse_header_row(data)
+        data["Run No."] = data["Run No."].ffill()
+        self.data = data.dropna(subset="Particle Size(µm)")
