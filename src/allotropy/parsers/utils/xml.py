@@ -65,3 +65,7 @@ def get_attrib_from_xml(
     except KeyError as e:
         msg = f"Unable to find '{attrib_name}' in {xml_element.attrib}"
         raise AllotropeConversionError(msg) from e
+
+
+def get_children_with_tag(xml_object: ElementTree.Element, tag: str):
+    return [child for child in xml_object if child.tag == tag]

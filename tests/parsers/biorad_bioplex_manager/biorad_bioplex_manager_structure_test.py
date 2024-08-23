@@ -4,11 +4,10 @@ import pytest
 
 from allotropy.parsers.biorad_bioplex_manager.biorad_bioplex_manager_structure import (
     AnalyteDocumentData,
-    AnalyteSample,
+    AnalyteMetadata,
     DeviceWellSettings,
     SampleDocumentAggregate,
-    validate_xml_structure,
-    WellSystemLevelMetadata,
+    SystemMetadata,
 )
 
 
@@ -22,7 +21,7 @@ def test_create_analyte_sample() -> None:
     """
     analyte_name = "Pn4"
     analyte_xml = ElementTree.fromstring(analyte_xml_string)  # noqa: S314
-    analyte_sample = AnalyteSample.create(analyte_xml)
+    analyte_sample = AnalyteMetadata.create(analyte_xml)
     assert analyte_sample.analyte_name == analyte_name
     assert analyte_sample.analyte_region == 18
     assert analyte_sample.analyte_error_code == "0"
@@ -94,7 +93,7 @@ def test_well_sytem_level_metadata() -> None:
     )
     tree = ElementTree.parse(test_filepath)  # noqa: S314
     well_system_xml = tree.getroot()
-    well_system = WellSystemLevelMetadata.create(well_system_xml)
+    well_system = SystemMetadata.create(well_system_xml)
 
     assert well_system.plate_id == "555"
     assert well_system.serial_number == "LX12345678912"
@@ -121,14 +120,3 @@ def test_well_sytem_level_metadata() -> None:
         "67",
         "75",
     ]
-
-
-@pytest.mark.short
-def test_validate_xml_structure() -> None:
-    test_filepath = "tests/parsers/biorad_bioplex_manager/testdata/bio-rad_bio-plex_manager_example_01.xml"
-    tree = ElementTree.parse(test_filepath)  # noqa: S314
-    root = tree.getroot()
-    try:
-        validate_xml_structure(root)
-    except Exception as e:
-        pytest.fail(f"Function raised an exception: {e}")

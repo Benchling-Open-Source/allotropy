@@ -101,13 +101,13 @@ class GroupDataElement:
 
 
 @dataclass(frozen=True)
-class GroupSampleData:
+class GroupSampleMetadata:
     identifier: str
     data_elements: list[GroupDataElement]
     aggregated_entries: list[GroupDataElementEntry]
 
     @classmethod
-    def create(cls, data: pd.DataFrame) -> GroupSampleData:
+    def create(cls, data: pd.DataFrame) -> GroupSampleMetadata:
         row_data = [SeriesData(row) for _, row in data.iterrows()]
         top_row = row_data[0]
         identifier = top_row[str, "Sample"]
@@ -129,7 +129,7 @@ class GroupSampleData:
             else:
                 normal_columns.append(column)
 
-        return GroupSampleData(
+        return GroupSampleMetadata(
             identifier=identifier,
             data_elements=[
                 GroupDataElement(
@@ -165,7 +165,7 @@ class GroupSampleData:
 @dataclass(frozen=True)
 class GroupData:
     name: str
-    sample_data: list[GroupSampleData]
+    sample_data: list[GroupSampleMetadata]
 
     @staticmethod
     def create(reader: CsvReader) -> GroupData:
@@ -189,7 +189,7 @@ class GroupData:
         return GroupData(
             name=name,
             sample_data=[
-                GroupSampleData.create(data.iloc[sample_entries.index])
+                GroupSampleMetadata.create(data.iloc[sample_entries.index])
                 for _, sample_entries in samples.groupby(samples)
             ],
         )

@@ -10,19 +10,15 @@ from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2
     Mapper,
 )
 from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.biorad_bioplex_manager.biorad_bioplex_manager_reader import (
+    BioradBioplexReader,
+)
 from allotropy.parsers.biorad_bioplex_manager.biorad_bioplex_manager_structure import (
     create_measurement_group,
     create_metadata,
-    validate_xml_structure,
-    WellSystemLevelMetadata,
-)
-from allotropy.parsers.biorad_bioplex_manager.constants import (
-    DESCRIPTION_TAG,
-    DOC_LOCATION_TAG,
-    PLATE_DIMENSIONS_TAG,
-    SAMPLES,
-    TOTAL_WELLS_ATTRIB,
-    WELLS_TAG,
+    SampleMetadata,
+    SystemMetadata,
+    Well,
 )
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.vendor_parser import MapperVendorParser
@@ -34,38 +30,23 @@ class BioradBioplexParser(MapperVendorParser[Data, Model]):
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
-        contents = named_file_contents.contents.read()
-        xml_tree = Et.ElementTree(Et.fromstring(contents))  # noqa: S314
-        root_xml = xml_tree.getroot()
-        validate_xml_structure(root_xml)
+        reader = BioradBioplexReader(named_file_contents)
 
-        for child in root_xml:
-            if child.tag == SAMPLES:
-                all_samples_xml = child
-            elif child.tag == PLATE_DIMENSIONS_TAG:
-                plate_well_count = int(child.attrib[TOTAL_WELLS_ATTRIB])
-            elif child.tag == DOC_LOCATION_TAG:
-                experimental_data_id = child.text
-            elif child.tag == DESCRIPTION_TAG:
-                experiment_type = child.text
-        for child in root_xml:
-            if child.tag == WELLS_TAG:
-                well_system_metadata = WellSystemLevelMetadata.create(child[0])
-                all_wells_xml = child
+        samples_dict = SampleMetadata.create_samples(reader.get("Samples"))
+        system_metadata = SystemMetadata.create(reader.get("Wells")[0])
+        wells = [Well.create(well_xml) for well_xml in reader.get("Wells")]
 
         return Data(
-            create_metadata(root_xml, well_system_metadata, named_file_contents.original_file_name),
+            create_metadata(reader.root, system_metadata, named_file_contents.original_file_name),
             [
                 create_measurement_group(
-                    samples_xml=all_samples_xml,
-                    well_xml=well_xml,
-                    regions_of_interest=well_system_metadata.regions_of_interest,
-                    experimental_data_id=experimental_data_id,
-                    experiment_type=experiment_type,
-                    plate_well_count=plate_well_count,
-                    analytical_method_identifier=well_system_metadata.analytical_method,
-                    plate_id=well_system_metadata.plate_id,
+                    well,
+                    samples_dict[well.name],
+                    system_metadata,
+                    experimental_data_id=reader.get("NativeDocumentLocation").text,
+                    experiment_type=reader.get("Description").text,
+                    plate_well_count=int(reader.get("PlateDimensions").attrib["TotalWells"]),
                 )
-                for well_xml in all_wells_xml
+                for well in wells
             ]
         )
