@@ -22,6 +22,7 @@ def create_measurement(row: SeriesData, absorbance_col: str) -> Measurement:
         electronic_absorbance_reference_wavelength_setting=row.get(
             float, "Baseline Correction (nm)"
         ),  # question: is this correct, always (nm)
+        nucleic_acid_factor=row.get(float, "Nucleic Acid Factor"),
     )
 
 

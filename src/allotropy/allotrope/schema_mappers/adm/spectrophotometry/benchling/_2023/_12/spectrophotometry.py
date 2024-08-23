@@ -112,6 +112,7 @@ class Measurement:
     standard_3_concentration: float | None = None
     baseline_absorbance: float | None = None
     electronic_absorbance_reference_wavelength_setting: float | None = None
+    nucleic_acid_factor: float | None = None
 
     # Measurements
     absorbance: JsonFloat | None = None
@@ -311,6 +312,9 @@ class Mapper:
             "emission setting": measurement.emission_wavelength_setting,
             "dilution factor": quantity_or_none(
                 TQuantityValueUnitless, measurement.dilution_factor_setting
+            ),
+            "nucleic acid factor": quantity_or_none(
+                TQuantityValueUnitless, measurement.nucleic_acid_factor
             ),
         }
 
