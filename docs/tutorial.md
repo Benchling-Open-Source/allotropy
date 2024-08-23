@@ -1,9 +1,7 @@
 # Tutorial
 
-This brief tutorial introduces the key ideas in this project
-and shows how to extend this package to handle a new kind of device.
-We assume you know how to create a virtual environment for Python,
-how to define a class,
+This brief tutorial introduces the key ideas in this project and shows how to extend this package to handle a
+new kind of device. We assume you know how to create a virtual environment for Python, how to define a class,
 and how to run tests using `pytest`.
 
 **Note:**
@@ -12,40 +10,26 @@ please follow the instructions in `CONTRIBUTING.md` in the root folder of this p
 
 ## What is Allotropy?
 
-`allotropy` is an open source Python package for converting laboratory instrument data
-into [Allotrope Simple Model][allotrope] (ASM) format,
-i.e.,
-to take the (often messy) output of laboratory tools
-and turn it into something that is well structured and has a well-defined semantics
-so that other pieces of software can use it.
+`allotropy` is an open source Python package for converting laboratory instrument data into
+[Allotrope Simple Model][allotrope] (ASM) format, i.e., to take the (often messy) output of laboratory tools
+and turn it into something that is well structured and has a well-defined semantics so that other pieces of
+software can use it.
 
-ASM is a complex format,
-but that complexity is necessary to represent the wide variety of inputs it must handle.
-For example,
-some plate readers produce several readings per well,
-so the format needs a way to represent a one-to-many relationship.
-Similarly,
-other devices might include timestamps,
-sample numbers,
-operator IDs,
-and other information,
-so ASM as a whole has to accommodate these
-even for devices that don't generate that information.
+ASM is a complex format, but that complexity is necessary to represent the wide variety of inputs it must handle.
+For example, some plate readers produce several readings per well, so the format needs a way to represent a
+one-to-many relationship.
 
-`allotropy` represents the structures defined by ASM as Python classes
-that can be converted to and from JSON.
-It does not convert those nested structures into flat formats
-like Pandas dataframes
-because different applications will want to extract different pieces of information
-from the overall representation.
-However,
-producing dataframes and other representations is straightforward,
-and is covered in this tutorial.
+Similarly, other devices might include timestamps, sample numbers, operator IDs, and other information,
+so ASM as a whole has to accommodate these even for devices that don't generate that information.
+
+`allotropy` represents the structures defined by ASM as Python classes that can be converted to and from JSON.
+It does not convert those nested structures into flat formats like Pandas dataframes because different
+applications will want to extract different pieces of information from the overall representation.
+However, producing dataframes and other representations is straightforward, and is covered in this tutorial.
 
 ## A Simple Input File
 
-The input files for this tutorial come from an old Weyland-Yutani plate reader,
-which produces CSV files like this:
+The input files for this tutorial come from an old Weyland-Yutani plate reader, which produces CSV files like this:
 
 ```csv
 Weyland-Yutani 470 1251,,,,
@@ -61,17 +45,12 @@ Recorded,2023-10-23:17:54:48,,,
 Line by line,
 the structure of this file is:
 
--   One line with the device model number (Weyland-Yutani 470) and serial number (1251),
-    all in one column.
--   Another line with the word `Recorded` in the first column
-    and an ISO-formatted timestamp in the second column.
--   A "blank" line.
-    Note that this line, and all others,
-    actually contains enough commas to delimit five columns
+-   One line with the device model number (Weyland-Yutani 470) and serial number (1251), all in one column.
+-   Another line with the word `Recorded` in the first column and an ISO-formatted timestamp in the second column.
+-   A "blank" line. Note that this line, and all others, actually contains enough commas to delimit five columns
     even if values are absent.
--   Five lines of plate data.
-    The first line has a blank followed by column titles A-D;
-    the remaining four rows have row numbers followed by readings.
+-   Five lines of plate data. The first line has a blank followed by column titles A-D; the remaining four
+    rows have row numbers followed by readings.
 
 If the operator pushes the right buttons,
 the Weyland-Yutani 470 can also produce files like this:
@@ -89,12 +68,9 @@ Recorded,2023-10-26:11:15:40,,,
 Checksum,b855,,,
 ```
 
-This file has a different machine serial number (1384 instead of 1251),
-but more importantly,
-the plate readings are followed by another "blank" line consisting of nothing but commas
-and then a checksum of the readings.
-Unfortunately,
-the documentation available to us does not specify how this checksum is calculated.
+This file has a different machine serial number (1384 instead of 1251), but more importantly, the plate
+readings are followed by another "blank" line consisting of nothing but commas and then a checksum of the readings.
+Unfortunately, the documentation available to us does not specify how this checksum is calculated.
 
 ## Defining Files
 
@@ -104,7 +80,9 @@ we make a new parser by running `hatch run scripts:create-parser "example waylan
 
 This will create 4 files in the directory `src/parsers/example_wayland_yutani`
 
-- `example_weyland_yutani_structure.py` defines the classes that represent the data we pull from our CSV files.
+- `example_weyland_yutani_reader.py` contains a reader class to parse the input file.
+- `example_weyland_yutani_structure.py` defines functions that convert the raw data from our CSV files into
+dataclasses that the schema mapper can use to produce ASM.
 - `example_weyland_yutani_parser.py` contains code to read CSV file and produce objects of those classes.
 - `constants.py` contains constants specific to these classes.
 - an empty `__init__.py` file identifies this directory as a sub-package to Python.
@@ -117,14 +95,10 @@ It will also create a corresponding test directory: `tests/parsers/example_wayla
 
 ## Representing Data
 
-`example_weyland_yutani_structure.py` defines five classes
-to represent various parts and levels of our data.
-All of these classes use the `@dataclass` decorator from the Python standard library,
-and all are "frozen",
-i.e.,
-instances cannot be modified after they are created.
-For example,
-the class that represent basic assay information is defined as:
+`example_weyland_yutani_structure.py` defines five classes to represent various parts and levels of our data.
+All of these classes use the `@dataclass` decorator from the Python standard library, and all are "frozen",
+i.e., instances cannot be modified after they are created. For example, the class that represent basic assay
+information is defined as:
 
 ```python
 from dataclasses import dataclass
@@ -157,59 +131,48 @@ From top to bottom, this class defines:
 -   Constants for the protocol ID and assay ID.
     (Real code would probably allow both to be variables taken from the data.)
 
--   The `BasicAssayInfo` dataclass with three fields:
-    the protocol ID, the assay ID, and a checksum.
-    As in all Python dataclasses,
-    these are defined as class-level variables with type annotations;
+-   The `BasicAssayInfo` dataclass with three fields: the protocol ID, the assay ID, and a checksum.
+    As in all Python dataclasses, these are defined as class-level variables with type annotations;
     the checksum is marked as optional.
 
--   A static method called `create` that can take a Pandas dataframe as input
-    and that produces an instance of `BasicAssayInfo`.
-    The dataframe argument may have the value `None`
-    if a checksum footer isn't present in the input data,
-    so the parameter `bottom` is defined as `pd.DataFrame | None`.
-    The `create` method does a conditional check
-    and defines `checksum` to be `None` or a value taken from the data if it's available,
-    then constructs the `BasicAssayInfo` instance and returns it.
+-   A static method called `create` that can take a Pandas dataframe as input and that produces an instance of `BasicAssayInfo`.
+    The dataframe argument may have the value `None` if a checksum footer isn't present in the input data,
+    so the parameter `bottom` is defined as `pd.DataFrame | None`. The `create` method does a conditional check
+    and defines `checksum` to be `None` or a value taken from the data if it's available, then constructs the
+    `BasicAssayInfo` instance and returns it.
 
 The other four classes in this file have a similar structure.
 They are:
 
--   `Instrument`: capture information about the particular machine
-    used to collect this data.
+-   `Instrument`: capture information about the particular machine used to collect this data.
 -   `Result`: store a single well reading as a triple of column, row, and reading.
 -   `Plate`: store a collection of `Result` objects for a single plate.
--   `Data`: store a list of plates,
-    the number of wells in each plate,
-    and one instance each of `BasicAssayInfo` and `Instrument`.
+-   `Data`: store a list of plates, the number of wells in each plate, and one instance each of
+    `BasicAssayInfo` and `Instrument`.
 
-The structure of these classes illustrates the point made earlier
-that we sometimes need fields that aren't strictly necessary in one particular case
-in order to conform with the needs of more complex cases.
-For example,
-`Plate` has two fields called `result` and `number`.
-Quite sensibly,
-the former holds a list of one `Result` object per well.
-The latter always holds the value 0,
-because the Weyland-Yutani reader only handles one plate at a time.
-We probably wouldn't bother to record this value
-if this was the only machine we were working with,
-but since our data structures need to be able to represent multi-plate readers,
-we need this field for compatibility.
+The structure of these classes illustrates the point made earlier that we sometimes need fields that aren't
+strictly necessary in one particular case in order to conform with the needs of more complex cases.
+For example, `Plate` has two fields called `result` and `number`. Quite sensibly, the former holds a list of
+one `Result` object per well. The latter always holds the value 0, because the Weyland-Yutani reader only
+handles one plate at a time. We probably wouldn't bother to record this value if this was the only machine we
+were working with, but since our data structures need to be able to represent multi-plate readers, we need
+this field for compatibility.
 
 ## The Parser
 
-The parser that turns CSV files into instances of the classes described above
-is a class called `ExampleWeylandYutaniParser`
-that lives in `example_weyland_yutani_parser.py`.
-This class is derived from the generic `VendorParser` class
-and *must* define a single method called `to_allotrope`
-that takes a `NamedFileContents` objects as input
-and produces an instance of (something derived from) `Model` as a result:
+The parser that turns CSV files into instances of the classes described above is a class called `ExampleWeylandYutaniParser`
+that lives in `example_weyland_yutani_parser.py`. This class is derived from the generic `VendorParser` class
+and *must* define a single method called `create_data` that takes a `NamedFileContents` objects as input
+and produces an instance of (something derived from) `Data` as a result:
 
 ```python
 class ExampleWeylandYutaniParser(VendorParser):
-    def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
+    DISPLAY_NAME = DISPLAY_NAME
+    RELEASE_STATE = ReleaseState.WORKING_DRAFT
+    SCHEMA_MAPPER = Mapper
+
+    def create_data(self, named_file_contents: NamedFileContents) -> Data:
+        reader = ExampleWeylandYutaniReader(named_file_contents)
         raw_contents = named_file_contents.contents
         reader = CsvReader(raw_contents)
         return self._get_model(Data.create(reader))

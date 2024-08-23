@@ -4,8 +4,17 @@ from dataclasses import dataclass
 
 import pandas as pd
 
+from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
+    ImageFeature,
+    Measurement,
+    MeasurementGroup,
+    MeasurementType,
+    Metadata,
+    ProcessedData,
+)
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.lines_reader import CsvReader
+from allotropy.parsers.example_weyland_yutani import constants
+from allotropy.parsers.utils.uuids import random_uuid_str
 
 EMPTY_CSV_LINE = r"^,*$"
 PROTOCOL_ID = "Weyland Yutani Example"
@@ -37,7 +46,7 @@ class Instrument:
     serial_number: str
     nickname: str
 
-    # TODO: extract and fill in real values for serial number and nickname
+    # TODO(tutorial): extract and fill in real values for serial number and nickname
     @staticmethod
     def create() -> Instrument:
         return Instrument(serial_number="", nickname="")
@@ -78,23 +87,30 @@ class Plate:
         ]
 
 
-@dataclass(frozen=True)
-class Data:
-    plates: list[Plate]
-    number_of_wells: float | None
-    basic_assay_info: BasicAssayInfo
-    instrument: Instrument
+def create_metadata(instrument: Instrument, file_name: str) -> Metadata:
+    return Metadata(
+        file_name=file_name,
+        # TODO(tutorial): extract and return actual measurement time
+        measurement_time="2022-12-31",
+        device_type=constants.DEVICE_TYPE,
+        model_number=instrument.serial_number,
+        device_identifier=instrument.nickname,
+    )
 
-    @staticmethod
-    def create(reader: CsvReader) -> Data:
-        _ = reader.pop_csv_block_as_df(empty_pat=EMPTY_CSV_LINE)
-        middle = reader.pop_csv_block_as_df(empty_pat=EMPTY_CSV_LINE)
-        bottom = reader.pop_csv_block_as_df(empty_pat=EMPTY_CSV_LINE)
 
-        plates = Plate.create(middle)
-        return Data(
-            basic_assay_info=BasicAssayInfo.create(bottom),
-            plates=plates,
-            number_of_wells=len(plates[0].results),
-            instrument=Instrument.create(),
-        )
+def create_measurement_group(plate: Plate, basic_assay_info: BasicAssayInfo) -> MeasurementGroup:
+    return MeasurementGroup(
+        plate_well_count=len(plate.results),
+        analytical_method_identifier=basic_assay_info.protocol_id,
+        experimental_data_identifier=basic_assay_info.assay_id,
+        measurements=[
+            Measurement(
+                type_=MeasurementType.FLUORESCENCE,
+                identifier=random_uuid_str(),
+                sample_identifier=f"Plate {plate.number}",
+                location_identifier=f"{result.col}{result.row}",
+                fluorescence=result.value,
+            )
+            for result in plate.results
+        ]
+    )

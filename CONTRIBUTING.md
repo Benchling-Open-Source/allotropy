@@ -60,11 +60,11 @@ Determine if the ASM schemas you need are in [the schema folder](src/allotropy/a
 
 ## If the ASM schema you need is available
 
-In this case we already have some code in the library to handle instruments of this type and you should look at those for examples of how to structure your own code. Each converter consists of two main pieces:
-1. A `Parser` class -- this implements [`VendorParser`](src/allotropy/parsers/vendor_parser.py) and does most of the work converting the instrument data to ASM.
-2. Either:
-  - A `Structure` file that the `Parser` uses to build an in memory representation of the instrument data that can be serialized to ASM.
-  - A `Reader` file that the `Parser` uses to read the raw contents of the file, which is passed to the `Structure` classes.
+In this case we already have some code in the library to handle instruments of this type and you should look at those for examples of how to structure your own code. Each converter consists of four main pieces:
+1. A `SchemaMapper` -- this defines a set of dataclasses for the parser to populate, and handles populating the ASM schema. This class is defined per schema, so it may already exist, though you may need to add to it if your parser adds a case not yet handled for the schema.
+2. A `Reader` class -- this reads the raw contents of the file, which is passed to the `Structure` classes.
+3. A `Structure` file -- this defines functions that the `Parser` uses populate the `SchemaMapper` dataclasses. It may construct intermediate dataclasses to organize the raw data of the file, which are then used to populate the `SchemaMapper` dataclasses.
+4. A `Parser` class -- this implements [`VendorParser`](src/allotropy/parsers/vendor_parser.py) and is responsible using the `Reader` and `Structure` to create data for the `SchemaMapper`
 
 Run `hatch run scripts:create-parser NAME SCHEMA_REGEX` to create a set of starter files. Where `SCHEMA_REGEX` is a search pattern over schema paths to specify a schema to use.
 

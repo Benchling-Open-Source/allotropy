@@ -105,7 +105,7 @@ class Measurement:
     type_: MeasurementType
     identifier: str
     sample_identifier: str
-    location_identifier: str
+    location_identifier: str | None = None
     analyst: str | None = None
     measurement_time: str | None = None
     well_plate_identifier: str | None = None
@@ -168,7 +168,7 @@ class Metadata:
     device_identifier: str
     device_type: str
     model_number: str
-    software_name: str
+    software_name: str | None = None
     detection_type: str | None = None
     unc_path: str | None = None
     software_version: str | None = None
