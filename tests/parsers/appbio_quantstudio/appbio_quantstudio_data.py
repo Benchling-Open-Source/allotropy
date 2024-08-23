@@ -1408,7 +1408,7 @@ def get_rel_std_curve_data(file_name: str) -> Data:
         measurement_method_identifier="Ct",
         pcr_detection_chemistry="TAQMAN",
         passive_reference_dye_setting="ROX",
-        barcode="",
+        barcode=None,
         analyst=None,
         experimental_data_identifier="QuantStudio96-Well Relative Standard Curve Example",
     )
@@ -1909,7 +1909,7 @@ def get_rel_std_curve_model() -> Model:
                                     batch_identifier=None,
                                     sample_role_type="UNKNOWN",
                                     well_location_identifier="D1",
-                                    well_plate_identifier="",
+                                    well_plate_identifier=None,
                                     mass_concentration=None,
                                 ),
                                 device_control_aggregate_document=DeviceControlAggregateDocument(
@@ -2053,7 +2053,7 @@ def get_rel_std_curve_model() -> Model:
                                     batch_identifier=None,
                                     sample_role_type="UNKNOWN",
                                     well_location_identifier="D2",
-                                    well_plate_identifier="",
+                                    well_plate_identifier=None,
                                     mass_concentration=None,
                                 ),
                                 device_control_aggregate_document=DeviceControlAggregateDocument(
@@ -2435,7 +2435,7 @@ def get_broken_calc_doc_data(file_name: str) -> Data:
         measurement_method_identifier="Ct",
         pcr_detection_chemistry="TAQMAN",
         passive_reference_dye_setting="ROX",
-        barcode="",
+        barcode=None,
         analyst=None,
         experimental_data_identifier="QuantStudio96-Well Relative Standard Curve Example",
     )
@@ -2573,7 +2573,7 @@ def get_broken_calc_doc_model() -> Model:
                                     batch_identifier=None,
                                     sample_role_type="UNKNOWN",
                                     well_location_identifier="D1",
-                                    well_plate_identifier="",
+                                    well_plate_identifier=None,
                                     mass_concentration=None,
                                 ),
                                 device_control_aggregate_document=DeviceControlAggregateDocument(
