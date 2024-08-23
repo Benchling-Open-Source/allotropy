@@ -1,14 +1,15 @@
 from __future__ import annotations
 
 from io import StringIO
+import re
 
 import pandas as pd
 
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import AllotropeConversionError, AllotropeParsingError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
 from allotropy.parsers.luminex_xponent import constants
-from allotropy.parsers.utils.pandas import read_csv, SeriesData
+from allotropy.parsers.utils.pandas import read_csv
 from allotropy.parsers.utils.values import assert_not_none, try_float
 
 
@@ -17,50 +18,38 @@ class LuminexXponentReader:
         reader = CsvReader(read_to_lines(named_file_contents))
 
         self.header_data = self._get_header_data(reader)
-        self.calibration_lines = self._get_calibration_data(reader)
+        self.calibration_data = self._get_calibration_data(reader)
         self.minimum_assay_bead_count_setting = (
             self._get_minimum_assay_bead_count_setting(reader)
         )
-        self.median_data = self._get_median_data(reader)
-        self.count_data = self._get_table_as_df(reader, "Count")
-        self.bead_ids_data = self._get_bead_ids_data(reader)
-        self.dilution_factor_data = self._get_table_as_df(reader, "Dilution Factor")
-        self.errors_data = self._get_table_as_df(reader, "Warnings/Errors")
+        self.results_data = LuminexXponentReader._get_results(reader)
 
     @classmethod
     def _get_header_data(cls, reader: CsvReader) -> pd.DataFrame:
         header_lines = list(reader.pop_until(constants.CALIBRATION_BLOCK_HEADER))
 
-        n_columns = 0
-        for line in header_lines:
-            n_row_columns = len(line.split(","))
-            if n_row_columns > n_columns:
-                n_columns = n_row_columns
-
+        n_columns = max(len(line.split(",")) for line in header_lines)
         if n_columns < constants.EXPECTED_HEADER_COLUMNS:
             msg = "Unable to parse header. Not enough data."
             raise AllotropeConversionError(msg)
 
-        header_data = read_csv(
-            StringIO("\n".join(header_lines)),
-            header=None,
-            index_col=0,
-            names=range(n_columns),
-        ).dropna(how="all")
-
-        return header_data.T
+        return (
+            read_csv(
+                StringIO("\n".join(header_lines)),
+                header=None,
+                index_col=0,
+                names=range(n_columns),
+            )
+            .dropna(how="all")
+            .T
+        )
 
     @classmethod
-    def _get_calibration_data(cls, reader: CsvReader) -> list[str]:
+    def _get_calibration_data(cls, reader: CsvReader) -> pd.DataFrame:
         reader.drop_until_inclusive(constants.CALIBRATION_BLOCK_HEADER)
-        calibration_lines = reader.pop_csv_block_as_lines(
-            empty_pat=constants.LUMINEX_EMPTY_PATTERN
+        return assert_not_none(
+            reader.pop_csv_block_as_df(constants.LUMINEX_EMPTY_PATTERN)
         )
-        if not calibration_lines:
-            msg = "Unable to find Calibration Block."
-            raise AllotropeConversionError(msg)
-
-        return calibration_lines
 
     @classmethod
     def _get_minimum_assay_bead_count_setting(cls, reader: CsvReader) -> float:
@@ -74,43 +63,26 @@ class LuminexXponentReader:
 
         return try_float(min_bead_count_setting, "minimum bead count setting")
 
-    @classmethod
-    def _get_median_data(cls, reader: CsvReader) -> pd.DataFrame:
-        reader.drop_until_inclusive(constants.TABLE_HEADER_PATTERN.format("Median"))
-        return assert_not_none(
-            reader.pop_csv_block_as_df(
-                empty_pat=constants.LUMINEX_EMPTY_PATTERN, header="infer"
-            ),
-            msg="Unable to find Median table.",
-        )
+    @staticmethod
+    def _get_results(reader: CsvReader) -> dict[str, pd.DataFrame]:
+        reader.drop_until_inclusive("Results")
+        reader.drop_empty(constants.LUMINEX_EMPTY_PATTERN)
+        results: dict[str, pd.DataFrame] = {}
+        while reader.current_line_exists() and "-- CRC --" not in (reader.get() or ""):
+            result_title_line = assert_not_none(reader.pop())
+            match: re.Match[str] | None
+            if not (
+                match := re.match(constants.TABLE_HEADER_PATTERN, result_title_line)
+            ):
+                msg = f"Invalid header block start line: {result_title_line}"
+                raise AllotropeParsingError(msg)
+            result_title = match.groups()[0]
+            table_data = assert_not_none(
+                reader.pop_csv_block_as_df(
+                    empty_pat=constants.LUMINEX_EMPTY_PATTERN, header=0, index_col=0
+                )
+            ).dropna(how="all", axis="columns")
+            results[result_title] = table_data
+            reader.drop_empty(constants.LUMINEX_EMPTY_PATTERN)
 
-    @classmethod
-    def _get_bead_ids_data(cls, reader: CsvReader) -> SeriesData:
-        units_df = cls._get_table_as_df(reader, "Units")
-        return SeriesData(units_df.loc["BeadID:"])
-
-    @classmethod
-    def _get_table_as_df(cls, reader: CsvReader, table_name: str) -> pd.DataFrame:
-        """Returns a dataframe that has the well location as index.
-
-        Results tables in luminex xponent output files have the location as first column.
-        Having this column as the index of the dataframe allows for easier lookup when
-        retrieving measurement data.
-        """
-        reader.drop_until_inclusive(
-            match_pat=constants.TABLE_HEADER_PATTERN.format(table_name)
-        )
-
-        table_lines = reader.pop_csv_block_as_lines(
-            empty_pat=constants.LUMINEX_EMPTY_PATTERN
-        )
-
-        if not table_lines:
-            msg = f"Unable to find {table_name} table."
-            raise AllotropeConversionError(msg)
-
-        return read_csv(
-            StringIO("\n".join(table_lines)),
-            header=[0],
-            index_col=[0],
-        ).dropna(how="all", axis="columns")
+        return results

@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import re
-from typing import Any
 
 import pandas as pd
 
@@ -52,6 +51,7 @@ class Header:
     ) -> Header:
         info_row = SeriesData(header_data.iloc[0])
         raw_datetime = info_row[str, "BatchStartTime"]
+        sample_volume = info_row[str, "SampleVolume"]
 
         return Header(
             model_number=cls._get_model_number(header_data),
@@ -60,7 +60,9 @@ class Header:
             analytical_method_identifier=info_row[str, "ProtocolName"],
             method_version=info_row[str, "ProtocolVersion"],
             experimental_data_identifier=info_row[str, "Batch"],
-            sample_volume_setting=cls._get_sample_volume_setting(info_row),
+            sample_volume_setting=try_float(
+                sample_volume.split()[0], "sample volume setting"
+            ),
             plate_well_count=cls._get_plate_well_count(header_data),
             measurement_time=raw_datetime,
             detector_gain_setting=info_row[str, "ProtocolReporterGain"],
@@ -68,12 +70,6 @@ class Header:
             minimum_assay_bead_count_setting=minimum_assay_bead_count_setting,
             analyst=info_row.get(str, "Operator"),
         )
-
-    @classmethod
-    def _get_sample_volume_setting(cls, info_row: SeriesData) -> float:
-        sample_volume = info_row[str, "SampleVolume"]
-
-        return try_float(sample_volume.split()[0], "sample volume setting")
 
     @classmethod
     def _get_model_number(cls, header_data: pd.DataFrame) -> str:
@@ -104,7 +100,7 @@ class Header:
     @classmethod
     def _try_col_from_header(
         cls, header_data: pd.DataFrame, key: str
-    ) -> pd.Series[Any]:
+    ) -> pd.Series[str]:
         if key not in header_data:
             msg = f"Unable to find {key} data in header block."
             raise AllotropeConversionError(msg)
@@ -112,25 +108,23 @@ class Header:
         return header_data[key]
 
 
-def create_calibration(calibration_line: str) -> Calibration:
+def create_calibration(calibration_data: SeriesData) -> Calibration:
     """Create a CalibrationItem from a calibration line.
 
     Each line should follow the pattern "Last <calibration_name>,<calibration_report> <calibration_time><,,,,"
     example: "Last F3DeCAL1 Calibration,Passed 05/17/2023 09:25:11,,,,,,"
     """
-    calibration_data = calibration_line.replace('"', "").split(",")
-    if len(calibration_data) < constants.MINIMUM_CALIBRATION_LINE_COLS:
-        msg = f"Expected at least two columns on the calibration line, got: {calibration_line}."
+    if len(calibration_data.series.index) < constants.MINIMUM_CALIBRATION_LINE_COLS:
+        msg = f"Expected at least two columns on the calibration line, got:\n{calibration_data.series}."
         raise AllotropeConversionError(msg)
 
-    calibration_result = calibration_data[1].split(maxsplit=1)
-
+    calibration_result = calibration_data.series.iloc[1].split(maxsplit=1)
     if len(calibration_result) != constants.EXPECTED_CALIBRATION_RESULT_LEN:
         msg = f"Invalid calibration result format, expected to split into two values, got: {calibration_result}."
         raise AllotropeConversionError(msg)
 
     return Calibration(
-        name=calibration_data[0].replace("Last", "").strip(),
+        name=calibration_data.series.iloc[0].replace("Last", "").strip(),
         report=calibration_result[0],
         time=calibration_result[1],
     )
@@ -155,18 +149,25 @@ class Measurement:
         dilution_factor_data: pd.DataFrame,
         errors_data: pd.DataFrame,
     ) -> Measurement:
-        location = median_data[str, "Location"]
-        dilution_factor_setting = SeriesData(dilution_factor_data.loc[location])[
-            float, "Dilution Factor"
-        ]
+        location = str(median_data.series.name)
+        if location not in dilution_factor_data.index:
+            msg = f"Could not find 'Dilution Factor' data for: '{location}'."
+            raise AllotropeConversionError(msg)
+        if location not in count_data.index:
+            msg = f"Could not find 'Count' data for: '{location}'."
+            raise AllotropeConversionError(msg)
+
+        # Keys in the median data that are not analyte data.
+        metadata_keys = ["Sample", "Total Events"]
 
         well_location, location_id = cls._get_location_details(location)
-
         return Measurement(
             identifier=random_uuid_str(),
             sample_identifier=median_data[str, "Sample"],
             location_identifier=location_id,
-            dilution_factor_setting=dilution_factor_setting,
+            dilution_factor_setting=SeriesData(dilution_factor_data.loc[location])[
+                float, "Dilution Factor"
+            ],
             assay_bead_count=median_data[float, "Total Events"],
             analytes=[
                 Analyte(
@@ -179,7 +180,9 @@ class Measurement:
                     value=median_data[float, analyte],
                     statistic_datum_role=TStatisticDatumRole.median_role,
                 )
-                for analyte in list(median_data.series.index)[2:-1]
+                for analyte in [
+                    key for key in median_data.series.index if key not in metadata_keys
+                ]
             ],
             errors=cls._get_errors(errors_data, well_location),
         )
@@ -198,15 +201,11 @@ class Measurement:
     def _get_errors(
         cls, errors_data: pd.DataFrame, well_location: str
     ) -> list[str] | None:
-        try:
-            measurement_errors = errors_data.loc[well_location]
-        except KeyError:
+        if well_location not in errors_data.index:
             return None
-
-        return [
-            measurement_errors.iloc[i]["Message"]
-            for i in range(len(measurement_errors))
-        ]
+        return map_rows(
+            errors_data.loc[[well_location]], lambda data: data[str, "Message"]
+        )
 
 
 @dataclass(frozen=True)
@@ -214,17 +213,32 @@ class MeasurementList:
     measurements: list[Measurement]
 
     @classmethod
-    def create(cls, reader: LuminexXponentReader) -> MeasurementList:
+    def create(cls, results_data: dict[str, pd.DataFrame]) -> MeasurementList:
+        if missing_sections := [
+            section
+            for section in constants.EXPECTED_SECTIONS
+            if section not in results_data
+        ]:
+            msg = f"Unable to parse input file, missing expected sections: {missing_sections}."
+            raise AllotropeConversionError(msg)
+
+        if "BeadID:" not in results_data["Units"].index:
+            msg = (
+                "Could not parse bead data from 'Units' section, missing 'BeadID:' row"
+            )
+            raise AllotropeConversionError()
+        bead_ids_data = SeriesData(results_data["Units"].loc["BeadID:"])
+
         def create_measurement(data: SeriesData) -> Measurement:
             return Measurement.create(
                 median_data=data,
-                count_data=reader.count_data,
-                bead_ids_data=reader.bead_ids_data,
-                dilution_factor_data=reader.dilution_factor_data,
-                errors_data=reader.errors_data,
+                count_data=results_data["Count"],
+                bead_ids_data=bead_ids_data,
+                dilution_factor_data=results_data["Dilution Factor"],
+                errors_data=results_data["Warnings/Errors"],
             )
 
-        return MeasurementList(map_rows(reader.median_data, create_measurement))
+        return MeasurementList(map_rows(results_data["Median"], create_measurement))
 
 
 @dataclass(frozen=True)
@@ -239,10 +253,8 @@ class Data:
             header=Header.create(
                 reader.header_data, reader.minimum_assay_bead_count_setting
             ),
-            calibrations=[
-                create_calibration(line) for line in reader.calibration_lines
-            ],
-            measurement_list=MeasurementList.create(reader),
+            calibrations=map_rows(reader.calibration_data, create_calibration),
+            measurement_list=MeasurementList.create(reader.results_data),
         )
 
 
