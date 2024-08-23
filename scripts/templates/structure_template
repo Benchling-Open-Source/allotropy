@@ -20,7 +20,7 @@ def create_metadata(data: SeriesData, file_name: str) -> Metadata:
 
 def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
     # This function will be called for every row in the dataset, use it to create
-    # a cooresponding measurement group.
+    # a corresponding measurement group.
     return MeasurementGroup(
         analyst=data[str, "Analyst"],
         measurements=[
