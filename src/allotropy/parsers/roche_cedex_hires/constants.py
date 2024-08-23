@@ -1,4 +1,4 @@
-""" Constants file for Roche Cedex HiRes Parser"""
+DISPLAY_NAME = "Roche Cedex HiRes"
 
 # Instrument Software Details
 CEDEX_SOFTWARE = "Cedex software"
