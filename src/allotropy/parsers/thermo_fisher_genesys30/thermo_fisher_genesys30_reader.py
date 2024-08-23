@@ -50,6 +50,4 @@ class ThermoFisherGenesys30Reader:
         metadata_dataframe.columns = metadata_dataframe.columns.str.strip()
         metadata_dataframe = metadata_dataframe.head(1)
 
-        self.header = df_to_series_data(
-            metadata_dataframe, "Failed to parser header data"
-        )
+        self.header = df_to_series_data(metadata_dataframe)

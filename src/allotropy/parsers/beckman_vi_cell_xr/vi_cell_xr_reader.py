@@ -146,9 +146,7 @@ class ViCellXRTXTReader:
         data_frame = read_csv(
             StringIO("\n".join(self.lines)), sep=" :", index_col=0, engine="python"
         )
-        file_data = df_to_series(
-            data_frame.astype(str).T, "Failed to parse input file."
-        )
+        file_data = df_to_series(data_frame.astype(str).T)
         file_data = file_data.str.strip().replace("", None)
         file_data = file_data.rename(index=HEADINGS_TO_PARSER_HEADINGS)
         # Do the datetime conversion and remove all rows that fail to pass as datetime
