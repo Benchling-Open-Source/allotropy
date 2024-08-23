@@ -39,7 +39,7 @@ class AgilentGen5Reader:
             keep_default_na=False,
             sep="\t",
         ).T
-        self.header_data = df_to_series_data(df, "Failed to parser header data")
+        self.header_data = df_to_series_data(df)
 
         self.sections = {}
 
