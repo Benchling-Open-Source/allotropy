@@ -76,7 +76,7 @@ Unfortunately, the documentation available to us does not specify how this check
 
 After forking the [`allotropy` repository][allotropy_repo]
 and creating a new branch for our work,
-we make a new parser by running `hatch run scripts:create-parser "example wayland yutani" "09/fluorescence"`
+we make a new parser by running `hatch run scripts:create-parser "example wayland yutani" "09/plate-reader"`
 
 This will create 4 files in the directory `src/parsers/example_wayland_yutani`
 
@@ -103,8 +103,6 @@ information is defined as:
 ```python
 from dataclasses import dataclass
 
-PROTOCOL_ID = "Weyland Yutani Example"
-ASSAY_ID = "Example Assay"
 
 @dataclass(frozen=True)
 class BasicAssayInfo:
@@ -120,16 +118,15 @@ class BasicAssayInfo:
             else str(bottom.iloc[0, 1])
         )
         return BasicAssayInfo(
-            protocol_id=PROTOCOL_ID,
-            assay_id=ASSAY_ID,
+            # NOTE: in real code these values would be read from data
+            protocol_id=constants.PROTOCOL_ID,
+            assay_id=constants.ASSAY_ID,
             checksum=checksum,
         )
+
 ```
 
 From top to bottom, this class defines:
-
--   Constants for the protocol ID and assay ID.
-    (Real code would probably allow both to be variables taken from the data.)
 
 -   The `BasicAssayInfo` dataclass with three fields: the protocol ID, the assay ID, and a checksum.
     As in all Python dataclasses, these are defined as class-level variables with type annotations;
@@ -147,8 +144,6 @@ They are:
 -   `Instrument`: capture information about the particular machine used to collect this data.
 -   `Result`: store a single well reading as a triple of column, row, and reading.
 -   `Plate`: store a collection of `Result` objects for a single plate.
--   `Data`: store a list of plates, the number of wells in each plate, and one instance each of
-    `BasicAssayInfo` and `Instrument`.
 
 The structure of these classes illustrates the point made earlier that we sometimes need fields that aren't
 strictly necessary in one particular case in order to conform with the needs of more complex cases.
@@ -158,101 +153,66 @@ handles one plate at a time. We probably wouldn't bother to record this value if
 were working with, but since our data structures need to be able to represent multi-plate readers, we need
 this field for compatibility.
 
+Finally, we define two functions `create_metadata` and `create_measurement_group`, which take the dataclasses
+above and use them to populate dataclasses that correspond to the structure of the ASM schema. When writing
+a new parser, you should familiarize yourself with the `SchemaMapper` of the schema that your parser will
+populate. This will give you and idea of the data will be extracting from the file.
+
 ## The Parser
 
 The parser that turns CSV files into instances of the classes described above is a class called `ExampleWeylandYutaniParser`
 that lives in `example_weyland_yutani_parser.py`. This class is derived from the generic `VendorParser` class
-and *must* define a single method called `create_data` that takes a `NamedFileContents` objects as input
-and produces an instance of (something derived from) `Data` as a result:
+and *must* define set `DISPLAY_NAME`, `RELEASE_STATE`, and `SCHEMA_MAPPER` and implement a single method called
+`create_data` that takes a `NamedFileContents` objects as input and produces an instance of (something derived from) `Data` as a result:
 
 ```python
-class ExampleWeylandYutaniParser(VendorParser):
+class ExampleWeylandYutaniParser(MapperVendorParser[Data, Model]):
     DISPLAY_NAME = DISPLAY_NAME
     RELEASE_STATE = ReleaseState.WORKING_DRAFT
     SCHEMA_MAPPER = Mapper
 
-    def create_data(self, named_file_contents: NamedFileContents) -> Data:
+    def create_data(self, named_file_contents: NamedFileContents) -> Model:
         reader = ExampleWeylandYutaniReader(named_file_contents)
-        raw_contents = named_file_contents.contents
-        reader = CsvReader(raw_contents)
-        return self._get_model(Data.create(reader))
-```
+        basic_assay_info = BasicAssayInfo.create(reader.bottom)
+        instrument = Instrument.create()
+        plates = Plate.create(reader.middle)
 
-After pulling the raw textual content out of the file object,
-`to_allotrope` wraps it with an instance of  `CsvReader`.
-This helper class,
-which is defined by `allotropy`,
-provides methods for inspecting and disassembling files that
-may or may not be readable by Python's own `csv` module—as anyone
-who has worked with the output of laboratory equipment can testify,
-many vendors have very idiosyncratic interpretations of "comma-separated values".
-
-The bulk of the work in this class is done by the `_get_model` method,
-which looks like this:
-
-```python
-    def _get_model(self, data: Data) -> Model:
-        if data.number_of_wells is None:
+        if plates[0].number_of_wells is None:
             msg = "Unable to determine the number of wells in the plate."
             raise AllotropeConversionError(msg)
 
-        return Model(
-            measurement_aggregate_document=MeasurementAggregateDocument(
-                measurement_identifier=str(uuid.uuid4()),
-                measurement_time=self._get_measurement_time(data),
-                analytical_method_identifier=data.basic_assay_info.protocol_id,
-                experimental_data_identifier=data.basic_assay_info.assay_id,
-                container_type=ContainerType.well_plate,
-                plate_well_count=TQuantityValueNumber(value=data.number_of_wells),
-                device_system_document=DeviceSystemDocument(
-                    model_number=data.instrument.serial_number,
-                    device_identifier=data.instrument.nickname,
-                ),
-                measurement_document=self._get_measurement_document(data),
-            )
+        return Data(
+            create_metadata(instrument, named_file_contents.original_file_name),
+            [create_measurement_group(plate, basic_assay_info) for plate in plates],
         )
 ```
 
-The first part of this method looks at the `Data` object
-defined in `example_weyland_yutani_structure.py`
-to make sure that the plate actually has some wells,
-and if not,
-raises an `AllotropeConversionError` exception.
-Please use this exception for *all* parsing and data conversion errors
-rather than (for example) raw Python `assert` statements
-so that client applications can catch problems reliably.
+`Parser.create_data` uses a `Reader` class to extract raw data out of the input file, which in this case is a CSV.
+The `Reader` class makes use of `CsvReader`, a helper class which is defined by `allotropy`.
+`CsvReader` provides methods for inspecting and disassembling files that may or may not be readable by
+Python's own `csv` module — as anyone who has worked with the output of laboratory equipment can testify,
+many vendors have very idiosyncratic interpretations of "comma-separated values".
 
-The second part of `_get_model` constructs an instance of
-the `allotropy` class `Model`,
-which for our data is just a wrapper around another `allotropy` class
-called `MeasurementAggregateDocument`.
-Again,
-this extra level of wrapping wouldn't be necessary
-if we were only supporting one kind of machine with one kind of output,
-but a `Model` can contain other information to support other kinds of hardware.
-The various objects that `MeasurementAggregateDocument` depends on,
-such as `ContainerType` and `DeviceSystemDocument`,
-are also defined by `allotropy`;
-in practice,
-the easiest way to navigate them
-is to copy and modify an existing parser.
+After parsing the raw data, the method checks to make sure that the plate actually has some wells, and if not,
+raises an `AllotropeConversionError` exception. Please use this exception for *all* errors caused by bad input
+data, rather than (for example) raw Python `assert` statements so that client applications can catch problems
+reliably.
+
+Note that after the call to `create_data`, the base `VendorParser` uses the `SchemaMapper` class to produce
+the corresponding `Model`, which can then be serialized into ASM json.
 
 ## Making the Parser Available
 
-Once our classes and parser are defined,
-we add entries to `src/allotropy/parser_factory.py`
+Once our classes and parser are defined, we add entries to `src/allotropy/parser_factory.py`
 to make them available to users of the package:
 (NOTE: this will be done automatically if using `hatch run scripts:create-parser`)
 
 1.  Import `ExampleWeylandYutaniParser`.
-    We don't need to import the dataclasses it depends on,
-    since client code will always access these by field name.
+    We don't need to import the dataclasses it depends on, since client code will always access these by field name.
 
-2.  Add an entry `EXAMPLE_WEYLAND_YUTANI` to the `Vendor` enumeration
-    to uniquely identify this kind of parser.
+2.  Add an entry `EXAMPLE_WEYLAND_YUTANI` to the `Vendor` enumeration to uniquely identify this kind of parser.
 
-3.  Add a similar entry to the `_VENDOR_TO_PARSER` lookup table
-    to translate this enumeration element into the appropriate class.
+3.  Add a similar entry to the `_VENDOR_TO_PARSER` lookup table to translate this enumeration element into the appropriate class.
 
 ## Testing
 
@@ -288,16 +248,13 @@ More complex parsers may require tests against helper methods, and will probably
 
 ## Exercises
 
-We have left the keyword `TODO` in a few places in the Weyland-Yutani example
-to serve as thought exercises
-and as examples of potential extensions to the base parser for handling more complex files.
-We hope you will work through them,
-but please do not submit fixes:
-we would like other people to be able to work through them too.
-Improvements or extensions to this tutorial,
-on the other hand,
-are very welcome,
-and should be submitted as pull requests in the usual way.
+We have left the keyword `TODO(tutorial)` in a few places in the Weyland-Yutani example to serve as thought
+exercises and as examples of potential extensions to the base parser for handling more complex files.
+We hope you will work through them, but please do not submit fixes: we would like other people to be able to
+work through them too.
+
+Improvements or extensions to this tutorial, on the other hand, are very welcome, and should be submitted as
+pull requests in the usual way.
 
 [allotrope]: https://www.allotrope.org/product-overview
 [allotropy_repo]: https://github.com/Benchling-Open-Source/allotropy

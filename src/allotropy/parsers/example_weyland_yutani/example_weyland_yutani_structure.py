@@ -5,20 +5,14 @@ from dataclasses import dataclass
 import pandas as pd
 
 from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
-    ImageFeature,
     Measurement,
     MeasurementGroup,
     MeasurementType,
     Metadata,
-    ProcessedData,
 )
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.example_weyland_yutani import constants
 from allotropy.parsers.utils.uuids import random_uuid_str
-
-EMPTY_CSV_LINE = r"^,*$"
-PROTOCOL_ID = "Weyland Yutani Example"
-ASSAY_ID = "Example Assay"
 
 
 @dataclass(frozen=True)
@@ -35,8 +29,9 @@ class BasicAssayInfo:
             else str(bottom.iloc[0, 1])
         )
         return BasicAssayInfo(
-            protocol_id=PROTOCOL_ID,
-            assay_id=ASSAY_ID,
+            # NOTE: in real code these values would be read from data
+            protocol_id=constants.PROTOCOL_ID,
+            assay_id=constants.ASSAY_ID,
             checksum=checksum,
         )
 
@@ -63,6 +58,10 @@ class Result:
 class Plate:
     number: str
     results: list[Result]
+
+    @property
+    def number_of_wells(self):
+        return len(self.results)
 
     @staticmethod
     def create(df: pd.DataFrame | None) -> list[Plate]:
@@ -98,9 +97,11 @@ def create_metadata(instrument: Instrument, file_name: str) -> Metadata:
     )
 
 
-def create_measurement_group(plate: Plate, basic_assay_info: BasicAssayInfo) -> MeasurementGroup:
+def create_measurement_group(
+    plate: Plate, basic_assay_info: BasicAssayInfo
+) -> MeasurementGroup:
     return MeasurementGroup(
-        plate_well_count=len(plate.results),
+        plate_well_count=plate.number_of_wells,
         analytical_method_identifier=basic_assay_info.protocol_id,
         experimental_data_identifier=basic_assay_info.assay_id,
         measurements=[
@@ -112,5 +113,5 @@ def create_measurement_group(plate: Plate, basic_assay_info: BasicAssayInfo) -> 
                 fluorescence=result.value,
             )
             for result in plate.results
-        ]
+        ],
     )

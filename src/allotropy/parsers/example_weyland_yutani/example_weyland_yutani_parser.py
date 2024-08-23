@@ -5,6 +5,7 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
     Data,
     Mapper,
 )
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.example_weyland_yutani.example_weyland_yutani_reader import (
     ExampleWeylandYutaniReader,
@@ -30,6 +31,10 @@ class ExampleWeylandYutaniParser(MapperVendorParser[Data, Model]):
         basic_assay_info = BasicAssayInfo.create(reader.bottom)
         instrument = Instrument.create()
         plates = Plate.create(reader.middle)
+
+        if plates[0].number_of_wells is None:
+            msg = "Unable to determine the number of wells in the plate."
+            raise AllotropeConversionError(msg)
 
         return Data(
             create_metadata(instrument, named_file_contents.original_file_name),
