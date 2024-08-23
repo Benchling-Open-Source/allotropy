@@ -2,9 +2,25 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from xml.etree import ElementTree
+import xml.etree.ElementTree as Et
 
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
-from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    TStatisticDatumRole,
+)
+from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._01.multi_analyte_profiling import (
+    Analyte,
+    Error,
+    Measurement,
+    MeasurementGroup,
+    Metadata,
+)
+from allotropy.exceptions import (
+    AllotropeConversionError,
+    AllotropyParserError,
+    get_key_or_error,
+)
+from allotropy.parsers.biorad_bioplex_manager import constants
 from allotropy.parsers.biorad_bioplex_manager.constants import (
     ACQ_TIME,
     ANALYTE_NAME,
@@ -14,6 +30,7 @@ from allotropy.parsers.biorad_bioplex_manager.constants import (
     DESCRIPTION_TAG,
     DILUTION,
     DOC_LOCATION_TAG,
+    ERROR_MAPPING,
     LABEL,
     MACHINE_INFO,
     MEDIAN,
@@ -32,10 +49,12 @@ from allotropy.parsers.biorad_bioplex_manager.constants import (
     SAMPLE_VOLUME,
     SAMPLES,
     SERIAL_NUMBER,
+    SOFTWARE_NAME,
     STOP_READING_CRITERIA,
     TOTAL_EVENTS,
     WELLS_TAG,
 )
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     try_float,
     try_float_or_none,
@@ -206,23 +225,23 @@ class AnalyteDocumentData:
         assay_bead_identifier = bead_region_xml.attrib[REGION_NUMBER]
 
         # Look up bead region -> analyte name
-        if assay_bead_identifier in regions_of_interest:
-            analyte_name = analyte_region_dict[assay_bead_identifier]
-            assay_bead_count = try_int(
-                get_val_from_xml(bead_region_xml, REGION_COUNT), "assay_bead_count"
-            )
-            # Median
-            fluorescence = try_float(
-                get_val_from_xml(bead_region_xml, MEDIAN), "fluorescence"
-            )
-            return AnalyteDocumentData(
-                analyte_name=analyte_name,
-                assay_bead_identifier=assay_bead_identifier,
-                assay_bead_count=assay_bead_count,
-                fluorescence=fluorescence,
-            )
-        else:
+        if assay_bead_identifier not in regions_of_interest:
             return None
+
+        analyte_name = analyte_region_dict[assay_bead_identifier]
+        assay_bead_count = try_int(
+            get_val_from_xml(bead_region_xml, REGION_COUNT), "assay_bead_count"
+        )
+        # Median
+        fluorescence = try_float(
+            get_val_from_xml(bead_region_xml, MEDIAN), "fluorescence"
+        )
+        return AnalyteDocumentData(
+            analyte_name=analyte_name,
+            assay_bead_identifier=assay_bead_identifier,
+            assay_bead_count=assay_bead_count,
+            fluorescence=fluorescence,
+        )
 
 
 @dataclass
@@ -297,3 +316,95 @@ def map_sample_type(sample_type_tag: str) -> SampleRoleType:
     except KeyError as err:
         msg = f"{sample_type_tag} is not in the valid list of sample role types: {SAMPLE_ROLE_TYPE_MAPPING.keys()}"
         raise AllotropeConversionError(msg) from err
+
+
+def create_metadata(root_xml: Et.Element, well_system_metadata: WellSystemLevelMetadata, file_name: str) -> Metadata:
+    return Metadata(
+        file_name=file_name,
+        software_name=constants.SOFTWARE_NAME,
+        software_version=root_xml.attrib[constants.VERSION_ATTRIB],
+        equipment_serial_number=well_system_metadata.serial_number,
+        firmware_version=well_system_metadata.controller_version,
+        product_manufacturer=constants.PRODUCT_MANUFACTURER,
+        device_type=constants.DEVICE_TYPE,
+    )
+
+
+def create_measurement_group(
+    samples_xml: Et.Element,
+    well_xml: Et.Element,
+    regions_of_interest: list[str],
+    experimental_data_id: str | None,
+    experiment_type: str | None,
+    plate_well_count: int,
+    analytical_method_identifier: str,
+    plate_id: str,
+) -> MeasurementGroup:
+    well_name = get_well_name(well_xml.attrib)
+
+    sample_document_aggregated = SampleDocumentAggregate.create(samples_xml)
+    sample = sample_document_aggregated.samples_dict[well_name]
+
+    device_well_settings = DeviceWellSettings.create(well_xml)
+
+    identifier = random_uuid_str()
+
+    analytes = []
+    for atr in well_xml:
+        if atr.tag != constants.BEAD_REGIONS:
+            continue
+        for bead in atr:
+            analyte_structure_doc = AnalyteDocumentData.create(
+                bead_region_xml=bead,
+                analyte_region_dict=sample_document_aggregated.analyte_region_dict,
+                regions_of_interest=regions_of_interest,
+            )
+            if analyte_structure_doc is None:
+                continue
+            analytes.append(
+                Analyte(
+                    identifier=random_uuid_str(),
+                    name=analyte_structure_doc.analyte_name,
+                    assay_bead_identifier=analyte_structure_doc.assay_bead_identifier,
+                    assay_bead_count=analyte_structure_doc.assay_bead_count,
+                    value=analyte_structure_doc.fluorescence,
+                    statistic_datum_role=TStatisticDatumRole.median_role,
+                )
+            )
+
+    errors = [
+        Error(
+            error=analyte.analyte_name,
+            feature=get_key_or_error(
+                "error code", analyte.analyte_error_code, ERROR_MAPPING
+            )
+        )
+        for analyte in sample.well_analyte_mapping.analytes if analyte.analyte_error_code != "0"
+    ]
+
+    return MeasurementGroup(
+        experiment_type=experiment_type,
+        plate_well_count=plate_well_count,
+        analytical_method_identifier=analytical_method_identifier,
+        experimental_data_identifier=experimental_data_id,
+        analyst=get_val_from_xml(well_xml, constants.USER),
+        container_type=constants.CONTAINER_TYPE,
+        measurements=[
+            Measurement(
+                identifier=identifier,
+                measurement_time=device_well_settings.acquisition_time,
+                assay_bead_count=device_well_settings.well_total_events,
+                description=sample.description,
+                sample_identifier=sample.sample_identifier,
+                location_identifier=well_name,
+                sample_role_type=sample.sample_type,
+                well_plate_identifier=plate_id,
+                sample_volume_setting=device_well_settings.sample_volume_setting,
+                dilution_factor_setting=sample.sample_dilution,
+                detector_gain_setting=device_well_settings.detector_gain_setting,
+                minimum_assay_bead_count_setting=device_well_settings.minimum_assay_bead_count_setting,
+                analytes=analytes,
+                errors=errors,
+            )
+        ]
+    )

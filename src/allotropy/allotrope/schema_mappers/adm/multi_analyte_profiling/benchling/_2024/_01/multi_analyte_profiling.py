@@ -62,6 +62,11 @@ class Measurement:
     analytes: list[Analyte]
     errors: list[Error] | None = None
 
+    # Optional metadata
+    description: str | None = None
+    sample_role_type: str | None = None
+    well_plate_identifier: str | None = None
+
     # Optional settings
     sample_volume_setting: float | None = None
     dilution_factor_setting: float | None = None
@@ -78,6 +83,7 @@ class MeasurementGroup:
     experimental_data_identifier: str | None = None
     method_version: str | None = None
     container_type: str | None = None
+    experiment_type: str | None = None
 
 
 @dataclass(frozen=True)
@@ -96,6 +102,9 @@ class Metadata:
     software_version: str | None = None
     equipment_serial_number: str | None = None
     data_system_instance_identifier: str | None = None
+    firmware_version: str | None = None
+    product_manufacturer: str | None = None
+    model_number: str | None = None
 
     calibrations: list[Calibration] | None = None
 
@@ -114,6 +123,8 @@ class Mapper(SchemaMapper[Data, Model]):
             multi_analyte_profiling_aggregate_document=MultiAnalyteProfilingAggregateDocument(
                 device_system_document=DeviceSystemDocument(
                     model_number=data.metadata.model_number,
+                    product_manufacturer=data.metadata.product_manufacturer,
+                    firmware_version=data.metadata.firmware_version,
                     equipment_serial_number=data.metadata.equipment_serial_number,
                     calibration_aggregate_document=self._get_calibration_aggregate_document(
                         data.metadata.calibrations
@@ -141,6 +152,7 @@ class Mapper(SchemaMapper[Data, Model]):
         return MultiAnalyteProfilingDocumentItem(
             analyst=measurement_group.analyst,
             measurement_aggregate_document=MeasurementAggregateDocument(
+                experiment_type=measurement_group.experiment_type,
                 analytical_method_identifier=measurement_group.analytical_method_identifier,
                 method_version=measurement_group.method_version,
                 experimental_data_identifier=measurement_group.experimental_data_identifier,
@@ -207,6 +219,9 @@ class Mapper(SchemaMapper[Data, Model]):
         return SampleDocument(
             sample_identifier=measurement.sample_identifier,
             location_identifier=measurement.location_identifier,
+            description=measurement.description,
+            sample_role_type=measurement.sample_role_type,
+            well_plate_identifier=measurement.well_plate_identifier,
         )
 
     def _get_calibration_aggregate_document(
