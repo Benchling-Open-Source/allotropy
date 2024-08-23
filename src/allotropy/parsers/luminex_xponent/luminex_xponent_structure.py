@@ -1,26 +1,33 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from io import StringIO
 import re
 from typing import Any
 
 import pandas as pd
 
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    TStatisticDatumRole,
+)
+from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._01.multi_analyte_profiling import (
+    Analyte,
+    Calibration,
+    Error as MapperError,
+    Measurement as MapperMeasurement,
+    MeasurementGroup,
+    Metadata,
+)
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.lines_reader import CsvReader
-from allotropy.parsers.utils.pandas import read_csv, SeriesData
+from allotropy.parsers.luminex_xponent import constants
+from allotropy.parsers.luminex_xponent.luminex_xponent_reader import (
+    LuminexXponentReader,
+)
+from allotropy.parsers.utils.pandas import map_rows, SeriesData
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
     try_float,
 )
-
-LUMINEX_EMPTY_PATTERN = r"^[,\"\s]*$"
-CALIBRATION_BLOCK_HEADER = "Most Recent Calibration and Verification Results"
-TABLE_HEADER_PATTERN = '^"?DataType:"?,"?{}"?'
-MINIMUM_CALIBRATION_LINE_COLS = 2
-EXPECTED_CALIBRATION_RESULT_LEN = 2
-EXPECTED_HEADER_COLUMNS = 7
 
 
 @dataclass(frozen=True)
@@ -36,10 +43,13 @@ class Header:
     measurement_time: str
     detector_gain_setting: str
     data_system_instance_identifier: str
+    minimum_assay_bead_count_setting: float
     analyst: str | None = None
 
     @classmethod
-    def create(cls, header_data: pd.DataFrame) -> Header:
+    def create(
+        cls, header_data: pd.DataFrame, minimum_assay_bead_count_setting: float
+    ) -> Header:
         info_row = SeriesData(header_data.iloc[0])
         raw_datetime = info_row[str, "BatchStartTime"]
 
@@ -55,6 +65,7 @@ class Header:
             measurement_time=raw_datetime,
             detector_gain_setting=info_row[str, "ProtocolReporterGain"],
             data_system_instance_identifier=info_row[str, "ComputerName"],
+            minimum_assay_bead_count_setting=minimum_assay_bead_count_setting,
             analyst=info_row.get(str, "Operator"),
         )
 
@@ -101,47 +112,33 @@ class Header:
         return header_data[key]
 
 
-@dataclass(frozen=True)
-class CalibrationItem:
-    name: str
-    report: str
-    time: str
+def create_calibration(calibration_line: str) -> Calibration:
+    """Create a CalibrationItem from a calibration line.
 
-    @classmethod
-    def create(cls, calibration_line: str) -> CalibrationItem:
-        """Create a CalibrationItem from a calibration line.
+    Each line should follow the pattern "Last <calibration_name>,<calibration_report> <calibration_time><,,,,"
+    example: "Last F3DeCAL1 Calibration,Passed 05/17/2023 09:25:11,,,,,,"
+    """
+    calibration_data = calibration_line.replace('"', "").split(",")
+    if len(calibration_data) < constants.MINIMUM_CALIBRATION_LINE_COLS:
+        msg = f"Expected at least two columns on the calibration line, got: {calibration_line}."
+        raise AllotropeConversionError(msg)
 
-        Each line should follow the pattern "Last <calibration_name>,<calibration_report> <calibration_time><,,,,"
-        example: "Last F3DeCAL1 Calibration,Passed 05/17/2023 09:25:11,,,,,,"
-        """
-        calibration_data = calibration_line.replace('"', "").split(",")
-        if len(calibration_data) < MINIMUM_CALIBRATION_LINE_COLS:
-            msg = f"Expected at least two columns on the calibration line, got: {calibration_line}."
-            raise AllotropeConversionError(msg)
+    calibration_result = calibration_data[1].split(maxsplit=1)
 
-        calibration_result = calibration_data[1].split(maxsplit=1)
+    if len(calibration_result) != constants.EXPECTED_CALIBRATION_RESULT_LEN:
+        msg = f"Invalid calibration result format, expected to split into two values, got: {calibration_result}."
+        raise AllotropeConversionError(msg)
 
-        if len(calibration_result) != EXPECTED_CALIBRATION_RESULT_LEN:
-            msg = f"Invalid calibration result format, expected to split into two values, got: {calibration_result}."
-            raise AllotropeConversionError(msg)
-
-        return CalibrationItem(
-            name=calibration_data[0].replace("Last", "").strip(),
-            report=calibration_result[0],
-            time=calibration_result[1],
-        )
-
-
-@dataclass(frozen=True)
-class Analyte:
-    analyte_name: str
-    assay_bead_identifier: str
-    assay_bead_count: float
-    fluorescence: float
+    return Calibration(
+        name=calibration_data[0].replace("Last", "").strip(),
+        report=calibration_result[0],
+        time=calibration_result[1],
+    )
 
 
 @dataclass(frozen=True)
 class Measurement:
+    identifier: str
     sample_identifier: str
     location_identifier: str
     dilution_factor_setting: float
@@ -162,26 +159,27 @@ class Measurement:
         dilution_factor_setting = SeriesData(dilution_factor_data.loc[location])[
             float, "Dilution Factor"
         ]
-        # analyte names are columns 3 through the penultimate
-        analyte_names = list(median_data.series.index)[2:-1]
 
         well_location, location_id = cls._get_location_details(location)
 
         return Measurement(
+            identifier=random_uuid_str(),
             sample_identifier=median_data[str, "Sample"],
             location_identifier=location_id,
             dilution_factor_setting=dilution_factor_setting,
             assay_bead_count=median_data[float, "Total Events"],
             analytes=[
                 Analyte(
-                    analyte_name=analyte,
+                    identifier=random_uuid_str(),
+                    name=analyte,
                     assay_bead_identifier=bead_ids_data[str, analyte],
                     assay_bead_count=SeriesData(count_data.loc[location])[
                         float, analyte
                     ],
-                    fluorescence=median_data[float, analyte],
+                    value=median_data[float, analyte],
+                    statistic_datum_role=TStatisticDatumRole.median_role,
                 )
-                for analyte in analyte_names
+                for analyte in list(median_data.series.index)[2:-1]
             ],
             errors=cls._get_errors(errors_data, well_location),
         )
@@ -216,127 +214,81 @@ class MeasurementList:
     measurements: list[Measurement]
 
     @classmethod
-    def create(cls, reader: CsvReader) -> MeasurementList:
-        median_data = cls._get_median_data(reader)
+    def create(cls, reader: LuminexXponentReader) -> MeasurementList:
+        def create_measurement(data: SeriesData) -> Measurement:
+            return Measurement.create(
+                median_data=data,
+                count_data=reader.count_data,
+                bead_ids_data=reader.bead_ids_data,
+                dilution_factor_data=reader.dilution_factor_data,
+                errors_data=reader.errors_data,
+            )
 
-        count_data = cls._get_table_as_df(reader, "Count")
-        bead_ids_data = cls._get_bead_ids_data(reader)
-        dilution_factor_data = cls._get_table_as_df(reader, "Dilution Factor")
-        errors_data = cls._get_table_as_df(reader, "Warnings/Errors")
-
-        return MeasurementList(
-            measurements=[
-                Measurement.create(
-                    median_data=SeriesData(median_data.iloc[i]),
-                    count_data=count_data,
-                    bead_ids_data=SeriesData(bead_ids_data),
-                    dilution_factor_data=dilution_factor_data,
-                    errors_data=errors_data,
-                )
-                for i in range(len(median_data))
-            ]
-        )
-
-    @classmethod
-    def _get_median_data(cls, reader: CsvReader) -> pd.DataFrame:
-        reader.drop_until_inclusive(TABLE_HEADER_PATTERN.format("Median"))
-        return assert_not_none(
-            reader.pop_csv_block_as_df(empty_pat=LUMINEX_EMPTY_PATTERN, header="infer"),
-            msg="Unable to find Median table.",
-        )
-
-    @classmethod
-    def _get_bead_ids_data(cls, reader: CsvReader) -> pd.Series[str]:
-        units_df = MeasurementList._get_table_as_df(reader, "Units")
-        return units_df.loc["BeadID:"]
-
-    @classmethod
-    def _get_table_as_df(cls, reader: CsvReader, table_name: str) -> pd.DataFrame:
-        """Returns a dataframe that has the well location as index.
-
-        Results tables in luminex xponent output files have the location as first column.
-        Having this column as the index of the dataframe allows for easier lookup when
-        retrieving measurement data.
-        """
-        reader.drop_until_inclusive(match_pat=TABLE_HEADER_PATTERN.format(table_name))
-
-        table_lines = reader.pop_csv_block_as_lines(empty_pat=LUMINEX_EMPTY_PATTERN)
-
-        if not table_lines:
-            msg = f"Unable to find {table_name} table."
-            raise AllotropeConversionError(msg)
-
-        return read_csv(
-            StringIO("\n".join(table_lines)),
-            header=[0],
-            index_col=[0],
-        ).dropna(how="all", axis="columns")
+        return MeasurementList(map_rows(reader.median_data, create_measurement))
 
 
 @dataclass(frozen=True)
 class Data:
     header: Header
-    calibration_data: list[CalibrationItem]
-    minimum_bead_count_setting: float
+    calibrations: list[Calibration]
     measurement_list: MeasurementList
 
     @classmethod
-    def create(cls, reader: CsvReader) -> Data:
+    def create(cls, reader: LuminexXponentReader) -> Data:
         return Data(
-            header=Header.create(cls._get_header_data(reader)),
-            calibration_data=cls._get_calibration_data(reader),
-            minimum_bead_count_setting=cls._get_minimum_bead_count_setting(reader),
+            header=Header.create(
+                reader.header_data, reader.minimum_assay_bead_count_setting
+            ),
+            calibrations=[
+                create_calibration(line) for line in reader.calibration_lines
+            ],
             measurement_list=MeasurementList.create(reader),
         )
 
-    @classmethod
-    def _get_header_data(cls, reader: CsvReader) -> pd.DataFrame:
-        header_lines = list(reader.pop_until(CALIBRATION_BLOCK_HEADER))
 
-        n_columns = 0
-        for line in header_lines:
-            n_row_columns = len(line.split(","))
-            if n_row_columns > n_columns:
-                n_columns = n_row_columns
+def create_metadata(
+    header: Header, calibrations: list[Calibration], file_name: str
+) -> Metadata:
+    return Metadata(
+        file_name=file_name,
+        equipment_serial_number=header.equipment_serial_number,
+        model_number=header.model_number,
+        calibrations=calibrations,
+        data_system_instance_identifier=header.data_system_instance_identifier,
+        software_name=constants.DEFAULT_SOFTWARE_NAME,
+        software_version=header.software_version,
+        device_type=constants.DEFAULT_DEVICE_TYPE,
+    )
 
-        if n_columns < EXPECTED_HEADER_COLUMNS:
-            msg = "Unable to parse header. Not enough data."
-            raise AllotropeConversionError(msg)
 
-        header_data = read_csv(
-            StringIO("\n".join(header_lines)),
-            header=None,
-            index_col=0,
-            names=range(n_columns),
-        ).dropna(how="all")
-
-        return header_data.T
-
-    @classmethod
-    def _get_calibration_data(cls, reader: CsvReader) -> list[CalibrationItem]:
-        reader.drop_until_inclusive(CALIBRATION_BLOCK_HEADER)
-        calibration_lines = reader.pop_csv_block_as_lines(
-            empty_pat=LUMINEX_EMPTY_PATTERN
+def create_measurement_groups(
+    measurements: list[Measurement], header: Header
+) -> list[MeasurementGroup]:
+    return [
+        MeasurementGroup(
+            analyst=header.analyst,
+            analytical_method_identifier=header.analytical_method_identifier,
+            method_version=header.method_version,
+            experimental_data_identifier=header.experimental_data_identifier,
+            container_type=constants.DEFAULT_CONTAINER_TYPE,
+            plate_well_count=header.plate_well_count,
+            measurements=[
+                MapperMeasurement(
+                    identifier=measurement.identifier,
+                    measurement_time=header.measurement_time,
+                    sample_identifier=measurement.sample_identifier,
+                    location_identifier=measurement.location_identifier,
+                    sample_volume_setting=header.sample_volume_setting,
+                    dilution_factor_setting=measurement.dilution_factor_setting,
+                    minimum_assay_bead_count_setting=header.minimum_assay_bead_count_setting,
+                    detector_gain_setting=header.detector_gain_setting,
+                    assay_bead_count=measurement.assay_bead_count,
+                    analytes=measurement.analytes,
+                    errors=[
+                        MapperError(error=error) for error in (measurement.errors or [])
+                    ],
+                )
+            ],
         )
-        if not calibration_lines:
-            msg = "Unable to find Calibration Block."
-            raise AllotropeConversionError(msg)
-
-        calibration_list = []
-
-        for line in calibration_lines:
-            calibration_list.append(CalibrationItem.create(line))
-
-        return calibration_list
-
-    @classmethod
-    def _get_minimum_bead_count_setting(cls, reader: CsvReader) -> float:
-        reader.drop_until(match_pat='^"?Samples"?,')
-        samples_info = assert_not_none(reader.pop(), msg="Unable to find Samples info.")
-        try:
-            min_bead_count_setting = samples_info.replace('"', "").split(",")[3]
-        except IndexError as e:
-            msg = f"Unable to find minimum bead count setting in Samples info: {samples_info}."
-            raise AllotropeConversionError(msg) from e
-
-        return try_float(min_bead_count_setting, "minimum bead count setting")
+        for measurement in measurements
+    ]
