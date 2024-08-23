@@ -14,6 +14,11 @@ from allotropy.parsers.utils.values import assert_not_none, try_float
 
 
 class LuminexXponentReader:
+    header_data: pd.DataFrame
+    calibration_data: pd.DataFrame
+    minimum_assay_bead_count_setting: float
+    results_data: dict[str, pd.DataFrame]
+
     def __init__(self, named_file_contents: NamedFileContents) -> None:
         reader = CsvReader(read_to_lines(named_file_contents))
 
@@ -27,7 +32,8 @@ class LuminexXponentReader:
     @classmethod
     def _get_header_data(cls, reader: CsvReader) -> pd.DataFrame:
         header_lines = list(reader.pop_until(constants.CALIBRATION_BLOCK_HEADER))
-
+        # Header has a weird structure where there rows have varying number of columns, so we need
+        # special handling before passing to read_csv.
         n_columns = max(len(line.split(",")) for line in header_lines)
         if n_columns < constants.EXPECTED_HEADER_COLUMNS:
             msg = "Unable to parse header. Not enough data."
