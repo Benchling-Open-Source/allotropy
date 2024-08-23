@@ -7,6 +7,8 @@ from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._1
     MeasurementGroup,
     MeasurementType,
     Metadata,
+    ProcessedData,
+    ProcessedDataFeature,
 )
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
@@ -23,6 +25,15 @@ def create_measurement(row: SeriesData, absorbance_col: str) -> Measurement:
             float, "Baseline Correction (nm)"
         ),  # question: is this correct, always (nm)
         nucleic_acid_factor=row.get(float, "Nucleic Acid Factor"),
+        detector_wavelength_setting=0,  # question: how to obtain
+        processed_data=ProcessedData(
+            features=[
+                ProcessedDataFeature(
+                    result=row.get(float, "Nucleic Acid(ng/uL)", NaN),
+                    unit="ng/uL",  # question: how to know the unit
+                )
+            ],
+        ),
     )
 
 
