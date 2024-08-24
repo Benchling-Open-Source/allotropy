@@ -55,7 +55,6 @@ def get_result_lines(remove: str = "") -> list[str]:
     return lines
 
 
-@pytest.mark.short
 def test_create_header() -> None:
     data = pd.DataFrame.from_dict(
         {
@@ -107,7 +106,6 @@ def test_create_header() -> None:
         "ProtocolReporterGain",
     ],
 )
-@pytest.mark.short
 def test_create_heder_without_required_col(required_col: str) -> None:
     data = pd.DataFrame.from_dict(
         {
@@ -134,7 +132,6 @@ def test_create_heder_without_required_col(required_col: str) -> None:
         Header.create(data.drop(columns=[required_col]))
 
 
-@pytest.mark.short
 def test_create_calibration_item() -> None:
     name = "Device Calibration"
     report = "Passed"
@@ -146,7 +143,6 @@ def test_create_calibration_item() -> None:
     assert calibration_item == CalibrationItem(name, report, "05/17/2023 09:25:11")
 
 
-@pytest.mark.short
 def test_create_calibration_item_invalid_line_format() -> None:
     bad_line = "Bad line."
     error = f"Expected at least two columns on the calibration line, got: {bad_line}"
@@ -154,7 +150,6 @@ def test_create_calibration_item_invalid_line_format() -> None:
         CalibrationItem.create(bad_line)
 
 
-@pytest.mark.short
 def test_create_calibration_item_invalid_calibration_result() -> None:
     bad_result = "bad_result"
     bad_line = f"Last CalReport,{bad_result}"
@@ -163,7 +158,6 @@ def test_create_calibration_item_invalid_calibration_result() -> None:
         CalibrationItem.create(bad_line)
 
 
-@pytest.mark.short
 def test_create_measurement_list() -> None:
     reader = CsvReader(get_result_lines())
 
@@ -201,7 +195,6 @@ def test_create_measurement_list() -> None:
     "table_name",
     ["Median", "Count", "Units", "Dilution Factor"],
 )
-@pytest.mark.short
 def test_create_measurement_list_without_required_table_then_raise(
     table_name: str,
 ) -> None:

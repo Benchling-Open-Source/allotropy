@@ -12,7 +12,6 @@ from allotropy.parsers.biorad_bioplex_manager.biorad_bioplex_manager_structure i
 )
 
 
-@pytest.mark.short
 def test_create_analyte_sample() -> None:
     analyte_xml_string = """
     <MWAnalyte RegionNumber="18">
@@ -28,7 +27,6 @@ def test_create_analyte_sample() -> None:
     assert analyte_sample.analyte_error_code == "0"
 
 
-@pytest.mark.short
 def test_create_device_settings() -> None:
     test_filepath = (
         "tests/parsers/biorad_bioplex_manager/testdata/exclude/well_xml_example.xml"
@@ -42,7 +40,6 @@ def test_create_device_settings() -> None:
     assert well_settings.sample_volume_setting == 50
 
 
-@pytest.mark.short
 def test_create_analyte_document_data() -> None:
     bead_xml_string = """
                     <BeadRegion RegionNumber="62">
@@ -87,7 +84,6 @@ def test_sample_aggregate_doc() -> None:
     assert isinstance(sample_aggregate_doc.analyte_region_dict, dict)
 
 
-@pytest.mark.short
 def test_well_sytem_level_metadata() -> None:
     test_filepath = (
         "tests/parsers/biorad_bioplex_manager/testdata/exclude/well_xml_example.xml"
@@ -123,7 +119,6 @@ def test_well_sytem_level_metadata() -> None:
     ]
 
 
-@pytest.mark.short
 def test_validate_xml_structure() -> None:
     test_filepath = "tests/parsers/biorad_bioplex_manager/testdata/bio-rad_bio-plex_manager_example_01.xml"
     tree = ElementTree.parse(test_filepath)  # noqa: S314

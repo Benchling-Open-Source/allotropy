@@ -51,7 +51,6 @@ def _read_to_lines(io_: IOType, encoding: str | None = None) -> list[str]:
     return read_to_lines(named_file_contents)
 
 
-@pytest.mark.short
 def test_header_builder_returns_header_instance() -> None:
     header_contents = get_raw_header_contents()
 
@@ -98,7 +97,6 @@ def test_header_builder() -> None:
     )
 
 
-@pytest.mark.short
 @pytest.mark.parametrize(
     "parameter,expected_error",
     [
@@ -120,7 +118,6 @@ def test_header_builder_required_parameter_none_then_raise(
         Header.create(lines_reader)
 
 
-@pytest.mark.short
 def test_header_builder_plate_well_count() -> None:
     header_contents = get_raw_header_contents(plate_well_count="96 plates")
     lines = _read_to_lines(header_contents)
@@ -153,7 +150,6 @@ def test_header_builder_plate_well_count() -> None:
     assert header.plate_well_count is None
 
 
-@pytest.mark.short
 def test_header_builder_no_header_then_raise() -> None:
     header_contents = get_raw_header_contents(raw_text="")
     lines = _read_to_lines(header_contents, encoding="UTF-8")
@@ -165,7 +161,6 @@ def test_header_builder_no_header_then_raise() -> None:
         Header.create(lines_reader)
 
 
-@pytest.mark.short
 def test_results_builder() -> None:
 
     data = pd.DataFrame(
@@ -187,7 +182,6 @@ def test_results_builder() -> None:
     assert result.automatic_cycle_threshold_enabled_setting is True
 
 
-@pytest.mark.short
 @pytest.mark.parametrize(
     "test_filepath,create_expected_data_func",
     [

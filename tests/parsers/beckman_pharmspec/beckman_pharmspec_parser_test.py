@@ -19,7 +19,6 @@ from allotropy.parsers.utils.timestamp_parser import TimestampParser
 TESTDATA = f"{Path(__file__).parent}/testdata"
 
 
-@pytest.mark.short
 def test_get_model() -> None:
     parser = PharmSpecParser(TimestampParser())
 
@@ -128,7 +127,6 @@ def test_get_model() -> None:
             assert test.value == particle_size
 
 
-@pytest.mark.short
 @pytest.mark.parametrize(
     "title,version",
     [

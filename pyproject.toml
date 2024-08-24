@@ -186,7 +186,7 @@ extra-dependencies = [
 
 [tool.hatch.envs.test.scripts]
 test = "pytest -n auto {args:tests}"
-short = "pytest -m short {args:tests}"
+short = "pytest -m 'not long' {args:tests}"
 test-cov = "coverage run -m pytest {args:tests}"
 cov-report = [
   "- coverage combine",
@@ -200,7 +200,7 @@ cov = [
 [tool.pytest.ini_options]
 pythonpath = "src"
 markers = [
-  "short: mark a test as running quickly",
+  "long: mark a test that takes a long time to run",
 ]
 
 [tool.ruff]

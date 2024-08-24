@@ -13,7 +13,6 @@ from tests.parsers.perkin_elmer_envision.perkin_elmer_envision_data import (
 VENDOR_TYPE = Vendor.PERKIN_ELMER_ENVISION
 
 
-@pytest.mark.short
 def test_get_model() -> None:
     parser = PerkinElmerEnvisionParser(TimestampParser())
     model = parser._get_model(get_data(), "file.txt")

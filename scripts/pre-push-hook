@@ -7,7 +7,7 @@ if [[ -n $(git status --porcelain) ]]; then
   git status --porcelain
   exit 1
 fi
-hatch run test -m short
+hatch run test -m "not long"
 if [ $? -ne 0 ]; then
   exit 1
 fi
