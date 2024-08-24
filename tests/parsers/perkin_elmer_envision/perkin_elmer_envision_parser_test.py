@@ -1,5 +1,3 @@
-import pytest
-
 from allotropy.parser_factory import Vendor
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import (
     PerkinElmerEnvisionParser,

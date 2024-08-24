@@ -1,5 +1,3 @@
-import pytest
-
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import (
     RocheCedexBiohtReader,
 )

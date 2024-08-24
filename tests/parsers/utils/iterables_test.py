@@ -1,5 +1,3 @@
-import pytest
-
 from allotropy.parsers.utils.iterables import get_first_not_none
 
 

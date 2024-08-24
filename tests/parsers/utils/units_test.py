@@ -1,6 +1,4 @@
 # We must import this to get all subclasses of TQuantityValue in scope
-import pytest
-
 import allotropy.allotrope.models.shared.definitions.custom  # noqa: F401
 from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
 from allotropy.allotrope.models.shared.definitions.units import (
