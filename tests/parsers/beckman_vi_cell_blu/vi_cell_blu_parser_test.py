@@ -12,7 +12,6 @@ from allotropy.parsers.beckman_vi_cell_blu.vi_cell_blu_structure import (
     create_metadata,
 )
 from allotropy.parsers.utils.pandas import map_rows
-from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from tests.parsers.beckman_vi_cell_blu.vi_cell_blu_data import (
     get_data,
     get_filename,
@@ -34,10 +33,9 @@ def _clear_measurement_identifier(model: Model) -> None:
 
 
 def test_get_model() -> None:
-    parser = ViCellBluParser(TimestampParser())
     data = Data(
         create_metadata(get_filename()), map_rows(get_data(), create_measurement_group)
     )
-    result = parser._get_mapper().map_model(data)
+    result = ViCellBluParser()._get_mapper().map_model(data)
     _clear_measurement_identifier(result)
     assert result == get_model()
