@@ -2,9 +2,9 @@
 if [[ "${SKIP_PRE_PUSH_CHECKS:-}" == "1" ]]; then
   exit 0
 fi
-git status --porcelain
-if [[ -n $? ]]; then
+if [[ -n $(git status --porcelain) ]]; then
   echo "Local has uncommited changes, you must commit or revert before push."
+  git status --porcelain
   exit 1
 fi
 hatch run test -m short
