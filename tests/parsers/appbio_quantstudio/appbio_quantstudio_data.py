@@ -723,11 +723,11 @@ def get_model() -> Model:
             calculated_data_aggregate_document=TCalculatedDataAggregateDocument(
                 calculated_data_document=[
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="d006e7e7-fbe4-47cf-821b-904e85202803",
+                        calculated_data_identifier="TEST_ID_2",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="d170f2df-7ff8-4978-b13d-a7ad19fab824",
+                                    data_source_identifier="TEST_ID_0",
                                     data_source_feature="normalized reporter result",
                                 )
                             ]
@@ -740,11 +740,11 @@ def get_model() -> Model:
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="f4fee39c-5861-4203-afcf-94ee755ac0b4",
+                        calculated_data_identifier="TEST_ID_3",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="d170f2df-7ff8-4978-b13d-a7ad19fab824",
+                                    data_source_identifier="TEST_ID_0",
                                     data_source_feature="normalized reporter result",
                                 )
                             ]
@@ -757,11 +757,11 @@ def get_model() -> Model:
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="e6707b0c-4494-412f-8a8e-ef51d01f25b3",
+                        calculated_data_identifier="TEST_ID_4",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="ba281c64-0605-4e76-8e9c-2a183be3cc08",
+                                    data_source_identifier="TEST_ID_1",
                                     data_source_feature="normalized reporter result",
                                 )
                             ]
@@ -774,11 +774,11 @@ def get_model() -> Model:
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="da78a225-2c34-40b3-b487-97893bfe491a",
+                        calculated_data_identifier="TEST_ID_5",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="ba281c64-0605-4e76-8e9c-2a183be3cc08",
+                                    data_source_identifier="TEST_ID_1",
                                     data_source_feature="normalized reporter result",
                                 )
                             ]
@@ -818,7 +818,7 @@ def get_model2() -> Model:
                         ),
                         measurement_document=[
                             MeasurementDocumentItem(
-                                measurement_identifier="1e572828d-45fd-49bd-ab66-2a7f06aea3b6",
+                                measurement_identifier="TEST_ID_0",
                                 measurement_time="2001-12-31T21:09:19-05:00",
                                 target_DNA_description="B2M-Qiagen",
                                 sample_document=SampleDocument(
@@ -1186,7 +1186,7 @@ def get_genotyping_model() -> Model:
                         ),
                         measurement_document=[
                             MeasurementDocumentItem(
-                                measurement_identifier="3c40d2c2-0a64-433f-b639-e9c6e896313e",
+                                measurement_identifier="TEST_ID_0",
                                 measurement_time="2010-09-16T07:35:29-04:00",
                                 target_DNA_description="CYP19_2-Allele 1",
                                 sample_document=SampleDocument(
@@ -2388,7 +2388,7 @@ def get_rel_std_curve_model() -> Model:
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="TEST_ID_0",
+                        calculated_data_identifier="TEST_ID_10",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
