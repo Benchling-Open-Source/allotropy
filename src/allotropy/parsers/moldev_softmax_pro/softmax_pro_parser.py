@@ -319,7 +319,10 @@ class SoftmaxproParser(VendorParser):
         ]
 
     def _get_group_agg_calc_docs(
-        self, data: Data, group_block: GroupBlock, group_sample_data: GroupSampleMetadata
+        self,
+        data: Data,
+        group_block: GroupBlock,
+        group_sample_data: GroupSampleMetadata,
     ) -> list[CalculatedDataDocumentItem]:
         return [
             self._build_calc_doc(
@@ -340,7 +343,10 @@ class SoftmaxproParser(VendorParser):
         ]
 
     def _get_group_simple_calc_docs(
-        self, data: Data, group_block: GroupBlock, group_sample_data: GroupSampleMetadata
+        self,
+        data: Data,
+        group_block: GroupBlock,
+        group_sample_data: GroupSampleMetadata,
     ) -> list[CalculatedDataDocumentItem]:
         calculated_documents = []
         for group_data_element in group_sample_data.data_elements:

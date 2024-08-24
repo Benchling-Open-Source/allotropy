@@ -18,6 +18,7 @@ from allotropy.allotrope.models.adm.multi_analyte_profiling.benchling._2024._01.
     MultiAnalyteProfilingDocumentItem,
     SampleDocument,
 )
+from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMicroliter,
     TQuantityValueNumber,
@@ -64,7 +65,7 @@ class Measurement:
 
     # Optional metadata
     description: str | None = None
-    sample_role_type: str | None = None
+    sample_role_type: SampleRoleType | None = None
     well_plate_identifier: str | None = None
 
     # Optional settings
@@ -97,14 +98,13 @@ class Calibration:
 class Metadata:
     file_name: str
     device_type: str
-    model_number: str
+    model_number: str | None = None
     software_name: str | None = None
     software_version: str | None = None
     equipment_serial_number: str | None = None
     data_system_instance_identifier: str | None = None
     firmware_version: str | None = None
     product_manufacturer: str | None = None
-    model_number: str | None = None
 
     calibrations: list[Calibration] | None = None
 

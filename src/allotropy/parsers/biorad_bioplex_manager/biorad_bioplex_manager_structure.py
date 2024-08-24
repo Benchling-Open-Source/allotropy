@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from xml.etree import ElementTree
 import xml.etree.ElementTree as Et
 
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
@@ -15,11 +14,7 @@ from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2
     MeasurementGroup,
     Metadata,
 )
-from allotropy.exceptions import (
-    AllotropeConversionError,
-    AllotropyParserError,
-    get_key_or_error,
-)
+from allotropy.exceptions import get_key_or_error
 from allotropy.parsers.biorad_bioplex_manager import constants
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
@@ -50,12 +45,16 @@ class AnalyteMetadata:
         return Error(error=self.error_msg, feature=self.name)
 
     @staticmethod
-    def create(analyte_xml: ElementTree.Element) -> AnalyteMetadata:
+    def create(analyte_xml: Et.Element) -> AnalyteMetadata:
         error_code = get_attrib_from_xml(analyte_xml, "Reading", "Code")
         return AnalyteMetadata(
             name=get_val_from_xml(analyte_xml, "AnalyteName"),
             region=try_int(analyte_xml.attrib["RegionNumber"], "analyte_region"),
-            error_msg=get_key_or_error("error code", error_code, constants.ERROR_MAPPING) if error_code != "0" else None,
+            error_msg=get_key_or_error(
+                "error code", error_code, constants.ERROR_MAPPING
+            )
+            if error_code != "0"
+            else None,
         )
 
 
@@ -70,44 +69,50 @@ class SampleMetadata:
 
     @staticmethod
     def create(
-        well_xml: ElementTree.Element,
-        sample_id: str,
-        sample_dilution: float | None,
-        sample_type: SampleRoleType,
-        sample_description: str | None,
+        sample_metadata: Et.Element,
+        member_well: Et.Element,
     ) -> SampleMetadata:
-        analyte_metadata = [AnalyteMetadata.create(analyte_xml) for analyte_xml in get_element_from_xml(well_xml, "MWAnalytes")]
+        analyte_metadata = [
+            AnalyteMetadata.create(analyte_xml)
+            for analyte_xml in get_element_from_xml(member_well, "MWAnalytes")
+        ]
 
         return SampleMetadata(
-            sample_type=sample_type,
-            sample_identifier=sample_id,
-            description=sample_description,
-            errors=[analyte.error for analyte in analyte_metadata if analyte.error_msg],
-            sample_dilution=sample_dilution,
-            analyte_region_dict={str(analyte.region): analyte.name for analyte in analyte_metadata},
+            sample_type=get_key_or_error(
+                "sample role type",
+                sample_metadata.tag,
+                constants.SAMPLE_ROLE_TYPE_MAPPING,
+            ),
+            sample_identifier=get_val_from_xml(sample_metadata, "Label"),
+            description=get_val_from_xml_or_none(sample_metadata, "Description"),
+            errors=[analyte.error for analyte in analyte_metadata if analyte.error],
+            sample_dilution=try_float_or_none(
+                get_val_from_xml_or_none(sample_metadata, "Dilution")
+            ),
+            analyte_region_dict={
+                str(analyte.region): analyte.name for analyte in analyte_metadata
+            },
         )
 
     @staticmethod
-    def create_samples(samples_xml: ElementTree.Element) -> dict[str, SampleMetadata]:
+    def create_samples(samples_xml: Et.Element) -> dict[str, SampleMetadata]:
         return {
             get_well_name(member_well.attrib): SampleMetadata.create(
-                well_xml=member_well,
-                sample_id=get_val_from_xml(child_sample_type, "Label"),
-                sample_dilution=try_float_or_none(get_val_from_xml_or_none(child_sample_type, "Dilution")),
-                sample_type=get_key_or_error("sample role type", child_sample_type.tag, constants.SAMPLE_ROLE_TYPE_MAPPING),
-                sample_description=get_val_from_xml_or_none(child_sample_type, "Description"),
+                sample_metadata, member_well
             )
             for sample_types in samples_xml
-            for child_sample_type in sample_types
-            for child in child_sample_type if child.tag == "MemberWells"
-            for member_well in child
+            for sample_metadata in sample_types
+            for member_well_group in get_children_with_tag(
+                sample_metadata, "MemberWells"
+            )
+            for member_well in member_well_group
         }
 
 
 @dataclass
 class Well:
     name: str
-    sample_volume_setting: int
+    sample_volume_setting: float
     detector_gain_setting: str
     minimum_assay_bead_count_setting: int
     well_total_events: int
@@ -116,27 +121,33 @@ class Well:
     xml: Et.Element
 
     @staticmethod
-    def create(well_xml: ElementTree.Element) -> Well:
+    def create(well_xml: Et.Element) -> Well:
         return Well(
             name=get_well_name(well_xml.attrib),
-            sample_volume_setting=try_int(
-                get_val_from_xml(well_xml, "RunSettings", "SampleVolume"), "sample_volume"
+            sample_volume_setting=try_float(
+                get_val_from_xml(well_xml, "RunSettings", "SampleVolume"),
+                "sample_volume",
             ),
-            detector_gain_setting=get_val_from_xml(well_xml, "RunConditions", "RP1Gain"),
+            detector_gain_setting=get_val_from_xml(
+                well_xml, "RunConditions", "RP1Gain"
+            ),
             minimum_assay_bead_count_setting=try_int(
                 get_attrib_from_xml(
                     well_xml, "RunSettings", "BeadCount", "StopReadingCriteria"
-                ), "minimum_assay_bead_count_settings"
+                ),
+                "minimum_assay_bead_count_settings",
             ),
             acquisition_time=get_val_from_xml(well_xml, "AcquisitionTime"),
-            well_total_events=try_int(get_val_from_xml(well_xml, "TotalEvents"), "well_total_events"),
+            well_total_events=try_int(
+                get_val_from_xml(well_xml, "TotalEvents"), "well_total_events"
+            ),
             analyst=get_val_from_xml(well_xml, "User"),
-            xml=well_xml
+            xml=well_xml,
         )
 
 
 def create_analyte(
-    bead_region_xml: ElementTree.Element,
+    bead_region_xml: Et.Element,
     analyte_region_dict: dict[str, str],
 ) -> Analyte:
     # Look up analyte name from sample
@@ -144,14 +155,12 @@ def create_analyte(
     return Analyte(
         identifier=random_uuid_str(),
         name=analyte_region_dict[assay_bead_identifier],
-        value=try_float(
-            get_val_from_xml(bead_region_xml, "Median"), "fluorescence"
-        ),
+        value=try_float(get_val_from_xml(bead_region_xml, "Median"), "fluorescence"),
         assay_bead_identifier=assay_bead_identifier,
         assay_bead_count=try_int(
             get_val_from_xml(bead_region_xml, "RegionCount"), "assay_bead_count"
         ),
-        statistic_datum_role=TStatisticDatumRole.median_role
+        statistic_datum_role=TStatisticDatumRole.median_role,
     )
 
 
@@ -163,7 +172,8 @@ def create_analytes(
     return [
         create_analyte(bead, analyte_region_dict)
         for child in get_children_with_tag(well_xml, "BeadRegions")
-        for bead in child if bead.attrib["RegionNumber"] in regions_of_interest
+        for bead in child
+        if bead.attrib["RegionNumber"] in regions_of_interest
     ]
 
 
@@ -171,43 +181,37 @@ def create_analytes(
 class SystemMetadata:
     serial_number: str
     controller_version: str
-    user: str
     analytical_method: str
     plate_id: str
     regions_of_interest: list[str] = field(default_factory=list)
 
     @staticmethod
-    def create(xml_well: ElementTree.Element) -> SystemMetadata:
-        serial_number = get_val_from_xml(xml_well, "MachineInfo", "SerialNumber")
-        controller_version = get_val_from_xml(
-            xml_well, "MachineInfo", "MicroControllerVersion"
-        )
-        user = get_val_from_xml(xml_well, "User")
-        analytical_method = get_val_from_xml(xml_well, "RunProtocolDocumentLocation")
-        plate_id = get_val_from_xml(xml_well, "PlateID")
-        regions = get_element_from_xml(xml_well, "RunSettings", "RegionsOfInterest")
-        regions_of_interest = []
-        for region in regions:
-            region_str = str(region.attrib["RegionNumber"])
-            regions_of_interest.append(region_str)
+    def create(xml_well: Et.Element) -> SystemMetadata:
         return SystemMetadata(
-            serial_number=serial_number,
-            controller_version=controller_version,
-            user=user,
-            analytical_method=analytical_method,
-            plate_id=plate_id,
-            regions_of_interest=regions_of_interest,
+            serial_number=get_val_from_xml(xml_well, "MachineInfo", "SerialNumber"),
+            controller_version=get_val_from_xml(
+                xml_well, "MachineInfo", "MicroControllerVersion"
+            ),
+            analytical_method=get_val_from_xml(xml_well, "RunProtocolDocumentLocation"),
+            plate_id=get_val_from_xml(xml_well, "PlateID"),
+            regions_of_interest=[
+                str(region.attrib["RegionNumber"])
+                for region in get_element_from_xml(
+                    xml_well, "RunSettings", "RegionsOfInterest"
+                )
+            ],
         )
-    
+
 
 def get_well_name(well_attrib: dict[str, str]) -> str:
-    # TODO: num to char
     row_name = num_to_chars(try_int(well_attrib["RowNo"], "row_number") - 1)
     col_name = str(well_attrib["ColNo"])
     return f"{row_name}{col_name}"
 
 
-def create_metadata(root_xml: Et.Element, system_metadata: SystemMetadata, file_name: str) -> Metadata:
+def create_metadata(
+    root_xml: Et.Element, system_metadata: SystemMetadata, file_name: str
+) -> Metadata:
     return Metadata(
         file_name=file_name,
         software_name=constants.SOFTWARE_NAME,
@@ -248,9 +252,13 @@ def create_measurement_group(
                 dilution_factor_setting=sample.sample_dilution,
                 detector_gain_setting=well.detector_gain_setting,
                 minimum_assay_bead_count_setting=well.minimum_assay_bead_count_setting,
-                analytes=create_analytes(well.xml, sample.analyte_region_dict, system_metadata.regions_of_interest),
+                analytes=create_analytes(
+                    well.xml,
+                    sample.analyte_region_dict,
+                    system_metadata.regions_of_interest,
+                ),
                 # TODO: add an error to sample data
                 errors=sample.errors,
             )
-        ]
+        ],
     )
