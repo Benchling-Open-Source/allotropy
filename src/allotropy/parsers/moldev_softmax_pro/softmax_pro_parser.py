@@ -54,7 +54,7 @@ from allotropy.parsers.moldev_softmax_pro.constants import (
 from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
     Data,
     GroupBlock,
-    GroupSampleMetadata,
+    GroupSampleData,
     PlateBlock,
     ScanPosition,
 )
@@ -322,7 +322,7 @@ class SoftmaxproParser(VendorParser):
         self,
         data: Data,
         group_block: GroupBlock,
-        group_sample_data: GroupSampleMetadata,
+        group_sample_data: GroupSampleData,
     ) -> list[CalculatedDataDocumentItem]:
         return [
             self._build_calc_doc(
@@ -346,7 +346,7 @@ class SoftmaxproParser(VendorParser):
         self,
         data: Data,
         group_block: GroupBlock,
-        group_sample_data: GroupSampleMetadata,
+        group_sample_data: GroupSampleData,
     ) -> list[CalculatedDataDocumentItem]:
         calculated_documents = []
         for group_data_element in group_sample_data.data_elements:
