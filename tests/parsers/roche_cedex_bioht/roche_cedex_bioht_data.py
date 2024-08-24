@@ -202,13 +202,13 @@ def get_data() -> Data:
                 data_processing_time="2021-06-01 13:04:06",
                 measurements=[
                     Measurement(
-                        identifier="dummy_id",
+                        identifier="TEST_ID_0",
                         measurement_time="2021-05-20 16:55:51",
                         sample_identifier="PPDTEST1",
                         absorbance=0.17138,
                     ),
                     Measurement(
-                        identifier="dummy_id",
+                        identifier="TEST_ID_1",
                         measurement_time="2021-05-20 16:55:51",
                         sample_identifier="PPDTEST1",
                         analytes=[
@@ -239,7 +239,7 @@ def get_model() -> Model:
                     measurement_aggregate_document=MeasurementAggregateDocument(
                         measurement_document=[
                             MeasurementDocument(
-                                measurement_identifier="dummy_id",
+                                measurement_identifier="TEST_ID_0",
                                 measurement_time="2021-05-20T16:55:51+00:00",
                                 sample_document=SampleDocument(
                                     sample_identifier="PPDTEST1",
@@ -257,7 +257,7 @@ def get_model() -> Model:
                                 ),
                             ),
                             MeasurementDocument(
-                                measurement_identifier="dummy_id",
+                                measurement_identifier="TEST_ID_1",
                                 measurement_time="2021-05-20T16:55:51+00:00",
                                 sample_document=SampleDocument(
                                     sample_identifier="PPDTEST1",

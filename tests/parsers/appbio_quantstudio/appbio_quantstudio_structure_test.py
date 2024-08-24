@@ -22,6 +22,7 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
 )
 from allotropy.parsers.lines_reader import LinesReader, read_to_lines
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
+from allotropy.testing.utils import mock_uuid_generation
 from allotropy.types import IOType
 from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
     get_broken_calc_doc_data,
@@ -32,18 +33,6 @@ from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
 )
 
 TESTDATA = Path(Path(__file__).parent, "testdata")
-
-
-def rm_uuid(data: Data) -> Data:
-    for measurement_group in data.measurement_groups:
-        for measurement in measurement_group.measurements:
-            measurement.identifier = ""
-
-    for calc_doc in data.calculated_data.items:
-        calc_doc.identifier = ""
-        for source in calc_doc.data_sources:
-            source.identifier = ""
-    return data
 
 
 def _read_to_lines(io_: IOType, encoding: str | None = None) -> list[str]:
@@ -217,11 +206,10 @@ def test_data_builder(
     test_filepath: str, create_expected_data_func: Callable[[str], Data]
 ) -> None:
     with open(test_filepath, "rb") as raw_contents:
-        assert rm_uuid(
-            AppBioQuantStudioParser(TimestampParser()).create_data(
+        with mock_uuid_generation():
+            assert AppBioQuantStudioParser(TimestampParser()).create_data(
                 NamedFileContents(raw_contents, test_filepath)
-            )
-        ) == rm_uuid(create_expected_data_func(test_filepath))
+            ) == create_expected_data_func(test_filepath)
 
 
 def get_raw_header_contents(

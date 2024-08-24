@@ -174,7 +174,7 @@ def get_data(file_name: str) -> Data:
         identifier=well_id,
         items=[
             WellItem(
-                uuid="d170f2df-7ff8-4978-b13d-a7ad19fab824",
+                uuid="TEST_ID_0",
                 identifier=well_item_id,
                 position="A1",
                 target_dna_description=target1,
@@ -185,7 +185,7 @@ def get_data(file_name: str) -> Data:
                 sample_role_type="BlockedIPC",
             ),
             WellItem(
-                uuid="ba281c64-0605-4e76-8e9c-2a183be3cc08",
+                uuid="TEST_ID_1",
                 identifier=well_item_id,
                 position="A1",
                 target_dna_description=target2,
@@ -199,7 +199,7 @@ def get_data(file_name: str) -> Data:
     )
     calculated_documents = [
         CalculatedDocument(
-            uuid="d006e7e7-fbe4-47cf-821b-904e85202803",
+            uuid="TEST_ID_2",
             name="rn mean",
             value=1.261,
             iterated=True,
@@ -211,7 +211,7 @@ def get_data(file_name: str) -> Data:
             ],
         ),
         CalculatedDocument(
-            uuid="f4fee39c-5861-4203-afcf-94ee755ac0b4",
+            uuid="TEST_ID_3",
             name="rn sd",
             value=0.088,
             iterated=True,
@@ -223,7 +223,7 @@ def get_data(file_name: str) -> Data:
             ],
         ),
         CalculatedDocument(
-            uuid="e6707b0c-4494-412f-8a8e-ef51d01f25b3",
+            uuid="TEST_ID_4",
             name="rn mean",
             value=0.397,
             iterated=True,
@@ -235,7 +235,7 @@ def get_data(file_name: str) -> Data:
             ],
         ),
         CalculatedDocument(
-            uuid="da78a225-2c34-40b3-b487-97893bfe491a",
+            uuid="TEST_ID_5",
             name="rn sd",
             value=0.006,
             iterated=True,
@@ -339,7 +339,7 @@ def get_data2(file_name: str) -> Data:
         identifier=well_id,
         items=[
             WellItem(
-                uuid="1e572828d-45fd-49bd-ab66-2a7f06aea3b6",
+                uuid="TEST_ID_0",
                 identifier=well_item_id,
                 position="A1",
                 target_dna_description=target1,
@@ -381,7 +381,7 @@ def get_model() -> Model:
                         ),
                         measurement_document=[
                             MeasurementDocumentItem(
-                                measurement_identifier="d170f2df-7ff8-4978-b13d-a7ad19fab824",
+                                measurement_identifier="TEST_ID_0",
                                 measurement_time="2010-10-01T01:44:54-04:00",
                                 target_DNA_description="IPC",
                                 sample_document=SampleDocument(
@@ -541,7 +541,7 @@ def get_model() -> Model:
                                 melting_curve_data_cube=None,
                             ),
                             MeasurementDocumentItem(
-                                measurement_identifier="ba281c64-0605-4e76-8e9c-2a183be3cc08",
+                                measurement_identifier="TEST_ID_1",
                                 measurement_time="2010-10-01T01:44:54-04:00",
                                 target_DNA_description="TGFb",
                                 sample_document=SampleDocument(
@@ -1133,7 +1133,7 @@ def get_genotyping_data(file_name: str) -> Data:
         identifier=well_id,
         items=[
             WellItem(
-                uuid="3c40d2c2-0a64-433f-b639-e9c6e896313e",
+                uuid="TEST_ID_0",
                 identifier=well_item_id,
                 position="A1",
                 target_dna_description=target1,
@@ -1144,7 +1144,7 @@ def get_genotyping_data(file_name: str) -> Data:
                 sample_role_type="NTC",
             ),
             WellItem(
-                uuid="cba0ba82-1486-4e0c-90ec-2abdfaf254b0",
+                uuid="TEST_ID_1",
                 identifier=well_item_id,
                 position="A1",
                 target_dna_description=target2,
@@ -1277,7 +1277,7 @@ def get_genotyping_model() -> Model:
                                 ),
                             ),
                             MeasurementDocumentItem(
-                                measurement_identifier="cba0ba82-1486-4e0c-90ec-2abdfaf254b0",
+                                measurement_identifier="TEST_ID_1",
                                 measurement_time="2010-09-16T07:35:29-04:00",
                                 target_DNA_description="CYP19_2-Allele 2",
                                 sample_document=SampleDocument(
@@ -1499,7 +1499,7 @@ def get_rel_std_curve_data(file_name: str) -> Data:
             identifier=well_id_1,
             items=[
                 WellItem(
-                    uuid="3387cf01-0e74-4636-8c1c-cfe840d7aff8",
+                    uuid="TEST_ID_0",
                     identifier=well_item_id_1,
                     target_dna_description=target1,
                     sample_identifier="800",
@@ -1515,7 +1515,7 @@ def get_rel_std_curve_data(file_name: str) -> Data:
             identifier=well_id_2,
             items=[
                 WellItem(
-                    uuid="f112727d-c267-4061-b51e-a0784a112afe",
+                    uuid="TEST_ID_1",
                     identifier=well_item_id_2,
                     target_dna_description=target1,
                     sample_identifier="800",
@@ -1530,22 +1530,20 @@ def get_rel_std_curve_data(file_name: str) -> Data:
     ]
     calculated_documents = [
         CalculatedDocument(
-            uuid="5c16ac3d-02de-4d5b-b42e-707fb2043d95",
+            uuid="TEST_ID_4",
             name="quantity mean",
             value=818.012,
             data_sources=[
                 DataSource(
                     feature="quantity",
                     reference=CalculatedDocument(
-                        uuid="61d96780-4aa9-4d24-8ff5-491ccd325502",
+                        uuid="TEST_ID_2",
                         name="quantity",
                         value=794.91,
                         data_sources=[
                             DataSource(
                                 feature="cycle threshold result",
-                                reference=Referenceable(
-                                    uuid="3387cf01-0e74-4636-8c1c-cfe840d7aff8"
-                                ),
+                                reference=Referenceable(uuid="TEST_ID_2"),
                             )
                         ],
                         iterated=True,
@@ -1554,14 +1552,14 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                 DataSource(
                     feature="quantity",
                     reference=CalculatedDocument(
-                        uuid="c9f7ba93-faff-465c-b1b6-baa049cab34f",
+                        uuid="TEST_ID_3",
                         name="quantity",
                         value=769.776,
                         data_sources=[
                             DataSource(
                                 feature="cycle threshold result",
                                 reference=Referenceable(
-                                    uuid="f112727d-c267-4061-b51e-a0784a112afe",
+                                    uuid="TEST_ID_3",
                                 ),
                             )
                         ],
@@ -1572,50 +1570,48 @@ def get_rel_std_curve_data(file_name: str) -> Data:
             iterated=True,
         ),
         CalculatedDocument(
-            uuid="61d96780-4aa9-4d24-8ff5-491ccd325502",
+            uuid="TEST_ID_2",
             name="quantity",
             value=794.91,
             data_sources=[
                 DataSource(
                     feature="cycle threshold result",
                     reference=Referenceable(
-                        uuid="3387cf01-0e74-4636-8c1c-cfe840d7aff8",
+                        uuid="TEST_ID_0",
                     ),
                 )
             ],
             iterated=True,
         ),
         CalculatedDocument(
-            uuid="c9f7ba93-faff-465c-b1b6-baa049cab34f",
+            uuid="TEST_ID_3",
             name="quantity",
             value=769.776,
             data_sources=[
                 DataSource(
                     feature="cycle threshold result",
                     reference=Referenceable(
-                        uuid="f112727d-c267-4061-b51e-a0784a112afe",
+                        uuid="TEST_ID_1",
                     ),
                 )
             ],
             iterated=True,
         ),
         CalculatedDocument(
-            uuid="4da4ba6b-cb9d-471b-b810-fdc46f57528e",
+            uuid="TEST_ID_5",
             name="quantity sd",
             value=29.535,
             data_sources=[
                 DataSource(
                     feature="quantity",
                     reference=CalculatedDocument(
-                        uuid="61d96780-4aa9-4d24-8ff5-491ccd325502",
+                        uuid="TEST_ID_2",
                         name="quantity",
                         value=794.91,
                         data_sources=[
                             DataSource(
                                 feature="cycle threshold result",
-                                reference=Referenceable(
-                                    uuid="3387cf01-0e74-4636-8c1c-cfe840d7aff8",
-                                ),
+                                reference=Referenceable(uuid="TEST_ID_0"),
                             )
                         ],
                         iterated=True,
@@ -1624,14 +1620,14 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                 DataSource(
                     feature="quantity",
                     reference=CalculatedDocument(
-                        uuid="c9f7ba93-faff-465c-b1b6-baa049cab34f",
+                        uuid="TEST_ID_3",
                         name="quantity",
                         value=769.776,
                         data_sources=[
                             DataSource(
                                 feature="cycle threshold result",
                                 reference=Referenceable(
-                                    uuid="f112727d-c267-4061-b51e-a0784a112afe",
+                                    uuid="TEST_ID_1",
                                 ),
                             )
                         ],
@@ -1642,75 +1638,75 @@ def get_rel_std_curve_data(file_name: str) -> Data:
             iterated=True,
         ),
         CalculatedDocument(
-            uuid="a59289c2-e71a-4d72-972d-258e3ac2e78e",
+            uuid="TEST_ID_6",
             name="ct mean",
             value=30.115,
             data_sources=[
                 DataSource(
                     feature="cycle threshold result",
                     reference=Referenceable(
-                        uuid="3387cf01-0e74-4636-8c1c-cfe840d7aff8",
+                        uuid="TEST_ID_0",
                     ),
                 ),
                 DataSource(
                     feature="cycle threshold result",
                     reference=Referenceable(
-                        uuid="f112727d-c267-4061-b51e-a0784a112afe",
+                        uuid="TEST_ID_1",
                     ),
                 ),
             ],
             iterated=True,
         ),
         CalculatedDocument(
-            uuid="99f04b2e-4463-4666-b20d-d8f1de2f62e5",
+            uuid="TEST_ID_7",
             name="ct sd",
             value=0.051,
             data_sources=[
                 DataSource(
                     feature="cycle threshold result",
                     reference=Referenceable(
-                        uuid="3387cf01-0e74-4636-8c1c-cfe840d7aff8",
+                        uuid="TEST_ID_0",
                     ),
                 ),
                 DataSource(
                     feature="cycle threshold result",
                     reference=Referenceable(
-                        uuid="f112727d-c267-4061-b51e-a0784a112afe",
+                        uuid="TEST_ID_1",
                     ),
                 ),
             ],
             iterated=True,
         ),
         CalculatedDocument(
-            uuid="095631c4-1c21-412d-acc1-3a67984dbbf2",
+            uuid="TEST_ID_9",
             name="rq min",
             value=0.658,
             data_sources=[
                 DataSource(
                     feature="rq",
                     reference=CalculatedDocument(
-                        uuid="d0dc238e-13a6-4057-b1ae-c8d30145805b",
+                        uuid="TEST_ID_8",
                         name="rq",
                         value=0.798,
                         data_sources=[
                             DataSource(
                                 feature="quantity mean",
                                 reference=CalculatedDocument(
-                                    uuid="5c16ac3d-02de-4d5b-b42e-707fb2043d95",
+                                    uuid="TEST_ID_4",
                                     name="quantity mean",
                                     value=818.012,
                                     data_sources=[
                                         DataSource(
                                             feature="quantity",
                                             reference=CalculatedDocument(
-                                                uuid="61d96780-4aa9-4d24-8ff5-491ccd325502",
+                                                uuid="TEST_ID_2",
                                                 name="quantity",
                                                 value=794.91,
                                                 data_sources=[
                                                     DataSource(
                                                         feature="cycle threshold result",
                                                         reference=Referenceable(
-                                                            uuid="3387cf01-0e74-4636-8c1c-cfe840d7aff8",
+                                                            uuid="TEST_ID_0",
                                                         ),
                                                     )
                                                 ],
@@ -1720,14 +1716,14 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                         DataSource(
                                             feature="quantity",
                                             reference=CalculatedDocument(
-                                                uuid="c9f7ba93-faff-465c-b1b6-baa049cab34f",
+                                                uuid="TEST_ID_3",
                                                 name="quantity",
                                                 value=769.776,
                                                 data_sources=[
                                                     DataSource(
                                                         feature="cycle threshold result",
                                                         reference=Referenceable(
-                                                            uuid="f112727d-c267-4061-b51e-a0784a112afe",
+                                                            uuid="TEST_ID_1",
                                                         ),
                                                     )
                                                 ],
@@ -1746,28 +1742,28 @@ def get_rel_std_curve_data(file_name: str) -> Data:
             iterated=True,
         ),
         CalculatedDocument(
-            uuid="d0dc238e-13a6-4057-b1ae-c8d30145805b",
+            uuid="TEST_ID_8",
             name="rq",
             value=0.798,
             data_sources=[
                 DataSource(
                     feature="quantity mean",
                     reference=CalculatedDocument(
-                        uuid="5c16ac3d-02de-4d5b-b42e-707fb2043d95",
+                        uuid="TEST_ID_4",
                         name="quantity mean",
                         value=818.012,
                         data_sources=[
                             DataSource(
                                 feature="quantity",
                                 reference=CalculatedDocument(
-                                    uuid="61d96780-4aa9-4d24-8ff5-491ccd325502",
+                                    uuid="TEST_ID_2",
                                     name="quantity",
                                     value=794.91,
                                     data_sources=[
                                         DataSource(
                                             feature="cycle threshold result",
                                             reference=Referenceable(
-                                                uuid="3387cf01-0e74-4636-8c1c-cfe840d7aff8",
+                                                uuid="TEST_ID_0",
                                             ),
                                         )
                                     ],
@@ -1777,14 +1773,14 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                             DataSource(
                                 feature="quantity",
                                 reference=CalculatedDocument(
-                                    uuid="c9f7ba93-faff-465c-b1b6-baa049cab34f",
+                                    uuid="TEST_ID_3",
                                     name="quantity",
                                     value=769.776,
                                     data_sources=[
                                         DataSource(
                                             feature="cycle threshold result",
                                             reference=Referenceable(
-                                                uuid="f112727d-c267-4061-b51e-a0784a112afe",
+                                                uuid="TEST_ID_1",
                                             ),
                                         )
                                     ],
@@ -1799,35 +1795,35 @@ def get_rel_std_curve_data(file_name: str) -> Data:
             iterated=True,
         ),
         CalculatedDocument(
-            uuid="4db4a552-e3c5-49fc-ab02-759245c01a48",
+            uuid="TEST_ID_10",
             name="rq max",
             value=0.967,
             data_sources=[
                 DataSource(
                     feature="rq",
                     reference=CalculatedDocument(
-                        uuid="d0dc238e-13a6-4057-b1ae-c8d30145805b",
+                        uuid="TEST_ID_8",
                         name="rq",
                         value=0.798,
                         data_sources=[
                             DataSource(
                                 feature="quantity mean",
                                 reference=CalculatedDocument(
-                                    uuid="5c16ac3d-02de-4d5b-b42e-707fb2043d95",
+                                    uuid="TEST_ID_4",
                                     name="quantity mean",
                                     value=818.012,
                                     data_sources=[
                                         DataSource(
                                             feature="quantity",
                                             reference=CalculatedDocument(
-                                                uuid="61d96780-4aa9-4d24-8ff5-491ccd325502",
+                                                uuid="TEST_ID_2",
                                                 name="quantity",
                                                 value=794.91,
                                                 data_sources=[
                                                     DataSource(
                                                         feature="cycle threshold result",
                                                         reference=Referenceable(
-                                                            uuid="3387cf01-0e74-4636-8c1c-cfe840d7aff8",
+                                                            uuid="TEST_ID_0",
                                                         ),
                                                     )
                                                 ],
@@ -1837,14 +1833,14 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                         DataSource(
                                             feature="quantity",
                                             reference=CalculatedDocument(
-                                                uuid="c9f7ba93-faff-465c-b1b6-baa049cab34f",
+                                                uuid="TEST_ID_3",
                                                 name="quantity",
                                                 value=769.776,
                                                 data_sources=[
                                                     DataSource(
                                                         feature="cycle threshold result",
                                                         reference=Referenceable(
-                                                            uuid="f112727d-c267-4061-b51e-a0784a112afe",
+                                                            uuid="TEST_ID_1",
                                                         ),
                                                     )
                                                 ],
@@ -1901,7 +1897,7 @@ def get_rel_std_curve_model() -> Model:
                         ),
                         measurement_document=[
                             MeasurementDocumentItem(
-                                measurement_identifier="3387cf01-0e74-4636-8c1c-cfe840d7aff8",
+                                measurement_identifier="TEST_ID_0",
                                 measurement_time="2010-10-20T02:23:34-04:00",
                                 target_DNA_description="RNaseP",
                                 sample_document=SampleDocument(
@@ -2045,7 +2041,7 @@ def get_rel_std_curve_model() -> Model:
                         ),
                         measurement_document=[
                             MeasurementDocumentItem(
-                                measurement_identifier="f112727d-c267-4061-b51e-a0784a112afe",
+                                measurement_identifier="TEST_ID_1",
                                 measurement_time="2010-10-20T02:23:34-04:00",
                                 target_DNA_description="RNaseP",
                                 sample_document=SampleDocument(
@@ -2192,15 +2188,15 @@ def get_rel_std_curve_model() -> Model:
             calculated_data_aggregate_document=TCalculatedDataAggregateDocument(
                 calculated_data_document=[
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="5c16ac3d-02de-4d5b-b42e-707fb2043d95",
+                        calculated_data_identifier="TEST_ID_4",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="61d96780-4aa9-4d24-8ff5-491ccd325502",
+                                    data_source_identifier="TEST_ID_2",
                                     data_source_feature="quantity",
                                 ),
                                 DataSourceDocumentItem(
-                                    data_source_identifier="c9f7ba93-faff-465c-b1b6-baa049cab34f",
+                                    data_source_identifier="TEST_ID_3",
                                     data_source_feature="quantity",
                                 ),
                             ]
@@ -2219,11 +2215,11 @@ def get_rel_std_curve_model() -> Model:
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="61d96780-4aa9-4d24-8ff5-491ccd325502",
+                        calculated_data_identifier="TEST_ID_2",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="3387cf01-0e74-4636-8c1c-cfe840d7aff8",
+                                    data_source_identifier="TEST_ID_0",
                                     data_source_feature="cycle threshold result",
                                 )
                             ]
@@ -2242,11 +2238,11 @@ def get_rel_std_curve_model() -> Model:
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="c9f7ba93-faff-465c-b1b6-baa049cab34f",
+                        calculated_data_identifier="TEST_ID_3",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="f112727d-c267-4061-b51e-a0784a112afe",
+                                    data_source_identifier="TEST_ID_1",
                                     data_source_feature="cycle threshold result",
                                 )
                             ]
@@ -2265,15 +2261,15 @@ def get_rel_std_curve_model() -> Model:
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="4da4ba6b-cb9d-471b-b810-fdc46f57528e",
+                        calculated_data_identifier="TEST_ID_5",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="61d96780-4aa9-4d24-8ff5-491ccd325502",
+                                    data_source_identifier="TEST_ID_2",
                                     data_source_feature="quantity",
                                 ),
                                 DataSourceDocumentItem(
-                                    data_source_identifier="c9f7ba93-faff-465c-b1b6-baa049cab34f",
+                                    data_source_identifier="TEST_ID_3",
                                     data_source_feature="quantity",
                                 ),
                             ]
@@ -2292,15 +2288,15 @@ def get_rel_std_curve_model() -> Model:
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="a59289c2-e71a-4d72-972d-258e3ac2e78e",
+                        calculated_data_identifier="TEST_ID_6",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="3387cf01-0e74-4636-8c1c-cfe840d7aff8",
+                                    data_source_identifier="TEST_ID_0",
                                     data_source_feature="cycle threshold result",
                                 ),
                                 DataSourceDocumentItem(
-                                    data_source_identifier="f112727d-c267-4061-b51e-a0784a112afe",
+                                    data_source_identifier="TEST_ID_1",
                                     data_source_feature="cycle threshold result",
                                 ),
                             ]
@@ -2319,15 +2315,15 @@ def get_rel_std_curve_model() -> Model:
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="99f04b2e-4463-4666-b20d-d8f1de2f62e5",
+                        calculated_data_identifier="TEST_ID_7",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="3387cf01-0e74-4636-8c1c-cfe840d7aff8",
+                                    data_source_identifier="TEST_ID_0",
                                     data_source_feature="cycle threshold result",
                                 ),
                                 DataSourceDocumentItem(
-                                    data_source_identifier="f112727d-c267-4061-b51e-a0784a112afe",
+                                    data_source_identifier="TEST_ID_1",
                                     data_source_feature="cycle threshold result",
                                 ),
                             ]
@@ -2346,11 +2342,11 @@ def get_rel_std_curve_model() -> Model:
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="095631c4-1c21-412d-acc1-3a67984dbbf2",
+                        calculated_data_identifier="TEST_ID_9",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="d0dc238e-13a6-4057-b1ae-c8d30145805b",
+                                    data_source_identifier="TEST_ID_8",
                                     data_source_feature="rq",
                                 )
                             ]
@@ -2369,11 +2365,11 @@ def get_rel_std_curve_model() -> Model:
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="d0dc238e-13a6-4057-b1ae-c8d30145805b",
+                        calculated_data_identifier="TEST_ID_8",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="5c16ac3d-02de-4d5b-b42e-707fb2043d95",
+                                    data_source_identifier="TEST_ID_4",
                                     data_source_feature="quantity mean",
                                 )
                             ]
@@ -2392,11 +2388,11 @@ def get_rel_std_curve_model() -> Model:
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="4db4a552-e3c5-49fc-ab02-759245c01a48",
+                        calculated_data_identifier="TEST_ID_0",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="d0dc238e-13a6-4057-b1ae-c8d30145805b",
+                                    data_source_identifier="TEST_ID_8",
                                     data_source_feature="rq",
                                 )
                             ]
@@ -2488,7 +2484,7 @@ def get_broken_calc_doc_data(file_name: str) -> Data:
         identifier=well_id,
         items=[
             WellItem(
-                uuid="a1453d7a-dd6b-4630-923f-7e4a14a7ee70",
+                uuid="TEST_ID_0",
                 identifier=well_item_id,
                 position="D1",
                 target_dna_description=target1,
@@ -2502,28 +2498,28 @@ def get_broken_calc_doc_data(file_name: str) -> Data:
     )
     calculated_documents = [
         CalculatedDocument(
-            uuid="f8cb25cf-8052-40eb-aead-1b6d371b9f25",
+            uuid="TEST_ID_1",
             name="ct mean",
             value=30.115,
             data_sources=[
                 DataSource(
                     feature="cycle threshold result",
                     reference=Referenceable(
-                        uuid="ba6db637-e3c9-4c08-bb0d-86b5cf1a14ab",
+                        uuid="TEST_ID_0",
                     ),
                 )
             ],
             iterated=True,
         ),
         CalculatedDocument(
-            uuid="d6d4d929-aa30-414b-a56a-12d2cac78bb3",
+            uuid="TEST_ID_2",
             name="ct sd",
             value=0.051,
             data_sources=[
                 DataSource(
                     feature="cycle threshold result",
                     reference=Referenceable(
-                        uuid="a1453d7a-dd6b-4630-923f-7e4a14a7ee70",
+                        uuid="TEST_ID_0",
                     ),
                 )
             ],
@@ -2565,7 +2561,7 @@ def get_broken_calc_doc_model() -> Model:
                         ),
                         measurement_document=[
                             MeasurementDocumentItem(
-                                measurement_identifier="a1453d7a-dd6b-4630-923f-7e4a14a7ee70",
+                                measurement_identifier="TEST_ID_0",
                                 measurement_time="2010-10-20T02:23:34-04:00",
                                 target_DNA_description="RNaseP",
                                 sample_document=SampleDocument(
@@ -2698,11 +2694,11 @@ def get_broken_calc_doc_model() -> Model:
             calculated_data_aggregate_document=TCalculatedDataAggregateDocument(
                 calculated_data_document=[
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="f8cb25cf-8052-40eb-aead-1b6d371b9f25",
+                        calculated_data_identifier="TEST_ID_1",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="ba6db637-e3c9-4c08-bb0d-86b5cf1a14ab",
+                                    data_source_identifier="TEST_ID_0",
                                     data_source_feature="cycle threshold result",
                                 )
                             ]
@@ -2721,11 +2717,11 @@ def get_broken_calc_doc_model() -> Model:
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="d6d4d929-aa30-414b-a56a-12d2cac78bb3",
+                        calculated_data_identifier="TEST_ID_2",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="a1453d7a-dd6b-4630-923f-7e4a14a7ee70",
+                                    data_source_identifier="TEST_ID_0",
                                     data_source_feature="cycle threshold result",
                                 )
                             ]
