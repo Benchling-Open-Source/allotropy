@@ -6,6 +6,10 @@ from allotropy.allotrope.allotrope import serialize_and_validate_allotrope
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parser_factory import Vendor
+from allotropy.parsers.utils.timestamp_parser import (
+    set_timestamp_parser,
+    TimestampParser,
+)
 from allotropy.types import IOType
 
 VendorType = Vendor | str
@@ -37,8 +41,8 @@ def allotrope_model_from_io(
         msg = f"Failed to create parser, unregistered vendor: {vendor_type}."
         raise AllotropeConversionError(msg) from e
     named_file_contents = NamedFileContents(contents, filename, encoding)
-    parser = vendor.get_parser(default_timezone=default_timezone)
-    return parser.to_allotrope(named_file_contents)
+    set_timestamp_parser(TimestampParser(default_timezone))
+    return vendor.get_parser().to_allotrope(named_file_contents)
 
 
 def allotrope_from_file(

@@ -26,6 +26,7 @@ from allotropy.parsers.methodical_mind.methodical_mind_structure import (
     PlateData,
 )
 from allotropy.parsers.release_state import ReleaseState
+from allotropy.parsers.utils.timestamp_parser import parse_timestamp
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -85,7 +86,7 @@ class MethodicalMindParser(VendorParser):
                 plate_reader_doc = PlateReaderDocumentItem(
                     analyst=plate.analyst,
                     measurement_aggregate_document=MeasurementAggregateDocument(
-                        measurement_time=self._get_date_time(plate.measurement_time),
+                        measurement_time=parse_timestamp(plate.measurement_time),
                         container_type=ContainerType.well_plate,
                         plate_well_count=TQuantityValueNumber(
                             value=plate.plate_well_count

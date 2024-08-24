@@ -15,7 +15,6 @@ from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure import (
     Title,
 )
 from allotropy.parsers.utils.pandas import SeriesData
-from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from tests.parsers.roche_cedex_bioht.roche_cedex_bioht_data import (
     get_data,
     get_data_stream,
@@ -227,7 +226,7 @@ def test_create_data() -> None:
         return_value="dummy_id",
     ):
         assert (
-            RocheCedexBiohtParser(TimestampParser()).create_data(
+            RocheCedexBiohtParser().create_data(
                 NamedFileContents(get_data_stream(), "dummy.txt")
             )
             == get_data()

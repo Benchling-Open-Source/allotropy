@@ -1,5 +1,4 @@
 from collections import defaultdict
-from datetime import tzinfo
 from enum import Enum
 from pathlib import Path
 
@@ -70,7 +69,6 @@ from allotropy.parsers.thermo_fisher_qubit_flex.thermo_fisher_qubit_flex_parser 
 from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_parser import (
     UnchainedLabsLunaticParser,
 )
-from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.parsers.vendor_parser import VendorParser
 
 
@@ -113,9 +111,8 @@ class Vendor(Enum):
     def release_state(self) -> ReleaseState:
         return self.get_parser().RELEASE_STATE
 
-    def get_parser(self, default_timezone: tzinfo | None = None) -> VendorParser:
-        timestamp_parser = TimestampParser(default_timezone)
-        return _VENDOR_TO_PARSER[self](timestamp_parser)
+    def get_parser(self) -> VendorParser:
+        return _VENDOR_TO_PARSER[self]()
 
 
 _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {

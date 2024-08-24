@@ -5,7 +5,6 @@ from dateutil import parser
 import pytz
 
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.utils.values import assert_not_none
 
 TIMEZONE_CODES_MAP = {
     **{code: pytz.timezone(code) for code in pytz.all_timezones},
@@ -37,8 +36,6 @@ class TimestampParser:
         :param time: the string to parse
         :raises AllotropeConversionError if time cannot be parsed
         """
-        assert_not_none(time, "time")
-
         try:
             timestamp = parser.parse(time, tzinfos=TIMEZONE_CODES_MAP, fuzzy=True)
         except ValueError as e:
@@ -47,3 +44,20 @@ class TimestampParser:
         if not timestamp.tzinfo:
             timestamp = timestamp.replace(tzinfo=self.default_timezone)
         return str(timestamp.isoformat())
+
+
+_PARSER = TimestampParser()
+
+
+def parse_timestamp(time: str) -> str:
+    return _PARSER.parse(time)
+
+
+def set_timestamp_parser(parser: TimestampParser) -> None:
+    # NOTE: globals are generally discouraged. However, in the context of the allotropy library, it is
+    # expected that set_timestamp_parser will be called once at the code entrypoint in to_allotrope,
+    # and then used globally. We are chosing to make the tradeoff of potentially confusing behavior if
+    # someone tries to change the timestamp parser while making multiple calls to allotropy in parallel
+    # for the simplicity of not having to pass timestamp parser around.
+    global _PARSER  # noqa: PLW0603
+    _PARSER = parser

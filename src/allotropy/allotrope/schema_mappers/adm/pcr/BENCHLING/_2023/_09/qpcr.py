@@ -43,6 +43,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.parsers.utils.iterables import get_first_not_none
+from allotropy.parsers.utils.timestamp_parser import parse_timestamp
 from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
 
 
@@ -214,7 +215,7 @@ class Mapper(SchemaMapper[Data, Model]):
     ) -> MeasurementDocumentItem:
         return MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
-            measurement_time=self.get_date_time(measurement.timestamp),
+            measurement_time=parse_timestamp(measurement.timestamp),
             target_DNA_description=measurement.target_identifier,
             sample_document=self._get_sample_document(measurement),
             device_control_aggregate_document=DeviceControlAggregateDocument(

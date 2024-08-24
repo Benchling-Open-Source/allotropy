@@ -4,7 +4,11 @@ from zoneinfo import ZoneInfo
 import pytest
 
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.utils.timestamp_parser import TimestampParser
+from allotropy.parsers.utils.timestamp_parser import (
+    parse_timestamp,
+    set_timestamp_parser,
+    TimestampParser,
+)
 
 
 @pytest.mark.short
@@ -71,3 +75,10 @@ def test_timestamp_parser_handles_24h_pm() -> None:
     assert (
         TimestampParser().parse("2023-03-16 16:52:37 PM") == "2023-03-16T16:52:37+00:00"
     )
+
+
+@pytest.mark.short
+def test_global_timestamp_parser() -> None:
+    assert parse_timestamp("10-11-08") == "2008-10-11T00:00:00+00:00"
+    set_timestamp_parser(TimestampParser(US_PACIFIC))
+    assert parse_timestamp("10-11-08") == "2008-10-11T00:00:00-07:00"

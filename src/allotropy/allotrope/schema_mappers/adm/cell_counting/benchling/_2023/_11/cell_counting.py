@@ -27,6 +27,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
+from allotropy.parsers.utils.timestamp_parser import parse_timestamp
 from allotropy.parsers.utils.values import quantity_or_none
 
 
@@ -149,7 +150,7 @@ class Mapper(SchemaMapper[Data, Model]):
         self, measurement: Measurement, metadata: Metadata
     ) -> CellCountingDetectorMeasurementDocumentItem:
         return CellCountingDetectorMeasurementDocumentItem(
-            measurement_time=self.get_date_time(measurement.timestamp),
+            measurement_time=parse_timestamp(measurement.timestamp),
             measurement_identifier=measurement.measurement_identifier,
             sample_document=self._get_sample_document(measurement),
             device_control_aggregate_document=CellCountingDetectorDeviceControlAggregateDocument(
@@ -171,7 +172,7 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
         custom_document = {
             "group identifier": measurement.group_identifier,
-            "sample draw time": self.get_date_time(measurement.sample_draw_time)
+            "sample draw time": parse_timestamp(measurement.sample_draw_time)
             if measurement.sample_draw_time
             else None,
         }

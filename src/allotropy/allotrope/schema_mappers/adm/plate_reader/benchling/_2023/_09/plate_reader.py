@@ -53,6 +53,7 @@ from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropyParserError
 from allotropy.parsers.agilent_gen5.constants import ReadMode
+from allotropy.parsers.utils.timestamp_parser import parse_timestamp
 from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
 
 
@@ -233,7 +234,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 plate_well_count=TQuantityValueNumber(
                     value=measurement_group.plate_well_count
                 ),
-                measurement_time=self.get_date_time(
+                measurement_time=parse_timestamp(
                     assert_not_none(
                         measurement_group.measurement_time or metadata.measurement_time,
                         msg="Failed to parse valid timestamp",

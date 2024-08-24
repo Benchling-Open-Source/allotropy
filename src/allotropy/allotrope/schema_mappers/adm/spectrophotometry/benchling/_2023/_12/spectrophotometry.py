@@ -48,6 +48,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
+from allotropy.parsers.utils.timestamp_parser import parse_timestamp
 from allotropy.parsers.utils.units import get_quantity_class
 from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
 
@@ -226,7 +227,7 @@ class Mapper(SchemaMapper[Data, Model]):
         return SpectrophotometryDocumentItem(
             analyst=measurement_group.analyst,
             measurement_aggregate_document=MeasurementAggregateDocument(
-                measurement_time=self.get_date_time(
+                measurement_time=parse_timestamp(
                     assert_not_none(measurement_group.measurement_time)
                 ),
                 experiment_type=measurement_group.experiment_type,

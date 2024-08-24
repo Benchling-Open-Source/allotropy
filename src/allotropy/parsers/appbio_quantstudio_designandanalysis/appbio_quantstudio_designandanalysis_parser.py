@@ -49,6 +49,7 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.st
     WellItem,
 )
 from allotropy.parsers.release_state import ReleaseState
+from allotropy.parsers.utils.timestamp_parser import parse_timestamp
 from allotropy.parsers.utils.values import quantity_or_none
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -152,7 +153,7 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
     ) -> MeasurementDocumentItem:
         return MeasurementDocumentItem(
             measurement_identifier=well_item.uuid,
-            measurement_time=self._get_date_time(data.header.measurement_time),
+            measurement_time=parse_timestamp(data.header.measurement_time),
             target_DNA_description=well_item.target_dna_description,
             sample_document=self.get_sample_document(data, well_item),
             device_control_aggregate_document=DeviceControlAggregateDocument(

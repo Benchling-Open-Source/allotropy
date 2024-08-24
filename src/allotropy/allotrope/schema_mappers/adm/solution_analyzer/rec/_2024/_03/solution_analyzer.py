@@ -38,6 +38,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.utils.timestamp_parser import parse_timestamp
 from allotropy.parsers.utils.values import quantity_or_none
 
 
@@ -163,7 +164,7 @@ class Mapper(SchemaMapper[Data, Model]):
         return SolutionAnalyzerDocumentItem(
             analyst=measurement_group.analyst,
             measurement_aggregate_document=MeasurementAggregateDocument(
-                data_processing_time=self.get_date_time(
+                data_processing_time=parse_timestamp(
                     measurement_group.data_processing_time
                 )
                 if measurement_group.data_processing_time
@@ -180,7 +181,7 @@ class Mapper(SchemaMapper[Data, Model]):
     ) -> MeasurementDocument:
         return MeasurementDocument(
             measurement_identifier=measurement.identifier,
-            measurement_time=self.get_date_time(measurement.measurement_time),
+            measurement_time=parse_timestamp(measurement.measurement_time),
             sample_document=self._get_sample_document(measurement),
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[

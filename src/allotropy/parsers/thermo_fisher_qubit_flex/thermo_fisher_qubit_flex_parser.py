@@ -44,6 +44,7 @@ from allotropy.parsers.thermo_fisher_qubit_flex import constants
 from allotropy.parsers.thermo_fisher_qubit_flex.thermo_fisher_qubit_flex_reader import (
     ThermoFisherQubitFlexReader,
 )
+from allotropy.parsers.utils.timestamp_parser import parse_timestamp
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -267,7 +268,7 @@ class ThermoFisherQubitFlexParser(VendorParser):
         Returns: the measurement aggregate document dictionary
         """
         return MeasurementAggregateDocument(
-            measurement_time=self._get_date_time(
+            measurement_time=parse_timestamp(
                 str(_get_value_not_none(data, "Test Date", i))
             ),
             experiment_type=_get_value(data, "Assay Name", i),
@@ -371,7 +372,7 @@ class ThermoFisherQubitFlexParser(VendorParser):
             "standard 3 concentration": _get_property_value(
                 data, "Std 3 RFU", i, TQuantityValueRelativeFluorescenceUnit
             ),
-            "last read standards": self._get_date_time(
+            "last read standards": parse_timestamp(
                 str(_get_value(data, "Test Date", i))
             ),
             "selected samples": _get_value(data, "Selected Samples", i),

@@ -34,6 +34,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
+from allotropy.parsers.utils.timestamp_parser import parse_timestamp
 from allotropy.parsers.utils.values import quantity_or_none
 
 
@@ -160,7 +161,7 @@ class Mapper(SchemaMapper[Data, Model]):
     ) -> MeasurementDocumentItem:
         return MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
-            measurement_time=self.get_date_time(measurement.measurement_time),
+            measurement_time=parse_timestamp(measurement.measurement_time),
             sample_document=self._get_sample_document(measurement),
             processed_data_aggregate_document=self._get_processed_data_aggregate_document(
                 measurement.processed_data

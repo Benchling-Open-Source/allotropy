@@ -60,6 +60,7 @@ from allotropy.parsers.biorad_bioplex_manager.constants import (
     WELLS_TAG,
 )
 from allotropy.parsers.release_state import ReleaseState
+from allotropy.parsers.utils.timestamp_parser import parse_timestamp
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import quantity_or_none
 from allotropy.parsers.utils.xml import get_val_from_xml
@@ -151,9 +152,7 @@ class BioradBioplexParser(VendorParser):
             device_well_settings = DeviceWellSettings.create(well)
             measurement_doc = MeasurementDocumentItem(
                 measurement_identifier=random_uuid_str(),
-                measurement_time=self._get_date_time(
-                    device_well_settings.acquisition_time
-                ),
+                measurement_time=parse_timestamp(device_well_settings.acquisition_time),
                 assay_bead_count=TQuantityValueNumber(
                     value=device_well_settings.well_total_events
                 ),

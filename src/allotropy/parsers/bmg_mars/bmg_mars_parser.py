@@ -42,6 +42,7 @@ from allotropy.parsers.bmg_mars.bmg_mars_structure import (
 )
 from allotropy.parsers.lines_reader import LinesReader, read_to_lines
 from allotropy.parsers.release_state import ReleaseState
+from allotropy.parsers.utils.timestamp_parser import parse_timestamp
 from allotropy.parsers.vendor_parser import VendorParser
 
 MeasurementDocumentItems = (
@@ -214,7 +215,6 @@ class BmgMarsParser(VendorParser):
     ) -> list[PlateReaderDocumentItem]:
         items = []
         measurement_docs_dict = defaultdict(list)
-        measurement_time = self._get_date_time(f"{header.date} {header.time}")
         device_control_aggregate_document = self._get_device_control_aggregate_document(
             wavelength, read_type
         )
@@ -236,7 +236,9 @@ class BmgMarsParser(VendorParser):
             items.append(
                 PlateReaderDocumentItem(
                     measurement_aggregate_document=MeasurementAggregateDocument(
-                        measurement_time=measurement_time,
+                        measurement_time=parse_timestamp(
+                            f"{header.date} {header.time}"
+                        ),
                         plate_well_count=plate_well_count,
                         measurement_document=measurement_docs_dict[well_location],
                         experiment_type=header.test_name,

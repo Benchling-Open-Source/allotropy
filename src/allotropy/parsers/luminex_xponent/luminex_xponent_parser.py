@@ -34,6 +34,7 @@ from allotropy.parsers.luminex_xponent.luminex_xponent_structure import (
     Measurement,
 )
 from allotropy.parsers.release_state import ReleaseState
+from allotropy.parsers.utils.timestamp_parser import parse_timestamp
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -65,9 +66,7 @@ class LuminexXponentParser(VendorParser):
                             CalibrationDocumentItem(
                                 calibration_name=calibration_item.name,
                                 calibration_report=calibration_item.report,
-                                calibration_time=self._get_date_time(
-                                    calibration_item.time
-                                ),
+                                calibration_time=parse_timestamp(calibration_item.time),
                             )
                             for calibration_item in data.calibration_data
                         ]
@@ -122,7 +121,7 @@ class LuminexXponentParser(VendorParser):
 
         return MeasurementDocumentItem(
             measurement_identifier=random_uuid_str(),
-            measurement_time=self._get_date_time(header_data.measurement_time),
+            measurement_time=parse_timestamp(header_data.measurement_time),
             sample_document=SampleDocument(
                 sample_identifier=measurement.sample_identifier,
                 location_identifier=measurement.location_identifier,

@@ -53,6 +53,7 @@ from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure imp
     ResultPlateInfo,
 )
 from allotropy.parsers.release_state import ReleaseState
+from allotropy.parsers.utils.timestamp_parser import parse_timestamp
 from allotropy.parsers.utils.values import quantity_or_none
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -138,7 +139,7 @@ class PerkinElmerEnvisionParser(VendorParser):
         ]
 
         if dates:
-            return self._get_date_time(min(dates))
+            return parse_timestamp(min(dates))
 
         msg = "Unable to determine the measurement time."
         raise AllotropeConversionError(msg)

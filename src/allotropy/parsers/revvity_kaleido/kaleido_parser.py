@@ -52,6 +52,7 @@ from allotropy.parsers.revvity_kaleido.kaleido_structure import (
     Data,
     ExperimentType,
 )
+from allotropy.parsers.utils.timestamp_parser import parse_timestamp
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
 from allotropy.parsers.vendor_parser import VendorParser
@@ -301,9 +302,7 @@ class KaleidoParser(VendorParser):
     ) -> MeasurementAggregateDocument:
         return MeasurementAggregateDocument(
             container_type=ContainerType.well_plate,
-            measurement_time=self._get_date_time(
-                data.measurement_info.measurement_time
-            ),
+            measurement_time=parse_timestamp(data.measurement_info.measurement_time),
             plate_well_count=TQuantityValueNumber(
                 value=data.results.get_plate_well_count()
             ),
