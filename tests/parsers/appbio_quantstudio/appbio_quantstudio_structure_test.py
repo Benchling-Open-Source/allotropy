@@ -21,7 +21,6 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     Result,
 )
 from allotropy.parsers.lines_reader import LinesReader, read_to_lines
-from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.types import IOType
 from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
     get_broken_calc_doc_data,
@@ -212,7 +211,7 @@ def test_data_builder(
 ) -> None:
     with open(test_filepath, "rb") as raw_contents:
         assert rm_uuid(
-            AppBioQuantStudioParser(TimestampParser()).create_data(
+            AppBioQuantStudioParser().create_data(
                 NamedFileContents(raw_contents, test_filepath)
             )
         ) == rm_uuid(create_expected_data_func(test_filepath))

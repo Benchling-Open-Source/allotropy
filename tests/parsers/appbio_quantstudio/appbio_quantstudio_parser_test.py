@@ -8,7 +8,6 @@ from allotropy.parser_factory import Vendor
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_parser import (
     AppBioQuantStudioParser,
 )
-from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
     get_broken_calc_doc_data,
     get_broken_calc_doc_model,
@@ -45,6 +44,5 @@ VENDOR_TYPE = Vendor.APPBIO_QUANTSTUDIO
     ],
 )
 def test_get_model(data: Data, model: Model) -> None:
-    parser = AppBioQuantStudioParser(TimestampParser())
-    generated = parser._get_mapper().map_model(data)
+    generated = AppBioQuantStudioParser()._get_mapper().map_model(data)
     assert generated == model
