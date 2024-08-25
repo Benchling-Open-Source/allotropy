@@ -9,16 +9,20 @@ from allotropy.testing.utils import from_file, validate_contents
 from allotropy.to_allotrope import allotrope_from_file, allotrope_model_from_file
 
 INVALID_FILE_PATH = "not/a/path"
-EXPECTED_ERROR_MESSAGE = f"File not found: {INVALID_FILE_PATH}"
+
+
+def test_unregistered_vendor() -> None:
+    with pytest.raises(AllotropeConversionError, match="Failed to create parser, unregistered vendor: Invalid vendor."):
+        allotrope_from_file(__file__, "Invalid vendor")
 
 
 def test_allotrope_from_file_not_found() -> None:
-    with pytest.raises(AllotropeConversionError, match=EXPECTED_ERROR_MESSAGE):
+    with pytest.raises(AllotropeConversionError, match=f"File not found: {INVALID_FILE_PATH}"):
         allotrope_from_file(INVALID_FILE_PATH, Vendor.AGILENT_GEN5)
 
 
 def test_allotrope_model_from_file_not_found() -> None:
-    with pytest.raises(AllotropeConversionError, match=EXPECTED_ERROR_MESSAGE):
+    with pytest.raises(AllotropeConversionError, match=f"File not found: {INVALID_FILE_PATH}"):
         allotrope_model_from_file(INVALID_FILE_PATH, Vendor.AGILENT_GEN5)
 
 

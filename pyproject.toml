@@ -61,11 +61,14 @@ target-version = ["py310"]
 skip-string-normalization = true
 
 [tool.coverage.run]
-source_pkgs = ["allotropy", "tests"]
+source_pkgs = ["allotropy"]
 branch = true
 parallel = true
+# timid = true
 omit = [
-  "src/allotropy/__about__.py",
+  "src/allotropy/allotrope/models/*",
+  "__init__.py",
+  "__about__.py",
 ]
 
 [tool.coverage.paths]
@@ -74,8 +77,6 @@ tests = ["tests", "*/allotropy/tests"]
 
 [tool.coverage.report]
 exclude_lines = [
-  "no cov",
-  "if __name__ == .__main__.:",
   "if TYPE_CHECKING:",
 ]
 
@@ -191,6 +192,7 @@ test-cov = "coverage run -m pytest {args:tests}"
 cov-report = [
   "- coverage combine",
   "coverage report",
+  "coverage xml"
 ]
 cov = [
   "test-cov",
