@@ -1024,9 +1024,6 @@ def get_model2() -> Model:
                 ASM_converter_name=ASM_CONVERTER_NAME,
                 ASM_converter_version=ASM_CONVERTER_VERSION,
             ),
-            calculated_data_aggregate_document=TCalculatedDataAggregateDocument(
-                calculated_data_document=[],
-            ),
         ),
         manifest="http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest",
     )
@@ -1383,9 +1380,6 @@ def get_genotyping_model() -> Model:
                 software_version="1.0",
                 ASM_converter_name=ASM_CONVERTER_NAME,
                 ASM_converter_version=ASM_CONVERTER_VERSION,
-            ),
-            calculated_data_aggregate_document=TCalculatedDataAggregateDocument(
-                calculated_data_document=[],
             ),
         ),
         manifest="http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest",
