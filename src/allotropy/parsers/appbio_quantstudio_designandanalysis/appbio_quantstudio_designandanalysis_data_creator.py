@@ -21,6 +21,9 @@ from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_data_creator import (
     _create_processed_data_cubes,
 )
+from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
+    AmplificationData,
+)
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
     DesignQuantstudioReader,
 )
@@ -28,7 +31,6 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.cr
     Creator,
 )
 from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.structure import (
-    AmplificationData,
     Data,
     Header,
     Result,
@@ -89,7 +91,9 @@ def _create_processed_data(
         cycle_threshold_result=result.cycle_threshold_result,
         normalized_reporter_result=result.normalized_reporter_result,
         baseline_corrected_reporter_result=result.baseline_corrected_reporter_result,
-        data_cubes=_create_processed_data_cubes(amplification_data) if amplification_data else None,
+        data_cubes=_create_processed_data_cubes(amplification_data)
+        if amplification_data
+        else None,
     )
 
 

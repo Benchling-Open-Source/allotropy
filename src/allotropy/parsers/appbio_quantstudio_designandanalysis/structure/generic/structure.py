@@ -8,6 +8,9 @@ import pandas as pd
 
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
+    AmplificationData,
+)
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
     DesignQuantstudioReader,
 )
@@ -159,7 +162,7 @@ class WellItem(Referenceable):
 
         amp_data = cls.get_amplification_data_sheet(contents)
         amplification_data = (
-            AmplificationData.create(amp_data, identifier, target_dna_description)
+            create_amplification_data(amp_data, identifier, target_dna_description)
             if amp_data is not None
             else None
         )
@@ -293,40 +296,30 @@ class WellList:
         )
 
 
-@dataclass(frozen=True)
-class AmplificationData:
-    total_cycle_number_setting: float
-    cycle: list[float]
-    rn: list[float | None]
-    delta_rn: list[float | None]
+def create_amplification_data(
+    amplification_data: pd.DataFrame,
+    well_item_id: int,
+    target_dna_description: str,
+) -> AmplificationData:
+    well_data = assert_not_empty_df(
+        amplification_data[
+            assert_df_column(amplification_data, "Well") == well_item_id
+        ],
+        msg=f"Unable to find amplification data for well {well_item_id}.",
+    )
 
-    @staticmethod
-    def create(
-        amplification_data: pd.DataFrame,
-        well_item_id: int,
-        target_dna_description: str,
-    ) -> AmplificationData:
-        well_data = assert_not_empty_df(
-            amplification_data[
-                assert_df_column(amplification_data, "Well") == well_item_id
-            ],
-            msg=f"Unable to find amplification data for well {well_item_id}.",
-        )
+    target_data = assert_not_empty_df(
+        well_data[assert_df_column(well_data, "Target") == target_dna_description],
+        msg=f"Unable to find amplification data for target '{target_dna_description}' in well {well_item_id}.",
+    )
 
-        target_data = assert_not_empty_df(
-            well_data[assert_df_column(well_data, "Target") == target_dna_description],
-            msg=f"Unable to find amplification data for target '{target_dna_description}' in well {well_item_id}.",
-        )
-
-        cycle_number = assert_df_column(target_data, "Cycle Number")
-        return AmplificationData(
-            total_cycle_number_setting=try_float(
-                str(cycle_number.max()), "Cycle Number"
-            ),
-            cycle=cycle_number.tolist(),
-            rn=assert_df_column(target_data, "Rn").tolist(),
-            delta_rn=assert_df_column(target_data, "dRn").tolist(),
-        )
+    cycle_number = assert_df_column(target_data, "Cycle Number")
+    return AmplificationData(
+        total_cycle_number_setting=try_float(str(cycle_number.max()), "Cycle Number"),
+        cycle=cycle_number.tolist(),
+        rn=assert_df_column(target_data, "Rn").tolist(),
+        delta_rn=assert_df_column(target_data, "dRn").tolist(),
+    )
 
 
 @dataclass(frozen=True)

@@ -32,7 +32,9 @@ from allotropy.parsers.utils.calculated_data_documents.definition import (
 from allotropy.parsers.utils.values import try_int_or_nan
 
 
-def _create_processed_data_cubes(amplification_data: AmplificationData) -> list[DataCube]:
+def _create_processed_data_cubes(
+    amplification_data: AmplificationData,
+) -> list[DataCube]:
     cycle_count = DataCubeComponent(FieldComponentDatatype.integer, "cycle count", "#")
     return [
         DataCube(
@@ -64,7 +66,9 @@ def _create_processed_data_cubes(amplification_data: AmplificationData) -> list[
     ]
 
 
-def _create_processed_data(amplification_data: AmplificationData, result: Result) -> ProcessedData:
+def _create_processed_data(
+    amplification_data: AmplificationData, result: Result
+) -> ProcessedData:
     return ProcessedData(
         automatic_cycle_threshold_enabled_setting=result.automatic_cycle_threshold_enabled_setting,
         cycle_threshold_value_setting=result.cycle_threshold_value_setting,
@@ -81,8 +85,8 @@ def _create_processed_data(amplification_data: AmplificationData, result: Result
 def _create_data_cubes(
     multicomponent_data: MulticomponentData | None,
     melt_curve_raw_data: MeltCurveRawData | None,
-    reporter_dye_setting: float | None,
-    passive_reference_dye_setting: float | None
+    reporter_dye_setting: str | None,
+    passive_reference_dye_setting: str | None,
 ) -> list[DataCube]:
     cycle_count = DataCubeComponent(FieldComponentDatatype.integer, "cycle count", "#")
     data_cubes = []
@@ -100,9 +104,7 @@ def _create_data_cubes(
                         )
                     ],
                     dimensions=[multicomponent_data.cycle],
-                    measures=[
-                        multicomponent_data.get_column(reporter_dye_setting)
-                    ],
+                    measures=[multicomponent_data.get_column(reporter_dye_setting)],
                 ),
             )
         if passive_reference_dye_setting is not None:
@@ -119,9 +121,7 @@ def _create_data_cubes(
                     ],
                     dimensions=[multicomponent_data.cycle],
                     measures=[
-                        multicomponent_data.get_column(
-                            passive_reference_dye_setting
-                        )
+                        multicomponent_data.get_column(passive_reference_dye_setting)
                     ],
                 ),
             )
@@ -179,7 +179,12 @@ def _create_measurement(
         quencher_dye_setting=well_item.quencher_dye_setting,
         passive_reference_dye_setting=header.passive_reference_dye_setting,
         processed_data=_create_processed_data(amplification_data, result),
-        data_cubes=_create_data_cubes(multicomponent_data, melt_curve_raw_data, well_item.reporter_dye_setting, header.passive_reference_dye_setting),
+        data_cubes=_create_data_cubes(
+            multicomponent_data,
+            melt_curve_raw_data,
+            well_item.reporter_dye_setting,
+            header.passive_reference_dye_setting,
+        ),
     )
 
 
