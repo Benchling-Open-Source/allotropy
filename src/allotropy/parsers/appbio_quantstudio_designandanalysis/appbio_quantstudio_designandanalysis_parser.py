@@ -4,14 +4,14 @@ from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import 
     Mapper,
 )
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
-    DesignQuantstudioReader,
-)
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_data_creator import (
     create_calculated_data,
     create_data,
     create_measurement_groups,
     create_metadata,
+)
+from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
+    DesignQuantstudioReader,
 )
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.vendor_parser import MapperVendorParser
