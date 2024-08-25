@@ -32,13 +32,41 @@ from allotropy.parsers.utils.calculated_data_documents.definition import (
 from allotropy.parsers.utils.values import try_int_or_nan
 
 
-def _create_processed_data(
-    amplification_data: AmplificationData,
-    result: Result,
-) -> ProcessedData:
+def _create_processed_data_cubes(amplification_data: AmplificationData) -> list[DataCube]:
     cycle_count = DataCubeComponent(FieldComponentDatatype.integer, "cycle count", "#")
+    return [
+        DataCube(
+            label="normalized reporter",
+            structure_dimensions=[cycle_count],
+            structure_measures=[
+                DataCubeComponent(
+                    FieldComponentDatatype.double,
+                    "normalized report result",
+                    UNITLESS,
+                )
+            ],
+            dimensions=[amplification_data.cycle],
+            measures=[amplification_data.rn],
+        ),
+        DataCube(
+            label="baseline corrected reporter",
+            structure_dimensions=[cycle_count],
+            structure_measures=[
+                DataCubeComponent(
+                    FieldComponentDatatype.double,
+                    "baseline corrected reporter result",
+                    UNITLESS,
+                )
+            ],
+            dimensions=[amplification_data.cycle],
+            measures=[amplification_data.delta_rn],
+        ),
+    ]
+
+
+def _create_processed_data(amplification_data: AmplificationData, result: Result) -> ProcessedData:
     return ProcessedData(
-        automatic_cycle_threshold_enabled_setting=result.automatic_baseline_determination_enabled_setting,
+        automatic_cycle_threshold_enabled_setting=result.automatic_cycle_threshold_enabled_setting,
         cycle_threshold_value_setting=result.cycle_threshold_value_setting,
         automatic_baseline_determination_enabled_setting=result.automatic_baseline_determination_enabled_setting,
         genotyping_determination_method_setting=result.genotyping_determination_method_setting,
@@ -46,52 +74,20 @@ def _create_processed_data(
         cycle_threshold_result=result.cycle_threshold_result,
         normalized_reporter_result=result.normalized_reporter_result,
         baseline_corrected_reporter_result=result.baseline_corrected_reporter_result,
-        data_cubes=[
-            DataCube(
-                label="normalized reporter",
-                structure_dimensions=[cycle_count],
-                structure_measures=[
-                    DataCubeComponent(
-                        FieldComponentDatatype.double,
-                        "normalized report result",
-                        UNITLESS,
-                    )
-                ],
-                dimensions=[amplification_data.cycle],
-                measures=[amplification_data.rn],
-            ),
-            DataCube(
-                label="baseline corrected reporter",
-                structure_dimensions=[cycle_count],
-                structure_measures=[
-                    DataCubeComponent(
-                        FieldComponentDatatype.double,
-                        "baseline corrected reporter result",
-                        UNITLESS,
-                    )
-                ],
-                dimensions=[amplification_data.cycle],
-                measures=[amplification_data.delta_rn],
-            ),
-        ],
+        data_cubes=_create_processed_data_cubes(amplification_data),
     )
 
 
-def _create_measurement(
-    well_item: WellItem,
-    header: Header,
+def _create_data_cubes(
     multicomponent_data: MulticomponentData | None,
     melt_curve_raw_data: MeltCurveRawData | None,
-    amplification_data: AmplificationData,
-    result: Result,
-) -> Measurement:
-    # TODO: temp workaround for cal doc result
-    well_item._result = result
-
+    reporter_dye_setting: float | None,
+    passive_reference_dye_setting: float | None
+) -> list[DataCube]:
     cycle_count = DataCubeComponent(FieldComponentDatatype.integer, "cycle count", "#")
     data_cubes = []
     if multicomponent_data:
-        if well_item.reporter_dye_setting is not None:
+        if reporter_dye_setting is not None:
             data_cubes.append(
                 DataCube(
                     label="reporter dye",
@@ -105,11 +101,11 @@ def _create_measurement(
                     ],
                     dimensions=[multicomponent_data.cycle],
                     measures=[
-                        multicomponent_data.get_column(well_item.reporter_dye_setting)
+                        multicomponent_data.get_column(reporter_dye_setting)
                     ],
                 ),
             )
-        if header.passive_reference_dye_setting is not None:
+        if passive_reference_dye_setting is not None:
             data_cubes.append(
                 DataCube(
                     label="passive reference dye",
@@ -124,7 +120,7 @@ def _create_measurement(
                     dimensions=[multicomponent_data.cycle],
                     measures=[
                         multicomponent_data.get_column(
-                            header.passive_reference_dye_setting
+                            passive_reference_dye_setting
                         )
                     ],
                 ),
@@ -155,6 +151,20 @@ def _create_measurement(
             ),
         )
 
+    return data_cubes
+
+
+def _create_measurement(
+    well_item: WellItem,
+    header: Header,
+    multicomponent_data: MulticomponentData | None,
+    melt_curve_raw_data: MeltCurveRawData | None,
+    amplification_data: AmplificationData,
+    result: Result,
+) -> Measurement:
+    # TODO: temp workaround for cal doc result
+    well_item._result = result
+
     return Measurement(
         identifier=well_item.uuid,
         timestamp=header.measurement_time,
@@ -169,7 +179,7 @@ def _create_measurement(
         quencher_dye_setting=well_item.quencher_dye_setting,
         passive_reference_dye_setting=header.passive_reference_dye_setting,
         processed_data=_create_processed_data(amplification_data, result),
-        data_cubes=data_cubes,
+        data_cubes=_create_data_cubes(multicomponent_data, melt_curve_raw_data, well_item.reporter_dye_setting, header.passive_reference_dye_setting),
     )
 
 

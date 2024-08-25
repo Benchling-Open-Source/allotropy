@@ -1,4 +1,5 @@
 {
+    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest",
     "qPCR aggregate document": {
         "device system document": {
             "device identifier": "1",
@@ -641,7 +642,7 @@
                                                 "value": 0.06,
                                                 "unit": "(unitless)"
                                             },
-                                            "automatic cycle threshold enabled setting": true,
+                                            "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true
                                         },
                                         "cycle threshold result": {
@@ -760,7 +761,7 @@
                                                 "value": 0.06,
                                                 "unit": "(unitless)"
                                             },
-                                            "automatic cycle threshold enabled setting": true,
+                                            "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true
                                         },
                                         "cycle threshold result": {
@@ -879,7 +880,7 @@
                                                 "value": 0.06,
                                                 "unit": "(unitless)"
                                             },
-                                            "automatic cycle threshold enabled setting": true,
+                                            "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true
                                         },
                                         "cycle threshold result": {
@@ -998,7 +999,7 @@
                                                 "value": 0.06,
                                                 "unit": "(unitless)"
                                             },
-                                            "automatic cycle threshold enabled setting": true,
+                                            "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true
                                         },
                                         "cycle threshold result": {
@@ -1085,7 +1086,7 @@
             "software name": "Thermo QuantStudio",
             "software version": "1.0",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.27"
+            "ASM converter version": "0.1.49"
         },
         "calculated data aggregate document": {
             "calculated data document": [
@@ -1555,6 +1556,5 @@
                 }
             ]
         }
-    },
-    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest"
+    }
 }

@@ -18,6 +18,9 @@ from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import 
     ProcessedData,
 )
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_data_creator import (
+    _create_processed_data_cubes,
+)
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
     DesignQuantstudioReader,
 )
@@ -75,40 +78,6 @@ def create_metadata(
 def _create_processed_data(
     result: Result, amplification_data: AmplificationData | None
 ) -> ProcessedData:
-    cycle_count = DataCubeComponent(FieldComponentDatatype.integer, "cycle count", "#")
-
-    data_cubes: list[DataCube] = []
-
-    if amplification_data:
-        data_cubes = [
-            DataCube(
-                label="normalized reporter",
-                structure_dimensions=[cycle_count],
-                structure_measures=[
-                    DataCubeComponent(
-                        FieldComponentDatatype.double,
-                        "normalized report result",
-                        UNITLESS,
-                    )
-                ],
-                dimensions=[amplification_data.cycle],
-                measures=[amplification_data.rn],
-            ),
-            DataCube(
-                label="baseline corrected reporter",
-                structure_dimensions=[cycle_count],
-                structure_measures=[
-                    DataCubeComponent(
-                        FieldComponentDatatype.double,
-                        "baseline corrected reporter result",
-                        UNITLESS,
-                    )
-                ],
-                dimensions=[amplification_data.cycle],
-                measures=[amplification_data.delta_rn],
-            ),
-        ]
-
     return ProcessedData(
         automatic_cycle_threshold_enabled_setting=result.automatic_cycle_threshold_enabled_setting,
         cycle_threshold_value_setting=result.cycle_threshold_value_setting,
@@ -120,7 +89,7 @@ def _create_processed_data(
         cycle_threshold_result=result.cycle_threshold_result,
         normalized_reporter_result=result.normalized_reporter_result,
         baseline_corrected_reporter_result=result.baseline_corrected_reporter_result,
-        data_cubes=data_cubes,
+        data_cubes=_create_processed_data_cubes(amplification_data) if amplification_data else None,
     )
 
 
