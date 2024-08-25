@@ -13,7 +13,6 @@ from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure import (
     Title,
 )
 from allotropy.parsers.utils.pandas import SeriesData
-from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.testing.utils import mock_uuid_generation
 from tests.parsers.roche_cedex_bioht.roche_cedex_bioht_data import (
     get_data,
@@ -223,7 +222,7 @@ def test_create_sample() -> None:
 def test_create_data() -> None:
     with mock_uuid_generation():
         assert (
-            RocheCedexBiohtParser(TimestampParser()).create_data(
+            RocheCedexBiohtParser().create_data(
                 NamedFileContents(get_data_stream(), "dummy.txt")
             )
             == get_data()

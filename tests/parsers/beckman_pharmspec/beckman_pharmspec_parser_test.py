@@ -14,16 +14,13 @@ from allotropy.allotrope.models.adm.light_obscuration.benchling._2023._12.light_
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.beckman_pharmspec.beckman_pharmspec_parser import PharmSpecParser
 from allotropy.parsers.beckman_pharmspec.beckman_pharmspec_structure import Header
-from allotropy.parsers.utils.timestamp_parser import TimestampParser
 
 TESTDATA = f"{Path(__file__).parent}/testdata"
 
 
 @pytest.mark.short
 def test_get_model() -> None:
-    parser = PharmSpecParser(TimestampParser())
-
-    model = parser.to_allotrope(
+    model = PharmSpecParser().to_allotrope(
         NamedFileContents(open(Path(TESTDATA, "hiac_example_1.xlsx"), "rb"), "")
     )
     assert isinstance(

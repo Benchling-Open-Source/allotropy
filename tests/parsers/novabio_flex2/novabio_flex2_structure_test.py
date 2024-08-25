@@ -14,7 +14,6 @@ from allotropy.parsers.novabio_flex2.novabio_flex2_structure import (
     SampleList,
     Title,
 )
-from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.testing.utils import mock_uuid_generation
 from tests.parsers.novabio_flex2.novabio_flex2_data import (
     get_data,
@@ -138,7 +137,4 @@ def test_create_sample_list_invalid_no_analyst() -> None:
 def test_create_data() -> None:
     named_file_contents = NamedFileContents(get_input_stream(), get_input_title())
     with mock_uuid_generation():
-        assert (
-            NovaBioFlexParser(TimestampParser()).create_data(named_file_contents)
-            == get_data()
-        )
+        assert NovaBioFlexParser().create_data(named_file_contents) == get_data()
