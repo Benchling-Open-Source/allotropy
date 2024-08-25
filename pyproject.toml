@@ -64,7 +64,6 @@ skip-string-normalization = true
 source_pkgs = ["allotropy"]
 branch = true
 parallel = true
-# timid = true
 omit = [
   "src/allotropy/allotrope/models/*",
   "__init__.py",
