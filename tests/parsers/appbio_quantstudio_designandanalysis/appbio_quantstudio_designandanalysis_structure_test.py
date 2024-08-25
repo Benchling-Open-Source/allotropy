@@ -4,8 +4,8 @@ import pandas as pd
 import pytest
 
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_contents import (
-    DesignQuantstudioContents,
+from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
+    DesignQuantstudioReader,
 )
 from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.structure import (
     Header,
@@ -100,7 +100,7 @@ def test_header_builder_no_header_then_raise() -> None:
 
 
 def test_results_builder() -> None:
-    contents = DesignQuantstudioContents(
+    contents = DesignQuantstudioReader(
         {
             "Results": get_results_sheet(),
             "Standard Curve Result": get_standard_curve_result_sheet(),

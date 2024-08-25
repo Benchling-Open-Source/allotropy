@@ -8,8 +8,8 @@ import pandas as pd
 
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_contents import (
-    DesignQuantstudioContents,
+from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
+    DesignQuantstudioReader,
 )
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.utils.calculated_data_documents.definition import (
@@ -134,14 +134,14 @@ class WellItem(Referenceable):
 
     @classmethod
     def get_amplification_data_sheet(
-        cls, contents: DesignQuantstudioContents
+        cls, contents: DesignQuantstudioReader
     ) -> pd.DataFrame | None:
         return contents.get_non_empty_sheet("Amplification Data")
 
     @classmethod
     def create(
         cls,
-        contents: DesignQuantstudioContents,
+        contents: DesignQuantstudioReader,
         data: SeriesData,
     ) -> WellItem:
         identifier = data[int, "Well"]
@@ -208,7 +208,7 @@ class Well:
     @classmethod
     def create(
         cls,
-        contents: DesignQuantstudioContents,
+        contents: DesignQuantstudioReader,
         header: Header,
         well_data: pd.DataFrame,
         identifier: int,
@@ -267,13 +267,13 @@ class WellList:
         return new_data
 
     @classmethod
-    def get_well_result_data(cls, contents: DesignQuantstudioContents) -> pd.DataFrame:
+    def get_well_result_data(cls, contents: DesignQuantstudioReader) -> pd.DataFrame:
         return contents.get_non_empty_sheet(cls.get_data_sheet())
 
     @classmethod
     def create(
         cls,
-        contents: DesignQuantstudioContents,
+        contents: DesignQuantstudioReader,
         header: Header,
     ) -> WellList:
         results_data = cls.get_well_result_data(contents)
@@ -446,7 +446,7 @@ class Result:
         return None
 
     @staticmethod
-    def get_reference_sample(contents: DesignQuantstudioContents) -> str:
+    def get_reference_sample(contents: DesignQuantstudioReader) -> str:
         data = contents.get_non_empty_sheet("RQ Replicate Group Result")
         reference_data = data[assert_df_column(data, "Rq") == 1]
         reference_sample_array = assert_df_column(reference_data, "Sample").unique()
@@ -458,7 +458,7 @@ class Result:
         return str(reference_sample_array[0])
 
     @staticmethod
-    def get_reference_target(contents: DesignQuantstudioContents) -> str | None:
+    def get_reference_target(contents: DesignQuantstudioReader) -> str | None:
         data = contents.get_non_empty_sheet("RQ Replicate Group Result")
 
         possible_ref_targets = set.intersection(

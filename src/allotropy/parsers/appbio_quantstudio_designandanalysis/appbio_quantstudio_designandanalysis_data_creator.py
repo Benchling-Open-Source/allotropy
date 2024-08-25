@@ -18,8 +18,8 @@ from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import 
     ProcessedData,
 )
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_contents import (
-    DesignQuantstudioContents,
+from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
+    DesignQuantstudioReader,
 )
 from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.creator import (
     Creator,
@@ -254,7 +254,7 @@ def create_calculated_data(data: Data) -> CalculatedData:
     )
 
 
-def create_data(contents: DesignQuantstudioContents) -> Data:
+def create_data(contents: DesignQuantstudioReader) -> Data:
     possible_creators: list[type[Creator]] = [
         StandardCurveCreator,
         RelativeStandardCurveCreator,

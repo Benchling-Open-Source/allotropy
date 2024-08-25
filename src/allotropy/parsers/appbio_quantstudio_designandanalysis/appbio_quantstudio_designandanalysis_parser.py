@@ -4,8 +4,8 @@ from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import 
     Mapper,
 )
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_contents import (
-    DesignQuantstudioContents,
+from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
+    DesignQuantstudioReader,
 )
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_data_creator import (
     create_calculated_data,
@@ -23,7 +23,7 @@ class AppBioQuantStudioDesignandanalysisParser(MapperVendorParser[Data, Model]):
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
-        contents = DesignQuantstudioContents.create(named_file_contents)
+        contents = DesignQuantstudioReader.create(named_file_contents)
         data = create_data(contents)
         return Data(
             create_metadata(

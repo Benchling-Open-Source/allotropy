@@ -2,8 +2,8 @@ from dataclasses import dataclass
 
 import pandas as pd
 
-from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_contents import (
-    DesignQuantstudioContents,
+from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
+    DesignQuantstudioReader,
 )
 from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.structure import (
     Well,
@@ -19,7 +19,7 @@ from allotropy.parsers.utils.pandas import (
 class PrimaryAnalysisWellItem(WellItem):
     @classmethod
     def get_amplification_data_sheet(
-        cls, contents: DesignQuantstudioContents
+        cls, contents: DesignQuantstudioReader
     ) -> pd.DataFrame | None:
         return contents.get_non_empty_sheet_or_none("Amplification Data")
 
@@ -38,7 +38,7 @@ class PrimaryAnalysisWellList(WellList):
         return PrimaryAnalysisWell
 
     @classmethod
-    def get_well_result_data(cls, contents: DesignQuantstudioContents) -> pd.DataFrame:
+    def get_well_result_data(cls, contents: DesignQuantstudioReader) -> pd.DataFrame:
         results_data = super(  # noqa: UP008
             PrimaryAnalysisWellList, cls
         ).get_well_result_data(contents)
