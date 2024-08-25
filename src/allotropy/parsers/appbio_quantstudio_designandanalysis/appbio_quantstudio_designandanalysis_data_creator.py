@@ -234,11 +234,7 @@ def create_measurement_groups(
 def create_calculated_data(data: Data) -> CalculatedData:
     return CalculatedData(
         reference_dna_description=data.reference_target,
-        # TODO: remove condition>?
-        reference_sample_description=data.reference_sample
-        if data.experiment_type
-        is ExperimentType.relative_standard_curve_qPCR_experiment
-        else None,
+        reference_sample_description=data.reference_sample,
         items=[
             CalculatedDataItem(
                 identifier=calc_doc.uuid,
