@@ -21,6 +21,9 @@ from allotropy.parsers.utils.values import (
 
 
 class DesignQuantstudioContents:
+    header: SeriesData
+    data: dict[str, pd.DataFrame]
+
     @staticmethod
     def create(named_file_contents: NamedFileContents) -> DesignQuantstudioContents:
         if not named_file_contents.original_file_name.endswith("xlsx"):
