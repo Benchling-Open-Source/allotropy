@@ -82,76 +82,70 @@ def _create_processed_data(
     )
 
 
-def _create_data_cubes(
-    multicomponent_data: MulticomponentData | None,
-    melt_curve_raw_data: MeltCurveRawData | None,
+def _create_multicomponent_data_cubes(
+    multicomponent_data: MulticomponentData,
     reporter_dye_setting: str | None,
     passive_reference_dye_setting: str | None,
 ) -> list[DataCube]:
     cycle_count = DataCubeComponent(FieldComponentDatatype.integer, "cycle count", "#")
     data_cubes = []
-    if multicomponent_data:
-        if reporter_dye_setting is not None:
-            data_cubes.append(
-                DataCube(
-                    label="reporter dye",
-                    structure_dimensions=[cycle_count],
-                    structure_measures=[
-                        DataCubeComponent(
-                            FieldComponentDatatype.double,
-                            "reporter dye fluorescence",
-                            "RFU",
-                        )
-                    ],
-                    dimensions=[multicomponent_data.cycle],
-                    measures=[multicomponent_data.get_column(reporter_dye_setting)],
-                ),
-            )
-        if passive_reference_dye_setting is not None:
-            data_cubes.append(
-                DataCube(
-                    label="passive reference dye",
-                    structure_dimensions=[cycle_count],
-                    structure_measures=[
-                        DataCubeComponent(
-                            FieldComponentDatatype.double,
-                            "passive reference dye fluorescence",
-                            "RFU",
-                        )
-                    ],
-                    dimensions=[multicomponent_data.cycle],
-                    measures=[
-                        multicomponent_data.get_column(passive_reference_dye_setting)
-                    ],
-                ),
-            )
-
-    if melt_curve_raw_data:
+    if reporter_dye_setting is not None:
         data_cubes.append(
             DataCube(
-                label="melting curve",
-                structure_dimensions=[
-                    DataCubeComponent(
-                        FieldComponentDatatype.double, "temperature", "degrees C"
-                    )
-                ],
+                label="reporter dye",
+                structure_dimensions=[cycle_count],
                 structure_measures=[
                     DataCubeComponent(
                         FieldComponentDatatype.double,
                         "reporter dye fluorescence",
-                        UNITLESS,
-                    ),
-                    DataCubeComponent(FieldComponentDatatype.double, "slope", UNITLESS),
+                        "RFU",
+                    )
                 ],
-                dimensions=[melt_curve_raw_data.reading],
+                dimensions=[multicomponent_data.cycle],
+                measures=[multicomponent_data.get_column(reporter_dye_setting)],
+            ),
+        )
+    if passive_reference_dye_setting is not None:
+        data_cubes.append(
+            DataCube(
+                label="passive reference dye",
+                structure_dimensions=[cycle_count],
+                structure_measures=[
+                    DataCubeComponent(
+                        FieldComponentDatatype.double,
+                        "passive reference dye fluorescence",
+                        "RFU",
+                    )
+                ],
+                dimensions=[multicomponent_data.cycle],
                 measures=[
-                    melt_curve_raw_data.fluorescence,
-                    melt_curve_raw_data.derivative,
+                    multicomponent_data.get_column(passive_reference_dye_setting)
                 ],
             ),
         )
-
     return data_cubes
+
+
+def _create_melt_curve_data_cube(melt_curve_raw_data: MeltCurveRawData) -> DataCube:
+    return DataCube(
+        label="melting curve",
+        structure_dimensions=[
+            DataCubeComponent(FieldComponentDatatype.double, "temperature", "degrees C")
+        ],
+        structure_measures=[
+            DataCubeComponent(
+                FieldComponentDatatype.double,
+                "reporter dye fluorescence",
+                UNITLESS,
+            ),
+            DataCubeComponent(FieldComponentDatatype.double, "slope", UNITLESS),
+        ],
+        dimensions=[melt_curve_raw_data.reading],
+        measures=[
+            melt_curve_raw_data.fluorescence,
+            melt_curve_raw_data.derivative,
+        ],
+    )
 
 
 def _create_measurement(
@@ -164,6 +158,18 @@ def _create_measurement(
 ) -> Measurement:
     # TODO: temp workaround for cal doc result
     well_item._result = result
+
+    data_cubes: list[DataCube] = []
+    if multicomponent_data:
+        data_cubes.extend(
+            _create_multicomponent_data_cubes(
+                multicomponent_data,
+                well_item.reporter_dye_setting,
+                header.passive_reference_dye_setting,
+            )
+        )
+    if melt_curve_raw_data:
+        data_cubes.append(_create_melt_curve_data_cube(melt_curve_raw_data))
 
     return Measurement(
         identifier=well_item.uuid,
@@ -179,12 +185,7 @@ def _create_measurement(
         quencher_dye_setting=well_item.quencher_dye_setting,
         passive_reference_dye_setting=header.passive_reference_dye_setting,
         processed_data=_create_processed_data(amplification_data, result),
-        data_cubes=_create_data_cubes(
-            multicomponent_data,
-            melt_curve_raw_data,
-            well_item.reporter_dye_setting,
-            header.passive_reference_dye_setting,
-        ),
+        data_cubes=data_cubes,
     )
 
 

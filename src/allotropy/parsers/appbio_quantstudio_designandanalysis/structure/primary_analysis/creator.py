@@ -16,13 +16,13 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.primary_an
 
 class PrimaryAnalysisCreator(Creator):
     @classmethod
-    def check_type(cls, contents: DesignQuantstudioReader) -> bool:
-        return list(contents.data.keys()) == ["Results"]
+    def check_type(cls, reader: DesignQuantstudioReader) -> bool:
+        return list(reader.data.keys()) == ["Results"]
 
     @classmethod
-    def create(cls, contents: DesignQuantstudioReader) -> Data:
-        header = Header.create(contents.header)
-        wells = PrimaryAnalysisWellList.create(contents, header)
+    def create(cls, reader: DesignQuantstudioReader) -> Data:
+        header = Header.create(reader.header)
+        wells = PrimaryAnalysisWellList.create(reader, header)
         return Data(
             header,
             wells,

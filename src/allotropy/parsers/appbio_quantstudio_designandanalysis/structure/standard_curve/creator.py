@@ -30,9 +30,9 @@ class StandardCurveCreator(Creator):
     ]
 
     @classmethod
-    def create(cls, contents: DesignQuantstudioReader) -> Data:
-        header = Header.create(contents.header)
-        wells = StandardCurveWellList.create(contents, header)
+    def create(cls, reader: DesignQuantstudioReader) -> Data:
+        header = Header.create(reader.header)
+        wells = StandardCurveWellList.create(reader, header)
         well_items = wells.get_well_items()
 
         return Data(

@@ -19,10 +19,12 @@ from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import 
 )
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_data_creator import (
+    _create_multicomponent_data_cubes,
     _create_processed_data_cubes,
 )
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     AmplificationData,
+    MeltCurveRawData,
 )
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
     DesignQuantstudioReader,
@@ -97,73 +99,36 @@ def _create_processed_data(
     )
 
 
+def _create_melt_curve_data_cube(melt_curve_raw_data: MeltCurveRawData) -> DataCube:
+    return DataCube(
+        label="melting curve",
+        structure_dimensions=[
+            DataCubeComponent(FieldComponentDatatype.double, "temperature", "degC")
+        ],
+        structure_measures=[
+            DataCubeComponent(FieldComponentDatatype.double, "fluorescence", "RFU"),
+            DataCubeComponent(FieldComponentDatatype.double, "derivative", UNITLESS),
+        ],
+        dimensions=[melt_curve_raw_data.temperature],
+        measures=[
+            melt_curve_raw_data.fluorescence,
+            melt_curve_raw_data.derivative,
+        ],
+    )
+
+
 def _create_measurement(well: Well, well_item: WellItem, header: Header) -> Measurement:
-    cycle_count = DataCubeComponent(FieldComponentDatatype.integer, "cycle count", "#")
-    data_cubes = []
-    if well.multicomponent_data and well_item.reporter_dye_setting is not None:
-        data_cubes.append(
-            DataCube(
-                label="reporter dye",
-                structure_dimensions=[cycle_count],
-                structure_measures=[
-                    DataCubeComponent(
-                        FieldComponentDatatype.double,
-                        "reporter dye fluorescence",
-                        "RFU",
-                    )
-                ],
-                dimensions=[well.multicomponent_data.cycle],
-                measures=[
-                    well.multicomponent_data.get_column(well_item.reporter_dye_setting)
-                ],
-            ),
+    data_cubes: list[DataCube] = []
+    if well.multicomponent_data:
+        data_cubes.extend(
+            _create_multicomponent_data_cubes(
+                well.multicomponent_data,
+                well_item.reporter_dye_setting,
+                header.passive_reference_dye_setting,
+            )
         )
-
-    if well.multicomponent_data and header.passive_reference_dye_setting is not None:
-        data_cubes.append(
-            DataCube(
-                label="passive reference dye",
-                structure_dimensions=[cycle_count],
-                structure_measures=[
-                    DataCubeComponent(
-                        FieldComponentDatatype.double,
-                        "passive reference dye fluorescence",
-                        "RFU",
-                    )
-                ],
-                dimensions=[well.multicomponent_data.cycle],
-                measures=[
-                    well.multicomponent_data.get_column(
-                        header.passive_reference_dye_setting
-                    )
-                ],
-            ),
-        )
-
     if well_item.melt_curve_data:
-        data_cubes.append(
-            DataCube(
-                label="melting curve",
-                structure_dimensions=[
-                    DataCubeComponent(
-                        FieldComponentDatatype.double, "temperature", "degC"
-                    )
-                ],
-                structure_measures=[
-                    DataCubeComponent(
-                        FieldComponentDatatype.double, "fluorescence", "RFU"
-                    ),
-                    DataCubeComponent(
-                        FieldComponentDatatype.double, "derivative", UNITLESS
-                    ),
-                ],
-                dimensions=[well_item.melt_curve_data.temperature],
-                measures=[
-                    well_item.melt_curve_data.fluorescence,
-                    well_item.melt_curve_data.derivative,
-                ],
-            ),
-        )
+        data_cubes.append(_create_melt_curve_data_cube(well_item.melt_curve_data))
 
     return Measurement(
         identifier=well_item.uuid,

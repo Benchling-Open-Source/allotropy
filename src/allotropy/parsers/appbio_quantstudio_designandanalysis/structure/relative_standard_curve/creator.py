@@ -30,13 +30,13 @@ class RelativeStandardCurveCreator(Creator):
     ]
 
     @classmethod
-    def create(cls, contents: DesignQuantstudioReader) -> Data:
-        header = Header.create(contents.header)
-        wells = RelativeStandardCurveWellList.create(contents, header)
+    def create(cls, reader: DesignQuantstudioReader) -> Data:
+        header = Header.create(reader.header)
+        wells = RelativeStandardCurveWellList.create(reader, header)
         well_items = wells.get_well_items()
 
-        r_sample = Result.get_reference_sample(contents)
-        r_target = Result.get_reference_target(contents)
+        r_sample = Result.get_reference_sample(reader)
+        r_target = Result.get_reference_target(reader)
 
         return Data(
             header,

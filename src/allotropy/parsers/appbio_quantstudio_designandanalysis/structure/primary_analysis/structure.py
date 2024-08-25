@@ -19,9 +19,9 @@ from allotropy.parsers.utils.pandas import (
 class PrimaryAnalysisWellItem(WellItem):
     @classmethod
     def get_amplification_data_sheet(
-        cls, contents: DesignQuantstudioReader
+        cls, reader: DesignQuantstudioReader
     ) -> pd.DataFrame | None:
-        return contents.get_non_empty_sheet_or_none("Amplification Data")
+        return reader.get_non_empty_sheet_or_none("Amplification Data")
 
 
 @dataclass
@@ -38,10 +38,10 @@ class PrimaryAnalysisWellList(WellList):
         return PrimaryAnalysisWell
 
     @classmethod
-    def get_well_result_data(cls, contents: DesignQuantstudioReader) -> pd.DataFrame:
+    def get_well_result_data(cls, reader: DesignQuantstudioReader) -> pd.DataFrame:
         results_data = super(  # noqa: UP008
             PrimaryAnalysisWellList, cls
-        ).get_well_result_data(contents)
+        ).get_well_result_data(reader)
 
         if "Well" not in results_data:
             pos = assert_df_column(results_data, "Well Position")

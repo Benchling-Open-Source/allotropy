@@ -45,10 +45,10 @@ class PresenceAbsenceWellList(WellList):
         return PresenceAbsenceWell
 
     @classmethod
-    def get_well_result_data(cls, contents: DesignQuantstudioReader) -> pd.DataFrame:
+    def get_well_result_data(cls, reader: DesignQuantstudioReader) -> pd.DataFrame:
         return cls._add_data(
-            data=contents.get_non_empty_sheet(cls.get_data_sheet()),
-            extra_data=contents.get_non_empty_sheet("Target Call"),
+            data=reader.get_non_empty_sheet(cls.get_data_sheet()),
+            extra_data=reader.get_non_empty_sheet("Target Call"),
             columns=[
                 "Call",
             ],

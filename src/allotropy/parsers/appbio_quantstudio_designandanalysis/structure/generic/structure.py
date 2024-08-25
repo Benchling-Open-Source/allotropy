@@ -137,14 +137,14 @@ class WellItem(Referenceable):
 
     @classmethod
     def get_amplification_data_sheet(
-        cls, contents: DesignQuantstudioReader
+        cls, reader: DesignQuantstudioReader
     ) -> pd.DataFrame | None:
-        return contents.get_non_empty_sheet("Amplification Data")
+        return reader.get_non_empty_sheet("Amplification Data")
 
     @classmethod
     def create(
         cls,
-        contents: DesignQuantstudioReader,
+        reader: DesignQuantstudioReader,
         data: SeriesData,
     ) -> WellItem:
         identifier = data[int, "Well"]
@@ -160,14 +160,14 @@ class WellItem(Referenceable):
             f"Unable to find well position for Well '{identifier}'.",
         ]
 
-        amp_data = cls.get_amplification_data_sheet(contents)
+        amp_data = cls.get_amplification_data_sheet(reader)
         amplification_data = (
             create_amplification_data(amp_data, identifier, target_dna_description)
             if amp_data is not None
             else None
         )
 
-        melt_data = contents.get_non_empty_sheet_or_none("Melt Curve Raw")
+        melt_data = reader.get_non_empty_sheet_or_none("Melt Curve Raw")
         melt_curve_data = (
             MeltCurveData.create(melt_data, identifier, target_dna_description)
             if melt_data is not None
@@ -211,7 +211,7 @@ class Well:
     @classmethod
     def create(
         cls,
-        contents: DesignQuantstudioReader,
+        reader: DesignQuantstudioReader,
         header: Header,
         well_data: pd.DataFrame,
         identifier: int,
@@ -219,12 +219,12 @@ class Well:
         well_item_class = cls.get_well_item_class()
         well_items = {
             SeriesData(item_data)[str, "Target"]: well_item_class.create(
-                contents,
+                reader,
                 SeriesData(item_data),
             )
             for _, item_data in well_data.iterrows()
         }
-        multi_data = contents.get_non_empty_sheet_or_none("Multicomponent")
+        multi_data = reader.get_non_empty_sheet_or_none("Multicomponent")
         return Well(
             identifier=identifier,
             items=well_items,
@@ -270,23 +270,23 @@ class WellList:
         return new_data
 
     @classmethod
-    def get_well_result_data(cls, contents: DesignQuantstudioReader) -> pd.DataFrame:
-        return contents.get_non_empty_sheet(cls.get_data_sheet())
+    def get_well_result_data(cls, reader: DesignQuantstudioReader) -> pd.DataFrame:
+        return reader.get_non_empty_sheet(cls.get_data_sheet())
 
     @classmethod
     def create(
         cls,
-        contents: DesignQuantstudioReader,
+        reader: DesignQuantstudioReader,
         header: Header,
     ) -> WellList:
-        results_data = cls.get_well_result_data(contents)
+        results_data = cls.get_well_result_data(reader)
         assert_df_column(results_data, "Well")
 
         well_class = cls.get_well_class()
         return WellList(
             wells=[
                 well_class.create(
-                    contents,
+                    reader,
                     header,
                     well_data,
                     try_int(str(identifier), "well identifier"),
@@ -439,8 +439,8 @@ class Result:
         return None
 
     @staticmethod
-    def get_reference_sample(contents: DesignQuantstudioReader) -> str:
-        data = contents.get_non_empty_sheet("RQ Replicate Group Result")
+    def get_reference_sample(reader: DesignQuantstudioReader) -> str:
+        data = reader.get_non_empty_sheet("RQ Replicate Group Result")
         reference_data = data[assert_df_column(data, "Rq") == 1]
         reference_sample_array = assert_df_column(reference_data, "Sample").unique()
 
@@ -451,8 +451,8 @@ class Result:
         return str(reference_sample_array[0])
 
     @staticmethod
-    def get_reference_target(contents: DesignQuantstudioReader) -> str | None:
-        data = contents.get_non_empty_sheet("RQ Replicate Group Result")
+    def get_reference_target(reader: DesignQuantstudioReader) -> str | None:
+        data = reader.get_non_empty_sheet("RQ Replicate Group Result")
 
         possible_ref_targets = set.intersection(
             *[

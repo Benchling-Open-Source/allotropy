@@ -21,9 +21,9 @@ class MeltCurveCreator(Creator):
     ]
 
     @classmethod
-    def create(cls, contents: DesignQuantstudioReader) -> Data:
-        header = Header.create(contents.header)
-        wells = WellList.create(contents, header)
+    def create(cls, reader: DesignQuantstudioReader) -> Data:
+        header = Header.create(reader.header)
+        wells = WellList.create(reader, header)
         return Data(
             header,
             wells,

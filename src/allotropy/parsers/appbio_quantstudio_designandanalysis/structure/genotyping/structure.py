@@ -46,9 +46,9 @@ class GenotypingWellList(WellList):
         return GenotypingWell
 
     @classmethod
-    def get_well_result_data(cls, contents: DesignQuantstudioReader) -> pd.DataFrame:
-        data = contents.get_non_empty_sheet(cls.get_data_sheet())
-        genotyping_result = contents.get_non_empty_sheet("Genotyping Result")
+    def get_well_result_data(cls, reader: DesignQuantstudioReader) -> pd.DataFrame:
+        data = reader.get_non_empty_sheet(cls.get_data_sheet())
+        genotyping_result = reader.get_non_empty_sheet("Genotyping Result")
 
         # The genotyping result data does not contain a target column
         # it can be constructed concatenating SNP assay column and the strings Allele 1/2

@@ -32,9 +32,9 @@ class PresenceAbsenceCreator(Creator):
     ]
 
     @classmethod
-    def create(cls, contents: DesignQuantstudioReader) -> Data:
-        header = Header.create(contents.header)
-        wells = PresenceAbsenceWellList.create(contents, header)
+    def create(cls, reader: DesignQuantstudioReader) -> Data:
+        header = Header.create(reader.header)
+        wells = PresenceAbsenceWellList.create(reader, header)
         well_items = wells.get_well_items()
         return Data(
             header,
