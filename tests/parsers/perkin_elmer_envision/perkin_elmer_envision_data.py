@@ -78,7 +78,7 @@ def get_data() -> Data:
                     result_list=ResultList(
                         [
                             Result(
-                                uuid="80d11e7d-734c-4506-8087-335769da996c",
+                                uuid="TEST_ID_0",
                                 col="A",
                                 row="01",
                                 value=31441,
@@ -110,7 +110,7 @@ def get_data() -> Data:
                     result_list=ResultList(
                         [
                             Result(
-                                uuid="f2d4dd7c-0b02-4bd6-a6c5-8acd944e8d56",
+                                uuid="TEST_ID_1",
                                 col="A",
                                 row="01",
                                 value=80368,
@@ -140,7 +140,7 @@ def get_data() -> Data:
                     calculated_result_list=CalculatedResultList(
                         calculated_results=[
                             CalculatedResult(
-                                uuid="",
+                                uuid="TEST_ID_2",
                                 col="A",
                                 row="01",
                                 value=3,
@@ -210,7 +210,7 @@ def get_model() -> Model:
                         plate_well_count=TQuantityValueNumber(value=96.0),
                         measurement_document=[
                             FluorescencePointDetectionMeasurementDocumentItems(
-                                measurement_identifier="",
+                                measurement_identifier="TEST_ID_0",
                                 device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
                                     device_control_document=[
                                         FluorescencePointDetectionDeviceControlDocumentItem(
@@ -258,7 +258,7 @@ def get_model() -> Model:
                                 ),
                             ),
                             FluorescencePointDetectionMeasurementDocumentItems(
-                                measurement_identifier="",
+                                measurement_identifier="TEST_ID_1",
                                 device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
                                     device_control_document=[
                                         FluorescencePointDetectionDeviceControlDocumentItem(
@@ -314,12 +314,12 @@ def get_model() -> Model:
                     CalculatedDataDocumentItem(
                         calculated_data_name="Calc 1: General",
                         calculation_description="Calc 1: General = (X / Y) where X = AC HTRF Laser [Eu](1) Y = AC HTRF Laser [Eu](1)",
-                        calculated_data_identifier="",
+                        calculated_data_identifier="TEST_ID_2",
                         calculated_result=TQuantityValueUnitless(value=3),
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="f2d4dd7c-0b02-4bd6-a6c5-8acd944e8d56",
+                                    data_source_identifier="TEST_ID_1",
                                     data_source_feature=ReadType.FLUORESCENCE.value,
                                 )
                             ]

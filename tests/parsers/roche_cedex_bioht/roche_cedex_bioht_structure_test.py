@@ -1,5 +1,3 @@
-from unittest import mock
-
 import pandas as pd
 import pytest
 
@@ -15,6 +13,7 @@ from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure import (
     Title,
 )
 from allotropy.parsers.utils.pandas import SeriesData
+from allotropy.testing.utils import mock_uuid_generation
 from tests.parsers.roche_cedex_bioht.roche_cedex_bioht_data import (
     get_data,
     get_data_stream,
@@ -212,10 +211,7 @@ def test_create_sample() -> None:
 
 
 def test_create_data() -> None:
-    with mock.patch(
-        "allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure.random_uuid_str",
-        return_value="dummy_id",
-    ):
+    with mock_uuid_generation():
         assert (
             RocheCedexBiohtParser().create_data(
                 NamedFileContents(get_data_stream(), "dummy.txt")
