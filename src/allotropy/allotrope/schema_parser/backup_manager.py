@@ -65,7 +65,7 @@ def backup_paths(
     backup_paths = [_backup_file(path) for path in paths]
     try:
         yield backup_paths
-    except Exception:
+    except (Exception, KeyboardInterrupt):
         for backup in backup_paths:
             backup.unlink(missing_ok=True)
         raise
