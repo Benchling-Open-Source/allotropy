@@ -248,30 +248,32 @@ class AmplificationData:
     rn: list[float | None]
     delta_rn: list[float | None]
 
-    @staticmethod
-    def create(reader: LinesReader) -> dict[int, dict[str, AmplificationData]]:
-        assert_not_none(
-            reader.drop_until(r"^\[Amplification Data\]"),
-            msg="Unable to find 'Amplification Data' section in file.",
-        )
 
-        reader.pop()  # remove title
-        lines = list(reader.pop_until(r"^\[.+\]"))
-        csv_stream = StringIO("\n".join(lines))
-        data = read_csv(csv_stream, sep="\t", thousands=r",")
+def create_amplification_data(
+    reader: LinesReader,
+) -> dict[int, dict[str, AmplificationData]]:
+    assert_not_none(
+        reader.drop_until(r"^\[Amplification Data\]"),
+        msg="Unable to find 'Amplification Data' section in file.",
+    )
 
-        def make_data(well_data: pd.DataFrame) -> dict[str, AmplificationData]:
-            return {
-                str(target_name): AmplificationData(
-                    total_cycle_number_setting=float(target_data["Cycle"].max()),
-                    cycle=target_data["Cycle"].tolist(),
-                    rn=target_data["Rn"].tolist(),
-                    delta_rn=target_data["Delta Rn"].tolist(),
-                )
-                for target_name, target_data in well_data.groupby("Target Name")
-            }
+    reader.pop()  # remove title
+    lines = list(reader.pop_until(r"^\[.+\]"))
+    csv_stream = StringIO("\n".join(lines))
+    data = read_csv(csv_stream, sep="\t", thousands=r",")
 
-        return map_wells(make_data, data)
+    def make_data(well_data: pd.DataFrame) -> dict[str, AmplificationData]:
+        return {
+            str(target_name): AmplificationData(
+                total_cycle_number_setting=float(target_data["Cycle"].max()),
+                cycle=target_data["Cycle"].tolist(),
+                rn=target_data["Rn"].tolist(),
+                delta_rn=target_data["Delta Rn"].tolist(),
+            )
+            for target_name, target_data in well_data.groupby("Target Name")
+        }
+
+    return map_wells(make_data, data)
 
 
 @dataclass(frozen=True)
@@ -285,26 +287,26 @@ class MulticomponentData:
             msg=f"Unable to obtain '{name}' from multicomponent data.",
         )
 
-    @staticmethod
-    def create(reader: LinesReader) -> dict[int, MulticomponentData]:
-        if not reader.match(r"^\[Multicomponent Data\]"):
-            return {}
-        reader.pop()  # remove title
-        lines = list(reader.pop_until(r"^\[.+\]"))
-        csv_stream = StringIO("\n".join(lines))
-        data = read_csv(csv_stream, sep="\t", thousands=r",")
 
-        def make_data(well_data: pd.Series[Any]) -> MulticomponentData:
-            return MulticomponentData(
-                cycle=well_data["Cycle"].tolist(),
-                columns={
-                    name: well_data[name].tolist()
-                    for name in well_data
-                    if name not in ["Well", "Cycle", "Well Position"]
-                },
-            )
+def create_multicomponent_data(reader: LinesReader) -> dict[int, MulticomponentData]:
+    if not reader.match(r"^\[Multicomponent Data\]"):
+        return {}
+    reader.pop()  # remove title
+    lines = list(reader.pop_until(r"^\[.+\]"))
+    csv_stream = StringIO("\n".join(lines))
+    data = read_csv(csv_stream, sep="\t", thousands=r",")
 
-        return map_wells(make_data, data)
+    def make_data(well_data: pd.Series[Any]) -> MulticomponentData:
+        return MulticomponentData(
+            cycle=well_data["Cycle"].tolist(),
+            columns={
+                name: well_data[name].tolist()
+                for name in well_data
+                if name not in ["Well", "Cycle", "Well Position"]
+            },
+        )
+
+    return map_wells(make_data, data)
 
 
 @dataclass(frozen=True)
