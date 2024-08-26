@@ -20,6 +20,7 @@ from allotropy.parsers.vendor_parser import MapperVendorParser
 class AgilentTapestationAnalysisParser(MapperVendorParser[Data, Model]):
     DISPLAY_NAME = "Agilent TapeStation Analysis"
     RELEASE_STATE = ReleaseState.RECOMMENDED
+    SUPPORTED_EXTENSIONS = "xml"
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:

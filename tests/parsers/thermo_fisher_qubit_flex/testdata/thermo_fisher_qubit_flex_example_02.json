@@ -18,18 +18,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.76123674997,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -51,6 +51,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.76123674997,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 968.243447194,
                                         "unit": "RFU"
                                     },
@@ -83,18 +87,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.83263823983,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -116,6 +120,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.83263823983,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 1011.24211785,
                                         "unit": "RFU"
                                     },
@@ -148,18 +156,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.78503724659,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -181,6 +189,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.78503724659,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 967.148849047,
                                         "unit": "RFU"
                                     },
@@ -213,18 +225,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.80883774321,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -246,6 +258,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.80883774321,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 982.615996767,
                                         "unit": "RFU"
                                     },
@@ -278,18 +294,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.76123674997,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -311,6 +327,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.76123674997,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 957.939947254,
                                         "unit": "RFU"
                                     },
@@ -343,18 +363,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.66603476348,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -376,6 +396,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.66603476348,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 855.35706446,
                                         "unit": "RFU"
                                     },
@@ -408,18 +432,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.47563079051,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -441,6 +465,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.47563079051,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 814.547590094,
                                         "unit": "RFU"
                                     },
@@ -473,18 +501,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.49943128713,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -506,6 +534,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.49943128713,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 790.63300016,
                                         "unit": "RFU"
                                     },
@@ -538,18 +570,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.76123674997,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -571,6 +603,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.76123674997,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 968.243447194,
                                         "unit": "RFU"
                                     },
@@ -603,18 +639,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.83263823983,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -636,6 +672,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.83263823983,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 1011.24211785,
                                         "unit": "RFU"
                                     },
@@ -668,18 +708,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.78503724659,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -701,6 +741,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.78503724659,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 967.148849047,
                                         "unit": "RFU"
                                     },
@@ -733,18 +777,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.80883774321,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -766,6 +810,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.80883774321,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 982.615996767,
                                         "unit": "RFU"
                                     },
@@ -798,18 +846,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.76123674997,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -831,6 +879,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.76123674997,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 957.939947254,
                                         "unit": "RFU"
                                     },
@@ -863,18 +915,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.66603476348,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -896,6 +948,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.66603476348,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 855.35706446,
                                         "unit": "RFU"
                                     },
@@ -928,18 +984,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.47563079051,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -961,6 +1017,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.47563079051,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 814.547590094,
                                         "unit": "RFU"
                                     },
@@ -993,18 +1053,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.49943128713,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -1026,6 +1086,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.49943128713,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 790.63300016,
                                         "unit": "RFU"
                                     },
@@ -1058,18 +1122,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.76123674997,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -1091,6 +1155,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.76123674997,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 968.243447194,
                                         "unit": "RFU"
                                     },
@@ -1123,18 +1191,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.83263823983,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -1156,6 +1224,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.83263823983,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 1011.24211785,
                                         "unit": "RFU"
                                     },
@@ -1188,18 +1260,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.78503724659,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -1221,6 +1293,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.78503724659,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 967.148849047,
                                         "unit": "RFU"
                                     },
@@ -1253,18 +1329,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.80883774321,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -1286,6 +1362,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.80883774321,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 982.615996767,
                                         "unit": "RFU"
                                     },
@@ -1318,18 +1398,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.76123674997,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -1351,6 +1431,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.76123674997,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 957.939947254,
                                         "unit": "RFU"
                                     },
@@ -1383,18 +1467,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.66603476348,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -1416,6 +1500,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.66603476348,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 855.35706446,
                                         "unit": "RFU"
                                     },
@@ -1448,18 +1536,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.47563079051,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -1481,6 +1569,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.47563079051,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 814.547590094,
                                         "unit": "RFU"
                                     },
@@ -1513,18 +1605,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.49943128713,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -1546,6 +1638,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.49943128713,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 790.63300016,
                                         "unit": "RFU"
                                     },
@@ -1578,18 +1674,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.76123674997,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -1611,6 +1707,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.76123674997,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 968.243447194,
                                         "unit": "RFU"
                                     },
@@ -1643,18 +1743,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.83263823983,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -1676,6 +1776,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.83263823983,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 1011.24211785,
                                         "unit": "RFU"
                                     },
@@ -1708,18 +1812,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.78503724659,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -1741,6 +1845,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.78503724659,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 967.148849047,
                                         "unit": "RFU"
                                     },
@@ -1773,18 +1881,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.80883774321,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -1806,6 +1914,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.80883774321,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 982.615996767,
                                         "unit": "RFU"
                                     },
@@ -1838,18 +1950,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.76123674997,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -1871,6 +1983,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.76123674997,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 957.939947254,
                                         "unit": "RFU"
                                     },
@@ -1903,18 +2019,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.66603476348,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -1936,6 +2052,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.66603476348,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 855.35706446,
                                         "unit": "RFU"
                                     },
@@ -1968,18 +2088,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.47563079051,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -2001,6 +2121,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.47563079051,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 814.547590094,
                                         "unit": "RFU"
                                     },
@@ -2033,18 +2157,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.49943128713,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -2066,6 +2190,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.49943128713,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 790.63300016,
                                         "unit": "RFU"
                                     },
@@ -2098,18 +2226,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.76123674997,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -2131,6 +2259,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.76123674997,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 968.243447194,
                                         "unit": "RFU"
                                     },
@@ -2163,18 +2295,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.83263823983,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -2196,6 +2328,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.83263823983,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 1011.24211785,
                                         "unit": "RFU"
                                     },
@@ -2228,18 +2364,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.78503724659,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -2261,6 +2397,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.78503724659,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 967.148849047,
                                         "unit": "RFU"
                                     },
@@ -2293,18 +2433,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.80883774321,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -2326,6 +2466,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.80883774321,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 982.615996767,
                                         "unit": "RFU"
                                     },
@@ -2358,18 +2502,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.76123674997,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -2391,6 +2535,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.76123674997,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 957.939947254,
                                         "unit": "RFU"
                                     },
@@ -2423,18 +2571,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.66603476348,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -2456,6 +2604,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.66603476348,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 855.35706446,
                                         "unit": "RFU"
                                     },
@@ -2488,18 +2640,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.47563079051,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -2521,6 +2673,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.47563079051,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 814.547590094,
                                         "unit": "RFU"
                                     },
@@ -2553,18 +2709,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.49943128713,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -2586,6 +2742,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.49943128713,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 790.63300016,
                                         "unit": "RFU"
                                     },
@@ -2618,18 +2778,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.76123674997,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -2651,6 +2811,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.76123674997,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 968.243447194,
                                         "unit": "RFU"
                                     },
@@ -2683,18 +2847,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.83263823983,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -2716,6 +2880,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.83263823983,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 1011.24211785,
                                         "unit": "RFU"
                                     },
@@ -2748,18 +2916,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.78503724659,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -2781,6 +2949,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.78503724659,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 967.148849047,
                                         "unit": "RFU"
                                     },
@@ -2813,18 +2985,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.80883774321,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -2846,6 +3018,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.80883774321,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 982.615996767,
                                         "unit": "RFU"
                                     },
@@ -2878,18 +3054,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.76123674997,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -2911,6 +3087,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.76123674997,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 957.939947254,
                                         "unit": "RFU"
                                     },
@@ -2943,18 +3123,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.66603476348,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -2976,6 +3156,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.66603476348,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 855.35706446,
                                         "unit": "RFU"
                                     },
@@ -3008,18 +3192,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.47563079051,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -3041,6 +3225,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.47563079051,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 814.547590094,
                                         "unit": "RFU"
                                     },
@@ -3073,18 +3261,18 @@
                                                 "unit": "μL"
                                             },
                                             "operating minimum": {
-                                                "value": "0.1-50.0",
+                                                "value": "0.05-0.1",
                                                 "unit": "ng/µL"
                                             },
                                             "operating range": {
-                                                "value": "50.0-60.0",
+                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
-                                                "value": "BLUE",
+                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.49943128713,
+                                            "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
                                                 "unit": "(unitless)"
@@ -3106,6 +3294,10 @@
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
+                                        "value": 1.49943128713,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
                                         "value": 790.63300016,
                                         "unit": "RFU"
                                     },
@@ -3133,7 +3325,7 @@
             "file name": "thermo_fisher_qubit_flex_example_02.xlsx",
             "software name": "Qubit Flex software",
             "ASM converter name": "allotropy_thermo_fisher_qubit_flex",
-            "ASM converter version": "0.1.38"
+            "ASM converter version": "0.1.49"
         }
     }
 }

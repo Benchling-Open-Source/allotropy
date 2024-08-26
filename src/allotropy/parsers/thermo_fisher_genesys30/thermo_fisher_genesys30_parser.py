@@ -21,6 +21,7 @@ from allotropy.parsers.vendor_parser import MapperVendorParser
 class ThermoFisherGenesys30Parser(MapperVendorParser[Data, Model]):
     DISPLAY_NAME = DISPLAY_NAME
     RELEASE_STATE = ReleaseState.WORKING_DRAFT
+    SUPPORTED_EXTENSIONS = ThermoFisherGenesys30Reader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:

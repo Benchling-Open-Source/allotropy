@@ -5,6 +5,7 @@ from allotropy.parsers.utils.pandas import parse_header_row, read_excel, SeriesD
 
 
 class BeckmanPharmspecReader:
+    SUPPORTED_EXTENSIONS = "xlsx"
     data: pd.DataFrame
     header: SeriesData
 

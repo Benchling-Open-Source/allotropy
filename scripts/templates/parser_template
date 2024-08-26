@@ -22,6 +22,7 @@ from allotropy.parsers.vendor_parser import MapperVendorParser
 class $CLASS_NAME_PREFIX$Parser(MapperVendorParser[Data, Model]):
     DISPLAY_NAME = DISPLAY_NAME
     RELEASE_STATE = ReleaseState.WORKING_DRAFT
+    SUPPORTED_EXTENSIONS = $CLASS_NAME_PREFIX$Reader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:

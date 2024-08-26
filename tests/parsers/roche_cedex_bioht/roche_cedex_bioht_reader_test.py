@@ -1,5 +1,3 @@
-import pytest
-
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import (
     RocheCedexBiohtReader,
 )
@@ -10,7 +8,6 @@ from tests.parsers.roche_cedex_bioht.roche_cedex_bioht_data import (
 )
 
 
-@pytest.mark.short
 def test_data_reader() -> None:
     reader = RocheCedexBiohtReader(get_data_stream())
 

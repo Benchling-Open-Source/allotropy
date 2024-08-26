@@ -21,6 +21,7 @@ from allotropy.parsers.vendor_parser import MapperVendorParser
 class ThermoFisherQubit4Parser(MapperVendorParser[Data, Model]):
     DISPLAY_NAME = "Thermo Fisher Qubit 4"
     RELEASE_STATE = ReleaseState.RECOMMENDED
+    SUPPORTED_EXTENSIONS = ThermoFisherQubit4Reader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:

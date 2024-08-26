@@ -24,6 +24,7 @@ from allotropy.parsers.vendor_parser import MapperVendorParser
 class ExampleWeylandYutaniParser(MapperVendorParser[Data, Model]):
     DISPLAY_NAME = "Example Weyland Yutani"
     RELEASE_STATE = ReleaseState.WORKING_DRAFT
+    SUPPORTED_EXTENSIONS = ExampleWeylandYutaniReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:

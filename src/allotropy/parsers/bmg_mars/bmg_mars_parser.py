@@ -66,6 +66,7 @@ def safe_value(cls: type[T], value: Any | None) -> T | None:
 class BmgMarsParser(VendorParser):
     DISPLAY_NAME = "BMG MARS"
     RELEASE_STATE = ReleaseState.RECOMMENDED
+    SUPPORTED_EXTENSIONS = "csv"
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         filename = named_file_contents.original_file_name

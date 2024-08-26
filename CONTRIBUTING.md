@@ -82,8 +82,6 @@ it must be included in the README. This can be done automatically via:
 hatch run scripts:update-readme
 ```
 
-If the parser is not in the `RECOMMENDED` state, it must be added to `NON_READY_PARSERS` in `tests/parser_factory_test.py`
-
 # Error messaging
 
 We ask that all error messages thrown in exceptions are written to be clear and useful to developers and end users. As such, please follow these guidelines. `AllotropeConversionError` and helper functions can be found in [`exceptions.py`](src/allotropy/exceptions.py) (and as always, we welcome any additions you may have).

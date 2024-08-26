@@ -12,7 +12,6 @@ from allotropy.parsers.agilent_gen5_image.constants import DetectionType
 from allotropy.parsers.lines_reader import LinesReader
 
 
-@pytest.mark.short
 def test_create_read_data() -> None:
     procedure_details = [
         "Procedure Details",
@@ -47,7 +46,6 @@ def test_create_read_data() -> None:
     assert read_data.read_sections[1].magnification_setting == 4
 
 
-@pytest.mark.short
 def test_create_read_section_channel_settings() -> None:
     read_section_lines = [
         "Read\tImage Single Image",
@@ -114,7 +112,6 @@ def test_create_read_section_channel_settings() -> None:
     )
 
 
-@pytest.mark.short
 @pytest.mark.parametrize(
     ("rows", "columns", "count"),
     ((2, 4, 8), (3, 5, 15), (5, 6, 30)),
@@ -146,7 +143,6 @@ def test_create_read_section_image_montage_count(
     assert read_section.image_count_setting == count
 
 
-@pytest.mark.short
 @pytest.mark.parametrize("detector_distance", (-450, 0, 1200, -445.7))
 def test_create_instrument_settings_detector_distance(detector_distance: float) -> None:
     settings_lines = [
@@ -163,7 +159,6 @@ def test_create_instrument_settings_detector_distance(detector_distance: float) 
     assert instrument_settings.detector_distance == detector_distance
 
 
-@pytest.mark.short
 @pytest.mark.parametrize(
     ("transmitted_light", "expected"),
     (
@@ -176,7 +171,6 @@ def test_create_instrument_settings_detector_distance(detector_distance: float) 
         )
     ),
 )
-@pytest.mark.short
 def test_create_instrument_settings_transmitted_light_correct_mapping(
     transmitted_light: str, expected: TransmittedLightSetting
 ) -> None:
