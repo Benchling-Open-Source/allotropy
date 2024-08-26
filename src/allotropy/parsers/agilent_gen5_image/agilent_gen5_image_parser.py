@@ -25,6 +25,7 @@ from allotropy.parsers.vendor_parser import MapperVendorParser
 class AgilentGen5ImageParser(MapperVendorParser[Data, Model]):
     DISPLAY_NAME = "Agilent Gen5 Image"
     RELEASE_STATE = ReleaseState.RECOMMENDED
+    SUPPORTED_EXTENSIONS = AgilentGen5Reader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:

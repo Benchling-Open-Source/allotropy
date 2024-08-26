@@ -22,6 +22,7 @@ from allotropy.parsers.vendor_parser import MapperVendorParser
 class NovaBioFlexParser(MapperVendorParser[Data, Model]):
     DISPLAY_NAME = "NovaBio Flex2"
     RELEASE_STATE = ReleaseState.RECOMMENDED
+    SUPPORTED_EXTENSIONS = "csv"
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:

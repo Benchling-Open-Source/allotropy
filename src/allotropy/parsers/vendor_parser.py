@@ -21,6 +21,9 @@ class VendorParser(ABC):
     DISPLAY_NAME: str
     # Signifies if the parser is ready to be used. Can be set to ReleaseState.WORKING_DRAFT while being developed.
     RELEASE_STATE: ReleaseState
+    # Comma separated list of file extensions that this parser supports.
+    SUPPORTED_EXTENSIONS: str
+
     timestamp_parser: TimestampParser
 
     def __init__(self, timestamp_parser: TimestampParser | None = None):

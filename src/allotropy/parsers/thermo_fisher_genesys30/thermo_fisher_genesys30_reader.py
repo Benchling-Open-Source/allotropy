@@ -2,14 +2,13 @@ from io import StringIO
 
 import pandas as pd
 
-from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.lines_reader import LinesReader, read_to_lines
-from allotropy.parsers.thermo_fisher_genesys30 import constants
 from allotropy.parsers.utils.pandas import df_to_series_data, read_csv, SeriesData
 
 
 class ThermoFisherGenesys30Reader:
+    SUPPORTED_EXTENSIONS = "csv,tsv"
     header: SeriesData
     data: pd.DataFrame
 
@@ -22,13 +21,10 @@ class ThermoFisherGenesys30Reader:
             metadata_list = [line for line in reader.pop_until("^,,") if line]
             reader.drop_until_inclusive(",,")
             delimiter = ","
-        elif filename.endswith(".tsv"):
+        else:
             metadata_list = list(reader.pop_until_empty())
             reader.drop_until_inclusive("")
             delimiter = "\t"
-        else:
-            message = f"{constants.UNSUPPORTED_FILE_FORMAT_ERROR} {filename}"
-            raise AllotropeConversionError(message)
 
         rawdata_list = list(reader.pop_until_empty())
         rawdata_string = StringIO("\n".join(rawdata_list))

@@ -1,5 +1,5 @@
 from datetime import tzinfo
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 from typing import Any
 
 from allotropy.allotrope.allotrope import serialize_and_validate_allotrope
@@ -36,6 +36,10 @@ def allotrope_model_from_io(
     except ValueError as e:
         msg = f"Failed to create parser, unregistered vendor: {vendor_type}."
         raise AllotropeConversionError(msg) from e
+    extension = PureWindowsPath(filename).suffix[1:]
+    if extension not in vendor.supported_extensions:
+        msg = f"Unsupported file extension '{extension}' for parser '{vendor.display_name}', expected one of '{vendor.supported_extensions}'."
+        raise AllotropeConversionError(msg)
     named_file_contents = NamedFileContents(contents, filename, encoding)
     parser = vendor.get_parser(default_timezone=default_timezone)
     return parser.to_allotrope(named_file_contents)

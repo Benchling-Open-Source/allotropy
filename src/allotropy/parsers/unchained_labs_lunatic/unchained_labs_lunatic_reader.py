@@ -3,7 +3,6 @@ from pathlib import PureWindowsPath
 import numpy as np
 import pandas as pd
 
-from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.utils.pandas import (
     assert_not_empty_df,
@@ -18,6 +17,7 @@ from allotropy.types import IOType
 
 
 class UnchainedLabsLunaticReader:
+    SUPPORTED_EXTENSIONS = "csv,xlsx"
     data: pd.DataFrame
     header: SeriesData
 
@@ -25,11 +25,8 @@ class UnchainedLabsLunaticReader:
         extension = PureWindowsPath(named_file_contents.original_file_name).suffix
         if extension == ".csv":
             self.header, self.data = self._parse_csv(named_file_contents.contents)
-        elif extension == ".xlsx":
-            self.header, self.data = self._parse_xlsx(named_file_contents.contents)
         else:
-            msg = f"Unsupported file extension: '{extension}' expected one of 'csv' or 'xlsx'."
-            raise AllotropeConversionError(msg)
+            self.header, self.data = self._parse_xlsx(named_file_contents.contents)
 
     def _parse_csv(self, contents: IOType) -> tuple[SeriesData, pd.DataFrame]:
         data = read_csv(contents).replace(np.nan, None)
