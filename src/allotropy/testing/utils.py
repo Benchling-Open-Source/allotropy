@@ -51,10 +51,6 @@ NON_UNIQUE_IDENTIFIERS = {
 }
 
 
-def _is_unique_identifier(key: str) -> bool:
-    return "identifier" in key and key not in NON_UNIQUE_IDENTIFIERS
-
-
 def _get_all_identifiers(asm: DictType) -> dict[str, list[str]]:
     all_identifiers = defaultdict(list)
     for key, value in asm.items():
@@ -66,17 +62,44 @@ def _get_all_identifiers(asm: DictType) -> dict[str, list[str]]:
                 if isinstance(v, dict):
                     for subkey, subvalue in _get_all_identifiers(v).items():
                         all_identifiers[subkey].extend(subvalue)
-        elif _is_unique_identifier(key):
+        elif "identifier" in key:
             all_identifiers[key].append(value)
     return {key: list(value) for key, value in all_identifiers.items()}
 
 
+def _get_all_with_key(target_key: str, item: Any) -> list[Any]:
+    values = []
+    if isinstance(item, dict):
+        for key, value in item.items():
+            if key == target_key:
+                values.append(value)
+            else:
+                values.extend(_get_all_with_key(target_key, value))
+    elif isinstance(item, list):
+        for value in item:
+            values.extend(_get_all_with_key(target_key, value))
+    return values
+
+
 def _validate_identifiers(asm: DictType) -> None:
-    for key, value in _get_all_identifiers(asm).items():
+    identifiers = _get_all_identifiers(asm)
+
+    # Validate that all identifiers are unique.
+    for key, value in identifiers.items():
+        if key in NON_UNIQUE_IDENTIFIERS:
+            continue
         if len(value) != len(set(value)):
             non_unique = [id_ for id_ in set(value) if value.count(id_) > 1]
             msg = f"Detected non-unique identifiers for key '{key}'. If this key should allow repeat values, add to NON_UNIQUE_IDENTIFIERS. Identifiers: {non_unique}"
             raise AssertionError(msg)
+
+    # Validate that data source identifiers have a valid reference.
+    data_source_ids = set(_get_all_with_key("data source identifier", asm))
+    for ids in identifiers.values():
+        data_source_ids -= set(ids)
+    if data_source_ids:
+        msg = f"data source identifiers {data_source_ids} do not have a valid identifier reference in the document."
+        raise AssertionError(msg)
 
 
 def _assert_allotrope_dicts_equal(
@@ -154,7 +177,7 @@ def validate_contents(
     # Ensure that allotrope_dict can be structured back into a python model.
     structure(allotrope_dict)
 
-    # Ensure that all IDs are unique
+    # Ensure that all IDs are unique and that data source identifiers are valid references.
     _validate_identifiers(allotrope_dict)
 
     try:
