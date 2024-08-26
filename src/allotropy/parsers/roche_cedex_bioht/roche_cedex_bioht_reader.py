@@ -20,6 +20,10 @@ def to_num(data: pd.Series[Any]) -> pd.Series[Any]:
 
 
 class RocheCedexBiohtReader:
+    SUPPORTED_EXTENSIONS = "txt"
+    title_data: SeriesData
+    samples_data: pd.DataFrame
+
     def __init__(self, contents: IOType):
         self.title_data = self.read_title_data(contents)
         self.samples_data = self.read_samples_data(contents)

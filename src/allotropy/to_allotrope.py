@@ -37,6 +37,9 @@ def allotrope_model_from_io(
         msg = f"Failed to create parser, unregistered vendor: {vendor_type}."
         raise AllotropeConversionError(msg) from e
     named_file_contents = NamedFileContents(contents, filename, encoding)
+    if named_file_contents.extension not in vendor.supported_extensions:
+        msg = f"Unsupported file extension '{named_file_contents.extension}' for parser '{vendor.display_name}', expected one of '{vendor.supported_extensions}'."
+        raise AllotropeConversionError(msg)
     parser = vendor.get_parser(default_timezone=default_timezone)
     return parser.to_allotrope(named_file_contents)
 

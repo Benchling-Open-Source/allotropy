@@ -13,11 +13,16 @@ from allotropy.parsers.utils.pandas import (
 from allotropy.parsers.utils.values import assert_not_none
 
 
-class MabtechApexContents:
+class MabtechApexReader:
+    SUPPORTED_EXTENSIONS = "xlsx"
+
+    plate_info: SeriesData
+    data: pd.DataFrame
+
     @staticmethod
-    def create(named_file_contents: NamedFileContents) -> MabtechApexContents:
+    def create(named_file_contents: NamedFileContents) -> MabtechApexReader:
         raw_contents = read_multisheet_excel(named_file_contents.contents)
-        return MabtechApexContents(raw_contents)
+        return MabtechApexReader(raw_contents)
 
     def __init__(self, raw_contents: dict[str, pd.DataFrame]) -> None:
         contents = {

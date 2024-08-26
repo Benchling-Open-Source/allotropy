@@ -29,6 +29,7 @@ from allotropy.parsers.vendor_parser import MapperVendorParser
 class AppBioQuantStudioParser(MapperVendorParser[Data, Model]):
     DISPLAY_NAME = "AppBio QuantStudio RT-PCR"
     RELEASE_STATE = ReleaseState.RECOMMENDED
+    SUPPORTED_EXTENSIONS = "txt"
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:

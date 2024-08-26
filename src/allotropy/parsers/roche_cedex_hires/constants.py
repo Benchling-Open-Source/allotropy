@@ -11,6 +11,3 @@ DETECTION_TYPE = "brightfield"
 # Errors
 MULTIPLE_SYSTEM_ERROR = "Error: Multiple values detected for system parameters. Expected a single unique value for:"
 VALUE_ERROR = "Unable to find value for column"
-UNSUPPORTED_FILE_FORMAT_ERROR = (
-    "Unsupported file format. Expected xlsx or csv file. Actual: "
-)
