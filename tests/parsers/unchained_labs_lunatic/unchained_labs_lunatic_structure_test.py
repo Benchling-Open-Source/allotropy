@@ -35,7 +35,6 @@ from allotropy.parsers.utils.pandas import SeriesData
         (450, 34.9, "Sample Name 3", "plateID3", None),
     ],
 )
-@pytest.mark.short
 def test__create_measurement(
     wavelength: int,
     absorbance_value: float,
@@ -61,7 +60,6 @@ def test__create_measurement(
     assert measurement.well_plate_identifier == well_plate_identifier
 
 
-@pytest.mark.short
 def test__create_measurement_with_no_wavelength_column() -> None:
     well_plate_data = SeriesData(
         pd.Series(
@@ -78,7 +76,6 @@ def test__create_measurement_with_no_wavelength_column() -> None:
         _create_measurement(well_plate_data, wavelength_column, [])
 
 
-@pytest.mark.short
 def test__create_measurement_with_incorrect_wavelength_column_format() -> None:
     msg = INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG
     well_plate_data = SeriesData(pd.Series({"Sample name": "dummy name"}))
@@ -86,7 +83,6 @@ def test__create_measurement_with_incorrect_wavelength_column_format() -> None:
         _create_measurement(well_plate_data, "Sample name", [])
 
 
-@pytest.mark.short
 def test__get_calculated_data_from_measurement_for_unknown_wavelength() -> None:
     calculated_data: list[CalculatedDataItem] = []
     well_plate_data = {
@@ -103,7 +99,6 @@ def test__get_calculated_data_from_measurement_for_unknown_wavelength() -> None:
     assert not calculated_data
 
 
-@pytest.mark.short
 def test__get_calculated_data_from_measurement_for_A260() -> None:  # noqa: N802
     calculated_data: list[CalculatedDataItem] = []
     well_plate_data = {
@@ -129,7 +124,6 @@ def test__get_calculated_data_from_measurement_for_A260() -> None:  # noqa: N802
             assert calculated_data_item.value == well_plate_data[item["column"]]
 
 
-@pytest.mark.short
 def test_create_well_plate() -> None:
     analytical_method_identifier = "dummy method"
     date = "17/10/2016"
@@ -150,7 +144,6 @@ def test_create_well_plate() -> None:
     assert well_plate.measurements[0].absorbance == 23.45
 
 
-@pytest.mark.short
 def test_create_well_plate_with_two_measurements() -> None:
     plate_data = {
         "A452": 23.45,
@@ -167,7 +160,6 @@ def test_create_well_plate_with_two_measurements() -> None:
     assert len(well_plate.measurements) == 2
 
 
-@pytest.mark.short
 def test_create_well_plate_without_date_column_then_raise() -> None:
     plate_data = SeriesData(
         pd.Series(
@@ -182,7 +174,6 @@ def test_create_well_plate_without_date_column_then_raise() -> None:
         _create_measurement_group(plate_data, [], [], None)
 
 
-@pytest.mark.short
 def test_get_calculated_data_items_from_data_with_the_right_values() -> None:
     contents = StringIO(
         """
@@ -201,7 +192,6 @@ batch_id,Plate1,dummyApp,2021-05-20,16:55:51,14,23.4,4.5
     assert calculated_data_item.data_sources[0].feature == "absorbance"
 
 
-@pytest.mark.short
 def test_get_calculated_data_items_from_data_create_right_ammount_of_items() -> None:
     contents = StringIO(
         """
@@ -214,7 +204,6 @@ batch_id,Plate1,dummyApp,2021-05-20,16:55:51,14,23.4,4.5,0.523,2.5,24.9
     assert len(calculated_data) == 4
 
 
-@pytest.mark.short
 def test_get_calculated_data_items_from_data_with_no_calculated_data_columns() -> (
     None
 ):
@@ -229,7 +218,6 @@ batch_id,Plate1,dummyApp,2021-05-20,16:55:51,14,23.4
     assert not calculated_data
 
 
-@pytest.mark.short
 def test_create_data() -> None:
     contents = StringIO(
         """
