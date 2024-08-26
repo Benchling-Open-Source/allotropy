@@ -54,7 +54,6 @@ def test_read_excel_fails_invalid_output() -> None:
         read_excel(EXCEL_FILE_TWO_SHEETS, sheet_name=[0, 1])
 
 
-@pytest.mark.short
 def test_get() -> None:
     data = SeriesData(pd.Series({"Plate": "4"}))
 
@@ -73,7 +72,6 @@ def test_get() -> None:
     assert data.get(float, "MISSING", 2.0) == 2.0
 
 
-@pytest.mark.short
 def test_get_bool() -> None:
     data = SeriesData(
         pd.Series(
@@ -93,7 +91,6 @@ def test_get_bool() -> None:
     assert data.get(bool, "MISSING", False) is False
 
 
-@pytest.mark.short
 def test_get_float() -> None:
     data = SeriesData(
         pd.Series(
@@ -106,7 +103,6 @@ def test_get_float() -> None:
     assert data.get(float, "percent") == 10.1
 
 
-@pytest.mark.short
 def test_get_not_nan() -> None:
     data = SeriesData(
         pd.Series(
@@ -124,7 +120,6 @@ def test_get_not_nan() -> None:
     assert data.get(float, ["nan_val", "int_val"], validate=SeriesData.NOT_NAN) == 1.0
 
 
-@pytest.mark.short
 def test_try_float_or_nan() -> None:
     data = SeriesData(
         pd.Series(
@@ -141,7 +136,6 @@ def test_try_float_or_nan() -> None:
     assert data.get(float, "zero_val", NaN) == 0.0
 
 
-@pytest.mark.short
 def test_get_multikey() -> None:
     data = SeriesData(
         pd.Series(
@@ -158,7 +152,6 @@ def test_get_multikey() -> None:
     assert data.get(int, ["Bad Plate", "Backup Plate"]) == 8
 
 
-@pytest.mark.short
 def test_index() -> None:
     data = SeriesData(pd.Series({"Plate": "4"}))
 
@@ -177,7 +170,6 @@ def test_index() -> None:
         data[int, "MISSING", "This is an error"]
 
 
-@pytest.mark.short
 def test_index_multikey() -> None:
     data = SeriesData(
         pd.Series(

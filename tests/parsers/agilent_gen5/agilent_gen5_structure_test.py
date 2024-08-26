@@ -1,5 +1,4 @@
 import pandas as pd
-import pytest
 
 from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
     ScanPositionSettingPlateReader,
@@ -15,7 +14,6 @@ from allotropy.parsers.agilent_gen5.constants import ReadMode
 from allotropy.parsers.utils.pandas import SeriesData
 
 
-@pytest.mark.short
 def test_create_header_data_no_well_plate_id_in_filename() -> None:
     data = SeriesData(
         pd.Series(
@@ -47,7 +45,6 @@ def test_create_header_data_no_well_plate_id_in_filename() -> None:
     )
 
 
-@pytest.mark.short
 def test_create_header_data_with_well_plate_id_from_filename() -> None:
     well_plate_id = "PLATEID123"
     matching_file_name = f"010307_114129_{well_plate_id}_std_01.txt"
@@ -71,7 +68,6 @@ def test_create_header_data_with_well_plate_id_from_filename() -> None:
     assert header_data.well_plate_identifier == well_plate_id
 
 
-@pytest.mark.short
 def test_create_read_data_with_step_label() -> None:
     absorbance_procedure_details = [
         "Procedure Details",
@@ -83,7 +79,6 @@ def test_create_read_data_with_step_label() -> None:
     assert read_data[0].step_label == "StepLabel"
 
 
-@pytest.mark.short
 def test_create_read_data_without_step_label() -> None:
     absorbance_procedure_details = [
         "Procedure Details",
@@ -95,7 +90,6 @@ def test_create_read_data_without_step_label() -> None:
     assert read_data[0].step_label is None
 
 
-@pytest.mark.short
 def test_create_read_data_absorbance() -> None:
     absorbance_procedure_details = [
         "Procedure Details",
@@ -124,7 +118,6 @@ def test_create_read_data_absorbance() -> None:
     ]
 
 
-@pytest.mark.short
 def test_create_read_data_luminescence_full_light() -> None:
     absorbance_procedure_details = [
         "Procedure Details",
@@ -152,7 +145,6 @@ def test_create_read_data_luminescence_full_light() -> None:
     }
 
 
-@pytest.mark.short
 def test_create_read_data_luminescence_text_settings() -> None:
     absorbance_procedure_details = [
         "Procedure Details",
@@ -179,7 +171,6 @@ def test_create_read_data_luminescence_text_settings() -> None:
     }
 
 
-@pytest.mark.short
 def test_create_read_data_luminescence_with_filter() -> None:
     absorbance_procedure_details = [
         "Procedure Details",
@@ -207,7 +198,6 @@ def test_create_read_data_luminescence_with_filter() -> None:
     }
 
 
-@pytest.mark.short
 def test_create_read_data_fluorescence() -> None:
     absorbance_procedure_details = [
         "Procedure Details",
@@ -252,7 +242,6 @@ def test_create_read_data_fluorescence() -> None:
     }
 
 
-@pytest.mark.short
 def test_create_filter_set() -> None:
     filterset = FilterSet(
         excitation="485/20",
@@ -272,7 +261,6 @@ def test_create_filter_set() -> None:
     )
 
 
-@pytest.mark.short
 def test_create_filter_set_with_mirror() -> None:
     filterset = FilterSet(
         excitation="485",
@@ -292,7 +280,6 @@ def test_create_filter_set_with_mirror() -> None:
     )
 
 
-@pytest.mark.short
 def test_create_filter_set_full_light() -> None:
     filterset = FilterSet(emission="Full light", gain="135", optics="Top")
 
@@ -307,7 +294,6 @@ def test_create_filter_set_full_light() -> None:
     )
 
 
-@pytest.mark.short
 def test_create_layout_data() -> None:
     layout_rows = [
         "Layout",
@@ -328,7 +314,6 @@ def test_create_layout_data() -> None:
     }
 
 
-@pytest.mark.short
 def test_create_layout_data_with_name_rows() -> None:
     layout_rows = [
         "Layout",
@@ -352,7 +337,6 @@ def test_create_layout_data_with_name_rows() -> None:
     }
 
 
-@pytest.mark.short
 def test_create_layout_data_with_name_rows_name_row_first() -> None:
     layout_rows = [
         "Layout",
@@ -375,7 +359,6 @@ def test_create_layout_data_with_name_rows_name_row_first() -> None:
     }
 
 
-@pytest.mark.short
 def test_create_multiple_read_modes() -> None:
     multiple_read_modes = [
         "Procedure Details",
@@ -423,7 +406,6 @@ def test_create_multiple_read_modes() -> None:
     }
 
 
-@pytest.mark.short
 def test_create_three_read_modes() -> None:
     multiple_read_modes = [
         "Procedure Details",
@@ -493,7 +475,6 @@ def test_create_three_read_modes() -> None:
     assert read_data[2].detector_distance == 4.5
 
 
-@pytest.mark.short
 def test_create_two_same_read_modes() -> None:
     multiple_read_modes = [
         "Procedure Details",
@@ -535,7 +516,6 @@ def test_create_two_same_read_modes() -> None:
     assert read_data[1].pathlength_correction == "977 / 900"
 
 
-@pytest.mark.short
 def test_create_two_same_read_modes_from_file() -> None:
     file_path = (
         "tests/parsers/agilent_gen5/testdata/multi_read_modes/two_same_read_modes.txt"
@@ -565,7 +545,6 @@ def test_create_two_same_read_modes_from_file() -> None:
     assert read_data[1].pathlength_correction == "977 / 900"
 
 
-@pytest.mark.short
 def test_create_two_read_modes_from_file() -> None:
     file_path = (
         "tests/parsers/agilent_gen5/testdata/multi_read_modes/multiple_read_modes.txt"
