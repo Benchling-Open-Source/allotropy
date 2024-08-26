@@ -23,6 +23,7 @@ def test_allotrope_model_from_file_not_found() -> None:
 
 
 # A parser can inherit from this test to automatically test all positive test cases of converting from file.
+@pytest.mark.long
 class ParserTest:
     VENDOR: Vendor
     OVERWRITE_ON_FAILURE: bool = False

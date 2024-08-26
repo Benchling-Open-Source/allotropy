@@ -34,7 +34,6 @@ from tests.parsers.agilent_tapestation_analysis.agilent_tapestation_test_data im
 )
 
 
-@pytest.mark.short
 def test_create_metadata() -> None:
     metadata = create_metadata(get_metadata_xml(), "file.txt")
     assert metadata == Metadata(
@@ -63,12 +62,10 @@ def test_create_metadata() -> None:
         ("kD", "kDa"),
     ),
 )
-@pytest.mark.short
 def test__get_unit_class(xml_unit: str, unit: str) -> None:
     assert _get_unit_class(get_metadata_xml(molecular_weight_unit=xml_unit)) == unit
 
 
-@pytest.mark.short
 def test__get_unit_class_with_unknown_unit() -> None:
     unit = "not-a-unit"
     msg = f"Unrecognized Molecular Weight Unit: '{unit}'. Expecting one of ['bp', 'kD', 'nt']."
@@ -76,19 +73,16 @@ def test__get_unit_class_with_unknown_unit() -> None:
         _get_unit_class(get_metadata_xml(molecular_weight_unit=unit))
 
 
-@pytest.mark.short
 def test_create_metadata_with_rine_version() -> None:
     metadata = create_metadata(get_metadata_xml(rine_version="2.3.4"), "dummy.txt")
     assert metadata.method_version == "2.3.4"
 
 
-@pytest.mark.short
 def test_create_metadata_with_din_version() -> None:
     metadata = create_metadata(get_metadata_xml(din_version="1.2.3"), "dummy.txt")
     assert metadata.method_version == "1.2.3"
 
 
-@pytest.mark.short
 def testcreate_measurement_groups_without_matching_screen_tape() -> None:
     sample_id = "01-S025-180717-01-899752"
     screen_tape_id = "01-S025-200617-01-899752"
@@ -108,7 +102,6 @@ def testcreate_measurement_groups_without_matching_screen_tape() -> None:
         create_measurement_groups(ET.fromstring(xml_str))  # noqa: S314
 
 
-@pytest.mark.short
 def testcreate_measurement_groups_without_screen_tapes() -> None:
     xml_str = """
     <File>
@@ -122,7 +115,6 @@ def testcreate_measurement_groups_without_screen_tapes() -> None:
         create_measurement_groups(ET.fromstring(xml_str))  # noqa: S314
 
 
-@pytest.mark.short
 def testcreate_measurement_groups() -> None:
     with mock_uuid_generation():
         groups, calc_docs = create_measurement_groups(get_samples_xml())
@@ -180,7 +172,6 @@ def testcreate_measurement_groups() -> None:
     assert not calc_docs
 
 
-@pytest.mark.short
 def testcreate_measurement_groups_with_calculated_data() -> None:
     with mock_uuid_generation():
         _, calc_docs = create_measurement_groups(
@@ -251,13 +242,11 @@ def testcreate_measurement_groups_with_calculated_data() -> None:
     ]
 
 
-@pytest.mark.short
 def testcreate_measurement_groups_with_error() -> None:
     groups, _ = create_measurement_groups(get_samples_xml(sample_error="Sample Error."))
     assert assert_not_none(groups[0].measurements[0].errors)[0].error == "Sample Error."
 
 
-@pytest.mark.short
 def testcreate_measurement_groups_with_regions() -> None:
     with mock_uuid_generation():
         groups, calc_docs = create_measurement_groups(
