@@ -8,7 +8,7 @@ from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.thermo_fisher_nanodrop_one.constants import DISPLAY_NAME
 from allotropy.parsers.thermo_fisher_nanodrop_one.thermo_fisher_nanodrop_one_structure import (
-    create_data,
+    DataNanodrop,
 )
 from allotropy.parsers.utils.pandas import read_multisheet_excel
 from allotropy.parsers.vendor_parser import VendorParser
@@ -28,5 +28,5 @@ class ThermoFisherNanodropOneParser(VendorParser):
             named_file_contents.contents,
             engine="calamine",
         )
-        data = create_data(contents, named_file_contents.original_file_name)
+        data = DataNanodrop.create(contents, named_file_contents.original_file_name)
         return self._get_mapper(Mapper).map_model(data)

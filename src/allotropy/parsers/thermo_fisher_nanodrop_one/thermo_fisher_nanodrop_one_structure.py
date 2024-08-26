@@ -1,3 +1,8 @@
+from __future__ import annotations
+
+from dataclasses import dataclass
+import re
+
 import pandas as pd
 
 from allotropy.allotrope.models.shared.definitions.definitions import NaN
@@ -5,6 +10,7 @@ from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
     CalculatedDataItem,
     Data,
+    DataSource,
     Measurement,
     MeasurementGroup,
     MeasurementType,
@@ -12,94 +18,204 @@ from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._1
     ProcessedData,
     ProcessedDataFeature,
 )
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.values import try_float
 
 
-def create_measurement(row: SeriesData, absorbance_col: str) -> Measurement:
-    return Measurement(
-        type_=MeasurementType.ULTRAVIOLET_ABSORBANCE,
-        identifier=random_uuid_str(),
-        sample_identifier=row[(str, "Sample Name")],
-        absorbance=row.get(float, absorbance_col, NaN),
-        baseline_absorbance=row.get(float, "Baseline Absorbance"),
-        electronic_absorbance_reference_wavelength_setting=row.get(
-            float, "Baseline Correction (nm)"
-        ),  # question: is this correct, always (nm)
-        nucleic_acid_factor=row.get(float, "Nucleic Acid Factor"),
-        detector_wavelength_setting=0,  # question: how to obtain
-        processed_data=ProcessedData(
-            features=[
-                ProcessedDataFeature(
-                    result=row.get(float, "Nucleic Acid(ng/uL)", NaN),
-                    unit="ng/uL",  # question: how to know the unit
-                )
-            ],
-        ),
-    )
+@dataclass
+class MetadataNanodrop:
+    nucleic_acid_unit: str
+    absorbance_columns: list[str]
+    calculated_columns: list[str]
 
 
-def create_measurement_groups(data: dict[str, pd.DataFrame]) -> list[MeasurementGroup]:
-    sheet_name = next(iter(data.keys()))  # question: is there always only one sheet
-    sheet = data[sheet_name]
+@dataclass
+class InputNanodrop:
+    metadata: MetadataNanodrop
+    data: list[SeriesData]
 
-    experiment_type, *_ = sheet_name.split(maxsplit=1)
 
-    return [
-        MeasurementGroup(
-            measurements=[
-                create_measurement(SeriesData(row), "A260"),
-                create_measurement(SeriesData(row), "A280"),
-            ],
-            measurement_time=row["Date"],
+@dataclass(frozen=True)
+class MeasurementGroupNanodrop(MeasurementGroup):
+    @staticmethod
+    def create(
+        row: SeriesData, metadata: MetadataNanodrop, experiment_type: str
+    ) -> MeasurementGroupNanodrop:
+        measurements = [
+            Measurement(
+                type_=MeasurementType.ULTRAVIOLET_ABSORBANCE,
+                identifier=random_uuid_str(),
+                sample_identifier=row[(str, "Sample Name")],
+                absorbance=row.get(float, column, NaN),
+                baseline_absorbance=row.get(float, "Baseline Absorbance"),
+                electronic_absorbance_reference_wavelength_setting=row.get(
+                    float, "Baseline Correction"
+                ),
+                nucleic_acid_factor=row.get(float, "Nucleic Acid Factor"),
+                detector_wavelength_setting=try_float(
+                    column.removeprefix("A"),
+                    "detector wavelenght setting",
+                ),
+                processed_data=ProcessedData(
+                    features=[
+                        ProcessedDataFeature(
+                            result=row.get(float, "Nucleic Acid", NaN),
+                            unit=metadata.nucleic_acid_unit,
+                        )
+                    ],
+                ),
+            )
+            for column in metadata.absorbance_columns
+        ]
+
+        return MeasurementGroupNanodrop(
+            measurements=measurements,
+            measurement_time=row[str, "Date"],
             experiment_type=experiment_type,
         )
-        for _, row in sheet.iterrows()
-    ]
 
-
-def get_calculated_data_element(
-    row: SeriesData, column: str
-) -> CalculatedDataItem | None:
-    value = row.get(float, column)
-    if value is None:
+    def get_measurement(self, raw_wavelength: str) -> Measurement | None:
+        detector_wavelength_setting = try_float(
+            raw_wavelength.removeprefix("A"),
+            "detector wavelenght setting",
+        )
+        for measurement in self.measurements:
+            if measurement.detector_wavelength_setting == detector_wavelength_setting:
+                return measurement
         return None
 
-    return CalculatedDataItem(
-        identifier=random_uuid_str(),
-        name=column,
-        value=value,
-        unit=UNITLESS,
-        data_sources=[],
-    )
 
-
-def create_calculated_data(data: dict[str, pd.DataFrame]) -> list[CalculatedDataItem]:
-    sheet_name = next(iter(data.keys()))  # question: is there always only one sheet
-    sheet = data[sheet_name]
-
+def create_calculated_data(
+    row: SeriesData,
+    metadata: MetadataNanodrop,
+    measurement_group: MeasurementGroupNanodrop,
+) -> list[CalculatedDataItem]:
     calculated_data = []
-    for _, row in sheet.iterrows():
-        if a260_a230 := get_calculated_data_element(SeriesData(row), "A260/A230"):
-            calculated_data.append(a260_a230)
+    for column in metadata.calculated_columns:
+        value = row.get(float, column)
+        if value is None:
+            continue
 
-        if a260_a280 := get_calculated_data_element(SeriesData(row), "A260/A280"):
-            calculated_data.append(a260_a280)
-
+        calculated_data.append(
+            CalculatedDataItem(
+                identifier=random_uuid_str(),
+                name=column,
+                value=value,
+                unit=UNITLESS,
+                data_sources=[
+                    DataSource(
+                        identifier=measurement.identifier,
+                        feature=str(measurement.absorbance),
+                    )
+                    for wavelength in column.split("/")
+                    if (measurement := measurement_group.get_measurement(wavelength))
+                ],
+            )
+        )
     return calculated_data
 
 
-def create_data(data: dict[str, pd.DataFrame], file_name: str) -> Data:
-    return Data(
-        metadata=Metadata(
-            device_identifier="N/A",
-            device_type="absorbance detector",
-            model_number="NanoDrop One",
-            brand_name="NanoDrop",
-            product_manufacturer="ThermoFisher Scientific",
-            file_name=file_name,
-            software_name="NanoDrop One software",
-        ),
-        measurement_groups=create_measurement_groups(data),
-        calculated_data=create_calculated_data(data),
-    )
+@dataclass
+class RowElements:
+    # is not a list to avoid invariance problem
+    measurement_groups: tuple[MeasurementGroup, ...]
+    calculated_data: list[CalculatedDataItem]
+
+    @staticmethod
+    def filter_column_names(data: pd.DataFrame, regex: str) -> list[str]:
+        return [column for column in data.columns if re.search(regex, column)]
+
+    @staticmethod
+    def filter_column_name(data: pd.DataFrame, pattern: str) -> str:
+        columns = RowElements.filter_column_names(data, pattern)
+        if len(columns) == 1:
+            return columns[0]
+
+        error = f"Unable to find column using pattern {pattern}."
+        raise AllotropeConversionError(error)
+
+    @staticmethod
+    def filter_data(data: pd.DataFrame) -> InputNanodrop:
+        nucleic_acid_col = RowElements.filter_column_name(data, r"^Nucleic Acid\s*\(")
+        absorbance_columns = RowElements.filter_column_names(data, r"^A(\d{3})$")
+        calculated_columns = RowElements.filter_column_names(
+            data, r"^A(\d{3})/A(\d{3})$"
+        )
+        baseline_correction_col = RowElements.filter_column_name(
+            data, "^Baseline Correction"
+        )
+
+        columns = [
+            "Date",
+            "Sample Name",
+            "Baseline Absorbance",
+            "Nucleic Acid Factor",
+            baseline_correction_col,
+            nucleic_acid_col,
+            *absorbance_columns,
+            *calculated_columns,
+        ]
+        new_data = data[columns].rename(
+            columns={
+                baseline_correction_col: "Baseline Correction",
+                nucleic_acid_col: "Nucleic Acid",
+            }
+        )
+
+        if match := re.match(r".*\((.+)\)", nucleic_acid_col):
+            nucleic_acid_unit = match.group(1)
+        else:
+            error = "Unable to find nucleic acid unit"
+            raise AllotropeConversionError(error)
+
+        return InputNanodrop(
+            metadata=MetadataNanodrop(
+                nucleic_acid_unit,
+                absorbance_columns,
+                calculated_columns,
+            ),
+            data=[SeriesData(row) for _, row in new_data.iterrows()],
+        )
+
+    @staticmethod
+    def create(data: pd.DataFrame, sheet_name: str) -> RowElements:
+        experiment_type, *_ = sheet_name.split(maxsplit=1)
+
+        clean_data = RowElements.filter_data(data)
+
+        measurement_groups = []
+        calculated_data = []
+        for row in clean_data.data:
+            measurement_group = MeasurementGroupNanodrop.create(
+                row, clean_data.metadata, experiment_type
+            )
+            measurement_groups.append(measurement_group)
+            calculated_data += create_calculated_data(
+                row, clean_data.metadata, measurement_group
+            )
+
+        return RowElements(tuple(measurement_groups), calculated_data)
+
+
+@dataclass(frozen=True)
+class DataNanodrop(Data):
+    @staticmethod
+    def create(data: dict[str, pd.DataFrame], file_name: str) -> Data:
+        sheet_name = next(iter(data.keys()))
+        row_elements = RowElements.create(data[sheet_name], sheet_name)
+
+        return Data(
+            metadata=Metadata(
+                device_identifier="N/A",
+                device_type="absorbance detector",
+                model_number="NanoDrop One",
+                brand_name="NanoDrop",
+                product_manufacturer="ThermoFisher Scientific",
+                file_name=file_name,
+                software_name="NanoDrop One software",
+            ),
+            measurement_groups=list(row_elements.measurement_groups),
+            calculated_data=row_elements.calculated_data or None,
+        )
