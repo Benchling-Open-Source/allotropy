@@ -192,7 +192,7 @@ def create_calculated_data(data: Data) -> CalculatedData:
     )
 
 
-def create_data(contents: DesignQuantstudioReader) -> Data:
+def create_data(reader: DesignQuantstudioReader) -> Data:
     possible_creators: list[type[Creator]] = [
         StandardCurveCreator,
         RelativeStandardCurveCreator,
@@ -202,11 +202,11 @@ def create_data(contents: DesignQuantstudioReader) -> Data:
         PrimaryAnalysisCreator,
     ]
     matching_creator = [
-        creator for creator in possible_creators if creator.check_type(contents)
+        creator for creator in possible_creators if creator.check_type(reader)
     ]
 
     if len(matching_creator) == 1:
-        return matching_creator[0].create(contents)
+        return matching_creator[0].create(reader)
 
     msg = "Unable to infer experiment type from sheets in the input"
     raise AllotropeConversionError(msg)

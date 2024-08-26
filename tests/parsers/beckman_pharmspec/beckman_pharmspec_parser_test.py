@@ -18,7 +18,6 @@ from allotropy.parsers.beckman_pharmspec.beckman_pharmspec_structure import Head
 TESTDATA = f"{Path(__file__).parent}/testdata"
 
 
-@pytest.mark.short
 def test_get_model() -> None:
     model = PharmSpecParser().to_allotrope(
         NamedFileContents(open(Path(TESTDATA, "hiac_example_1.xlsx"), "rb"), "")
@@ -125,7 +124,6 @@ def test_get_model() -> None:
             assert test.value == particle_size
 
 
-@pytest.mark.short
 @pytest.mark.parametrize(
     "title,version",
     [

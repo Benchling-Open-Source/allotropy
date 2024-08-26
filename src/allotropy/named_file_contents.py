@@ -1,4 +1,6 @@
 from dataclasses import dataclass
+from functools import cached_property
+from pathlib import PureWindowsPath
 
 from allotropy.types import IOType
 
@@ -21,3 +23,7 @@ class NamedFileContents:
     contents: IOType
     original_file_name: str
     encoding: str | None = None
+
+    @cached_property
+    def extension(self) -> str:
+        return PureWindowsPath(self.original_file_name).suffix[1:]

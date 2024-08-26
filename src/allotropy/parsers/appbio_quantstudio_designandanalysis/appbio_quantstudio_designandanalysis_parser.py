@@ -20,11 +20,11 @@ from allotropy.parsers.vendor_parser import MapperVendorParser
 class AppBioQuantStudioDesignandanalysisParser(MapperVendorParser[Data, Model]):
     DISPLAY_NAME = "AppBio QuantStudio Design & Analysis"
     RELEASE_STATE = ReleaseState.RECOMMENDED
+    SUPPORTED_EXTENSIONS = DesignQuantstudioReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
-        contents = DesignQuantstudioReader.create(named_file_contents)
-        data = create_data(contents)
+        data = create_data(DesignQuantstudioReader.create(named_file_contents))
         return Data(
             create_metadata(
                 data.header,

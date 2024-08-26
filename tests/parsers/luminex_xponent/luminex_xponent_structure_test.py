@@ -57,7 +57,6 @@ def get_result_lines() -> list[str]:
     ]
 
 
-@pytest.mark.short
 def test_create_header() -> None:
     data = pd.DataFrame.from_dict(
         {
@@ -110,7 +109,6 @@ def test_create_header() -> None:
         "ProtocolReporterGain",
     ],
 )
-@pytest.mark.short
 def test_create_heder_without_required_col(required_col: str) -> None:
     data = pd.DataFrame.from_dict(
         {
@@ -139,7 +137,6 @@ def test_create_heder_without_required_col(required_col: str) -> None:
         )
 
 
-@pytest.mark.short
 def test_create_calibration_item() -> None:
     name = "Device Calibration"
     report = "Passed"
@@ -150,7 +147,6 @@ def test_create_calibration_item() -> None:
     ) == Calibration(name, report, time)
 
 
-@pytest.mark.short
 def test_create_calibration_item_invalid_line_format() -> None:
     bad_line = "Bad line."
     data = SeriesData(pd.Series([bad_line]))
@@ -161,7 +157,6 @@ def test_create_calibration_item_invalid_line_format() -> None:
         create_calibration(data)
 
 
-@pytest.mark.short
 def test_create_calibration_item_invalid_calibration_result() -> None:
     bad_result = "bad_result"
     error = f"Invalid calibration result format, expected to split into two values, got: ['{bad_result}']"
@@ -169,7 +164,6 @@ def test_create_calibration_item_invalid_calibration_result() -> None:
         create_calibration(SeriesData(pd.Series(["Last CalReport", bad_result])))
 
 
-@pytest.mark.short
 def test_create_measurement_list() -> None:
     results_data = LuminexXponentReader._get_results(CsvReader(get_result_lines()))
     with mock.patch(
@@ -217,7 +211,6 @@ def test_create_measurement_list() -> None:
     "table_name",
     constants.EXPECTED_SECTIONS,
 )
-@pytest.mark.short
 def test_create_measurement_list_without_required_table_then_raise(
     table_name: str,
 ) -> None:

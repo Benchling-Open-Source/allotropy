@@ -13,10 +13,10 @@ class Creator(ABC):
     EXPECTED_SHEETS: ClassVar[list[str]] = []
 
     @classmethod
-    def check_type(cls, contents: DesignQuantstudioReader) -> bool:
-        return all(contents.has_sheet(sheet_name) for sheet_name in cls.EXPECTED_SHEETS)
+    def check_type(cls, reader: DesignQuantstudioReader) -> bool:
+        return all(reader.has_sheet(sheet_name) for sheet_name in cls.EXPECTED_SHEETS)
 
     @classmethod
     @abstractmethod
-    def create(cls, contents: DesignQuantstudioReader) -> Data:
+    def create(cls, reader: DesignQuantstudioReader) -> Data:
         pass

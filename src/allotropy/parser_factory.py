@@ -113,6 +113,12 @@ class Vendor(Enum):
     def release_state(self) -> ReleaseState:
         return self.get_parser().RELEASE_STATE
 
+    @property
+    def supported_extensions(self) -> list[str]:
+        return [
+            ext.strip() for ext in self.get_parser().SUPPORTED_EXTENSIONS.split(",")
+        ]
+
     def get_parser(self, default_timezone: tzinfo | None = None) -> VendorParser:
         timestamp_parser = TimestampParser(default_timezone)
         return _VENDOR_TO_PARSER[self](timestamp_parser)

@@ -29,7 +29,6 @@ from tests.parsers.roche_cedex_bioht.roche_cedex_bioht_data import (
         ("2023-06-01 24:35:25", "CEDEX BIO HT", 00000, "Analyst3", "1.2.2"),
     ],
 )
-@pytest.mark.short
 def test_create_title(
     processing_time: str,
     model_number: str,
@@ -53,7 +52,6 @@ def test_create_title(
     assert title.software_version == software_version
 
 
-@pytest.mark.short
 def test_create_title_with_no_analyst() -> None:
     title_data = SeriesData(
         pd.Series(
@@ -69,7 +67,6 @@ def test_create_title_with_no_analyst() -> None:
         Title.create(title_data)
 
 
-@pytest.mark.short
 def test_create_title_with_no_serial_number() -> None:
     title_data = SeriesData(
         pd.Series({"analyst": "dummy", "data processing time": "2021-06-01 13:04:06"})
@@ -81,7 +78,6 @@ def test_create_title_with_no_serial_number() -> None:
         Title.create(title_data)
 
 
-@pytest.mark.short
 def test_create_raw_measurement() -> None:
     data = SeriesData(
         pd.Series(
@@ -100,7 +96,6 @@ def test_create_raw_measurement() -> None:
     assert measurement.unit == "mmol/L"
 
 
-@pytest.mark.short
 def test_create_measurements() -> None:
     data = pd.DataFrame(
         {
@@ -131,7 +126,6 @@ def test_create_measurements() -> None:
     }
 
 
-@pytest.mark.short
 def test_create_measurements_more_than_one_measurement_docs() -> None:
     data = pd.DataFrame(
         {
@@ -164,7 +158,6 @@ def test_create_measurements_more_than_one_measurement_docs() -> None:
     }
 
 
-@pytest.mark.short
 def test_create_measurements_duplicate_measurements() -> None:
     data = pd.DataFrame(
         {
@@ -186,7 +179,6 @@ def test_create_measurements_duplicate_measurements() -> None:
         create_measurements(data)
 
 
-@pytest.mark.short
 def test_create_sample() -> None:
     sample_data = pd.DataFrame(
         {
@@ -219,7 +211,6 @@ def test_create_sample() -> None:
     }
 
 
-@pytest.mark.short
 def test_create_data() -> None:
     with mock.patch(
         "allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure.random_uuid_str",
