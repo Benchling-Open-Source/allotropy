@@ -16,7 +16,7 @@ class RocheCedexHiResReader:
     data: pd.DataFrame
 
     def __init__(self, named_file_contents: NamedFileContents) -> None:
-        if named_file_contents.original_file_name.endswith(".csv"):
+        if named_file_contents.extension == "csv":
             df = read_csv(
                 named_file_contents.contents,
                 index_col=False,

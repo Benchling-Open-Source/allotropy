@@ -25,7 +25,7 @@ class ThermoFisherQubitFlexReader:
         Raises:
         AllotropeConversionError: If the file format is not supported.
         """
-        if named_file_contents.original_file_name.endswith(".csv"):
+        if named_file_contents.extension == "csv":
             return read_csv(
                 named_file_contents.contents,
                 index_col=False,

@@ -22,8 +22,7 @@ class UnchainedLabsLunaticReader:
     header: SeriesData
 
     def __init__(self, named_file_contents: NamedFileContents) -> None:
-        extension = PureWindowsPath(named_file_contents.original_file_name).suffix
-        if extension == ".csv":
+        if named_file_contents.extension == "csv":
             self.header, self.data = self._parse_csv(named_file_contents.contents)
         else:
             self.header, self.data = self._parse_xlsx(named_file_contents.contents)

@@ -13,11 +13,9 @@ class ThermoFisherGenesys30Reader:
     data: pd.DataFrame
 
     def __init__(self, named_file_contents: NamedFileContents) -> None:
-        filename = named_file_contents.original_file_name
-
         reader = LinesReader(read_to_lines(named_file_contents))
 
-        if filename.endswith(".csv"):
+        if named_file_contents.extension == "csv":
             metadata_list = [line for line in reader.pop_until("^,,") if line]
             reader.drop_until_inclusive(",,")
             delimiter = ","

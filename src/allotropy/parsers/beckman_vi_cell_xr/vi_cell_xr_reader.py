@@ -36,7 +36,7 @@ class ViCellData:
 def create_reader_data(named_file_contents: NamedFileContents) -> ViCellData:
     reader: ViCellXRReader | ViCellXRTXTReader = (
         ViCellXRTXTReader(named_file_contents)
-        if named_file_contents.original_file_name.endswith("txt")
+        if named_file_contents.extension == "txt"
         else ViCellXRReader(named_file_contents)
     )
     return ViCellData(reader.data, reader.serial_number, reader.version)
@@ -64,7 +64,7 @@ class ViCellXRReader:
         # calamine is faster for reading xlsx, but does not read xls. For xls, let pandas pick engine.
         self.engine = (
             "calamine"
-            if named_file_contents.original_file_name.endswith("xlsx")
+            if named_file_contents.extension == "xlsx"
             else None
         )
         self.contents = named_file_contents.contents
