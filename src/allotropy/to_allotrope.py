@@ -1,5 +1,5 @@
 from datetime import tzinfo
-from pathlib import Path, PureWindowsPath
+from pathlib import Path
 from typing import Any
 
 from allotropy.allotrope.allotrope import serialize_and_validate_allotrope

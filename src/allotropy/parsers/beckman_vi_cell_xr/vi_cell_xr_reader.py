@@ -62,11 +62,7 @@ class ViCellXRReader:
 
     def __init__(self, named_file_contents: NamedFileContents) -> None:
         # calamine is faster for reading xlsx, but does not read xls. For xls, let pandas pick engine.
-        self.engine = (
-            "calamine"
-            if named_file_contents.extension == "xlsx"
-            else None
-        )
+        self.engine = "calamine" if named_file_contents.extension == "xlsx" else None
         self.contents = named_file_contents.contents
         file_info = self._get_file_info()
         try:
