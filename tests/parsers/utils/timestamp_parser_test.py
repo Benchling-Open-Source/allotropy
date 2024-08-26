@@ -7,7 +7,6 @@ from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 
 
-@pytest.mark.short
 @pytest.mark.parametrize(
     "time_str,expected",
     [
@@ -28,7 +27,6 @@ US_PACIFIC = ZoneInfo("US/Pacific")
 UTC_MINUS_7 = timezone(timedelta(hours=-7))
 
 
-@pytest.mark.short
 @pytest.mark.parametrize(
     "default_timezone,time_str,expected",
     [
@@ -50,7 +48,6 @@ def test_timestamp_parser_provided_timezone(
     assert TimestampParser(default_timezone).parse(time_str) == expected
 
 
-@pytest.mark.short
 @pytest.mark.parametrize("time_str", ["blah"])
 def test_timestamp_parser_fails_on_invalid_timestamp(time_str: str) -> None:
     parser = TimestampParser()
@@ -58,7 +55,6 @@ def test_timestamp_parser_fails_on_invalid_timestamp(time_str: str) -> None:
         parser.parse(time_str)
 
 
-@pytest.mark.short
 def test_timestamp_parser_handles_24h_pm() -> None:
     assert (
         TimestampParser().parse("2023-03-16 16:52:37 PM") == "2023-03-16T16:52:37+00:00"

@@ -56,6 +56,7 @@ def test_unrecognized_read_type(test_file: str) -> None:
         from_file(test_file, VENDOR_TYPE)
 
 
+@pytest.mark.long
 @pytest.mark.parametrize("test_filepath", get_test_cases(TESTDATA))
 def test_data_source_id_references(
     test_filepath: Path,
