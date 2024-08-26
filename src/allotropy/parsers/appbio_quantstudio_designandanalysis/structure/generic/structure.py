@@ -10,6 +10,7 @@ from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import Experime
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     AmplificationData,
+    MulticomponentData,
 )
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
     DesignQuantstudioReader,
@@ -231,7 +232,7 @@ class Well:
             multicomponent_data=(
                 None
                 if multi_data is None
-                else MulticomponentData.create(header, multi_data, identifier)
+                else create_multicomponent_data(header, multi_data, identifier)
             ),
         )
 
@@ -322,49 +323,39 @@ def create_amplification_data(
     )
 
 
-@dataclass(frozen=True)
-class MulticomponentData:
-    cycle: list[float]
-    columns: dict[str, list[float | None]]
+def create_multicomponent_data(
+    header: Header, data: pd.DataFrame, well_id: int
+) -> MulticomponentData:
+    well_data = assert_not_empty_df(
+        data[assert_df_column(data, "Well") == well_id],
+        msg=f"Unable to find multi component data for well {well_id}.",
+    )
 
-    def get_column(self, name: str) -> list[float | None]:
-        return assert_not_none(
-            self.columns.get(name),
-            msg=f"Unable to obtain '{name}' from multicomponent data.",
+    stage_number = well_data.get("Stage Number")
+    stage_data = (
+        well_data
+        if header.pcr_stage_number is None or stage_number is None
+        else assert_not_empty_df(
+            well_data[stage_number == header.pcr_stage_number],  # type: ignore[arg-type]
+            msg=f"Unable to find multi component data for stage {header.pcr_stage_number}.",
         )
+    )
 
-    @staticmethod
-    def create(header: Header, data: pd.DataFrame, well_id: int) -> MulticomponentData:
-        well_data = assert_not_empty_df(
-            data[assert_df_column(data, "Well") == well_id],
-            msg=f"Unable to find multi component data for well {well_id}.",
-        )
-
-        stage_number = well_data.get("Stage Number")
-        stage_data = (
-            well_data
-            if header.pcr_stage_number is None or stage_number is None
-            else assert_not_empty_df(
-                well_data[stage_number == header.pcr_stage_number],  # type: ignore[arg-type]
-                msg=f"Unable to find multi component data for stage {header.pcr_stage_number}.",
-            )
-        )
-
-        return MulticomponentData(
-            cycle=assert_df_column(stage_data, "Cycle Number").tolist(),
-            columns={
-                str(name): stage_data[name].tolist()
-                for name in stage_data
-                if name
-                not in [
-                    "Well",
-                    "Cycle Number",
-                    "Well Position",
-                    "Stage Number",
-                    "Step Number",
-                ]
-            },
-        )
+    return MulticomponentData(
+        cycle=assert_df_column(stage_data, "Cycle Number").tolist(),
+        columns={
+            str(name): stage_data[name].tolist()
+            for name in stage_data
+            if name
+            not in [
+                "Well",
+                "Cycle Number",
+                "Well Position",
+                "Stage Number",
+                "Step Number",
+            ]
+        },
+    )
 
 
 @dataclass(frozen=True)

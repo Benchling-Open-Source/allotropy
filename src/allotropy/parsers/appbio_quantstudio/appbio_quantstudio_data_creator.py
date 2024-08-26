@@ -1,6 +1,5 @@
 from collections.abc import Iterable
 
-from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ContainerType
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
 )
@@ -16,6 +15,7 @@ from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import 
     Metadata,
     ProcessedData,
 )
+from allotropy.parsers.appbio_quantstudio import constants
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     AmplificationData,
     Header,
@@ -192,17 +192,17 @@ def _create_measurement(
 def create_metadata(header: Header, file_name: str) -> Metadata:
     return Metadata(
         device_identifier=header.device_identifier,
-        device_type="qPCR",
+        device_type=constants.DEVICE_TYPE,
         device_serial_number=header.device_serial_number,
         model_number=header.model_number,
-        software_name="Thermo QuantStudio",
-        software_version="1.0",
-        data_system_instance_identifier="localhost",
+        software_name=constants.SOFTWARE_NAME,
+        software_version=constants.SOFTWARE_VERSION,
+        data_system_instance_identifier=constants.DATA_SYSTEM_INSTANCE_IDENTIFIER,
         file_name=file_name,
         unc_path="",  # unknown
         measurement_method_identifier=header.measurement_method_identifier,
         experiment_type=header.experiment_type,
-        container_type=ContainerType.qPCR_reaction_block,
+        container_type=constants.CONTAINER_TYPE,
     )
 
 

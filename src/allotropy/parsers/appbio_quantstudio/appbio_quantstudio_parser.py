@@ -14,9 +14,9 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_data_creator import
 )
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     create_amplification_data,
+    create_multicomponent_data,
     Header,
     MeltCurveRawData,
-    MulticomponentData,
     RawData,
     Result,
     Well,
@@ -40,7 +40,7 @@ class AppBioQuantStudioParser(MapperVendorParser[Data, Model]):
         # Skip raw data section
         RawData.create(reader)
         amp_data = create_amplification_data(reader)
-        multi_data = MulticomponentData.create(reader)
+        multi_data = create_multicomponent_data(reader)
         results_data, results_metadata = Result.create(reader, header.experiment_type)
         melt_data = MeltCurveRawData.create(reader)
 

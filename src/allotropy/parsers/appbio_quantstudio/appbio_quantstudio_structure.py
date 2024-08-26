@@ -287,26 +287,26 @@ class MulticomponentData:
             msg=f"Unable to obtain '{name}' from multicomponent data.",
         )
 
-    @staticmethod
-    def create(reader: LinesReader) -> dict[int, MulticomponentData]:
-        if not reader.match(r"^\[Multicomponent Data\]"):
-            return {}
-        reader.pop()  # remove title
-        lines = list(reader.pop_until(r"^\[.+\]"))
-        csv_stream = StringIO("\n".join(lines))
-        data = read_csv(csv_stream, sep="\t", thousands=r",")
 
-        def make_data(well_data: pd.Series[Any]) -> MulticomponentData:
-            return MulticomponentData(
-                cycle=well_data["Cycle"].tolist(),
-                columns={
-                    name: well_data[name].tolist()
-                    for name in well_data
-                    if name not in ["Well", "Cycle", "Well Position"]
-                },
-            )
+def create_multicomponent_data(reader: LinesReader) -> dict[int, MulticomponentData]:
+    if not reader.match(r"^\[Multicomponent Data\]"):
+        return {}
+    reader.pop()  # remove title
+    lines = list(reader.pop_until(r"^\[.+\]"))
+    csv_stream = StringIO("\n".join(lines))
+    data = read_csv(csv_stream, sep="\t", thousands=r",")
 
-        return map_wells(make_data, data)
+    def make_data(well_data: pd.Series[Any]) -> MulticomponentData:
+        return MulticomponentData(
+            cycle=well_data["Cycle"].tolist(),
+            columns={
+                name: well_data[name].tolist()
+                for name in well_data
+                if name not in ["Well", "Cycle", "Well Position"]
+            },
+        )
+
+    return map_wells(make_data, data)
 
 
 @dataclass(frozen=True)
