@@ -257,7 +257,6 @@ def create_measurement_group(
                     sample.analyte_region_dict,
                     system_metadata.regions_of_interest,
                 ),
-                # TODO: add an error to sample data
                 errors=sample.errors,
             )
         ],
