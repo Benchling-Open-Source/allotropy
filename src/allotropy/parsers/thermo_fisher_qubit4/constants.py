@@ -9,4 +9,3 @@ DEVICE_TYPE = "fluorescence detector"
 
 # Errors
 VALUE_ERROR = "Unable to find value for column"
-UNSUPPORTED_FILE_FORMAT_ERROR = "Unsupported file format. Expected xlsx. Actual: "

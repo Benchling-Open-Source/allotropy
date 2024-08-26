@@ -36,6 +36,7 @@ LUMINESCENCE_DETECTOR = "luminescence detector"
 class MethodicalMindParser(VendorParser):
     DISPLAY_NAME = "Methodical Mind"
     RELEASE_STATE = ReleaseState.RECOMMENDED
+    SUPPORTED_EXTENSIONS = "txt"
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         file_lines = read_to_lines(named_file_contents)

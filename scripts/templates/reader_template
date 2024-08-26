@@ -11,6 +11,7 @@ from allotropy.parsers.utils.pandas import (
 
 
 class $CLASS_NAME_PREFIX$Reader:
+    SUPPORTED_EXTENSIONS = "txt,csv"
     header: SeriesData
     data: pd.DataFrame
 

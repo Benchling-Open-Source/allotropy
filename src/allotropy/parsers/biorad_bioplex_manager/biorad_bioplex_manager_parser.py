@@ -69,6 +69,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 class BioradBioplexParser(VendorParser):
     DISPLAY_NAME = "Bio-Rad Bio-Plex Manager"
     RELEASE_STATE = ReleaseState.RECOMMENDED
+    SUPPORTED_EXTENSIONS = "xml"
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         contents = named_file_contents.contents.read()

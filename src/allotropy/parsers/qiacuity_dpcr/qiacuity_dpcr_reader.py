@@ -6,6 +6,9 @@ from allotropy.types import IOType
 
 
 class QiacuitydPCRReader:
+    SUPPORTED_EXTENSIONS = "csv"
+    well_data: pd.DataFrame
+
     def __init__(self, contents: IOType):
         # Read in the file, skip first row since it does not have data in it.
         qiacuity_dpcr_data = read_csv(filepath_or_buffer=contents, header=1).replace(

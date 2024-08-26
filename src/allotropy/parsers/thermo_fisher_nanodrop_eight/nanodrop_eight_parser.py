@@ -21,6 +21,7 @@ from allotropy.parsers.vendor_parser import MapperVendorParser
 class NanodropEightParser(MapperVendorParser[Data, Model]):
     DISPLAY_NAME = "Thermo Fisher NanoDrop Eight"
     RELEASE_STATE = ReleaseState.RECOMMENDED
+    SUPPORTED_EXTENSIONS = NanoDropEightReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:

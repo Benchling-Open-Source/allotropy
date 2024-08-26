@@ -242,6 +242,7 @@ class ImagingMeasurementParser(MeasurementParser):
 class KaleidoParser(VendorParser):
     DISPLAY_NAME = "Revvity Kaleido"
     RELEASE_STATE = ReleaseState.RECOMMENDED
+    SUPPORTED_EXTENSIONS = "csv"
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         lines = read_to_lines(named_file_contents)
