@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 
 import pytest
 
@@ -10,6 +11,19 @@ from allotropy.to_allotrope import allotrope_from_file, allotrope_model_from_fil
 
 INVALID_FILE_PATH = "not/a/path"
 EXPECTED_ERROR_MESSAGE = f"File not found: {INVALID_FILE_PATH}"
+
+
+def test_raises_on_invalid_extension() -> None:
+    with pytest.raises(
+        AllotropeConversionError,
+        match=re.escape(
+            "Unsupported file extension 'csv' for parser 'Agilent Gen5', expected one of '['txt']'."
+        ),
+    ):
+        allotrope_from_file(
+            "tests/parsers/appbio_absolute_q/testdata/Appbio_AbsoluteQ_example01.csv",
+            Vendor.AGILENT_GEN5,
+        )
 
 
 def test_allotrope_from_file_not_found() -> None:

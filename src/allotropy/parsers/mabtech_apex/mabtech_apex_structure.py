@@ -12,7 +12,7 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
     ProcessedData,
 )
 from allotropy.parsers.constants import NOT_APPLICABLE
-from allotropy.parsers.mabtech_apex.mabtech_apex_contents import MabtechApexContents
+from allotropy.parsers.mabtech_apex.mabtech_apex_reader import MabtechApexReader
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none
@@ -24,11 +24,11 @@ IMAGE_FEATURES = [
 ]
 
 
-def create_metadata(contents: MabtechApexContents, file_name: str) -> Metadata:
+def create_metadata(reader: MabtechApexReader, file_name: str) -> Metadata:
     machine_id = assert_not_none(
         re.match(
             "([A-Z]+[a-z]+) ([0-9]+)",
-            contents.plate_info[str, "Machine ID:"],
+            reader.plate_info[str, "Machine ID:"],
         ),
         msg="Unable to interpret Machine ID",
     )
@@ -38,12 +38,12 @@ def create_metadata(contents: MabtechApexContents, file_name: str) -> Metadata:
         device_type="imager",
         detection_type="optical-imaging",
         software_name="Apex",
-        unc_path=contents.plate_info.get(str, "Path:"),
-        software_version=contents.plate_info.get(str, "Software Version:"),
+        unc_path=reader.plate_info.get(str, "Path:"),
+        software_version=reader.plate_info.get(str, "Software Version:"),
         model_number=machine_id.group(1),
         equipment_serial_number=machine_id.group(2),
         file_name=file_name,
-        analyst=contents.plate_info.get(str, "Saved By:"),
+        analyst=reader.plate_info.get(str, "Saved By:"),
     )
 
 

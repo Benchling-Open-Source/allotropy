@@ -9,7 +9,4 @@ PRODUCT_MANUFACTURER = "Thermo Fisher Scientific"
 DEVICE_TYPE = "absorbance detector"
 
 # Error messages:
-UNSUPPORTED_FILE_FORMAT_ERROR = (
-    "Unsupported File Extension. Expected .csv, .tsv. Actual: "
-)
 MEASUREMENT_TIME_MISSING = "Unable to find measurement time from instrument file"

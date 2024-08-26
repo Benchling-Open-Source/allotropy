@@ -5,6 +5,8 @@ from allotropy.types import IOType
 
 
 class NucleoviewReader:
+    SUPPORTED_EXTENSIONS = "csv"
+
     @classmethod
     def read(cls, contents: IOType) -> pd.DataFrame:
         df = read_csv(contents, sep=";", skipinitialspace=True, index_col=0)

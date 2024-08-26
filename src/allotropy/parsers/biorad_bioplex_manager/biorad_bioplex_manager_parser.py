@@ -25,6 +25,7 @@ from allotropy.parsers.vendor_parser import MapperVendorParser
 class BioradBioplexParser(MapperVendorParser[Data, Model]):
     DISPLAY_NAME = "Bio-Rad Bio-Plex Manager"
     RELEASE_STATE = ReleaseState.RECOMMENDED
+    SUPPORTED_EXTENSIONS = "xml"
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:

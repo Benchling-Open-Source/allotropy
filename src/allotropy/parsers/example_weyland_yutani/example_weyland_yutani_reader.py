@@ -6,6 +6,8 @@ from allotropy.parsers.lines_reader import CsvReader, read_to_lines
 
 
 class ExampleWeylandYutaniReader:
+    SUPPORTED_EXTENSIONS = "csv"
+
     middle: pd.DataFrame | None
     bottom: pd.DataFrame | None
 
