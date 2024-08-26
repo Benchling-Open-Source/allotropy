@@ -75,7 +75,7 @@ def get_data() -> Data:
                 data_processing_time="2022-06-28 142558",
                 measurements=[
                     Measurement(
-                        identifier="dummy_id",
+                        identifier="TEST_ID_0",
                         measurement_time="2022-06-24 14:34:52",
                         sample_identifier="BP_R10_KP_008_D0",
                         batch_identifier="KP_008",
@@ -96,7 +96,7 @@ def get_data() -> Data:
                         ),
                     ),
                     Measurement(
-                        identifier="dummy_id",
+                        identifier="TEST_ID_1",
                         measurement_time="2022-06-24 14:34:52",
                         sample_identifier="BP_R10_KP_008_D0",
                         batch_identifier="KP_008",
@@ -108,7 +108,7 @@ def get_data() -> Data:
                         oxygen_saturation=100.0,
                     ),
                     Measurement(
-                        identifier="dummy_id",
+                        identifier="TEST_ID_2",
                         measurement_time="2022-06-24 14:34:52",
                         sample_identifier="BP_R10_KP_008_D0",
                         batch_identifier="KP_008",

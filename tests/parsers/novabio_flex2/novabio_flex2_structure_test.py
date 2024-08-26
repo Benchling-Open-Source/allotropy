@@ -1,5 +1,4 @@
 import re
-from unittest import mock
 
 import pandas as pd
 import pytest
@@ -15,6 +14,7 @@ from allotropy.parsers.novabio_flex2.novabio_flex2_structure import (
     SampleList,
     Title,
 )
+from allotropy.testing.utils import mock_uuid_generation
 from tests.parsers.novabio_flex2.novabio_flex2_data import (
     get_data,
     get_input_stream,
@@ -129,8 +129,5 @@ def test_create_sample_list_invalid_no_analyst() -> None:
 
 def test_create_data() -> None:
     named_file_contents = NamedFileContents(get_input_stream(), get_input_title())
-    with mock.patch(
-        "allotropy.parsers.novabio_flex2.novabio_flex2_structure.random_uuid_str",
-        return_value="dummy_id",
-    ):
+    with mock_uuid_generation():
         assert NovaBioFlexParser().create_data(named_file_contents) == get_data()

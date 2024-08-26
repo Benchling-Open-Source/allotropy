@@ -134,7 +134,7 @@ class TestIdGenerator:
 
 
 @contextmanager
-def mock_uuid_generation(prefix: str | None) -> Iterator[None]:
+def mock_uuid_generation(prefix: str | None = None) -> Iterator[None]:
     with mock.patch(
         "allotropy.parsers.utils.uuids._IdGeneratorFactory.get_id_generator",
         return_value=TestIdGenerator(prefix),
