@@ -12,7 +12,6 @@ from allotropy.parsers.biorad_bioplex_manager.biorad_bioplex_manager_reader impo
 TESTDATA = f"{Path(__file__).parent}/testdata"
 
 
-@pytest.mark.short
 def test_validate_xml_structure_missing_tags() -> None:
     test_filepath = (
         f"{TESTDATA}/exclude/bio-rad_bio-plex_manager_missing_children_error.xml"

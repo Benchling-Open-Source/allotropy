@@ -19,6 +19,7 @@ def _get_schema_paths() -> list[Path]:
     ]
 
 
+@pytest.mark.long
 @pytest.mark.parametrize("schema_path", _get_schema_paths())
 def test_generate_schemas_runs_to_completion(schema_path: Path) -> None:
     models_changed = generate_schemas(dry_run=True, schema_regex=str(schema_path))

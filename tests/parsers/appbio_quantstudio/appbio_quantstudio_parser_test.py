@@ -24,7 +24,6 @@ from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
 VENDOR_TYPE = Vendor.APPBIO_QUANTSTUDIO
 
 
-@pytest.mark.short
 @pytest.mark.parametrize(
     "data,model",
     [

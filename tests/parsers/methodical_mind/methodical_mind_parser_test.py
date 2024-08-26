@@ -11,6 +11,7 @@ OUTPUT_FILES = (
 )
 
 
+@pytest.mark.long
 @pytest.mark.parametrize("output_file", OUTPUT_FILES)
 def test_parse_biorad_bioplex_to_asm_contents(output_file: str) -> None:
     # Validate that file contents are correctly translated to json allotrope model representation

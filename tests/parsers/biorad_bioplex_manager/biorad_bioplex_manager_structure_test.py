@@ -1,8 +1,6 @@
 from unittest import mock
 from xml.etree import ElementTree
 
-import pytest
-
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.allotrope.models.shared.definitions.definitions import (
     TStatisticDatumRole,
@@ -20,7 +18,6 @@ from allotropy.parsers.biorad_bioplex_manager.biorad_bioplex_manager_structure i
 )
 
 
-@pytest.mark.short
 def test_create_analyte_metadata() -> None:
     analyte_xml_string = """
     <MWAnalyte RegionNumber="18">
@@ -34,7 +31,6 @@ def test_create_analyte_metadata() -> None:
     assert analyte_metadata.error is None
 
 
-@pytest.mark.short
 def test_create_analyte_sample_with_error() -> None:
     analyte_xml_string = """
     <MWAnalyte RegionNumber="18">
@@ -48,7 +44,6 @@ def test_create_analyte_sample_with_error() -> None:
     assert analyte_metadata.error == Error(error="Low bead number", feature="Pn4")
 
 
-@pytest.mark.short
 def test_create_well() -> None:
     test_filepath = (
         "tests/parsers/biorad_bioplex_manager/testdata/exclude/well_xml_example.xml"
@@ -69,7 +64,6 @@ def test_create_well() -> None:
     )
 
 
-@pytest.mark.short
 def test_create_analyte_document_data() -> None:
     bead_xml_string = """
 <BeadRegion RegionNumber="62">
@@ -209,7 +203,6 @@ def test_create_samples() -> None:
     }
 
 
-@pytest.mark.short
 def test_create_system_metadata() -> None:
     test_filepath = (
         "tests/parsers/biorad_bioplex_manager/testdata/exclude/well_xml_example.xml"

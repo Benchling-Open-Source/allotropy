@@ -15,6 +15,7 @@ class TestParser(ParserTest):
     VENDOR = Vendor.THERMO_FISHER_NANODROP_EIGHT
 
 
+@pytest.mark.long
 @pytest.mark.parametrize("test_filepath", get_test_cases(TESTDATA))
 def test_parse_thermo_fisher_nanodrop_eight_data_source_ids(
     test_filepath: Path,
