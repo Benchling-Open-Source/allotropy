@@ -14,6 +14,8 @@ from allotropy.parsers.utils.values import assert_not_none, try_float
 
 
 class LuminexXponentReader:
+    SUPPORTED_EXTENSIONS = "csv"
+
     header_data: pd.DataFrame
     calibration_data: pd.DataFrame
     minimum_assay_bead_count_setting: float

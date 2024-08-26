@@ -56,6 +56,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 class AppBioQuantStudioDesignandanalysisParser(VendorParser):
     DISPLAY_NAME = "AppBio QuantStudio Design & Analysis"
     RELEASE_STATE = ReleaseState.RECOMMENDED
+    SUPPORTED_EXTENSIONS = DesignQuantstudioContents.SUPPORTED_EXTENSIONS
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         contents = DesignQuantstudioContents.create(named_file_contents)

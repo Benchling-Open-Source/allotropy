@@ -21,6 +21,7 @@ from allotropy.parsers.vendor_parser import MapperVendorParser
 class LuminexXponentParser(MapperVendorParser[MapperData, Model]):
     DISPLAY_NAME = "Luminex xPONENT"
     RELEASE_STATE = ReleaseState.RECOMMENDED
+    SUPPORTED_EXTENSIONS = LuminexXponentReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> MapperData:
