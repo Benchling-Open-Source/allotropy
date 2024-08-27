@@ -151,5 +151,5 @@ def create_measurement_groups(
         )
         for row_name, row in data.iterrows()
         for col_name, value in row.items()
-        if value is not np.nan
+        if not pd.isnull(value)
     ]
