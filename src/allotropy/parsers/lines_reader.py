@@ -12,6 +12,7 @@ from allotropy.constants import CHARDET_ENCODING, DEFAULT_ENCODING
 from allotropy.exceptions import AllotropeConversionError, AllotropeParsingError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.utils.pandas import read_csv
+from allotropy.parsers.utils.values import assert_not_none
 
 EMPTY_STR_PATTERN = r"^\s*$"
 
@@ -134,6 +135,11 @@ class LinesReader:
             line = self.pop()
             if line is not None:
                 yield line
+
+    def pop_until_inclusive(self, match_pat: str) -> Iterator[str]:
+        yield from self.pop_until(match_pat)
+        if self.current_line_exists():
+            yield assert_not_none(self.pop())
 
     def pop_until_empty(self, empty_pat: str = EMPTY_STR_PATTERN) -> Iterator[str]:
         while self.current_line_exists() and not self.is_empty(empty_pat):

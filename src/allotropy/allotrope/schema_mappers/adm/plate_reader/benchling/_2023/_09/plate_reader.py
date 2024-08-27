@@ -106,8 +106,6 @@ class Measurement:
     identifier: str
     sample_identifier: str
     location_identifier: str
-    analyst: str | None = None
-    measurement_time: str | None = None
     well_plate_identifier: str | None = None
     detection_type: str | None = None
 
@@ -150,6 +148,7 @@ class MeasurementGroup:
     analyst: str | None = None
     analytical_method_identifier: str | None = None
     experimental_data_identifier: str | None = None
+    experiment_type: str | None = None
     processed_data: ProcessedData | None = None
 
 
@@ -214,6 +213,7 @@ class Mapper(SchemaMapper[Data, Model]):
             measurement_aggregate_document=MeasurementAggregateDocument(
                 analytical_method_identifier=measurement_group.analytical_method_identifier,
                 experimental_data_identifier=measurement_group.experimental_data_identifier,
+                experiment_type=measurement_group.experiment_type,
                 container_type=ContainerType.well_plate,
                 plate_well_count=TQuantityValueNumber(
                     value=measurement_group.plate_well_count

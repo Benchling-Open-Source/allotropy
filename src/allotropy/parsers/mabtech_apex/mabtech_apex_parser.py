@@ -1,3 +1,5 @@
+from functools import partial
+
 from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
     Model,
 )
@@ -28,6 +30,9 @@ class MabtechApexParser(MapperVendorParser[Data, Model]):
         # if Read Date is not present in file, return None, no measurement for given Well
         plate_data = reader.data.dropna(subset="Read Date")
         return Data(
-            create_metadata(reader, named_file_contents.original_file_name),
-            map_rows(plate_data, create_measurement_group),
+            create_metadata(reader.plate_info, named_file_contents.original_file_name),
+            map_rows(
+                plate_data,
+                partial(create_measurement_group, plate_info=reader.plate_info),
+            ),
         )
