@@ -57,12 +57,11 @@ class PlateData:
             for row_index, (_, row) in enumerate(data.loc[[row_name]].iterrows())
             for col_name, value in row.items()
         ]
-
         return PlateData(
             measurement_time=header[str, "Read Time"],
             analyst=header.get(str, "User"),
             well_plate_id=well_plate_id,
-            # The well count is the number of measurements / # of spots per well.
+            # The well count is (# of unique row labels) * (# of columns)
             plate_well_count=len(data.index.unique()) * data.shape[1],
             well_data=well_data,
         )
