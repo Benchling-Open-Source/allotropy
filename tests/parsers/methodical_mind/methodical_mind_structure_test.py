@@ -46,7 +46,9 @@ def test_create_plate_well_data_multiple_values_per_well() -> None:
     ]
     plate_df = pd.DataFrame(
         # The repeated label row labels signify multiple rows per well
-        data, index=["A", "A", "A", "B", "B", "B"], columns=["1", "2", "3", "4", "5"]
+        data,
+        index=["A", "A", "A", "B", "B", "B"],
+        columns=["1", "2", "3", "4", "5"],
     )
 
     result = PlateData.create(header, plate_df)
