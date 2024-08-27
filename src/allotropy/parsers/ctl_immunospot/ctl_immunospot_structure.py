@@ -15,6 +15,7 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
 )
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.constants import NOT_APPLICABLE
+from allotropy.parsers.ctl_immunospot import constants
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
@@ -115,6 +116,7 @@ def create_measurement_groups(
                     well_plate_identifier=well_plate_identifier,
                     location_identifier=well_position,
                     sample_identifier=f"{well_plate_identifier}_{well_position}",
+                    detection_type=constants.DETECTION_TYPE,
                     processed_data=ProcessedData(
                         random_uuid_str(),
                         features=[
@@ -165,8 +167,7 @@ def create_metadata(reader: LinesReader) -> Metadata:
     )
     return Metadata(
         device_identifier=NOT_APPLICABLE,
-        device_type="imager",
-        detection_type="optical-imaging",
+        device_type=constants.DEVICE_TYPE,
         model_number=assert_not_none(
             re.match(r"^(\w+)-(\w+)", analyzer_serial_number),
             msg="Unable to parse analyzer serial number.",
@@ -178,8 +179,8 @@ def create_metadata(reader: LinesReader) -> Metadata:
         ),
         file_name=path.name,
         unc_path=raw_path,
-        product_manufacturer="CTL",
-        software_name="ImmunoSpot",
+        product_manufacturer=constants.PRODUCT_MANUFACTURER,
+        software_name=constants.SOFTWARE_NAME,
         software_version=assert_not_none(
             re.match(r"^ImmunoSpot ([\d\.]+)$", software_info),
             msg="Unable to parse software version",

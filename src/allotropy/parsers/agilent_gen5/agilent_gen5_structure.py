@@ -601,6 +601,7 @@ def _create_measurement(
         or f"{header_data.well_plate_identifier} {well_position}",
         location_identifier=well_position,
         well_plate_identifier=header_data.well_plate_identifier,
+        detection_type=read_data.read_mode.value,
         detector_wavelength_setting=detector_wavelength_setting,
         detector_bandwidth_setting=filter_data.detector_bandwidth_setting
         if filter_data

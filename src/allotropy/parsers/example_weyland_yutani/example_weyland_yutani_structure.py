@@ -108,6 +108,7 @@ def create_measurement_group(
             Measurement(
                 type_=MeasurementType.FLUORESCENCE,
                 identifier=random_uuid_str(),
+                detection_type=constants.DETECTION_TYPE,
                 sample_identifier=f"Plate {plate.number}",
                 location_identifier=f"{result.col}{result.row}",
                 fluorescence=result.value,
