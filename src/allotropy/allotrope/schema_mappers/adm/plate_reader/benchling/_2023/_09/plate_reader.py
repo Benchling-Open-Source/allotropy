@@ -52,7 +52,6 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropyParserError
-from allotropy.parsers.agilent_gen5.constants import ReadMode
 from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
 
 
@@ -109,6 +108,7 @@ class Measurement:
     analyst: str | None = None
     measurement_time: str | None = None
     well_plate_identifier: str | None = None
+    detection_type: str | None = None
 
     # Measurements
     absorbance: JsonFloat | None = None
@@ -169,7 +169,6 @@ class Metadata:
     device_type: str
     model_number: str
     software_name: str | None = None
-    detection_type: str | None = None
     unc_path: str | None = None
     software_version: str | None = None
     equipment_serial_number: str | None = None
@@ -277,7 +276,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 device_control_document=[
                     OpticalImagingDeviceControlDocumentItem(
                         device_type=metadata.device_type,
-                        detection_type=metadata.detection_type,
+                        detection_type=measurement.detection_type,
                         detector_wavelength_setting=quantity_or_none(
                             TQuantityValueNanometer,
                             measurement.detector_wavelength_setting,
@@ -323,7 +322,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 device_control_document=[
                     UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
                         device_type=metadata.device_type,
-                        detection_type=ReadMode.ABSORBANCE.value,
+                        detection_type=measurement.detection_type,
                         detector_wavelength_setting=TQuantityValueNanometer(
                             value=assert_not_none(  # type: ignore[arg-type]
                                 measurement.detector_wavelength_setting,
@@ -358,7 +357,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 device_control_document=[
                     LuminescencePointDetectionDeviceControlDocumentItem(
                         device_type=metadata.device_type,
-                        detection_type=ReadMode.LUMINESCENCE.value,
+                        detection_type=measurement.detection_type,
                         detector_wavelength_setting=quantity_or_none(
                             TQuantityValueNanometer,
                             measurement.detector_wavelength_setting,
@@ -394,7 +393,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 device_control_document=[
                     FluorescencePointDetectionDeviceControlDocumentItem(
                         device_type=metadata.device_type,
-                        detection_type=ReadMode.FLUORESCENCE.value,
+                        detection_type=measurement.detection_type,
                         detector_wavelength_setting=quantity_or_none(
                             TQuantityValueNanometer,
                             measurement.detector_wavelength_setting,

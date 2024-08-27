@@ -115,6 +115,7 @@ def create_measurement_groups(
                     well_plate_identifier=well_plate_identifier,
                     location_identifier=well_position,
                     sample_identifier=f"{well_plate_identifier}_{well_position}",
+                    detection_type="optical-imaging",
                     processed_data=ProcessedData(
                         random_uuid_str(),
                         features=[
@@ -166,7 +167,6 @@ def create_metadata(reader: LinesReader) -> Metadata:
     return Metadata(
         device_identifier=NOT_APPLICABLE,
         device_type="imager",
-        detection_type="optical-imaging",
         model_number=assert_not_none(
             re.match(r"^(\w+)-(\w+)", analyzer_serial_number),
             msg="Unable to parse analyzer serial number.",

@@ -14,6 +14,7 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.unchained_labs_lunatic.constants import (
     CALCULATED_DATA_LOOKUP,
+    DETECTION_TYPE,
     INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG,
     NO_DATE_OR_TIME_ERROR_MSG,
     NO_DEVICE_IDENTIFIER_ERROR_MSG,
@@ -47,6 +48,7 @@ def _create_measurement(
     )
     return Measurement(
         type_=MeasurementType.ULTRAVIOLET_ABSORBANCE,
+        detection_type=DETECTION_TYPE,
         identifier=measurement_identifier,
         detector_wavelength_setting=float(wavelength_column[1:]),
         absorbance=well_plate_data.get(float, wavelength_column, NaN),

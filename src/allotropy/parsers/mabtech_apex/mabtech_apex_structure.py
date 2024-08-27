@@ -36,7 +36,6 @@ def create_metadata(reader: MabtechApexReader, file_name: str) -> Metadata:
     return Metadata(
         device_identifier=NOT_APPLICABLE,
         device_type="imager",
-        detection_type="optical-imaging",
         software_name="Apex",
         unc_path=reader.plate_info.get(str, "Path:"),
         software_version=reader.plate_info.get(str, "Software Version:"),
@@ -58,6 +57,7 @@ def _create_measurement(plate_data: SeriesData) -> Measurement:
         location_identifier=location_id,
         well_plate_identifier=well_plate,
         sample_identifier=f"{well_plate}_{location_id}",
+        detection_type="optical-imaging",
         exposure_duration_setting=plate_data.get(float, "Exposure"),
         illumination_setting=plate_data.get(float, "Preset Intensity"),
         processed_data=ProcessedData(

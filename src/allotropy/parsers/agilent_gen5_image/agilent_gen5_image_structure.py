@@ -316,7 +316,6 @@ def create_results(
 def create_metadata(header_data: HeaderData) -> Metadata:
     return Metadata(
         device_type=DEVICE_TYPE,
-        detection_type=DETECTION_TYPE,
         device_identifier=NOT_APPLICABLE,
         model_number=header_data.model_number or NOT_APPLICABLE,
         equipment_serial_number=header_data.equipment_serial_number,
@@ -342,6 +341,7 @@ def _create_measurement(
         or f"{header_data.well_plate_identifier} {well_position}",
         location_identifier=well_position,
         well_plate_identifier=header_data.well_plate_identifier,
+        detection_type=DETECTION_TYPE,
         detector_wavelength_setting=instrument_settings.detector_wavelength,
         excitation_wavelength_setting=instrument_settings.excitation_wavelength,
         # TODO: this setting won't get reported at the moment since Gen5 only reports it
