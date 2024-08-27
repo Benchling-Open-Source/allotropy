@@ -4,7 +4,6 @@ from dataclasses import dataclass
 from enum import Enum
 import re
 
-import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.models.shared.definitions.definitions import (

@@ -4,4 +4,3 @@ from tests.to_allotrope_test import ParserTest
 
 class TestParser(ParserTest):
     VENDOR = Vendor.BMG_MARS
-    OVERWRITE_ON_FAILURE = True
