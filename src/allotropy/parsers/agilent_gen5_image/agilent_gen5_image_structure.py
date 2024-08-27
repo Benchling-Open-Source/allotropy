@@ -302,6 +302,7 @@ def create_results(
 
         groups.append(
             MeasurementGroup(
+                measurement_time=header_data.datetime,
                 plate_well_count=len(image_features),
                 analytical_method_identifier=header_data.protocol_file_path,
                 experimental_data_identifier=header_data.experiment_file_path,
@@ -315,14 +316,12 @@ def create_results(
 
 def create_metadata(header_data: HeaderData) -> Metadata:
     return Metadata(
-        device_type=DEVICE_TYPE,
         device_identifier=NOT_APPLICABLE,
         model_number=header_data.model_number or NOT_APPLICABLE,
         equipment_serial_number=header_data.equipment_serial_number,
         software_name=DEFAULT_SOFTWARE_NAME,
         software_version=header_data.software_version,
         file_name=header_data.file_name,
-        measurement_time=header_data.datetime,
     )
 
 
@@ -336,6 +335,7 @@ def _create_measurement(
 ) -> Measurement:
     return Measurement(
         type_=MeasurementType.OPTICAL_IMAGING,
+        device_type=DEVICE_TYPE,
         identifier=random_uuid_str(),
         sample_identifier=sample_identifier
         or f"{header_data.well_plate_identifier} {well_position}",
