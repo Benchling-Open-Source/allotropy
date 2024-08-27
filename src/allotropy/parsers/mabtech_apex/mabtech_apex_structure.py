@@ -12,16 +12,11 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
     ProcessedData,
 )
 from allotropy.parsers.constants import NOT_APPLICABLE
+from allotropy.parsers.mabtech_apex import constants
 from allotropy.parsers.mabtech_apex.mabtech_apex_reader import MabtechApexReader
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none
-
-IMAGE_FEATURES = [
-    "Spot Forming Units (SFU)",
-    "Average Relative Spot Volume (RSV)",
-    "Sum of Spot Volume (RSV)",
-]
 
 
 def create_metadata(reader: MabtechApexReader, file_name: str) -> Metadata:
@@ -35,8 +30,8 @@ def create_metadata(reader: MabtechApexReader, file_name: str) -> Metadata:
 
     return Metadata(
         device_identifier=NOT_APPLICABLE,
-        device_type="imager",
-        software_name="Apex",
+        device_type=constants.DEVICE_TYPE,
+        software_name=constants.SOFTWARE_NAME,
         unc_path=reader.plate_info.get(str, "Path:"),
         software_version=reader.plate_info.get(str, "Software Version:"),
         model_number=machine_id.group(1),
@@ -57,7 +52,7 @@ def _create_measurement(plate_data: SeriesData) -> Measurement:
         location_identifier=location_id,
         well_plate_identifier=well_plate,
         sample_identifier=f"{well_plate}_{location_id}",
-        detection_type="optical-imaging",
+        detection_type=constants.DETECTION_TYPE,
         exposure_duration_setting=plate_data.get(float, "Exposure"),
         illumination_setting=plate_data.get(float, "Preset Intensity"),
         processed_data=ProcessedData(
@@ -68,7 +63,7 @@ def _create_measurement(plate_data: SeriesData) -> Measurement:
                     feature=feature,
                     result=plate_data.get(float, feature, NaN),
                 )
-                for feature in IMAGE_FEATURES
+                for feature in constants.IMAGE_FEATURES
             ],
         ),
     )
