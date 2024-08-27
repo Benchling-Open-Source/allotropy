@@ -89,9 +89,6 @@ class Plate:
 def create_metadata(instrument: Instrument, file_name: str) -> Metadata:
     return Metadata(
         file_name=file_name,
-        # TODO(tutorial): extract and return actual measurement time
-        measurement_time="2022-12-31",
-        device_type=constants.DEVICE_TYPE,
         model_number=instrument.serial_number,
         device_identifier=instrument.nickname,
     )
@@ -104,9 +101,12 @@ def create_measurement_group(
         plate_well_count=plate.number_of_wells,
         analytical_method_identifier=basic_assay_info.protocol_id,
         experimental_data_identifier=basic_assay_info.assay_id,
+        # TODO(tutorial): extract and return actual measurement time
+        measurement_time="2022-12-31",
         measurements=[
             Measurement(
                 type_=MeasurementType.FLUORESCENCE,
+                device_type=constants.DEVICE_TYPE,
                 identifier=random_uuid_str(),
                 detection_type=constants.DETECTION_TYPE,
                 sample_identifier=f"Plate {plate.number}",
