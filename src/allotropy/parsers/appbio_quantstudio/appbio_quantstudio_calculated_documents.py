@@ -30,6 +30,8 @@ def build_quantity(well_item: WellItem) -> CalculatedDocument | None:
         value=quantity,
         data_sources=[
             DataSource(feature="cycle threshold result", reference=well_item),
+            DataSource(feature="Y-intercept", reference=well_item),
+            DataSource(feature="Slope", reference=well_item),
         ],
     )
 
