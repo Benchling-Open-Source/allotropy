@@ -43,24 +43,34 @@ class MeasurementGroupNanodrop(MeasurementGroup):
     def create(
         row: SeriesData, metadata: MetadataNanodrop, experiment_type: str
     ) -> MeasurementGroupNanodrop:
+        sample_identifier = row[(str, "Sample Name")]
+        nucleic_acid = row.get(float, "Nucleic Acid", validate=SeriesData.NOT_NAN)
+        baseline_absorbance = row.get(
+            float, "Baseline Absorbance", validate=SeriesData.NOT_NAN
+        )
+        electronic_absorbance_reference_wavelength_setting = row.get(
+            float, "Baseline Correction", validate=SeriesData.NOT_NAN
+        )
+        nucleic_acid_factor = row.get(
+            float, "Nucleic Acid Factor", validate=SeriesData.NOT_NAN
+        )
+
         measurements = [
             Measurement(
                 type_=MeasurementType.ULTRAVIOLET_ABSORBANCE,
                 identifier=random_uuid_str(),
-                sample_identifier=row[(str, "Sample Name")],
+                sample_identifier=sample_identifier,
                 absorbance=row.get(float, column, NaN),
-                baseline_absorbance=row.get(float, "Baseline Absorbance"),
-                electronic_absorbance_reference_wavelength_setting=row.get(
-                    float, "Baseline Correction"
-                ),
-                nucleic_acid_factor=row.get(float, "Nucleic Acid Factor"),
+                baseline_absorbance=baseline_absorbance,
+                electronic_absorbance_reference_wavelength_setting=electronic_absorbance_reference_wavelength_setting,
+                nucleic_acid_factor=nucleic_acid_factor,
                 detector_wavelength_setting=try_float(
                     column.removeprefix("A"),
                     "detector wavelenght setting",
                 ),
                 processed_data=(
                     None
-                    if (nucleic_acid := row.get(float, "Nucleic Acid")) is None
+                    if nucleic_acid is None
                     else ProcessedData(
                         features=[
                             ProcessedDataFeature(
