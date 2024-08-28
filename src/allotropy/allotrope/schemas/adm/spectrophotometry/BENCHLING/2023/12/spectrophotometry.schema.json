@@ -1390,6 +1390,766 @@
         }
       }
     },
+    "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/03/core.schema": {
+      "$id": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/03/core.schema",
+      "title": "Schema for leaf node values.",
+      "$defs": {
+        "asm": {
+          "properties": {
+            "$asm.manifest": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "format": "iri"
+                },
+                {
+                  "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/03/manifest.schema"
+                }
+              ]
+            }
+          }
+        },
+        "tQuantityValue": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "unit": {
+              "$ref": "#/$defs/tUnit"
+            },
+            "has statistic datum role": {
+              "$ref": "#/$defs/tStatisticDatumRole"
+            },
+            "@type": {
+              "$ref": "#/$defs/tClass"
+            }
+          },
+          "$asm.type": "http://qudt.org/schema/qudt#QuantityValue",
+          "required": [
+            "value",
+            "unit"
+          ]
+        },
+        "tNumericValue": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/tByteValue"
+            },
+            {
+              "$ref": "#/$defs/tShortValue"
+            },
+            {
+              "$ref": "#/$defs/tIntValue"
+            },
+            {
+              "$ref": "#/$defs/tLongValue"
+            },
+            {
+              "$ref": "#/$defs/tUnsignedByteValue"
+            },
+            {
+              "$ref": "#/$defs/tUnsignedShortValue"
+            },
+            {
+              "$ref": "#/$defs/tUnsignedIntValue"
+            },
+            {
+              "$ref": "#/$defs/tUnsignedLongValue"
+            },
+            {
+              "$ref": "#/$defs/tFloatValue"
+            },
+            {
+              "$ref": "#/$defs/tDoubleValue"
+            },
+            {
+              "$ref": "#/$defs/tDecimalValue"
+            },
+            {
+              "$ref": "#/$defs/tIntegerValue"
+            }
+          ]
+        },
+        "tOrderedValue": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/tNumericValue"
+            },
+            {
+              "$ref": "#/$defs/tStringValue"
+            },
+            {
+              "$ref": "#/$defs/tDateTimeValue"
+            },
+            {
+              "$ref": "#/$defs/tDateTimeStampValue"
+            },
+            {
+              "$ref": "#/$defs/tDateValue"
+            },
+            {
+              "$ref": "#/$defs/tTimeValue"
+            }
+          ]
+        },
+        "tRangeValue": {
+          "type": "object",
+          "properties": {
+            "minInclusive": {
+              "$ref": "#/$defs/tOrderedValue"
+            },
+            "minExclusive": {
+              "$ref": "#/$defs/tOrderedValue"
+            },
+            "maxInclusive": {
+              "$ref": "#/$defs/tOrderedValue"
+            },
+            "maxExclusive": {
+              "$ref": "#/$defs/tOrderedValue"
+            },
+            "unit": {
+              "$ref": "#/$defs/tUnit"
+            }
+          },
+          "dependencies": {
+            "minInclusive": {
+              "not": {
+                "required": [
+                  "minExclusive"
+                ]
+              }
+            },
+            "minExclusive": {
+              "not": {
+                "required": [
+                  "min"
+                ]
+              }
+            },
+            "maxInclusive": {
+              "not": {
+                "required": [
+                  "maxExclusive"
+                ]
+              }
+            },
+            "maxExclusive": {
+              "not": {
+                "required": [
+                  "max"
+                ]
+              }
+            }
+          },
+          "$asm.type": "http://purl.allotrope.org/ontologies/common#AFC_0000021"
+        },
+        "tStatisticDatumRole": {
+          "description": "A statistic datum role.",
+          "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+          "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class",
+          "type": "string",
+          "enum": [
+            "arithmetic mean role",
+            "median role",
+            "relative standard deviation role",
+            "skewness role",
+            "standard deviation role",
+            "variance role",
+            "maximum value role",
+            "minimum value role",
+            "initial value role",
+            "final value role"
+          ],
+          "$asm.value-sub-class-of": "http://purl.allotrope.org/ontologies/role#AFRL_0000328"
+        },
+        "tUnit": {
+          "description": "A unit is referenced by its QUDT symbol. It MUST be unique within the QUDT units defined in the vocabularies declared in the manifest.",
+          "type": "string",
+          "$asm.lookup-property": "http://purl.allotrope.org/ontology/qudt-ext/schema#symbol",
+          "$asm.type": "http://qudt.org/schema/qudt#Unit"
+        },
+        "tBooleanValue": {
+          "description": "A boolean value.",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#boolean",
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "@type": {
+                  "$ref": "#/$defs/tClass"
+                },
+                "value": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "@type",
+                "value"
+              ]
+            }
+          ]
+        },
+        "tDecimalValue": {
+          "description": "A number value stored as an XSD decimal.",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#decimal",
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "@type": {
+                  "$ref": "#/$defs/tClass"
+                },
+                "value": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "@type",
+                "value"
+              ]
+            }
+          ]
+        },
+        "tDoubleValue": {
+          "description": "A number value stored as an XSD double.",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#double",
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "@type": {
+                  "$ref": "#/$defs/tClass"
+                },
+                "value": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "@type",
+                "value"
+              ]
+            }
+          ]
+        },
+        "tFloatValue": {
+          "description": "A number value stored as an XSD float.",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#float",
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "@type": {
+                  "$ref": "#/$defs/tClass"
+                },
+                "value": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "@type",
+                "value"
+              ]
+            }
+          ]
+        },
+        "tStringValue": {
+          "description": "A literal string in UTF-8 encoding.",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "@type": {
+                  "$ref": "#/$defs/tClass"
+                },
+                "value": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "@type",
+                "value"
+              ]
+            }
+          ]
+        },
+        "tByteValue": {
+          "description": "A signed 8 bit integer value.",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#byte",
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": -128,
+              "maximum": 127
+            },
+            {
+              "type": "object",
+              "properties": {
+                "@type": {
+                  "$ref": "#/$defs/tClass"
+                },
+                "value": {
+                  "type": "integer",
+                  "minimum": -128,
+                  "maximum": 127
+                }
+              },
+              "required": [
+                "@type",
+                "value"
+              ]
+            }
+          ]
+        },
+        "tShortValue": {
+          "description": "A signed 16 bit integer value.",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#short",
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": -32768,
+              "maximum": 32767
+            },
+            {
+              "type": "object",
+              "properties": {
+                "@type": {
+                  "$ref": "#/$defs/tClass"
+                },
+                "value": {
+                  "type": "integer",
+                  "minimum": -32768,
+                  "maximum": 32767
+                }
+              },
+              "required": [
+                "@type",
+                "value"
+              ]
+            }
+          ]
+        },
+        "tIntValue": {
+          "description": "A signed 32 bit integer value.",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#int",
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": -2147483648,
+              "maximum": 2147483647
+            },
+            {
+              "type": "object",
+              "properties": {
+                "@type": {
+                  "$ref": "#/$defs/tClass"
+                },
+                "value": {
+                  "type": "integer",
+                  "minimum": -2147483648,
+                  "maximum": 2147483647
+                }
+              },
+              "required": [
+                "@type",
+                "value"
+              ]
+            }
+          ]
+        },
+        "tLongValue": {
+          "description": "A signed 64 bit integer value.",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#long",
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": -9223372036854775808,
+              "maximum": 9223372036854775807
+            },
+            {
+              "type": "object",
+              "properties": {
+                "@type": {
+                  "$ref": "#/$defs/tClass"
+                },
+                "value": {
+                  "type": "integer",
+                  "minimum": -9223372036854775808,
+                  "maximum": 9223372036854775807
+                }
+              },
+              "required": [
+                "@type",
+                "value"
+              ]
+            }
+          ]
+        },
+        "tUnsignedByteValue": {
+          "description": "An unsigned 8 bit integer value.",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#unsignedByte",
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            {
+              "type": "object",
+              "properties": {
+                "@type": {
+                  "$ref": "#/$defs/tClass"
+                },
+                "value": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 255
+                }
+              },
+              "required": [
+                "@type",
+                "value"
+              ]
+            }
+          ]
+        },
+        "tUnsignedShortValue": {
+          "description": "An unsigned 16 bit integer value.",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#unsignedShort",
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 65535
+            },
+            {
+              "type": "object",
+              "properties": {
+                "@type": {
+                  "$ref": "#/$defs/tClass"
+                },
+                "value": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 65535
+                }
+              },
+              "required": [
+                "@type",
+                "value"
+              ]
+            }
+          ]
+        },
+        "tUnsignedIntValue": {
+          "description": "A signed 32 bit integer value.",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#unsignedInt",
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4294967295
+            },
+            {
+              "type": "object",
+              "properties": {
+                "@type": {
+                  "$ref": "#/$defs/tClass"
+                },
+                "value": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 4294967295
+                }
+              },
+              "required": [
+                "@type",
+                "value"
+              ]
+            }
+          ]
+        },
+        "tUnsignedLongValue": {
+          "description": "A signed 64 bit integer value.",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#unsignedLong",
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 18446744073709551615
+            },
+            {
+              "type": "object",
+              "properties": {
+                "@type": {
+                  "$ref": "#/$defs/tClass"
+                },
+                "value": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 18446744073709551615
+                }
+              },
+              "required": [
+                "@type",
+                "value"
+              ]
+            }
+          ]
+        },
+        "tIntegerValue": {
+          "description": "A arbitrary length integer value.",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#integer",
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "@type": {
+                  "$ref": "#/$defs/tClass"
+                },
+                "value": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "@type",
+                "value"
+              ]
+            }
+          ]
+        },
+        "tIRIValue": {
+          "description": "A literal IRI reference, not to be confused with a resource reference (tResource)",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#anyURI",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "iri"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "@type": {
+                  "$ref": "#/$defs/tClass"
+                },
+                "value": {
+                  "type": "string",
+                  "format": "iri"
+                }
+              },
+              "required": [
+                "@type",
+                "value"
+              ]
+            }
+          ]
+        },
+        "tDateTimeValue": {
+          "description": "All timestamps MUST be in ISO8601 date/time format.",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "@type": {
+                  "$ref": "#/$defs/tClass"
+                },
+                "value": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              },
+              "required": [
+                "@type",
+                "value"
+              ]
+            }
+          ]
+        },
+        "tDateTimeStampValue": {
+          "description": "All timestamps MUST be in ISO8601 date/time format.",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#dateTimeStamp",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "@type": {
+                  "$ref": "#/$defs/tClass"
+                },
+                "value": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              },
+              "required": [
+                "@type",
+                "value"
+              ]
+            }
+          ]
+        },
+        "tDateValue": {
+          "description": "All timestamps MUST be in ISO8601 date format.",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#date",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "@type": {
+                  "$ref": "#/$defs/tClass"
+                },
+                "value": {
+                  "type": "string",
+                  "format": "date"
+                }
+              },
+              "required": [
+                "@type",
+                "value"
+              ]
+            }
+          ]
+        },
+        "tTimeValue": {
+          "description": "All timestamps MUST be in ISO8601 time format.",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#time",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "time"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "@type": {
+                  "$ref": "#/$defs/tClass"
+                },
+                "value": {
+                  "type": "string",
+                  "format": "time"
+                }
+              },
+              "required": [
+                "@type",
+                "value"
+              ]
+            }
+          ]
+        },
+        "tDurationValue": {
+          "description": "All durations MUST be in ISO8601 duration format.",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#duration",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "duration"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "@type": {
+                  "$ref": "#/$defs/tClass"
+                },
+                "value": {
+                  "type": "string",
+                  "format": "duration"
+                }
+              },
+              "required": [
+                "@type",
+                "value"
+              ]
+            }
+          ]
+        },
+        "tClass": {
+          "description": "A class reference is the SKOS preferred label of a class. This label MUST be unique within the transitive closure of the vocabulary referenced by the manifest.",
+          "type": "string",
+          "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+          "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class"
+        },
+        "tObject": {
+          "description": "An JSON object with properties. This will be mapped to an RDF resource, which can be a blank node.",
+          "type": "object",
+          "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Resource"
+        },
+        "tArray": {
+          "description": "An JSON array. This will be mapped to a list, which can be a blank node.",
+          "type": "array",
+          "$asm.type": "http://purl.allotrope.org/ontologies/common#AFC_0000160"
+        },
+        "tNamed": {
+          "description": "A reference to an arbitrary RDF resource identified by a SKOS preferred label. The label MUST be unique.",
+          "type": "string",
+          "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+          "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Resource"
+        },
+        "tResource": {
+          "description": "A reference to an arbitrary RDF resource identified by an IRI. The mapping to RDF will introduce a node reference instead of a literal IRI.",
+          "type": "string",
+          "format": "iri",
+          "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Resource"
+        },
+        "tReference": {
+          "description": "A reference to an object within an JSON document using JSON pointers.",
+          "type": "string",
+          "format": "uri-reference",
+          "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Resource"
+        },
+        "mixedItem": {
+          "description": "A schema for a polymorphic array item, which requires that each item has a @type declaration",
+          "properties": {
+            "@type": {
+              "$ref": "#/$defs/tClass"
+            }
+          },
+          "required": [
+            "@type"
+          ]
+        },
+        "orderedItem": {
+          "description": "A schema for an array item, that is ordered in a not-natural way. This means that it MUST have an explicit @index property stating the position. The index value is a strict positive 32bit signed integer (excluding 0).",
+          "properties": {
+            "@index": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 2147483647
+            }
+          }
+        }
+      }
+    },
     "ultravioletAbsorbancePointDetectionDeviceControlDocument": {
       "type": "array",
       "$asm.array-ordered": true,

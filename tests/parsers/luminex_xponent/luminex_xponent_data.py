@@ -1,8 +1,15 @@
-from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.lines_reader import CsvReader, read_to_lines
-from allotropy.parsers.luminex_xponent.luminex_xponent_structure import (
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    TStatisticDatumRole,
+)
+from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._01.multi_analyte_profiling import (
     Analyte,
-    CalibrationItem,
+    Calibration,
+)
+from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.luminex_xponent.luminex_xponent_reader import (
+    LuminexXponentReader,
+)
+from allotropy.parsers.luminex_xponent.luminex_xponent_structure import (
     Data,
     Header,
     Measurement,
@@ -10,12 +17,10 @@ from allotropy.parsers.luminex_xponent.luminex_xponent_structure import (
 )
 
 
-def get_reader() -> CsvReader:
+def get_reader() -> LuminexXponentReader:
     filename = "tests/parsers/luminex_xponent/testdata/test_data_exclude.csv"
     with open(filename, "rb") as fp:
-        named_file_contents = NamedFileContents(fp, filename)
-        lines = read_to_lines(named_file_contents)
-    return CsvReader(lines)
+        return LuminexXponentReader(NamedFileContents(fp, filename))
 
 
 def get_data() -> Data:
@@ -33,50 +38,57 @@ def get_data() -> Data:
             detector_gain_setting="Standard PMT",  # ProtocolReporterGain
             analyst="waldo",  # Operator row
             data_system_instance_identifier="ABCDEFG123456",  # ComputerName
+            minimum_assay_bead_count_setting=100,
         ),
-        calibration_data=[
-            CalibrationItem(
+        calibrations=[
+            Calibration(
                 name="F3DeCAL1 Calibration",
                 report="Passed",
                 time="05/17/2023 09:25:11",
             ),
-            CalibrationItem(
+            Calibration(
                 name="F3DCAL2 Calibration",
                 report="Failed",
                 time="05/17/2023 09:25:33",
             ),
-            CalibrationItem(
+            Calibration(
                 name="Fluidics Test",
                 report="Passed",
                 time="05/17/2023 09:28:43",
             ),
         ],
-        minimum_bead_count_setting=100,
         measurement_list=MeasurementList(
             measurements=[
                 Measurement(
+                    identifier="dummy_id",
                     sample_identifier="Unknown1",
                     location_identifier="A1",
                     dilution_factor_setting=1,
                     assay_bead_count=881.0,
                     analytes=[
                         Analyte(
-                            analyte_name="alpha",
+                            identifier="dummy_id",
+                            name="alpha",
                             assay_bead_identifier="28",
-                            assay_bead_count=30,
-                            fluorescence=10921.5,
+                            assay_bead_count=30.0,
+                            value=10921.5,
+                            statistic_datum_role=TStatisticDatumRole.median_role,
                         ),
                         Analyte(
-                            analyte_name="bravo",
+                            identifier="dummy_id",
+                            name="bravo",
                             assay_bead_identifier="35",
-                            assay_bead_count=42,
-                            fluorescence=37214,
+                            assay_bead_count=42.0,
+                            value=37214.0,
+                            statistic_datum_role=TStatisticDatumRole.median_role,
                         ),
                         Analyte(
-                            analyte_name="charlie",
+                            identifier="dummy_id",
+                            name="charlie",
                             assay_bead_identifier="37",
-                            assay_bead_count=42,
-                            fluorescence=24978,
+                            assay_bead_count=42.0,
+                            value=24978.0,
+                            statistic_datum_role=TStatisticDatumRole.median_role,
                         ),
                     ],
                     errors=[
@@ -85,28 +97,35 @@ def get_data() -> Data:
                     ],
                 ),
                 Measurement(
+                    identifier="dummy_id",
                     sample_identifier="Unknown2",
                     location_identifier="B1",
-                    dilution_factor_setting=3,
+                    dilution_factor_setting=3.0,
                     assay_bead_count=728.0,
                     analytes=[
                         Analyte(
-                            analyte_name="alpha",
+                            identifier="dummy_id",
+                            name="alpha",
                             assay_bead_identifier="28",
-                            assay_bead_count=26,
-                            fluorescence=8244,
+                            assay_bead_count=26.0,
+                            value=8244.0,
+                            statistic_datum_role=TStatisticDatumRole.median_role,
                         ),
                         Analyte(
-                            analyte_name="bravo",
+                            identifier="dummy_id",
+                            name="bravo",
                             assay_bead_identifier="35",
-                            assay_bead_count=33,
-                            fluorescence=35052,
+                            assay_bead_count=33.0,
+                            value=35052.0,
+                            statistic_datum_role=TStatisticDatumRole.median_role,
                         ),
                         Analyte(
-                            analyte_name="charlie",
+                            identifier="dummy_id",
+                            name="charlie",
                             assay_bead_identifier="37",
-                            assay_bead_count=33,
-                            fluorescence=22609,
+                            assay_bead_count=33.0,
+                            value=22609.0,
+                            statistic_datum_role=TStatisticDatumRole.median_role,
                         ),
                     ],
                 ),

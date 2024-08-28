@@ -4,6 +4,7 @@ from collections.abc import Callable, Iterable
 from enum import Enum
 import re
 from typing import Any, Literal, overload, TypeVar
+import unicodedata
 
 import pandas as pd
 from pandas._typing import FilePath, ReadCsvBuffer
@@ -14,7 +15,6 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 from allotropy.exceptions import (
     AllotropeConversionError,
     AllotropeParsingError,
-    AllotropyParserError,
 )
 from allotropy.parsers.utils.iterables import get_first_not_none
 from allotropy.parsers.utils.values import (
@@ -43,19 +43,30 @@ def rm_df_columns(data: pd.DataFrame, pattern: str) -> pd.DataFrame:
     )
 
 
-def df_to_series(
-    df: pd.DataFrame, msg: str, index: int | None = None
-) -> pd.Series[Any]:
+def set_columns(data: pd.DataFrame, column_names: Iterable[str]) -> None:
+    cols = list(column_names)
+    if data.shape[1] != len(cols):
+        msg = f"Invalid format - mismatch between # of columns ({data.shape[1]}) and # of labels ({len(cols)}), column labels: {cols}."
+        raise AllotropeConversionError(msg)
+    data.columns = pd.Index(cols)
+
+
+def df_to_series(df: pd.DataFrame, index: int | None = None) -> pd.Series[Any]:
+    df = df.dropna(how="all")
     n_rows, _ = df.shape
-    if index is None and n_rows == 1:
-        index = 0
-    if index is None or index >= n_rows:
-        raise AllotropyParserError(msg)
+    if index is None and n_rows != 1:
+        msg = "Unable to convert DataFrame to series: data has more than 1 row and no index was provided."
+        raise AllotropeConversionError(msg)
+    index = index or 0
+    if index >= n_rows:
+        msg = f"Index {index} is greater than the number of rows in dataframe {n_rows}."
+        raise AllotropeConversionError(msg)
     return pd.Series(df.iloc[index], index=df.columns)
 
 
-def df_to_series_data(df: pd.DataFrame, msg: str) -> SeriesData:
-    return SeriesData(df_to_series(df, msg))
+def df_to_series_data(df: pd.DataFrame, index: int | None = None) -> SeriesData:
+    df.columns = df.columns.astype(str).str.strip()
+    return SeriesData(df_to_series(df, index))
 
 
 def assert_df_column(df: pd.DataFrame, column: str) -> pd.Series[Any]:
@@ -80,6 +91,39 @@ def assert_value_from_df(df: pd.DataFrame, key: str) -> Any:
         raise AllotropeConversionError(msg) from e
 
 
+def parse_header_row(df: pd.DataFrame) -> pd.DataFrame:
+    # Set the first row of a dataframe as the columns. This is useful when the dataframe has already been
+    # parsed (e.g. when splitting a dataframe into two parts), and so the header/index_col arguments cannot
+    # be used to set the columns/index at read time.
+    df.columns = pd.Index(
+        assert_not_empty_df(df, "Cannot set parse header row for empty dataframe.")
+        .astype(str)
+        .iloc[0]
+    )
+    df.columns = df.astype(str).columns.str.strip()
+    return df[1:]
+
+
+def split_header_and_data(
+    df: pd.DataFrame, should_split_on_row: Callable[[pd.Series[Any]], bool]
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    for idx, row in df.iterrows():
+        if should_split_on_row(row):
+            header_end = int(str(idx))
+            return df[:header_end], df[header_end + 1 :]
+
+    msg = f"Unable to split header and data from dataframe: {df}"
+    raise AllotropeConversionError(msg)
+
+
+def _normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
+    return df.rename(
+        columns=lambda col: unicodedata.normalize("NFKC", col)
+        if isinstance(col, str)
+        else col
+    )
+
+
 def read_csv(
     # types for filepath_or_buffer match those in pd.read_csv()
     filepath_or_buffer: FilePath | ReadCsvBuffer[bytes] | ReadCsvBuffer[str],
@@ -93,10 +137,12 @@ def read_csv(
     except Exception as e:
         msg = f"Error calling pd.read_csv(): {e}"
         raise AllotropeParsingError(msg) from e
-    return assert_is_type(
-        df_or_reader,
-        pd.DataFrame,
-        "pd.read_csv() returned a TextFileReader, which is not supported.",
+    return _normalize_columns(
+        assert_is_type(
+            df_or_reader,
+            pd.DataFrame,
+            "pd.read_csv() returned a TextFileReader, which is not supported.",
+        )
     )
 
 
@@ -113,8 +159,8 @@ def read_excel(
     except Exception as e:
         msg = f"Error calling pd.read_excel(): {e}"
         raise AllotropeParsingError(msg) from e
-    return assert_is_type(
-        df_or_dict, pd.DataFrame, "Expected a single-sheet Excel file."
+    return _normalize_columns(
+        assert_is_type(df_or_dict, pd.DataFrame, "Expected a single-sheet Excel file.")
     )
 
 
@@ -127,7 +173,15 @@ def read_multisheet_excel(
     except Exception as e:
         msg = f"Error calling pd.read_excel(): {e}"
         raise AllotropeParsingError(msg) from e
-    return assert_is_type(df_or_dict, dict, "Expected a multi-sheet Excel file.")
+    sheets: dict[str, pd.DataFrame] = assert_is_type(
+        df_or_dict, dict, "Expected a multi-sheet Excel file."
+    )
+    return {
+        sheet_name: _normalize_columns(
+            assert_is_type(df, pd.DataFrame, "Expected all sheets to yield dataframes.")
+        )
+        for sheet_name, df in sheets.items()
+    }
 
 
 T = TypeVar("T", bool, float, int, str)

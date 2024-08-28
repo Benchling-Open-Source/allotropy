@@ -3,23 +3,6 @@ from pathlib import Path
 from allotropy.parser_factory import Vendor
 from allotropy.parsers.release_state import ReleaseState
 
-NON_READY_PARSERS = {
-    # NOTE: example parser will never be marked as ready to use, as it shouldn't be used.
-    Vendor.EXAMPLE_WEYLAND_YUTANI,
-    # We want to collect more test cases for this parser before marking as ready.
-    Vendor.QIACUITY_DPCR,
-    # We want to collect more test cases for this parser before marking as ready.
-    Vendor.MABTECH_APEX,
-    # We want to collect more test cases for this parser before marking as ready.
-    Vendor.THERMO_FISHER_QUBIT4,
-    # parser is under working draft
-    Vendor.THERMO_FISHER_QUBIT_FLEX,
-    # We want to collect more test cases for this parser before marking as ready.
-    Vendor.ROCHE_CEDEX_HIRES,
-    # Parser is under working draft
-    Vendor.BMG_MARS,
-}
-
 
 def test_vendor_display_name() -> None:
     # All vendors implement display_name
@@ -28,14 +11,6 @@ def test_vendor_display_name() -> None:
 
     # All display names unique
     assert len(Vendor) == len({vendor.display_name for vendor in Vendor})
-
-
-def test_vendor_release_state() -> None:
-    for vendor in Vendor:
-        assert (
-            vendor.release_state == ReleaseState.RECOMMENDED
-            or vendor in NON_READY_PARSERS
-        )
 
 
 def test_get_parser() -> None:

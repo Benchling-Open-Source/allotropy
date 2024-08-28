@@ -1,4 +1,3 @@
-from collections.abc import Callable
 from dataclasses import dataclass
 from enum import Enum
 
@@ -48,9 +47,9 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 from allotropy.allotrope.models.shared.definitions.definitions import (
     InvalidJsonFloat,
     JsonFloat,
-    TDateTimeValue,
     TQuantityValue,
 )
+from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropyParserError
 from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
@@ -103,12 +102,12 @@ class CalculatedDataItem:
 class Measurement:
     # Measurement metadata
     type_: MeasurementType
+    device_type: str
     identifier: str
     sample_identifier: str
     location_identifier: str
-    analyst: str | None = None
-    measurement_time: str | None = None
     well_plate_identifier: str | None = None
+    detection_type: str | None = None
 
     # Measurements
     absorbance: JsonFloat | None = None
@@ -145,31 +144,19 @@ class Measurement:
 class MeasurementGroup:
     measurements: list[Measurement]
     plate_well_count: float
+    measurement_time: str
+    analyst: str | None = None
     analytical_method_identifier: str | None = None
     experimental_data_identifier: str | None = None
-    _measurement_time: str | None = None
+    experiment_type: str | None = None
     processed_data: ProcessedData | None = None
-
-    @property
-    def measurement_time(self) -> str | None:
-        if self._measurement_time is not None:
-            return self._measurement_time
-        if (
-            self.measurements
-            and len({m.measurement_time for m in self.measurements}) == 1
-            and self.measurements[0].measurement_time
-        ):
-            return self.measurements[0].measurement_time
-        return None
 
 
 @dataclass(frozen=True)
 class Metadata:
     device_identifier: str
-    device_type: str
     model_number: str
-    software_name: str
-    detection_type: str | None = None
+    software_name: str | None = None
     unc_path: str | None = None
     software_version: str | None = None
     equipment_serial_number: str | None = None
@@ -177,9 +164,6 @@ class Metadata:
 
     file_name: str | None = None
     data_system_instance_id: str | None = None
-
-    analyst: str | None = None
-    measurement_time: str | None = None
 
 
 @dataclass(frozen=True)
@@ -189,14 +173,8 @@ class Data:
     calculated_data: list[CalculatedDataItem] | None = None
 
 
-class Mapper:
+class Mapper(SchemaMapper[Data, Model]):
     MANIFEST = "http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest"
-
-    def __init__(
-        self, asm_converter_name: str, get_date_time: Callable[[str], TDateTimeValue]
-    ) -> None:
-        self.converter_name = asm_converter_name
-        self.get_date_time = get_date_time
 
     def map_model(self, data: Data) -> Model:
         return Model(
@@ -217,7 +195,7 @@ class Mapper:
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 plate_reader_document=[
-                    self._get_technique_document(measurement_group, data.metadata)
+                    self._get_technique_document(measurement_group)
                     for measurement_group in data.measurement_groups
                 ],
                 calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
@@ -228,25 +206,21 @@ class Mapper:
         )
 
     def _get_technique_document(
-        self, measurement_group: MeasurementGroup, metadata: Metadata
+        self, measurement_group: MeasurementGroup
     ) -> PlateReaderDocumentItem:
         return PlateReaderDocumentItem(
-            analyst=metadata.analyst,
+            analyst=measurement_group.analyst,
             measurement_aggregate_document=MeasurementAggregateDocument(
                 analytical_method_identifier=measurement_group.analytical_method_identifier,
                 experimental_data_identifier=measurement_group.experimental_data_identifier,
+                experiment_type=measurement_group.experiment_type,
                 container_type=ContainerType.well_plate,
                 plate_well_count=TQuantityValueNumber(
                     value=measurement_group.plate_well_count
                 ),
-                measurement_time=self.get_date_time(
-                    assert_not_none(
-                        measurement_group.measurement_time or metadata.measurement_time,
-                        msg="Failed to parse valid timestamp",
-                    )
-                ),
+                measurement_time=self.get_date_time(measurement_group.measurement_time),
                 measurement_document=[
-                    self._get_measurement_document(measurement, metadata)
+                    self._get_measurement_document(measurement)
                     for measurement in measurement_group.measurements
                 ],
                 processed_data_aggregate_document=self._get_processed_data_aggregate_document(
@@ -256,25 +230,23 @@ class Mapper:
         )
 
     def _get_measurement_document(
-        self, measurement: Measurement, metadata: Metadata
+        self, measurement: Measurement
     ) -> MeasurementDocumentItems:
         # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
         if measurement.type_ == MeasurementType.OPTICAL_IMAGING:
-            return self._get_optical_imaging_measurement_document(measurement, metadata)
+            return self._get_optical_imaging_measurement_document(measurement)
         elif measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE:
-            return self._get_ultraviolet_absorbance_measurement_document(
-                measurement, metadata
-            )
+            return self._get_ultraviolet_absorbance_measurement_document(measurement)
         elif measurement.type_ == MeasurementType.LUMINESCENCE:
-            return self._get_luminescence_measurement_document(measurement, metadata)
+            return self._get_luminescence_measurement_document(measurement)
         elif measurement.type_ == MeasurementType.FLUORESCENCE:
-            return self._get_fluorescence_measurement_document(measurement, metadata)
+            return self._get_fluorescence_measurement_document(measurement)
         else:
             msg = f"Unexpected measurement type: {measurement.type}"
             raise AllotropyParserError(msg)
 
     def _get_optical_imaging_measurement_document(
-        self, measurement: Measurement, metadata: Metadata
+        self, measurement: Measurement
     ) -> OpticalImagingMeasurementDocumentItems:
         return OpticalImagingMeasurementDocumentItems(
             measurement_identifier=measurement.identifier,
@@ -282,8 +254,8 @@ class Mapper:
             device_control_aggregate_document=OpticalImagingDeviceControlAggregateDocument(
                 device_control_document=[
                     OpticalImagingDeviceControlDocumentItem(
-                        device_type=metadata.device_type,
-                        detection_type=metadata.detection_type,
+                        device_type=measurement.device_type,
+                        detection_type=measurement.detection_type,
                         detector_wavelength_setting=quantity_or_none(
                             TQuantityValueNanometer,
                             measurement.detector_wavelength_setting,
@@ -320,7 +292,7 @@ class Mapper:
         )
 
     def _get_ultraviolet_absorbance_measurement_document(
-        self, measurement: Measurement, metadata: Metadata
+        self, measurement: Measurement
     ) -> UltravioletAbsorbancePointDetectionMeasurementDocumentItems:
         return UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
             measurement_identifier=measurement.identifier,
@@ -328,8 +300,8 @@ class Mapper:
             device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
                 device_control_document=[
                     UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
-                        device_type=metadata.device_type,
-                        detection_type=metadata.detection_type,
+                        device_type=measurement.device_type,
+                        detection_type=measurement.detection_type,
                         detector_wavelength_setting=TQuantityValueNanometer(
                             value=assert_not_none(  # type: ignore[arg-type]
                                 measurement.detector_wavelength_setting,
@@ -355,7 +327,7 @@ class Mapper:
         )
 
     def _get_luminescence_measurement_document(
-        self, measurement: Measurement, metadata: Metadata
+        self, measurement: Measurement
     ) -> LuminescencePointDetectionMeasurementDocumentItems:
         return LuminescencePointDetectionMeasurementDocumentItems(
             measurement_identifier=measurement.identifier,
@@ -363,8 +335,8 @@ class Mapper:
             device_control_aggregate_document=LuminescencePointDetectionDeviceControlAggregateDocument(
                 device_control_document=[
                     LuminescencePointDetectionDeviceControlDocumentItem(
-                        device_type=metadata.device_type,
-                        detection_type=metadata.detection_type,
+                        device_type=measurement.device_type,
+                        detection_type=measurement.detection_type,
                         detector_wavelength_setting=quantity_or_none(
                             TQuantityValueNanometer,
                             measurement.detector_wavelength_setting,
@@ -392,15 +364,15 @@ class Mapper:
         )
 
     def _get_fluorescence_measurement_document(
-        self, measurement: Measurement, metadata: Metadata
+        self, measurement: Measurement
     ) -> FluorescencePointDetectionMeasurementDocumentItems:
         return FluorescencePointDetectionMeasurementDocumentItems(
             measurement_identifier=measurement.identifier,
             device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
                 device_control_document=[
                     FluorescencePointDetectionDeviceControlDocumentItem(
-                        device_type=metadata.device_type,
-                        detection_type=metadata.detection_type,
+                        device_type=measurement.device_type,
+                        detection_type=measurement.detection_type,
                         detector_wavelength_setting=quantity_or_none(
                             TQuantityValueNanometer,
                             measurement.detector_wavelength_setting,

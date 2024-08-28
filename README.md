@@ -43,6 +43,7 @@ We currently have parser support for the following instruments:
 ### Candidate Release
 
 ### Working Draft
+  - Thermo Fisher Genesys30
   - Thermo Fisher Nanodrop One
 
 The parsers follow maturation levels of: Recommended, Candidate Release, Working Draft - see [release_state.py](https://github.com/Benchling-Open-Source/allotropy/blob/main/src/allotropy/parsers/release_state.py) for additional details.
@@ -89,9 +90,9 @@ Install Hatch: https://hatch.pypa.io/latest/
 Install Python: https://www.python.org/downloads/
 This library supports Python 3.10 or higher. Hatch will install a matching version of Python (defined in `pyproject.toml`) when it sets up your environment.
 
-Add pre-push checks to your repo:
+Tell git to use .githooks:
 ```sh
-hatch run scripts:setup-pre-push
+git config core.hooksPath .githooks
 ```
 
 #### Dependencies

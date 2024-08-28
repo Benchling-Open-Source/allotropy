@@ -4,26 +4,27 @@ from dataclasses import dataclass
 import re
 from typing import Any
 
-import numpy as np
 import pandas as pd
 
-from allotropy.exceptions import (
-    AllotropeConversionError,
-    get_key_or_error,
+from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
+    Analyte,
+    Measurement,
+    MeasurementGroup,
+    Metadata,
 )
-from allotropy.named_file_contents import NamedFileContents
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.novabio_flex2.constants import (
     ANALYTE_MAPPINGS,
-    BLOOD_GAS_DETECTION_MAPPINGS,
-    CELL_COUNTER_MAPPINGS,
-    CONCENTRATION_CLASSES,
-    CONCENTRATION_CLS_BY_UNIT,
+    DETECTION_PROPERTY_MAPPING,
+    DEVICE_TYPE,
     FILENAME_REGEX,
     INVALID_FILENAME_MESSAGE,
-    OSMOLALITY_DETECTION_MAPPINGS,
-    PH_DETECTION_MAPPINGS,
+    MODEL_NUMBER,
+    PRODUCT_MANUFACTURER,
+    SOFTWARE_NAME,
 )
-from allotropy.parsers.utils.pandas import read_csv, SeriesData
+from allotropy.parsers.utils.pandas import SeriesData
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import try_float_or_none
 
 
@@ -47,38 +48,27 @@ class Title:
 
 
 @dataclass(frozen=True)
-class Analyte:
-    name: str
-    concentration: CONCENTRATION_CLASSES
-
-    @staticmethod
-    def create(raw_name: str, value: float) -> Analyte:
-        mapping = get_key_or_error("analyte name", raw_name, ANALYTE_MAPPINGS)
-        return Analyte(
-            mapping["name"],
-            CONCENTRATION_CLS_BY_UNIT[mapping["unit"]](value=value),
-        )
-
-    def __lt__(self, other: Any) -> bool:
-        if not isinstance(other, Analyte):
-            return NotImplemented
-
-        return self.name < other.name
-
-
-@dataclass(frozen=True)
 class Sample:
     identifier: str
     sample_type: str
     measurement_time: str
     batch_identifier: str | None
     analytes: list[Analyte]
-    cell_counter_properties: dict[str, Any]
-    blood_gas_properties: dict[str, Any]
-    osmolality_properties: dict[str, Any]
-    ph_properties: dict[str, Any]
-    cell_type_processing_method: str | None
-    cell_density_dilution_factor: float | None
+    po2: float | None = None
+    pco2: float | None = None
+    carbon_dioxide_saturation: float | None = None
+    oxygen_saturation: float | None = None
+    ph: float | None = None
+    temperature: float | None = None
+    osmolality: float | None = None
+    viability: float | None = None
+    total_cell_density: float | None = None
+    viable_cell_density: float | None = None
+    average_live_cell_diameter: float | None = None
+    total_cell_count: float | None = None
+    viable_cell_count: float | None = None
+    cell_type_processing_method: str | None = None
+    cell_density_dilution_factor: float | None = None
 
     @classmethod
     def create(cls, series: pd.Series[Any]) -> Sample:
@@ -94,34 +84,33 @@ class Sample:
             batch_identifier=data.get(str, "Batch ID"),
             analytes=sorted(
                 [
-                    Analyte.create(raw_name, data[float, raw_name])
+                    Analyte(
+                        ANALYTE_MAPPINGS[raw_name]["name"],
+                        data[float, raw_name],
+                        ANALYTE_MAPPINGS[raw_name]["unit"],
+                    )
                     for raw_name in ANALYTE_MAPPINGS
                     if data.get(float, raw_name) is not None
                 ]
             ),
-            cell_counter_properties=cls._get_properties(data, CELL_COUNTER_MAPPINGS),
-            blood_gas_properties=cls._get_properties(
-                data, BLOOD_GAS_DETECTION_MAPPINGS
-            ),
-            osmolality_properties=cls._get_properties(
-                data, OSMOLALITY_DETECTION_MAPPINGS
-            ),
-            ph_properties=cls._get_properties(data, PH_DETECTION_MAPPINGS),
-            cell_type_processing_method=data.get(str, "Cell Type"),
+            viability=data.get(float, "Viability"),
+            total_cell_density=data.get(float, "Total Density"),
+            viable_cell_density=data.get(float, "Viable Density"),
+            average_live_cell_diameter=data.get(float, "Average Live Cell Diameter"),
+            total_cell_count=data.get(float, "Total Cell Count"),
+            viable_cell_count=data.get(float, "Total Live Count"),
+            osmolality=data.get(float, "Osm"),
+            ph=data.get(float, "pH"),
+            temperature=data.get(float, "Vessel Temperature (°C)"),
+            po2=data.get(float, "PO2"),
+            pco2=data.get(float, "PCO2"),
+            carbon_dioxide_saturation=data.get(float, "CO2 Saturation"),
+            oxygen_saturation=data.get(float, "O2 Saturation"),
+            cell_type_processing_method=data.get(str, "Cell Type")
+            if cell_density_dilution
+            else None,
             cell_density_dilution_factor=try_float_or_none(str(cell_density_dilution)),
         )
-
-    @classmethod
-    def _get_properties(
-        cls, data: SeriesData, property_mappings: dict[str, Any]
-    ) -> dict[str, Any]:
-        return {
-            property_name: property_dict["cls"](
-                value=data.get(float, property_dict["col_name"])
-            )
-            for property_name, property_dict in property_mappings.items()
-            if data.get(float, property_dict["col_name"]) is not None
-        }
 
 
 @dataclass(frozen=True)
@@ -149,14 +138,64 @@ class SampleList:
         )
 
 
-@dataclass(frozen=True)
-class Data:
-    title: Title
-    sample_list: SampleList
+def _create_measurement(sample: Sample, **kwargs: Any) -> Measurement:
+    return Measurement(
+        identifier=random_uuid_str(),
+        measurement_time=sample.measurement_time,
+        sample_identifier=sample.identifier,
+        description=sample.sample_type,
+        batch_identifier=sample.batch_identifier,
+        **kwargs,
+    )
 
-    @staticmethod
-    def create(named_file_contents: NamedFileContents) -> Data:
-        contents = named_file_contents.contents
-        filename = named_file_contents.original_file_name
-        data = read_csv(contents, parse_dates=["Date & Time"]).replace(np.nan, None)
-        return Data(Title.create(filename), SampleList.create(data))
+
+def _get_measurements(sample: Sample) -> list[Measurement]:
+    measurements = []
+
+    # NOTE: only specifying this order to keep test results identical for refactor. Will remove in follow
+    # up change that moves this logic into schema mapper.
+    for detection_type in [
+        "metabolite-detection",
+        "cell-counting",
+        "blood-gas-detection",
+        "osmolality-detection",
+        "ph-detection",
+    ]:
+        kwargs = {
+            key: getattr(sample, key)
+            for key in DETECTION_PROPERTY_MAPPING[detection_type]
+        }
+        if any(value is not None for value in kwargs.values()):
+            measurements.append(
+                _create_measurement(
+                    sample,
+                    detection_type=detection_type,
+                    **kwargs,
+                )
+            )
+
+    return measurements
+
+
+def create_metadata(title: Title, file_name: str) -> Metadata:
+    return Metadata(
+        file_name=file_name,
+        device_type=DEVICE_TYPE,
+        model_number=MODEL_NUMBER,
+        product_manufacturer=PRODUCT_MANUFACTURER,
+        device_identifier=title.device_identifier,
+        software_name=SOFTWARE_NAME,
+    )
+
+
+def create_measurement_groups(
+    title: Title, sample_list: SampleList
+) -> list[MeasurementGroup]:
+    return [
+        MeasurementGroup(
+            analyst=sample_list.analyst,
+            data_processing_time=title.processing_time,
+            measurements=_get_measurements(sample),
+        )
+        for sample in sample_list.samples
+    ]

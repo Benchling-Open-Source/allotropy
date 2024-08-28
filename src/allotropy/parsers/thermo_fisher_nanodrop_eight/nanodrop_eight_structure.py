@@ -7,7 +7,6 @@ import pandas as pd
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
     CalculatedDataItem,
-    Data,
     DataSource,
     Measurement,
     MeasurementGroup,
@@ -17,15 +16,10 @@ from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._1
     ProcessedDataFeature,
 )
 from allotropy.parsers.constants import NOT_APPLICABLE
+from allotropy.parsers.thermo_fisher_nanodrop_eight import constants
 from allotropy.parsers.utils.iterables import get_first_not_none
 from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
-
-# These may be reported in the results, and are stored as calculated data
-ABSORBANCE_RATIOS = [
-    (260, 280),
-    (260, 230),
-]
 
 
 @dataclass
@@ -103,7 +97,7 @@ class SpectroscopyRow:
             )
 
         absorbance_ratios = {}
-        for numerator, denominator in ABSORBANCE_RATIOS:
+        for numerator, denominator in constants.ABSORBANCE_RATIOS:
             ratio = data.get(float, f"{numerator}/{denominator}")
             if ratio:
                 absorbance_ratios[(numerator, denominator)] = ratio
@@ -138,26 +132,19 @@ class SpectroscopyRow:
         return map_rows(data, SpectroscopyRow.create)
 
 
-def create_data(data: pd.DataFrame, file_name: str) -> Data:
-    rows = SpectroscopyRow.create_rows(data)
+def create_metadata(file_name: str) -> Metadata:
+    return Metadata(
+        device_identifier=constants.DEVICE_IDENTIFIER,
+        device_type=constants.DEVICE_TYPE,
+        model_number=constants.MODEL_NUBMER,
+        file_name=file_name,
+    )
 
-    return Data(
-        metadata=Metadata(
-            device_identifier="Nanodrop",
-            device_type="absorbance detector",
-            model_number="Nanodrop Eight",
-            file_name=file_name,
-        ),
-        measurement_groups=[
-            MeasurementGroup(
-                measurement_time=row.timestamp,
-                analyst=row.analyst,
-                experiment_type=row.experiment_type,
-                measurements=row.measurements,
-            )
-            for row in rows
-        ],
-        # NOTE: in current implementation, calculated data is reported at global level for some reason.
-        # TODO(nstender): should we move this inside of measurements?
-        calculated_data=[item for row in rows for item in row.calculated_data],
+
+def create_measurement_group(row: SpectroscopyRow) -> MeasurementGroup:
+    return MeasurementGroup(
+        measurement_time=row.timestamp,
+        analyst=row.analyst,
+        experiment_type=row.experiment_type,
+        measurements=row.measurements,
     )

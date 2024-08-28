@@ -55,6 +55,9 @@ from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_parser import (
 from allotropy.parsers.roche_cedex_hires.roche_cedex_hires_parser import (
     RocheCedexHiResParser,
 )
+from allotropy.parsers.thermo_fisher_genesys30.thermo_fisher_genesys30_parser import (
+    ThermoFisherGenesys30Parser,
+)
 from allotropy.parsers.thermo_fisher_nanodrop_eight.nanodrop_eight_parser import (
     NanodropEightParser,
 )
@@ -99,6 +102,7 @@ class Vendor(Enum):
     REVVITY_KALEIDO = "REVVITY_KALEIDO"
     ROCHE_CEDEX_BIOHT = "ROCHE_CEDEX_BIOHT"
     ROCHE_CEDEX_HIRES = "ROCHE_CEDEX_HIRES"
+    THERMO_FISHER_GENESYS30 = "THERMO_FISHER_GENESYS30"
     THERMO_FISHER_NANODROP_EIGHT = "THERMO_FISHER_NANODROP_EIGHT"
     THERMO_FISHER_NANODROP_ONE = "THERMO_FISHER_NANODROP_ONE"
     THERMO_FISHER_QUBIT4 = "THERMO_FISHER_QUBIT4"
@@ -107,11 +111,17 @@ class Vendor(Enum):
 
     @property
     def display_name(self) -> str:
-        return self.get_parser().display_name
+        return self.get_parser().DISPLAY_NAME
 
     @property
     def release_state(self) -> ReleaseState:
-        return self.get_parser().release_state
+        return self.get_parser().RELEASE_STATE
+
+    @property
+    def supported_extensions(self) -> list[str]:
+        return [
+            ext.strip() for ext in self.get_parser().SUPPORTED_EXTENSIONS.split(",")
+        ]
 
     def get_parser(self, default_timezone: tzinfo | None = None) -> VendorParser:
         timestamp_parser = TimestampParser(default_timezone)
@@ -143,6 +153,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.REVVITY_KALEIDO: KaleidoParser,
     Vendor.ROCHE_CEDEX_BIOHT: RocheCedexBiohtParser,
     Vendor.ROCHE_CEDEX_HIRES: RocheCedexHiResParser,
+    Vendor.THERMO_FISHER_GENESYS30: ThermoFisherGenesys30Parser,
     Vendor.THERMO_FISHER_NANODROP_EIGHT: NanodropEightParser,
     Vendor.THERMO_FISHER_NANODROP_ONE: ThermoFisherNanodropOneParser,
     Vendor.THERMO_FISHER_QUBIT4: ThermoFisherQubit4Parser,

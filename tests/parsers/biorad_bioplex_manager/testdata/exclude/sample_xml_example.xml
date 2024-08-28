@@ -1,0 +1,71 @@
+<Samples>
+    <Blanks>
+        <Blank>
+            <Description></Description><Label>B</Label>
+            <MemberWells>
+                <MemberWell RowNo="1" ColNo="12" WellNumber="12">
+                    <MWAnalytes>
+                        <MWAnalyte RegionNumber="12">
+                            <AnalyteName>alpha</AnalyteName>
+                            <Reading Valid="true" Code="0" OutlierType="None">6.20000000000000000E+001</Reading>
+                        </MWAnalyte>
+                    </MWAnalytes>
+                </MemberWell>
+                <MemberWell RowNo="2" ColNo="12" WellNumber="24">
+                    <MWAnalytes>
+                        <MWAnalyte RegionNumber="12">
+                            <AnalyteName>alpha</AnalyteName>
+                            <Reading Valid="true" Code="0" OutlierType="None">6.20000000000000000E+001</Reading>
+                        </MWAnalyte>
+                    </MWAnalytes>
+                </MemberWell>
+            </MemberWells>
+        </Blank>
+    </Blanks>
+    <Controls>
+        <Control>
+            <Description></Description><Label>C1</Label>
+            <Dilution>1.00000000000000000E+000</Dilution>
+            <MemberWells>
+                <MemberWell RowNo="3" ColNo="1" WellNumber="25">
+                    <MWAnalytes>
+                        <MWAnalyte RegionNumber="12">
+                            <AnalyteName>alpha</AnalyteName>
+                            <Reading Valid="true" Code="0" OutlierType="None">2.91000000000000000E+002</Reading>
+                            <MWObsConc ReadingOK="false" ReadError="Data field has not been set" ReadErrorCode="9" RecoveryRange="NotInRange" RecoveryRangeCode="9">0.00000000000000000E+000</MWObsConc>
+                        </MWAnalyte>
+                        <MWAnalyte RegionNumber="15">
+                            <AnalyteName>bravo</AnalyteName>
+                            <Reading Valid="true" Code="0" OutlierType="None">1.17100000000000000E+003</Reading>
+                            <MWObsConc ReadingOK="false" ReadError="Data field has not been set" ReadErrorCode="9" RecoveryRange="NotInRange" RecoveryRangeCode="9">0.00000000000000000E+000</MWObsConc>
+                        </MWAnalyte>
+                    </MWAnalytes>
+                </MemberWell>
+            </MemberWells>
+        </Control>
+        <Control>
+            <Description></Description><Label>C2</Label>
+            <Dilution>1.00000000000000000E+000</Dilution>
+            <MemberWells>
+                <MemberWell RowNo="3" ColNo="2" WellNumber="26">
+                    <MWAnalytes>
+                        <MWAnalyte RegionNumber="12">
+                            <AnalyteName>alpha</AnalyteName>
+                            <Reading Valid="true" Code="0" OutlierType="None">1.42000000000000000E+002</Reading>
+                            <MWObsConc ReadingOK="false" ReadError="Data field has not been set" ReadErrorCode="9" RecoveryRange="NotInRange" RecoveryRangeCode="9">0.00000000000000000E+000</MWObsConc>
+                        </MWAnalyte>
+                    </MWAnalytes>
+                </MemberWell>
+                <MemberWell RowNo="4" ColNo="2" WellNumber="38">
+                    <MWAnalytes>
+                        <MWAnalyte RegionNumber="12">
+                            <AnalyteName>alpha</AnalyteName>
+                            <Reading Valid="true" Code="0" OutlierType="None">1.32500000000000000E+002</Reading>
+                            <MWObsConc ReadingOK="false" ReadError="Data field has not been set" ReadErrorCode="9" RecoveryRange="NotInRange" RecoveryRangeCode="9">0.00000000000000000E+000</MWObsConc>
+                        </MWAnalyte>
+                    </MWAnalytes>
+                </MemberWell>
+            </MemberWells>
+        </Control>
+    </Controls>
+</Samples>

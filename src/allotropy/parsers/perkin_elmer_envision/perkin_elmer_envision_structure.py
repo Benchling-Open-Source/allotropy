@@ -18,10 +18,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from re import search
-from typing import Any
 
 import numpy as np
-import pandas as pd
 
 from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
     ScanPositionSettingPlateReader,
@@ -30,18 +28,15 @@ from allotropy.allotrope.models.shared.components.plate_reader import SampleRole
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import CsvReader
-from allotropy.parsers.utils.pandas import SeriesData
+from allotropy.parsers.utils.pandas import (
+    df_to_series_data,
+    SeriesData,
+)
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
     num_to_chars,
 )
-
-
-# TODO(nstender): figure out how to integrate this with pandas util function
-def df_to_series(df: pd.DataFrame) -> pd.Series[Any]:
-    df.columns = df.iloc[0]  # type: ignore[assignment]
-    return pd.Series(df.iloc[-1], index=df.columns)
 
 
 @dataclass(frozen=True)
@@ -59,12 +54,10 @@ class PlateInfo:
             msg="Unable to find expected plate information",
         )
 
-        return SeriesData(
-            df_to_series(
-                assert_not_none(
-                    reader.pop_csv_block_as_df(),
-                    "Plate information CSV block",
-                )
+        return df_to_series_data(
+            assert_not_none(
+                reader.pop_csv_block_as_df(header=0),
+                "Plate information CSV block",
             ).replace(np.nan, None)
         )
 
@@ -218,7 +211,7 @@ class CalculatedResultList:
             "results data",
         )
         series = (
-            data_frame.drop(0, axis=0).drop(0, axis=1)
+            data_frame.drop(0, axis="index").drop(0, axis="columns")
             if data_frame.iloc[1, 0] == "A"
             else data_frame
         )
@@ -261,7 +254,7 @@ class ResultList:
             "reader data",
         )
         series = (
-            data_frame.drop(0, axis=0).drop(0, axis=1)
+            data_frame.drop(0, axis="index").drop(0, axis="columns")
             if data_frame.iloc[1, 0] == "A"
             else data_frame
         )
@@ -353,11 +346,11 @@ class BasicAssayInfo:
     def create(reader: CsvReader) -> BasicAssayInfo:
         reader.drop_until_inclusive("^Basic assay information")
         data_frame = assert_not_none(
-            reader.pop_csv_block_as_df(),
+            reader.pop_csv_block_as_df(index_col=0),
             "Basic assay information",
         ).T
-        data_frame.iloc[0] = data_frame.iloc[0].replace(":.*", "", regex=True)
-        data = SeriesData(df_to_series(data_frame))
+        data_frame.columns = data_frame.columns.str.replace(":", "").str.strip()
+        data = df_to_series_data(data_frame)
         return BasicAssayInfo(data.get(str, "Protocol ID"), data.get(str, "Assay ID"))
 
 
@@ -368,8 +361,10 @@ class PlateType:
     @staticmethod
     def create(reader: CsvReader) -> PlateType:
         reader.drop_until_inclusive("^Plate type")
-        data_frame = assert_not_none(reader.pop_csv_block_as_df(), "Plate type").T
-        data = SeriesData(df_to_series(data_frame))
+        data_frame = assert_not_none(
+            reader.pop_csv_block_as_df(index_col=0), "Plate type"
+        )
+        data = df_to_series_data(data_frame.T)
         return PlateType(
             number_of_wells=data[float, "Number of the wells in the plate"]
         )
@@ -431,7 +426,7 @@ class PlateMap:
         reader.drop_empty()
 
         series = (
-            data_frame.drop(0, axis=0).drop(0, axis=1)
+            data_frame.drop(0, axis="index").drop(0, axis="columns")
             if data_frame.iloc[1, 0] == "A"
             else data_frame
         )
@@ -489,10 +484,10 @@ class Filter:
             return None
 
         data_frame = assert_not_none(
-            reader.pop_csv_block_as_df(),
+            reader.pop_csv_block_as_df(index_col=0),
             "Filter information",
         )
-        data = SeriesData(df_to_series(data_frame.T))
+        data = df_to_series_data(data_frame.T)
         name = str(data.series.index[0])
         description = data[str, "Description"]
 
@@ -542,10 +537,10 @@ class Labels:
     def create(reader: CsvReader) -> Labels:
         reader.drop_until_inclusive("^Labels")
         data_frame = assert_not_none(
-            reader.pop_csv_block_as_df(),
+            reader.pop_csv_block_as_df(index_col=0),
             "Labels",
         )
-        data = SeriesData(df_to_series(data_frame.T).replace(np.nan, None))
+        data = df_to_series_data(data_frame.T.replace(np.nan, None))
         filters = create_filters(reader)
         filter_position_map = {
             "Bottom": ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_,

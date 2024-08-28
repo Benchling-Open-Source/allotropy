@@ -3,15 +3,16 @@ from __future__ import annotations
 import pandas as pd
 import pytest
 
-from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_contents import (
-    DesignQuantstudioContents,
+from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
+    DesignQuantstudioReader,
 )
-from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_structure import (
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.structure import (
     Header,
     Result,
-    WellList,
+)
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.standard_curve.structure import (
+    StandardCurveWellList,
 )
 from allotropy.parsers.utils.pandas import SeriesData
 
@@ -99,17 +100,16 @@ def test_header_builder_no_header_then_raise() -> None:
 
 
 def test_results_builder() -> None:
-    contents = DesignQuantstudioContents(
+    contents = DesignQuantstudioReader(
         {
             "Results": get_results_sheet(),
             "Standard Curve Result": get_standard_curve_result_sheet(),
         },
     )
 
-    experiment_type = ExperimentType.standard_curve_qPCR_experiment
     target_dna_description = "RNaseP"
     well_item_id = 1
-    data = WellList.get_well_result_data(contents, experiment_type)
+    data = StandardCurveWellList.get_well_result_data(contents)
     well_data = data[pd.Series(data.get("Well")) == 1]
     target_well_data = well_data[
         pd.Series(well_data.get("Target")) == target_dna_description
@@ -117,7 +117,7 @@ def test_results_builder() -> None:
     target_data = SeriesData(
         pd.Series(target_well_data.iloc[0], index=target_well_data.columns)
     )
-    result = Result.create(target_data, well_item_id, experiment_type)
+    result = Result.create(target_data, well_item_id)
 
     assert isinstance(result, Result)
     assert result.automatic_baseline_determination_enabled_setting is True

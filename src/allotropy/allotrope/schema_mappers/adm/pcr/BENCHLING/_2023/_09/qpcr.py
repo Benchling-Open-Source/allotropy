@@ -39,8 +39,8 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TDatacubeComponent,
     TDatacubeData,
     TDatacubeStructure,
-    TDateTimeValue,
 )
+from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.parsers.utils.iterables import get_first_not_none
 from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
@@ -94,6 +94,8 @@ class ProcessedData:
     cycle_threshold_result: float | None = None
     normalized_reporter_result: float | None = None
     baseline_corrected_reporter_result: float | None = None
+    baseline_determination_start_cycle_setting: float | None = None
+    baseline_determination_end_cycle_setting: float | None = None
     data_cubes: list[DataCube] | None = None
 
 
@@ -138,14 +140,15 @@ class Metadata:
     device_type: str
     device_serial_number: str
     model_number: str
-    software_name: str
-    software_version: str
     data_system_instance_identifier: str
     file_name: str
     unc_path: str
     experiment_type: ExperimentType
     container_type: ContainerType
     measurement_method_identifier: str
+    software_name: str | None = None
+    software_version: str | None = None
+    product_manufacturer: str | None = None
 
 
 @dataclass
@@ -158,14 +161,8 @@ class Data:
 CubeClass = TypeVar("CubeClass")
 
 
-class Mapper:
+class Mapper(SchemaMapper[Data, Model]):
     MANIFEST = "http://purl.allotrope.org/manifests/cell-counting/BENCHLING/2023/11/cell-counting.manifest"
-
-    def __init__(
-        self, asm_converter_name: str, get_date_time: Callable[[str], TDateTimeValue]
-    ) -> None:
-        self.converter_name = asm_converter_name
-        self.get_date_time = get_date_time
 
     def map_model(self, data: Data) -> Model:
         return Model(
@@ -174,6 +171,7 @@ class Mapper:
                     device_identifier=data.metadata.device_identifier,
                     model_number=data.metadata.model_number,
                     device_serial_number=data.metadata.device_serial_number,
+                    product_manufacturer=data.metadata.product_manufacturer,
                 ),
                 data_system_document=DataSystemDocument(
                     data_system_instance_identifier=data.metadata.data_system_instance_identifier,
@@ -271,7 +269,7 @@ class Mapper:
             processed_data_document=[
                 ProcessedDataDocumentItem(
                     data_processing_document=DataProcessingDocument(
-                        automatic_cycle_threshold_enabled_setting=data.automatic_baseline_determination_enabled_setting,
+                        automatic_cycle_threshold_enabled_setting=data.automatic_cycle_threshold_enabled_setting,
                         cycle_threshold_value_setting=TQuantityValueUnitless(
                             value=data.cycle_threshold_value_setting,
                         ),
@@ -279,6 +277,14 @@ class Mapper:
                         genotyping_determination_method_setting=quantity_or_none(
                             TQuantityValueUnitless,
                             data.genotyping_determination_method_setting,
+                        ),
+                        baseline_determination_start_cycle_setting=quantity_or_none(
+                            TQuantityValueNumber,
+                            data.baseline_determination_start_cycle_setting,
+                        ),
+                        baseline_determination_end_cycle_setting=quantity_or_none(
+                            TQuantityValueNumber,
+                            data.baseline_determination_end_cycle_setting,
                         ),
                     ),
                     cycle_threshold_result=TNullableQuantityValueUnitless(
@@ -309,7 +315,7 @@ class Mapper:
     def _get_calculated_data_aggregate_document(
         self, data: Data
     ) -> TCalculatedDataAggregateDocument | None:
-        if not data.calculated_data:
+        if not data.calculated_data or not data.calculated_data.items:
             return None
 
         if data.calculated_data.reference_sample_description:

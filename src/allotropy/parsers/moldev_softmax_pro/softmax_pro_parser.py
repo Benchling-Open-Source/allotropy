@@ -34,7 +34,10 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueRelativeLightUnit,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    JsonFloat,
+    TQuantityValue,
+)
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import (
@@ -73,13 +76,9 @@ MeasurementDocumentItems = (
 
 
 class SoftmaxproParser(VendorParser):
-    @property
-    def display_name(self) -> str:
-        return "Molecular Devices SoftMax Pro"
-
-    @property
-    def release_state(self) -> ReleaseState:
-        return ReleaseState.RECOMMENDED
+    DISPLAY_NAME = "Molecular Devices SoftMax Pro"
+    RELEASE_STATE = ReleaseState.RECOMMENDED
+    SUPPORTED_EXTENSIONS = "txt"
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         lines = read_to_lines(named_file_contents)
@@ -98,7 +97,7 @@ class SoftmaxproParser(VendorParser):
                 data_system_document=DataSystemDocument(
                     file_name=file_name,
                     software_name="SoftMax Pro",
-                    ASM_converter_name=self.get_asm_converter_name(),
+                    ASM_converter_name=self.asm_converter_name,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 plate_reader_document=[
@@ -292,7 +291,7 @@ class SoftmaxproParser(VendorParser):
     def _build_calc_doc(
         self,
         name: str,
-        value: float,
+        value: JsonFloat,
         data_sources: list[DataSourceDocumentItem],
         description: str | None = None,
     ) -> CalculatedDataDocumentItem:

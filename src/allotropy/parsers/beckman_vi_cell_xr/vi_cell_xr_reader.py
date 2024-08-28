@@ -36,7 +36,7 @@ class ViCellData:
 def create_reader_data(named_file_contents: NamedFileContents) -> ViCellData:
     reader: ViCellXRReader | ViCellXRTXTReader = (
         ViCellXRTXTReader(named_file_contents)
-        if named_file_contents.original_file_name.endswith("txt")
+        if named_file_contents.extension == "txt"
         else ViCellXRReader(named_file_contents)
     )
     return ViCellData(reader.data, reader.serial_number, reader.version)
@@ -62,11 +62,7 @@ class ViCellXRReader:
 
     def __init__(self, named_file_contents: NamedFileContents) -> None:
         # calamine is faster for reading xlsx, but does not read xls. For xls, let pandas pick engine.
-        self.engine = (
-            "calamine"
-            if named_file_contents.original_file_name.endswith("xlsx")
-            else None
-        )
+        self.engine = "calamine" if named_file_contents.extension == "xlsx" else None
         self.contents = named_file_contents.contents
         file_info = self._get_file_info()
         try:
@@ -92,9 +88,7 @@ class ViCellXRReader:
         file_data = self._read_excel(skiprows=skiprows, names=header)
 
         # rename the columns to match the existing parser that was based on xls(x) files
-        file_data.columns = pd.Index(
-            [HEADINGS_TO_PARSER_HEADINGS.get(name, name) for name in file_data.columns]
-        )
+        file_data = file_data.rename(columns=HEADINGS_TO_PARSER_HEADINGS)
 
         # Do the datetime conversion and remove all rows that fail to pass as datetime
         # This fixes an issue where some files have a hidden invalid first row
@@ -148,13 +142,9 @@ class ViCellXRTXTReader:
         data_frame = read_csv(
             StringIO("\n".join(self.lines)), sep=" :", index_col=0, engine="python"
         )
-        file_data = df_to_series(
-            data_frame.astype(str).T, "Failed to parse input file."
-        )
+        file_data = df_to_series(data_frame.astype(str).T)
         file_data = file_data.str.strip().replace("", None)
-        file_data.index = pd.Index(
-            [HEADINGS_TO_PARSER_HEADINGS.get(name, name) for name in file_data.index]
-        )
+        file_data = file_data.rename(index=HEADINGS_TO_PARSER_HEADINGS)
         # Do the datetime conversion and remove all rows that fail to pass as datetime
         # This fixes an issue where some files have a hidden invalid first row
         file_data[DATE_HEADER] = pd.to_datetime(

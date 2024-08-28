@@ -3,13 +3,13 @@
 import pandas as pd
 
 from allotropy.constants import DEFAULT_ENCODING
-from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.thermo_fisher_qubit4 import constants
-from allotropy.parsers.utils.pandas import read_csv, read_excel
+from allotropy.parsers.utils.pandas import read_csv, read_excel, set_columns
 
 
 class ThermoFisherQubit4Reader:
+    SUPPORTED_EXTENSIONS = "csv,xlsx"
+
     """
     A reader class for parsing ThermoFisher Qubit 4 data files into pandas DataFrames.
 
@@ -34,21 +34,19 @@ class ThermoFisherQubit4Reader:
         Raises:
         AllotropeConversionError: If the file format is not supported.
         """
-        if named_file_contents.original_file_name.endswith(".xlsx"):
+        if named_file_contents.extension == "xlsx":
             dataframe = read_excel(named_file_contents.contents.name)
-        elif named_file_contents.original_file_name.endswith(".csv"):
+        else:
             dataframe = read_csv(
                 named_file_contents.contents,
                 index_col=False,
                 encoding=DEFAULT_ENCODING,
             )
-        else:
-            message = f"{constants.UNSUPPORTED_FILE_FORMAT_ERROR} '{named_file_contents.original_file_name}'"
-            raise AllotropeConversionError(message)
+
         columns = dataframe.columns.tolist()
         new_columns = [
             f"Units_{columns[i - 1]}" if "Units" in col else col
             for i, col in enumerate(columns)
         ]
-        dataframe.columns = pd.Index(new_columns)
+        set_columns(dataframe, new_columns)
         return dataframe

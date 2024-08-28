@@ -27,36 +27,11 @@ from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure imp
     ResultPlateInfo,
 )
 from allotropy.parsers.utils.pandas import SeriesData
+from allotropy.testing.utils import mock_uuid_generation
 
 
 def get_reader_from_lines(lines: list[str]) -> CsvReader:
     return CsvReader(lines)
-
-
-def rm_result_list_uuids(result_list: ResultList) -> ResultList:
-    for result in result_list.results:
-        result.uuid = ""
-    return result_list
-
-
-def rm_calculated_result_list_uuid(
-    calculated_result_list: CalculatedResultList,
-) -> CalculatedResultList:
-    for calculated_result in calculated_result_list.calculated_results:
-        calculated_result.uuid = ""
-    return calculated_result_list
-
-
-def rm_plate_uuids(plate: Plate) -> Plate:
-    plate.calculated_result_list = rm_calculated_result_list_uuid(
-        plate.calculated_result_list
-    )
-    plate.result_list = rm_result_list_uuids(plate.result_list)
-    return plate
-
-
-def rm_plates_uuids(plates: PlateList) -> PlateList:
-    return PlateList([rm_plate_uuids(plate) for plate in plates.plates])
 
 
 def test_create_plate_info() -> None:
@@ -123,33 +98,34 @@ def test_create_result() -> None:
     expected = ResultList(
         results=[
             Result(
-                uuid="419c6bf1-25a7-448a-a201-67745003a1c5",
+                uuid="TEST_ID_0",
                 col="A",
                 row="01",
                 value=1,
             ),
             Result(
-                uuid="e2390200-ce45-44dc-b012-a98139a2981c",
+                uuid="TEST_ID_1",
                 col="A",
                 row="02",
                 value=2,
             ),
             Result(
-                uuid="334db986-6007-4f36-8250-b8b3b6a47032",
+                uuid="TEST_ID_2",
                 col="B",
                 row="01",
                 value=3,
             ),
             Result(
-                uuid="055ecf25-af94-484d-b44e-584b55a0c553",
+                uuid="TEST_ID_3",
                 col="B",
                 row="02",
                 value=4,
             ),
         ]
     )
-    result_list = ResultList.create(reader)
-    assert rm_result_list_uuids(result_list) == rm_result_list_uuids(expected)
+    with mock_uuid_generation():
+        result_list = ResultList.create(reader)
+    assert result_list == expected
 
 
 def test_create_plates() -> None:
@@ -202,19 +178,19 @@ def test_create_plates() -> None:
                 result_list=ResultList(
                     results=[
                         Result(
-                            uuid="68893bf4-218e-45ed-9622-01e9211a2608",
+                            uuid="TEST_ID_0",
                             col="A",
                             row="01",
                             value=6,
                         ),
                         Result(
-                            uuid="d549e030-8fe2-4a24-8d58-f6abdf5010d6",
+                            uuid="TEST_ID_1",
                             col="A",
                             row="03",
                             value=7,
                         ),
                         Result(
-                            uuid="1a82a766-5ff6-4b02-9d4f-3d2fe71ea55e",
+                            uuid="TEST_ID_2",
                             col="C",
                             row="02",
                             value=8,
@@ -224,9 +200,9 @@ def test_create_plates() -> None:
             )
         ]
     )
-
-    plate = PlateList.create(reader)
-    assert rm_plates_uuids(plate) == rm_plates_uuids(expected)
+    with mock_uuid_generation():
+        plate = PlateList.create(reader)
+    assert plate == expected
 
 
 def test_create_plates_with_calculated_data() -> None:
@@ -277,19 +253,19 @@ def test_create_plates_with_calculated_data() -> None:
                 calculated_result_list=CalculatedResultList(
                     calculated_results=[
                         CalculatedResult(
-                            uuid="68893bf4-218e-45ed-9622-01e9211a2608",
+                            uuid="TEST_ID_0",
                             col="A",
                             row="01",
                             value=3,
                         ),
                         CalculatedResult(
-                            uuid="d549e030-8fe2-4a24-8d58-f6abdf5010d6",
+                            uuid="TEST_ID_1",
                             col="A",
                             row="03",
                             value=3.5,
                         ),
                         CalculatedResult(
-                            uuid="1a82a766-5ff6-4b02-9d4f-3d2fe71ea55e",
+                            uuid="TEST_ID_2",
                             col="C",
                             row="02",
                             value=4,
@@ -300,9 +276,9 @@ def test_create_plates_with_calculated_data() -> None:
             )
         ]
     )
-
-    plate = PlateList.create(reader)
-    assert rm_plates_uuids(plate) == rm_plates_uuids(expected)
+    with mock_uuid_generation():
+        plate = PlateList.create(reader)
+    assert plate == expected
 
 
 def test_create_calculated_plate_info() -> None:

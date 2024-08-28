@@ -57,7 +57,7 @@ class CombinedData:
                     reader.lines[plate_start:plate_end], sep="\t", header=0
                 ),
                 "Luminescence data table",
-            ).dropna(axis=1, how="all")
+            ).dropna(axis="columns", how="all")
 
             # Drop rows with nans in the first column since they don't represent a row in a plate
             # Drop the first column to get total wells since it's just a "label"

@@ -1,2 +1,4 @@
-# Use CODEOWNERS file to facilitate code reviews
-*   @Benchling-Open-Source/benchling-connect
+src/allotropy/parsers	@slopez-b @alejandro-salgado
+tests			@slopez-b @alejandro-salgado
+docs			@james-leinas
+*   			@Benchling-Open-Source/benchling-connect
