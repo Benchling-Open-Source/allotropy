@@ -17,6 +17,7 @@
 from __future__ import annotations
 
 from collections import defaultdict
+from collections.abc import Iterator
 from dataclasses import dataclass
 from enum import Enum
 from re import search
@@ -285,19 +286,6 @@ class Plate:
     plate_info: PlateInfo
     background_infos: list[BackgroundInfo]
 
-    def collect_result_plates(self, plate_list: PlateList) -> list[ResultPlate]:
-        if not self.background_infos:
-            msg = f"Unable to collect result plates, there is no background information for plate {self.plate_info.number}"
-            raise AllotropeConversionError(msg)
-
-        return [
-            assert_not_none(
-                plate_list.get_result_plate(background_info),
-                msg=f"Unable to find result plate {background_info.label}.",
-            )
-            for background_info in self.background_infos
-        ]
-
 
 @dataclass
 class ResultPlate(Plate):
@@ -309,6 +297,30 @@ class ResultPlate(Plate):
 class CalculatedPlate(Plate):
     plate_info: CalculatedPlateInfo
     results: list[CalculatedResult]
+
+    def get_source_results(self, plate_list: PlateList) -> Iterator[list[Result]]:
+        if not self.background_infos:
+            msg = f"Unable to collect result plates for calculated data, there is no background information for plate {self.plate_info.number}"
+            raise AllotropeConversionError(msg)
+
+        source_results = [
+            assert_not_none(
+                plate_list.get_result_plate(background_info),
+                msg=f"Unable to find result plate {background_info.label}.",
+            ).results
+            for background_info in self.background_infos
+        ]
+
+        if not all(len(source_results[0]) == len(sr) for sr in source_results):
+            msg = f"Unable to collect result plates for calculated data, expected all result plates to have the same number of results, get: {[len(sr) for sr in source_results]}."
+            raise AllotropeConversionError(msg)
+
+        yield from [list(tup) for tup in zip(*source_results, strict=True)]
+
+    def get_result_and_sources(
+        self, plate_list: PlateList
+    ) -> Iterator[tuple[CalculatedResult, list[Result]]]:
+        yield from zip(self.results, self.get_source_results(plate_list), strict=True)
 
 
 def create_plate(reader: CsvReader) -> ResultPlate | CalculatedPlate:
@@ -701,21 +713,21 @@ def create_metadata(
 
 
 def _create_measurement(
-    plate: ResultPlate,
+    plate_info: ResultPlateInfo,
     result: Result,
     plate_maps: dict[str, PlateMap],
     labels: Labels,
     read_type: ReadType,
 ) -> Measurement:
     try:
-        p_map = plate_maps[plate.plate_info.number]
+        p_map = plate_maps[plate_info.number]
     except KeyError as e:
-        msg = f"Unable to find plate map for Plate {plate.plate_info.barcode}."
+        msg = f"Unable to find plate map for Plate {plate_info.barcode}."
         raise AllotropeConversionError(msg) from e
-    plate_barcode = plate.plate_info.barcode
+    plate_barcode = plate_info.barcode
     well_location = f"{result.col}{result.row}"
     ex_filter = labels.excitation_filter
-    em_filter = labels.get_emission_filter(plate.plate_info.emission_filter_id)
+    em_filter = labels.get_emission_filter(plate_info.emission_filter_id)
     return Measurement(
         type_=read_type.measurement_type,
         device_type=read_type.device_type,
@@ -724,11 +736,11 @@ def _create_measurement(
         well_plate_identifier=plate_barcode,
         location_identifier=well_location,
         sample_role_type=p_map.get_sample_role_type(result.col, result.row),
-        compartment_temperature=plate.plate_info.chamber_temperature_at_start,
+        compartment_temperature=plate_info.chamber_temperature_at_start,
         absorbance=result.value if read_type is ReadType.ABSORBANCE else None,
         fluorescence=result.value if read_type is ReadType.FLUORESCENCE else None,
         luminescence=result.value if read_type is ReadType.LUMINESCENCE else None,
-        detector_distance_setting=plate.plate_info.measured_height,
+        detector_distance_setting=plate_info.measured_height,
         number_of_averages=labels.number_of_flashes,
         detector_gain_setting=labels.detector_gain_setting,
         scan_position_setting=labels.scan_position_setting,
@@ -745,7 +757,7 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
     for plate in data.plate_list.results:
         for result in plate.results:
             measurement = _create_measurement(
-                plate,
+                plate.plate_info,
                 result,
                 data.plate_maps,
                 data.labels,
@@ -771,34 +783,23 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
 def create_calculated_data(
     plate_list: PlateList, read_type: ReadType
 ) -> list[CalculatedDataItem]:
-    calculated_documents = []
-
-    for calculated_plate in plate_list.calculated:
-        source_result_lists = [
-            source_plate.results
-            for source_plate in calculated_plate.collect_result_plates(plate_list)
-        ]
-
-        for calculated_result, *source_results in zip(
-            calculated_plate.results,
-            *source_result_lists,
-            strict=True,
-        ):
-            calculated_documents.append(
-                CalculatedDataItem(
-                    identifier=calculated_result.uuid,
-                    name=calculated_plate.plate_info.name,
-                    description=calculated_plate.plate_info.formula,
-                    value=calculated_result.value,
-                    unit=UNITLESS,
-                    data_sources=[
-                        DataSource(
-                            identifier=source_result.uuid,
-                            feature=read_type.value,
-                        )
-                        for source_result in source_results
-                    ],
+    return [
+        CalculatedDataItem(
+            identifier=calculated_result.uuid,
+            name=calculated_plate.plate_info.name,
+            description=calculated_plate.plate_info.formula,
+            value=calculated_result.value,
+            unit=UNITLESS,
+            data_sources=[
+                DataSource(
+                    identifier=source_result.uuid,
+                    feature=read_type.value,
                 )
-            )
-
-    return calculated_documents
+                for source_result in source_results
+            ],
+        )
+        for calculated_plate in plate_list.calculated
+        for calculated_result, source_results in calculated_plate.get_result_and_sources(
+            plate_list
+        )
+    ]
