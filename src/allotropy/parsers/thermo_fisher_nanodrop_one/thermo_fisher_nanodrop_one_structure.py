@@ -58,13 +58,17 @@ class MeasurementGroupNanodrop(MeasurementGroup):
                     column.removeprefix("A"),
                     "detector wavelenght setting",
                 ),
-                processed_data=ProcessedData(
-                    features=[
-                        ProcessedDataFeature(
-                            result=row.get(float, "Nucleic Acid", NaN),
-                            unit=metadata.nucleic_acid_unit,
-                        )
-                    ],
+                processed_data=(
+                    None
+                    if (nucleic_acid := row.get(float, "Nucleic Acid")) is None
+                    else ProcessedData(
+                        features=[
+                            ProcessedDataFeature(
+                                result=nucleic_acid,
+                                unit=metadata.nucleic_acid_unit,
+                            )
+                        ],
+                    )
                 ),
             )
             for column in metadata.absorbance_columns
