@@ -2,6 +2,7 @@ from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectr
     Model,
 )
 from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
+    Data,
     Mapper,
 )
 from allotropy.named_file_contents import NamedFileContents
@@ -11,22 +12,18 @@ from allotropy.parsers.thermo_fisher_nanodrop_one.thermo_fisher_nanodrop_one_str
     DataNanodrop,
 )
 from allotropy.parsers.utils.pandas import read_multisheet_excel
-from allotropy.parsers.vendor_parser import VendorParser
+from allotropy.parsers.vendor_parser import MapperVendorParser
 
 
-class ThermoFisherNanodropOneParser(VendorParser):
-    @property
-    def display_name(self) -> str:
-        return DISPLAY_NAME
+class ThermoFisherNanodropOneParser(MapperVendorParser[Data, Model]):
+    DISPLAY_NAME = DISPLAY_NAME
+    RELEASE_STATE = ReleaseState.WORKING_DRAFT
+    SUPPORTED_EXTENSIONS = "xlsx"
+    SCHEMA_MAPPER = Mapper
 
-    @property
-    def release_state(self) -> ReleaseState:
-        return ReleaseState.WORKING_DRAFT
-
-    def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
+    def create_data(self, named_file_contents: NamedFileContents) -> Data:
         contents = read_multisheet_excel(
             named_file_contents.contents,
             engine="calamine",
         )
-        data = DataNanodrop.create(contents, named_file_contents.original_file_name)
-        return self._get_mapper(Mapper).map_model(data)
+        return DataNanodrop.create(contents, named_file_contents.original_file_name)
