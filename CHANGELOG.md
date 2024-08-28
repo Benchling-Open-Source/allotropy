@@ -9,8 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added support for xlsx exports in Unchained Lunatic parser
 - Added `supported_extensions` to Vendor, allowing parsers to specify supported file extensions.
+- Added support for `multiple read modes` in `Agilent Gen5` Adapter
 - Added Thermo Fisher Nanodrop One adapter
 
 ### Fixed
@@ -32,7 +32,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added requirement doc for ThermoFisher Genesys 30 adapter
 - Added support for xlsx exports in Unchained Lunatic parser
 - Add column special character normalization to pandas util (and so most parsers)
-- Added support for multiple read modes in Agilent Gen5 Adapter
 
 ### Fixed
 
