@@ -295,7 +295,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 ),
             ),
             custom_info_doc={
-                "sample volume setting": quantity_or_none(
+                "baseline absorbance": quantity_or_none(
                     TQuantityValueMilliAbsorbanceUnit,
                     measurement.baseline_absorbance,
                 ),
