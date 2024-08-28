@@ -107,7 +107,7 @@ def create_calculated_data(
                 data_sources=[
                     DataSource(
                         identifier=measurement.identifier,
-                        feature=str(measurement.absorbance),
+                        feature="absorbance",
                     )
                     for wavelength in column.split("/")
                     if (measurement := measurement_group.get_measurement(wavelength))
