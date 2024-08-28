@@ -23,28 +23,25 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNanometer,
     TQuantityValueNumber,
     TQuantityValueRelativeFluorescenceUnit,
-    TQuantityValueUnitless,
 )
+from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.constants import ASM_CONVERTER_VERSION
-from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import (
-    ReadType,
-)
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure import (
     BackgroundInfo,
-    BackgroundInfoList,
     BasicAssayInfo,
+    CalculatedPlate,
     CalculatedPlateInfo,
     CalculatedResult,
-    CalculatedResultList,
     Data,
     Filter,
     Instrument,
     Labels,
-    Plate,
     PlateList,
     PlateMap,
+    ReadType,
     Result,
-    ResultList,
+    ResultPlate,
     ResultPlateInfo,
     Software,
 )
@@ -53,8 +50,8 @@ from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure imp
 def get_data() -> Data:
     return Data(
         plate_list=PlateList(
-            plates=[
-                Plate(
+            results=[
+                ResultPlate(
                     plate_info=ResultPlateInfo(
                         number="1",
                         barcode="Plate 1",
@@ -65,28 +62,23 @@ def get_data() -> Data:
                         chamber_temperature_at_start=23.17,
                         label="AC HTRF Laser [Eu]",
                     ),
-                    background_info_list=BackgroundInfoList(
-                        background_info=[
-                            BackgroundInfo(
-                                plate_num="1",
-                                label="AC HTRF Laser [Eu]",
-                                measinfo="De=1st Ex=Top Em=Top Wdw=1 (14)",
-                            ),
-                        ],
-                    ),
-                    calculated_result_list=CalculatedResultList([]),
-                    result_list=ResultList(
-                        [
-                            Result(
-                                uuid="TEST_ID_0",
-                                col="A",
-                                row="01",
-                                value=31441,
-                            )
-                        ]
-                    ),
+                    background_infos=[
+                        BackgroundInfo(
+                            plate_num="1",
+                            label="AC HTRF Laser [Eu]",
+                            measinfo="De=1st Ex=Top Em=Top Wdw=1 (14)",
+                        ),
+                    ],
+                    results=[
+                        Result(
+                            uuid="TEST_ID_0",
+                            col="A",
+                            row="01",
+                            value=31441,
+                        )
+                    ],
                 ),
-                Plate(
+                ResultPlate(
                     plate_info=ResultPlateInfo(
                         number="1",
                         barcode="Plate 1",
@@ -97,28 +89,25 @@ def get_data() -> Data:
                         chamber_temperature_at_start=23.17,
                         label="AC HTRF Laser [Eu]",
                     ),
-                    background_info_list=BackgroundInfoList(
-                        background_info=[
-                            BackgroundInfo(
-                                plate_num="1",
-                                label="AC HTRF Laser [Eu]",
-                                measinfo="De=2nd Ex=Top Em=Top Wdw=1 (142)",
-                            ),
-                        ],
-                    ),
-                    calculated_result_list=CalculatedResultList([]),
-                    result_list=ResultList(
-                        [
-                            Result(
-                                uuid="TEST_ID_1",
-                                col="A",
-                                row="01",
-                                value=80368,
-                            )
-                        ]
-                    ),
+                    background_infos=[
+                        BackgroundInfo(
+                            plate_num="1",
+                            label="AC HTRF Laser [Eu]",
+                            measinfo="De=2nd Ex=Top Em=Top Wdw=1 (142)",
+                        ),
+                    ],
+                    results=[
+                        Result(
+                            uuid="TEST_ID_1",
+                            col="A",
+                            row="01",
+                            value=80368,
+                        )
+                    ],
                 ),
-                Plate(
+            ],
+            calculated=[
+                CalculatedPlate(
                     plate_info=CalculatedPlateInfo(
                         number="1",
                         barcode="Plate 1",
@@ -128,26 +117,21 @@ def get_data() -> Data:
                         formula="Calc 1: General = (X / Y) where X = AC HTRF Laser [Eu](1) Y = AC HTRF Laser [Eu](1)",
                         name="Calc 1: General",
                     ),
-                    background_info_list=BackgroundInfoList(
-                        background_info=[
-                            BackgroundInfo(
-                                plate_num="1",
-                                label="AC HTRF Laser [Eu]",
-                                measinfo="De=2nd Ex=Top Em=Top Wdw=1 (142)",
-                            ),
-                        ],
-                    ),
-                    calculated_result_list=CalculatedResultList(
-                        calculated_results=[
-                            CalculatedResult(
-                                uuid="TEST_ID_2",
-                                col="A",
-                                row="01",
-                                value=3,
-                            )
-                        ]
-                    ),
-                    result_list=ResultList([]),
+                    background_infos=[
+                        BackgroundInfo(
+                            plate_num="1",
+                            label="AC HTRF Laser [Eu]",
+                            measinfo="De=2nd Ex=Top Em=Top Wdw=1 (142)",
+                        ),
+                    ],
+                    results=[
+                        CalculatedResult(
+                            uuid="TEST_ID_2",
+                            col="A",
+                            row="01",
+                            value=3,
+                        )
+                    ],
                 ),
             ],
         ),
@@ -315,7 +299,7 @@ def get_model() -> Model:
                         calculated_data_name="Calc 1: General",
                         calculation_description="Calc 1: General = (X / Y) where X = AC HTRF Laser [Eu](1) Y = AC HTRF Laser [Eu](1)",
                         calculated_data_identifier="TEST_ID_2",
-                        calculated_result=TQuantityValueUnitless(value=3),
+                        calculated_result=TQuantityValue(value=3, unit=UNITLESS),
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
