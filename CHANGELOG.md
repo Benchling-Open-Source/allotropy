@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added `supported_extensions` to Vendor, allowing parsers to specify supported file extensions.
+- Update data sources for quantity calculated documents with Y-intercept and Slope in AppBio Quantstudio
 
 ### Fixed
 
