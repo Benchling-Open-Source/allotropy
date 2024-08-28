@@ -57,9 +57,12 @@ ALPHALISA_FLUORESCENCE_FOUND = (
     "Both ALPHALISA and FLUORESCENCE read modes detected, which is not supported."
 )
 
+KINETIC_MEASUREMENTS_EXISTS_PATTERN = "Start Kinetic\t"
+REGULAR_READ_PATTERN = "^Read\t"
+KINETIC_READ_PATTERN = "\tRead\t"
+
 
 class ReadType(str, Enum):
     ENDPOINT = "Endpoint"
-    KINETIC = "Kinetic"
     AREASCAN = "Area Scan"
     SPECTRAL = "Spectral"

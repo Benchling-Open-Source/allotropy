@@ -4,8 +4,10 @@ from collections import defaultdict
 from dataclasses import dataclass
 from io import StringIO
 import re
+from typing import List
 
 import pandas as pd
+from tomlkit.items import String
 
 from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
     ScanPositionSettingPlateReader,
@@ -44,10 +46,13 @@ from allotropy.parsers.agilent_gen5.constants import (
     ReadType,
     UNSUPPORTED_READ_MODE_ERROR,
     UNSUPPORTED_READ_TYPE_ERROR,
+    KINETIC_MEASUREMENTS_EXISTS_PATTERN,
+    REGULAR_READ_PATTERN,
+    KINETIC_READ_PATTERN,
     WAVELENGTHS_KEY,
 )
 from allotropy.parsers.constants import NOT_APPLICABLE
-from allotropy.parsers.lines_reader import SectionLinesReader
+from allotropy.parsers.lines_reader import SectionLinesReader, LinesReader
 from allotropy.parsers.utils.pandas import read_csv, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
@@ -239,8 +244,14 @@ class ReadData:
         if read_type != ReadType.ENDPOINT:
             raise AllotropeConversionError(UNSUPPORTED_READ_TYPE_ERROR)
 
-        read_modes = cls.get_read_modes(procedure_details)
-        read_sections = list(SectionLinesReader(lines).iter_sections("^Read\t"))
+        existence_of_pattern = re.search("Start Kinetic\t", procedure_details)
+        if existence_of_pattern:
+            read_modes = cls.get_kinetic_read_modes(procedure_details)
+            read_sections = cls.kinetic_read_sections(lines)
+        else:
+            read_modes = cls.get_read_modes(procedure_details)
+            read_sections = cls.regular_read_sections(lines)
+
         if len(read_modes) != len(read_sections):
             msg = "Expected the number of read modes to match the number of read sections."
             raise AllotropeConversionError(msg)
@@ -282,6 +293,45 @@ class ReadData:
             )
         return read_data_list
 
+    @classmethod
+    def kinetic_read_sections(cls, lines: list[str]) -> list[LinesReader]:
+        return list(SectionLinesReader(lines).iter_sections("    Read\t"))
+
+    @classmethod
+    def regular_read_sections(cls, lines: list[str]) -> list[LinesReader]:
+        return list(SectionLinesReader(lines).iter_sections("^Read\t"))
+
+    @classmethod
+    def parse_time_info(cls, lines: list[str]) -> str:
+        units = "s"
+        return units
+
+    @staticmethod
+    def get_kinetic_read_modes(procedure_details: str) -> list[ReadMode]:
+        read_modes = []
+        for read_mode in ReadMode:
+            # Construct the regex pattern for the current read mode
+            pattern = fr"\t{re.escape(read_mode.value)} Endpoint"
+            # Use regex to find all occurrences of the read mode pattern in the procedure details
+            matches = re.findall(pattern, procedure_details)
+            if matches:
+                # Add the read_mode to the list for each match found
+                read_modes.extend([read_mode] * len(matches))
+
+        if not read_modes:
+            raise AllotropeConversionError(UNSUPPORTED_READ_MODE_ERROR)
+
+        if ReadMode.ALPHALISA in read_modes and ReadMode.FLUORESCENCE in read_modes:
+            raise AllotropeConversionError(ALPHALISA_FLUORESCENCE_FOUND)
+
+        # Replace ALPHALISA with FLUORESCENCE
+        read_modes = [
+            ReadMode.FLUORESCENCE if read_mode == ReadMode.ALPHALISA else read_mode
+            for read_mode in read_modes
+        ]
+
+        return read_modes
+
     @staticmethod
     def get_read_modes(procedure_details: str) -> list[ReadMode]:
         read_modes = []
@@ -310,9 +360,9 @@ class ReadData:
 
     @staticmethod
     def get_read_type(procedure_details: str) -> ReadType:
-        if ReadType.KINETIC.value in procedure_details:
-            return ReadType.KINETIC
-        elif ReadType.AREASCAN.value in procedure_details:
+        # if ReadType.KINETIC.value in procedure_details:
+        #     return ReadType.KINETIC
+        if ReadType.AREASCAN.value in procedure_details:
             return ReadType.AREASCAN
         elif ReadType.SPECTRAL.value in procedure_details:
             return ReadType.SPECTRAL
