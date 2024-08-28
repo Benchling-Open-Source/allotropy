@@ -47,7 +47,7 @@
                                 ]
                             },
                             "custom information document": {
-                                "sample volume setting": {
+                                "baseline absorbance": {
                                     "value": 0.812,
                                     "unit": "mAU"
                                 }
@@ -94,7 +94,7 @@
                                 ]
                             },
                             "custom information document": {
-                                "sample volume setting": {
+                                "baseline absorbance": {
                                     "value": 0.812,
                                     "unit": "mAU"
                                 }
@@ -149,7 +149,7 @@
                                 ]
                             },
                             "custom information document": {
-                                "sample volume setting": {
+                                "baseline absorbance": {
                                     "value": 0.956,
                                     "unit": "mAU"
                                 }
@@ -196,7 +196,7 @@
                                 ]
                             },
                             "custom information document": {
-                                "sample volume setting": {
+                                "baseline absorbance": {
                                     "value": 0.956,
                                     "unit": "mAU"
                                 }
@@ -251,7 +251,7 @@
                                 ]
                             },
                             "custom information document": {
-                                "sample volume setting": {
+                                "baseline absorbance": {
                                     "value": NaN,
                                     "unit": "mAU"
                                 }
@@ -298,7 +298,7 @@
                                 ]
                             },
                             "custom information document": {
-                                "sample volume setting": {
+                                "baseline absorbance": {
                                     "value": NaN,
                                     "unit": "mAU"
                                 }
@@ -353,7 +353,7 @@
                                 ]
                             },
                             "custom information document": {
-                                "sample volume setting": {
+                                "baseline absorbance": {
                                     "value": NaN,
                                     "unit": "mAU"
                                 }
@@ -400,7 +400,7 @@
                                 ]
                             },
                             "custom information document": {
-                                "sample volume setting": {
+                                "baseline absorbance": {
                                     "value": NaN,
                                     "unit": "mAU"
                                 }
@@ -455,7 +455,7 @@
                                 ]
                             },
                             "custom information document": {
-                                "sample volume setting": {
+                                "baseline absorbance": {
                                     "value": 0.943,
                                     "unit": "mAU"
                                 }
@@ -502,7 +502,7 @@
                                 ]
                             },
                             "custom information document": {
-                                "sample volume setting": {
+                                "baseline absorbance": {
                                     "value": 0.943,
                                     "unit": "mAU"
                                 }
@@ -557,7 +557,7 @@
                                 ]
                             },
                             "custom information document": {
-                                "sample volume setting": {
+                                "baseline absorbance": {
                                     "value": 1.286,
                                     "unit": "mAU"
                                 }
@@ -604,7 +604,7 @@
                                 ]
                             },
                             "custom information document": {
-                                "sample volume setting": {
+                                "baseline absorbance": {
                                     "value": 1.286,
                                     "unit": "mAU"
                                 }
@@ -625,7 +625,7 @@
             "file name": "example1.xlsx",
             "software name": "NanoDrop One software",
             "ASM converter name": "allotropy_thermo_fisher_nanodrop_one",
-            "ASM converter version": "0.1.48"
+            "ASM converter version": "0.1.49"
         },
         "calculated data aggregate document": {
             "calculated data document": [
@@ -639,11 +639,11 @@
                         "data source document": [
                             {
                                 "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_0",
-                                "data source feature": "14.309"
+                                "data source feature": "absorbance"
                             },
                             {
                                 "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_1",
-                                "data source feature": "7.601"
+                                "data source feature": "absorbance"
                             }
                         ]
                     },
@@ -659,7 +659,7 @@
                         "data source document": [
                             {
                                 "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_0",
-                                "data source feature": "14.309"
+                                "data source feature": "absorbance"
                             }
                         ]
                     },
@@ -675,11 +675,11 @@
                         "data source document": [
                             {
                                 "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_4",
-                                "data source feature": "17.128"
+                                "data source feature": "absorbance"
                             },
                             {
                                 "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_5",
-                                "data source feature": "8.975"
+                                "data source feature": "absorbance"
                             }
                         ]
                     },
@@ -695,7 +695,7 @@
                         "data source document": [
                             {
                                 "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_4",
-                                "data source feature": "17.128"
+                                "data source feature": "absorbance"
                             }
                         ]
                     },
@@ -711,11 +711,11 @@
                         "data source document": [
                             {
                                 "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_8",
-                                "data source feature": "nan"
+                                "data source feature": "absorbance"
                             },
                             {
                                 "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_9",
-                                "data source feature": "nan"
+                                "data source feature": "absorbance"
                             }
                         ]
                     },
@@ -731,7 +731,7 @@
                         "data source document": [
                             {
                                 "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_8",
-                                "data source feature": "nan"
+                                "data source feature": "absorbance"
                             }
                         ]
                     },
@@ -747,11 +747,11 @@
                         "data source document": [
                             {
                                 "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_12",
-                                "data source feature": "nan"
+                                "data source feature": "absorbance"
                             },
                             {
                                 "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_13",
-                                "data source feature": "nan"
+                                "data source feature": "absorbance"
                             }
                         ]
                     },
@@ -767,7 +767,7 @@
                         "data source document": [
                             {
                                 "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_12",
-                                "data source feature": "nan"
+                                "data source feature": "absorbance"
                             }
                         ]
                     },
@@ -783,11 +783,11 @@
                         "data source document": [
                             {
                                 "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_16",
-                                "data source feature": "22.811"
+                                "data source feature": "absorbance"
                             },
                             {
                                 "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_17",
-                                "data source feature": "11.917"
+                                "data source feature": "absorbance"
                             }
                         ]
                     },
@@ -803,7 +803,7 @@
                         "data source document": [
                             {
                                 "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_16",
-                                "data source feature": "22.811"
+                                "data source feature": "absorbance"
                             }
                         ]
                     },
@@ -819,11 +819,11 @@
                         "data source document": [
                             {
                                 "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_20",
-                                "data source feature": "23.477"
+                                "data source feature": "absorbance"
                             },
                             {
                                 "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_21",
-                                "data source feature": "12.31"
+                                "data source feature": "absorbance"
                             }
                         ]
                     },
@@ -839,7 +839,7 @@
                         "data source document": [
                             {
                                 "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_20",
-                                "data source feature": "23.477"
+                                "data source feature": "absorbance"
                             }
                         ]
                     },
