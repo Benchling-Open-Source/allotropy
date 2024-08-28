@@ -183,17 +183,9 @@ class BackgroundInfo:
     @staticmethod
     def create(data: SeriesData) -> BackgroundInfo:
         return BackgroundInfo(
-            plate_num=data[
-                str,
-                "Plate",
-                "Unable to find plate number from background info.",
-            ],
-            label=data[str, "Label", "Unable to find label from background info."],
-            measinfo=data[
-                str,
-                "MeasInfo",
-                "Unable to find meas info from background info.",
-            ],
+            plate_num=data[str, "Plate"],
+            label=data[str, "Label"],
+            measinfo=data[str, "MeasInfo"],
         )
 
 
