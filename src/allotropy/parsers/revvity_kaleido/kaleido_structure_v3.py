@@ -1,166 +1,45 @@
-import re
+from dataclasses import dataclass
 
 from allotropy.parsers.lines_reader import CsvReader
-from allotropy.parsers.revvity_kaleido import constants
 from allotropy.parsers.revvity_kaleido.kaleido_structure import (
     AnalysisResult,
     BackgroundInfo,
     Data,
-    MeasurementElement,
     MeasurementInfo,
     Measurements,
     Platemap,
     Results,
 )
-from allotropy.parsers.utils.pandas import df_to_series_data
-from allotropy.parsers.utils.values import assert_not_none, try_float_or_none
+from allotropy.parsers.utils.values import assert_not_none
 
 
-def create_background_info(reader: CsvReader) -> BackgroundInfo:
-    assert_not_none(
-        reader.pop_if_match("^EnSight Results from"),
-        msg="Unable to find EnSight section.",
-    )
+@dataclass(frozen=True)
+class ResultsV3(Results):
+    @classmethod
+    def read_barcode(cls, reader: CsvReader) -> str:
+        assert_not_none(
+            reader.pop_if_match("^Barcode"),
+            msg="Unable to find barcode indicator.",
+        )
 
-    reader.drop_until("^Result for")
-
-    line = assert_not_none(
-        reader.drop_until_inclusive("^Result for.(.+) 1"),
-        msg="Unable to find background information.",
-    )
-
-    experiment_type = assert_not_none(
-        re.match("^Result for.(.+) 1", line),
-        msg="Unable to find experiment type from background information section.",
-    ).group(1)
-
-    return BackgroundInfo(experiment_type)
-
-
-def create_results(reader: CsvReader) -> Results:
-    assert_not_none(
-        reader.pop_if_match("^Barcode"),
-        msg="Unable to find barcode indicator.",
-    )
-
-    raw_barcode, *_ = assert_not_none(
-        reader.pop_if_match("^.+,"),
-        msg="Unable to find barcode value.",
-    ).split(",", maxsplit=1)
-    barcode = raw_barcode.strip()
-
-    results = assert_not_none(
-        reader.pop_csv_block_as_df(header=0, index_col=0),
-        msg="Unable to find results table.",
-    )
-
-    for column in results:
-        if str(column).startswith("Unnamed"):
-            results = results.drop(columns=column)
-
-    return Results(
-        barcode=barcode,
-        data={
-            f"{row}{col}": str(values[col])
-            for row, values in results.iterrows()
-            for col in results.columns
-        },
-    )
-
-
-def create_analysis_results(reader: CsvReader) -> list[AnalysisResult]:
-    section_title = assert_not_none(
-        reader.drop_until("^Results for|^Measurement Information"),
-        msg="Unable to find Analysis Result or Measurement Information section.",
-    )
-
-    if section_title.startswith("Measurement Information"):
-        return []
-
-    reader.drop_until("^Barcode")
-
-    analysis_results = []
-    while reader.match("^Barcode"):
-        if analysis_result := AnalysisResult.create(reader):
-            analysis_results.append(analysis_result)
-
-    return analysis_results
-
-
-def create_measurement_info(reader: CsvReader) -> MeasurementInfo:
-    assert_not_none(
-        reader.drop_until_inclusive("^Measurement Information"),
-        msg="Unable to find Measurement Information section.",
-    )
-
-    elements = {}
-    for raw_line in reader.pop_until("^Instrument Information"):
-        if raw_line == "":
-            continue
-
-        key, _, value, *_ = raw_line.split(",")
-        elements[key.rstrip(":")] = value
-
-    assert_not_none(
-        reader.drop_until_inclusive("^Instrument Information"),
-        msg="Unable to find Instrument Information section.",
-    )
-
-    for raw_line in reader.pop_until("^Protocol Information"):
-        if raw_line == "":
-            continue
-
-        key, _, value, *_ = raw_line.split(",")
-        elements[key.rstrip(":")] = value
-
-    assert_not_none(
-        reader.drop_until_inclusive("^Protocol Information"),
-        msg="Unable to find Protocol Information section.",
-    )
-
-    for raw_line in reader.pop_until("^Plate Type Information"):
-        if raw_line == "":
-            continue
-
-        key, _, value, *_ = raw_line.split(",")
-        elements[key.rstrip(":")] = value
-
-    return MeasurementInfo.create(elements)
-
-
-def create_platemap(reader: CsvReader) -> Platemap:
-    assert_not_none(
-        reader.drop_until_inclusive("^Platemap"),
-        msg="Unable to find Platemap section.",
-    )
-
-    data = assert_not_none(
-        reader.pop_csv_block_as_df(header=0, index_col=0),
-        msg="Unable to find platemap information.",
-    )
-
-    return Platemap(
-        data={
-            f"{row}{col}": values[col]
-            for row, values in data.iterrows()
-            for col in data.columns
-        }
-    )
+        raw_barcode, *_ = assert_not_none(
+            reader.pop_if_match("^.+,"),
+            msg="Unable to find barcode value.",
+        ).split(",", maxsplit=1)
+        return raw_barcode.strip()
 
 
 def create_data_v3(version: str, reader: CsvReader) -> Data:
-    background_info = create_background_info(reader)
-    results = create_results(reader)
-    analysis_results = create_analysis_results(reader)
-    measurement_info = create_measurement_info(reader)
-    assert_not_none(
-        reader.drop_until_inclusive("^Plate Type"),
-        msg="Unable to find Plate Type section.",
+    background_info = BackgroundInfo.create(reader)
+    results = ResultsV3.create(reader)
+    analysis_results = AnalysisResult.create_results(reader, "Measurement Information")
+    measurement_info = MeasurementInfo.create(
+        reader, "Measurement Information", "Plate Type Information"
     )
-    reader.drop_until("^Platemap")
-
-    platemap = create_platemap(reader)
-    measurements = Measurements.create(reader, "Details of Measurement Sequence", "Post Processing Sequence")
+    platemap = Platemap.create(reader)
+    measurements = Measurements.create(
+        reader, "Details of Measurement Sequence", "Post Processing Sequence"
+    )
 
     return Data(
         version,

@@ -85,7 +85,7 @@ class ImageFeature:
     identifier: str
     feature: str
     result: float | InvalidJsonFloat
-    data_sources: list[DataSource]
+    data_sources: list[DataSource] | None = None
 
 
 @dataclass(frozen=True)
@@ -241,7 +241,9 @@ class Mapper(SchemaMapper[Data, Model]):
                 processed_data_aggregate_document=self._get_processed_data_aggregate_document(
                     measurement_group.processed_data
                 ),
-                image_aggregate_document=self._get_image_source_aggregate_document(measurement_group.images)
+                image_aggregate_document=self._get_image_source_aggregate_document(
+                    measurement_group.images
+                ),
             ),
         )
 
@@ -280,9 +282,14 @@ class Mapper(SchemaMapper[Data, Model]):
                             TQuantityValueMilliSecond,
                             measurement.exposure_duration_setting,
                         ),
-                        illumination_setting=quantity_or_none(
-                            assert_not_none(get_quantity_class(measurement.illumination_setting_unit)),
-                            measurement.illumination_setting
+                        # TODO(nstender): figure out how to limit possible classes from get_quantity_class for typing.
+                        illumination_setting=quantity_or_none(  # type: ignore[arg-type]
+                            assert_not_none(
+                                get_quantity_class(
+                                    measurement.illumination_setting_unit
+                                )
+                            ),
+                            measurement.illumination_setting,
                         ),
                         detector_distance_setting__plate_reader_=quantity_or_none(
                             TQuantityValueMillimeter,
@@ -444,7 +451,9 @@ class Mapper(SchemaMapper[Data, Model]):
             sample_identifier=measurement.sample_identifier,
             location_identifier=measurement.location_identifier,
             well_plate_identifier=measurement.well_plate_identifier,
-            sample_role_type=measurement.sample_role_type.value if measurement.sample_role_type else None,
+            sample_role_type=measurement.sample_role_type.value
+            if measurement.sample_role_type
+            else None,
         )
 
     def _get_processed_data_aggregate_document(
@@ -467,15 +476,9 @@ class Mapper(SchemaMapper[Data, Model]):
                                 image_feature_result=TQuantityValueUnitless(
                                     value=image_feature.result
                                 ),
-                                data_source_aggregate_document=DataSourceAggregateDocument(
-                                    data_source_document=[
-                                        DataSourceDocumentItem(
-                                            data_source_identifier=source.identifier,
-                                            data_source_feature=source.feature,
-                                        )
-                                        for source in image_feature.data_sources
-                                    ]
-                                ) if image_feature.data_sources else None
+                                data_source_aggregate_document=self._get_data_source_aggregate_document(
+                                    image_feature.data_sources
+                                ),
                             )
                             for image_feature in data.features
                         ]
@@ -484,7 +487,9 @@ class Mapper(SchemaMapper[Data, Model]):
             ]
         )
 
-    def _get_image_source_aggregate_document(self, images: list[ImageFeature] | None) -> OpticalImagingAggregateDocument | None:
+    def _get_image_source_aggregate_document(
+        self, images: list[ImageSource] | None
+    ) -> OpticalImagingAggregateDocument | None:
         if not images:
             return None
 
@@ -510,16 +515,26 @@ class Mapper(SchemaMapper[Data, Model]):
                         value=calculated_data_item.value,
                         unit=calculated_data_item.unit,
                     ),
-                    data_source_aggregate_document=DataSourceAggregateDocument(
-                        data_source_document=[
-                            DataSourceDocumentItem(
-                                data_source_identifier=item.identifier,
-                                data_source_feature=item.feature,
-                            )
-                            for item in calculated_data_item.data_sources
-                        ]
+                    data_source_aggregate_document=self._get_data_source_aggregate_document(
+                        calculated_data_item.data_sources
                     ),
                 )
                 for calculated_data_item in calculated_data_items
+            ]
+        )
+
+    def _get_data_source_aggregate_document(
+        self, data_sources: list[DataSource] | None
+    ) -> DataSourceAggregateDocument | None:
+        if not data_sources:
+            return None
+
+        return DataSourceAggregateDocument(
+            data_source_document=[
+                DataSourceDocumentItem(
+                    data_source_identifier=item.identifier,
+                    data_source_feature=item.feature,
+                )
+                for item in data_sources
             ]
         )
