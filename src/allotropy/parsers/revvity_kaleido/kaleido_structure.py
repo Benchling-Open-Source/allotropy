@@ -42,7 +42,7 @@ class ExperimentType(StrEnum):
     OPTICAL_IMAGING = "optical imaging"
 
     @staticmethod
-    def from_str(experiment_type: str) -> ExperimentType:
+    def create(experiment_type: str) -> ExperimentType:
         experiment_type_lower = experiment_type.lower()
         if "fluorescence" in experiment_type_lower or "alpha" in experiment_type_lower:
             return ExperimentType.FLUORESCENCE
@@ -95,7 +95,7 @@ class BackgroundInfo:
 
     @property
     def experiment_type(self) -> ExperimentType:
-        return ExperimentType.from_str(self.experiment_type_value)
+        return ExperimentType.create(self.experiment_type_value)
 
     @staticmethod
     def create(reader: CsvReader) -> BackgroundInfo:
