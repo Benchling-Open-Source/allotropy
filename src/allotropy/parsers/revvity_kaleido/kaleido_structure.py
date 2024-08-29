@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from collections.abc import Iterator
 from dataclasses import dataclass
-from enum import Enum, StrEnum
+from enum import Enum
 import logging
 import re
 
@@ -35,7 +35,7 @@ from allotropy.parsers.utils.values import (
 )
 
 
-class ExperimentType(StrEnum):
+class ExperimentType(Enum):
     FLUORESCENCE = "fluorescence"
     ABSORBANCE = "absorbance"
     LUMINESCENCE = "luminescence"
@@ -80,7 +80,7 @@ class ExperimentType(StrEnum):
         if self is ExperimentType.OPTICAL_IMAGING:
             return "optical-imaging"
         elif self is ExperimentType.FLUORESCENCE:
-            return self.value
+            return str(self.value)
         return None
 
 
