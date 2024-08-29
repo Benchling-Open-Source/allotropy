@@ -1,6 +1,7 @@
 import re
 
 from allotropy.parsers.lines_reader import CsvReader
+from allotropy.parsers.revvity_kaleido import constants
 from allotropy.parsers.revvity_kaleido.kaleido_structure import (
     AnalysisResult,
     BackgroundInfo,
@@ -10,8 +11,8 @@ from allotropy.parsers.revvity_kaleido.kaleido_structure import (
     Measurements,
     Platemap,
     Results,
-    SCAN_POSITION_CONVERSION,
 )
+from allotropy.parsers.utils.pandas import df_to_series_data
 from allotropy.parsers.utils.values import assert_not_none, try_float_or_none
 
 
@@ -60,7 +61,7 @@ def create_results(reader: CsvReader) -> Results:
     return Results(
         barcode=barcode,
         data={
-            f"{row}{col}": values[col]
+            f"{row}{col}": str(values[col])
             for row, values in results.iterrows()
             for col in results.columns
         },
@@ -153,52 +154,35 @@ def create_measurements(reader: CsvReader) -> Measurements:
         msg="Unable to find Details of Measurement Sequence section.",
     )
 
-    elements = []
-    for raw_line in reader.pop_until("^Post Processing Sequence"):
-        if raw_line == "":
-            continue
+    lines = list(reader.pop_until("^Post Processing Sequence"))
+    df = reader.lines_as_df(lines, index_col=0, names=range(7)).T.dropna(how="all")
+    data = df_to_series_data(df, index=0)
 
-        key, _, _, value, *_ = raw_line.split(",")
-        elements.append(
-            MeasurementElement(title=key.rstrip(":"), value=value),
-        )
-
-    scan_position_element = Measurements.try_element_or_none(
-        elements, "Excitation / Emission"
-    )
-    excitation_wavelength_element = Measurements.try_element_or_none(
-        elements, "Excitation Wavelength [nm]"
-    )
-
+    scan_position = data.get(str, "Excitation / Emission")
+    excitation_wavelength = data.get(str, "Excitation Wavelength [nm]")
+    print("^^^")
+    print(data.series)
     return Measurements(
-        channels=Measurements.create_channels(elements),
-        number_of_averages=Measurements.get_element_float_value_or_none(
-            elements, "Number of Flashes"
-        ),
-        detector_distance=Measurements.get_element_float_value_or_none(
-            elements, "Distance between Plate and Detector [mm]"
-        ),
+        channels=Measurements.create_channels(data),
+        number_of_averages=data.get(float, "Number of Flashes"),
+        detector_distance=data.get(float, "Distance between Plate and Detector [mm]"),
         scan_position=(
             None
-            if scan_position_element is None
+            if scan_position is None
             else assert_not_none(
-                SCAN_POSITION_CONVERSION.get(scan_position_element.value),
-                msg=f"'{scan_position_element.value}' is not a valid scan position, expected TOP or BOTTOM.",
+                constants.SCAN_POSITION_CONVERSION.get(scan_position),
+                msg=f"'{scan_position}' is not a valid scan position, expected TOP or BOTTOM.",
             )
         ),
-        emission_wavelength=Measurements.get_element_float_value_or_none(
-            elements, "Emission Wavelength [nm]"
-        ),
+        emission_wavelength=data.get(float, "Emission Wavelength [nm]"),
         excitation_wavelength=(
             None
-            if excitation_wavelength_element is None
+            if excitation_wavelength is None
             else try_float_or_none(
-                excitation_wavelength_element.value.removesuffix("nm")
+                excitation_wavelength.removesuffix("nm")
             )
         ),
-        focus_height=Measurements.get_element_float_value_or_none(
-            elements, "Focus Height [µm]"
-        ),
+        focus_height=data.get(float, "Focus Height [µm]"),
     )
 
 

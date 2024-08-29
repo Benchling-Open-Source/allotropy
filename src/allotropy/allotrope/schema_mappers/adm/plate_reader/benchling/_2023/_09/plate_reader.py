@@ -12,6 +12,7 @@ from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reade
     FluorescencePointDetectionDeviceControlAggregateDocument,
     FluorescencePointDetectionDeviceControlDocumentItem,
     FluorescencePointDetectionMeasurementDocumentItems,
+    ImageDocumentItem,
     ImageFeatureAggregateDocument,
     ImageFeatureDocumentItem,
     LuminescencePointDetectionDeviceControlAggregateDocument,
@@ -19,6 +20,7 @@ from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reade
     LuminescencePointDetectionMeasurementDocumentItems,
     MeasurementAggregateDocument,
     Model,
+    OpticalImagingAggregateDocument,
     OpticalImagingDeviceControlAggregateDocument,
     OpticalImagingDeviceControlDocumentItem,
     OpticalImagingMeasurementDocumentItems,
@@ -33,6 +35,7 @@ from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reade
     UltravioletAbsorbancePointDetectionDeviceControlDocumentItem,
     UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
 )
+from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueDegreeCelsius,
     TQuantityValueMilliAbsorbanceUnit,
@@ -52,6 +55,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropyParserError
+from allotropy.parsers.utils.units import get_quantity_class
 from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
 
 
@@ -71,22 +75,23 @@ MeasurementDocumentItems = (
 
 
 @dataclass(frozen=True)
+class DataSource:
+    identifier: str
+    feature: str
+
+
+@dataclass(frozen=True)
 class ImageFeature:
     identifier: str
     feature: str
     result: float | InvalidJsonFloat
+    data_sources: list[DataSource]
 
 
 @dataclass(frozen=True)
 class ProcessedData:
-    identifier: str
     features: list[ImageFeature]
-
-
-@dataclass(frozen=True)
-class DataSource:
-    identifier: str
-    feature: str
+    identifier: str | None = None
 
 
 @dataclass(frozen=True)
@@ -99,6 +104,11 @@ class CalculatedDataItem:
 
 
 @dataclass(frozen=True)
+class ImageSource:
+    identifier: str
+
+
+@dataclass(frozen=True)
 class Measurement:
     # Measurement metadata
     type_: MeasurementType
@@ -108,6 +118,7 @@ class Measurement:
     location_identifier: str
     well_plate_identifier: str | None = None
     detection_type: str | None = None
+    sample_role_type: SampleRoleType | None = None
 
     # Measurements
     absorbance: JsonFloat | None = None
@@ -133,6 +144,7 @@ class Measurement:
     # Optical imaging
     exposure_duration_setting: float | None = None
     illumination_setting: float | None = None
+    illumination_setting_unit: str | None = None
     magnification_setting: float | None = None
     transmitted_light_setting: TransmittedLightSetting | None = None
     auto_focus_setting: bool | None = None
@@ -149,7 +161,10 @@ class MeasurementGroup:
     analytical_method_identifier: str | None = None
     experimental_data_identifier: str | None = None
     experiment_type: str | None = None
+
+    # Processed data
     processed_data: ProcessedData | None = None
+    images: list[ImageSource] | None = None
 
 
 @dataclass(frozen=True)
@@ -226,6 +241,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 processed_data_aggregate_document=self._get_processed_data_aggregate_document(
                     measurement_group.processed_data
                 ),
+                image_aggregate_document=self._get_image_source_aggregate_document(measurement_group.images)
             ),
         )
 
@@ -265,7 +281,12 @@ class Mapper(SchemaMapper[Data, Model]):
                             measurement.exposure_duration_setting,
                         ),
                         illumination_setting=quantity_or_none(
-                            TQuantityValueUnitless, measurement.illumination_setting
+                            assert_not_none(get_quantity_class(measurement.illumination_setting_unit)),
+                            measurement.illumination_setting
+                        ),
+                        detector_distance_setting__plate_reader_=quantity_or_none(
+                            TQuantityValueMillimeter,
+                            measurement.detector_distance_setting,
                         ),
                         detector_gain_setting=measurement.detector_gain_setting,
                         magnification_setting=quantity_or_none(
@@ -423,12 +444,13 @@ class Mapper(SchemaMapper[Data, Model]):
             sample_identifier=measurement.sample_identifier,
             location_identifier=measurement.location_identifier,
             well_plate_identifier=measurement.well_plate_identifier,
+            sample_role_type=measurement.sample_role_type.value if measurement.sample_role_type else None,
         )
 
     def _get_processed_data_aggregate_document(
         self, data: ProcessedData | None
     ) -> ProcessedDataAggregateDocument | None:
-        if not data:
+        if not data or not data.features:
             return None
 
         # NOTE: this / ProcessedData operating only on "image features" is almost certainly not comprehensive,
@@ -445,11 +467,31 @@ class Mapper(SchemaMapper[Data, Model]):
                                 image_feature_result=TQuantityValueUnitless(
                                     value=image_feature.result
                                 ),
+                                data_source_aggregate_document=DataSourceAggregateDocument(
+                                    data_source_document=[
+                                        DataSourceDocumentItem(
+                                            data_source_identifier=source.identifier,
+                                            data_source_feature=source.feature,
+                                        )
+                                        for source in image_feature.data_sources
+                                    ]
+                                ) if image_feature.data_sources else None
                             )
                             for image_feature in data.features
                         ]
                     ),
                 )
+            ]
+        )
+
+    def _get_image_source_aggregate_document(self, images: list[ImageFeature] | None) -> OpticalImagingAggregateDocument | None:
+        if not images:
+            return None
+
+        return OpticalImagingAggregateDocument(
+            image_document=[
+                ImageDocumentItem(experimental_data_identifier=image.identifier)
+                for image in images
             ]
         )
 

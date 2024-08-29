@@ -9,6 +9,7 @@ import re
 from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
     TransmittedLightSetting,
 )
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
     ImageFeature,
     Measurement,
@@ -350,6 +351,7 @@ def _create_measurement(
         detector_gain_setting=instrument_settings.detector_gain,
         magnification_setting=read_section.magnification_setting,
         illumination_setting=instrument_settings.illumination,
+        illumination_setting_unit=UNITLESS,
         transmitted_light_setting=instrument_settings.transmitted_light,
         auto_focus_setting=instrument_settings.auto_focus,
         image_count_setting=read_section.image_count_setting,
