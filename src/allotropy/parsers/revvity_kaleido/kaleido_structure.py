@@ -75,7 +75,8 @@ class ExperimentType(StrEnum):
 
     @property
     def detection_type(self) -> str | None:
-        # TODO: this is weird
+        # TODO(nstender): investigate why we override detection type for these two type but not others,
+        # when we have detection type value for all examples.
         if self is ExperimentType.OPTICAL_IMAGING:
             return "optical-imaging"
         elif self is ExperimentType.FLUORESCENCE:
