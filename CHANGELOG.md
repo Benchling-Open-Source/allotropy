@@ -9,12 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added `supported_extensions` to Vendor, allowing parsers to specify supported file extensions. 
+- Added `supported_extensions` to Vendor, allowing parsers to specify supported file extensions.
 - Added support for `multiple read modes` in `Agilent Gen5` Adapter
 
 ### Fixed
 
 ### Changed
+
+- Updated Softmax Pro adapter to use the REC/2024/06 plate reader schema
 
 ### Deprecated
 
