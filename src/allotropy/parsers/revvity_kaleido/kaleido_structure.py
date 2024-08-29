@@ -26,7 +26,7 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
 from allotropy.exceptions import AllotropeConversionError, AllotropeParsingError
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.revvity_kaleido import constants
-from allotropy.parsers.utils.pandas import SeriesData
+from allotropy.parsers.utils.pandas import df_to_series_data, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
@@ -302,38 +302,78 @@ class Measurements:
     focus_height: float | None
 
     @staticmethod
+    def create(reader: CsvReader, section_title: str, next_section_title: str) -> Measurements:
+        assert_not_none(
+            reader.drop_until_inclusive(f"^{section_title}"),
+            msg=f"Unable to find {section_title} section.",
+        )
+
+        lines = list(reader.pop_until(f"^{next_section_title}"))
+        df = reader.lines_as_df(lines, index_col=0, names=range(7)).T.dropna(how="all")
+        df.columns = df.columns.astype(str).str.lower()
+        data = df_to_series_data(df, index=0)
+
+        scan_position = data.get(str, "Excitation / Emission")
+        excitation_wavelength = data.get(str, "Excitation wavelength [nm]")
+
+        scan_position = data.get(str, "excitation / emission")
+        excitation_wavelength = data.get(str, "excitation wavelength [nm]")
+
+        return Measurements(
+            channels=Measurements.create_channels(data),
+            number_of_averages=data.get(float, "number of flashes"),
+            detector_distance=data.get(float, "distance between plate and detector [mm]"),
+            scan_position=(
+                None
+                if scan_position is None
+                else assert_not_none(
+                    constants.SCAN_POSITION_CONVERSION.get(scan_position),
+                    msg=f"'{scan_position}' is not a valid scan position, expected TOP or BOTTOM.",
+                )
+            ),
+            emission_wavelength=data.get(float, "emission wavelength [nm]"),
+            excitation_wavelength=(
+                None
+                if excitation_wavelength is None
+                else try_float_or_none(
+                    excitation_wavelength.removesuffix("nm")
+                )
+            ),
+            focus_height=data.get(float, "focus height [µm]"),
+        )
+
+    @staticmethod
     def create_channels(data: SeriesData) -> list[Channel]:
         values: dict[str, str | pd.Series | None] = {
             key: data.series.get(key)
-            for key in ["Channel", "Excitation wavelength [nm]", "Excitation Power [%]", "Exposure Time [ms]", "Additional Focus offset [mm]"]
+            for key in ["channel", "excitation wavelength [nm]", "excitation power [%]", "exposure time [ms]", "additional focus offset [mm]"]
         }
-        if values["Channel"] is None:
-            return None
+        if values["channel"] is None:
+            return []
 
         channel_values: dict[str, list[str]] = {}
-        CHANNEL_COLUMNS_ERROR = "Expected every Channel be followed by: Excitation wavelength [nm], Excitation Power [%], Exposure Time [ms], Additional Focus offset [mm]"
-        if isinstance(values["Channel"], str):
+        if isinstance(values["channel"], str):
             for key, value in values.items():
                 if not isinstance(value, str):
-                    raise AllotropeConversionError(CHANNEL_COLUMNS_ERROR)
+                    raise AllotropeConversionError(constants.CHANNEL_COLUMNS_ERROR)
                 channel_values[key] = [value]
-        elif isinstance(values["Channel"], pd.Series):
+        elif isinstance(values["channel"], pd.Series):
             for key, value in values.items():
                 if not isinstance(value, pd.Series):
-                    raise AllotropeConversionError(CHANNEL_COLUMNS_ERROR)
+                    raise AllotropeConversionError(constants.CHANNEL_COLUMNS_ERROR)
                 channel_values[key] = list(value.values)
-                if not len(channel_values["Channel"]) == len(channel_values[key]):
-                    raise AllotropeConversionError(CHANNEL_COLUMNS_ERROR)
+                if not len(channel_values["channel"]) == len(channel_values[key]):
+                    raise AllotropeConversionError(constants.CHANNEL_COLUMNS_ERROR)
 
         return [
             Channel.create(
-                name=channel_values["Channel"][i],
-                excitation_wavelength=channel_values["Excitation wavelength [nm]"][i],
-                excitation_power=channel_values["Excitation Power [%]"][i],
-                exposure_time=channel_values["Exposure Time [ms]"][i],
-                additional_focus_offset=channel_values["Additional Focus offset [mm]"][i],
+                name=channel_values["channel"][i],
+                excitation_wavelength=channel_values["excitation wavelength [nm]"][i],
+                excitation_power=channel_values["excitation power [%]"][i],
+                exposure_time=channel_values["exposure time [ms]"][i],
+                additional_focus_offset=channel_values["additional focus offset [mm]"][i],
             )
-            for i in range(len(channel_values["Channel"]))
+            for i in range(len(channel_values["channel"]))
         ]
 
 

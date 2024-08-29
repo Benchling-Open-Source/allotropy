@@ -119,45 +119,6 @@ def create_platemap(reader: CsvReader) -> Platemap:
     )
 
 
-def create_measurements(reader: CsvReader) -> Measurements:
-    assert_not_none(
-        reader.drop_until_inclusive("^Measurements"),
-        msg="Unable to find Measurements section.",
-    )
-
-    lines = list(reader.pop_until("^Analysis"))
-    df = reader.lines_as_df(lines, index_col=0, names=range(7)).T.dropna(how="all")
-    data = df_to_series_data(df, index=0)
-
-    scan_position = data.get(str, "Excitation / Emission")
-    excitation_wavelength = data.get(str, "Excitation wavelength [nm]")
-
-    print("!!!")
-    print(data.series)
-    return Measurements(
-        channels=Measurements.create_channels(data),
-        number_of_averages=data.get(float, "Number of flashes"),
-        detector_distance=data.get(float, "Distance between Plate and Detector [mm]"),
-        scan_position=(
-            None
-            if scan_position is None
-            else assert_not_none(
-                constants.SCAN_POSITION_CONVERSION.get(scan_position),
-                msg=f"'{scan_position}' is not a valid scan position, expected TOP or BOTTOM.",
-            )
-        ),
-        emission_wavelength=data.get(float, "Emission wavelength [nm]"),
-        excitation_wavelength=(
-            None
-            if excitation_wavelength is None
-            else try_float_or_none(
-                excitation_wavelength.removesuffix("nm")
-            )
-        ),
-        focus_height=data.get(float, "Focus Height [µm]"),
-    )
-
-
 def create_data_v2(version: str, reader: CsvReader) -> Data:
     background_info = create_background_info(reader)
     results = create_results(reader)
@@ -171,7 +132,7 @@ def create_data_v2(version: str, reader: CsvReader) -> Data:
     reader.drop_until("^Platemap")
 
     platemap = create_platemap(reader)
-    measurements = create_measurements(reader)
+    measurements = Measurements.create(reader, "Measurements", "Analysis")
 
     return Data(
         version,
