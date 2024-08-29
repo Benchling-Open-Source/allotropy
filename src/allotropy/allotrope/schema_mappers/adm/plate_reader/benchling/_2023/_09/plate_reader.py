@@ -101,6 +101,7 @@ class CalculatedDataItem:
     value: JsonFloat
     unit: str
     data_sources: list[DataSource]
+    description: str | None = None
 
 
 @dataclass(frozen=True)
@@ -116,6 +117,8 @@ class Measurement:
     identifier: str
     sample_identifier: str
     location_identifier: str
+
+    # Optional metadata
     well_plate_identifier: str | None = None
     detection_type: str | None = None
     sample_role_type: SampleRoleType | None = None
@@ -330,16 +333,19 @@ class Mapper(SchemaMapper[Data, Model]):
                     UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
                         device_type=measurement.device_type,
                         detection_type=measurement.detection_type,
-                        detector_wavelength_setting=TQuantityValueNanometer(
-                            value=assert_not_none(  # type: ignore[arg-type]
-                                measurement.detector_wavelength_setting,
-                                msg="Missing wavelength setting value in ultraviolet absorbance measurement",
-                            )
+                        detector_wavelength_setting=quantity_or_none(
+                            TQuantityValueNanometer,
+                            measurement.detector_wavelength_setting,
                         ),
                         number_of_averages=quantity_or_none(
                             TQuantityValueNumber, measurement.number_of_averages
                         ),
                         detector_carriage_speed_setting=measurement.detector_carriage_speed,
+                        detector_gain_setting=measurement.detector_gain_setting,
+                        detector_distance_setting__plate_reader_=quantity_or_none(
+                            TQuantityValueMillimeter,
+                            measurement.detector_distance_setting,
+                        ),
                     )
                 ]
             ),
@@ -388,6 +394,9 @@ class Mapper(SchemaMapper[Data, Model]):
                     measurement.luminescence,
                     msg="Missing luminescence value in luminescence measurement",
                 )
+            ),
+            compartment_temperature=quantity_or_none(
+                TQuantityValueDegreeCelsius, measurement.compartment_temperature
             ),
         )
 
@@ -511,6 +520,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 CalculatedDataDocumentItem(
                     calculated_data_identifier=calculated_data_item.identifier,
                     calculated_data_name=calculated_data_item.name,
+                    calculation_description=calculated_data_item.description,
                     calculated_result=TQuantityValue(
                         value=calculated_data_item.value,
                         unit=calculated_data_item.unit,
