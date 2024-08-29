@@ -1,30 +1,20 @@
-from collections.abc import Sequence
 from itertools import chain
 
-from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
+from allotropy.allotrope.models.adm.plate_reader.rec._2024._06.plate_reader import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
-    ContainerType,
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
     DataSystemDocument,
+    DeviceControlAggregateDocument,
+    DeviceControlDocumentItem,
     DeviceSystemDocument,
-    FluorescencePointDetectionDeviceControlAggregateDocument,
-    FluorescencePointDetectionDeviceControlDocumentItem,
-    FluorescencePointDetectionMeasurementDocumentItems,
-    LuminescencePointDetectionDeviceControlAggregateDocument,
-    LuminescencePointDetectionDeviceControlDocumentItem,
-    LuminescencePointDetectionMeasurementDocumentItems,
     MeasurementAggregateDocument,
+    MeasurementDocument,
     Model,
-    OpticalImagingMeasurementDocumentItems,
     PlateReaderAggregateDocument,
     PlateReaderDocumentItem,
     SampleDocument,
-    ScanPositionSettingPlateReader,
-    UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument,
-    UltravioletAbsorbancePointDetectionDeviceControlDocumentItem,
-    UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueDegreeCelsius,
@@ -47,9 +37,11 @@ from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
 from allotropy.parsers.moldev_softmax_pro.constants import (
+    ContainerType,
     DEVICE_TYPE,
     EPOCH,
     REDUCED,
+    ScanPositionSettingPlateReader,
 )
 from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
     Data,
@@ -63,16 +55,8 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
     quantity_or_none,
-    try_nan_float_or_none,
 )
 from allotropy.parsers.vendor_parser import VendorParser
-
-MeasurementDocumentItems = (
-    OpticalImagingMeasurementDocumentItems
-    | UltravioletAbsorbancePointDetectionMeasurementDocumentItems
-    | FluorescencePointDetectionMeasurementDocumentItems
-    | LuminescencePointDetectionMeasurementDocumentItems
-)
 
 
 class SoftmaxproParser(VendorParser):
@@ -87,22 +71,26 @@ class SoftmaxproParser(VendorParser):
 
     def _get_model(self, file_name: str, data: Data) -> Model:
         return Model(
-            field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
+            field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/REC/2024/06/plate-reader.manifest",
             plate_reader_aggregate_document=PlateReaderAggregateDocument(
                 device_system_document=DeviceSystemDocument(
                     device_identifier=NOT_APPLICABLE,
                     model_number=NOT_APPLICABLE,
                 ),
                 data_system_document=DataSystemDocument(
+                    ASM_file_identifier=NOT_APPLICABLE,
+                    data_system_instance_identifier=NOT_APPLICABLE,
                     file_name=file_name,
+                    UNC_path=NOT_APPLICABLE,
                     software_name="SoftMax Pro",
                     ASM_converter_name=self.asm_converter_name,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 plate_reader_document=[
-                    self._get_plate_reader_document_item(plate_block, position)
+                    plate_reader_document
                     for plate_block in data.block_list.plate_blocks.values()
                     for position in plate_block.iter_wells()
+                    if (plate_reader_document:=self._get_plate_reader_document_item(plate_block, position)) is not None
                 ],
                 calculated_data_aggregate_document=self._get_calc_docs(data),
             ),
@@ -110,10 +98,10 @@ class SoftmaxproParser(VendorParser):
 
     def _get_plate_reader_document_item(
         self, plate_block: PlateBlock, position: str
-    ) -> PlateReaderDocumentItem:
+    ) -> PlateReaderDocumentItem | None:
         plate_block_type = plate_block.get_plate_block_type()
 
-        measurement_document: Sequence[MeasurementDocumentItems]
+        measurement_document: list[MeasurementDocument]
 
         if plate_block_type == "Absorbance":
             measurement_document = self._get_absorbance_measurement_document(
@@ -134,6 +122,9 @@ class SoftmaxproParser(VendorParser):
             msg = f"{plate_block_type} is not a valid plate block type."
             raise AllotropeConversionError(msg)
 
+        if not measurement_document:
+            return None
+
         return PlateReaderDocumentItem(
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_time=EPOCH,
@@ -147,25 +138,25 @@ class SoftmaxproParser(VendorParser):
 
     def _get_fluorescence_measurement_document(
         self, plate_block: PlateBlock, position: str
-    ) -> list[FluorescencePointDetectionMeasurementDocumentItems]:
+    ) -> list[MeasurementDocument]:
         return [
-            FluorescencePointDetectionMeasurementDocumentItems(
+            MeasurementDocument(
                 measurement_identifier=data_element.uuid,
                 fluorescence=TQuantityValueRelativeFluorescenceUnit(
                     value=data_element.value
                 ),
                 compartment_temperature=quantity_or_none(
                     TQuantityValueDegreeCelsius,
-                    try_nan_float_or_none(data_element.temperature),
+                    data_element.temperature,
                 ),
                 sample_document=SampleDocument(
                     location_identifier=data_element.position,
                     well_plate_identifier=plate_block.header.name,
                     sample_identifier=data_element.sample_identifier,
                 ),
-                device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
+                device_control_aggregate_document=DeviceControlAggregateDocument(
                     device_control_document=[
-                        FluorescencePointDetectionDeviceControlDocumentItem(
+                        DeviceControlDocumentItem(
                             device_type=DEVICE_TYPE,
                             detection_type=plate_block.header.read_mode,
                             scan_position_setting__plate_reader_=(
@@ -199,28 +190,28 @@ class SoftmaxproParser(VendorParser):
 
     def _get_luminescence_measurement_document(
         self, plate_block: PlateBlock, position: str
-    ) -> list[LuminescencePointDetectionMeasurementDocumentItems]:
+    ) -> list[MeasurementDocument]:
         reads_per_well = assert_not_none(
             plate_block.header.reads_per_well,
             msg="Unable to find plate block reads per well.",
         )
 
         return [
-            LuminescencePointDetectionMeasurementDocumentItems(
+            MeasurementDocument(
                 measurement_identifier=data_element.uuid,
                 luminescence=TQuantityValueRelativeLightUnit(value=data_element.value),
                 compartment_temperature=quantity_or_none(
                     TQuantityValueDegreeCelsius,
-                    try_nan_float_or_none(data_element.temperature),
+                    data_element.temperature,
                 ),
                 sample_document=SampleDocument(
                     location_identifier=data_element.position,
                     well_plate_identifier=plate_block.header.name,
                     sample_identifier=data_element.sample_identifier,
                 ),
-                device_control_aggregate_document=LuminescencePointDetectionDeviceControlAggregateDocument(
+                device_control_aggregate_document=DeviceControlAggregateDocument(
                     device_control_document=[
-                        LuminescencePointDetectionDeviceControlDocumentItem(
+                        DeviceControlDocumentItem(
                             device_type=DEVICE_TYPE,
                             detection_type=plate_block.header.read_mode,
                             detector_wavelength_setting=TQuantityValueNanometer(
@@ -239,23 +230,23 @@ class SoftmaxproParser(VendorParser):
 
     def _get_absorbance_measurement_document(
         self, plate_block: PlateBlock, position: str
-    ) -> list[UltravioletAbsorbancePointDetectionMeasurementDocumentItems]:
+    ) -> list[MeasurementDocument]:
         return [
-            UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
+            MeasurementDocument(
                 measurement_identifier=data_element.uuid,
                 absorbance=TQuantityValueMilliAbsorbanceUnit(value=data_element.value),
                 compartment_temperature=quantity_or_none(
                     TQuantityValueDegreeCelsius,
-                    try_nan_float_or_none(data_element.temperature),
+                    data_element.temperature,
                 ),
                 sample_document=SampleDocument(
                     location_identifier=data_element.position,
                     well_plate_identifier=plate_block.header.name,
                     sample_identifier=data_element.sample_identifier,
                 ),
-                device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
+                device_control_aggregate_document=DeviceControlAggregateDocument(
                     device_control_document=[
-                        UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
+                        DeviceControlDocumentItem(
                             device_type=DEVICE_TYPE,
                             detection_type=plate_block.header.read_mode,
                             detector_wavelength_setting=TQuantityValueNanometer(
