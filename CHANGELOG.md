@@ -18,6 +18,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update mabtech-apex-adapter regex to handle scenarios where first word in the machine ID section has all letter uppercase
 
 ### Changed
+- Update Thermo Fisher Nanodrop One adapter to recommended state
+- Update Thermo Fisher Genesys 30 adapter to recommended state
 
 ### Deprecated
 
