@@ -134,23 +134,27 @@ class GroupSampleData:
                     position=row[str, ["Well", "Wells"]],
                     plate=row[str, "WellPlateName"],
                     entries=[
-                        group_data_element_entry
+                        element_entry
                         for column_name in normal_columns
-                        if (group_data_element_entry:=cls._get_element_entry(row, column_name)) is not None
+                        if (element_entry := cls._get_element_entry(row, column_name))
+                        is not None
                     ],
                 )
                 for row in row_data
             ],
             aggregated_entries=[
-                group_data_element_entry
+                element_entry
                 for column_name in aggregated_columns
-                if (group_data_element_entry:=cls._get_element_entry(top_row, column_name)) is not None
+                if (element_entry := cls._get_element_entry(top_row, column_name))
+                is not None
             ],
         )
 
     @classmethod
-    def _get_element_entry(cls, data_row: SeriesData, column_name: str) -> GroupDataElementEntry | None:
-        if (value:=data_row.get(float, column_name)) is not None:
+    def _get_element_entry(
+        cls, data_row: SeriesData, column_name: str
+    ) -> GroupDataElementEntry | None:
+        if (value := data_row.get(float, column_name)) is not None:
             return GroupDataElementEntry(
                 name=column_name,
                 value=value,
@@ -310,7 +314,7 @@ class PlateWavelengthData:
             f"{num_to_chars(row_idx)}{col}": value
             for row_idx, *row_data in df_data.itertuples()
             for col, raw_value in zip(df_data.columns, row_data, strict=True)
-            if (value:=try_non_nan_float_or_none(raw_value)) is not None
+            if (value := try_non_nan_float_or_none(raw_value)) is not None
         }
         return PlateWavelengthData(
             wavelength,
@@ -496,7 +500,7 @@ class TimeKineticData:
                     value=value,
                 )
                 for position, raw_value in row.iloc[2:].items()
-                if (value:=try_non_nan_float_or_none(str(raw_value))) is not None
+                if (value := try_non_nan_float_or_none(str(raw_value))) is not None
             },
         )
 

@@ -15,6 +15,7 @@ from allotropy.allotrope.models.adm.plate_reader.rec._2024._06.plate_reader impo
     PlateReaderAggregateDocument,
     PlateReaderDocumentItem,
     SampleDocument,
+    TQuantityValueModel,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueDegreeCelsius,
@@ -23,10 +24,6 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
     TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueRelativeLightUnit,
-)
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    JsonFloat,
-    TQuantityValue,
 )
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.constants import ASM_CONVERTER_VERSION
@@ -88,10 +85,15 @@ class SoftmaxproParser(VendorParser):
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 plate_reader_document=[
-                    plate_reader_document
+                    document_item
                     for plate_block in data.block_list.plate_blocks.values()
                     for position in plate_block.iter_wells()
-                    if (plate_reader_document:=self._get_plate_reader_document_item(plate_block, position)) is not None
+                    if (
+                        document_item := self._get_plate_reader_document_item(
+                            plate_block, position
+                        )
+                    )
+                    is not None
                 ],
                 calculated_data_aggregate_document=self._get_calc_docs(data),
             ),
@@ -132,7 +134,7 @@ class SoftmaxproParser(VendorParser):
                 plate_well_count=TQuantityValueNumber(
                     value=plate_block.header.num_wells
                 ),
-                container_type=ContainerType.well_plate,
+                container_type=ContainerType.well_plate.value,
                 measurement_document=list(measurement_document),
             )
         )
@@ -161,9 +163,9 @@ class SoftmaxproParser(VendorParser):
                             device_type=DEVICE_TYPE,
                             detection_type=plate_block.header.read_mode,
                             scan_position_setting__plate_reader_=(
-                                ScanPositionSettingPlateReader.top_scan_position__plate_reader_
+                                ScanPositionSettingPlateReader.top_scan_position__plate_reader_.value
                                 if plate_block.header.scan_position == ScanPosition.TOP
-                                else ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_
+                                else ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_.value
                             ),
                             detector_wavelength_setting=TQuantityValueNanometer(
                                 value=data_element.wavelength
@@ -282,7 +284,7 @@ class SoftmaxproParser(VendorParser):
     def _build_calc_doc(
         self,
         name: str,
-        value: JsonFloat,
+        value: float,
         data_sources: list[DataSourceDocumentItem],
         description: str | None = None,
     ) -> CalculatedDataDocumentItem:
@@ -290,7 +292,7 @@ class SoftmaxproParser(VendorParser):
             calculated_data_identifier=random_uuid_str(),
             calculated_data_name=name,
             calculation_description=description,
-            calculated_result=TQuantityValue(unit=UNITLESS, value=value),
+            calculated_result=TQuantityValueModel(unit=UNITLESS, value=value),
             data_source_aggregate_document=DataSourceAggregateDocument(
                 data_source_document=data_sources
             ),
