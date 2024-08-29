@@ -9,21 +9,20 @@ from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure import (
     BackgroundInfo,
-    BackgroundInfoList,
     BasicAssayInfo,
+    CalculatedPlate,
     CalculatedPlateInfo,
     CalculatedResult,
-    CalculatedResultList,
     create_plate_maps,
+    create_results,
     Filter,
     Instrument,
     Labels,
-    Plate,
     PlateList,
     PlateMap,
     PlateType,
     Result,
-    ResultList,
+    ResultPlate,
     ResultPlateInfo,
 )
 from allotropy.parsers.utils.pandas import SeriesData
@@ -95,36 +94,34 @@ def test_create_result() -> None:
         ]
     )
 
-    expected = ResultList(
-        results=[
-            Result(
-                uuid="TEST_ID_0",
-                col="A",
-                row="01",
-                value=1,
-            ),
-            Result(
-                uuid="TEST_ID_1",
-                col="A",
-                row="02",
-                value=2,
-            ),
-            Result(
-                uuid="TEST_ID_2",
-                col="B",
-                row="01",
-                value=3,
-            ),
-            Result(
-                uuid="TEST_ID_3",
-                col="B",
-                row="02",
-                value=4,
-            ),
-        ]
-    )
+    expected = [
+        Result(
+            uuid="TEST_ID_0",
+            col="A",
+            row="01",
+            value=1,
+        ),
+        Result(
+            uuid="TEST_ID_1",
+            col="A",
+            row="02",
+            value=2,
+        ),
+        Result(
+            uuid="TEST_ID_2",
+            col="B",
+            row="01",
+            value=3,
+        ),
+        Result(
+            uuid="TEST_ID_3",
+            col="B",
+            row="02",
+            value=4,
+        ),
+    ]
     with mock_uuid_generation():
-        result_list = ResultList.create(reader)
+        result_list = create_results(reader)
     assert result_list == expected
 
 
@@ -148,8 +145,9 @@ def test_create_plates() -> None:
     )
 
     expected = PlateList(
-        plates=[
-            Plate(
+        calculated=[],
+        results=[
+            ResultPlate(
                 plate_info=ResultPlateInfo(
                     number="2",
                     barcode="Plate 2",
@@ -160,45 +158,40 @@ def test_create_plates() -> None:
                     chamber_temperature_at_start=14.5,
                     label="AC HTRF Laser [Eu](1)",
                 ),
-                background_info_list=BackgroundInfoList(
-                    background_info=[
-                        BackgroundInfo(
-                            plate_num="2",
-                            label="AC HTRF Laser [Eu]",
-                            measinfo="De=1st Ex=Top Em=Top Wdw=1 (14)",
-                        ),
-                        BackgroundInfo(
-                            plate_num="2",
-                            label="AC HTRF Laser [Eu]",
-                            measinfo="De=2nd Ex=Top Em=Top Wdw=1 (142)",
-                        ),
-                    ],
-                ),
-                calculated_result_list=CalculatedResultList([]),
-                result_list=ResultList(
-                    results=[
-                        Result(
-                            uuid="TEST_ID_0",
-                            col="A",
-                            row="01",
-                            value=6,
-                        ),
-                        Result(
-                            uuid="TEST_ID_1",
-                            col="A",
-                            row="03",
-                            value=7,
-                        ),
-                        Result(
-                            uuid="TEST_ID_2",
-                            col="C",
-                            row="02",
-                            value=8,
-                        ),
-                    ]
-                ),
+                background_infos=[
+                    BackgroundInfo(
+                        plate_num="2",
+                        label="AC HTRF Laser [Eu]",
+                        measinfo="De=1st Ex=Top Em=Top Wdw=1 (14)",
+                    ),
+                    BackgroundInfo(
+                        plate_num="2",
+                        label="AC HTRF Laser [Eu]",
+                        measinfo="De=2nd Ex=Top Em=Top Wdw=1 (142)",
+                    ),
+                ],
+                results=[
+                    Result(
+                        uuid="TEST_ID_0",
+                        col="A",
+                        row="01",
+                        value=6,
+                    ),
+                    Result(
+                        uuid="TEST_ID_1",
+                        col="A",
+                        row="03",
+                        value=7,
+                    ),
+                    Result(
+                        uuid="TEST_ID_2",
+                        col="C",
+                        row="02",
+                        value=8,
+                    ),
+                ],
             )
-        ]
+        ],
     )
     with mock_uuid_generation():
         plate = PlateList.create(reader)
@@ -225,8 +218,9 @@ def test_create_plates_with_calculated_data() -> None:
     )
 
     expected = PlateList(
-        [
-            Plate(
+        results=[],
+        calculated=[
+            CalculatedPlate(
                 plate_info=CalculatedPlateInfo(
                     number="2",
                     barcode="Plate 2",
@@ -236,45 +230,40 @@ def test_create_plates_with_calculated_data() -> None:
                     formula="Calc 1: General = X / 2 where X = test",
                     name="Calc 1: General",
                 ),
-                background_info_list=BackgroundInfoList(
-                    background_info=[
-                        BackgroundInfo(
-                            plate_num="2",
-                            label="AC HTRF Laser [Eu]",
-                            measinfo="De=1st Ex=Top Em=Top Wdw=1 (14)",
-                        ),
-                        BackgroundInfo(
-                            plate_num="2",
-                            label="AC HTRF Laser [Eu]",
-                            measinfo="De=2nd Ex=Top Em=Top Wdw=1 (142)",
-                        ),
-                    ],
-                ),
-                calculated_result_list=CalculatedResultList(
-                    calculated_results=[
-                        CalculatedResult(
-                            uuid="TEST_ID_0",
-                            col="A",
-                            row="01",
-                            value=3,
-                        ),
-                        CalculatedResult(
-                            uuid="TEST_ID_1",
-                            col="A",
-                            row="03",
-                            value=3.5,
-                        ),
-                        CalculatedResult(
-                            uuid="TEST_ID_2",
-                            col="C",
-                            row="02",
-                            value=4,
-                        ),
-                    ]
-                ),
-                result_list=ResultList([]),
+                background_infos=[
+                    BackgroundInfo(
+                        plate_num="2",
+                        label="AC HTRF Laser [Eu]",
+                        measinfo="De=1st Ex=Top Em=Top Wdw=1 (14)",
+                    ),
+                    BackgroundInfo(
+                        plate_num="2",
+                        label="AC HTRF Laser [Eu]",
+                        measinfo="De=2nd Ex=Top Em=Top Wdw=1 (142)",
+                    ),
+                ],
+                results=[
+                    CalculatedResult(
+                        uuid="TEST_ID_0",
+                        col="A",
+                        row="01",
+                        value=3,
+                    ),
+                    CalculatedResult(
+                        uuid="TEST_ID_1",
+                        col="A",
+                        row="03",
+                        value=3.5,
+                    ),
+                    CalculatedResult(
+                        uuid="TEST_ID_2",
+                        col="C",
+                        row="02",
+                        value=4,
+                    ),
+                ],
             )
-        ]
+        ],
     )
     with mock_uuid_generation():
         plate = PlateList.create(reader)
@@ -317,7 +306,7 @@ def test_create_calculated_plate_info_with_no_formula() -> None:
             }
         )
     )
-    msg = "Unable to find expected formula for calculated results section."
+    msg = "Expected non-null value for Formula."
     with pytest.raises(AllotropeConversionError, match=msg):
         CalculatedPlateInfo.create(data)
 

@@ -53,6 +53,7 @@ class PlateData:
                 location_id=f"{row_name}{col_name}_{row_index + 1}",
                 well_plate_id=well_plate_id,
             )
+            # Get each unique row label, and then iterate over all rows with that label.
             for row_name in data.index.unique()
             for row_index, (_, row) in enumerate(data.loc[[row_name]].iterrows())
             for col_name, value in row.items()

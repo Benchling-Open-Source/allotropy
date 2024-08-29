@@ -41,7 +41,8 @@ class MethodicalMindReader:
                 ),
                 "Luminescence data table",
             ).dropna(axis="columns", how="all")
-            # Fill NaN row labels with previous row. This is because
+            # There may be multiple rows per well row for additional measurements, and the extra rows are
+            # not labelled. ffill the row label so that each row has the correspondign row label.
             data.index = pd.Index(data.index.to_series().ffill())
             data.index = data.index.astype(str).str.strip()
             data.columns = data.columns.astype(str).str.strip()
