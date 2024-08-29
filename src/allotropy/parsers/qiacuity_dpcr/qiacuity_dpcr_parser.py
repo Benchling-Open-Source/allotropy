@@ -20,6 +20,7 @@ from allotropy.parsers.vendor_parser import MapperVendorParser
 class QiacuitydPCRParser(MapperVendorParser[Data, Model]):
     DISPLAY_NAME = "Qiacuity dPCR"
     RELEASE_STATE = ReleaseState.RECOMMENDED
+    SUPPORTED_EXTENSIONS = QiacuitydPCRReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:

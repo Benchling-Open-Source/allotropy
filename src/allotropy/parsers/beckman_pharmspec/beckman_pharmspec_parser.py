@@ -23,6 +23,7 @@ from allotropy.parsers.vendor_parser import MapperVendorParser
 class PharmSpecParser(MapperVendorParser[Data, Model]):
     DISPLAY_NAME = "Beckman PharmSpec"
     RELEASE_STATE = ReleaseState.RECOMMENDED
+    SUPPORTED_EXTENSIONS = BeckmanPharmspecReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:

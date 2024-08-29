@@ -14,11 +14,16 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.unchained_labs_lunatic.constants import (
     CALCULATED_DATA_LOOKUP,
+    DETECTION_TYPE,
+    DEVICE_TYPE,
     INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG,
+    MODEL_NUMBER,
     NO_DATE_OR_TIME_ERROR_MSG,
     NO_DEVICE_IDENTIFIER_ERROR_MSG,
     NO_MEASUREMENT_IN_PLATE_ERROR_MSG,
     NO_WAVELENGTH_COLUMN_ERROR_MSG,
+    PRODUCT_MANUFACTURER,
+    SOFTWARE_NAME,
     WAVELENGTH_COLUMNS_RE,
 )
 from allotropy.parsers.utils.pandas import (
@@ -47,6 +52,8 @@ def _create_measurement(
     )
     return Measurement(
         type_=MeasurementType.ULTRAVIOLET_ABSORBANCE,
+        device_type=DEVICE_TYPE,
+        detection_type=DETECTION_TYPE,
         identifier=measurement_identifier,
         detector_wavelength_setting=float(wavelength_column[1:]),
         absorbance=well_plate_data.get(float, wavelength_column, NaN),
@@ -97,7 +104,7 @@ def _create_measurement_group(
         timestamp = f"{date} {time}"
 
     return MeasurementGroup(
-        _measurement_time=assert_not_none(timestamp, msg=NO_DATE_OR_TIME_ERROR_MSG),
+        measurement_time=assert_not_none(timestamp, msg=NO_DATE_OR_TIME_ERROR_MSG),
         analytical_method_identifier=data.get(str, "Application"),
         plate_well_count=96,
         measurements=[
@@ -112,13 +119,12 @@ def create_metadata(header: SeriesData, file_name: str) -> Metadata:
         str, "Instrument"
     )
     return Metadata(
-        device_type="plate reader",
-        model_number="Lunatic",
-        product_manufacturer="Unchained Labs",
+        model_number=MODEL_NUMBER,
+        product_manufacturer=PRODUCT_MANUFACTURER,
         device_identifier=assert_not_none(
             device_identifier, msg=NO_DEVICE_IDENTIFIER_ERROR_MSG
         ),
-        software_name="Lunatic and Stunner Analysis",
+        software_name=SOFTWARE_NAME,
         file_name=file_name,
     )
 

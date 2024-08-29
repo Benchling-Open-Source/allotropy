@@ -1,5 +1,4 @@
 import re
-from unittest import mock
 
 import pandas as pd
 import pytest
@@ -15,7 +14,7 @@ from allotropy.parsers.novabio_flex2.novabio_flex2_structure import (
     SampleList,
     Title,
 )
-from allotropy.parsers.utils.timestamp_parser import TimestampParser
+from allotropy.testing.utils import mock_uuid_generation
 from tests.parsers.novabio_flex2.novabio_flex2_data import (
     get_data,
     get_input_stream,
@@ -34,7 +33,6 @@ from tests.parsers.novabio_flex2.novabio_flex2_data import (
         ),
     ],
 )
-@pytest.mark.short
 def test_create_title(
     filename: str, processing_time: str, device_identifier: str | None
 ) -> None:
@@ -51,7 +49,6 @@ def test_create_title(
         "SampleResults2021-02-18_104838T26918070C.csv",  # wrong order of timestamp and identifier
     ),
 )
-@pytest.mark.short
 def test_create_title_invalid_filename(filename: str) -> None:
     expected_regex_raw = f"{filename} is not valid. File name is expected to have format of SampleResultsYYYY-MM-DD_HHMMSS.csv or SampleResults<Analyzer ID>YYYY-MM-DD_HHMMSS.csv where <Analyzer ID> is defined in Settings"
     expected_regex = re.escape(expected_regex_raw)
@@ -59,7 +56,6 @@ def test_create_title_invalid_filename(filename: str) -> None:
         Title.create(filename)
 
 
-@pytest.mark.short
 def test_create_sample() -> None:
     data = {
         "Sample ID": "BP_R10_KP_008_D0",
@@ -89,7 +85,6 @@ def test_create_sample() -> None:
     assert sample.oxygen_saturation == 100.0
 
 
-@pytest.mark.short
 def test_create_sample_list() -> None:
     sample_list = SampleList.create(
         pd.DataFrame(
@@ -111,14 +106,12 @@ def test_create_sample_list() -> None:
     assert sample_list.samples[1].identifier == "SAMPLE_2"
 
 
-@pytest.mark.short
 def test_create_sample_list_invalid_no_samples() -> None:
     df = pd.DataFrame()
     with pytest.raises(AllotropeConversionError, match="Unable to find any sample."):
         SampleList.create(df)
 
 
-@pytest.mark.short
 def test_create_sample_list_invalid_no_analyst() -> None:
     df = pd.DataFrame(
         {
@@ -134,14 +127,7 @@ def test_create_sample_list_invalid_no_analyst() -> None:
         SampleList.create(df)
 
 
-@pytest.mark.short
 def test_create_data() -> None:
     named_file_contents = NamedFileContents(get_input_stream(), get_input_title())
-    with mock.patch(
-        "allotropy.parsers.novabio_flex2.novabio_flex2_structure.random_uuid_str",
-        return_value="dummy_id",
-    ):
-        assert (
-            NovaBioFlexParser(TimestampParser()).create_data(named_file_contents)
-            == get_data()
-        )
+    with mock_uuid_generation():
+        assert NovaBioFlexParser().create_data(named_file_contents) == get_data()

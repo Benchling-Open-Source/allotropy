@@ -62,6 +62,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 class SoftmaxproParser(VendorParser):
     DISPLAY_NAME = "Molecular Devices SoftMax Pro"
     RELEASE_STATE = ReleaseState.RECOMMENDED
+    SUPPORTED_EXTENSIONS = "txt"
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         lines = read_to_lines(named_file_contents)

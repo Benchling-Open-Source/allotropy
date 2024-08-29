@@ -5,7 +5,6 @@ from dateutil import parser
 import pytz
 
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.utils.values import assert_not_none
 
 TIMEZONE_CODES_MAP = {
     **{code: pytz.timezone(code) for code in pytz.all_timezones},
@@ -24,9 +23,6 @@ class TimestampParser:
     default_timezone: tzinfo
 
     def __init__(self, default_timezone: tzinfo | None = None):
-        if default_timezone and not isinstance(default_timezone, tzinfo):
-            msg = f"Invalid default timezone '{default_timezone}'."
-            raise AllotropeConversionError(msg)
         self.default_timezone = default_timezone or ZoneInfo("UTC")
 
     def parse(self, time: str) -> str:
@@ -37,8 +33,6 @@ class TimestampParser:
         :param time: the string to parse
         :raises AllotropeConversionError if time cannot be parsed
         """
-        assert_not_none(time, "time")
-
         try:
             timestamp = parser.parse(time, tzinfos=TIMEZONE_CODES_MAP, fuzzy=True)
         except ValueError as e:

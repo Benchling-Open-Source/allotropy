@@ -14,6 +14,7 @@ from allotropy.parsers.utils.values import assert_not_none
 class AgilentGen5Reader:
     header_data: SeriesData
     sections: dict[str, list[str]]
+    SUPPORTED_EXTENSIONS = "txt"
 
     def __init__(self, named_file_contents: NamedFileContents) -> None:
         reader = SectionLinesReader.create(named_file_contents)
@@ -39,7 +40,7 @@ class AgilentGen5Reader:
             keep_default_na=False,
             sep="\t",
         ).T
-        self.header_data = df_to_series_data(df, "Failed to parser header data")
+        self.header_data = df_to_series_data(df)
 
         self.sections = {}
 

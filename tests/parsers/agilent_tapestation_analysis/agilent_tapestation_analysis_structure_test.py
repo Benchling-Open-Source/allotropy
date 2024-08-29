@@ -1,5 +1,4 @@
 import re
-from unittest import mock
 import xml.etree.ElementTree as ET  # noqa: N817
 
 import pytest
@@ -28,13 +27,13 @@ from allotropy.parsers.agilent_tapestation_analysis.constants import (
     SOFTWARE_NAME,
 )
 from allotropy.parsers.utils.values import assert_not_none
+from allotropy.testing.utils import mock_uuid_generation
 from tests.parsers.agilent_tapestation_analysis.agilent_tapestation_test_data import (
     get_metadata_xml,
     get_samples_xml,
 )
 
 
-@pytest.mark.short
 def test_create_metadata() -> None:
     metadata = create_metadata(get_metadata_xml(), "file.txt")
     assert metadata == Metadata(
@@ -63,12 +62,10 @@ def test_create_metadata() -> None:
         ("kD", "kDa"),
     ),
 )
-@pytest.mark.short
 def test__get_unit_class(xml_unit: str, unit: str) -> None:
     assert _get_unit_class(get_metadata_xml(molecular_weight_unit=xml_unit)) == unit
 
 
-@pytest.mark.short
 def test__get_unit_class_with_unknown_unit() -> None:
     unit = "not-a-unit"
     msg = f"Unrecognized Molecular Weight Unit: '{unit}'. Expecting one of ['bp', 'kD', 'nt']."
@@ -76,19 +73,16 @@ def test__get_unit_class_with_unknown_unit() -> None:
         _get_unit_class(get_metadata_xml(molecular_weight_unit=unit))
 
 
-@pytest.mark.short
 def test_create_metadata_with_rine_version() -> None:
     metadata = create_metadata(get_metadata_xml(rine_version="2.3.4"), "dummy.txt")
     assert metadata.method_version == "2.3.4"
 
 
-@pytest.mark.short
 def test_create_metadata_with_din_version() -> None:
     metadata = create_metadata(get_metadata_xml(din_version="1.2.3"), "dummy.txt")
     assert metadata.method_version == "1.2.3"
 
 
-@pytest.mark.short
 def testcreate_measurement_groups_without_matching_screen_tape() -> None:
     sample_id = "01-S025-180717-01-899752"
     screen_tape_id = "01-S025-200617-01-899752"
@@ -108,7 +102,6 @@ def testcreate_measurement_groups_without_matching_screen_tape() -> None:
         create_measurement_groups(ET.fromstring(xml_str))  # noqa: S314
 
 
-@pytest.mark.short
 def testcreate_measurement_groups_without_screen_tapes() -> None:
     xml_str = """
     <File>
@@ -122,19 +115,15 @@ def testcreate_measurement_groups_without_screen_tapes() -> None:
         create_measurement_groups(ET.fromstring(xml_str))  # noqa: S314
 
 
-@pytest.mark.short
 def testcreate_measurement_groups() -> None:
-    with mock.patch(
-        "allotropy.parsers.agilent_tapestation_analysis.agilent_tapestation_analysis_structure.random_uuid_str",
-        return_value="dummy_id",
-    ):
+    with mock_uuid_generation():
         groups, calc_docs = create_measurement_groups(get_samples_xml())
 
     assert groups == [
         MeasurementGroup(
             measurements=[
                 Measurement(
-                    identifier="dummy_id",
+                    identifier="TEST_ID_0",
                     measurement_time="2020-09-20T03:52:58-05:00",
                     compartment_temperature=26.4,
                     location_identifier="A1",
@@ -143,7 +132,7 @@ def testcreate_measurement_groups() -> None:
                     processed_data=ProcessedData(
                         peaks=[
                             ProcessedDataFeature(
-                                identifier="dummy_id",
+                                identifier="TEST_ID_1",
                                 name="-",
                                 height=261.379,
                                 start=68.0,
@@ -158,7 +147,7 @@ def testcreate_measurement_groups() -> None:
                                 comment="Lower Marker",
                             ),
                             ProcessedDataFeature(
-                                identifier="dummy_id",
+                                identifier="TEST_ID_2",
                                 name="1",
                                 height=284.723,
                                 start=3812.0,
@@ -183,101 +172,94 @@ def testcreate_measurement_groups() -> None:
     assert not calc_docs
 
 
-@pytest.mark.short
 def testcreate_measurement_groups_with_calculated_data() -> None:
-    with mock.patch(
-        "allotropy.parsers.agilent_tapestation_analysis.agilent_tapestation_analysis_structure.random_uuid_str",
-        return_value="dummy_id",
-    ):
+    with mock_uuid_generation():
         _, calc_docs = create_measurement_groups(
             get_samples_xml(with_calculated_data=True)
         )
 
-    peak_data_source = DataSource(feature="peak", identifier="dummy_id")
-    sample_data_source = DataSource(feature="sample", identifier="dummy_id")
+    sample_data_source = DataSource(feature="sample", identifier="TEST_ID_0")
+    peak_1_data_source = DataSource(feature="peak", identifier="TEST_ID_2")
+    peak_2_data_source = DataSource(feature="peak", identifier="TEST_ID_7")
 
     assert calc_docs == [
         CalculatedDataItem(
-            identifier="dummy_id",
+            identifier="TEST_ID_1",
             name="Concentration",
             unit="(unitless)",
             value=58.2,
             data_sources=[sample_data_source],
         ),
         CalculatedDataItem(
-            identifier="dummy_id",
+            identifier="TEST_ID_3",
             name="AssignedQuantity",
             unit="(unitless)",
             value=8.50,
-            data_sources=[peak_data_source],
+            data_sources=[peak_1_data_source],
         ),
         CalculatedDataItem(
-            identifier="dummy_id",
+            identifier="TEST_ID_4",
             name="FromPercent",
             unit="(unitless)",
             value=80.6,
-            data_sources=[peak_data_source],
+            data_sources=[peak_1_data_source],
         ),
         CalculatedDataItem(
-            identifier="dummy_id",
+            identifier="TEST_ID_5",
             name="Molarity",
             unit="(unitless)",
             value=131.0,
-            data_sources=[peak_data_source],
+            data_sources=[peak_1_data_source],
         ),
         CalculatedDataItem(
-            identifier="dummy_id",
+            identifier="TEST_ID_6",
             name="ToPercent",
             unit="(unitless)",
             value=85.4,
-            data_sources=[peak_data_source],
+            data_sources=[peak_1_data_source],
         ),
         CalculatedDataItem(
-            identifier="dummy_id",
+            identifier="TEST_ID_8",
             name="CalibratedQuantity",
             unit="(unitless)",
             value=11.3,
-            data_sources=[peak_data_source],
+            data_sources=[peak_2_data_source],
         ),
         CalculatedDataItem(
-            identifier="dummy_id",
+            identifier="TEST_ID_9",
             name="FromPercent",
             unit="(unitless)",
             value=41.1,
-            data_sources=[peak_data_source],
+            data_sources=[peak_2_data_source],
         ),
         CalculatedDataItem(
-            identifier="dummy_id",
+            identifier="TEST_ID_10",
             name="RunDistance",
             unit="(unitless)",
             value=46.5,
-            data_sources=[peak_data_source],
+            data_sources=[peak_2_data_source],
         ),
     ]
 
 
-@pytest.mark.short
 def testcreate_measurement_groups_with_error() -> None:
     groups, _ = create_measurement_groups(get_samples_xml(sample_error="Sample Error."))
     assert assert_not_none(groups[0].measurements[0].errors)[0].error == "Sample Error."
 
 
-@pytest.mark.short
 def testcreate_measurement_groups_with_regions() -> None:
-    with mock.patch(
-        "allotropy.parsers.agilent_tapestation_analysis.agilent_tapestation_analysis_structure.random_uuid_str",
-        return_value="dummy_id",
-    ):
+    with mock_uuid_generation():
         groups, calc_docs = create_measurement_groups(
             get_samples_xml(with_regions=True)
         )
 
-    region_data_source = DataSource(feature="data region", identifier="dummy_id")
+    region_1_data_source = DataSource(feature="data region", identifier="TEST_ID_3")
+    region_2_data_source = DataSource(feature="data region", identifier="TEST_ID_6")
 
     # Note: Data regions are ordered by <From> (region_start) ascending
     assert groups[0].measurements[0].processed_data.data_regions == [
         ProcessedDataFeature(
-            identifier="dummy_id",
+            identifier="TEST_ID_3",
             start=42.0,
             start_unit="#",
             end=3000.0,
@@ -288,7 +270,7 @@ def testcreate_measurement_groups_with_regions() -> None:
             comment="Partially Degraded",
         ),
         ProcessedDataFeature(
-            identifier="dummy_id",
+            identifier="TEST_ID_6",
             start=504.0,
             start_unit="#",
             end=1000.0,
@@ -301,31 +283,31 @@ def testcreate_measurement_groups_with_regions() -> None:
     ]
     assert calc_docs == [
         CalculatedDataItem(
-            identifier="dummy_id",
+            identifier="TEST_ID_4",
             name="AverageSize",
             unit="(unitless)",
             value=1944.0,
-            data_sources=[region_data_source],
+            data_sources=[region_1_data_source],
         ),
         CalculatedDataItem(
-            identifier="dummy_id",
+            identifier="TEST_ID_5",
             name="Molarity",
             unit="(unitless)",
             value=0.765,
-            data_sources=[region_data_source],
+            data_sources=[region_1_data_source],
         ),
         CalculatedDataItem(
-            identifier="dummy_id",
+            identifier="TEST_ID_7",
             name="AverageSize",
             unit="(unitless)",
             value=395.0,
-            data_sources=[region_data_source],
+            data_sources=[region_2_data_source],
         ),
         CalculatedDataItem(
-            identifier="dummy_id",
+            identifier="TEST_ID_8",
             name="Concentration",
             unit="(unitless)",
             value=1.11,
-            data_sources=[region_data_source],
+            data_sources=[region_2_data_source],
         ),
     ]

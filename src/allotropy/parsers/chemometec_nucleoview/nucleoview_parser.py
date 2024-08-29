@@ -19,14 +19,14 @@ from allotropy.parsers.vendor_parser import MapperVendorParser
 class ChemometecNucleoviewParser(MapperVendorParser[Data, Model]):
     DISPLAY_NAME = "ChemoMetec Nucleoview"
     RELEASE_STATE = ReleaseState.RECOMMENDED
+    SUPPORTED_EXTENSIONS = NucleoviewReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         df = NucleoviewReader.read(named_file_contents.contents)
         return Data(
             create_metadata(
-                df_to_series_data(df.head(1), "Unable to parse row in dataset."),
-                named_file_contents.original_file_name,
+                df_to_series_data(df.head(1)), named_file_contents.original_file_name
             ),
             map_rows(df, create_measurement_groups),
         )

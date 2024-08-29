@@ -187,6 +187,7 @@ class ThermoFisherQubitFlexParser(VendorParser):
 
     DISPLAY_NAME = constants.DISPLAY_NAME
     RELEASE_STATE = ReleaseState.RECOMMENDED
+    SUPPORTED_EXTENSIONS = ThermoFisherQubitFlexReader.SUPPORTED_EXTENSIONS
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         """

@@ -4,8 +4,8 @@ from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import Experime
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_calculated_documents import (
     iter_presence_absence_calc_docs,
 )
-from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_contents import (
-    DesignQuantstudioContents,
+from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
+    DesignQuantstudioReader,
 )
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_views import (
     SampleView,
@@ -32,9 +32,9 @@ class PresenceAbsenceCreator(Creator):
     ]
 
     @classmethod
-    def create(cls, contents: DesignQuantstudioContents) -> Data:
-        header = Header.create(contents.header)
-        wells = PresenceAbsenceWellList.create(contents, header)
+    def create(cls, reader: DesignQuantstudioReader) -> Data:
+        header = Header.create(reader.header)
+        wells = PresenceAbsenceWellList.create(reader, header)
         well_items = wells.get_well_items()
         return Data(
             header,

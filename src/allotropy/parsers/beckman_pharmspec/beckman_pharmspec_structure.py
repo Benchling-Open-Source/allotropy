@@ -20,7 +20,10 @@ from allotropy.parsers.beckman_pharmspec.constants import (
     UNIT_LOOKUP,
     VALID_CALCS,
 )
-from allotropy.parsers.utils.pandas import map_rows, SeriesData
+from allotropy.parsers.utils.pandas import (
+    map_rows,
+    SeriesData,
+)
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 

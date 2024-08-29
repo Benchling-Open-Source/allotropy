@@ -59,10 +59,10 @@ from allotropy.parsers.utils.values import (
 
 @dataclass(frozen=True)
 class HeaderData:
+    datetime: str
     software_version: str
     experiment_file_path: str | None
     protocol_file_path: str | None
-    datetime: str | None
     well_plate_identifier: str | None
     model_number: str | None
     equipment_serial_number: str | None
@@ -72,14 +72,12 @@ class HeaderData:
     def create(cls, data: SeriesData, file_name: str) -> HeaderData:
         matches = re.match(FILENAME_REGEX, file_name)
         plate_identifier = matches.groupdict()["plate_identifier"] if matches else None
-        date = data.get(str, "Date")
-        time = data.get(str, "Time")
         return HeaderData(
             software_version=data[str, "Software Version"],
             experiment_file_path=data.get(str, "Experiment File Path:"),
             file_name=file_name,
             protocol_file_path=data.get(str, "Protocol File Path:"),
-            datetime=f"{date} {time}" if date and time else None,
+            datetime=f'{data[str, "Date"]} {data[str, "Time"]}',
             well_plate_identifier=plate_identifier or data.get(str, "Plate Number"),
             model_number=data.get(str, "Reader Type:"),
             equipment_serial_number=data.get(str, "Reader Serial Number:"),
@@ -478,6 +476,7 @@ def create_results(
 
     groups = [
         MeasurementGroup(
+            measurement_time=header_data.datetime,
             plate_well_count=len(well_to_measurements),
             analytical_method_identifier=header_data.protocol_file_path,
             experimental_data_identifier=header_data.experiment_file_path,
@@ -557,14 +556,12 @@ def _get_sources(
 
 def create_metadata(header_data: HeaderData) -> Metadata:
     return Metadata(
-        device_type=DEVICE_TYPE,
         device_identifier=NOT_APPLICABLE,
         model_number=header_data.model_number or NOT_APPLICABLE,
         equipment_serial_number=header_data.equipment_serial_number,
         software_name=DEFAULT_SOFTWARE_NAME,
         software_version=header_data.software_version,
         file_name=header_data.file_name,
-        measurement_time=header_data.datetime,
     )
 
 
@@ -596,11 +593,13 @@ def _create_measurement(
 
     return Measurement(
         type_=measurement_type,
+        device_type=DEVICE_TYPE,
         identifier=measurement.identifier,
         sample_identifier=sample_identifier
         or f"{header_data.well_plate_identifier} {well_position}",
         location_identifier=well_position,
         well_plate_identifier=header_data.well_plate_identifier,
+        detection_type=read_data.read_mode.value,
         detector_wavelength_setting=detector_wavelength_setting,
         detector_bandwidth_setting=filter_data.detector_bandwidth_setting
         if filter_data

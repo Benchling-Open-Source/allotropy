@@ -13,10 +13,10 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_data_creator import
     create_metadata,
 )
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
-    AmplificationData,
+    create_amplification_data,
+    create_multicomponent_data,
     Header,
     MeltCurveRawData,
-    MulticomponentData,
     RawData,
     Result,
     Well,
@@ -29,6 +29,7 @@ from allotropy.parsers.vendor_parser import MapperVendorParser
 class AppBioQuantStudioParser(MapperVendorParser[Data, Model]):
     DISPLAY_NAME = "AppBio QuantStudio RT-PCR"
     RELEASE_STATE = ReleaseState.RECOMMENDED
+    SUPPORTED_EXTENSIONS = "txt"
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
@@ -39,8 +40,8 @@ class AppBioQuantStudioParser(MapperVendorParser[Data, Model]):
         wells = Well.create(reader, header.experiment_type)
         # Skip raw data section
         RawData.create(reader)
-        amp_data = AmplificationData.create(reader)
-        multi_data = MulticomponentData.create(reader)
+        amp_data = create_amplification_data(reader)
+        multi_data = create_multicomponent_data(reader)
         results_data, results_metadata = Result.create(reader, header.experiment_type)
         melt_data = MeltCurveRawData.create(reader)
 

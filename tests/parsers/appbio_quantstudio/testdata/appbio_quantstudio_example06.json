@@ -1,4 +1,5 @@
 {
+    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest",
     "qPCR aggregate document": {
         "device system document": {
             "device identifier": "1",
@@ -20,8 +21,7 @@
                             "sample document": {
                                 "sample identifier": "Lung",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D1",
-                                "well plate identifier": ""
+                                "well location identifier": "D1"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -140,8 +140,7 @@
                             "sample document": {
                                 "sample identifier": "Lung",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D2",
-                                "well plate identifier": ""
+                                "well location identifier": "D2"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -260,8 +259,7 @@
                             "sample document": {
                                 "sample identifier": "Liver",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D10",
-                                "well plate identifier": ""
+                                "well location identifier": "D10"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -380,8 +378,7 @@
                             "sample document": {
                                 "sample identifier": "Lung",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E1",
-                                "well plate identifier": ""
+                                "well location identifier": "E1"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -500,8 +497,7 @@
                             "sample document": {
                                 "sample identifier": "Liver",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E10",
-                                "well plate identifier": ""
+                                "well location identifier": "E10"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -620,8 +616,7 @@
                             "sample document": {
                                 "sample identifier": "Lung",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H1",
-                                "well plate identifier": ""
+                                "well location identifier": "H1"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -647,7 +642,7 @@
                                                 "value": 0.06,
                                                 "unit": "(unitless)"
                                             },
-                                            "automatic cycle threshold enabled setting": true,
+                                            "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true
                                         },
                                         "cycle threshold result": {
@@ -740,8 +735,7 @@
                             "sample document": {
                                 "sample identifier": "Lung",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H2",
-                                "well plate identifier": ""
+                                "well location identifier": "H2"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -767,7 +761,7 @@
                                                 "value": 0.06,
                                                 "unit": "(unitless)"
                                             },
-                                            "automatic cycle threshold enabled setting": true,
+                                            "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true
                                         },
                                         "cycle threshold result": {
@@ -860,8 +854,7 @@
                             "sample document": {
                                 "sample identifier": "Liver",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H10",
-                                "well plate identifier": ""
+                                "well location identifier": "H10"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -887,7 +880,7 @@
                                                 "value": 0.06,
                                                 "unit": "(unitless)"
                                             },
-                                            "automatic cycle threshold enabled setting": true,
+                                            "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true
                                         },
                                         "cycle threshold result": {
@@ -980,8 +973,7 @@
                             "sample document": {
                                 "sample identifier": "Liver",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H11",
-                                "well plate identifier": ""
+                                "well location identifier": "H11"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -1007,7 +999,7 @@
                                                 "value": 0.06,
                                                 "unit": "(unitless)"
                                             },
-                                            "automatic cycle threshold enabled setting": true,
+                                            "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true
                                         },
                                         "cycle threshold result": {
@@ -1094,7 +1086,7 @@
             "software name": "Thermo QuantStudio",
             "software version": "1.0",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.27"
+            "ASM converter version": "0.1.49"
         },
         "calculated data aggregate document": {
             "calculated data document": [
@@ -1564,6 +1556,5 @@
                 }
             ]
         }
-    },
-    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest"
+    }
 }

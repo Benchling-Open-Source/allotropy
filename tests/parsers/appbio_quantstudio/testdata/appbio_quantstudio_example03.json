@@ -1,4 +1,5 @@
 {
+    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest",
     "qPCR aggregate document": {
         "device system document": {
             "device identifier": "Sponge_Bob_32",
@@ -20,8 +21,7 @@
                             "sample document": {
                                 "sample identifier": "NTC",
                                 "sample role type": "NTC",
-                                "well location identifier": "A1",
-                                "well plate identifier": ""
+                                "well location identifier": "A1"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -287,8 +287,7 @@
                             "sample document": {
                                 "sample identifier": "NTC",
                                 "sample role type": "NTC",
-                                "well location identifier": "A1",
-                                "well plate identifier": ""
+                                "well location identifier": "A1"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -567,8 +566,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "PC_ALLELE_1",
-                                "well location identifier": "A2",
-                                "well plate identifier": ""
+                                "well location identifier": "A2"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -834,8 +832,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "PC_ALLELE_1",
-                                "well location identifier": "A2",
-                                "well plate identifier": ""
+                                "well location identifier": "A2"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -1114,8 +1111,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "A3",
-                                "well plate identifier": ""
+                                "well location identifier": "A3"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -1381,8 +1377,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "A3",
-                                "well plate identifier": ""
+                                "well location identifier": "A3"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -1661,8 +1656,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "A4",
-                                "well plate identifier": ""
+                                "well location identifier": "A4"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -1928,8 +1922,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "A4",
-                                "well plate identifier": ""
+                                "well location identifier": "A4"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -2208,8 +2201,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "A5",
-                                "well plate identifier": ""
+                                "well location identifier": "A5"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -2475,8 +2467,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "A5",
-                                "well plate identifier": ""
+                                "well location identifier": "A5"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -2755,8 +2746,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "PC_ALLELE_2",
-                                "well location identifier": "A6",
-                                "well plate identifier": ""
+                                "well location identifier": "A6"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -3022,8 +3012,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "PC_ALLELE_2",
-                                "well location identifier": "A6",
-                                "well plate identifier": ""
+                                "well location identifier": "A6"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -3302,8 +3291,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "A7",
-                                "well plate identifier": ""
+                                "well location identifier": "A7"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -3569,8 +3557,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "A7",
-                                "well plate identifier": ""
+                                "well location identifier": "A7"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -3849,8 +3836,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "A8",
-                                "well plate identifier": ""
+                                "well location identifier": "A8"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -4116,8 +4102,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "A8",
-                                "well plate identifier": ""
+                                "well location identifier": "A8"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -4396,8 +4381,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "A9",
-                                "well plate identifier": ""
+                                "well location identifier": "A9"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -4663,8 +4647,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "A9",
-                                "well plate identifier": ""
+                                "well location identifier": "A9"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -4943,8 +4926,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "PC_ALLELE_BOTH",
-                                "well location identifier": "A10",
-                                "well plate identifier": ""
+                                "well location identifier": "A10"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -5210,8 +5192,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "PC_ALLELE_BOTH",
-                                "well location identifier": "A10",
-                                "well plate identifier": ""
+                                "well location identifier": "A10"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -5490,8 +5471,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "A11",
-                                "well plate identifier": ""
+                                "well location identifier": "A11"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -5757,8 +5737,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "A11",
-                                "well plate identifier": ""
+                                "well location identifier": "A11"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -6037,8 +6016,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "A12",
-                                "well plate identifier": ""
+                                "well location identifier": "A12"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -6304,8 +6282,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "A12",
-                                "well plate identifier": ""
+                                "well location identifier": "A12"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -6584,8 +6561,7 @@
                             "sample document": {
                                 "sample identifier": "NTC",
                                 "sample role type": "NTC",
-                                "well location identifier": "B1",
-                                "well plate identifier": ""
+                                "well location identifier": "B1"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -6851,8 +6827,7 @@
                             "sample document": {
                                 "sample identifier": "NTC",
                                 "sample role type": "NTC",
-                                "well location identifier": "B1",
-                                "well plate identifier": ""
+                                "well location identifier": "B1"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -7131,8 +7106,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "B2",
-                                "well plate identifier": ""
+                                "well location identifier": "B2"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -7398,8 +7372,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "B2",
-                                "well plate identifier": ""
+                                "well location identifier": "B2"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -7678,8 +7651,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "B3",
-                                "well plate identifier": ""
+                                "well location identifier": "B3"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -7945,8 +7917,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "B3",
-                                "well plate identifier": ""
+                                "well location identifier": "B3"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -8225,8 +8196,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "B4",
-                                "well plate identifier": ""
+                                "well location identifier": "B4"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -8492,8 +8462,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "B4",
-                                "well plate identifier": ""
+                                "well location identifier": "B4"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -8772,8 +8741,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "B5",
-                                "well plate identifier": ""
+                                "well location identifier": "B5"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -9039,8 +9007,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "B5",
-                                "well plate identifier": ""
+                                "well location identifier": "B5"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -9319,8 +9286,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "B6",
-                                "well plate identifier": ""
+                                "well location identifier": "B6"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -9586,8 +9552,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "B6",
-                                "well plate identifier": ""
+                                "well location identifier": "B6"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -9866,8 +9831,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "B7",
-                                "well plate identifier": ""
+                                "well location identifier": "B7"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -10133,8 +10097,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "B7",
-                                "well plate identifier": ""
+                                "well location identifier": "B7"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -10413,8 +10376,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "B8",
-                                "well plate identifier": ""
+                                "well location identifier": "B8"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -10680,8 +10642,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "B8",
-                                "well plate identifier": ""
+                                "well location identifier": "B8"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -10960,8 +10921,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "B9",
-                                "well plate identifier": ""
+                                "well location identifier": "B9"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -11227,8 +11187,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "B9",
-                                "well plate identifier": ""
+                                "well location identifier": "B9"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -11507,8 +11466,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "B10",
-                                "well plate identifier": ""
+                                "well location identifier": "B10"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -11774,8 +11732,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "B10",
-                                "well plate identifier": ""
+                                "well location identifier": "B10"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -12054,8 +12011,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "B11",
-                                "well plate identifier": ""
+                                "well location identifier": "B11"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -12321,8 +12277,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "B11",
-                                "well plate identifier": ""
+                                "well location identifier": "B11"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -12601,8 +12556,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "B12",
-                                "well plate identifier": ""
+                                "well location identifier": "B12"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -12868,8 +12822,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "B12",
-                                "well plate identifier": ""
+                                "well location identifier": "B12"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -13148,8 +13101,7 @@
                             "sample document": {
                                 "sample identifier": "NTC",
                                 "sample role type": "NTC",
-                                "well location identifier": "C1",
-                                "well plate identifier": ""
+                                "well location identifier": "C1"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -13415,8 +13367,7 @@
                             "sample document": {
                                 "sample identifier": "NTC",
                                 "sample role type": "NTC",
-                                "well location identifier": "C1",
-                                "well plate identifier": ""
+                                "well location identifier": "C1"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -13695,8 +13646,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "C2",
-                                "well plate identifier": ""
+                                "well location identifier": "C2"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -13962,8 +13912,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "C2",
-                                "well plate identifier": ""
+                                "well location identifier": "C2"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -14242,8 +14191,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "C3",
-                                "well plate identifier": ""
+                                "well location identifier": "C3"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -14509,8 +14457,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "C3",
-                                "well plate identifier": ""
+                                "well location identifier": "C3"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -14789,8 +14736,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "C4",
-                                "well plate identifier": ""
+                                "well location identifier": "C4"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -15056,8 +15002,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "C4",
-                                "well plate identifier": ""
+                                "well location identifier": "C4"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -15336,8 +15281,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "C5",
-                                "well plate identifier": ""
+                                "well location identifier": "C5"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -15603,8 +15547,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "C5",
-                                "well plate identifier": ""
+                                "well location identifier": "C5"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -15883,8 +15826,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "C6",
-                                "well plate identifier": ""
+                                "well location identifier": "C6"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -16150,8 +16092,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "C6",
-                                "well plate identifier": ""
+                                "well location identifier": "C6"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -16430,8 +16371,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "C7",
-                                "well plate identifier": ""
+                                "well location identifier": "C7"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -16697,8 +16637,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "C7",
-                                "well plate identifier": ""
+                                "well location identifier": "C7"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -16977,8 +16916,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "C8",
-                                "well plate identifier": ""
+                                "well location identifier": "C8"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -17244,8 +17182,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "C8",
-                                "well plate identifier": ""
+                                "well location identifier": "C8"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -17524,8 +17461,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "C9",
-                                "well plate identifier": ""
+                                "well location identifier": "C9"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -17791,8 +17727,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "C9",
-                                "well plate identifier": ""
+                                "well location identifier": "C9"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -18071,8 +18006,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "C10",
-                                "well plate identifier": ""
+                                "well location identifier": "C10"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -18338,8 +18272,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "C10",
-                                "well plate identifier": ""
+                                "well location identifier": "C10"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -18618,8 +18551,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "C11",
-                                "well plate identifier": ""
+                                "well location identifier": "C11"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -18885,8 +18817,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "C11",
-                                "well plate identifier": ""
+                                "well location identifier": "C11"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -19165,8 +19096,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "C12",
-                                "well plate identifier": ""
+                                "well location identifier": "C12"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -19432,8 +19362,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "C12",
-                                "well plate identifier": ""
+                                "well location identifier": "C12"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -19712,8 +19641,7 @@
                             "sample document": {
                                 "sample identifier": "NTC",
                                 "sample role type": "NTC",
-                                "well location identifier": "D1",
-                                "well plate identifier": ""
+                                "well location identifier": "D1"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -19979,8 +19907,7 @@
                             "sample document": {
                                 "sample identifier": "NTC",
                                 "sample role type": "NTC",
-                                "well location identifier": "D1",
-                                "well plate identifier": ""
+                                "well location identifier": "D1"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -20259,8 +20186,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D2",
-                                "well plate identifier": ""
+                                "well location identifier": "D2"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -20526,8 +20452,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D2",
-                                "well plate identifier": ""
+                                "well location identifier": "D2"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -20806,8 +20731,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D3",
-                                "well plate identifier": ""
+                                "well location identifier": "D3"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -21073,8 +20997,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D3",
-                                "well plate identifier": ""
+                                "well location identifier": "D3"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -21353,8 +21276,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D4",
-                                "well plate identifier": ""
+                                "well location identifier": "D4"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -21620,8 +21542,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D4",
-                                "well plate identifier": ""
+                                "well location identifier": "D4"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -21900,8 +21821,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D5",
-                                "well plate identifier": ""
+                                "well location identifier": "D5"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -22167,8 +22087,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D5",
-                                "well plate identifier": ""
+                                "well location identifier": "D5"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -22447,8 +22366,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D6",
-                                "well plate identifier": ""
+                                "well location identifier": "D6"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -22714,8 +22632,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D6",
-                                "well plate identifier": ""
+                                "well location identifier": "D6"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -22994,8 +22911,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D7",
-                                "well plate identifier": ""
+                                "well location identifier": "D7"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -23261,8 +23177,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D7",
-                                "well plate identifier": ""
+                                "well location identifier": "D7"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -23541,8 +23456,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D8",
-                                "well plate identifier": ""
+                                "well location identifier": "D8"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -23808,8 +23722,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D8",
-                                "well plate identifier": ""
+                                "well location identifier": "D8"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -24088,8 +24001,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D9",
-                                "well plate identifier": ""
+                                "well location identifier": "D9"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -24355,8 +24267,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D9",
-                                "well plate identifier": ""
+                                "well location identifier": "D9"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -24635,8 +24546,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D10",
-                                "well plate identifier": ""
+                                "well location identifier": "D10"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -24902,8 +24812,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D10",
-                                "well plate identifier": ""
+                                "well location identifier": "D10"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -25182,8 +25091,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D11",
-                                "well plate identifier": ""
+                                "well location identifier": "D11"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -25449,8 +25357,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D11",
-                                "well plate identifier": ""
+                                "well location identifier": "D11"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -25729,8 +25636,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D12",
-                                "well plate identifier": ""
+                                "well location identifier": "D12"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -25996,8 +25902,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D12",
-                                "well plate identifier": ""
+                                "well location identifier": "D12"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -26276,8 +26181,7 @@
                             "sample document": {
                                 "sample identifier": "NTC",
                                 "sample role type": "NTC",
-                                "well location identifier": "E1",
-                                "well plate identifier": ""
+                                "well location identifier": "E1"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -26543,8 +26447,7 @@
                             "sample document": {
                                 "sample identifier": "NTC",
                                 "sample role type": "NTC",
-                                "well location identifier": "E1",
-                                "well plate identifier": ""
+                                "well location identifier": "E1"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -26823,8 +26726,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E2",
-                                "well plate identifier": ""
+                                "well location identifier": "E2"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -27090,8 +26992,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E2",
-                                "well plate identifier": ""
+                                "well location identifier": "E2"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -27370,8 +27271,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E3",
-                                "well plate identifier": ""
+                                "well location identifier": "E3"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -27637,8 +27537,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E3",
-                                "well plate identifier": ""
+                                "well location identifier": "E3"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -27917,8 +27816,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E4",
-                                "well plate identifier": ""
+                                "well location identifier": "E4"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -28184,8 +28082,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E4",
-                                "well plate identifier": ""
+                                "well location identifier": "E4"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -28464,8 +28361,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E5",
-                                "well plate identifier": ""
+                                "well location identifier": "E5"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -28731,8 +28627,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E5",
-                                "well plate identifier": ""
+                                "well location identifier": "E5"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -29011,8 +28906,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E6",
-                                "well plate identifier": ""
+                                "well location identifier": "E6"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -29278,8 +29172,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E6",
-                                "well plate identifier": ""
+                                "well location identifier": "E6"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -29558,8 +29451,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E7",
-                                "well plate identifier": ""
+                                "well location identifier": "E7"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -29825,8 +29717,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E7",
-                                "well plate identifier": ""
+                                "well location identifier": "E7"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -30105,8 +29996,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E8",
-                                "well plate identifier": ""
+                                "well location identifier": "E8"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -30372,8 +30262,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E8",
-                                "well plate identifier": ""
+                                "well location identifier": "E8"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -30652,8 +30541,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E9",
-                                "well plate identifier": ""
+                                "well location identifier": "E9"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -30919,8 +30807,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E9",
-                                "well plate identifier": ""
+                                "well location identifier": "E9"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -31199,8 +31086,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E10",
-                                "well plate identifier": ""
+                                "well location identifier": "E10"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -31466,8 +31352,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E10",
-                                "well plate identifier": ""
+                                "well location identifier": "E10"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -31746,8 +31631,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E11",
-                                "well plate identifier": ""
+                                "well location identifier": "E11"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -32013,8 +31897,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E11",
-                                "well plate identifier": ""
+                                "well location identifier": "E11"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -32293,8 +32176,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E12",
-                                "well plate identifier": ""
+                                "well location identifier": "E12"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -32560,8 +32442,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E12",
-                                "well plate identifier": ""
+                                "well location identifier": "E12"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -32840,8 +32721,7 @@
                             "sample document": {
                                 "sample identifier": "NTC",
                                 "sample role type": "NTC",
-                                "well location identifier": "F1",
-                                "well plate identifier": ""
+                                "well location identifier": "F1"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -33107,8 +32987,7 @@
                             "sample document": {
                                 "sample identifier": "NTC",
                                 "sample role type": "NTC",
-                                "well location identifier": "F1",
-                                "well plate identifier": ""
+                                "well location identifier": "F1"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -33387,8 +33266,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F2",
-                                "well plate identifier": ""
+                                "well location identifier": "F2"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -33654,8 +33532,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F2",
-                                "well plate identifier": ""
+                                "well location identifier": "F2"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -33934,8 +33811,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F3",
-                                "well plate identifier": ""
+                                "well location identifier": "F3"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -34201,8 +34077,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F3",
-                                "well plate identifier": ""
+                                "well location identifier": "F3"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -34481,8 +34356,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F4",
-                                "well plate identifier": ""
+                                "well location identifier": "F4"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -34748,8 +34622,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F4",
-                                "well plate identifier": ""
+                                "well location identifier": "F4"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -35028,8 +34901,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F5",
-                                "well plate identifier": ""
+                                "well location identifier": "F5"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -35295,8 +35167,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F5",
-                                "well plate identifier": ""
+                                "well location identifier": "F5"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -35575,8 +35446,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F6",
-                                "well plate identifier": ""
+                                "well location identifier": "F6"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -35842,8 +35712,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F6",
-                                "well plate identifier": ""
+                                "well location identifier": "F6"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -36122,8 +35991,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F7",
-                                "well plate identifier": ""
+                                "well location identifier": "F7"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -36389,8 +36257,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F7",
-                                "well plate identifier": ""
+                                "well location identifier": "F7"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -36669,8 +36536,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F8",
-                                "well plate identifier": ""
+                                "well location identifier": "F8"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -36936,8 +36802,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F8",
-                                "well plate identifier": ""
+                                "well location identifier": "F8"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -37216,8 +37081,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F9",
-                                "well plate identifier": ""
+                                "well location identifier": "F9"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -37483,8 +37347,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F9",
-                                "well plate identifier": ""
+                                "well location identifier": "F9"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -37763,8 +37626,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F10",
-                                "well plate identifier": ""
+                                "well location identifier": "F10"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -38030,8 +37892,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F10",
-                                "well plate identifier": ""
+                                "well location identifier": "F10"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -38310,8 +38171,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F11",
-                                "well plate identifier": ""
+                                "well location identifier": "F11"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -38577,8 +38437,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F11",
-                                "well plate identifier": ""
+                                "well location identifier": "F11"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -38857,8 +38716,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F12",
-                                "well plate identifier": ""
+                                "well location identifier": "F12"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -39124,8 +38982,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F12",
-                                "well plate identifier": ""
+                                "well location identifier": "F12"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -39404,8 +39261,7 @@
                             "sample document": {
                                 "sample identifier": "NTC",
                                 "sample role type": "NTC",
-                                "well location identifier": "G1",
-                                "well plate identifier": ""
+                                "well location identifier": "G1"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -39671,8 +39527,7 @@
                             "sample document": {
                                 "sample identifier": "NTC",
                                 "sample role type": "NTC",
-                                "well location identifier": "G1",
-                                "well plate identifier": ""
+                                "well location identifier": "G1"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -39951,8 +39806,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G2",
-                                "well plate identifier": ""
+                                "well location identifier": "G2"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -40218,8 +40072,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G2",
-                                "well plate identifier": ""
+                                "well location identifier": "G2"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -40498,8 +40351,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G3",
-                                "well plate identifier": ""
+                                "well location identifier": "G3"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -40765,8 +40617,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G3",
-                                "well plate identifier": ""
+                                "well location identifier": "G3"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -41045,8 +40896,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G4",
-                                "well plate identifier": ""
+                                "well location identifier": "G4"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -41312,8 +41162,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G4",
-                                "well plate identifier": ""
+                                "well location identifier": "G4"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -41592,8 +41441,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G5",
-                                "well plate identifier": ""
+                                "well location identifier": "G5"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -41859,8 +41707,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G5",
-                                "well plate identifier": ""
+                                "well location identifier": "G5"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -42139,8 +41986,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G6",
-                                "well plate identifier": ""
+                                "well location identifier": "G6"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -42406,8 +42252,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G6",
-                                "well plate identifier": ""
+                                "well location identifier": "G6"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -42686,8 +42531,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G7",
-                                "well plate identifier": ""
+                                "well location identifier": "G7"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -42953,8 +42797,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G7",
-                                "well plate identifier": ""
+                                "well location identifier": "G7"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -43233,8 +43076,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G8",
-                                "well plate identifier": ""
+                                "well location identifier": "G8"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -43500,8 +43342,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G8",
-                                "well plate identifier": ""
+                                "well location identifier": "G8"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -43780,8 +43621,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G9",
-                                "well plate identifier": ""
+                                "well location identifier": "G9"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -44047,8 +43887,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G9",
-                                "well plate identifier": ""
+                                "well location identifier": "G9"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -44327,8 +44166,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G10",
-                                "well plate identifier": ""
+                                "well location identifier": "G10"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -44594,8 +44432,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G10",
-                                "well plate identifier": ""
+                                "well location identifier": "G10"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -44874,8 +44711,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G11",
-                                "well plate identifier": ""
+                                "well location identifier": "G11"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -45141,8 +44977,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G11",
-                                "well plate identifier": ""
+                                "well location identifier": "G11"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -45421,8 +45256,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G12",
-                                "well plate identifier": ""
+                                "well location identifier": "G12"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -45688,8 +45522,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G12",
-                                "well plate identifier": ""
+                                "well location identifier": "G12"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -45968,8 +45801,7 @@
                             "sample document": {
                                 "sample identifier": "NTC",
                                 "sample role type": "NTC",
-                                "well location identifier": "H1",
-                                "well plate identifier": ""
+                                "well location identifier": "H1"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -46235,8 +46067,7 @@
                             "sample document": {
                                 "sample identifier": "NTC",
                                 "sample role type": "NTC",
-                                "well location identifier": "H1",
-                                "well plate identifier": ""
+                                "well location identifier": "H1"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -46515,8 +46346,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H2",
-                                "well plate identifier": ""
+                                "well location identifier": "H2"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -46782,8 +46612,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H2",
-                                "well plate identifier": ""
+                                "well location identifier": "H2"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -47062,8 +46891,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H3",
-                                "well plate identifier": ""
+                                "well location identifier": "H3"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -47329,8 +47157,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H3",
-                                "well plate identifier": ""
+                                "well location identifier": "H3"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -47609,8 +47436,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H4",
-                                "well plate identifier": ""
+                                "well location identifier": "H4"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -47876,8 +47702,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H4",
-                                "well plate identifier": ""
+                                "well location identifier": "H4"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -48156,8 +47981,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H5",
-                                "well plate identifier": ""
+                                "well location identifier": "H5"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -48423,8 +48247,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H5",
-                                "well plate identifier": ""
+                                "well location identifier": "H5"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -48703,8 +48526,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H6",
-                                "well plate identifier": ""
+                                "well location identifier": "H6"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -48970,8 +48792,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H6",
-                                "well plate identifier": ""
+                                "well location identifier": "H6"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -49250,8 +49071,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H7",
-                                "well plate identifier": ""
+                                "well location identifier": "H7"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -49517,8 +49337,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H7",
-                                "well plate identifier": ""
+                                "well location identifier": "H7"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -49797,8 +49616,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H8",
-                                "well plate identifier": ""
+                                "well location identifier": "H8"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -50064,8 +49882,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H8",
-                                "well plate identifier": ""
+                                "well location identifier": "H8"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -50344,8 +50161,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H9",
-                                "well plate identifier": ""
+                                "well location identifier": "H9"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -50611,8 +50427,7 @@
                             "sample document": {
                                 "sample identifier": "Allele 2",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H9",
-                                "well plate identifier": ""
+                                "well location identifier": "H9"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -50891,8 +50706,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H10",
-                                "well plate identifier": ""
+                                "well location identifier": "H10"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -51158,8 +50972,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H10",
-                                "well plate identifier": ""
+                                "well location identifier": "H10"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -51438,8 +51251,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H11",
-                                "well plate identifier": ""
+                                "well location identifier": "H11"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -51705,8 +51517,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H11",
-                                "well plate identifier": ""
+                                "well location identifier": "H11"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -51985,8 +51796,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H12",
-                                "well plate identifier": ""
+                                "well location identifier": "H12"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -52252,8 +52062,7 @@
                             "sample document": {
                                 "sample identifier": "Hetero",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H12",
-                                "well plate identifier": ""
+                                "well location identifier": "H12"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -52526,11 +52335,7 @@
             "software name": "Thermo QuantStudio",
             "software version": "1.0",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.17"
-        },
-        "calculated data aggregate document": {
-            "calculated data document": []
+            "ASM converter version": "0.1.49"
         }
-    },
-    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest"
+    }
 }
