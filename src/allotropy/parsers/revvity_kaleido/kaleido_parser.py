@@ -23,9 +23,7 @@ class KaleidoParser(MapperVendorParser[Data, Model]):
     SUPPORTED_EXTENSIONS = "csv"
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
-        lines = read_to_lines(named_file_contents)
-        reader = CsvReader(lines)
-        data = create_data(reader)
+        data = create_data(CsvReader(read_to_lines(named_file_contents)))
         return Data(
             create_metadata(data, named_file_contents.original_file_name),
             create_measurement_groups(data),

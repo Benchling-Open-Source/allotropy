@@ -8,6 +8,7 @@ SOFTWARE_NAME = "Kaleido"
 DEVICE_IDENTIFIER = "EnSight"
 MODEL_NUMBER = "EnSight"
 PRODUCT_MANUFACTURER = "Revvity"
+MAGNIFICATION_SETTING = 4
 
 CHANNEL_COLUMNS_ERROR = "Expected every Channel be followed by: Excitation wavelength [nm], Excitation Power [%], Exposure Time [ms], Additional Focus offset [mm]"
 

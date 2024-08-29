@@ -288,7 +288,7 @@ class Platemap:
 
     def get_sample_role_type(self, well_position: str) -> SampleRoleType | None:
         raw_value = self.get(well_position)
-        if raw_value in "-":
+        if raw_value == "-":
             return None
 
         value = assert_not_none(
@@ -390,6 +390,7 @@ class Measurements:
 
     @staticmethod
     def create_channels(data: SeriesData) -> list[Channel]:
+        # Get all channel keys
         values = {
             key: data.series.get(key)
             for key in [
@@ -403,6 +404,7 @@ class Measurements:
         if values["channel"] is None:
             return []
 
+        # Convert series values (multiple Channels == pd.Series, single Channel == str) to lists.
         channel_values: dict[str, list[str]] = {}
         if isinstance(values["channel"], str):
             for key, value in values.items():
@@ -495,19 +497,11 @@ def _create_measurement(data: Data, well_position: str, well_value: str) -> Meas
         location_identifier=well_position,
         well_plate_identifier=data.results.barcode,
         sample_role_type=data.platemap.get_sample_role_type(well_position),
-        number_of_averages=data.measurements.number_of_averages
-        if experiment_type in (ExperimentType.FLUORESCENCE, ExperimentType.ABSORBANCE)
-        else None,
-        detector_distance_setting=data.measurements.focus_height
-        if experiment_type is ExperimentType.OPTICAL_IMAGING
-        else data.measurements.detector_distance,
-        scan_position_setting=data.measurements.scan_position
-        if experiment_type is ExperimentType.FLUORESCENCE
-        else None,
+        number_of_averages=data.measurements.number_of_averages,
+        detector_distance_setting=data.measurements.detector_distance,
+        scan_position_setting=data.measurements.scan_position,
         detector_wavelength_setting=detector_wavelength_setting,
-        excitation_wavelength_setting=data.measurements.excitation_wavelength
-        if experiment_type is ExperimentType.FLUORESCENCE
-        else None,
+        excitation_wavelength_setting=data.measurements.excitation_wavelength,
         fluorescence=measurement_value
         if experiment_type is ExperimentType.FLUORESCENCE
         else None,
@@ -535,7 +529,7 @@ def _create_optical_measurement(
         sample_role_type=data.platemap.get_sample_role_type(well_position),
         detector_distance_setting=data.measurements.focus_height,
         excitation_wavelength_setting=channel.excitation_wavelength,
-        magnification_setting=4,
+        magnification_setting=constants.MAGNIFICATION_SETTING,
         exposure_duration_setting=channel.exposure_duration,
         illumination_setting=channel.illumination,
         illumination_setting_unit="%",
