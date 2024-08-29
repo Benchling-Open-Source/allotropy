@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Update mabtech-apex-adapter regex to handle scenarios where first word in the machine ID section has all letter uppercase
+
 ### Changed
 
 - Updated Softmax Pro adapter to use the REC/2024/06 plate reader schema
