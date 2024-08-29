@@ -31,12 +31,8 @@ def create_data_v2(version: str, reader: CsvReader) -> Data:
         version,
         BackgroundInfo.create(reader),
         ResultsV2.create(reader),
-        AnalysisResult.create_results(
-            reader, "Measurement Basic Information"
-        ),
-        MeasurementInfo.create(
-            reader, "Measurement Basic Information", "Plate Type"
-        ),
+        AnalysisResult.create_results(reader, "Measurement Basic Information"),
+        MeasurementInfo.create(reader, "Measurement Basic Information", "Plate Type"),
         Platemap.create(reader),
         Measurements.create(reader, "Measurements", "Analysis"),
     )
