@@ -2335,7 +2335,7 @@ def get_rel_std_curve_model() -> Model:
                                 DataSourceDocumentItem(
                                     data_source_identifier="TEST_ID_0",
                                     data_source_feature="Slope",
-                                )
+                                ),
                             ]
                         ),
                         data_processing_document=DataProcessingDocument(
@@ -2366,7 +2366,7 @@ def get_rel_std_curve_model() -> Model:
                                 DataSourceDocumentItem(
                                     data_source_identifier="TEST_ID_1",
                                     data_source_feature="Slope",
-                                )
+                                ),
                             ]
                         ),
                         data_processing_document=DataProcessingDocument(
