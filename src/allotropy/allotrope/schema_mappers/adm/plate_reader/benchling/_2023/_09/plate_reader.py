@@ -55,8 +55,11 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropyParserError
-from allotropy.parsers.utils.units import get_quantity_class
-from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
+from allotropy.parsers.utils.values import (
+    assert_not_none,
+    quantity_or_none,
+    quantity_or_none_from_unit,
+)
 
 
 class MeasurementType(Enum):
@@ -286,12 +289,8 @@ class Mapper(SchemaMapper[Data, Model]):
                             measurement.exposure_duration_setting,
                         ),
                         # TODO(nstender): figure out how to limit possible classes from get_quantity_class for typing.
-                        illumination_setting=quantity_or_none(  # type: ignore[arg-type]
-                            assert_not_none(
-                                get_quantity_class(
-                                    measurement.illumination_setting_unit
-                                )
-                            ),
+                        illumination_setting=quantity_or_none_from_unit(  # type: ignore[arg-type]
+                            measurement.illumination_setting_unit,
                             measurement.illumination_setting,
                         ),
                         detector_distance_setting__plate_reader_=quantity_or_none(
