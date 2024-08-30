@@ -27,7 +27,9 @@ class UnchainedLabsLunaticReader:
         assert_not_empty_df(data, "Unable to parse data from empty dataset.")
 
         if data.columns[0] == "Report":
-            header_data, data = split_header_and_data(data, lambda row: row.iloc[0] == "Table")
+            header_data, data = split_header_and_data(
+                data, lambda row: row.iloc[0] == "Table"
+            )
             self.header = df_to_series_data(parse_header_row(header_data.T))
             data = parse_header_row(data)
         else:
