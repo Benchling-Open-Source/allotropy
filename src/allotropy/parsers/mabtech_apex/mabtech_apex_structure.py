@@ -22,7 +22,7 @@ from allotropy.parsers.utils.values import assert_not_none
 def create_metadata(plate_info: SeriesData, file_name: str) -> Metadata:
     machine_id = assert_not_none(
         re.match(
-            "([A-Z]+[a-z]+) ([0-9]+)",
+            "([A-Z]+[a-z]*) ([0-9]+)",
             plate_info[str, "Machine ID:"],
         ),
         msg="Unable to interpret Machine ID",
