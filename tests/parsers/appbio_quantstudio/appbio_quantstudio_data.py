@@ -1540,11 +1540,11 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                 reference=Referenceable(uuid="TEST_ID_2"),
                             ),
                             DataSource(
-                                feature="Y-intercept",
+                                feature="y-intercept",
                                 reference=Referenceable(uuid="TEST_ID_2"),
                             ),
                             DataSource(
-                                feature="Slope",
+                                feature="slope",
                                 reference=Referenceable(uuid="TEST_ID_2"),
                             ),
                         ],
@@ -1565,11 +1565,11 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                 ),
                             ),
                             DataSource(
-                                feature="Y-intercept",
+                                feature="y-intercept",
                                 reference=Referenceable(uuid="TEST_ID_3"),
                             ),
                             DataSource(
-                                feature="Slope",
+                                feature="slope",
                                 reference=Referenceable(uuid="TEST_ID_3"),
                             ),
                         ],
@@ -1591,11 +1591,11 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                     ),
                 ),
                 DataSource(
-                    feature="Y-intercept",
+                    feature="y-intercept",
                     reference=Referenceable(uuid="TEST_ID_0"),
                 ),
                 DataSource(
-                    feature="Slope",
+                    feature="slope",
                     reference=Referenceable(uuid="TEST_ID_0"),
                 ),
             ],
@@ -1613,11 +1613,11 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                     ),
                 ),
                 DataSource(
-                    feature="Y-intercept",
+                    feature="y-intercept",
                     reference=Referenceable(uuid="TEST_ID_1"),
                 ),
                 DataSource(
-                    feature="Slope",
+                    feature="slope",
                     reference=Referenceable(uuid="TEST_ID_1"),
                 ),
             ],
@@ -1640,11 +1640,11 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                 reference=Referenceable(uuid="TEST_ID_0"),
                             ),
                             DataSource(
-                                feature="Y-intercept",
+                                feature="y-intercept",
                                 reference=Referenceable(uuid="TEST_ID_0"),
                             ),
                             DataSource(
-                                feature="Slope",
+                                feature="slope",
                                 reference=Referenceable(uuid="TEST_ID_0"),
                             ),
                         ],
@@ -1665,11 +1665,11 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                 ),
                             ),
                             DataSource(
-                                feature="Y-intercept",
+                                feature="y-intercept",
                                 reference=Referenceable(uuid="TEST_ID_1"),
                             ),
                             DataSource(
-                                feature="Slope",
+                                feature="slope",
                                 reference=Referenceable(uuid="TEST_ID_1"),
                             ),
                         ],
@@ -1752,13 +1752,13 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                                         ),
                                                     ),
                                                     DataSource(
-                                                        feature="Y-intercept",
+                                                        feature="y-intercept",
                                                         reference=Referenceable(
                                                             uuid="TEST_ID_0"
                                                         ),
                                                     ),
                                                     DataSource(
-                                                        feature="Slope",
+                                                        feature="slope",
                                                         reference=Referenceable(
                                                             uuid="TEST_ID_0"
                                                         ),
@@ -1781,13 +1781,13 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                                         ),
                                                     ),
                                                     DataSource(
-                                                        feature="Y-intercept",
+                                                        feature="y-intercept",
                                                         reference=Referenceable(
                                                             uuid="TEST_ID_1"
                                                         ),
                                                     ),
                                                     DataSource(
-                                                        feature="Slope",
+                                                        feature="slope",
                                                         reference=Referenceable(
                                                             uuid="TEST_ID_1"
                                                         ),
@@ -1833,11 +1833,11 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                             ),
                                         ),
                                         DataSource(
-                                            feature="Y-intercept",
+                                            feature="y-intercept",
                                             reference=Referenceable(uuid="TEST_ID_0"),
                                         ),
                                         DataSource(
-                                            feature="Slope",
+                                            feature="slope",
                                             reference=Referenceable(uuid="TEST_ID_0"),
                                         ),
                                     ],
@@ -1858,11 +1858,11 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                             ),
                                         ),
                                         DataSource(
-                                            feature="Y-intercept",
+                                            feature="y-intercept",
                                             reference=Referenceable(uuid="TEST_ID_1"),
                                         ),
                                         DataSource(
-                                            feature="Slope",
+                                            feature="slope",
                                             reference=Referenceable(uuid="TEST_ID_1"),
                                         ),
                                     ],
@@ -1909,13 +1909,13 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                                         ),
                                                     ),
                                                     DataSource(
-                                                        feature="Y-intercept",
+                                                        feature="y-intercept",
                                                         reference=Referenceable(
                                                             uuid="TEST_ID_0"
                                                         ),
                                                     ),
                                                     DataSource(
-                                                        feature="Slope",
+                                                        feature="slope",
                                                         reference=Referenceable(
                                                             uuid="TEST_ID_0"
                                                         ),
@@ -1938,13 +1938,13 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                                         ),
                                                     ),
                                                     DataSource(
-                                                        feature="Y-intercept",
+                                                        feature="y-intercept",
                                                         reference=Referenceable(
                                                             uuid="TEST_ID_1"
                                                         ),
                                                     ),
                                                     DataSource(
-                                                        feature="Slope",
+                                                        feature="slope",
                                                         reference=Referenceable(
                                                             uuid="TEST_ID_1"
                                                         ),
@@ -2330,11 +2330,11 @@ def get_rel_std_curve_model() -> Model:
                                 ),
                                 DataSourceDocumentItem(
                                     data_source_identifier="TEST_ID_0",
-                                    data_source_feature="Y-intercept",
+                                    data_source_feature="y-intercept",
                                 ),
                                 DataSourceDocumentItem(
                                     data_source_identifier="TEST_ID_0",
-                                    data_source_feature="Slope",
+                                    data_source_feature="slope",
                                 ),
                             ]
                         ),
@@ -2361,11 +2361,11 @@ def get_rel_std_curve_model() -> Model:
                                 ),
                                 DataSourceDocumentItem(
                                     data_source_identifier="TEST_ID_1",
-                                    data_source_feature="Y-intercept",
+                                    data_source_feature="y-intercept",
                                 ),
                                 DataSourceDocumentItem(
                                     data_source_identifier="TEST_ID_1",
-                                    data_source_feature="Slope",
+                                    data_source_feature="slope",
                                 ),
                             ]
                         ),
