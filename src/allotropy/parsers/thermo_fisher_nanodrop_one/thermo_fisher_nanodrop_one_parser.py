@@ -17,7 +17,7 @@ from allotropy.parsers.vendor_parser import MapperVendorParser
 
 class ThermoFisherNanodropOneParser(MapperVendorParser[Data, Model]):
     DISPLAY_NAME = DISPLAY_NAME
-    RELEASE_STATE = ReleaseState.WORKING_DRAFT
+    RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "xlsx"
     SCHEMA_MAPPER = Mapper
 

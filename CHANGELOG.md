@@ -9,14 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added `supported_extensions` to Vendor, allowing parsers to specify supported file extensions.
-- Added support for `multiple read modes` in `Agilent Gen5` Adapter
-- Added Thermo Fisher Nanodrop One adapter
-- Update data sources for quantity calculated documents with Y-intercept and Slope in AppBio Quantstudio
+- Update data sources for quantity calculated documents with y-intercept and Slope in AppBio Quantstudio
 
 ### Fixed
-
-- Update mabtech-apex-adapter regex to handle scenarios where first word in the machine ID section has all letter uppercase
 
 ### Changed
 
@@ -25,6 +20,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 ### Security
+
+## [0.1.50] - 2024-08-30
+
+### Added
+
+- Added `supported_extensions` to Vendor, allowing parsers to specify supported file extensions.
+- Added support for `multiple read modes` in `Agilent Gen5` Adapter
+- Added Thermo Fisher Nanodrop One adapter
+
+### Fixed
+
+- Update mabtech-apex-adapter regex to handle scenarios where first word in the machine ID section has all letter uppercase
 
 ## [0.1.49] - 2024-08-21
 
