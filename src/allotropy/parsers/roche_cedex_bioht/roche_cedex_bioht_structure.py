@@ -7,11 +7,15 @@ from dateutil import parser
 import pandas as pd
 
 from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat, NaN
-from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
+from allotropy.allotrope.schema_mappers.adm.metabolite_analyzer.rec._2024._03.metabolite_detector import (
     Analyte,
+)
+from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
     Measurement,
     MeasurementGroup,
+    MetaboliteDetectorMeasurement,
     Metadata,
+    UltravioletAbsorbancePointDetectionMeasurement,
 )
 from allotropy.exceptions import AllotropyParserError
 from allotropy.parsers.constants import NOT_APPLICABLE
@@ -147,9 +151,10 @@ def _create_measurements(
 
         if name == OPTICAL_DENSITY:
             measurements.append(
-                Measurement(
+                UltravioletAbsorbancePointDetectionMeasurement(
                     identifier=random_uuid_str(),
                     measurement_time=measurement_time,
+                    device_type=SOLUTION_ANALYZER,
                     sample_identifier=sample.name,
                     batch_identifier=sample.batch,
                     absorbance=value if isinstance(value, float) else -1,
@@ -158,17 +163,18 @@ def _create_measurements(
         else:
             analytes.append(
                 Analyte(
-                    name=measurement.name,
-                    value=value if isinstance(value, float) else -1,
-                    unit=measurement.unit,
+                    measurement.name,
+                    value if isinstance(value, float) else -1,
+                    measurement.unit,
                 )
             )
 
     if analytes:
         measurements.append(
-            Measurement(
+            MetaboliteDetectorMeasurement(
                 identifier=random_uuid_str(),
                 measurement_time=measurement_time,
+                device_type=SOLUTION_ANALYZER,
                 sample_identifier=sample.name,
                 batch_identifier=sample.batch,
                 analytes=analytes,
@@ -205,7 +211,6 @@ def create_measurement_groups(
 def create_metadata(title: Title, file_name: str) -> Metadata:
     return Metadata(
         file_name=file_name,
-        device_type=SOLUTION_ANALYZER,
         model_number=title.model_number,
         equipment_serial_number=title.device_serial_number,
         device_identifier=NOT_APPLICABLE,

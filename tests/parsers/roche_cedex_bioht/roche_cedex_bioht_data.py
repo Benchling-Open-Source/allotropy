@@ -22,12 +22,15 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMilliAbsorbanceUnit,
     TQuantityValueMillimolePerLiter,
 )
-from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
+from allotropy.allotrope.schema_mappers.adm.metabolite_analyzer.rec._2024._03.metabolite_detector import (
     Analyte,
+)
+from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
     Data,
-    Measurement,
     MeasurementGroup,
+    MetaboliteDetectorMeasurement,
     Metadata,
+    UltravioletAbsorbancePointDetectionMeasurement,
 )
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.parsers.constants import NOT_APPLICABLE
@@ -188,7 +191,6 @@ def get_data() -> Data:
     return Data(
         metadata=Metadata(
             file_name="dummy.txt",
-            device_type=SOLUTION_ANALYZER,
             software_name="CEDEX BIO HT",
             model_number="CEDEX BIO HT",
             equipment_serial_number="620103",
@@ -201,15 +203,17 @@ def get_data() -> Data:
                 analyst="ADMIN",
                 data_processing_time="2021-06-01 13:04:06",
                 measurements=[
-                    Measurement(
+                    UltravioletAbsorbancePointDetectionMeasurement(
                         identifier="TEST_ID_0",
                         measurement_time="2021-05-20 16:55:51",
+                        device_type=SOLUTION_ANALYZER,
                         sample_identifier="PPDTEST1",
                         absorbance=0.17138,
                     ),
-                    Measurement(
+                    MetaboliteDetectorMeasurement(
                         identifier="TEST_ID_1",
                         measurement_time="2021-05-20 16:55:51",
+                        device_type=SOLUTION_ANALYZER,
                         sample_identifier="PPDTEST1",
                         analytes=[
                             Analyte(

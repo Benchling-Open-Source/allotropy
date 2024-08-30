@@ -1,11 +1,15 @@
 from io import StringIO
 
-from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
+from allotropy.allotrope.schema_mappers.adm.metabolite_analyzer.rec._2024._03.metabolite_detector import (
     Analyte,
+)
+from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
+    BloodGasDetectorMeasurement,
     Data,
-    Measurement,
     MeasurementGroup,
+    MetaboliteDetectorMeasurement,
     Metadata,
+    PhDetectorMeasurement,
 )
 from allotropy.parsers.novabio_flex2.constants import (
     DEVICE_TYPE,
@@ -63,7 +67,6 @@ def get_data() -> Data:
     return Data(
         metadata=Metadata(
             file_name="SampleResults2022-06-28_142558.csv",
-            device_type=DEVICE_TYPE,
             model_number=MODEL_NUMBER,
             product_manufacturer=PRODUCT_MANUFACTURER,
             device_identifier=None,
@@ -74,9 +77,10 @@ def get_data() -> Data:
                 analyst="BioprocessingTeam",
                 data_processing_time="2022-06-28 142558",
                 measurements=[
-                    Measurement(
+                    MetaboliteDetectorMeasurement(
                         identifier="TEST_ID_0",
                         measurement_time="2022-06-24 14:34:52",
+                        device_type=DEVICE_TYPE,
                         sample_identifier="BP_R10_KP_008_D0",
                         batch_identifier="KP_008",
                         description="Spent Media",
@@ -95,9 +99,10 @@ def get_data() -> Data:
                             ]
                         ),
                     ),
-                    Measurement(
+                    BloodGasDetectorMeasurement(
                         identifier="TEST_ID_1",
                         measurement_time="2022-06-24 14:34:52",
+                        device_type=DEVICE_TYPE,
                         sample_identifier="BP_R10_KP_008_D0",
                         batch_identifier="KP_008",
                         description="Spent Media",
@@ -107,9 +112,10 @@ def get_data() -> Data:
                         carbon_dioxide_saturation=6.6,
                         oxygen_saturation=100.0,
                     ),
-                    Measurement(
+                    PhDetectorMeasurement(
                         identifier="TEST_ID_2",
                         measurement_time="2022-06-24 14:34:52",
+                        device_type=DEVICE_TYPE,
                         sample_identifier="BP_R10_KP_008_D0",
                         batch_identifier="KP_008",
                         description="Spent Media",

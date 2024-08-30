@@ -6,11 +6,18 @@ from typing import Any
 
 import pandas as pd
 
-from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
+from allotropy.allotrope.schema_mappers.adm.metabolite_analyzer.rec._2024._03.metabolite_detector import (
     Analyte,
+)
+from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
+    BloodGasDetectorMeasurement,
+    CellCountingDetectorMeasurement,
     Measurement,
     MeasurementGroup,
+    MetaboliteDetectorMeasurement,
     Metadata,
+    OsmolalityDetectorMeasurement,
+    PhDetectorMeasurement,
 )
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.novabio_flex2.constants import (
@@ -85,9 +92,9 @@ class Sample:
             analytes=sorted(
                 [
                     Analyte(
-                        ANALYTE_MAPPINGS[raw_name]["name"],
-                        data[float, raw_name],
-                        ANALYTE_MAPPINGS[raw_name]["unit"],
+                        name=ANALYTE_MAPPINGS[raw_name]["name"],
+                        value=data[float, raw_name],
+                        unit=ANALYTE_MAPPINGS[raw_name]["unit"],
                     )
                     for raw_name in ANALYTE_MAPPINGS
                     if data.get(float, raw_name) is not None
@@ -138,18 +145,32 @@ class SampleList:
         )
 
 
-def _create_measurement(sample: Sample, **kwargs: Any) -> Measurement:
-    return Measurement(
+def _create_measurement(
+    sample: Sample, detection_type: str, **kwargs: Any
+) -> Measurement:
+    measurement_cls: type[Measurement] = {
+        "metabolite-detection": MetaboliteDetectorMeasurement,
+        "cell-counting": CellCountingDetectorMeasurement,
+        "blood-gas-detection": BloodGasDetectorMeasurement,
+        "osmolality-detection": OsmolalityDetectorMeasurement,
+        "ph-detection": PhDetectorMeasurement,
+    }[detection_type]
+
+    return measurement_cls(
         identifier=random_uuid_str(),
         measurement_time=sample.measurement_time,
+        device_type=DEVICE_TYPE,
         sample_identifier=sample.identifier,
         description=sample.sample_type,
         batch_identifier=sample.batch_identifier,
+        detection_type=detection_type,
         **kwargs,
     )
 
 
-def _get_measurements(sample: Sample) -> list[Measurement]:
+def _get_measurements(
+    sample: Sample,
+) -> list[Measurement | MetaboliteDetectorMeasurement]:
     measurements = []
 
     # NOTE: only specifying this order to keep test results identical for refactor. Will remove in follow
@@ -180,7 +201,6 @@ def _get_measurements(sample: Sample) -> list[Measurement]:
 def create_metadata(title: Title, file_name: str) -> Metadata:
     return Metadata(
         file_name=file_name,
-        device_type=DEVICE_TYPE,
         model_number=MODEL_NUMBER,
         product_manufacturer=PRODUCT_MANUFACTURER,
         device_identifier=title.device_identifier,
