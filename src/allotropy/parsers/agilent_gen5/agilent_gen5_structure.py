@@ -1,20 +1,16 @@
 from __future__ import annotations
 
+import time
 from collections import defaultdict
 from dataclasses import dataclass
 from io import StringIO
 import re
-from typing import List
 
 import pandas as pd
-from tomlkit.items import String
 
-from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
-    ScanPositionSettingPlateReader,
-)
 from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
-from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
+from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
     CalculatedDataItem,
     DataSource,
     Measurement,
@@ -46,19 +42,16 @@ from allotropy.parsers.agilent_gen5.constants import (
     ReadType,
     UNSUPPORTED_READ_MODE_ERROR,
     UNSUPPORTED_READ_TYPE_ERROR,
-    KINETIC_MEASUREMENTS_EXISTS_PATTERN,
-    REGULAR_READ_PATTERN,
-    KINETIC_READ_PATTERN,
-    WAVELENGTHS_KEY,
+    WAVELENGTHS_KEY, ScanPositionSettingPlateReader,
 )
 from allotropy.parsers.constants import NOT_APPLICABLE
-from allotropy.parsers.lines_reader import SectionLinesReader, LinesReader
+from allotropy.parsers.lines_reader import SectionLinesReader
 from allotropy.parsers.utils.pandas import read_csv, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     try_float,
     try_float_or_nan,
-    try_float_or_none,
+    try_float_or_none, try_non_nan_float_or_none, try_non_nan_float,
 )
 
 
@@ -227,6 +220,31 @@ class DeviceControlData:
 
 
 @dataclass(frozen=True)
+class KineticData:
+    run_time: str | None
+    interval: str | None
+    reads: int | None
+
+    @classmethod
+    def create(cls, lines: list[str]) -> KineticData | None:
+        for line in lines:
+            if line.startswith("Start Kinetic\t"):
+                return cls._parse_kinetic_section(line)
+
+    @classmethod
+    def _parse_kinetic_section(cls, line: str) -> KineticData:
+        split_line = line.strip().split("\t")[1].split(", ")
+        if len(split_line) != 3:
+            msg = f"Expected the Kinetic section '{split_line}' to contain exactly 3 values."
+            raise AllotropeConversionError(msg)
+        return KineticData(
+            run_time=split_line[0].split(" ")[1],
+            interval=split_line[1].split(" ")[1],
+            reads=int(split_line[2].split(" ")[0])
+        )
+
+
+@dataclass(frozen=True)
 class ReadData:
     read_mode: ReadMode
     measurement_labels: set[str]
@@ -243,15 +261,8 @@ class ReadData:
         read_type = cls.get_read_type(procedure_details)
         if read_type != ReadType.ENDPOINT:
             raise AllotropeConversionError(UNSUPPORTED_READ_TYPE_ERROR)
-
-        existence_of_pattern = re.search("Start Kinetic\t", procedure_details)
-        if existence_of_pattern:
-            read_modes = cls.get_kinetic_read_modes(procedure_details)
-            read_sections = cls.kinetic_read_sections(lines)
-        else:
-            read_modes = cls.get_read_modes(procedure_details)
-            read_sections = cls.regular_read_sections(lines)
-
+        read_sections = list(SectionLinesReader(lines).iter_sections(r"^\s{0,4}Read\t"))
+        read_modes = cls.get_read_modes(procedure_details)
         if len(read_modes) != len(read_sections):
             msg = "Expected the number of read modes to match the number of read sections."
             raise AllotropeConversionError(msg)
@@ -293,45 +304,6 @@ class ReadData:
             )
         return read_data_list
 
-    @classmethod
-    def kinetic_read_sections(cls, lines: list[str]) -> list[LinesReader]:
-        return list(SectionLinesReader(lines).iter_sections("    Read\t"))
-
-    @classmethod
-    def regular_read_sections(cls, lines: list[str]) -> list[LinesReader]:
-        return list(SectionLinesReader(lines).iter_sections("^Read\t"))
-
-    @classmethod
-    def parse_time_info(cls, lines: list[str]) -> str:
-        units = "s"
-        return units
-
-    @staticmethod
-    def get_kinetic_read_modes(procedure_details: str) -> list[ReadMode]:
-        read_modes = []
-        for read_mode in ReadMode:
-            # Construct the regex pattern for the current read mode
-            pattern = fr"\t{re.escape(read_mode.value)} Endpoint"
-            # Use regex to find all occurrences of the read mode pattern in the procedure details
-            matches = re.findall(pattern, procedure_details)
-            if matches:
-                # Add the read_mode to the list for each match found
-                read_modes.extend([read_mode] * len(matches))
-
-        if not read_modes:
-            raise AllotropeConversionError(UNSUPPORTED_READ_MODE_ERROR)
-
-        if ReadMode.ALPHALISA in read_modes and ReadMode.FLUORESCENCE in read_modes:
-            raise AllotropeConversionError(ALPHALISA_FLUORESCENCE_FOUND)
-
-        # Replace ALPHALISA with FLUORESCENCE
-        read_modes = [
-            ReadMode.FLUORESCENCE if read_mode == ReadMode.ALPHALISA else read_mode
-            for read_mode in read_modes
-        ]
-
-        return read_modes
-
     @staticmethod
     def get_read_modes(procedure_details: str) -> list[ReadMode]:
         read_modes = []
@@ -360,8 +332,6 @@ class ReadData:
 
     @staticmethod
     def get_read_type(procedure_details: str) -> ReadType:
-        # if ReadType.KINETIC.value in procedure_details:
-        #     return ReadType.KINETIC
         if ReadType.AREASCAN.value in procedure_details:
             return ReadType.AREASCAN
         elif ReadType.SPECTRAL.value in procedure_details:
@@ -414,7 +384,7 @@ class ReadData:
 
     @classmethod
     def _get_absorbance_measurement_labels(
-        cls, label_prefix: str | None, device_control_data: DeviceControlData
+            cls, label_prefix: str | None, device_control_data: DeviceControlData
     ) -> list[str]:
         pathlength_correction = device_control_data.get(PATHLENGTH_CORRECTION_KEY)
         measurement_labels = []
@@ -485,7 +455,7 @@ def get_identifiers(layout_lines: list[str] | None) -> dict[str, str]:
             well_pos = f"{row_name}{col_index + 1}"
             # Prefer Name to Well ID
             if not pd.isna(col) and (
-                label == "Name" or label == "Well ID" and well_pos not in identifiers
+                    label == "Name" or label == "Well ID" and well_pos not in identifiers
             ):
                 identifiers[well_pos] = col
     return identifiers
@@ -503,6 +473,19 @@ def get_temperature(actual_temperature_lines: list[str] | None) -> float | None:
     )
 
 
+def get_kinetic_measurements(kinetic_lines: list[str]) -> dict[str, list[str]] | None:
+    if not kinetic_lines:
+        return None
+    data = read_csv(StringIO("\n".join(kinetic_lines)), sep="\t")
+    kinetic_measurements = defaultdict(list)
+    for col in data.columns:
+        for idx, value in enumerate(data[col]):
+            if not pd.isna(value):
+                kinetic_measurements[str(col)].append(str(value))
+
+    return {key: value for key, value in kinetic_measurements.items()}
+
+
 @dataclass(frozen=True)
 class MeasurementData:
     identifier: str
@@ -511,11 +494,13 @@ class MeasurementData:
 
 
 def create_results(
-    result_lines: list[str],
-    header_data: HeaderData,
-    read_data: list[ReadData],
-    sample_identifiers: dict[str, str],
-    actual_temperature: float | None,
+        result_lines: list[str],
+        header_data: HeaderData,
+        read_data: list[ReadData],
+        sample_identifiers: dict[str, str],
+        actual_temperature: float | None,
+        kinetic_data: KineticData | None,
+        kinetic_measurements: dict[str, list[str]] | None,
 ) -> tuple[list[MeasurementGroup], list[CalculatedDataItem]]:
     if result_lines[0].strip() != "Results":
         msg = f"Expected the first line of the results section '{result_lines[0]}' to be 'Results'."
@@ -538,14 +523,19 @@ def create_results(
         label = row.iloc[-1]
         for col_index, value in enumerate(row.iloc[:-1]):
             well_pos = f"{row_name}{col_index + 1}"
-            well_value = try_float_or_nan(value)
-
+            well_value = try_non_nan_float_or_none(value)
+            # TODO: Report error documents for NaN values
+            if not well_value:
+                continue
             if label in measurement_labels:
                 well_to_measurements[well_pos].append(
                     MeasurementData(random_uuid_str(), well_value, label)
                 )
             else:
                 calculated_data[well_pos].append((label, well_value))
+
+    kinetic_elapsed_time = [_convert_time_to_seconds(time) for time in kinetic_measurements["Time"]] if kinetic_measurements else None
+    del kinetic_measurements["Time"]
 
     groups = [
         MeasurementGroup(
@@ -568,18 +558,37 @@ def create_results(
         for well_position, measurements in well_to_measurements.items()
     ]
 
+    if kinetic_measurements:
+        groups.extend(
+            MeasurementGroup(
+                measurement_time=header_data.datetime,
+                plate_well_count=len(well_to_measurements),
+                analytical_method_identifier=header_data.protocol_file_path,
+                experimental_data_identifier=header_data.experiment_file_path,
+                measurements=[
+                    _create_measurement(
+                        measurement := MeasurementData(random_uuid_str(), well_position, measurement_labels[0]),
+                        well_position,
+                        header_data,
+                        get_read_data_from_measurement(measurement, read_data),
+                        sample_identifiers.get(well_position),
+                        actual_temperature,
+                        kinetic_data,
+                        kinetic_measurements_data,
+                        kinetic_elapsed_time
+                    )
+                ],
+            ) for well_position, kinetic_measurements_data in kinetic_measurements.items() if well_position == "A1"
+        )
+
     calculated_data_items = [
         CalculatedDataItem(
-            identifier=random_uuid_str(),
+            identifier="UUID",
             data_sources=[
                 DataSource(
-                    identifier=measurement.identifier,
-                    feature=item.read_mode.value.lower(),
+                    identifier=random_uuid_str(),
+                    feature="absorption profile data cube",
                 )
-                for measurement in _get_sources(
-                    label, well_to_measurements[well_position]
-                )
-                for item in read_data
             ],
             unit=UNITLESS,
             name=label,
@@ -593,10 +602,10 @@ def create_results(
 
 
 def get_read_data_from_measurement(
-    measurement: MeasurementData, read_data_list: list[ReadData]
+        measurement: MeasurementData, read_data_list: list[ReadData]
 ) -> ReadData:
     for read_data in read_data_list:
-        if measurement.label in read_data.measurement_labels:
+        if _is_label_in_measurement_labels(measurement.label, read_data.measurement_labels):
             return read_data
 
     raise AllotropeConversionError(
@@ -605,7 +614,7 @@ def get_read_data_from_measurement(
 
 
 def _get_sources(
-    calculated_data_label: str, measurements: list[MeasurementData]
+        calculated_data_label: str, measurements: list[MeasurementData]
 ) -> list[MeasurementData]:
     # Pathlength is a special case, its sources are always determined
     # by the pathlength correction setting
@@ -635,16 +644,32 @@ def create_metadata(header_data: HeaderData) -> Metadata:
         software_name=DEFAULT_SOFTWARE_NAME,
         software_version=header_data.software_version,
         file_name=header_data.file_name,
+        asm_file_identifier=NOT_APPLICABLE,
+        data_system_instance_id=NOT_APPLICABLE
     )
 
 
+def _is_label_in_measurement_labels(label: str, measurement_labels: list[str]):
+    if not measurement_labels:
+        return False
+    if label in measurement_labels:
+        return True
+    # TODO Improve this logic to support multiple kinetic sections
+    match = re.search(r"\[(\d+)]", label)
+    if match and match.group()[1:-1] in measurement_labels:
+        return True
+
+
 def _create_measurement(
-    measurement: MeasurementData,
-    well_position: str,
-    header_data: HeaderData,
-    read_data: ReadData,
-    sample_identifier: str | None,
-    actual_temperature: float | None,
+        measurement: MeasurementData,
+        well_position: str,
+        header_data: HeaderData,
+        read_data: ReadData,
+        sample_identifier: str | None,
+        actual_temperature: float | None,
+        kinetic_data: KineticData | None = None,
+        kinetic_measurements: list[str] | None = None,
+        kinetic_elapsed_time: list[float] = None,
 ) -> Measurement:
     # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
     if read_data.read_mode == ReadMode.ABSORBANCE:
@@ -654,7 +679,6 @@ def _create_measurement(
     elif read_data.read_mode == ReadMode.LUMINESCENCE:
         measurement_type = MeasurementType.LUMINESCENCE
 
-    detector_wavelength_setting: JsonFloat | None = None
     if measurement_type is MeasurementType.ULTRAVIOLET_ABSORBANCE:
         filter_data = None
         detector_wavelength_setting = float(
@@ -664,12 +688,15 @@ def _create_measurement(
         filter_data = read_data.filter_sets[measurement.label]
         detector_wavelength_setting = filter_data.detector_wavelength_setting
 
+    if kinetic_measurements:
+        kinetic_measurements = [try_non_nan_float(value) for value in kinetic_measurements]
+
     return Measurement(
         type_=measurement_type,
         device_type=DEVICE_TYPE,
         identifier=measurement.identifier,
         sample_identifier=sample_identifier
-        or f"{header_data.well_plate_identifier} {well_position}",
+                          or f"{header_data.well_plate_identifier} {well_position}",
         location_identifier=well_position,
         well_plate_identifier=header_data.well_plate_identifier,
         detection_type=read_data.read_mode.value,
@@ -694,13 +721,28 @@ def _create_measurement(
         number_of_averages=read_data.number_of_averages,
         detector_carriage_speed=read_data.detector_carriage_speed,
         absorbance=measurement.value
-        if measurement_type == MeasurementType.ULTRAVIOLET_ABSORBANCE
+        if measurement_type == MeasurementType.ULTRAVIOLET_ABSORBANCE and not kinetic_data
         else None,
         fluorescence=measurement.value
-        if measurement_type == MeasurementType.FLUORESCENCE
+        if measurement_type == MeasurementType.FLUORESCENCE and not kinetic_data
         else None,
         luminescence=measurement.value
-        if measurement_type == MeasurementType.LUMINESCENCE
+        if measurement_type == MeasurementType.LUMINESCENCE and not kinetic_data
         else None,
         compartment_temperature=actual_temperature,
+        total_measurement_time_setting=_convert_time_to_seconds(kinetic_data.run_time) if kinetic_data else None,
+        read_interval_setting=_convert_time_to_seconds(kinetic_data.interval) if kinetic_data else None,
+        number_of_scans_setting=kinetic_data.reads if kinetic_data else None,
+        dimensions_elapsed_time=kinetic_elapsed_time if kinetic_elapsed_time else None,
+        measures=kinetic_measurements if kinetic_measurements else None,
     )
+
+
+def _convert_time_to_seconds(time_str: str) -> float:
+    try:
+        hours, minutes, seconds = map(float, time_str.split(":"))
+        return hours * 3600 + minutes * 60 + seconds
+
+    except ValueError:
+        msg = f"Invalid time string: '{time_str}'."
+        raise AllotropeConversionError(msg)

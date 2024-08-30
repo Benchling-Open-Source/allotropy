@@ -26,12 +26,15 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNanometer,
     TQuantityValueNumber,
     TQuantityValueRelativeFluorescenceUnit,
-    TQuantityValueRelativeLightUnit,
+    TQuantityValueRelativeLightUnit, TQuantityValueSecondTime,
 )
+from allotropy.allotrope.models.shared.definitions.definitions import TDatacube, TDatacubeData, TDatacubeStructure, \
+    TDatacubeComponent, FieldComponentDatatype
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
-from allotropy.exceptions import AllotropyParserError
-from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
+from allotropy.exceptions import AllotropyParserError, AllotropeConversionError
+from allotropy.parsers.constants import NOT_APPLICABLE
+from allotropy.parsers.utils.values import assert_not_none, quantity_or_none, try_non_nan_float_or_none
 
 
 # TODO: these two enum classes should come from the schema
@@ -117,6 +120,15 @@ class Measurement:
     compartment_temperature: float | None = None
     number_of_averages: float | None = None
 
+    # Kinetic settings
+    total_measurement_time_setting: float | None = None
+    read_interval_setting: float | None = None
+    number_of_scans_setting: float | None = None
+
+    # Kinetic measurements
+    dimensions_elapsed_time: list[float] | None = None
+    measures: list[str] | None = None
+
 
 @dataclass(frozen=True)
 class MeasurementGroup:
@@ -127,9 +139,6 @@ class MeasurementGroup:
     analytical_method_identifier: str | None = None
     experimental_data_identifier: str | None = None
     experiment_type: str | None = None
-    total_measurement_time_setting: float | None = None
-    read_interval_setting: float | None = None
-    number_of_scans_setting: float | None = None
 
 
 @dataclass(frozen=True)
@@ -166,10 +175,10 @@ class Mapper(SchemaMapper[Data, Model]):
                     product_manufacturer=data.metadata.product_manufacturer,
                 ),
                 data_system_document=DataSystemDocument(
-                    ASM_file_identifier=data.metadata.asm_file_identifier,
-                    data_system_instance_identifier=data.metadata.data_system_instance_id,
+                    ASM_file_identifier=NOT_APPLICABLE,
+                    data_system_instance_identifier=NOT_APPLICABLE,
                     file_name=data.metadata.file_name,
-                    UNC_path=data.metadata.unc_path,
+                    UNC_path=NOT_APPLICABLE,
                     software_name=data.metadata.software_name,
                     software_version=data.metadata.software_version,
                     ASM_converter_name=self.converter_name,
@@ -227,6 +236,7 @@ class Mapper(SchemaMapper[Data, Model]):
         return MeasurementDocument(
             measurement_identifier=measurement.identifier,
             sample_document=self._get_sample_document(measurement),
+            absorption_profile_data_cube=self._get_data_cube(measurement),
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
                     DeviceControlDocumentItem(
@@ -245,16 +255,22 @@ class Mapper(SchemaMapper[Data, Model]):
                             TQuantityValueMillimeter,
                             measurement.detector_distance_setting,
                         ),
-
+                        total_measurement_time_setting=quantity_or_none(
+                            TQuantityValueSecondTime,
+                            measurement.total_measurement_time_setting),
+                        read_interval_setting=quantity_or_none(
+                            TQuantityValueSecondTime,
+                            int(measurement.read_interval_setting)),
+                        number_of_scans_setting=quantity_or_none(
+                            TQuantityValueNumber,
+                            measurement.number_of_scans_setting,
+                        ),
                     )
                 ]
             ),
             absorbance=TQuantityValueMilliAbsorbanceUnit(
-                value=assert_not_none(
-                    value=measurement.absorbance,
-                    msg="Missing absorbance value in ultraviolet absorbance measurement",
-                )
-            ),
+                value=measurement.absorbance
+            ) if measurement.absorbance is not None else None,
             compartment_temperature=quantity_or_none(
                 TQuantityValueDegreeCelsius, measurement.compartment_temperature
             ),
@@ -267,6 +283,7 @@ class Mapper(SchemaMapper[Data, Model]):
         return MeasurementDocument(
             measurement_identifier=measurement.identifier,
             sample_document=self._get_sample_document(measurement),
+            luminescence_profile_data_cube=self._get_data_cube(measurement),
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
                     DeviceControlDocumentItem(
@@ -313,6 +330,7 @@ class Mapper(SchemaMapper[Data, Model]):
     ) -> MeasurementDocument:
         return MeasurementDocument(
             measurement_identifier=measurement.identifier,
+            fluorescence_emission_profile_data_cube=self._get_data_cube(measurement),
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
                     DeviceControlDocumentItem(
@@ -407,4 +425,30 @@ class Mapper(SchemaMapper[Data, Model]):
                 )
                 for calculated_data_item in calculated_data_items
             ]
+        )
+
+    def _get_data_cube(self, measurement: Measurement) -> TDatacube | None:
+        if not measurement.dimensions_elapsed_time or not measurement.measures:
+            return None
+        return TDatacube(
+            label=str(int(measurement.detector_wavelength_setting)),
+            cube_structure=TDatacubeStructure(
+                dimensions=[
+                    TDatacubeComponent(
+                        concept="elapsed time",
+                        field_componentDatatype=FieldComponentDatatype.double,
+                        unit="s",
+                    )
+                ],
+                measures=[
+                    TDatacubeComponent(
+                        field_componentDatatype=FieldComponentDatatype.double,
+                        concept="absorbance",
+                        unit="mAU",
+                    )
+                ],
+            ),
+            data=TDatacubeData(
+                dimensions=[measurement.dimensions_elapsed_time], measures=[measurement.measures]
+            ),
         )

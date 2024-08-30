@@ -1,7 +1,7 @@
 from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
     Model,
 )
-from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
+from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
     Data,
     Mapper,
 )
@@ -14,7 +14,7 @@ from allotropy.parsers.agilent_gen5.agilent_gen5_structure import (
     get_identifiers,
     get_temperature,
     HeaderData,
-    ReadData,
+    ReadData, KineticData, get_kinetic_measurements,
 )
 from allotropy.parsers.agilent_gen5.constants import DEFAULT_EXPORT_FORMAT_ERROR
 from allotropy.parsers.release_state import ReleaseState
@@ -37,9 +37,11 @@ class AgilentGen5Parser(MapperVendorParser[Data, Model]):
             reader.header_data, named_file_contents.original_file_name
         )
         read_data = ReadData.create(reader.sections["Procedure Details"])
+        kinetic_data = KineticData.create(reader.sections["Procedure Details"])
 
         sample_identifiers = get_identifiers(reader.sections.get("Layout"))
         actual_temperature = get_temperature(reader.sections.get("Actual Temperature"))
+        kinetic_measurements = get_kinetic_measurements(reader.sections.get("Time"))
 
         measurement_groups, calculated_data = create_results(
             reader.sections["Results"],
@@ -47,6 +49,8 @@ class AgilentGen5Parser(MapperVendorParser[Data, Model]):
             read_data,
             sample_identifiers,
             actual_temperature,
+            kinetic_data,
+            kinetic_measurements
         )
 
         return Data(
