@@ -44,6 +44,7 @@ We currently have parser support for the following instruments:
 
 ### Working Draft
   - Thermo Fisher Genesys30
+  - Thermo Fisher Nanodrop One
 
 The parsers follow maturation levels of: Recommended, Candidate Release, Working Draft - see [release_state.py](https://github.com/Benchling-Open-Source/allotropy/blob/main/src/allotropy/parsers/release_state.py) for additional details.
 

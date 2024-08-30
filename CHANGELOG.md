@@ -10,9 +10,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added `supported_extensions` to Vendor, allowing parsers to specify supported file extensions.
+- Added support for `multiple read modes` in `Agilent Gen5` Adapter
+- Added Thermo Fisher Nanodrop One adapter
 - Update data sources for quantity calculated documents with Y-intercept and Slope in AppBio Quantstudio
 
 ### Fixed
+
+- Update mabtech-apex-adapter regex to handle scenarios where first word in the machine ID section has all letter uppercase
 
 ### Changed
 
@@ -31,7 +35,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added requirement doc for ThermoFisher Genesys 30 adapter
 - Added support for xlsx exports in Unchained Lunatic parser
 - Add column special character normalization to pandas util (and so most parsers)
-- Added support for multiple read modes in Agilent Gen5 Adapter
 
 ### Fixed
 

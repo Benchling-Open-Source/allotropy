@@ -141,6 +141,9 @@ class Measurement:
     standard_1_concentration: float | None = None
     standard_2_concentration: float | None = None
     standard_3_concentration: float | None = None
+    baseline_absorbance: float | None = None
+    electronic_absorbance_reference_wavelength_setting: float | None = None
+    nucleic_acid_factor: float | None = None
 
     # Measurements
     absorbance: JsonFloat | None = None
@@ -259,32 +262,44 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_ultraviolet_absorbance_measurement_document(
         self, measurement: Measurement, metadata: Metadata
     ) -> UltravioletAbsorbancePointDetectionMeasurementDocumentItems:
-        return UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
-            measurement_identifier=measurement.identifier,
-            sample_document=self._get_sample_document(measurement),
-            processed_data_aggregate_document=self._get_processed_data_aggregate_document(
-                measurement.processed_data
-            ),
-            device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
-                device_control_document=[
-                    add_custom_information_document(
-                        UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
-                            device_type=metadata.device_type,
-                            detector_wavelength_setting=quantity_or_none(
-                                TQuantityValueNanometer,
-                                measurement.detector_wavelength_setting,
+        return add_custom_information_document(
+            UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
+                measurement_identifier=measurement.identifier,
+                sample_document=self._get_sample_document(measurement),
+                processed_data_aggregate_document=self._get_processed_data_aggregate_document(
+                    measurement.processed_data
+                ),
+                device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
+                    device_control_document=[
+                        add_custom_information_document(
+                            UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
+                                device_type=metadata.device_type,
+                                detector_wavelength_setting=quantity_or_none(
+                                    TQuantityValueNanometer,
+                                    measurement.detector_wavelength_setting,
+                                ),
+                                electronic_absorbance_reference_bandwidth_setting=quantity_or_none(
+                                    TQuantityValueNanometer,
+                                    measurement.electronic_absorbance_reference_wavelength_setting,
+                                ),
                             ),
-                        ),
-                        self._get_device_control_custom_document(measurement),
-                    )
-                ]
+                            self._get_device_control_custom_document(measurement),
+                        )
+                    ]
+                ),
+                absorbance=TQuantityValueMilliAbsorbanceUnit(
+                    value=assert_not_none(measurement.absorbance)  # type: ignore[arg-type]
+                ),
+                calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
+                    measurement.calculated_data
+                ),
             ),
-            absorbance=TQuantityValueMilliAbsorbanceUnit(
-                value=assert_not_none(measurement.absorbance)  # type: ignore[arg-type]
-            ),
-            calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
-                measurement.calculated_data
-            ),
+            custom_info_doc={
+                "baseline absorbance": quantity_or_none(
+                    TQuantityValueMilliAbsorbanceUnit,
+                    measurement.baseline_absorbance,
+                ),
+            },
         )
 
     def _get_ultraviolet_absorbance_spectrum_measurement_document(
@@ -385,6 +400,9 @@ class Mapper(SchemaMapper[Data, Model]):
             "operating maximum": quantity_or_none(
                 TQuantityValueNanometer, measurement.operating_maximum
             ),
+            "nucleic acid factor": quantity_or_none(
+                TQuantityValueUnitless, measurement.nucleic_acid_factor
+            ),
         }
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
@@ -464,7 +482,9 @@ class Mapper(SchemaMapper[Data, Model]):
                             )
                             for item in calculated_data_item.data_sources
                         ]
-                    ),
+                    )
+                    if calculated_data_item.data_sources
+                    else None,
                 )
                 for calculated_data_item in calculated_data_items
             ]
