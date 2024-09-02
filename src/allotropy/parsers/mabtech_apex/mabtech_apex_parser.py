@@ -27,8 +27,8 @@ class MabtechApexParser(MapperVendorParser[Data, Model]):
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = MabtechApexReader.create(named_file_contents)
 
-        # if Read Date is not present in file, return None, no measurement for given Well
-        plate_data = reader.data.dropna(subset="Read Date")
+        # if Read Date or machine ID is not present in file, return None, no measurement for given Well
+        plate_data = reader.data.dropna(subset=["Read Date", "Machine ID"])
         return Data(
             create_metadata(reader.plate_info, named_file_contents.original_file_name),
             map_rows(
