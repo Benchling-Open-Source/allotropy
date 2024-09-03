@@ -67,20 +67,16 @@ def _create_measurement(plate_data: SeriesData) -> Measurement:
         illumination_setting=plate_data.get(float, illumination_setting_key),
         processed_data=ProcessedData(
             identifier=random_uuid_str(),
-            features=[
-                ImageFeature(
-                    identifier=random_uuid_str(),
-                    feature=_format_feature_name(feature, led_filter),
-                    result=plate_data.get(float, feature, NaN),
-                )
+            features=list(filter(lambda feature: feature is not None, [
+                _build_feature(feature, plate_data, led_filter_without_total)
                 for feature in constants.IMAGE_FEATURES
-                if plate_data.get(float, feature)
-            ],
+            ])),
         ),
     )
 
 
-def _format_feature_name(feature: str, led_filter: str | None) -> str:
+def _build_feature(feature: str, plate_data: SeriesData, led_filter: str
+) -> ImageFeature | None:
     if led_filter:
         led_number = re.search(r"\d+", led_filter)
         if not led_number:
@@ -89,7 +85,13 @@ def _format_feature_name(feature: str, led_filter: str | None) -> str:
         feature = feature.format(filter=led_filter, led_number=led_number.group())
     else:
         feature = feature.format(filter="", led_number="").replace("  ", " ")
-    return feature
+    if not plate_data.get(float, feature):
+        return None
+    return ImageFeature(
+        identifier=random_uuid_str(),
+        feature=feature,
+        result=plate_data.get(float, feature, NaN),
+    )
 
 
 def create_measurement_group(
