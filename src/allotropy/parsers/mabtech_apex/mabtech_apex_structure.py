@@ -4,13 +4,13 @@ import re
 
 from allotropy.allotrope.models.shared.definitions.definitions import NaN
 from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
+    CustomInformationDocument,
     ImageFeature,
     Measurement,
     MeasurementGroup,
     MeasurementType,
     Metadata,
     ProcessedData,
-    CustomInformationDocument,
 )
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.mabtech_apex import constants
@@ -76,11 +76,12 @@ def _create_measurement(plate_data: SeriesData) -> Measurement:
 
 
 def _build_feature(
-    feature: str, plate_data: SeriesData, led_filter: str
+    feature: str, plate_data: SeriesData, led_filter: str | None
 ) -> ImageFeature:
     if led_filter:
         led_number = re.search(r"\d+", led_filter)
-        feature = feature.format(filter=led_filter, led_number=led_number.group())
+        if led_number:
+            feature = feature.format(filter=led_filter, led_number=led_number.group())
     else:
         feature = feature.format(filter="", led_number="").replace("  ", " ")
     return ImageFeature(
