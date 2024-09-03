@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Updated Softmax Pro adapter to use the REC/2024/06 plate reader schema
+- Remove `NaN` measurements from Softmax Pro adapter to comply with the new `REC` schema
 
 ### Deprecated
 

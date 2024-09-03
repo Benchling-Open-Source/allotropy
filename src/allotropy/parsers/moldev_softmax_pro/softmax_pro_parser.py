@@ -93,7 +93,6 @@ class SoftmaxproParser(VendorParser):
                             plate_block, position
                         )
                     )
-                    is not None
                 ],
                 calculated_data_aggregate_document=self._get_calc_docs(data),
             ),

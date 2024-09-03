@@ -310,6 +310,7 @@ class PlateWavelengthData:
     ) -> PlateWavelengthData:
         # Since value is required for the measurement class (absorbance, luminescense and fluorescense)
         # we don't store data for NaN values
+        # TODO: Report error documents for NaN values
         data = {
             f"{num_to_chars(row_idx)}{col}": value
             for row_idx, *row_data in df_data.itertuples()
