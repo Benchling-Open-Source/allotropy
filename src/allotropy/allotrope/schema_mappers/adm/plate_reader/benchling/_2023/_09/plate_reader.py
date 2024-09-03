@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import Enum
+import logging
 
 from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
@@ -148,12 +149,7 @@ class Measurement:
     fluorescent_tag_setting: str | None = None
 
     # Custom information
-    custom_information_document: CustomInformationDocument | None = None
-
-
-@dataclass(frozen=True)
-class CustomInformationDocument:
-    led_filter: str
+    led_filter: str | None = None
 
 
 @dataclass(frozen=True)
@@ -303,14 +299,16 @@ class Mapper(SchemaMapper[Data, Model]):
                 device_control_document=[
                     add_custom_information_document(
                         device_control_document,
-                        measurement.custom_information_document,
+                        {
+                            "LED filter": measurement.led_filter,
+                        },
                     )
-                    if measurement.custom_information_document
+                    if measurement.led_filter
                     else device_control_document
                 ]
             ),
             processed_data_aggregate_document=self._get_processed_data_aggregate_document(
-                measurement.processed_data
+                measurement.processed_data, measurement.well_plate_identifier
             ),
         )
 
@@ -458,9 +456,13 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_processed_data_aggregate_document(
-        self, data: ProcessedData | None
+        self, data: ProcessedData | None, well_plate_identifier: str | None = None
     ) -> ProcessedDataAggregateDocument | None:
         if not data:
+            return None
+
+        if not data.features:
+            logging.warning(f"no image features identified for {well_plate_identifier}")
             return None
 
         # NOTE: this / ProcessedData operating only on "image features" is almost certainly not comprehensive,

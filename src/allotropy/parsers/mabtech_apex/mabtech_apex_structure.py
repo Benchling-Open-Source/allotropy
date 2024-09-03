@@ -4,7 +4,6 @@ import re
 
 from allotropy.allotrope.models.shared.definitions.definitions import NaN
 from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
-    CustomInformationDocument,
     ImageFeature,
     Measurement,
     MeasurementGroup,
@@ -12,6 +11,7 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
     Metadata,
     ProcessedData,
 )
+from allotropy.exceptions import AllotropeParsingError
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.mabtech_apex import constants
 from allotropy.parsers.utils.pandas import SeriesData
@@ -43,15 +43,17 @@ def _create_measurement(plate_data: SeriesData) -> Measurement:
     location_id = plate_data[str, "Well"]
     well_plate = plate_data.get(str, "Plate")
     led_filter = plate_data.get(str, "LED Filter")
-    if led_filter:
-        led_filter = led_filter.split(" ")[0]
+    led_filter_without_total = led_filter.split(" ")[0] if led_filter else None
     exposure_duration_setting_key = (
-        f"{led_filter} Exposure" if led_filter else "Exposure"
+        f"{led_filter_without_total} Exposure"
+        if led_filter_without_total
+        else "Exposure"
     )
     illumination_setting_key = (
-        f"{led_filter} Preset Intensity" if led_filter else "Preset Intensity"
+        f"{led_filter_without_total} Preset Intensity"
+        if led_filter_without_total
+        else "Preset Intensity"
     )
-
     return Measurement(
         type_=MeasurementType.OPTICAL_IMAGING,
         identifier=random_uuid_str(),
@@ -60,35 +62,34 @@ def _create_measurement(plate_data: SeriesData) -> Measurement:
         sample_identifier=f"{well_plate}_{location_id}",
         detection_type=constants.DETECTION_TYPE,
         device_type=constants.DEVICE_TYPE,
+        led_filter=led_filter,
         exposure_duration_setting=plate_data.get(float, exposure_duration_setting_key),
         illumination_setting=plate_data.get(float, illumination_setting_key),
         processed_data=ProcessedData(
             identifier=random_uuid_str(),
             features=[
-                _build_feature(feature, plate_data, led_filter)
+                ImageFeature(
+                    identifier=random_uuid_str(),
+                    feature=_format_feature_name(feature, led_filter),
+                    result=plate_data.get(float, feature, NaN),
+                )
                 for feature in constants.IMAGE_FEATURES
+                if plate_data.get(float, feature)
             ],
         ),
-        custom_information_document=CustomInformationDocument(
-            led_filter=plate_data.get(str, "LED Filter") or NOT_APPLICABLE
-        ),
     )
 
 
-def _build_feature(
-    feature: str, plate_data: SeriesData, led_filter: str | None
-) -> ImageFeature:
+def _format_feature_name(feature: str, led_filter: str | None) -> str:
     if led_filter:
         led_number = re.search(r"\d+", led_filter)
-        if led_number:
-            feature = feature.format(filter=led_filter, led_number=led_number.group())
+        if not led_number:
+            error_msg = f"Unable to interpret LED number from {led_filter}"
+            raise AllotropeParsingError(error_msg)
+        feature = feature.format(filter=led_filter, led_number=led_number.group())
     else:
         feature = feature.format(filter="", led_number="").replace("  ", " ")
-    return ImageFeature(
-        identifier=random_uuid_str(),
-        feature=feature,
-        result=plate_data.get(float, feature, NaN),
-    )
+    return feature
 
 
 def create_measurement_group(
