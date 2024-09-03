@@ -68,6 +68,17 @@ class SoftmaxproParser(VendorParser):
         return self._get_model(named_file_contents.original_file_name, data)
 
     def _get_model(self, file_name: str, data: Data) -> Model:
+        plate_reader_document = [
+            doc_item
+            for plate_block in data.block_list.plate_blocks.values()
+            for position in plate_block.iter_wells()
+            if (doc_item := self._get_plate_reader_document_item(plate_block, position))
+        ]
+
+        if not plate_reader_document:
+            msg = "Invalid data - the file contains invalid or missing measurement data. Unable to construct ASM."
+            raise AllotropeConversionError(msg)
+
         return Model(
             field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/REC/2024/06/plate-reader.manifest",
             plate_reader_aggregate_document=PlateReaderAggregateDocument(
@@ -84,16 +95,7 @@ class SoftmaxproParser(VendorParser):
                     ASM_converter_name=self.asm_converter_name,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
-                plate_reader_document=[
-                    document_item
-                    for plate_block in data.block_list.plate_blocks.values()
-                    for position in plate_block.iter_wells()
-                    if (
-                        document_item := self._get_plate_reader_document_item(
-                            plate_block, position
-                        )
-                    )
-                ],
+                plate_reader_document=plate_reader_document,
                 calculated_data_aggregate_document=self._get_calc_docs(data),
             ),
         )
