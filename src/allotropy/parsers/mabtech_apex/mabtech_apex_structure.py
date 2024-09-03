@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import logging
 import re
 
 from allotropy.allotrope.models.shared.definitions.definitions import NaN
@@ -54,7 +55,7 @@ def _create_measurement(plate_data: SeriesData) -> Measurement:
         if led_filter_without_total
         else "Preset Intensity"
     )
-    return Measurement(
+    measurement = Measurement(
         type_=MeasurementType.OPTICAL_IMAGING,
         identifier=random_uuid_str(),
         location_identifier=location_id,
@@ -78,6 +79,9 @@ def _create_measurement(plate_data: SeriesData) -> Measurement:
             ],
         ),
     )
+    if not (measurement.processed_data and measurement.processed_data.features):
+        logging.warning(f"no image features identified for {well_plate}")
+    return measurement
 
 
 def _build_feature(

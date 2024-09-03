@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import Enum
-import logging
 
 from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
@@ -308,7 +307,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 ]
             ),
             processed_data_aggregate_document=self._get_processed_data_aggregate_document(
-                measurement.processed_data, measurement.well_plate_identifier
+                measurement.processed_data
             ),
         )
 
@@ -456,13 +455,9 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_processed_data_aggregate_document(
-        self, data: ProcessedData | None, well_plate_identifier: str | None = None
+        self, data: ProcessedData | None
     ) -> ProcessedDataAggregateDocument | None:
-        if not data:
-            return None
-
-        if not data.features:
-            logging.warning(f"no image features identified for {well_plate_identifier}")
+        if not (data and data.features):
             return None
 
         # NOTE: this / ProcessedData operating only on "image features" is almost certainly not comprehensive,
