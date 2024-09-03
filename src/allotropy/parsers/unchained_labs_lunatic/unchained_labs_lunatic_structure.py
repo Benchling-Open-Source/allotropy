@@ -125,6 +125,7 @@ def create_metadata(header: SeriesData, file_name: str) -> Metadata:
             device_identifier, msg=NO_DEVICE_IDENTIFIER_ERROR_MSG
         ),
         software_name=SOFTWARE_NAME,
+        software_version=header.get(str, "Software version"),
         file_name=file_name,
     )
 
