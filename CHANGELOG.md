@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated Softmax Pro adapter to use the REC/2024/06 plate reader schema
 - Remove `NaN` measurements from Softmax Pro adapter to comply with the new `REC` schema
 - Change Unchained Labs Lunatic reader so that it supports both formats (with/without header) for both file types.
+- Disregard compartment temperature in `Softmax Pro` adapter when is reported as 0.
 
 ### Deprecated
 

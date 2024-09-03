@@ -151,7 +151,9 @@ class SoftmaxproParser(VendorParser):
                 ),
                 compartment_temperature=quantity_or_none(
                     TQuantityValueDegreeCelsius,
-                    data_element.temperature,
+                    # A temperature of 0 degrees indicates an error in the instrument Software
+                    # as this temperature is not used in practice for this reader.
+                    data_element.temperature or None,
                 ),
                 sample_document=SampleDocument(
                     location_identifier=data_element.position,
