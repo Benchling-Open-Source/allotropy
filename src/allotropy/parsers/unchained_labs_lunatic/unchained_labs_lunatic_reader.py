@@ -11,7 +11,6 @@ from allotropy.parsers.utils.pandas import (
     SeriesData,
     split_header_and_data,
 )
-from allotropy.types import IOType
 
 
 class UnchainedLabsLunaticReader:
@@ -21,19 +20,21 @@ class UnchainedLabsLunaticReader:
 
     def __init__(self, named_file_contents: NamedFileContents) -> None:
         if named_file_contents.extension == "csv":
-            self.header, self.data = self._parse_csv(named_file_contents.contents)
+            data = read_csv(named_file_contents.contents)
         else:
-            self.header, self.data = self._parse_xlsx(named_file_contents.contents)
+            data = read_excel(named_file_contents.contents)
 
-    def _parse_csv(self, contents: IOType) -> tuple[SeriesData, pd.DataFrame]:
-        data = read_csv(contents).replace(np.nan, None)
         assert_not_empty_df(data, "Unable to parse data from empty dataset.")
-        # Use the first row in the data block for metadata, since it has all required columns.
-        return df_to_series_data(data, index=0), data
 
-    def _parse_xlsx(self, contents: IOType) -> tuple[SeriesData, pd.DataFrame]:
-        data = read_excel(contents)
-        header, data = split_header_and_data(data, lambda row: row.iloc[0] == "Table")
-        data = parse_header_row(data)
-        data.columns = data.columns.str.replace("\n", " ")
-        return df_to_series_data(parse_header_row(header.T)), data
+        if data.columns[0] == "Report":
+            header_data, data = split_header_and_data(
+                data, lambda row: row.iloc[0] == "Table"
+            )
+            self.header = df_to_series_data(parse_header_row(header_data.T))
+            data = parse_header_row(data)
+        else:
+            # Use the first row in the data block for metadata, since it has all required columns.
+            self.header = df_to_series_data(data, index=0)
+
+        data.columns = data.columns.str.replace("\n", " ").str.replace("\r", "")
+        self.data = data.replace(np.nan, None)

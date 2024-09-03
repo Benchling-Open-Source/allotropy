@@ -1,0 +1,21 @@
+Report,,,,,,,,,,,
+,,,,,,,,,,,
+Info,,,,,,,,,,,
+Date,01/08/2024 10:15:59,,,,,,,,,,
+Test performed by,ImmuneMed,,,,,,,,,,
+Instrument,123456,,,,,,,,,,
+Software version,8.2.0.259,,,,,,,,,,
+Client version,8.3.0.305,,,,,,,,,,
+Experiment name,BENCHLING_TEST,,,,,,,,,,
+Application,dsDNA (Turbidity) (8.2.0.2),,,,,,,,,,
+Blanks,Sample group 'GROUP_1': On Plate/Chip:  (2x),,,,,,,,,,
+Plate type,Lunatic Plate,,,,,,,,,,
+Nr of Plates,1,,,,,,,,,,
+,- Lunatic_test_BE_31JUL2024,,,,,,,,,,
+,,,,,,,,,,,
+Table,,,,,,,,,,,
+Plate ID,"Plate
+Position",Sample name,"Concentration
+(ng/ul)",A260/A280,A260/A230,A260,Sample group,Date,Time,Application,Instrument ID
+PLATE_1,A1,SAMPLE_1,182.6,1.94,2.55,3.65,GROUP_1,01/08/2024,10:15:59,dsDNA (Turbidity),123456
+PLATE_2,B1,SAMPLE_2,182.8,1.94,2.52,3.66,GROUP_1,01/08/2024,10:15:59,dsDNA (Turbidity),123456
