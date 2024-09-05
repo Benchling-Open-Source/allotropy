@@ -39,6 +39,19 @@ def test_handles_unrecognized_read_mode() -> None:
         )
 
 
+def test_no_plate_reader_documents() -> None:
+    with pytest.raises(
+        AllotropeConversionError,
+        match=re.escape(
+            "Invalid data - the file contains invalid or missing measurement data. Unable to construct ASM."
+        ),
+    ):
+        from_file(
+            f"{TESTDATA}/errors/no_measurements.txt",
+            VENDOR_TYPE,
+        )
+
+
 @pytest.mark.parametrize(
     "test_file",
     [
