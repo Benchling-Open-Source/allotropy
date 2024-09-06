@@ -55,8 +55,7 @@ def _create_measurement(plate_data: SeriesData) -> Measurement:
         if led_filter_without_total and len(filters) == 1
         else "Preset Intensity"
     )
-    if not led_filter_without_total:
-        pass
+
     feature_names = _build_feature_names(filters)
     features = [
         feature
@@ -90,6 +89,12 @@ def _build_feature_names(led_filters: list[str]) -> list[str]:
     seen = set()
 
     for feature in constants.IMAGE_FEATURES:
+        if not led_filters:
+            formatted_feature = feature.format(filter="", led_number="")
+            if formatted_feature not in seen:
+                feature_names.append(formatted_feature)
+                seen.add(formatted_feature)
+            continue
         for led_filter in led_filters:
             led_number = re.search(r"\d+", led_filter)
             if not led_number:
