@@ -27,7 +27,7 @@ def try_int(value: str | None, value_name: str) -> int:
         # If the value is expected to be an int, but represented as a float (e.g. 1.0) try casting with float
         # and return if it's a valid int.
         try:
-            float_value = float(str_value)
+            float_value = _try_float(str_value)
             if float_value == int(float_value):
                 return int(float_value)
         except ValueError:
