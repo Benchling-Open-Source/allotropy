@@ -39,6 +39,7 @@ We currently have parser support for the following instruments:
   - Thermo Fisher Qubit 4
   - Thermo Fisher Qubit Flex
   - Unchained Labs Lunatic
+  - Thermo Fisher Nanodrop One
 
 ### Candidate Release
 

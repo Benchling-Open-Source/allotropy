@@ -96,8 +96,15 @@ def _try_int(value: str | None) -> int:
     return try_int(value, "param")
 
 
-def test_try_int() -> None:
-    assert _try_int("1") == 1
+@pytest.mark.parametrize(
+    "value,expected",
+    [
+        ("1", 1),
+        ("1.0", 1),
+    ],
+)
+def test_try_int(value: str, expected: int) -> None:
+    assert _try_int(value) == expected
 
 
 @pytest.mark.parametrize(
@@ -105,6 +112,7 @@ def test_try_int() -> None:
     [
         (None, "Expected non-null value for param."),
         ("a", "Invalid integer string: 'a'."),
+        ("1.5", "Invalid integer string: '1.5'."),
     ],
 )
 def test_try_int_fails(value: str | None, expected_regex: str) -> None:
