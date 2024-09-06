@@ -26,7 +26,9 @@ def build_quantity(well_item: WellItem) -> CalculatedDocument | None:
 
     data_sources = []
     if well_item.result.cycle_threshold_result is not None:
-        data_sources.append(DataSource(feature="cycle threshold result", reference=well_item)) 
+        data_sources.append(
+            DataSource(feature="cycle threshold result", reference=well_item)
+        )
 
     if well_item.result.y_intercept is not None:
         data_sources.append(DataSource(feature="y-intercept", reference=well_item))
