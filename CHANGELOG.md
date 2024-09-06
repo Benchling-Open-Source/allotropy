@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Allow try_int to handle decimal point in int values (e.g. 1.0)
+
 ### Changed
 
 - Updated Softmax Pro adapter to use the REC/2024/06 plate reader schema
