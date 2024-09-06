@@ -9,6 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+### Fixed
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Security
+
+## [0.1.51] - 2024-09-06
+
+### Added
+
 - Added `supported_extensions` to Vendor, allowing parsers to specify supported file extensions.
 - Added support for `multiple read modes` in `Agilent Gen5` Adapter
 - Added error message for zero plate reader documents in `Softmax Pro` Adapter
@@ -23,12 +37,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Remove `NaN` measurements from Softmax Pro adapter to comply with the new `REC` schema
 - Change Unchained Labs Lunatic reader so that it supports both formats (with/without header) for both file types.
 - Disregard compartment temperature in `Softmax Pro` adapter when is reported as 0.
-
-### Deprecated
-
-### Removed
-
-### Security
 
 ## [0.1.50] - 2024-08-30
 
