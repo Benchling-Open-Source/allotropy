@@ -3,7 +3,6 @@ from __future__ import annotations
 import logging
 import re
 
-from allotropy.allotrope.models.shared.definitions.definitions import NaN
 from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
     ImageFeature,
     Measurement,
@@ -45,16 +44,26 @@ def _create_measurement(plate_data: SeriesData) -> Measurement:
     well_plate = plate_data.get(str, "Plate")
     led_filter = plate_data.get(str, "LED Filter")
     led_filter_without_total = led_filter.split(" ")[0] if led_filter else None
+    filters = led_filter_without_total.split("+") if led_filter_without_total else []
     exposure_duration_setting_key = (
         f"{led_filter_without_total} Exposure"
-        if led_filter_without_total
+        if led_filter_without_total and len(filters) == 1
         else "Exposure"
     )
     illumination_setting_key = (
         f"{led_filter_without_total} Preset Intensity"
-        if led_filter_without_total
+        if led_filter_without_total and len(filters) == 1
         else "Preset Intensity"
     )
+    if not led_filter_without_total:
+        pass
+    feature_names = _build_feature_names(filters)
+    features = [
+        feature
+        for feature_name in feature_names
+        if (feature := _build_feature(feature_name, plate_data))
+    ]
+
     measurement = Measurement(
         type_=MeasurementType.OPTICAL_IMAGING,
         identifier=random_uuid_str(),
@@ -68,15 +77,7 @@ def _create_measurement(plate_data: SeriesData) -> Measurement:
         illumination_setting=plate_data.get(float, illumination_setting_key),
         processed_data=ProcessedData(
             identifier=random_uuid_str(),
-            features=[
-                value
-                for feature in constants.IMAGE_FEATURES
-                if (
-                    value := _build_feature(
-                        feature, plate_data, led_filter_without_total
-                    )
-                )
-            ],
+            features=features,
         ),
     )
     if not (measurement.processed_data and measurement.processed_data.features):
@@ -84,32 +85,41 @@ def _create_measurement(plate_data: SeriesData) -> Measurement:
     return measurement
 
 
-def _build_feature(
-    feature: str, plate_data: SeriesData, led_filter: str | None
-) -> ImageFeature | None:
-    if led_filter:
-        led_number = re.search(r"\d+", led_filter)
-        if not led_number:
-            error_msg = f"Unable to interpret LED number from {led_filter}"
-            raise AllotropeParsingError(error_msg)
-        feature = feature.format(filter=led_filter, led_number=led_number.group())
-    else:
-        feature = feature.format(filter="", led_number="").replace("  ", " ")
-    if not plate_data.get(float, feature):
+def _build_feature_names(led_filters: list[str]) -> list[str]:
+    feature_names = []
+    seen = set()
+
+    for feature in constants.IMAGE_FEATURES:
+        for led_filter in led_filters:
+            led_number = re.search(r"\d+", led_filter)
+            if not led_number:
+                error_msg = f"Unable to interpret LED number from {led_filter}"
+                raise AllotropeParsingError(error_msg)
+
+            formatted_feature = feature.format(
+                filter=led_filter, led_number=led_number.group()
+            )
+            if formatted_feature not in seen:
+                feature_names.append(formatted_feature)
+                seen.add(formatted_feature)
+
+    return feature_names
+
+
+def _build_feature(feature: str, plate_data: SeriesData) -> ImageFeature | None:
+    value = plate_data.get(float, feature)
+    if value is None:
         return None
-    return ImageFeature(
-        identifier=random_uuid_str(),
-        feature=feature,
-        result=plate_data.get(float, feature, NaN),
-    )
+    return ImageFeature(identifier=random_uuid_str(), feature=feature, result=value)
 
 
 def create_measurement_group(
-    data: SeriesData, plate_info: SeriesData
+    well_data: list[SeriesData], plate_info: SeriesData
 ) -> MeasurementGroup:
+    measurements = [_create_measurement(well_row) for well_row in well_data]
     return MeasurementGroup(
-        measurements=[_create_measurement(data)],
+        measurements=measurements,
         plate_well_count=96,
-        measurement_time=data[str, "Read Date"],
+        measurement_time=well_data[0][str, "Read Date"],
         analyst=plate_info.get(str, "Saved By:"),
     )
