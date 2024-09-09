@@ -125,7 +125,7 @@ def create_measurement_groups(
                     sample_identifier=f"{well_plate_identifier}_{well_position}",
                     detection_type=constants.DETECTION_TYPE,
                     processed_data=ProcessedData(
-                        random_uuid_str(),
+                        identifier=random_uuid_str(),
                         features=[
                             ImageFeature(
                                 identifier=random_uuid_str(),

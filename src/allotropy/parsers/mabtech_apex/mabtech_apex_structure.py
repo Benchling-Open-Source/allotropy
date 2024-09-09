@@ -3,6 +3,7 @@ from __future__ import annotations
 import logging
 import re
 
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
     ImageFeature,
     Measurement,
@@ -74,6 +75,7 @@ def _create_measurement(plate_data: SeriesData) -> Measurement:
         led_filter=led_filter,
         exposure_duration_setting=plate_data.get(float, exposure_duration_setting_key),
         illumination_setting=plate_data.get(float, illumination_setting_key),
+        illumination_setting_unit=UNITLESS,
         processed_data=ProcessedData(
             identifier=random_uuid_str(),
             features=features,

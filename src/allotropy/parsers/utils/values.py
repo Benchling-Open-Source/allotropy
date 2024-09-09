@@ -10,7 +10,8 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     JsonFloat,
     TQuantityValue,
 )
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
+from allotropy.parsers.utils.units import get_quantity_class
 
 PrimitiveValue = str | int | float
 
@@ -120,6 +121,19 @@ def quantity_or_none(
         return value_cls(value=value[assert_not_none(index, msg="Cannot provide list to quantity_or_none without index")])  # type: ignore[call-arg]
     # Typing does not know that all subclasses of TQuantityValue have default value for unit set.
     return value_cls(value=value)  # type: ignore[call-arg]
+
+
+def quantity_or_none_from_unit(
+    unit: str | None,
+    value: JsonFloat | list[JsonFloat] | list[int] | None,
+) -> TQuantityValue | None:
+    if value is None:
+        return None
+    value_cls = get_quantity_class(unit)
+    if not value_cls:
+        msg = f"Must provide valid unit when value is non-null, got: {unit}"
+        raise AllotropyParserError(msg)
+    return quantity_or_none(value_cls, value)
 
 
 T = TypeVar("T")
