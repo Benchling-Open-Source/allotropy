@@ -103,27 +103,25 @@ class SoftmaxproParser(VendorParser):
     def _get_plate_reader_document_item(
         self, plate_block: PlateBlock, position: str
     ) -> PlateReaderDocumentItem | None:
-        plate_block_type = plate_block.get_plate_block_type()
-
         measurement_document: list[MeasurementDocument]
 
-        if plate_block_type == "Absorbance":
+        if plate_block.measurement_type == "Absorbance":
             measurement_document = self._get_absorbance_measurement_document(
                 plate_block,
                 position,
             )
-        elif plate_block_type == "Luminescence":
+        elif plate_block.measurement_type == "Luminescence":
             measurement_document = self._get_luminescence_measurement_document(
                 plate_block,
                 position,
             )
-        elif plate_block_type == "Fluorescence":
+        elif plate_block.measurement_type == "Fluorescence":
             measurement_document = self._get_fluorescence_measurement_document(
                 plate_block,
                 position,
             )
         else:
-            msg = f"{plate_block_type} is not a valid plate block type."
+            msg = f"{plate_block.measurement_type} is not a valid plate block type."
             raise AllotropeConversionError(msg)
 
         if not measurement_document:
@@ -279,7 +277,7 @@ class SoftmaxproParser(VendorParser):
         return [
             DataSourceDocumentItem(
                 data_source_identifier=data_source.uuid,
-                data_source_feature=plate_block.get_plate_block_type(),
+                data_source_feature=plate_block.measurement_type,
             )
             for data_source in plate_block.iter_data_elements(position)
         ]

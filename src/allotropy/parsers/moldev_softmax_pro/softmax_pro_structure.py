@@ -635,10 +635,10 @@ class PlateBlock(ABC, Block):
         read_mode = header_series[5]
         return get_key_or_error("read mode", read_mode, plate_block_cls)
 
-    @staticmethod
+    @property
     @abstractmethod
-    def get_plate_block_type() -> str:
-        ...
+    def measurement_type(self) -> str:
+        raise NotImplementedError
 
     @classmethod
     def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
@@ -700,8 +700,8 @@ class PlateBlock(ABC, Block):
 
 @dataclass(frozen=True)
 class FluorescencePlateBlock(PlateBlock):
-    @staticmethod
-    def get_plate_block_type() -> str:
+    @property
+    def measurement_type(self) -> str:
         return "Fluorescence"
 
     @classmethod
@@ -814,8 +814,8 @@ class FluorescencePlateBlock(PlateBlock):
 
 @dataclass(frozen=True)
 class LuminescencePlateBlock(PlateBlock):
-    @staticmethod
-    def get_plate_block_type() -> str:
+    @property
+    def measurement_type(self) -> str:
         return "Luminescence"
 
     @classmethod
@@ -889,8 +889,8 @@ class LuminescencePlateBlock(PlateBlock):
 
 @dataclass(frozen=True)
 class AbsorbancePlateBlock(PlateBlock):
-    @staticmethod
-    def get_plate_block_type() -> str:
+    @property
+    def measurement_type(self) -> str:
         return "Absorbance"
 
     @classmethod
@@ -972,8 +972,8 @@ class BlockList:
                     group_blocks.append(GroupBlock.create(sub_reader))
             elif sub_reader.match("^Plate"):
                 header_series = PlateBlock.read_header(sub_reader)
-                cls = PlateBlock.get_plate_block_cls(header_series)
-                header = cls.parse_header(header_series)
+                plate_block_cls = PlateBlock.get_plate_block_cls(header_series)
+                header = plate_block_cls.parse_header(header_series)
 
                 export_format_to_data_format = {
                     ExportFormat.TIME_FORMAT.value: TimeData,
@@ -984,7 +984,7 @@ class BlockList:
                 )
                 block_data = data_format.create(sub_reader, header)
 
-                plate_blocks[header.name] = cls(
+                plate_blocks[header.name] = plate_block_cls(
                     block_type="Plate",
                     header=header,
                     block_data=block_data,
