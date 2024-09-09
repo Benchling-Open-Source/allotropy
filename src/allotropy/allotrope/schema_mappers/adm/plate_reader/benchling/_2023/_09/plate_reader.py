@@ -1,6 +1,9 @@
+from __future__ import annotations
+
 from dataclasses import dataclass
 from enum import Enum
 
+from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
@@ -144,6 +147,9 @@ class Measurement:
     image_count_setting: float | None = None
     fluorescent_tag_setting: str | None = None
 
+    # Custom information
+    led_filter: str | None = None
+
 
 @dataclass(frozen=True)
 class MeasurementGroup:
@@ -253,42 +259,51 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_optical_imaging_measurement_document(
         self, measurement: Measurement
     ) -> OpticalImagingMeasurementDocumentItems:
+        device_control_document = OpticalImagingDeviceControlDocumentItem(
+            device_type=measurement.device_type,
+            detection_type=measurement.detection_type,
+            detector_wavelength_setting=quantity_or_none(
+                TQuantityValueNanometer,
+                measurement.detector_wavelength_setting,
+            ),
+            exposure_duration_setting=quantity_or_none(
+                TQuantityValueMilliSecond,
+                measurement.exposure_duration_setting,
+            ),
+            illumination_setting=quantity_or_none(
+                TQuantityValueUnitless, measurement.illumination_setting
+            ),
+            detector_gain_setting=measurement.detector_gain_setting,
+            magnification_setting=quantity_or_none(
+                TQuantityValueUnitless,
+                measurement.magnification_setting,
+            ),
+            transmitted_light_setting=measurement.transmitted_light_setting,
+            auto_focus_setting=measurement.auto_focus_setting,
+            fluorescent_tag_setting=measurement.fluorescent_tag_setting,
+            image_count_setting=quantity_or_none(
+                TQuantityValueUnitless,
+                measurement.image_count_setting,
+            ),
+            excitation_wavelength_setting=quantity_or_none(
+                TQuantityValueNanometer,
+                measurement.excitation_wavelength_setting,
+            ),
+        )
+
         return OpticalImagingMeasurementDocumentItems(
             measurement_identifier=measurement.identifier,
             sample_document=self._get_sample_document(measurement),
             device_control_aggregate_document=OpticalImagingDeviceControlAggregateDocument(
                 device_control_document=[
-                    OpticalImagingDeviceControlDocumentItem(
-                        device_type=measurement.device_type,
-                        detection_type=measurement.detection_type,
-                        detector_wavelength_setting=quantity_or_none(
-                            TQuantityValueNanometer,
-                            measurement.detector_wavelength_setting,
-                        ),
-                        exposure_duration_setting=quantity_or_none(
-                            TQuantityValueMilliSecond,
-                            measurement.exposure_duration_setting,
-                        ),
-                        illumination_setting=quantity_or_none(
-                            TQuantityValueUnitless, measurement.illumination_setting
-                        ),
-                        detector_gain_setting=measurement.detector_gain_setting,
-                        magnification_setting=quantity_or_none(
-                            TQuantityValueUnitless,
-                            measurement.magnification_setting,
-                        ),
-                        transmitted_light_setting=measurement.transmitted_light_setting,
-                        auto_focus_setting=measurement.auto_focus_setting,
-                        fluorescent_tag_setting=measurement.fluorescent_tag_setting,
-                        image_count_setting=quantity_or_none(
-                            TQuantityValueUnitless,
-                            measurement.image_count_setting,
-                        ),
-                        excitation_wavelength_setting=quantity_or_none(
-                            TQuantityValueNanometer,
-                            measurement.excitation_wavelength_setting,
-                        ),
+                    add_custom_information_document(
+                        device_control_document,
+                        {
+                            "LED filter": measurement.led_filter,
+                        },
                     )
+                    if measurement.led_filter
+                    else device_control_document
                 ]
             ),
             processed_data_aggregate_document=self._get_processed_data_aggregate_document(
@@ -442,7 +457,7 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_processed_data_aggregate_document(
         self, data: ProcessedData | None
     ) -> ProcessedDataAggregateDocument | None:
-        if not data:
+        if not (data and data.features):
             return None
 
         # NOTE: this / ProcessedData operating only on "image features" is almost certainly not comprehensive,

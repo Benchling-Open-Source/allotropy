@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Allow try_int to handle decimal point in int values (e.g. 1.0)
+
 ### Changed
 
 - Updated Softmax Pro adapter to use the REC/2024/06 plate reader schema
@@ -197,6 +199,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated schema cleaner to handle object schemas with no properties
 - Updated Vi-Cell XR requirements doc to reflect support for .txt files
 - Handle dashes and slashes in custom information document key names
+- Updated Mabtech Apex fields to support LED Filter
 
 ### Changed
 
