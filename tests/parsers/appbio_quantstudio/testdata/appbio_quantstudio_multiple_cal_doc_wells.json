@@ -1,4 +1,5 @@
 {
+    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest",
     "qPCR aggregate document": {
         "device system document": {
             "device identifier": "278880031",
@@ -464,7 +465,7 @@
             "software name": "Thermo QuantStudio",
             "software version": "1.0",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.29"
+            "ASM converter version": "0.1.49"
         },
         "calculated data aggregate document": {
             "calculated data document": [
@@ -495,6 +496,14 @@
                             {
                                 "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
                                 "data source feature": "cycle threshold result"
+                            },
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
+                                "data source feature": "y-intercept"
+                            },
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
+                                "data source feature": "slope"
                             }
                         ]
                     },
@@ -511,6 +520,14 @@
                             {
                                 "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_2",
                                 "data source feature": "cycle threshold result"
+                            },
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_2",
+                                "data source feature": "y-intercept"
+                            },
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_2",
+                                "data source feature": "slope"
                             }
                         ]
                     },
@@ -607,6 +624,14 @@
                             {
                                 "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
                                 "data source feature": "cycle threshold result"
+                            },
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
+                                "data source feature": "y-intercept"
+                            },
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
+                                "data source feature": "slope"
                             }
                         ]
                     },
@@ -623,6 +648,14 @@
                             {
                                 "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_3",
                                 "data source feature": "cycle threshold result"
+                            },
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_3",
+                                "data source feature": "y-intercept"
+                            },
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_3",
+                                "data source feature": "slope"
                             }
                         ]
                     },
@@ -694,6 +727,5 @@
                 }
             ]
         }
-    },
-    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest"
+    }
 }
