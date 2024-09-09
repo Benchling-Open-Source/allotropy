@@ -11,12 +11,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added `supported_extensions` to Vendor, allowing parsers to specify supported file extensions.
 - Added support for `multiple read modes` in `Agilent Gen5` Adapter
+- Added error message for zero plate reader documents in `Softmax Pro` Adapter
+- Update data sources for quantity calculated documents with y-intercept and Slope in AppBio Quantstudio
 
 ### Fixed
 
+- Allow try_int to handle decimal point in int values (e.g. 1.0)
+
 ### Changed
 
+- Updated Softmax Pro adapter to use the REC/2024/06 plate reader schema
+- Remove `NaN` measurements from Softmax Pro adapter to comply with the new `REC` schema
 - Change Unchained Labs Lunatic reader so that it supports both formats (with/without header) for both file types.
+- Disregard compartment temperature in `Softmax Pro` adapter when is reported as 0.
 
 ### Deprecated
 
@@ -192,6 +199,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated schema cleaner to handle object schemas with no properties
 - Updated Vi-Cell XR requirements doc to reflect support for .txt files
 - Handle dashes and slashes in custom information document key names
+- Updated Mabtech Apex fields to support LED Filter
 
 ### Changed
 

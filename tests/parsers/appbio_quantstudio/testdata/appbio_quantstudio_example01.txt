@@ -35,7 +35,7 @@
 
 [Sample Setup]
 Well	Well Position	Sample Name	Sample Color	Biogroup Name	Biogroup Color	Target Name	Target Color	Task	Reporter	Quencher	Quantity	Comments
-1	A1	1SAMPLE_1.1	"RGB(176,23,31)"			TARGET_1	"RGB(176,23,31)"	UNKNOWN	SYBR	None
+1.0	A1	1SAMPLE_1.1	"RGB(176,23,31)"			TARGET_1	"RGB(176,23,31)"	UNKNOWN	SYBR	None
 2	A2	2SAMPLE_1.2	"RGB(0,0,255)"			TARGET_1	"RGB(176,23,31)"	UNKNOWN	SYBR	None
 3	A3	3SAMPLE_1.3	"RGB(0,139,69)"			TARGET_1	"RGB(176,23,31)"	UNKNOWN	SYBR	None
 4	A4	4SAMPLE_2.1	"RGB(255,127,0)"			TARGET_1	"RGB(176,23,31)"	UNKNOWN	SYBR	None

@@ -24,13 +24,23 @@ def build_quantity(well_item: WellItem) -> CalculatedDocument | None:
     if (quantity := well_item.result.quantity) is None:
         return None
 
+    data_sources = []
+    if well_item.result.cycle_threshold_result is not None:
+        data_sources.append(
+            DataSource(feature="cycle threshold result", reference=well_item)
+        )
+
+    if well_item.result.y_intercept is not None:
+        data_sources.append(DataSource(feature="y-intercept", reference=well_item))
+
+    if well_item.result.slope is not None:
+        data_sources.append(DataSource(feature="slope", reference=well_item))
+
     return CalculatedDocument(
         uuid=random_uuid_str(),
         name="quantity",
         value=quantity,
-        data_sources=[
-            DataSource(feature="cycle threshold result", reference=well_item),
-        ],
+        data_sources=data_sources,
     )
 
 

@@ -8,7 +8,6 @@ import re
 
 import pandas as pd
 
-from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat, NaN
 from allotropy.exceptions import (
     AllotropeConversionError,
     get_key_or_error,
@@ -20,8 +19,6 @@ from allotropy.parsers.utils.values import (
     assert_not_none,
     num_to_chars,
     try_float,
-    try_float_or_nan,
-    try_float_or_none,
     try_int,
     try_int_or_none,
     try_non_nan_float_or_none,
@@ -89,7 +86,7 @@ class Block:
 @dataclass(frozen=True)
 class GroupDataElementEntry:
     name: str
-    value: JsonFloat
+    value: float
 
 
 @dataclass(frozen=True)
@@ -137,29 +134,32 @@ class GroupSampleData:
                     position=row[str, ["Well", "Wells"]],
                     plate=row[str, "WellPlateName"],
                     entries=[
-                        GroupDataElementEntry(
-                            name=column_name,
-                            value=cls._get_value_from_col(row, column_name),
-                        )
+                        element_entry
                         for column_name in normal_columns
+                        if (element_entry := cls._get_element_entry(row, column_name))
+                        is not None
                     ],
                 )
                 for row in row_data
             ],
             aggregated_entries=[
-                GroupDataElementEntry(
-                    name=column_name,
-                    value=cls._get_value_from_col(top_row, column_name),
-                )
+                element_entry
                 for column_name in aggregated_columns
+                if (element_entry := cls._get_element_entry(top_row, column_name))
+                is not None
             ],
         )
 
     @classmethod
-    def _get_value_from_col(cls, data_row: SeriesData, column_name: str) -> JsonFloat:
-        if data_row.get(str, column_name) in VALID_NAN_VALUES:
-            return NaN
-        return data_row[float, column_name]
+    def _get_element_entry(
+        cls, data_row: SeriesData, column_name: str
+    ) -> GroupDataElementEntry | None:
+        if (value := data_row.get(float, column_name)) is not None:
+            return GroupDataElementEntry(
+                name=column_name,
+                value=value,
+            )
+        return None
 
 
 @dataclass(frozen=True)
@@ -282,7 +282,7 @@ class DataElement:
     temperature: float | None
     wavelength: float
     position: str
-    value: JsonFloat
+    value: float
     sample_id: str | None = None
 
     @property
@@ -308,10 +308,14 @@ class PlateWavelengthData:
         wavelength: float,
         df_data: pd.DataFrame,
     ) -> PlateWavelengthData:
+        # Since value is required for the measurement class (absorbance, luminescense and fluorescense)
+        # we don't store data for NaN values
+        # TODO: Report error documents for NaN values
         data = {
             f"{num_to_chars(row_idx)}{col}": value
             for row_idx, *row_data in df_data.itertuples()
-            for col, value in zip(df_data.columns, row_data, strict=True)
+            for col, raw_value in zip(df_data.columns, row_data, strict=True)
+            if (value := try_non_nan_float_or_none(raw_value)) is not None
         }
         return PlateWavelengthData(
             wavelength,
@@ -322,7 +326,7 @@ class PlateWavelengthData:
                     temperature=temperature,
                     wavelength=wavelength,
                     position=str(position),
-                    value=try_float_or_nan(value),
+                    value=value,
                 )
                 for position, value in data.items()
             },
@@ -361,7 +365,7 @@ class PlateKineticData:
         set_columns(data, columns)
 
         # get temperature from the first column of the first row with value
-        temperature = try_float_or_none(
+        temperature = try_non_nan_float_or_none(
             str(data.iloc[int(pd.to_numeric(data.first_valid_index())), 1])
         )
 
@@ -467,6 +471,8 @@ class PlateData:
     def iter_data_elements(self, position: str) -> Iterator[DataElement]:
         for kinetic_data in self.raw_data.kinetic_data:
             for wavelength_data in kinetic_data.wavelength_data:
+                if position not in wavelength_data.data_elements:
+                    continue
                 yield wavelength_data.data_elements[position]
 
 
@@ -492,9 +498,10 @@ class TimeKineticData:
                     temperature=temperature,
                     wavelength=wavelength,
                     position=str(position),
-                    value=try_float_or_nan(str(value)),
+                    value=value,
                 )
-                for position, value in row.iloc[2:].items()
+                for position, raw_value in row.iloc[2:].items()
+                if (value := try_non_nan_float_or_none(str(raw_value))) is not None
             },
         )
 
@@ -600,6 +607,8 @@ class TimeData:
     def iter_data_elements(self, position: str) -> Iterator[DataElement]:
         for wavelength_data in self.raw_data.wavelength_data:
             for kinetic_data in wavelength_data.kinetic_data:
+                if position not in kinetic_data.data_elements:
+                    continue
                 yield kinetic_data.data_elements[position]
 
 
