@@ -8,11 +8,21 @@ import re
 
 import pandas as pd
 
+from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
+    CalculatedDataItem,
+    Measurement,
+    MeasurementGroup,
+    MeasurementType,
+    Metadata,
+    ScanPositionSettingPlateReader,
+)
 from allotropy.exceptions import (
     AllotropeConversionError,
     get_key_or_error,
 )
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import CsvReader
+from allotropy.parsers.moldev_softmax_pro.constants import DEVICE_TYPE, EPOCH
 from allotropy.parsers.utils.pandas import rm_df_columns, SeriesData, set_columns
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
@@ -1016,11 +1026,11 @@ class BlockList:
 
 
 @dataclass(frozen=True)
-class Data:
+class StructureData:
     block_list: BlockList
 
     @staticmethod
-    def create(reader: CsvReader) -> Data:
+    def create(reader: CsvReader) -> StructureData:
         block_list = BlockList.create(reader)
 
         for group_block in block_list.group_blocks:
@@ -1032,4 +1042,149 @@ class Data:
                     ):
                         data_element.sample_id = group_data_element.sample
 
-        return Data(block_list)
+        return StructureData(block_list)
+
+
+def create_metadata(file_name: str) -> Metadata:
+    return Metadata(
+        asm_file_identifier=NOT_APPLICABLE,
+        device_identifier=NOT_APPLICABLE,
+        model_number=NOT_APPLICABLE,
+        data_system_instance_id=NOT_APPLICABLE,
+        unc_path=NOT_APPLICABLE,
+        software_name="SoftMax Pro",
+        file_name=file_name,
+    )
+
+
+def _create_fluorescence_measurements(
+    plate_block: PlateBlock, position: str
+) -> list[Measurement]:
+    return [
+        Measurement(
+            type_=MeasurementType.FLUORESCENCE,
+            identifier=data_element.uuid,
+            fluorescence=data_element.value,
+            # A temperature of 0 indicates the temperature was not actualy read.
+            compartment_temperature=data_element.temperature or None,
+            # Sample document
+            location_identifier=data_element.position,
+            well_plate_identifier=plate_block.header.name,
+            sample_identifier=data_element.sample_identifier,
+            # Device Control document
+            device_type=DEVICE_TYPE,
+            detection_type=plate_block.header.read_mode,
+            scan_position_setting=(
+                ScanPositionSettingPlateReader.top_scan_position__plate_reader_
+                if plate_block.header.scan_position == ScanPosition.TOP
+                else ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_
+            ),
+            detector_wavelength_setting=data_element.wavelength,
+            excitation_wavelength_setting=plate_block.header.excitation_wavelengths[
+                idx
+            ],
+            wavelength_filter_cutoff_setting=plate_block.header.cutoff_filters[idx],
+            number_of_averages=plate_block.header.reads_per_well,
+            detector_gain_setting=plate_block.header.pmt_gain,
+        )
+        for idx, data_element in enumerate(plate_block.iter_data_elements(position))
+    ]
+
+
+def _create_luminescence_measurements(
+    plate_block: PlateBlock, position: str
+) -> list[Measurement]:
+
+    # TODO: is this really necessary?
+    reads_per_well = assert_not_none(
+        plate_block.header.reads_per_well,
+        msg="Unable to find plate block reads per well.",
+    )
+
+    return [
+        Measurement(
+            type_=MeasurementType.LUMINESCENCE,
+            identifier=data_element.uuid,
+            luminescence=data_element.value,
+            # A temperature of 0 indicates the temperature was not actualy read.
+            compartment_temperature=data_element.temperature or None,
+            # Sample document
+            sample_identifier=data_element.sample_identifier,
+            location_identifier=data_element.position,
+            well_plate_identifier=plate_block.header.name,
+            # Device control document
+            device_type=DEVICE_TYPE,
+            detection_type=plate_block.header.read_mode,
+            detector_wavelength_setting=data_element.wavelength,
+            number_of_averages=reads_per_well,
+            detector_gain_setting=plate_block.header.pmt_gain,
+        )
+        for data_element in plate_block.iter_data_elements(position)
+    ]
+
+
+def _create_absorbance_measurements(
+    plate_block: PlateBlock, position: str
+) -> list[Measurement]:
+    return [
+        Measurement(
+            type_=MeasurementType.ULTRAVIOLET_ABSORBANCE,
+            identifier=data_element.uuid,
+            absorbance=data_element.value,
+            # A temperature of 0 indicates the temperature was not actualy read.
+            compartment_temperature=data_element.temperature or None,
+            # Sample document
+            sample_identifier=data_element.sample_identifier,
+            location_identifier=data_element.position,
+            well_plate_identifier=plate_block.header.name,
+            # Device control document
+            device_type=DEVICE_TYPE,
+            detection_type=plate_block.header.read_mode,
+            detector_wavelength_setting=data_element.wavelength,
+        )
+        for data_element in plate_block.iter_data_elements(position)
+    ]
+
+
+def _create_measurement_group(
+    plate_block: PlateBlock, position: str
+) -> MeasurementGroup | None:
+    measurements: list[Measurement] = []
+
+    # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
+    if plate_block.measurement_type == "Absorbance":
+        measurements = _create_absorbance_measurements(plate_block, position)
+    elif plate_block.measurement_type == "Luminescence":
+        measurements = _create_luminescence_measurements(plate_block, position)
+    elif plate_block.measurement_type == "Fluorescence":
+        measurements = _create_fluorescence_measurements(plate_block, position)
+    else:
+        msg = f"{plate_block.measurement_type} is not a valid plate block type."
+        raise AllotropeConversionError(msg)
+
+    if not measurements:
+        return None
+
+    return MeasurementGroup(
+        measurements=measurements,
+        plate_well_count=plate_block.header.num_wells,
+        measurement_time=EPOCH,
+    )
+
+
+def create_measurement_groups(data: StructureData) -> list[MeasurementGroup]:
+    measurement_groups = [
+        measurement_group
+        for plate_block in data.block_list.plate_blocks.values()
+        for position in plate_block.iter_wells()
+        if (measurement_group := _create_measurement_group(plate_block, position))
+    ]
+    if not measurement_groups:
+        msg = "Invalid data - the file contains invalid or missing measurement data. Unable to construct ASM."
+        raise AllotropeConversionError(msg)
+
+    return measurement_groups
+
+
+def create_calculated_data() -> list[CalculatedDataItem]:
+    return []

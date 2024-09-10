@@ -151,7 +151,7 @@ class Data:
 
 
 class Mapper(SchemaMapper[Data, Model]):
-    MANIFEST = "http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest"
+    MANIFEST = "http://purl.allotrope.org/manifests/plate-reader/REC/2024/06/plate-reader.manifest"
 
     def map_model(self, data: Data) -> Model:
         return Model(
@@ -279,9 +279,14 @@ class Mapper(SchemaMapper[Data, Model]):
                             TQuantityValueMillimeter,
                             measurement.detector_distance_setting,
                         ),
-                        scan_position_setting__plate_reader_=measurement.scan_position_setting.value
-                        if measurement.scan_position_setting
-                        else None,
+                        scan_position_setting__plate_reader_=(
+                            measurement.scan_position_setting.value
+                            if measurement.scan_position_setting
+                            else None
+                        ),
+                        number_of_averages=quantity_or_none(
+                            TQuantityValueNumber, measurement.number_of_averages
+                        ),
                         detector_gain_setting=measurement.detector_gain_setting,
                         detector_carriage_speed_setting=measurement.detector_carriage_speed,
                     )
@@ -332,9 +337,11 @@ class Mapper(SchemaMapper[Data, Model]):
                             TQuantityValueMillimeter,
                             measurement.detector_distance_setting,
                         ),
-                        scan_position_setting__plate_reader_=measurement.scan_position_setting.value
-                        if measurement.scan_position_setting
-                        else None,
+                        scan_position_setting__plate_reader_=(
+                            measurement.scan_position_setting.value
+                            if measurement.scan_position_setting
+                            else None
+                        ),
                         detector_gain_setting=measurement.detector_gain_setting,
                         number_of_averages=quantity_or_none(
                             TQuantityValueNumber, measurement.number_of_averages
@@ -360,9 +367,11 @@ class Mapper(SchemaMapper[Data, Model]):
             sample_identifier=measurement.sample_identifier,
             location_identifier=measurement.location_identifier,
             well_plate_identifier=measurement.well_plate_identifier,
-            sample_role_type=measurement.sample_role_type.value
-            if measurement.sample_role_type
-            else None,
+            sample_role_type=(
+                measurement.sample_role_type.value
+                if measurement.sample_role_type
+                else None
+            ),
         )
 
     def _get_calculated_data_aggregate_document(
