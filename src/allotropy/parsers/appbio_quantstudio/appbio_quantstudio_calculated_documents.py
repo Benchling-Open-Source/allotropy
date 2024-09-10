@@ -96,7 +96,8 @@ def build_quantity_mean(
 def build_quantity_sd(
     view_st_data: ViewData[WellItem],
     view_tr_data: ViewData[WellItem],
-    sample: str, target: str
+    sample: str,
+    target: str,
 ) -> CalculatedDocument | None:
     well_items = view_st_data.get_leaf_item(sample, target)
     if (quantity_sd := well_items[0].result.quantity_sd) is None:
@@ -570,10 +571,14 @@ def iter_comparative_ct_calc_docs(
             yield from calc_doc.iter_struct()
 
         if target != r_target:
-            if calc_doc := build_rq_min(view_st_data, sample, target, r_sample, r_target):
+            if calc_doc := build_rq_min(
+                view_st_data, sample, target, r_sample, r_target
+            ):
                 yield from calc_doc.iter_struct()
 
-            if calc_doc := build_rq_max(view_st_data, sample, target, r_sample, r_target):
+            if calc_doc := build_rq_max(
+                view_st_data, sample, target, r_sample, r_target
+            ):
                 yield from calc_doc.iter_struct()
 
 
@@ -629,10 +634,14 @@ def iter_relative_standard_curve_calc_docs(
         if calc_doc := build_ct_sd(view_st_data, sample, target):
             yield from calc_doc.iter_struct()
 
-        if calc_doc := build_relative_rq_min(view_st_data, view_tr_data, sample, target):
+        if calc_doc := build_relative_rq_min(
+            view_st_data, view_tr_data, sample, target
+        ):
             yield from calc_doc.iter_struct()
 
-        if calc_doc := build_relative_rq_max(view_st_data, view_tr_data, sample, target):
+        if calc_doc := build_relative_rq_max(
+            view_st_data, view_tr_data, sample, target
+        ):
             yield from calc_doc.iter_struct()
 
     for target in view_tr_data.data:
