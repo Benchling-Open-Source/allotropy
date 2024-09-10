@@ -4,12 +4,15 @@ from abc import ABC, abstractmethod
 from collections.abc import Iterator
 from dataclasses import dataclass
 from enum import Enum
+from itertools import chain
 import re
 
 import pandas as pd
 
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
     CalculatedDataItem,
+    DataSource,
     Measurement,
     MeasurementGroup,
     MeasurementType,
@@ -1083,7 +1086,11 @@ def _create_fluorescence_measurements(
             excitation_wavelength_setting=plate_block.header.excitation_wavelengths[
                 idx
             ],
-            wavelength_filter_cutoff_setting=plate_block.header.cutoff_filters[idx],
+            wavelength_filter_cutoff_setting=(
+                plate_block.header.cutoff_filters[idx]
+                if plate_block.header.cutoff_filters
+                else None
+            ),
             number_of_averages=plate_block.header.reads_per_well,
             detector_gain_setting=plate_block.header.pmt_gain,
         )
@@ -1152,6 +1159,7 @@ def _create_measurement_group(
     measurements: list[Measurement] = []
 
     # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
+    # TODO: have one _create_measurements and move this if there.
     if plate_block.measurement_type == "Absorbance":
         measurements = _create_absorbance_measurements(plate_block, position)
     elif plate_block.measurement_type == "Luminescence":
@@ -1186,5 +1194,108 @@ def create_measurement_groups(data: StructureData) -> list[MeasurementGroup]:
     return measurement_groups
 
 
-def create_calculated_data() -> list[CalculatedDataItem]:
-    return []
+def create_calculated_data(data: StructureData) -> list[CalculatedDataItem]:
+    return _get_reduced_calc_docs(data) + _get_group_calc_docs(data)
+
+
+def _get_calc_docs_data_sources(
+    plate_block: PlateBlock, position: str
+) -> list[DataSource]:
+    return [
+        DataSource(
+            identifier=data_source.uuid,
+            feature=plate_block.measurement_type,
+        )
+        for data_source in plate_block.iter_data_elements(position)
+    ]
+
+
+def _build_calc_doc(
+    name: str,
+    value: float,
+    data_sources: list[DataSource],
+    description: str | None = None,
+) -> CalculatedDataItem:
+    return CalculatedDataItem(
+        identifier=random_uuid_str(),
+        name=name,
+        value=value,
+        unit=UNITLESS,
+        data_sources=data_sources,
+        description=description,
+    )
+
+
+def _get_reduced_calc_docs(data: StructureData) -> list[CalculatedDataItem]:
+    return [
+        _build_calc_doc(
+            name="Reduced",
+            value=reduced_data_element.value,
+            data_sources=_get_calc_docs_data_sources(
+                plate_block,
+                reduced_data_element.position,
+            ),
+        )
+        for plate_block in data.block_list.plate_blocks.values()
+        for reduced_data_element in plate_block.iter_reduced_data()
+    ]
+
+
+def _get_group_agg_calc_docs(
+    data: StructureData,
+    group_block: GroupBlock,
+    group_sample_data: GroupSampleData,
+) -> list[CalculatedDataItem]:
+    return [
+        _build_calc_doc(
+            name=aggregated_entry.name,
+            value=aggregated_entry.value,
+            data_sources=list(
+                chain.from_iterable(
+                    _get_calc_docs_data_sources(
+                        data.block_list.plate_blocks[group_data_element.plate],
+                        group_data_element.position,
+                    )
+                    for group_data_element in group_sample_data.data_elements
+                )
+            ),
+            description=group_block.group_columns.data.get(aggregated_entry.name),
+        )
+        for aggregated_entry in group_sample_data.aggregated_entries
+    ]
+
+
+def _get_group_simple_calc_docs(
+    data: StructureData,
+    group_block: GroupBlock,
+    group_sample_data: GroupSampleData,
+) -> list[CalculatedDataItem]:
+    calculated_documents = []
+    for group_data_element in group_sample_data.data_elements:
+        data_sources = _get_calc_docs_data_sources(
+            data.block_list.plate_blocks[group_data_element.plate],
+            group_data_element.position,
+        )
+        for entry in group_data_element.entries:
+            calculated_documents.append(
+                _build_calc_doc(
+                    name=entry.name,
+                    value=entry.value,
+                    data_sources=data_sources,
+                    description=group_block.group_columns.data.get(entry.name),
+                )
+            )
+    return calculated_documents
+
+
+def _get_group_calc_docs(data: StructureData) -> list[CalculatedDataItem]:
+    calculated_documents = []
+    for group_block in data.block_list.group_blocks:
+        for group_sample_data in group_block.group_data.sample_data:
+            calculated_documents += _get_group_agg_calc_docs(
+                data, group_block, group_sample_data
+            )
+            calculated_documents += _get_group_simple_calc_docs(
+                data, group_block, group_sample_data
+            )
+    return calculated_documents
