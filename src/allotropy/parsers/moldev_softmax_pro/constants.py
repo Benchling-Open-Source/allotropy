@@ -1,5 +1,3 @@
-from enum import Enum
-
 DEVICE_TYPE = "plate reader"
 # The epoch is a place holder for measurement time since is not optional but
 # the input file does not include a time that can be used.
