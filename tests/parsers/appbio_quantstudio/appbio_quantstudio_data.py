@@ -1524,40 +1524,40 @@ def get_rel_std_curve_data(file_name: str) -> Data:
     ]
     calculated_documents = [
         CalculatedDocument(
-            uuid='TEST_ID_6',
-            name='quantity mean',
+            uuid="TEST_ID_6",
+            name="quantity mean",
             value=818.012,
             data_sources=[
                 DataSource(
-                    feature='quantity',
+                    feature="quantity",
                     reference=CalculatedDocument(
-                        uuid='TEST_ID_4',
-                        name='quantity',
+                        uuid="TEST_ID_4",
+                        name="quantity",
                         value=794.91,
                         data_sources=[
                             DataSource(
-                                feature='cycle threshold result',
+                                feature="cycle threshold result",
                                 reference=Referenceable(
-                                    uuid='TEST_ID_0',
+                                    uuid="TEST_ID_0",
                                 ),
                             ),
                             DataSource(
-                                feature='y-intercept',
+                                feature="y-intercept",
                                 reference=CalculatedDocument(
-                                    uuid='TEST_ID_2',
-                                    name='y intercept',
+                                    uuid="TEST_ID_2",
+                                    name="y intercept",
                                     value=39.662,
                                     data_sources=[
                                         DataSource(
-                                            feature='cycle threshold result',
+                                            feature="cycle threshold result",
                                             reference=Referenceable(
-                                                uuid='TEST_ID_0',
+                                                uuid="TEST_ID_0",
                                             ),
                                         ),
                                         DataSource(
-                                            feature='cycle threshold result',
+                                            feature="cycle threshold result",
                                             reference=Referenceable(
-                                                uuid='TEST_ID_1',
+                                                uuid="TEST_ID_1",
                                             ),
                                         ),
                                     ],
@@ -1565,22 +1565,22 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                 ),
                             ),
                             DataSource(
-                                feature='slope',
+                                feature="slope",
                                 reference=CalculatedDocument(
-                                    uuid='TEST_ID_3',
-                                    name='slope',
+                                    uuid="TEST_ID_3",
+                                    name="slope",
                                     value=-3.278,
                                     data_sources=[
                                         DataSource(
-                                            feature='cycle threshold result',
+                                            feature="cycle threshold result",
                                             reference=Referenceable(
-                                                uuid='TEST_ID_0',
+                                                uuid="TEST_ID_0",
                                             ),
                                         ),
                                         DataSource(
-                                            feature='cycle threshold result',
+                                            feature="cycle threshold result",
                                             reference=Referenceable(
-                                                uuid='TEST_ID_1',
+                                                uuid="TEST_ID_1",
                                             ),
                                         ),
                                     ],
@@ -1592,35 +1592,35 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                     ),
                 ),
                 DataSource(
-                    feature='quantity',
+                    feature="quantity",
                     reference=CalculatedDocument(
-                        uuid='TEST_ID_5',
-                        name='quantity',
+                        uuid="TEST_ID_5",
+                        name="quantity",
                         value=769.776,
                         data_sources=[
                             DataSource(
-                                feature='cycle threshold result',
+                                feature="cycle threshold result",
                                 reference=Referenceable(
-                                    uuid='TEST_ID_1',
+                                    uuid="TEST_ID_1",
                                 ),
                             ),
                             DataSource(
-                                feature='y-intercept',
+                                feature="y-intercept",
                                 reference=CalculatedDocument(
-                                    uuid='TEST_ID_2',
-                                    name='y intercept',
+                                    uuid="TEST_ID_2",
+                                    name="y intercept",
                                     value=39.662,
                                     data_sources=[
                                         DataSource(
-                                            feature='cycle threshold result',
+                                            feature="cycle threshold result",
                                             reference=Referenceable(
-                                                uuid='TEST_ID_0',
+                                                uuid="TEST_ID_0",
                                             ),
                                         ),
                                         DataSource(
-                                            feature='cycle threshold result',
+                                            feature="cycle threshold result",
                                             reference=Referenceable(
-                                                uuid='TEST_ID_1',
+                                                uuid="TEST_ID_1",
                                             ),
                                         ),
                                     ],
@@ -1628,22 +1628,22 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                 ),
                             ),
                             DataSource(
-                                feature='slope',
+                                feature="slope",
                                 reference=CalculatedDocument(
-                                    uuid='TEST_ID_3',
-                                    name='slope',
+                                    uuid="TEST_ID_3",
+                                    name="slope",
                                     value=-3.278,
                                     data_sources=[
                                         DataSource(
-                                            feature='cycle threshold result',
+                                            feature="cycle threshold result",
                                             reference=Referenceable(
-                                                uuid='TEST_ID_0',
+                                                uuid="TEST_ID_0",
                                             ),
                                         ),
                                         DataSource(
-                                            feature='cycle threshold result',
+                                            feature="cycle threshold result",
                                             reference=Referenceable(
-                                                uuid='TEST_ID_1',
+                                                uuid="TEST_ID_1",
                                             ),
                                         ),
                                     ],
@@ -1658,33 +1658,33 @@ def get_rel_std_curve_data(file_name: str) -> Data:
             iterated=True,
         ),
         CalculatedDocument(
-            uuid='TEST_ID_4',
-            name='quantity',
+            uuid="TEST_ID_4",
+            name="quantity",
             value=794.91,
             data_sources=[
                 DataSource(
-                    feature='cycle threshold result',
+                    feature="cycle threshold result",
                     reference=Referenceable(
-                        uuid='TEST_ID_0',
+                        uuid="TEST_ID_0",
                     ),
                 ),
                 DataSource(
-                    feature='y-intercept',
+                    feature="y-intercept",
                     reference=CalculatedDocument(
-                        uuid='TEST_ID_2',
-                        name='y intercept',
+                        uuid="TEST_ID_2",
+                        name="y intercept",
                         value=39.662,
                         data_sources=[
                             DataSource(
-                                feature='cycle threshold result',
+                                feature="cycle threshold result",
                                 reference=Referenceable(
-                                    uuid='TEST_ID_0',
+                                    uuid="TEST_ID_0",
                                 ),
                             ),
                             DataSource(
-                                feature='cycle threshold result',
+                                feature="cycle threshold result",
                                 reference=Referenceable(
-                                    uuid='TEST_ID_1',
+                                    uuid="TEST_ID_1",
                                 ),
                             ),
                         ],
@@ -1692,22 +1692,22 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                     ),
                 ),
                 DataSource(
-                    feature='slope',
+                    feature="slope",
                     reference=CalculatedDocument(
-                        uuid='TEST_ID_3',
-                        name='slope',
+                        uuid="TEST_ID_3",
+                        name="slope",
                         value=-3.278,
                         data_sources=[
                             DataSource(
-                                feature='cycle threshold result',
+                                feature="cycle threshold result",
                                 reference=Referenceable(
-                                    uuid='TEST_ID_0',
+                                    uuid="TEST_ID_0",
                                 ),
                             ),
                             DataSource(
-                                feature='cycle threshold result',
+                                feature="cycle threshold result",
                                 reference=Referenceable(
-                                    uuid='TEST_ID_1',
+                                    uuid="TEST_ID_1",
                                 ),
                             ),
                         ],
@@ -1718,73 +1718,73 @@ def get_rel_std_curve_data(file_name: str) -> Data:
             iterated=True,
         ),
         CalculatedDocument(
-            uuid='TEST_ID_2',
-            name='y intercept',
+            uuid="TEST_ID_2",
+            name="y intercept",
             value=39.662,
             data_sources=[
                 DataSource(
-                    feature='cycle threshold result',
+                    feature="cycle threshold result",
                     reference=Referenceable(
-                        uuid='TEST_ID_0',
+                        uuid="TEST_ID_0",
                     ),
                 ),
                 DataSource(
-                    feature='cycle threshold result',
+                    feature="cycle threshold result",
                     reference=Referenceable(
-                        uuid='TEST_ID_1',
+                        uuid="TEST_ID_1",
                     ),
                 ),
             ],
             iterated=True,
         ),
         CalculatedDocument(
-            uuid='TEST_ID_3',
-            name='slope',
+            uuid="TEST_ID_3",
+            name="slope",
             value=-3.278,
             data_sources=[
                 DataSource(
-                    feature='cycle threshold result',
+                    feature="cycle threshold result",
                     reference=Referenceable(
-                        uuid='TEST_ID_0',
+                        uuid="TEST_ID_0",
                     ),
                 ),
                 DataSource(
-                    feature='cycle threshold result',
+                    feature="cycle threshold result",
                     reference=Referenceable(
-                        uuid='TEST_ID_1',
+                        uuid="TEST_ID_1",
                     ),
                 ),
             ],
             iterated=True,
         ),
         CalculatedDocument(
-            uuid='TEST_ID_5',
-            name='quantity',
+            uuid="TEST_ID_5",
+            name="quantity",
             value=769.776,
             data_sources=[
                 DataSource(
-                    feature='cycle threshold result',
+                    feature="cycle threshold result",
                     reference=Referenceable(
-                        uuid='TEST_ID_1',
+                        uuid="TEST_ID_1",
                     ),
                 ),
                 DataSource(
-                    feature='y-intercept',
+                    feature="y-intercept",
                     reference=CalculatedDocument(
-                        uuid='TEST_ID_2',
-                        name='y intercept',
+                        uuid="TEST_ID_2",
+                        name="y intercept",
                         value=39.662,
                         data_sources=[
                             DataSource(
-                                feature='cycle threshold result',
+                                feature="cycle threshold result",
                                 reference=Referenceable(
-                                    uuid='TEST_ID_0',
+                                    uuid="TEST_ID_0",
                                 ),
                             ),
                             DataSource(
-                                feature='cycle threshold result',
+                                feature="cycle threshold result",
                                 reference=Referenceable(
-                                    uuid='TEST_ID_1',
+                                    uuid="TEST_ID_1",
                                 ),
                             ),
                         ],
@@ -1792,22 +1792,22 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                     ),
                 ),
                 DataSource(
-                    feature='slope',
+                    feature="slope",
                     reference=CalculatedDocument(
-                        uuid='TEST_ID_3',
-                        name='slope',
+                        uuid="TEST_ID_3",
+                        name="slope",
                         value=-3.278,
                         data_sources=[
                             DataSource(
-                                feature='cycle threshold result',
+                                feature="cycle threshold result",
                                 reference=Referenceable(
-                                    uuid='TEST_ID_0',
+                                    uuid="TEST_ID_0",
                                 ),
                             ),
                             DataSource(
-                                feature='cycle threshold result',
+                                feature="cycle threshold result",
                                 reference=Referenceable(
-                                    uuid='TEST_ID_1',
+                                    uuid="TEST_ID_1",
                                 ),
                             ),
                         ],
@@ -1818,40 +1818,40 @@ def get_rel_std_curve_data(file_name: str) -> Data:
             iterated=True,
         ),
         CalculatedDocument(
-            uuid='TEST_ID_7',
-            name='quantity sd',
+            uuid="TEST_ID_7",
+            name="quantity sd",
             value=29.535,
             data_sources=[
                 DataSource(
-                    feature='quantity',
+                    feature="quantity",
                     reference=CalculatedDocument(
-                        uuid='TEST_ID_4',
-                        name='quantity',
+                        uuid="TEST_ID_4",
+                        name="quantity",
                         value=794.91,
                         data_sources=[
                             DataSource(
-                                feature='cycle threshold result',
+                                feature="cycle threshold result",
                                 reference=Referenceable(
-                                    uuid='TEST_ID_0',
+                                    uuid="TEST_ID_0",
                                 ),
                             ),
                             DataSource(
-                                feature='y-intercept',
+                                feature="y-intercept",
                                 reference=CalculatedDocument(
-                                    uuid='TEST_ID_2',
-                                    name='y intercept',
+                                    uuid="TEST_ID_2",
+                                    name="y intercept",
                                     value=39.662,
                                     data_sources=[
                                         DataSource(
-                                            feature='cycle threshold result',
+                                            feature="cycle threshold result",
                                             reference=Referenceable(
-                                                uuid='TEST_ID_0',
+                                                uuid="TEST_ID_0",
                                             ),
                                         ),
                                         DataSource(
-                                            feature='cycle threshold result',
+                                            feature="cycle threshold result",
                                             reference=Referenceable(
-                                                uuid='TEST_ID_1',
+                                                uuid="TEST_ID_1",
                                             ),
                                         ),
                                     ],
@@ -1859,22 +1859,22 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                 ),
                             ),
                             DataSource(
-                                feature='slope',
+                                feature="slope",
                                 reference=CalculatedDocument(
-                                    uuid='TEST_ID_3',
-                                    name='slope',
+                                    uuid="TEST_ID_3",
+                                    name="slope",
                                     value=-3.278,
                                     data_sources=[
                                         DataSource(
-                                            feature='cycle threshold result',
+                                            feature="cycle threshold result",
                                             reference=Referenceable(
-                                                uuid='TEST_ID_0',
+                                                uuid="TEST_ID_0",
                                             ),
                                         ),
                                         DataSource(
-                                            feature='cycle threshold result',
+                                            feature="cycle threshold result",
                                             reference=Referenceable(
-                                                uuid='TEST_ID_1',
+                                                uuid="TEST_ID_1",
                                             ),
                                         ),
                                     ],
@@ -1886,35 +1886,35 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                     ),
                 ),
                 DataSource(
-                    feature='quantity',
+                    feature="quantity",
                     reference=CalculatedDocument(
-                        uuid='TEST_ID_5',
-                        name='quantity',
+                        uuid="TEST_ID_5",
+                        name="quantity",
                         value=769.776,
                         data_sources=[
                             DataSource(
-                                feature='cycle threshold result',
+                                feature="cycle threshold result",
                                 reference=Referenceable(
-                                    uuid='TEST_ID_1',
+                                    uuid="TEST_ID_1",
                                 ),
                             ),
                             DataSource(
-                                feature='y-intercept',
+                                feature="y-intercept",
                                 reference=CalculatedDocument(
-                                    uuid='TEST_ID_2',
-                                    name='y intercept',
+                                    uuid="TEST_ID_2",
+                                    name="y intercept",
                                     value=39.662,
                                     data_sources=[
                                         DataSource(
-                                            feature='cycle threshold result',
+                                            feature="cycle threshold result",
                                             reference=Referenceable(
-                                                uuid='TEST_ID_0',
+                                                uuid="TEST_ID_0",
                                             ),
                                         ),
                                         DataSource(
-                                            feature='cycle threshold result',
+                                            feature="cycle threshold result",
                                             reference=Referenceable(
-                                                uuid='TEST_ID_1',
+                                                uuid="TEST_ID_1",
                                             ),
                                         ),
                                     ],
@@ -1922,22 +1922,22 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                 ),
                             ),
                             DataSource(
-                                feature='slope',
+                                feature="slope",
                                 reference=CalculatedDocument(
-                                    uuid='TEST_ID_3',
-                                    name='slope',
+                                    uuid="TEST_ID_3",
+                                    name="slope",
                                     value=-3.278,
                                     data_sources=[
                                         DataSource(
-                                            feature='cycle threshold result',
+                                            feature="cycle threshold result",
                                             reference=Referenceable(
-                                                uuid='TEST_ID_0',
+                                                uuid="TEST_ID_0",
                                             ),
                                         ),
                                         DataSource(
-                                            feature='cycle threshold result',
+                                            feature="cycle threshold result",
                                             reference=Referenceable(
-                                                uuid='TEST_ID_1',
+                                                uuid="TEST_ID_1",
                                             ),
                                         ),
                                     ],
@@ -1952,94 +1952,94 @@ def get_rel_std_curve_data(file_name: str) -> Data:
             iterated=True,
         ),
         CalculatedDocument(
-            uuid='TEST_ID_8',
-            name='ct mean',
+            uuid="TEST_ID_8",
+            name="ct mean",
             value=30.115,
             data_sources=[
                 DataSource(
-                    feature='cycle threshold result',
+                    feature="cycle threshold result",
                     reference=Referenceable(
-                        uuid='TEST_ID_0',
+                        uuid="TEST_ID_0",
                     ),
                 ),
                 DataSource(
-                    feature='cycle threshold result',
+                    feature="cycle threshold result",
                     reference=Referenceable(
-                        uuid='TEST_ID_1',
+                        uuid="TEST_ID_1",
                     ),
                 ),
             ],
             iterated=True,
         ),
         CalculatedDocument(
-            uuid='TEST_ID_9',
-            name='ct sd',
+            uuid="TEST_ID_9",
+            name="ct sd",
             value=0.051,
             data_sources=[
                 DataSource(
-                    feature='cycle threshold result',
+                    feature="cycle threshold result",
                     reference=Referenceable(
-                        uuid='TEST_ID_0',
+                        uuid="TEST_ID_0",
                     ),
                 ),
                 DataSource(
-                    feature='cycle threshold result',
+                    feature="cycle threshold result",
                     reference=Referenceable(
-                        uuid='TEST_ID_1',
+                        uuid="TEST_ID_1",
                     ),
                 ),
             ],
             iterated=True,
         ),
         CalculatedDocument(
-            uuid='TEST_ID_11',
-            name='rq min',
+            uuid="TEST_ID_11",
+            name="rq min",
             value=0.658,
             data_sources=[
                 DataSource(
-                    feature='rq',
+                    feature="rq",
                     reference=CalculatedDocument(
-                        uuid='TEST_ID_10',
-                        name='rq',
+                        uuid="TEST_ID_10",
+                        name="rq",
                         value=0.798,
                         data_sources=[
                             DataSource(
-                                feature='quantity mean',
+                                feature="quantity mean",
                                 reference=CalculatedDocument(
-                                    uuid='TEST_ID_6',
-                                    name='quantity mean',
+                                    uuid="TEST_ID_6",
+                                    name="quantity mean",
                                     value=818.012,
                                     data_sources=[
                                         DataSource(
-                                            feature='quantity',
+                                            feature="quantity",
                                             reference=CalculatedDocument(
-                                                uuid='TEST_ID_4',
-                                                name='quantity',
+                                                uuid="TEST_ID_4",
+                                                name="quantity",
                                                 value=794.91,
                                                 data_sources=[
                                                     DataSource(
-                                                        feature='cycle threshold result',
+                                                        feature="cycle threshold result",
                                                         reference=Referenceable(
-                                                            uuid='TEST_ID_0',
+                                                            uuid="TEST_ID_0",
                                                         ),
                                                     ),
                                                     DataSource(
-                                                        feature='y-intercept',
+                                                        feature="y-intercept",
                                                         reference=CalculatedDocument(
-                                                            uuid='TEST_ID_2',
-                                                            name='y intercept',
+                                                            uuid="TEST_ID_2",
+                                                            name="y intercept",
                                                             value=39.662,
                                                             data_sources=[
                                                                 DataSource(
-                                                                    feature='cycle threshold result',
+                                                                    feature="cycle threshold result",
                                                                     reference=Referenceable(
-                                                                        uuid='TEST_ID_0',
+                                                                        uuid="TEST_ID_0",
                                                                     ),
                                                                 ),
                                                                 DataSource(
-                                                                    feature='cycle threshold result',
+                                                                    feature="cycle threshold result",
                                                                     reference=Referenceable(
-                                                                        uuid='TEST_ID_1',
+                                                                        uuid="TEST_ID_1",
                                                                     ),
                                                                 ),
                                                             ],
@@ -2047,22 +2047,22 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                                         ),
                                                     ),
                                                     DataSource(
-                                                        feature='slope',
+                                                        feature="slope",
                                                         reference=CalculatedDocument(
-                                                            uuid='TEST_ID_3',
-                                                            name='slope',
+                                                            uuid="TEST_ID_3",
+                                                            name="slope",
                                                             value=-3.278,
                                                             data_sources=[
                                                                 DataSource(
-                                                                    feature='cycle threshold result',
+                                                                    feature="cycle threshold result",
                                                                     reference=Referenceable(
-                                                                        uuid='TEST_ID_0',
+                                                                        uuid="TEST_ID_0",
                                                                     ),
                                                                 ),
                                                                 DataSource(
-                                                                    feature='cycle threshold result',
+                                                                    feature="cycle threshold result",
                                                                     reference=Referenceable(
-                                                                        uuid='TEST_ID_1',
+                                                                        uuid="TEST_ID_1",
                                                                     ),
                                                                 ),
                                                             ],
@@ -2074,35 +2074,35 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                             ),
                                         ),
                                         DataSource(
-                                            feature='quantity',
+                                            feature="quantity",
                                             reference=CalculatedDocument(
-                                                uuid='TEST_ID_5',
-                                                name='quantity',
+                                                uuid="TEST_ID_5",
+                                                name="quantity",
                                                 value=769.776,
                                                 data_sources=[
                                                     DataSource(
-                                                        feature='cycle threshold result',
+                                                        feature="cycle threshold result",
                                                         reference=Referenceable(
-                                                            uuid='TEST_ID_1',
+                                                            uuid="TEST_ID_1",
                                                         ),
                                                     ),
                                                     DataSource(
-                                                        feature='y-intercept',
+                                                        feature="y-intercept",
                                                         reference=CalculatedDocument(
-                                                            uuid='TEST_ID_2',
-                                                            name='y intercept',
+                                                            uuid="TEST_ID_2",
+                                                            name="y intercept",
                                                             value=39.662,
                                                             data_sources=[
                                                                 DataSource(
-                                                                    feature='cycle threshold result',
+                                                                    feature="cycle threshold result",
                                                                     reference=Referenceable(
-                                                                        uuid='TEST_ID_0',
+                                                                        uuid="TEST_ID_0",
                                                                     ),
                                                                 ),
                                                                 DataSource(
-                                                                    feature='cycle threshold result',
+                                                                    feature="cycle threshold result",
                                                                     reference=Referenceable(
-                                                                        uuid='TEST_ID_1',
+                                                                        uuid="TEST_ID_1",
                                                                     ),
                                                                 ),
                                                             ],
@@ -2110,22 +2110,22 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                                         ),
                                                     ),
                                                     DataSource(
-                                                        feature='slope',
+                                                        feature="slope",
                                                         reference=CalculatedDocument(
-                                                            uuid='TEST_ID_3',
-                                                            name='slope',
+                                                            uuid="TEST_ID_3",
+                                                            name="slope",
                                                             value=-3.278,
                                                             data_sources=[
                                                                 DataSource(
-                                                                    feature='cycle threshold result',
+                                                                    feature="cycle threshold result",
                                                                     reference=Referenceable(
-                                                                        uuid='TEST_ID_0',
+                                                                        uuid="TEST_ID_0",
                                                                     ),
                                                                 ),
                                                                 DataSource(
-                                                                    feature='cycle threshold result',
+                                                                    feature="cycle threshold result",
                                                                     reference=Referenceable(
-                                                                        uuid='TEST_ID_1',
+                                                                        uuid="TEST_ID_1",
                                                                     ),
                                                                 ),
                                                             ],
@@ -2148,47 +2148,47 @@ def get_rel_std_curve_data(file_name: str) -> Data:
             iterated=True,
         ),
         CalculatedDocument(
-            uuid='TEST_ID_10',
-            name='rq',
+            uuid="TEST_ID_10",
+            name="rq",
             value=0.798,
             data_sources=[
                 DataSource(
-                    feature='quantity mean',
+                    feature="quantity mean",
                     reference=CalculatedDocument(
-                        uuid='TEST_ID_6',
-                        name='quantity mean',
+                        uuid="TEST_ID_6",
+                        name="quantity mean",
                         value=818.012,
                         data_sources=[
                             DataSource(
-                                feature='quantity',
+                                feature="quantity",
                                 reference=CalculatedDocument(
-                                    uuid='TEST_ID_4',
-                                    name='quantity',
+                                    uuid="TEST_ID_4",
+                                    name="quantity",
                                     value=794.91,
                                     data_sources=[
                                         DataSource(
-                                            feature='cycle threshold result',
+                                            feature="cycle threshold result",
                                             reference=Referenceable(
-                                                uuid='TEST_ID_0',
+                                                uuid="TEST_ID_0",
                                             ),
                                         ),
                                         DataSource(
-                                            feature='y-intercept',
+                                            feature="y-intercept",
                                             reference=CalculatedDocument(
-                                                uuid='TEST_ID_2',
-                                                name='y intercept',
+                                                uuid="TEST_ID_2",
+                                                name="y intercept",
                                                 value=39.662,
                                                 data_sources=[
                                                     DataSource(
-                                                        feature='cycle threshold result',
+                                                        feature="cycle threshold result",
                                                         reference=Referenceable(
-                                                            uuid='TEST_ID_0',
+                                                            uuid="TEST_ID_0",
                                                         ),
                                                     ),
                                                     DataSource(
-                                                        feature='cycle threshold result',
+                                                        feature="cycle threshold result",
                                                         reference=Referenceable(
-                                                            uuid='TEST_ID_1',
+                                                            uuid="TEST_ID_1",
                                                         ),
                                                     ),
                                                 ],
@@ -2196,22 +2196,22 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                             ),
                                         ),
                                         DataSource(
-                                            feature='slope',
+                                            feature="slope",
                                             reference=CalculatedDocument(
-                                                uuid='TEST_ID_3',
-                                                name='slope',
+                                                uuid="TEST_ID_3",
+                                                name="slope",
                                                 value=-3.278,
                                                 data_sources=[
                                                     DataSource(
-                                                        feature='cycle threshold result',
+                                                        feature="cycle threshold result",
                                                         reference=Referenceable(
-                                                            uuid='TEST_ID_0',
+                                                            uuid="TEST_ID_0",
                                                         ),
                                                     ),
                                                     DataSource(
-                                                        feature='cycle threshold result',
+                                                        feature="cycle threshold result",
                                                         reference=Referenceable(
-                                                            uuid='TEST_ID_1',
+                                                            uuid="TEST_ID_1",
                                                         ),
                                                     ),
                                                 ],
@@ -2223,35 +2223,35 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                 ),
                             ),
                             DataSource(
-                                feature='quantity',
+                                feature="quantity",
                                 reference=CalculatedDocument(
-                                    uuid='TEST_ID_5',
-                                    name='quantity',
+                                    uuid="TEST_ID_5",
+                                    name="quantity",
                                     value=769.776,
                                     data_sources=[
                                         DataSource(
-                                            feature='cycle threshold result',
+                                            feature="cycle threshold result",
                                             reference=Referenceable(
-                                                uuid='TEST_ID_1',
+                                                uuid="TEST_ID_1",
                                             ),
                                         ),
                                         DataSource(
-                                            feature='y-intercept',
+                                            feature="y-intercept",
                                             reference=CalculatedDocument(
-                                                uuid='TEST_ID_2',
-                                                name='y intercept',
+                                                uuid="TEST_ID_2",
+                                                name="y intercept",
                                                 value=39.662,
                                                 data_sources=[
                                                     DataSource(
-                                                        feature='cycle threshold result',
+                                                        feature="cycle threshold result",
                                                         reference=Referenceable(
-                                                            uuid='TEST_ID_0',
+                                                            uuid="TEST_ID_0",
                                                         ),
                                                     ),
                                                     DataSource(
-                                                        feature='cycle threshold result',
+                                                        feature="cycle threshold result",
                                                         reference=Referenceable(
-                                                            uuid='TEST_ID_1',
+                                                            uuid="TEST_ID_1",
                                                         ),
                                                     ),
                                                 ],
@@ -2259,22 +2259,22 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                             ),
                                         ),
                                         DataSource(
-                                            feature='slope',
+                                            feature="slope",
                                             reference=CalculatedDocument(
-                                                uuid='TEST_ID_3',
-                                                name='slope',
+                                                uuid="TEST_ID_3",
+                                                name="slope",
                                                 value=-3.278,
                                                 data_sources=[
                                                     DataSource(
-                                                        feature='cycle threshold result',
+                                                        feature="cycle threshold result",
                                                         reference=Referenceable(
-                                                            uuid='TEST_ID_0',
+                                                            uuid="TEST_ID_0",
                                                         ),
                                                     ),
                                                     DataSource(
-                                                        feature='cycle threshold result',
+                                                        feature="cycle threshold result",
                                                         reference=Referenceable(
-                                                            uuid='TEST_ID_1',
+                                                            uuid="TEST_ID_1",
                                                         ),
                                                     ),
                                                 ],
@@ -2293,54 +2293,54 @@ def get_rel_std_curve_data(file_name: str) -> Data:
             iterated=True,
         ),
         CalculatedDocument(
-            uuid='TEST_ID_12',
-            name='rq max',
+            uuid="TEST_ID_12",
+            name="rq max",
             value=0.967,
             data_sources=[
                 DataSource(
-                    feature='rq',
+                    feature="rq",
                     reference=CalculatedDocument(
-                        uuid='TEST_ID_10',
-                        name='rq',
+                        uuid="TEST_ID_10",
+                        name="rq",
                         value=0.798,
                         data_sources=[
                             DataSource(
-                                feature='quantity mean',
+                                feature="quantity mean",
                                 reference=CalculatedDocument(
-                                    uuid='TEST_ID_6',
-                                    name='quantity mean',
+                                    uuid="TEST_ID_6",
+                                    name="quantity mean",
                                     value=818.012,
                                     data_sources=[
                                         DataSource(
-                                            feature='quantity',
+                                            feature="quantity",
                                             reference=CalculatedDocument(
-                                                uuid='TEST_ID_4',
-                                                name='quantity',
+                                                uuid="TEST_ID_4",
+                                                name="quantity",
                                                 value=794.91,
                                                 data_sources=[
                                                     DataSource(
-                                                        feature='cycle threshold result',
+                                                        feature="cycle threshold result",
                                                         reference=Referenceable(
-                                                            uuid='TEST_ID_0',
+                                                            uuid="TEST_ID_0",
                                                         ),
                                                     ),
                                                     DataSource(
-                                                        feature='y-intercept',
+                                                        feature="y-intercept",
                                                         reference=CalculatedDocument(
-                                                            uuid='TEST_ID_2',
-                                                            name='y intercept',
+                                                            uuid="TEST_ID_2",
+                                                            name="y intercept",
                                                             value=39.662,
                                                             data_sources=[
                                                                 DataSource(
-                                                                    feature='cycle threshold result',
+                                                                    feature="cycle threshold result",
                                                                     reference=Referenceable(
-                                                                        uuid='TEST_ID_0',
+                                                                        uuid="TEST_ID_0",
                                                                     ),
                                                                 ),
                                                                 DataSource(
-                                                                    feature='cycle threshold result',
+                                                                    feature="cycle threshold result",
                                                                     reference=Referenceable(
-                                                                        uuid='TEST_ID_1',
+                                                                        uuid="TEST_ID_1",
                                                                     ),
                                                                 ),
                                                             ],
@@ -2348,22 +2348,22 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                                         ),
                                                     ),
                                                     DataSource(
-                                                        feature='slope',
+                                                        feature="slope",
                                                         reference=CalculatedDocument(
-                                                            uuid='TEST_ID_3',
-                                                            name='slope',
+                                                            uuid="TEST_ID_3",
+                                                            name="slope",
                                                             value=-3.278,
                                                             data_sources=[
                                                                 DataSource(
-                                                                    feature='cycle threshold result',
+                                                                    feature="cycle threshold result",
                                                                     reference=Referenceable(
-                                                                        uuid='TEST_ID_0',
+                                                                        uuid="TEST_ID_0",
                                                                     ),
                                                                 ),
                                                                 DataSource(
-                                                                    feature='cycle threshold result',
+                                                                    feature="cycle threshold result",
                                                                     reference=Referenceable(
-                                                                        uuid='TEST_ID_1',
+                                                                        uuid="TEST_ID_1",
                                                                     ),
                                                                 ),
                                                             ],
@@ -2375,35 +2375,35 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                             ),
                                         ),
                                         DataSource(
-                                            feature='quantity',
+                                            feature="quantity",
                                             reference=CalculatedDocument(
-                                                uuid='TEST_ID_5',
-                                                name='quantity',
+                                                uuid="TEST_ID_5",
+                                                name="quantity",
                                                 value=769.776,
                                                 data_sources=[
                                                     DataSource(
-                                                        feature='cycle threshold result',
+                                                        feature="cycle threshold result",
                                                         reference=Referenceable(
-                                                            uuid='TEST_ID_1',
+                                                            uuid="TEST_ID_1",
                                                         ),
                                                     ),
                                                     DataSource(
-                                                        feature='y-intercept',
+                                                        feature="y-intercept",
                                                         reference=CalculatedDocument(
-                                                            uuid='TEST_ID_2',
-                                                            name='y intercept',
+                                                            uuid="TEST_ID_2",
+                                                            name="y intercept",
                                                             value=39.662,
                                                             data_sources=[
                                                                 DataSource(
-                                                                    feature='cycle threshold result',
+                                                                    feature="cycle threshold result",
                                                                     reference=Referenceable(
-                                                                        uuid='TEST_ID_0',
+                                                                        uuid="TEST_ID_0",
                                                                     ),
                                                                 ),
                                                                 DataSource(
-                                                                    feature='cycle threshold result',
+                                                                    feature="cycle threshold result",
                                                                     reference=Referenceable(
-                                                                        uuid='TEST_ID_1',
+                                                                        uuid="TEST_ID_1",
                                                                     ),
                                                                 ),
                                                             ],
@@ -2411,22 +2411,22 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                                         ),
                                                     ),
                                                     DataSource(
-                                                        feature='slope',
+                                                        feature="slope",
                                                         reference=CalculatedDocument(
-                                                            uuid='TEST_ID_3',
-                                                            name='slope',
+                                                            uuid="TEST_ID_3",
+                                                            name="slope",
                                                             value=-3.278,
                                                             data_sources=[
                                                                 DataSource(
-                                                                    feature='cycle threshold result',
+                                                                    feature="cycle threshold result",
                                                                     reference=Referenceable(
-                                                                        uuid='TEST_ID_0',
+                                                                        uuid="TEST_ID_0",
                                                                     ),
                                                                 ),
                                                                 DataSource(
-                                                                    feature='cycle threshold result',
+                                                                    feature="cycle threshold result",
                                                                     reference=Referenceable(
-                                                                        uuid='TEST_ID_1',
+                                                                        uuid="TEST_ID_1",
                                                                     ),
                                                                 ),
                                                             ],
@@ -2449,40 +2449,40 @@ def get_rel_std_curve_data(file_name: str) -> Data:
             iterated=True,
         ),
         CalculatedDocument(
-            uuid='TEST_ID_13',
-            name='r^2',
+            uuid="TEST_ID_13",
+            name="r^2",
             value=0.999,
             data_sources=[
                 DataSource(
-                    feature='cycle threshold result',
+                    feature="cycle threshold result",
                     reference=Referenceable(
-                        uuid='TEST_ID_0',
+                        uuid="TEST_ID_0",
                     ),
                 ),
                 DataSource(
-                    feature='cycle threshold result',
+                    feature="cycle threshold result",
                     reference=Referenceable(
-                        uuid='TEST_ID_1',
+                        uuid="TEST_ID_1",
                     ),
                 ),
             ],
             iterated=True,
         ),
         CalculatedDocument(
-            uuid='TEST_ID_14',
-            name='efficiency',
+            uuid="TEST_ID_14",
+            name="efficiency",
             value=101.866,
             data_sources=[
                 DataSource(
-                    feature='cycle threshold result',
+                    feature="cycle threshold result",
                     reference=Referenceable(
-                        uuid='TEST_ID_0',
+                        uuid="TEST_ID_0",
                     ),
                 ),
                 DataSource(
-                    feature='cycle threshold result',
+                    feature="cycle threshold result",
                     reference=Referenceable(
-                        uuid='TEST_ID_1',
+                        uuid="TEST_ID_1",
                     ),
                 ),
             ],
@@ -2505,12 +2505,12 @@ def get_rel_std_curve_data(file_name: str) -> Data:
 
 def get_rel_std_curve_model() -> Model:
     return     Model(
-        manifest='http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest',
+        manifest="http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest",
         qPCR_aggregate_document=QPCRAggregateDocument(
             device_system_document=DeviceSystemDocument(
-                device_identifier='278880034',
-                model_number='QuantStudio(TM) 7 Flex System',
-                device_serial_number='278880034',
+                device_identifier="278880034",
+                model_number="QuantStudio(TM) 7 Flex System",
+                device_serial_number="278880034",
                 asset_management_identifier=None,
                 firmware_version=None,
                 description=None,
@@ -2522,34 +2522,34 @@ def get_rel_std_curve_model() -> Model:
                     measurement_aggregate_document=MeasurementAggregateDocument(
                         plate_well_count=TQuantityValueNumber(
                             value=96,
-                            unit='#',
+                            unit="#",
                             has_statistic_datum_role=None,
                             field_type=None,
                         ),
                         measurement_document=[
                             MeasurementDocumentItem(
-                                measurement_identifier='TEST_ID_0',
-                                measurement_time='2010-10-20T02:23:34-04:00',
-                                target_DNA_description='RNaseP',
+                                measurement_identifier="TEST_ID_0",
+                                measurement_time="2010-10-20T02:23:34-04:00",
+                                target_DNA_description="RNaseP",
                                 sample_document=SampleDocument(
-                                    sample_identifier='800',
+                                    sample_identifier="800",
                                     batch_identifier=None,
-                                    sample_role_type='STANDARD',
-                                    well_location_identifier='D1',
+                                    sample_role_type="STANDARD",
+                                    well_location_identifier="D1",
                                     well_plate_identifier=None,
                                     mass_concentration=None,
                                 ),
                                 device_control_aggregate_document=DeviceControlAggregateDocument(
                                     device_control_document=[
                                         DeviceControlDocumentItem(
-                                            device_type='qPCR',
-                                            measurement_method_identifier='Ct',
-                                            PCR_detection_chemistry='TAQMAN',
+                                            device_type="qPCR",
+                                            measurement_method_identifier="Ct",
+                                            PCR_detection_chemistry="TAQMAN",
                                             device_identifier=None,
                                             detection_type=None,
                                             total_cycle_number_setting=TQuantityValueNumber(
                                                 value=1.0,
-                                                unit='#',
+                                                unit="#",
                                                 has_statistic_datum_role=None,
                                                 field_type=None,
                                             ),
@@ -2559,9 +2559,9 @@ def get_rel_std_curve_model() -> Model:
                                             annealing_time_setting=None,
                                             extension_temperature_setting=None,
                                             extension_time_setting=None,
-                                            reporter_dye_setting='FAM',
-                                            quencher_dye_setting='NFQ-MGB',
-                                            passive_reference_dye_setting='ROX',
+                                            reporter_dye_setting="FAM",
+                                            quencher_dye_setting="NFQ-MGB",
+                                            passive_reference_dye_setting="ROX",
                                         )
                                     ]
                                 ),
@@ -2571,7 +2571,7 @@ def get_rel_std_curve_model() -> Model:
                                             data_processing_document=DataProcessingDocument(
                                                 cycle_threshold_value_setting=TQuantityValueUnitless(
                                                     value=0.133,
-                                                    unit='(unitless)',
+                                                    unit="(unitless)",
                                                     has_statistic_datum_role=None,
                                                     field_type=None,
                                                 ),
@@ -2586,19 +2586,19 @@ def get_rel_std_curve_model() -> Model:
                                             ),
                                             cycle_threshold_result=TNullableQuantityValueUnitless(
                                                 value=30.155,
-                                                unit='(unitless)',
+                                                unit="(unitless)",
                                                 has_statistic_datum_role=None,
                                                 field_type=None,
                                             ),
                                             normalized_reporter_result=None,
                                             normalized_reporter_data_cube=NormalizedReporterDataCube(
-                                                label='normalized reporter',
+                                                label="normalized reporter",
                                                 cube_structure=TDatacubeStructure(
                                                     dimensions=[
                                                         TDatacubeComponent(
                                                             field_componentDatatype=FieldComponentDatatype.integer,
-                                                            concept='cycle count',
-                                                            unit='#',
+                                                            concept="cycle count",
+                                                            unit="#",
                                                             scale=None,
                                                             field_asm_fill_value=None,
                                                         )
@@ -2606,8 +2606,8 @@ def get_rel_std_curve_model() -> Model:
                                                     measures=[
                                                         TDatacubeComponent(
                                                             field_componentDatatype=FieldComponentDatatype.double,
-                                                            concept='normalized report result',
-                                                            unit='(unitless)',
+                                                            concept="normalized report result",
+                                                            unit="(unitless)",
                                                             scale=None,
                                                             field_asm_fill_value=None,
                                                         )
@@ -2621,13 +2621,13 @@ def get_rel_std_curve_model() -> Model:
                                             ),
                                             baseline_corrected_reporter_result=None,
                                             baseline_corrected_reporter_data_cube=BaselineCorrectedReporterDataCube(
-                                                label='baseline corrected reporter',
+                                                label="baseline corrected reporter",
                                                 cube_structure=TDatacubeStructure(
                                                     dimensions=[
                                                         TDatacubeComponent(
                                                             field_componentDatatype=FieldComponentDatatype.integer,
-                                                            concept='cycle count',
-                                                            unit='#',
+                                                            concept="cycle count",
+                                                            unit="#",
                                                             scale=None,
                                                             field_asm_fill_value=None,
                                                         )
@@ -2635,8 +2635,8 @@ def get_rel_std_curve_model() -> Model:
                                                     measures=[
                                                         TDatacubeComponent(
                                                             field_componentDatatype=FieldComponentDatatype.double,
-                                                            concept='baseline corrected reporter result',
-                                                            unit='(unitless)',
+                                                            concept="baseline corrected reporter result",
+                                                            unit="(unitless)",
                                                             scale=None,
                                                             field_asm_fill_value=None,
                                                         )
@@ -2658,7 +2658,7 @@ def get_rel_std_curve_model() -> Model:
                             )
                         ],
                         analytical_method_identifier=None,
-                        experimental_data_identifier='QuantStudio96-Well Relative Standard Curve Example',
+                        experimental_data_identifier="QuantStudio96-Well Relative Standard Curve Example",
                         experiment_type=ExperimentType.relative_standard_curve_qPCR_experiment,
                         container_type=ContainerType.qPCR_reaction_block,
                         well_volume=None,
@@ -2671,34 +2671,34 @@ def get_rel_std_curve_model() -> Model:
                     measurement_aggregate_document=MeasurementAggregateDocument(
                         plate_well_count=TQuantityValueNumber(
                             value=96,
-                            unit='#',
+                            unit="#",
                             has_statistic_datum_role=None,
                             field_type=None,
                         ),
                         measurement_document=[
                             MeasurementDocumentItem(
-                                measurement_identifier='TEST_ID_1',
-                                measurement_time='2010-10-20T02:23:34-04:00',
-                                target_DNA_description='RNaseP',
+                                measurement_identifier="TEST_ID_1",
+                                measurement_time="2010-10-20T02:23:34-04:00",
+                                target_DNA_description="RNaseP",
                                 sample_document=SampleDocument(
-                                    sample_identifier='800',
+                                    sample_identifier="800",
                                     batch_identifier=None,
-                                    sample_role_type='STANDARD',
-                                    well_location_identifier='D2',
+                                    sample_role_type="STANDARD",
+                                    well_location_identifier="D2",
                                     well_plate_identifier=None,
                                     mass_concentration=None,
                                 ),
                                 device_control_aggregate_document=DeviceControlAggregateDocument(
                                     device_control_document=[
                                         DeviceControlDocumentItem(
-                                            device_type='qPCR',
-                                            measurement_method_identifier='Ct',
-                                            PCR_detection_chemistry='TAQMAN',
+                                            device_type="qPCR",
+                                            measurement_method_identifier="Ct",
+                                            PCR_detection_chemistry="TAQMAN",
                                             device_identifier=None,
                                             detection_type=None,
                                             total_cycle_number_setting=TQuantityValueNumber(
                                                 value=1.0,
-                                                unit='#',
+                                                unit="#",
                                                 has_statistic_datum_role=None,
                                                 field_type=None,
                                             ),
@@ -2708,9 +2708,9 @@ def get_rel_std_curve_model() -> Model:
                                             annealing_time_setting=None,
                                             extension_temperature_setting=None,
                                             extension_time_setting=None,
-                                            reporter_dye_setting='FAM',
-                                            quencher_dye_setting='NFQ-MGB',
-                                            passive_reference_dye_setting='ROX',
+                                            reporter_dye_setting="FAM",
+                                            quencher_dye_setting="NFQ-MGB",
+                                            passive_reference_dye_setting="ROX",
                                         )
                                     ]
                                 ),
@@ -2720,7 +2720,7 @@ def get_rel_std_curve_model() -> Model:
                                             data_processing_document=DataProcessingDocument(
                                                 cycle_threshold_value_setting=TQuantityValueUnitless(
                                                     value=0.133,
-                                                    unit='(unitless)',
+                                                    unit="(unitless)",
                                                     has_statistic_datum_role=None,
                                                     field_type=None,
                                                 ),
@@ -2735,19 +2735,19 @@ def get_rel_std_curve_model() -> Model:
                                             ),
                                             cycle_threshold_result=TNullableQuantityValueUnitless(
                                                 value=30.2,
-                                                unit='(unitless)',
+                                                unit="(unitless)",
                                                 has_statistic_datum_role=None,
                                                 field_type=None,
                                             ),
                                             normalized_reporter_result=None,
                                             normalized_reporter_data_cube=NormalizedReporterDataCube(
-                                                label='normalized reporter',
+                                                label="normalized reporter",
                                                 cube_structure=TDatacubeStructure(
                                                     dimensions=[
                                                         TDatacubeComponent(
                                                             field_componentDatatype=FieldComponentDatatype.integer,
-                                                            concept='cycle count',
-                                                            unit='#',
+                                                            concept="cycle count",
+                                                            unit="#",
                                                             scale=None,
                                                             field_asm_fill_value=None,
                                                         )
@@ -2755,8 +2755,8 @@ def get_rel_std_curve_model() -> Model:
                                                     measures=[
                                                         TDatacubeComponent(
                                                             field_componentDatatype=FieldComponentDatatype.double,
-                                                            concept='normalized report result',
-                                                            unit='(unitless)',
+                                                            concept="normalized report result",
+                                                            unit="(unitless)",
                                                             scale=None,
                                                             field_asm_fill_value=None,
                                                         )
@@ -2770,13 +2770,13 @@ def get_rel_std_curve_model() -> Model:
                                             ),
                                             baseline_corrected_reporter_result=None,
                                             baseline_corrected_reporter_data_cube=BaselineCorrectedReporterDataCube(
-                                                label='baseline corrected reporter',
+                                                label="baseline corrected reporter",
                                                 cube_structure=TDatacubeStructure(
                                                     dimensions=[
                                                         TDatacubeComponent(
                                                             field_componentDatatype=FieldComponentDatatype.integer,
-                                                            concept='cycle count',
-                                                            unit='#',
+                                                            concept="cycle count",
+                                                            unit="#",
                                                             scale=None,
                                                             field_asm_fill_value=None,
                                                         )
@@ -2784,8 +2784,8 @@ def get_rel_std_curve_model() -> Model:
                                                     measures=[
                                                         TDatacubeComponent(
                                                             field_componentDatatype=FieldComponentDatatype.double,
-                                                            concept='baseline corrected reporter result',
-                                                            unit='(unitless)',
+                                                            concept="baseline corrected reporter result",
+                                                            unit="(unitless)",
                                                             scale=None,
                                                             field_asm_fill_value=None,
                                                         )
@@ -2807,7 +2807,7 @@ def get_rel_std_curve_model() -> Model:
                             )
                         ],
                         analytical_method_identifier=None,
-                        experimental_data_identifier='QuantStudio96-Well Relative Standard Curve Example',
+                        experimental_data_identifier="QuantStudio96-Well Relative Standard Curve Example",
                         experiment_type=ExperimentType.relative_standard_curve_qPCR_experiment,
                         container_type=ContainerType.qPCR_reaction_block,
                         well_volume=None,
@@ -2818,27 +2818,27 @@ def get_rel_std_curve_model() -> Model:
                 ),
             ],
             data_system_document=DataSystemDocument(
-                data_system_instance_identifier='localhost',
-                file_name='appbio_quantstudio_test04.txt',
-                UNC_path='',
-                software_name='Thermo QuantStudio',
-                software_version='1.0',
-                ASM_converter_name='allotropy_appbio_quantstudio_rt_pcr',
-                ASM_converter_version='0.1.51',
+                data_system_instance_identifier="localhost",
+                file_name="appbio_quantstudio_test04.txt",
+                UNC_path="",
+                software_name="Thermo QuantStudio",
+                software_version="1.0",
+                ASM_converter_name="allotropy_appbio_quantstudio_rt_pcr",
+                ASM_converter_version="0.1.51",
             ),
             calculated_data_aggregate_document=TCalculatedDataAggregateDocument(
                 calculated_data_document=[
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier='TEST_ID_6',
+                        calculated_data_identifier="TEST_ID_6",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier='TEST_ID_4',
-                                    data_source_feature='quantity',
+                                    data_source_identifier="TEST_ID_4",
+                                    data_source_feature="quantity",
                                 ),
                                 DataSourceDocumentItem(
-                                    data_source_identifier='TEST_ID_5',
-                                    data_source_feature='quantity',
+                                    data_source_identifier="TEST_ID_5",
+                                    data_source_feature="quantity",
                                 ),
                             ]
                         ),
@@ -2850,33 +2850,33 @@ def get_rel_std_curve_model() -> Model:
                             baseline_determination_end_cycle_setting=None,
                             genotyping_determination_method=None,
                             genotyping_determination_method_setting=None,
-                            reference_DNA_description='RNaseP',
-                            reference_sample_description='800',
+                            reference_DNA_description="RNaseP",
+                            reference_sample_description="800",
                         ),
-                        calculated_data_name='quantity mean',
+                        calculated_data_name="quantity mean",
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
                             value=818.012,
-                            unit='(unitless)',
+                            unit="(unitless)",
                             has_statistic_datum_role=None,
                             field_type=None,
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier='TEST_ID_4',
+                        calculated_data_identifier="TEST_ID_4",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier='TEST_ID_0',
-                                    data_source_feature='cycle threshold result',
+                                    data_source_identifier="TEST_ID_0",
+                                    data_source_feature="cycle threshold result",
                                 ),
                                 DataSourceDocumentItem(
-                                    data_source_identifier='TEST_ID_2',
-                                    data_source_feature='y-intercept',
+                                    data_source_identifier="TEST_ID_2",
+                                    data_source_feature="y-intercept",
                                 ),
                                 DataSourceDocumentItem(
-                                    data_source_identifier='TEST_ID_3',
-                                    data_source_feature='slope',
+                                    data_source_identifier="TEST_ID_3",
+                                    data_source_feature="slope",
                                 ),
                             ]
                         ),
@@ -2888,29 +2888,29 @@ def get_rel_std_curve_model() -> Model:
                             baseline_determination_end_cycle_setting=None,
                             genotyping_determination_method=None,
                             genotyping_determination_method_setting=None,
-                            reference_DNA_description='RNaseP',
-                            reference_sample_description='800',
+                            reference_DNA_description="RNaseP",
+                            reference_sample_description="800",
                         ),
-                        calculated_data_name='quantity',
+                        calculated_data_name="quantity",
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
                             value=794.91,
-                            unit='(unitless)',
+                            unit="(unitless)",
                             has_statistic_datum_role=None,
                             field_type=None,
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier='TEST_ID_2',
+                        calculated_data_identifier="TEST_ID_2",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier='TEST_ID_0',
-                                    data_source_feature='cycle threshold result',
+                                    data_source_identifier="TEST_ID_0",
+                                    data_source_feature="cycle threshold result",
                                 ),
                                 DataSourceDocumentItem(
-                                    data_source_identifier='TEST_ID_1',
-                                    data_source_feature='cycle threshold result',
+                                    data_source_identifier="TEST_ID_1",
+                                    data_source_feature="cycle threshold result",
                                 ),
                             ]
                         ),
@@ -2922,29 +2922,29 @@ def get_rel_std_curve_model() -> Model:
                             baseline_determination_end_cycle_setting=None,
                             genotyping_determination_method=None,
                             genotyping_determination_method_setting=None,
-                            reference_DNA_description='RNaseP',
-                            reference_sample_description='800',
+                            reference_DNA_description="RNaseP",
+                            reference_sample_description="800",
                         ),
-                        calculated_data_name='y intercept',
+                        calculated_data_name="y intercept",
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
                             value=39.662,
-                            unit='(unitless)',
+                            unit="(unitless)",
                             has_statistic_datum_role=None,
                             field_type=None,
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier='TEST_ID_3',
+                        calculated_data_identifier="TEST_ID_3",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier='TEST_ID_0',
-                                    data_source_feature='cycle threshold result',
+                                    data_source_identifier="TEST_ID_0",
+                                    data_source_feature="cycle threshold result",
                                 ),
                                 DataSourceDocumentItem(
-                                    data_source_identifier='TEST_ID_1',
-                                    data_source_feature='cycle threshold result',
+                                    data_source_identifier="TEST_ID_1",
+                                    data_source_feature="cycle threshold result",
                                 ),
                             ]
                         ),
@@ -2956,33 +2956,33 @@ def get_rel_std_curve_model() -> Model:
                             baseline_determination_end_cycle_setting=None,
                             genotyping_determination_method=None,
                             genotyping_determination_method_setting=None,
-                            reference_DNA_description='RNaseP',
-                            reference_sample_description='800',
+                            reference_DNA_description="RNaseP",
+                            reference_sample_description="800",
                         ),
-                        calculated_data_name='slope',
+                        calculated_data_name="slope",
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
                             value=-3.278,
-                            unit='(unitless)',
+                            unit="(unitless)",
                             has_statistic_datum_role=None,
                             field_type=None,
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier='TEST_ID_5',
+                        calculated_data_identifier="TEST_ID_5",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier='TEST_ID_1',
-                                    data_source_feature='cycle threshold result',
+                                    data_source_identifier="TEST_ID_1",
+                                    data_source_feature="cycle threshold result",
                                 ),
                                 DataSourceDocumentItem(
-                                    data_source_identifier='TEST_ID_2',
-                                    data_source_feature='y-intercept',
+                                    data_source_identifier="TEST_ID_2",
+                                    data_source_feature="y-intercept",
                                 ),
                                 DataSourceDocumentItem(
-                                    data_source_identifier='TEST_ID_3',
-                                    data_source_feature='slope',
+                                    data_source_identifier="TEST_ID_3",
+                                    data_source_feature="slope",
                                 ),
                             ]
                         ),
@@ -2994,29 +2994,29 @@ def get_rel_std_curve_model() -> Model:
                             baseline_determination_end_cycle_setting=None,
                             genotyping_determination_method=None,
                             genotyping_determination_method_setting=None,
-                            reference_DNA_description='RNaseP',
-                            reference_sample_description='800',
+                            reference_DNA_description="RNaseP",
+                            reference_sample_description="800",
                         ),
-                        calculated_data_name='quantity',
+                        calculated_data_name="quantity",
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
                             value=769.776,
-                            unit='(unitless)',
+                            unit="(unitless)",
                             has_statistic_datum_role=None,
                             field_type=None,
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier='TEST_ID_7',
+                        calculated_data_identifier="TEST_ID_7",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier='TEST_ID_4',
-                                    data_source_feature='quantity',
+                                    data_source_identifier="TEST_ID_4",
+                                    data_source_feature="quantity",
                                 ),
                                 DataSourceDocumentItem(
-                                    data_source_identifier='TEST_ID_5',
-                                    data_source_feature='quantity',
+                                    data_source_identifier="TEST_ID_5",
+                                    data_source_feature="quantity",
                                 ),
                             ]
                         ),
@@ -3028,29 +3028,29 @@ def get_rel_std_curve_model() -> Model:
                             baseline_determination_end_cycle_setting=None,
                             genotyping_determination_method=None,
                             genotyping_determination_method_setting=None,
-                            reference_DNA_description='RNaseP',
-                            reference_sample_description='800',
+                            reference_DNA_description="RNaseP",
+                            reference_sample_description="800",
                         ),
-                        calculated_data_name='quantity sd',
+                        calculated_data_name="quantity sd",
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
                             value=29.535,
-                            unit='(unitless)',
+                            unit="(unitless)",
                             has_statistic_datum_role=None,
                             field_type=None,
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier='TEST_ID_8',
+                        calculated_data_identifier="TEST_ID_8",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier='TEST_ID_0',
-                                    data_source_feature='cycle threshold result',
+                                    data_source_identifier="TEST_ID_0",
+                                    data_source_feature="cycle threshold result",
                                 ),
                                 DataSourceDocumentItem(
-                                    data_source_identifier='TEST_ID_1',
-                                    data_source_feature='cycle threshold result',
+                                    data_source_identifier="TEST_ID_1",
+                                    data_source_feature="cycle threshold result",
                                 ),
                             ]
                         ),
@@ -3062,29 +3062,29 @@ def get_rel_std_curve_model() -> Model:
                             baseline_determination_end_cycle_setting=None,
                             genotyping_determination_method=None,
                             genotyping_determination_method_setting=None,
-                            reference_DNA_description='RNaseP',
-                            reference_sample_description='800',
+                            reference_DNA_description="RNaseP",
+                            reference_sample_description="800",
                         ),
-                        calculated_data_name='ct mean',
+                        calculated_data_name="ct mean",
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
                             value=30.115,
-                            unit='(unitless)',
+                            unit="(unitless)",
                             has_statistic_datum_role=None,
                             field_type=None,
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier='TEST_ID_9',
+                        calculated_data_identifier="TEST_ID_9",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier='TEST_ID_0',
-                                    data_source_feature='cycle threshold result',
+                                    data_source_identifier="TEST_ID_0",
+                                    data_source_feature="cycle threshold result",
                                 ),
                                 DataSourceDocumentItem(
-                                    data_source_identifier='TEST_ID_1',
-                                    data_source_feature='cycle threshold result',
+                                    data_source_identifier="TEST_ID_1",
+                                    data_source_feature="cycle threshold result",
                                 ),
                             ]
                         ),
@@ -3096,25 +3096,25 @@ def get_rel_std_curve_model() -> Model:
                             baseline_determination_end_cycle_setting=None,
                             genotyping_determination_method=None,
                             genotyping_determination_method_setting=None,
-                            reference_DNA_description='RNaseP',
-                            reference_sample_description='800',
+                            reference_DNA_description="RNaseP",
+                            reference_sample_description="800",
                         ),
-                        calculated_data_name='ct sd',
+                        calculated_data_name="ct sd",
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
                             value=0.051,
-                            unit='(unitless)',
+                            unit="(unitless)",
                             has_statistic_datum_role=None,
                             field_type=None,
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier='TEST_ID_11',
+                        calculated_data_identifier="TEST_ID_11",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier='TEST_ID_10',
-                                    data_source_feature='rq',
+                                    data_source_identifier="TEST_ID_10",
+                                    data_source_feature="rq",
                                 )
                             ]
                         ),
@@ -3126,25 +3126,25 @@ def get_rel_std_curve_model() -> Model:
                             baseline_determination_end_cycle_setting=None,
                             genotyping_determination_method=None,
                             genotyping_determination_method_setting=None,
-                            reference_DNA_description='RNaseP',
-                            reference_sample_description='800',
+                            reference_DNA_description="RNaseP",
+                            reference_sample_description="800",
                         ),
-                        calculated_data_name='rq min',
+                        calculated_data_name="rq min",
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
                             value=0.658,
-                            unit='(unitless)',
+                            unit="(unitless)",
                             has_statistic_datum_role=None,
                             field_type=None,
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier='TEST_ID_10',
+                        calculated_data_identifier="TEST_ID_10",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier='TEST_ID_6',
-                                    data_source_feature='quantity mean',
+                                    data_source_identifier="TEST_ID_6",
+                                    data_source_feature="quantity mean",
                                 )
                             ]
                         ),
@@ -3156,25 +3156,25 @@ def get_rel_std_curve_model() -> Model:
                             baseline_determination_end_cycle_setting=None,
                             genotyping_determination_method=None,
                             genotyping_determination_method_setting=None,
-                            reference_DNA_description='RNaseP',
-                            reference_sample_description='800',
+                            reference_DNA_description="RNaseP",
+                            reference_sample_description="800",
                         ),
-                        calculated_data_name='rq',
+                        calculated_data_name="rq",
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
                             value=0.798,
-                            unit='(unitless)',
+                            unit="(unitless)",
                             has_statistic_datum_role=None,
                             field_type=None,
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier='TEST_ID_12',
+                        calculated_data_identifier="TEST_ID_12",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier='TEST_ID_10',
-                                    data_source_feature='rq',
+                                    data_source_identifier="TEST_ID_10",
+                                    data_source_feature="rq",
                                 )
                             ]
                         ),
@@ -3186,29 +3186,29 @@ def get_rel_std_curve_model() -> Model:
                             baseline_determination_end_cycle_setting=None,
                             genotyping_determination_method=None,
                             genotyping_determination_method_setting=None,
-                            reference_DNA_description='RNaseP',
-                            reference_sample_description='800',
+                            reference_DNA_description="RNaseP",
+                            reference_sample_description="800",
                         ),
-                        calculated_data_name='rq max',
+                        calculated_data_name="rq max",
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
                             value=0.967,
-                            unit='(unitless)',
+                            unit="(unitless)",
                             has_statistic_datum_role=None,
                             field_type=None,
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier='TEST_ID_13',
+                        calculated_data_identifier="TEST_ID_13",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier='TEST_ID_0',
-                                    data_source_feature='cycle threshold result',
+                                    data_source_identifier="TEST_ID_0",
+                                    data_source_feature="cycle threshold result",
                                 ),
                                 DataSourceDocumentItem(
-                                    data_source_identifier='TEST_ID_1',
-                                    data_source_feature='cycle threshold result',
+                                    data_source_identifier="TEST_ID_1",
+                                    data_source_feature="cycle threshold result",
                                 ),
                             ]
                         ),
@@ -3220,29 +3220,29 @@ def get_rel_std_curve_model() -> Model:
                             baseline_determination_end_cycle_setting=None,
                             genotyping_determination_method=None,
                             genotyping_determination_method_setting=None,
-                            reference_DNA_description='RNaseP',
-                            reference_sample_description='800',
+                            reference_DNA_description="RNaseP",
+                            reference_sample_description="800",
                         ),
-                        calculated_data_name='r^2',
+                        calculated_data_name="r^2",
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
                             value=0.999,
-                            unit='(unitless)',
+                            unit="(unitless)",
                             has_statistic_datum_role=None,
                             field_type=None,
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier='TEST_ID_14',
+                        calculated_data_identifier="TEST_ID_14",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier='TEST_ID_0',
-                                    data_source_feature='cycle threshold result',
+                                    data_source_identifier="TEST_ID_0",
+                                    data_source_feature="cycle threshold result",
                                 ),
                                 DataSourceDocumentItem(
-                                    data_source_identifier='TEST_ID_1',
-                                    data_source_feature='cycle threshold result',
+                                    data_source_identifier="TEST_ID_1",
+                                    data_source_feature="cycle threshold result",
                                 ),
                             ]
                         ),
@@ -3254,14 +3254,14 @@ def get_rel_std_curve_model() -> Model:
                             baseline_determination_end_cycle_setting=None,
                             genotyping_determination_method=None,
                             genotyping_determination_method_setting=None,
-                            reference_DNA_description='RNaseP',
-                            reference_sample_description='800',
+                            reference_DNA_description="RNaseP",
+                            reference_sample_description="800",
                         ),
-                        calculated_data_name='efficiency',
+                        calculated_data_name="efficiency",
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
                             value=101.866,
-                            unit='(unitless)',
+                            unit="(unitless)",
                             has_statistic_datum_role=None,
                             field_type=None,
                         ),
