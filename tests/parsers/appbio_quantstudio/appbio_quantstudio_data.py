@@ -2504,7 +2504,7 @@ def get_rel_std_curve_data(file_name: str) -> Data:
 
 
 def get_rel_std_curve_model() -> Model:
-    return     Model(
+    return Model(
         manifest="http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest",
         qPCR_aggregate_document=QPCRAggregateDocument(
             device_system_document=DeviceSystemDocument(
@@ -2614,8 +2614,8 @@ def get_rel_std_curve_model() -> Model:
                                                     ],
                                                 ),
                                                 data=TDatacubeData(
-                                                    dimensions=[[1]],
-                                                    measures=[[0.627]],
+                                                    dimensions=[[1.0]],
+                                                    measures=[[0.627]],  # type: ignore[list-item]
                                                     points=None,
                                                 ),
                                             ),
@@ -2643,8 +2643,8 @@ def get_rel_std_curve_model() -> Model:
                                                     ],
                                                 ),
                                                 data=TDatacubeData(
-                                                    dimensions=[[1]],
-                                                    measures=[[0.001]],
+                                                    dimensions=[[1.0]],
+                                                    measures=[[0.001]],  # type: ignore[list-item]
                                                     points=None,
                                                 ),
                                             ),
@@ -2763,8 +2763,8 @@ def get_rel_std_curve_model() -> Model:
                                                     ],
                                                 ),
                                                 data=TDatacubeData(
-                                                    dimensions=[[1]],
-                                                    measures=[[0.612]],
+                                                    dimensions=[[1.0]],
+                                                    measures=[[0.612]],  # type: ignore[list-item]
                                                     points=None,
                                                 ),
                                             ),
@@ -2792,8 +2792,8 @@ def get_rel_std_curve_model() -> Model:
                                                     ],
                                                 ),
                                                 data=TDatacubeData(
-                                                    dimensions=[[1]],
-                                                    measures=[[-0.001]],
+                                                    dimensions=[[1.0]],
+                                                    measures=[[-0.001]],  # type: ignore[list-item]
                                                     points=None,
                                                 ),
                                             ),
