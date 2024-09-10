@@ -1,4 +1,4 @@
-from functools import partial
+from collections import defaultdict
 
 from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
     Model,
@@ -14,7 +14,9 @@ from allotropy.parsers.mabtech_apex.mabtech_apex_structure import (
     create_metadata,
 )
 from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.utils.pandas import map_rows
+from allotropy.parsers.utils.pandas import (
+    SeriesData,
+)
 from allotropy.parsers.vendor_parser import MapperVendorParser
 
 
@@ -27,12 +29,20 @@ class MabtechApexParser(MapperVendorParser[Data, Model]):
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = MabtechApexReader.create(named_file_contents)
 
-        # if Read Date is not present in file, return None, no measurement for given Well
-        plate_data = reader.data.dropna(subset="Read Date")
-        return Data(
+        # if Read Date or machine ID is not present in file, return None, no measurement for given Well
+        plate_data = reader.data.dropna(subset=["Read Date", "Machine ID"])
+        measurements_per_well = defaultdict(list)
+        for _, row in plate_data.iterrows():
+            well_row = SeriesData(row)
+            well = well_row.get(str, "Well")
+            measurements_per_well[well].append(well_row)
+
+        data_measurement = [
+            create_measurement_group(measurements, reader.plate_info)
+            for measurements in measurements_per_well.values()
+        ]
+        data = Data(
             create_metadata(reader.plate_info, named_file_contents.original_file_name),
-            map_rows(
-                plate_data,
-                partial(create_measurement_group, plate_info=reader.plate_info),
-            ),
+            data_measurement,
         )
+        return data

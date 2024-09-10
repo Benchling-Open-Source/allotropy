@@ -6,13 +6,28 @@ from enum import Enum
 import logging
 import re
 
+import pandas as pd
+
 from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
     ScanPositionSettingPlateReader,
     TransmittedLightSetting,
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
+from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
+    DataSource,
+    ImageFeature,
+    ImageSource,
+    Measurement,
+    MeasurementGroup,
+    MeasurementType,
+    Metadata,
+    ProcessedData,
+)
 from allotropy.exceptions import AllotropeConversionError, AllotropeParsingError
 from allotropy.parsers.lines_reader import CsvReader
+from allotropy.parsers.revvity_kaleido import constants
+from allotropy.parsers.utils.pandas import df_to_series_data, SeriesData
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
     try_float,
@@ -26,42 +41,75 @@ class ExperimentType(Enum):
     LUMINESCENCE = "luminescence"
     OPTICAL_IMAGING = "optical imaging"
 
+    @staticmethod
+    def create(experiment_type: str) -> ExperimentType:
+        experiment_type_lower = experiment_type.lower()
+        if "fluorescence" in experiment_type_lower or "alpha" in experiment_type_lower:
+            return ExperimentType.FLUORESCENCE
+        elif "abs" in experiment_type_lower:
+            return ExperimentType.ABSORBANCE
+        elif "luminescence" in experiment_type_lower:
+            return ExperimentType.LUMINESCENCE
+        elif "img" in experiment_type_lower:
+            return ExperimentType.OPTICAL_IMAGING
+
+        msg = f"Unable to determine experiment type from: '{experiment_type}'"
+        raise AllotropeConversionError(msg)
+
+    @property
+    def measurement_type(self) -> MeasurementType:
+        if self is ExperimentType.FLUORESCENCE:
+            return MeasurementType.FLUORESCENCE
+        elif self is ExperimentType.ABSORBANCE:
+            return MeasurementType.ULTRAVIOLET_ABSORBANCE
+        elif self is ExperimentType.LUMINESCENCE:
+            return MeasurementType.LUMINESCENCE
+        elif self is ExperimentType.OPTICAL_IMAGING:
+            return MeasurementType.OPTICAL_IMAGING
+
+    @property
+    def device_type(self) -> str:
+        if self is ExperimentType.OPTICAL_IMAGING:
+            return "imaging detector"
+        return f"{self.value} detector"
+
+    @property
+    def detection_type(self) -> str | None:
+        # TODO(nstender): investigate why we override detection type for these two type but not others,
+        # when we have detection type value for all examples.
+        if self is ExperimentType.OPTICAL_IMAGING:
+            return "optical-imaging"
+        elif self is ExperimentType.FLUORESCENCE:
+            return str(self.value)
+        return None
+
 
 class Version(Enum):
     V2 = "2.0"
     V3 = "3.0"
 
 
-PLATEMAP_TO_SAMPLE_ROLE_TYPE = {
-    "B": SampleRoleType.blank_role.value,
-    "C": SampleRoleType.control_sample_role.value,
-    "S": SampleRoleType.standard_sample_role.value,
-    "U": SampleRoleType.unknown_sample_role.value,
-    "E": SampleRoleType.control_sample_role.value,
-    "ZL": SampleRoleType.control_sample_role.value,
-    "ZH": SampleRoleType.control_sample_role.value,
-    "LB": SampleRoleType.control_sample_role.value,
-    "LC": SampleRoleType.control_sample_role.value,
-    "LH": SampleRoleType.control_sample_role.value,
-}
-
-
-SCAN_POSITION_CONVERSION = {
-    "TOP": ScanPositionSettingPlateReader.top_scan_position__plate_reader_,
-    "BOTTOM": ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_,
-}
-
-
-TRANSMITTED_LIGHT_CONVERSION = {
-    "BRIGHTFIELD": TransmittedLightSetting.brightfield,
-    "DARKFIELD": TransmittedLightSetting.darkfield,
-    "PHASE CONTRAST": TransmittedLightSetting.phase_contrast,
-}
-
-
 @dataclass
 class BackgroundInfo:
-    experiment_type: str
+    experiment_type_value: str
+
+    @property
+    def experiment_type(self) -> ExperimentType:
+        return ExperimentType.create(self.experiment_type_value)
+
+    @staticmethod
+    def create(reader: CsvReader) -> BackgroundInfo:
+        line = assert_not_none(
+            reader.drop_until_inclusive("^Results? for.(.+) 1"),
+            msg="Unable to find background information.",
+        )
+
+        experiment_type = assert_not_none(
+            re.match("^Results? for.(.+) 1", line),
+            msg="Unable to find experiment type from background information section.",
+        ).group(1)
+
+        return BackgroundInfo(experiment_type_value=experiment_type)
 
 
 @dataclass(frozen=True)
@@ -69,28 +117,62 @@ class Results:
     barcode: str
     data: dict[str, str]
 
-    def get_plate_well_count(self) -> int:
+    @property
+    def plate_well_count(self) -> int:
         return len(self.data)
 
-    def get_well_float_value(self, well_position: str) -> float:
-        return try_float(
-            self.get_well_str_value(well_position),
-            f"result well at '{well_position}'",
+    @classmethod
+    def create(cls, reader: CsvReader) -> Results:
+        barcode = cls.read_barcode(reader)
+
+        results = assert_not_none(
+            reader.pop_csv_block_as_df(header=0, index_col=0),
+            msg="Unable to find results table.",
         )
 
-    def get_well_str_value(self, well_position: str) -> str:
-        return str(
-            assert_not_none(
-                self.data.get(well_position),
-                msg=f"Unable to get well at position '{well_position}' from results section.",
-            )
+        for column in results:
+            if str(column).startswith("Unnamed"):
+                results = results.drop(columns=column)
+
+        return Results(
+            barcode=barcode,
+            data={
+                f"{row}{col}": str(values[col])
+                for row, values in results.iterrows()
+                for col in results.columns
+            },
         )
+
+    @classmethod
+    def read_barcode(cls, reader: CsvReader) -> str:
+        raise NotImplementedError
 
 
 @dataclass(frozen=True)
 class AnalysisResult:
     analysis_parameter: str
     results: dict[str, str]
+
+    @staticmethod
+    def create_results(
+        reader: CsvReader, next_section_title: str
+    ) -> list[AnalysisResult]:
+        section_title = assert_not_none(
+            reader.drop_until(f"^Results for|^{next_section_title}"),
+            msg=f"Unable to find Analysis Result or {next_section_title} section.",
+        )
+
+        if section_title.startswith(next_section_title):
+            return []
+
+        reader.drop_until("^Barcode")
+
+        analysis_results = []
+        while reader.match("^Barcode"):
+            if analysis_result := AnalysisResult.create(reader):
+                analysis_results.append(analysis_result)
+
+        return analysis_results
 
     @staticmethod
     def create(reader: CsvReader) -> AnalysisResult | None:
@@ -101,11 +183,8 @@ class AnalysisResult:
 
         analysis_parameter = None
         for element in barcode_line.split(","):
-            if re.search("^.+:.+$", element):
-                key, value = element.split(":", maxsplit=1)
-                if "AnalysisParameter" in key:
-                    analysis_parameter = value
-                    break
+            if "AnalysisParameter" in element:
+                analysis_parameter = element.split(":", maxsplit=1)[1]
 
         analysis_parameter = assert_not_none(
             analysis_parameter,
@@ -116,32 +195,21 @@ class AnalysisResult:
             results_df = assert_not_none(
                 reader.pop_csv_block_as_df(header=0, index_col=0),
                 msg="Unable to find results table.",
-            )
+            ).dropna(how="all")
         except AllotropeParsingError:
             logging.warning(
                 f"Unable to read analysis result '{analysis_parameter}'. Ignoring"
             )
             return None
 
-        for column in results_df:
-            if str(column).startswith("Unnamed"):
-                results_df = results_df.drop(columns=column)
-
         results = {
-            f"{row}{col}": values[col]
+            f"{row}{col}": str(values[col])
             for row, values in results_df.iterrows()
             for col in results_df.columns
         }
 
-        a1_value = str(
-            assert_not_none(
-                results.get("A1"),
-                msg=f"Unable to find first position of analysis result '{analysis_parameter}'.",
-            )
-        )
-
         # if first value is not a valid float value the results are not useful
-        if try_float_or_none(a1_value) is None:
+        if try_float_or_none(results.get("A1")) is None:
             return None
 
         return AnalysisResult(
@@ -149,18 +217,10 @@ class AnalysisResult:
             results=results,
         )
 
-    def get_result(self, well_position: str) -> str:
-        return str(
-            assert_not_none(
-                self.results.get(str(well_position)),
-                msg=f"Unable to get well at position '{well_position}' from analysis result '{self.analysis_parameter}'.",
-            )
-        )
-
     def get_image_feature_result(self, well_position: str) -> float:
+        value_name = f"analysis result '{self.analysis_parameter}' at '{well_position}'"
         return try_float(
-            self.get_result(well_position),
-            f"analysis result '{self.analysis_parameter}' at '{well_position}'",
+            assert_not_none(self.results.get(well_position), value_name), value_name
         )
 
 
@@ -172,32 +232,27 @@ class MeasurementInfo:
     measurement_signature: str
 
     @staticmethod
-    def create(elements: dict[str, str]) -> MeasurementInfo:
-        instrument_serial_number = assert_not_none(
-            elements.get("Instrument Serial Number"),
-            msg="Unable to find Instrument Serial Number in Measurement Information section.",
+    def create(
+        reader: CsvReader, section_name: str, next_section_title: str
+    ) -> MeasurementInfo:
+        assert_not_none(
+            reader.drop_until_inclusive(f"^{section_name}"),
+            msg=f"Unable to find {section_name} section.",
         )
 
-        measurement_time = assert_not_none(
-            elements.get("Measurement Started"),
-            msg="Unable to find Measurement time in Measurement Information section.",
-        )
-
-        protocol_signature = assert_not_none(
-            elements.get("Protocol Signature"),
-            msg="Unable to find Protocol Signature in Measurement Information section.",
-        )
-
-        measurement_signature = assert_not_none(
-            elements.get("Measurement Signature"),
-            msg="Unable to find Measurement Signature in Measurement Information section.",
-        )
+        lines = list(reader.pop_until(f"^{next_section_title}"))
+        df = assert_not_none(
+            reader.lines_as_df(lines, index_col=0, names=range(7)),
+            msg=f"Unable to parser data for {section_name} section.",
+        ).T.dropna(how="all")
+        df.columns = df.columns.astype(str).str.strip(":")
+        data = df_to_series_data(df, index=0)
 
         return MeasurementInfo(
-            instrument_serial_number,
-            measurement_time,
-            protocol_signature,
-            measurement_signature,
+            instrument_serial_number=data[str, "Instrument Serial Number"],
+            measurement_time=data[str, "Measurement Started"],
+            protocol_signature=data[str, "Protocol Signature"],
+            measurement_signature=data[str, "Measurement Signature"],
         )
 
 
@@ -205,16 +260,35 @@ class MeasurementInfo:
 class Platemap:
     data: dict[str, str]
 
-    def get_well_value(self, well_position: str) -> str:
-        return str(
-            assert_not_none(
-                self.data.get(well_position),
-                msg=f"Unable to get well at position '{well_position}' from platemap section.",
-            )
+    @staticmethod
+    def create(reader: CsvReader) -> Platemap:
+        assert_not_none(
+            reader.drop_until_inclusive("^Platemap"),
+            msg="Unable to find Platemap section.",
+        )
+        reader.pop_if_match("^Plate")
+
+        data = assert_not_none(
+            reader.pop_csv_block_as_df(header=0, index_col=0),
+            msg="Unable to find platemap information.",
         )
 
-    def get_sample_role_type(self, well_position: str) -> str | None:
-        raw_value = self.get_well_value(well_position)
+        return Platemap(
+            data={
+                f"{row}{col}": str(values[col])
+                for row, values in data.iterrows()
+                for col in data.columns
+            }
+        )
+
+    def get(self, well_position: str) -> str:
+        return assert_not_none(
+            self.data.get(well_position),
+            f"platemap value for well position '{well_position}'",
+        )
+
+    def get_sample_role_type(self, well_position: str) -> SampleRoleType | None:
+        raw_value = self.get(well_position)
         if raw_value == "-":
             return None
 
@@ -224,15 +298,9 @@ class Platemap:
         ).group(1)
 
         return assert_not_none(
-            PLATEMAP_TO_SAMPLE_ROLE_TYPE.get(value),
+            constants.PLATEMAP_TO_SAMPLE_ROLE_TYPE.get(value),
             msg=f"Unable to find sample role type for well position '{well_position}'.",
         )
-
-
-@dataclass(frozen=True)
-class MeasurementElement:
-    title: str
-    value: str
 
 
 @dataclass(frozen=True)
@@ -246,38 +314,24 @@ class Channel:
     additional_focus_offset: float
 
     @staticmethod
-    def check_element_title(element: MeasurementElement, expected_title: str) -> None:
-        if element.title != expected_title:
-            msg = f"Expected to get '{expected_title}' but '{element.title}' was found."
-            raise AllotropeConversionError(msg)
-
-    @staticmethod
     def create(
-        name: MeasurementElement,
-        excitation_wavelength: MeasurementElement,
-        excitation_power: MeasurementElement,
-        exposure_time: MeasurementElement,
-        additional_focus_offset: MeasurementElement,
+        name: str,
+        excitation_wavelength: str,
+        excitation_power: str,
+        exposure_time: str,
+        additional_focus_offset: str,
     ) -> Channel:
-        Channel.check_element_title(name, "Channel")
-        Channel.check_element_title(excitation_wavelength, "Excitation wavelength [nm]")
-        Channel.check_element_title(excitation_power, "Excitation Power [%]")
-        Channel.check_element_title(exposure_time, "Exposure Time [ms]")
-        Channel.check_element_title(
-            additional_focus_offset, "Additional Focus offset [mm]"
-        )
-
         return Channel(
-            name.value,
-            fluorescent_tag=None if name.value == "BRIGHTFIELD" else name.value,
-            transmitted_light=TRANSMITTED_LIGHT_CONVERSION.get(name.value),
+            name=name,
+            fluorescent_tag=None if name == "BRIGHTFIELD" else name,
+            transmitted_light=constants.TRANSMITTED_LIGHT_CONVERSION.get(name),
             excitation_wavelength=try_float(
-                excitation_wavelength.value.removesuffix("nm"), "excitation wavelength"
+                excitation_wavelength.removesuffix("nm"), "excitation wavelength"
             ),
-            illumination=try_float(excitation_power.value, "excitation power"),
-            exposure_duration=try_float(exposure_time.value, "exposure time"),
+            illumination=try_float(excitation_power, "excitation power"),
+            exposure_duration=try_float(exposure_time, "exposure time"),
             additional_focus_offset=try_float(
-                additional_focus_offset.value, "additional focus offset"
+                additional_focus_offset, "additional focus offset"
             ),
         )
 
@@ -293,43 +347,91 @@ class Measurements:
     focus_height: float | None
 
     @staticmethod
-    def create_channels(elements: list[MeasurementElement]) -> list[Channel]:
-        channels: list[Channel] = []
-        for idx, element in enumerate(elements):
-            if element.title != "Channel":
-                continue
-            try:
-                channels.append(
-                    Channel.create(
-                        name=elements[idx],
-                        excitation_wavelength=elements[idx + 1],
-                        excitation_power=elements[idx + 2],
-                        exposure_time=elements[idx + 3],
-                        additional_focus_offset=elements[idx + 4],
-                    )
+    def create(
+        reader: CsvReader, section_title: str, next_section_title: str
+    ) -> Measurements:
+        assert_not_none(
+            reader.drop_until_inclusive(f"^{section_title}"),
+            msg=f"Unable to find {section_title} section.",
+        )
+
+        lines = list(reader.pop_until(f"^{next_section_title}"))
+        df = assert_not_none(
+            reader.lines_as_df(lines, index_col=0, names=range(7)),
+            msg=f"Unable to parser data for {section_title} section.",
+        ).T.dropna(how="all")
+        df.columns = df.columns.astype(str).str.lower()
+        data = df_to_series_data(df, index=0)
+
+        scan_position = data.get(str, "excitation / emission")
+        excitation_wavelength = data.get(str, "excitation wavelength [nm]")
+
+        return Measurements(
+            channels=Measurements.create_channels(data),
+            number_of_averages=data.get(float, "number of flashes"),
+            detector_distance=data.get(
+                float, "distance between plate and detector [mm]"
+            ),
+            scan_position=(
+                None
+                if scan_position is None
+                else assert_not_none(
+                    constants.SCAN_POSITION_CONVERSION.get(scan_position),
+                    msg=f"'{scan_position}' is not a valid scan position, expected TOP or BOTTOM.",
                 )
-            except IndexError as e:
-                msg = f"Unable to get channel data for channel {element.value}"
-                raise AllotropeConversionError(msg) from e
-        return channels
+            ),
+            emission_wavelength=data.get(float, "emission wavelength [nm]"),
+            excitation_wavelength=(
+                None
+                if excitation_wavelength is None
+                else try_float_or_none(excitation_wavelength.removesuffix("nm"))
+            ),
+            focus_height=data.get(float, "focus height [µm]"),
+        )
 
     @staticmethod
-    def try_element_or_none(
-        elements: list[MeasurementElement], title: str
-    ) -> MeasurementElement | None:
-        for element in elements:
-            if element.title == title:
-                return element
-        return None
+    def create_channels(data: SeriesData) -> list[Channel]:
+        # Get all channel keys
+        values = {
+            key: data.series.get(key)
+            for key in [
+                "channel",
+                "excitation wavelength [nm]",
+                "excitation power [%]",
+                "exposure time [ms]",
+                "additional focus offset [mm]",
+            ]
+        }
+        if values["channel"] is None:
+            return []
 
-    @staticmethod
-    def get_element_float_value_or_none(
-        elements: list[MeasurementElement], title: str
-    ) -> float | None:
-        element = Measurements.try_element_or_none(elements, title)
-        if element is None:
-            return None
-        return try_float_or_none(element.value)
+        # Convert series values (multiple Channels == pd.Series, single Channel == str) to lists.
+        channel_values: dict[str, list[str]] = {}
+        if isinstance(values["channel"], str):
+            for key, value in values.items():
+                if not isinstance(value, str):
+                    raise AllotropeConversionError(constants.CHANNEL_COLUMNS_ERROR)
+                channel_values[key] = [value]
+        elif isinstance(values["channel"], pd.Series):
+            for key, value in values.items():
+                if not isinstance(value, pd.Series):
+                    raise AllotropeConversionError(constants.CHANNEL_COLUMNS_ERROR)
+                channel_values[key] = list(value.values)
+                if not len(channel_values["channel"]) == len(channel_values[key]):
+                    raise AllotropeConversionError(constants.CHANNEL_COLUMNS_ERROR)
+
+        return [
+            Channel.create(
+                name=channel_values["channel"][i],
+                excitation_wavelength=channel_values["excitation wavelength [nm]"][i],
+                excitation_power=channel_values["excitation power [%]"][i],
+                exposure_time=channel_values["exposure time [ms]"][i],
+                additional_focus_offset=channel_values["additional focus offset [mm]"][
+                    i
+                ],
+            )
+            for i in range(len(channel_values["channel"]))
+        ]
 
 
 @dataclass(frozen=True)
@@ -342,17 +444,144 @@ class Data:
     platemap: Platemap
     measurements: Measurements
 
-    def iter_wells(self) -> Iterator[str]:
-        yield from self.results.data
+    def iter_wells(self) -> Iterator[tuple[str, str]]:
+        yield from self.results.data.items()
 
-    def get_well_float_value(self, well_position: str) -> float:
-        return self.results.get_well_float_value(well_position)
+    def get_sample_identifier(self, well_position: str) -> str:
+        platemap_value = self.platemap.get(well_position)
+        return (
+            f"{self.results.barcode}_{well_position}"
+            if platemap_value in ("-", None)
+            else platemap_value
+        )
 
-    def get_well_str_value(self, well_position: str) -> str:
-        return self.results.get_well_str_value(well_position)
 
-    def get_platemap_well_value(self, well_position: str) -> str:
-        return self.platemap.get_well_value(well_position)
+def create_metadata(data: Data, file_name: str) -> Metadata:
+    return Metadata(
+        file_name=file_name,
+        software_name=constants.SOFTWARE_NAME,
+        software_version=data.version,
+        device_identifier=constants.DEVICE_IDENTIFIER,
+        model_number=constants.MODEL_NUMBER,
+        product_manufacturer=constants.PRODUCT_MANUFACTURER,
+        equipment_serial_number=data.measurement_info.instrument_serial_number,
+    )
 
-    def get_sample_role_type(self, well_position: str) -> str | None:
-        return self.platemap.get_sample_role_type(well_position)
+
+def _create_measurement(data: Data, well_position: str, well_value: str) -> Measurement:
+    experiment_type = data.background_info.experiment_type
+
+    if experiment_type is ExperimentType.ABSORBANCE:
+        assert_not_none(
+            data.measurements.number_of_averages,
+            msg="Unable to find number of averages",
+        )
+
+    detector_wavelength_setting = (
+        data.measurements.emission_wavelength
+        if experiment_type is ExperimentType.FLUORESCENCE
+        else (
+            data.measurements.excitation_wavelength
+            if experiment_type is ExperimentType.ABSORBANCE
+            else None
+        )
+    )
+    measurement_value = try_float(well_value, f"result well at '{well_position}'")
+
+    return Measurement(
+        type_=experiment_type.measurement_type,
+        identifier=random_uuid_str(),
+        device_type=experiment_type.device_type,
+        detection_type=experiment_type.detection_type
+        or data.background_info.experiment_type_value,
+        sample_identifier=data.get_sample_identifier(well_position),
+        location_identifier=well_position,
+        well_plate_identifier=data.results.barcode,
+        sample_role_type=data.platemap.get_sample_role_type(well_position),
+        number_of_averages=data.measurements.number_of_averages,
+        detector_distance_setting=data.measurements.detector_distance,
+        scan_position_setting=data.measurements.scan_position,
+        detector_wavelength_setting=detector_wavelength_setting,
+        excitation_wavelength_setting=data.measurements.excitation_wavelength,
+        fluorescence=measurement_value
+        if experiment_type is ExperimentType.FLUORESCENCE
+        else None,
+        absorbance=measurement_value
+        if experiment_type is ExperimentType.ABSORBANCE
+        else None,
+        luminescence=measurement_value
+        if experiment_type is ExperimentType.LUMINESCENCE
+        else None,
+    )
+
+
+def _create_optical_measurement(
+    data: Data, well_position: str, channel: Channel
+) -> Measurement:
+    return Measurement(
+        type_=data.background_info.experiment_type.measurement_type,
+        identifier=random_uuid_str(),
+        device_type=data.background_info.experiment_type.device_type,
+        detection_type=data.background_info.experiment_type.detection_type
+        or data.background_info.experiment_type_value,
+        sample_identifier=data.get_sample_identifier(well_position),
+        location_identifier=well_position,
+        well_plate_identifier=data.results.barcode,
+        sample_role_type=data.platemap.get_sample_role_type(well_position),
+        detector_distance_setting=data.measurements.focus_height,
+        excitation_wavelength_setting=channel.excitation_wavelength,
+        magnification_setting=constants.MAGNIFICATION_SETTING,
+        exposure_duration_setting=channel.exposure_duration,
+        illumination_setting=channel.illumination,
+        illumination_setting_unit="%",
+        transmitted_light_setting=channel.transmitted_light,
+        fluorescent_tag_setting=channel.fluorescent_tag,
+    )
+
+
+def _create_measurements(
+    data: Data, well_position: str, well_value: str
+) -> list[Measurement]:
+    if data.background_info.experiment_type is ExperimentType.OPTICAL_IMAGING:
+        return [
+            _create_optical_measurement(data, well_position, channel)
+            for channel in data.measurements.channels
+        ]
+    else:
+        return [_create_measurement(data, well_position, well_value)]
+
+
+def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
+    return [
+        MeasurementGroup(
+            measurement_time=data.measurement_info.measurement_time,
+            plate_well_count=data.results.plate_well_count,
+            experiment_type=data.background_info.experiment_type_value,
+            analytical_method_identifier=data.measurement_info.protocol_signature,
+            experimental_data_identifier=data.measurement_info.measurement_signature,
+            measurements=_create_measurements(data, well_position, well_value),
+            processed_data=ProcessedData(
+                features=[
+                    ImageFeature(
+                        identifier=random_uuid_str(),
+                        feature=analysis_result.analysis_parameter,
+                        result=analysis_result.get_image_feature_result(well_position),
+                        data_sources=[
+                            DataSource(
+                                identifier=well_value,
+                                # TODO(nstender): I'm not sure what this original comment means, investigate.
+                                feature="image feature",  # wait for actual value
+                            )
+                        ],
+                    )
+                    for analysis_result in data.analysis_results
+                ]
+            ),
+            images=[
+                ImageSource(identifier=well_value),
+            ]
+            if data.background_info.experiment_type is ExperimentType.OPTICAL_IMAGING
+            else None,
+        )
+        for well_position, well_value in data.iter_wells()
+    ]
