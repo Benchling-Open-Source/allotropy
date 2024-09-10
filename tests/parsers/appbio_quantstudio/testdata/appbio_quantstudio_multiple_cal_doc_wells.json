@@ -20,7 +20,7 @@
                             "target DNA description": "GROUP1",
                             "sample document": {
                                 "sample identifier": "5K",
-                                "sample role type": "UNKNOWN",
+                                "sample role type": "STANDARD",
                                 "well location identifier": "A1"
                             },
                             "device control aggregate document": {
@@ -126,7 +126,7 @@
                             "target DNA description": "GROUP2",
                             "sample document": {
                                 "sample identifier": "5K",
-                                "sample role type": "UNKNOWN",
+                                "sample role type": "STANDARD",
                                 "well location identifier": "A1"
                             },
                             "device control aggregate document": {
@@ -245,7 +245,7 @@
                             "target DNA description": "GROUP1",
                             "sample document": {
                                 "sample identifier": "5K",
-                                "sample role type": "UNKNOWN",
+                                "sample role type": "STANDARD",
                                 "well location identifier": "A2"
                             },
                             "device control aggregate document": {
@@ -351,7 +351,7 @@
                             "target DNA description": "GROUP2",
                             "sample document": {
                                 "sample identifier": "5K",
-                                "sample role type": "UNKNOWN",
+                                "sample role type": "STANDARD",
                                 "well location identifier": "A2"
                             },
                             "device control aggregate document": {
@@ -465,7 +465,7 @@
             "software name": "Thermo QuantStudio",
             "software version": "1.0",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.49"
+            "ASM converter version": "0.1.51"
         },
         "calculated data aggregate document": {
             "calculated data document": [
@@ -722,6 +722,166 @@
                     "calculated data name": "ct sd",
                     "calculated datum": {
                         "value": 0.063,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_16",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
+                                "data source feature": "cycle threshold result"
+                            },
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_2",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "calculated data name": "y intercept",
+                    "calculated datum": {
+                        "value": 39.814,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_17",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
+                                "data source feature": "cycle threshold result"
+                            },
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_2",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "calculated data name": "r^2",
+                    "calculated datum": {
+                        "value": 0.997,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_18",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
+                                "data source feature": "cycle threshold result"
+                            },
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_2",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "calculated data name": "slope",
+                    "calculated datum": {
+                        "value": -3.383,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_19",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
+                                "data source feature": "cycle threshold result"
+                            },
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_2",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "calculated data name": "efficiency",
+                    "calculated datum": {
+                        "value": 97.505,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_20",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
+                                "data source feature": "cycle threshold result"
+                            },
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_3",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "calculated data name": "y intercept",
+                    "calculated datum": {
+                        "value": 39.814,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_21",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
+                                "data source feature": "cycle threshold result"
+                            },
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_3",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "calculated data name": "r^2",
+                    "calculated datum": {
+                        "value": 0.997,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_22",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
+                                "data source feature": "cycle threshold result"
+                            },
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_3",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "calculated data name": "slope",
+                    "calculated datum": {
+                        "value": -3.383,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_23",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
+                                "data source feature": "cycle threshold result"
+                            },
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_3",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "calculated data name": "efficiency",
+                    "calculated datum": {
+                        "value": 97.505,
                         "unit": "(unitless)"
                     }
                 }
