@@ -5,7 +5,7 @@ from pathlib import Path
 import subprocess
 
 import click
-from pytz import timezone
+from dateutil import timezone
 import semantic_version  # type: ignore
 
 from allotropy.__about__ import __version__

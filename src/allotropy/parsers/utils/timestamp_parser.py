@@ -1,13 +1,13 @@
 from datetime import timedelta, timezone, tzinfo
 from zoneinfo import ZoneInfo
 
-from dateutil import parser
-import pytz
+from dateutil import parser, tz
+from dateutil.zoneinfo import getzoneinfofile_stream, ZoneInfoFile
 
 from allotropy.exceptions import AllotropeConversionError
 
 TIMEZONE_CODES_MAP = {
-    **{code: pytz.timezone(code) for code in pytz.all_timezones},
+    **{code: tz.gettz(code) for code in ZoneInfoFile(getzoneinfofile_stream()).zones.keys()},
     # Add daylight savings time codes for USA
     **{
         "EDT": timezone(timedelta(hours=-4), "EDT"),
