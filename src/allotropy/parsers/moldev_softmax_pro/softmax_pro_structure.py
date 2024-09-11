@@ -1083,9 +1083,9 @@ def _create_fluorescence_measurements(
                 else ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_
             ),
             detector_wavelength_setting=data_element.wavelength,
-            excitation_wavelength_setting=plate_block.header.excitation_wavelengths[
-                idx
-            ],
+            excitation_wavelength_setting=plate_block.header.excitation_wavelengths[idx]
+            if plate_block.header.excitation_wavelengths
+            else None,
             wavelength_filter_cutoff_setting=(
                 plate_block.header.cutoff_filters[idx]
                 if plate_block.header.cutoff_filters
