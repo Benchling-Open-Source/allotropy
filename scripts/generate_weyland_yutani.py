@@ -46,7 +46,7 @@ import random
 import sys
 from typing import Any
 
-import pytz
+from dateutil import tz
 
 CHECKSUM_RANGE = 2**16
 MODEL = "Weyland-Yutani 470"
@@ -165,7 +165,7 @@ def parse_args() -> argparse.Namespace:
         args.serial = SERIAL_NUMBER_RANGE + random.randint(1, SERIAL_NUMBER_RANGE - 1)
 
     if args.exptime is None:
-        args.exptime = datetime.now(tz=pytz.utc).strftime("%Y-%m-%d:%H:%M:%S")
+        args.exptime = datetime.now(tz=tz.UTC).strftime("%Y-%m-%d:%H:%M:%S")
 
     return args
 
