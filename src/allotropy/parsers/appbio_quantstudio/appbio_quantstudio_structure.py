@@ -364,6 +364,8 @@ class Result:
     expfail: str | None
     tholdfail: str | None
     prfdrop: str | None
+    amp_score: float | None
+    cq_conf: float | None
 
     @staticmethod
     def create(
@@ -482,6 +484,8 @@ class Result:
                 expfail=data.get(str, "EXPFAIL"),
                 tholdfail=data.get(str, "THOLDFAIL"),
                 prfdrop=data.get(str, "PRFDROP"),
+                amp_score=data.get(float, "Amp Score"),
+                cq_conf=data.get(float, "Cq Conf"),
             )
             for allele_prefix in allele_prefixes
         }

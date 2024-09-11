@@ -128,10 +128,12 @@ def get_data(file_name: str) -> Data:
                 efficiency=None,
                 comments=None,
                 highsd=None,
-                noamp='N',
-                expfail='N',
+                noamp="N",
+                expfail="N",
                 tholdfail=None,
                 prfdrop=None,
+                amp_score=None,
+                cq_conf=None,
             ),
             target2.replace(" ", ""): Result(
                 cycle_threshold_value_setting=0.2,
@@ -161,10 +163,12 @@ def get_data(file_name: str) -> Data:
                 efficiency=None,
                 comments=None,
                 highsd=None,
-                noamp='N',
-                expfail='N',
+                noamp="N",
+                expfail="N",
                 tholdfail=None,
                 prfdrop=None,
+                amp_score=None,
+                cq_conf=None,
             ),
         }
     }
@@ -330,6 +334,8 @@ def get_data2(file_name: str) -> Data:
                 expfail=None,
                 tholdfail=None,
                 prfdrop=None,
+                amp_score=None,
+                cq_conf=None,
             )
         }
     }
@@ -1116,6 +1122,8 @@ def get_genotyping_data(file_name: str) -> Data:
                 expfail=None,
                 tholdfail=None,
                 prfdrop=None,
+                amp_score=None,
+                cq_conf=None,
             ),
             target2.replace(" ", ""): Result(
                 cycle_threshold_value_setting=0.132,
@@ -1149,6 +1157,8 @@ def get_genotyping_data(file_name: str) -> Data:
                 expfail=None,
                 tholdfail=None,
                 prfdrop=None,
+                amp_score=None,
+                cq_conf=None,
             ),
         }
     }
@@ -1488,6 +1498,8 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                 expfail=None,
                 tholdfail=None,
                 prfdrop=None,
+                amp_score=None,
+                cq_conf=None,
             )
         },
         well_item_id_2: {
@@ -1523,6 +1535,8 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                 expfail=None,
                 tholdfail=None,
                 prfdrop=None,
+                amp_score=None,
+                cq_conf=None,
             )
         },
     }
@@ -1566,128 +1580,90 @@ def get_rel_std_curve_data(file_name: str) -> Data:
     ]
     calculated_documents = [
         CalculatedDocument(
-            uuid="TEST_ID_4",
-            name="quantity mean",
-            value=818.012,
-            data_sources=[
-                DataSource(
-                    feature="quantity",
-                    reference=CalculatedDocument(
-                        uuid="TEST_ID_2",
-                        name="quantity",
-                        value=794.91,
-                        data_sources=[
-                            DataSource(
-                                feature="cycle threshold result",
-                                reference=Referenceable(uuid="TEST_ID_2"),
-                            ),
-                            DataSource(
-                                feature="y-intercept",
-                                reference=Referenceable(uuid="TEST_ID_2"),
-                            ),
-                            DataSource(
-                                feature="slope",
-                                reference=Referenceable(uuid="TEST_ID_2"),
-                            ),
-                        ],
-                        iterated=True,
-                    ),
-                ),
-                DataSource(
-                    feature="quantity",
-                    reference=CalculatedDocument(
-                        uuid="TEST_ID_3",
-                        name="quantity",
-                        value=769.776,
-                        data_sources=[
-                            DataSource(
-                                feature="cycle threshold result",
-                                reference=Referenceable(
-                                    uuid="TEST_ID_3",
-                                ),
-                            ),
-                            DataSource(
-                                feature="y-intercept",
-                                reference=Referenceable(uuid="TEST_ID_3"),
-                            ),
-                            DataSource(
-                                feature="slope",
-                                reference=Referenceable(uuid="TEST_ID_3"),
-                            ),
-                        ],
-                        iterated=True,
-                    ),
-                ),
-            ],
-            iterated=True,
-        ),
-        CalculatedDocument(
             uuid="TEST_ID_2",
-            name="quantity",
-            value=794.91,
+            name="amplification score",
+            value=1.242,
             data_sources=[
                 DataSource(
                     feature="cycle threshold result",
                     reference=Referenceable(
                         uuid="TEST_ID_0",
                     ),
-                ),
-                DataSource(
-                    feature="y-intercept",
-                    reference=Referenceable(uuid="TEST_ID_0"),
-                ),
-                DataSource(
-                    feature="slope",
-                    reference=Referenceable(uuid="TEST_ID_0"),
-                ),
+                )
             ],
-            iterated=True,
+            iterated=False,
         ),
         CalculatedDocument(
             uuid="TEST_ID_3",
-            name="quantity",
-            value=769.776,
+            name="cq confidence",
+            value=0.967,
+            data_sources=[
+                DataSource(
+                    feature="cycle threshold result",
+                    reference=Referenceable(
+                        uuid="TEST_ID_0",
+                    ),
+                )
+            ],
+            iterated=False,
+        ),
+        CalculatedDocument(
+            uuid="TEST_ID_4",
+            name="amplification score",
+            value=1.242,
             data_sources=[
                 DataSource(
                     feature="cycle threshold result",
                     reference=Referenceable(
                         uuid="TEST_ID_1",
                     ),
-                ),
-                DataSource(
-                    feature="y-intercept",
-                    reference=Referenceable(uuid="TEST_ID_1"),
-                ),
-                DataSource(
-                    feature="slope",
-                    reference=Referenceable(uuid="TEST_ID_1"),
-                ),
+                )
             ],
-            iterated=True,
+            iterated=False,
         ),
         CalculatedDocument(
             uuid="TEST_ID_5",
-            name="quantity sd",
-            value=29.535,
+            name="cq confidence",
+            value=0.964,
+            data_sources=[
+                DataSource(
+                    feature="cycle threshold result",
+                    reference=Referenceable(
+                        uuid="TEST_ID_1",
+                    ),
+                )
+            ],
+            iterated=False,
+        ),
+        CalculatedDocument(
+            uuid="TEST_ID_8",
+            name="quantity mean",
+            value=818.012,
             data_sources=[
                 DataSource(
                     feature="quantity",
                     reference=CalculatedDocument(
-                        uuid="TEST_ID_2",
+                        uuid="TEST_ID_6",
                         name="quantity",
                         value=794.91,
                         data_sources=[
                             DataSource(
                                 feature="cycle threshold result",
-                                reference=Referenceable(uuid="TEST_ID_0"),
+                                reference=Referenceable(
+                                    uuid="TEST_ID_0",
+                                ),
                             ),
                             DataSource(
                                 feature="y-intercept",
-                                reference=Referenceable(uuid="TEST_ID_0"),
+                                reference=Referenceable(
+                                    uuid="TEST_ID_0",
+                                ),
                             ),
                             DataSource(
                                 feature="slope",
-                                reference=Referenceable(uuid="TEST_ID_0"),
+                                reference=Referenceable(
+                                    uuid="TEST_ID_0",
+                                ),
                             ),
                         ],
                         iterated=True,
@@ -1696,7 +1672,7 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                 DataSource(
                     feature="quantity",
                     reference=CalculatedDocument(
-                        uuid="TEST_ID_3",
+                        uuid="TEST_ID_7",
                         name="quantity",
                         value=769.776,
                         data_sources=[
@@ -1708,11 +1684,15 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                             ),
                             DataSource(
                                 feature="y-intercept",
-                                reference=Referenceable(uuid="TEST_ID_1"),
+                                reference=Referenceable(
+                                    uuid="TEST_ID_1",
+                                ),
                             ),
                             DataSource(
                                 feature="slope",
-                                reference=Referenceable(uuid="TEST_ID_1"),
+                                reference=Referenceable(
+                                    uuid="TEST_ID_1",
+                                ),
                             ),
                         ],
                         iterated=True,
@@ -1723,6 +1703,124 @@ def get_rel_std_curve_data(file_name: str) -> Data:
         ),
         CalculatedDocument(
             uuid="TEST_ID_6",
+            name="quantity",
+            value=794.91,
+            data_sources=[
+                DataSource(
+                    feature="cycle threshold result",
+                    reference=Referenceable(
+                        uuid="TEST_ID_0",
+                    ),
+                ),
+                DataSource(
+                    feature="y-intercept",
+                    reference=Referenceable(
+                        uuid="TEST_ID_0",
+                    ),
+                ),
+                DataSource(
+                    feature="slope",
+                    reference=Referenceable(
+                        uuid="TEST_ID_0",
+                    ),
+                ),
+            ],
+            iterated=True,
+        ),
+        CalculatedDocument(
+            uuid="TEST_ID_7",
+            name="quantity",
+            value=769.776,
+            data_sources=[
+                DataSource(
+                    feature="cycle threshold result",
+                    reference=Referenceable(
+                        uuid="TEST_ID_1",
+                    ),
+                ),
+                DataSource(
+                    feature="y-intercept",
+                    reference=Referenceable(
+                        uuid="TEST_ID_1",
+                    ),
+                ),
+                DataSource(
+                    feature="slope",
+                    reference=Referenceable(
+                        uuid="TEST_ID_1",
+                    ),
+                ),
+            ],
+            iterated=True,
+        ),
+        CalculatedDocument(
+            uuid="TEST_ID_9",
+            name="quantity sd",
+            value=29.535,
+            data_sources=[
+                DataSource(
+                    feature="quantity",
+                    reference=CalculatedDocument(
+                        uuid="TEST_ID_6",
+                        name="quantity",
+                        value=794.91,
+                        data_sources=[
+                            DataSource(
+                                feature="cycle threshold result",
+                                reference=Referenceable(
+                                    uuid="TEST_ID_0",
+                                ),
+                            ),
+                            DataSource(
+                                feature="y-intercept",
+                                reference=Referenceable(
+                                    uuid="TEST_ID_0",
+                                ),
+                            ),
+                            DataSource(
+                                feature="slope",
+                                reference=Referenceable(
+                                    uuid="TEST_ID_0",
+                                ),
+                            ),
+                        ],
+                        iterated=True,
+                    ),
+                ),
+                DataSource(
+                    feature="quantity",
+                    reference=CalculatedDocument(
+                        uuid="TEST_ID_7",
+                        name="quantity",
+                        value=769.776,
+                        data_sources=[
+                            DataSource(
+                                feature="cycle threshold result",
+                                reference=Referenceable(
+                                    uuid="TEST_ID_1",
+                                ),
+                            ),
+                            DataSource(
+                                feature="y-intercept",
+                                reference=Referenceable(
+                                    uuid="TEST_ID_1",
+                                ),
+                            ),
+                            DataSource(
+                                feature="slope",
+                                reference=Referenceable(
+                                    uuid="TEST_ID_1",
+                                ),
+                            ),
+                        ],
+                        iterated=True,
+                    ),
+                ),
+            ],
+            iterated=True,
+        ),
+        CalculatedDocument(
+            uuid="TEST_ID_10",
             name="ct mean",
             value=30.115,
             data_sources=[
@@ -1742,7 +1840,7 @@ def get_rel_std_curve_data(file_name: str) -> Data:
             iterated=True,
         ),
         CalculatedDocument(
-            uuid="TEST_ID_7",
+            uuid="TEST_ID_11",
             name="ct sd",
             value=0.051,
             data_sources=[
@@ -1762,28 +1860,28 @@ def get_rel_std_curve_data(file_name: str) -> Data:
             iterated=True,
         ),
         CalculatedDocument(
-            uuid="TEST_ID_9",
+            uuid="TEST_ID_13",
             name="rq min",
             value=0.658,
             data_sources=[
                 DataSource(
                     feature="rq",
                     reference=CalculatedDocument(
-                        uuid="TEST_ID_8",
+                        uuid="TEST_ID_12",
                         name="rq",
                         value=0.798,
                         data_sources=[
                             DataSource(
                                 feature="quantity mean",
                                 reference=CalculatedDocument(
-                                    uuid="TEST_ID_4",
+                                    uuid="TEST_ID_8",
                                     name="quantity mean",
                                     value=818.012,
                                     data_sources=[
                                         DataSource(
                                             feature="quantity",
                                             reference=CalculatedDocument(
-                                                uuid="TEST_ID_2",
+                                                uuid="TEST_ID_6",
                                                 name="quantity",
                                                 value=794.91,
                                                 data_sources=[
@@ -1796,13 +1894,13 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                                     DataSource(
                                                         feature="y-intercept",
                                                         reference=Referenceable(
-                                                            uuid="TEST_ID_0"
+                                                            uuid="TEST_ID_0",
                                                         ),
                                                     ),
                                                     DataSource(
                                                         feature="slope",
                                                         reference=Referenceable(
-                                                            uuid="TEST_ID_0"
+                                                            uuid="TEST_ID_0",
                                                         ),
                                                     ),
                                                 ],
@@ -1812,7 +1910,7 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                         DataSource(
                                             feature="quantity",
                                             reference=CalculatedDocument(
-                                                uuid="TEST_ID_3",
+                                                uuid="TEST_ID_7",
                                                 name="quantity",
                                                 value=769.776,
                                                 data_sources=[
@@ -1825,13 +1923,13 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                                     DataSource(
                                                         feature="y-intercept",
                                                         reference=Referenceable(
-                                                            uuid="TEST_ID_1"
+                                                            uuid="TEST_ID_1",
                                                         ),
                                                     ),
                                                     DataSource(
                                                         feature="slope",
                                                         reference=Referenceable(
-                                                            uuid="TEST_ID_1"
+                                                            uuid="TEST_ID_1",
                                                         ),
                                                     ),
                                                 ],
@@ -1850,21 +1948,21 @@ def get_rel_std_curve_data(file_name: str) -> Data:
             iterated=True,
         ),
         CalculatedDocument(
-            uuid="TEST_ID_8",
+            uuid="TEST_ID_12",
             name="rq",
             value=0.798,
             data_sources=[
                 DataSource(
                     feature="quantity mean",
                     reference=CalculatedDocument(
-                        uuid="TEST_ID_4",
+                        uuid="TEST_ID_8",
                         name="quantity mean",
                         value=818.012,
                         data_sources=[
                             DataSource(
                                 feature="quantity",
                                 reference=CalculatedDocument(
-                                    uuid="TEST_ID_2",
+                                    uuid="TEST_ID_6",
                                     name="quantity",
                                     value=794.91,
                                     data_sources=[
@@ -1876,11 +1974,15 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                         ),
                                         DataSource(
                                             feature="y-intercept",
-                                            reference=Referenceable(uuid="TEST_ID_0"),
+                                            reference=Referenceable(
+                                                uuid="TEST_ID_0",
+                                            ),
                                         ),
                                         DataSource(
                                             feature="slope",
-                                            reference=Referenceable(uuid="TEST_ID_0"),
+                                            reference=Referenceable(
+                                                uuid="TEST_ID_0",
+                                            ),
                                         ),
                                     ],
                                     iterated=True,
@@ -1889,7 +1991,7 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                             DataSource(
                                 feature="quantity",
                                 reference=CalculatedDocument(
-                                    uuid="TEST_ID_3",
+                                    uuid="TEST_ID_7",
                                     name="quantity",
                                     value=769.776,
                                     data_sources=[
@@ -1901,11 +2003,15 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                         ),
                                         DataSource(
                                             feature="y-intercept",
-                                            reference=Referenceable(uuid="TEST_ID_1"),
+                                            reference=Referenceable(
+                                                uuid="TEST_ID_1",
+                                            ),
                                         ),
                                         DataSource(
                                             feature="slope",
-                                            reference=Referenceable(uuid="TEST_ID_1"),
+                                            reference=Referenceable(
+                                                uuid="TEST_ID_1",
+                                            ),
                                         ),
                                     ],
                                     iterated=True,
@@ -1919,28 +2025,28 @@ def get_rel_std_curve_data(file_name: str) -> Data:
             iterated=True,
         ),
         CalculatedDocument(
-            uuid="TEST_ID_10",
+            uuid="TEST_ID_14",
             name="rq max",
             value=0.967,
             data_sources=[
                 DataSource(
                     feature="rq",
                     reference=CalculatedDocument(
-                        uuid="TEST_ID_8",
+                        uuid="TEST_ID_12",
                         name="rq",
                         value=0.798,
                         data_sources=[
                             DataSource(
                                 feature="quantity mean",
                                 reference=CalculatedDocument(
-                                    uuid="TEST_ID_4",
+                                    uuid="TEST_ID_8",
                                     name="quantity mean",
                                     value=818.012,
                                     data_sources=[
                                         DataSource(
                                             feature="quantity",
                                             reference=CalculatedDocument(
-                                                uuid="TEST_ID_2",
+                                                uuid="TEST_ID_6",
                                                 name="quantity",
                                                 value=794.91,
                                                 data_sources=[
@@ -1953,13 +2059,13 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                                     DataSource(
                                                         feature="y-intercept",
                                                         reference=Referenceable(
-                                                            uuid="TEST_ID_0"
+                                                            uuid="TEST_ID_0",
                                                         ),
                                                     ),
                                                     DataSource(
                                                         feature="slope",
                                                         reference=Referenceable(
-                                                            uuid="TEST_ID_0"
+                                                            uuid="TEST_ID_0",
                                                         ),
                                                     ),
                                                 ],
@@ -1969,7 +2075,7 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                         DataSource(
                                             feature="quantity",
                                             reference=CalculatedDocument(
-                                                uuid="TEST_ID_3",
+                                                uuid="TEST_ID_7",
                                                 name="quantity",
                                                 value=769.776,
                                                 data_sources=[
@@ -1982,13 +2088,13 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                                     DataSource(
                                                         feature="y-intercept",
                                                         reference=Referenceable(
-                                                            uuid="TEST_ID_1"
+                                                            uuid="TEST_ID_1",
                                                         ),
                                                     ),
                                                     DataSource(
                                                         feature="slope",
                                                         reference=Referenceable(
-                                                            uuid="TEST_ID_1"
+                                                            uuid="TEST_ID_1",
                                                         ),
                                                     ),
                                                 ],
@@ -2023,6 +2129,7 @@ def get_rel_std_curve_data(file_name: str) -> Data:
 
 def get_rel_std_curve_model() -> Model:
     return Model(
+        manifest="http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest",
         qPCR_aggregate_document=QPCRAggregateDocument(
             device_system_document=DeviceSystemDocument(
                 device_identifier="278880034",
@@ -2088,6 +2195,9 @@ def get_rel_std_curve_model() -> Model:
                                             data_processing_document=DataProcessingDocument(
                                                 cycle_threshold_value_setting=TQuantityValueUnitless(
                                                     value=0.133,
+                                                    unit="(unitless)",
+                                                    has_statistic_datum_role=None,
+                                                    field_type=None,
                                                 ),
                                                 automatic_cycle_threshold_enabled_setting=True,
                                                 automatic_baseline_determination_enabled_setting=True,
@@ -2095,10 +2205,12 @@ def get_rel_std_curve_model() -> Model:
                                                 baseline_determination_end_cycle_setting=None,
                                                 genotyping_determination_method=None,
                                                 genotyping_determination_method_setting=None,
+                                                reference_DNA_description=None,
+                                                reference_sample_description=None,
                                             ),
                                             cycle_threshold_result=TNullableQuantityValueUnitless(
                                                 value=30.155,
-                                                unit=UNITLESS,
+                                                unit="(unitless)",
                                                 has_statistic_datum_role=None,
                                                 field_type=None,
                                             ),
@@ -2119,7 +2231,7 @@ def get_rel_std_curve_model() -> Model:
                                                         TDatacubeComponent(
                                                             field_componentDatatype=FieldComponentDatatype.double,
                                                             concept="normalized report result",
-                                                            unit=UNITLESS,
+                                                            unit="(unitless)",
                                                             scale=None,
                                                             field_asm_fill_value=None,
                                                         )
@@ -2148,7 +2260,7 @@ def get_rel_std_curve_model() -> Model:
                                                         TDatacubeComponent(
                                                             field_componentDatatype=FieldComponentDatatype.double,
                                                             concept="baseline corrected reporter result",
-                                                            unit=UNITLESS,
+                                                            unit="(unitless)",
                                                             scale=None,
                                                             field_asm_fill_value=None,
                                                         )
@@ -2232,6 +2344,9 @@ def get_rel_std_curve_model() -> Model:
                                             data_processing_document=DataProcessingDocument(
                                                 cycle_threshold_value_setting=TQuantityValueUnitless(
                                                     value=0.133,
+                                                    unit="(unitless)",
+                                                    has_statistic_datum_role=None,
+                                                    field_type=None,
                                                 ),
                                                 automatic_cycle_threshold_enabled_setting=True,
                                                 automatic_baseline_determination_enabled_setting=True,
@@ -2239,10 +2354,12 @@ def get_rel_std_curve_model() -> Model:
                                                 baseline_determination_end_cycle_setting=None,
                                                 genotyping_determination_method=None,
                                                 genotyping_determination_method_setting=None,
+                                                reference_DNA_description=None,
+                                                reference_sample_description=None,
                                             ),
                                             cycle_threshold_result=TNullableQuantityValueUnitless(
                                                 value=30.2,
-                                                unit=UNITLESS,
+                                                unit="(unitless)",
                                                 has_statistic_datum_role=None,
                                                 field_type=None,
                                             ),
@@ -2263,7 +2380,7 @@ def get_rel_std_curve_model() -> Model:
                                                         TDatacubeComponent(
                                                             field_componentDatatype=FieldComponentDatatype.double,
                                                             concept="normalized report result",
-                                                            unit=UNITLESS,
+                                                            unit="(unitless)",
                                                             scale=None,
                                                             field_asm_fill_value=None,
                                                         )
@@ -2292,7 +2409,7 @@ def get_rel_std_curve_model() -> Model:
                                                         TDatacubeComponent(
                                                             field_componentDatatype=FieldComponentDatatype.double,
                                                             concept="baseline corrected reporter result",
-                                                            unit=UNITLESS,
+                                                            unit="(unitless)",
                                                             scale=None,
                                                             field_asm_fill_value=None,
                                                         )
@@ -2330,38 +2447,11 @@ def get_rel_std_curve_model() -> Model:
                 UNC_path="",
                 software_name="Thermo QuantStudio",
                 software_version="1.0",
-                ASM_converter_name=ASM_CONVERTER_NAME,
-                ASM_converter_version=ASM_CONVERTER_VERSION,
+                ASM_converter_name="allotropy_appbio_quantstudio_rt_pcr",
+                ASM_converter_version="0.1.51",
             ),
             calculated_data_aggregate_document=TCalculatedDataAggregateDocument(
                 calculated_data_document=[
-                    CalculatedDataDocumentItem(
-                        calculated_data_identifier="TEST_ID_4",
-                        data_source_aggregate_document=DataSourceAggregateDocument(
-                            data_source_document=[
-                                DataSourceDocumentItem(
-                                    data_source_identifier="TEST_ID_2",
-                                    data_source_feature="quantity",
-                                ),
-                                DataSourceDocumentItem(
-                                    data_source_identifier="TEST_ID_3",
-                                    data_source_feature="quantity",
-                                ),
-                            ]
-                        ),
-                        data_processing_document=DataProcessingDocument(
-                            reference_DNA_description="RNaseP",
-                            reference_sample_description="800",
-                        ),
-                        calculated_data_name="quantity mean",
-                        calculated_data_description=None,
-                        calculated_datum=TQuantityValueUnitless(
-                            value=818.012,
-                            unit=UNITLESS,
-                            has_statistic_datum_role=None,
-                            field_type=None,
-                        ),
-                    ),
                     CalculatedDataDocumentItem(
                         calculated_data_identifier="TEST_ID_2",
                         data_source_aggregate_document=DataSourceAggregateDocument(
@@ -2369,26 +2459,25 @@ def get_rel_std_curve_model() -> Model:
                                 DataSourceDocumentItem(
                                     data_source_identifier="TEST_ID_0",
                                     data_source_feature="cycle threshold result",
-                                ),
-                                DataSourceDocumentItem(
-                                    data_source_identifier="TEST_ID_0",
-                                    data_source_feature="y-intercept",
-                                ),
-                                DataSourceDocumentItem(
-                                    data_source_identifier="TEST_ID_0",
-                                    data_source_feature="slope",
-                                ),
+                                )
                             ]
                         ),
                         data_processing_document=DataProcessingDocument(
+                            cycle_threshold_value_setting=None,
+                            automatic_cycle_threshold_enabled_setting=None,
+                            automatic_baseline_determination_enabled_setting=None,
+                            baseline_determination_start_cycle_setting=None,
+                            baseline_determination_end_cycle_setting=None,
+                            genotyping_determination_method=None,
+                            genotyping_determination_method_setting=None,
                             reference_DNA_description="RNaseP",
                             reference_sample_description="800",
                         ),
-                        calculated_data_name="quantity",
+                        calculated_data_name="amplification score",
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
-                            value=794.91,
-                            unit=UNITLESS,
+                            value=1.242,
+                            unit="(unitless)",
                             has_statistic_datum_role=None,
                             field_type=None,
                         ),
@@ -2398,28 +2487,57 @@ def get_rel_std_curve_model() -> Model:
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="TEST_ID_1",
+                                    data_source_identifier="TEST_ID_0",
                                     data_source_feature="cycle threshold result",
-                                ),
-                                DataSourceDocumentItem(
-                                    data_source_identifier="TEST_ID_1",
-                                    data_source_feature="y-intercept",
-                                ),
-                                DataSourceDocumentItem(
-                                    data_source_identifier="TEST_ID_1",
-                                    data_source_feature="slope",
-                                ),
+                                )
                             ]
                         ),
                         data_processing_document=DataProcessingDocument(
+                            cycle_threshold_value_setting=None,
+                            automatic_cycle_threshold_enabled_setting=None,
+                            automatic_baseline_determination_enabled_setting=None,
+                            baseline_determination_start_cycle_setting=None,
+                            baseline_determination_end_cycle_setting=None,
+                            genotyping_determination_method=None,
+                            genotyping_determination_method_setting=None,
                             reference_DNA_description="RNaseP",
                             reference_sample_description="800",
                         ),
-                        calculated_data_name="quantity",
+                        calculated_data_name="cq confidence",
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
-                            value=769.776,
-                            unit=UNITLESS,
+                            value=0.967,
+                            unit="(unitless)",
+                            has_statistic_datum_role=None,
+                            field_type=None,
+                        ),
+                    ),
+                    CalculatedDataDocumentItem(
+                        calculated_data_identifier="TEST_ID_4",
+                        data_source_aggregate_document=DataSourceAggregateDocument(
+                            data_source_document=[
+                                DataSourceDocumentItem(
+                                    data_source_identifier="TEST_ID_1",
+                                    data_source_feature="cycle threshold result",
+                                )
+                            ]
+                        ),
+                        data_processing_document=DataProcessingDocument(
+                            cycle_threshold_value_setting=None,
+                            automatic_cycle_threshold_enabled_setting=None,
+                            automatic_baseline_determination_enabled_setting=None,
+                            baseline_determination_start_cycle_setting=None,
+                            baseline_determination_end_cycle_setting=None,
+                            genotyping_determination_method=None,
+                            genotyping_determination_method_setting=None,
+                            reference_DNA_description="RNaseP",
+                            reference_sample_description="800",
+                        ),
+                        calculated_data_name="amplification score",
+                        calculated_data_description=None,
+                        calculated_datum=TQuantityValueUnitless(
+                            value=1.242,
+                            unit="(unitless)",
                             has_statistic_datum_role=None,
                             field_type=None,
                         ),
@@ -2429,24 +2547,61 @@ def get_rel_std_curve_model() -> Model:
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="TEST_ID_2",
+                                    data_source_identifier="TEST_ID_1",
+                                    data_source_feature="cycle threshold result",
+                                )
+                            ]
+                        ),
+                        data_processing_document=DataProcessingDocument(
+                            cycle_threshold_value_setting=None,
+                            automatic_cycle_threshold_enabled_setting=None,
+                            automatic_baseline_determination_enabled_setting=None,
+                            baseline_determination_start_cycle_setting=None,
+                            baseline_determination_end_cycle_setting=None,
+                            genotyping_determination_method=None,
+                            genotyping_determination_method_setting=None,
+                            reference_DNA_description="RNaseP",
+                            reference_sample_description="800",
+                        ),
+                        calculated_data_name="cq confidence",
+                        calculated_data_description=None,
+                        calculated_datum=TQuantityValueUnitless(
+                            value=0.964,
+                            unit="(unitless)",
+                            has_statistic_datum_role=None,
+                            field_type=None,
+                        ),
+                    ),
+                    CalculatedDataDocumentItem(
+                        calculated_data_identifier="TEST_ID_8",
+                        data_source_aggregate_document=DataSourceAggregateDocument(
+                            data_source_document=[
+                                DataSourceDocumentItem(
+                                    data_source_identifier="TEST_ID_6",
                                     data_source_feature="quantity",
                                 ),
                                 DataSourceDocumentItem(
-                                    data_source_identifier="TEST_ID_3",
+                                    data_source_identifier="TEST_ID_7",
                                     data_source_feature="quantity",
                                 ),
                             ]
                         ),
                         data_processing_document=DataProcessingDocument(
+                            cycle_threshold_value_setting=None,
+                            automatic_cycle_threshold_enabled_setting=None,
+                            automatic_baseline_determination_enabled_setting=None,
+                            baseline_determination_start_cycle_setting=None,
+                            baseline_determination_end_cycle_setting=None,
+                            genotyping_determination_method=None,
+                            genotyping_determination_method_setting=None,
                             reference_DNA_description="RNaseP",
                             reference_sample_description="800",
                         ),
-                        calculated_data_name="quantity sd",
+                        calculated_data_name="quantity mean",
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
-                            value=29.535,
-                            unit=UNITLESS,
+                            value=818.012,
+                            unit="(unitless)",
                             has_statistic_datum_role=None,
                             field_type=None,
                         ),
@@ -2460,26 +2615,109 @@ def get_rel_std_curve_model() -> Model:
                                     data_source_feature="cycle threshold result",
                                 ),
                                 DataSourceDocumentItem(
-                                    data_source_identifier="TEST_ID_1",
-                                    data_source_feature="cycle threshold result",
+                                    data_source_identifier="TEST_ID_0",
+                                    data_source_feature="y-intercept",
+                                ),
+                                DataSourceDocumentItem(
+                                    data_source_identifier="TEST_ID_0",
+                                    data_source_feature="slope",
                                 ),
                             ]
                         ),
                         data_processing_document=DataProcessingDocument(
+                            cycle_threshold_value_setting=None,
+                            automatic_cycle_threshold_enabled_setting=None,
+                            automatic_baseline_determination_enabled_setting=None,
+                            baseline_determination_start_cycle_setting=None,
+                            baseline_determination_end_cycle_setting=None,
+                            genotyping_determination_method=None,
+                            genotyping_determination_method_setting=None,
                             reference_DNA_description="RNaseP",
                             reference_sample_description="800",
                         ),
-                        calculated_data_name="ct mean",
+                        calculated_data_name="quantity",
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
-                            value=30.115,
-                            unit=UNITLESS,
+                            value=794.91,
+                            unit="(unitless)",
                             has_statistic_datum_role=None,
                             field_type=None,
                         ),
                     ),
                     CalculatedDataDocumentItem(
                         calculated_data_identifier="TEST_ID_7",
+                        data_source_aggregate_document=DataSourceAggregateDocument(
+                            data_source_document=[
+                                DataSourceDocumentItem(
+                                    data_source_identifier="TEST_ID_1",
+                                    data_source_feature="cycle threshold result",
+                                ),
+                                DataSourceDocumentItem(
+                                    data_source_identifier="TEST_ID_1",
+                                    data_source_feature="y-intercept",
+                                ),
+                                DataSourceDocumentItem(
+                                    data_source_identifier="TEST_ID_1",
+                                    data_source_feature="slope",
+                                ),
+                            ]
+                        ),
+                        data_processing_document=DataProcessingDocument(
+                            cycle_threshold_value_setting=None,
+                            automatic_cycle_threshold_enabled_setting=None,
+                            automatic_baseline_determination_enabled_setting=None,
+                            baseline_determination_start_cycle_setting=None,
+                            baseline_determination_end_cycle_setting=None,
+                            genotyping_determination_method=None,
+                            genotyping_determination_method_setting=None,
+                            reference_DNA_description="RNaseP",
+                            reference_sample_description="800",
+                        ),
+                        calculated_data_name="quantity",
+                        calculated_data_description=None,
+                        calculated_datum=TQuantityValueUnitless(
+                            value=769.776,
+                            unit="(unitless)",
+                            has_statistic_datum_role=None,
+                            field_type=None,
+                        ),
+                    ),
+                    CalculatedDataDocumentItem(
+                        calculated_data_identifier="TEST_ID_9",
+                        data_source_aggregate_document=DataSourceAggregateDocument(
+                            data_source_document=[
+                                DataSourceDocumentItem(
+                                    data_source_identifier="TEST_ID_6",
+                                    data_source_feature="quantity",
+                                ),
+                                DataSourceDocumentItem(
+                                    data_source_identifier="TEST_ID_7",
+                                    data_source_feature="quantity",
+                                ),
+                            ]
+                        ),
+                        data_processing_document=DataProcessingDocument(
+                            cycle_threshold_value_setting=None,
+                            automatic_cycle_threshold_enabled_setting=None,
+                            automatic_baseline_determination_enabled_setting=None,
+                            baseline_determination_start_cycle_setting=None,
+                            baseline_determination_end_cycle_setting=None,
+                            genotyping_determination_method=None,
+                            genotyping_determination_method_setting=None,
+                            reference_DNA_description="RNaseP",
+                            reference_sample_description="800",
+                        ),
+                        calculated_data_name="quantity sd",
+                        calculated_data_description=None,
+                        calculated_datum=TQuantityValueUnitless(
+                            value=29.535,
+                            unit="(unitless)",
+                            has_statistic_datum_role=None,
+                            field_type=None,
+                        ),
+                    ),
+                    CalculatedDataDocumentItem(
+                        calculated_data_identifier="TEST_ID_10",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
@@ -2493,6 +2731,47 @@ def get_rel_std_curve_model() -> Model:
                             ]
                         ),
                         data_processing_document=DataProcessingDocument(
+                            cycle_threshold_value_setting=None,
+                            automatic_cycle_threshold_enabled_setting=None,
+                            automatic_baseline_determination_enabled_setting=None,
+                            baseline_determination_start_cycle_setting=None,
+                            baseline_determination_end_cycle_setting=None,
+                            genotyping_determination_method=None,
+                            genotyping_determination_method_setting=None,
+                            reference_DNA_description="RNaseP",
+                            reference_sample_description="800",
+                        ),
+                        calculated_data_name="ct mean",
+                        calculated_data_description=None,
+                        calculated_datum=TQuantityValueUnitless(
+                            value=30.115,
+                            unit="(unitless)",
+                            has_statistic_datum_role=None,
+                            field_type=None,
+                        ),
+                    ),
+                    CalculatedDataDocumentItem(
+                        calculated_data_identifier="TEST_ID_11",
+                        data_source_aggregate_document=DataSourceAggregateDocument(
+                            data_source_document=[
+                                DataSourceDocumentItem(
+                                    data_source_identifier="TEST_ID_0",
+                                    data_source_feature="cycle threshold result",
+                                ),
+                                DataSourceDocumentItem(
+                                    data_source_identifier="TEST_ID_1",
+                                    data_source_feature="cycle threshold result",
+                                ),
+                            ]
+                        ),
+                        data_processing_document=DataProcessingDocument(
+                            cycle_threshold_value_setting=None,
+                            automatic_cycle_threshold_enabled_setting=None,
+                            automatic_baseline_determination_enabled_setting=None,
+                            baseline_determination_start_cycle_setting=None,
+                            baseline_determination_end_cycle_setting=None,
+                            genotyping_determination_method=None,
+                            genotyping_determination_method_setting=None,
                             reference_DNA_description="RNaseP",
                             reference_sample_description="800",
                         ),
@@ -2500,22 +2779,29 @@ def get_rel_std_curve_model() -> Model:
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
                             value=0.051,
-                            unit=UNITLESS,
+                            unit="(unitless)",
                             has_statistic_datum_role=None,
                             field_type=None,
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="TEST_ID_9",
+                        calculated_data_identifier="TEST_ID_13",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="TEST_ID_8",
+                                    data_source_identifier="TEST_ID_12",
                                     data_source_feature="rq",
                                 )
                             ]
                         ),
                         data_processing_document=DataProcessingDocument(
+                            cycle_threshold_value_setting=None,
+                            automatic_cycle_threshold_enabled_setting=None,
+                            automatic_baseline_determination_enabled_setting=None,
+                            baseline_determination_start_cycle_setting=None,
+                            baseline_determination_end_cycle_setting=None,
+                            genotyping_determination_method=None,
+                            genotyping_determination_method_setting=None,
                             reference_DNA_description="RNaseP",
                             reference_sample_description="800",
                         ),
@@ -2523,22 +2809,29 @@ def get_rel_std_curve_model() -> Model:
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
                             value=0.658,
-                            unit=UNITLESS,
+                            unit="(unitless)",
                             has_statistic_datum_role=None,
                             field_type=None,
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="TEST_ID_8",
+                        calculated_data_identifier="TEST_ID_12",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="TEST_ID_4",
+                                    data_source_identifier="TEST_ID_8",
                                     data_source_feature="quantity mean",
                                 )
                             ]
                         ),
                         data_processing_document=DataProcessingDocument(
+                            cycle_threshold_value_setting=None,
+                            automatic_cycle_threshold_enabled_setting=None,
+                            automatic_baseline_determination_enabled_setting=None,
+                            baseline_determination_start_cycle_setting=None,
+                            baseline_determination_end_cycle_setting=None,
+                            genotyping_determination_method=None,
+                            genotyping_determination_method_setting=None,
                             reference_DNA_description="RNaseP",
                             reference_sample_description="800",
                         ),
@@ -2546,22 +2839,29 @@ def get_rel_std_curve_model() -> Model:
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
                             value=0.798,
-                            unit=UNITLESS,
+                            unit="(unitless)",
                             has_statistic_datum_role=None,
                             field_type=None,
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="TEST_ID_10",
+                        calculated_data_identifier="TEST_ID_14",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="TEST_ID_8",
+                                    data_source_identifier="TEST_ID_12",
                                     data_source_feature="rq",
                                 )
                             ]
                         ),
                         data_processing_document=DataProcessingDocument(
+                            cycle_threshold_value_setting=None,
+                            automatic_cycle_threshold_enabled_setting=None,
+                            automatic_baseline_determination_enabled_setting=None,
+                            baseline_determination_start_cycle_setting=None,
+                            baseline_determination_end_cycle_setting=None,
+                            genotyping_determination_method=None,
+                            genotyping_determination_method_setting=None,
                             reference_DNA_description="RNaseP",
                             reference_sample_description="800",
                         ),
@@ -2569,7 +2869,7 @@ def get_rel_std_curve_model() -> Model:
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
                             value=0.967,
-                            unit=UNITLESS,
+                            unit="(unitless)",
                             has_statistic_datum_role=None,
                             field_type=None,
                         ),
@@ -2577,7 +2877,6 @@ def get_rel_std_curve_model() -> Model:
                 ]
             ),
         ),
-        manifest="http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest",
     )
 
 
@@ -2643,6 +2942,8 @@ def get_broken_calc_doc_data(file_name: str) -> Data:
                 expfail=None,
                 tholdfail=None,
                 prfdrop=None,
+                amp_score=None,
+                cq_conf=None,
             )
         }
     }
@@ -2669,28 +2970,48 @@ def get_broken_calc_doc_data(file_name: str) -> Data:
     calculated_documents = [
         CalculatedDocument(
             uuid="TEST_ID_1",
+            name="amplification score",
+            value=1.242,
+            data_sources=[
+                DataSource(
+                    feature="cycle threshold result",
+                    reference=Referenceable(uuid="TEST_ID_0"),
+                )
+            ],
+            iterated=False,
+        ),
+        CalculatedDocument(
+            uuid="TEST_ID_2",
+            name="cq confidence",
+            value=0.967,
+            data_sources=[
+                DataSource(
+                    feature="cycle threshold result",
+                    reference=Referenceable(uuid="TEST_ID_0"),
+                )
+            ],
+            iterated=False,
+        ),
+        CalculatedDocument(
+            uuid="TEST_ID_3",
             name="ct mean",
             value=30.115,
             data_sources=[
                 DataSource(
                     feature="cycle threshold result",
-                    reference=Referenceable(
-                        uuid="TEST_ID_0",
-                    ),
+                    reference=Referenceable(uuid="TEST_ID_0"),
                 )
             ],
             iterated=True,
         ),
         CalculatedDocument(
-            uuid="TEST_ID_2",
+            uuid="TEST_ID_4",
             name="ct sd",
             value=0.051,
             data_sources=[
                 DataSource(
                     feature="cycle threshold result",
-                    reference=Referenceable(
-                        uuid="TEST_ID_0",
-                    ),
+                    reference=Referenceable(uuid="TEST_ID_0"),
                 )
             ],
             iterated=True,
@@ -2712,6 +3033,7 @@ def get_broken_calc_doc_data(file_name: str) -> Data:
 
 def get_broken_calc_doc_model() -> Model:
     return Model(
+        manifest="http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest",
         qPCR_aggregate_document=QPCRAggregateDocument(
             device_system_document=DeviceSystemDocument(
                 device_identifier="278880034",
@@ -2728,6 +3050,9 @@ def get_broken_calc_doc_model() -> Model:
                     measurement_aggregate_document=MeasurementAggregateDocument(
                         plate_well_count=TQuantityValueNumber(
                             value=96,
+                            unit="#",
+                            has_statistic_datum_role=None,
+                            field_type=None,
                         ),
                         measurement_document=[
                             MeasurementDocumentItem(
@@ -2752,6 +3077,9 @@ def get_broken_calc_doc_model() -> Model:
                                             detection_type=None,
                                             total_cycle_number_setting=TQuantityValueNumber(
                                                 value=1.0,
+                                                unit="#",
+                                                has_statistic_datum_role=None,
+                                                field_type=None,
                                             ),
                                             denaturing_temperature_setting=None,
                                             denaturing_time_setting=None,
@@ -2771,6 +3099,9 @@ def get_broken_calc_doc_model() -> Model:
                                             data_processing_document=DataProcessingDocument(
                                                 cycle_threshold_value_setting=TQuantityValueUnitless(
                                                     value=0.133,
+                                                    unit="(unitless)",
+                                                    has_statistic_datum_role=None,
+                                                    field_type=None,
                                                 ),
                                                 automatic_cycle_threshold_enabled_setting=True,
                                                 automatic_baseline_determination_enabled_setting=True,
@@ -2778,9 +3109,14 @@ def get_broken_calc_doc_model() -> Model:
                                                 baseline_determination_end_cycle_setting=None,
                                                 genotyping_determination_method=None,
                                                 genotyping_determination_method_setting=None,
+                                                reference_DNA_description=None,
+                                                reference_sample_description=None,
                                             ),
                                             cycle_threshold_result=TNullableQuantityValueUnitless(
                                                 value=30.155,
+                                                unit="(unitless)",
+                                                has_statistic_datum_role=None,
+                                                field_type=None,
                                             ),
                                             normalized_reporter_result=None,
                                             normalized_reporter_data_cube=NormalizedReporterDataCube(
@@ -2791,13 +3127,17 @@ def get_broken_calc_doc_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.integer,
                                                             concept="cycle count",
                                                             unit="#",
+                                                            scale=None,
+                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                     measures=[
                                                         TDatacubeComponent(
                                                             field_componentDatatype=FieldComponentDatatype.double,
                                                             concept="normalized report result",
-                                                            unit=UNITLESS,
+                                                            unit="(unitless)",
+                                                            scale=None,
+                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                 ),
@@ -2816,13 +3156,17 @@ def get_broken_calc_doc_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.integer,
                                                             concept="cycle count",
                                                             unit="#",
+                                                            scale=None,
+                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                     measures=[
                                                         TDatacubeComponent(
                                                             field_componentDatatype=FieldComponentDatatype.double,
                                                             concept="baseline corrected reporter result",
-                                                            unit=UNITLESS,
+                                                            unit="(unitless)",
+                                                            scale=None,
+                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                 ),
@@ -2858,8 +3202,8 @@ def get_broken_calc_doc_model() -> Model:
                 UNC_path="",
                 software_name="Thermo QuantStudio",
                 software_version="1.0",
-                ASM_converter_name=ASM_CONVERTER_NAME,
-                ASM_converter_version=ASM_CONVERTER_VERSION,
+                ASM_converter_name="allotropy_appbio_quantstudio_rt_pcr",
+                ASM_converter_version="0.1.51",
             ),
             calculated_data_aggregate_document=TCalculatedDataAggregateDocument(
                 calculated_data_document=[
@@ -2874,14 +3218,21 @@ def get_broken_calc_doc_model() -> Model:
                             ]
                         ),
                         data_processing_document=DataProcessingDocument(
+                            cycle_threshold_value_setting=None,
+                            automatic_cycle_threshold_enabled_setting=None,
+                            automatic_baseline_determination_enabled_setting=None,
+                            baseline_determination_start_cycle_setting=None,
+                            baseline_determination_end_cycle_setting=None,
+                            genotyping_determination_method=None,
+                            genotyping_determination_method_setting=None,
                             reference_DNA_description="RNaseP",
                             reference_sample_description="800",
                         ),
-                        calculated_data_name="ct mean",
+                        calculated_data_name="amplification score",
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
-                            value=30.115,
-                            unit=UNITLESS,
+                            value=1.242,
+                            unit="(unitless)",
                             has_statistic_datum_role=None,
                             field_type=None,
                         ),
@@ -2897,6 +3248,73 @@ def get_broken_calc_doc_model() -> Model:
                             ]
                         ),
                         data_processing_document=DataProcessingDocument(
+                            cycle_threshold_value_setting=None,
+                            automatic_cycle_threshold_enabled_setting=None,
+                            automatic_baseline_determination_enabled_setting=None,
+                            baseline_determination_start_cycle_setting=None,
+                            baseline_determination_end_cycle_setting=None,
+                            genotyping_determination_method=None,
+                            genotyping_determination_method_setting=None,
+                            reference_DNA_description="RNaseP",
+                            reference_sample_description="800",
+                        ),
+                        calculated_data_name="cq confidence",
+                        calculated_data_description=None,
+                        calculated_datum=TQuantityValueUnitless(
+                            value=0.967,
+                            unit="(unitless)",
+                            has_statistic_datum_role=None,
+                            field_type=None,
+                        ),
+                    ),
+                    CalculatedDataDocumentItem(
+                        calculated_data_identifier="TEST_ID_3",
+                        data_source_aggregate_document=DataSourceAggregateDocument(
+                            data_source_document=[
+                                DataSourceDocumentItem(
+                                    data_source_identifier="TEST_ID_0",
+                                    data_source_feature="cycle threshold result",
+                                )
+                            ]
+                        ),
+                        data_processing_document=DataProcessingDocument(
+                            cycle_threshold_value_setting=None,
+                            automatic_cycle_threshold_enabled_setting=None,
+                            automatic_baseline_determination_enabled_setting=None,
+                            baseline_determination_start_cycle_setting=None,
+                            baseline_determination_end_cycle_setting=None,
+                            genotyping_determination_method=None,
+                            genotyping_determination_method_setting=None,
+                            reference_DNA_description="RNaseP",
+                            reference_sample_description="800",
+                        ),
+                        calculated_data_name="ct mean",
+                        calculated_data_description=None,
+                        calculated_datum=TQuantityValueUnitless(
+                            value=30.115,
+                            unit="(unitless)",
+                            has_statistic_datum_role=None,
+                            field_type=None,
+                        ),
+                    ),
+                    CalculatedDataDocumentItem(
+                        calculated_data_identifier="TEST_ID_4",
+                        data_source_aggregate_document=DataSourceAggregateDocument(
+                            data_source_document=[
+                                DataSourceDocumentItem(
+                                    data_source_identifier="TEST_ID_0",
+                                    data_source_feature="cycle threshold result",
+                                )
+                            ]
+                        ),
+                        data_processing_document=DataProcessingDocument(
+                            cycle_threshold_value_setting=None,
+                            automatic_cycle_threshold_enabled_setting=None,
+                            automatic_baseline_determination_enabled_setting=None,
+                            baseline_determination_start_cycle_setting=None,
+                            baseline_determination_end_cycle_setting=None,
+                            genotyping_determination_method=None,
+                            genotyping_determination_method_setting=None,
                             reference_DNA_description="RNaseP",
                             reference_sample_description="800",
                         ),
@@ -2904,11 +3322,12 @@ def get_broken_calc_doc_model() -> Model:
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
                             value=0.051,
-                            unit=UNITLESS,
+                            unit="(unitless)",
+                            has_statistic_datum_role=None,
+                            field_type=None,
                         ),
                     ),
                 ]
             ),
         ),
-        manifest="http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest",
     )
