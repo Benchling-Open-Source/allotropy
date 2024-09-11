@@ -126,6 +126,12 @@ def get_data(file_name: str) -> Data:
                 r_squared=None,
                 slope=None,
                 efficiency=None,
+                comments=None,
+                highsd=None,
+                noamp='N',
+                expfail='N',
+                tholdfail=None,
+                prfdrop=None,
             ),
             target2.replace(" ", ""): Result(
                 cycle_threshold_value_setting=0.2,
@@ -153,6 +159,12 @@ def get_data(file_name: str) -> Data:
                 r_squared=None,
                 slope=None,
                 efficiency=None,
+                comments=None,
+                highsd=None,
+                noamp='N',
+                expfail='N',
+                tholdfail=None,
+                prfdrop=None,
             ),
         }
     }
@@ -312,6 +324,12 @@ def get_data2(file_name: str) -> Data:
                 r_squared=None,
                 slope=None,
                 efficiency=None,
+                comments=None,
+                highsd=None,
+                noamp=None,
+                expfail=None,
+                tholdfail=None,
+                prfdrop=None,
             )
         }
     }
@@ -1092,6 +1110,12 @@ def get_genotyping_data(file_name: str) -> Data:
                 r_squared=None,
                 slope=None,
                 efficiency=None,
+                comments=None,
+                highsd=None,
+                noamp=None,
+                expfail=None,
+                tholdfail=None,
+                prfdrop=None,
             ),
             target2.replace(" ", ""): Result(
                 cycle_threshold_value_setting=0.132,
@@ -1119,6 +1143,12 @@ def get_genotyping_data(file_name: str) -> Data:
                 r_squared=None,
                 slope=None,
                 efficiency=None,
+                comments=None,
+                highsd=None,
+                noamp=None,
+                expfail=None,
+                tholdfail=None,
+                prfdrop=None,
             ),
         }
     }
@@ -1452,6 +1482,12 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                 r_squared=0.999,
                 slope=-3.278,
                 efficiency=101.866,
+                comments=None,
+                highsd=None,
+                noamp=None,
+                expfail=None,
+                tholdfail=None,
+                prfdrop=None,
             )
         },
         well_item_id_2: {
@@ -1481,6 +1517,12 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                 r_squared=0.999,
                 slope=-3.278,
                 efficiency=101.866,
+                comments=None,
+                highsd=None,
+                noamp=None,
+                expfail=None,
+                tholdfail=None,
+                prfdrop=None,
             )
         },
     }
@@ -2595,6 +2637,12 @@ def get_broken_calc_doc_data(file_name: str) -> Data:
                 r_squared=0.999,
                 slope=-3.278,
                 efficiency=101.866,
+                comments=None,
+                highsd=None,
+                noamp=None,
+                expfail=None,
+                tholdfail=None,
+                prfdrop=None,
             )
         }
     }
