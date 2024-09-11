@@ -215,7 +215,7 @@ class Mapper(SchemaMapper[Data, Model]):
         elif measurement.type_ == MeasurementType.FLUORESCENCE:
             return self._get_fluorescence_measurement_document(measurement)
         else:
-            msg = f"Unexpected measurement type: {measurement.type}"
+            msg = f"Unexpected measurement type: {measurement.type_}"
             raise AllotropyParserError(msg)
 
     def _get_ultraviolet_absorbance_measurement_document(

@@ -280,8 +280,8 @@ class PlateHeader:
     concept: str
     read_mode: str
     unit: str
-    scan_position: ScanPosition
-    reads_per_well: float
+    scan_position: ScanPositionSettingPlateReader | None
+    reads_per_well: float | None
     pmt_gain: str | None
     num_rows: int
     excitation_wavelengths: list[int] | None
@@ -650,7 +650,7 @@ class PlateBlock(ABC, Block):
 
     @property
     @abstractmethod
-    def measurement_type(self) -> str:
+    def measurement_type(self) -> MeasurementType:
         raise NotImplementedError
 
     @classmethod
@@ -714,8 +714,8 @@ class PlateBlock(ABC, Block):
 @dataclass(frozen=True)
 class FluorescencePlateBlock(PlateBlock):
     @property
-    def measurement_type(self) -> str:
-        return "Fluorescence"
+    def measurement_type(self) -> MeasurementType:
+        return MeasurementType.FLUORESCENCE
 
     @classmethod
     def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
@@ -792,9 +792,13 @@ class FluorescencePlateBlock(PlateBlock):
             raise AllotropeConversionError(msg)
 
         if raw_scan_position == "TRUE":
-            scan_position = ScanPosition.BOTTOM
+            scan_position = (
+                ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_
+            )
         elif raw_scan_position == "FALSE":
-            scan_position = ScanPosition.TOP
+            scan_position = (
+                ScanPositionSettingPlateReader.top_scan_position__plate_reader_
+            )
         else:
             msg = f"{raw_scan_position} is not a valid scan position, expected 'TRUE' or 'FALSE'."
             raise AllotropeConversionError(msg)
@@ -828,8 +832,8 @@ class FluorescencePlateBlock(PlateBlock):
 @dataclass(frozen=True)
 class LuminescencePlateBlock(PlateBlock):
     @property
-    def measurement_type(self) -> str:
-        return "Luminescence"
+    def measurement_type(self) -> MeasurementType:
+        return MeasurementType.LUMINESCENCE
 
     @classmethod
     def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
@@ -891,7 +895,7 @@ class LuminescencePlateBlock(PlateBlock):
             concept="luminescence",
             read_mode="Luminescence",
             unit="RLU",
-            scan_position=ScanPosition.NONE,
+            scan_position=None,
             reads_per_well=try_int(reads_per_well, "reads_per_well"),
             pmt_gain=pmt_gain,
             num_rows=try_int(num_rows, "num_rows"),
@@ -903,8 +907,8 @@ class LuminescencePlateBlock(PlateBlock):
 @dataclass(frozen=True)
 class AbsorbancePlateBlock(PlateBlock):
     @property
-    def measurement_type(self) -> str:
-        return "Absorbance"
+    def measurement_type(self) -> MeasurementType:
+        return MeasurementType.ULTRAVIOLET_ABSORBANCE
 
     @classmethod
     def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
@@ -957,8 +961,8 @@ class AbsorbancePlateBlock(PlateBlock):
             concept="absorbance",
             read_mode="Absorbance",
             unit="mAU",
-            scan_position=ScanPosition.NONE,
-            reads_per_well=0,
+            scan_position=None,
+            reads_per_well=None,
             pmt_gain=None,
             num_rows=try_int(num_rows_raw, "num_rows"),
             excitation_wavelengths=None,
@@ -1060,14 +1064,29 @@ def create_metadata(file_name: str) -> Metadata:
     )
 
 
-def _create_fluorescence_measurements(
-    plate_block: PlateBlock, position: str
-) -> list[Measurement]:
+def _create_measurements(plate_block: PlateBlock, position: str) -> list[Measurement]:
+
+    measurement_type = plate_block.measurement_type
+
     return [
         Measurement(
-            type_=MeasurementType.FLUORESCENCE,
+            type_=measurement_type,
             identifier=data_element.uuid,
-            fluorescence=data_element.value,
+            absorbance=(
+                data_element.value
+                if measurement_type == MeasurementType.ULTRAVIOLET_ABSORBANCE
+                else None
+            ),
+            fluorescence=(
+                data_element.value
+                if measurement_type == MeasurementType.FLUORESCENCE
+                else None
+            ),
+            luminescence=(
+                data_element.value
+                if measurement_type == MeasurementType.LUMINESCENCE
+                else None
+            ),
             # A temperature of 0 indicates the temperature was not actualy read.
             compartment_temperature=data_element.temperature or None,
             # Sample document
@@ -1077,15 +1096,13 @@ def _create_fluorescence_measurements(
             # Device Control document
             device_type=DEVICE_TYPE,
             detection_type=plate_block.header.read_mode,
-            scan_position_setting=(
-                ScanPositionSettingPlateReader.top_scan_position__plate_reader_
-                if plate_block.header.scan_position == ScanPosition.TOP
-                else ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_
-            ),
+            scan_position_setting=plate_block.header.scan_position,
             detector_wavelength_setting=data_element.wavelength,
-            excitation_wavelength_setting=plate_block.header.excitation_wavelengths[idx]
-            if plate_block.header.excitation_wavelengths
-            else None,
+            excitation_wavelength_setting=(
+                plate_block.header.excitation_wavelengths[idx]
+                if plate_block.header.excitation_wavelengths
+                else None
+            ),
             wavelength_filter_cutoff_setting=(
                 plate_block.header.cutoff_filters[idx]
                 if plate_block.header.cutoff_filters
@@ -1098,79 +1115,11 @@ def _create_fluorescence_measurements(
     ]
 
 
-def _create_luminescence_measurements(
-    plate_block: PlateBlock, position: str
-) -> list[Measurement]:
-
-    # TODO: is this really necessary?
-    reads_per_well = assert_not_none(
-        plate_block.header.reads_per_well,
-        msg="Unable to find plate block reads per well.",
-    )
-
-    return [
-        Measurement(
-            type_=MeasurementType.LUMINESCENCE,
-            identifier=data_element.uuid,
-            luminescence=data_element.value,
-            # A temperature of 0 indicates the temperature was not actualy read.
-            compartment_temperature=data_element.temperature or None,
-            # Sample document
-            sample_identifier=data_element.sample_identifier,
-            location_identifier=data_element.position,
-            well_plate_identifier=plate_block.header.name,
-            # Device control document
-            device_type=DEVICE_TYPE,
-            detection_type=plate_block.header.read_mode,
-            detector_wavelength_setting=data_element.wavelength,
-            number_of_averages=reads_per_well,
-            detector_gain_setting=plate_block.header.pmt_gain,
-        )
-        for data_element in plate_block.iter_data_elements(position)
-    ]
-
-
-def _create_absorbance_measurements(
-    plate_block: PlateBlock, position: str
-) -> list[Measurement]:
-    return [
-        Measurement(
-            type_=MeasurementType.ULTRAVIOLET_ABSORBANCE,
-            identifier=data_element.uuid,
-            absorbance=data_element.value,
-            # A temperature of 0 indicates the temperature was not actualy read.
-            compartment_temperature=data_element.temperature or None,
-            # Sample document
-            sample_identifier=data_element.sample_identifier,
-            location_identifier=data_element.position,
-            well_plate_identifier=plate_block.header.name,
-            # Device control document
-            device_type=DEVICE_TYPE,
-            detection_type=plate_block.header.read_mode,
-            detector_wavelength_setting=data_element.wavelength,
-        )
-        for data_element in plate_block.iter_data_elements(position)
-    ]
-
-
 def _create_measurement_group(
     plate_block: PlateBlock, position: str
 ) -> MeasurementGroup | None:
-    measurements: list[Measurement] = []
 
-    # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
-    # TODO: have one _create_measurements and move this if there.
-    if plate_block.measurement_type == "Absorbance":
-        measurements = _create_absorbance_measurements(plate_block, position)
-    elif plate_block.measurement_type == "Luminescence":
-        measurements = _create_luminescence_measurements(plate_block, position)
-    elif plate_block.measurement_type == "Fluorescence":
-        measurements = _create_fluorescence_measurements(plate_block, position)
-    else:
-        msg = f"{plate_block.measurement_type} is not a valid plate block type."
-        raise AllotropeConversionError(msg)
-
-    if not measurements:
+    if not (measurements := _create_measurements(plate_block, position)):
         return None
 
     return MeasurementGroup(
@@ -1201,10 +1150,15 @@ def create_calculated_data(data: StructureData) -> list[CalculatedDataItem]:
 def _get_calc_docs_data_sources(
     plate_block: PlateBlock, position: str
 ) -> list[DataSource]:
+    measurement_type_to_feature = {
+        MeasurementType.ULTRAVIOLET_ABSORBANCE: "Absorbance",
+        MeasurementType.LUMINESCENCE: "Luminescence",
+        MeasurementType.FLUORESCENCE: "Fluorescence",
+    }
     return [
         DataSource(
             identifier=data_source.uuid,
-            feature=plate_block.measurement_type,
+            feature=measurement_type_to_feature[plate_block.measurement_type],
         )
         for data_source in plate_block.iter_data_elements(position)
     ]
