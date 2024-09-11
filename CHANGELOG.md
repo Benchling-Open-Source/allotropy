@@ -9,9 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Add schema mapper for the `REC/2024/06/plate-reader` schema.
+
 ### Fixed
 
+- Correctly parse dates in Softmaxpro adapter.
+
 ### Changed
+
+- Refactor Softmaxpro adapter to use the new schema mapper.
 
 ### Deprecated
 
