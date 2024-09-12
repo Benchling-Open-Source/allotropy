@@ -32553,12 +32553,492 @@
             "software name": "Thermo QuantStudio",
             "software version": "1.0",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.49"
+            "ASM converter version": "0.1.51"
         },
         "calculated data aggregate document": {
             "calculated data document": [
                 {
                     "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_66",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_6",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.242,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_67",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_6",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.967,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_68",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_7",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.242,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_69",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_7",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.964,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_70",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_8",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.241,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_71",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_8",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.962,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_72",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_18",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.247,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_73",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_18",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.965,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_74",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_19",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.244,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_75",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_19",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.967,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_76",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_20",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.242,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_77",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_20",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.967,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_78",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_30",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.244,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_79",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_30",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.951,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_80",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_31",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.249,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_81",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_31",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.964,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_82",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_32",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.241,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_83",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_32",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.963,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_84",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_42",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.243,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_85",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_42",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.967,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_86",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_43",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.245,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_87",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_43",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.965,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_88",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_44",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.242,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_89",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_44",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.964,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_90",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -32622,15 +33102,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_69",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_93",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_67",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_91",
                                 "data source feature": "ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_68",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_92",
                                 "data source feature": "ct mean"
                             }
                         ]
@@ -32646,7 +33126,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_67",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_91",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -32710,7 +33190,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_68",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_92",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -32738,11 +33218,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_76",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_100",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_75",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_99",
                                 "data source feature": "rq"
                             }
                         ]
@@ -32758,11 +33238,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_75",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_99",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_74",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_98",
                                 "data source feature": "delta delta ct"
                             }
                         ]
@@ -32778,15 +33258,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_74",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_98",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_70",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_94",
                                 "data source feature": "delta ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_73",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_97",
                                 "data source feature": "delta ct mean"
                             }
                         ]
@@ -32802,15 +33282,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_70",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_94",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_67",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_91",
                                 "data source feature": "ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_68",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_92",
                                 "data source feature": "ct mean"
                             }
                         ]
@@ -32826,15 +33306,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_73",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_97",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_71",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_95",
                                 "data source feature": "ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_72",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_96",
                                 "data source feature": "ct mean"
                             }
                         ]
@@ -32850,7 +33330,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_71",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_95",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -32914,7 +33394,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_72",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_96",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -32942,11 +33422,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_77",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_101",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_75",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_99",
                                 "data source feature": "rq"
                             }
                         ]
@@ -32962,7 +33442,127 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_78",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_102",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_54",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 0.936,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_103",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_54",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.954,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_104",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_55",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 0.947,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_105",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_55",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.911,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_106",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_56",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 0.95,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_107",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_56",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.909,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_108",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -32990,7 +33590,487 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_79",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_109",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_9",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.24,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_110",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_9",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.966,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_111",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_10",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.239,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_112",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_10",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.966,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_113",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_11",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.242,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_114",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_11",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.968,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_115",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_21",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.241,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_116",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_21",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.967,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_117",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_22",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.241,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_118",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_22",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.967,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_119",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_23",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.241,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_120",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_23",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.972,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_121",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_33",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.24,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_122",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_33",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.967,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_123",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_34",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.244,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_124",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_34",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.969,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_125",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_35",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.241,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_126",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_35",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.972,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_127",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_45",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.242,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_128",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_45",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.968,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_129",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_46",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.245,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_130",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_46",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.966,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_131",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_47",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.245,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_132",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_47",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.965,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_133",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -33054,15 +34134,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_82",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_136",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_80",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_134",
                                 "data source feature": "ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_81",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_135",
                                 "data source feature": "ct mean"
                             }
                         ]
@@ -33078,7 +34158,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_80",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_134",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -33142,7 +34222,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_81",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_135",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -33170,11 +34250,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_86",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_140",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_85",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_139",
                                 "data source feature": "rq"
                             }
                         ]
@@ -33190,11 +34270,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_85",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_139",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_84",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_138",
                                 "data source feature": "delta delta ct"
                             }
                         ]
@@ -33210,15 +34290,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_84",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_138",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_83",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_137",
                                 "data source feature": "delta ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_73",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_97",
                                 "data source feature": "delta ct mean"
                             }
                         ]
@@ -33234,15 +34314,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_83",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_137",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_80",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_134",
                                 "data source feature": "ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_81",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_135",
                                 "data source feature": "ct mean"
                             }
                         ]
@@ -33258,11 +34338,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_87",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_141",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_85",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_139",
                                 "data source feature": "rq"
                             }
                         ]
@@ -33278,7 +34358,127 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_88",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_142",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_57",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 0.938,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_143",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_57",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.878,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_144",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_58",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 0.948,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_145",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_58",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.871,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_146",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_59",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 0.949,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_147",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_59",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.867,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_148",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -33306,7 +34506,487 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_89",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_149",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_12",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.235,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_150",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_12",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.972,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_151",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_13",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.236,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_152",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_13",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.971,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_153",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_14",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.239,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_154",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_14",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.974,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_155",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_24",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.237,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_156",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_24",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.972,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_157",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_25",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.239,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_158",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_25",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.975,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_159",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_26",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.237,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_160",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_26",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.978,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_161",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_36",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.239,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_162",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_36",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.973,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_163",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_37",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.239,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_164",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_37",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.97,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_165",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_38",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.238,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_166",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_38",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.973,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_167",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_48",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.238,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_168",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_48",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.978,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_169",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_49",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.242,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_170",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_49",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.974,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_171",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_50",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.242,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_172",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_50",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.972,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_173",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -33370,15 +35050,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_92",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_176",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_90",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_174",
                                 "data source feature": "ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_91",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_175",
                                 "data source feature": "ct mean"
                             }
                         ]
@@ -33394,7 +35074,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_90",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_174",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -33458,7 +35138,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_91",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_175",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -33486,11 +35166,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_96",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_180",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_95",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_179",
                                 "data source feature": "rq"
                             }
                         ]
@@ -33506,11 +35186,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_95",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_179",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_94",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_178",
                                 "data source feature": "delta delta ct"
                             }
                         ]
@@ -33526,15 +35206,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_94",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_178",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_93",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_177",
                                 "data source feature": "delta ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_73",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_97",
                                 "data source feature": "delta ct mean"
                             }
                         ]
@@ -33550,15 +35230,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_93",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_177",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_90",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_174",
                                 "data source feature": "ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_91",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_175",
                                 "data source feature": "ct mean"
                             }
                         ]
@@ -33574,11 +35254,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_97",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_181",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_95",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_179",
                                 "data source feature": "rq"
                             }
                         ]
@@ -33594,7 +35274,127 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_98",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_182",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_60",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 0.944,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_183",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_60",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.862,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_184",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_61",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 0.949,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_185",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_61",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.854,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_186",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_62",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 0.943,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_187",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_62",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.913,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_188",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -33622,7 +35422,487 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_99",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_189",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_15",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.23,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_190",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_15",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.968,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_191",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_16",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.229,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_192",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_16",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.965,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_193",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_17",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.229,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_194",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_17",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.967,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_195",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_27",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.232,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_196",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_27",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.97,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_197",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_28",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.231,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_198",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_28",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.969,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_199",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_29",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.231,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_200",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_29",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.968,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_201",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_39",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.233,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_202",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_39",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.968,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_203",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_40",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.234,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_204",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_40",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.973,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_205",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_41",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.231,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_206",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_41",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.967,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_207",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_51",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.233,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_208",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_51",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.971,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_209",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_52",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.228,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_210",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_52",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.966,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_211",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_53",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 1.234,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_212",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_53",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.967,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_213",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -33686,15 +35966,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_100",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_214",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_71",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_95",
                                 "data source feature": "ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_72",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_96",
                                 "data source feature": "ct mean"
                             }
                         ]
@@ -33710,11 +35990,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_103",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_217",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_102",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_216",
                                 "data source feature": "rq"
                             }
                         ]
@@ -33730,11 +36010,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_102",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_216",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_101",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_215",
                                 "data source feature": "delta delta ct"
                             }
                         ]
@@ -33750,15 +36030,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_101",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_215",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_73",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_97",
                                 "data source feature": "delta ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_73",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_97",
                                 "data source feature": "delta ct mean"
                             }
                         ]
@@ -33774,11 +36054,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_104",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_218",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_102",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_216",
                                 "data source feature": "rq"
                             }
                         ]
@@ -33794,7 +36074,127 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_105",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_219",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_63",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 0.945,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_220",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_63",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.947,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_221",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_64",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 0.947,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_222",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_64",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.912,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_223",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_65",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "amplification score",
+                    "calculated datum": {
+                        "value": 0.94,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_224",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_65",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "GAPDH",
+                        "reference sample description": "Liver"
+                    },
+                    "calculated data name": "cq confidence",
+                    "calculated datum": {
+                        "value": 0.948,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_225",
                     "data source aggregate document": {
                         "data source document": [
                             {
