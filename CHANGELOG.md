@@ -13,13 +13,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Use dateutil timezone instead of pytz, because pytz is can create incorrect timezones when not localized.
-
 ### Deprecated
 
 ### Removed
 
 ### Security
+
+## [0.1.52] - 2024-09-12
+
+### Changed
+
+- Use dateutil timezone instead of pytz, because pytz is can create incorrect timezones when not localized.
 
 ## [0.1.51] - 2024-09-09
 
