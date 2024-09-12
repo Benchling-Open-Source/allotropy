@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Amp score and Cq conf calculated documents to Appbio Quantstudio
+- Add custom information to processed data document in Appbio Quantstudio
 
 ### Fixed
 

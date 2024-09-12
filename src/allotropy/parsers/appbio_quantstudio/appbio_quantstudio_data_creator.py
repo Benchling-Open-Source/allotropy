@@ -78,6 +78,12 @@ def _create_processed_data(
         cycle_threshold_result=result.cycle_threshold_result,
         normalized_reporter_result=result.normalized_reporter_result,
         baseline_corrected_reporter_result=result.baseline_corrected_reporter_result,
+        comments=result.comments,
+        highsd=result.highsd,
+        noamp=result.noamp,
+        expfail=result.expfail,
+        tholdfail=result.tholdfail,
+        prfdrop=result.prfdrop,
         data_cubes=_create_processed_data_cubes(amplification_data),
     )
 

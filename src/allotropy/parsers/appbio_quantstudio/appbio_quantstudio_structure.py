@@ -358,6 +358,14 @@ class Result:
     r_squared: float | None
     slope: float | None
     efficiency: float | None
+    comments: str | None
+    highsd: str | None
+    noamp: str | None
+    expfail: str | None
+    tholdfail: str | None
+    prfdrop: str | None
+    amp_score: float | None
+    cq_conf: float | None
 
     @staticmethod
     def create(
@@ -470,6 +478,14 @@ class Result:
                 r_squared=data.get(float, "R(superscript 2)"),
                 slope=data.get(float, "Slope"),
                 efficiency=data.get(float, "Efficiency"),
+                comments=data.get(str, "Comments"),
+                highsd=data.get(str, "HIGHSD"),
+                noamp=data.get(str, "NOAMP"),
+                expfail=data.get(str, "EXPFAIL"),
+                tholdfail=data.get(str, "THOLDFAIL"),
+                prfdrop=data.get(str, "PRFDROP"),
+                amp_score=data.get(float, "Amp Score"),
+                cq_conf=data.get(float, "Cq Conf"),
             )
             for allele_prefix in allele_prefixes
         }
