@@ -21,6 +21,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
+## [0.1.52] - 2024-09-12
+
+### Fixed
+
+- Fixed bug where name of contents instead of contents was being passed to reader in Roche Cedex Bioht, Thermo Qubit 4 and flex parsers.
+
+### Changed
+
+- Use dateutil timezone instead of pytz, because pytz is can create incorrect timezones when not localized.
+
 ## [0.1.51] - 2024-09-09
 
 ### Added
