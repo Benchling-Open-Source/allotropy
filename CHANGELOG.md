@@ -10,12 +10,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Amp score and Cq conf calculated documents to Appbio Quantstudio
 - Add custom information to processed data document in Appbio Quantstudio
-
+- Add schema mapper for the `REC/2024/06/plate-reader` schema.
 - Checks for missing well item amplification and results data in quantstudio
 
 ### Fixed
 
+- Correctly format timezone in SoftmaxPro adapter
+
 ### Changed
+
+- Refactor Softmaxpro adapter to use the new schema mapper.
 
 ### Deprecated
 
