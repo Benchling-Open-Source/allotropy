@@ -23,7 +23,7 @@ class RocheCedexHiResReader:
                 encoding=DEFAULT_ENCODING,
             )
         else:
-            df = read_excel(named_file_contents.contents.name)
+            df = read_excel(named_file_contents.contents)
 
         # Fix typo found in some source files.
         df.columns = df.columns.str.replace("identifer", "identifier", regex=True)
