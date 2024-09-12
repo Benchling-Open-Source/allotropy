@@ -568,6 +568,13 @@ def iter_comparative_ct_calc_docs(
     # Quantity, Quantity Mean, Quantity SD, Ct Mean, Ct SD, Delta Ct Mean,
     # Delta Ct SE, Delta Delta Ct, RQ, RQ min, RQ max
     for sample, target in view_data.iter_keys():
+        for well_item in view_data.get_leaf_item(sample, target):
+            if calc_doc := build_amp_score(well_item):
+                yield calc_doc
+
+            if calc_doc := build_cq_conf(well_item):
+                yield calc_doc
+
         if calc_doc := build_quantity_mean(view_data, sample, target):
             yield from calc_doc.iter_struct()
 
