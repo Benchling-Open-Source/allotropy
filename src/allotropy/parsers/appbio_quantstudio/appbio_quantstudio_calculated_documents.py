@@ -566,7 +566,7 @@ def iter_comparative_ct_calc_docs(
     r_target: str,
 ) -> Iterator[CalculatedDocument]:
     # Quantity, Quantity Mean, Quantity SD, Ct Mean, Ct SD, Delta Ct Mean,
-    # Delta Ct SE, Delta Delta Ct, RQ, RQ min, RQ max
+    # Delta Ct SE, Delta Delta Ct, RQ, RQ min, RQ max, Amplification score, Cq confidence
     for sample, target in view_data.iter_keys():
         for well_item in view_data.get_leaf_item(sample, target):
             if calc_doc := build_amp_score(well_item):
@@ -685,7 +685,7 @@ def iter_relative_standard_curve_calc_docs(
 def iter_presence_absence_calc_docs(
     view_data: ViewData[WellItem],
 ) -> Iterator[CalculatedDocument]:
-    # Rn Mean, Rn SD
+    # Rn Mean, Rn SD, Amplification score, Cq confidence
     for sample, target in view_data.iter_keys():
         for well_item in view_data.get_leaf_item(sample, target):
             if calc_doc := build_amp_score(well_item):
