@@ -2,6 +2,7 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from typing import TypeVar
 
+from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import (
     BaselineCorrectedReporterDataCube,
     CalculatedDataDocumentItem,
@@ -96,6 +97,12 @@ class ProcessedData:
     baseline_corrected_reporter_result: float | None = None
     baseline_determination_start_cycle_setting: float | None = None
     baseline_determination_end_cycle_setting: float | None = None
+    comments: str | None = None
+    highsd: str | None = None
+    noamp: str | None = None
+    expfail: str | None = None
+    tholdfail: str | None = None
+    prfdrop: str | None = None
     data_cubes: list[DataCube] | None = None
 
 
@@ -267,47 +274,57 @@ class Mapper(SchemaMapper[Data, Model]):
             return None
         return ProcessedDataAggregateDocument(
             processed_data_document=[
-                ProcessedDataDocumentItem(
-                    data_processing_document=DataProcessingDocument(
-                        automatic_cycle_threshold_enabled_setting=data.automatic_cycle_threshold_enabled_setting,
-                        cycle_threshold_value_setting=TQuantityValueUnitless(
-                            value=data.cycle_threshold_value_setting,
+                add_custom_information_document(
+                    ProcessedDataDocumentItem(
+                        data_processing_document=DataProcessingDocument(
+                            automatic_cycle_threshold_enabled_setting=data.automatic_cycle_threshold_enabled_setting,
+                            cycle_threshold_value_setting=TQuantityValueUnitless(
+                                value=data.cycle_threshold_value_setting,
+                            ),
+                            automatic_baseline_determination_enabled_setting=data.automatic_baseline_determination_enabled_setting,
+                            genotyping_determination_method_setting=quantity_or_none(
+                                TQuantityValueUnitless,
+                                data.genotyping_determination_method_setting,
+                            ),
+                            baseline_determination_start_cycle_setting=quantity_or_none(
+                                TQuantityValueNumber,
+                                data.baseline_determination_start_cycle_setting,
+                            ),
+                            baseline_determination_end_cycle_setting=quantity_or_none(
+                                TQuantityValueNumber,
+                                data.baseline_determination_end_cycle_setting,
+                            ),
                         ),
-                        automatic_baseline_determination_enabled_setting=data.automatic_baseline_determination_enabled_setting,
-                        genotyping_determination_method_setting=quantity_or_none(
+                        cycle_threshold_result=TNullableQuantityValueUnitless(
+                            value=data.cycle_threshold_result,
+                        ),
+                        normalized_reporter_result=quantity_or_none(
+                            TQuantityValueUnitless, data.normalized_reporter_result
+                        ),
+                        baseline_corrected_reporter_result=quantity_or_none(
                             TQuantityValueUnitless,
-                            data.genotyping_determination_method_setting,
+                            data.baseline_corrected_reporter_result,
                         ),
-                        baseline_determination_start_cycle_setting=quantity_or_none(
-                            TQuantityValueNumber,
-                            data.baseline_determination_start_cycle_setting,
+                        genotyping_determination_result=data.genotyping_determination_result,
+                        normalized_reporter_data_cube=self._get_data_cube(
+                            NormalizedReporterDataCube,
+                            "normalized reporter",
+                            data.data_cubes,
                         ),
-                        baseline_determination_end_cycle_setting=quantity_or_none(
-                            TQuantityValueNumber,
-                            data.baseline_determination_end_cycle_setting,
+                        baseline_corrected_reporter_data_cube=self._get_data_cube(
+                            BaselineCorrectedReporterDataCube,
+                            "baseline corrected reporter",
+                            data.data_cubes,
                         ),
                     ),
-                    cycle_threshold_result=TNullableQuantityValueUnitless(
-                        value=data.cycle_threshold_result,
-                    ),
-                    normalized_reporter_result=quantity_or_none(
-                        TQuantityValueUnitless, data.normalized_reporter_result
-                    ),
-                    baseline_corrected_reporter_result=quantity_or_none(
-                        TQuantityValueUnitless,
-                        data.baseline_corrected_reporter_result,
-                    ),
-                    genotyping_determination_result=data.genotyping_determination_result,
-                    normalized_reporter_data_cube=self._get_data_cube(
-                        NormalizedReporterDataCube,
-                        "normalized reporter",
-                        data.data_cubes,
-                    ),
-                    baseline_corrected_reporter_data_cube=self._get_data_cube(
-                        BaselineCorrectedReporterDataCube,
-                        "baseline corrected reporter",
-                        data.data_cubes,
-                    ),
+                    custom_info_doc={
+                        "comments": data.comments,
+                        "highsd": data.highsd,
+                        "noamp": data.noamp,
+                        "expfail": data.expfail,
+                        "tholdfail": data.tholdfail,
+                        "prfdrop": data.prfdrop,
+                    },
                 )
             ]
         )
