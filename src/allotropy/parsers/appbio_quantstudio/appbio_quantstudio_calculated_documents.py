@@ -687,6 +687,13 @@ def iter_presence_absence_calc_docs(
 ) -> Iterator[CalculatedDocument]:
     # Rn Mean, Rn SD
     for sample, target in view_data.iter_keys():
+        for well_item in view_data.get_leaf_item(sample, target):
+            if calc_doc := build_amp_score(well_item):
+                yield calc_doc
+
+            if calc_doc := build_cq_conf(well_item):
+                yield calc_doc
+
         if calc_doc := build_rn_mean(view_data, sample, target):
             yield from calc_doc.iter_struct()
 
