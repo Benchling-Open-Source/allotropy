@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Correctly parse dates in Softmaxpro adapter.
+- Correctly format timezone in SoftmaxPro adapter
 
 ### Changed
 
