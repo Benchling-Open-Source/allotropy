@@ -5,7 +5,7 @@ from pathlib import Path
 import subprocess
 
 import click
-from pytz import timezone
+from dateutil import tz
 import semantic_version  # type: ignore
 
 from allotropy.__about__ import __version__
@@ -45,7 +45,7 @@ def _update_changelog(version: str) -> str:
                         """## [Unreleased]\n\n### Added\n\n### Fixed\n\n### Changed\n\n### Deprecated\n\n### Removed\n\n### Security\n\n"""
                     )
                     f.write(
-                        f"## [{version}] - {datetime.now(timezone('EST')).strftime('%Y-%m-%d')}\n"
+                        f"## [{version}] - {datetime.now(tz.gettz('EST')).strftime('%Y-%m-%d')}\n"
                     )
                     editing = True
                     continue

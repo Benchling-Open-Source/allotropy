@@ -35,7 +35,7 @@ class ThermoFisherQubit4Reader:
         AllotropeConversionError: If the file format is not supported.
         """
         if named_file_contents.extension == "xlsx":
-            dataframe = read_excel(named_file_contents.contents.name)
+            dataframe = read_excel(named_file_contents.contents)
         else:
             dataframe = read_csv(
                 named_file_contents.contents,

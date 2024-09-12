@@ -32,4 +32,4 @@ class ThermoFisherQubitFlexReader:
                 encoding=DEFAULT_ENCODING,
             )
         else:
-            return read_excel(named_file_contents.contents.name)
+            return read_excel(named_file_contents.contents)
