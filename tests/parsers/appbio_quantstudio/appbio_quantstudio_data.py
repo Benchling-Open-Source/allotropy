@@ -1557,7 +1557,7 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                     position="D1",
                     well_location_identifier="D1",
                     quencher_dye_setting="NFQ-MGB",
-                    sample_role_type="UNKNOWN",
+                    sample_role_type="STANDARD",
                 )
             ],
         ),
@@ -1573,7 +1573,7 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                     position="D2",
                     well_location_identifier="D2",
                     quencher_dye_setting="NFQ-MGB",
-                    sample_role_type="UNKNOWN",
+                    sample_role_type="STANDARD",
                 )
             ],
         ),
@@ -1636,14 +1636,14 @@ def get_rel_std_curve_data(file_name: str) -> Data:
             iterated=False,
         ),
         CalculatedDocument(
-            uuid="TEST_ID_8",
+            uuid="TEST_ID_10",
             name="quantity mean",
             value=818.012,
             data_sources=[
                 DataSource(
                     feature="quantity",
                     reference=CalculatedDocument(
-                        uuid="TEST_ID_6",
+                        uuid="TEST_ID_8",
                         name="quantity",
                         value=794.91,
                         data_sources=[
@@ -1655,14 +1655,48 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                             ),
                             DataSource(
                                 feature="y-intercept",
-                                reference=Referenceable(
-                                    uuid="TEST_ID_0",
+                                reference=CalculatedDocument(
+                                    uuid="TEST_ID_6",
+                                    name="y intercept",
+                                    value=39.662,
+                                    data_sources=[
+                                        DataSource(
+                                            feature="cycle threshold result",
+                                            reference=Referenceable(
+                                                uuid="TEST_ID_0",
+                                            ),
+                                        ),
+                                        DataSource(
+                                            feature="cycle threshold result",
+                                            reference=Referenceable(
+                                                uuid="TEST_ID_1",
+                                            ),
+                                        ),
+                                    ],
+                                    iterated=True,
                                 ),
                             ),
                             DataSource(
                                 feature="slope",
-                                reference=Referenceable(
-                                    uuid="TEST_ID_0",
+                                reference=CalculatedDocument(
+                                    uuid="TEST_ID_7",
+                                    name="slope",
+                                    value=-3.278,
+                                    data_sources=[
+                                        DataSource(
+                                            feature="cycle threshold result",
+                                            reference=Referenceable(
+                                                uuid="TEST_ID_0",
+                                            ),
+                                        ),
+                                        DataSource(
+                                            feature="cycle threshold result",
+                                            reference=Referenceable(
+                                                uuid="TEST_ID_1",
+                                            ),
+                                        ),
+                                    ],
+                                    iterated=True,
                                 ),
                             ),
                         ],
@@ -1672,7 +1706,7 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                 DataSource(
                     feature="quantity",
                     reference=CalculatedDocument(
-                        uuid="TEST_ID_7",
+                        uuid="TEST_ID_9",
                         name="quantity",
                         value=769.776,
                         data_sources=[
@@ -1684,12 +1718,106 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                             ),
                             DataSource(
                                 feature="y-intercept",
-                                reference=Referenceable(
-                                    uuid="TEST_ID_1",
+                                reference=CalculatedDocument(
+                                    uuid="TEST_ID_6",
+                                    name="y intercept",
+                                    value=39.662,
+                                    data_sources=[
+                                        DataSource(
+                                            feature="cycle threshold result",
+                                            reference=Referenceable(
+                                                uuid="TEST_ID_0",
+                                            ),
+                                        ),
+                                        DataSource(
+                                            feature="cycle threshold result",
+                                            reference=Referenceable(
+                                                uuid="TEST_ID_1",
+                                            ),
+                                        ),
+                                    ],
+                                    iterated=True,
                                 ),
                             ),
                             DataSource(
                                 feature="slope",
+                                reference=CalculatedDocument(
+                                    uuid="TEST_ID_7",
+                                    name="slope",
+                                    value=-3.278,
+                                    data_sources=[
+                                        DataSource(
+                                            feature="cycle threshold result",
+                                            reference=Referenceable(
+                                                uuid="TEST_ID_0",
+                                            ),
+                                        ),
+                                        DataSource(
+                                            feature="cycle threshold result",
+                                            reference=Referenceable(
+                                                uuid="TEST_ID_1",
+                                            ),
+                                        ),
+                                    ],
+                                    iterated=True,
+                                ),
+                            ),
+                        ],
+                        iterated=True,
+                    ),
+                ),
+            ],
+            iterated=True,
+        ),
+        CalculatedDocument(
+            uuid="TEST_ID_8",
+            name="quantity",
+            value=794.91,
+            data_sources=[
+                DataSource(
+                    feature="cycle threshold result",
+                    reference=Referenceable(
+                        uuid="TEST_ID_0",
+                    ),
+                ),
+                DataSource(
+                    feature="y-intercept",
+                    reference=CalculatedDocument(
+                        uuid="TEST_ID_6",
+                        name="y intercept",
+                        value=39.662,
+                        data_sources=[
+                            DataSource(
+                                feature="cycle threshold result",
+                                reference=Referenceable(
+                                    uuid="TEST_ID_0",
+                                ),
+                            ),
+                            DataSource(
+                                feature="cycle threshold result",
+                                reference=Referenceable(
+                                    uuid="TEST_ID_1",
+                                ),
+                            ),
+                        ],
+                        iterated=True,
+                    ),
+                ),
+                DataSource(
+                    feature="slope",
+                    reference=CalculatedDocument(
+                        uuid="TEST_ID_7",
+                        name="slope",
+                        value=-3.278,
+                        data_sources=[
+                            DataSource(
+                                feature="cycle threshold result",
+                                reference=Referenceable(
+                                    uuid="TEST_ID_0",
+                                ),
+                            ),
+                            DataSource(
+                                feature="cycle threshold result",
                                 reference=Referenceable(
                                     uuid="TEST_ID_1",
                                 ),
@@ -1703,8 +1831,8 @@ def get_rel_std_curve_data(file_name: str) -> Data:
         ),
         CalculatedDocument(
             uuid="TEST_ID_6",
-            name="quantity",
-            value=794.91,
+            name="y intercept",
+            value=39.662,
             data_sources=[
                 DataSource(
                     feature="cycle threshold result",
@@ -1713,15 +1841,9 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                     ),
                 ),
                 DataSource(
-                    feature="y-intercept",
+                    feature="cycle threshold result",
                     reference=Referenceable(
-                        uuid="TEST_ID_0",
-                    ),
-                ),
-                DataSource(
-                    feature="slope",
-                    reference=Referenceable(
-                        uuid="TEST_ID_0",
+                        uuid="TEST_ID_1",
                     ),
                 ),
             ],
@@ -1729,6 +1851,26 @@ def get_rel_std_curve_data(file_name: str) -> Data:
         ),
         CalculatedDocument(
             uuid="TEST_ID_7",
+            name="slope",
+            value=-3.278,
+            data_sources=[
+                DataSource(
+                    feature="cycle threshold result",
+                    reference=Referenceable(
+                        uuid="TEST_ID_0",
+                    ),
+                ),
+                DataSource(
+                    feature="cycle threshold result",
+                    reference=Referenceable(
+                        uuid="TEST_ID_1",
+                    ),
+                ),
+            ],
+            iterated=True,
+        ),
+        CalculatedDocument(
+            uuid="TEST_ID_9",
             name="quantity",
             value=769.776,
             data_sources=[
@@ -1740,28 +1882,62 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                 ),
                 DataSource(
                     feature="y-intercept",
-                    reference=Referenceable(
-                        uuid="TEST_ID_1",
+                    reference=CalculatedDocument(
+                        uuid="TEST_ID_6",
+                        name="y intercept",
+                        value=39.662,
+                        data_sources=[
+                            DataSource(
+                                feature="cycle threshold result",
+                                reference=Referenceable(
+                                    uuid="TEST_ID_0",
+                                ),
+                            ),
+                            DataSource(
+                                feature="cycle threshold result",
+                                reference=Referenceable(
+                                    uuid="TEST_ID_1",
+                                ),
+                            ),
+                        ],
+                        iterated=True,
                     ),
                 ),
                 DataSource(
                     feature="slope",
-                    reference=Referenceable(
-                        uuid="TEST_ID_1",
+                    reference=CalculatedDocument(
+                        uuid="TEST_ID_7",
+                        name="slope",
+                        value=-3.278,
+                        data_sources=[
+                            DataSource(
+                                feature="cycle threshold result",
+                                reference=Referenceable(
+                                    uuid="TEST_ID_0",
+                                ),
+                            ),
+                            DataSource(
+                                feature="cycle threshold result",
+                                reference=Referenceable(
+                                    uuid="TEST_ID_1",
+                                ),
+                            ),
+                        ],
+                        iterated=True,
                     ),
                 ),
             ],
             iterated=True,
         ),
         CalculatedDocument(
-            uuid="TEST_ID_9",
+            uuid="TEST_ID_11",
             name="quantity sd",
             value=29.535,
             data_sources=[
                 DataSource(
                     feature="quantity",
                     reference=CalculatedDocument(
-                        uuid="TEST_ID_6",
+                        uuid="TEST_ID_8",
                         name="quantity",
                         value=794.91,
                         data_sources=[
@@ -1773,14 +1949,48 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                             ),
                             DataSource(
                                 feature="y-intercept",
-                                reference=Referenceable(
-                                    uuid="TEST_ID_0",
+                                reference=CalculatedDocument(
+                                    uuid="TEST_ID_6",
+                                    name="y intercept",
+                                    value=39.662,
+                                    data_sources=[
+                                        DataSource(
+                                            feature="cycle threshold result",
+                                            reference=Referenceable(
+                                                uuid="TEST_ID_0",
+                                            ),
+                                        ),
+                                        DataSource(
+                                            feature="cycle threshold result",
+                                            reference=Referenceable(
+                                                uuid="TEST_ID_1",
+                                            ),
+                                        ),
+                                    ],
+                                    iterated=True,
                                 ),
                             ),
                             DataSource(
                                 feature="slope",
-                                reference=Referenceable(
-                                    uuid="TEST_ID_0",
+                                reference=CalculatedDocument(
+                                    uuid="TEST_ID_7",
+                                    name="slope",
+                                    value=-3.278,
+                                    data_sources=[
+                                        DataSource(
+                                            feature="cycle threshold result",
+                                            reference=Referenceable(
+                                                uuid="TEST_ID_0",
+                                            ),
+                                        ),
+                                        DataSource(
+                                            feature="cycle threshold result",
+                                            reference=Referenceable(
+                                                uuid="TEST_ID_1",
+                                            ),
+                                        ),
+                                    ],
+                                    iterated=True,
                                 ),
                             ),
                         ],
@@ -1790,7 +2000,7 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                 DataSource(
                     feature="quantity",
                     reference=CalculatedDocument(
-                        uuid="TEST_ID_7",
+                        uuid="TEST_ID_9",
                         name="quantity",
                         value=769.776,
                         data_sources=[
@@ -1802,14 +2012,48 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                             ),
                             DataSource(
                                 feature="y-intercept",
-                                reference=Referenceable(
-                                    uuid="TEST_ID_1",
+                                reference=CalculatedDocument(
+                                    uuid="TEST_ID_6",
+                                    name="y intercept",
+                                    value=39.662,
+                                    data_sources=[
+                                        DataSource(
+                                            feature="cycle threshold result",
+                                            reference=Referenceable(
+                                                uuid="TEST_ID_0",
+                                            ),
+                                        ),
+                                        DataSource(
+                                            feature="cycle threshold result",
+                                            reference=Referenceable(
+                                                uuid="TEST_ID_1",
+                                            ),
+                                        ),
+                                    ],
+                                    iterated=True,
                                 ),
                             ),
                             DataSource(
                                 feature="slope",
-                                reference=Referenceable(
-                                    uuid="TEST_ID_1",
+                                reference=CalculatedDocument(
+                                    uuid="TEST_ID_7",
+                                    name="slope",
+                                    value=-3.278,
+                                    data_sources=[
+                                        DataSource(
+                                            feature="cycle threshold result",
+                                            reference=Referenceable(
+                                                uuid="TEST_ID_0",
+                                            ),
+                                        ),
+                                        DataSource(
+                                            feature="cycle threshold result",
+                                            reference=Referenceable(
+                                                uuid="TEST_ID_1",
+                                            ),
+                                        ),
+                                    ],
+                                    iterated=True,
                                 ),
                             ),
                         ],
@@ -1820,7 +2064,7 @@ def get_rel_std_curve_data(file_name: str) -> Data:
             iterated=True,
         ),
         CalculatedDocument(
-            uuid="TEST_ID_10",
+            uuid="TEST_ID_12",
             name="ct mean",
             value=30.115,
             data_sources=[
@@ -1840,7 +2084,7 @@ def get_rel_std_curve_data(file_name: str) -> Data:
             iterated=True,
         ),
         CalculatedDocument(
-            uuid="TEST_ID_11",
+            uuid="TEST_ID_13",
             name="ct sd",
             value=0.051,
             data_sources=[
@@ -1860,28 +2104,28 @@ def get_rel_std_curve_data(file_name: str) -> Data:
             iterated=True,
         ),
         CalculatedDocument(
-            uuid="TEST_ID_13",
+            uuid="TEST_ID_15",
             name="rq min",
             value=0.658,
             data_sources=[
                 DataSource(
                     feature="rq",
                     reference=CalculatedDocument(
-                        uuid="TEST_ID_12",
+                        uuid="TEST_ID_14",
                         name="rq",
                         value=0.798,
                         data_sources=[
                             DataSource(
                                 feature="quantity mean",
                                 reference=CalculatedDocument(
-                                    uuid="TEST_ID_8",
+                                    uuid="TEST_ID_10",
                                     name="quantity mean",
                                     value=818.012,
                                     data_sources=[
                                         DataSource(
                                             feature="quantity",
                                             reference=CalculatedDocument(
-                                                uuid="TEST_ID_6",
+                                                uuid="TEST_ID_8",
                                                 name="quantity",
                                                 value=794.91,
                                                 data_sources=[
@@ -1893,14 +2137,48 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                                     ),
                                                     DataSource(
                                                         feature="y-intercept",
-                                                        reference=Referenceable(
-                                                            uuid="TEST_ID_0",
+                                                        reference=CalculatedDocument(
+                                                            uuid="TEST_ID_6",
+                                                            name="y intercept",
+                                                            value=39.662,
+                                                            data_sources=[
+                                                                DataSource(
+                                                                    feature="cycle threshold result",
+                                                                    reference=Referenceable(
+                                                                        uuid="TEST_ID_0",
+                                                                    ),
+                                                                ),
+                                                                DataSource(
+                                                                    feature="cycle threshold result",
+                                                                    reference=Referenceable(
+                                                                        uuid="TEST_ID_1",
+                                                                    ),
+                                                                ),
+                                                            ],
+                                                            iterated=True,
                                                         ),
                                                     ),
                                                     DataSource(
                                                         feature="slope",
-                                                        reference=Referenceable(
-                                                            uuid="TEST_ID_0",
+                                                        reference=CalculatedDocument(
+                                                            uuid="TEST_ID_7",
+                                                            name="slope",
+                                                            value=-3.278,
+                                                            data_sources=[
+                                                                DataSource(
+                                                                    feature="cycle threshold result",
+                                                                    reference=Referenceable(
+                                                                        uuid="TEST_ID_0",
+                                                                    ),
+                                                                ),
+                                                                DataSource(
+                                                                    feature="cycle threshold result",
+                                                                    reference=Referenceable(
+                                                                        uuid="TEST_ID_1",
+                                                                    ),
+                                                                ),
+                                                            ],
+                                                            iterated=True,
                                                         ),
                                                     ),
                                                 ],
@@ -1910,7 +2188,7 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                         DataSource(
                                             feature="quantity",
                                             reference=CalculatedDocument(
-                                                uuid="TEST_ID_7",
+                                                uuid="TEST_ID_9",
                                                 name="quantity",
                                                 value=769.776,
                                                 data_sources=[
@@ -1922,14 +2200,48 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                                     ),
                                                     DataSource(
                                                         feature="y-intercept",
-                                                        reference=Referenceable(
-                                                            uuid="TEST_ID_1",
+                                                        reference=CalculatedDocument(
+                                                            uuid="TEST_ID_6",
+                                                            name="y intercept",
+                                                            value=39.662,
+                                                            data_sources=[
+                                                                DataSource(
+                                                                    feature="cycle threshold result",
+                                                                    reference=Referenceable(
+                                                                        uuid="TEST_ID_0",
+                                                                    ),
+                                                                ),
+                                                                DataSource(
+                                                                    feature="cycle threshold result",
+                                                                    reference=Referenceable(
+                                                                        uuid="TEST_ID_1",
+                                                                    ),
+                                                                ),
+                                                            ],
+                                                            iterated=True,
                                                         ),
                                                     ),
                                                     DataSource(
                                                         feature="slope",
-                                                        reference=Referenceable(
-                                                            uuid="TEST_ID_1",
+                                                        reference=CalculatedDocument(
+                                                            uuid="TEST_ID_7",
+                                                            name="slope",
+                                                            value=-3.278,
+                                                            data_sources=[
+                                                                DataSource(
+                                                                    feature="cycle threshold result",
+                                                                    reference=Referenceable(
+                                                                        uuid="TEST_ID_0",
+                                                                    ),
+                                                                ),
+                                                                DataSource(
+                                                                    feature="cycle threshold result",
+                                                                    reference=Referenceable(
+                                                                        uuid="TEST_ID_1",
+                                                                    ),
+                                                                ),
+                                                            ],
+                                                            iterated=True,
                                                         ),
                                                     ),
                                                 ],
@@ -1948,21 +2260,21 @@ def get_rel_std_curve_data(file_name: str) -> Data:
             iterated=True,
         ),
         CalculatedDocument(
-            uuid="TEST_ID_12",
+            uuid="TEST_ID_14",
             name="rq",
             value=0.798,
             data_sources=[
                 DataSource(
                     feature="quantity mean",
                     reference=CalculatedDocument(
-                        uuid="TEST_ID_8",
+                        uuid="TEST_ID_10",
                         name="quantity mean",
                         value=818.012,
                         data_sources=[
                             DataSource(
                                 feature="quantity",
                                 reference=CalculatedDocument(
-                                    uuid="TEST_ID_6",
+                                    uuid="TEST_ID_8",
                                     name="quantity",
                                     value=794.91,
                                     data_sources=[
@@ -1974,14 +2286,48 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                         ),
                                         DataSource(
                                             feature="y-intercept",
-                                            reference=Referenceable(
-                                                uuid="TEST_ID_0",
+                                            reference=CalculatedDocument(
+                                                uuid="TEST_ID_6",
+                                                name="y intercept",
+                                                value=39.662,
+                                                data_sources=[
+                                                    DataSource(
+                                                        feature="cycle threshold result",
+                                                        reference=Referenceable(
+                                                            uuid="TEST_ID_0",
+                                                        ),
+                                                    ),
+                                                    DataSource(
+                                                        feature="cycle threshold result",
+                                                        reference=Referenceable(
+                                                            uuid="TEST_ID_1",
+                                                        ),
+                                                    ),
+                                                ],
+                                                iterated=True,
                                             ),
                                         ),
                                         DataSource(
                                             feature="slope",
-                                            reference=Referenceable(
-                                                uuid="TEST_ID_0",
+                                            reference=CalculatedDocument(
+                                                uuid="TEST_ID_7",
+                                                name="slope",
+                                                value=-3.278,
+                                                data_sources=[
+                                                    DataSource(
+                                                        feature="cycle threshold result",
+                                                        reference=Referenceable(
+                                                            uuid="TEST_ID_0",
+                                                        ),
+                                                    ),
+                                                    DataSource(
+                                                        feature="cycle threshold result",
+                                                        reference=Referenceable(
+                                                            uuid="TEST_ID_1",
+                                                        ),
+                                                    ),
+                                                ],
+                                                iterated=True,
                                             ),
                                         ),
                                     ],
@@ -1991,7 +2337,7 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                             DataSource(
                                 feature="quantity",
                                 reference=CalculatedDocument(
-                                    uuid="TEST_ID_7",
+                                    uuid="TEST_ID_9",
                                     name="quantity",
                                     value=769.776,
                                     data_sources=[
@@ -2003,14 +2349,48 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                         ),
                                         DataSource(
                                             feature="y-intercept",
-                                            reference=Referenceable(
-                                                uuid="TEST_ID_1",
+                                            reference=CalculatedDocument(
+                                                uuid="TEST_ID_6",
+                                                name="y intercept",
+                                                value=39.662,
+                                                data_sources=[
+                                                    DataSource(
+                                                        feature="cycle threshold result",
+                                                        reference=Referenceable(
+                                                            uuid="TEST_ID_0",
+                                                        ),
+                                                    ),
+                                                    DataSource(
+                                                        feature="cycle threshold result",
+                                                        reference=Referenceable(
+                                                            uuid="TEST_ID_1",
+                                                        ),
+                                                    ),
+                                                ],
+                                                iterated=True,
                                             ),
                                         ),
                                         DataSource(
                                             feature="slope",
-                                            reference=Referenceable(
-                                                uuid="TEST_ID_1",
+                                            reference=CalculatedDocument(
+                                                uuid="TEST_ID_7",
+                                                name="slope",
+                                                value=-3.278,
+                                                data_sources=[
+                                                    DataSource(
+                                                        feature="cycle threshold result",
+                                                        reference=Referenceable(
+                                                            uuid="TEST_ID_0",
+                                                        ),
+                                                    ),
+                                                    DataSource(
+                                                        feature="cycle threshold result",
+                                                        reference=Referenceable(
+                                                            uuid="TEST_ID_1",
+                                                        ),
+                                                    ),
+                                                ],
+                                                iterated=True,
                                             ),
                                         ),
                                     ],
@@ -2025,28 +2405,28 @@ def get_rel_std_curve_data(file_name: str) -> Data:
             iterated=True,
         ),
         CalculatedDocument(
-            uuid="TEST_ID_14",
+            uuid="TEST_ID_16",
             name="rq max",
             value=0.967,
             data_sources=[
                 DataSource(
                     feature="rq",
                     reference=CalculatedDocument(
-                        uuid="TEST_ID_12",
+                        uuid="TEST_ID_14",
                         name="rq",
                         value=0.798,
                         data_sources=[
                             DataSource(
                                 feature="quantity mean",
                                 reference=CalculatedDocument(
-                                    uuid="TEST_ID_8",
+                                    uuid="TEST_ID_10",
                                     name="quantity mean",
                                     value=818.012,
                                     data_sources=[
                                         DataSource(
                                             feature="quantity",
                                             reference=CalculatedDocument(
-                                                uuid="TEST_ID_6",
+                                                uuid="TEST_ID_8",
                                                 name="quantity",
                                                 value=794.91,
                                                 data_sources=[
@@ -2058,14 +2438,48 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                                     ),
                                                     DataSource(
                                                         feature="y-intercept",
-                                                        reference=Referenceable(
-                                                            uuid="TEST_ID_0",
+                                                        reference=CalculatedDocument(
+                                                            uuid="TEST_ID_6",
+                                                            name="y intercept",
+                                                            value=39.662,
+                                                            data_sources=[
+                                                                DataSource(
+                                                                    feature="cycle threshold result",
+                                                                    reference=Referenceable(
+                                                                        uuid="TEST_ID_0",
+                                                                    ),
+                                                                ),
+                                                                DataSource(
+                                                                    feature="cycle threshold result",
+                                                                    reference=Referenceable(
+                                                                        uuid="TEST_ID_1",
+                                                                    ),
+                                                                ),
+                                                            ],
+                                                            iterated=True,
                                                         ),
                                                     ),
                                                     DataSource(
                                                         feature="slope",
-                                                        reference=Referenceable(
-                                                            uuid="TEST_ID_0",
+                                                        reference=CalculatedDocument(
+                                                            uuid="TEST_ID_7",
+                                                            name="slope",
+                                                            value=-3.278,
+                                                            data_sources=[
+                                                                DataSource(
+                                                                    feature="cycle threshold result",
+                                                                    reference=Referenceable(
+                                                                        uuid="TEST_ID_0",
+                                                                    ),
+                                                                ),
+                                                                DataSource(
+                                                                    feature="cycle threshold result",
+                                                                    reference=Referenceable(
+                                                                        uuid="TEST_ID_1",
+                                                                    ),
+                                                                ),
+                                                            ],
+                                                            iterated=True,
                                                         ),
                                                     ),
                                                 ],
@@ -2075,7 +2489,7 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                         DataSource(
                                             feature="quantity",
                                             reference=CalculatedDocument(
-                                                uuid="TEST_ID_7",
+                                                uuid="TEST_ID_9",
                                                 name="quantity",
                                                 value=769.776,
                                                 data_sources=[
@@ -2087,14 +2501,48 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                                                     ),
                                                     DataSource(
                                                         feature="y-intercept",
-                                                        reference=Referenceable(
-                                                            uuid="TEST_ID_1",
+                                                        reference=CalculatedDocument(
+                                                            uuid="TEST_ID_6",
+                                                            name="y intercept",
+                                                            value=39.662,
+                                                            data_sources=[
+                                                                DataSource(
+                                                                    feature="cycle threshold result",
+                                                                    reference=Referenceable(
+                                                                        uuid="TEST_ID_0",
+                                                                    ),
+                                                                ),
+                                                                DataSource(
+                                                                    feature="cycle threshold result",
+                                                                    reference=Referenceable(
+                                                                        uuid="TEST_ID_1",
+                                                                    ),
+                                                                ),
+                                                            ],
+                                                            iterated=True,
                                                         ),
                                                     ),
                                                     DataSource(
                                                         feature="slope",
-                                                        reference=Referenceable(
-                                                            uuid="TEST_ID_1",
+                                                        reference=CalculatedDocument(
+                                                            uuid="TEST_ID_7",
+                                                            name="slope",
+                                                            value=-3.278,
+                                                            data_sources=[
+                                                                DataSource(
+                                                                    feature="cycle threshold result",
+                                                                    reference=Referenceable(
+                                                                        uuid="TEST_ID_0",
+                                                                    ),
+                                                                ),
+                                                                DataSource(
+                                                                    feature="cycle threshold result",
+                                                                    reference=Referenceable(
+                                                                        uuid="TEST_ID_1",
+                                                                    ),
+                                                                ),
+                                                            ],
+                                                            iterated=True,
                                                         ),
                                                     ),
                                                 ],
@@ -2109,6 +2557,46 @@ def get_rel_std_curve_data(file_name: str) -> Data:
                         iterated=True,
                     ),
                 )
+            ],
+            iterated=True,
+        ),
+        CalculatedDocument(
+            uuid="TEST_ID_17",
+            name="r^2",
+            value=0.999,
+            data_sources=[
+                DataSource(
+                    feature="cycle threshold result",
+                    reference=Referenceable(
+                        uuid="TEST_ID_0",
+                    ),
+                ),
+                DataSource(
+                    feature="cycle threshold result",
+                    reference=Referenceable(
+                        uuid="TEST_ID_1",
+                    ),
+                ),
+            ],
+            iterated=True,
+        ),
+        CalculatedDocument(
+            uuid="TEST_ID_18",
+            name="efficiency",
+            value=101.866,
+            data_sources=[
+                DataSource(
+                    feature="cycle threshold result",
+                    reference=Referenceable(
+                        uuid="TEST_ID_0",
+                    ),
+                ),
+                DataSource(
+                    feature="cycle threshold result",
+                    reference=Referenceable(
+                        uuid="TEST_ID_1",
+                    ),
+                ),
             ],
             iterated=True,
         ),
@@ -2158,7 +2646,7 @@ def get_rel_std_curve_model() -> Model:
                                 sample_document=SampleDocument(
                                     sample_identifier="800",
                                     batch_identifier=None,
-                                    sample_role_type="UNKNOWN",
+                                    sample_role_type="STANDARD",
                                     well_location_identifier="D1",
                                     well_plate_identifier=None,
                                     mass_concentration=None,
@@ -2307,7 +2795,7 @@ def get_rel_std_curve_model() -> Model:
                                 sample_document=SampleDocument(
                                     sample_identifier="800",
                                     batch_identifier=None,
-                                    sample_role_type="UNKNOWN",
+                                    sample_role_type="STANDARD",
                                     well_location_identifier="D2",
                                     well_plate_identifier=None,
                                     mass_concentration=None,
@@ -2573,15 +3061,15 @@ def get_rel_std_curve_model() -> Model:
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="TEST_ID_8",
+                        calculated_data_identifier="TEST_ID_10",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="TEST_ID_6",
+                                    data_source_identifier="TEST_ID_8",
                                     data_source_feature="quantity",
                                 ),
                                 DataSourceDocumentItem(
-                                    data_source_identifier="TEST_ID_7",
+                                    data_source_identifier="TEST_ID_9",
                                     data_source_feature="quantity",
                                 ),
                             ]
@@ -2607,7 +3095,7 @@ def get_rel_std_curve_model() -> Model:
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="TEST_ID_6",
+                        calculated_data_identifier="TEST_ID_8",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
@@ -2615,11 +3103,11 @@ def get_rel_std_curve_model() -> Model:
                                     data_source_feature="cycle threshold result",
                                 ),
                                 DataSourceDocumentItem(
-                                    data_source_identifier="TEST_ID_0",
+                                    data_source_identifier="TEST_ID_6",
                                     data_source_feature="y-intercept",
                                 ),
                                 DataSourceDocumentItem(
-                                    data_source_identifier="TEST_ID_0",
+                                    data_source_identifier="TEST_ID_7",
                                     data_source_feature="slope",
                                 ),
                             ]
@@ -2645,7 +3133,75 @@ def get_rel_std_curve_model() -> Model:
                         ),
                     ),
                     CalculatedDataDocumentItem(
+                        calculated_data_identifier="TEST_ID_6",
+                        data_source_aggregate_document=DataSourceAggregateDocument(
+                            data_source_document=[
+                                DataSourceDocumentItem(
+                                    data_source_identifier="TEST_ID_0",
+                                    data_source_feature="cycle threshold result",
+                                ),
+                                DataSourceDocumentItem(
+                                    data_source_identifier="TEST_ID_1",
+                                    data_source_feature="cycle threshold result",
+                                ),
+                            ]
+                        ),
+                        data_processing_document=DataProcessingDocument(
+                            cycle_threshold_value_setting=None,
+                            automatic_cycle_threshold_enabled_setting=None,
+                            automatic_baseline_determination_enabled_setting=None,
+                            baseline_determination_start_cycle_setting=None,
+                            baseline_determination_end_cycle_setting=None,
+                            genotyping_determination_method=None,
+                            genotyping_determination_method_setting=None,
+                            reference_DNA_description="RNaseP",
+                            reference_sample_description="800",
+                        ),
+                        calculated_data_name="y intercept",
+                        calculated_data_description=None,
+                        calculated_datum=TQuantityValueUnitless(
+                            value=39.662,
+                            unit="(unitless)",
+                            has_statistic_datum_role=None,
+                            field_type=None,
+                        ),
+                    ),
+                    CalculatedDataDocumentItem(
                         calculated_data_identifier="TEST_ID_7",
+                        data_source_aggregate_document=DataSourceAggregateDocument(
+                            data_source_document=[
+                                DataSourceDocumentItem(
+                                    data_source_identifier="TEST_ID_0",
+                                    data_source_feature="cycle threshold result",
+                                ),
+                                DataSourceDocumentItem(
+                                    data_source_identifier="TEST_ID_1",
+                                    data_source_feature="cycle threshold result",
+                                ),
+                            ]
+                        ),
+                        data_processing_document=DataProcessingDocument(
+                            cycle_threshold_value_setting=None,
+                            automatic_cycle_threshold_enabled_setting=None,
+                            automatic_baseline_determination_enabled_setting=None,
+                            baseline_determination_start_cycle_setting=None,
+                            baseline_determination_end_cycle_setting=None,
+                            genotyping_determination_method=None,
+                            genotyping_determination_method_setting=None,
+                            reference_DNA_description="RNaseP",
+                            reference_sample_description="800",
+                        ),
+                        calculated_data_name="slope",
+                        calculated_data_description=None,
+                        calculated_datum=TQuantityValueUnitless(
+                            value=-3.278,
+                            unit="(unitless)",
+                            has_statistic_datum_role=None,
+                            field_type=None,
+                        ),
+                    ),
+                    CalculatedDataDocumentItem(
+                        calculated_data_identifier="TEST_ID_9",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
@@ -2653,11 +3209,11 @@ def get_rel_std_curve_model() -> Model:
                                     data_source_feature="cycle threshold result",
                                 ),
                                 DataSourceDocumentItem(
-                                    data_source_identifier="TEST_ID_1",
+                                    data_source_identifier="TEST_ID_6",
                                     data_source_feature="y-intercept",
                                 ),
                                 DataSourceDocumentItem(
-                                    data_source_identifier="TEST_ID_1",
+                                    data_source_identifier="TEST_ID_7",
                                     data_source_feature="slope",
                                 ),
                             ]
@@ -2683,15 +3239,15 @@ def get_rel_std_curve_model() -> Model:
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="TEST_ID_9",
+                        calculated_data_identifier="TEST_ID_11",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="TEST_ID_6",
+                                    data_source_identifier="TEST_ID_8",
                                     data_source_feature="quantity",
                                 ),
                                 DataSourceDocumentItem(
-                                    data_source_identifier="TEST_ID_7",
+                                    data_source_identifier="TEST_ID_9",
                                     data_source_feature="quantity",
                                 ),
                             ]
@@ -2717,7 +3273,7 @@ def get_rel_std_curve_model() -> Model:
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="TEST_ID_10",
+                        calculated_data_identifier="TEST_ID_12",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
@@ -2751,7 +3307,7 @@ def get_rel_std_curve_model() -> Model:
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="TEST_ID_11",
+                        calculated_data_identifier="TEST_ID_13",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
@@ -2785,11 +3341,11 @@ def get_rel_std_curve_model() -> Model:
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="TEST_ID_13",
+                        calculated_data_identifier="TEST_ID_15",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="TEST_ID_12",
+                                    data_source_identifier="TEST_ID_14",
                                     data_source_feature="rq",
                                 )
                             ]
@@ -2815,11 +3371,11 @@ def get_rel_std_curve_model() -> Model:
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="TEST_ID_12",
+                        calculated_data_identifier="TEST_ID_14",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="TEST_ID_8",
+                                    data_source_identifier="TEST_ID_10",
                                     data_source_feature="quantity mean",
                                 )
                             ]
@@ -2845,11 +3401,11 @@ def get_rel_std_curve_model() -> Model:
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="TEST_ID_14",
+                        calculated_data_identifier="TEST_ID_16",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="TEST_ID_12",
+                                    data_source_identifier="TEST_ID_14",
                                     data_source_feature="rq",
                                 )
                             ]
@@ -2869,6 +3425,74 @@ def get_rel_std_curve_model() -> Model:
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
                             value=0.967,
+                            unit="(unitless)",
+                            has_statistic_datum_role=None,
+                            field_type=None,
+                        ),
+                    ),
+                    CalculatedDataDocumentItem(
+                        calculated_data_identifier="TEST_ID_17",
+                        data_source_aggregate_document=DataSourceAggregateDocument(
+                            data_source_document=[
+                                DataSourceDocumentItem(
+                                    data_source_identifier="TEST_ID_0",
+                                    data_source_feature="cycle threshold result",
+                                ),
+                                DataSourceDocumentItem(
+                                    data_source_identifier="TEST_ID_1",
+                                    data_source_feature="cycle threshold result",
+                                ),
+                            ]
+                        ),
+                        data_processing_document=DataProcessingDocument(
+                            cycle_threshold_value_setting=None,
+                            automatic_cycle_threshold_enabled_setting=None,
+                            automatic_baseline_determination_enabled_setting=None,
+                            baseline_determination_start_cycle_setting=None,
+                            baseline_determination_end_cycle_setting=None,
+                            genotyping_determination_method=None,
+                            genotyping_determination_method_setting=None,
+                            reference_DNA_description="RNaseP",
+                            reference_sample_description="800",
+                        ),
+                        calculated_data_name="r^2",
+                        calculated_data_description=None,
+                        calculated_datum=TQuantityValueUnitless(
+                            value=0.999,
+                            unit="(unitless)",
+                            has_statistic_datum_role=None,
+                            field_type=None,
+                        ),
+                    ),
+                    CalculatedDataDocumentItem(
+                        calculated_data_identifier="TEST_ID_18",
+                        data_source_aggregate_document=DataSourceAggregateDocument(
+                            data_source_document=[
+                                DataSourceDocumentItem(
+                                    data_source_identifier="TEST_ID_0",
+                                    data_source_feature="cycle threshold result",
+                                ),
+                                DataSourceDocumentItem(
+                                    data_source_identifier="TEST_ID_1",
+                                    data_source_feature="cycle threshold result",
+                                ),
+                            ]
+                        ),
+                        data_processing_document=DataProcessingDocument(
+                            cycle_threshold_value_setting=None,
+                            automatic_cycle_threshold_enabled_setting=None,
+                            automatic_baseline_determination_enabled_setting=None,
+                            baseline_determination_start_cycle_setting=None,
+                            baseline_determination_end_cycle_setting=None,
+                            genotyping_determination_method=None,
+                            genotyping_determination_method_setting=None,
+                            reference_DNA_description="RNaseP",
+                            reference_sample_description="800",
+                        ),
+                        calculated_data_name="efficiency",
+                        calculated_data_description=None,
+                        calculated_datum=TQuantityValueUnitless(
+                            value=101.866,
                             unit="(unitless)",
                             has_statistic_datum_role=None,
                             field_type=None,
