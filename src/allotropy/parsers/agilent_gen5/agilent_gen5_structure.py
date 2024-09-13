@@ -319,7 +319,7 @@ class ReadData:
 
     @classmethod
     def _get_measurement_labels(
-        cls, device_control_data: DeviceControlData, read_mode: str
+            cls, device_control_data: DeviceControlData, read_mode: str
     ) -> list[str]:
         step_label = device_control_data.step_label
         label_prefix = f"{step_label}:" if step_label else ""
@@ -337,6 +337,10 @@ class ReadData:
                 f"{label_prefix}{excitation},{emission}"
                 for excitation, emission in zip(excitations, emissions, strict=True)
             ]
+            measurement_labels.extend([
+                f"{label_prefix}{excitation.split("/")[0]},{emission.split("/")[0]}"
+                for excitation, emission in zip(excitations, emissions, strict=True)
+            ])
             if not measurement_labels:
                 measurement_labels = ["Alpha"]
 
@@ -350,7 +354,7 @@ class ReadData:
 
     @classmethod
     def _get_absorbance_measurement_labels(
-        cls, label_prefix: str | None, device_control_data: DeviceControlData
+            cls, label_prefix: str | None, device_control_data: DeviceControlData
     ) -> list[str]:
         pathlength_correction = device_control_data.get(PATHLENGTH_CORRECTION_KEY)
         measurement_labels = []
@@ -369,10 +373,10 @@ class ReadData:
 
     @classmethod
     def _get_filter_sets(
-        cls,
-        measurement_labels: list[str],
-        device_control_data: DeviceControlData,
-        read_mode: ReadMode,
+            cls,
+            measurement_labels: list[str],
+            device_control_data: DeviceControlData,
+            read_mode: ReadMode,
     ) -> dict[str, FilterSet]:
         filter_data: dict[str, FilterSet] = {}
         if read_mode == ReadMode.ABSORBANCE:
@@ -386,6 +390,8 @@ class ReadData:
 
         for idx, label in enumerate(measurement_labels):
             mirror = None
+            if idx >= len(gains):
+                break
             if mirrors and read_mode == ReadMode.FLUORESCENCE:
                 mirror = mirrors[idx]
             filter_data[label] = FilterSet(
@@ -395,6 +401,17 @@ class ReadData:
                 mirror=mirror,
                 optics=optics[idx] if optics else None,
             )
+        if read_mode == ReadMode.FLUORESCENCE:
+            for label in measurement_labels:
+                if label not in filter_data.keys():
+                    match_label = label.split(":")[1] if ":" in label else label
+                    if "," not in match_label:
+                        continue
+                    excitation, emission = match_label.split(",")
+                    for key in list(filter_data.keys()):
+                        if excitation in key and emission in key:
+                            filter_data[label] = filter_data[key]
+
         return filter_data
 
 
@@ -412,7 +429,7 @@ def get_identifiers(layout_lines: list[str] | None) -> dict[str, str]:
             well_pos = f"{row_name}{col_index + 1}"
             # Prefer Name to Well ID
             if not pd.isna(col) and (
-                label == "Name" or label == "Well ID" and well_pos not in identifiers
+                    label == "Name" or label == "Well ID" and well_pos not in identifiers
             ):
                 identifiers[well_pos] = col
     return identifiers
@@ -438,11 +455,11 @@ class MeasurementData:
 
 
 def create_results(
-    result_lines: list[str],
-    header_data: HeaderData,
-    read_data: list[ReadData],
-    sample_identifiers: dict[str, str],
-    actual_temperature: float | None,
+        result_lines: list[str],
+        header_data: HeaderData,
+        read_data: list[ReadData],
+        sample_identifiers: dict[str, str],
+        actual_temperature: float | None,
 ) -> tuple[list[MeasurementGroup], list[CalculatedDataItem]]:
     if result_lines[0].strip() != "Results":
         msg = f"Expected the first line of the results section '{result_lines[0]}' to be 'Results'."
@@ -520,7 +537,7 @@ def create_results(
 
 
 def get_read_data_from_measurement(
-    measurement: MeasurementData, read_data_list: list[ReadData]
+        measurement: MeasurementData, read_data_list: list[ReadData]
 ) -> ReadData:
     for read_data in read_data_list:
         if measurement.label in read_data.measurement_labels:
@@ -532,7 +549,7 @@ def get_read_data_from_measurement(
 
 
 def _get_sources(
-    calculated_data_label: str, measurements: list[MeasurementData]
+        calculated_data_label: str, measurements: list[MeasurementData]
 ) -> list[MeasurementData]:
     # Pathlength is a special case, its sources are always determined
     # by the pathlength correction setting
@@ -566,12 +583,12 @@ def create_metadata(header_data: HeaderData) -> Metadata:
 
 
 def _create_measurement(
-    measurement: MeasurementData,
-    well_position: str,
-    header_data: HeaderData,
-    read_data: ReadData,
-    sample_identifier: str | None,
-    actual_temperature: float | None,
+        measurement: MeasurementData,
+        well_position: str,
+        header_data: HeaderData,
+        read_data: ReadData,
+        sample_identifier: str | None,
+        actual_temperature: float | None,
 ) -> Measurement:
     # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
     if read_data.read_mode == ReadMode.ABSORBANCE:
@@ -596,7 +613,7 @@ def _create_measurement(
         device_type=DEVICE_TYPE,
         identifier=measurement.identifier,
         sample_identifier=sample_identifier
-        or f"{header_data.well_plate_identifier} {well_position}",
+                          or f"{header_data.well_plate_identifier} {well_position}",
         location_identifier=well_position,
         well_plate_identifier=header_data.well_plate_identifier,
         detection_type=read_data.read_mode.value,

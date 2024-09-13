@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Correctly format timezone in SoftmaxPro adapter
+- Added support for agile gen5 label format "[excitation wavelength], [emission wavelength]" for fluorescence point detection
 
 ### Changed
 
