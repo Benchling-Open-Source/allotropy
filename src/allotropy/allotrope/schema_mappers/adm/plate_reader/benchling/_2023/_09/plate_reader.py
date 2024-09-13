@@ -51,6 +51,9 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TDateTimeValue,
     TQuantityValue,
 )
+
+from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
+
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropyParserError
 from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
@@ -109,6 +112,7 @@ class Measurement:
     analyst: str | None = None
     measurement_time: str | None = None
     well_plate_identifier: str | None = None
+    sample_role_type: SampleRoleType | None = None
 
     # Measurements
     absorbance: JsonFloat | None = None
@@ -451,6 +455,8 @@ class Mapper:
             sample_identifier=measurement.sample_identifier,
             location_identifier=measurement.location_identifier,
             well_plate_identifier=measurement.well_plate_identifier,
+            sample_role_type=measurement.sample_role_type
+
         )
 
     def _get_processed_data_aggregate_document(
