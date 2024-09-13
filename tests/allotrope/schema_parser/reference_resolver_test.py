@@ -121,9 +121,9 @@ def test_resolve_references() -> None:
     with mock.patch(
         "allotropy.allotrope.schema_parser.reference_resolver.download_schema"
     ) as mock_download:
-        mock_download.return_value = Path("adm/core/rec/2023/09/fake.schema.json")
+        mock_download.return_value = Path("adm/core/REC/2023/09/fake.schema.json")
         schema_paths = _download_references(references)
-        assert schema_paths == {Path("adm/core/rec/2023/09/fake.schema.json")}
+        assert schema_paths == {Path("adm/core/REC/2023/09/fake.schema.json")}
         mock_download.assert_called_once_with(
             "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/fake.schema",
         )
@@ -137,7 +137,7 @@ def test_download_schema() -> None:
             "http://purl.allotrope.org/json-schemas/adm/liquid-chromatography/REC/2023/09/liquid-chromatography.schema"
         ) == Path(
             SCHEMA_DIR_PATH,
-            "adm/liquid-chromatography/rec/2023/09/liquid-chromatography.schema.json",
+            "adm/liquid-chromatography/REC/2023/09/liquid-chromatography.schema.json",
         )
         mock_urlretrieve.assert_not_called()
 
@@ -146,11 +146,11 @@ def test_download_schema() -> None:
     ) as mock_urlretrieve:
         assert download_schema(
             "http://purl.allotrope.org/json-schemas/adm/fake/REC/2023/09/fake.schema"
-        ) == Path(SCHEMA_DIR_PATH, "adm/fake/rec/2023/09/fake.schema.json")
+        ) == Path(SCHEMA_DIR_PATH, "adm/fake/REC/2023/09/fake.schema.json")
         mock_urlretrieve.assert_called_once_with(
             "http://purl.allotrope.org/json-schemas/adm/fake/REC/2023/09/fake.schema",
             Path(
                 SCHEMA_DIR_PATH,
-                "adm/fake/rec/2023/09/fake.schema.json",
+                "adm/fake/REC/2023/09/fake.schema.json",
             ),
         )
