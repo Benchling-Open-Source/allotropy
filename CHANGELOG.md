@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Fixed bad reference for y-intercept and slope in quantity calculated data document of Appbio Quantstudio
 - Correctly format timezone in SoftmaxPro adapter
 
 ### Changed
