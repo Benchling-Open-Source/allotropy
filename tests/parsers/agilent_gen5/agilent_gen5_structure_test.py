@@ -225,6 +225,8 @@ def test_create_read_data_fluorescence() -> None:
     assert read_data[0].measurement_labels == [
         "DAPI/GFP:360/40,460/40",
         "DAPI/GFP:485/20,528/20",
+        'DAPI/GFP:360,460',
+        'DAPI/GFP:485,528',
     ]
     assert read_data[0].filter_sets == {
         "DAPI/GFP:360/40,460/40": FilterSet(
@@ -237,6 +239,20 @@ def test_create_read_data_fluorescence() -> None:
             excitation="485/20",
             emission="528/20",
             mirror="Top 510 nm",
+            gain="35",
+        ),
+        'DAPI/GFP:485,528': FilterSet(
+            excitation="485/20",
+            emission="528/20",
+            optics=None,
+            mirror="Top 510 nm",
+            gain="35",
+        ),
+        'DAPI/GFP:360,460': FilterSet(
+            excitation="360/40",
+            emission="460/40",
+            optics=None,
+            mirror="Top 400 nm",
             gain="35",
         ),
     }
