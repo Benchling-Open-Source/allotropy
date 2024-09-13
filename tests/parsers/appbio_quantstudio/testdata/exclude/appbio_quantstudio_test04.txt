@@ -38,8 +38,8 @@
 
 [Sample Setup]
 Well	Well Position	Sample Name	Sample Color	Biogroup Name	Biogroup Color	Target Name	Target Color	Task	Reporter	Quencher	Quantity	Comments
-37	D1	800	"RGB(176,23,31)"			RNaseP	"RGB(176,23,31)"	UNKNOWN	FAM	NFQ-MGB		
-38	D2	800	"RGB(176,23,31)"			RNaseP	"RGB(176,23,31)"	UNKNOWN	FAM	NFQ-MGB		
+37	D1	800	"RGB(176,23,31)"			RNaseP	"RGB(176,23,31)"	STANDARD	FAM	NFQ-MGB		
+38	D2	800	"RGB(176,23,31)"			RNaseP	"RGB(176,23,31)"	STANDARD	FAM	NFQ-MGB		
 
 
 [Amplification Data]
@@ -49,8 +49,8 @@ Well	Cycle	Target Name	Rn	Delta Rn
 
 [Results]
 Well	Well Position	Omit	Sample Name	Target Name	Task	Reporter	Quencher	RQ	RQ Min	RQ Max	CT	Ct Mean	Ct SD	Quantity	Normalized Quantity	Normalized Quantity Standard Error	Quantity Mean	Quantity SD	Efficiency	Y-Intercept	R(superscript 2)	Slope	Automatic Ct Threshold	Ct Threshold	Automatic Baseline	Baseline Start	Baseline End	Comments	Amp Score	Cq Conf
-37	D1	false	800	RNaseP	UNKNOWN	FAM	NFQ-MGB	0.798	0.658	0.967	30.155	30.115	0.051	794.910			818.012	29.535	101.866	39.662	0.999	-3.278	true	0.133	true	3	25		1.242	0.967
-38	D2	false	800	RNaseP	UNKNOWN	FAM	NFQ-MGB	0.798	0.658	0.967	30.200	30.115	0.051	769.776			818.012	29.535	101.866	39.662	0.999	-3.278	true	0.133	true	3	25		1.242	0.964
+37	D1	false	800	RNaseP	STANDARD	FAM	NFQ-MGB	0.798	0.658	0.967	30.155	30.115	0.051	794.910			818.012	29.535	101.866	39.662	0.999	-3.278	true	0.133	true	3	25		1.242	0.967
+38	D2	false	800	RNaseP	STANDARD	FAM	NFQ-MGB	0.798	0.658	0.967	30.200	30.115	0.051	769.776			818.012	29.535	101.866	39.662	0.999	-3.278	true	0.133	true	3	25		1.242	0.964
 
 Analysis Type = Singleplex
 Endogenous Control = RNaseP
