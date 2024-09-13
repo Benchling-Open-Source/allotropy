@@ -338,7 +338,7 @@ class ReadData:
                 for excitation, emission in zip(excitations, emissions, strict=True)
             ]
             measurement_labels.extend([
-                f"{label_prefix}{excitation.split("/")[0]},{emission.split("/")[0]}"
+                f"{label_prefix}{excitation.split('/')[0]},{emission.split('/')[0]}"
                 for excitation, emission in zip(excitations, emissions, strict=True)
             ])
             if not measurement_labels:
