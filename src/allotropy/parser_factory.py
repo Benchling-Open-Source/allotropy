@@ -58,8 +58,8 @@ from allotropy.parsers.roche_cedex_hires.roche_cedex_hires_parser import (
 from allotropy.parsers.thermo_fisher_genesys30.thermo_fisher_genesys30_parser import (
     ThermoFisherGenesys30Parser,
 )
-from allotropy.parsers.thermo_fisher_nanodrop_eight.nanodrop_eight_parser import (
-    NanodropEightParser,
+from allotropy.parsers.thermo_fisher_nanodrop_8000.nanodrop_8000_parser import (
+    Nanodrop8000Parser,
 )
 from allotropy.parsers.thermo_fisher_nanodrop_one.thermo_fisher_nanodrop_one_parser import (
     ThermoFisherNanodropOneParser,
@@ -103,7 +103,7 @@ class Vendor(Enum):
     ROCHE_CEDEX_BIOHT = "ROCHE_CEDEX_BIOHT"
     ROCHE_CEDEX_HIRES = "ROCHE_CEDEX_HIRES"
     THERMO_FISHER_GENESYS30 = "THERMO_FISHER_GENESYS30"
-    THERMO_FISHER_NANODROP_EIGHT = "THERMO_FISHER_NANODROP_EIGHT"
+    THERMO_FISHER_NANODROP_8000 = "THERMO_FISHER_NANODROP_8000"
     THERMO_FISHER_NANODROP_ONE = "THERMO_FISHER_NANODROP_ONE"
     THERMO_FISHER_QUBIT4 = "THERMO_FISHER_QUBIT4"
     THERMO_FISHER_QUBIT_FLEX = "THERMO_FISHER_QUBIT_FLEX"
@@ -154,7 +154,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.ROCHE_CEDEX_BIOHT: RocheCedexBiohtParser,
     Vendor.ROCHE_CEDEX_HIRES: RocheCedexHiResParser,
     Vendor.THERMO_FISHER_GENESYS30: ThermoFisherGenesys30Parser,
-    Vendor.THERMO_FISHER_NANODROP_EIGHT: NanodropEightParser,
+    Vendor.THERMO_FISHER_NANODROP_8000: Nanodrop8000Parser,
     Vendor.THERMO_FISHER_NANODROP_ONE: ThermoFisherNanodropOneParser,
     Vendor.THERMO_FISHER_QUBIT4: ThermoFisherQubit4Parser,
     Vendor.THERMO_FISHER_QUBIT_FLEX: ThermoFisherQubitFlexParser,

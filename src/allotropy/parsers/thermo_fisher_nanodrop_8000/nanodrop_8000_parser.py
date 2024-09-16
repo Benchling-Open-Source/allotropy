@@ -7,10 +7,10 @@ from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._1
 )
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.thermo_fisher_nanodrop_eight.nanodrop_eight_reader import (
-    NanoDropEightReader,
+from allotropy.parsers.thermo_fisher_nanodrop_8000.nanodrop_8000_reader import (
+    NanoDrop8000Reader,
 )
-from allotropy.parsers.thermo_fisher_nanodrop_eight.nanodrop_eight_structure import (
+from allotropy.parsers.thermo_fisher_nanodrop_8000.nanodrop_8000_structure import (
     create_measurement_group,
     create_metadata,
     SpectroscopyRow,
@@ -18,14 +18,14 @@ from allotropy.parsers.thermo_fisher_nanodrop_eight.nanodrop_eight_structure imp
 from allotropy.parsers.vendor_parser import MapperVendorParser
 
 
-class NanodropEightParser(MapperVendorParser[Data, Model]):
+class Nanodrop8000Parser(MapperVendorParser[Data, Model]):
     DISPLAY_NAME = "Thermo Fisher NanoDrop Eight"
     RELEASE_STATE = ReleaseState.RECOMMENDED
-    SUPPORTED_EXTENSIONS = NanoDropEightReader.SUPPORTED_EXTENSIONS
+    SUPPORTED_EXTENSIONS = NanoDrop8000Reader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
-        data = NanoDropEightReader.read(named_file_contents)
+        data = NanoDrop8000Reader.read(named_file_contents)
         rows = SpectroscopyRow.create_rows(data)
 
         return Data(
