@@ -224,7 +224,7 @@ class DeviceControlData:
 @dataclass(frozen=True)
 class ReadData:
     read_mode: ReadMode
-    measurement_labels: list[str]
+    measurement_labels: set[str]
     pathlength_correction: str | None
     step_label: str | None
     number_of_averages: float | None
