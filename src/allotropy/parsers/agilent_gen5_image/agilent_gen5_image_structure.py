@@ -9,8 +9,8 @@ import re
 from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
     TransmittedLightSetting,
 )
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
-    Data,
     ImageFeature,
     Measurement,
     MeasurementGroup,
@@ -21,34 +21,25 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
 from allotropy.exceptions import (
     AllotropeConversionError,
 )
-from allotropy.parsers.agilent_gen5.agilent_gen5_structure import (
-    get_identifiers,
-    HeaderData,
-    read_data_section,
-)
-from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
+from allotropy.parsers.agilent_gen5.agilent_gen5_structure import HeaderData
 from allotropy.parsers.agilent_gen5_image.constants import (
     AUTOFOCUS_STRINGS,
     CHANNEL_HEADER_REGEX,
-    DEFAULT_EXPORT_FORMAT_ERROR,
     DEFAULT_SOFTWARE_NAME,
     DETECTION_TYPE,
     DetectionType,
     DETECTOR_DISTANCE_REGEX,
     DEVICE_TYPE,
-    MULTIPLATE_FILE_ERROR,
-    NO_PLATE_DATA_ERROR,
     ReadType,
     SETTINGS_SECTION_REGEX,
     TRANSMITTED_LIGHT_MAP,
     UNSUPPORTED_READ_TYPE_ERROR,
 )
 from allotropy.parsers.constants import NOT_APPLICABLE
-from allotropy.parsers.lines_reader import LinesReader
+from allotropy.parsers.lines_reader import LinesReader, SectionLinesReader
 from allotropy.parsers.utils.pandas import read_csv
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
-    assert_not_none,
     try_float,
     try_float_or_nan,
     try_float_or_none,
@@ -227,12 +218,7 @@ class ReadData:
     read_sections: list[ReadSection]
 
     @classmethod
-    def create(cls, reader: LinesReader) -> ReadData:
-        assert_not_none(reader.drop_until("^Procedure Details"), "Procedure Details")
-        reader.pop()
-        reader.drop_empty()
-        procedure_details = read_data_section(reader)
-
+    def create(cls, procedure_details: list[str]) -> ReadData:
         read_type = cls._get_read_type("\n".join(procedure_details))
         if read_type != ReadType.IMAGE:
             raise AllotropeConversionError(UNSUPPORTED_READ_TYPE_ERROR)
@@ -317,6 +303,7 @@ def create_results(
 
         groups.append(
             MeasurementGroup(
+                measurement_time=header_data.datetime,
                 plate_well_count=len(image_features),
                 analytical_method_identifier=header_data.protocol_file_path,
                 experimental_data_identifier=header_data.experiment_file_path,
@@ -328,17 +315,14 @@ def create_results(
     return groups
 
 
-def _create_metadata(header_data: HeaderData) -> Metadata:
+def create_metadata(header_data: HeaderData) -> Metadata:
     return Metadata(
-        device_type=DEVICE_TYPE,
-        detection_type=DETECTION_TYPE,
         device_identifier=NOT_APPLICABLE,
         model_number=header_data.model_number or NOT_APPLICABLE,
         equipment_serial_number=header_data.equipment_serial_number,
         software_name=DEFAULT_SOFTWARE_NAME,
         software_version=header_data.software_version,
         file_name=header_data.file_name,
-        measurement_time=header_data.datetime,
     )
 
 
@@ -352,11 +336,13 @@ def _create_measurement(
 ) -> Measurement:
     return Measurement(
         type_=MeasurementType.OPTICAL_IMAGING,
+        device_type=DEVICE_TYPE,
         identifier=random_uuid_str(),
         sample_identifier=sample_identifier
         or f"{header_data.well_plate_identifier} {well_position}",
         location_identifier=well_position,
         well_plate_identifier=header_data.well_plate_identifier,
+        detection_type=DETECTION_TYPE,
         detector_wavelength_setting=instrument_settings.detector_wavelength,
         excitation_wavelength_setting=instrument_settings.excitation_wavelength,
         # TODO: this setting won't get reported at the moment since Gen5 only reports it
@@ -365,43 +351,11 @@ def _create_measurement(
         detector_gain_setting=instrument_settings.detector_gain,
         magnification_setting=read_section.magnification_setting,
         illumination_setting=instrument_settings.illumination,
+        illumination_setting_unit=UNITLESS,
         transmitted_light_setting=instrument_settings.transmitted_light,
         auto_focus_setting=instrument_settings.auto_focus,
         image_count_setting=read_section.image_count_setting,
         fluorescent_tag_setting=instrument_settings.fluorescent_tag,
         exposure_duration_setting=instrument_settings.exposure_duration,
         processed_data=processed_data,
-    )
-
-
-def create_data(reader: SectionLinesReader, file_name: str) -> Data:
-    plates = list(reader.iter_sections("^Software Version"))
-
-    if not plates:
-        raise AllotropeConversionError(NO_PLATE_DATA_ERROR)
-
-    if len(plates) > 1:
-        raise AllotropeConversionError(MULTIPLATE_FILE_ERROR)
-
-    header_data = HeaderData.create(plates[0], file_name)
-    read_data = ReadData.create(plates[0])
-
-    section_lines = {}
-    while plates[0].current_line_exists():
-        data_section = read_data_section(plates[0])
-        section_lines[data_section[0].strip().split(":")[0]] = data_section
-
-    # If there is no results table, it might mean that the export format includes results in
-    # separate tables, or that there are no results at all (also bad format)
-    if "Results" not in section_lines:
-        raise AllotropeConversionError(DEFAULT_EXPORT_FORMAT_ERROR)
-
-    return Data(
-        metadata=_create_metadata(header_data),
-        measurement_groups=create_results(
-            section_lines["Results"],
-            header_data,
-            read_data,
-            get_identifiers(section_lines.get("Layout")),
-        ),
     )

@@ -8,8 +8,12 @@ import pandas as pd
 
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_contents import (
-    DesignQuantstudioContents,
+from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
+    AmplificationData,
+    MulticomponentData,
+)
+from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
+    DesignQuantstudioReader,
 )
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.utils.calculated_data_documents.definition import (
@@ -134,14 +138,14 @@ class WellItem(Referenceable):
 
     @classmethod
     def get_amplification_data_sheet(
-        cls, contents: DesignQuantstudioContents
+        cls, reader: DesignQuantstudioReader
     ) -> pd.DataFrame | None:
-        return contents.get_non_empty_sheet("Amplification Data")
+        return reader.get_non_empty_sheet("Amplification Data")
 
     @classmethod
     def create(
         cls,
-        contents: DesignQuantstudioContents,
+        reader: DesignQuantstudioReader,
         data: SeriesData,
     ) -> WellItem:
         identifier = data[int, "Well"]
@@ -157,14 +161,14 @@ class WellItem(Referenceable):
             f"Unable to find well position for Well '{identifier}'.",
         ]
 
-        amp_data = cls.get_amplification_data_sheet(contents)
+        amp_data = cls.get_amplification_data_sheet(reader)
         amplification_data = (
-            AmplificationData.create(amp_data, identifier, target_dna_description)
+            create_amplification_data(amp_data, identifier, target_dna_description)
             if amp_data is not None
             else None
         )
 
-        melt_data = contents.get_non_empty_sheet_or_none("Melt Curve Raw")
+        melt_data = reader.get_non_empty_sheet_or_none("Melt Curve Raw")
         melt_curve_data = (
             MeltCurveData.create(melt_data, identifier, target_dna_description)
             if melt_data is not None
@@ -208,7 +212,7 @@ class Well:
     @classmethod
     def create(
         cls,
-        contents: DesignQuantstudioContents,
+        reader: DesignQuantstudioReader,
         header: Header,
         well_data: pd.DataFrame,
         identifier: int,
@@ -216,19 +220,19 @@ class Well:
         well_item_class = cls.get_well_item_class()
         well_items = {
             SeriesData(item_data)[str, "Target"]: well_item_class.create(
-                contents,
+                reader,
                 SeriesData(item_data),
             )
             for _, item_data in well_data.iterrows()
         }
-        multi_data = contents.get_non_empty_sheet_or_none("Multicomponent")
+        multi_data = reader.get_non_empty_sheet_or_none("Multicomponent")
         return Well(
             identifier=identifier,
             items=well_items,
             multicomponent_data=(
                 None
                 if multi_data is None
-                else MulticomponentData.create(header, multi_data, identifier)
+                else create_multicomponent_data(header, multi_data, identifier)
             ),
         )
 
@@ -267,23 +271,23 @@ class WellList:
         return new_data
 
     @classmethod
-    def get_well_result_data(cls, contents: DesignQuantstudioContents) -> pd.DataFrame:
-        return contents.get_non_empty_sheet(cls.get_data_sheet())
+    def get_well_result_data(cls, reader: DesignQuantstudioReader) -> pd.DataFrame:
+        return reader.get_non_empty_sheet(cls.get_data_sheet())
 
     @classmethod
     def create(
         cls,
-        contents: DesignQuantstudioContents,
+        reader: DesignQuantstudioReader,
         header: Header,
     ) -> WellList:
-        results_data = cls.get_well_result_data(contents)
+        results_data = cls.get_well_result_data(reader)
         assert_df_column(results_data, "Well")
 
         well_class = cls.get_well_class()
         return WellList(
             wells=[
                 well_class.create(
-                    contents,
+                    reader,
                     header,
                     well_data,
                     try_int(str(identifier), "well identifier"),
@@ -293,85 +297,65 @@ class WellList:
         )
 
 
-@dataclass(frozen=True)
-class AmplificationData:
-    total_cycle_number_setting: float
-    cycle: list[float]
-    rn: list[float | None]
-    delta_rn: list[float | None]
+def create_amplification_data(
+    amplification_data: pd.DataFrame,
+    well_item_id: int,
+    target_dna_description: str,
+) -> AmplificationData:
+    well_data = assert_not_empty_df(
+        amplification_data[
+            assert_df_column(amplification_data, "Well") == well_item_id
+        ],
+        msg=f"Unable to find amplification data for well {well_item_id}.",
+    )
 
-    @staticmethod
-    def create(
-        amplification_data: pd.DataFrame,
-        well_item_id: int,
-        target_dna_description: str,
-    ) -> AmplificationData:
-        well_data = assert_not_empty_df(
-            amplification_data[
-                assert_df_column(amplification_data, "Well") == well_item_id
-            ],
-            msg=f"Unable to find amplification data for well {well_item_id}.",
+    target_data = assert_not_empty_df(
+        well_data[assert_df_column(well_data, "Target") == target_dna_description],
+        msg=f"Unable to find amplification data for target '{target_dna_description}' in well {well_item_id}.",
+    )
+
+    cycle_number = assert_df_column(target_data, "Cycle Number")
+    return AmplificationData(
+        total_cycle_number_setting=try_float(str(cycle_number.max()), "Cycle Number"),
+        cycle=cycle_number.tolist(),
+        rn=assert_df_column(target_data, "Rn").tolist(),
+        delta_rn=assert_df_column(target_data, "dRn").tolist(),
+    )
+
+
+def create_multicomponent_data(
+    header: Header, data: pd.DataFrame, well_id: int
+) -> MulticomponentData:
+    well_data = assert_not_empty_df(
+        data[assert_df_column(data, "Well") == well_id],
+        msg=f"Unable to find multi component data for well {well_id}.",
+    )
+
+    stage_number = well_data.get("Stage Number")
+    stage_data = (
+        well_data
+        if header.pcr_stage_number is None or stage_number is None
+        else assert_not_empty_df(
+            well_data[stage_number == header.pcr_stage_number],  # type: ignore[arg-type]
+            msg=f"Unable to find multi component data for stage {header.pcr_stage_number}.",
         )
+    )
 
-        target_data = assert_not_empty_df(
-            well_data[assert_df_column(well_data, "Target") == target_dna_description],
-            msg=f"Unable to find amplification data for target '{target_dna_description}' in well {well_item_id}.",
-        )
-
-        cycle_number = assert_df_column(target_data, "Cycle Number")
-        return AmplificationData(
-            total_cycle_number_setting=try_float(
-                str(cycle_number.max()), "Cycle Number"
-            ),
-            cycle=cycle_number.tolist(),
-            rn=assert_df_column(target_data, "Rn").tolist(),
-            delta_rn=assert_df_column(target_data, "dRn").tolist(),
-        )
-
-
-@dataclass(frozen=True)
-class MulticomponentData:
-    cycle: list[float]
-    columns: dict[str, list[float | None]]
-
-    def get_column(self, name: str) -> list[float | None]:
-        return assert_not_none(
-            self.columns.get(name),
-            msg=f"Unable to obtain '{name}' from multicomponent data.",
-        )
-
-    @staticmethod
-    def create(header: Header, data: pd.DataFrame, well_id: int) -> MulticomponentData:
-        well_data = assert_not_empty_df(
-            data[assert_df_column(data, "Well") == well_id],
-            msg=f"Unable to find multi component data for well {well_id}.",
-        )
-
-        stage_number = well_data.get("Stage Number")
-        stage_data = (
-            well_data
-            if header.pcr_stage_number is None or stage_number is None
-            else assert_not_empty_df(
-                well_data[stage_number == header.pcr_stage_number],  # type: ignore[arg-type]
-                msg=f"Unable to find multi component data for stage {header.pcr_stage_number}.",
-            )
-        )
-
-        return MulticomponentData(
-            cycle=assert_df_column(stage_data, "Cycle Number").tolist(),
-            columns={
-                str(name): stage_data[name].tolist()
-                for name in stage_data
-                if name
-                not in [
-                    "Well",
-                    "Cycle Number",
-                    "Well Position",
-                    "Stage Number",
-                    "Step Number",
-                ]
-            },
-        )
+    return MulticomponentData(
+        cycle=assert_df_column(stage_data, "Cycle Number").tolist(),
+        columns={
+            str(name): stage_data[name].tolist()
+            for name in stage_data
+            if name
+            not in [
+                "Well",
+                "Cycle Number",
+                "Well Position",
+                "Stage Number",
+                "Step Number",
+            ]
+        },
+    )
 
 
 @dataclass(frozen=True)
@@ -446,8 +430,8 @@ class Result:
         return None
 
     @staticmethod
-    def get_reference_sample(contents: DesignQuantstudioContents) -> str:
-        data = contents.get_non_empty_sheet("RQ Replicate Group Result")
+    def get_reference_sample(reader: DesignQuantstudioReader) -> str:
+        data = reader.get_non_empty_sheet("RQ Replicate Group Result")
         reference_data = data[assert_df_column(data, "Rq") == 1]
         reference_sample_array = assert_df_column(reference_data, "Sample").unique()
 
@@ -458,8 +442,8 @@ class Result:
         return str(reference_sample_array[0])
 
     @staticmethod
-    def get_reference_target(contents: DesignQuantstudioContents) -> str | None:
-        data = contents.get_non_empty_sheet("RQ Replicate Group Result")
+    def get_reference_target(reader: DesignQuantstudioReader) -> str | None:
+        data = reader.get_non_empty_sheet("RQ Replicate Group Result")
 
         possible_ref_targets = set.intersection(
             *[

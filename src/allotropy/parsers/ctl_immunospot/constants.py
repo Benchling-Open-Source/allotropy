@@ -1,0 +1,4 @@
+DETECTION_TYPE = "optical-imaging"
+SOFTWARE_NAME = "ImmunoSpot"
+PRODUCT_MANUFACTURER = "CTL"
+DEVICE_TYPE = "imager"

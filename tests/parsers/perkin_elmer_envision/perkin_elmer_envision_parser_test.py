@@ -1,10 +1,15 @@
-import pytest
-
+from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
+    Data,
+)
 from allotropy.parser_factory import Vendor
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import (
     PerkinElmerEnvisionParser,
 )
-from allotropy.parsers.utils.timestamp_parser import TimestampParser
+from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure import (
+    create_calculated_data,
+    create_measurement_groups,
+    create_metadata,
+)
 from tests.parsers.perkin_elmer_envision.perkin_elmer_envision_data import (
     get_data,
     get_model,
@@ -13,21 +18,14 @@ from tests.parsers.perkin_elmer_envision.perkin_elmer_envision_data import (
 VENDOR_TYPE = Vendor.PERKIN_ELMER_ENVISION
 
 
-@pytest.mark.short
 def test_get_model() -> None:
-    parser = PerkinElmerEnvisionParser(TimestampParser())
-    model = parser._get_model(get_data(), "file.txt")
+    data = get_data()
+    mapper_data = Data(
+        create_metadata(data.software, data.instrument, "file.txt"),
+        create_measurement_groups(data),
+        create_calculated_data(data.plate_list, data.labels.get_read_type()),
+    )
 
-    # remove all random UUIDs
-    if agg_doc := model.plate_reader_aggregate_document:
-        for i in range(len(plate_doc := agg_doc.plate_reader_document)):
-            for j in range(
-                len(
-                    measurement_doc := plate_doc[
-                        i
-                    ].measurement_aggregate_document.measurement_document
-                )
-            ):
-                measurement_doc[j].measurement_identifier = ""
-
-    assert model == get_model()
+    assert (
+        PerkinElmerEnvisionParser()._get_mapper().map_model(mapper_data) == get_model()
+    )

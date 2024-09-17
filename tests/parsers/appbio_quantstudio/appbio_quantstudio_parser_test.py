@@ -3,13 +3,11 @@ import pytest
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import Model
 from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import (
     Data,
-    Mapper,
 )
 from allotropy.parser_factory import Vendor
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_parser import (
     AppBioQuantStudioParser,
 )
-from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
     get_broken_calc_doc_data,
     get_broken_calc_doc_model,
@@ -26,7 +24,6 @@ from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
 VENDOR_TYPE = Vendor.APPBIO_QUANTSTUDIO
 
 
-@pytest.mark.short
 @pytest.mark.parametrize(
     "data,model",
     [
@@ -47,6 +44,5 @@ VENDOR_TYPE = Vendor.APPBIO_QUANTSTUDIO
     ],
 )
 def test_get_model(data: Data, model: Model) -> None:
-    parser = AppBioQuantStudioParser(TimestampParser())
-    generated = parser._get_mapper(Mapper).map_model(data)
+    generated = AppBioQuantStudioParser()._get_mapper().map_model(data)
     assert generated == model

@@ -13,14 +13,15 @@ from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import 
 )
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_data_creator import (
-    create_data,
+from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_parser import (
+    AppBioQuantStudioParser,
 )
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     Header,
     Result,
 )
 from allotropy.parsers.lines_reader import LinesReader, read_to_lines
+from allotropy.testing.utils import mock_uuid_generation
 from allotropy.types import IOType
 from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
     get_broken_calc_doc_data,
@@ -33,24 +34,11 @@ from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
 TESTDATA = Path(Path(__file__).parent, "testdata")
 
 
-def rm_uuid(data: Data) -> Data:
-    for measurement_group in data.measurement_groups:
-        for measurement in measurement_group.measurements:
-            measurement.identifier = ""
-
-    for calc_doc in data.calculated_data.items:
-        calc_doc.identifier = ""
-        for source in calc_doc.data_sources:
-            source.identifier = ""
-    return data
-
-
 def _read_to_lines(io_: IOType, encoding: str | None = None) -> list[str]:
     named_file_contents = NamedFileContents(io_, "test.csv", encoding=encoding)
     return read_to_lines(named_file_contents)
 
 
-@pytest.mark.short
 def test_header_builder_returns_header_instance() -> None:
     header_contents = get_raw_header_contents()
 
@@ -97,7 +85,6 @@ def test_header_builder() -> None:
     )
 
 
-@pytest.mark.short
 @pytest.mark.parametrize(
     "parameter,expected_error",
     [
@@ -119,7 +106,6 @@ def test_header_builder_required_parameter_none_then_raise(
         Header.create(lines_reader)
 
 
-@pytest.mark.short
 def test_header_builder_plate_well_count() -> None:
     header_contents = get_raw_header_contents(plate_well_count="96 plates")
     lines = _read_to_lines(header_contents)
@@ -152,19 +138,17 @@ def test_header_builder_plate_well_count() -> None:
     assert header.plate_well_count is None
 
 
-@pytest.mark.short
 def test_header_builder_no_header_then_raise() -> None:
     header_contents = get_raw_header_contents(raw_text="")
     lines = _read_to_lines(header_contents, encoding="UTF-8")
     lines_reader = LinesReader(lines)
     with pytest.raises(
         AllotropeConversionError,
-        match="Expected non-null value for Block Type.",
+        match="Cannot parse data from empty header.",
     ):
         Header.create(lines_reader)
 
 
-@pytest.mark.short
 def test_results_builder() -> None:
 
     data = pd.DataFrame(
@@ -186,7 +170,6 @@ def test_results_builder() -> None:
     assert result.automatic_cycle_threshold_enabled_setting is True
 
 
-@pytest.mark.short
 @pytest.mark.parametrize(
     "test_filepath,create_expected_data_func",
     [
@@ -216,11 +199,10 @@ def test_data_builder(
     test_filepath: str, create_expected_data_func: Callable[[str], Data]
 ) -> None:
     with open(test_filepath, "rb") as raw_contents:
-        lines = _read_to_lines(raw_contents)
-    reader = LinesReader(lines)
-    assert rm_uuid(create_data(reader, test_filepath)) == rm_uuid(
-        create_expected_data_func(test_filepath)
-    )
+        with mock_uuid_generation():
+            assert AppBioQuantStudioParser().create_data(
+                NamedFileContents(raw_contents, test_filepath)
+            ) == create_expected_data_func(test_filepath)
 
 
 def get_raw_header_contents(

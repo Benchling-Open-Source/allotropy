@@ -10,7 +10,6 @@ from allotropy.parsers.utils.xml import (
 )
 
 
-@pytest.mark.short
 @pytest.mark.parametrize(
     "tag_name,expected_output_val",
     [
@@ -40,7 +39,6 @@ def test_get_val_from_xml(tag_name: tuple[str, str], expected_output_val: str) -
     )
 
 
-@pytest.mark.short
 def test_get_val_raise_error() -> None:
     xml_string = """<Well RowNo="1" ColNo="1" WellNo="1">
         <RunProtocolDocumentName>qux_15PLEX_ASSAY</RunProtocolDocumentName>
@@ -57,7 +55,6 @@ def test_get_val_raise_error() -> None:
         get_val_from_xml(test_xml, "SerialNumber")
 
 
-@pytest.mark.short
 @pytest.mark.parametrize(
     "inputs,expected_output_val",
     [

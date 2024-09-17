@@ -6,7 +6,7 @@ import click
 from allotropy.allotrope.schema_parser.path_util import (
     get_import_path_from_path,
     get_manifest_from_schema_path,
-    get_model_file_from_schema_path,
+    get_model_path_from_schema_path,
     SCHEMA_DIR_PATH,
 )
 from allotropy.allotrope.schema_parser.schema_model import snake_to_upper_camel
@@ -62,9 +62,9 @@ def create_parser(
     name = name.replace(" ", "_").replace("-", "_").lower()
     enum_name = name.upper()
     display_name = display_name or name.replace("_", " ").title()
-    class_name = f"{snake_to_upper_camel(name)}Parser"
+    class_name_prefix = f"{snake_to_upper_camel(name)}"
 
-    model_path = get_model_file_from_schema_path(schema_path)
+    model_path = get_model_path_from_schema_path(schema_path)
     import_path = get_import_path_from_path(model_path)
     manifest = get_manifest_from_schema_path(schema_path)
 
@@ -82,10 +82,11 @@ def create_parser(
 
     template_replacements = {
         "PARSER_NAME": name,
-        "CLASS_NAME": class_name,
+        "CLASS_NAME_PREFIX": class_name_prefix,
         "DISPLAY_NAME": display_name,
         "ENUM_NAME": enum_name,
-        "IMPORT_PATH": import_path,
+        "MODEL_IMPORT_PATH": import_path,
+        "MAPPER_IMPORT_PATH": import_path.replace("models", "schema_mappers"),
         "MANIFEST": manifest,
     }
     write_template_files(
@@ -94,6 +95,7 @@ def create_parser(
         {
             "parser_template": f"{name}_parser.py",
             "structure_template": f"{name}_structure.py",
+            "reader_template": f"{name}_reader.py",
             "constants_template": "constants.py",
         },
     )
@@ -104,7 +106,7 @@ def create_parser(
             "test_template": "to_allotrope_test.py",
         },
     )
-    add_to_parser_factory(name, enum_name, class_name)
+    add_to_parser_factory(name, enum_name, f"{class_name_prefix}Parser")
 
 
 @click.command()

@@ -9,6 +9,8 @@ from allotropy.parsers.utils.pandas import read_csv
 
 
 class NanoDropEightReader:
+    SUPPORTED_EXTENSIONS = "txt"
+
     @classmethod
     def read(cls, named_file_contents: NamedFileContents) -> pd.DataFrame:
         all_lines = lines_reader.read_to_lines(named_file_contents)

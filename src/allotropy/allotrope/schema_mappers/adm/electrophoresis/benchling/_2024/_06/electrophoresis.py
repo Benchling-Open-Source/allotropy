@@ -1,4 +1,3 @@
-from collections.abc import Callable
 from dataclasses import dataclass
 
 from allotropy.allotrope.models.adm.electrophoresis.benchling._2024._06.electrophoresis import (
@@ -32,13 +31,13 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    JsonFloat,
-    TDateTimeValue,
-)
+from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
+from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
-from allotropy.parsers.utils.units import get_quantity_class
-from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
+from allotropy.parsers.utils.values import (
+    quantity_or_none,
+    quantity_or_none_from_unit,
+)
 
 
 @dataclass(frozen=True)
@@ -144,14 +143,8 @@ class Data:
     calculated_data: list[CalculatedDataItem] | None = None
 
 
-class Mapper:
+class Mapper(SchemaMapper[Data, Model]):
     MANIFEST = "http://purl.allotrope.org/manifests/electrophoresis/BENCHLING/2024/06/electrophoresis.manifest"
-
-    def __init__(
-        self, asm_converter_name: str, get_date_time: Callable[[str], TDateTimeValue]
-    ) -> None:
-        self.converter_name = asm_converter_name
-        self.get_date_time = get_date_time
 
     def map_model(self, data: Data) -> Model:
         return Model(
@@ -249,22 +242,9 @@ class Mapper:
                                     TQuantityValueRelativeFluorescenceUnit, peak.height
                                 ),
                                 # TODO(nstender): figure out how to limit possible classes from get_quantity_class for typing.
-                                peak_start=quantity_or_none(  # type: ignore[arg-type]
-                                    assert_not_none(
-                                        get_quantity_class(peak.start_unit)
-                                    ),
-                                    peak.start,
-                                ),
-                                peak_end=quantity_or_none(  # type: ignore[arg-type]
-                                    assert_not_none(get_quantity_class(peak.end_unit)),
-                                    peak.end,
-                                ),
-                                peak_position=quantity_or_none(  # type: ignore[arg-type]
-                                    assert_not_none(
-                                        get_quantity_class(peak.position_unit)
-                                    ),
-                                    peak.position,
-                                ),
+                                peak_start=quantity_or_none_from_unit(peak.start_unit, peak.start),  # type: ignore[arg-type]
+                                peak_end=quantity_or_none_from_unit(peak.end_unit, peak.end),  # type: ignore[arg-type]
+                                peak_position=quantity_or_none_from_unit(peak.position_unit, peak.position),  # type: ignore[arg-type]
                                 peak_area=quantity_or_none(
                                     TQuantityValueUnitless, peak.area
                                 ),
@@ -285,18 +265,8 @@ class Mapper:
                                 region_identifier=data_region.identifier,
                                 region_name=data_region.name,
                                 # TODO(nstender): figure out how to limit possible classes from get_quantity_class for typing.
-                                region_start=quantity_or_none(  # type: ignore[arg-type]
-                                    assert_not_none(
-                                        get_quantity_class(data_region.start_unit)
-                                    ),
-                                    data_region.start,
-                                ),
-                                region_end=quantity_or_none(  # type: ignore[arg-type]
-                                    assert_not_none(
-                                        get_quantity_class(data_region.end_unit)
-                                    ),
-                                    data_region.end,
-                                ),
+                                region_start=quantity_or_none_from_unit(data_region.start_unit, data_region.start),  # type: ignore[arg-type]
+                                region_end=quantity_or_none_from_unit(data_region.end_unit, data_region.end),  # type: ignore[arg-type]
                                 region_area=TQuantityValueUnitless(
                                     value=data_region.area
                                 ),

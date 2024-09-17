@@ -3,13 +3,13 @@
 import pandas as pd
 
 from allotropy.constants import DEFAULT_ENCODING
-from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.thermo_fisher_qubit_flex import constants
 from allotropy.parsers.utils.pandas import read_csv, read_excel
 
 
 class ThermoFisherQubitFlexReader:
+    SUPPORTED_EXTENSIONS = "csv,xlsx"
+
     @classmethod
     def read(cls, named_file_contents: NamedFileContents) -> pd.DataFrame:
         """
@@ -25,14 +25,11 @@ class ThermoFisherQubitFlexReader:
         Raises:
         AllotropeConversionError: If the file format is not supported.
         """
-        if named_file_contents.original_file_name.endswith(".csv"):
+        if named_file_contents.extension == "csv":
             return read_csv(
                 named_file_contents.contents,
                 index_col=False,
                 encoding=DEFAULT_ENCODING,
             )
-        elif named_file_contents.original_file_name.endswith(".xlsx"):
-            return read_excel(named_file_contents.contents.name)
         else:
-            message = f"{constants.UNSUPPORTED_FILE_FORMAT_ERROR} '{named_file_contents.original_file_name}'"
-            raise AllotropeConversionError(message)
+            return read_excel(named_file_contents.contents)

@@ -8,6 +8,72 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Amp score and Cq conf calculated documents to Appbio Quantstudio
+- Add custom information to processed data document in Appbio Quantstudio
+- Add schema mapper for the `REC/2024/06/plate-reader` schema.
+- Checks for missing well item amplification and results data in quantstudio
+- Add csv support to ThermoFisher Nanodrop One
+
+### Fixed
+
+- Fixed bad reference for y-intercept and slope in quantity calculated data document of Appbio Quantstudio
+- Correctly format timezone in SoftmaxPro adapter
+
+### Changed
+
+- Refactor Softmaxpro adapter to use the new schema mapper.
+
+### Deprecated
+
+### Removed
+
+### Security
+
+## [0.1.52] - 2024-09-12
+
+### Fixed
+
+- Fixed bug where name of contents instead of contents was being passed to reader in Roche Cedex Bioht, Thermo Qubit 4 and flex parsers.
+
+### Changed
+
+- Use dateutil timezone instead of pytz, because pytz is can create incorrect timezones when not localized.
+
+## [0.1.51] - 2024-09-09
+
+### Added
+
+- Added `supported_extensions` to Vendor, allowing parsers to specify supported file extensions.
+- Added support for `multiple read modes` in `Agilent Gen5` Adapter
+- Added error message for zero plate reader documents in `Softmax Pro` Adapter
+- Update data sources for quantity calculated documents with y-intercept and Slope in AppBio Quantstudio
+
+### Fixed
+
+- Allow try_int to handle decimal point in int values (e.g. 1.0)
+
+### Changed
+
+- Updated Softmax Pro adapter to use the REC/2024/06 plate reader schema
+- Remove `NaN` measurements from Softmax Pro adapter to comply with the new `REC` schema
+- Change Unchained Labs Lunatic reader so that it supports both formats (with/without header) for both file types.
+- Disregard compartment temperature in `Softmax Pro` adapter when is reported as 0.
+
+## [0.1.50] - 2024-08-30
+
+### Added
+
+- Added `supported_extensions` to Vendor, allowing parsers to specify supported file extensions.
+- Added support for `multiple read modes` in `Agilent Gen5` Adapter
+- Added Thermo Fisher Nanodrop One adapter
+
+### Fixed
+
+- Update mabtech-apex-adapter regex to handle scenarios where first word in the machine ID section has all letter uppercase
+
+## [0.1.49] - 2024-08-21
+
+### Added
 
 - Primary analysis experiment type in AppBio Quantstudio Design and Analysis
 - Added ThermoFisher Genesys 30 adapter
@@ -21,12 +87,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Updated the spectrophotometry mapper script to accommodate absorbance spectrum data cubes
-
-### Deprecated
-
-### Removed
-
-### Security
 
 ## [0.1.48] - 2024-08-15
 
@@ -167,6 +227,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated schema cleaner to handle object schemas with no properties
 - Updated Vi-Cell XR requirements doc to reflect support for .txt files
 - Handle dashes and slashes in custom information document key names
+- Updated Mabtech Apex fields to support LED Filter
 
 ### Changed
 

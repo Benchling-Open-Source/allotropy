@@ -39,6 +39,7 @@ We currently have parser support for the following instruments:
   - Thermo Fisher Qubit 4
   - Thermo Fisher Qubit Flex
   - Unchained Labs Lunatic
+  - Thermo Fisher Nanodrop One
 
 ### Candidate Release
 
@@ -89,9 +90,9 @@ Install Hatch: https://hatch.pypa.io/latest/
 Install Python: https://www.python.org/downloads/
 This library supports Python 3.10 or higher. Hatch will install a matching version of Python (defined in `pyproject.toml`) when it sets up your environment.
 
-Add pre-push checks to your repo:
+Tell git to use .githooks:
 ```sh
-hatch run scripts:setup-pre-push
+git config core.hooksPath .githooks
 ```
 
 #### Dependencies

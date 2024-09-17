@@ -24,7 +24,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -256,9 +256,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -289,7 +286,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -521,9 +518,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -554,7 +548,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -786,9 +780,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -819,7 +810,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -1051,9 +1042,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -1084,7 +1072,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -1316,9 +1304,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -1349,7 +1334,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -1581,9 +1566,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -1614,7 +1596,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -1846,9 +1828,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -1879,7 +1858,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -2111,9 +2090,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -2144,7 +2120,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -2376,9 +2352,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -2409,7 +2382,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -2641,9 +2614,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -2674,7 +2644,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -2906,9 +2876,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -2939,7 +2906,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "detector gain setting": "2198",
@@ -3169,7 +3136,28 @@
                                 ]
                             },
                             "error aggregate document": {
-                                "error document": []
+                                "error document": [
+                                    {
+                                        "error": "Low bead number",
+                                        "error feature": "bravo"
+                                    },
+                                    {
+                                        "error": "Aggregated beads",
+                                        "error feature": "charlie"
+                                    },
+                                    {
+                                        "error": "Classify efficiency",
+                                        "error feature": "delta"
+                                    },
+                                    {
+                                        "error": "Region selection",
+                                        "error feature": "echo"
+                                    },
+                                    {
+                                        "error": "Platform temperature",
+                                        "error feature": "foxtrot"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -3200,7 +3188,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -3432,9 +3420,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -3465,7 +3450,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -3697,9 +3682,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -3730,7 +3712,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -3962,9 +3944,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -3995,7 +3974,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -4227,9 +4206,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -4260,7 +4236,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -4492,9 +4468,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -4525,7 +4498,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -4757,9 +4730,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -4790,7 +4760,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -5022,9 +4992,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -5055,7 +5022,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -5287,9 +5254,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -5320,7 +5284,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -5552,9 +5516,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -5585,7 +5546,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -5817,9 +5778,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -5850,7 +5808,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -6082,9 +6040,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -6115,7 +6070,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "detector gain setting": "2198",
@@ -6343,9 +6298,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -6376,7 +6328,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -6608,9 +6560,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -6641,7 +6590,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -6873,9 +6822,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -6906,7 +6852,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -7138,9 +7084,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -7171,7 +7114,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -7403,9 +7346,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -7436,7 +7376,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -7668,9 +7608,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -7701,7 +7638,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -7933,9 +7870,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -7966,7 +7900,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -8198,9 +8132,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -8231,7 +8162,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -8463,9 +8394,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -8496,7 +8424,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -8728,9 +8656,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -8761,7 +8686,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -8993,9 +8918,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -9026,7 +8948,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -9258,9 +9180,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -9291,7 +9210,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -9523,9 +9442,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -9556,7 +9472,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -9788,9 +9704,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -9821,7 +9734,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -10053,9 +9966,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -10086,7 +9996,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -10318,9 +10228,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -10351,7 +10258,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -10583,9 +10490,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -10616,7 +10520,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -10848,9 +10752,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -10881,7 +10782,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -11113,9 +11014,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -11146,7 +11044,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -11378,9 +11276,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -11411,7 +11306,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -11643,9 +11538,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -11676,7 +11568,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -11908,9 +11800,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -11941,7 +11830,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -12173,9 +12062,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -12206,7 +12092,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -12438,9 +12324,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -12471,7 +12354,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -12703,9 +12586,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -12736,7 +12616,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -12968,9 +12848,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -13001,7 +12878,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -13233,9 +13110,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -13266,7 +13140,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -13498,9 +13372,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -13531,7 +13402,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -13763,9 +13634,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -13796,7 +13664,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -14028,9 +13896,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -14061,7 +13926,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -14293,9 +14158,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -14326,7 +14188,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -14558,9 +14420,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -14591,7 +14450,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -14823,9 +14682,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -14856,7 +14712,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -15088,9 +14944,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -15121,7 +14974,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -15353,9 +15206,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -15386,7 +15236,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -15618,9 +15468,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -15651,7 +15498,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -15883,9 +15730,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -15916,7 +15760,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -16148,9 +15992,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -16181,7 +16022,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -16413,9 +16254,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -16446,7 +16284,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -16678,9 +16516,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -16711,7 +16546,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -16943,9 +16778,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -16976,7 +16808,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -17208,9 +17040,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -17241,7 +17070,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -17473,9 +17302,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -17506,7 +17332,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -17738,9 +17564,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -17771,7 +17594,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -18003,9 +17826,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -18036,7 +17856,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -18268,9 +18088,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -18301,7 +18118,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -18533,9 +18350,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -18566,7 +18380,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -18798,9 +18612,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -18831,7 +18642,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -19063,9 +18874,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -19096,7 +18904,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -19328,9 +19136,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -19361,7 +19166,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -19593,9 +19398,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -19626,7 +19428,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -19858,9 +19660,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -19891,7 +19690,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -20123,9 +19922,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -20156,7 +19952,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -20388,9 +20184,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -20421,7 +20214,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -20653,9 +20446,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -20686,7 +20476,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -20918,9 +20708,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -20951,7 +20738,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -21183,9 +20970,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -21216,7 +21000,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -21448,9 +21232,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -21481,7 +21262,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -21713,9 +21494,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -21746,7 +21524,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -21978,9 +21756,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -22011,7 +21786,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -22243,9 +22018,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -22276,7 +22048,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -22508,9 +22280,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -22541,7 +22310,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -22773,9 +22542,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -22806,7 +22572,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -23038,9 +22804,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -23071,7 +22834,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -23303,9 +23066,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -23336,7 +23096,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -23568,9 +23328,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -23601,7 +23358,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -23833,9 +23590,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -23866,7 +23620,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -24098,9 +23852,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -24131,7 +23882,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -24363,9 +24114,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -24396,7 +24144,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -24628,9 +24376,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -24661,7 +24406,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -24893,9 +24638,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -24926,7 +24668,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -25158,9 +24900,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -25191,7 +24930,7 @@
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -25423,9 +25162,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -25445,7 +25181,7 @@
             "software name": "“Bio-Plex Manager",
             "software version": "6.2.0.175",
             "ASM converter name": "allotropy_bio_rad_bio_plex_manager",
-            "ASM converter version": "0.1.43"
+            "ASM converter version": "0.1.49"
         }
     }
 }

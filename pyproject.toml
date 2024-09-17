@@ -46,7 +46,6 @@ dependencies = [
   "openpyxl >= 3.1.0",
   "pandas >= 2.2.0",
   "python-calamine >= 0.2.3",
-  "pytz",
   "xlrd >= 2.0.0",
   "rfc3339-validator >= 0.1.4",
 ]
@@ -61,11 +60,13 @@ target-version = ["py310"]
 skip-string-normalization = true
 
 [tool.coverage.run]
-source_pkgs = ["allotropy", "tests"]
+source_pkgs = ["allotropy"]
 branch = true
 parallel = true
 omit = [
-  "src/allotropy/__about__.py",
+  "src/allotropy/allotrope/models/*",
+  "__init__.py",
+  "__about__.py",
 ]
 
 [tool.coverage.paths]
@@ -74,8 +75,6 @@ tests = ["tests", "*/allotropy/tests"]
 
 [tool.coverage.report]
 exclude_lines = [
-  "no cov",
-  "if __name__ == .__main__.:",
   "if TYPE_CHECKING:",
 ]
 
@@ -125,7 +124,6 @@ platforms = ["linux", "macos"]
 
 [tool.hatch.envs.scripts.scripts]
 script_path = "scripts/"
-setup-pre-push = "cp scripts/pre-push-hook .git/hooks/pre-push; echo 'Copied to .git/hooks/pre-push'"
 generate-schemas = "scripts/generate_schemas.py {args:}"
 download-schema = "scripts/download_schema.py {args:}"
 create-parser = "scripts/create_parser.py {args:}"
@@ -136,7 +134,6 @@ update-version = "scripts/update_version.py {args:}"
 platforms = ["windows"]
 
 [tool.hatch.envs.win-scripts.scripts]
-setup-pre-push = "copy scripts\\pre-push-hook .git\\hooks\\pre-push && echo Copied to .git\\hooks\\pre-push"
 generate-schemas = "python scripts\\generate_schemas.py {args:}"
 download-schema = "python scripts\\download_schema.py {args:}"
 create-parser = "python scripts\\create_parser.py {args:}"
@@ -186,11 +183,12 @@ extra-dependencies = [
 
 [tool.hatch.envs.test.scripts]
 test = "pytest -n auto {args:tests}"
-short = "pytest -m short {args:tests}"
+short = "pytest -m 'not long' {args:tests}"
 test-cov = "coverage run -m pytest {args:tests}"
 cov-report = [
   "- coverage combine",
   "coverage report",
+  "coverage xml"
 ]
 cov = [
   "test-cov",
@@ -200,7 +198,7 @@ cov = [
 [tool.pytest.ini_options]
 pythonpath = "src"
 markers = [
-  "short: mark a test as running quickly",
+  "long: mark a test that takes a long time to run",
 ]
 
 [tool.ruff]

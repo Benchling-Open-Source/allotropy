@@ -2,25 +2,36 @@ from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reade
     Model,
 )
 from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
+    Data,
     Mapper,
 )
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.ctl_immunospot.ctl_immunospot_structure import create_data
-from allotropy.parsers.lines_reader import LinesReader, read_to_lines
+from allotropy.parsers.ctl_immunospot.ctl_immunospot_structure import (
+    AssayData,
+    create_measurement_groups,
+    create_metadata,
+    Header,
+)
+from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.vendor_parser import VendorParser
+from allotropy.parsers.vendor_parser import MapperVendorParser
 
 
-class CtlImmunospotParser(VendorParser):
-    @property
-    def display_name(self) -> str:
-        return "CTL ImmunoSpot"
+class CtlImmunospotParser(MapperVendorParser[Data, Model]):
+    DISPLAY_NAME = "CTL ImmunoSpot"
+    RELEASE_STATE = ReleaseState.RECOMMENDED
+    SUPPORTED_EXTENSIONS = "txt"
+    SCHEMA_MAPPER = Mapper
 
-    @property
-    def release_state(self) -> ReleaseState:
-        return ReleaseState.RECOMMENDED
+    def create_data(self, named_file_contents: NamedFileContents) -> Data:
+        reader = LinesReader.create(named_file_contents)
+        header = Header.create(reader)
+        reader.drop_empty()
+        reader.drop_until_empty()  # ignore assay info
+        reader.drop_empty()
+        assay_data = AssayData.create(reader)
 
-    def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        lines = read_to_lines(named_file_contents)
-        data = create_data(LinesReader(lines))
-        return self._get_mapper(Mapper).map_model(data)
+        return Data(
+            create_metadata(header),
+            create_measurement_groups(assay_data, header),
+        )

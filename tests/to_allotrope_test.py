@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 
 import pytest
 
@@ -12,6 +13,19 @@ INVALID_FILE_PATH = "not/a/path"
 EXPECTED_ERROR_MESSAGE = f"File not found: {INVALID_FILE_PATH}"
 
 
+def test_raises_on_invalid_extension() -> None:
+    with pytest.raises(
+        AllotropeConversionError,
+        match=re.escape(
+            "Unsupported file extension 'csv' for parser 'Agilent Gen5', expected one of '['txt']'."
+        ),
+    ):
+        allotrope_from_file(
+            "tests/parsers/appbio_absolute_q/testdata/Appbio_AbsoluteQ_example01.csv",
+            Vendor.AGILENT_GEN5,
+        )
+
+
 def test_allotrope_from_file_not_found() -> None:
     with pytest.raises(AllotropeConversionError, match=EXPECTED_ERROR_MESSAGE):
         allotrope_from_file(INVALID_FILE_PATH, Vendor.AGILENT_GEN5)
@@ -23,6 +37,7 @@ def test_allotrope_model_from_file_not_found() -> None:
 
 
 # A parser can inherit from this test to automatically test all positive test cases of converting from file.
+@pytest.mark.long
 class ParserTest:
     VENDOR: Vendor
     OVERWRITE_ON_FAILURE: bool = False

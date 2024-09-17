@@ -18,6 +18,7 @@ import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.calculated_data_documents.definition import Referenceable
@@ -57,16 +58,17 @@ class Header:
 
     @staticmethod
     def create(reader: LinesReader) -> Header:
-        lines = [line.replace("*", "", 1) for line in reader.pop_until(r"^\[.+\]")]
-        csv_stream = StringIO("\n".join(lines))
-        raw_data = read_csv(csv_stream, header=None, sep="=", names=["index", "values"])
-        series = pd.Series(raw_data["values"].values, index=raw_data["index"]).astype(
-            str
-        )
-        series.index = series.index.str.strip()
-        series = series.str.strip().replace("NA", None)
+        lines = [line.strip() for line in reader.pop_until(r"^\[.+\]") if line.strip()]
+        if not lines:
+            msg = "Cannot parse data from empty header."
+            raise AllotropeConversionError(msg)
 
-        data = SeriesData(series)
+        csv_stream = StringIO("\n".join(lines))
+        raw_data = read_csv(
+            csv_stream, header=None, sep="=", skipinitialspace=True, index_col=0
+        )
+        raw_data.index = raw_data.index.str.replace("*", "")
+        data = df_to_series_data(raw_data.T.replace(np.nan, None))
 
         experiments_type_options = {
             "Standard Curve": ExperimentType.standard_curve_qPCR_experiment,
@@ -246,30 +248,32 @@ class AmplificationData:
     rn: list[float | None]
     delta_rn: list[float | None]
 
-    @staticmethod
-    def create(reader: LinesReader) -> dict[int, dict[str, AmplificationData]]:
-        assert_not_none(
-            reader.drop_until(r"^\[Amplification Data\]"),
-            msg="Unable to find 'Amplification Data' section in file.",
-        )
 
-        reader.pop()  # remove title
-        lines = list(reader.pop_until(r"^\[.+\]"))
-        csv_stream = StringIO("\n".join(lines))
-        data = read_csv(csv_stream, sep="\t", thousands=r",")
+def create_amplification_data(
+    reader: LinesReader,
+) -> dict[int, dict[str, AmplificationData]]:
+    assert_not_none(
+        reader.drop_until(r"^\[Amplification Data\]"),
+        msg="Unable to find 'Amplification Data' section in file.",
+    )
 
-        def make_data(well_data: pd.DataFrame) -> dict[str, AmplificationData]:
-            return {
-                str(target_name): AmplificationData(
-                    total_cycle_number_setting=float(target_data["Cycle"].max()),
-                    cycle=target_data["Cycle"].tolist(),
-                    rn=target_data["Rn"].tolist(),
-                    delta_rn=target_data["Delta Rn"].tolist(),
-                )
-                for target_name, target_data in well_data.groupby("Target Name")
-            }
+    reader.pop()  # remove title
+    lines = list(reader.pop_until(r"^\[.+\]"))
+    csv_stream = StringIO("\n".join(lines))
+    data = read_csv(csv_stream, sep="\t", thousands=r",")
 
-        return map_wells(make_data, data)
+    def make_data(well_data: pd.DataFrame) -> dict[str, AmplificationData]:
+        return {
+            str(target_name): AmplificationData(
+                total_cycle_number_setting=float(target_data["Cycle"].max()),
+                cycle=target_data["Cycle"].tolist(),
+                rn=target_data["Rn"].tolist(),
+                delta_rn=target_data["Delta Rn"].tolist(),
+            )
+            for target_name, target_data in well_data.groupby("Target Name")
+        }
+
+    return map_wells(make_data, data)
 
 
 @dataclass(frozen=True)
@@ -283,26 +287,26 @@ class MulticomponentData:
             msg=f"Unable to obtain '{name}' from multicomponent data.",
         )
 
-    @staticmethod
-    def create(reader: LinesReader) -> dict[int, MulticomponentData]:
-        if not reader.match(r"^\[Multicomponent Data\]"):
-            return {}
-        reader.pop()  # remove title
-        lines = list(reader.pop_until(r"^\[.+\]"))
-        csv_stream = StringIO("\n".join(lines))
-        data = read_csv(csv_stream, sep="\t", thousands=r",")
 
-        def make_data(well_data: pd.Series[Any]) -> MulticomponentData:
-            return MulticomponentData(
-                cycle=well_data["Cycle"].tolist(),
-                columns={
-                    name: well_data[name].tolist()
-                    for name in well_data
-                    if name not in ["Well", "Cycle", "Well Position"]
-                },
-            )
+def create_multicomponent_data(reader: LinesReader) -> dict[int, MulticomponentData]:
+    if not reader.match(r"^\[Multicomponent Data\]"):
+        return {}
+    reader.pop()  # remove title
+    lines = list(reader.pop_until(r"^\[.+\]"))
+    csv_stream = StringIO("\n".join(lines))
+    data = read_csv(csv_stream, sep="\t", thousands=r",")
 
-        return map_wells(make_data, data)
+    def make_data(well_data: pd.Series[Any]) -> MulticomponentData:
+        return MulticomponentData(
+            cycle=well_data["Cycle"].tolist(),
+            columns={
+                name: well_data[name].tolist()
+                for name in well_data
+                if name not in ["Well", "Cycle", "Well Position"]
+            },
+        )
+
+    return map_wells(make_data, data)
 
 
 @dataclass(frozen=True)
@@ -354,6 +358,14 @@ class Result:
     r_squared: float | None
     slope: float | None
     efficiency: float | None
+    comments: str | None
+    highsd: str | None
+    noamp: str | None
+    expfail: str | None
+    tholdfail: str | None
+    prfdrop: str | None
+    amp_score: float | None
+    cq_conf: float | None
 
     @staticmethod
     def create(
@@ -404,9 +416,7 @@ class Result:
                 target_dna_description: result
                 for target_id, target_data in well_data.groupby(target_key)
                 for target_dna_description, result in Result.create_result(
-                    df_to_series_data(
-                        target_data, msg="Unable to find parser result data"
-                    ),
+                    df_to_series_data(target_data),
                     experiment_type,
                     str(target_id),
                 ).items()
@@ -468,6 +478,14 @@ class Result:
                 r_squared=data.get(float, "R(superscript 2)"),
                 slope=data.get(float, "Slope"),
                 efficiency=data.get(float, "Efficiency"),
+                comments=data.get(str, "Comments"),
+                highsd=data.get(str, "HIGHSD"),
+                noamp=data.get(str, "NOAMP"),
+                expfail=data.get(str, "EXPFAIL"),
+                tholdfail=data.get(str, "THOLDFAIL"),
+                prfdrop=data.get(str, "PRFDROP"),
+                amp_score=data.get(float, "Amp Score"),
+                cq_conf=data.get(float, "Cq Conf"),
             )
             for allele_prefix in allele_prefixes
         }

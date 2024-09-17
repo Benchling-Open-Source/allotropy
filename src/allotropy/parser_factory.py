@@ -61,6 +61,9 @@ from allotropy.parsers.thermo_fisher_genesys30.thermo_fisher_genesys30_parser im
 from allotropy.parsers.thermo_fisher_nanodrop_eight.nanodrop_eight_parser import (
     NanodropEightParser,
 )
+from allotropy.parsers.thermo_fisher_nanodrop_one.thermo_fisher_nanodrop_one_parser import (
+    ThermoFisherNanodropOneParser,
+)
 from allotropy.parsers.thermo_fisher_qubit4.thermo_fisher_qubit4_parser import (
     ThermoFisherQubit4Parser,
 )
@@ -103,6 +106,7 @@ class Vendor(Enum):
     ROCHE_CEDEX_HIRES = "ROCHE_CEDEX_HIRES"
     THERMO_FISHER_GENESYS30 = "THERMO_FISHER_GENESYS30"
     THERMO_FISHER_NANODROP_EIGHT = "THERMO_FISHER_NANODROP_EIGHT"
+    THERMO_FISHER_NANODROP_ONE = "THERMO_FISHER_NANODROP_ONE"
     THERMO_FISHER_QUBIT4 = "THERMO_FISHER_QUBIT4"
     THERMO_FISHER_QUBIT_FLEX = "THERMO_FISHER_QUBIT_FLEX"
     UNCHAINED_LABS_LUNATIC = "UNCHAINED_LABS_LUNATIC"
@@ -110,11 +114,17 @@ class Vendor(Enum):
 
     @property
     def display_name(self) -> str:
-        return self.get_parser().display_name
+        return self.get_parser().DISPLAY_NAME
 
     @property
     def release_state(self) -> ReleaseState:
-        return self.get_parser().release_state
+        return self.get_parser().RELEASE_STATE
+
+    @property
+    def supported_extensions(self) -> list[str]:
+        return [
+            ext.strip() for ext in self.get_parser().SUPPORTED_EXTENSIONS.split(",")
+        ]
 
     def get_parser(self, default_timezone: tzinfo | None = None) -> VendorParser:
         timestamp_parser = TimestampParser(default_timezone)
@@ -148,6 +158,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.ROCHE_CEDEX_HIRES: RocheCedexHiResParser,
     Vendor.THERMO_FISHER_GENESYS30: ThermoFisherGenesys30Parser,
     Vendor.THERMO_FISHER_NANODROP_EIGHT: NanodropEightParser,
+    Vendor.THERMO_FISHER_NANODROP_ONE: ThermoFisherNanodropOneParser,
     Vendor.THERMO_FISHER_QUBIT4: ThermoFisherQubit4Parser,
     Vendor.THERMO_FISHER_QUBIT_FLEX: ThermoFisherQubitFlexParser,
     Vendor.UNCHAINED_LABS_LUNATIC: UnchainedLabsLunaticParser,
