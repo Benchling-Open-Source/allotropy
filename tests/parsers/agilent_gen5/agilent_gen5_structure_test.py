@@ -109,13 +109,13 @@ def test_create_read_data_absorbance() -> None:
     assert read_data[0].step_label == "260"
     assert read_data[0].detector_carriage_speed == "Normal"  # Read Speed
     assert read_data[0].number_of_averages == 8  # Measurements/Data Point
-    assert read_data[0].measurement_labels == [
+    assert read_data[0].measurement_labels == {
         "260:260",
         "260:280",
         "260:230",
         "260:977 [Test]",
         "260:900 [Ref]",
-    ]
+    }
 
 
 def test_create_read_data_luminescence_full_light() -> None:
@@ -139,7 +139,7 @@ def test_create_read_data_luminescence_full_light() -> None:
     assert read_data[0].step_label == "LUM"
     assert read_data[0].detector_carriage_speed == "Normal"  # Read Speed
     assert read_data[0].detector_distance == 4.5  # Read Height
-    assert read_data[0].measurement_labels == ["LUM:Lum"]
+    assert read_data[0].measurement_labels == {"LUM:Lum"}
     assert read_data[0].filter_sets == {
         "LUM:Lum": FilterSet(emission="Full light", gain="135", optics="Top")
     }
@@ -165,7 +165,7 @@ def test_create_read_data_luminescence_text_settings() -> None:
     assert read_data[0].read_mode == ReadMode.LUMINESCENCE
     assert read_data[0].detector_carriage_speed == "Normal"  # Read Speed
     assert read_data[0].detector_distance == 4.5  # Read Height
-    assert read_data[0].measurement_labels == ["Lum"]
+    assert read_data[0].measurement_labels == {"Lum"}
     assert read_data[0].filter_sets == {
         "Lum": FilterSet(emission="Hole", gain="135", optics="Top", excitation="Plug")
     }
@@ -192,7 +192,7 @@ def test_create_read_data_luminescence_with_filter() -> None:
     assert read_data[0].step_label == "LUM"
     assert read_data[0].detector_carriage_speed == "Normal"  # Read Speed
     assert read_data[0].detector_distance == 4.5  # Read Height
-    assert read_data[0].measurement_labels == ["LUM:460/40"]
+    assert read_data[0].measurement_labels == {"LUM:460/40"}
     assert read_data[0].filter_sets == {
         "LUM:460/40": FilterSet(emission="460/40", gain="136")
     }
@@ -222,10 +222,12 @@ def test_create_read_data_fluorescence() -> None:
     assert read_data[0].detector_carriage_speed == "Normal"  # Read Speed
     assert read_data[0].detector_distance == 7  # Read Height
     assert read_data[0].number_of_averages == 10  # Measurements/Data Point
-    assert read_data[0].measurement_labels == [
+    assert read_data[0].measurement_labels == {
         "DAPI/GFP:360/40,460/40",
         "DAPI/GFP:485/20,528/20",
-    ]
+        "DAPI/GFP:360,460",
+        "DAPI/GFP:485,528",
+    }
     assert read_data[0].filter_sets == {
         "DAPI/GFP:360/40,460/40": FilterSet(
             excitation="360/40",
@@ -237,6 +239,20 @@ def test_create_read_data_fluorescence() -> None:
             excitation="485/20",
             emission="528/20",
             mirror="Top 510 nm",
+            gain="35",
+        ),
+        "DAPI/GFP:485,528": FilterSet(
+            excitation="485/20",
+            emission="528/20",
+            optics=None,
+            mirror="Top 510 nm",
+            gain="35",
+        ),
+        "DAPI/GFP:360,460": FilterSet(
+            excitation="360/40",
+            emission="460/40",
+            optics=None,
+            mirror="Top 400 nm",
             gain="35",
         ),
     }
@@ -384,7 +400,7 @@ def test_create_multiple_read_modes() -> None:
     assert len(read_data) == 2
     assert read_data[0].read_mode == ReadMode.ABSORBANCE
     assert read_data[0].step_label == "od"
-    assert read_data[0].measurement_labels == ["od:600"]
+    assert read_data[0].measurement_labels == {"od:600"}
     assert read_data[0].number_of_averages == 8
     assert read_data[0].detector_carriage_speed == "Normal"
 
@@ -441,7 +457,7 @@ def test_create_three_read_modes() -> None:
     assert len(read_data) == 3
     assert read_data[0].read_mode == ReadMode.ABSORBANCE
     assert read_data[0].step_label == "od"
-    assert read_data[0].measurement_labels == ["od:600"]
+    assert read_data[0].measurement_labels == {"od:600"}
     assert read_data[0].number_of_averages == 8
     assert read_data[0].detector_carriage_speed == "Normal"
 
@@ -464,7 +480,7 @@ def test_create_three_read_modes() -> None:
 
     assert read_data[2].read_mode == ReadMode.LUMINESCENCE
     assert read_data[2].step_label == "LUM"
-    assert read_data[2].measurement_labels == ["LUM:460/40"]
+    assert read_data[2].measurement_labels == {"LUM:460/40"}
     assert read_data[2].filter_sets == {
         "LUM:460/40": FilterSet(
             emission="460/40",
@@ -498,20 +514,20 @@ def test_create_two_same_read_modes() -> None:
     assert len(read_data) == 2
     assert read_data[0].read_mode == ReadMode.ABSORBANCE
     assert read_data[0].step_label == "od"
-    assert read_data[0].measurement_labels == ["od:600"]
+    assert read_data[0].measurement_labels == {"od:600"}
     assert read_data[0].number_of_averages == 8
     assert read_data[0].detector_carriage_speed == "Normal"
 
     assert read_data[1].read_mode == ReadMode.ABSORBANCE
     assert read_data[1].step_label == "260"
     assert read_data[1].detector_carriage_speed == "Normal"
-    assert read_data[1].measurement_labels == [
+    assert read_data[1].measurement_labels == {
         "260:260",
         "260:280",
         "260:230",
         "260:977 [Test]",
         "260:900 [Ref]",
-    ]
+    }
     assert read_data[1].number_of_averages == 8
     assert read_data[1].pathlength_correction == "977 / 900"
 
@@ -529,18 +545,18 @@ def test_create_two_same_read_modes_from_file() -> None:
     assert len(read_data) == 2
     assert read_data[0].read_mode == ReadMode.ABSORBANCE
     assert read_data[0].step_label == "od"
-    assert read_data[0].measurement_labels == ["od:600"]
+    assert read_data[0].measurement_labels == {"od:600"}
     assert read_data[0].number_of_averages == 8
     assert read_data[0].detector_carriage_speed == "Normal"
 
     assert read_data[1].read_mode == ReadMode.ABSORBANCE
     assert read_data[1].step_label == "260"
     assert read_data[1].detector_carriage_speed == "Normal"
-    assert read_data[1].measurement_labels == [
+    assert read_data[1].measurement_labels == {
         "260:280",
         "260:977 [Test]",
         "260:900 [Ref]",
-    ]
+    }
     assert read_data[1].number_of_averages == 8
     assert read_data[1].pathlength_correction == "977 / 900"
 
@@ -558,7 +574,7 @@ def test_create_two_read_modes_from_file() -> None:
     assert len(read_data) == 2
     assert read_data[0].read_mode == ReadMode.ABSORBANCE
     assert read_data[0].step_label == "od"
-    assert read_data[0].measurement_labels == ["od:600"]
+    assert read_data[0].measurement_labels == {"od:600"}
     assert read_data[0].number_of_averages == 8
     assert read_data[0].detector_carriage_speed == "Normal"
 
