@@ -10,10 +10,8 @@ from allotropy.allotrope.models.cell_counting_benchling_2023_11_cell_counting im
     CellCountingDetectorDeviceControlAggregateDocument,
     CellCountingDetectorMeasurementDocumentItem,
     CellCountingDocumentItem,
-    DataProcessingDocument,
     DataSystemDocument,
     DeviceControlDocumentItemModel,
-    DeviceSystemDocument,
     MeasurementAggregateDocument,
     Model,
     ProcessedDataAggregateDocument1,
@@ -63,17 +61,15 @@ class NexcelomMatrixParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         contents = named_file_contents.contents
         filename = named_file_contents.original_file_name
-        # TODO: can we get filepath?
+        filepath = contents.name
         reader = NexcelomMatrixReader(contents)
 
         return Model(
             field_asm_manifest="http://purl.allotrope.org/manifests/cell-counting/BENCHLING/2023/11/cell-counting.manifest",
             cell_counting_aggregate_document=CellCountingAggregateDocument(
-                device_system_document=DeviceSystemDocument(),  # Empty reqs  # TODO do we leave empty documents in?
                 data_system_document=DataSystemDocument(
                     file_name=filename,
-                    # software_name=SOFTWARE_NAME,  # TODO
-                    # software_version=reader.file_version.value,
+                    UNC_path=filepath,
                     ASM_converter_name=ASM_CONVERTER_NAME,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
@@ -120,7 +116,6 @@ class NexcelomMatrixParser(VendorParser):
                         processed_data_aggregate_document=ProcessedDataAggregateDocument1(
                             processed_data_document=[
                                 ProcessedDataDocumentItem(
-                                    data_processing_document=DataProcessingDocument(),  # TODO not needed? What do I do with notes and errors?
                                     viability__cell_counter_=viability__cell_counter_,
                                     viable_cell_density__cell_counter_=viable_cell_density__cell_counter_,
                                     total_cell_count=get_property_from_sample(

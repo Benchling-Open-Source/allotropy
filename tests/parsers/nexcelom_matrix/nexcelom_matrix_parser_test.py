@@ -1,12 +1,9 @@
 import pytest
 
-# from allotropy.exceptions import AllotropeConversionError
 from allotropy.parser_factory import Vendor
 from allotropy.testing.utils import from_file, validate_contents
 
-OUTPUT_FILES = (
-    "nexcelom_matrix_1.xlsx",
-)
+OUTPUT_FILES = ("nexcelom_matrix_1.xlsx",)
 
 VENDOR_TYPE = Vendor.NEXCELOM_MATRIX
 
@@ -20,9 +17,10 @@ def test_parse_nexcelom_matrix_to_asm_expected_contents(output_file: str) -> Non
 
     validate_contents(allotrope_dict, expected_filepath)
 
-# TODO Need more tests
+
+# TODO This test fails with a KeyError instead of AllotropeConversionError
 # def test_parse_nexcelom_matrix_file_without_required_fields_then_raise() -> None:
-#     test_filepath = "tests/parsers/nexcelom_matrix/testdata/NONE_GIVEN.xlsx"
+#     test_filepath = "tests/parsers/nexcelom_matrix/testdata/nexcelom_matrix_error.xlsx"
 #     expected_regex = re.escape(
 #         "Expected to find lines with all of these headers: ['Viability', 'Live Cells/mL']."
 #     )
