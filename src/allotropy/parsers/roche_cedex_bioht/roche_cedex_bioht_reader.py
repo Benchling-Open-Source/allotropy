@@ -5,13 +5,13 @@ from typing import Any
 import numpy as np
 import pandas as pd
 
-from allotropy.allotrope.pandas_util import read_csv
 from allotropy.parsers.roche_cedex_bioht.constants import (
     ANALYTES_LOOKUP,
     DATA_HEADER,
     INFO_HEADER,
     SAMPLE_ROLE_TYPES,
 )
+from allotropy.parsers.utils.pandas import read_csv, SeriesData
 from allotropy.types import IOType
 
 
@@ -20,19 +20,25 @@ def to_num(data: pd.Series[Any]) -> pd.Series[Any]:
 
 
 class RocheCedexBiohtReader:
+    SUPPORTED_EXTENSIONS = "txt"
+    title_data: SeriesData
+    samples_data: pd.DataFrame
+
     def __init__(self, contents: IOType):
         self.title_data = self.read_title_data(contents)
         self.samples_data = self.read_samples_data(contents)
 
-    def read_title_data(self, contents: IOType) -> pd.Series[Any]:
+    def read_title_data(self, contents: IOType) -> SeriesData:
         contents.seek(0)
-        return read_csv(
-            contents,
-            delimiter="\t",
-            usecols=INFO_HEADER,
-            names=INFO_HEADER,
-            nrows=1,
-        ).T[0]
+        return SeriesData(
+            read_csv(
+                contents,
+                delimiter="\t",
+                usecols=INFO_HEADER,
+                names=INFO_HEADER,
+                nrows=1,
+            ).T[0]
+        )
 
     def read_samples_data(self, contents: IOType) -> pd.DataFrame:
         contents.seek(0)

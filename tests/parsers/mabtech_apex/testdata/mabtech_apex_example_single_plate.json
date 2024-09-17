@@ -1,0 +1,1748 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
+    "plate reader aggregate document": {
+        "plate reader document": [
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-01-29T09:06:35+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "MABTECH_APEX_TEST_ID_3",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "imager",
+                                        "detection type": "optical-imaging",
+                                        "exposure duration setting": {
+                                            "value": 13400.0,
+                                            "unit": "ms"
+                                        },
+                                        "illumination setting": {
+                                            "value": 400.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "mabtech_apex_example1_B1",
+                                "location identifier": "B1",
+                                "well plate identifier": "mabtech_apex_example1"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "processed data identifier": "MABTECH_APEX_TEST_ID_4",
+                                        "image feature aggregate document": {
+                                            "image feature document": [
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_0",
+                                                    "image feature name": "Spot Forming Units (SFU)",
+                                                    "image feature result": {
+                                                        "value": 2.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_1",
+                                                    "image feature name": "Sum of Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 772.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_2",
+                                                    "image feature name": "Average Relative Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 386.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "container type": "well plate"
+                },
+                "analyst": "Admin"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-01-29T09:06:39+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "MABTECH_APEX_TEST_ID_8",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "imager",
+                                        "detection type": "optical-imaging",
+                                        "exposure duration setting": {
+                                            "value": 13400.0,
+                                            "unit": "ms"
+                                        },
+                                        "illumination setting": {
+                                            "value": 400.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "mabtech_apex_example1_B2",
+                                "location identifier": "B2",
+                                "well plate identifier": "mabtech_apex_example1"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "processed data identifier": "MABTECH_APEX_TEST_ID_9",
+                                        "image feature aggregate document": {
+                                            "image feature document": [
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_5",
+                                                    "image feature name": "Spot Forming Units (SFU)",
+                                                    "image feature result": {
+                                                        "value": 3.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_6",
+                                                    "image feature name": "Sum of Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 2372.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_7",
+                                                    "image feature name": "Average Relative Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 790.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "container type": "well plate"
+                },
+                "analyst": "Admin"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-01-29T09:06:40+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "MABTECH_APEX_TEST_ID_13",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "imager",
+                                        "detection type": "optical-imaging",
+                                        "exposure duration setting": {
+                                            "value": 13400.0,
+                                            "unit": "ms"
+                                        },
+                                        "illumination setting": {
+                                            "value": 400.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "mabtech_apex_example1_B3",
+                                "location identifier": "B3",
+                                "well plate identifier": "mabtech_apex_example1"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "processed data identifier": "MABTECH_APEX_TEST_ID_14",
+                                        "image feature aggregate document": {
+                                            "image feature document": [
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_10",
+                                                    "image feature name": "Spot Forming Units (SFU)",
+                                                    "image feature result": {
+                                                        "value": 1256.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_11",
+                                                    "image feature name": "Sum of Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 1549855.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_12",
+                                                    "image feature name": "Average Relative Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 1233.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "container type": "well plate"
+                },
+                "analyst": "Admin"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-01-29T09:06:45+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "MABTECH_APEX_TEST_ID_18",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "imager",
+                                        "detection type": "optical-imaging",
+                                        "exposure duration setting": {
+                                            "value": 13400.0,
+                                            "unit": "ms"
+                                        },
+                                        "illumination setting": {
+                                            "value": 400.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "mabtech_apex_example1_B4",
+                                "location identifier": "B4",
+                                "well plate identifier": "mabtech_apex_example1"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "processed data identifier": "MABTECH_APEX_TEST_ID_19",
+                                        "image feature aggregate document": {
+                                            "image feature document": [
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_15",
+                                                    "image feature name": "Spot Forming Units (SFU)",
+                                                    "image feature result": {
+                                                        "value": 1206.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_16",
+                                                    "image feature name": "Sum of Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 1560641.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_17",
+                                                    "image feature name": "Average Relative Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 1294.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "container type": "well plate"
+                },
+                "analyst": "Admin"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-01-29T09:06:46+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "MABTECH_APEX_TEST_ID_23",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "imager",
+                                        "detection type": "optical-imaging",
+                                        "exposure duration setting": {
+                                            "value": 13400.0,
+                                            "unit": "ms"
+                                        },
+                                        "illumination setting": {
+                                            "value": 400.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "mabtech_apex_example1_B5",
+                                "location identifier": "B5",
+                                "well plate identifier": "mabtech_apex_example1"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "processed data identifier": "MABTECH_APEX_TEST_ID_24",
+                                        "image feature aggregate document": {
+                                            "image feature document": [
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_20",
+                                                    "image feature name": "Spot Forming Units (SFU)",
+                                                    "image feature result": {
+                                                        "value": 382.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_21",
+                                                    "image feature name": "Sum of Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 250340.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_22",
+                                                    "image feature name": "Average Relative Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 655.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "container type": "well plate"
+                },
+                "analyst": "Admin"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-01-29T09:06:50+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "MABTECH_APEX_TEST_ID_28",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "imager",
+                                        "detection type": "optical-imaging",
+                                        "exposure duration setting": {
+                                            "value": 13400.0,
+                                            "unit": "ms"
+                                        },
+                                        "illumination setting": {
+                                            "value": 400.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "mabtech_apex_example1_B6",
+                                "location identifier": "B6",
+                                "well plate identifier": "mabtech_apex_example1"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "processed data identifier": "MABTECH_APEX_TEST_ID_29",
+                                        "image feature aggregate document": {
+                                            "image feature document": [
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_25",
+                                                    "image feature name": "Spot Forming Units (SFU)",
+                                                    "image feature result": {
+                                                        "value": 369.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_26",
+                                                    "image feature name": "Sum of Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 254896.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_27",
+                                                    "image feature name": "Average Relative Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 690.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "container type": "well plate"
+                },
+                "analyst": "Admin"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-01-29T09:06:36+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "MABTECH_APEX_TEST_ID_33",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "imager",
+                                        "detection type": "optical-imaging",
+                                        "exposure duration setting": {
+                                            "value": 13400.0,
+                                            "unit": "ms"
+                                        },
+                                        "illumination setting": {
+                                            "value": 400.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "mabtech_apex_example1_C1",
+                                "location identifier": "C1",
+                                "well plate identifier": "mabtech_apex_example1"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "processed data identifier": "MABTECH_APEX_TEST_ID_34",
+                                        "image feature aggregate document": {
+                                            "image feature document": [
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_30",
+                                                    "image feature name": "Spot Forming Units (SFU)",
+                                                    "image feature result": {
+                                                        "value": 7.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_31",
+                                                    "image feature name": "Sum of Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 8285.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_32",
+                                                    "image feature name": "Average Relative Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 1183.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "container type": "well plate"
+                },
+                "analyst": "Admin"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-01-29T09:06:38+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "MABTECH_APEX_TEST_ID_38",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "imager",
+                                        "detection type": "optical-imaging",
+                                        "exposure duration setting": {
+                                            "value": 13400.0,
+                                            "unit": "ms"
+                                        },
+                                        "illumination setting": {
+                                            "value": 400.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "mabtech_apex_example1_C2",
+                                "location identifier": "C2",
+                                "well plate identifier": "mabtech_apex_example1"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "processed data identifier": "MABTECH_APEX_TEST_ID_39",
+                                        "image feature aggregate document": {
+                                            "image feature document": [
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_35",
+                                                    "image feature name": "Spot Forming Units (SFU)",
+                                                    "image feature result": {
+                                                        "value": 8.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_36",
+                                                    "image feature name": "Sum of Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 10696.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_37",
+                                                    "image feature name": "Average Relative Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 1337.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "container type": "well plate"
+                },
+                "analyst": "Admin"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-01-29T09:06:41+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "MABTECH_APEX_TEST_ID_43",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "imager",
+                                        "detection type": "optical-imaging",
+                                        "exposure duration setting": {
+                                            "value": 13400.0,
+                                            "unit": "ms"
+                                        },
+                                        "illumination setting": {
+                                            "value": 400.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "mabtech_apex_example1_C3",
+                                "location identifier": "C3",
+                                "well plate identifier": "mabtech_apex_example1"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "processed data identifier": "MABTECH_APEX_TEST_ID_44",
+                                        "image feature aggregate document": {
+                                            "image feature document": [
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_40",
+                                                    "image feature name": "Spot Forming Units (SFU)",
+                                                    "image feature result": {
+                                                        "value": 1406.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_41",
+                                                    "image feature name": "Sum of Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 1791268.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_42",
+                                                    "image feature name": "Average Relative Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 1274.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "container type": "well plate"
+                },
+                "analyst": "Admin"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-01-29T09:06:44+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "MABTECH_APEX_TEST_ID_48",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "imager",
+                                        "detection type": "optical-imaging",
+                                        "exposure duration setting": {
+                                            "value": 13400.0,
+                                            "unit": "ms"
+                                        },
+                                        "illumination setting": {
+                                            "value": 400.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "mabtech_apex_example1_C4",
+                                "location identifier": "C4",
+                                "well plate identifier": "mabtech_apex_example1"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "processed data identifier": "MABTECH_APEX_TEST_ID_49",
+                                        "image feature aggregate document": {
+                                            "image feature document": [
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_45",
+                                                    "image feature name": "Spot Forming Units (SFU)",
+                                                    "image feature result": {
+                                                        "value": 1394.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_46",
+                                                    "image feature name": "Sum of Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 1879934.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_47",
+                                                    "image feature name": "Average Relative Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 1348.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "container type": "well plate"
+                },
+                "analyst": "Admin"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-01-29T09:06:46+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "MABTECH_APEX_TEST_ID_53",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "imager",
+                                        "detection type": "optical-imaging",
+                                        "exposure duration setting": {
+                                            "value": 13400.0,
+                                            "unit": "ms"
+                                        },
+                                        "illumination setting": {
+                                            "value": 400.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "mabtech_apex_example1_C5",
+                                "location identifier": "C5",
+                                "well plate identifier": "mabtech_apex_example1"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "processed data identifier": "MABTECH_APEX_TEST_ID_54",
+                                        "image feature aggregate document": {
+                                            "image feature document": [
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_50",
+                                                    "image feature name": "Spot Forming Units (SFU)",
+                                                    "image feature result": {
+                                                        "value": 864.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_51",
+                                                    "image feature name": "Sum of Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 866855.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_52",
+                                                    "image feature name": "Average Relative Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 1003.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "container type": "well plate"
+                },
+                "analyst": "Admin"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-01-29T09:06:49+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "MABTECH_APEX_TEST_ID_58",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "imager",
+                                        "detection type": "optical-imaging",
+                                        "exposure duration setting": {
+                                            "value": 13400.0,
+                                            "unit": "ms"
+                                        },
+                                        "illumination setting": {
+                                            "value": 400.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "mabtech_apex_example1_C6",
+                                "location identifier": "C6",
+                                "well plate identifier": "mabtech_apex_example1"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "processed data identifier": "MABTECH_APEX_TEST_ID_59",
+                                        "image feature aggregate document": {
+                                            "image feature document": [
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_55",
+                                                    "image feature name": "Spot Forming Units (SFU)",
+                                                    "image feature result": {
+                                                        "value": 927.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_56",
+                                                    "image feature name": "Sum of Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 921827.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_57",
+                                                    "image feature name": "Average Relative Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 994.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "container type": "well plate"
+                },
+                "analyst": "Admin"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-01-29T09:06:37+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "MABTECH_APEX_TEST_ID_63",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "imager",
+                                        "detection type": "optical-imaging",
+                                        "exposure duration setting": {
+                                            "value": 13400.0,
+                                            "unit": "ms"
+                                        },
+                                        "illumination setting": {
+                                            "value": 400.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "mabtech_apex_example1_D1",
+                                "location identifier": "D1",
+                                "well plate identifier": "mabtech_apex_example1"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "processed data identifier": "MABTECH_APEX_TEST_ID_64",
+                                        "image feature aggregate document": {
+                                            "image feature document": [
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_60",
+                                                    "image feature name": "Spot Forming Units (SFU)",
+                                                    "image feature result": {
+                                                        "value": 0.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_61",
+                                                    "image feature name": "Sum of Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 0.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_62",
+                                                    "image feature name": "Average Relative Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 0.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "container type": "well plate"
+                },
+                "analyst": "Admin"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-01-29T09:06:37+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "MABTECH_APEX_TEST_ID_68",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "imager",
+                                        "detection type": "optical-imaging",
+                                        "exposure duration setting": {
+                                            "value": 13400.0,
+                                            "unit": "ms"
+                                        },
+                                        "illumination setting": {
+                                            "value": 400.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "mabtech_apex_example1_D2",
+                                "location identifier": "D2",
+                                "well plate identifier": "mabtech_apex_example1"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "processed data identifier": "MABTECH_APEX_TEST_ID_69",
+                                        "image feature aggregate document": {
+                                            "image feature document": [
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_65",
+                                                    "image feature name": "Spot Forming Units (SFU)",
+                                                    "image feature result": {
+                                                        "value": 0.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_66",
+                                                    "image feature name": "Sum of Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 0.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_67",
+                                                    "image feature name": "Average Relative Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 0.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "container type": "well plate"
+                },
+                "analyst": "Admin"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-01-29T09:06:42+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "MABTECH_APEX_TEST_ID_73",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "imager",
+                                        "detection type": "optical-imaging",
+                                        "exposure duration setting": {
+                                            "value": 13400.0,
+                                            "unit": "ms"
+                                        },
+                                        "illumination setting": {
+                                            "value": 400.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "mabtech_apex_example1_D3",
+                                "location identifier": "D3",
+                                "well plate identifier": "mabtech_apex_example1"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "processed data identifier": "MABTECH_APEX_TEST_ID_74",
+                                        "image feature aggregate document": {
+                                            "image feature document": [
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_70",
+                                                    "image feature name": "Spot Forming Units (SFU)",
+                                                    "image feature result": {
+                                                        "value": 1226.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_71",
+                                                    "image feature name": "Sum of Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 1839186.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_72",
+                                                    "image feature name": "Average Relative Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 1500.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "container type": "well plate"
+                },
+                "analyst": "Admin"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-01-29T09:06:43+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "MABTECH_APEX_TEST_ID_78",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "imager",
+                                        "detection type": "optical-imaging",
+                                        "exposure duration setting": {
+                                            "value": 13400.0,
+                                            "unit": "ms"
+                                        },
+                                        "illumination setting": {
+                                            "value": 400.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "mabtech_apex_example1_D4",
+                                "location identifier": "D4",
+                                "well plate identifier": "mabtech_apex_example1"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "processed data identifier": "MABTECH_APEX_TEST_ID_79",
+                                        "image feature aggregate document": {
+                                            "image feature document": [
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_75",
+                                                    "image feature name": "Spot Forming Units (SFU)",
+                                                    "image feature result": {
+                                                        "value": 1190.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_76",
+                                                    "image feature name": "Sum of Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 1748345.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_77",
+                                                    "image feature name": "Average Relative Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 1469.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "container type": "well plate"
+                },
+                "analyst": "Admin"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-01-29T09:06:47+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "MABTECH_APEX_TEST_ID_83",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "imager",
+                                        "detection type": "optical-imaging",
+                                        "exposure duration setting": {
+                                            "value": 13400.0,
+                                            "unit": "ms"
+                                        },
+                                        "illumination setting": {
+                                            "value": 400.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "mabtech_apex_example1_D5",
+                                "location identifier": "D5",
+                                "well plate identifier": "mabtech_apex_example1"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "processed data identifier": "MABTECH_APEX_TEST_ID_84",
+                                        "image feature aggregate document": {
+                                            "image feature document": [
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_80",
+                                                    "image feature name": "Spot Forming Units (SFU)",
+                                                    "image feature result": {
+                                                        "value": 1179.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_81",
+                                                    "image feature name": "Sum of Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 1129846.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_82",
+                                                    "image feature name": "Average Relative Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 958.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "container type": "well plate"
+                },
+                "analyst": "Admin"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-01-29T09:06:48+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "MABTECH_APEX_TEST_ID_88",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "imager",
+                                        "detection type": "optical-imaging",
+                                        "exposure duration setting": {
+                                            "value": 13400.0,
+                                            "unit": "ms"
+                                        },
+                                        "illumination setting": {
+                                            "value": 400.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "mabtech_apex_example1_D6",
+                                "location identifier": "D6",
+                                "well plate identifier": "mabtech_apex_example1"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "processed data identifier": "MABTECH_APEX_TEST_ID_89",
+                                        "image feature aggregate document": {
+                                            "image feature document": [
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_85",
+                                                    "image feature name": "Spot Forming Units (SFU)",
+                                                    "image feature result": {
+                                                        "value": 1111.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_86",
+                                                    "image feature name": "Sum of Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 1066341.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_87",
+                                                    "image feature name": "Average Relative Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 959.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "container type": "well plate"
+                },
+                "analyst": "Admin"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-01-29T09:06:52+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "MABTECH_APEX_TEST_ID_93",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "imager",
+                                        "detection type": "optical-imaging",
+                                        "exposure duration setting": {
+                                            "value": 13400.0,
+                                            "unit": "ms"
+                                        },
+                                        "illumination setting": {
+                                            "value": 400.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "mabtech_apex_example1_H7",
+                                "location identifier": "H7",
+                                "well plate identifier": "mabtech_apex_example1"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "processed data identifier": "MABTECH_APEX_TEST_ID_94",
+                                        "image feature aggregate document": {
+                                            "image feature document": [
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_90",
+                                                    "image feature name": "Spot Forming Units (SFU)",
+                                                    "image feature result": {
+                                                        "value": 0.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_91",
+                                                    "image feature name": "Sum of Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 0.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_92",
+                                                    "image feature name": "Average Relative Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 0.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "container type": "well plate"
+                },
+                "analyst": "Admin"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-01-29T09:06:53+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "MABTECH_APEX_TEST_ID_98",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "imager",
+                                        "detection type": "optical-imaging",
+                                        "exposure duration setting": {
+                                            "value": 13400.0,
+                                            "unit": "ms"
+                                        },
+                                        "illumination setting": {
+                                            "value": 400.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "mabtech_apex_example1_H8",
+                                "location identifier": "H8",
+                                "well plate identifier": "mabtech_apex_example1"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "processed data identifier": "MABTECH_APEX_TEST_ID_99",
+                                        "image feature aggregate document": {
+                                            "image feature document": [
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_95",
+                                                    "image feature name": "Spot Forming Units (SFU)",
+                                                    "image feature result": {
+                                                        "value": 0.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_96",
+                                                    "image feature name": "Sum of Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 0.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_97",
+                                                    "image feature name": "Average Relative Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 0.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "container type": "well plate"
+                },
+                "analyst": "Admin"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-01-29T09:06:53+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "MABTECH_APEX_TEST_ID_103",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "imager",
+                                        "detection type": "optical-imaging",
+                                        "exposure duration setting": {
+                                            "value": 13400.0,
+                                            "unit": "ms"
+                                        },
+                                        "illumination setting": {
+                                            "value": 400.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "mabtech_apex_example1_H9",
+                                "location identifier": "H9",
+                                "well plate identifier": "mabtech_apex_example1"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "processed data identifier": "MABTECH_APEX_TEST_ID_104",
+                                        "image feature aggregate document": {
+                                            "image feature document": [
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_100",
+                                                    "image feature name": "Spot Forming Units (SFU)",
+                                                    "image feature result": {
+                                                        "value": 0.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_101",
+                                                    "image feature name": "Sum of Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 0.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_102",
+                                                    "image feature name": "Average Relative Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 0.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "container type": "well plate"
+                },
+                "analyst": "Admin"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-01-29T09:06:54+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "MABTECH_APEX_TEST_ID_108",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "imager",
+                                        "detection type": "optical-imaging",
+                                        "exposure duration setting": {
+                                            "value": 13400.0,
+                                            "unit": "ms"
+                                        },
+                                        "illumination setting": {
+                                            "value": 400.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "mabtech_apex_example1_H10",
+                                "location identifier": "H10",
+                                "well plate identifier": "mabtech_apex_example1"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "processed data identifier": "MABTECH_APEX_TEST_ID_109",
+                                        "image feature aggregate document": {
+                                            "image feature document": [
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_105",
+                                                    "image feature name": "Spot Forming Units (SFU)",
+                                                    "image feature result": {
+                                                        "value": 0.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_106",
+                                                    "image feature name": "Sum of Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 0.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_107",
+                                                    "image feature name": "Average Relative Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 0.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "container type": "well plate"
+                },
+                "analyst": "Admin"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-01-29T09:06:55+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "MABTECH_APEX_TEST_ID_113",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "imager",
+                                        "detection type": "optical-imaging",
+                                        "exposure duration setting": {
+                                            "value": 13400.0,
+                                            "unit": "ms"
+                                        },
+                                        "illumination setting": {
+                                            "value": 400.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "mabtech_apex_example1_H11",
+                                "location identifier": "H11",
+                                "well plate identifier": "mabtech_apex_example1"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "processed data identifier": "MABTECH_APEX_TEST_ID_114",
+                                        "image feature aggregate document": {
+                                            "image feature document": [
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_110",
+                                                    "image feature name": "Spot Forming Units (SFU)",
+                                                    "image feature result": {
+                                                        "value": 0.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_111",
+                                                    "image feature name": "Sum of Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 0.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_112",
+                                                    "image feature name": "Average Relative Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 0.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "container type": "well plate"
+                },
+                "analyst": "Admin"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-01-29T09:06:56+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "MABTECH_APEX_TEST_ID_118",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "imager",
+                                        "detection type": "optical-imaging",
+                                        "exposure duration setting": {
+                                            "value": 13400.0,
+                                            "unit": "ms"
+                                        },
+                                        "illumination setting": {
+                                            "value": 400.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "mabtech_apex_example1_H12",
+                                "location identifier": "H12",
+                                "well plate identifier": "mabtech_apex_example1"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "processed data identifier": "MABTECH_APEX_TEST_ID_119",
+                                        "image feature aggregate document": {
+                                            "image feature document": [
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_115",
+                                                    "image feature name": "Spot Forming Units (SFU)",
+                                                    "image feature result": {
+                                                        "value": 0.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_116",
+                                                    "image feature name": "Sum of Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 0.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                },
+                                                {
+                                                    "image feature identifier": "MABTECH_APEX_TEST_ID_117",
+                                                    "image feature name": "Average Relative Spot Volume (RSV)",
+                                                    "image feature result": {
+                                                        "value": 0.0,
+                                                        "unit": "(unitless)"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "container type": "well plate"
+                },
+                "analyst": "Admin"
+            }
+        ],
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "Iris",
+            "equipment serial number": "0"
+        },
+        "data system document": {
+            "file name": "mabtech_apex_example_single_plate.xlsx",
+            "UNC path": "mabtech_apex_example_path",
+            "software name": "Apex",
+            "software version": "1.1.58.127",
+            "ASM converter name": "allotropy_mabtech_apex",
+            "ASM converter version": "0.1.49"
+        }
+    }
+}

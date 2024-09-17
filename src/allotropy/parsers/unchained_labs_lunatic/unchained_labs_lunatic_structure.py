@@ -1,172 +1,150 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Any, Optional
-
 import pandas as pd
 
-from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
+from allotropy.allotrope.models.shared.definitions.definitions import NaN
+from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
+    CalculatedDataItem,
+    DataSource,
+    Measurement,
+    MeasurementGroup,
+    MeasurementType,
+    Metadata,
+)
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.unchained_labs_lunatic.constants import (
     CALCULATED_DATA_LOOKUP,
+    DETECTION_TYPE,
+    DEVICE_TYPE,
     INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG,
+    MODEL_NUMBER,
     NO_DATE_OR_TIME_ERROR_MSG,
+    NO_DEVICE_IDENTIFIER_ERROR_MSG,
     NO_MEASUREMENT_IN_PLATE_ERROR_MSG,
     NO_WAVELENGTH_COLUMN_ERROR_MSG,
+    PRODUCT_MANUFACTURER,
+    SOFTWARE_NAME,
     WAVELENGTH_COLUMNS_RE,
 )
-from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import (
-    try_float_from_series_or_nan,
-    try_float_from_series_or_none,
-    try_str_from_series,
-    try_str_from_series_or_none,
+from allotropy.parsers.utils.pandas import (
+    map_rows,
+    SeriesData,
 )
+from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.values import assert_not_none
 
 
-@dataclass(frozen=True)
-class DataSourceItem:
-    identifier: str
-    feature: str
+def _create_measurement(
+    well_plate_data: SeriesData,
+    wavelength_column: str,
+    calculated_data: list[CalculatedDataItem],
+) -> Measurement:
+    if wavelength_column not in well_plate_data.series:
+        msg = NO_MEASUREMENT_IN_PLATE_ERROR_MSG.format(wavelength_column)
+        raise AllotropeConversionError(msg)
+
+    if not WAVELENGTH_COLUMNS_RE.match(wavelength_column):
+        raise AllotropeConversionError(INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG)
+
+    measurement_identifier = random_uuid_str()
+    calculated_data.extend(
+        _get_calculated_data(well_plate_data, wavelength_column, measurement_identifier)
+    )
+    return Measurement(
+        type_=MeasurementType.ULTRAVIOLET_ABSORBANCE,
+        device_type=DEVICE_TYPE,
+        detection_type=DETECTION_TYPE,
+        identifier=measurement_identifier,
+        detector_wavelength_setting=float(wavelength_column[1:]),
+        absorbance=well_plate_data.get(float, wavelength_column, NaN),
+        sample_identifier=well_plate_data[str, "Sample name"],
+        location_identifier=well_plate_data[str, "Plate Position"],
+        well_plate_identifier=well_plate_data.get(str, "Plate ID"),
+    )
 
 
-@dataclass(frozen=True)
-class CalculatedDataItem:
-    identifier: str
-    name: str
-    value: float
-    unit: str
-    data_source_document: list[DataSourceItem]
+def _get_calculated_data(
+    well_plate_data: SeriesData,
+    wavelength_column: str,
+    measurement_identifier: str,
+) -> list[CalculatedDataItem]:
+    calculated_data = []
+    for item in CALCULATED_DATA_LOOKUP.get(wavelength_column, []):
+        value = well_plate_data.get(float, item["column"])
+        if value is None:
+            continue
 
-
-@dataclass(frozen=True)
-class Measurement:
-    identifier: str
-    wavelength: float
-    absorbance: JsonFloat
-    sample_identifier: str
-    location_identifier: str
-    well_plate_identifier: Optional[str]
-    calculated_data: list[CalculatedDataItem]
-
-    @staticmethod
-    def create(well_plate_data: pd.Series[Any], wavelength_column: str) -> Measurement:
-        if wavelength_column not in well_plate_data:
-            msg = NO_MEASUREMENT_IN_PLATE_ERROR_MSG.format(wavelength_column)
-            raise AllotropeConversionError(msg)
-
-        if not WAVELENGTH_COLUMNS_RE.match(wavelength_column):
-            raise AllotropeConversionError(INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG)
-
-        measurement_identifier = random_uuid_str()
-        return Measurement(
-            identifier=measurement_identifier,
-            wavelength=float(wavelength_column[1:]),
-            absorbance=try_float_from_series_or_nan(well_plate_data, wavelength_column),
-            sample_identifier=try_str_from_series(well_plate_data, "Sample name"),
-            location_identifier=try_str_from_series(well_plate_data, "Plate Position"),
-            well_plate_identifier=try_str_from_series_or_none(
-                well_plate_data, "Plate ID"
-            ),
-            calculated_data=Measurement._get_calculated_data(
-                well_plate_data, wavelength_column, measurement_identifier
-            ),
-        )
-
-    @staticmethod
-    def _get_calculated_data(
-        well_plate_data: pd.Series[Any],
-        wavelength_column: str,
-        measurement_identifier: str,
-    ) -> list[CalculatedDataItem]:
-        calculated_data_dict = CALCULATED_DATA_LOOKUP.get(wavelength_column)
-        if not calculated_data_dict:
-            return []
-
-        calculated_data = []
-        for item in calculated_data_dict:
-            value = try_float_from_series_or_none(well_plate_data, item["column"])
-            if value is None:
-                continue
-
-            calculated_data.append(
-                CalculatedDataItem(
-                    identifier=random_uuid_str(),
-                    name=item["name"],
-                    value=value,
-                    unit=item["unit"],
-                    data_source_document=[
-                        DataSourceItem(
-                            identifier=measurement_identifier,
-                            feature=item["feature"],
-                        )
-                    ],
-                )
+        calculated_data.append(
+            CalculatedDataItem(
+                identifier=random_uuid_str(),
+                name=item["name"],
+                value=value,
+                unit=item["unit"],
+                data_sources=[
+                    DataSource(
+                        identifier=measurement_identifier,
+                        feature=item["feature"],
+                    )
+                ],
             )
-        return calculated_data
+        )
+    return calculated_data
 
 
-@dataclass(frozen=True)
-class WellPlate:
-    measurement_time: str
-    analytical_method_identifier: Optional[str]
-    measurements: list[Measurement]
+def _create_measurement_group(
+    data: SeriesData,
+    wavelength_columns: list[str],
+    calculated_data: list[CalculatedDataItem],
+    timestamp: str | None,
+) -> MeasurementGroup:
+    # Support timestamp from metadata section, but overide with columns in data if specified.
+    date = data.get(str, "Date")
+    time = data.get(str, "Time")
+    if date and time:
+        timestamp = f"{date} {time}"
 
-    @staticmethod
-    def create(plate_data: pd.Series[Any], wavelength_columns: list[str]) -> WellPlate:
-        return WellPlate(
-            measurement_time=WellPlate._get_datetime_from_plate(plate_data),
-            analytical_method_identifier=try_str_from_series_or_none(
-                plate_data, "Application"
-            ),
-            measurements=[
-                Measurement.create(plate_data, wavelength_column)
-                for wavelength_column in wavelength_columns
-            ],
+    return MeasurementGroup(
+        measurement_time=assert_not_none(timestamp, msg=NO_DATE_OR_TIME_ERROR_MSG),
+        analytical_method_identifier=data.get(str, "Application"),
+        plate_well_count=96,
+        measurements=[
+            _create_measurement(data, wavelength_column, calculated_data)
+            for wavelength_column in wavelength_columns
+        ],
+    )
+
+
+def create_metadata(header: SeriesData, file_name: str) -> Metadata:
+    device_identifier = header.get(str, "Instrument ID") or header.get(
+        str, "Instrument"
+    )
+    return Metadata(
+        model_number=MODEL_NUMBER,
+        product_manufacturer=PRODUCT_MANUFACTURER,
+        device_identifier=assert_not_none(
+            device_identifier, msg=NO_DEVICE_IDENTIFIER_ERROR_MSG
+        ),
+        software_name=SOFTWARE_NAME,
+        software_version=header.get(str, "Software version"),
+        file_name=file_name,
+    )
+
+
+def create_measurement_groups(
+    header: SeriesData, data: pd.DataFrame
+) -> tuple[list[MeasurementGroup], list[CalculatedDataItem]]:
+    wavelength_columns = list(filter(WAVELENGTH_COLUMNS_RE.match, data.columns))
+    if not wavelength_columns:
+        raise AllotropeConversionError(NO_WAVELENGTH_COLUMN_ERROR_MSG)
+
+    # TODO: we are reporting calculated data for measurements globally instead of in the measurement doc,
+    # which is why we have to pass this list to collect them. Why are we reporting globally when data is
+    # pertains to the individual measurements?
+    calculated_data: list[CalculatedDataItem] = []
+
+    def make_group(data: SeriesData) -> MeasurementGroup:
+        return _create_measurement_group(
+            data, wavelength_columns, calculated_data, header.get(str, "Date")
         )
 
-    @staticmethod
-    def _get_datetime_from_plate(plate_data: pd.Series[Any]) -> str:
-        date = plate_data.get("Date")
-        time = plate_data.get("Time")
-
-        if not date or not time:
-            raise AllotropeConversionError(NO_DATE_OR_TIME_ERROR_MSG)
-
-        return f"{date} {time}"
-
-
-@dataclass(frozen=True)
-class Data:
-    device_identifier: str
-    well_plate_list: list[WellPlate]
-
-    @staticmethod
-    def create(data: pd.DataFrame) -> Data:
-        device_identifier = Data._get_device_identifier(data.iloc[0])
-
-        wavelength_columns = list(filter(WAVELENGTH_COLUMNS_RE.match, data.columns))
-        if not wavelength_columns:
-            raise AllotropeConversionError(NO_WAVELENGTH_COLUMN_ERROR_MSG)
-
-        return Data(
-            device_identifier=device_identifier,
-            well_plate_list=[
-                WellPlate.create(data.iloc[i], wavelength_columns)
-                for i in range(len(data.index))
-            ],
-        )
-
-    @staticmethod
-    def _get_device_identifier(data: pd.Series[Any]) -> str:
-        device_identifier = try_str_from_series(data, "Instrument ID")
-
-        return str(device_identifier)
-
-    def get_calculated_data_document(self) -> list[CalculatedDataItem]:
-        calculated_data_document = []
-        for well_plate in self.well_plate_list:
-            for measurement in well_plate.measurements:
-                calculated_data_document.extend(measurement.calculated_data)
-
-        return calculated_data_document
+    return map_rows(data, make_group), calculated_data

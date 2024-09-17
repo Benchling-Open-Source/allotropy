@@ -1,190 +1,215 @@
-# mypy: disallow_any_generics = False
-
 from __future__ import annotations
 
 from collections import defaultdict
 from dataclasses import dataclass
-from typing import Optional
 
+from dateutil import parser
 import pandas as pd
 
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat, NaN
+from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
+    Analyte,
+    Measurement,
+    MeasurementGroup,
+    Metadata,
+)
+from allotropy.exceptions import AllotropyParserError
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.roche_cedex_bioht.constants import (
-    MOLAR_CONCENTRATION_CLS_BY_UNIT,
-    NON_AGGREGABLE_PROPERTIES,
+    BELOW_TEST_RANGE,
+    MAX_MEASUREMENT_TIME_GROUP_DIFFERENCE,
+    OPTICAL_DENSITY,
+    SOLUTION_ANALYZER,
 )
-from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import (
-    RocheCedexBiohtReader,
-)
+from allotropy.parsers.utils.pandas import map_rows, SeriesData
+from allotropy.parsers.utils.uuids import random_uuid_str
 
 
 @dataclass(frozen=True)
 class Title:
     data_processing_time: str
     analyst: str
-    model_number: Optional[str]
-    device_serial_number: Optional[str]
+    device_serial_number: str
+    model_number: str | None = None
+    software_version: str | None = None
 
     @staticmethod
-    def create(title_data: pd.Series) -> Title:
-        analyst = title_data.get("analyst")
-        if analyst is None:
-            msg = "Unable to obtain analyst."
-            raise AllotropeConversionError(msg)
-
-        device_serial_number = title_data.get("device serial number")
-        if device_serial_number is None:
-            msg = "Unable to obtain device serial number."
-            raise AllotropeConversionError(msg)
-
+    def create(title_data: SeriesData) -> Title:
         return Title(
-            title_data.get("data processing time"),  # type: ignore[arg-type]
-            analyst,  # type: ignore[arg-type]
-            title_data.get("model number"),  # type: ignore[arg-type]
-            str(device_serial_number),
+            title_data[str, "data processing time"],
+            title_data[str, "analyst"],
+            title_data[str, "device serial number"],
+            title_data.get(str, "model number"),
+            title_data.get(str, "software version"),
         )
 
 
 @dataclass(frozen=True)
-class Analyte:
+class RawMeasurement:
     name: str
-    concentration_value: Optional[float]
-    unit: Optional[str]
+    measurement_time: str
+    concentration_value: JsonFloat
+    unit: str
+    error: str | None = None
 
     @staticmethod
-    def create(data: pd.Series) -> Analyte:
-        analyte_name: str = data.get("analyte name")  # type: ignore[assignment]
-        concentration_value: Optional[float] = data.get("concentration value")  # type: ignore[assignment]
-        unit: Optional[str] = data.get("concentration unit")  # type: ignore[assignment]
-
-        return Analyte(analyte_name, concentration_value, unit)
-
-
-@dataclass(frozen=True)
-class AnalyteList:
-    analytes: list[Analyte]
-    molar_concentration_dict: dict
-    molar_concentration_nans: dict
-    non_aggregrable_dict: dict
-    non_aggregable_nans: dict
-    num_measurement_docs: int
-
-    @staticmethod
-    def create(data: pd.DataFrame) -> AnalyteList:
-        analytes = [Analyte.create(analyte_data) for _, analyte_data in data.iterrows()]
-        molar_concentration_dict = defaultdict(list)
-        molar_concentration_nans = {}
-        non_aggregrable_dict = defaultdict(list)
-        non_aggregable_nans = {}
-        num_measurement_docs = 1
-
-        for analyte in analytes:
-            analyte_name = analyte.name
-            concentration_value = analyte.concentration_value
-
-            if analyte_cls := NON_AGGREGABLE_PROPERTIES.get(analyte_name):
-                if concentration_value is None:
-                    non_aggregable_nans[analyte_name] = analyte_cls(
-                        value=concentration_value
-                    )
-                else:
-                    non_aggregrable_dict[analyte_name].append(
-                        analyte_cls(value=concentration_value)
-                    )
-
-                num_measurement_docs = max(
-                    len(non_aggregrable_dict[analyte_name]), num_measurement_docs
-                )
-            else:
-                unit = analyte.unit
-                if unit is None:
-                    continue
-
-                molar_concentration_item_cls = MOLAR_CONCENTRATION_CLS_BY_UNIT.get(unit)
-                if molar_concentration_item_cls is None:
-                    continue
-
-                molar_concentration_item = molar_concentration_item_cls(
-                    value=concentration_value
-                )
-                if concentration_value is None:
-                    molar_concentration_nans[analyte_name] = molar_concentration_item
-                else:
-                    molar_concentration_dict[analyte_name].append(
-                        molar_concentration_item
-                    )
-                num_measurement_docs = max(
-                    len(molar_concentration_dict[analyte_name]), num_measurement_docs
-                )
-
-        # Only include None values if there is not a valid value for that analyte
-        for analyte_name in non_aggregable_nans:
-            if len(non_aggregrable_dict[analyte_name]) == 0:
-                non_aggregrable_dict[analyte_name].append(
-                    non_aggregable_nans[analyte_name]
-                )
-                num_measurement_docs = max(
-                    len(non_aggregrable_dict[analyte_name]), num_measurement_docs
-                )
-
-        for analyte_name in molar_concentration_nans:
-            if len(molar_concentration_dict[analyte_name]) == 0:
-                molar_concentration_dict[analyte_name].append(
-                    molar_concentration_nans[analyte_name]
-                )
-                num_measurement_docs = max(
-                    len(molar_concentration_dict[analyte_name]), num_measurement_docs
-                )
-
-        return AnalyteList(
-            analytes,
-            molar_concentration_dict,
-            molar_concentration_nans,
-            non_aggregrable_dict,
-            non_aggregable_nans,
-            num_measurement_docs,
+    def create(data: SeriesData) -> RawMeasurement:
+        error = data.get(str, "flag", "").strip()
+        # TODO: handle other errors
+        if BELOW_TEST_RANGE not in error:
+            error = ""
+        concentration_value = (
+            NaN
+            if BELOW_TEST_RANGE in error
+            else data.get(float, "concentration value", NaN)
         )
+        return RawMeasurement(
+            data[str, "analyte name"],
+            data[str, "measurement time"],
+            concentration_value,
+            data[str, "concentration unit"],
+            error or None,
+        )
+
+
+def create_measurements(data: pd.DataFrame) -> dict[str, dict[str, RawMeasurement]]:
+    measurements = sorted(
+        map_rows(data, RawMeasurement.create), key=lambda a: a.measurement_time
+    )
+
+    # Dict from measurement time to data
+    groups: defaultdict[str, dict[str, RawMeasurement]] = defaultdict(dict)
+
+    current_measurement_time = measurements[0].measurement_time
+    previous_measurement_time = current_measurement_time
+    for analyte in measurements:
+        time_diff = parser.parse(analyte.measurement_time) - parser.parse(
+            previous_measurement_time
+        )
+        if time_diff > MAX_MEASUREMENT_TIME_GROUP_DIFFERENCE:
+            current_measurement_time = analyte.measurement_time
+        if analyte.name in groups[current_measurement_time]:
+            if analyte.concentration_value is NaN:
+                continue
+            # NOTE: if this fails, it's probably because MAX_MEASUREMENT_TIME_GROUP_DIFFERENCE is too big
+            # and we're erroneously grouping two groups of measurements into one.
+            # We could potentially make this more robust by just splitting into a new group if a duplicate
+            # measurement is found, but cross that bridge when we come to it.
+            if (
+                groups[current_measurement_time][analyte.name].concentration_value
+                is not NaN
+            ):
+                msg = f"Duplicate measurement for {analyte.name} in the same measurement group: {analyte.concentration_value} vs {groups[current_measurement_time][analyte.name].concentration_value}"
+                raise AllotropyParserError(msg)
+        groups[current_measurement_time][analyte.name] = analyte
+        previous_measurement_time = analyte.measurement_time
+
+    return dict(groups)
 
 
 @dataclass(frozen=True)
 class Sample:
     name: str
-    role_type: str
-    measurement_time: str
-    analyte_list: AnalyteList
-    batch: Optional[str] = None
+    measurements: dict[str, dict[str, RawMeasurement]]
+    batch: str | None = None
 
     @staticmethod
-    def create(name: str, batch: Optional[str], samples_data: pd.DataFrame) -> Sample:
-        condition = samples_data["sample identifier"] == name
-        condition &= samples_data["batch identifier"] == batch
-        sample_data = samples_data[condition].sort_values(by="analyte name")
-
-        role_type = sample_data.iloc[0]["sample role type"]
-        measurement_time = str(sample_data.iloc[0]["measurement time"])
-
+    def create(name: str, batch: str | None, sample_data: pd.DataFrame) -> Sample:
         return Sample(
             name,
-            role_type,
-            measurement_time,
-            AnalyteList.create(sample_data),
+            create_measurements(sample_data),
             batch=batch or None,
         )
 
-
-@dataclass(frozen=True)
-class Data:
-    title: Title
-    samples: list[Sample]
-
     @staticmethod
-    def create(reader: RocheCedexBiohtReader) -> Data:
-        # A sample group is defined by both the sample and the batch identifier
-        sample_groups = reader.samples_data.groupby(
-            ["sample identifier", "batch identifier"]
-        ).groups.keys()
+    def create_samples(samples_data: pd.DataFrame) -> list[Sample]:
+        return [
+            Sample.create(name, batch, samples_data)
+            for (name, batch), samples_data in samples_data.groupby(
+                # A sample group is defined by both the sample and the batch identifier
+                ["sample identifier", "batch identifier"]
+            )
+        ]
 
-        return Data(
-            title=Title.create(reader.title_data),
-            samples=[Sample.create(name, batch, reader.samples_data) for name, batch in sample_groups],  # type: ignore[has-type, misc]
+
+def _create_measurements(
+    sample: Sample, measurement_time: str, raw_measurements: dict[str, RawMeasurement]
+) -> list[Measurement]:
+    measurements: list[Measurement] = []
+
+    analytes: list[Analyte] = []
+    for name in sorted(raw_measurements):
+        measurement = raw_measurements[name]
+        value = measurement.concentration_value
+        # TODO: report value and add error
+        if value is NaN:
+            continue
+
+        if name == OPTICAL_DENSITY:
+            measurements.append(
+                Measurement(
+                    identifier=random_uuid_str(),
+                    measurement_time=measurement_time,
+                    sample_identifier=sample.name,
+                    batch_identifier=sample.batch,
+                    absorbance=value if isinstance(value, float) else -1,
+                )
+            )
+        else:
+            analytes.append(
+                Analyte(
+                    name=measurement.name,
+                    value=value if isinstance(value, float) else -1,
+                    unit=measurement.unit,
+                )
+            )
+
+    if analytes:
+        measurements.append(
+            Measurement(
+                identifier=random_uuid_str(),
+                measurement_time=measurement_time,
+                sample_identifier=sample.name,
+                batch_identifier=sample.batch,
+                analytes=analytes,
+            )
         )
+
+    return measurements
+
+
+def create_measurement_groups(
+    samples: list[Sample], title: Title
+) -> list[MeasurementGroup]:
+    groups: list[MeasurementGroup] = []
+    for sample in samples:
+        measurements = [
+            measurement
+            for measurement_time, sample_measurements in sample.measurements.items()
+            for measurement in _create_measurements(
+                sample, measurement_time, sample_measurements
+            )
+        ]
+        if not measurements:
+            continue
+        groups.append(
+            MeasurementGroup(
+                analyst=title.analyst,
+                data_processing_time=title.data_processing_time,
+                measurements=measurements,
+            )
+        )
+    return groups
+
+
+def create_metadata(title: Title, file_name: str) -> Metadata:
+    return Metadata(
+        file_name=file_name,
+        device_type=SOLUTION_ANALYZER,
+        model_number=title.model_number,
+        equipment_serial_number=title.device_serial_number,
+        device_identifier=NOT_APPLICABLE,
+        unc_path="",
+        software_name=title.model_number,
+        software_version=title.software_version,
+    )

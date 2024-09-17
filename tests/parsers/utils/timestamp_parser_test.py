@@ -1,5 +1,4 @@
 from datetime import timedelta, timezone, tzinfo
-from typing import Optional
 from zoneinfo import ZoneInfo
 
 import pytest
@@ -8,14 +7,6 @@ from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 
 
-def test_timestamp_parser_init_fails_invalid_default_timezone() -> None:
-    with pytest.raises(
-        AllotropeConversionError, match="Invalid default timezone 'timezone'."
-    ):
-        TimestampParser("timezone")  # type: ignore[arg-type]
-
-
-@pytest.mark.short
 @pytest.mark.parametrize(
     "time_str,expected",
     [
@@ -27,7 +18,7 @@ def test_timestamp_parser_init_fails_invalid_default_timezone() -> None:
         ("Tue Jun 22 07:46:22 GMT 2010", "2010-06-22T07:46:22+00:00"),
     ],
 )
-def test_timestamp_parser_default_utc(time_str: str, expected: Optional[str]) -> None:
+def test_timestamp_parser_default_utc(time_str: str, expected: str | None) -> None:
     assert TimestampParser().parse(time_str) == expected
 
 
@@ -36,7 +27,6 @@ US_PACIFIC = ZoneInfo("US/Pacific")
 UTC_MINUS_7 = timezone(timedelta(hours=-7))
 
 
-@pytest.mark.short
 @pytest.mark.parametrize(
     "default_timezone,time_str,expected",
     [
@@ -58,7 +48,6 @@ def test_timestamp_parser_provided_timezone(
     assert TimestampParser(default_timezone).parse(time_str) == expected
 
 
-@pytest.mark.short
 @pytest.mark.parametrize("time_str", ["blah"])
 def test_timestamp_parser_fails_on_invalid_timestamp(time_str: str) -> None:
     parser = TimestampParser()
@@ -66,7 +55,6 @@ def test_timestamp_parser_fails_on_invalid_timestamp(time_str: str) -> None:
         parser.parse(time_str)
 
 
-@pytest.mark.short
 def test_timestamp_parser_handles_24h_pm() -> None:
     assert (
         TimestampParser().parse("2023-03-16 16:52:37 PM") == "2023-03-16T16:52:37+00:00"

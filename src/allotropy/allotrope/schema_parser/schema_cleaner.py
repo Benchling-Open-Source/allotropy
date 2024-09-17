@@ -1,12 +1,12 @@
 from collections import defaultdict
+from collections.abc import Callable
 import copy
-import json
 import re
-from typing import Any, Callable, Optional, Union
+from typing import Any
+import urllib.parse
 
 from allotropy.allotrope.schema_parser.update_units import unit_name_from_iri
 from allotropy.allotrope.schemas import (
-    get_schema,
     get_shared_definitions,
     get_shared_unit_definitions,
 )
@@ -17,8 +17,11 @@ def _is_array_schema(schema: dict[str, Any]) -> bool:
 
 
 def _is_direct_object_schema(schema: dict[str, Any]) -> bool:
-    return isinstance(schema, dict) and any(
-        key in schema for key in ["properties", "required"]
+    return (
+        isinstance(schema, dict)
+        and "type" in schema
+        and schema["type"] == "object"
+        or any(key in schema for key in ["properties", "required"])
     )
 
 
@@ -53,11 +56,15 @@ def _is_ref_schema_array(schema: dict[str, Any]) -> bool:
     return _is_array_schema(schema) and _is_ref_schema(schema["items"])
 
 
+def _escape_def_name(def_name: str) -> str:
+    return urllib.parse.unquote(def_name).replace("~1", "/")
+
+
 def _get_def_name(reference: str) -> str:
-    return reference.split("/")[-1]
+    return _escape_def_name(reference.split("/")[-1])
 
 
-def _get_reference_from_url(value: Any) -> tuple[Optional[str], Optional[str]]:
+def _get_reference_from_url(value: Any) -> tuple[str | None, str | None]:
     # Identify URL-like references, and return a sanitized version that can be followed by generation script.
     # Return schema_name and definition name separately for use in other logic.
     ref_match = re.match(
@@ -68,7 +75,7 @@ def _get_reference_from_url(value: Any) -> tuple[Optional[str], Optional[str]]:
         return None, None
     schema_name, _, def_name = ref_match.groups()
     schema_name = re.subn(r"[\/\-\.]", "_", schema_name)[0]
-    return schema_name, def_name
+    return schema_name, _escape_def_name(def_name)
 
 
 def _get_required(schema: dict[str, Any]) -> list[str]:
@@ -134,8 +141,8 @@ class SchemaCleaner:
         # dereference definition references. Though this smells, the flag is nested so deep in the
         # code, that it would be impractical to send this all the way down, and I think this is the
         # lesser evil.
-        self.enclosing_schema_name: Optional[str] = None
-        self.enclosing_schema_keys: Optional[dict[str, Any]] = None
+        self.enclosing_schema_name: str | None = None
+        self.enclosing_schema_keys: dict[str, Any] | None = None
 
     def _is_unit_name_ref(self, ref: str) -> bool:
         return _get_def_name(ref) in self.unit_to_name.values()
@@ -375,11 +382,13 @@ class SchemaCleaner:
                 if new_schemas
                 else [[schema] for schema in schemas_list]
             )
+
         return {key: [{"allOf": schemas} for schemas in new_schemas]}
 
     def _combine_allof_schemas(
         self, schemas: list[dict[str, Any]]
-    ) -> Union[dict[str, Any], list[dict[str, Any]]]:
+    ) -> dict[str, Any] | list[dict[str, Any]]:
+        schemas = self._clean_value(schemas)
         if not all(_is_class_schema(schema) for schema in schemas):
             if any(_is_class_schema(schema) for schema in schemas):
                 msg = f"_combine_allof_schemas can only be called with a list of object schema dictionaries: {schemas}"
@@ -479,7 +488,7 @@ class SchemaCleaner:
     def _clean_value(
         self,
         value: Any,
-        cleaning_function: Optional[Callable[[dict[str, Any]], dict[str, Any]]] = None,
+        cleaning_function: Callable[[dict[str, Any]], dict[str, Any]] | None = None,
     ) -> Any:
         # Fan out function for handling dict/list values. Calls cleaning_function on dictionaries
         # (assumed to be schemas). Allows passing custom cleaning_fuction to handle cleaning definitions.
@@ -525,9 +534,6 @@ class SchemaCleaner:
                 cleaned |= self._combine_allof(clean_value)
             elif key == "$ref":
                 cleaned[key] = self._clean_ref_value(value)
-            elif key == "anyOf":
-                clean_value = self._clean_value(value)
-                cleaned |= self._combine_anyof(clean_value)
             else:
                 cleaned[key] = self._clean_value(value)
 
@@ -623,9 +629,3 @@ class SchemaCleaner:
         cleaned["$defs"] = self._clean_defs(cleaned.get("$defs", {}))
 
         return self._clean_schema(cleaned)
-
-    def clean_file(self, schema_path: str) -> None:
-        schema = self.clean(get_schema(schema_path))
-
-        with open(schema_path, "w") as f:
-            json.dump(schema, f, indent=2)

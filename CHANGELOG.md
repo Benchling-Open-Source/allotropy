@@ -8,11 +8,227 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Tool to create graph visualization of calculated data documents
-- Details of parser requirements to docs
-
+- Amp score and Cq conf calculated documents to Appbio Quantstudio
+- Add custom information to processed data document in Appbio Quantstudio
+- Add schema mapper for the `REC/2024/06/plate-reader` schema.
+- Checks for missing well item amplification and results data in quantstudio
+- Add csv support to ThermoFisher Nanodrop One
 
 ### Fixed
+
+- Fixed bad reference for y-intercept and slope in quantity calculated data document of Appbio Quantstudio
+- Correctly format timezone in SoftmaxPro adapter
+- Added support for Agilent Gen5 label format "[excitation wavelength], [emission wavelength]" for fluorescence point detection
+
+### Changed
+
+- Refactor Softmaxpro adapter to use the new schema mapper.
+
+### Deprecated
+
+### Removed
+
+### Security
+
+## [0.1.52] - 2024-09-12
+
+### Fixed
+
+- Fixed bug where name of contents instead of contents was being passed to reader in Roche Cedex Bioht, Thermo Qubit 4 and flex parsers.
+
+### Changed
+
+- Use dateutil timezone instead of pytz, because pytz is can create incorrect timezones when not localized.
+
+## [0.1.51] - 2024-09-09
+
+### Added
+
+- Added `supported_extensions` to Vendor, allowing parsers to specify supported file extensions.
+- Added support for `multiple read modes` in `Agilent Gen5` Adapter
+- Added error message for zero plate reader documents in `Softmax Pro` Adapter
+- Update data sources for quantity calculated documents with y-intercept and Slope in AppBio Quantstudio
+
+### Fixed
+
+- Allow try_int to handle decimal point in int values (e.g. 1.0)
+
+### Changed
+
+- Updated Softmax Pro adapter to use the REC/2024/06 plate reader schema
+- Remove `NaN` measurements from Softmax Pro adapter to comply with the new `REC` schema
+- Change Unchained Labs Lunatic reader so that it supports both formats (with/without header) for both file types.
+- Disregard compartment temperature in `Softmax Pro` adapter when is reported as 0.
+
+## [0.1.50] - 2024-08-30
+
+### Added
+
+- Added `supported_extensions` to Vendor, allowing parsers to specify supported file extensions.
+- Added support for `multiple read modes` in `Agilent Gen5` Adapter
+- Added Thermo Fisher Nanodrop One adapter
+
+### Fixed
+
+- Update mabtech-apex-adapter regex to handle scenarios where first word in the machine ID section has all letter uppercase
+
+## [0.1.49] - 2024-08-21
+
+### Added
+
+- Primary analysis experiment type in AppBio Quantstudio Design and Analysis
+- Added ThermoFisher Genesys 30 adapter
+- Added requirement doc for ThermoFisher Genesys 30 adapter
+- Added support for xlsx exports in Unchained Lunatic parser
+- Add column special character normalization to pandas util (and so most parsers)
+
+### Fixed
+
+- Fix SoftMax Pro case where some columns were incorrectly identified as not numeric for calculated data documents. Added exceptions for Masked and Range values which will be treated as NaN.
+
+### Changed
+- Updated the spectrophotometry mapper script to accommodate absorbance spectrum data cubes
+
+## [0.1.48] - 2024-08-15
+
+### Changed
+
+- BMG MARS moved to recommended state
+- Updated Roche NovaBio Flex2 adapter to work with the Solution Analyzer ASM schema
+
+## [0.1.47] - 2024-08-13
+
+### Fixed
+
+- Fix mis-reporting some analyte units in Roche Cedex Bioht parser
+
+## [0.1.46] - 2024-08-13
+
+### Added
+
+- Add plate id field to biorad bioplex
+- Add luminescence point detection, absorption spectrum detection, fluorescence emission detection measurement extension to Spectrophotometry BENCHLING/2023/12 schema
+- Add BMG MARS adapter
+- Added plate-reader REC/2024/06 schema
+
+### Fixed
+
+- Handle comma as decimal place in float conversion utilities
+- Raise AllotropeConversionError on missing Results section in Agilent Gen5
+- Add error for multiple read modes in Agilent Gen5
+- Cast data to str before using in AppBio QuantStudio parser
+- Simplify VI-Cell XR text file reader, removing bug in pivot operation
+- Fix edge case where there are multiple measurements for a property in Roche Cedex Bioht
+
+### Changed
+
+- Only return AllotropeConversionError when there is a problem with input data that we expect, add other errors for unexpected problems.
+- Split structure by experiment type in AppBio Quantstudio Design and Anlysis
+
+## [0.1.45] - 2024-08-01
+
+### Changed
+
+- Pandas version updated to 2.2.0 to have calamine engine
+- Updated Roche Cedex Bioht adapter to work with the Solution Analyzer ASM schema
+
+## [0.1.44] - 2024-07-30
+
+### Fixed
+- Fixed tapestation analysis adapter to not inlude data region documents when there is no region data.
+- Removed `devide identifier` from `device control document` in the tapestation analysis adapter.
+- Add column normalization to vicell blu reader to fix unrecognized colums due to mismatching characters
+
+## [0.1.43] - 2024-07-22
+
+### Added
+
+- Change Cedex HiRes to recommended release state
+- Change Qubit Flex to recommended release state
+- Change Qubit 4 ASM to recommended release state
+- Change MabTech Apex to recommended release state
+- Change Qiacuity to recommended release state
+
+## [0.1.42] - 2024-07-19
+
+### Changed
+
+- Use "calamine" engine for reading excel where possible.
+- Relaxed conditions for schema model generator combining classes to handle cases where required key sets created a large number of class versions
+
+## [0.1.41] - 2024-07-18
+
+### Added
+
+- Added Thermo Fisher Qubit Flex adapter
+- Added requirement document for Thermo Fisher Qubit Flex adapter
+- Added digital PCR and solution analyzer parser requirement templates to /docs
+
+## [0.1.40] - 2024-07-15
+
+### Changed
+- Redefine stage number as optional in AppBio Quantstudio Design and Analysis
+
+## [0.1.39] - 2024-07-15
+
+### Added
+
+- Added ThermoFisher Qubit4 adapter
+- Added requirement doc for ThermoFisher Qubit4 adapter
+- Added Roche Cedex HiRes adapter
+- Added requirement doc for Roche Cedex HiRes adapter
+
+### Fixed
+
+- Updated the `structure_custom_information_document` function to create dataclasses with default field values set to `None`. This change ensures that custom keys are omitted as they are not required keys.
+- Fixed encoding issues while reading units.json file in schemas.py script
+- Fixed encoding issues while reading test json files in testing/utils.py script
+
+### Changed
+- Updated NON_UNIQUE_IDENTIFIERS to have "group identifier" field
+
+## [0.1.38] - 2024-07-11
+
+### Added
+
+- Added electrophoresis and spectrophotometry parser requirement templates to /docs
+
+### Fixed
+
+- Catch and raise AllotropeConversionError when Beckman XR parser has missing date header
+- Make get_model_class_from_schema work with Windows style path
+- Support non-numeric emission values for gen5 luminescence
+
+### Changed
+- Allow no target DNA reference in AppBio Quantstudio design and analysis
+- Standardize use of "N/A" for strings where a non-applicable value is necessary
+- Update `None` filtering to preserve required keys when converting model to dictionary
+- Update ASM converter name field to specify the parser name instead of just "allotropy", this is intended to give better granularity on the adapter that did the conversion and not just the library version
+- Upgrade pydantic to pull in fix for ForwardRef._evaluate() issue (https://github.com/pydantic/pydantic/issues/9637)
+- Update non-numeric emission related values to NaN instead of removing them from ASM for gen5 luminescence
+
+
+### Deprecated
+
+### Removed
+
+### Security
+
+## [0.1.37] - 2024-06-26
+
+### Added
+
+- Add Agilent TapeStation Analysis adapter
+- Added utility to add both dict and dataclass custom information document to an ASM model
+
+- Added Solution Analyzer BENCHLING/2024/03 schema with the extension of the Data System Document.
+### Fixed
+
+- Updated schema cleaner to handle utf-8 characters in unit schema urls
+- Updated schema cleaner to handle object schemas with no properties
+- Updated Vi-Cell XR requirements doc to reflect support for .txt files
+- Handle dashes and slashes in custom information document key names
+- Updated Mabtech Apex fields to support LED Filter
 
 ### Changed
 
@@ -21,6 +237,83 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 ### Security
+
+## [0.1.36] - 2024-06-24
+
+### Added
+- Add Mabtech Apex adapter
+- Added support for parsing Vi-Cell XR txt files
+- Add Electrophoresis BENCHLING/2024/06 schema.
+- Added github enforcement that CHANGELOG.md is updated
+- Added test files Agilent TapeStation Analysis
+- Added requirements for remaining parsers to /docs
+- Add Alphalisa assay support to Gen5 adapter
+- Add fluorescence point detection measurement extension to Spectrophotometry BENCHLING/2023/12 schema
+
+### Changed
+
+- Redefine plate well count as optional in AppBio Quantstudio
+- Updated README.md to organize parsers according to maturity level
+
+## [0.1.35] - 2024-06-07
+
+### Added
+- Luminex Xponent parser able to process output as pure csv file.
+
+### Fixed
+- Improved way of infer reference sample and DNA target in AppBio Quantstudio Design and Analysis
+- Fix model number and device id in ctl immunospot
+
+### Deprecated
+- Sample role type removed from Roche Cedex Bioht
+
+## [0.1.34] - 2024-06-04
+
+### Added
+
+- Add Methodical Mind adapter
+
+### Fixed
+
+- Fixed missing genotyping determination result in AppBio Quantstudio Design and Analysis
+- Fixed empty space at beginning of sample identifier in Revvity Kaleido
+
+### Changed
+
+- Use modular paths for schema models
+
+
+## [0.1.33] - 2024-05-29
+
+### Fixed
+
+- Fixed path_util to work outside of allotropy correctly
+
+## [0.1.32] - 2024-05-29
+
+### Added
+
+- Add schema_parser/path_util.py to remove dependency: converter.py -> generate_schemas.py, which pulled script dependencies into allotropy
+
+## [0.1.31] - 2024-05-24
+
+### Added
+
+- Script to create graph visualization of calculated data documents from asm json files
+- Details of parser requirements to docs
+- Add Agilent Gen5 Image Adapter
+- Add CTL Immunospot adapter
+
+### Fixed
+
+- Fixed missing required field in cell-counting 2023/11 schema
+- Fixed missing required field in 2023/09 lum/fluor/abs plate reader schemas
+
+### Changed
+- Upgraded allotropy python requirement to python 10
+- Updated ASM model class typing to use or union
+- Implement default value for sample role names in AppBio Quantstudio
+- Added kw_only=True for generated schema models
 
 ## [0.1.30] - 2024-05-10
 
@@ -31,41 +324,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add structure for Methodical Mind
 
 ### Fixed
+
 - Remove duplicated ct sd and ct se calculated data documents in Quantstudio Design and Analysis adapter
 - Remove duplicated quantity mean calculated data documents from AppBio Quantstudio adapter
 
 ### Changed
-- Update multianalyte model minimum_assay_bead_count to be of type "number" insetead of "unitless"
+
+- Update multianalyte model minimum_assay_bead_count to be of type "number" instead of "unitless"
 - Update luminex and biorad bioplex to use updated multianalyte model
 - Remove inner calculated data documents from AppBio Quantstudio
 - Use global definition of calculated data documents in AppBio Quantstudio and Quantstudio Design and Analysis adapters
-
-### Deprecated
-
-### Removed
-
-### Security
 
 ## [0.1.29] - 2024-04-30
 
 ### Added
 
 - Add Vendor display names
-- Added liquid-chromatograpy 2023/09 schema
-
-### Fixed
+- Added liquid-chromatography 2023/09 schema
 
 ### Changed
 
 - Improved schema model generation script to handle more complicated schemas
 
-### Deprecated
-
 ### Removed
 
 - Remove assert in validate_contents
 
-### Security
 
 
 ## [0.1.28] - 2024-04-29
@@ -90,12 +374,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Use new plate reader schema in gen5 adapter
-
-### Deprecated
-
-### Removed
-
-### Security
 
 ## [0.1.27] - 2024-04-10
 
@@ -292,7 +570,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Refactor way to extract and validate information from pandas series in AppBio QuantStudio
 - Simplify CSV lines reader
 - Update PerkinElmer EnVision adapter to use the new plate-reader BENCHLING/2023/09 schema
-- Standaradize and clarify exception messages
+- Standardize and clarify exception messages
 
 ## [0.1.10] - 2023-11-14
 
@@ -366,16 +644,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Parser for AppBio Absoute Q dPCR exports
+- Parser for AppBio Absolute Q dPCR exports
 
 ### Fixed
 
 - Redefine calculated data documents references as required in AppBio QuantStudio parser
-- Update dPCR schema "experiement type" enum to have correct values
+- Update dPCR schema "experiment type" enum to have correct values
 
 ### Changed
 
-- Make "flourescence intensity threshold setting" optional in the dPCR schema
+- Make "fluorescence intensity threshold setting" optional in the dPCR schema
 - Changed the "calculated datum" property on the calculated data documents to allow different units
 
 ## [0.1.4] - 2023-10-03
@@ -383,7 +661,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Remove duplication of calculated documents related to quantity measurements in AppBio QuantStudio
-- Rename "qPRC detection chemistry" to "PRC detection chemistry" in PCR schemas
+- Rename "qPCR detection chemistry" to "PRC detection chemistry" in PCR schemas
 - Add missing @dataclass annotation to TQuantityValueNumberPerMicroliter
 
 ## [0.1.3] - 2023-10-03
@@ -420,7 +698,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial commit, includes support for:
   - Agilent Gen5
-  - Applied Bio QuantStudio
+  - AppBio QuantStudio
   - Beckman Vi-Cell BLU
   - Beckman Vi-Cell XR
   - MolDev SoftMax Pro

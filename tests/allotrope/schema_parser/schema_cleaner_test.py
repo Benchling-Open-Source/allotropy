@@ -1,5 +1,5 @@
 import re
-from typing import Any, Optional
+from typing import Any
 
 from deepdiff import DeepDiff
 import pytest
@@ -14,7 +14,7 @@ def validate_cleaned_schema(
     schema: dict[str, Any],
     expected: dict[str, Any],
     *,
-    test_defs: Optional[bool] = False,
+    test_defs: bool | None = False,
 ) -> SchemaCleaner:
     # Add $defs/<core schema>/$defs/tQuantityValue as it is used for many tests.
     if "$defs" not in schema:
@@ -51,7 +51,6 @@ def validate_cleaned_schema(
         actual.pop("$defs", None)
         expected.pop("$defs", None)
 
-    # print(DeepDiff(expected, actual, exclude_regex_paths=exclude_regex))
     assert not DeepDiff(
         expected,
         actual,
@@ -125,18 +124,18 @@ def test_fix_quantity_value_reference() -> None:
 def test_add_missing_unit() -> None:
     schema = {
         "properties": {
-            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/fake-unit"
+            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/10%5E7%20fakes~1mL"
         },
         "$defs": {
             "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema": {
                 "$id": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema",
                 "$comment": "Auto-generated from QUDT 1.1 and Allotrope Extensions for QUDT",
                 "$defs": {
-                    "fake-unit": {
+                    "10^7 fakes/mL": {
                         "properties": {
                             "unit": {
                                 "type": "string",
-                                "const": "fake-unit",
+                                "const": "10^7 fakes/mL",
                                 "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#FakeUnit",
                             }
                         },
@@ -153,7 +152,7 @@ def test_add_missing_unit() -> None:
         },
     )
     assert schema_cleaner.get_referenced_units() == {
-        "fake-unit": "http://purl.allotrope.org/ontology/qudt-ext/unit#FakeUnit"
+        "10^7 fakes/mL": "http://purl.allotrope.org/ontology/qudt-ext/unit#FakeUnit"
     }
 
 
@@ -387,377 +386,6 @@ def test_fix_nested_def_references() -> None:
     )
 
 
-def test_singular_anyof() -> None:
-    schema = {
-        "anyOf": [
-            {
-                "items": {"properties": {"key1": "value"}},
-            }
-        ]
-    }
-    validate_cleaned_schema(
-        schema,
-        {
-            "items": {
-                "properties": {
-                    "key1": "value",
-                }
-            },
-        },
-    )
-
-
-def test_combine_anyof_non_conflicting_optional_keys() -> None:
-    schema = {
-        "anyOf": [
-            {"properties": {"key1": "value"}},
-            {"properties": {"key2": "value"}},
-            {"properties": {"key3": "value"}},
-        ]
-    }
-    validate_cleaned_schema(
-        schema, {"properties": {"key1": "value", "key2": "value", "key3": "value"}}
-    )
-
-
-def test_combine_anyof_with_conflicting_keys() -> None:
-    schema = {
-        "anyOf": [
-            {"properties": {"key1": "value", "key2": "value"}},
-            {"properties": {"key1": "otherValue", "key3": "value"}},
-            {"properties": {"key4": "value"}},
-        ]
-    }
-    validate_cleaned_schema(
-        schema,
-        {
-            "anyOf": [
-                {
-                    "properties": {
-                        "key1": "otherValue",
-                        "key3": "value",
-                        "key4": "value",
-                    }
-                },
-                {
-                    "properties": {
-                        "key1": "value",
-                        "key2": "value",
-                        "key4": "value",
-                    }
-                },
-            ]
-        },
-    )
-
-
-def test_combine_anyof_with_multiple_conflicting_keys() -> None:
-    schema = {
-        "anyOf": [
-            {"properties": {"key1": "value", "key2": "value"}},
-            {"properties": {"key1": "otherValue", "key2": "otherValue"}},
-        ]
-    }
-    validate_cleaned_schema(
-        schema,
-        {
-            "anyOf": [
-                {"properties": {"key1": "otherValue", "key2": "otherValue"}},
-                {"properties": {"key1": "value", "key2": "value"}},
-            ]
-        },
-    )
-
-
-def test_combine_anyof_with_nested_conflicting_keys() -> None:
-    schema = {
-        "anyOf": [
-            {
-                "properties": {
-                    "obj1": {"properties": {"key1": "string"}},
-                    "field1": "value",
-                }
-            },
-            {
-                "properties": {
-                    "obj1": {"properties": {"key1": "boolean"}},
-                }
-            },
-        ]
-    }
-    validate_cleaned_schema(
-        schema,
-        {
-            "anyOf": [
-                {
-                    "properties": {
-                        "obj1": {"properties": {"key1": "boolean"}},
-                    }
-                },
-                {
-                    "properties": {
-                        "obj1": {"properties": {"key1": "string"}},
-                        "field1": "value",
-                    }
-                },
-            ]
-        },
-    )
-
-
-def test_combine_anyof_with_nested_anyof() -> None:
-    schema = {
-        "anyOf": [
-            {
-                "properties": {
-                    "obj1": {
-                        "anyOf": [
-                            {"properties": {"key1": "value"}},
-                            {"properties": {"key2": "value"}},
-                        ]
-                    }
-                }
-            },
-            {
-                "properties": {
-                    "obj1": {
-                        "anyOf": [
-                            {"properties": {"key3": "value"}},
-                            {"properties": {"key4": "value"}},
-                        ]
-                    }
-                }
-            },
-        ]
-    }
-    # NOTE: because there are no conflicting required keys, all schemas are combined into a single schema.
-    validate_cleaned_schema(
-        schema,
-        {
-            "properties": {
-                "obj1": {
-                    "allOf": [
-                        {"properties": {"key1": "value", "key2": "value"}},
-                        {"properties": {"key3": "value", "key4": "value"}},
-                    ]
-                }
-            }
-        },
-    )
-
-
-def test_combine_anyof_with_required_values() -> None:
-    schema = {
-        "anyOf": [
-            {
-                "items": {"properties": {"key1": "value"}, "required": ["key1"]},
-                "minItems": 0,
-            },
-            {"items": {"properties": {"key2": "value"}}, "minItems": 0},
-            {"items": {"properties": {"key3": "value"}}, "minItems": 0},
-        ]
-    }
-    validate_cleaned_schema(
-        schema,
-        {
-            "anyOf": [
-                {
-                    "items": {
-                        "properties": {
-                            "key1": "value",
-                            "key2": "value",
-                            "key3": "value",
-                        },
-                        "required": ["key1"],
-                    },
-                },
-                {
-                    "items": {"properties": {"key2": "value", "key3": "value"}},
-                },
-            ]
-        },
-    )
-
-
-def test_combine_anyof_with_multiple_required_values() -> None:
-    schema = {
-        "anyOf": [
-            {
-                "properties": {"key1": "value", "key2": "value"},
-                "required": ["key1", "key2"],
-            },
-            {"properties": {"key3": "value"}},
-        ]
-    }
-    validate_cleaned_schema(
-        schema,
-        {
-            "anyOf": [
-                {
-                    "properties": {"key1": "value", "key2": "value", "key3": "value"},
-                    "required": ["key1", "key2"],
-                },
-                {"properties": {"key3": "value"}},
-            ]
-        },
-    )
-
-
-def test_combine_anyof_with_multiple_required_value_sets() -> None:
-    schema = {
-        "anyOf": [
-            {
-                "properties": {"key1": "value", "key2": "value", "key3": "value"},
-                "required": ["key1", "key2"],
-            },
-            {"properties": {"key2": "value", "key3": "value"}},
-            {"properties": {"key4": "value"}, "required": ["key4"]},
-        ]
-    }
-    validate_cleaned_schema(
-        schema,
-        {
-            "anyOf": [
-                {
-                    "properties": {
-                        "key1": "value",
-                        "key2": "value",
-                        "key3": "value",
-                        "key4": "value",
-                    },
-                    "required": ["key1", "key2", "key4"],
-                },
-                {
-                    "properties": {"key2": "value", "key3": "value", "key4": "value"},
-                    "required": ["key4"],
-                },
-                {
-                    "properties": {"key1": "value", "key2": "value", "key3": "value"},
-                    "required": ["key1", "key2"],
-                },
-                {"properties": {"key2": "value", "key3": "value"}},
-            ]
-        },
-    )
-
-
-def test_combine_anyof_with_parent_object() -> None:
-    schema = {
-        "items": {
-            "properties": {"parentKey": "value"},
-            "anyOf": [
-                {"properties": {"key1": "value"}},
-                {"properties": {"key2": "value"}},
-            ],
-        },
-        "minItems": 1,
-    }
-    validate_cleaned_schema(
-        schema,
-        {
-            "items": {
-                "allOf": [
-                    {"properties": {"parentKey": "value"}},
-                    {"properties": {"key1": "value", "key2": "value"}},
-                ]
-            },
-        },
-    )
-
-
-def test_combine_anyof_with_parent_object_with_required_keys() -> None:
-    schema = {
-        "properties": {
-            "parentKey": "value",
-        },
-        "required": ["parentKey"],
-        "anyOf": [
-            {
-                "properties": {"childKey": "value"},
-            },
-        ],
-    }
-    validate_cleaned_schema(
-        schema,
-        {
-            "properties": {"parentKey": "value", "childKey": "value"},
-            "required": ["parentKey"],
-        },
-    )
-
-
-def test_combine_anyof_with_parent_object_with_child_required_keys() -> None:
-    schema = {
-        "properties": {
-            "parentKey": "value",
-        },
-        "required": ["parentKey"],
-        "anyOf": [
-            {
-                "properties": {"childKey1": "value"},
-            },
-            {
-                "properties": {"childKey2": "value"},
-                "required": ["childKey2"],
-            },
-        ],
-    }
-    validate_cleaned_schema(
-        schema,
-        {
-            "anyOf": [
-                {
-                    "properties": {
-                        "parentKey": "value",
-                        "childKey1": "value",
-                        "childKey2": "value",
-                    },
-                    "required": ["childKey2", "parentKey"],
-                },
-                {
-                    "properties": {
-                        "parentKey": "value",
-                        "childKey1": "value",
-                    },
-                    "required": ["parentKey"],
-                },
-            ]
-        },
-    )
-
-
-def test_combine_anyof_with_parent_anyof_required_keys() -> None:
-    schema = {
-        "properties": {
-            "key1": "value",
-            "key2": "otherValue",
-        },
-        "anyOf": [
-            {"required": ["key1"]},
-            {"required": ["key2"]},
-        ],
-    }
-    validate_cleaned_schema(
-        schema,
-        {
-            "anyOf": [
-                {
-                    "properties": {"key1": "value", "key2": "otherValue"},
-                    "required": ["key1", "key2"],
-                },
-                {
-                    "properties": {"key1": "value", "key2": "otherValue"},
-                    "required": ["key1"],
-                },
-                {
-                    "properties": {"key1": "value", "key2": "otherValue"},
-                    "required": ["key2"],
-                },
-            ]
-        },
-    )
-
-
 def test_fixes_singlular_allof() -> None:
     schema = {
         "allOf": [{"key": "value"}],
@@ -844,6 +472,33 @@ def test_combine_allof() -> None:
         schema,
         {
             "properties": {"key1": "value", "key2": "value", "key3": "otherValue"},
+            "required": ["key1"],
+        },
+    )
+
+
+def test_combine_allof_empty_object_schema() -> None:
+    # Sometimes ASM only specifies the $asm properties, in this case we should successfully combine.
+    schema = {
+        "allOf": [
+            {
+                "type": "object",
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002655",
+                "$asm.pattern": "aggregate datum",
+            },
+            {
+                "type": "object",
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002655",
+                "$asm.pattern": "aggregate datum",
+                "properties": {"key1": "value"},
+                "required": ["key1"],
+            },
+        ]
+    }
+    validate_cleaned_schema(
+        schema,
+        {
+            "properties": {"key1": "value"},
             "required": ["key1"],
         },
     )
@@ -1045,12 +700,16 @@ def test_combine_allof_with_nested_anyof() -> None:
     validate_cleaned_schema(
         schema,
         {
-            "properties": {
-                "key1": "value",
-                "key2": "value",
-                "key3": "value",
-            },
-            "required": ["key1"],
+            "anyOf": [
+                {
+                    "properties": {"key1": "value", "key2": "value"},
+                    "required": ["key1"],
+                },
+                {
+                    "properties": {"key1": "value", "key3": "value"},
+                    "required": ["key1"],
+                },
+            ]
         },
     )
 
@@ -1081,15 +740,18 @@ def test_combine_allof_with_nested_anyof_with_required_keys() -> None:
                     "properties": {
                         "key1": "value",
                         "key2": "value",
-                        "key3": "value",
                     },
                     "required": ["key2"],
                 },
                 {
-                    "properties": {
-                        "key1": "value",
-                        "key3": "value",
-                    },
+                    "allOf": [
+                        {
+                            "properties": {"key1": "value"},
+                        },
+                        {
+                            "properties": {"key3": "value"},
+                        },
+                    ],
                 },
             ]
         },
@@ -1132,17 +794,16 @@ def test_combine_allof_nested_oneof_and_anyof() -> None:
                             "properties": {
                                 "key1": "value",
                                 "key2": "value",
-                                "key3": "value",
                                 "key4": "value",
                             },
                             "required": ["key2"],
                         },
                         {
-                            "properties": {
-                                "key1": "value",
-                                "key3": "value",
-                                "key4": "value",
-                            },
+                            "allOf": [
+                                {"properties": {"key1": "value"}},
+                                {"properties": {"key3": "value"}},
+                                {"properties": {"key4": "value"}},
+                            ]
                         },
                     ]
                 },
@@ -1152,17 +813,16 @@ def test_combine_allof_nested_oneof_and_anyof() -> None:
                             "properties": {
                                 "key1": "value",
                                 "key2": "value",
-                                "key3": "value",
                                 "key5": "value",
                             },
                             "required": ["key2"],
                         },
                         {
-                            "properties": {
-                                "key1": "value",
-                                "key3": "value",
-                                "key5": "value",
-                            },
+                            "allOf": [
+                                {"properties": {"key1": "value"}},
+                                {"properties": {"key3": "value"}},
+                                {"properties": {"key5": "value"}},
+                            ]
                         },
                     ]
                 },
@@ -1339,34 +999,62 @@ def test_deeply_nested_anyof_allof() -> None:
         {
             "anyOf": [
                 {
-                    "properties": {
-                        "obj": {
+                    "allOf": [
+                        {
                             "properties": {
-                                "sub": {
+                                "obj": {
                                     "allOf": [
-                                        {"properties": {"key1": "value1a"}},
-                                        {"properties": {"key2": "value2a"}},
+                                        {
+                                            "properties": {
+                                                "sub": {
+                                                    "properties": {"key1": "value1a"}
+                                                }
+                                            }
+                                        },
+                                        {"properties": {"other": "value"}},
                                     ]
-                                },
-                                "other": "value",
+                                }
                             }
-                        }
-                    }
+                        },
+                        {
+                            "properties": {
+                                "obj": {
+                                    "properties": {
+                                        "sub": {"properties": {"key2": "value2a"}}
+                                    }
+                                }
+                            }
+                        },
+                    ]
                 },
                 {
-                    "properties": {
-                        "obj": {
+                    "allOf": [
+                        {
                             "properties": {
-                                "sub": {
+                                "obj": {
                                     "allOf": [
-                                        {"properties": {"key1": "value1a"}},
-                                        {"properties": {"key2": "value2b"}},
+                                        {
+                                            "properties": {
+                                                "sub": {
+                                                    "properties": {"key1": "value1a"}
+                                                }
+                                            }
+                                        },
+                                        {"properties": {"other": "value"}},
                                     ]
-                                },
-                                "other": "value",
+                                }
                             }
-                        }
-                    }
+                        },
+                        {
+                            "properties": {
+                                "obj": {
+                                    "properties": {
+                                        "sub": {"properties": {"key2": "value2b"}}
+                                    }
+                                }
+                            }
+                        },
+                    ]
                 },
             ]
         },
@@ -1385,11 +1073,11 @@ def test_anyof() -> None:
 
 
 def test_load_model() -> None:
-    from allotropy.allotrope.models.liquid_chromatography_rec_2023_09_liquid_chromatography import (
+    from allotropy.allotrope.models.adm.liquid_chromatography.rec._2023._09.liquid_chromatography import (
         Model,
     )
 
-    Model("fake_manifest")
+    Model(field_asm_manifest="fake_manifest")
 
 
 def test_powerset_indices_from_index() -> None:

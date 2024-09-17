@@ -2,7 +2,10 @@ from enum import Enum
 
 MULTIPLATE_FILE_ERROR = "Only a single plate per file can be processed at this time. Please refer to Gen5 documentation for how to generate single plate exports from multi-plate experiments"
 NO_PLATE_DATA_ERROR = "No plate data found in file."
-UNSUPORTED_READ_TYPE_ERROR = "Only Endpoint measurements can be processed at this time."
+DEFAULT_EXPORT_FORMAT_ERROR = "Could not find 'Results' section. This export format cannot be processed at this time - ensure the 'Regroup data in one matrix/table' option is enabled within Gen5"
+UNSUPPORTED_READ_TYPE_ERROR = (
+    "Only Endpoint measurements can be processed at this time."
+)
 
 HEADER_PREFIXES = frozenset(
     {
@@ -35,11 +38,24 @@ DEVICE_TYPE = "plate reader"
 
 FILENAME_REGEX = r"^\d{6}_\d{6}_(?P<plate_identifier>.[^_]*)_.*\.txt$"
 
+NAN_EMISSION_EXCITATION = ["Full light", "Plug", "Hole"]
+
 
 class ReadMode(str, Enum):
     ABSORBANCE = "Absorbance"
     FLUORESCENCE = "Fluorescence"
     LUMINESCENCE = "Luminescence"
+    ALPHALISA = "Alpha"
+
+
+UNSUPPORTED_READ_MODE_ERROR = (
+    f"Read mode not found; expected to find one of {sorted(ReadMode._member_names_)}."
+)
+
+READ_DATA_MEASUREMENT_ERROR = "No read mode found for measurement {}"
+ALPHALISA_FLUORESCENCE_FOUND = (
+    "Both ALPHALISA and FLUORESCENCE read modes detected, which is not supported."
+)
 
 
 class ReadType(str, Enum):

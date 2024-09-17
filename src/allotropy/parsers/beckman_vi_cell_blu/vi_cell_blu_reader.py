@@ -1,11 +1,13 @@
 import pandas as pd
 
-from allotropy.allotrope.pandas_util import read_csv
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.lines_reader import determine_encoding
+from allotropy.parsers.utils.pandas import read_csv
 
 
 class ViCellBluReader:
+    SUPPORTED_EXTENSIONS = "csv"
+
     @classmethod
     def read(cls, named_file_contents: NamedFileContents) -> pd.DataFrame:
         contents = named_file_contents.contents.read()

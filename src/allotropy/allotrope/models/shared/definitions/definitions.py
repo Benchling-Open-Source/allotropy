@@ -2,51 +2,62 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import Enum
-from typing import Optional, Union
+from typing import Any
 
 from allotropy.exceptions import AllotropeConversionError
 
 
-@dataclass
+@dataclass(kw_only=True)
 class TBooleanValueItem:
     field_type: TClass
     value: bool
 
 
-@dataclass
+@dataclass(kw_only=True)
 class TIntValueItem:
     value: int
     field_type: str
 
 
-TIntValue = Union[int, TIntValueItem]
+TIntValue = int | TIntValueItem
+TIntegerValue = TIntValue
 
 
-@dataclass
+@dataclass(kw_only=True)
+class TDoubleValueItem:
+    value: float
+    field_type: str
+
+
+TDoubleValue = float | TDoubleValueItem
+TFloatValue = TDoubleValue
+TDecimalValue = TDoubleValue
+
+
+@dataclass(kw_only=True)
 class TDateTimeValueItem:
     field_type: TClass
     value: str
 
 
-@dataclass
+@dataclass(kw_only=True)
 class TStringValueItem:
     value: str
     field_type: str
 
 
 TBooleanArray = list[bool]
-TBooleanOrNullArray = list[Optional[bool]]
-TBooleanValue = Union[bool, TBooleanValueItem]
+TBooleanOrNullArray = list[bool | None]
+TBooleanValue = bool | TBooleanValueItem
 TClass = str
-TDateTimeValue = Union[str, TDateTimeValueItem]
-# TODO(brian): inline this
+TDateTimeValue = str | TDateTimeValueItem
 TDateTimeStampValue = TDateTimeValue
 TNumberArray = list[float]
-TNumberOrNullArray = list[Optional[float]]
+TNumberOrNullArray = list[float | None]
 TStringArray = list[str]
-TStringOrNullArray = list[Optional[str]]
-TStringValue = Union[str, TStringValueItem]
-TTupleData = list[Optional[Union[float, bool, str]]]
+TStringOrNullArray = list[str | None]
+TStringValue = str | TStringValueItem
+TTupleData = list[float | bool | str | None]
 TUnit = str
 
 
@@ -70,24 +81,30 @@ class InvalidJsonFloat(Enum):
     field_Infinity = "+Infinity"
     field_Infinity_1 = "-Infinity"
 
+    def __truediv__(self, other: Any) -> InvalidJsonFloat:
+        # The logic here is that: NaN/Any = NaN, +Infinity/Any = +Infinity, -Infinity/Any = -Infinity
+        return self
 
-JsonFloat = Union[float, InvalidJsonFloat]
+
+# For convenience
+JsonFloat = float | InvalidJsonFloat
+NaN = InvalidJsonFloat.NaN
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class TQuantityValue:
     value: JsonFloat
     unit: TUnit
-    has_statistic_datum_role: Optional[TStatisticDatumRole] = None
-    field_type: Optional[TClass] = None
+    has_statistic_datum_role: TStatisticDatumRole | None = None
+    field_type: TClass | None = None
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class TNullableQuantityValue:
-    value: Optional[float]
+    value: float | None
     unit: TUnit
-    has_statistic_datum_role: Optional[TStatisticDatumRole] = None
-    field_type: Optional[TClass] = None
+    has_statistic_datum_role: TStatisticDatumRole | None = None
+    field_type: TClass | None = None
 
 
 class FieldComponentDatatype(Enum):
@@ -117,30 +134,30 @@ class Type(Enum):
     logarithmic = "logarithmic"
 
 
-@dataclass
+@dataclass(kw_only=True)
 class TFunction:
-    type: Optional[Type] = Type.linear
-    start: Optional[float] = 1
-    length: Optional[float] = None
-    incr: Optional[float] = 1
+    type: Type | None = Type.linear
+    start: float | None = 1
+    length: float | None = None
+    incr: float | None = 1
 
 
-@dataclass
+@dataclass(kw_only=True)
 class TDatacubeComponent:
     field_componentDatatype: FieldComponentDatatype
     concept: TClass
-    unit: Optional[TUnit] = None
-    scale: Optional[Scale] = None
-    field_asm_fill_value: Optional[Union[str, float, int, bool]] = None
+    unit: TUnit | None = None
+    scale: Scale | None = None
+    field_asm_fill_value: str | float | int | bool | None = None
 
 
-TDimensionArray = Union[TNumberArray, TBooleanArray, TStringArray]
+TDimensionArray = TNumberArray | TBooleanArray | TStringArray
 
 
-TMeasureArray = Union[TNumberOrNullArray, TBooleanOrNullArray, TStringOrNullArray]
+TMeasureArray = TNumberOrNullArray | TBooleanOrNullArray | TStringOrNullArray
 
 
-@dataclass
+@dataclass(kw_only=True)
 class TDatacubeStructure:
     dimensions: list[TDatacubeComponent]
     measures: list[TDatacubeComponent]
@@ -151,45 +168,50 @@ TODO: datamodel-codegen cannot properly generate the models for TDatacubeData wi
 oneOf{measures, points} constraint. I can't figure out how to do it correctly right now either.
 We need to either figure this out and file a bug with datamodel-codegen or fix the schema.
 
-@dataclass
+@dataclass(kw_only=True)
 class TDimensionData:
-    dimensions: List[Union[TDimensionArray, TFunction]]
+    dimensions: list[TDimensionArray | TFunction]
 
 
-@dataclass
+@dataclass(kw_only=True)
 class TMeasureDatum:
-    measures: List[TMeasureArray]
+    measures: list[TMeasureArray]
 
 
-@dataclass
+@dataclass(kw_only=True)
 class TMeasureDatum1:
-    points: List[TTupleData]
+    points: list[TTupleData]
 
 
-TMeasureData = Union[TMeasureDatum, TMeasureDatum1]
+TMeasureData = TMeasureDatum | TMeasureDatum1
 
 
-@dataclass
+@dataclass(kw_only=True)
 class TDatacubeData(TDimensionData):
     pass
 """
 
 
-@dataclass
+@dataclass(kw_only=True)
 class TDatacubeData:
-    dimensions: list[Union[TDimensionArray, TFunction]]
-    measures: Optional[list[TMeasureArray]] = None
-    points: Optional[list[TTupleData]] = None
+    dimensions: list[TDimensionArray | TFunction]
+    measures: list[TMeasureArray] | None = None
+    points: list[TTupleData] | None = None
 
     def __post_init__(self) -> None:
         # Logic for enforcing oneOf
         if not (self.measures is None) ^ (self.points is None):
-            error = "Exactly one of measures or points must be set on a datacube."
-            raise AllotropeConversionError(error)
+            msg = "Exactly one of measures or points must be set on a datacube."
+            raise AllotropeConversionError(msg)
 
 
-@dataclass
+@dataclass(kw_only=True)
 class TDatacube:
-    label: Optional[str] = None
-    cube_structure: Optional[TDatacubeStructure] = None
-    data: Optional[TDatacubeData] = None
+    label: str | None = None
+    cube_structure: TDatacubeStructure | None = None
+    data: TDatacubeData | None = None
+
+
+@dataclass(kw_only=True)
+class OrderedItem:
+    field_index: int | None = None

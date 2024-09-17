@@ -1,0 +1,34 @@
+from $MAPPER_IMPORT_PATH$ import (
+    Measurement,
+    MeasurementGroup,
+    Metadata,
+)
+from allotropy.parsers.roche_cedex_hires import constants
+from allotropy.parsers.utils.pandas import SeriesData
+from allotropy.parsers.utils.uuids import random_uuid_str
+
+
+def create_metadata(data: SeriesData, file_name: str) -> Metadata:
+    return Metadata(
+        file_name=file_name,
+        # Example of the kind of value that might be set with a constant.
+        device_type=constants.DEVICE_TYPE,
+        # Example of the kind of value that might be set from the header data.
+        description=data[str, "System description"],
+    )
+
+
+def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
+    # This function will be called for every row in the dataset, use it to create
+    # a corresponding measurement group.
+    return MeasurementGroup(
+        analyst=data[str, "Analyst"],
+        measurements=[
+            Measurement(
+                measurement_identifier=random_uuid_str(),
+                # Example of the kind of value that might be set from a measurement row
+                sample_identifier=data[str, "Sample ID"],
+                viability=data[float, "Viability"],
+            )
+        ],
+    )

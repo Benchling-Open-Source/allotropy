@@ -4,75 +4,43 @@ from abc import ABC, abstractmethod
 from collections.abc import Iterator
 from dataclasses import dataclass
 from enum import Enum
-import math
+from itertools import chain
 import re
-from typing import Any, Optional, Union
 
 import pandas as pd
 
-from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
+from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
+    CalculatedDataItem,
+    DataSource,
+    Measurement,
+    MeasurementGroup,
+    MeasurementType,
+    Metadata,
+    ScanPositionSettingPlateReader,
+)
 from allotropy.exceptions import (
     AllotropeConversionError,
-    msg_for_error_on_unrecognized_value,
+    get_key_or_error,
 )
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import CsvReader
+from allotropy.parsers.moldev_softmax_pro.constants import DEVICE_TYPE, EPOCH
+from allotropy.parsers.utils.pandas import rm_df_columns, SeriesData, set_columns
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
     num_to_chars,
     try_float,
-    try_float_or_nan,
-    try_float_or_none,
     try_int,
     try_int_or_none,
-    try_str_from_series,
-    try_str_from_series_or_none,
+    try_non_nan_float_or_none,
 )
 
 BLOCKS_LINE_REGEX = r"^##BLOCKS=\s*(\d+)$"
 END_LINE_REGEX = "~End"
 EXPORT_VERSION = "1.3"
-
-
-def try_non_nan_float_or_none(value: Optional[str]) -> Optional[float]:
-    number = try_float_or_none(value)
-    return None if number is None or math.isnan(number) else number
-
-
-def can_parse_as_float_non_nan(value: Any) -> bool:
-    try:
-        number = float(value)
-    except ValueError:
-        return False
-    return not math.isnan(number)
-
-
-def rm_df_columns(data: pd.DataFrame, pattern: str) -> pd.DataFrame:
-    return data.drop(
-        columns=[column for column in data.columns if re.match(pattern, column)]
-    )
-
-
-def try_str_from_series_multikey_or_none(
-    data: pd.Series[Any],
-    possible_keys: set[str],
-) -> Optional[str]:
-    for key in possible_keys:
-        value = try_str_from_series_or_none(data, key)
-        if value is not None:
-            return value
-    return None
-
-
-def try_str_from_series_multikey(
-    data: pd.Series[Any],
-    possible_keys: set[str],
-    msg: Optional[str] = None,
-) -> str:
-    return assert_not_none(
-        try_str_from_series_multikey_or_none(data, possible_keys),
-        msg=msg,
-    )
+VALID_NAN_VALUES = ("Masked", "Range?")
 
 
 NUM_WELLS_TO_PLATE_DIMENSIONS: dict[int, tuple[int, int]] = {
@@ -148,15 +116,19 @@ class GroupSampleData:
     data_elements: list[GroupDataElement]
     aggregated_entries: list[GroupDataElementEntry]
 
-    @staticmethod
-    def create(data: pd.DataFrame) -> GroupSampleData:
-        top_row = data.iloc[0]
-        identifier = str(top_row["Sample"])
+    @classmethod
+    def create(cls, data: pd.DataFrame) -> GroupSampleData:
+        row_data = [SeriesData(row) for _, row in data.iterrows()]
+        top_row = row_data[0]
+        identifier = top_row[str, "Sample"]
         data = rm_df_columns(data, r"^Sample$|^Standard Value|^R$|^Unnamed: \d+$")
+        # Columns are considered "numeric" if the value of the first row is a float
+        # "Mask" and "Range?" are special cases that will be considered NaN.
         numeric_columns = [
             column
             for column in data.columns
-            if can_parse_as_float_non_nan(top_row[column])
+            if top_row.get(float, column, validate=SeriesData.NOT_NAN) is not None
+            or top_row.get(str, column) in VALID_NAN_VALUES
         ]
 
         normal_columns = []
@@ -172,30 +144,35 @@ class GroupSampleData:
             data_elements=[
                 GroupDataElement(
                     sample=identifier,
-                    position=try_str_from_series_multikey(
-                        row,
-                        {"Well", "Wells"},
-                        msg="Unable to find well position in group data.",
-                    ),
-                    plate=try_str_from_series(row, "WellPlateName"),
+                    position=row[str, ["Well", "Wells"]],
+                    plate=row[str, "WellPlateName"],
                     entries=[
-                        GroupDataElementEntry(
-                            name=column_name,
-                            value=try_float(row[column_name], column_name),
-                        )
+                        element_entry
                         for column_name in normal_columns
+                        if (element_entry := cls._get_element_entry(row, column_name))
+                        is not None
                     ],
                 )
-                for _, row in data.iterrows()
+                for row in row_data
             ],
             aggregated_entries=[
-                GroupDataElementEntry(
-                    name=column_name,
-                    value=try_float(top_row[column_name], column_name),
-                )
+                element_entry
                 for column_name in aggregated_columns
+                if (element_entry := cls._get_element_entry(top_row, column_name))
+                is not None
             ],
         )
+
+    @classmethod
+    def _get_element_entry(
+        cls, data_row: SeriesData, column_name: str
+    ) -> GroupDataElementEntry | None:
+        if (value := data_row.get(float, column_name)) is not None:
+            return GroupDataElementEntry(
+                name=column_name,
+                value=value,
+            )
+        return None
 
 
 @dataclass(frozen=True)
@@ -210,10 +187,11 @@ class GroupData:
             msg="Unable to find group block name.",
         ).removeprefix("Group: ")
 
-        data = assert_not_none(
-            reader.pop_csv_block_as_df(sep="\t", header=0),
-            msg="Unable to find group block data.",
-        ).replace(r"^\s+$", None, regex=True)
+        with pd.option_context("future.no_silent_downcasting", True):  # noqa: FBT003
+            data = assert_not_none(
+                reader.pop_csv_block_as_df(sep="\t", header=0),
+                msg="Unable to find group block data.",
+            ).replace(r"^\s+$", None, regex=True)
 
         assert_not_none(
             data.get("Sample"),
@@ -242,15 +220,15 @@ class GroupColumns:
         )
 
         if "Formula Name" not in data:
-            error = "Unable to find formula name in group block columns."
-            raise AllotropeConversionError(error)
+            msg = "Unable to find 'Formula Name' in group block columns."
+            raise AllotropeConversionError(msg)
 
         if "Formula" not in data:
-            error = "Unable to find formula in group block columns."
-            raise AllotropeConversionError(error)
+            msg = "Unable to find 'Formula' in group block columns."
+            raise AllotropeConversionError(msg)
 
         return GroupColumns(
-            data=dict(zip(data["Formula Name"], data["Formula"])),
+            data=dict(zip(data["Formula Name"], data["Formula"], strict=True)),
         )
 
 
@@ -302,23 +280,23 @@ class PlateHeader:
     concept: str
     read_mode: str
     unit: str
-    scan_position: ScanPosition
-    reads_per_well: float
-    pmt_gain: Optional[str]
+    scan_position: ScanPositionSettingPlateReader | None
+    reads_per_well: float | None
+    pmt_gain: str | None
     num_rows: int
-    excitation_wavelengths: Optional[list[int]]
-    cutoff_filters: Optional[list[int]]
+    excitation_wavelengths: list[int] | None
+    cutoff_filters: list[int] | None
 
 
 @dataclass
 class DataElement:
     uuid: str
     plate: str
-    temperature: Optional[float]
+    temperature: float | None
     wavelength: float
     position: str
-    value: JsonFloat
-    sample_id: Optional[str] = None
+    value: float
+    sample_id: str | None = None
 
     @property
     def sample_identifier(self) -> str:
@@ -339,14 +317,18 @@ class PlateWavelengthData:
     @staticmethod
     def create(
         plate_name: str,
-        temperature: Optional[float],
+        temperature: float | None,
         wavelength: float,
         df_data: pd.DataFrame,
     ) -> PlateWavelengthData:
+        # Since value is required for the measurement class (absorbance, luminescense and fluorescense)
+        # we don't store data for NaN values
+        # TODO: Report error documents for NaN values
         data = {
             f"{num_to_chars(row_idx)}{col}": value
             for row_idx, *row_data in df_data.itertuples()
-            for col, value in zip(df_data.columns, row_data)
+            for col, raw_value in zip(df_data.columns, row_data, strict=True)
+            if (value := try_non_nan_float_or_none(raw_value)) is not None
         }
         return PlateWavelengthData(
             wavelength,
@@ -357,7 +339,7 @@ class PlateWavelengthData:
                     temperature=temperature,
                     wavelength=wavelength,
                     position=str(position),
-                    value=try_float_or_nan(value),
+                    value=value,
                 )
                 for position, value in data.items()
             },
@@ -366,7 +348,7 @@ class PlateWavelengthData:
 
 @dataclass(frozen=True)
 class PlateKineticData:
-    temperature: Optional[float]
+    temperature: float | None
     wavelength_data: list[PlateWavelengthData]
 
     @staticmethod
@@ -384,7 +366,7 @@ class PlateKineticData:
         rows = dimensions[1]
         lines = []
         # read number of rows in plate
-        for _row in range(rows):
+        for _ in range(rows):
             lines.append(reader.pop() or "")
         reader.drop_empty()
 
@@ -393,10 +375,10 @@ class PlateKineticData:
             reader.lines_as_df(lines=lines, sep="\t"),
             msg="unable to find data from plate block.",
         )
-        data.columns = pd.Index(columns)
+        set_columns(data, columns)
 
-        # get temprature from the first column of the first row with value
-        temperature = try_float_or_none(
+        # get temperature from the first column of the first row with value
+        temperature = try_non_nan_float_or_none(
             str(data.iloc[int(pd.to_numeric(data.first_valid_index())), 1])
         )
 
@@ -413,7 +395,7 @@ class PlateKineticData:
     @staticmethod
     def _get_wavelength_data(
         plate_name: str,
-        temperature: Optional[float],
+        temperature: float | None,
         header: PlateHeader,
         w_data: pd.DataFrame,
     ) -> list[PlateWavelengthData]:
@@ -468,7 +450,7 @@ class PlateReducedData:
 
         reduced_data_elements = []
         for row, *data in df_data.itertuples():
-            for col, str_value in zip(df_data.columns, data):
+            for col, str_value in zip(df_data.columns, data, strict=True):
                 value = try_non_nan_float_or_none(str_value)
                 if value is not None:
                     reduced_data_elements.append(
@@ -483,7 +465,7 @@ class PlateReducedData:
 @dataclass(frozen=True)
 class PlateData:
     raw_data: PlateRawData
-    reduced_data: Optional[PlateReducedData]
+    reduced_data: PlateReducedData | None
 
     @staticmethod
     def create(
@@ -502,12 +484,14 @@ class PlateData:
     def iter_data_elements(self, position: str) -> Iterator[DataElement]:
         for kinetic_data in self.raw_data.kinetic_data:
             for wavelength_data in kinetic_data.wavelength_data:
+                if position not in wavelength_data.data_elements:
+                    continue
                 yield wavelength_data.data_elements[position]
 
 
 @dataclass(frozen=True)
 class TimeKineticData:
-    temperature: Optional[float]
+    temperature: float | None
     data_elements: dict[str, DataElement]
 
     @staticmethod
@@ -527,9 +511,10 @@ class TimeKineticData:
                     temperature=temperature,
                     wavelength=wavelength,
                     position=str(position),
-                    value=try_float_or_nan(str(value)),
+                    value=value,
                 )
-                for position, value in row.iloc[2:].items()
+                for position, raw_value in row.iloc[2:].items()
+                if (value := try_non_nan_float_or_none(str(raw_value))) is not None
             },
         )
 
@@ -550,7 +535,7 @@ class TimeWavelengthData:
             reader.pop_csv_block_as_df(sep="\t"),
             msg="unable to find raw data from time block.",
         )
-        data.columns = pd.Index(columns)
+        set_columns(data, columns)
         return TimeWavelengthData(
             wavelength=wavelength,
             kinetic_data=[
@@ -616,7 +601,7 @@ class TimeReducedData:
 @dataclass(frozen=True)
 class TimeData:
     raw_data: TimeRawData
-    reduced_data: Optional[TimeReducedData]
+    reduced_data: TimeReducedData | None
 
     @staticmethod
     def create(
@@ -635,13 +620,15 @@ class TimeData:
     def iter_data_elements(self, position: str) -> Iterator[DataElement]:
         for wavelength_data in self.raw_data.wavelength_data:
             for kinetic_data in wavelength_data.kinetic_data:
+                if position not in kinetic_data.data_elements:
+                    continue
                 yield kinetic_data.data_elements[position]
 
 
 @dataclass(frozen=True)
 class PlateBlock(ABC, Block):
     header: PlateHeader
-    block_data: Union[PlateData, TimeData]
+    block_data: PlateData | TimeData
 
     @staticmethod
     def read_header(reader: CsvReader) -> pd.Series[str]:
@@ -649,7 +636,7 @@ class PlateBlock(ABC, Block):
             reader.pop_as_series(sep="\t"),
             msg="Unable to find plate block header.",
         )
-        return raw_header_series.replace("", None).str.strip()
+        return raw_header_series.astype(str).replace("", None).str.strip()
 
     @staticmethod
     def get_plate_block_cls(header_series: pd.Series[str]) -> type[PlateBlock]:
@@ -659,18 +646,12 @@ class PlateBlock(ABC, Block):
             "Luminescence": LuminescencePlateBlock,
         }
         read_mode = header_series[5]
-        cls = plate_block_cls.get(read_mode or "")
-        if cls is None:
-            msg = msg_for_error_on_unrecognized_value(
-                "read mode", read_mode, plate_block_cls.keys()
-            )
-            raise AllotropeConversionError(msg)
-        return cls
+        return get_key_or_error("read mode", read_mode, plate_block_cls)
 
-    @staticmethod
+    @property
     @abstractmethod
-    def get_plate_block_type() -> str:
-        ...
+    def measurement_type(self) -> MeasurementType:
+        raise NotImplementedError
 
     @classmethod
     def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
@@ -679,35 +660,35 @@ class PlateBlock(ABC, Block):
     @classmethod
     def check_export_version(cls, export_version: str) -> None:
         if export_version != EXPORT_VERSION:
-            error = f"Unsupported export version {export_version}; only {EXPORT_VERSION} is supported."
-            raise AllotropeConversionError(error)
+            msg = f"Unsupported export version {export_version}; only {EXPORT_VERSION} is supported."
+            raise AllotropeConversionError(msg)
 
     @classmethod
     def check_read_type(cls, read_type: str) -> None:
         if read_type != ReadType.ENDPOINT.value:
-            error = "Only Endpoint measurements can be processed at this time."
-            raise AllotropeConversionError(error)
+            msg = f"Only Endpoint measurements can be processed at this time, got: {read_type}"
+            raise AllotropeConversionError(msg)
 
     @classmethod
     def check_data_type(cls, data_type: str) -> None:
         if data_type not in (DataType.RAW.value, DataType.BOTH.value):
-            error = "The SoftMax Pro file is required to include either 'Raw' or 'Both' (Raw and Reduced) data for all plates"
-            raise AllotropeConversionError(error)
+            msg = f"The SoftMax Pro file is required to include either 'Raw' or 'Both' (Raw and Reduced) data for all plates, got {data_type}."
+            raise AllotropeConversionError(msg)
 
     @classmethod
     def check_num_wavelengths(
         cls, wavelengths: list[float], num_wavelengths: int
     ) -> None:
         if len(wavelengths) != num_wavelengths:
-            error = "Unable to find expected number of wavelength values."
-            raise AllotropeConversionError(error)
+            msg = f"Unable to find expected number of wavelength values, expected {num_wavelengths}, found {len(wavelengths)}."
+            raise AllotropeConversionError(msg)
 
     @classmethod
-    def get_num_wavelengths(cls, num_wavelengths_raw: Optional[str]) -> int:
+    def get_num_wavelengths(cls, num_wavelengths_raw: str | None) -> int:
         return try_int_or_none(num_wavelengths_raw) or 1
 
     @classmethod
-    def get_wavelengths(cls, wavelengths_str: Optional[str]) -> list[float]:
+    def get_wavelengths(cls, wavelengths_str: str | None) -> list[float]:
         return [
             try_float(wavelength, "wavelength")
             for wavelength in assert_not_none(
@@ -732,9 +713,9 @@ class PlateBlock(ABC, Block):
 
 @dataclass(frozen=True)
 class FluorescencePlateBlock(PlateBlock):
-    @staticmethod
-    def get_plate_block_type() -> str:
-        return "Fluorescence"
+    @property
+    def measurement_type(self) -> MeasurementType:
+        return MeasurementType.FLUORESCENCE
 
     @classmethod
     def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
@@ -791,8 +772,8 @@ class FluorescencePlateBlock(PlateBlock):
         ]
 
         if len(excitation_wavelengths) != num_wavelengths:
-            error = "Unable to find expected number of excitation values."
-            raise AllotropeConversionError(error)
+            msg = f"Unable to find expected number of excitation values, expected {num_wavelengths}, found {len(excitation_wavelengths)}"
+            raise AllotropeConversionError(msg)
 
         # cutoff filters is an optional field in the input file
         # if present it contains a list of string numbers separated by spaces
@@ -807,16 +788,20 @@ class FluorescencePlateBlock(PlateBlock):
 
         # if there are cutoff filters check that the size match number of wavelengths
         if cutoff_filters is not None and len(cutoff_filters) != num_wavelengths:
-            error = "Unable to find expected number of cutoff filter values."
-            raise AllotropeConversionError(error)
+            msg = f"Unable to find expected number of cutoff filter values, expected {num_wavelengths}, found {len(cutoff_filters)}."
+            raise AllotropeConversionError(msg)
 
         if raw_scan_position == "TRUE":
-            scan_position = ScanPosition.BOTTOM
+            scan_position = (
+                ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_
+            )
         elif raw_scan_position == "FALSE":
-            scan_position = ScanPosition.TOP
+            scan_position = (
+                ScanPositionSettingPlateReader.top_scan_position__plate_reader_
+            )
         else:
-            error = f"{raw_scan_position} is not a valid scan position."
-            raise AllotropeConversionError(error)
+            msg = f"{raw_scan_position} is not a valid scan position, expected 'TRUE' or 'FALSE'."
+            raise AllotropeConversionError(msg)
 
         num_wells = try_int(num_wells_raw, "num_wells")
         num_columns = num_wells_to_n_columns(num_wells)
@@ -846,9 +831,9 @@ class FluorescencePlateBlock(PlateBlock):
 
 @dataclass(frozen=True)
 class LuminescencePlateBlock(PlateBlock):
-    @staticmethod
-    def get_plate_block_type() -> str:
-        return "Luminescence"
+    @property
+    def measurement_type(self) -> MeasurementType:
+        return MeasurementType.LUMINESCENCE
 
     @classmethod
     def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
@@ -910,7 +895,7 @@ class LuminescencePlateBlock(PlateBlock):
             concept="luminescence",
             read_mode="Luminescence",
             unit="RLU",
-            scan_position=ScanPosition.NONE,
+            scan_position=None,
             reads_per_well=try_int(reads_per_well, "reads_per_well"),
             pmt_gain=pmt_gain,
             num_rows=try_int(num_rows, "num_rows"),
@@ -921,9 +906,9 @@ class LuminescencePlateBlock(PlateBlock):
 
 @dataclass(frozen=True)
 class AbsorbancePlateBlock(PlateBlock):
-    @staticmethod
-    def get_plate_block_type() -> str:
-        return "Absorbance"
+    @property
+    def measurement_type(self) -> MeasurementType:
+        return MeasurementType.ULTRAVIOLET_ABSORBANCE
 
     @classmethod
     def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
@@ -976,8 +961,8 @@ class AbsorbancePlateBlock(PlateBlock):
             concept="absorbance",
             read_mode="Absorbance",
             unit="mAU",
-            scan_position=ScanPosition.NONE,
-            reads_per_well=0,
+            scan_position=None,
+            reads_per_well=None,
             pmt_gain=None,
             num_rows=try_int(num_rows_raw, "num_rows"),
             excitation_wavelengths=None,
@@ -1004,26 +989,26 @@ class BlockList:
                     group_blocks.append(GroupBlock.create(sub_reader))
             elif sub_reader.match("^Plate"):
                 header_series = PlateBlock.read_header(sub_reader)
-                cls = PlateBlock.get_plate_block_cls(header_series)
-                header = cls.parse_header(header_series)
+                plate_block_cls = PlateBlock.get_plate_block_cls(header_series)
+                header = plate_block_cls.parse_header(header_series)
 
-                block_data: Union[TimeData, PlateData]
-                if header.export_format == ExportFormat.TIME_FORMAT.value:
-                    block_data = TimeData.create(sub_reader, header)
-                elif header.export_format == ExportFormat.PLATE_FORMAT.value:
-                    block_data = PlateData.create(sub_reader, header)
-                else:
-                    error = f"unrecognized export format {header.export_format}"
-                    raise AllotropeConversionError(error)
+                export_format_to_data_format = {
+                    ExportFormat.TIME_FORMAT.value: TimeData,
+                    ExportFormat.PLATE_FORMAT.value: PlateData,
+                }
+                data_format: type[TimeData] | type[PlateData] = get_key_or_error(
+                    "export format", header.export_format, export_format_to_data_format
+                )
+                block_data = data_format.create(sub_reader, header)
 
-                plate_blocks[header.name] = cls(
+                plate_blocks[header.name] = plate_block_cls(
                     block_type="Plate",
                     header=header,
                     block_data=block_data,
                 )
             elif not sub_reader.match("^Note"):
-                error = f"Expected block '{sub_reader.get()}' to start with Group, Plate or Note."
-                raise AllotropeConversionError(error)
+                msg = f"Expected block '{sub_reader.get()}' to start with Group, Plate or Note."
+                raise AllotropeConversionError(msg)
 
         return BlockList(
             plate_blocks=plate_blocks,
@@ -1035,7 +1020,7 @@ class BlockList:
         start_line = reader.pop() or ""
         if search_result := re.search(BLOCKS_LINE_REGEX, start_line):
             return int(search_result.group(1))
-        msg = msg_for_error_on_unrecognized_value("start line", start_line)
+        msg = f"Unrecognized start line, expected a line starting with ##BLOCKS, got {start_line}"
         raise AllotropeConversionError(msg)
 
     @staticmethod
@@ -1048,11 +1033,11 @@ class BlockList:
 
 
 @dataclass(frozen=True)
-class Data:
+class StructureData:
     block_list: BlockList
 
     @staticmethod
-    def create(reader: CsvReader) -> Data:
+    def create(reader: CsvReader) -> StructureData:
         block_list = BlockList.create(reader)
 
         for group_block in block_list.group_blocks:
@@ -1064,4 +1049,207 @@ class Data:
                     ):
                         data_element.sample_id = group_data_element.sample
 
-        return Data(block_list)
+        return StructureData(block_list)
+
+
+def create_metadata(file_name: str) -> Metadata:
+    return Metadata(
+        asm_file_identifier=NOT_APPLICABLE,
+        device_identifier=NOT_APPLICABLE,
+        model_number=NOT_APPLICABLE,
+        data_system_instance_id=NOT_APPLICABLE,
+        unc_path=NOT_APPLICABLE,
+        software_name="SoftMax Pro",
+        file_name=file_name,
+    )
+
+
+def _create_measurements(plate_block: PlateBlock, position: str) -> list[Measurement]:
+
+    measurement_type = plate_block.measurement_type
+
+    return [
+        Measurement(
+            type_=measurement_type,
+            identifier=data_element.uuid,
+            absorbance=(
+                data_element.value
+                if measurement_type == MeasurementType.ULTRAVIOLET_ABSORBANCE
+                else None
+            ),
+            fluorescence=(
+                data_element.value
+                if measurement_type == MeasurementType.FLUORESCENCE
+                else None
+            ),
+            luminescence=(
+                data_element.value
+                if measurement_type == MeasurementType.LUMINESCENCE
+                else None
+            ),
+            # A temperature of 0 indicates the temperature was not actualy read.
+            compartment_temperature=data_element.temperature or None,
+            # Sample document
+            location_identifier=data_element.position,
+            well_plate_identifier=plate_block.header.name,
+            sample_identifier=data_element.sample_identifier,
+            # Device Control document
+            device_type=DEVICE_TYPE,
+            detection_type=plate_block.header.read_mode,
+            scan_position_setting=plate_block.header.scan_position,
+            detector_wavelength_setting=data_element.wavelength,
+            excitation_wavelength_setting=(
+                plate_block.header.excitation_wavelengths[idx]
+                if plate_block.header.excitation_wavelengths
+                else None
+            ),
+            wavelength_filter_cutoff_setting=(
+                plate_block.header.cutoff_filters[idx]
+                if plate_block.header.cutoff_filters
+                else None
+            ),
+            number_of_averages=plate_block.header.reads_per_well,
+            detector_gain_setting=plate_block.header.pmt_gain,
+        )
+        for idx, data_element in enumerate(plate_block.iter_data_elements(position))
+    ]
+
+
+def _create_measurement_group(
+    plate_block: PlateBlock, position: str
+) -> MeasurementGroup | None:
+
+    if not (measurements := _create_measurements(plate_block, position)):
+        return None
+
+    return MeasurementGroup(
+        measurements=measurements,
+        plate_well_count=plate_block.header.num_wells,
+        measurement_time=EPOCH,
+    )
+
+
+def create_measurement_groups(data: StructureData) -> list[MeasurementGroup]:
+    measurement_groups = [
+        measurement_group
+        for plate_block in data.block_list.plate_blocks.values()
+        for position in plate_block.iter_wells()
+        if (measurement_group := _create_measurement_group(plate_block, position))
+    ]
+    if not measurement_groups:
+        msg = "Invalid data - the file contains invalid or missing measurement data. Unable to construct ASM."
+        raise AllotropeConversionError(msg)
+
+    return measurement_groups
+
+
+def create_calculated_data(data: StructureData) -> list[CalculatedDataItem]:
+    return _get_reduced_calc_docs(data) + _get_group_calc_docs(data)
+
+
+def _get_calc_docs_data_sources(
+    plate_block: PlateBlock, position: str
+) -> list[DataSource]:
+    measurement_type_to_feature = {
+        MeasurementType.ULTRAVIOLET_ABSORBANCE: "Absorbance",
+        MeasurementType.LUMINESCENCE: "Luminescence",
+        MeasurementType.FLUORESCENCE: "Fluorescence",
+    }
+    return [
+        DataSource(
+            identifier=data_source.uuid,
+            feature=measurement_type_to_feature[plate_block.measurement_type],
+        )
+        for data_source in plate_block.iter_data_elements(position)
+    ]
+
+
+def _build_calc_doc(
+    name: str,
+    value: float,
+    data_sources: list[DataSource],
+    description: str | None = None,
+) -> CalculatedDataItem:
+    return CalculatedDataItem(
+        identifier=random_uuid_str(),
+        name=name,
+        value=value,
+        unit=UNITLESS,
+        data_sources=data_sources,
+        description=description,
+    )
+
+
+def _get_reduced_calc_docs(data: StructureData) -> list[CalculatedDataItem]:
+    return [
+        _build_calc_doc(
+            name="Reduced",
+            value=reduced_data_element.value,
+            data_sources=_get_calc_docs_data_sources(
+                plate_block,
+                reduced_data_element.position,
+            ),
+        )
+        for plate_block in data.block_list.plate_blocks.values()
+        for reduced_data_element in plate_block.iter_reduced_data()
+    ]
+
+
+def _get_group_agg_calc_docs(
+    data: StructureData,
+    group_block: GroupBlock,
+    group_sample_data: GroupSampleData,
+) -> list[CalculatedDataItem]:
+    return [
+        _build_calc_doc(
+            name=aggregated_entry.name,
+            value=aggregated_entry.value,
+            data_sources=list(
+                chain.from_iterable(
+                    _get_calc_docs_data_sources(
+                        data.block_list.plate_blocks[group_data_element.plate],
+                        group_data_element.position,
+                    )
+                    for group_data_element in group_sample_data.data_elements
+                )
+            ),
+            description=group_block.group_columns.data.get(aggregated_entry.name),
+        )
+        for aggregated_entry in group_sample_data.aggregated_entries
+    ]
+
+
+def _get_group_simple_calc_docs(
+    data: StructureData,
+    group_block: GroupBlock,
+    group_sample_data: GroupSampleData,
+) -> list[CalculatedDataItem]:
+    calculated_documents = []
+    for group_data_element in group_sample_data.data_elements:
+        data_sources = _get_calc_docs_data_sources(
+            data.block_list.plate_blocks[group_data_element.plate],
+            group_data_element.position,
+        )
+        for entry in group_data_element.entries:
+            calculated_documents.append(
+                _build_calc_doc(
+                    name=entry.name,
+                    value=entry.value,
+                    data_sources=data_sources,
+                    description=group_block.group_columns.data.get(entry.name),
+                )
+            )
+    return calculated_documents
+
+
+def _get_group_calc_docs(data: StructureData) -> list[CalculatedDataItem]:
+    calculated_documents = []
+    for group_block in data.block_list.group_blocks:
+        for group_sample_data in group_block.group_data.sample_data:
+            calculated_documents += _get_group_agg_calc_docs(
+                data, group_block, group_sample_data
+            )
+            calculated_documents += _get_group_simple_calc_docs(
+                data, group_block, group_sample_data
+            )
+    return calculated_documents

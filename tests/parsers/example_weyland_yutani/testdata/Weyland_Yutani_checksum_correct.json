@@ -1,340 +1,334 @@
 {
-    "measurement aggregate document": {
-        "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_0",
-        "plate well count": {
-            "value": 16,
-            "unit": "#"
-        },
-        "measurement document": [
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
+    "plate reader aggregate document": {
+        "plate reader document": [
             {
-                "device control aggregate document": {
-                    "device control document": [
+                "measurement aggregate document": {
+                    "measurement time": "2022-12-31T00:00:00+00:00",
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
                         {
-                            "device type": "fluorescence detector"
-                        }
-                    ]
-                },
-                "sample document": {
-                    "well location identifier": "A1"
-                },
-                "processed data aggregate document": {
-                    "processed data document": [
+                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_0",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "Fluorescence"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 0",
+                                "location identifier": "A1"
+                            },
+                            "fluorescence": {
+                                "value": 3.61,
+                                "unit": "RFU"
+                            }
+                        },
                         {
-                            "processed data": 3.61,
-                            "data processing description": "processed data"
-                        }
-                    ]
-                }
-            },
-            {
-                "device control aggregate document": {
-                    "device control document": [
+                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_1",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "Fluorescence"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 0",
+                                "location identifier": "A2"
+                            },
+                            "fluorescence": {
+                                "value": 4.1,
+                                "unit": "RFU"
+                            }
+                        },
                         {
-                            "device type": "fluorescence detector"
-                        }
-                    ]
-                },
-                "sample document": {
-                    "well location identifier": "A2"
-                },
-                "processed data aggregate document": {
-                    "processed data document": [
+                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_2",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "Fluorescence"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 0",
+                                "location identifier": "A3"
+                            },
+                            "fluorescence": {
+                                "value": 3.27,
+                                "unit": "RFU"
+                            }
+                        },
                         {
-                            "processed data": 4.1,
-                            "data processing description": "processed data"
-                        }
-                    ]
-                }
-            },
-            {
-                "device control aggregate document": {
-                    "device control document": [
+                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_3",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "Fluorescence"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 0",
+                                "location identifier": "A4"
+                            },
+                            "fluorescence": {
+                                "value": 2.78,
+                                "unit": "RFU"
+                            }
+                        },
                         {
-                            "device type": "fluorescence detector"
-                        }
-                    ]
-                },
-                "sample document": {
-                    "well location identifier": "A3"
-                },
-                "processed data aggregate document": {
-                    "processed data document": [
+                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_4",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "Fluorescence"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 0",
+                                "location identifier": "B1"
+                            },
+                            "fluorescence": {
+                                "value": 1.45,
+                                "unit": "RFU"
+                            }
+                        },
                         {
-                            "processed data": 3.27,
-                            "data processing description": "processed data"
-                        }
-                    ]
-                }
-            },
-            {
-                "device control aggregate document": {
-                    "device control document": [
+                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_5",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "Fluorescence"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 0",
+                                "location identifier": "B2"
+                            },
+                            "fluorescence": {
+                                "value": 4.58,
+                                "unit": "RFU"
+                            }
+                        },
                         {
-                            "device type": "fluorescence detector"
-                        }
-                    ]
-                },
-                "sample document": {
-                    "well location identifier": "A4"
-                },
-                "processed data aggregate document": {
-                    "processed data document": [
+                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_6",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "Fluorescence"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 0",
+                                "location identifier": "B3"
+                            },
+                            "fluorescence": {
+                                "value": 1.4,
+                                "unit": "RFU"
+                            }
+                        },
                         {
-                            "processed data": 2.78,
-                            "data processing description": "processed data"
-                        }
-                    ]
-                }
-            },
-            {
-                "device control aggregate document": {
-                    "device control document": [
+                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_7",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "Fluorescence"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 0",
+                                "location identifier": "B4"
+                            },
+                            "fluorescence": {
+                                "value": 0.72,
+                                "unit": "RFU"
+                            }
+                        },
                         {
-                            "device type": "fluorescence detector"
-                        }
-                    ]
-                },
-                "sample document": {
-                    "well location identifier": "B1"
-                },
-                "processed data aggregate document": {
-                    "processed data document": [
+                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_8",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "Fluorescence"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 0",
+                                "location identifier": "C1"
+                            },
+                            "fluorescence": {
+                                "value": 2.23,
+                                "unit": "RFU"
+                            }
+                        },
                         {
-                            "processed data": 1.45,
-                            "data processing description": "processed data"
-                        }
-                    ]
-                }
-            },
-            {
-                "device control aggregate document": {
-                    "device control document": [
+                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_9",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "Fluorescence"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 0",
+                                "location identifier": "C2"
+                            },
+                            "fluorescence": {
+                                "value": 3.6,
+                                "unit": "RFU"
+                            }
+                        },
                         {
-                            "device type": "fluorescence detector"
-                        }
-                    ]
-                },
-                "sample document": {
-                    "well location identifier": "B2"
-                },
-                "processed data aggregate document": {
-                    "processed data document": [
+                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_10",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "Fluorescence"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 0",
+                                "location identifier": "C3"
+                            },
+                            "fluorescence": {
+                                "value": 4.99,
+                                "unit": "RFU"
+                            }
+                        },
                         {
-                            "processed data": 4.58,
-                            "data processing description": "processed data"
-                        }
-                    ]
-                }
-            },
-            {
-                "device control aggregate document": {
-                    "device control document": [
+                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_11",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "Fluorescence"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 0",
+                                "location identifier": "C4"
+                            },
+                            "fluorescence": {
+                                "value": 4.0,
+                                "unit": "RFU"
+                            }
+                        },
                         {
-                            "device type": "fluorescence detector"
-                        }
-                    ]
-                },
-                "sample document": {
-                    "well location identifier": "B3"
-                },
-                "processed data aggregate document": {
-                    "processed data document": [
+                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_12",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "Fluorescence"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 0",
+                                "location identifier": "D1"
+                            },
+                            "fluorescence": {
+                                "value": 3.08,
+                                "unit": "RFU"
+                            }
+                        },
                         {
-                            "processed data": 1.4,
-                            "data processing description": "processed data"
-                        }
-                    ]
-                }
-            },
-            {
-                "device control aggregate document": {
-                    "device control document": [
+                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_13",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "Fluorescence"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 0",
+                                "location identifier": "D2"
+                            },
+                            "fluorescence": {
+                                "value": 1.67,
+                                "unit": "RFU"
+                            }
+                        },
                         {
-                            "device type": "fluorescence detector"
-                        }
-                    ]
-                },
-                "sample document": {
-                    "well location identifier": "B4"
-                },
-                "processed data aggregate document": {
-                    "processed data document": [
+                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_14",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "Fluorescence"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 0",
+                                "location identifier": "D3"
+                            },
+                            "fluorescence": {
+                                "value": 2.47,
+                                "unit": "RFU"
+                            }
+                        },
                         {
-                            "processed data": 0.72,
-                            "data processing description": "processed data"
+                            "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_15",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "Fluorescence"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 0",
+                                "location identifier": "D4"
+                            },
+                            "fluorescence": {
+                                "value": 0.49,
+                                "unit": "RFU"
+                            }
                         }
-                    ]
-                }
-            },
-            {
-                "device control aggregate document": {
-                    "device control document": [
-                        {
-                            "device type": "fluorescence detector"
-                        }
-                    ]
-                },
-                "sample document": {
-                    "well location identifier": "C1"
-                },
-                "processed data aggregate document": {
-                    "processed data document": [
-                        {
-                            "processed data": 2.23,
-                            "data processing description": "processed data"
-                        }
-                    ]
-                }
-            },
-            {
-                "device control aggregate document": {
-                    "device control document": [
-                        {
-                            "device type": "fluorescence detector"
-                        }
-                    ]
-                },
-                "sample document": {
-                    "well location identifier": "C2"
-                },
-                "processed data aggregate document": {
-                    "processed data document": [
-                        {
-                            "processed data": 3.6,
-                            "data processing description": "processed data"
-                        }
-                    ]
-                }
-            },
-            {
-                "device control aggregate document": {
-                    "device control document": [
-                        {
-                            "device type": "fluorescence detector"
-                        }
-                    ]
-                },
-                "sample document": {
-                    "well location identifier": "C3"
-                },
-                "processed data aggregate document": {
-                    "processed data document": [
-                        {
-                            "processed data": 4.99,
-                            "data processing description": "processed data"
-                        }
-                    ]
-                }
-            },
-            {
-                "device control aggregate document": {
-                    "device control document": [
-                        {
-                            "device type": "fluorescence detector"
-                        }
-                    ]
-                },
-                "sample document": {
-                    "well location identifier": "C4"
-                },
-                "processed data aggregate document": {
-                    "processed data document": [
-                        {
-                            "processed data": 4.0,
-                            "data processing description": "processed data"
-                        }
-                    ]
-                }
-            },
-            {
-                "device control aggregate document": {
-                    "device control document": [
-                        {
-                            "device type": "fluorescence detector"
-                        }
-                    ]
-                },
-                "sample document": {
-                    "well location identifier": "D1"
-                },
-                "processed data aggregate document": {
-                    "processed data document": [
-                        {
-                            "processed data": 3.08,
-                            "data processing description": "processed data"
-                        }
-                    ]
-                }
-            },
-            {
-                "device control aggregate document": {
-                    "device control document": [
-                        {
-                            "device type": "fluorescence detector"
-                        }
-                    ]
-                },
-                "sample document": {
-                    "well location identifier": "D2"
-                },
-                "processed data aggregate document": {
-                    "processed data document": [
-                        {
-                            "processed data": 1.67,
-                            "data processing description": "processed data"
-                        }
-                    ]
-                }
-            },
-            {
-                "device control aggregate document": {
-                    "device control document": [
-                        {
-                            "device type": "fluorescence detector"
-                        }
-                    ]
-                },
-                "sample document": {
-                    "well location identifier": "D3"
-                },
-                "processed data aggregate document": {
-                    "processed data document": [
-                        {
-                            "processed data": 2.47,
-                            "data processing description": "processed data"
-                        }
-                    ]
-                }
-            },
-            {
-                "device control aggregate document": {
-                    "device control document": [
-                        {
-                            "device type": "fluorescence detector"
-                        }
-                    ]
-                },
-                "sample document": {
-                    "well location identifier": "D4"
-                },
-                "processed data aggregate document": {
-                    "processed data document": [
-                        {
-                            "processed data": 0.49,
-                            "data processing description": "processed data"
-                        }
-                    ]
+                    ],
+                    "analytical method identifier": "Weyland Yutani Example",
+                    "experimental data identifier": "Example Assay",
+                    "container type": "well plate"
                 }
             }
         ],
-        "measurement time": "2022-12-31T00:00:00+00:00",
-        "analytical method identifier": "Weyland Yutani Example",
-        "experimental data identifier": "Example Assay",
-        "container type": "well plate",
         "device system document": {
             "device identifier": "",
             "model number": ""
+        },
+        "data system document": {
+            "file name": "Weyland_Yutani_checksum_correct.csv",
+            "ASM converter name": "allotropy_example_weyland_yutani",
+            "ASM converter version": "0.1.49"
         }
-    },
-    "$asm.manifest": "http://purl.allotrope.org/manifests/fluorescence/BENCHLING/2023/09/fluorescence.manifest"
+    }
 }

@@ -1,15 +1,12 @@
 from datetime import timedelta, timezone, tzinfo
-from typing import Optional
 from zoneinfo import ZoneInfo
 
-from dateutil import parser
-import pytz
+from dateutil import parser, tz, zoneinfo
 
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.utils.values import assert_not_none
 
 TIMEZONE_CODES_MAP = {
-    **{code: pytz.timezone(code) for code in pytz.all_timezones},
+    **{code: tz.gettz(code) for code in zoneinfo.get_zonefile_instance().zones.keys()},
     # Add daylight savings time codes for USA
     **{
         "EDT": timezone(timedelta(hours=-4), "EDT"),
@@ -24,10 +21,7 @@ TIMEZONE_CODES_MAP = {
 class TimestampParser:
     default_timezone: tzinfo
 
-    def __init__(self, default_timezone: Optional[tzinfo] = None):
-        if default_timezone and not isinstance(default_timezone, tzinfo):
-            msg = f"Invalid default timezone '{default_timezone}'."
-            raise AllotropeConversionError(msg)
+    def __init__(self, default_timezone: tzinfo | None = None):
         self.default_timezone = default_timezone or ZoneInfo("UTC")
 
     def parse(self, time: str) -> str:
@@ -38,8 +32,6 @@ class TimestampParser:
         :param time: the string to parse
         :raises AllotropeConversionError if time cannot be parsed
         """
-        assert_not_none(time, "time")
-
         try:
             timestamp = parser.parse(time, tzinfos=TIMEZONE_CODES_MAP, fuzzy=True)
         except ValueError as e:

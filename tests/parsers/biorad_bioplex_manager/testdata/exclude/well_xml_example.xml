@@ -1,0 +1,64 @@
+<Well RowNo="1" ColNo="1" WellNo="1">
+        <PlateID>555</PlateID>
+        <User>baz</User>
+        <AcquisitionTime>2023-05-09T18:55:02Z</AcquisitionTime>
+        <RunProtocolDocumentName>qux_15PLEX_ASSAY</RunProtocolDocumentName>
+            <RunProtocolDocumentLocation>Z:\corge\quux_qux Luminex\Protocols\qux_15PLEX_ASSAY.spbx</RunProtocolDocumentLocation>
+            <RunConditions>
+                <PlatformTemp Unit="°C">23.56</PlatformTemp>
+                <FlowRate Unit="µl/min">60</FlowRate>
+                <AirPressure Unit="lb/in²">7.14</AirPressure>
+                <SheathPressure Unit="lb/in²">6.83</SheathPressure>
+                <BoardTemp Unit="°C">38.72</BoardTemp>
+                <DDTemp Unit="°C">23.52</DDTemp>
+                <CL1Temp Unit="°C">23.52</CL1Temp>
+                <CL2Temp Unit="°C">23.96</CL2Temp>
+                <DDVoltageAPD Unit="V">84.25</DDVoltageAPD>
+                <CL1VoltageAPD Unit="V">111.90</CL1VoltageAPD>
+                <CL2VoltageAPD Unit="V">112.77</CL2VoltageAPD>
+                <HighVoltage Unit="V">10.02</HighVoltage>
+                <DDGain>1353</DDGain>
+                <CL1Gain>1797</CL1Gain>
+                <CL2Gain>1811</CL2Gain>
+                <RP1Gain>2198</RP1Gain>
+            </RunConditions>
+            <RunSettings>
+                <SampleVolume Unit="µl">50</SampleVolume>
+                <StopReadingCriteria BeadCount="25" BeadCountIn="0">Each selected region</StopReadingCriteria>
+                <RP1VoltagePMT Unit="V">658.85</RP1VoltagePMT>
+                <BeadMap Code="0">100 region</BeadMap>
+                <RegionsOfInterest>
+                    <Region RegionNumber="12" />
+                    <Region RegionNumber="15" />
+                    <Region RegionNumber="18" />
+                    <Region RegionNumber="21" />
+                    <Region RegionNumber="25" />
+                    <Region RegionNumber="28" />
+                    <Region RegionNumber="33" />
+                    <Region RegionNumber="36" />
+                    <Region RegionNumber="42" />
+                    <Region RegionNumber="47" />
+                    <Region RegionNumber="53" />
+                    <Region RegionNumber="57" />
+                    <Region RegionNumber="62" />
+                    <Region RegionNumber="67" />
+                    <Region RegionNumber="75" />
+                </RegionsOfInterest>
+                <OriginalDDGates Low="5000" High="25000" />
+                <RP1Gates Low="0" High="32767" />
+                <PlatformTargetTemp Unit="°C" TempControlSet="false">35</PlatformTargetTemp>
+                <SampleTimeout Unit="s">0</SampleTimeout>
+                <RP1PMTTarget>3698</RP1PMTTarget>
+                <WellRerun>false</WellRerun>
+            </RunSettings>
+            <MachineInfo>
+                <MicroControllerVersion>2.6.1</MicroControllerVersion>
+                <DSPVersion>3.17.0</DSPVersion>
+                <XYPlatformVersion>2.1.15</XYPlatformVersion>
+                <SerialNumber>LX12345678912</SerialNumber>
+                <XYPlatformSerialNumber>LXY07068104</XYPlatformSerialNumber>
+            </MachineInfo>
+            <TotalEvents>717</TotalEvents>
+            <TotalGatedEvents>637</TotalGatedEvents>
+            <TotalRegionEventCount>609</TotalRegionEventCount>
+</Well>

@@ -1,34 +1,37 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Optional
 
 import pandas as pd
 
+from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
+    Measurement,
+    MeasurementGroup,
+    MeasurementType,
+    Metadata,
+)
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.lines_reader import CsvReader
-
-EMPTY_CSV_LINE = r"^,*$"
-PROTOCOL_ID = "Weyland Yutani Example"
-ASSAY_ID = "Example Assay"
+from allotropy.parsers.example_weyland_yutani import constants
+from allotropy.parsers.utils.uuids import random_uuid_str
 
 
 @dataclass(frozen=True)
 class BasicAssayInfo:
     protocol_id: str
     assay_id: str
-    checksum: Optional[str]
+    checksum: str | None
 
     @staticmethod
-    def create(bottom: Optional[pd.DataFrame]) -> BasicAssayInfo:
+    def create(bottom: pd.DataFrame | None) -> BasicAssayInfo:
         checksum = (
             None
             if (bottom is None) or (bottom.iloc[0, 0] != "Checksum")
             else str(bottom.iloc[0, 1])
         )
         return BasicAssayInfo(
-            protocol_id=PROTOCOL_ID,
-            assay_id=ASSAY_ID,
+            # NOTE: in real code these values would be read from data
+            protocol_id=constants.PROTOCOL_ID,
+            assay_id=constants.ASSAY_ID,
             checksum=checksum,
         )
 
@@ -38,7 +41,7 @@ class Instrument:
     serial_number: str
     nickname: str
 
-    # TODO: extract and fill in real values for serial number and nickname
+    # TODO(tutorial): extract and fill in real values for serial number and nickname
     @staticmethod
     def create() -> Instrument:
         return Instrument(serial_number="", nickname="")
@@ -56,15 +59,19 @@ class Plate:
     number: str
     results: list[Result]
 
+    @property
+    def number_of_wells(self) -> int:
+        return len(self.results)
+
     @staticmethod
-    def create(df: Optional[pd.DataFrame]) -> list[Plate]:
+    def create(df: pd.DataFrame | None) -> list[Plate]:
         if df is None:
             return []
         pivoted = df.T
         if pivoted.iloc[1, 0] != "A":
             msg = "Column header(s) not found."
             raise AllotropeConversionError(msg)
-        stripped = pivoted.drop(0, axis=0).drop(0, axis=1)
+        stripped = pivoted.drop(0, axis="index").drop(0, axis="columns")
         rows, cols = stripped.shape
         stripped.index = [df.iloc[0, i + 1] for i in range(rows)]  # type: ignore
         stripped.columns = [str(int(df.iloc[i, 0])) for i in range(1, cols + 1)]  # type: ignore
@@ -79,23 +86,33 @@ class Plate:
         ]
 
 
-@dataclass(frozen=True)
-class Data:
-    plates: list[Plate]
-    number_of_wells: Optional[float]
-    basic_assay_info: BasicAssayInfo
-    instrument: Instrument
+def create_metadata(instrument: Instrument, file_name: str) -> Metadata:
+    return Metadata(
+        file_name=file_name,
+        model_number=instrument.serial_number,
+        device_identifier=instrument.nickname,
+    )
 
-    @staticmethod
-    def create(reader: CsvReader) -> Data:
-        _ = reader.pop_csv_block_as_df(empty_pat=EMPTY_CSV_LINE)
-        middle = reader.pop_csv_block_as_df(empty_pat=EMPTY_CSV_LINE)
-        bottom = reader.pop_csv_block_as_df(empty_pat=EMPTY_CSV_LINE)
 
-        plates = Plate.create(middle)
-        return Data(
-            basic_assay_info=BasicAssayInfo.create(bottom),
-            plates=plates,
-            number_of_wells=len(plates[0].results),
-            instrument=Instrument.create(),
-        )
+def create_measurement_group(
+    plate: Plate, basic_assay_info: BasicAssayInfo
+) -> MeasurementGroup:
+    return MeasurementGroup(
+        plate_well_count=plate.number_of_wells,
+        analytical_method_identifier=basic_assay_info.protocol_id,
+        experimental_data_identifier=basic_assay_info.assay_id,
+        # TODO(tutorial): extract and return actual measurement time
+        measurement_time="2022-12-31",
+        measurements=[
+            Measurement(
+                type_=MeasurementType.FLUORESCENCE,
+                device_type=constants.DEVICE_TYPE,
+                identifier=random_uuid_str(),
+                detection_type=constants.DETECTION_TYPE,
+                sample_identifier=f"Plate {plate.number}",
+                location_identifier=f"{result.col}{result.row}",
+                fluorescence=result.value,
+            )
+            for result in plate.results
+        ],
+    )

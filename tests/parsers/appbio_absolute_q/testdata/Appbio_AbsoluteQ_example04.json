@@ -1,4 +1,5 @@
 {
+    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/dpcr.manifest",
     "dPCR aggregate document": {
         "device system document": {
             "device identifier": "Absolute Q 0140",
@@ -26,12 +27,13 @@
                                 "device control document": [
                                     {
                                         "device type": "dPCR",
+                                        "device identifier": "Absolute Q 0140",
                                         "reporter dye setting": "VIC"
                                     }
                                 ]
                             },
                             "total partition count": {
-                                "value": 20413.0,
+                                "value": 20413,
                                 "unit": "#"
                             },
                             "processed data aggregate document": {
@@ -42,7 +44,7 @@
                                             "unit": "#/μL"
                                         },
                                         "positive partition count": {
-                                            "value": 0.0,
+                                            "value": 0,
                                             "unit": "#"
                                         }
                                     }
@@ -74,12 +76,13 @@
                                 "device control document": [
                                     {
                                         "device type": "dPCR",
+                                        "device identifier": "Absolute Q 0140",
                                         "reporter dye setting": "VIC"
                                     }
                                 ]
                             },
                             "total partition count": {
-                                "value": 20452.0,
+                                "value": 20452,
                                 "unit": "#"
                             },
                             "processed data aggregate document": {
@@ -90,7 +93,7 @@
                                             "unit": "#/μL"
                                         },
                                         "positive partition count": {
-                                            "value": 0.0,
+                                            "value": 0,
                                             "unit": "#"
                                         }
                                     }
@@ -122,12 +125,13 @@
                                 "device control document": [
                                     {
                                         "device type": "dPCR",
+                                        "device identifier": "Absolute Q 0140",
                                         "reporter dye setting": "VIC"
                                     }
                                 ]
                             },
                             "total partition count": {
-                                "value": 20424.0,
+                                "value": 20424,
                                 "unit": "#"
                             },
                             "processed data aggregate document": {
@@ -138,7 +142,7 @@
                                             "unit": "#/μL"
                                         },
                                         "positive partition count": {
-                                            "value": 343.0,
+                                            "value": 343,
                                             "unit": "#"
                                         }
                                     }
@@ -170,12 +174,13 @@
                                 "device control document": [
                                     {
                                         "device type": "dPCR",
+                                        "device identifier": "Absolute Q 0140",
                                         "reporter dye setting": "VIC"
                                     }
                                 ]
                             },
                             "total partition count": {
-                                "value": 20466.0,
+                                "value": 20466,
                                 "unit": "#"
                             },
                             "processed data aggregate document": {
@@ -186,7 +191,7 @@
                                             "unit": "#/μL"
                                         },
                                         "positive partition count": {
-                                            "value": 340.0,
+                                            "value": 340,
                                             "unit": "#"
                                         }
                                     }
@@ -218,12 +223,13 @@
                                 "device control document": [
                                     {
                                         "device type": "dPCR",
+                                        "device identifier": "Absolute Q 0140",
                                         "reporter dye setting": "VIC"
                                     }
                                 ]
                             },
                             "total partition count": {
-                                "value": 20449.0,
+                                "value": 20449,
                                 "unit": "#"
                             },
                             "processed data aggregate document": {
@@ -234,7 +240,7 @@
                                             "unit": "#/μL"
                                         },
                                         "positive partition count": {
-                                            "value": 34.0,
+                                            "value": 34,
                                             "unit": "#"
                                         }
                                     }
@@ -266,12 +272,13 @@
                                 "device control document": [
                                     {
                                         "device type": "dPCR",
+                                        "device identifier": "Absolute Q 0140",
                                         "reporter dye setting": "VIC"
                                     }
                                 ]
                             },
                             "total partition count": {
-                                "value": 20447.0,
+                                "value": 20447,
                                 "unit": "#"
                             },
                             "processed data aggregate document": {
@@ -282,7 +289,7 @@
                                             "unit": "#/μL"
                                         },
                                         "positive partition count": {
-                                            "value": 36.0,
+                                            "value": 36,
                                             "unit": "#"
                                         }
                                     }
@@ -314,12 +321,13 @@
                                 "device control document": [
                                     {
                                         "device type": "dPCR",
+                                        "device identifier": "Absolute Q 0140",
                                         "reporter dye setting": "VIC"
                                     }
                                 ]
                             },
                             "total partition count": {
-                                "value": 20456.0,
+                                "value": 20456,
                                 "unit": "#"
                             },
                             "processed data aggregate document": {
@@ -330,7 +338,7 @@
                                             "unit": "#/μL"
                                         },
                                         "positive partition count": {
-                                            "value": 1511.0,
+                                            "value": 1511,
                                             "unit": "#"
                                         }
                                     }
@@ -362,12 +370,13 @@
                                 "device control document": [
                                     {
                                         "device type": "dPCR",
+                                        "device identifier": "Absolute Q 0140",
                                         "reporter dye setting": "VIC"
                                     }
                                 ]
                             },
                             "total partition count": {
-                                "value": 20442.0,
+                                "value": 20442,
                                 "unit": "#"
                             },
                             "processed data aggregate document": {
@@ -378,7 +387,7 @@
                                             "unit": "#/μL"
                                         },
                                         "positive partition count": {
-                                            "value": 1416.0,
+                                            "value": 1416,
                                             "unit": "#"
                                         }
                                     }
@@ -410,12 +419,13 @@
                                 "device control document": [
                                     {
                                         "device type": "dPCR",
+                                        "device identifier": "Absolute Q 0140",
                                         "reporter dye setting": "VIC"
                                     }
                                 ]
                             },
                             "total partition count": {
-                                "value": 20449.0,
+                                "value": 20449,
                                 "unit": "#"
                             },
                             "processed data aggregate document": {
@@ -426,7 +436,7 @@
                                             "unit": "#/μL"
                                         },
                                         "positive partition count": {
-                                            "value": 80.0,
+                                            "value": 80,
                                             "unit": "#"
                                         }
                                     }
@@ -458,12 +468,13 @@
                                 "device control document": [
                                     {
                                         "device type": "dPCR",
+                                        "device identifier": "Absolute Q 0140",
                                         "reporter dye setting": "VIC"
                                     }
                                 ]
                             },
                             "total partition count": {
-                                "value": 20422.0,
+                                "value": 20422,
                                 "unit": "#"
                             },
                             "processed data aggregate document": {
@@ -474,7 +485,7 @@
                                             "unit": "#/μL"
                                         },
                                         "positive partition count": {
-                                            "value": 96.0,
+                                            "value": 96,
                                             "unit": "#"
                                         }
                                     }
@@ -506,12 +517,13 @@
                                 "device control document": [
                                     {
                                         "device type": "dPCR",
+                                        "device identifier": "Absolute Q 0140",
                                         "reporter dye setting": "VIC"
                                     }
                                 ]
                             },
                             "total partition count": {
-                                "value": 20449.0,
+                                "value": 20449,
                                 "unit": "#"
                             },
                             "processed data aggregate document": {
@@ -522,7 +534,7 @@
                                             "unit": "#/μL"
                                         },
                                         "positive partition count": {
-                                            "value": 4775.0,
+                                            "value": 4775,
                                             "unit": "#"
                                         }
                                     }
@@ -554,12 +566,13 @@
                                 "device control document": [
                                     {
                                         "device type": "dPCR",
+                                        "device identifier": "Absolute Q 0140",
                                         "reporter dye setting": "VIC"
                                     }
                                 ]
                             },
                             "total partition count": {
-                                "value": 20443.0,
+                                "value": 20443,
                                 "unit": "#"
                             },
                             "processed data aggregate document": {
@@ -570,7 +583,7 @@
                                             "unit": "#/μL"
                                         },
                                         "positive partition count": {
-                                            "value": 4899.0,
+                                            "value": 4899,
                                             "unit": "#"
                                         }
                                     }
@@ -602,12 +615,13 @@
                                 "device control document": [
                                     {
                                         "device type": "dPCR",
+                                        "device identifier": "Absolute Q 0140",
                                         "reporter dye setting": "VIC"
                                     }
                                 ]
                             },
                             "total partition count": {
-                                "value": 20370.0,
+                                "value": 20370,
                                 "unit": "#"
                             },
                             "processed data aggregate document": {
@@ -618,7 +632,7 @@
                                             "unit": "#/μL"
                                         },
                                         "positive partition count": {
-                                            "value": 165.0,
+                                            "value": 165,
                                             "unit": "#"
                                         }
                                     }
@@ -650,12 +664,13 @@
                                 "device control document": [
                                     {
                                         "device type": "dPCR",
+                                        "device identifier": "Absolute Q 0140",
                                         "reporter dye setting": "VIC"
                                     }
                                 ]
                             },
                             "total partition count": {
-                                "value": 20299.0,
+                                "value": 20299,
                                 "unit": "#"
                             },
                             "processed data aggregate document": {
@@ -666,7 +681,7 @@
                                             "unit": "#/μL"
                                         },
                                         "positive partition count": {
-                                            "value": 149.0,
+                                            "value": 149,
                                             "unit": "#"
                                         }
                                     }
@@ -698,12 +713,13 @@
                                 "device control document": [
                                     {
                                         "device type": "dPCR",
+                                        "device identifier": "Absolute Q 0140",
                                         "reporter dye setting": "VIC"
                                     }
                                 ]
                             },
                             "total partition count": {
-                                "value": 20409.0,
+                                "value": 20409,
                                 "unit": "#"
                             },
                             "processed data aggregate document": {
@@ -714,7 +730,7 @@
                                             "unit": "#/μL"
                                         },
                                         "positive partition count": {
-                                            "value": 13963.0,
+                                            "value": 13963,
                                             "unit": "#"
                                         }
                                     }
@@ -746,12 +762,13 @@
                                 "device control document": [
                                     {
                                         "device type": "dPCR",
+                                        "device identifier": "Absolute Q 0140",
                                         "reporter dye setting": "VIC"
                                     }
                                 ]
                             },
                             "total partition count": {
-                                "value": 20425.0,
+                                "value": 20425,
                                 "unit": "#"
                             },
                             "processed data aggregate document": {
@@ -762,7 +779,7 @@
                                             "unit": "#/μL"
                                         },
                                         "positive partition count": {
-                                            "value": 10196.0,
+                                            "value": 10196,
                                             "unit": "#"
                                         }
                                     }
@@ -778,9 +795,8 @@
         "data system document": {
             "file name": "Appbio_AbsoluteQ_example04.csv",
             "software name": "QuantStudio Absolute Q Digital PCR Software",
-            "ASM converter name": "allotropy",
-            "ASM converter version": "0.1.17"
+            "ASM converter name": "allotropy_appbio_absoluteq",
+            "ASM converter version": "0.1.42"
         }
-    },
-    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/dpcr.manifest"
+    }
 }

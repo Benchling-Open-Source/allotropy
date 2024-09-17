@@ -1,0 +1,37 @@
+{
+  "allowCompoundWords": true,
+  "words": [
+    "astype",
+    "chardet",
+    "dpcr",
+    "dropna",
+    "ffill",
+    "fillna",
+    "flourescence",
+    "genotyping",
+    "gpgsign",
+    "iloc",
+    "imager",
+    "infile",
+    "iterrows",
+    "mypy",
+    "pydantic",
+    "pyproject",
+    "pytest",
+    "sdist",
+    "unstructure"
+  ],
+  "flagWords": [
+    "hte",
+    "begining"
+  ],
+  "dictionaryDefinitions": [
+    {
+      "name": "companies",
+      "path": ".vscode/cspell_companies.txt"
+    }
+  ],
+  "dictionaries": [
+    "companies"
+  ]
+}

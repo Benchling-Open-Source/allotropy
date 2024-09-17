@@ -1,22 +1,22 @@
 from datetime import tzinfo
 from pathlib import Path
-from typing import Any, Optional, Union
+from typing import Any
 
 from allotropy.allotrope.allotrope import serialize_and_validate_allotrope
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parser_factory import get_parser, Vendor
+from allotropy.parser_factory import Vendor
 from allotropy.types import IOType
 
-VendorType = Union[Vendor, str]
+VendorType = Vendor | str
 
 
 def allotrope_from_io(
     contents: IOType,
     filename: str,
     vendor_type: VendorType,
-    default_timezone: Optional[tzinfo] = None,
-    encoding: Optional[str] = None,
+    default_timezone: tzinfo | None = None,
+    encoding: str | None = None,
 ) -> dict[str, Any]:
     model = allotrope_model_from_io(
         contents, filename, vendor_type, default_timezone, encoding
@@ -28,24 +28,27 @@ def allotrope_model_from_io(
     contents: IOType,
     filename: str,
     vendor_type: VendorType,
-    default_timezone: Optional[tzinfo] = None,
-    encoding: Optional[str] = None,
+    default_timezone: tzinfo | None = None,
+    encoding: str | None = None,
 ) -> Any:
     try:
         vendor = Vendor(vendor_type)
     except ValueError as e:
-        error = f"Failed to create parser, unregistered vendor: {vendor_type}."
-        raise AllotropeConversionError(error) from e
+        msg = f"Failed to create parser, unregistered vendor: {vendor_type}."
+        raise AllotropeConversionError(msg) from e
     named_file_contents = NamedFileContents(contents, filename, encoding)
-    parser = get_parser(vendor, default_timezone=default_timezone)
+    if named_file_contents.extension not in vendor.supported_extensions:
+        msg = f"Unsupported file extension '{named_file_contents.extension}' for parser '{vendor.display_name}', expected one of '{vendor.supported_extensions}'."
+        raise AllotropeConversionError(msg)
+    parser = vendor.get_parser(default_timezone=default_timezone)
     return parser.to_allotrope(named_file_contents)
 
 
 def allotrope_from_file(
     filepath: str,
     vendor_type: VendorType,
-    default_timezone: Optional[tzinfo] = None,
-    encoding: Optional[str] = None,
+    default_timezone: tzinfo | None = None,
+    encoding: str | None = None,
 ) -> dict[str, Any]:
     model = allotrope_model_from_file(filepath, vendor_type, default_timezone, encoding)
     return serialize_and_validate_allotrope(model)
@@ -54,8 +57,8 @@ def allotrope_from_file(
 def allotrope_model_from_file(
     filepath: str,
     vendor_type: VendorType,
-    default_timezone: Optional[tzinfo] = None,
-    encoding: Optional[str] = None,
+    default_timezone: tzinfo | None = None,
+    encoding: str | None = None,
 ) -> Any:
     try:
         with open(filepath, "rb") as f:

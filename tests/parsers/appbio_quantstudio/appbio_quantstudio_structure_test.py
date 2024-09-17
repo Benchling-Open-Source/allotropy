@@ -1,28 +1,27 @@
 from __future__ import annotations
 
+from collections.abc import Callable
 from io import BytesIO
-from typing import Optional
+from pathlib import Path
 
 import pandas as pd
 import pytest
 
-from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
+from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
+from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import (
+    Data,
+)
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_data_creator import (
-    create_data,
+from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_parser import (
+    AppBioQuantStudioParser,
 )
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
-    Data,
     Header,
     Result,
-    WellItem,
 )
 from allotropy.parsers.lines_reader import LinesReader, read_to_lines
-from allotropy.parsers.utils.calculated_data_documents.definition import (
-    CalculatedDocument,
-    Referenceable,
-)
+from allotropy.testing.utils import mock_uuid_generation
 from allotropy.types import IOType
 from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
     get_broken_calc_doc_data,
@@ -32,34 +31,14 @@ from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
     get_rel_std_curve_data,
 )
 
-
-def rm_uuid(data: Data) -> Data:
-    for well in data.wells:
-        for well_item in well.items.values():
-            well_item.uuid = ""
-
-    for calc_doc in data.calculated_documents:
-        rm_uuid_calc_doc(calc_doc)
-
-    return data
+TESTDATA = Path(Path(__file__).parent, "testdata")
 
 
-def rm_uuid_calc_doc(calc_doc: CalculatedDocument) -> None:
-    calc_doc.uuid = ""
-    for source in calc_doc.data_sources:
-        if isinstance(source.reference, CalculatedDocument):
-            rm_uuid_calc_doc(source.reference)
-        elif isinstance(source.reference, Referenceable):
-            source.reference.uuid = ""
-
-
-def _read_to_lines(io_: IOType, encoding: Optional[str] = None) -> list[str]:
+def _read_to_lines(io_: IOType, encoding: str | None = None) -> list[str]:
     named_file_contents = NamedFileContents(io_, "test.csv", encoding=encoding)
     return read_to_lines(named_file_contents)
 
 
-@pytest.mark.short
-@pytest.mark.quantstudio
 def test_header_builder_returns_header_instance() -> None:
     header_contents = get_raw_header_contents()
 
@@ -67,7 +46,6 @@ def test_header_builder_returns_header_instance() -> None:
     assert isinstance(Header.create(LinesReader(lines)), Header)
 
 
-@pytest.mark.quantstudio
 def test_header_builder() -> None:
     device_identifier = "device1"
     model_number = "123"
@@ -107,8 +85,6 @@ def test_header_builder() -> None:
     )
 
 
-@pytest.mark.short
-@pytest.mark.quantstudio
 @pytest.mark.parametrize(
     "parameter,expected_error",
     [
@@ -118,7 +94,6 @@ def test_header_builder() -> None:
             "Expected non-null value for Quantification Cycle Method.",
         ),
         ("pcr_detection_chemistry", "Expected non-null value for Chemistry."),
-        ("plate_well_count", "Expected non-null value for Block Type."),
     ],
 )
 def test_header_builder_required_parameter_none_then_raise(
@@ -131,32 +106,49 @@ def test_header_builder_required_parameter_none_then_raise(
         Header.create(lines_reader)
 
 
-@pytest.mark.short
-@pytest.mark.quantstudio
-def test_header_builder_invalid_plate_well_count() -> None:
+def test_header_builder_plate_well_count() -> None:
+    header_contents = get_raw_header_contents(plate_well_count="96 plates")
+    lines = _read_to_lines(header_contents)
+    header = Header.create(LinesReader(lines))
+    assert header.plate_well_count == 96
+
+    header_contents = get_raw_header_contents(plate_well_count="Fast 96 plates")
+    lines = _read_to_lines(header_contents)
+    header = Header.create(LinesReader(lines))
+    assert header.plate_well_count == 96
+
+    header_contents = get_raw_header_contents(plate_well_count="384 plates")
+    lines = _read_to_lines(header_contents)
+    header = Header.create(LinesReader(lines))
+    assert header.plate_well_count == 384
+
+    header_contents = get_raw_header_contents(plate_well_count="Fast 384 plates")
+    lines = _read_to_lines(header_contents)
+    header = Header.create(LinesReader(lines))
+    assert header.plate_well_count == 384
+
+    header_contents = get_raw_header_contents(plate_well_count="200 plates")
+    lines = _read_to_lines(header_contents)
+    header = Header.create(LinesReader(lines))
+    assert header.plate_well_count is None
+
     header_contents = get_raw_header_contents(plate_well_count="0 plates")
     lines = _read_to_lines(header_contents)
-    with pytest.raises(
-        AllotropeConversionError, match="Unable to find plate well count"
-    ):
-        Header.create(LinesReader(lines))
+    header = Header.create(LinesReader(lines))
+    assert header.plate_well_count is None
 
 
-@pytest.mark.short
-@pytest.mark.quantstudio
 def test_header_builder_no_header_then_raise() -> None:
     header_contents = get_raw_header_contents(raw_text="")
     lines = _read_to_lines(header_contents, encoding="UTF-8")
     lines_reader = LinesReader(lines)
     with pytest.raises(
         AllotropeConversionError,
-        match="Expected non-null value for Experiment Run End Time.",
+        match="Cannot parse data from empty header.",
     ):
         Header.create(lines_reader)
 
 
-@pytest.mark.short
-@pytest.mark.quantstudio
 def test_results_builder() -> None:
 
     data = pd.DataFrame(
@@ -169,74 +161,65 @@ def test_results_builder() -> None:
             "Allele1 Ct": ["Undetermined"],
         }
     )
-    well_item = WellItem(
-        uuid="be566c58-41f3-40f8-900b-ef1dff20d264",
-        identifier=1,
-        position="A1",
-        target_dna_description="CYP19_2-Allele 1",
-        sample_identifier="NTC",
-        well_location_identifier="A1",
-        reporter_dye_setting="SYBR",
-        quencher_dye_setting=None,
-        sample_role_type="PC_ALLELE_1",
-    )
-    result = Result.create(data, well_item, ExperimentType.genotyping_qPCR_experiment)
+    result = Result.create_results(data, ExperimentType.genotyping_qPCR_experiment)[1][
+        "CYP19_2-Allele1"
+    ]
     assert isinstance(result, Result)
     assert result.cycle_threshold_value_setting == 0.219
     assert result.cycle_threshold_result is None
     assert result.automatic_cycle_threshold_enabled_setting is True
 
 
-@pytest.mark.short
-@pytest.mark.quantstudio
 @pytest.mark.parametrize(
-    "test_filepath,expected_data",
+    "test_filepath,create_expected_data_func",
     [
         (
-            "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_test01.txt",
-            get_data(),
+            f"{TESTDATA}/exclude/appbio_quantstudio_test01.txt",
+            get_data,
         ),
         (
-            "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_test02.txt",
-            get_data2(),
+            f"{TESTDATA}/exclude/appbio_quantstudio_test02.txt",
+            get_data2,
         ),
         (
-            "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_test03.txt",
-            get_genotyping_data(),
+            f"{TESTDATA}/exclude/appbio_quantstudio_test03.txt",
+            get_genotyping_data,
         ),
         (
-            "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_test04.txt",
-            get_rel_std_curve_data(),
+            f"{TESTDATA}/exclude/appbio_quantstudio_test04.txt",
+            get_rel_std_curve_data,
         ),
         (
-            "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_test05.txt",
-            get_broken_calc_doc_data(),
+            f"{TESTDATA}/exclude/appbio_quantstudio_test05.txt",
+            get_broken_calc_doc_data,
         ),
     ],
 )
-def test_data_builder(test_filepath: str, expected_data: Data) -> None:
+def test_data_builder(
+    test_filepath: str, create_expected_data_func: Callable[[str], Data]
+) -> None:
     with open(test_filepath, "rb") as raw_contents:
-        lines = _read_to_lines(raw_contents)
-    reader = LinesReader(lines)
-    assert rm_uuid(create_data(reader)) == rm_uuid(expected_data)
+        with mock_uuid_generation():
+            assert AppBioQuantStudioParser().create_data(
+                NamedFileContents(raw_contents, test_filepath)
+            ) == create_expected_data_func(test_filepath)
 
 
 def get_raw_header_contents(
-    raw_text: Optional[str] = None,
-    measurement_time: Optional[str] = "2010-10-01 01:44:54 AM EDT",
-    plate_well_count: Optional[str] = "96-Well Block (0.2mL)",
-    experiment_type: Optional[str] = "Presence/Absence",
-    device_identifier: Optional[str] = "278880034",
-    model_number: Optional[str] = "QuantStudio(TM) 6 Flex System",
-    device_serial_number: Optional[str] = "278880034",
-    measurement_method_identifier: Optional[str] = "Ct",
-    pcr_detection_chemistry: Optional[str] = "TAQMAN",
-    passive_reference_dye_setting: Optional[str] = "ROX",
-    barcode: Optional[str] = "NA",
-    analyst: Optional[str] = "NA",
-    experimental_data_identifier: Optional[
-        str
-    ] = "QuantStudio 96-Well Presence-Absence Example",
+    raw_text: str | None = None,
+    measurement_time: str | None = "2010-10-01 01:44:54 AM EDT",
+    plate_well_count: str | None = "96-Well Block (0.2mL)",
+    experiment_type: str | None = "Presence/Absence",
+    device_identifier: str | None = "278880034",
+    model_number: str | None = "QuantStudio(TM) 6 Flex System",
+    device_serial_number: str | None = "278880034",
+    measurement_method_identifier: str | None = "Ct",
+    pcr_detection_chemistry: str | None = "TAQMAN",
+    passive_reference_dye_setting: str | None = "ROX",
+    barcode: str | None = "NA",
+    analyst: str | None = "NA",
+    experimental_data_identifier: None
+    | (str) = "QuantStudio 96-Well Presence-Absence Example",
 ) -> BytesIO:
     if raw_text is not None:
         return BytesIO(raw_text.encode("utf-8"))

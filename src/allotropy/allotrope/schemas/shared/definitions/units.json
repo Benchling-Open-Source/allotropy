@@ -47,6 +47,18 @@
       "unit"
     ]
   },
+  "CountsPerSecond": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "Counts/s",
+        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#CountsPerSecond"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
   "CountsTimesSecond": {
     "properties": {
       "unit": {
@@ -76,7 +88,7 @@
       "unit": {
         "type": "string",
         "const": "degC",
-        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#DegreeCelsius"
+        "$asm.unit-iri": "http://qudt.org/vocab/unit#DegreeCelsius"
       }
     },
     "required": [
@@ -107,11 +119,23 @@
       "unit"
     ]
   },
+  "KiloDalton": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "kDa",
+        "$asm.unit-iri": "TODO"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
   "MicrogramPerMicroliter": {
     "properties": {
       "unit": {
         "type": "string",
-        "const": "ug/uL",
+        "const": "ug/µL",
         "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MicrogramPerMicroliter"
       }
     },
@@ -136,7 +160,7 @@
       "unit": {
         "type": "string",
         "const": "μL",
-        "$asm.unit-iri": "http://qudt.org/vocab/unit#Microliter"
+        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Microliter"
       }
     },
     "required": [
@@ -239,6 +263,18 @@
       "unit"
     ]
   },
+  "MilliliterPerLiter": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "mL/L",
+        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MilliliterPerLiter"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
   "Millimeter": {
     "properties": {
       "unit": {
@@ -280,7 +316,7 @@
       "unit": {
         "type": "string",
         "const": "10^6 cells/mL",
-        "$asm.unit-iri": "http://qudt.org/vocab/unit#MillionCellsPerMilliliter"
+        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MillionCellsPerMilliliter"
       }
     },
     "required": [
@@ -339,7 +375,7 @@
     "properties": {
       "unit": {
         "type": "string",
-        "const": "ng/uL",
+        "const": "ng/µL",
         "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#NanogramPerMicroliter"
       }
     },
@@ -376,7 +412,7 @@
       "unit": {
         "type": "string",
         "const": "#",
-        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Number"
+        "$asm.unit-iri": "http://qudt.org/vocab/unit#Number"
       }
     },
     "required": [
@@ -479,12 +515,60 @@
       "unit"
     ]
   },
+  "RelativeFluorescenceUnitTimesMilliliter": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "RFU.mL",
+        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#RelativeFluorescenceUnitTimesMilliliter"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
+  "RelativeFluorescenceUnitTimesSecond": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "RFU.s",
+        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#RelativeFluorescenceUnitTimesSecond"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
   "RelativeLightUnit": {
     "properties": {
       "unit": {
         "type": "string",
         "const": "RLU",
         "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#RelativeLightUnit"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
+  "RelativeLightUnitTimesMilliliter": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "RLU.mL",
+        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#RelativeLightUnitTimesMilliliter"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
+  "RelativeLightUnitTimesSecond": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "RLU.s",
+        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#RelativeLightUnitTimesSecond"
       }
     },
     "required": [

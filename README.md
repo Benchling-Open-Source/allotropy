@@ -10,24 +10,43 @@ If you aren't familiar with Allotrope, we suggest you start by reading the [Allo
 We have chosen to have this library output ASM since JSON is easy to read and consume in most modern systems and can be checked by humans without any special tools needed. All of the published open source ASMs can be found in the [ASM Gitlab repository](https://gitlab.com/allotrope-public/asm).
 
 We currently have parser support for the following instruments:
+
+### Recommended
   - Agilent Gen5
-  - Applied Bio AbsoluteQ
-  - Applied Bio QuantStudio RT-PCR
-  - Applied Bio QuantStudio Design & Analysis
+  - Agilent Gen5 Image
+  - Agilent TapeStation Analysis
+  - AppBio AbsoluteQ
+  - AppBio QuantStudio Design & Analysis
+  - AppBio QuantStudio RT-PCR
+  - BMG MARS
+  - Beckman PharmSpec
   - Beckman Vi-Cell BLU
   - Beckman Vi-Cell XR
-  - Beckman PharmSpec
   - Bio-Rad Bio-Plex Manager
+  - CTL ImmunoSpot
   - ChemoMetec Nucleoview
   - Luminex xPONENT
+  - Mabtech Apex
+  - Methodical Mind
   - Molecular Devices SoftMax Pro
   - NovaBio Flex2
   - PerkinElmer Envision
   - Qiacuity dPCR
   - Revvity Kaleido
   - Roche Cedex BioHT
+  - Roche Cedex HiRes
   - Thermo Fisher NanoDrop Eight
+  - Thermo Fisher Qubit 4
+  - Thermo Fisher Qubit Flex
   - Unchained Labs Lunatic
+  - Thermo Fisher Nanodrop One
+
+### Candidate Release
+
+### Working Draft
+  - Thermo Fisher Genesys30
+
+The parsers follow maturation levels of: Recommended, Candidate Release, Working Draft - see [release_state.py](https://github.com/Benchling-Open-Source/allotropy/blob/main/src/allotropy/parsers/release_state.py) for additional details.
 
 This code is published under the permissive MIT license because we believe that standardized instrument data is a benefit for everyone in science.
 
@@ -69,11 +88,11 @@ asm_schema = allotrope_from_io(bytes_io, Vendor.MOLDEV_SOFTMAX_PRO)
 
 Install Hatch: https://hatch.pypa.io/latest/
 Install Python: https://www.python.org/downloads/
-This library supports Python 3.9 or higher. Hatch will install a matching version of Python (defined in `pyproject.toml`) when it sets up your environment.
+This library supports Python 3.10 or higher. Hatch will install a matching version of Python (defined in `pyproject.toml`) when it sets up your environment.
 
-Add pre-push checks to your repo:
+Tell git to use .githooks:
 ```sh
-hatch run scripts:setup-pre-push
+git config core.hooksPath .githooks
 ```
 
 #### Dependencies
@@ -97,17 +116,17 @@ hatch run lint:all
 
 Auto-fix all possible lint issues:
 ```sh
-hatch run lint:fmt
+hatch run fix
 ```
 
 Run all tests:
 ```sh
-hatch run test:test
+hatch run test
 ```
 
 Run a specific test file (replace the filepath with your own):
 ```sh
-hatch run test:test tests/allotrope/allotrope_test.py
+hatch run test tests/allotrope/allotrope_test.py
 ```
 
 Run all tests with coverage:
@@ -122,9 +141,16 @@ hatch shell
 
 ### Publish
 
-To publish a new version, update the version in `src/allotropy/__about__.py` and run:
+NOTE: only package admins can publish allotropy.
+
+To publish a new version:
 
 ```sh
+hatch run scripts:update-version
+```
+
+Merge the resulting PR, and then run on `main`:
+```
 hatch build
 hatch publish
 ```

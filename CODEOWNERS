@@ -1,2 +1,8 @@
-# Use CODEOWNERS file to facilitate code reviews
-*   @Benchling-Open-Source/benchling-connect
+# Give senior parser developers ownership over everything except allotrope schema code and CODEOWNERS
+*			@slopez-b @alejandro-salgado
+src/allotropy/allotrope
+CODEOWNERS
+# Give ASM experts ownership over docs
+docs			@james-leinas
+# Give Benchling Connect team ownership over all
+*   			@Benchling-Open-Source/benchling-connect

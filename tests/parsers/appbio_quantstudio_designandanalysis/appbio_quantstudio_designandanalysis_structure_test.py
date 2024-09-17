@@ -1,28 +1,27 @@
 from __future__ import annotations
 
-from typing import Optional
-
 import pandas as pd
 import pytest
 
-from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_contents import (
-    DesignQuantstudioContents,
+from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
+    DesignQuantstudioReader,
 )
-from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_structure import (
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.structure import (
     Header,
     Result,
 )
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.standard_curve.structure import (
+    StandardCurveWellList,
+)
+from allotropy.parsers.utils.pandas import SeriesData
 
 
-@pytest.mark.design_quantstudio
 def test_header_builder_returns_header_instance() -> None:
     header_contents = get_raw_header_contents()
     assert isinstance(Header.create(header_contents), Header)
 
 
-@pytest.mark.design_quantstudio
 def test_header_builder() -> None:
     measurement_time = "2010-10-01 01:44:54 AM EDT"
     device_identifier = "device1"
@@ -69,7 +68,6 @@ def test_header_builder() -> None:
     )
 
 
-@pytest.mark.design_quantstudio
 @pytest.mark.parametrize(
     "parameter,expected_error",
     [
@@ -89,7 +87,6 @@ def test_header_builder_required_parameter_none_then_raise(
         Header.create(header_contents)
 
 
-@pytest.mark.design_quantstudio
 def test_header_builder_invalid_plate_well_count() -> None:
     header_contents = get_raw_header_contents(plate_well_count="0 plates")
 
@@ -97,24 +94,30 @@ def test_header_builder_invalid_plate_well_count() -> None:
         Header.create(header_contents)
 
 
-@pytest.mark.design_quantstudio
 def test_header_builder_no_header_then_raise() -> None:
     with pytest.raises(AllotropeConversionError):
-        Header.create(pd.Series())
+        Header.create(SeriesData(pd.Series()))
 
 
-@pytest.mark.design_quantstudio
 def test_results_builder() -> None:
-    contents = DesignQuantstudioContents(
+    contents = DesignQuantstudioReader(
         {
             "Results": get_results_sheet(),
             "Standard Curve Result": get_standard_curve_result_sheet(),
         },
     )
 
-    result = Result.create(
-        contents, 1, "RNaseP", ExperimentType.standard_curve_qPCR_experiment
+    target_dna_description = "RNaseP"
+    well_item_id = 1
+    data = StandardCurveWellList.get_well_result_data(contents)
+    well_data = data[pd.Series(data.get("Well")) == 1]
+    target_well_data = well_data[
+        pd.Series(well_data.get("Target")) == target_dna_description
+    ]
+    target_data = SeriesData(
+        pd.Series(target_well_data.iloc[0], index=target_well_data.columns)
     )
+    result = Result.create(target_data, well_item_id)
 
     assert isinstance(result, Result)
     assert result.automatic_baseline_determination_enabled_setting is True
@@ -242,40 +245,41 @@ def get_results_sheet() -> pd.DataFrame:
 
 
 def get_raw_header_contents(
-    measurement_time: Optional[str] = "2010-10-01 01:44:54 AM EDT",
-    plate_well_count: Optional[str] = "96-Well 0.2-mL Block",
-    device_identifier: Optional[str] = "QS1-Eng2",
-    model_number: Optional[str] = "QuantStudio(TM) 6 Flex System",
-    device_serial_number: Optional[str] = "278880034",
-    measurement_method_identifier: Optional[str] = "Ct",
-    pcr_detection_chemistry: Optional[str] = "TAQMAN",
-    passive_reference_dye_setting: Optional[str] = "ROX",
-    barcode: Optional[str] = None,
-    analyst: Optional[str] = None,
-    experimental_data_identifier: Optional[
-        str
-    ] = "QuantStudio 96-Well Presence-Absence Example",
-    pcr_stage_number: Optional[str] = "Stage 2 Step 2",
-    software_name_and_version: Optional[str] = "Design & Analysis Software v2.7.0",
-    block_serial_number: Optional[str] = "1",
-    heated_cover_serial_number: Optional[str] = "2",
-) -> pd.Series[str]:
-    return pd.Series(
-        {
-            "Run End Data/Time": measurement_time,
-            "Block Type": plate_well_count,
-            "Instrument Name": device_identifier,
-            "Instrument Type": model_number,
-            "Instrument Serial Number": device_serial_number,
-            "Quantification Cycle Method": measurement_method_identifier,
-            "Chemistry": pcr_detection_chemistry,
-            "Passive Reference": passive_reference_dye_setting,
-            "Barcode": barcode,
-            "Operator": analyst,
-            "Experiment Name": experimental_data_identifier,
-            "PCR Stage/Step Number": pcr_stage_number,
-            "Software Name and Version": software_name_and_version,
-            "Block Serial Number": block_serial_number,
-            "Heated Cover Serial Number": heated_cover_serial_number,
-        }
+    measurement_time: str | None = "2010-10-01 01:44:54 AM EDT",
+    plate_well_count: str | None = "96-Well 0.2-mL Block",
+    device_identifier: str | None = "QS1-Eng2",
+    model_number: str | None = "QuantStudio(TM) 6 Flex System",
+    device_serial_number: str | None = "278880034",
+    measurement_method_identifier: str | None = "Ct",
+    pcr_detection_chemistry: str | None = "TAQMAN",
+    passive_reference_dye_setting: str | None = "ROX",
+    barcode: str | None = None,
+    analyst: str | None = None,
+    experimental_data_identifier: None
+    | (str) = "QuantStudio 96-Well Presence-Absence Example",
+    pcr_stage_number: str | None = "Stage 2 Step 2",
+    software_name_and_version: str | None = "Design & Analysis Software v2.7.0",
+    block_serial_number: str | None = "1",
+    heated_cover_serial_number: str | None = "2",
+) -> SeriesData:
+    return SeriesData(
+        pd.Series(
+            {
+                "Run End Data/Time": measurement_time,
+                "Block Type": plate_well_count,
+                "Instrument Name": device_identifier,
+                "Instrument Type": model_number,
+                "Instrument Serial Number": device_serial_number,
+                "Quantification Cycle Method": measurement_method_identifier,
+                "Chemistry": pcr_detection_chemistry,
+                "Passive Reference": passive_reference_dye_setting,
+                "Barcode": barcode,
+                "Operator": analyst,
+                "Experiment Name": experimental_data_identifier,
+                "PCR Stage/Step Number": pcr_stage_number,
+                "Software Name and Version": software_name_and_version,
+                "Block Serial Number": block_serial_number,
+                "Heated Cover Serial Number": heated_cover_serial_number,
+            }
+        )
     )

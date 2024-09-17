@@ -1,0 +1,11 @@
+#!/bin/bash
+if [[ "$PR_TITLE" =~ ^(docs|style|refactor|perf|test|chore):.* ]]; then
+    exit 0
+fi
+git fetch origin --quiet
+if [ $(git diff-tree -r --name-only --no-commit-id origin/main HEAD | grep -c CHANGELOG.md) -eq 0 ]
+then
+    echo "Must update CHANGELOG.md when PR title prefix is feat or fix, see CONTRIBUTING for details."
+    exit 1
+fi
+exit 0

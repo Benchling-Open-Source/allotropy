@@ -3,17 +3,21 @@ from __future__ import annotations
 from collections import defaultdict
 from dataclasses import dataclass
 import io
-import json
-import os
 from pathlib import Path
 import re
-from typing import Any, Optional
+from typing import Any
 
+from allotropy.allotrope.schema_parser.backup_manager import get_original_path
+from allotropy.allotrope.schema_parser.path_util import (
+    get_manifest_from_schema_path,
+    get_schema_path_from_model_path,
+)
 from allotropy.allotrope.schema_parser.schema_cleaner import _should_filter_key
 from allotropy.allotrope.schema_parser.schema_model import (
     get_all_schema_components,
     get_schema_definitions_mapping,
 )
+from allotropy.parsers.utils.values import assert_not_none
 
 SCHEMA_DIR_PATH = "src/allotropy/allotrope/schemas"
 SHARED_FOLDER_MODULE = "allotropy.allotrope.models.shared"
@@ -26,7 +30,9 @@ def _values_equal(value1: Any, value2: Any) -> bool:
         return (
             isinstance(value2, list)
             and len(value1) == len(value2)
-            and all(_values_equal(v1, v2) for v1, v2 in zip(value1, value2))
+            and all(
+                _values_equal(v1, v2) for v1, v2 in zip(value1, value2, strict=True)
+            )
         )
     else:
         return bool(
@@ -42,10 +48,9 @@ def _schemas_equal(schema1: dict[str, Any], schema2: dict[str, Any]) -> bool:
     )
 
 
-def get_shared_schema_info(schema_path: str) -> tuple[set[str], dict[str, set[str]]]:
-    with open(schema_path) as f:
-        schema = json.load(f)
-
+def get_shared_schema_info(
+    schema: dict[str, Any]
+) -> tuple[set[str], dict[str, set[str]]]:
     classes_to_skip = set()
     imports_to_add = defaultdict(set)
 
@@ -72,52 +77,106 @@ def get_shared_schema_info(schema_path: str) -> tuple[set[str], dict[str, set[st
     return classes_to_skip, dict(imports_to_add)
 
 
-def get_manifest_from_schema_path(schema_path: str) -> str:
-    relpath = Path(os.path.relpath(schema_path, SCHEMA_DIR_PATH))
-    return (
-        f"http://purl.allotrope.org/manifests/{relpath.parent}/{relpath.stem}.manifest"
+def _to_or_union(types: set[str]) -> str:
+    return "|".join(
+        sorted(t for t in types if t not in ("", "None"))
+        + (["None"] if "None" in types else [])
     )
+
+
+def _is_or_union(type_string: str, sep: str = "|") -> bool:
+    # A type string is an | union if there is a | not nested in brackets.
+    nested = 0
+    for char in type_string:
+        if char == "]":
+            nested -= 1
+        if char == "[":
+            nested += 1
+        if char == sep and not nested:
+            return True
+    return False
+
+
+def _split_types(type_string: str, sep: str) -> tuple[set[str], int]:
+    # Given a string representing some or all of a type specification, returns the types up to the first
+    # closing bracket, or all types if no bracket if found. If a closing bracket is found, returns the
+    # index of that bracket in the string.
+    #
+    #    "str|int" -> {"str, "int"}, 6 (6 == length of string)
+    #
+    #    "str|int]|float" -> {"str, "int"}, 7 (7 == index of ])
+    #
+    inner_types = [""]
+    nested = 0
+    for index, char in enumerate(type_string):  # noqa: B007
+        if char == "]":
+            if nested == 0:
+                break
+            nested -= 1
+        if char == "[":
+            nested += 1
+        # Build up inner_type, breaking on outermost commas
+        if char == sep and not nested:
+            inner_types.append("")
+        else:
+            inner_types[-1] += char
+    return set(inner_types), index
+
+
+def _union_to_or(type_string: str) -> str:
+    type_string = type_string.replace("Union", "union")
+    while "union" in type_string:
+        before, after = type_string.split("union[", 1)
+        inner_types, end_index = _split_types(after, ",")
+        type_string = before + _to_or_union(inner_types) + after[end_index + 1 :]
+        # type_string = before + "|".join(sorted(it for it in inner_types if it)) + after[end_index + 1:]
+    return type_string
 
 
 def _parse_field_types(type_string: str) -> set[str]:
     # Parses a set of types from a dataclass field type specification, e.g.
-    #   key: Union[str, int] -> {int, str}
+    #   key: Union[str, int] / int|str -> {int, str}
     #
     # Combined duplicated values recursively. These can happen due to class substitutions, e.g.
     #   item: Union[Type, Type1], where Type1 gets replaced with Type becomes:
-    #   item: Union[Type, Type] -> {Type}
-    if "[" not in type_string:
+    #   item: Union[Type, Type] / Type|Type -> {Type}
+
+    # Convert all unions to | operators, as this makes the rest of the logic easier
+    type_string = _union_to_or(type_string)
+
+    # In a union, parse each type recursively to clean up inner types and combine duplicates
+    if _is_or_union(type_string):
+        return set.union(
+            *[_parse_field_types(ts) for ts in _split_types(type_string, "|")[0]]
+        )
+
+    # If it is not a union and it doesn't end with a bracket, nothing left to do
+    if not type_string.endswith("]"):
         return {type_string}
 
     identifier, inner = type_string.split("[", 1)
     inner = inner[:-1]
 
-    # Return Unioned values as a set of deduped types
-    if identifier == "Union":
-        types = set()
-        for inner_ in inner.split(","):
-            if not inner_:
-                continue
-            types |= _parse_field_types(inner_)
-        return types
-
     if identifier.lower() in ("list", "set", "tuple"):
         # Special handling for type specifications with lowercase (typedef) identifiers, which
         # can specify a list of types without a union. e.g.
-        #     List[Union[str, int]] == list[str, int]
-        # Handle this by inserting a Union and reparsing
-        if not inner.lower().startswith("union["):
-            inner = f"Union[{inner}]"
+        #     list[str,int] == list[str|int]
+        # Handle this by replacing with an or union
+        if _is_or_union(inner, ","):
+            inner = _to_or_union(_split_types(inner, ",")[0])
         types = _parse_field_types(inner)
-    elif identifier in ("dict", "Dict", "Mapping"):
-        # NOTE: assumes that key_type is always one value. Generated code hasn't done something else yet.
+    elif identifier.lower() in ("dict", "mapping"):
         key_type, value_types = inner.split(",", 1)
-        return {f"{identifier}[{key_type},{','.join(_parse_field_types(value_types))}]"}
+        return {
+            f"{identifier}[{key_type},{_to_or_union(_parse_field_types(value_types))}]"
+        }
+    elif identifier.lower() == "optional":
+        return _parse_field_types(inner) | {"None"}
     else:
         types = _parse_field_types(inner)
 
     if len(types) > 1:
-        types_string = f"Union[{','.join(sorted(types))}]"
+        types_string = _to_or_union(types)
     else:
         types_string = next(iter(types))
     return {f"{identifier}[{types_string}]"}
@@ -128,8 +187,7 @@ class DataclassField:
     """Represents a dataclass field."""
 
     name: str
-    is_required: bool
-    default_value: Optional[str]
+    default_value: str | None
     field_types: set[str]
 
     @staticmethod
@@ -138,45 +196,43 @@ class DataclassField:
         type_string, default_value = (
             content.split("=") if "=" in content else (content, None)
         )
-        if not type_string:
-            msg = "This is impossible but type checker is dumb"
-            raise AssertionError(msg)
-        is_required = True
-        if type_string.startswith("Optional["):
-            is_required = False
-            type_string = type_string[9:-1]
-        types = _parse_field_types(type_string)
+        types = _parse_field_types(assert_not_none(type_string))
 
-        return DataclassField(name, is_required, default_value, types)
+        return DataclassField(name, default_value, types)
+
+    @property
+    def is_required(self) -> bool:
+        return "None" not in self.field_types
 
     @property
     def contents(self) -> str:
         if len(self.field_types) > 1:
-            types = f"Union[{','.join(sorted(self.field_types))}]"
+            types = _to_or_union(self.field_types)
         else:
             types = next(iter(self.field_types))
-        if not self.is_required:
-            types = f"Optional[{types}]"
         if self.default_value:
             types = f"{types}={self.default_value}"
         return f"{self.name}: {types}"
 
-    def can_merge(self, other: DataclassField) -> bool:
-        return (
-            self.name == other.name
-            and self.is_required == other.is_required
-            and self.default_value == other.default_value
-        )
+    def make_optional(self) -> None:
+        self.field_types.add("None")
+        self.default_value = "None"
 
     def merge(self, other: DataclassField) -> DataclassField:
-        if not self.can_merge(other):
-            msg = f"Can not merge incompatible fields {self} and {other}"
-            raise AssertionError(msg)
         return DataclassField(
             name=self.name,
-            is_required=self.is_required,
-            default_value=self.default_value,
-            field_types=self.field_types | other.field_types,
+            # If default values disagree - this must be a now optional field, make it None
+            default_value=self.default_value
+            if self.default_value == other.default_value
+            else "None",
+            # Note that combining required + not required == not required
+            # When combining types, drop a general dict[str, Any] type. This happens when the schema
+            # does not specify any fields, but that's a mistake.
+            field_types={
+                type_
+                for type_ in self.field_types | other.field_types
+                if type_.lower() != "dict[str,any]"
+            },
         )
 
 
@@ -189,11 +245,10 @@ class ClassLines:
 
     @property
     def base_class_name(self) -> str:
-        match = re.match("([A-Za-z]*)[0-9]*", self.class_name)
-        if not match:
-            msg = f"Could not extract base class name from {self.class_name}"
-            raise AssertionError(msg)
-        return str(match.groups(0)[0])
+        match = re.match("([A-Za-z]*)[0-9]*$", self.class_name)
+        if match:
+            return str(match.groups(0)[0])
+        return self.class_name
 
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, ClassLines):
@@ -213,6 +268,43 @@ class ClassLines:
         return "".join(self.lines)
 
 
+@dataclass
+class TypeName(ClassLines):
+    """Represents a set of lines defining a type name."""
+
+    lines: list[str]
+    class_name: str
+    types: set[str]
+
+    @staticmethod
+    def create(lines: list[str]) -> TypeName:
+        match = re.match(
+            "(\\S+) = \\(?([^).]+)\\)?", "".join([line.strip() for line in lines])
+        )
+        if not match:
+            msg = f"Could not parse type definition for {''.join(lines)}."
+            raise AssertionError(msg)
+        class_name = match.groups()[0]
+        types = {type_.strip() for type_ in match.groups()[1].split("|")}
+        lines = [f"{class_name} = {'|'.join(types)}"]
+        return TypeName(lines, class_name, types)
+
+    def should_merge(self, _: DataClassLines | TypeName) -> bool:
+        return False
+
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, TypeName):
+            return False
+
+        if self.base_class_name != other.base_class_name:
+            return False
+
+        if self.types != other.types:
+            return False
+
+        return True
+
+
 @dataclass(eq=False)
 class DataClassLines(ClassLines):
     """Represents a set of lines defining a dataclass."""
@@ -226,11 +318,13 @@ class DataClassLines(ClassLines):
         name: str,
         parent_class_names: list[str],
         fields: dict[str, DataclassField],
-        field_name_order: Optional[list[str]] = None,
-        is_frozen: Optional[bool] = False,  # noqa: FBT002
+        field_name_order: list[str] | None = None,
+        is_frozen: bool | None = False,  # noqa: FBT002
     ) -> DataClassLines:
         # Recreate lines with no whitespace from parsed values
-        lines = [f"@dataclass{'(frozen=True)' if is_frozen else ''}"]
+        kwargs = ({"frozen": True} if is_frozen else {}) | {"kw_only": True}
+        kwargs_string = ",".join(f"{key}={value}" for key, value in kwargs.items())
+        lines = [f"@dataclass({kwargs_string})"]
 
         class_name_line = f"class {name}"
         if parent_class_names:
@@ -251,6 +345,8 @@ class DataClassLines(ClassLines):
 
         for field_name in fixed_field_name_order:
             lines.append(f"    {fields[field_name].contents}")
+        if not fixed_field_name_order:
+            lines.append("    pass")
 
         return DataClassLines(
             lines=[line + "\n" for line in lines],
@@ -286,40 +382,44 @@ class DataClassLines(ClassLines):
             self.is_frozen,
         )
 
-    def should_merge(self, other: DataClassLines) -> bool:
+    def should_merge(self, other: DataClassLines | TypeName) -> bool:
+        if isinstance(other, TypeName):
+            return other.types == {self.class_name}
+
+        # Special case where one class is an empty rename of the other.
+        if not other.fields and set(other.parent_class_names) == {self.class_name}:
+            return True
+
         # parent classes must match
-        if not set(self.parent_class_names) == set(other.parent_class_names):
-            return False
-        # There must be some overlapping fields with the same values
-        if not any(
-            self.fields[name].contents == other.fields[name].contents
-            for name in self.fields.keys() & other.fields.keys()
-        ):
-            return False
-        # Fields unique to one class must be optional.
-        all_fields = self.fields | other.fields
-        if any(
-            all_fields[name].is_required
-            for name in self.fields.keys() ^ other.fields.keys()
-        ):
-            return False
-        # Shared fields must agree on whether they are required
-        if not all(
-            self.fields[name].can_merge(other.fields[name])
-            for name in self.fields.keys() & other.fields.keys()
-        ):
-            return False
+        if set(self.parent_class_names) != set(other.parent_class_names):
+            # Special case for OrderedItem, which sometimes gets combined and sometimes does not.
+            if set(self.parent_class_names) | set(other.parent_class_names) != {
+                "OrderedItem"
+            }:
+                return False
 
         return True
 
-    def merge_similar(self, other: DataClassLines) -> DataClassLines:
+    def merge_similar(self, other: DataClassLines | TypeName) -> DataClassLines:
         # Merge another class that has similar fields with this one.
+
+        if isinstance(other, TypeName):
+            if other.types != {self.class_name}:
+                msg = f"Can't merge TypeName when not a perfect match: {self.class_name}, {other.class_name}."
+                raise AssertionError(msg)
+            return self
 
         # Add fields from the other class to this one.
         for field_name in other.fields:
             if field_name not in self.fields:
                 self.fields[field_name] = other.fields[field_name]
+                self.fields[field_name].make_optional()
                 self.field_name_order.append(field_name)
+
+        # For fields in this class not in the other, mark as optional
+        for field_name in self.fields:
+            if field_name not in other.fields:
+                self.fields[field_name].make_optional()
 
         # Merge fields by combining types into a single union.
         for field_name in self.fields.keys() & other.fields.keys():
@@ -328,6 +428,15 @@ class DataClassLines(ClassLines):
             self.fields[field_name] = self.fields[field_name].merge(
                 other.fields[field_name]
             )
+
+        # Special case for OrderedItem, which sometimes gets combined and sometimes does not.
+        # If parents do not match, and it is only ordered item, it is because one class got
+        # ordered item merged in, so drop it.
+        if set(self.parent_class_names) != set(other.parent_class_names):
+            if set(self.parent_class_names) | set(other.parent_class_names) == {
+                "OrderedItem"
+            }:
+                self.parent_class_names = []
 
         return DataClassLines.create(
             self.class_name,
@@ -359,17 +468,13 @@ def create_class_lines(lines: list[str]) -> ClassLines:
     elif " = " in class_description:
         # Match type aliasing, e.g. TClass = str
         match = re.match("(\\S+) =", lines[0])
+        return TypeName.create(lines)
     if not match:
         msg = f"Could not determine class name for: {''.join(lines)}."
         raise AssertionError(msg)
     class_name = match.groups()[0]
 
     if not is_dataclass:
-        return ClassLines(lines, class_name)
-
-    # Handle case where dataclass is just a rename of another dataclass. We don't need to do anything with
-    # these, so just pass them.
-    if "pass" in lines[desc_end + 1] and ":" not in lines[desc_end + 1]:
         return ClassLines(lines, class_name)
 
     is_frozen = "frozen=True" in lines[0]
@@ -380,6 +485,17 @@ def create_class_lines(lines: list[str]) -> ClassLines:
     parent_class_names = (
         [name.strip() for name in match.groups()[0].split(",")] if match else []
     )
+
+    # Handle case where dataclass is just a rename of another dataclass. We don't need to do anything with
+    # these, so just pass them.
+    if "pass" in lines[desc_end + 1] and ":" not in lines[desc_end + 1]:
+        return DataClassLines.create(
+            name=class_name,
+            parent_class_names=parent_class_names,
+            fields={},
+            field_name_order=[],
+            is_frozen=is_frozen,
+        )
 
     # Get fields of the dataclass
     fields: dict[str, DataclassField] = {}
@@ -424,14 +540,16 @@ class ModelClassEditor:
         manifest: str,
         classes_to_skip: set[str],
         imports_to_add: dict[str, set[str]],
+        schema_name: str,
     ):
         self.manifest = manifest
         self.classes_to_skip = classes_to_skip
         self.imports_to_add = imports_to_add
+        self.schema_name = schema_name
 
     def _handle_class_lines(
         self, class_name: str, classes: dict[str, ClassLines]
-    ) -> Optional[list[str]]:
+    ) -> list[str] | None:
         class_lines = classes[class_name]
 
         # A dataclass with required fields can not inherit from a dataclass with an optional field
@@ -455,8 +573,8 @@ class ModelClassEditor:
         return class_lines.lines
 
     def _get_class_lines(
-        self, file: io.TextIOBase, existing_lines: Optional[list[str]] = None
-    ) -> Optional[ClassLines]:
+        self, file: io.TextIOBase, existing_lines: list[str] | None = None
+    ) -> ClassLines | None:
         # Reads lines for the next class and returns as a ClassLines object.
         lines: list[str] = existing_lines or []
         started = False
@@ -476,27 +594,51 @@ class ModelClassEditor:
 
     def _find_substitutions(
         self, classes: dict[str, ClassLines], class_groups: dict[str, set[str]]
-    ) -> dict[str, str]:
+    ) -> tuple[dict[str, str], dict[str, str]]:
         substitutions: dict[str, str] = {}
+        renames: dict[str, str] = {}
 
         for class_group in class_groups.values():
             sorted_class_names = sorted(class_group)
+            made_change = False
             for i in range(len(sorted_class_names) - 1):
                 class1 = classes[sorted_class_names[i]]
-                if not isinstance(class1, DataClassLines):
+                if not isinstance(class1, DataClassLines | TypeName):
                     continue
                 for j in range(i + 1, len(sorted_class_names)):
                     class2 = classes[sorted_class_names[j]]
-                    if not isinstance(class2, DataClassLines):
+                    if not isinstance(class2, DataClassLines | TypeName):
                         continue
+                    made_change = True
                     # If classes are equal or similar enough to merge, substitute.
                     if class1 == class2:
                         substitutions[class2.class_name] = class1.class_name
-                    elif class1.should_merge(class2):
+                    elif isinstance(class1, DataClassLines) and class1.should_merge(
+                        class2
+                    ):
                         classes[class1.class_name] = class1.merge_similar(class2)
                         substitutions[class2.class_name] = class1.class_name
+                    elif isinstance(class2, DataClassLines) and class2.should_merge(
+                        class1
+                    ):
+                        classes[class2.class_name] = class2.merge_similar(class1)
+                        substitutions[class1.class_name] = class2.class_name
+                    else:
+                        made_change = False
 
-        return substitutions
+            # If we are done combining classes for this group, rename to set number suffixes
+            # as low as possible.
+            if not made_change:
+                base_class_name = classes[sorted_class_names[0]].base_class_name
+                for idx, class_name in enumerate(sorted_class_names):
+                    # Don't fix names that are already going to be skipped.
+                    if class_name in self.classes_to_skip:
+                        continue
+                    rename = f"{base_class_name}{idx if idx > 0 else ''}"
+                    if rename != class_name:
+                        renames[class_name] = rename
+
+        return substitutions, renames
 
     def modify_file(self, file_contents: str) -> str:
         new_contents: list[str] = []
@@ -506,8 +648,10 @@ class ModelClassEditor:
         # Scan past comments and import lines.
         while True:
             line = f.readline()
+            if line.startswith("#   filename:"):
+                new_contents.append(f"#   filename:  {self.schema_name}\n")
             # TODO: this needs work to be more robust.
-            if (
+            elif (
                 line == "\n"
                 or line.startswith("#")
                 or line.startswith("from")
@@ -545,7 +689,7 @@ class ModelClassEditor:
             class_groups[class_lines.base_class_name].add(class_lines.class_name)
 
         # If there are identical/similar classes with numerical suffixes, remove them.
-        substitutions = self._find_substitutions(classes, class_groups)
+        substitutions, renames = self._find_substitutions(classes, class_groups)
 
         # Build the new file contents before we do substitutions and look for unused classes.
         for class_name in classes_in_order:
@@ -563,6 +707,12 @@ class ModelClassEditor:
                 rf"{substitutions[class_to_remove]}\g<1>",
                 new,
             )
+        for class_to_remove in sorted(renames.keys(), reverse=True):
+            new = re.sub(
+                f"{class_to_remove}([^0-9])",
+                rf"{renames[class_to_remove]}\g<1>",
+                new,
+            )
 
         # Check for classes that are no longer used
         unused_classes: set[str] = set()
@@ -573,7 +723,7 @@ class ModelClassEditor:
                 unused_classes.add(class_name)
 
         # If we changed anything, run through again to look for iterative removals
-        if unused_classes or substitutions:
+        if unused_classes or substitutions or renames:
             self.classes_to_skip = unused_classes
             self.imports_to_add = {}
             return self.modify_file(new)
@@ -581,11 +731,13 @@ class ModelClassEditor:
         return new
 
 
-def modify_file(model_path: str, schema_path: str) -> None:
-    classes_to_skip, imports_to_add = get_shared_schema_info(schema_path)
+def modify_file(model_path: Path, schema: dict[str, Any]) -> None:
+    classes_to_skip, imports_to_add = get_shared_schema_info(schema)
+    schema_path = get_schema_path_from_model_path(get_original_path(model_path))
     manifest = get_manifest_from_schema_path(schema_path)
-
-    editor = ModelClassEditor(manifest, classes_to_skip, imports_to_add)
+    editor = ModelClassEditor(
+        manifest, classes_to_skip, imports_to_add, schema_path.name
+    )
 
     with open(model_path) as f:
         contents = f.read()

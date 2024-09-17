@@ -1,48 +1,82 @@
 from __future__ import annotations
 
-from dataclasses import fields
+from collections.abc import Callable
 import math
 import re
-from typing import Any, Optional, TypeVar, Union
-from xml.etree import ElementTree
-
-import pandas as pd
+from typing import Any, TypeVar
 
 from allotropy.allotrope.models.shared.definitions.definitions import (
     InvalidJsonFloat,
     JsonFloat,
+    TQuantityValue,
 )
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
+from allotropy.parsers.utils.units import get_quantity_class
 
-PrimitiveValue = Union[str, int, float]
+PrimitiveValue = str | int | float
 
 
 def str_to_bool(value: str) -> bool:
-    return value.lower() in ("yes", "true", "t", "1")
+    return value.lower() in ("yes", "y", "true", "t", "1")
 
 
-def try_int(value: Optional[str], value_name: str) -> int:
+def try_int(value: str | None, value_name: str) -> int:
+    str_value = assert_not_none(value, value_name)
     try:
-        return int(assert_not_none(value, value_name))
+        return int(str_value)
     except ValueError as e:
+        # If the value is expected to be an int, but represented as a float (e.g. 1.0) try casting with float
+        # and return if it's a valid int.
+        try:
+            float_value = _try_float(str_value)
+            if float_value == int(float_value):
+                return int(float_value)
+        except ValueError:
+            pass
         msg = f"Invalid integer string: '{value}'."
         raise AllotropeConversionError(msg) from e
 
 
-def try_int_or_none(value: Optional[str]) -> Optional[int]:
+def try_int_or_none(value: str | None) -> int | None:
     try:
         return int(value or "")
     except ValueError:
         return None
 
 
+def _try_float(value: str) -> float:
+    # NOTE: this will convert a string with commas for thousands into a decimal, potentially introducing
+    # an unexpected error, e.g. one thousand represented as 1,000 would get converted to 1.0
+    # However, numbers are not usually represented like this in scientific output (we have no example of it)
+    return float(value.replace(",", "."))
+
+
 def try_float(value: str, value_name: str) -> float:
     assert_not_none(value, value_name)
     try:
-        return float(value)
+        return _try_float(value)
     except ValueError as e:
         msg = f"Invalid float string: '{value}'."
         raise AllotropeConversionError(msg) from e
+
+
+def try_float_or_none(value: str | float | None) -> float | None:
+    try:
+        return _try_float(str(value))
+    except ValueError:
+        return None
+
+
+def try_nan_float_or_none(value: str | float | None) -> JsonFloat | None:
+    float_value = try_float_or_none(value) if isinstance(value, str) else value
+    if float_value is None:
+        return None
+    return InvalidJsonFloat.NaN if math.isnan(float_value) else float_value
+
+
+def try_non_nan_float_or_none(value: str | float | None) -> float | None:
+    float_value = try_float_or_none(value)
+    return None if float_value is None or math.isnan(float_value) else float_value
 
 
 def try_non_nan_float(value: str) -> float:
@@ -53,19 +87,14 @@ def try_non_nan_float(value: str) -> float:
     return float_value
 
 
-def try_non_nan_float_or_none(value: Optional[str]) -> Optional[float]:
-    float_value = try_float_or_none(value)
-    return None if float_value is None or math.isnan(float_value) else float_value
+def try_int_or_nan(value: str | int | None) -> int | InvalidJsonFloat:
+    if isinstance(value, int):
+        return value
+    float_value = try_non_nan_float_or_none(value)
+    return InvalidJsonFloat.NaN if float_value is None else int(float_value)
 
 
-def try_float_or_none(value: Optional[str]) -> Optional[float]:
-    try:
-        return float("" if value is None else value)
-    except ValueError:
-        return None
-
-
-def try_float_or_nan(value: Optional[str]) -> JsonFloat:
+def try_float_or_nan(value: str | float | None) -> JsonFloat:
     float_value = try_non_nan_float_or_none(value)
     return InvalidJsonFloat.NaN if float_value is None else float_value
 
@@ -78,129 +107,55 @@ def natural_sort_key(key: str) -> list[str]:
     ]
 
 
+QuantityType = TypeVar("QuantityType", bound=TQuantityValue)
+
+
+def quantity_or_none(
+    value_cls: type[QuantityType],
+    value: JsonFloat | list[JsonFloat] | list[int] | None,
+    index: int | None = None,
+) -> QuantityType | None:
+    if value is None:
+        return None
+    if isinstance(value, list):
+        return value_cls(value=value[assert_not_none(index, msg="Cannot provide list to quantity_or_none without index")])  # type: ignore[call-arg]
+    # Typing does not know that all subclasses of TQuantityValue have default value for unit set.
+    return value_cls(value=value)  # type: ignore[call-arg]
+
+
+def quantity_or_none_from_unit(
+    unit: str | None,
+    value: JsonFloat | list[JsonFloat] | list[int] | None,
+) -> TQuantityValue | None:
+    if value is None:
+        return None
+    value_cls = get_quantity_class(unit)
+    if not value_cls:
+        msg = f"Must provide valid unit when value is non-null, got: {unit}"
+        raise AllotropyParserError(msg)
+    return quantity_or_none(value_cls, value)
+
+
 T = TypeVar("T")
 
 
 def assert_not_none(
-    value: Optional[T], name: Optional[str] = None, msg: Optional[str] = None
+    value: T | None, name: str | None = None, msg: str | None = None
 ) -> T:
     if value is None:
-        error = msg or f"Expected non-null value{f' for {name}' if name else ''}."
-        raise AllotropeConversionError(error)
+        msg = msg or f"Expected non-null value{f' for {name}' if name else ''}."
+        raise AllotropeConversionError(msg)
     return value
 
 
-def df_to_series(
-    df: pd.DataFrame,
-    msg: str,
-) -> pd.Series[Any]:
-    n_rows, _ = df.shape
-    if n_rows == 1:
-        return pd.Series(df.iloc[0], index=df.columns)
-    raise AllotropeConversionError(msg)
+Type_ = Callable[..., T]
 
 
-def assert_df_column(df: pd.DataFrame, column: str) -> pd.Series[Any]:
-    df_column = df.get(column)
-    if df_column is None:
-        msg = f"Unable to find column '{column}'"
+def assert_is_type(value: Any, type_: Type_[T], msg: str | None = None) -> T:
+    if type(value) is not type_:
+        msg = msg or f"Expected value: '{value}' to be of type {type_}"
         raise AllotropeConversionError(msg)
-    return pd.Series(df_column)
-
-
-def assert_not_empty_df(df: pd.DataFrame, msg: str) -> pd.DataFrame:
-    if df.empty:
-        raise AllotropeConversionError(msg)
-    return df
-
-
-def try_str_from_series_or_default(
-    data: pd.Series[Any],
-    key: str,
-    default: str,
-) -> str:
-    value = data.get(key)
-    return default if value is None else str(value)
-
-
-def try_str_from_series_or_none(
-    data: pd.Series[Any],
-    key: str,
-) -> Optional[str]:
-    value = data.get(key)
-    return None if value is None else str(value)
-
-
-def try_str_from_series(
-    series: pd.Series[Any],
-    key: str,
-    msg: Optional[str] = None,
-) -> str:
-    return assert_not_none(try_str_from_series_or_none(series, key), key, msg)
-
-
-def try_int_from_series_or_none(
-    data: pd.Series[Any],
-    key: str,
-) -> Optional[int]:
-    try:
-        value = data.get(key)
-        return try_int(str(value), key)
-    except Exception as e:
-        msg = f"Unable to convert '{value}' (with key '{key}') to integer value."
-        raise AllotropeConversionError(msg) from e
-
-
-def try_int_from_series(
-    data: pd.Series[Any],
-    key: str,
-    msg: Optional[str] = None,
-) -> int:
-    return assert_not_none(try_int_from_series_or_none(data, key), key, msg)
-
-
-def try_float_from_series_or_nan(
-    data: pd.Series[Any],
-    key: str,
-) -> JsonFloat:
-    try:
-        value = data.get(key)
-        return try_float_or_nan(str(value))
-    except Exception as e:
-        msg = f"Unable to convert '{value}' (with key '{key}') to float value."
-        raise AllotropeConversionError(msg) from e
-
-
-def try_float_from_series_or_none(
-    data: pd.Series[Any],
-    key: str,
-) -> Optional[float]:
-    try:
-        value = data.get(key)
-        return try_float_or_none(str(value))
-    except Exception as e:
-        msg = f"Unable to convert '{value}' (with key '{key}') to float value."
-        raise AllotropeConversionError(msg) from e
-
-
-def try_float_from_series(
-    data: pd.Series[Any],
-    key: str,
-    msg: Optional[str] = None,
-) -> float:
-    return assert_not_none(try_float_from_series_or_none(data, key), key, msg)
-
-
-def try_bool_from_series_or_none(
-    data: pd.Series[Any],
-    key: str,
-) -> Optional[bool]:
-    try:
-        value = data.get(key)
-        return None if value is None else str_to_bool(str(value))
-    except Exception as e:
-        msg = f"Unable to convert '{value}' (with key '{key}') to boolean value."
-        raise AllotropeConversionError(msg) from e
+    return value  # type:ignore[no-any-return]
 
 
 def num_to_chars(n: int) -> str:
@@ -208,74 +163,5 @@ def num_to_chars(n: int) -> str:
     return "" if n < 0 else num_to_chars(d - 1) + chr(m + 65)  # chr(65) = 'A'
 
 
-def str_or_none(value: Any) -> Optional[str]:
+def str_or_none(value: Any) -> str | None:
     return None if value is None else str(value)
-
-
-def get_element_from_xml(
-    xml_object: ElementTree.Element, tag_name: str, tag_name_2: Optional[str] = None
-) -> ElementTree.Element:
-    if tag_name_2 is not None:
-        tag_finder = tag_name + "/" + tag_name_2
-        xml_element = xml_object.find(tag_finder)
-    else:
-        tag_finder = tag_name
-        xml_element = xml_object.find(tag_finder)
-    if xml_element is not None:
-        return xml_element
-    else:
-        msg = f"Unable to find '{tag_finder}' from xml."
-        raise AllotropeConversionError(msg)
-
-
-def get_val_from_xml(
-    xml_object: ElementTree.Element, tag_name: str, tag_name_2: Optional[str] = None
-) -> str:
-    return str(get_element_from_xml(xml_object, tag_name, tag_name_2).text)
-
-
-def get_val_from_xml_or_none(
-    xml_object: ElementTree.Element, tag_name: str, tag_name_2: Optional[str] = None
-) -> Optional[str]:
-    try:
-        val_from_xml = get_element_from_xml(xml_object, tag_name, tag_name_2).text
-        if val_from_xml is not None:
-            return str(val_from_xml)
-        else:
-            return None
-    except AllotropeConversionError:
-        return None
-
-
-def get_attrib_from_xml(
-    xml_object: ElementTree.Element,
-    tag_name: str,
-    attrib_name: str,
-    tag_name_2: Optional[str] = None,
-) -> str:
-    xml_element = get_element_from_xml(xml_object, tag_name, tag_name_2)
-    try:
-        attribute_val = xml_element.attrib[attrib_name]
-        return attribute_val
-    except KeyError as e:
-        msg = f"Unable to find '{attrib_name}' in {xml_element.attrib}"
-        raise AllotropeConversionError(msg) from e
-
-
-def remove_none_fields_from_data_class(
-    cls_instance: Any,
-) -> Any:
-
-    data_class_fields = fields(cls_instance.__class__)
-
-    # get all non-none fields
-    non_none_fields = {
-        field.name: getattr(cls_instance, field.name)
-        for field in data_class_fields
-        if (getattr(cls_instance, field.name) is not None or field.default is not None)
-    }
-
-    # Create a new instance with non-None fields
-    updated_instance = cls_instance.__class__(**non_none_fields)
-
-    return updated_instance

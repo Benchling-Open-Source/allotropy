@@ -79,6 +79,26 @@
       }
     ]
   },
+  "tQuantityValueCountsPerSecond": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/CountsPerSecond"
+      }
+    ]
+  },
+  "tNullableQuantityValueCountsPerSecond": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/CountsPerSecond"
+      }
+    ]
+  },
   "tQuantityValueCountsTimesSecond": {
     "allOf": [
       {
@@ -176,6 +196,26 @@
       },
       {
         "$ref": "#/$defs/Hertz"
+      }
+    ]
+  },
+  "tQuantityValueKiloDalton": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/KiloDalton"
+      }
+    ]
+  },
+  "tNullableQuantityValueKiloDalton": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/KiloDalton"
       }
     ]
   },
@@ -396,6 +436,26 @@
       },
       {
         "$ref": "#/$defs/Milliliter"
+      }
+    ]
+  },
+  "tQuantityValueMilliliterPerLiter": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/MilliliterPerLiter"
+      }
+    ]
+  },
+  "tNullableQuantityValueMilliliterPerLiter": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/MilliliterPerLiter"
       }
     ]
   },
@@ -799,6 +859,46 @@
       }
     ]
   },
+  "tQuantityValueRelativeFluorescenceUnitTimesMilliliter": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/RelativeFluorescenceUnitTimesMilliliter"
+      }
+    ]
+  },
+  "tNullableQuantityValueRelativeFluorescenceUnitTimesMilliliter": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/RelativeFluorescenceUnitTimesMilliliter"
+      }
+    ]
+  },
+  "tQuantityValueRelativeFluorescenceUnitTimesSecond": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/RelativeFluorescenceUnitTimesSecond"
+      }
+    ]
+  },
+  "tNullableQuantityValueRelativeFluorescenceUnitTimesSecond": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/RelativeFluorescenceUnitTimesSecond"
+      }
+    ]
+  },
   "tQuantityValueRelativeLightUnit": {
     "allOf": [
       {
@@ -816,6 +916,46 @@
       },
       {
         "$ref": "#/$defs/RelativeLightUnit"
+      }
+    ]
+  },
+  "tQuantityValueRelativeLightUnitTimesMilliliter": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/RelativeLightUnitTimesMilliliter"
+      }
+    ]
+  },
+  "tNullableQuantityValueRelativeLightUnitTimesMilliliter": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/RelativeLightUnitTimesMilliliter"
+      }
+    ]
+  },
+  "tQuantityValueRelativeLightUnitTimesSecond": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/RelativeLightUnitTimesSecond"
+      }
+    ]
+  },
+  "tNullableQuantityValueRelativeLightUnitTimesSecond": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/RelativeLightUnitTimesSecond"
       }
     ]
   },

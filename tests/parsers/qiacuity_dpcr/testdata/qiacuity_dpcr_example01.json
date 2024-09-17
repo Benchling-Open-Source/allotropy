@@ -1,4 +1,5 @@
 {
+    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/dpcr.manifest",
     "dPCR aggregate document": {
         "device system document": {
             "device identifier": "Qiacuity dPCR",
@@ -15,7 +16,7 @@
                     "measurement document": [
                         {
                             "measurement identifier": "QIACUITY_DPCR_TEST_ID_0",
-                            "measurement time": "1970-01-01T00:00:00-00:00",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
                             "target DNA description": "5p",
                             "sample document": {
                                 "sample identifier": "1",
@@ -60,7 +61,7 @@
                         },
                         {
                             "measurement identifier": "QIACUITY_DPCR_TEST_ID_1",
-                            "measurement time": "1970-01-01T00:00:00-00:00",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
                             "target DNA description": "5p",
                             "sample document": {
                                 "sample identifier": "2",
@@ -105,7 +106,7 @@
                         },
                         {
                             "measurement identifier": "QIACUITY_DPCR_TEST_ID_2",
-                            "measurement time": "1970-01-01T00:00:00-00:00",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
                             "target DNA description": "5p",
                             "sample document": {
                                 "sample identifier": "3",
@@ -150,7 +151,7 @@
                         },
                         {
                             "measurement identifier": "QIACUITY_DPCR_TEST_ID_3",
-                            "measurement time": "1970-01-01T00:00:00-00:00",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
                             "target DNA description": "5p",
                             "sample document": {
                                 "sample identifier": "4",
@@ -195,7 +196,7 @@
                         },
                         {
                             "measurement identifier": "QIACUITY_DPCR_TEST_ID_4",
-                            "measurement time": "1970-01-01T00:00:00-00:00",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
                             "target DNA description": "5p",
                             "sample document": {
                                 "sample identifier": "5",
@@ -240,7 +241,7 @@
                         },
                         {
                             "measurement identifier": "QIACUITY_DPCR_TEST_ID_5",
-                            "measurement time": "1970-01-01T00:00:00-00:00",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
                             "target DNA description": "5p",
                             "sample document": {
                                 "sample identifier": "6",
@@ -290,9 +291,8 @@
         "data system document": {
             "file name": "qiacuity_dpcr_example01.csv",
             "software name": "Qiacuity Software Suite",
-            "ASM converter name": "allotropy",
-            "ASM converter version": "0.1.19"
+            "ASM converter name": "allotropy_qiacuity_dpcr",
+            "ASM converter version": "0.1.42"
         }
-    },
-    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/dpcr.manifest"
+    }
 }

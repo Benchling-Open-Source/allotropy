@@ -7,17 +7,21 @@ name = "allotropy"
 dynamic = ["version"]
 description = 'Converts to ASM (Allotrope Simple Model) from various file formats.'
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 license = "MIT"
 keywords = ["allotropy", "allotrope", "asm", "benchling", "converters"]
 authors = [
   { name = "Benchling Open Source", email = "opensource@benchling.com" },
   { name = "Lukas Boelling", email = "lukas.boelling@deepgenomics.com" },
   { name = "Danielle Chou", email = "danielle.chou@benchling.com" },
+  { name = "Chris Friedline", email = "chris.friedline@benchling.com" },
   { name = "Kathy Garcia", email = "kathy@benchling.com" },
   { name = "Trevor Halum", email = "trevor.halum@deepgenomics.com" },
+  { name = "Joshua Hernandez", email = "jherna@benchling.com" },
   { name = "Sebastian Lopez", email = "sebastian.cardona@benchling.com" },
+  { name = "James Leinas", email = "james.leinas@benchling.com" },
   { name = "Mindren Lu", email = "mindren.lu@benchling.com" },
+  { name = "Keith Macaulay", email = "keith.macaulay@benchling.com" },
   { name = "Joe Negri", email = "joe.negri@benchling.com" },
   { name = "Alejando Salgado", email = "alejando.salgado@benchling.com" },
   { name = "Nathan Stender", email = "nathan.stender@benchling.com" },
@@ -31,7 +35,6 @@ authors = [
 classifiers = [
   "Development Status :: 4 - Beta",
   "Programming Language :: Python",
-  "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
 ]
@@ -41,8 +44,8 @@ dependencies = [
   "jsonschema >= 4.3.3",
   "numpy >= 1.25.0",
   "openpyxl >= 3.1.0",
-  "pandas >= 2.1.0",
-  "pytz",
+  "pandas >= 2.2.0",
+  "python-calamine >= 0.2.3",
   "xlrd >= 2.0.0",
   "rfc3339-validator >= 0.1.4",
 ]
@@ -53,15 +56,17 @@ Issues = "https://github.com/Benchling-Open-Source/allotropy/issues"
 Source = "https://github.com/Benchling-Open-Source/allotropy"
 
 [tool.black]
-target-version = ["py39"]
+target-version = ["py310"]
 skip-string-normalization = true
 
 [tool.coverage.run]
-source_pkgs = ["allotropy", "tests"]
+source_pkgs = ["allotropy"]
 branch = true
 parallel = true
 omit = [
-  "src/allotropy/__about__.py",
+  "src/allotropy/allotrope/models/*",
+  "__init__.py",
+  "__about__.py",
 ]
 
 [tool.coverage.paths]
@@ -70,8 +75,6 @@ tests = ["tests", "*/allotropy/tests"]
 
 [tool.coverage.report]
 exclude_lines = [
-  "no cov",
-  "if __name__ == .__main__.:",
   "if TYPE_CHECKING:",
 ]
 
@@ -100,18 +103,49 @@ dependencies = [
   "datamodel-code-generator == 0.25.2",
   # Without jsonschema-spec and pydantic, pydantic spews a bunch of errors when parsing schemas
   "jsonschema-specifications == 2023.7.1",
-  "pydantic == 1.10.9",
+  "pydantic == 1.10.17",
   "ruff == 0.0.289",
+  "semantic-version",
 ]
 
+[tool.hatch.envs.default.scripts]
+fix = "hatch run lint:fmt {args:}"
+lint = "hatch run lint:all {args:}"
+test = "hatch run test:test {args:}"
+
+[tool.hatch.envs.viz]
+extra-dependencies = [
+    "networkx >= 3.2.1",
+    "pygraphviz >= 1.11",
+]
+
+[tool.hatch.envs.scripts]
+platforms = ["linux", "macos"]
+
 [tool.hatch.envs.scripts.scripts]
-setup-pre-push = "cp scripts/pre-push-hook .git/hooks/pre-push; echo 'Copied to .git/hooks/pre-push'"
+script_path = "scripts/"
 generate-schemas = "scripts/generate_schemas.py {args:}"
-csv-as-json = "scripts/csv_as_json.py {args:}"
+download-schema = "scripts/download_schema.py {args:}"
+create-parser = "scripts/create_parser.py {args:}"
+update-readme = "scripts/update_readme.py {args:}"
+update-version = "scripts/update_version.py {args:}"
+
+[tool.hatch.envs.win-scripts]
+platforms = ["windows"]
+
+[tool.hatch.envs.win-scripts.scripts]
+generate-schemas = "python scripts\\generate_schemas.py {args:}"
+download-schema = "python scripts\\download_schema.py {args:}"
+create-parser = "python scripts\\create_parser.py {args:}"
+update-readme = "python scripts\\update_readme.py {args:}"
+update-version = "python scripts\\update_version.py {args:}"
+
+[tool.hatch.envs.viz.scripts]
+run = "scripts/visualization.py {args:}"
 
 [tool.hatch.envs.lint]
 extra-dependencies = [
-  # mypy sometimes can't find cattrs even though it's a project depenedency, so add explicitly here.
+  # mypy sometimes can't find cattrs even though it's a project dependency, so add explicitly here.
   "cattrs == 23.1.2",
   "more-itertools >= 10.1.0",
   "mypy == 1.8.0",
@@ -144,15 +178,17 @@ extra-dependencies = [
   "deepdiff >= 6.5.0",
   "more-itertools >= 10.1.0",
   "pytest >= 7.4.0",
+  "pytest-xdist >= 3.6.1",
 ]
 
 [tool.hatch.envs.test.scripts]
-test = "pytest {args:tests}"
-short = "pytest -m short {args:tests}"
+test = "pytest -n auto {args:tests}"
+short = "pytest -m 'not long' {args:tests}"
 test-cov = "coverage run -m pytest {args:tests}"
 cov-report = [
   "- coverage combine",
   "coverage report",
+  "coverage xml"
 ]
 cov = [
   "test-cov",
@@ -162,11 +198,11 @@ cov = [
 [tool.pytest.ini_options]
 pythonpath = "src"
 markers = [
-  "short: mark a test as running quickly",
+  "long: mark a test that takes a long time to run",
 ]
 
 [tool.ruff]
-target-version = "py39"
+target-version = "py310"
 select = [
   "A",
   "ARG",
@@ -219,6 +255,10 @@ ban-relative-imports = "all"
 ]
 # Generated models can have class fields that shadow python builtins
 "src/allotropy/allotrope/models/**/*" = ["A003"]
+# Scripts can print
+"scripts/**/*" = ["T201"]
+# update_version can use subprocess
+"scripts/update_version.py" = ["S603", "S607"]
 
 [tool.ruff.pyupgrade]
 # Preserve types, even if a file imports `from __future__ import annotations`.

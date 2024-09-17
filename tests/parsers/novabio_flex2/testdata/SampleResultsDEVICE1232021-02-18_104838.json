@@ -1,626 +1,1036 @@
 {
-    "measurement aggregate document": {
-        "measurement identifier": "NOVABIO_FLEX2_TEST_ID_0",
-        "analyst": "Unither",
-        "device system document": {
-            "device identifier": "DEVICE123",
-            "model number": "NovaBio Flex2"
-        },
-        "measurement document": [
+    "$asm.manifest": "http://purl.allotrope.org/manifests/solution-analyzer/REC/2024/03/solution-analyzer.manifest",
+    "solution analyzer aggregate document": {
+        "solution analyzer document": [
             {
-                "sample document": {
-                    "sample identifier": "SAMPLE 0001",
-                    "sample role type": "Default"
-                },
-                "measurement time": "2021-02-18T10:28:04+00:00",
-                "analyte aggregate document": {
-                    "analyte document": [
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
-                            "analyte name": "ammonium",
-                            "molar concentration": {
-                                "value": 0.25,
-                                "unit": "mmol/L"
+                            "measurement time": "2021-02-18T10:28:04+00:00",
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_0",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer",
+                                        "detection type": "metabolite-detection"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "SAMPLE 0001",
+                                "description": "Default"
+                            },
+                            "analyte aggregate document": {
+                                "analyte document": [
+                                    {
+                                        "analyte name": "ammonium",
+                                        "molar concentration": {
+                                            "value": 0.25,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "bicarbonate",
+                                        "molar concentration": {
+                                            "value": 5.6,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "calcium",
+                                        "molar concentration": {
+                                            "value": 1.09,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "glucose",
+                                        "mass concentration": {
+                                            "value": 0.78,
+                                            "unit": "g/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "glutamate",
+                                        "molar concentration": {
+                                            "value": 0.16,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "glutamine",
+                                        "molar concentration": {
+                                            "value": 0.56,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "lactate",
+                                        "mass concentration": {
+                                            "value": 0.0,
+                                            "unit": "g/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "potassium",
+                                        "molar concentration": {
+                                            "value": 4.47,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "sodium",
+                                        "molar concentration": {
+                                            "value": 127.5,
+                                            "unit": "mmol/L"
+                                        }
+                                    }
+                                ]
                             }
                         },
                         {
-                            "analyte name": "bicarbonate",
-                            "molar concentration": {
-                                "value": 5.6,
-                                "unit": "mmol/L"
+                            "measurement time": "2021-02-18T10:28:04+00:00",
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_1",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer",
+                                        "detection type": "cell-counting"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "SAMPLE 0001",
+                                "description": "Default"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 0.0,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 0.0,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.17,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell count": {
+                                            "value": 19.0,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 0.0,
+                                            "unit": "cell"
+                                        }
+                                    }
+                                ]
                             }
                         },
                         {
-                            "analyte name": "calcium",
-                            "molar concentration": {
-                                "value": 1.09,
-                                "unit": "mmol/L"
+                            "measurement time": "2021-02-18T10:28:04+00:00",
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_2",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer",
+                                        "detection type": "blood-gas-detection"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "SAMPLE 0001",
+                                "description": "Default"
+                            },
+                            "pO2": {
+                                "value": 197.1,
+                                "unit": "mmHg"
+                            },
+                            "pCO2": {
+                                "value": 10.3,
+                                "unit": "mmHg"
+                            },
+                            "carbon dioxide saturation": {
+                                "value": 1.4,
+                                "unit": "%"
+                            },
+                            "oxygen saturation": {
+                                "value": 100.0,
+                                "unit": "%"
                             }
                         },
                         {
-                            "analyte name": "glucose",
-                            "molar concentration": {
-                                "value": 0.78,
-                                "unit": "g/L"
+                            "measurement time": "2021-02-18T10:28:04+00:00",
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_3",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer",
+                                        "detection type": "osmolality-detection"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "SAMPLE 0001",
+                                "description": "Default"
+                            },
+                            "osmolality": {
+                                "value": 300.0,
+                                "unit": "mosm/kg"
                             }
                         },
                         {
-                            "analyte name": "glutamate",
-                            "molar concentration": {
-                                "value": 0.16,
-                                "unit": "mmol/L"
-                            }
-                        },
-                        {
-                            "analyte name": "glutamine",
-                            "molar concentration": {
-                                "value": 0.56,
-                                "unit": "mmol/L"
-                            }
-                        },
-                        {
-                            "analyte name": "lactate",
-                            "molar concentration": {
-                                "value": 0.0,
-                                "unit": "g/L"
-                            }
-                        },
-                        {
-                            "analyte name": "potassium",
-                            "molar concentration": {
-                                "value": 4.47,
-                                "unit": "mmol/L"
-                            }
-                        },
-                        {
-                            "analyte name": "sodium",
-                            "molar concentration": {
-                                "value": 127.5,
-                                "unit": "mmol/L"
+                            "measurement time": "2021-02-18T10:28:04+00:00",
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_4",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer",
+                                        "detection type": "ph-detection"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "SAMPLE 0001",
+                                "description": "Default"
+                            },
+                            "pH": {
+                                "value": 7.34,
+                                "unit": "pH"
+                            },
+                            "temperature": {
+                                "value": 37.0,
+                                "unit": "degC"
                             }
                         }
-                    ]
+                    ],
+                    "data processing time": "2021-02-18T10:48:38+00:00"
                 },
-                "pCO2": {
-                    "value": 10.3,
-                    "unit": "mmHg"
-                },
-                "CO2 saturation": {
-                    "value": 1.4,
-                    "unit": "%"
-                },
-                "pO2": {
-                    "value": 197.1,
-                    "unit": "mmHg"
-                },
-                "O2 saturation": {
-                    "value": 100.0,
-                    "unit": "%"
-                },
-                "pH": {
-                    "value": 7.34,
-                    "unit": "pH"
-                },
-                "osmolality": {
-                    "value": 300.0,
-                    "unit": "mosm/kg"
-                },
-                "viability (cell counter)": {
-                    "value": 0.0,
-                    "unit": "%"
-                },
-                "total cell density (cell counter)": {
-                    "value": 0.17,
-                    "unit": "10^6 cells/mL"
-                },
-                "viable cell density (cell counter)": {
-                    "value": 0.0,
-                    "unit": "10^6 cells/mL"
-                },
-                "viable cell count (cell counter)": {
-                    "value": 0.0,
-                    "unit": "cell"
-                },
-                "total cell count (cell counter)": {
-                    "value": 19.0,
-                    "unit": "cell"
-                }
+                "analyst": "Unither"
             },
             {
-                "sample document": {
-                    "sample identifier": "SAMPLE 0002",
-                    "sample role type": "Default"
-                },
-                "measurement time": "2021-02-18T10:33:17+00:00",
-                "analyte aggregate document": {
-                    "analyte document": [
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
-                            "analyte name": "ammonium",
-                            "molar concentration": {
-                                "value": 0.25,
-                                "unit": "mmol/L"
+                            "measurement time": "2021-02-18T10:33:17+00:00",
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_5",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer",
+                                        "detection type": "metabolite-detection"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "SAMPLE 0002",
+                                "description": "Default"
+                            },
+                            "analyte aggregate document": {
+                                "analyte document": [
+                                    {
+                                        "analyte name": "ammonium",
+                                        "molar concentration": {
+                                            "value": 0.25,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "bicarbonate",
+                                        "molar concentration": {
+                                            "value": 6.6,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "calcium",
+                                        "molar concentration": {
+                                            "value": 1.09,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "glucose",
+                                        "mass concentration": {
+                                            "value": 0.79,
+                                            "unit": "g/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "glutamate",
+                                        "molar concentration": {
+                                            "value": 0.12,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "glutamine",
+                                        "molar concentration": {
+                                            "value": 0.58,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "lactate",
+                                        "mass concentration": {
+                                            "value": 0.0,
+                                            "unit": "g/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "potassium",
+                                        "molar concentration": {
+                                            "value": 4.47,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "sodium",
+                                        "molar concentration": {
+                                            "value": 128.1,
+                                            "unit": "mmol/L"
+                                        }
+                                    }
+                                ]
                             }
                         },
                         {
-                            "analyte name": "bicarbonate",
-                            "molar concentration": {
-                                "value": 6.6,
-                                "unit": "mmol/L"
+                            "measurement time": "2021-02-18T10:33:17+00:00",
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_6",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer",
+                                        "detection type": "cell-counting"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "SAMPLE 0002",
+                                "description": "Default"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 0.0,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 10.0,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.18,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell count": {
+                                            "value": 20.0,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 0.0,
+                                            "unit": "cell"
+                                        }
+                                    }
+                                ]
                             }
                         },
                         {
-                            "analyte name": "calcium",
-                            "molar concentration": {
-                                "value": 1.09,
-                                "unit": "mmol/L"
+                            "measurement time": "2021-02-18T10:33:17+00:00",
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_7",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer",
+                                        "detection type": "blood-gas-detection"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "SAMPLE 0002",
+                                "description": "Default"
+                            },
+                            "pO2": {
+                                "value": 211.9,
+                                "unit": "mmHg"
+                            },
+                            "pCO2": {
+                                "value": 14.5,
+                                "unit": "mmHg"
+                            },
+                            "carbon dioxide saturation": {
+                                "value": 2.0,
+                                "unit": "%"
+                            },
+                            "oxygen saturation": {
+                                "value": 100.0,
+                                "unit": "%"
                             }
                         },
                         {
-                            "analyte name": "glucose",
-                            "molar concentration": {
-                                "value": 0.79,
-                                "unit": "g/L"
+                            "measurement time": "2021-02-18T10:33:17+00:00",
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_8",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer",
+                                        "detection type": "osmolality-detection"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "SAMPLE 0002",
+                                "description": "Default"
+                            },
+                            "osmolality": {
+                                "value": 303.0,
+                                "unit": "mosm/kg"
                             }
                         },
                         {
-                            "analyte name": "glutamate",
-                            "molar concentration": {
-                                "value": 0.12,
-                                "unit": "mmol/L"
-                            }
-                        },
-                        {
-                            "analyte name": "glutamine",
-                            "molar concentration": {
-                                "value": 0.58,
-                                "unit": "mmol/L"
-                            }
-                        },
-                        {
-                            "analyte name": "lactate",
-                            "molar concentration": {
-                                "value": 0.0,
-                                "unit": "g/L"
-                            }
-                        },
-                        {
-                            "analyte name": "potassium",
-                            "molar concentration": {
-                                "value": 4.47,
-                                "unit": "mmol/L"
-                            }
-                        },
-                        {
-                            "analyte name": "sodium",
-                            "molar concentration": {
-                                "value": 128.1,
-                                "unit": "mmol/L"
+                            "measurement time": "2021-02-18T10:33:17+00:00",
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_9",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer",
+                                        "detection type": "ph-detection"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "SAMPLE 0002",
+                                "description": "Default"
+                            },
+                            "pH": {
+                                "value": 7.262,
+                                "unit": "pH"
+                            },
+                            "temperature": {
+                                "value": 37.0,
+                                "unit": "degC"
                             }
                         }
-                    ]
+                    ],
+                    "data processing time": "2021-02-18T10:48:38+00:00"
                 },
-                "pCO2": {
-                    "value": 14.5,
-                    "unit": "mmHg"
-                },
-                "CO2 saturation": {
-                    "value": 2.0,
-                    "unit": "%"
-                },
-                "pO2": {
-                    "value": 211.9,
-                    "unit": "mmHg"
-                },
-                "O2 saturation": {
-                    "value": 100.0,
-                    "unit": "%"
-                },
-                "pH": {
-                    "value": 7.262,
-                    "unit": "pH"
-                },
-                "osmolality": {
-                    "value": 303.0,
-                    "unit": "mosm/kg"
-                },
-                "viability (cell counter)": {
-                    "value": 0.0,
-                    "unit": "%"
-                },
-                "total cell density (cell counter)": {
-                    "value": 0.18,
-                    "unit": "10^6 cells/mL"
-                },
-                "viable cell density (cell counter)": {
-                    "value": 0.0,
-                    "unit": "10^6 cells/mL"
-                },
-                "viable cell count (cell counter)": {
-                    "value": 0.0,
-                    "unit": "cell"
-                },
-                "total cell count (cell counter)": {
-                    "value": 20.0,
-                    "unit": "cell"
-                }
+                "analyst": "Unither"
             },
             {
-                "sample document": {
-                    "sample identifier": "SAMPLE 0003",
-                    "sample role type": "Simple"
-                },
-                "measurement time": "2021-02-18T10:38:33+00:00",
-                "analyte aggregate document": {
-                    "analyte document": [
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
-                            "analyte name": "ammonium",
-                            "molar concentration": {
-                                "value": 0.27,
-                                "unit": "mmol/L"
+                            "measurement time": "2021-02-18T10:38:33+00:00",
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_10",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer",
+                                        "detection type": "metabolite-detection"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "SAMPLE 0003",
+                                "description": "Simple"
+                            },
+                            "analyte aggregate document": {
+                                "analyte document": [
+                                    {
+                                        "analyte name": "ammonium",
+                                        "molar concentration": {
+                                            "value": 0.27,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "bicarbonate",
+                                        "molar concentration": {
+                                            "value": 6.7,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "calcium",
+                                        "molar concentration": {
+                                            "value": 1.0,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "glucose",
+                                        "mass concentration": {
+                                            "value": 0.76,
+                                            "unit": "g/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "glutamate",
+                                        "molar concentration": {
+                                            "value": 0.15,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "glutamine",
+                                        "molar concentration": {
+                                            "value": 0.7,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "lactate",
+                                        "mass concentration": {
+                                            "value": 0.0,
+                                            "unit": "g/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "potassium",
+                                        "molar concentration": {
+                                            "value": 5.13,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "sodium",
+                                        "molar concentration": {
+                                            "value": 124.3,
+                                            "unit": "mmol/L"
+                                        }
+                                    }
+                                ]
                             }
                         },
                         {
-                            "analyte name": "bicarbonate",
-                            "molar concentration": {
-                                "value": 6.7,
-                                "unit": "mmol/L"
+                            "measurement time": "2021-02-18T10:38:33+00:00",
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_11",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer",
+                                        "detection type": "blood-gas-detection"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "SAMPLE 0003",
+                                "description": "Simple"
+                            },
+                            "pO2": {
+                                "value": 182.0,
+                                "unit": "mmHg"
+                            },
+                            "pCO2": {
+                                "value": 13.8,
+                                "unit": "mmHg"
+                            },
+                            "carbon dioxide saturation": {
+                                "value": 1.9,
+                                "unit": "%"
+                            },
+                            "oxygen saturation": {
+                                "value": 100.0,
+                                "unit": "%"
                             }
                         },
                         {
-                            "analyte name": "calcium",
-                            "molar concentration": {
-                                "value": 1.0,
-                                "unit": "mmol/L"
-                            }
-                        },
-                        {
-                            "analyte name": "glucose",
-                            "molar concentration": {
-                                "value": 0.76,
-                                "unit": "g/L"
-                            }
-                        },
-                        {
-                            "analyte name": "glutamate",
-                            "molar concentration": {
-                                "value": 0.15,
-                                "unit": "mmol/L"
-                            }
-                        },
-                        {
-                            "analyte name": "glutamine",
-                            "molar concentration": {
-                                "value": 0.7,
-                                "unit": "mmol/L"
-                            }
-                        },
-                        {
-                            "analyte name": "lactate",
-                            "molar concentration": {
-                                "value": 0.0,
-                                "unit": "g/L"
-                            }
-                        },
-                        {
-                            "analyte name": "potassium",
-                            "molar concentration": {
-                                "value": 5.13,
-                                "unit": "mmol/L"
-                            }
-                        },
-                        {
-                            "analyte name": "sodium",
-                            "molar concentration": {
-                                "value": 124.3,
-                                "unit": "mmol/L"
+                            "measurement time": "2021-02-18T10:38:33+00:00",
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_12",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer",
+                                        "detection type": "ph-detection"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "SAMPLE 0003",
+                                "description": "Simple"
+                            },
+                            "pH": {
+                                "value": 7.288,
+                                "unit": "pH"
+                            },
+                            "temperature": {
+                                "value": 37.0,
+                                "unit": "degC"
                             }
                         }
-                    ]
+                    ],
+                    "data processing time": "2021-02-18T10:48:38+00:00"
                 },
-                "pCO2": {
-                    "value": 13.8,
-                    "unit": "mmHg"
-                },
-                "CO2 saturation": {
-                    "value": 1.9,
-                    "unit": "%"
-                },
-                "pO2": {
-                    "value": 182.0,
-                    "unit": "mmHg"
-                },
-                "O2 saturation": {
-                    "value": 100.0,
-                    "unit": "%"
-                },
-                "pH": {
-                    "value": 7.288,
-                    "unit": "pH"
-                }
+                "analyst": "Unither"
             },
             {
-                "sample document": {
-                    "sample identifier": "SAMPLE 0004",
-                    "sample role type": "Simple"
-                },
-                "measurement time": "2021-02-18T10:41:08+00:00",
-                "analyte aggregate document": {
-                    "analyte document": [
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
-                            "analyte name": "ammonium",
-                            "molar concentration": {
-                                "value": 0.29,
-                                "unit": "mmol/L"
+                            "measurement time": "2021-02-18T10:41:08+00:00",
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_13",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer",
+                                        "detection type": "metabolite-detection"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "SAMPLE 0004",
+                                "description": "Simple"
+                            },
+                            "analyte aggregate document": {
+                                "analyte document": [
+                                    {
+                                        "analyte name": "ammonium",
+                                        "molar concentration": {
+                                            "value": 0.29,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "bicarbonate",
+                                        "molar concentration": {
+                                            "value": 7.3,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "calcium",
+                                        "molar concentration": {
+                                            "value": 1.03,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "glucose",
+                                        "mass concentration": {
+                                            "value": 0.73,
+                                            "unit": "g/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "glutamate",
+                                        "molar concentration": {
+                                            "value": 0.17,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "glutamine",
+                                        "molar concentration": {
+                                            "value": 0.59,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "lactate",
+                                        "mass concentration": {
+                                            "value": 0.0,
+                                            "unit": "g/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "potassium",
+                                        "molar concentration": {
+                                            "value": 4.66,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "sodium",
+                                        "molar concentration": {
+                                            "value": 123.1,
+                                            "unit": "mmol/L"
+                                        }
+                                    }
+                                ]
                             }
                         },
                         {
-                            "analyte name": "bicarbonate",
-                            "molar concentration": {
-                                "value": 7.3,
-                                "unit": "mmol/L"
+                            "measurement time": "2021-02-18T10:41:08+00:00",
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_14",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer",
+                                        "detection type": "blood-gas-detection"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "SAMPLE 0004",
+                                "description": "Simple"
+                            },
+                            "pO2": {
+                                "value": 154.6,
+                                "unit": "mmHg"
+                            },
+                            "pCO2": {
+                                "value": 17.9,
+                                "unit": "mmHg"
+                            },
+                            "carbon dioxide saturation": {
+                                "value": 2.5,
+                                "unit": "%"
+                            },
+                            "oxygen saturation": {
+                                "value": 100.0,
+                                "unit": "%"
                             }
                         },
                         {
-                            "analyte name": "calcium",
-                            "molar concentration": {
-                                "value": 1.03,
-                                "unit": "mmol/L"
-                            }
-                        },
-                        {
-                            "analyte name": "glucose",
-                            "molar concentration": {
-                                "value": 0.73,
-                                "unit": "g/L"
-                            }
-                        },
-                        {
-                            "analyte name": "glutamate",
-                            "molar concentration": {
-                                "value": 0.17,
-                                "unit": "mmol/L"
-                            }
-                        },
-                        {
-                            "analyte name": "glutamine",
-                            "molar concentration": {
-                                "value": 0.59,
-                                "unit": "mmol/L"
-                            }
-                        },
-                        {
-                            "analyte name": "lactate",
-                            "molar concentration": {
-                                "value": 0.0,
-                                "unit": "g/L"
-                            }
-                        },
-                        {
-                            "analyte name": "potassium",
-                            "molar concentration": {
-                                "value": 4.66,
-                                "unit": "mmol/L"
-                            }
-                        },
-                        {
-                            "analyte name": "sodium",
-                            "molar concentration": {
-                                "value": 123.1,
-                                "unit": "mmol/L"
+                            "measurement time": "2021-02-18T10:41:08+00:00",
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_15",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer",
+                                        "detection type": "ph-detection"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "SAMPLE 0004",
+                                "description": "Simple"
+                            },
+                            "pH": {
+                                "value": 7.215,
+                                "unit": "pH"
+                            },
+                            "temperature": {
+                                "value": 37.0,
+                                "unit": "degC"
                             }
                         }
-                    ]
+                    ],
+                    "data processing time": "2021-02-18T10:48:38+00:00"
                 },
-                "pCO2": {
-                    "value": 17.9,
-                    "unit": "mmHg"
-                },
-                "CO2 saturation": {
-                    "value": 2.5,
-                    "unit": "%"
-                },
-                "pO2": {
-                    "value": 154.6,
-                    "unit": "mmHg"
-                },
-                "O2 saturation": {
-                    "value": 100.0,
-                    "unit": "%"
-                },
-                "pH": {
-                    "value": 7.215,
-                    "unit": "pH"
-                }
+                "analyst": "Unither"
             },
             {
-                "sample document": {
-                    "sample identifier": "SAMPLE 0005",
-                    "sample role type": "Simple"
-                },
-                "measurement time": "2021-02-18T10:43:33+00:00",
-                "analyte aggregate document": {
-                    "analyte document": [
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
-                            "analyte name": "ammonium",
-                            "molar concentration": {
-                                "value": 0.34,
-                                "unit": "mmol/L"
+                            "measurement time": "2021-02-18T10:43:33+00:00",
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_16",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer",
+                                        "detection type": "metabolite-detection"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "SAMPLE 0005",
+                                "description": "Simple"
+                            },
+                            "analyte aggregate document": {
+                                "analyte document": [
+                                    {
+                                        "analyte name": "ammonium",
+                                        "molar concentration": {
+                                            "value": 0.34,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "bicarbonate",
+                                        "molar concentration": {
+                                            "value": 6.7,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "calcium",
+                                        "molar concentration": {
+                                            "value": 1.0,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "glucose",
+                                        "mass concentration": {
+                                            "value": 0.67,
+                                            "unit": "g/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "glutamate",
+                                        "molar concentration": {
+                                            "value": 0.22,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "glutamine",
+                                        "molar concentration": {
+                                            "value": 0.8,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "lactate",
+                                        "mass concentration": {
+                                            "value": 0.0,
+                                            "unit": "g/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "potassium",
+                                        "molar concentration": {
+                                            "value": 5.18,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "sodium",
+                                        "molar concentration": {
+                                            "value": 123.0,
+                                            "unit": "mmol/L"
+                                        }
+                                    }
+                                ]
                             }
                         },
                         {
-                            "analyte name": "bicarbonate",
-                            "molar concentration": {
-                                "value": 6.7,
-                                "unit": "mmol/L"
+                            "measurement time": "2021-02-18T10:43:33+00:00",
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_17",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer",
+                                        "detection type": "blood-gas-detection"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "SAMPLE 0005",
+                                "description": "Simple"
+                            },
+                            "pO2": {
+                                "value": 158.3,
+                                "unit": "mmHg"
+                            },
+                            "pCO2": {
+                                "value": 15.1,
+                                "unit": "mmHg"
+                            },
+                            "carbon dioxide saturation": {
+                                "value": 2.1,
+                                "unit": "%"
+                            },
+                            "oxygen saturation": {
+                                "value": 100.0,
+                                "unit": "%"
                             }
                         },
                         {
-                            "analyte name": "calcium",
-                            "molar concentration": {
-                                "value": 1.0,
-                                "unit": "mmol/L"
-                            }
-                        },
-                        {
-                            "analyte name": "glucose",
-                            "molar concentration": {
-                                "value": 0.67,
-                                "unit": "g/L"
-                            }
-                        },
-                        {
-                            "analyte name": "glutamate",
-                            "molar concentration": {
-                                "value": 0.22,
-                                "unit": "mmol/L"
-                            }
-                        },
-                        {
-                            "analyte name": "glutamine",
-                            "molar concentration": {
-                                "value": 0.8,
-                                "unit": "mmol/L"
-                            }
-                        },
-                        {
-                            "analyte name": "lactate",
-                            "molar concentration": {
-                                "value": 0.0,
-                                "unit": "g/L"
-                            }
-                        },
-                        {
-                            "analyte name": "potassium",
-                            "molar concentration": {
-                                "value": 5.18,
-                                "unit": "mmol/L"
-                            }
-                        },
-                        {
-                            "analyte name": "sodium",
-                            "molar concentration": {
-                                "value": 123.0,
-                                "unit": "mmol/L"
+                            "measurement time": "2021-02-18T10:43:33+00:00",
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_18",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer",
+                                        "detection type": "ph-detection"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "SAMPLE 0005",
+                                "description": "Simple"
+                            },
+                            "pH": {
+                                "value": 7.252,
+                                "unit": "pH"
+                            },
+                            "temperature": {
+                                "value": 37.0,
+                                "unit": "degC"
                             }
                         }
-                    ]
+                    ],
+                    "data processing time": "2021-02-18T10:48:38+00:00"
                 },
-                "pCO2": {
-                    "value": 15.1,
-                    "unit": "mmHg"
-                },
-                "CO2 saturation": {
-                    "value": 2.1,
-                    "unit": "%"
-                },
-                "pO2": {
-                    "value": 158.3,
-                    "unit": "mmHg"
-                },
-                "O2 saturation": {
-                    "value": 100.0,
-                    "unit": "%"
-                },
-                "pH": {
-                    "value": 7.252,
-                    "unit": "pH"
-                }
+                "analyst": "Unither"
             },
             {
-                "sample document": {
-                    "sample identifier": "SAMPLE 0006",
-                    "sample role type": "Simple"
-                },
-                "measurement time": "2021-02-18T10:46:05+00:00",
-                "analyte aggregate document": {
-                    "analyte document": [
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
-                            "analyte name": "ammonium",
-                            "molar concentration": {
-                                "value": 0.25,
-                                "unit": "mmol/L"
+                            "measurement time": "2021-02-18T10:46:05+00:00",
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_19",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer",
+                                        "detection type": "metabolite-detection"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "SAMPLE 0006",
+                                "description": "Simple"
+                            },
+                            "analyte aggregate document": {
+                                "analyte document": [
+                                    {
+                                        "analyte name": "ammonium",
+                                        "molar concentration": {
+                                            "value": 0.25,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "bicarbonate",
+                                        "molar concentration": {
+                                            "value": 4.8,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "calcium",
+                                        "molar concentration": {
+                                            "value": 0.91,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "glucose",
+                                        "mass concentration": {
+                                            "value": 0.59,
+                                            "unit": "g/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "glutamate",
+                                        "molar concentration": {
+                                            "value": 0.14,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "glutamine",
+                                        "molar concentration": {
+                                            "value": 0.47,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "lactate",
+                                        "mass concentration": {
+                                            "value": 0.0,
+                                            "unit": "g/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "potassium",
+                                        "molar concentration": {
+                                            "value": 4.36,
+                                            "unit": "mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "sodium",
+                                        "molar concentration": {
+                                            "value": 128.2,
+                                            "unit": "mmol/L"
+                                        }
+                                    }
+                                ]
                             }
                         },
                         {
-                            "analyte name": "bicarbonate",
-                            "molar concentration": {
-                                "value": 4.8,
-                                "unit": "mmol/L"
+                            "measurement time": "2021-02-18T10:46:05+00:00",
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_20",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer",
+                                        "detection type": "blood-gas-detection"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "SAMPLE 0006",
+                                "description": "Simple"
+                            },
+                            "pO2": {
+                                "value": 176.2,
+                                "unit": "mmHg"
+                            },
+                            "pCO2": {
+                                "value": 10.1,
+                                "unit": "mmHg"
+                            },
+                            "carbon dioxide saturation": {
+                                "value": 1.4,
+                                "unit": "%"
+                            },
+                            "oxygen saturation": {
+                                "value": 100.0,
+                                "unit": "%"
                             }
                         },
                         {
-                            "analyte name": "calcium",
-                            "molar concentration": {
-                                "value": 0.91,
-                                "unit": "mmol/L"
-                            }
-                        },
-                        {
-                            "analyte name": "glucose",
-                            "molar concentration": {
-                                "value": 0.59,
-                                "unit": "g/L"
-                            }
-                        },
-                        {
-                            "analyte name": "glutamate",
-                            "molar concentration": {
-                                "value": 0.14,
-                                "unit": "mmol/L"
-                            }
-                        },
-                        {
-                            "analyte name": "glutamine",
-                            "molar concentration": {
-                                "value": 0.47,
-                                "unit": "mmol/L"
-                            }
-                        },
-                        {
-                            "analyte name": "lactate",
-                            "molar concentration": {
-                                "value": 0.0,
-                                "unit": "g/L"
-                            }
-                        },
-                        {
-                            "analyte name": "potassium",
-                            "molar concentration": {
-                                "value": 4.36,
-                                "unit": "mmol/L"
-                            }
-                        },
-                        {
-                            "analyte name": "sodium",
-                            "molar concentration": {
-                                "value": 128.2,
-                                "unit": "mmol/L"
+                            "measurement time": "2021-02-18T10:46:05+00:00",
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_21",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer",
+                                        "detection type": "ph-detection"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "SAMPLE 0006",
+                                "description": "Simple"
+                            },
+                            "pH": {
+                                "value": 7.278,
+                                "unit": "pH"
+                            },
+                            "temperature": {
+                                "value": 37.0,
+                                "unit": "degC"
                             }
                         }
-                    ]
+                    ],
+                    "data processing time": "2021-02-18T10:48:38+00:00"
                 },
-                "pCO2": {
-                    "value": 10.1,
-                    "unit": "mmHg"
-                },
-                "CO2 saturation": {
-                    "value": 1.4,
-                    "unit": "%"
-                },
-                "pO2": {
-                    "value": 176.2,
-                    "unit": "mmHg"
-                },
-                "O2 saturation": {
-                    "value": 100.0,
-                    "unit": "%"
-                },
-                "pH": {
-                    "value": 7.278,
-                    "unit": "pH"
-                }
+                "analyst": "Unither"
             }
         ],
-        "data processing time": "2021-02-18T10:48:38+00:00"
-    },
-    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-culture-analyzer/BENCHLING/2023/09/cell-culture-analyzer.manifest"
+        "device system document": {
+            "product manufacturer": "Nova Biomedical",
+            "device identifier": "DEVICE123",
+            "model number": "Flex2"
+        },
+        "data system document": {
+            "file name": "SampleResultsDEVICE1232021-02-18_104838.csv",
+            "software name": "NovaBio Flex",
+            "ASM converter name": "allotropy_novabio_flex2",
+            "ASM converter version": "0.1.47"
+        }
+    }
 }

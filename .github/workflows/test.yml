@@ -13,18 +13,51 @@ permissions:
 
 jobs:
   test:
-
     runs-on: ubuntu-20.04
-    name: Quality Checks + Tests
+    name: Tests
 
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-python@v4
       with:
-        python-version: "3.9.11"
+        python-version: "3.10.13"
+    - name: Install hatch
+      run: pip install hatch
+    - name: Run Tests
+      run: hatch run test
+
+  lint:
+    runs-on: ubuntu-20.04
+    name: Quality Checks
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: "3.10.13"
     - name: Install hatch
       run: pip install hatch
     - name: Lint
-      run: hatch run lint:all
-    - name: Run Tests
-      run: hatch run test:test
+      run: hatch run lint
+
+  changelog:
+    runs-on: ubuntu-20.04
+    name: Check CHANGELOG
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Check CHANGELOG
+      run: ./scripts/check_changelog
+      env:
+        PR_TITLE: ${{ github.event.pull_request.title }}
+
+  pr-title-check:
+    runs-on: ubuntu-20.04
+    name: Check PR Title
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Check PR title
+      run: ./scripts/check_title
+      env:
+        PR_TITLE: ${{ github.event.pull_request.title }}

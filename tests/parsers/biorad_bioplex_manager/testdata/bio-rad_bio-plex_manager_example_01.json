@@ -16,14 +16,15 @@
                             "sample document": {
                                 "sample identifier": "S1",
                                 "sample role type": "standard sample role",
-                                "location identifier": "A1"
+                                "location identifier": "A1",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -255,9 +256,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -280,14 +278,15 @@
                             "sample document": {
                                 "sample identifier": "S2",
                                 "sample role type": "standard sample role",
-                                "location identifier": "A2"
+                                "location identifier": "A2",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -519,9 +518,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -544,14 +540,15 @@
                             "sample document": {
                                 "sample identifier": "S3",
                                 "sample role type": "standard sample role",
-                                "location identifier": "A3"
+                                "location identifier": "A3",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -783,9 +780,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -808,14 +802,15 @@
                             "sample document": {
                                 "sample identifier": "S4",
                                 "sample role type": "standard sample role",
-                                "location identifier": "A4"
+                                "location identifier": "A4",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -1047,9 +1042,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -1072,14 +1064,15 @@
                             "sample document": {
                                 "sample identifier": "S5",
                                 "sample role type": "standard sample role",
-                                "location identifier": "A5"
+                                "location identifier": "A5",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -1311,9 +1304,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -1336,14 +1326,15 @@
                             "sample document": {
                                 "sample identifier": "S6",
                                 "sample role type": "standard sample role",
-                                "location identifier": "A6"
+                                "location identifier": "A6",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -1575,9 +1566,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -1600,14 +1588,15 @@
                             "sample document": {
                                 "sample identifier": "S7",
                                 "sample role type": "standard sample role",
-                                "location identifier": "A7"
+                                "location identifier": "A7",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -1839,9 +1828,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -1864,14 +1850,15 @@
                             "sample document": {
                                 "sample identifier": "S8",
                                 "sample role type": "standard sample role",
-                                "location identifier": "A8"
+                                "location identifier": "A8",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -2103,9 +2090,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -2128,14 +2112,15 @@
                             "sample document": {
                                 "sample identifier": "S9",
                                 "sample role type": "standard sample role",
-                                "location identifier": "A9"
+                                "location identifier": "A9",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -2367,9 +2352,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -2392,14 +2374,15 @@
                             "sample document": {
                                 "sample identifier": "S10",
                                 "sample role type": "standard sample role",
-                                "location identifier": "A10"
+                                "location identifier": "A10",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -2631,9 +2614,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -2656,14 +2636,15 @@
                             "sample document": {
                                 "sample identifier": "S11",
                                 "sample role type": "standard sample role",
-                                "location identifier": "A11"
+                                "location identifier": "A11",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -2895,9 +2876,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -2920,14 +2898,15 @@
                             "sample document": {
                                 "sample identifier": "B",
                                 "sample role type": "blank role",
-                                "location identifier": "A12"
+                                "location identifier": "A12",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "detector gain setting": "2198",
@@ -3157,7 +3136,28 @@
                                 ]
                             },
                             "error aggregate document": {
-                                "error document": []
+                                "error document": [
+                                    {
+                                        "error": "Low bead number",
+                                        "error feature": "bravo"
+                                    },
+                                    {
+                                        "error": "Aggregated beads",
+                                        "error feature": "charlie"
+                                    },
+                                    {
+                                        "error": "Classify efficiency",
+                                        "error feature": "delta"
+                                    },
+                                    {
+                                        "error": "Region selection",
+                                        "error feature": "echo"
+                                    },
+                                    {
+                                        "error": "Platform temperature",
+                                        "error feature": "foxtrot"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -3180,14 +3180,15 @@
                             "sample document": {
                                 "sample identifier": "S1",
                                 "sample role type": "standard sample role",
-                                "location identifier": "B1"
+                                "location identifier": "B1",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -3419,9 +3420,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -3444,14 +3442,15 @@
                             "sample document": {
                                 "sample identifier": "S2",
                                 "sample role type": "standard sample role",
-                                "location identifier": "B2"
+                                "location identifier": "B2",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -3683,9 +3682,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -3708,14 +3704,15 @@
                             "sample document": {
                                 "sample identifier": "S3",
                                 "sample role type": "standard sample role",
-                                "location identifier": "B3"
+                                "location identifier": "B3",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -3947,9 +3944,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -3972,14 +3966,15 @@
                             "sample document": {
                                 "sample identifier": "S4",
                                 "sample role type": "standard sample role",
-                                "location identifier": "B4"
+                                "location identifier": "B4",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -4211,9 +4206,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -4236,14 +4228,15 @@
                             "sample document": {
                                 "sample identifier": "S5",
                                 "sample role type": "standard sample role",
-                                "location identifier": "B5"
+                                "location identifier": "B5",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -4475,9 +4468,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -4500,14 +4490,15 @@
                             "sample document": {
                                 "sample identifier": "S6",
                                 "sample role type": "standard sample role",
-                                "location identifier": "B6"
+                                "location identifier": "B6",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -4739,9 +4730,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -4764,14 +4752,15 @@
                             "sample document": {
                                 "sample identifier": "S7",
                                 "sample role type": "standard sample role",
-                                "location identifier": "B7"
+                                "location identifier": "B7",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -5003,9 +4992,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -5028,14 +5014,15 @@
                             "sample document": {
                                 "sample identifier": "S8",
                                 "sample role type": "standard sample role",
-                                "location identifier": "B8"
+                                "location identifier": "B8",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -5267,9 +5254,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -5292,14 +5276,15 @@
                             "sample document": {
                                 "sample identifier": "S9",
                                 "sample role type": "standard sample role",
-                                "location identifier": "B9"
+                                "location identifier": "B9",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -5531,9 +5516,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -5556,14 +5538,15 @@
                             "sample document": {
                                 "sample identifier": "S10",
                                 "sample role type": "standard sample role",
-                                "location identifier": "B10"
+                                "location identifier": "B10",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -5795,9 +5778,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -5820,14 +5800,15 @@
                             "sample document": {
                                 "sample identifier": "S11",
                                 "sample role type": "standard sample role",
-                                "location identifier": "B11"
+                                "location identifier": "B11",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -6059,9 +6040,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -6084,14 +6062,15 @@
                             "sample document": {
                                 "sample identifier": "B",
                                 "sample role type": "blank role",
-                                "location identifier": "B12"
+                                "location identifier": "B12",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "detector gain setting": "2198",
@@ -6319,9 +6298,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -6344,14 +6320,15 @@
                             "sample document": {
                                 "sample identifier": "C1",
                                 "sample role type": "control sample role",
-                                "location identifier": "C1"
+                                "location identifier": "C1",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -6583,9 +6560,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -6608,14 +6582,15 @@
                             "sample document": {
                                 "sample identifier": "C2",
                                 "sample role type": "control sample role",
-                                "location identifier": "C2"
+                                "location identifier": "C2",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -6847,9 +6822,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -6872,14 +6844,15 @@
                             "sample document": {
                                 "sample identifier": "C3",
                                 "sample role type": "control sample role",
-                                "location identifier": "C3"
+                                "location identifier": "C3",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -7111,9 +7084,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -7136,14 +7106,15 @@
                             "sample document": {
                                 "sample identifier": "C4",
                                 "sample role type": "control sample role",
-                                "location identifier": "C4"
+                                "location identifier": "C4",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -7375,9 +7346,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -7400,14 +7368,15 @@
                             "sample document": {
                                 "sample identifier": "X1",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "C5"
+                                "location identifier": "C5",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -7639,9 +7608,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -7664,14 +7630,15 @@
                             "sample document": {
                                 "sample identifier": "X2",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "C6"
+                                "location identifier": "C6",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -7903,9 +7870,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -7928,14 +7892,15 @@
                             "sample document": {
                                 "sample identifier": "X3",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "C7"
+                                "location identifier": "C7",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -8167,9 +8132,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -8192,14 +8154,15 @@
                             "sample document": {
                                 "sample identifier": "X4",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "C8"
+                                "location identifier": "C8",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -8431,9 +8394,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -8456,14 +8416,15 @@
                             "sample document": {
                                 "sample identifier": "X5",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "C9"
+                                "location identifier": "C9",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -8695,9 +8656,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -8720,14 +8678,15 @@
                             "sample document": {
                                 "sample identifier": "X6",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "C10"
+                                "location identifier": "C10",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -8959,9 +8918,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -8984,14 +8940,15 @@
                             "sample document": {
                                 "sample identifier": "X7",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "C11"
+                                "location identifier": "C11",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -9223,9 +9180,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -9248,14 +9202,15 @@
                             "sample document": {
                                 "sample identifier": "X8",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "C12"
+                                "location identifier": "C12",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -9487,9 +9442,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -9512,14 +9464,15 @@
                             "sample document": {
                                 "sample identifier": "C1",
                                 "sample role type": "control sample role",
-                                "location identifier": "D1"
+                                "location identifier": "D1",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -9751,9 +9704,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -9776,14 +9726,15 @@
                             "sample document": {
                                 "sample identifier": "C2",
                                 "sample role type": "control sample role",
-                                "location identifier": "D2"
+                                "location identifier": "D2",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -10015,9 +9966,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -10040,14 +9988,15 @@
                             "sample document": {
                                 "sample identifier": "C3",
                                 "sample role type": "control sample role",
-                                "location identifier": "D3"
+                                "location identifier": "D3",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -10279,9 +10228,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -10304,14 +10250,15 @@
                             "sample document": {
                                 "sample identifier": "C4",
                                 "sample role type": "control sample role",
-                                "location identifier": "D4"
+                                "location identifier": "D4",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -10543,9 +10490,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -10568,14 +10512,15 @@
                             "sample document": {
                                 "sample identifier": "X1",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "D5"
+                                "location identifier": "D5",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -10807,9 +10752,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -10832,14 +10774,15 @@
                             "sample document": {
                                 "sample identifier": "X2",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "D6"
+                                "location identifier": "D6",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -11071,9 +11014,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -11096,14 +11036,15 @@
                             "sample document": {
                                 "sample identifier": "X3",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "D7"
+                                "location identifier": "D7",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -11335,9 +11276,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -11360,14 +11298,15 @@
                             "sample document": {
                                 "sample identifier": "X4",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "D8"
+                                "location identifier": "D8",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -11599,9 +11538,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -11624,14 +11560,15 @@
                             "sample document": {
                                 "sample identifier": "X5",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "D9"
+                                "location identifier": "D9",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -11863,9 +11800,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -11888,14 +11822,15 @@
                             "sample document": {
                                 "sample identifier": "X6",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "D10"
+                                "location identifier": "D10",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -12127,9 +12062,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -12152,14 +12084,15 @@
                             "sample document": {
                                 "sample identifier": "X7",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "D11"
+                                "location identifier": "D11",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -12391,9 +12324,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -12416,14 +12346,15 @@
                             "sample document": {
                                 "sample identifier": "X8",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "D12"
+                                "location identifier": "D12",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -12655,9 +12586,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -12680,14 +12608,15 @@
                             "sample document": {
                                 "sample identifier": "X9",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "E1"
+                                "location identifier": "E1",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -12919,9 +12848,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -12944,14 +12870,15 @@
                             "sample document": {
                                 "sample identifier": "X10",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "E2"
+                                "location identifier": "E2",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -13183,9 +13110,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -13208,14 +13132,15 @@
                             "sample document": {
                                 "sample identifier": "X11",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "E3"
+                                "location identifier": "E3",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -13447,9 +13372,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -13472,14 +13394,15 @@
                             "sample document": {
                                 "sample identifier": "X12",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "E4"
+                                "location identifier": "E4",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -13711,9 +13634,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -13736,14 +13656,15 @@
                             "sample document": {
                                 "sample identifier": "X13",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "E5"
+                                "location identifier": "E5",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -13975,9 +13896,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -14000,14 +13918,15 @@
                             "sample document": {
                                 "sample identifier": "X14",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "E6"
+                                "location identifier": "E6",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -14239,9 +14158,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -14264,14 +14180,15 @@
                             "sample document": {
                                 "sample identifier": "X15",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "E7"
+                                "location identifier": "E7",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -14503,9 +14420,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -14528,14 +14442,15 @@
                             "sample document": {
                                 "sample identifier": "X16",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "E8"
+                                "location identifier": "E8",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -14767,9 +14682,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -14792,14 +14704,15 @@
                             "sample document": {
                                 "sample identifier": "X17",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "E9"
+                                "location identifier": "E9",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -15031,9 +14944,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -15056,14 +14966,15 @@
                             "sample document": {
                                 "sample identifier": "X18",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "E10"
+                                "location identifier": "E10",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -15295,9 +15206,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -15320,14 +15228,15 @@
                             "sample document": {
                                 "sample identifier": "X19",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "E11"
+                                "location identifier": "E11",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -15559,9 +15468,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -15584,14 +15490,15 @@
                             "sample document": {
                                 "sample identifier": "X20",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "E12"
+                                "location identifier": "E12",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -15823,9 +15730,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -15848,14 +15752,15 @@
                             "sample document": {
                                 "sample identifier": "X9",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "F1"
+                                "location identifier": "F1",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -16087,9 +15992,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -16112,14 +16014,15 @@
                             "sample document": {
                                 "sample identifier": "X10",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "F2"
+                                "location identifier": "F2",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -16351,9 +16254,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -16376,14 +16276,15 @@
                             "sample document": {
                                 "sample identifier": "X11",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "F3"
+                                "location identifier": "F3",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -16615,9 +16516,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -16640,14 +16538,15 @@
                             "sample document": {
                                 "sample identifier": "X12",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "F4"
+                                "location identifier": "F4",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -16879,9 +16778,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -16904,14 +16800,15 @@
                             "sample document": {
                                 "sample identifier": "X13",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "F5"
+                                "location identifier": "F5",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -17143,9 +17040,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -17168,14 +17062,15 @@
                             "sample document": {
                                 "sample identifier": "X14",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "F6"
+                                "location identifier": "F6",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -17407,9 +17302,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -17432,14 +17324,15 @@
                             "sample document": {
                                 "sample identifier": "X15",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "F7"
+                                "location identifier": "F7",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -17671,9 +17564,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -17696,14 +17586,15 @@
                             "sample document": {
                                 "sample identifier": "X16",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "F8"
+                                "location identifier": "F8",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -17935,9 +17826,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -17960,14 +17848,15 @@
                             "sample document": {
                                 "sample identifier": "X17",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "F9"
+                                "location identifier": "F9",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -18199,9 +18088,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -18224,14 +18110,15 @@
                             "sample document": {
                                 "sample identifier": "X18",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "F10"
+                                "location identifier": "F10",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -18463,9 +18350,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -18488,14 +18372,15 @@
                             "sample document": {
                                 "sample identifier": "X19",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "F11"
+                                "location identifier": "F11",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -18727,9 +18612,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -18752,14 +18634,15 @@
                             "sample document": {
                                 "sample identifier": "X20",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "F12"
+                                "location identifier": "F12",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -18991,9 +18874,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -19016,14 +18896,15 @@
                             "sample document": {
                                 "sample identifier": "X21",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "G1"
+                                "location identifier": "G1",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -19255,9 +19136,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -19280,14 +19158,15 @@
                             "sample document": {
                                 "sample identifier": "X22",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "G2"
+                                "location identifier": "G2",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -19519,9 +19398,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -19544,14 +19420,15 @@
                             "sample document": {
                                 "sample identifier": "X23",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "G3"
+                                "location identifier": "G3",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -19783,9 +19660,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -19808,14 +19682,15 @@
                             "sample document": {
                                 "sample identifier": "X24",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "G4"
+                                "location identifier": "G4",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -20047,9 +19922,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -20072,14 +19944,15 @@
                             "sample document": {
                                 "sample identifier": "X25",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "G5"
+                                "location identifier": "G5",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -20311,9 +20184,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -20336,14 +20206,15 @@
                             "sample document": {
                                 "sample identifier": "X26",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "G6"
+                                "location identifier": "G6",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -20575,9 +20446,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -20600,14 +20468,15 @@
                             "sample document": {
                                 "sample identifier": "X27",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "G7"
+                                "location identifier": "G7",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -20839,9 +20708,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -20864,14 +20730,15 @@
                             "sample document": {
                                 "sample identifier": "X28",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "G8"
+                                "location identifier": "G8",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -21103,9 +20970,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -21128,14 +20992,15 @@
                             "sample document": {
                                 "sample identifier": "X29",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "G9"
+                                "location identifier": "G9",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -21367,9 +21232,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -21392,14 +21254,15 @@
                             "sample document": {
                                 "sample identifier": "X30",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "G10"
+                                "location identifier": "G10",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -21631,9 +21494,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -21656,14 +21516,15 @@
                             "sample document": {
                                 "sample identifier": "X31",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "G11"
+                                "location identifier": "G11",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -21895,9 +21756,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -21920,14 +21778,15 @@
                             "sample document": {
                                 "sample identifier": "X32",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "G12"
+                                "location identifier": "G12",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -22159,9 +22018,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -22184,14 +22040,15 @@
                             "sample document": {
                                 "sample identifier": "X21",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "H1"
+                                "location identifier": "H1",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -22423,9 +22280,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -22448,14 +22302,15 @@
                             "sample document": {
                                 "sample identifier": "X22",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "H2"
+                                "location identifier": "H2",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -22687,9 +22542,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -22712,14 +22564,15 @@
                             "sample document": {
                                 "sample identifier": "X23",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "H3"
+                                "location identifier": "H3",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -22951,9 +22804,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -22976,14 +22826,15 @@
                             "sample document": {
                                 "sample identifier": "X24",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "H4"
+                                "location identifier": "H4",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -23215,9 +23066,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -23240,14 +23088,15 @@
                             "sample document": {
                                 "sample identifier": "X25",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "H5"
+                                "location identifier": "H5",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -23479,9 +23328,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -23504,14 +23350,15 @@
                             "sample document": {
                                 "sample identifier": "X26",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "H6"
+                                "location identifier": "H6",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -23743,9 +23590,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -23768,14 +23612,15 @@
                             "sample document": {
                                 "sample identifier": "X27",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "H7"
+                                "location identifier": "H7",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -24007,9 +23852,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -24032,14 +23874,15 @@
                             "sample document": {
                                 "sample identifier": "X28",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "H8"
+                                "location identifier": "H8",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -24271,9 +24114,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -24296,14 +24136,15 @@
                             "sample document": {
                                 "sample identifier": "X29",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "H9"
+                                "location identifier": "H9",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -24535,9 +24376,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -24560,14 +24398,15 @@
                             "sample document": {
                                 "sample identifier": "X30",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "H10"
+                                "location identifier": "H10",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -24799,9 +24638,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -24824,14 +24660,15 @@
                             "sample document": {
                                 "sample identifier": "X31",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "H11"
+                                "location identifier": "H11",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -25063,9 +24900,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -25088,14 +24922,15 @@
                             "sample document": {
                                 "sample identifier": "X32",
                                 "sample role type": "unknown sample role",
-                                "location identifier": "H12"
+                                "location identifier": "H12",
+                                "well plate identifier": "555"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
                                         "sample volume setting": {
-                                            "value": 50,
+                                            "value": 50.0,
                                             "unit": "μL"
                                         },
                                         "dilution factor setting": {
@@ -25327,9 +25162,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -25348,8 +25180,8 @@
             "file name": "bio-rad_bio-plex_manager_example_01.xml",
             "software name": "“Bio-Plex Manager",
             "software version": "6.2.0.175",
-            "ASM converter name": "allotropy_biorad_bioplex_manager",
-            "ASM converter version": "0.1.29"
+            "ASM converter name": "allotropy_bio_rad_bio_plex_manager",
+            "ASM converter version": "0.1.49"
         }
     }
 }

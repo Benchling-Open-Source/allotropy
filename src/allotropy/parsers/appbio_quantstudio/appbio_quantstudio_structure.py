@@ -8,62 +8,67 @@
 
 from __future__ import annotations
 
-from collections.abc import Iterator
+from collections.abc import Callable
 from dataclasses import dataclass
 from io import StringIO
 import re
-from typing import Optional
+from typing import Any, TypeVar
 
 import numpy as np
 import pandas as pd
 
-from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
-from allotropy.allotrope.pandas_util import read_csv
+from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
+from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import LinesReader
-from allotropy.parsers.utils.calculated_data_documents.definition import (
-    CalculatedDocument,
-    Referenceable,
+from allotropy.parsers.utils.calculated_data_documents.definition import Referenceable
+from allotropy.parsers.utils.pandas import (
+    df_to_series_data,
+    map_rows,
+    read_csv,
+    SeriesData,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import (
-    assert_not_empty_df,
-    assert_not_none,
-    df_to_series,
-    try_bool_from_series_or_none,
-    try_float_from_series,
-    try_float_from_series_or_none,
-    try_float_or_none,
-    try_int,
-    try_int_from_series,
-    try_str_from_series,
-    try_str_from_series_or_default,
-    try_str_from_series_or_none,
-)
+from allotropy.parsers.utils.values import assert_not_none, try_int
+
+T = TypeVar("T")
+
+
+def map_wells(map_func: Callable[..., T], data: pd.DataFrame) -> dict[int, T]:
+    return {
+        try_int(str(well_id), "well id"): map_func(well_data)
+        for well_id, well_data in data.groupby("Well")
+    }
 
 
 @dataclass(frozen=True)
 class Header:
     measurement_time: str
-    plate_well_count: int
+    plate_well_count: int | None
     experiment_type: ExperimentType
     device_identifier: str
     model_number: str
     device_serial_number: str
     measurement_method_identifier: str
     pcr_detection_chemistry: str
-    passive_reference_dye_setting: Optional[str]
-    barcode: Optional[str]
-    analyst: Optional[str]
-    experimental_data_identifier: Optional[str]
+    passive_reference_dye_setting: str | None
+    barcode: str | None
+    analyst: str | None
+    experimental_data_identifier: str | None
 
     @staticmethod
     def create(reader: LinesReader) -> Header:
-        lines = [line.replace("*", "", 1) for line in reader.pop_until(r"^\[.+\]")]
+        lines = [line.strip() for line in reader.pop_until(r"^\[.+\]") if line.strip()]
+        if not lines:
+            msg = "Cannot parse data from empty header."
+            raise AllotropeConversionError(msg)
+
         csv_stream = StringIO("\n".join(lines))
-        raw_data = read_csv(csv_stream, header=None, sep="=", names=["index", "values"])
-        data = pd.Series(raw_data["values"].values, index=raw_data["index"])
-        data.index = data.index.str.strip()
-        data = data.str.strip().replace("NA", None)
+        raw_data = read_csv(
+            csv_stream, header=None, sep="=", skipinitialspace=True, index_col=0
+        )
+        raw_data.index = raw_data.index.str.replace("*", "")
+        data = df_to_series_data(raw_data.T.replace(np.nan, None))
 
         experiments_type_options = {
             "Standard Curve": ExperimentType.standard_curve_qPCR_experiment,
@@ -74,47 +79,32 @@ class Header:
             "Presence/Absence": ExperimentType.presence_absence_qPCR_experiment,
         }
 
+        plate_well_count_search = re.search("(96)|(384)", data[str, "Block Type"])
+
         return Header(
-            measurement_time=try_str_from_series(data, "Experiment Run End Time"),
-            plate_well_count=assert_not_none(
-                try_int(
-                    assert_not_none(
-                        re.match(
-                            "(96)|(384)",
-                            try_str_from_series(data, "Block Type"),
-                        ),
-                        msg="Unable to find plate well count",
-                    ).group(),
-                    "plate well count",
-                ),
-                msg="Unable to interpret plate well count",
+            measurement_time=data[str, "Experiment Run End Time"],
+            plate_well_count=(
+                None
+                if plate_well_count_search is None
+                else int(plate_well_count_search.group())
             ),
             experiment_type=assert_not_none(
                 experiments_type_options.get(
-                    try_str_from_series(data, "Experiment Type"),
+                    data[str, "Experiment Type"],
                 ),
                 msg="Unable to find valid experiment type",
             ),
-            device_identifier=(
-                try_str_from_series_or_none(data, "Instrument Name") or "NA"
+            device_identifier=(data.get(str, "Instrument Name", NOT_APPLICABLE)),
+            model_number=data[str, "Instrument Type"],
+            device_serial_number=data.get(
+                str, "Instrument Serial Number", NOT_APPLICABLE
             ),
-            model_number=try_str_from_series(data, "Instrument Type"),
-            device_serial_number=try_str_from_series_or_none(
-                data, "Instrument Serial Number"
-            )
-            or "NA",
-            measurement_method_identifier=try_str_from_series(
-                data, "Quantification Cycle Method"
-            ),
-            pcr_detection_chemistry=try_str_from_series(data, "Chemistry"),
-            passive_reference_dye_setting=try_str_from_series_or_none(
-                data, "Passive Reference"
-            ),
-            barcode=try_str_from_series_or_none(data, "Experiment Barcode"),
-            analyst=try_str_from_series_or_none(data, "Experiment User Name"),
-            experimental_data_identifier=try_str_from_series_or_none(
-                data, "Experiment Name"
-            ),
+            measurement_method_identifier=data[str, "Quantification Cycle Method"],
+            pcr_detection_chemistry=data[str, "Chemistry"],
+            passive_reference_dye_setting=data.get(str, "Passive Reference"),
+            barcode=data.get(str, "Experiment Barcode"),
+            analyst=data.get(str, "Experiment User Name"),
+            experimental_data_identifier=data.get(str, "Experiment Name"),
         )
 
 
@@ -123,196 +113,102 @@ class WellItem(Referenceable):
     identifier: int
     target_dna_description: str
     sample_identifier: str
-    reporter_dye_setting: Optional[str]
-    position: Optional[str]
-    well_location_identifier: Optional[str]
-    quencher_dye_setting: Optional[str]
-    sample_role_type: Optional[str]
-    _amplification_data: Optional[AmplificationData] = None
-    _result: Optional[Result] = None
+    reporter_dye_setting: str | None = None
+    position: str | None = None
+    well_location_identifier: str | None = None
+    quencher_dye_setting: str | None = None
+    sample_role_type: str | None = None
+    _result: Result | None = None
 
-    @property
-    def amplification_data(self) -> AmplificationData:
-        return assert_not_none(
-            self._amplification_data,
-            msg=f"Unable to find amplification data for target '{self.target_dna_description}' in well {self.identifier} .",
-        )
-
-    @amplification_data.setter
-    def amplification_data(self, amplification_data: AmplificationData) -> None:
-        self._amplification_data = amplification_data
+    # Make hashable to allow for use of caching
+    def __hash__(self) -> int:
+        return hash(self.identifier)
 
     @property
     def result(self) -> Result:
-        return assert_not_none(
-            self._result,
-            msg=f"Unable to find result data for well {self.identifier}.",
-        )
-
-    @result.setter
-    def result(self, result: Result) -> None:
-        self._result = result
+        return assert_not_none(self._result)
 
     @staticmethod
-    def create_genotyping(data: pd.Series[str]) -> tuple[WellItem, WellItem]:
-        identifier = try_int_from_series(data, "Well")
-
-        snp_name = try_str_from_series(
-            data,
-            "SNP Assay Name",
-            msg=f"Unable to find snp name for well {identifier}",
-        )
-
-        sample_identifier = try_str_from_series(
-            data,
-            "Sample Name",
-            msg=f"Unable to find sample identifier for well {identifier}",
-        )
-
-        allele1 = try_str_from_series(
-            data,
-            "Allele1 Name",
-            msg=f"Unable to find allele 1 for well {identifier}",
-        )
-
-        allele2 = try_str_from_series(
-            data,
-            "Allele2 Name",
-            msg=f"Unable to find allele 2 for well {identifier}",
-        )
-
+    def create_genotyping(data: SeriesData) -> tuple[WellItem, WellItem]:
+        identifier = data[int, "Well"]
+        snp_name = data[
+            str, "SNP Assay Name", f"Unable to find snp name for well {identifier}"
+        ]
+        allele1 = data[
+            str, "Allele1 Name", f"Unable to find allele 1 for well {identifier}"
+        ]
+        allele2 = data[
+            str, "Allele2 Name", f"Unable to find allele 2 for well {identifier}"
+        ]
         return (
             WellItem(
                 uuid=random_uuid_str(),
                 identifier=identifier,
                 target_dna_description=f"{snp_name}-{allele1}",
-                sample_identifier=sample_identifier,
-                reporter_dye_setting=try_str_from_series_or_none(
-                    data, "Allele1 Reporter"
-                ),
-                position=try_str_from_series_or_default(
-                    data, "Well Position", default="UNDEFINED"
-                ),
-                well_location_identifier=try_str_from_series_or_none(
-                    data, "Well Position"
-                ),
-                quencher_dye_setting=try_str_from_series_or_none(data, "Quencher"),
-                sample_role_type=try_str_from_series_or_none(data, "Task"),
+                sample_identifier=data.get(str, "Sample Name", NOT_APPLICABLE),
+                reporter_dye_setting=data.get(str, "Allele1 Reporter"),
+                position=data.get(str, "Well Position", NOT_APPLICABLE),
+                well_location_identifier=data.get(str, "Well Position"),
+                quencher_dye_setting=data.get(str, "Quencher"),
+                sample_role_type=data.get(str, "Task"),
             ),
             WellItem(
                 uuid=random_uuid_str(),
                 identifier=identifier,
                 target_dna_description=f"{snp_name}-{allele2}",
-                sample_identifier=sample_identifier,
-                reporter_dye_setting=try_str_from_series_or_none(
-                    data, "Allele2 Reporter"
-                ),
-                position=try_str_from_series_or_default(
-                    data, "Well Position", default="UNDEFINED"
-                ),
-                well_location_identifier=try_str_from_series_or_none(
-                    data, "Well Position"
-                ),
-                quencher_dye_setting=try_str_from_series_or_none(data, "Quencher"),
-                sample_role_type=try_str_from_series_or_none(data, "Task"),
+                sample_identifier=data.get(str, "Sample Name", NOT_APPLICABLE),
+                reporter_dye_setting=data.get(str, "Allele2 Reporter"),
+                position=data.get(str, "Well Position", NOT_APPLICABLE),
+                well_location_identifier=data.get(str, "Well Position"),
+                quencher_dye_setting=data.get(str, "Quencher"),
+                sample_role_type=data.get(str, "Task"),
             ),
         )
 
     @staticmethod
-    def create_generic(data: pd.Series[str]) -> WellItem:
-        identifier = try_int_from_series(data, "Well")
-
-        target_dna_description = try_str_from_series(
-            data,
-            "Target Name",
-            msg=f"Unable to find target dna description for well {identifier}",
-        )
-
-        sample_identifier = try_str_from_series(
-            data,
-            "Sample Name",
-            msg=f"Unable to find sample identifier for well {identifier}",
-        )
-
+    def create_generic(data: SeriesData) -> WellItem:
+        identifier = data[int, "Well"]
         return WellItem(
             uuid=random_uuid_str(),
             identifier=identifier,
-            target_dna_description=target_dna_description,
-            sample_identifier=sample_identifier,
-            reporter_dye_setting=try_str_from_series_or_none(data, "Reporter"),
-            position=try_str_from_series_or_default(
-                data, "Well Position", default="UNDEFINED"
-            ),
-            well_location_identifier=try_str_from_series_or_none(data, "Well Position"),
-            quencher_dye_setting=try_str_from_series_or_none(data, "Quencher"),
-            sample_role_type=try_str_from_series_or_none(data, "Task"),
+            target_dna_description=data[
+                str,
+                "Target Name",
+                f"Unable to find target dna description for well {identifier}",
+            ],
+            sample_identifier=data.get(str, "Sample Name", NOT_APPLICABLE),
+            reporter_dye_setting=data.get(str, "Reporter"),
+            position=data.get(str, "Well Position", NOT_APPLICABLE),
+            well_location_identifier=data.get(str, "Well Position"),
+            quencher_dye_setting=data.get(str, "Quencher"),
+            sample_role_type=data.get(str, "Task"),
         )
 
 
 @dataclass
 class Well:
     identifier: int
-    items: dict[str, WellItem]
-    _multicomponent_data: Optional[MulticomponentData] = None
-    _melt_curve_raw_data: Optional[MeltCurveRawData] = None
-
-    def get_well_item(self, target: str) -> WellItem:
-        well_item = self.items.get(target)
-        return assert_not_none(
-            well_item,
-            msg=f"Unable to find target DNA '{target}' for well {self.identifier}.",
-        )
-
-    @property
-    def multicomponent_data(self) -> Optional[MulticomponentData]:
-        return self._multicomponent_data
-
-    @multicomponent_data.setter
-    def multicomponent_data(self, multicomponent_data: MulticomponentData) -> None:
-        self._multicomponent_data = multicomponent_data
-
-    @property
-    def melt_curve_raw_data(self) -> Optional[MeltCurveRawData]:
-        return self._melt_curve_raw_data
-
-    @melt_curve_raw_data.setter
-    def melt_curve_raw_data(self, melt_curve_raw_data: MeltCurveRawData) -> None:
-        self._melt_curve_raw_data = melt_curve_raw_data
+    items: list[WellItem]
 
     @staticmethod
-    def create_genotyping(identifier: int, well_data: pd.Series[str]) -> Well:
+    def create_genotyping(data: SeriesData) -> Well:
         return Well(
-            identifier=identifier,
-            items={
-                well_item.target_dna_description: well_item
-                for well_item in WellItem.create_genotyping(well_data)
-            },
+            identifier=try_int(str(data.series.name), "well id"),
+            items=list(WellItem.create_genotyping(data)),
         )
 
     @staticmethod
-    def create_generic(identifier: int, well_data: pd.DataFrame) -> Well:
+    def create_generic(well_data: pd.DataFrame) -> Well:
         return Well(
-            identifier=identifier,
-            items={
-                item_data["Target Name"]: WellItem.create_generic(item_data)
+            identifier=try_int(str(well_data["Well"].iloc[0]), "well id"),
+            items=[
+                WellItem.create_generic(SeriesData(item_data))
                 for _, item_data in well_data.iterrows()
-            },
+            ],
         )
 
-
-@dataclass(frozen=True)
-class WellList:
-    wells: list[Well]
-
-    def iter_well_items(self) -> Iterator[WellItem]:
-        for well in self.wells:
-            yield from well.items.values()
-
-    def __iter__(self) -> Iterator[Well]:
-        return iter(self.wells)
-
     @staticmethod
-    def create(reader: LinesReader, experiment_type: ExperimentType) -> WellList:
+    def create(reader: LinesReader, experiment_type: ExperimentType) -> list[Well]:
         assert_not_none(
             reader.drop_until(r"^\[Sample Setup\]"),
             msg="Unable to find 'Sample Setup' section in file.",
@@ -321,28 +217,16 @@ class WellList:
         reader.pop()  # remove title
         lines = list(reader.pop_until(r"^\[.+\]"))
         csv_stream = StringIO("\n".join(lines))
-        raw_data = read_csv(csv_stream, sep="\t").replace(np.nan, None)
-        data = raw_data[raw_data["Sample Name"].notnull()]
+        data = read_csv(csv_stream, sep="\t").replace(np.nan, None)
 
         if experiment_type == ExperimentType.genotyping_qPCR_experiment:
-            return WellList(
-                [
-                    Well.create_genotyping(
-                        try_int(str(identifier), "genotyping well identifier"),
-                        well_data,
-                    )
-                    for identifier, well_data in data.iterrows()
-                ]
+            return map_rows(data, Well.create_genotyping)
+        else:
+            return list(
+                map_wells(
+                    Well.create_generic, data[data["Target Name"].notnull()]
+                ).values()
             )
-        return WellList(
-            [
-                Well.create_generic(
-                    try_int(str(identifier), "well identifier"),
-                    well_data,
-                )
-                for identifier, well_data in data.groupby("Well")
-            ]
-        )
 
 
 @dataclass(frozen=True)
@@ -350,7 +234,7 @@ class RawData:
     lines: list[str]
 
     @staticmethod
-    def create(reader: LinesReader) -> Optional[RawData]:
+    def create(reader: LinesReader) -> RawData | None:
         if reader.match(r"^\[Raw Data\]"):
             reader.pop()  # remove title
             return RawData(lines=list(reader.pop_until(r"^\[.+\]")))
@@ -361,110 +245,132 @@ class RawData:
 class AmplificationData:
     total_cycle_number_setting: float
     cycle: list[float]
-    rn: list[Optional[float]]
-    delta_rn: list[Optional[float]]
+    rn: list[float | None]
+    delta_rn: list[float | None]
 
-    @staticmethod
-    def get_data(reader: LinesReader) -> pd.DataFrame:
-        assert_not_none(
-            reader.drop_until(r"^\[Amplification Data\]"),
-            msg="Unable to find 'Amplification Data' section in file.",
-        )
 
-        reader.pop()  # remove title
-        lines = list(reader.pop_until(r"^\[.+\]"))
-        csv_stream = StringIO("\n".join(lines))
-        return read_csv(csv_stream, sep="\t", thousands=r",")
+def create_amplification_data(
+    reader: LinesReader,
+) -> dict[int, dict[str, AmplificationData]]:
+    assert_not_none(
+        reader.drop_until(r"^\[Amplification Data\]"),
+        msg="Unable to find 'Amplification Data' section in file.",
+    )
 
-    @staticmethod
-    def create(
-        amplification_data: pd.DataFrame, well_item: WellItem
-    ) -> AmplificationData:
-        well_data = assert_not_empty_df(
-            amplification_data[amplification_data["Well"] == well_item.identifier],
-            msg=f"Unable to find amplification data for well {well_item.identifier}.",
-        )
+    reader.pop()  # remove title
+    lines = list(reader.pop_until(r"^\[.+\]"))
+    csv_stream = StringIO("\n".join(lines))
+    data = read_csv(csv_stream, sep="\t", thousands=r",")
 
-        target_data = assert_not_empty_df(
-            well_data[well_data["Target Name"] == well_item.target_dna_description],
-            msg=f"Unable to find amplification data for target '{well_item.target_dna_description}' in well {well_item.identifier} .",
-        )
+    def make_data(well_data: pd.DataFrame) -> dict[str, AmplificationData]:
+        return {
+            str(target_name): AmplificationData(
+                total_cycle_number_setting=float(target_data["Cycle"].max()),
+                cycle=target_data["Cycle"].tolist(),
+                rn=target_data["Rn"].tolist(),
+                delta_rn=target_data["Delta Rn"].tolist(),
+            )
+            for target_name, target_data in well_data.groupby("Target Name")
+        }
 
-        return AmplificationData(
-            total_cycle_number_setting=float(target_data["Cycle"].max()),
-            cycle=target_data["Cycle"].tolist(),
-            rn=target_data["Rn"].tolist(),
-            delta_rn=target_data["Delta Rn"].tolist(),
-        )
+    return map_wells(make_data, data)
 
 
 @dataclass(frozen=True)
 class MulticomponentData:
     cycle: list[float]
-    columns: dict[str, list[Optional[float]]]
+    columns: dict[str, list[float | None]]
 
-    def get_column(self, name: str) -> list[Optional[float]]:
+    def get_column(self, name: str) -> list[float | None]:
         return assert_not_none(
             self.columns.get(name),
             msg=f"Unable to obtain '{name}' from multicomponent data.",
         )
 
-    @staticmethod
-    def get_data(reader: LinesReader) -> Optional[pd.DataFrame]:
-        if not reader.match(r"^\[Multicomponent Data\]"):
-            return None
-        reader.pop()  # remove title
-        lines = list(reader.pop_until(r"^\[.+\]"))
-        csv_stream = StringIO("\n".join(lines))
-        return read_csv(csv_stream, sep="\t", thousands=r",")
 
-    @staticmethod
-    def create(data: pd.DataFrame, well: Well) -> MulticomponentData:
-        well_data = assert_not_empty_df(
-            data[data["Well"] == well.identifier],
-            msg=f"Unable to find multi component data for well {well.identifier}.",
-        )
+def create_multicomponent_data(reader: LinesReader) -> dict[int, MulticomponentData]:
+    if not reader.match(r"^\[Multicomponent Data\]"):
+        return {}
+    reader.pop()  # remove title
+    lines = list(reader.pop_until(r"^\[.+\]"))
+    csv_stream = StringIO("\n".join(lines))
+    data = read_csv(csv_stream, sep="\t", thousands=r",")
 
+    def make_data(well_data: pd.Series[Any]) -> MulticomponentData:
         return MulticomponentData(
             cycle=well_data["Cycle"].tolist(),
             columns={
-                name: well_data[name].tolist()  # type: ignore[misc]
+                name: well_data[name].tolist()
                 for name in well_data
                 if name not in ["Well", "Cycle", "Well Position"]
             },
+        )
+
+    return map_wells(make_data, data)
+
+
+@dataclass(frozen=True)
+class ResultMetadata:
+    reference_dna_description: str | None
+    reference_sample_description: str | None
+
+    @staticmethod
+    def create(data: SeriesData, experiment_type: ExperimentType) -> ResultMetadata:
+        if experiment_type not in [
+            ExperimentType.comparative_CT_qPCR_experiment,
+            ExperimentType.relative_standard_curve_qPCR_experiment,
+        ]:
+            return ResultMetadata(None, None)
+        return ResultMetadata(
+            reference_dna_description=data.get(
+                str, "Endogenous Control", NOT_APPLICABLE
+            ),
+            reference_sample_description=data.get(
+                str, "Reference Sample", NOT_APPLICABLE
+            ),
         )
 
 
 @dataclass(frozen=True)
 class Result:
     cycle_threshold_value_setting: float
-    cycle_threshold_result: Optional[float]
-    automatic_cycle_threshold_enabled_setting: Optional[bool]
-    automatic_baseline_determination_enabled_setting: Optional[bool]
-    normalized_reporter_result: Optional[float]
-    baseline_corrected_reporter_result: Optional[float]
-    genotyping_determination_result: Optional[str]
-    genotyping_determination_method_setting: Optional[float]
-    quantity: Optional[float]
-    quantity_mean: Optional[float]
-    quantity_sd: Optional[float]
-    ct_mean: Optional[float]
-    ct_sd: Optional[float]
-    delta_ct_mean: Optional[float]
-    delta_ct_se: Optional[float]
-    delta_delta_ct: Optional[float]
-    rq: Optional[float]
-    rq_min: Optional[float]
-    rq_max: Optional[float]
-    rn_mean: Optional[float]
-    rn_sd: Optional[float]
-    y_intercept: Optional[float]
-    r_squared: Optional[float]
-    slope: Optional[float]
-    efficiency: Optional[float]
+    cycle_threshold_result: float | None
+    automatic_cycle_threshold_enabled_setting: bool | None
+    automatic_baseline_determination_enabled_setting: bool | None
+    normalized_reporter_result: float | None
+    baseline_corrected_reporter_result: float | None
+    genotyping_determination_result: str | None
+    genotyping_determination_method_setting: float | None
+    quantity: float | None
+    quantity_mean: float | None
+    quantity_sd: float | None
+    ct_mean: float | None
+    ct_sd: float | None
+    delta_ct_mean: float | None
+    delta_ct_se: float | None
+    delta_delta_ct: float | None
+    rq: float | None
+    rq_min: float | None
+    rq_max: float | None
+    rn_mean: float | None
+    rn_sd: float | None
+    y_intercept: float | None
+    r_squared: float | None
+    slope: float | None
+    efficiency: float | None
+    comments: str | None
+    highsd: str | None
+    noamp: str | None
+    expfail: str | None
+    tholdfail: str | None
+    prfdrop: str | None
+    amp_score: float | None
+    cq_conf: float | None
 
     @staticmethod
-    def get_data(reader: LinesReader) -> tuple[pd.DataFrame, pd.Series[str]]:
+    def create(
+        reader: LinesReader, experiment_type: ExperimentType
+    ) -> tuple[dict[int, dict[str, Result]], ResultMetadata]:
         assert_not_none(
             reader.drop_until(r"^\[Results\]"),
             msg="Unable to find 'Results' section in file.",
@@ -474,193 +380,137 @@ class Result:
         data_lines = list(reader.pop_until_empty())
         csv_stream = StringIO("\n".join(data_lines))
         data = read_csv(csv_stream, sep="\t", thousands=r",").replace(np.nan, None)
+        result = Result.create_results(data, experiment_type)
 
         reader.drop_empty()
 
         if reader.match(r"\[.+\]"):
-            return data, pd.Series()
+            return result, ResultMetadata.create(
+                SeriesData(pd.Series()), experiment_type
+            )
 
         metadata_lines = list(reader.pop_until_empty())
         csv_stream = StringIO("\n".join(metadata_lines))
-        raw_data = read_csv(csv_stream, header=None, sep="=", names=["index", "values"])
+        raw_data = read_csv(
+            csv_stream, header=None, sep="=", names=["index", "values"]
+        ).astype(str)
         metadata = pd.Series(raw_data["values"].values, index=raw_data["index"])
         metadata.index = metadata.index.str.strip()
 
         reader.drop_empty()
 
-        return data, metadata.str.strip()
-
-    @staticmethod
-    def create_genotyping(data: pd.DataFrame, well_item: WellItem) -> Result:
-        well_data = assert_not_empty_df(
-            data[data["Well"] == well_item.identifier],
-            msg=f"Unable to find result data for well {well_item.identifier}.",
-        )
-
-        snp_assay_name, _ = well_item.target_dna_description.split("-")
-        target_data = df_to_series(
-            assert_not_empty_df(
-                well_data[well_data["SNP Assay Name"] == snp_assay_name],
-                msg=f"Unable to find result data for well {well_item.identifier}.",
-            ),
-            msg=f"Expected exactly 1 row of results to be associated with target '{well_item.target_dna_description}' in well {well_item.identifier}.",
-        )
-
-        _, raw_allele = well_item.target_dna_description.split("-")
-        allele = raw_allele.replace(" ", "")
-        cycle_threshold_value_setting = try_float_from_series(
-            target_data,
-            f"{allele} Ct Threshold",
-            msg=f"Unable to find cycle threshold value setting for well {well_item.identifier}",
-        )
-
-        cycle_threshold_result = assert_not_none(
-            target_data.get(f"{allele} Ct"),
-            msg="Unable to find cycle threshold result",
-        )
-
-        return Result(
-            cycle_threshold_value_setting=cycle_threshold_value_setting,
-            cycle_threshold_result=try_float_or_none(str(cycle_threshold_result)),
-            automatic_cycle_threshold_enabled_setting=try_bool_from_series_or_none(
-                target_data, f"{allele} Automatic Ct Threshold"
-            ),
-            automatic_baseline_determination_enabled_setting=try_bool_from_series_or_none(
-                target_data, f"{allele} Automatic Baseline"
-            ),
-            normalized_reporter_result=try_float_from_series_or_none(target_data, "Rn"),
-            baseline_corrected_reporter_result=try_float_from_series_or_none(
-                target_data, f"{allele} Delta Rn"
-            ),
-            genotyping_determination_result=try_str_from_series_or_none(
-                target_data, "Call"
-            ),
-            genotyping_determination_method_setting=try_float_from_series_or_none(
-                target_data, "Threshold Value"
-            ),
-            quantity=try_float_from_series_or_none(target_data, "Quantity"),
-            quantity_mean=try_float_from_series_or_none(target_data, "Quantity Mean"),
-            quantity_sd=try_float_from_series_or_none(target_data, "Quantity SD"),
-            ct_mean=try_float_from_series_or_none(target_data, "Ct Mean"),
-            ct_sd=try_float_from_series_or_none(target_data, "Ct SD"),
-            delta_ct_mean=try_float_from_series_or_none(target_data, "Delta Ct Mean"),
-            delta_ct_se=try_float_from_series_or_none(target_data, "Delta Ct SE"),
-            delta_delta_ct=try_float_from_series_or_none(target_data, "Delta Delta Ct"),
-            rq=try_float_from_series_or_none(target_data, "RQ"),
-            rq_min=try_float_from_series_or_none(target_data, "RQ Min"),
-            rq_max=try_float_from_series_or_none(target_data, "RQ Max"),
-            rn_mean=try_float_from_series_or_none(target_data, "Rn Mean"),
-            rn_sd=try_float_from_series_or_none(target_data, "Rn SD"),
-            y_intercept=try_float_from_series_or_none(target_data, "Y-Intercept"),
-            r_squared=try_float_from_series_or_none(target_data, "R(superscript 2)"),
-            slope=try_float_from_series_or_none(target_data, "Slope"),
-            efficiency=try_float_from_series_or_none(target_data, "Efficiency"),
+        return result, ResultMetadata.create(
+            SeriesData(metadata.str.strip()), experiment_type
         )
 
     @staticmethod
-    def create_generic(data: pd.DataFrame, well_item: WellItem) -> Result:
-        well_data = assert_not_empty_df(
-            data[data["Well"] == well_item.identifier],
-            msg=f"Unable to find result data for well {well_item.identifier}.",
-        )
-
-        target_data = df_to_series(
-            assert_not_empty_df(
-                well_data[well_data["Target Name"] == well_item.target_dna_description],
-                msg=f"Unable to find result data for well {well_item.identifier}.",
-            ),
-            msg=f"Expected exactly 1 row of results to be associated with target '{well_item.target_dna_description}' in well {well_item.identifier}.",
-        )
-
-        cycle_threshold_result = assert_not_none(
-            target_data.get("CT"),
-            msg="Unable to find cycle threshold result",
-        )
-
-        return Result(
-            cycle_threshold_value_setting=try_float_from_series(
-                target_data,
-                "Ct Threshold",
-                msg=f"Unable to find cycle threshold value setting for well {well_item.identifier}",
-            ),
-            cycle_threshold_result=try_float_or_none(str(cycle_threshold_result)),
-            automatic_cycle_threshold_enabled_setting=try_bool_from_series_or_none(
-                target_data, "Automatic Ct Threshold"
-            ),
-            automatic_baseline_determination_enabled_setting=try_bool_from_series_or_none(
-                target_data, "Automatic Baseline"
-            ),
-            normalized_reporter_result=try_float_from_series_or_none(target_data, "Rn"),
-            baseline_corrected_reporter_result=try_float_from_series_or_none(
-                target_data, "Delta Rn"
-            ),
-            genotyping_determination_result=try_str_from_series_or_none(
-                target_data, "Call"
-            ),
-            genotyping_determination_method_setting=try_float_from_series_or_none(
-                target_data, "Threshold Value"
-            ),
-            quantity=try_float_from_series_or_none(target_data, "Quantity"),
-            quantity_mean=try_float_from_series_or_none(target_data, "Quantity Mean"),
-            quantity_sd=try_float_from_series_or_none(target_data, "Quantity SD"),
-            ct_mean=try_float_from_series_or_none(target_data, "Ct Mean"),
-            ct_sd=try_float_from_series_or_none(target_data, "Ct SD"),
-            delta_ct_mean=try_float_from_series_or_none(target_data, "Delta Ct Mean"),
-            delta_ct_se=try_float_from_series_or_none(target_data, "Delta Ct SE"),
-            delta_delta_ct=try_float_from_series_or_none(target_data, "Delta Delta Ct"),
-            rq=try_float_from_series_or_none(target_data, "RQ"),
-            rq_min=try_float_from_series_or_none(target_data, "RQ Min"),
-            rq_max=try_float_from_series_or_none(target_data, "RQ Max"),
-            rn_mean=try_float_from_series_or_none(target_data, "Rn Mean"),
-            rn_sd=try_float_from_series_or_none(target_data, "Rn SD"),
-            y_intercept=try_float_from_series_or_none(target_data, "Y-Intercept"),
-            r_squared=try_float_from_series_or_none(target_data, "R(superscript 2)"),
-            slope=try_float_from_series_or_none(target_data, "Slope"),
-            efficiency=try_float_from_series_or_none(target_data, "Efficiency"),
-        )
-
-    @staticmethod
-    def create(
-        data: pd.DataFrame, well_item: WellItem, experiment_type: ExperimentType
-    ) -> Result:
+    def create_results(
+        data: pd.DataFrame, experiment_type: ExperimentType
+    ) -> dict[int, dict[str, Result]]:
+        target_key = "Target Name"
         if experiment_type == ExperimentType.genotyping_qPCR_experiment:
-            return Result.create_genotyping(data, well_item)
-        return Result.create_generic(data, well_item)
+            target_key = "SNP Assay Name"
+
+        def make_results(well_data: pd.DataFrame) -> dict[str, Result]:
+            return {
+                target_dna_description: result
+                for target_id, target_data in well_data.groupby(target_key)
+                for target_dna_description, result in Result.create_result(
+                    df_to_series_data(target_data),
+                    experiment_type,
+                    str(target_id),
+                ).items()
+            }
+
+        return map_wells(make_results, data)
+
+    @staticmethod
+    def create_result(
+        data: SeriesData, experiment_type: ExperimentType, target_id: str
+    ) -> dict[str, Result]:
+        if experiment_type == ExperimentType.genotyping_qPCR_experiment:
+            allele_prefixes = []
+            for column in data.series.index:
+                if match := re.match("(^\\w+) Ct$", column):
+                    allele_prefixes.append(f"{match.groups()[0]} ")
+        else:
+            allele_prefixes = [""]
+
+        return {
+            f"{target_id}{f'-{allele_prefix}' if allele_prefix else ''}".replace(
+                " ", ""
+            ): Result(
+                cycle_threshold_value_setting=data[
+                    float, f"{allele_prefix}Ct Threshold"
+                ],
+                # TODO(nstender): really seems like this should be NaN if invalid value. Keeping to preserve tests.
+                cycle_threshold_result=data.get(
+                    float, [f"{allele_prefix}Ct", f"{allele_prefix}CT"]
+                ),
+                automatic_cycle_threshold_enabled_setting=data.get(
+                    bool, f"{allele_prefix}Automatic Ct Threshold"
+                ),
+                automatic_baseline_determination_enabled_setting=data.get(
+                    bool, f"{allele_prefix}Automatic Baseline"
+                ),
+                normalized_reporter_result=data.get(float, "Rn"),
+                baseline_corrected_reporter_result=data.get(
+                    float, f"{allele_prefix}Delta Rn"
+                ),
+                genotyping_determination_result=data.get(str, "Call"),
+                genotyping_determination_method_setting=data.get(
+                    float, "Threshold Value"
+                ),
+                quantity=data.get(float, "Quantity"),
+                quantity_mean=data.get(float, "Quantity Mean"),
+                quantity_sd=data.get(float, "Quantity SD"),
+                ct_mean=data.get(float, "Ct Mean"),
+                ct_sd=data.get(float, "Ct SD"),
+                delta_ct_mean=data.get(float, "Delta Ct Mean"),
+                delta_ct_se=data.get(float, "Delta Ct SE"),
+                delta_delta_ct=data.get(float, "Delta Delta Ct"),
+                rq=data.get(float, "RQ"),
+                rq_min=data.get(float, "RQ Min"),
+                rq_max=data.get(float, "RQ Max"),
+                rn_mean=data.get(float, "Rn Mean"),
+                rn_sd=data.get(float, "Rn SD"),
+                y_intercept=data.get(float, "Y-Intercept"),
+                r_squared=data.get(float, "R(superscript 2)"),
+                slope=data.get(float, "Slope"),
+                efficiency=data.get(float, "Efficiency"),
+                comments=data.get(str, "Comments"),
+                highsd=data.get(str, "HIGHSD"),
+                noamp=data.get(str, "NOAMP"),
+                expfail=data.get(str, "EXPFAIL"),
+                tholdfail=data.get(str, "THOLDFAIL"),
+                prfdrop=data.get(str, "PRFDROP"),
+                amp_score=data.get(float, "Amp Score"),
+                cq_conf=data.get(float, "Cq Conf"),
+            )
+            for allele_prefix in allele_prefixes
+        }
 
 
 @dataclass(frozen=True)
 class MeltCurveRawData:
     reading: list[float]
-    fluorescence: list[Optional[float]]
-    derivative: list[Optional[float]]
+    fluorescence: list[float | None]
+    derivative: list[float | None]
 
     @staticmethod
-    def create(data: pd.DataFrame, well: Well) -> MeltCurveRawData:
-        well_data = assert_not_empty_df(
-            data[data["Well"] == well.identifier],
-            msg=f"Unable to find melt curve raw data for well {well.identifier}.",
-        )
-        return MeltCurveRawData(
-            reading=well_data["Reading"].tolist(),
-            fluorescence=well_data["Fluorescence"].tolist(),
-            derivative=well_data["Derivative"].tolist(),
-        )
-
-    @staticmethod
-    def get_data(reader: LinesReader) -> Optional[pd.DataFrame]:
+    def create(reader: LinesReader) -> dict[int, MeltCurveRawData]:
         if not reader.match(r"^\[Melt Curve Raw Data\]"):
-            return None
+            return {}
         reader.pop()  # remove title
         lines = list(reader.pop_until_empty())
         csv_stream = StringIO("\n".join(lines))
-        return read_csv(csv_stream, sep="\t", thousands=r",")
+        data = read_csv(csv_stream, sep="\t", thousands=r",")
 
+        def make_data(well_data: pd.Series[Any]) -> MeltCurveRawData:
+            return MeltCurveRawData(
+                reading=well_data["Reading"].tolist(),
+                fluorescence=well_data["Fluorescence"].tolist(),
+                derivative=well_data["Derivative"].tolist(),
+            )
 
-@dataclass(frozen=True)
-class Data:
-    header: Header
-    wells: WellList
-    raw_data: Optional[RawData]
-    endogenous_control: str
-    reference_sample: str
-    calculated_documents: list[CalculatedDocument]
+        return map_wells(make_data, data)

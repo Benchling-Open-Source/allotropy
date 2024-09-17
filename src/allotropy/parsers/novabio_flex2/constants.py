@@ -1,19 +1,7 @@
-from typing import Any, Union
-
-from allotropy.allotrope.models.shared.definitions.custom import (
-    TNullableQuantityValueCell,
-    TNullableQuantityValueGramPerLiter,
-    TNullableQuantityValueMicrometer,
-    TNullableQuantityValueMillimeterOfMercury,
-    TNullableQuantityValueMillimolePerLiter,
-    TNullableQuantityValueMillionCellsPerMilliliter,
-    TNullableQuantityValueMilliOsmolesPerKilogram,
-    TNullableQuantityValueOpticalDensity,
-    TNullableQuantityValuePercent,
-    TNullableQuantityValuePH,
-    TNullableQuantityValueTODO,
-    TNullableQuantityValueUnitPerLiter,
-)
+MODEL_NUMBER = "Flex2"
+SOFTWARE_NAME = "NovaBio Flex"
+DEVICE_TYPE = "solution-analyzer"
+PRODUCT_MANUFACTURER = "Nova Biomedical"
 
 FILENAME_REGEX = r"^SampleResults(?P<device_identifier>.*)?(?P<processing_time>\d{4}-\d{2}-\d{2}_\d{6})\.csv$"
 
@@ -22,27 +10,7 @@ INVALID_FILENAME_MESSAGE = (
     "or SampleResults<Analyzer ID>YYYY-MM-DD_HHMMSS.csv where <Analyzer ID> is defined in Settings"
 )
 
-MOLAR_CONCENTRATION_CLASSES = Union[
-    TNullableQuantityValueMillimolePerLiter,
-    TNullableQuantityValueGramPerLiter,
-    TNullableQuantityValueUnitPerLiter,
-]
-ALL_MOLAR_CONCENTRATION_CLASSES: list[
-    Union[
-        type[TNullableQuantityValueMillimolePerLiter],
-        type[TNullableQuantityValueGramPerLiter],
-        type[TNullableQuantityValueUnitPerLiter],
-    ]
-] = [
-    TNullableQuantityValueMillimolePerLiter,
-    TNullableQuantityValueGramPerLiter,
-    TNullableQuantityValueUnitPerLiter,
-]
-MOLAR_CONCENTRATION_CLS_BY_UNIT = {
-    cls.unit: cls for cls in ALL_MOLAR_CONCENTRATION_CLASSES
-}
-
-ANALYTE_MAPPINGS: dict[str, dict[str, str]] = {
+ANALYTE_MAPPINGS = {
     "NH4+": {
         "name": "ammonium",
         "unit": "mmol/L",
@@ -81,65 +49,27 @@ ANALYTE_MAPPINGS: dict[str, dict[str, str]] = {
     },
 }
 
-PROPERTY_MAPPINGS: dict[str, dict[str, Any]] = {
-    "pco2": {
-        "col_name": "PCO2",
-        "cls": TNullableQuantityValueMillimeterOfMercury,
-    },
-    "co2_saturation": {
-        "col_name": "CO2 Saturation",
-        "cls": TNullableQuantityValuePercent,
-    },
-    "po2": {
-        "col_name": "PO2",
-        "cls": TNullableQuantityValueMillimeterOfMercury,
-    },
-    "o2_saturation": {
-        "col_name": "O2 Saturation",
-        "cls": TNullableQuantityValuePercent,
-    },
-    "optical_density": {
-        "col_name": "Optical Density",
-        "cls": TNullableQuantityValueOpticalDensity,
-    },
-    "pH": {
-        "col_name": "pH",
-        "cls": TNullableQuantityValuePH,
-    },
-    "osmolality": {
-        "col_name": "Osm",
-        "cls": TNullableQuantityValueMilliOsmolesPerKilogram,
-    },
-    "viability__cell_counter_": {
-        "col_name": "Viability",
-        "cls": TNullableQuantityValuePercent,
-    },
-    "total_cell_density__cell_counter_": {
-        "col_name": "Total Density",
-        "cls": TNullableQuantityValueMillionCellsPerMilliliter,
-    },
-    "viable_cell_density__cell_counter_": {
-        "col_name": "Viable Density",
-        "cls": TNullableQuantityValueMillionCellsPerMilliliter,
-    },
-    "average_live_cell_diameter__cell_counter_": {
-        "col_name": "Average Live Cell Diameter",
-        "cls": TNullableQuantityValueMicrometer,
-    },
-    "average_total_cell_diameter__cell_counter_": {
-        "col_name": "Average Total Cell Diameter",
-        "cls": TNullableQuantityValueMicrometer,
-    },
-    "total_cell_diameter_distribution__cell_counter_": {
-        "col_name": "Total Cell Diameter Distribution",
-        "cls": TNullableQuantityValueTODO,
-    },
-    "viable_cell_count__cell_counter_": {
-        "col_name": "Total Live Count",
-        "cls": TNullableQuantityValueCell,
-    },
-    "total_cell_count__cell_counter_": {
-        "col_name": "Total Cell Count",
-        "cls": TNullableQuantityValueCell,
-    },
+DETECTION_PROPERTY_MAPPING = {
+    "metabolite-detection": ["analytes"],
+    "blood-gas-detection": [
+        "po2",
+        "pco2",
+        "carbon_dioxide_saturation",
+        "oxygen_saturation",
+    ],
+    "ph-detection": [
+        "ph",
+        "temperature",
+    ],
+    "osmolality-detection": ["osmolality"],
+    "cell-counting": [
+        "viability",
+        "total_cell_density",
+        "viable_cell_density",
+        "average_live_cell_diameter",
+        "total_cell_count",
+        "viable_cell_count",
+        "cell_type_processing_method",
+        "cell_density_dilution_factor",
+    ],
 }

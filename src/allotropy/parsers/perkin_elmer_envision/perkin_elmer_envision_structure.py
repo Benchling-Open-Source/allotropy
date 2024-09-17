@@ -16,74 +16,91 @@
 # Instrument
 from __future__ import annotations
 
+from collections import defaultdict
+from collections.abc import Iterator
 from dataclasses import dataclass
+from enum import Enum
 from re import search
-from typing import Any, Optional, Union
 
 import numpy as np
-import pandas as pd
 
-from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
+from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
     ScanPositionSettingPlateReader,
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
+from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
+    CalculatedDataItem,
+    DataSource,
+    Measurement,
+    MeasurementGroup,
+    MeasurementType,
+    Metadata,
+)
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import CsvReader
+from allotropy.parsers.perkin_elmer_envision import constants
+from allotropy.parsers.utils.pandas import (
+    df_to_series_data,
+    map_rows,
+    SeriesData,
+)
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
-    try_float_from_series,
-    try_float_from_series_or_none,
-    try_str_from_series,
-    try_str_from_series_or_none,
+    num_to_chars,
 )
 
 
-def df_to_series(df: pd.DataFrame) -> pd.Series[Any]:
-    df.columns = df.iloc[0]  # type: ignore[assignment]
-    return pd.Series(df.iloc[-1], index=df.columns)
+class ReadType(Enum):
+    ABSORBANCE = "Absorbance"
+    FLUORESCENCE = "Fluorescence"
+    LUMINESCENCE = "Luminescence"
 
+    @property
+    def measurement_type(self) -> MeasurementType:
+        if self is ReadType.ABSORBANCE:
+            return MeasurementType.ULTRAVIOLET_ABSORBANCE
+        elif self is ReadType.FLUORESCENCE:
+            return MeasurementType.FLUORESCENCE
+        elif self is ReadType.LUMINESCENCE:
+            return MeasurementType.LUMINESCENCE
 
-def num_to_chars(n: int) -> str:
-    d, m = divmod(n, 26)  # 26 is the number of ASCII letters
-    return "" if n < 0 else num_to_chars(d - 1) + chr(m + 65)  # chr(65) = 'A'
+    @property
+    def device_type(self) -> str:
+        return f"{self.value.lower()} detector"
 
 
 @dataclass(frozen=True)
 class PlateInfo:
     number: str
     barcode: str
-    measurement_time: Optional[str]
-    measured_height: Optional[float]
-    chamber_temperature_at_start: Optional[float]
+    measurement_time: str | None
+    measured_height: float | None
+    chamber_temperature_at_start: float | None
 
     @staticmethod
-    def get_series(reader: CsvReader) -> pd.Series[str]:
+    def get_series(reader: CsvReader) -> SeriesData:
         assert_not_none(
             reader.pop_if_match("^Plate information"),
             msg="Unable to find expected plate information",
         )
 
-        return df_to_series(
+        return df_to_series_data(
             assert_not_none(
-                reader.pop_csv_block_as_df(),
+                reader.pop_csv_block_as_df(header=0),
                 "Plate information CSV block",
-            )
-        ).replace(np.nan, None)
-
-    @staticmethod
-    def get_plate_number(series: pd.Series[str]) -> str:
-        return try_str_from_series(
-            series,
-            "Plate",
-            msg="Unable to find plate number",
+            ).replace(np.nan, None)
         )
 
     @staticmethod
-    def get_barcode(series: pd.Series[str], plate_number: str) -> str:
-        raw_barcode = try_str_from_series_or_none(series, "Barcode")
+    def get_plate_number_and_barcode(data: SeriesData) -> tuple[str, str]:
+        plate_number = data[str, "Plate"]
+        raw_barcode = data.get(str, "Barcode")
         barcode = (raw_barcode or '=""').removeprefix('="').removesuffix('"')
-        return barcode or f"Plate {plate_number}"
+        barcode = barcode or f"Plate {plate_number}"
+        return plate_number, barcode
 
 
 @dataclass(frozen=True)
@@ -92,27 +109,23 @@ class CalculatedPlateInfo(PlateInfo):
     name: str
 
     @staticmethod
-    def create(series: pd.Series[str]) -> CalculatedPlateInfo:
-        plate_number = PlateInfo.get_plate_number(series)
+    def create(data: SeriesData) -> CalculatedPlateInfo:
+        formula = data[str, "Formula"]
 
-        formula = try_str_from_series(
-            series,
-            "Formula",
-            msg="Unable to find expected formula for calculated results section.",
-        )
         name = assert_not_none(
             search(r"^([^=]*)=", formula),
             msg="Unable to find expected formula name for calculated results section.",
         ).group(1)
 
+        plate_number, barcode = PlateInfo.get_plate_number_and_barcode(data)
+
         return CalculatedPlateInfo(
             number=plate_number,
-            barcode=PlateInfo.get_barcode(series, plate_number),
-            measurement_time=try_str_from_series_or_none(series, "Measurement date"),
-            measured_height=try_float_from_series_or_none(series, "Measured height"),
-            chamber_temperature_at_start=try_float_from_series_or_none(
-                series,
-                "Chamber temperature at start",
+            barcode=barcode,
+            measurement_time=data.get(str, "Measurement date"),
+            measured_height=data.get(float, "Measured height"),
+            chamber_temperature_at_start=data.get(
+                float, "Chamber temperature at start"
             ),
             formula=formula,
             name=name.strip(),
@@ -126,24 +139,23 @@ class ResultPlateInfo(PlateInfo):
     emission_filter_id: str
 
     @staticmethod
-    def create(series: pd.Series[str]) -> Optional[ResultPlateInfo]:
-        label = try_str_from_series_or_none(series, "Label")
+    def create(data: SeriesData) -> ResultPlateInfo | None:
+        label = data.get(str, "Label")
         if label is None:
             return None
 
-        measinfo = try_str_from_series_or_none(series, "Measinfo")
+        measinfo = data.get(str, "Measinfo")
         if measinfo is None:
             return None
 
-        plate_number = PlateInfo.get_plate_number(series)
-        barcode = PlateInfo.get_barcode(series, plate_number)
+        plate_number, barcode = PlateInfo.get_plate_number_and_barcode(data)
 
         return ResultPlateInfo(
             plate_number,
             barcode,
-            try_str_from_series_or_none(series, "Measurement date"),
-            try_float_from_series_or_none(series, "Measured height"),
-            try_float_from_series_or_none(series, "Chamber temperature at start"),
+            data.get(str, "Measurement date"),
+            data.get(float, "Measured height"),
+            data.get(float, "Chamber temperature at start"),
             label=label,
             measinfo=measinfo,
             emission_filter_id=assert_not_none(
@@ -168,41 +180,25 @@ class BackgroundInfo:
     label: str
     measinfo: str
 
-
-@dataclass
-class BackgroundInfoList:
-    background_info: list[BackgroundInfo]
-
     @staticmethod
-    def create(reader: CsvReader) -> Optional[BackgroundInfoList]:
-        title = reader.pop_if_match("^Background information")
-        if title is None:
-            return None
-
-        data = assert_not_none(
-            reader.pop_csv_block_as_df(header=0),
-            "background information",
+    def create(data: SeriesData) -> BackgroundInfo:
+        return BackgroundInfo(
+            plate_num=data[str, "Plate"],
+            label=data[str, "Label"],
+            measinfo=data[str, "MeasInfo"],
         )
 
-        return BackgroundInfoList(
-            background_info=[
-                BackgroundInfo(
-                    plate_num=assert_not_none(
-                        try_str_from_series_or_none(series, "Plate"),
-                        msg="Unable to find plate number from background info.",
-                    ),
-                    label=assert_not_none(
-                        try_str_from_series_or_none(series, "Label"),
-                        msg="Unable to find label from background info.",
-                    ),
-                    measinfo=assert_not_none(
-                        try_str_from_series_or_none(series, "MeasInfo"),
-                        msg="Unable to find meas info from background info.",
-                    ),
-                )
-                for _, series in data.iterrows()
-            ]
-        )
+
+def create_background_infos(reader: CsvReader) -> list[BackgroundInfo]:
+    title = reader.pop_if_match("^Background information")
+    if title is None:
+        return []
+
+    data_frame = assert_not_none(
+        reader.pop_csv_block_as_df(header=0),
+        "background information",
+    )
+    return map_rows(data_frame, BackgroundInfo.create)
 
 
 @dataclass
@@ -213,37 +209,32 @@ class CalculatedResult:
     value: float
 
 
-@dataclass
-class CalculatedResultList:
-    calculated_results: list[CalculatedResult]
+def create_calculated_results(reader: CsvReader) -> list[CalculatedResult]:
+    # Calculated results may or may not have a title
+    reader.pop_if_match("^Calculated results")
 
-    @staticmethod
-    def create(reader: CsvReader) -> CalculatedResultList:
-        # Calculated results may or may not have a title
-        reader.pop_if_match("^Calculated results")
+    data_frame = assert_not_none(
+        reader.pop_csv_block_as_df(),
+        "results data",
+    )
+    series = (
+        data_frame.drop(0, axis="index").drop(0, axis="columns")
+        if data_frame.iloc[1, 0] == "A"
+        else data_frame
+    )
+    rows, cols = series.shape
+    series.index = [num_to_chars(i) for i in range(rows)]  # type: ignore[assignment]
+    series.columns = [str(i).zfill(2) for i in range(1, cols + 1)]  # type: ignore[assignment]
 
-        data = assert_not_none(
-            reader.pop_csv_block_as_df(),
-            "results data",
+    return [
+        CalculatedResult(
+            uuid=random_uuid_str(),
+            col=col,
+            row=row,
+            value=series.loc[col, row],
         )
-        series = (
-            data.drop(0, axis=0).drop(0, axis=1) if data.iloc[1, 0] == "A" else data
-        )
-        rows, cols = series.shape
-        series.index = [num_to_chars(i) for i in range(rows)]  # type: ignore[assignment]
-        series.columns = [str(i).zfill(2) for i in range(1, cols + 1)]  # type: ignore[assignment]
-
-        return CalculatedResultList(
-            calculated_results=[
-                CalculatedResult(
-                    uuid=random_uuid_str(),
-                    col=col,
-                    row=row,
-                    value=series.loc[col, row],
-                )
-                for col, row in series.stack().index
-            ]
-        )
+        for col, row in series.stack().index
+    ]
 
 
 @dataclass
@@ -254,120 +245,145 @@ class Result:
     value: int
 
 
-@dataclass
-class ResultList:
-    results: list[Result]
+def create_results(reader: CsvReader) -> list[Result]:
+    # Results may or may not have a title
+    reader.pop_if_match("^Results")
 
-    @staticmethod
-    def create(reader: CsvReader) -> ResultList:
-        # Results may or may not have a title
-        reader.pop_if_match("^Results")
+    data_frame = assert_not_none(
+        reader.pop_csv_block_as_df(),
+        "reader data",
+    )
+    series = (
+        data_frame.drop(0, axis="index").drop(0, axis="columns")
+        if data_frame.iloc[1, 0] == "A"
+        else data_frame
+    )
+    rows, cols = series.shape
+    series.index = [num_to_chars(i) for i in range(rows)]  # type: ignore[assignment]
+    series.columns = [str(i).zfill(2) for i in range(1, cols + 1)]  # type: ignore[assignment]
 
-        data = assert_not_none(
-            reader.pop_csv_block_as_df(),
-            "reader data",
+    return [
+        Result(
+            uuid=random_uuid_str(),
+            col=col,
+            row=row,
+            value=int(series.loc[col, row]),
         )
-        series = (
-            data.drop(0, axis=0).drop(0, axis=1) if data.iloc[1, 0] == "A" else data
-        )
-        rows, cols = series.shape
-        series.index = [num_to_chars(i) for i in range(rows)]  # type: ignore[assignment]
-        series.columns = [str(i).zfill(2) for i in range(1, cols + 1)]  # type: ignore[assignment]
-
-        return ResultList(
-            results=[
-                Result(
-                    uuid=random_uuid_str(),
-                    col=col,
-                    row=row,
-                    value=int(series.loc[col, row]),
-                )
-                for col, row in series.stack().index
-            ]
-        )
+        for col, row in series.stack().index
+    ]
 
 
 @dataclass
 class Plate:
-    plate_info: Union[CalculatedPlateInfo, ResultPlateInfo]
-    background_info_list: Optional[BackgroundInfoList]
-    calculated_result_list: CalculatedResultList
-    result_list: ResultList
+    plate_info: PlateInfo
+    background_infos: list[BackgroundInfo]
 
-    @staticmethod
-    def create(reader: CsvReader) -> Plate:
-        series = PlateInfo.get_series(reader)
-        if result_plate_info := ResultPlateInfo.create(series):
-            return Plate(
-                plate_info=result_plate_info,
-                background_info_list=BackgroundInfoList.create(reader),
-                calculated_result_list=CalculatedResultList([]),
-                result_list=ResultList.create(reader),
-            )
-        else:
-            return Plate(
-                plate_info=CalculatedPlateInfo.create(series),
-                background_info_list=BackgroundInfoList.create(reader),
-                calculated_result_list=CalculatedResultList.create(reader),
-                result_list=ResultList([]),
-            )
 
-    def collect_result_plates(self, plate_list: PlateList) -> list[Plate]:
-        background_info_list = assert_not_none(
-            self.background_info_list,
-            msg=f"Unable to collect result plates, there is no background information for plate {self.plate_info.number}",
-        )
+@dataclass
+class ResultPlate(Plate):
+    plate_info: ResultPlateInfo
+    results: list[Result]
 
-        return [
+
+@dataclass
+class CalculatedPlate(Plate):
+    plate_info: CalculatedPlateInfo
+    results: list[CalculatedResult]
+
+    def get_source_results(self, plate_list: PlateList) -> Iterator[list[Result]]:
+        if not self.background_infos:
+            msg = f"Unable to collect result plates for calculated data, there is no background information for plate {self.plate_info.number}"
+            raise AllotropeConversionError(msg)
+
+        source_results = [
             assert_not_none(
                 plate_list.get_result_plate(background_info),
                 msg=f"Unable to find result plate {background_info.label}.",
-            )
-            for background_info in background_info_list.background_info
+            ).results
+            for background_info in self.background_infos
         ]
+
+        if not all(len(source_results[0]) == len(sr) for sr in source_results):
+            msg = f"Unable to collect result plates for calculated data, expected all result plates to have the same number of results, get: {[len(sr) for sr in source_results]}."
+            raise AllotropeConversionError(msg)
+
+        yield from [list(tup) for tup in zip(*source_results, strict=True)]
+
+    def get_result_and_sources(
+        self, plate_list: PlateList
+    ) -> Iterator[tuple[CalculatedResult, list[Result]]]:
+        yield from zip(self.results, self.get_source_results(plate_list), strict=True)
+
+
+def create_plate(reader: CsvReader) -> ResultPlate | CalculatedPlate:
+    series = PlateInfo.get_series(reader)
+    if result_plate_info := ResultPlateInfo.create(series):
+        return ResultPlate(
+            plate_info=result_plate_info,
+            background_infos=create_background_infos(reader),
+            results=create_results(reader),
+        )
+    else:
+        return CalculatedPlate(
+            plate_info=CalculatedPlateInfo.create(series),
+            background_infos=create_background_infos(reader),
+            results=create_calculated_results(reader),
+        )
 
 
 @dataclass
 class PlateList:
-    plates: list[Plate]
+    results: list[ResultPlate]
+    calculated: list[CalculatedPlate]
 
     @staticmethod
     def create(reader: CsvReader) -> PlateList:
-        plates: list[Plate] = []
+        results: list[ResultPlate] = []
+        calculated: list[CalculatedPlate] = []
 
         while reader.match("^Plate information"):
-            plates.append(Plate.create(reader))
-        return PlateList(plates)
+            plate = create_plate(reader)
+            if isinstance(plate, CalculatedPlate):
+                calculated.append(plate)
+            else:
+                results.append(plate)
+        return PlateList(results, calculated)
 
-    def get_result_plate(self, background_info: BackgroundInfo) -> Optional[Plate]:
-        for plate in self.plates:
-            if isinstance(plate.plate_info, CalculatedPlateInfo):
-                continue
-
+    def get_result_plate(self, background_info: BackgroundInfo) -> ResultPlate | None:
+        for plate in self.results:
             if plate.plate_info.match(background_info):
                 return plate
         return None
 
+    def get_measurement_time(self) -> str:
+        try:
+            return min(
+                [
+                    plate.plate_info.measurement_time
+                    for plate in self.results
+                    if plate.plate_info.measurement_time
+                ]
+            )
+        except ValueError as err:
+            msg = "Unable to determine the measurement time."
+            raise AllotropeConversionError(msg) from err
+
 
 @dataclass(frozen=True)
 class BasicAssayInfo:
-    protocol_id: Optional[str]
-    assay_id: Optional[str]
+    protocol_id: str | None
+    assay_id: str | None
 
     @staticmethod
     def create(reader: CsvReader) -> BasicAssayInfo:
         reader.drop_until_inclusive("^Basic assay information")
-        data = assert_not_none(
-            reader.pop_csv_block_as_df(),
+        data_frame = assert_not_none(
+            reader.pop_csv_block_as_df(index_col=0),
             "Basic assay information",
-        )
-        data = data.T
-        data.iloc[0].replace(":.*", "", regex=True, inplace=True)
-        series = df_to_series(data)
-        return BasicAssayInfo(
-            try_str_from_series_or_none(series, "Protocol ID"),
-            try_str_from_series_or_none(series, "Assay ID"),
-        )
+        ).T
+        data_frame.columns = data_frame.columns.str.replace(":", "").str.strip()
+        data = df_to_series_data(data_frame)
+        return BasicAssayInfo(data.get(str, "Protocol ID"), data.get(str, "Assay ID"))
 
 
 @dataclass(frozen=True)
@@ -377,15 +393,12 @@ class PlateType:
     @staticmethod
     def create(reader: CsvReader) -> PlateType:
         reader.drop_until_inclusive("^Plate type")
-        data = assert_not_none(
-            reader.pop_csv_block_as_df(),
-            "Plate type",
+        data_frame = assert_not_none(
+            reader.pop_csv_block_as_df(index_col=0), "Plate type"
         )
+        data = df_to_series_data(data_frame.T)
         return PlateType(
-            number_of_wells=try_float_from_series(
-                df_to_series(data.T),
-                "Number of the wells in the plate",
-            ),
+            number_of_wells=data[float, "Number of the wells in the plate"]
         )
 
 
@@ -429,14 +442,14 @@ class PlateMap:
     sample_role_type_mapping: dict[str, dict[str, SampleRoleType]]
 
     @staticmethod
-    def create(reader: CsvReader) -> Optional[PlateMap]:
+    def create(reader: CsvReader) -> PlateMap | None:
         if not reader.current_line_exists() or reader.match("^Calculations"):
             return None
 
         *_, plate_n = assert_not_none(reader.pop(), "Platemap number").split(",")
         *_, group_n = assert_not_none(reader.pop(), "Platemap group").split(",")
 
-        data = assert_not_none(
+        data_frame = assert_not_none(
             reader.pop_csv_block_as_df(),
             "Platemap data",
         ).replace(" ", "", regex=True)
@@ -445,7 +458,9 @@ class PlateMap:
         reader.drop_empty()
 
         series = (
-            data.drop(0, axis=0).drop(0, axis=1) if data.iloc[1, 0] == "A" else data
+            data_frame.drop(0, axis="index").drop(0, axis="columns")
+            if data_frame.iloc[1, 0] == "A"
+            else data_frame
         )
         rows, cols = series.shape
         series.index = [num_to_chars(i) for i in range(rows)]  # type: ignore[assignment]
@@ -491,22 +506,22 @@ def create_plate_maps(reader: CsvReader) -> dict[str, PlateMap]:
 class Filter:
     name: str
     wavelength: float
-    bandwidth: Optional[float] = None
+    bandwidth: float | None = None
 
     @staticmethod
-    def create(reader: CsvReader) -> Optional[Filter]:
+    def create(reader: CsvReader) -> Filter | None:
         if not reader.current_line_exists() or reader.match(
             "(^Mirror modules)|(^Instrument:)|(^Aperture:)"
         ):
             return None
 
-        data = assert_not_none(
-            reader.pop_csv_block_as_df(),
+        data_frame = assert_not_none(
+            reader.pop_csv_block_as_df(index_col=0),
             "Filter information",
         )
-        series = df_to_series(data.T)
-        name = str(series.index[0])
-        description = try_str_from_series(series, "Description")
+        data = df_to_series_data(data_frame.T)
+        name = str(data.series.index[0])
+        description = data[str, "Description"]
 
         if search_result := search("Longpass=(\\d+)nm", description):
             return Filter(name, wavelength=float(search_result.group(1)))
@@ -544,20 +559,20 @@ def create_filters(reader: CsvReader) -> dict[str, Filter]:
 @dataclass(frozen=True)
 class Labels:
     label: str
-    excitation_filter: Optional[Filter]
-    emission_filters: dict[str, Optional[Filter]]
-    scan_position_setting: Optional[ScanPositionSettingPlateReader] = None
-    number_of_flashes: Optional[float] = None
-    detector_gain_setting: Optional[str] = None
+    excitation_filter: Filter | None
+    emission_filters: dict[str, Filter | None]
+    scan_position_setting: ScanPositionSettingPlateReader | None = None
+    number_of_flashes: float | None = None
+    detector_gain_setting: str | None = None
 
     @staticmethod
     def create(reader: CsvReader) -> Labels:
         reader.drop_until_inclusive("^Labels")
-        data = assert_not_none(
-            reader.pop_csv_block_as_df(),
+        data_frame = assert_not_none(
+            reader.pop_csv_block_as_df(index_col=0),
             "Labels",
         )
-        series = df_to_series(data.T).replace(np.nan, None)
+        data = df_to_series_data(data_frame.T.replace(np.nan, None))
         filters = create_filters(reader)
         filter_position_map = {
             "Bottom": ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_,
@@ -565,31 +580,43 @@ class Labels:
         }
 
         return Labels(
-            label=series.index[0],
-            excitation_filter=filters.get(
-                try_str_from_series_or_none(series, "Exc. filter") or ""
-            ),
+            label=data.series.index[0],
+            excitation_filter=filters.get(data.get(str, "Exc. filter", NOT_APPLICABLE)),
             emission_filters={
                 "1st": filters.get(
-                    try_str_from_series_or_none(series, "Ems. filter") or "",
+                    data.get(str, "Ems. filter", NOT_APPLICABLE),
                 ),
-                "2nd": filters.get(
-                    try_str_from_series_or_none(series, "2nd ems. filter") or ""
-                ),
+                "2nd": filters.get(data.get(str, "2nd ems. filter", NOT_APPLICABLE)),
             },
             scan_position_setting=filter_position_map.get(
-                try_str_from_series_or_none(series, "Using of emission filter") or ""
+                data.get(str, "Using of emission filter", NOT_APPLICABLE)
             ),
-            number_of_flashes=try_float_from_series_or_none(
-                series, "Number of flashes"
-            ),
-            detector_gain_setting=try_str_from_series_or_none(
-                series, "Reference AD gain"
-            ),
+            number_of_flashes=data.get(float, "Number of flashes"),
+            detector_gain_setting=data.get(str, "Reference AD gain"),
         )
 
-    def get_emission_filter(self, id_val: str) -> Optional[Filter]:
+    def get_emission_filter(self, id_val: str) -> Filter | None:
         return self.emission_filters.get(id_val)
+
+    def get_read_type(self) -> ReadType:
+        patterns = {
+            "ABS": ReadType.ABSORBANCE,
+            "Absorbance": ReadType.ABSORBANCE,
+            "LUM": ReadType.LUMINESCENCE,
+            "Luminescence": ReadType.LUMINESCENCE,
+            "Fluorescence": ReadType.FLUORESCENCE,
+        }
+        read_types = {
+            read_type for key, read_type in patterns.items() if key in self.label
+        }
+
+        if len(read_types) > 1:
+            msg = f"Unable to determine unique read type from label: '{self.label}'"
+            raise AllotropeConversionError(msg)
+        if len(read_types) == 1:
+            return read_types.pop()
+        # TODO check if this is correct, this is the original behavior
+        return ReadType.FLUORESCENCE
 
 
 @dataclass(frozen=True)
@@ -662,3 +689,109 @@ class Data:
             instrument=Instrument.create(reader),
             software=Software.create(reader),
         )
+
+
+def create_metadata(
+    software: Software, instrument: Instrument, file_name: str
+) -> Metadata:
+    return Metadata(
+        file_name=file_name,
+        software_name=software.software_name,
+        software_version=software.software_version,
+        model_number=constants.MODEL_NUMBER,
+        equipment_serial_number=instrument.serial_number,
+        device_identifier=instrument.nickname,
+    )
+
+
+def _create_measurement(
+    plate_info: ResultPlateInfo,
+    result: Result,
+    plate_maps: dict[str, PlateMap],
+    labels: Labels,
+    read_type: ReadType,
+) -> Measurement:
+    try:
+        p_map = plate_maps[plate_info.number]
+    except KeyError as e:
+        msg = f"Unable to find plate map for Plate {plate_info.barcode}."
+        raise AllotropeConversionError(msg) from e
+    plate_barcode = plate_info.barcode
+    well_location = f"{result.col}{result.row}"
+    ex_filter = labels.excitation_filter
+    em_filter = labels.get_emission_filter(plate_info.emission_filter_id)
+    return Measurement(
+        type_=read_type.measurement_type,
+        device_type=read_type.device_type,
+        identifier=result.uuid,
+        sample_identifier=f"{plate_barcode} {well_location}",
+        well_plate_identifier=plate_barcode,
+        location_identifier=well_location,
+        sample_role_type=p_map.get_sample_role_type(result.col, result.row),
+        compartment_temperature=plate_info.chamber_temperature_at_start,
+        absorbance=result.value if read_type is ReadType.ABSORBANCE else None,
+        fluorescence=result.value if read_type is ReadType.FLUORESCENCE else None,
+        luminescence=result.value if read_type is ReadType.LUMINESCENCE else None,
+        detector_distance_setting=plate_info.measured_height,
+        number_of_averages=labels.number_of_flashes,
+        detector_gain_setting=labels.detector_gain_setting,
+        scan_position_setting=labels.scan_position_setting,
+        detector_wavelength_setting=em_filter.wavelength if em_filter else None,
+        detector_bandwidth_setting=em_filter.bandwidth if em_filter else None,
+        excitation_wavelength_setting=ex_filter.wavelength if ex_filter else None,
+        excitation_bandwidth_setting=ex_filter.bandwidth if ex_filter else None,
+    )
+
+
+def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
+    read_type = data.labels.get_read_type()
+    well_loc_measurements = defaultdict(list)
+    for plate in data.plate_list.results:
+        for result in plate.results:
+            measurement = _create_measurement(
+                plate.plate_info,
+                result,
+                data.plate_maps,
+                data.labels,
+                read_type,
+            )
+            well_loc_measurements[
+                (plate.plate_info.number, measurement.location_identifier)
+            ].append(measurement)
+
+    measurement_time = data.plate_list.get_measurement_time()
+    return [
+        MeasurementGroup(
+            measurement_time=measurement_time,
+            plate_well_count=data.number_of_wells,
+            analytical_method_identifier=data.basic_assay_info.protocol_id,
+            experimental_data_identifier=data.basic_assay_info.assay_id,
+            measurements=well_loc_measurements[well_location],
+        )
+        for well_location in sorted(well_loc_measurements.keys())
+    ]
+
+
+def create_calculated_data(
+    plate_list: PlateList, read_type: ReadType
+) -> list[CalculatedDataItem]:
+    return [
+        CalculatedDataItem(
+            identifier=calculated_result.uuid,
+            name=calculated_plate.plate_info.name,
+            description=calculated_plate.plate_info.formula,
+            value=calculated_result.value,
+            unit=UNITLESS,
+            data_sources=[
+                DataSource(
+                    identifier=source_result.uuid,
+                    feature=read_type.value,
+                )
+                for source_result in source_results
+            ],
+        )
+        for calculated_plate in plate_list.calculated
+        for calculated_result, source_results in calculated_plate.get_result_and_sources(
+            plate_list
+        )
+    ]

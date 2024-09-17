@@ -1,0 +1,418 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/spectrophotometry/BENCHLING/2023/12/spectrophotometry.manifest",
+    "spectrophotometry aggregate document": {
+        "spectrophotometry document": [
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2023-04-11T01:06:59+00:00",
+                    "measurement document": [
+                        {
+                            "measurement identifier": "THERMO_FISHER_QUBIT4_TEST_ID_0",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "custom information document": {
+                                            "sample volume setting": {
+                                                "value": 1.0,
+                                                "unit": "μL"
+                                            },
+                                            "excitation setting": "Blue",
+                                            "emission setting": "Green",
+                                            "dilution factor": {
+                                                "value": 200.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample_#231104-010659",
+                                "batch identifier": "2023-11-04",
+                                "custom information document": {
+                                    "original sample concentration": {
+                                        "value": 21.2,
+                                        "unit": "ng/µL"
+                                    },
+                                    "qubit tube concentration": {
+                                        "value": 106.0,
+                                        "unit": "ng/mL"
+                                    },
+                                    "standard 1 concentration": {
+                                        "value": 56.12,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
+                                        "value": 26516.64,
+                                        "unit": "RFU"
+                                    }
+                                }
+                            },
+                            "fluorescence": {
+                                "value": 5615.1,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "1x dsDNA High Sensitivity",
+                    "container type": "tube"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2023-04-11T01:06:49+00:00",
+                    "measurement document": [
+                        {
+                            "measurement identifier": "THERMO_FISHER_QUBIT4_TEST_ID_1",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "custom information document": {
+                                            "sample volume setting": {
+                                                "value": 1.0,
+                                                "unit": "μL"
+                                            },
+                                            "excitation setting": "Blue",
+                                            "emission setting": "Green",
+                                            "dilution factor": {
+                                                "value": 200.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample_#231104-010649",
+                                "batch identifier": "2023-11-04",
+                                "custom information document": {
+                                    "original sample concentration": {
+                                        "value": 9.86,
+                                        "unit": "ng/µL"
+                                    },
+                                    "qubit tube concentration": {
+                                        "value": 49.3,
+                                        "unit": "ng/mL"
+                                    },
+                                    "standard 1 concentration": {
+                                        "value": 56.12,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
+                                        "value": 26516.64,
+                                        "unit": "RFU"
+                                    }
+                                }
+                            },
+                            "fluorescence": {
+                                "value": 2620.19,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "1x dsDNA High Sensitivity",
+                    "container type": "tube"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2023-04-11T01:06:38+00:00",
+                    "measurement document": [
+                        {
+                            "measurement identifier": "THERMO_FISHER_QUBIT4_TEST_ID_2",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "custom information document": {
+                                            "sample volume setting": {
+                                                "value": 1.0,
+                                                "unit": "μL"
+                                            },
+                                            "excitation setting": "Blue",
+                                            "emission setting": "Green",
+                                            "dilution factor": {
+                                                "value": 200.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample_#231104-010638",
+                                "batch identifier": "2023-11-04",
+                                "custom information document": {
+                                    "original sample concentration": {
+                                        "value": 20.0,
+                                        "unit": "ng/µL"
+                                    },
+                                    "qubit tube concentration": {
+                                        "value": 100.0,
+                                        "unit": "ng/mL"
+                                    },
+                                    "standard 1 concentration": {
+                                        "value": 56.12,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
+                                        "value": 26516.64,
+                                        "unit": "RFU"
+                                    }
+                                }
+                            },
+                            "fluorescence": {
+                                "value": 5301.86,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "1x dsDNA High Sensitivity",
+                    "container type": "tube"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2023-04-11T01:06:30+00:00",
+                    "measurement document": [
+                        {
+                            "measurement identifier": "THERMO_FISHER_QUBIT4_TEST_ID_3",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "custom information document": {
+                                            "sample volume setting": {
+                                                "value": 1.0,
+                                                "unit": "μL"
+                                            },
+                                            "excitation setting": "Blue",
+                                            "emission setting": "Green",
+                                            "dilution factor": {
+                                                "value": 200.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample_#231104-010630",
+                                "batch identifier": "2023-11-04",
+                                "custom information document": {
+                                    "original sample concentration": {
+                                        "value": 14.5,
+                                        "unit": "ng/µL"
+                                    },
+                                    "qubit tube concentration": {
+                                        "value": 72.7,
+                                        "unit": "ng/mL"
+                                    },
+                                    "standard 1 concentration": {
+                                        "value": 56.12,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
+                                        "value": 26516.64,
+                                        "unit": "RFU"
+                                    }
+                                }
+                            },
+                            "fluorescence": {
+                                "value": 3848.81,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "1x dsDNA High Sensitivity",
+                    "container type": "tube"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2023-04-11T00:46:44+00:00",
+                    "measurement document": [
+                        {
+                            "measurement identifier": "THERMO_FISHER_QUBIT4_TEST_ID_4",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "custom information document": {
+                                            "sample volume setting": {
+                                                "value": 1.0,
+                                                "unit": "μL"
+                                            },
+                                            "excitation setting": "Blue",
+                                            "emission setting": "Green",
+                                            "dilution factor": {
+                                                "value": 200.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample_#231104-004644",
+                                "batch identifier": "2023-11-04",
+                                "custom information document": {
+                                    "original sample concentration": {
+                                        "value": 19.5,
+                                        "unit": "ng/µL"
+                                    },
+                                    "qubit tube concentration": {
+                                        "value": 97.4,
+                                        "unit": "ng/mL"
+                                    },
+                                    "standard 1 concentration": {
+                                        "value": 56.12,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
+                                        "value": 26516.64,
+                                        "unit": "RFU"
+                                    }
+                                }
+                            },
+                            "fluorescence": {
+                                "value": 5146.53,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "1x dsDNA High Sensitivity",
+                    "container type": "tube"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2023-04-11T00:41:55+00:00",
+                    "measurement document": [
+                        {
+                            "measurement identifier": "THERMO_FISHER_QUBIT4_TEST_ID_5",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "custom information document": {
+                                            "sample volume setting": {
+                                                "value": 1.0,
+                                                "unit": "μL"
+                                            },
+                                            "excitation setting": "Blue",
+                                            "emission setting": "Green",
+                                            "dilution factor": {
+                                                "value": 200.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample_#231104-004155",
+                                "batch identifier": "2023-11-04",
+                                "custom information document": {
+                                    "original sample concentration": {
+                                        "value": "NaN",
+                                        "unit": "ng/µL"
+                                    },
+                                    "qubit tube concentration": {
+                                        "value": "NaN",
+                                        "unit": "ng/mL"
+                                    },
+                                    "standard 1 concentration": {
+                                        "value": 56.12,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
+                                        "value": 26516.64,
+                                        "unit": "RFU"
+                                    }
+                                }
+                            },
+                            "fluorescence": {
+                                "value": 44282.53,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "1x dsDNA High Sensitivity",
+                    "container type": "tube"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2023-04-11T00:41:50+00:00",
+                    "measurement document": [
+                        {
+                            "measurement identifier": "THERMO_FISHER_QUBIT4_TEST_ID_6",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "custom information document": {
+                                            "sample volume setting": {
+                                                "value": 1.0,
+                                                "unit": "μL"
+                                            },
+                                            "excitation setting": "Blue",
+                                            "emission setting": "Green",
+                                            "dilution factor": {
+                                                "value": 200.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample_#231104-004150",
+                                "batch identifier": "2023-11-04",
+                                "custom information document": {
+                                    "original sample concentration": {
+                                        "value": 68.8,
+                                        "unit": "ng/µL"
+                                    },
+                                    "qubit tube concentration": {
+                                        "value": 344.0,
+                                        "unit": "ng/mL"
+                                    },
+                                    "standard 1 concentration": {
+                                        "value": 56.12,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
+                                        "value": 26516.64,
+                                        "unit": "RFU"
+                                    }
+                                }
+                            },
+                            "fluorescence": {
+                                "value": 18227.08,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "1x dsDNA High Sensitivity",
+                    "container type": "tube"
+                }
+            }
+        ],
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "Qubit 4",
+            "brand name": "Qubit",
+            "product manufacturer": "Thermo Fisher Scientific"
+        },
+        "data system document": {
+            "file name": "thermo_fisher_qubit4_example_3.csv",
+            "software name": "Qubit 4 software",
+            "ASM converter name": "allotropy_thermo_fisher_qubit_4",
+            "ASM converter version": "0.1.38"
+        }
+    }
+}

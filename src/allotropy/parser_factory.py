@@ -1,9 +1,16 @@
+from collections import defaultdict
 from datetime import tzinfo
 from enum import Enum
-from typing import Optional
+from pathlib import Path
 
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.allotrope.schema_parser.path_util import ROOT_DIR
 from allotropy.parsers.agilent_gen5.agilent_gen5_parser import AgilentGen5Parser
+from allotropy.parsers.agilent_gen5_image.agilent_gen5_image_parser import (
+    AgilentGen5ImageParser,
+)
+from allotropy.parsers.agilent_tapestation_analysis.agilent_tapestation_analysis_parser import (
+    AgilentTapestationAnalysisParser,
+)
 from allotropy.parsers.appbio_absolute_q.appbio_absolute_q_parser import (
     AppbioAbsoluteQParser,
 )
@@ -19,14 +26,20 @@ from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_parser import ViCellXRParse
 from allotropy.parsers.biorad_bioplex_manager.biorad_bioplex_manager_parser import (
     BioradBioplexParser,
 )
+from allotropy.parsers.bmg_mars.bmg_mars_parser import BmgMarsParser
 from allotropy.parsers.chemometec_nucleoview.nucleoview_parser import (
     ChemometecNucleoviewParser,
 )
+from allotropy.parsers.ctl_immunospot.ctl_immunospot_parser import CtlImmunospotParser
 from allotropy.parsers.example_weyland_yutani.example_weyland_yutani_parser import (
     ExampleWeylandYutaniParser,
 )
 from allotropy.parsers.luminex_xponent.luminex_xponent_parser import (
     LuminexXponentParser,
+)
+from allotropy.parsers.mabtech_apex.mabtech_apex_parser import MabtechApexParser
+from allotropy.parsers.methodical_mind.methodical_mind_parser import (
+    MethodicalMindParser,
 )
 from allotropy.parsers.moldev_softmax_pro.softmax_pro_parser import SoftmaxproParser
 from allotropy.parsers.nexcelom_matrix.nexcelom_matrix_parser import (
@@ -37,12 +50,28 @@ from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import
     PerkinElmerEnvisionParser,
 )
 from allotropy.parsers.qiacuity_dpcr.qiacuity_dpcr_parser import QiacuitydPCRParser
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.revvity_kaleido.kaleido_parser import KaleidoParser
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_parser import (
     RocheCedexBiohtParser,
 )
+from allotropy.parsers.roche_cedex_hires.roche_cedex_hires_parser import (
+    RocheCedexHiResParser,
+)
+from allotropy.parsers.thermo_fisher_genesys30.thermo_fisher_genesys30_parser import (
+    ThermoFisherGenesys30Parser,
+)
 from allotropy.parsers.thermo_fisher_nanodrop_eight.nanodrop_eight_parser import (
     NanodropEightParser,
+)
+from allotropy.parsers.thermo_fisher_nanodrop_one.thermo_fisher_nanodrop_one_parser import (
+    ThermoFisherNanodropOneParser,
+)
+from allotropy.parsers.thermo_fisher_qubit4.thermo_fisher_qubit4_parser import (
+    ThermoFisherQubit4Parser,
+)
+from allotropy.parsers.thermo_fisher_qubit_flex.thermo_fisher_qubit_flex_parser import (
+    ThermoFisherQubitFlexParser,
 )
 from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_parser import (
     UnchainedLabsLunaticParser,
@@ -53,16 +82,22 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 class Vendor(Enum):
     AGILENT_GEN5 = "AGILENT_GEN5"
+    AGILENT_GEN5_IMAGE = "AGILENT_GEN5_IMAGE"
+    AGILENT_TAPESTATION_ANALYSIS = "AGILENT_TAPESTATION_ANALYSIS"
     APPBIO_ABSOLUTE_Q = "APPBIO_ABSOLUTE_Q"
     APPBIO_QUANTSTUDIO = "APPBIO_QUANTSTUDIO"
     APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS = "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS"
+    BMG_MARS = "BMG_MARS"
     BECKMAN_PHARMSPEC = "BECKMAN_PHARMSPEC"
     BECKMAN_VI_CELL_BLU = "BECKMAN_VI_CELL_BLU"
     BECKMAN_VI_CELL_XR = "BECKMAN_VI_CELL_XR"
     BIORAD_BIOPLEX = "BIORAD_BIOPLEX"
     CHEMOMETEC_NUCLEOVIEW = "CHEMOMETEC_NUCLEOVIEW"
+    CTL_IMMUNOSPOT = "CTL_IMMUNOSPOT"
     EXAMPLE_WEYLAND_YUTANI = "EXAMPLE_WEYLAND_YUTANI"
     LUMINEX_XPONENT = "LUMINEX_XPONENT"
+    MABTECH_APEX = "MABTECH_APEX"
+    METHODICAL_MIND = "METHODICAL_MIND"
     MOLDEV_SOFTMAX_PRO = "MOLDEV_SOFTMAX_PRO"
     NEXCELOM_MATRIX = "NEXCELOM_MATRIX"
     NOVABIO_FLEX2 = "NOVABIO_FLEX2"
@@ -70,39 +105,37 @@ class Vendor(Enum):
     QIACUITY_DPCR = "QIACUITY_DPCR"
     REVVITY_KALEIDO = "REVVITY_KALEIDO"
     ROCHE_CEDEX_BIOHT = "ROCHE_CEDEX_BIOHT"
+    ROCHE_CEDEX_HIRES = "ROCHE_CEDEX_HIRES"
+    THERMO_FISHER_GENESYS30 = "THERMO_FISHER_GENESYS30"
     THERMO_FISHER_NANODROP_EIGHT = "THERMO_FISHER_NANODROP_EIGHT"
+    THERMO_FISHER_NANODROP_ONE = "THERMO_FISHER_NANODROP_ONE"
+    THERMO_FISHER_QUBIT4 = "THERMO_FISHER_QUBIT4"
+    THERMO_FISHER_QUBIT_FLEX = "THERMO_FISHER_QUBIT_FLEX"
     UNCHAINED_LABS_LUNATIC = "UNCHAINED_LABS_LUNATIC"
 
-    def get_display_name(self) -> str:
-        return _VENDOR_TO_DISPLAY_NAME.get(self, self.value.title())
+    @property
+    def display_name(self) -> str:
+        return self.get_parser().DISPLAY_NAME
 
+    @property
+    def release_state(self) -> ReleaseState:
+        return self.get_parser().RELEASE_STATE
 
-_VENDOR_TO_DISPLAY_NAME = {
-    Vendor.AGILENT_GEN5: "Agilent Gen5",
-    Vendor.APPBIO_ABSOLUTE_Q: "AppBio AbsoluteQ",
-    Vendor.APPBIO_QUANTSTUDIO: "AppBio QuantStudio RT-PCR",
-    Vendor.APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS: "AppBio QuantStudio Design And Analysis",
-    Vendor.BECKMAN_PHARMSPEC: "Beckman PharmSpec",
-    Vendor.BECKMAN_VI_CELL_BLU: "Beckman Vi Cell BLU",
-    Vendor.BECKMAN_VI_CELL_XR: "Beckman Vi Cell XR",
-    Vendor.BIORAD_BIOPLEX: "BioRad BioPlex Manager",
-    Vendor.CHEMOMETEC_NUCLEOVIEW: "Chemometec Nucleoview",
-    Vendor.EXAMPLE_WEYLAND_YUTANI: "Example Weyland Yutani",
-    Vendor.LUMINEX_XPONENT: "Luminex xPONENT",
-    Vendor.MOLDEV_SOFTMAX_PRO: "MolDev SoftMax Pro",
-    Vendor.NEXCELOM_MATRIX: "Nexcelom Matrix",
-    Vendor.NOVABIO_FLEX2: "NovaBio Flex2",
-    Vendor.PERKIN_ELMER_ENVISION: "Perkin Elmer Envision",
-    Vendor.QIACUITY_DPCR: "Qiacuity dPCR",
-    Vendor.REVVITY_KALEIDO: "Revvity Kaleiedo",
-    Vendor.ROCHE_CEDEX_BIOHT: "Roche Cedex BioHT",
-    Vendor.THERMO_FISHER_NANODROP_EIGHT: "Thermo Fisher Nanodrop Eight",
-    Vendor.UNCHAINED_LABS_LUNATIC: "Unchained Labs Lunatic",
-}
+    @property
+    def supported_extensions(self) -> list[str]:
+        return [
+            ext.strip() for ext in self.get_parser().SUPPORTED_EXTENSIONS.split(",")
+        ]
+
+    def get_parser(self, default_timezone: tzinfo | None = None) -> VendorParser:
+        timestamp_parser = TimestampParser(default_timezone)
+        return _VENDOR_TO_PARSER[self](timestamp_parser)
 
 
 _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.AGILENT_GEN5: AgilentGen5Parser,
+    Vendor.AGILENT_GEN5_IMAGE: AgilentGen5ImageParser,
+    Vendor.AGILENT_TAPESTATION_ANALYSIS: AgilentTapestationAnalysisParser,
     Vendor.APPBIO_ABSOLUTE_Q: AppbioAbsoluteQParser,
     Vendor.APPBIO_QUANTSTUDIO: AppBioQuantStudioParser,
     Vendor.APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS: AppBioQuantStudioDesignandanalysisParser,
@@ -110,9 +143,13 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.BECKMAN_VI_CELL_BLU: ViCellBluParser,
     Vendor.BECKMAN_VI_CELL_XR: ViCellXRParser,
     Vendor.BIORAD_BIOPLEX: BioradBioplexParser,
+    Vendor.BMG_MARS: BmgMarsParser,
     Vendor.CHEMOMETEC_NUCLEOVIEW: ChemometecNucleoviewParser,
+    Vendor.CTL_IMMUNOSPOT: CtlImmunospotParser,
     Vendor.EXAMPLE_WEYLAND_YUTANI: ExampleWeylandYutaniParser,
     Vendor.LUMINEX_XPONENT: LuminexXponentParser,
+    Vendor.MABTECH_APEX: MabtechApexParser,
+    Vendor.METHODICAL_MIND: MethodicalMindParser,
     Vendor.MOLDEV_SOFTMAX_PRO: SoftmaxproParser,
     Vendor.NEXCELOM_MATRIX: NexcelomMatrixParser,
     Vendor.NOVABIO_FLEX2: NovaBioFlexParser,
@@ -120,17 +157,51 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.QIACUITY_DPCR: QiacuitydPCRParser,
     Vendor.REVVITY_KALEIDO: KaleidoParser,
     Vendor.ROCHE_CEDEX_BIOHT: RocheCedexBiohtParser,
+    Vendor.ROCHE_CEDEX_HIRES: RocheCedexHiResParser,
+    Vendor.THERMO_FISHER_GENESYS30: ThermoFisherGenesys30Parser,
     Vendor.THERMO_FISHER_NANODROP_EIGHT: NanodropEightParser,
+    Vendor.THERMO_FISHER_NANODROP_ONE: ThermoFisherNanodropOneParser,
+    Vendor.THERMO_FISHER_QUBIT4: ThermoFisherQubit4Parser,
+    Vendor.THERMO_FISHER_QUBIT_FLEX: ThermoFisherQubitFlexParser,
     Vendor.UNCHAINED_LABS_LUNATIC: UnchainedLabsLunaticParser,
 }
 
 
-def get_parser(
-    vendor: Vendor, default_timezone: Optional[tzinfo] = None
-) -> VendorParser:
-    timestamp_parser = TimestampParser(default_timezone)
-    try:
-        return _VENDOR_TO_PARSER[vendor](timestamp_parser)
-    except KeyError as e:
-        error = f"Failed to create parser, unregistered vendor: {vendor}."
-        raise AllotropeConversionError(error) from e
+def update_readme() -> None:
+    release_state_to_parser = defaultdict(set)
+    for vendor in Vendor:
+        if "example" in str(vendor).lower():
+            continue
+        release_state_to_parser[vendor.release_state].add(vendor.display_name)
+
+    readme_file = Path(ROOT_DIR, "README.md")
+    with open(readme_file) as f:
+        contents = f.readlines()
+
+    with open(readme_file, "w") as f:
+        in_block = False
+        newline_count = 0
+        for line in contents:
+            if line.startswith("### Recommended"):
+                in_block = True
+                continue
+            if in_block:
+                if line == "\n":
+                    newline_count += 1
+                if newline_count == 3:  # noqa: PLR2004
+                    for release_state in [
+                        ReleaseState.RECOMMENDED,
+                        ReleaseState.CANDIDATE_RELEASE,
+                        ReleaseState.WORKING_DRAFT,
+                    ]:
+                        f.write(
+                            f'### {release_state.value.replace("_", " ").title()}\n'
+                        )
+                        for display_name in sorted(
+                            release_state_to_parser.get(release_state, [])
+                        ):
+                            f.write(f"  - {display_name}\n")
+                        f.write("\n")
+                    in_block = False
+                continue
+            f.write(line)

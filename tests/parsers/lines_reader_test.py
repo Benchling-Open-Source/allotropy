@@ -1,9 +1,9 @@
 from io import BytesIO
 import re
-from typing import Optional
 
 import pytest
 
+from allotropy.exceptions import AllotropeConversionError, AllotropeParsingError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.lines_reader import LinesReader, read_to_lines
 
@@ -27,7 +27,7 @@ INPUT_LINES = [
 ]
 
 
-def _read_to_lines(encoding: Optional[str] = None) -> list[str]:
+def _read_to_lines(encoding: str | None = None) -> list[str]:
     input_text = "\n".join(INPUT_LINES)
     io_ = BytesIO(input_text.encode("UTF-8"))
     named_file_contents = NamedFileContents(io_, "test.csv", encoding)
@@ -40,22 +40,22 @@ def test_read_to_lines() -> None:
 
 
 @pytest.mark.parametrize("encoding", [None, "UTF-8"])
-def test_read_to_lines_with_encoding(encoding: Optional[str]) -> None:
+def test_read_to_lines_with_encoding(encoding: str | None) -> None:
     lines = _read_to_lines(encoding)
     assert lines == INPUT_LINES
 
 
 def test_read_to_lines_with_encoding_that_is_invalid() -> None:
-    # TODO: should raise AllotropeConversionError
-    with pytest.raises(LookupError, match="unknown encoding: BAD ENCODING"):
+    with pytest.raises(
+        AllotropeConversionError, match="Invalid encoding: 'BAD ENCODING'."
+    ):
         _read_to_lines("BAD ENCODING")
 
 
 def test_read_to_lines_with_encoding_that_is_valid_but_invalid_for_file() -> None:
     expected_regex_raw = "'utf-32-le' codec can't decode bytes in position 0-3: code point not in range(0x110000)"
     expected_regex = re.escape(expected_regex_raw)
-    # TODO: should raise AllotropeConversionError
-    with pytest.raises(UnicodeDecodeError, match=expected_regex):
+    with pytest.raises(AllotropeParsingError, match=expected_regex):
         _read_to_lines("UTF-32")
 
 

@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from allotropy.allotrope.models.light_obscuration_benchling_2023_12_light_obscuration import (
+from allotropy.allotrope.models.adm.light_obscuration.benchling._2023._12.light_obscuration import (
     DeviceSystemDocument,
     DistributionAggregateDocument,
     DistributionItem,
@@ -12,26 +12,16 @@ from allotropy.allotrope.models.light_obscuration_benchling_2023_12_light_obscur
     SampleDocument,
 )
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parser_factory import Vendor
 from allotropy.parsers.beckman_pharmspec.beckman_pharmspec_parser import PharmSpecParser
-from allotropy.parsers.utils.timestamp_parser import TimestampParser
-from allotropy.testing.utils import from_file, validate_contents
-from allotropy.to_allotrope import allotrope_from_file
+from allotropy.parsers.beckman_pharmspec.beckman_pharmspec_structure import Header
 
-VENDOR_TYPE = Vendor.BECKMAN_PHARMSPEC
+TESTDATA = f"{Path(__file__).parent}/testdata"
 
 
-@pytest.fixture()
-def test_file() -> Path:
-    f = Path(__file__).parent / "testdata/hiac_example_1.xlsx"
-    return f.absolute()
-
-
-@pytest.mark.short
-def test_get_model(test_file: Path) -> None:
-    parser = PharmSpecParser(TimestampParser())
-
-    model = parser.to_allotrope(NamedFileContents(open(test_file, "rb"), ""))
+def test_get_model() -> None:
+    model = PharmSpecParser().to_allotrope(
+        NamedFileContents(open(Path(TESTDATA, "hiac_example_1.xlsx"), "rb"), "")
+    )
     assert isinstance(
         model.light_obscuration_aggregate_document, LightObscurationAggregateDocument
     )
@@ -134,29 +124,16 @@ def test_get_model(test_file: Path) -> None:
             assert test.value == particle_size
 
 
-@pytest.mark.short
-def test_asm(test_file: Path) -> None:
-    asm = allotrope_from_file(str(test_file), VENDOR_TYPE)
-    assert isinstance(asm, dict)
-
-
-@pytest.mark.short
-def test_parse_beckman_pharmspec_hiac_to_asm_contents(test_file: Path) -> None:
-    expected_filepath = str(test_file.absolute()).replace(".xlsx", ".json")
-    allotrope_dict = from_file(str(test_file.absolute()), VENDOR_TYPE)
-    validate_contents(allotrope_dict, expected_filepath)
-
-
-@pytest.mark.short
-def test_get_software_version_report_string() -> None:
-    parser = PharmSpecParser(TimestampParser())
-    tests = [
+@pytest.mark.parametrize(
+    "title,version",
+    [
         ["HIAC PharmSpec v3.0 Summary Report", "3.0"],
         ["HIAC PharmSpec v3.0.1 Summary Report", "3.0.1"],
         ["HIAC PharmSpec v3 Summary Report", "3"],
         ["HIAC PharmSpec v Summary Report", "Unknown"],
         ["HIAC PharmSpec v3.0.10 Summary Report", "3.0.10"],
         ["HIAC PharmSpec v3.0.10.40 Summary Report", "3.0.10"],
-    ]
-    for t in tests:
-        assert parser._get_software_version_report_string(t[0]) == t[1]
+    ],
+)
+def test_get_software_version_report_string(title: str, version: str) -> None:
+    assert Header._get_software_version_report_string(title) == version
