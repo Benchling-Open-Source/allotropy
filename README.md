@@ -40,11 +40,11 @@ We currently have parser support for the following instruments:
   - Thermo Fisher Qubit Flex
   - Unchained Labs Lunatic
   - Thermo Fisher Nanodrop One
+  - Thermo Fisher Genesys30
 
 ### Candidate Release
 
 ### Working Draft
-  - Thermo Fisher Genesys30
 
 The parsers follow maturation levels of: Recommended, Candidate Release, Working Draft - see [release_state.py](https://github.com/Benchling-Open-Source/allotropy/blob/main/src/allotropy/parsers/release_state.py) for additional details.
 

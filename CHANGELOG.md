@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Refactor Softmaxpro adapter to use the new schema mapper.
+- Update Thermo Fisher Genesys30 to recommended state
 
 ### Deprecated
 
