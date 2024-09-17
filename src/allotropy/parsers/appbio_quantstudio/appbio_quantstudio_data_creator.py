@@ -15,6 +15,7 @@ from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import 
     Metadata,
     ProcessedData,
 )
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_quantstudio import constants
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     AmplificationData,
@@ -238,6 +239,32 @@ def create_calculated_data(
     )
 
 
+def get_well_item_results(
+    well_item: WellItem,
+    results_data: dict[int, dict[str, Result]],
+) -> Result:
+    results_data_element = results_data.get(well_item.identifier, {}).get(
+        well_item.target_dna_description.replace(" ", "")
+    )
+    if results_data_element is None:
+        msg = f"No result data for well item {well_item.identifier} and target DNA {well_item.target_dna_description}"
+        raise AllotropeConversionError(msg)
+    return results_data_element
+
+
+def get_well_item_amp_data(
+    well_item: WellItem,
+    amp_data: dict[int, dict[str, AmplificationData]],
+) -> AmplificationData:
+    amp_data_element = amp_data.get(well_item.identifier, {}).get(
+        well_item.target_dna_description
+    )
+    if amp_data_element is None:
+        msg = f"No amplification data for well item {well_item.identifier} and target DNA {well_item.target_dna_description}"
+        raise AllotropeConversionError(msg)
+    return amp_data_element
+
+
 def create_measurement_groups(
     header: Header,
     wells: list[Well],
@@ -257,10 +284,8 @@ def create_measurement_groups(
                     header,
                     multi_data.get(well.identifier),
                     melt_data.get(well.identifier),
-                    amp_data[well_item.identifier][well_item.target_dna_description],
-                    results_data[well_item.identifier][
-                        well_item.target_dna_description.replace(" ", "")
-                    ],
+                    get_well_item_amp_data(well_item, amp_data),
+                    get_well_item_results(well_item, results_data),
                 )
                 for well_item in well.items
             ],
