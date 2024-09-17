@@ -254,7 +254,7 @@ class ReadData:
                 device_control_data, read_mode
             )
             all_labels = {
-                extra for extras in label_aliases.values() for extra in extras
+                alias for aliases in label_aliases.values() for alias in aliases
             }
             number_of_averages = device_control_data.get(MEASUREMENTS_DATA_POINT_KEY)
             read_height = device_control_data.get(READ_HEIGHT_KEY) or ""
