@@ -81,7 +81,6 @@ class VarioskanMetadata:
             equipment_serial_number=find_value_by_label_optional(
                 df=instrument_info_df, label="Serial number"
             ),
-            device_type="Plate Reader"
             # firmware_version=VarioskanMetadata.find_value_by_label(instrument_info_df, "ESW version")
         )
 
@@ -102,9 +101,10 @@ class AbsorbanceDataWell(Measurement):
             identifier=random_uuid_str(),
             sample_identifier=sample_name,
             location_identifier=well_location,
-            sample_role_type=str(AbsorbanceDataWell.get_sample_role(sample_name)),
+            sample_role_type=AbsorbanceDataWell.get_sample_role(sample_name),
             absorbance=abs_value,
             detector_wavelength_setting=detector_wavelength,
+            device_type="plate reader",
         )
 
     @staticmethod
@@ -133,11 +133,15 @@ class VarioskanMeasurementGroup(MeasurementGroup):
         plate_well_count = VarioskanMeasurementGroup.get_plate_well_count(
             layout_definitions_df
         )
-        session_name = find_value_by_label_optional(session_info_df, "Session notes")
-        exec_time = find_value_by_label_optional(session_info_df, "Execution Time")
+        session_name = find_value_by_label_optional(
+            df=session_info_df, label="Session notes"
+        )
+        exec_time = find_value_by_label_required(
+            df=session_info_df, label="Execution Time", sheet_name="Session information"
+        )
         absorbance_wells = []
         for index, row in abs_df.iterrows():
-            well_letter = row[0]
+            well_letter = row.iloc[0]
             for col_name, value in list(row.items())[1:]:
                 col_index = abs_df.columns.get_loc(col_name)
                 if isinstance(col_index, tuple):
@@ -158,7 +162,7 @@ class VarioskanMeasurementGroup(MeasurementGroup):
         return MeasurementGroup(
             measurements=absorbance_wells,
             plate_well_count=plate_well_count,
-            _measurement_time=exec_time,
+            measurement_time=exec_time,
             experimental_data_identifier=session_name,
         )
 
@@ -202,8 +206,8 @@ class VarioskanMeasurementGroup(MeasurementGroup):
 
         # Iterate through each row
         for _index, row in absorbance_sheet_df.iterrows():
-            if pd.notna(row[0]) and "Wavelength" in row[0]:
-                match = re.search(r"Wavelength:\s*(\d{3})\s*nm", row[0])
+            if pd.notna(row.iloc[0]) and "Wavelength" in row.iloc[0]:
+                match = re.search(r"Wavelength:\s*(\d{3})\s*nm", row.iloc[0])
                 if match:
                     wavelength = float(match.group(1))
                 else:

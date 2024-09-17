@@ -11,7 +11,6 @@ from allotropy.parsers.varioskan_plate_reader.varioskan_structure import (
 )
 
 
-@pytest.mark.short
 def test_create_metadata() -> None:
     data = {
         "Instrument information": [
@@ -149,7 +148,6 @@ def test_create_metadata() -> None:
     assert varioskan_metadata.software_version == "7.0.0.50"
 
 
-@pytest.mark.short
 def test_get_sample_role() -> None:
     sample_name_1 = "Std392"
     sample_name_2 = "Un4"
@@ -164,7 +162,6 @@ def test_get_sample_role() -> None:
     )
 
 
-@pytest.mark.short
 def test_get_sample_role_failure() -> None:
     sample_name_error = "Unk4"
     with pytest.raises(
