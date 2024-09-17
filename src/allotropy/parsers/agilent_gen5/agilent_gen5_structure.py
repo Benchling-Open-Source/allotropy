@@ -253,7 +253,9 @@ class ReadData:
             measurement_labels, label_aliases = cls._get_measurement_labels(
                 device_control_data, read_mode
             )
-            all_labels = {extra for extras in label_aliases.values() for extra in extras}
+            all_labels = {
+                extra for extras in label_aliases.values() for extra in extras
+            }
             number_of_averages = device_control_data.get(MEASUREMENTS_DATA_POINT_KEY)
             read_height = device_control_data.get(READ_HEIGHT_KEY) or ""
             read_data_list.append(
@@ -271,7 +273,10 @@ class ReadData:
                     detector_distance=try_float_or_none(read_height.split(" ")[0]),
                     # Fluorescence attributes
                     filter_sets=cls._get_filter_sets(
-                        measurement_labels, label_aliases, device_control_data, read_mode
+                        measurement_labels,
+                        label_aliases,
+                        device_control_data,
+                        read_mode,
                     ),
                 )
             )
