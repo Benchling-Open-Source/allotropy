@@ -1,4 +1,8 @@
-src/allotropy/parsers	@slopez-b @alejandro-salgado
-tests			@slopez-b @alejandro-salgado
+# Give senior parser developers ownership over everything except allotrope schema code and CODEOWNERS
+*			@slopez-b @alejandro-salgado
+src/allotropy/allotrope
+CODEOWNERS
+# Give ASM experts ownership over docs
 docs			@james-leinas
+# Give Benchling Connect team ownership over all
 *   			@Benchling-Open-Source/benchling-connect
