@@ -273,7 +273,10 @@ class ReadData:
                     detector_distance=try_float_or_none(read_height.split(" ")[0]),
                     # Fluorescence attributes
                     filter_sets=cls._get_filter_sets(
-                        measurement_labels, label_aliases, device_control_data, read_mode
+                        measurement_labels,
+                        label_aliases,
+                        device_control_data,
+                        read_mode,
                     ),
                 )
             )
