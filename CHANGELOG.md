@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed bad reference for y-intercept and slope in quantity calculated data document of Appbio Quantstudio
 - Correctly format timezone in SoftmaxPro adapter
-- Added support for agile gen5 label format "[excitation wavelength], [emission wavelength]" for fluorescence point detection
+- Added support for Agilent Gen5 label format "[excitation wavelength], [emission wavelength]" for fluorescence point detection
 
 ### Changed
 
