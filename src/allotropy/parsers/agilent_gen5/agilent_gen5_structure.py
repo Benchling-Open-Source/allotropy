@@ -250,16 +250,17 @@ class ReadData:
             device_control_data = DeviceControlData.create(
                 read_section.lines, read_mode
             )
-            measurement_labels = cls._get_measurement_labels(
+            measurement_labels, label_aliases = cls._get_measurement_labels(
                 device_control_data, read_mode
             )
+            all_labels = {extra for extras in label_aliases.values() for extra in extras}
             number_of_averages = device_control_data.get(MEASUREMENTS_DATA_POINT_KEY)
             read_height = device_control_data.get(READ_HEIGHT_KEY) or ""
             read_data_list.append(
                 ReadData(
                     read_mode=read_mode,
                     step_label=device_control_data.step_label,
-                    measurement_labels=measurement_labels,
+                    measurement_labels=set(measurement_labels) | all_labels,
                     detector_carriage_speed=device_control_data.get(READ_SPEED_KEY),
                     # Absorbance attributes
                     pathlength_correction=device_control_data.get(
@@ -270,7 +271,7 @@ class ReadData:
                     detector_distance=try_float_or_none(read_height.split(" ")[0]),
                     # Fluorescence attributes
                     filter_sets=cls._get_filter_sets(
-                        measurement_labels, device_control_data, read_mode
+                        measurement_labels, label_aliases, device_control_data, read_mode
                     ),
                 )
             )
@@ -320,10 +321,13 @@ class ReadData:
     @classmethod
     def _get_measurement_labels(
         cls, device_control_data: DeviceControlData, read_mode: str
-    ) -> list[str]:
+    ) -> tuple[list[str], dict[str, set[str]]]:
         step_label = device_control_data.step_label
         label_prefix = f"{step_label}:" if step_label else ""
         measurement_labels = []
+        # Some measurement labels may be reported in more than one format in the result rows, e.g.
+        # fluorescence measurements may include bandwidths, or not: 360/40,460/40 or 360,460.
+        label_aliases: dict[str, set[str]] = {}
 
         if read_mode == ReadMode.ABSORBANCE:
             measurement_labels = cls._get_absorbance_measurement_labels(
@@ -337,12 +341,12 @@ class ReadData:
                 f"{label_prefix}{excitation},{emission}"
                 for excitation, emission in zip(excitations, emissions, strict=True)
             ]
-            measurement_labels.extend(
-                [
+            label_aliases = {
+                f"{label_prefix}{excitation},{emission}": {
                     f"{label_prefix}{excitation.split('/')[0]},{emission.split('/')[0]}"
-                    for excitation, emission in zip(excitations, emissions, strict=True)
-                ]
-            )
+                }
+                for excitation, emission in zip(excitations, emissions, strict=True)
+            }
             if not measurement_labels:
                 measurement_labels = ["Alpha"]
 
@@ -352,7 +356,7 @@ class ReadData:
                 label = "Lum" if emission in NAN_EMISSION_EXCITATION else emission
                 measurement_labels.append(f"{label_prefix}{label}")
 
-        return measurement_labels
+        return measurement_labels, label_aliases
 
     @classmethod
     def _get_absorbance_measurement_labels(
@@ -377,6 +381,7 @@ class ReadData:
     def _get_filter_sets(
         cls,
         measurement_labels: list[str],
+        label_aliases: dict[str, set[str]],
         device_control_data: DeviceControlData,
         read_mode: ReadMode,
     ) -> dict[str, FilterSet]:
@@ -390,10 +395,12 @@ class ReadData:
         optics = device_control_data.get_list(OPTICS_KEY)
         gains = device_control_data.get_list(GAIN_KEY)
 
+        if len(measurement_labels) != len(gains):
+            msg = f"Expected the number measurement labels: {measurement_labels} to match the number of gains: {gains}."
+            raise AllotropeConversionError(msg)
+
         for idx, label in enumerate(measurement_labels):
             mirror = None
-            if idx >= len(gains):
-                break
             if mirrors and read_mode == ReadMode.FLUORESCENCE:
                 mirror = mirrors[idx]
             filter_data[label] = FilterSet(
@@ -403,16 +410,9 @@ class ReadData:
                 mirror=mirror,
                 optics=optics[idx] if optics else None,
             )
-        if read_mode == ReadMode.FLUORESCENCE:
-            for label in measurement_labels:
-                if label not in filter_data.keys():
-                    match_label = label.split(":")[1] if ":" in label else label
-                    if "," not in match_label:
-                        continue
-                    excitation, emission = match_label.split(",")
-                    for key in list(filter_data.keys()):
-                        if excitation in key and emission in key:
-                            filter_data[label] = filter_data[key]
+        for measurement_label, aliases in label_aliases.items():
+            for alias in aliases:
+                filter_data[alias] = filter_data[measurement_label]
 
         return filter_data
 
