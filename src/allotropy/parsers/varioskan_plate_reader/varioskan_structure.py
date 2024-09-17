@@ -10,6 +10,7 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
     Data,
     Measurement,
     MeasurementGroup,
+    MeasurementType,
     Metadata,
 )
 from allotropy.exceptions import AllotropyParserError
@@ -21,6 +22,22 @@ sample_role_mappings = {
     "Blank": SampleRoleType.blank_role,
     "Ctrl": SampleRoleType.control_sample_role,
 }
+
+
+def find_value_by_label_optional(df: pd.DataFrame, label: str) -> str | None:
+    row = df[df.iloc[:, 1].str.contains(label, case=False, na=False)]
+    if not row.empty:
+        return str(row.iloc[0, 4])  # Assuming the value is in the 5th column (index 4)
+    return None
+
+
+def find_value_by_label_required(df: pd.DataFrame, sheet_name: str, label: str) -> str:
+    row = df[df.iloc[:, 1].str.contains(label, case=False, na=False)]
+    if not row.empty:
+        return str(row.iloc[0, 4])  # Assuming the value is in the 5th column (index 4)
+    else:
+        msg = f"Unable to identify {label} from {sheet_name} tab"
+        raise AllotropyParserError(msg)
 
 
 @dataclass(frozen=True)
@@ -39,56 +56,59 @@ class VarioskanMetadata:
                 break
         # Regular expression to extract software and version
         pattern = r"(SkanIt Software.*?)(?=,)|(\b\d+\.\d+\.\d+\.\d+\b)"
-        matches = re.findall(pattern, software_info)
-        # Process matches to get a cleaner output
-        software_name = matches[0][0].strip() if matches[0][0] else None
-        version_number = matches[1][1] if len(matches) > 1 and matches[1][1] else None
+        if software_info is not None:
+            matches = re.findall(pattern, software_info)
+            # Process matches to get a cleaner output
+            software_name = matches[0][0].strip() if matches[0][0] else None
+            version_number = (
+                matches[1][1] if len(matches) > 1 and matches[1][1] else None
+            )
+        else:
+            msg = "Unable to identify Software Name or Version from General information tab"
+            raise AllotropyParserError(msg)
 
         return Metadata(
-            device_identifier=VarioskanMetadata.find_value_by_label(
-                instrument_info_df, "Name"
+            device_identifier=find_value_by_label_required(
+                instrument_info_df, sheet_name="Instrument information", label="Name"
             ),
-            model_number=VarioskanMetadata.find_value_by_label(
-                instrument_info_df, "Name"
+            model_number=find_value_by_label_required(
+                instrument_info_df, sheet_name="Instrument information", label="Name"
             ),
             software_name=software_name,
             software_version=version_number,
             unc_path="",
             file_name=file_name,
-            equipment_serial_number=VarioskanMetadata.find_value_by_label(
-                instrument_info_df, "Serial number"
+            equipment_serial_number=find_value_by_label_optional(
+                df=instrument_info_df, label="Serial number"
             ),
             device_type="Plate Reader"
             # firmware_version=VarioskanMetadata.find_value_by_label(instrument_info_df, "ESW version")
         )
 
     # Function to find the value based on the label in the dataframe
-    @staticmethod
-    def find_value_by_label(df, label):
-        row = df[df.iloc[:, 1].str.contains(label, case=False, na=False)]
-        if not row.empty:
-            return row.iloc[0, 4]  # Assuming the value is in the 5th column (index 4)
-        return None
 
 
 @dataclass(frozen=True)
 class AbsorbanceDataWell(Measurement):
     @staticmethod
     def create(
-        well_location, abs_value, sample_name, detector_wavelength
+        well_location: str,
+        abs_value: float,
+        sample_name: str,
+        detector_wavelength: float,
     ) -> Measurement:
         return Measurement(
-            type_="Absorbance",
+            type_=MeasurementType.ULTRAVIOLET_ABSORBANCE,
             identifier=random_uuid_str(),
             sample_identifier=sample_name,
             location_identifier=well_location,
-            sample_role_type=AbsorbanceDataWell.get_sample_role(sample_name),
+            sample_role_type=str(AbsorbanceDataWell.get_sample_role(sample_name)),
             absorbance=abs_value,
             detector_wavelength_setting=detector_wavelength,
         )
 
     @staticmethod
-    def get_sample_role(sample_name):
+    def get_sample_role(sample_name: str) -> SampleRoleType:
         stripped_text = re.sub(r"\d+", "", sample_name)
         try:
             return sample_role_mappings[stripped_text]
@@ -100,7 +120,11 @@ class AbsorbanceDataWell(Measurement):
 @dataclass(frozen=True)
 class VarioskanMeasurementGroup(MeasurementGroup):
     @staticmethod
-    def create(absorbance_sheet_df, layout_definitions_df, session_info_df):
+    def create(
+        absorbance_sheet_df: pd.DataFrame,
+        layout_definitions_df: pd.DataFrame,
+        session_info_df: pd.DataFrame,
+    ) -> MeasurementGroup:
         (
             abs_df,
             name_df,
@@ -109,18 +133,20 @@ class VarioskanMeasurementGroup(MeasurementGroup):
         plate_well_count = VarioskanMeasurementGroup.get_plate_well_count(
             layout_definitions_df
         )
-        session_name = VarioskanMeasurementGroup.find_value_by_label(
-            session_info_df, "Session notes"
-        )
-        exec_time = VarioskanMeasurementGroup.find_value_by_label(
-            session_info_df, "Execution Time"
-        )
+        session_name = find_value_by_label_optional(session_info_df, "Session notes")
+        exec_time = find_value_by_label_optional(session_info_df, "Execution Time")
         absorbance_wells = []
         for index, row in abs_df.iterrows():
             well_letter = row[0]
             for col_name, value in list(row.items())[1:]:
                 col_index = abs_df.columns.get_loc(col_name)
-                well_name = name_df.iloc[index, col_index]
+                if isinstance(col_index, tuple):
+                    col_index = col_index[0]
+                if isinstance(index, int) and isinstance(col_index, int):
+                    well_name = str(name_df.iloc[index, col_index])
+                else:
+                    msg = f"Unable to identify well name for row {index} and column {col_index}"
+                    raise AllotropyParserError(msg)
                 abs_value = value
                 abs_well = AbsorbanceDataWell.create(
                     well_location=well_letter + str(col_index),
@@ -137,7 +163,7 @@ class VarioskanMeasurementGroup(MeasurementGroup):
         )
 
     @staticmethod
-    def get_plate_well_count(layout_definitions_df):
+    def get_plate_well_count(layout_definitions_df: pd.DataFrame) -> int:
         # Combine all non-empty values in the row where "Plate template" is found
         plate_template_row = layout_definitions_df[
             layout_definitions_df.iloc[:, 0].str.contains(
@@ -149,16 +175,25 @@ class VarioskanMeasurementGroup(MeasurementGroup):
             if not plate_template_row.empty
             else None
         )
-        # Extract the integer from the combined string
-        plate_template_number = int(
-            re.search(r"\d+", plate_template_value).group()
-            if plate_template_value
-            else None
+        msg = (
+            "Unable to identify plate well count from Layout definitions tab. "
+            "Expected to find in Plate template description."
         )
-        return plate_template_number
+        if plate_template_value is None:
+            raise AllotropyParserError(msg)
+        else:
+            # Extract the integer from the combined string
+            search_string = re.search(r"\d+", plate_template_value)
+            if search_string:
+                plate_template_number = int(search_string.group())
+                return plate_template_number
+            else:
+                raise AllotropyParserError(msg)
 
     @staticmethod
-    def identify_abs_and_sample_dfs(absorbance_sheet_df):
+    def identify_abs_and_sample_dfs(
+        absorbance_sheet_df: pd.DataFrame,
+    ) -> tuple[pd.DataFrame, pd.DataFrame, float]:
         # Initialize variables
         start_reading_abs = False
         start_reading_sample = False
@@ -168,9 +203,12 @@ class VarioskanMeasurementGroup(MeasurementGroup):
         # Iterate through each row
         for _index, row in absorbance_sheet_df.iterrows():
             if pd.notna(row[0]) and "Wavelength" in row[0]:
-                wavelength = int(
-                    re.search(r"Wavelength:\s*(\d{3})\s*nm", row[0]).group(1)
-                )
+                match = re.search(r"Wavelength:\s*(\d{3})\s*nm", row[0])
+                if match:
+                    wavelength = float(match.group(1))
+                else:
+                    msg = "Unable to identify Wavelength (nm) from Absorbance tab"
+                    raise AllotropyParserError(msg)
             if start_reading_sample:
                 # Check if the row is blank
                 if row.isnull().all():
@@ -196,15 +234,9 @@ class VarioskanMeasurementGroup(MeasurementGroup):
             data_between_sample_and_blank
         ).reset_index(drop=True)
 
-        return df_between_abs_and_blank, df_between_sample_and_blank, wavelength
+        return (df_between_abs_and_blank, df_between_sample_and_blank, wavelength)
 
     # Function to find the value based on the label in the dataframe
-    @staticmethod
-    def find_value_by_label(df, label):
-        row = df[df.iloc[:, 1].str.contains(label, case=False, na=False)]
-        if not row.empty:
-            return row.iloc[0, 4]  # Assuming the value is in the 5th column (index 4)
-        return None
 
 
 @dataclass(frozen=True)

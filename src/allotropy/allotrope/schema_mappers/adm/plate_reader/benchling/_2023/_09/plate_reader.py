@@ -34,7 +34,6 @@ from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reade
     UltravioletAbsorbancePointDetectionDeviceControlDocumentItem,
     UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
 )
-from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueDegreeCelsius,
     TQuantityValueMilliAbsorbanceUnit,
@@ -110,7 +109,7 @@ class Measurement:
     analyst: str | None = None
     measurement_time: str | None = None
     well_plate_identifier: str | None = None
-    sample_role_type: SampleRoleType | None = None
+    sample_role_type: str | None = None
 
     # Measurements
     absorbance: JsonFloat | None = None

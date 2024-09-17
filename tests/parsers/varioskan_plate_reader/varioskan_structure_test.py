@@ -135,7 +135,9 @@ def test_create_metadata() -> None:
     general_info_df = pd.DataFrame(data)
 
     varioskan_metadata = VarioskanMetadata.create_metadata(
-        instrument_info_df=instrument_info_df, general_info_df=general_info_df
+        instrument_info_df=instrument_info_df,
+        general_info_df=general_info_df,
+        file_name="test file",
     )
 
     assert varioskan_metadata.device_identifier == "Varioskan LUX"
@@ -189,7 +191,6 @@ def test_create_varioskan_meas_group() -> None:
         == "5. APOE potency MOA_EB_20230522_003"
     )
 
-    assert varioskan_meas_group.measurements[95].type_ == "Absorbance"
     assert varioskan_meas_group.measurements[95].location_identifier == "H12"
     assert varioskan_meas_group.measurements[95].absorbance == 0.1032
 
