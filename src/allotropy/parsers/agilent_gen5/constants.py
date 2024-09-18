@@ -41,15 +41,6 @@ FILENAME_REGEX = r"^\d{6}_\d{6}_(?P<plate_identifier>.[^_]*)_.*\.txt$"
 NAN_EMISSION_EXCITATION = ["Full light", "Plug", "Hole"]
 
 
-# TODO: These enum classes should come from the schema
-class ScanPositionSettingPlateReader(Enum):
-    bottom_scan_position__plate_reader_ = "bottom scan position (plate reader)"
-    scan_position_configuration__plate_reader_ = (
-        "scan position configuration (plate reader)"
-    )
-    top_scan_position__plate_reader_ = "top scan position (plate reader)"
-
-
 class ReadMode(str, Enum):
     ABSORBANCE = "Absorbance"
     FLUORESCENCE = "Fluorescence"
@@ -65,6 +56,12 @@ READ_DATA_MEASUREMENT_ERROR = "No read mode found for measurement {}"
 ALPHALISA_FLUORESCENCE_FOUND = (
     "Both ALPHALISA and FLUORESCENCE read modes detected, which is not supported."
 )
+
+DATA_SOURCE_FEATURE_VALUES = {
+    ReadMode.ABSORBANCE: "absorption profile data cube",
+    ReadMode.FLUORESCENCE: "fluorescence profile data cube",
+    ReadMode.LUMINESCENCE: "luminescence profile data cube",
+}
 
 
 class ReadType(str, Enum):

@@ -1,4 +1,4 @@
-from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
+from allotropy.allotrope.models.adm.plate_reader.rec._2024._06.plate_reader import (
     Model,
 )
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
@@ -9,12 +9,15 @@ from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.agilent_gen5.agilent_gen5_reader import AgilentGen5Reader
 from allotropy.parsers.agilent_gen5.agilent_gen5_structure import (
+    create_kinetic_results,
     create_metadata,
     create_results,
     get_identifiers,
+    get_kinetic_measurements,
     get_temperature,
     HeaderData,
-    ReadData, KineticData, get_kinetic_measurements,
+    KineticData,
+    ReadData,
 )
 from allotropy.parsers.agilent_gen5.constants import DEFAULT_EXPORT_FORMAT_ERROR
 from allotropy.parsers.release_state import ReleaseState
@@ -41,17 +44,35 @@ class AgilentGen5Parser(MapperVendorParser[Data, Model]):
 
         sample_identifiers = get_identifiers(reader.sections.get("Layout"))
         actual_temperature = get_temperature(reader.sections.get("Actual Temperature"))
-        kinetic_measurements = get_kinetic_measurements(reader.sections.get("Time"))
+        kinetic_measurements, kinetic_elapsed_time = get_kinetic_measurements(
+            reader.sections.get("Time")
+        ) or ({}, [])
 
-        measurement_groups, calculated_data = create_results(
-            reader.sections["Results"],
-            header_data,
-            read_data,
-            sample_identifiers,
-            actual_temperature,
-            kinetic_data,
-            kinetic_measurements
-        )
+        if kinetic_data and not (kinetic_measurements and kinetic_elapsed_time):
+            msg = "Kinetic data is present in the file but no kinetic measurements data is found."
+            raise AllotropeConversionError(msg)
+
+        # in case of single kinetic section, each well will contain one measurement document with the kinetic data cube
+        # otherwise each well will contain multiple measurement documents
+        if kinetic_data:
+            measurement_groups, calculated_data = create_kinetic_results(
+                reader.sections["Results"],
+                header_data,
+                read_data,
+                sample_identifiers,
+                actual_temperature,
+                kinetic_data,
+                kinetic_measurements,
+                kinetic_elapsed_time,
+            )
+        else:
+            measurement_groups, calculated_data = create_results(
+                reader.sections["Results"],
+                header_data,
+                read_data,
+                sample_identifiers,
+                actual_temperature,
+            )
 
         return Data(
             metadata=create_metadata(header_data),
