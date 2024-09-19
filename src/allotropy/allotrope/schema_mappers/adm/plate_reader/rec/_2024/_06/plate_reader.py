@@ -154,8 +154,6 @@ class Measurement:
 
     # Kinetic measurements
     profile_data_cube: DataCube | None = None
-    dimensions_elapsed_time: list[float] | None = None
-    measures: list[float | None] | None = None
 
 
 @dataclass(frozen=True)
