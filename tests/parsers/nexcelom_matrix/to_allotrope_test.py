@@ -9,4 +9,3 @@ TESTDATA = f"{Path(__file__).parent}/testdata"
 
 class TestParser(ParserTest):
     VENDOR = VENDOR_TYPE
-    OVERWRITE_ON_FAILURE = True
