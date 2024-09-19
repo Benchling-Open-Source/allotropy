@@ -271,8 +271,8 @@ class ReadData:
         read_type = cls.get_read_type(procedure_details)
         if read_type != ReadType.ENDPOINT:
             raise AllotropeConversionError(UNSUPPORTED_READ_TYPE_ERROR)
-        read_sections = list(SectionLinesReader(lines).iter_sections(r"^\s{0,4}Read\t"))
         read_modes = cls.get_read_modes(procedure_details)
+        read_sections = list(SectionLinesReader(lines).iter_sections(r"^\s{0,4}Read\t"))
         if len(read_modes) != len(read_sections):
             msg = "Expected the number of read modes to match the number of read sections."
             raise AllotropeConversionError(msg)
