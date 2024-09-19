@@ -62,6 +62,7 @@ class Measurement:
 
     average_total_cell_diameter: JsonFloat | None = None
     average_live_cell_diameter: float | None = None
+    average_dead_cell_diameter: float | None = None
     average_total_cell_circularity: float | None = None
     average_viable_cell_circularity: float | None = None
 
@@ -83,10 +84,11 @@ class MeasurementGroup:
 @dataclass
 class Metadata:
     device_type: str
-    detection_type: str
-    model_number: str
-    software_name: str
-    file_name: str
+    detection_type: str | None = None
+    model_number: str | None = None
+    software_name: str | None = None
+    file_name: str | None = None
+    unc_path: str | None = None
     equipment_serial_number: str | None = None
     software_version: str | None = None
     product_manufacturer: str | None = None
@@ -120,6 +122,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 ),
                 data_system_document=DataSystemDocument(
                     file_name=data.metadata.file_name,
+                    UNC_path=data.metadata.unc_path,
                     software_name=data.metadata.software_name,
                     software_version=data.metadata.software_version,
                     ASM_converter_name=self.converter_name,
@@ -245,6 +248,10 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement.average_total_cell_diameter,
             ),
             average_live_cell_diameter__cell_counter_=quantity_or_none(
+                TQuantityValueMicrometer,
+                measurement.average_live_cell_diameter,
+            ),
+            average_dead_cell_diameter__cell_counter_=quantity_or_none(
                 TQuantityValueMicrometer,
                 measurement.average_live_cell_diameter,
             ),

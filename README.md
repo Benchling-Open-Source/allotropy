@@ -35,16 +35,17 @@ We currently have parser support for the following instruments:
   - Revvity Kaleido
   - Roche Cedex BioHT
   - Roche Cedex HiRes
+  - Thermo Fisher Genesys30
   - Thermo Fisher NanoDrop Eight
+  - Thermo Fisher Nanodrop One
   - Thermo Fisher Qubit 4
   - Thermo Fisher Qubit Flex
   - Unchained Labs Lunatic
-  - Thermo Fisher Nanodrop One
-  - Thermo Fisher Genesys30
 
 ### Candidate Release
 
 ### Working Draft
+  - Nexcelom Matrix
 
 The parsers follow maturation levels of: Recommended, Candidate Release, Working Draft - see [release_state.py](https://github.com/Benchling-Open-Source/allotropy/blob/main/src/allotropy/parsers/release_state.py) for additional details.
 
