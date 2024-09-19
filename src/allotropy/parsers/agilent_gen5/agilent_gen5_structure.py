@@ -7,9 +7,14 @@ import re
 
 import pandas as pd
 
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    FieldComponentDatatype,
+)
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
     CalculatedDataItem,
+    DataCube,
+    DataCubeComponent,
     DataSource,
     Measurement,
     MeasurementGroup,
@@ -26,6 +31,7 @@ from allotropy.parsers.agilent_gen5.constants import (
     DATA_SOURCE_FEATURE_VALUES,
     DEFAULT_SOFTWARE_NAME,
     DEVICE_TYPE,
+    ELAPSED_TIME,
     EMISSION_KEY,
     EXCITATION_KEY,
     FILENAME_REGEX,
@@ -37,9 +43,11 @@ from allotropy.parsers.agilent_gen5.constants import (
     PATHLENGTH_CORRECTION_KEY,
     READ_DATA_MEASUREMENT_ERROR,
     READ_HEIGHT_KEY,
+    READ_MODE_UNITS,
     READ_SPEED_KEY,
     ReadMode,
     ReadType,
+    SECONDS,
     UNSUPPORTED_READ_MODE_ERROR,
     UNSUPPORTED_READ_TYPE_ERROR,
     WAVELENGTHS_KEY,
@@ -531,7 +539,7 @@ def create_results(
             well_pos = f"{row_name}{col_index + 1}"
             well_value = try_non_nan_float_or_none(value)
             # TODO: Report error documents for NaN values
-            if not well_value:
+            if well_value is None:
                 continue
             if label in measurement_labels:
                 well_to_measurements[well_pos].append(
@@ -703,7 +711,6 @@ def _get_sources(
             for measurement in measurements
             if measurement.label in calculated_data_label
         ]
-
     # if there are no matches in the measurement labels, use all measurements as source
     return sources or measurements
 
@@ -718,6 +725,7 @@ def create_metadata(header_data: HeaderData) -> Metadata:
         file_name=header_data.file_name,
         asm_file_identifier=NOT_APPLICABLE,
         data_system_instance_id=NOT_APPLICABLE,
+        unc_path=NOT_APPLICABLE,
     )
 
 
@@ -744,15 +752,24 @@ def _create_measurement(
     kinetic_measurements: list[float | None] | None = None,
     kinetic_elapsed_time: list[float] | None = None,
 ) -> Measurement:
-    # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
-    if read_data.read_mode == ReadMode.ABSORBANCE:
-        measurement_type = MeasurementType.ULTRAVIOLET_ABSORBANCE
-    elif read_data.read_mode == ReadMode.FLUORESCENCE:
-        measurement_type = MeasurementType.FLUORESCENCE
-    elif read_data.read_mode == ReadMode.LUMINESCENCE:
-        measurement_type = MeasurementType.LUMINESCENCE
+    match (read_data.read_mode, bool(kinetic_data)):
+        case (ReadMode.ABSORBANCE, False):
+            measurement_type = MeasurementType.ULTRAVIOLET_ABSORBANCE
+        case (ReadMode.FLUORESCENCE, False):
+            measurement_type = MeasurementType.FLUORESCENCE
+        case (ReadMode.LUMINESCENCE, False):
+            measurement_type = MeasurementType.LUMINESCENCE
+        case (ReadMode.ABSORBANCE, True):
+            measurement_type = MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_DETECTOR
+        case (ReadMode.FLUORESCENCE, True):
+            measurement_type = MeasurementType.FLUORESCENCE_CUBE_DETECTOR
+        case (ReadMode.LUMINESCENCE, True):
+            measurement_type = MeasurementType.LUMINESCENCE_CUBE_DETECTOR
 
-    if measurement_type is MeasurementType.ULTRAVIOLET_ABSORBANCE:
+    if measurement_type in [
+        MeasurementType.ULTRAVIOLET_ABSORBANCE,
+        MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_DETECTOR,
+    ]:
         filter_data = None
         detector_wavelength_setting = (
             float(measurement.label.split(":")[-1].split(" ")[0])
@@ -808,8 +825,23 @@ def _create_measurement(
         if kinetic_data
         else None,
         number_of_scans_setting=kinetic_data.reads if kinetic_data else None,
-        dimensions_elapsed_time=kinetic_elapsed_time if kinetic_elapsed_time else None,
-        measures=kinetic_measurements if kinetic_measurements else None,
+        profile_data_cube=DataCube(
+            label=str(detector_wavelength_setting),
+            structure_dimensions=DataCubeComponent(
+                concept=ELAPSED_TIME,
+                type_=FieldComponentDatatype.double,
+                unit=SECONDS,
+            ),
+            structure_measures=DataCubeComponent(
+                concept=read_data.read_mode.lower(),
+                type_=FieldComponentDatatype.double,
+                unit=READ_MODE_UNITS.get(read_data.read_mode, UNITLESS),
+            ),
+            dimensions=kinetic_elapsed_time,
+            measures=kinetic_measurements,
+        )
+        if kinetic_elapsed_time and kinetic_measurements
+        else None,
     )
 
 

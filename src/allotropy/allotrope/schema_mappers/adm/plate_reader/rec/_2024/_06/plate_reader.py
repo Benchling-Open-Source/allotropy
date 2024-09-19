@@ -31,7 +31,6 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
-    JsonFloat,
     TDatacube,
     TDatacubeComponent,
     TDatacubeData,
@@ -40,8 +39,8 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropyParserError
-from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.utils.values import (
+    assert_not_none,
     quantity_or_none,
 )
 
@@ -79,6 +78,25 @@ class MeasurementType(Enum):
     ULTRAVIOLET_ABSORBANCE = "ULTRAVIOLET_ABSORBANCE"
     FLUORESCENCE = "FLUORESCENCE"
     LUMINESCENCE = "LUMINESCENCE"
+    ULTRAVIOLET_ABSORBANCE_CUBE_DETECTOR = "ULTRAVIOLET_ABSORBANCE_CUBE_DETECTOR"
+    FLUORESCENCE_CUBE_DETECTOR = "FLUORESCENCE_CUBE_DETECTOR"
+    LUMINESCENCE_CUBE_DETECTOR = "LUMINESCENCE_CUBE_DETECTOR"
+
+
+@dataclass
+class DataCubeComponent:
+    type_: FieldComponentDatatype
+    concept: str
+    unit: str
+
+
+@dataclass
+class DataCube:
+    label: str
+    structure_dimensions: DataCubeComponent
+    structure_measures: DataCubeComponent
+    dimensions: list[float]
+    measures: list[float | None]
 
 
 @dataclass(frozen=True)
@@ -112,9 +130,9 @@ class Measurement:
     sample_role_type: SampleRoleType | None = None
 
     # Measurements
-    absorbance: JsonFloat | None = None
-    fluorescence: JsonFloat | None = None
-    luminescence: JsonFloat | None = None
+    absorbance: float | None = None
+    fluorescence: float | None = None
+    luminescence: float | None = None
 
     # Settings
     detector_wavelength_setting: float | None = None
@@ -135,6 +153,7 @@ class Measurement:
     number_of_scans_setting: float | None = None
 
     # Kinetic measurements
+    profile_data_cube: DataCube | None = None
     dimensions_elapsed_time: list[float] | None = None
     measures: list[float | None] | None = None
 
@@ -184,10 +203,10 @@ class Mapper(SchemaMapper[Data, Model]):
                     product_manufacturer=data.metadata.product_manufacturer,
                 ),
                 data_system_document=DataSystemDocument(
-                    ASM_file_identifier=NOT_APPLICABLE,
-                    data_system_instance_identifier=NOT_APPLICABLE,
+                    ASM_file_identifier=data.metadata.asm_file_identifier,
+                    data_system_instance_identifier=data.metadata.data_system_instance_id,
                     file_name=data.metadata.file_name,
-                    UNC_path=NOT_APPLICABLE,
+                    UNC_path=data.metadata.unc_path,
                     software_name=data.metadata.software_name,
                     software_version=data.metadata.software_version,
                     ASM_converter_name=self.converter_name,
@@ -235,6 +254,18 @@ class Mapper(SchemaMapper[Data, Model]):
             return self._get_luminescence_measurement_document(measurement)
         elif measurement.type_ == MeasurementType.FLUORESCENCE:
             return self._get_fluorescence_measurement_document(measurement)
+        elif measurement.type_ in [
+            MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_DETECTOR,
+            MeasurementType.LUMINESCENCE_CUBE_DETECTOR,
+            MeasurementType.FLUORESCENCE_CUBE_DETECTOR,
+        ]:
+            if not measurement.profile_data_cube:
+                msg = "Profile data cube is required for cube detector measurements"
+                raise AllotropyParserError(msg)
+            return self._get_profile_data_cube_measurement_document(
+                measurement,
+                measurement.profile_data_cube,
+            )
         else:
             msg = f"Unexpected measurement type: {measurement.type_}"
             raise AllotropyParserError(msg)
@@ -245,7 +276,6 @@ class Mapper(SchemaMapper[Data, Model]):
         return MeasurementDocument(
             measurement_identifier=measurement.identifier,
             sample_document=self._get_sample_document(measurement),
-            absorption_profile_data_cube=self._get_data_cube(measurement),
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
                     DeviceControlDocumentItem(
@@ -264,24 +294,15 @@ class Mapper(SchemaMapper[Data, Model]):
                             TQuantityValueMillimeter,
                             measurement.detector_distance_setting,
                         ),
-                        total_measurement_time_setting=quantity_or_none(
-                            TQuantityValueSecondTime,
-                            measurement.total_measurement_time_setting,
-                        ),
-                        read_interval_setting=quantity_or_none(
-                            TQuantityValueSecondTime,
-                            measurement.read_interval_setting,
-                        ),
-                        number_of_scans_setting=quantity_or_none(
-                            TQuantityValueNumber,
-                            measurement.number_of_scans_setting,
-                        ),
                     )
                 ]
             ),
-            absorbance=TQuantityValueMilliAbsorbanceUnit(value=measurement.absorbance)
-            if measurement.absorbance is not None
-            else None,
+            absorbance=TQuantityValueMilliAbsorbanceUnit(
+                value=assert_not_none(
+                    value=measurement.absorbance,
+                    msg="Missing absorbance value in ultraviolet absorbance measurement",
+                )
+            ),
             compartment_temperature=quantity_or_none(
                 TQuantityValueDegreeCelsius, measurement.compartment_temperature
             ),
@@ -293,7 +314,6 @@ class Mapper(SchemaMapper[Data, Model]):
         return MeasurementDocument(
             measurement_identifier=measurement.identifier,
             sample_document=self._get_sample_document(measurement),
-            luminescence_profile_data_cube=self._get_data_cube(measurement),
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
                     DeviceControlDocumentItem(
@@ -324,9 +344,12 @@ class Mapper(SchemaMapper[Data, Model]):
                     )
                 ]
             ),
-            luminescence=TQuantityValueRelativeLightUnit(value=measurement.luminescence)
-            if measurement.luminescence is not None
-            else None,
+            luminescence=TQuantityValueRelativeLightUnit(
+                value=assert_not_none(
+                    measurement.luminescence,
+                    msg="Missing luminescence value in luminescence measurement",
+                )
+            ),
             compartment_temperature=quantity_or_none(
                 TQuantityValueDegreeCelsius, measurement.compartment_temperature
             ),
@@ -337,7 +360,6 @@ class Mapper(SchemaMapper[Data, Model]):
     ) -> MeasurementDocument:
         return MeasurementDocument(
             measurement_identifier=measurement.identifier,
-            fluorescence_emission_profile_data_cube=self._get_data_cube(measurement),
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
                     DeviceControlDocumentItem(
@@ -381,14 +403,72 @@ class Mapper(SchemaMapper[Data, Model]):
                 ]
             ),
             fluorescence=TQuantityValueRelativeFluorescenceUnit(
-                value=measurement.fluorescence
-            )
-            if measurement.fluorescence is not None
-            else None,
+                value=assert_not_none(
+                    measurement.fluorescence,
+                    msg="Missing fluorescence value in fluorescence measurement",
+                )
+            ),
             compartment_temperature=quantity_or_none(
                 TQuantityValueDegreeCelsius, measurement.compartment_temperature
             ),
             sample_document=self._get_sample_document(measurement),
+        )
+
+    def _get_profile_data_cube_measurement_document(
+        self,
+        measurement: Measurement,
+        profile_data_cube: DataCube,
+    ) -> MeasurementDocument:
+        return MeasurementDocument(
+            measurement_identifier=measurement.identifier,
+            sample_document=self._get_sample_document(measurement),
+            device_control_aggregate_document=DeviceControlAggregateDocument(
+                device_control_document=[
+                    DeviceControlDocumentItem(
+                        device_type=measurement.device_type,
+                        detection_type=measurement.detection_type,
+                        detector_wavelength_setting=quantity_or_none(
+                            TQuantityValueNanometer,
+                            measurement.detector_wavelength_setting,
+                        ),
+                        number_of_averages=quantity_or_none(
+                            TQuantityValueNumber, measurement.number_of_averages
+                        ),
+                        detector_carriage_speed_setting=measurement.detector_carriage_speed,
+                        detector_gain_setting=measurement.detector_gain_setting,
+                        detector_distance_setting__plate_reader_=quantity_or_none(
+                            TQuantityValueMillimeter,
+                            measurement.detector_distance_setting,
+                        ),
+                        total_measurement_time_setting=quantity_or_none(
+                            TQuantityValueSecondTime,
+                            measurement.total_measurement_time_setting,
+                        ),
+                        read_interval_setting=quantity_or_none(
+                            TQuantityValueSecondTime,
+                            measurement.read_interval_setting,
+                        ),
+                        number_of_scans_setting=quantity_or_none(
+                            TQuantityValueNumber,
+                            measurement.number_of_scans_setting,
+                        ),
+                    )
+                ]
+            ),
+            compartment_temperature=quantity_or_none(
+                TQuantityValueDegreeCelsius, measurement.compartment_temperature
+            ),
+            absorption_profile_data_cube=self._get_data_cube(profile_data_cube)
+            if measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_DETECTOR
+            else None,
+            luminescence_profile_data_cube=self._get_data_cube(profile_data_cube)
+            if measurement.type_ == MeasurementType.LUMINESCENCE_CUBE_DETECTOR
+            else None,
+            fluorescence_emission_profile_data_cube=self._get_data_cube(
+                profile_data_cube
+            )
+            if measurement.type_ == MeasurementType.FLUORESCENCE_CUBE_DETECTOR
+            else None,
         )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
@@ -433,29 +513,27 @@ class Mapper(SchemaMapper[Data, Model]):
             ]
         )
 
-    def _get_data_cube(self, measurement: Measurement) -> TDatacube | None:
-        if not measurement.dimensions_elapsed_time or not measurement.measures:
-            return None
+    def _get_data_cube(self, profile_data_cube: DataCube) -> TDatacube | None:
         return TDatacube(
-            label=str(measurement.detector_wavelength_setting),
+            label=str(profile_data_cube.label),
             cube_structure=TDatacubeStructure(
                 dimensions=[
                     TDatacubeComponent(
-                        concept="elapsed time",
-                        field_componentDatatype=FieldComponentDatatype.double,
-                        unit="s",
+                        concept=profile_data_cube.structure_dimensions.concept,
+                        field_componentDatatype=profile_data_cube.structure_dimensions.type_,
+                        unit=profile_data_cube.structure_dimensions.unit,
                     )
                 ],
                 measures=[
                     TDatacubeComponent(
-                        field_componentDatatype=FieldComponentDatatype.double,
-                        concept="absorbance",
-                        unit="mAU",
+                        field_componentDatatype=profile_data_cube.structure_measures.type_,
+                        concept=profile_data_cube.structure_measures.concept,
+                        unit=profile_data_cube.structure_measures.unit,
                     )
                 ],
             ),
             data=TDatacubeData(
-                dimensions=[measurement.dimensions_elapsed_time],
-                measures=[measurement.measures],
+                dimensions=[profile_data_cube.dimensions],
+                measures=[profile_data_cube.measures],
             ),
         )
