@@ -6,7 +6,7 @@ from allotropy.exceptions import AllotropyParserError
 from allotropy.parsers.thermo_skanit.thermo_skanit_structure import (
     AbsorbanceDataWell,
     DataThermoSkanIt,
-    ThermoSkanItMeasurementGroup,
+    ThermoSkanItMeasurementGroups,
     ThermoSkanItMetadata,
 )
 
@@ -176,7 +176,7 @@ def test_create_skanit_meas_group() -> None:
     layout_definitions_df = pd.read_excel(file_path, sheet_name="Layout definitions")
     session_info_df = pd.read_excel(file_path, sheet_name="Session information")
 
-    skanit_meas_group = ThermoSkanItMeasurementGroup.create(
+    skanit_meas_group = ThermoSkanItMeasurementGroups.create(
         absorbance_sheet_df=absorbance_df,
         layout_definitions_df=layout_definitions_df,
         session_info_df=session_info_df,

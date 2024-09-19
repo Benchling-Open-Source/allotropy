@@ -115,18 +115,20 @@ class AbsorbanceDataWell(Measurement):
 
 
 @dataclass(frozen=True)
-class ThermoSkanItMeasurementGroups():
+class ThermoSkanItMeasurementGroups:
     @staticmethod
     def create(
         absorbance_sheet_df: pd.DataFrame,
         layout_definitions_df: pd.DataFrame,
         session_info_df: pd.DataFrame,
-    ) -> [MeasurementGroup]:
+    ) -> list[MeasurementGroup]:
         (
             abs_df,
             name_df,
             wavelength,
-        ) = ThermoSkanItMeasurementGroups.identify_abs_and_sample_dfs(absorbance_sheet_df)
+        ) = ThermoSkanItMeasurementGroups.identify_abs_and_sample_dfs(
+            absorbance_sheet_df
+        )
         plate_well_count = ThermoSkanItMeasurementGroups.get_plate_well_count(
             layout_definitions_df
         )
@@ -156,13 +158,13 @@ class ThermoSkanItMeasurementGroups():
                     sample_name=well_name,
                     detector_wavelength=wavelength,
                 )
-                meas_groups.append(MeasurementGroup(
-                    measurements=[abs_well],
-                    plate_well_count=plate_well_count,
-                    measurement_time=exec_time,
-                    experimental_data_identifier=session_name,
-                )
-
+                meas_groups.append(
+                    MeasurementGroup(
+                        measurements=[abs_well],
+                        plate_well_count=plate_well_count,
+                        measurement_time=exec_time,
+                        experimental_data_identifier=session_name,
+                    )
                 )
         return meas_groups
 

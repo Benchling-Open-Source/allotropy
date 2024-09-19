@@ -70,11 +70,11 @@ from allotropy.parsers.thermo_fisher_qubit4.thermo_fisher_qubit4_parser import (
 from allotropy.parsers.thermo_fisher_qubit_flex.thermo_fisher_qubit_flex_parser import (
     ThermoFisherQubitFlexParser,
 )
+from allotropy.parsers.thermo_skanit.thermo_skanit_parser import ThermoSkanItParser
 from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_parser import (
     UnchainedLabsLunaticParser,
 )
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
-from allotropy.parsers.thermo_skanit.thermo_skanit_parser import ThermoSkanItParser
 from allotropy.parsers.vendor_parser import VendorParser
 
 
@@ -110,7 +110,6 @@ class Vendor(Enum):
     THERMO_FISHER_QUBIT_FLEX = "THERMO_FISHER_QUBIT_FLEX"
     THERMO_SKANIT = "THERMO_SKANIT"
     UNCHAINED_LABS_LUNATIC = "UNCHAINED_LABS_LUNATIC"
-
 
     @property
     def display_name(self) -> str:

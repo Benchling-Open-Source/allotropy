@@ -167,8 +167,7 @@ def _write_actual_to_expected(
 def validate_contents(
     allotrope_dict: DictType,
     expected_file: Path | str,
-    write_actual_to_expected_on_fail: True
-    #write_actual_to_expected_on_fail: bool = False,  # noqa: FBT001, FBT002
+    write_actual_to_expected_on_fail: bool = False,  # noqa: FBT001, FBT002
 ) -> None:
     """Use the newly created allotrope_dict to validate the contents inside expected_file."""
     # Ensure that allotrope_dict can be written via json.dump()
