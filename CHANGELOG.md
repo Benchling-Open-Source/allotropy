@@ -8,6 +8,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+
+### Fixed
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Security
+
+## [0.1.53] - 2024-09-17
+
+### Added
+
 - Amp score and Cq conf calculated documents to Appbio Quantstudio
 - Add custom information to processed data document in Appbio Quantstudio
 - Add schema mapper for the `REC/2024/06/plate-reader` schema.
@@ -19,16 +34,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed bad reference for y-intercept and slope in quantity calculated data document of Appbio Quantstudio
 - Correctly format timezone in SoftmaxPro adapter
+- Added support for Agilent Gen5 label format "[excitation wavelength], [emission wavelength]" for fluorescence point detection
 
 ### Changed
 
 - Refactor Softmaxpro adapter to use the new schema mapper.
-
-### Deprecated
-
-### Removed
-
-### Security
+- Update Thermo Fisher Genesys30 to recommended state
 
 ## [0.1.52] - 2024-09-12
 
