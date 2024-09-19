@@ -29,5 +29,5 @@ class NexcelomMatrixParser(MapperVendorParser[Data, Model]):
         reader = NexcelomMatrixReader(named_file_contents)
         return Data(
             create_metadata(named_file_contents.original_file_name),
-            map_rows(reader.data, create_measurement_group)
+            map_rows(reader.data, create_measurement_group),
         )

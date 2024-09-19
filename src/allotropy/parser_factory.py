@@ -42,7 +42,9 @@ from allotropy.parsers.methodical_mind.methodical_mind_parser import (
     MethodicalMindParser,
 )
 from allotropy.parsers.moldev_softmax_pro.softmax_pro_parser import SoftmaxproParser
-from allotropy.parsers.nexcelom_matrix.nexcelom_matrix_parser import NexcelomMatrixParser
+from allotropy.parsers.nexcelom_matrix.nexcelom_matrix_parser import (
+    NexcelomMatrixParser,
+)
 from allotropy.parsers.novabio_flex2.novabio_flex2_parser import NovaBioFlexParser
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import (
     PerkinElmerEnvisionParser,

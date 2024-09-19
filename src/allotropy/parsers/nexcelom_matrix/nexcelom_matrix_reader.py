@@ -26,5 +26,7 @@ class NexcelomMatrixReader:
         else:
             df = read_excel(named_file_contents.contents)
 
-        df[MILLION_SCALE_COLS] = df[MILLION_SCALE_COLS].map(lambda x: x / MILLION_CONVERSION)
+        df[MILLION_SCALE_COLS] = df[MILLION_SCALE_COLS].map(
+            lambda x: x / MILLION_CONVERSION
+        )
         self.data = df

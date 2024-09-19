@@ -232,7 +232,9 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
         )
         processed_data_document = ProcessedDataDocumentItem(
-            data_processing_document=data_processing_document if has_value(data_processing_document) else None,
+            data_processing_document=data_processing_document
+            if has_value(data_processing_document)
+            else None,
             viability__cell_counter_=TQuantityValuePercent(value=measurement.viability),
             viable_cell_density__cell_counter_=TQuantityValueMillionCellsPerMilliliter(
                 value=measurement.viable_cell_density
