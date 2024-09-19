@@ -104,6 +104,10 @@ class Data:
     measurement_groups: list[MeasurementGroup]
 
 
+def has_value(model: object) -> bool:
+    return any(value is not None for value in model.__dict__.values())
+
+
 class Mapper(SchemaMapper[Data, Model]):
     MANIFEST = "http://purl.allotrope.org/manifests/cell-counting/BENCHLING/2023/11/cell-counting.manifest"
 
@@ -212,22 +216,23 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValuePercent, measurement.aggregate_rate
             ),
         }
-        processed_data_document = ProcessedDataDocumentItem(
-            data_processing_document=DataProcessingDocument(
-                cell_type_processing_method=measurement.cell_type_processing_method,
-                minimum_cell_diameter_setting=quantity_or_none(
-                    TQuantityValueMicrometer,
-                    measurement.minimum_cell_diameter_setting,
-                ),
-                maximum_cell_diameter_setting=quantity_or_none(
-                    TQuantityValueMicrometer,
-                    measurement.maximum_cell_diameter_setting,
-                ),
-                cell_density_dilution_factor=quantity_or_none(
-                    TQuantityValueUnitless,
-                    measurement.cell_density_dilution_factor,
-                ),
+        data_processing_document = DataProcessingDocument(
+            cell_type_processing_method=measurement.cell_type_processing_method,
+            minimum_cell_diameter_setting=quantity_or_none(
+                TQuantityValueMicrometer,
+                measurement.minimum_cell_diameter_setting,
             ),
+            maximum_cell_diameter_setting=quantity_or_none(
+                TQuantityValueMicrometer,
+                measurement.maximum_cell_diameter_setting,
+            ),
+            cell_density_dilution_factor=quantity_or_none(
+                TQuantityValueUnitless,
+                measurement.cell_density_dilution_factor,
+            ),
+        )
+        processed_data_document = ProcessedDataDocumentItem(
+            data_processing_document=data_processing_document if has_value(data_processing_document) else None,
             viability__cell_counter_=TQuantityValuePercent(value=measurement.viability),
             viable_cell_density__cell_counter_=TQuantityValueMillionCellsPerMilliliter(
                 value=measurement.viable_cell_density
@@ -253,7 +258,7 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
             average_dead_cell_diameter__cell_counter_=quantity_or_none(
                 TQuantityValueMicrometer,
-                measurement.average_live_cell_diameter,
+                measurement.average_dead_cell_diameter,
             ),
             viable_cell_count=quantity_or_none(
                 TQuantityValueCell, measurement.viable_cell_count

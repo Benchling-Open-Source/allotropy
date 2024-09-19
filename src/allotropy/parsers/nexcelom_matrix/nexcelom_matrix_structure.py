@@ -1,5 +1,3 @@
-import pandas as pd
-
 from allotropy.allotrope.schema_mappers.adm.cell_counting.benchling._2023._11.cell_counting import (
     Measurement,
     MeasurementGroup,
@@ -10,12 +8,10 @@ from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
-def create_metadata(file_name: str, unc_path: str) -> Metadata:
+def create_metadata(file_name: str) -> Metadata:
     return Metadata(
         file_name=file_name,
-        unc_path=unc_path,
         device_type=constants.DEVICE_TYPE,
-
     )
 
 
