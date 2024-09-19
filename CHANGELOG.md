@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 ### Changed
+- Simplify sheets needed to infer presence/absence experiment type inference in Appbio Quantstudio Design and Analysis
+- Allow software name and version to be None in Appbio Quantstudio Design and Analysis 
 
 ### Deprecated
 
