@@ -16,7 +16,7 @@ class NexcelomMatrixReader:
     SUPPORTED_EXTENSIONS = "csv,xlsx"
     data: pd.DataFrame
 
-    def __init__(self, named_file_contents: NamedFileContents) -> pd.DataFrame:
+    def __init__(self, named_file_contents: NamedFileContents) -> None:
         if named_file_contents.extension == "csv":
             df = read_csv(
                 named_file_contents.contents,
