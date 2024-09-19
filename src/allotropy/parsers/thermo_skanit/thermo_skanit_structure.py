@@ -41,7 +41,7 @@ def find_value_by_label_required(df: pd.DataFrame, sheet_name: str, label: str) 
 
 
 @dataclass(frozen=True)
-class VarioskanMetadata:
+class ThermoSkanItMetadata:
     @staticmethod
     def create_metadata(
         instrument_info_df: pd.DataFrame, general_info_df: pd.DataFrame, file_name: str
@@ -81,10 +81,7 @@ class VarioskanMetadata:
             equipment_serial_number=find_value_by_label_optional(
                 df=instrument_info_df, label="Serial number"
             ),
-            # firmware_version=VarioskanMetadata.find_value_by_label(instrument_info_df, "ESW version")
         )
-
-    # Function to find the value based on the label in the dataframe
 
 
 @dataclass(frozen=True)
@@ -118,19 +115,19 @@ class AbsorbanceDataWell(Measurement):
 
 
 @dataclass(frozen=True)
-class VarioskanMeasurementGroup(MeasurementGroup):
+class ThermoSkanItMeasurementGroups():
     @staticmethod
     def create(
         absorbance_sheet_df: pd.DataFrame,
         layout_definitions_df: pd.DataFrame,
         session_info_df: pd.DataFrame,
-    ) -> MeasurementGroup:
+    ) -> [MeasurementGroup]:
         (
             abs_df,
             name_df,
             wavelength,
-        ) = VarioskanMeasurementGroup.identify_abs_and_sample_dfs(absorbance_sheet_df)
-        plate_well_count = VarioskanMeasurementGroup.get_plate_well_count(
+        ) = ThermoSkanItMeasurementGroups.identify_abs_and_sample_dfs(absorbance_sheet_df)
+        plate_well_count = ThermoSkanItMeasurementGroups.get_plate_well_count(
             layout_definitions_df
         )
         session_name = find_value_by_label_optional(
@@ -139,7 +136,8 @@ class VarioskanMeasurementGroup(MeasurementGroup):
         exec_time = find_value_by_label_required(
             df=session_info_df, label="Execution Time", sheet_name="Session information"
         )
-        absorbance_wells = []
+
+        meas_groups = []
         for index, row in abs_df.iterrows():
             well_letter = row.iloc[0]
             for col_name, value in list(row.items())[1:]:
@@ -158,13 +156,15 @@ class VarioskanMeasurementGroup(MeasurementGroup):
                     sample_name=well_name,
                     detector_wavelength=wavelength,
                 )
-                absorbance_wells.append(abs_well)
-        return MeasurementGroup(
-            measurements=absorbance_wells,
-            plate_well_count=plate_well_count,
-            measurement_time=exec_time,
-            experimental_data_identifier=session_name,
-        )
+                meas_groups.append(MeasurementGroup(
+                    measurements=[abs_well],
+                    plate_well_count=plate_well_count,
+                    measurement_time=exec_time,
+                    experimental_data_identifier=session_name,
+                )
+
+                )
+        return meas_groups
 
     @staticmethod
     def get_plate_well_count(layout_definitions_df: pd.DataFrame) -> int:
@@ -240,11 +240,9 @@ class VarioskanMeasurementGroup(MeasurementGroup):
 
         return (df_between_abs_and_blank, df_between_sample_and_blank, wavelength)
 
-    # Function to find the value based on the label in the dataframe
-
 
 @dataclass(frozen=True)
-class DataVarioskan(Data):
+class DataThermoSkanIt(Data):
     @staticmethod
     def create(sheet_data: dict[str, pd.DataFrame], file_name: str) -> Data:
         for sheet_name, df in sheet_data.items():
@@ -260,12 +258,12 @@ class DataVarioskan(Data):
             elif "General" in sheet_name:
                 general_df = df
 
-        metadata = VarioskanMetadata.create_metadata(
+        metadata = ThermoSkanItMetadata.create_metadata(
             instrument_info_df=inst_info_df,
             general_info_df=general_df,
             file_name=file_name,
         )
-        measurement_group = VarioskanMeasurementGroup.create(
+        measurement_groups = ThermoSkanItMeasurementGroups.create(
             absorbance_sheet_df=abs_df,
             layout_definitions_df=layout_df,
             session_info_df=session_df,
@@ -273,5 +271,5 @@ class DataVarioskan(Data):
 
         return Data(
             metadata=metadata,
-            measurement_groups=[measurement_group],
+            measurement_groups=measurement_groups,
         )
