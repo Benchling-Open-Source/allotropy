@@ -554,7 +554,7 @@ def create_results(
     ]
     plate_well_count = 0
     for row_name, row in data.iterrows():
-        label = str(row.iloc[-1])
+        label = row.iloc[-1]
         for col_index, value in enumerate(row.iloc[:-1]):
             well_pos = f"{row_name}{col_index + 1}"
             well_value = try_non_nan_float_or_none(value)
