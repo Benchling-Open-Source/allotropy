@@ -11,7 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Handle missing 'Sample name' and missing 'Table' label before table in Unchained Labs Lunatic parser.
+- Unchained Labs Lunatic - handle missing 'Sample name' and missing 'Table' label before table  parser.
+- Agilent Gen5 - cast measurement label to string, since it can numeric when reading directly from dataframe (e.g. a single wavelength).
 
 ### Changed
 
