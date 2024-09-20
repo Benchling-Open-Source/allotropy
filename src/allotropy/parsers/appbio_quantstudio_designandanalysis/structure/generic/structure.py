@@ -66,11 +66,15 @@ class Header:
 
     @staticmethod
     def create(header: SeriesData) -> Header:
-        software_info = assert_not_none(
-            re.match(
-                "(.*) v(.+)",
-                header[str, "Software Name and Version"],
-            )
+        software_info = re.match(
+            "(.*) v(.+)",
+            header.get(str, "Software Name and Version", ""),
+        )
+
+        software_name, software_version = (
+            (software_info.group(1), software_info.group(2))
+            if software_info
+            else (None, None)
         )
 
         stage_number_raw = header.get(str, "PCR Stage/Step Number", "")
@@ -110,8 +114,8 @@ class Header:
             block_serial_number=header.get(str, "Block Serial Number"),
             heated_cover_serial_number=header.get(str, "Heated Cover Serial Number"),
             pcr_stage_number=pcr_stage_number,
-            software_name=software_info.group(1),
-            software_version=software_info.group(2),
+            software_name=software_name,
+            software_version=software_version,
         )
 
 
