@@ -515,7 +515,9 @@ def get_kinetic_measurements(
         if column.isnull().any():
             msg = f"Unable to process null value in column: {col_name} of Kinetic section."
             raise AllotropeConversionError(msg)
-        kinetic_measurements[str(col_name)] = column.astype(float).to_list()
+        kinetic_measurements[str(col_name)] = [
+            float(value) if not pd.isna(value) else None for value in column
+        ]
     return dict(kinetic_measurements.items()), kinetic_elapsed_time
 
 
@@ -643,6 +645,7 @@ def create_kinetic_results(
             well_pos = f"{row_name}{col_index + 1}"
             well_value = try_non_nan_float_or_none(value)
             # TODO: Report error documents for NaN values
+            plate_well_count += 1
             if not well_value:
                 continue
             calculated_data[well_pos].append((label, well_value))
