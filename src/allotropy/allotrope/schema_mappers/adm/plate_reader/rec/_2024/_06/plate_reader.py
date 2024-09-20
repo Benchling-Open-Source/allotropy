@@ -93,10 +93,10 @@ class DataCubeComponent:
 @dataclass
 class DataCube:
     label: str
-    structure_dimensions: DataCubeComponent
-    structure_measures: DataCubeComponent
-    dimensions: list[float]
-    measures: list[float | None]
+    structure_dimensions: list[DataCubeComponent]
+    structure_measures: list[DataCubeComponent]
+    dimensions: list[list[float]]
+    measures: list[list[float | None]]
 
 
 @dataclass(frozen=True)
@@ -511,27 +511,28 @@ class Mapper(SchemaMapper[Data, Model]):
             ]
         )
 
-    def _get_data_cube(self, profile_data_cube: DataCube) -> TDatacube | None:
+    def _get_data_cube(self, data_cube: DataCube) -> TDatacube:
         return TDatacube(
-            label=str(profile_data_cube.label),
+            label=data_cube.label,
             cube_structure=TDatacubeStructure(
                 dimensions=[
                     TDatacubeComponent(
-                        concept=profile_data_cube.structure_dimensions.concept,
-                        field_componentDatatype=profile_data_cube.structure_dimensions.type_,
-                        unit=profile_data_cube.structure_dimensions.unit,
+                        field_componentDatatype=component.type_,
+                        concept=component.concept,
+                        unit=component.unit,
                     )
+                    for component in data_cube.structure_dimensions
                 ],
                 measures=[
                     TDatacubeComponent(
-                        field_componentDatatype=profile_data_cube.structure_measures.type_,
-                        concept=profile_data_cube.structure_measures.concept,
-                        unit=profile_data_cube.structure_measures.unit,
+                        field_componentDatatype=component.type_,
+                        concept=component.concept,
+                        unit=component.unit,
                     )
+                    for component in data_cube.structure_measures
                 ],
             ),
             data=TDatacubeData(
-                dimensions=[profile_data_cube.dimensions],
-                measures=[profile_data_cube.measures],
+                dimensions=data_cube.dimensions, measures=data_cube.measures  # type: ignore[arg-type]
             ),
         )

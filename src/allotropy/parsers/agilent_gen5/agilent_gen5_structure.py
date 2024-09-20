@@ -827,18 +827,18 @@ def _create_measurement(
         number_of_scans_setting=kinetic_data.reads if kinetic_data else None,
         profile_data_cube=DataCube(
             label=str(detector_wavelength_setting),
-            structure_dimensions=DataCubeComponent(
+            structure_dimensions=[DataCubeComponent(
                 concept=ELAPSED_TIME,
                 type_=FieldComponentDatatype.double,
                 unit=SECONDS,
-            ),
-            structure_measures=DataCubeComponent(
+            )],
+            structure_measures=[DataCubeComponent(
                 concept=read_data.read_mode.lower(),
                 type_=FieldComponentDatatype.double,
                 unit=READ_MODE_UNITS.get(read_data.read_mode, UNITLESS),
-            ),
-            dimensions=kinetic_elapsed_time,
-            measures=kinetic_measurements,
+            )],
+            dimensions=[kinetic_elapsed_time],
+            measures=[kinetic_measurements],
         )
         if kinetic_elapsed_time and kinetic_measurements
         else None,
