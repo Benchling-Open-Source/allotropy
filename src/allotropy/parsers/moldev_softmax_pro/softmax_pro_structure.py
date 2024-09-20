@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
 from collections.abc import Iterator
 from dataclasses import dataclass
 from enum import Enum
@@ -321,7 +320,7 @@ class PlateWavelengthData:
         wavelength: float,
         df_data: pd.DataFrame,
     ) -> PlateWavelengthData:
-        # Since value is required for the measurement class (absorbance, luminescense and fluorescense)
+        # Since value is required for the measurement class (absorbance, luminescense and fluorescence)
         # we don't store data for NaN values
         # TODO: Report error documents for NaN values
         data = {
@@ -649,9 +648,16 @@ class PlateBlock(ABC, Block):
         return get_key_or_error("read mode", read_mode, plate_block_cls)
 
     @property
-    @abstractmethod
     def measurement_type(self) -> MeasurementType:
-        raise NotImplementedError
+        read_mode_to_measurement_type = {
+            "Absorbance": MeasurementType.ULTRAVIOLET_ABSORBANCE,
+            "Fluorescence": MeasurementType.FLUORESCENCE,
+            "Luminescence": MeasurementType.LUMINESCENCE,
+            "Absorbance Kinetic": MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_DETECTOR,
+            "Fluorescence Kinetic": MeasurementType.FLUORESCENCE_CUBE_DETECTOR,
+            "Luminescence Kinetic": MeasurementType.LUMINESCENCE_CUBE_DETECTOR,
+        }
+        return read_mode_to_measurement_type[self.header.read_mode]
 
     @classmethod
     def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
@@ -668,6 +674,10 @@ class PlateBlock(ABC, Block):
         if read_type != ReadType.ENDPOINT.value:
             msg = f"Only Endpoint measurements can be processed at this time, got: {read_type}"
             raise AllotropeConversionError(msg)
+
+    @classmethod
+    def get_read_mode(cls, read_type: str, read_mode_raw):
+        return f"{'Kinetic ' if read_type == ReadType.KINETIC.value else ''}{read_mode_raw}"
 
     @classmethod
     def check_data_type(cls, data_type: str) -> None:
@@ -713,9 +723,6 @@ class PlateBlock(ABC, Block):
 
 @dataclass(frozen=True)
 class FluorescencePlateBlock(PlateBlock):
-    @property
-    def measurement_type(self) -> MeasurementType:
-        return MeasurementType.FLUORESCENCE
 
     @classmethod
     def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
@@ -725,7 +732,7 @@ class FluorescencePlateBlock(PlateBlock):
             export_version,
             export_format,
             read_type,
-            _,  # Read mode
+            read_mode_raw,
             raw_scan_position,
             data_type,
             _,  # Pre-read, always FALSE
@@ -818,7 +825,7 @@ class FluorescencePlateBlock(PlateBlock):
             num_columns=num_columns,
             num_wells=num_wells,
             concept="fluorescence",
-            read_mode="Fluorescence",
+            read_mode=cls.get_read_mode(read_type, read_mode_raw),
             unit="RFU",
             scan_position=scan_position,
             reads_per_well=try_float(reads_per_well, "reads_per_well"),
@@ -831,9 +838,6 @@ class FluorescencePlateBlock(PlateBlock):
 
 @dataclass(frozen=True)
 class LuminescencePlateBlock(PlateBlock):
-    @property
-    def measurement_type(self) -> MeasurementType:
-        return MeasurementType.LUMINESCENCE
 
     @classmethod
     def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
@@ -843,7 +847,7 @@ class LuminescencePlateBlock(PlateBlock):
             export_version,
             export_format,
             read_type,
-            _,  # Read mode
+            read_mode_raw,
             data_type,
             _,  # Pre-read, always FALSE
             kinetic_points_raw,
@@ -893,7 +897,7 @@ class LuminescencePlateBlock(PlateBlock):
             num_columns=num_columns,
             num_wells=num_wells,
             concept="luminescence",
-            read_mode="Luminescence",
+            read_mode=cls.get_read_mode(read_type, read_mode_raw),
             unit="RLU",
             scan_position=None,
             reads_per_well=try_int(reads_per_well, "reads_per_well"),
@@ -906,9 +910,6 @@ class LuminescencePlateBlock(PlateBlock):
 
 @dataclass(frozen=True)
 class AbsorbancePlateBlock(PlateBlock):
-    @property
-    def measurement_type(self) -> MeasurementType:
-        return MeasurementType.ULTRAVIOLET_ABSORBANCE
 
     @classmethod
     def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
@@ -918,7 +919,7 @@ class AbsorbancePlateBlock(PlateBlock):
             export_version,
             export_format,
             read_type,
-            _,  # Read mode
+            read_mode_raw,
             data_type,
             _,  # Pre-read, always FALSE
             kinetic_points_raw,
@@ -959,7 +960,7 @@ class AbsorbancePlateBlock(PlateBlock):
             num_columns=num_columns,
             num_wells=num_wells,
             concept="absorbance",
-            read_mode="Absorbance",
+            read_mode=cls.get_read_mode(read_type, read_mode_raw),
             unit="mAU",
             scan_position=None,
             reads_per_well=None,
@@ -1150,15 +1151,10 @@ def create_calculated_data(data: StructureData) -> list[CalculatedDataItem]:
 def _get_calc_docs_data_sources(
     plate_block: PlateBlock, position: str
 ) -> list[DataSource]:
-    measurement_type_to_feature = {
-        MeasurementType.ULTRAVIOLET_ABSORBANCE: "Absorbance",
-        MeasurementType.LUMINESCENCE: "Luminescence",
-        MeasurementType.FLUORESCENCE: "Fluorescence",
-    }
     return [
         DataSource(
             identifier=data_source.uuid,
-            feature=measurement_type_to_feature[plate_block.measurement_type],
+            feature=plate_block.header.read_mode,
         )
         for data_source in plate_block.iter_data_elements(position)
     ]
