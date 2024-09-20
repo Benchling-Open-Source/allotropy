@@ -118,6 +118,12 @@ class WellItem(Referenceable):
     well_location_identifier: str | None = None
     quencher_dye_setting: str | None = None
     sample_role_type: str | None = None
+    omit: bool | None = None
+    sample_color: str | None = None
+    biogroup_name: str | None = None
+    biogroup_color: str | None = None
+    target_name: str | None = None
+    target_color: str | None = None
     _result: Result | None = None
 
     # Make hashable to allow for use of caching
@@ -150,6 +156,12 @@ class WellItem(Referenceable):
                 position=data.get(str, "Well Position", NOT_APPLICABLE),
                 well_location_identifier=data.get(str, "Well Position"),
                 quencher_dye_setting=data.get(str, "Quencher"),
+                omit=data.get(bool, "Omit"),
+                sample_color=data.get(str, "Sample Color"),
+                biogroup_name=data.get(str, "Biogroup Name"),
+                biogroup_color=data.get(str, "Biogroup Color"),
+                target_name=data.get(str, "Target Name"),
+                target_color=data.get(str, "Target Color"),
                 sample_role_type=data.get(str, "Task"),
             ),
             WellItem(
@@ -161,6 +173,12 @@ class WellItem(Referenceable):
                 position=data.get(str, "Well Position", NOT_APPLICABLE),
                 well_location_identifier=data.get(str, "Well Position"),
                 quencher_dye_setting=data.get(str, "Quencher"),
+                omit=data.get(bool, "Omit"),
+                sample_color=data.get(str, "Sample Color"),
+                biogroup_name=data.get(str, "Biogroup Name"),
+                biogroup_color=data.get(str, "Biogroup Color"),
+                target_name=data.get(str, "Target Name"),
+                target_color=data.get(str, "Target Color"),
                 sample_role_type=data.get(str, "Task"),
             ),
         )
@@ -181,6 +199,12 @@ class WellItem(Referenceable):
             position=data.get(str, "Well Position", NOT_APPLICABLE),
             well_location_identifier=data.get(str, "Well Position"),
             quencher_dye_setting=data.get(str, "Quencher"),
+            omit=data.get(bool, "Omit"),
+            sample_color=data.get(str, "Sample Color"),
+            biogroup_name=data.get(str, "Biogroup Name"),
+            biogroup_color=data.get(str, "Biogroup Color"),
+            target_name=data.get(str, "Target Name"),
+            target_color=data.get(str, "Target Color"),
             sample_role_type=data.get(str, "Task"),
         )
 
@@ -336,7 +360,9 @@ class Result:
     cycle_threshold_value_setting: float
     cycle_threshold_result: float | None
     automatic_cycle_threshold_enabled_setting: bool | None
-    automatic_baseline_determination_enabled_setting: bool | None
+    automatic_baseline: bool | None
+    baseline_start: float | None
+    baseline_end: float | None
     normalized_reporter_result: float | None
     baseline_corrected_reporter_result: float | None
     genotyping_determination_result: str | None
@@ -450,9 +476,9 @@ class Result:
                 automatic_cycle_threshold_enabled_setting=data.get(
                     bool, f"{allele_prefix}Automatic Ct Threshold"
                 ),
-                automatic_baseline_determination_enabled_setting=data.get(
-                    bool, f"{allele_prefix}Automatic Baseline"
-                ),
+                automatic_baseline=data.get(bool, f"{allele_prefix}Automatic Baseline"),
+                baseline_start=data.get(float, f"{allele_prefix}Baseline Start"),
+                baseline_end=data.get(float, f"{allele_prefix}Baseline End"),
                 normalized_reporter_result=data.get(float, "Rn"),
                 baseline_corrected_reporter_result=data.get(
                     float, f"{allele_prefix}Delta Rn"

@@ -21,7 +21,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "NTC",
-                                "well location identifier": "A1"
+                                "well location identifier": "A1",
+                                "custom information document": {
+                                    "well identifier": 1,
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -48,7 +53,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": null,
@@ -517,7 +530,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "A2"
+                                "well location identifier": "A2",
+                                "custom information document": {
+                                    "well identifier": 2,
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -544,7 +562,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 31.404,
@@ -1013,7 +1039,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "A3"
+                                "well location identifier": "A3",
+                                "custom information document": {
+                                    "well identifier": 3,
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -1040,7 +1071,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 30.469,
@@ -1509,7 +1548,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "A4"
+                                "well location identifier": "A4",
+                                "custom information document": {
+                                    "well identifier": 4,
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -1536,7 +1580,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 29.439,
@@ -2005,7 +2057,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "A5"
+                                "well location identifier": "A5",
+                                "custom information document": {
+                                    "well identifier": 5,
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -2032,7 +2089,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 28.498,
@@ -2501,7 +2566,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "A6"
+                                "well location identifier": "A6",
+                                "custom information document": {
+                                    "well identifier": 6,
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -2528,7 +2598,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 27.506,
@@ -2997,7 +3075,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "NTC",
-                                "well location identifier": "A7"
+                                "well location identifier": "A7",
+                                "custom information document": {
+                                    "well identifier": 7,
+                                    "target name": "IPC",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -3024,7 +3107,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": false,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": null,
@@ -3493,7 +3584,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "A8"
+                                "well location identifier": "A8",
+                                "custom information document": {
+                                    "well identifier": 8,
+                                    "target name": "IPC",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -3520,7 +3616,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": false,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 34.631,
@@ -3989,7 +4093,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "A9"
+                                "well location identifier": "A9",
+                                "custom information document": {
+                                    "well identifier": 9,
+                                    "target name": "IPC",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -4016,7 +4125,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": false,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 33.12,
@@ -4485,7 +4602,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "A10"
+                                "well location identifier": "A10",
+                                "custom information document": {
+                                    "well identifier": 10,
+                                    "target name": "IPC",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -4512,7 +4634,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": false,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 32.612,
@@ -4981,7 +5111,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "A11"
+                                "well location identifier": "A11",
+                                "custom information document": {
+                                    "well identifier": 11,
+                                    "target name": "IPC",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -5008,7 +5143,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": false,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 30.821,
@@ -5477,7 +5620,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "A12"
+                                "well location identifier": "A12",
+                                "custom information document": {
+                                    "well identifier": 12,
+                                    "target name": "IPC",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -5504,7 +5652,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": false,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 29.982,
@@ -5973,7 +6129,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "NTC",
-                                "well location identifier": "B1"
+                                "well location identifier": "B1",
+                                "custom information document": {
+                                    "well identifier": 13,
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -6000,7 +6161,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": null,
@@ -6469,7 +6638,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "B2"
+                                "well location identifier": "B2",
+                                "custom information document": {
+                                    "well identifier": 14,
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -6496,7 +6670,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 31.362,
@@ -6965,7 +7147,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "B3"
+                                "well location identifier": "B3",
+                                "custom information document": {
+                                    "well identifier": 15,
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -6992,7 +7179,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 30.448,
@@ -7461,7 +7656,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "B4"
+                                "well location identifier": "B4",
+                                "custom information document": {
+                                    "well identifier": 16,
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -7488,7 +7688,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 29.508,
@@ -7957,7 +8165,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "B5"
+                                "well location identifier": "B5",
+                                "custom information document": {
+                                    "well identifier": 17,
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -7984,7 +8197,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 28.519,
@@ -8453,7 +8674,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "B6"
+                                "well location identifier": "B6",
+                                "custom information document": {
+                                    "well identifier": 18,
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -8480,7 +8706,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 27.5,
@@ -8949,7 +9183,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "NTC",
-                                "well location identifier": "B7"
+                                "well location identifier": "B7",
+                                "custom information document": {
+                                    "well identifier": 19,
+                                    "target name": "IPC",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -8976,7 +9215,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": false,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": null,
@@ -9445,7 +9692,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "B8"
+                                "well location identifier": "B8",
+                                "custom information document": {
+                                    "well identifier": 20,
+                                    "target name": "IPC",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -9472,7 +9724,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": false,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 35.573,
@@ -9941,7 +10201,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "B9"
+                                "well location identifier": "B9",
+                                "custom information document": {
+                                    "well identifier": 21,
+                                    "target name": "IPC",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -9968,7 +10233,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": false,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 33.28,
@@ -10437,7 +10710,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "B10"
+                                "well location identifier": "B10",
+                                "custom information document": {
+                                    "well identifier": 22,
+                                    "target name": "IPC",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -10464,7 +10742,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": false,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 32.157,
@@ -10933,7 +11219,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "B11"
+                                "well location identifier": "B11",
+                                "custom information document": {
+                                    "well identifier": 23,
+                                    "target name": "IPC",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -10960,7 +11251,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": false,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 30.823,
@@ -11429,7 +11728,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "B12"
+                                "well location identifier": "B12",
+                                "custom information document": {
+                                    "well identifier": 24,
+                                    "target name": "IPC",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -11456,7 +11760,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": false,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 29.989,
@@ -11925,7 +12237,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "NTC",
-                                "well location identifier": "C1"
+                                "well location identifier": "C1",
+                                "custom information document": {
+                                    "well identifier": 25,
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -11952,7 +12269,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": null,
@@ -12421,7 +12746,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "C2"
+                                "well location identifier": "C2",
+                                "custom information document": {
+                                    "well identifier": 26,
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -12448,7 +12778,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 31.379,
@@ -12917,7 +13255,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "C3"
+                                "well location identifier": "C3",
+                                "custom information document": {
+                                    "well identifier": 27,
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -12944,7 +13287,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 30.49,
@@ -13413,7 +13764,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "C4"
+                                "well location identifier": "C4",
+                                "custom information document": {
+                                    "well identifier": 28,
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -13440,7 +13796,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 29.539,
@@ -13909,7 +14273,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "C5"
+                                "well location identifier": "C5",
+                                "custom information document": {
+                                    "well identifier": 29,
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -13936,7 +14305,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 28.463,
@@ -14405,7 +14782,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "C6"
+                                "well location identifier": "C6",
+                                "custom information document": {
+                                    "well identifier": 30,
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -14432,7 +14814,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 27.483,
@@ -14901,7 +15291,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "NTC",
-                                "well location identifier": "C7"
+                                "well location identifier": "C7",
+                                "custom information document": {
+                                    "well identifier": 31,
+                                    "target name": "IPC",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -14928,7 +15323,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": false,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": null,
@@ -15397,7 +15800,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "C8"
+                                "well location identifier": "C8",
+                                "custom information document": {
+                                    "well identifier": 32,
+                                    "target name": "IPC",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -15424,7 +15832,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": false,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 34.603,
@@ -15893,7 +16309,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "C9"
+                                "well location identifier": "C9",
+                                "custom information document": {
+                                    "well identifier": 33,
+                                    "target name": "IPC",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -15920,7 +16341,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": false,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 33.272,
@@ -16389,7 +16818,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "C10"
+                                "well location identifier": "C10",
+                                "custom information document": {
+                                    "well identifier": 34,
+                                    "target name": "IPC",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -16416,7 +16850,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": false,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 32.057,
@@ -16885,7 +17327,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "C11"
+                                "well location identifier": "C11",
+                                "custom information document": {
+                                    "well identifier": 35,
+                                    "target name": "IPC",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -16912,7 +17359,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": false,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 31.019,
@@ -17381,7 +17836,12 @@
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "C12"
+                                "well location identifier": "C12",
+                                "custom information document": {
+                                    "well identifier": 36,
+                                    "target name": "IPC",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -17408,7 +17868,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": false,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 30.137,
@@ -17877,7 +18345,13 @@
                             "sample document": {
                                 "sample identifier": "800.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D1"
+                                "well location identifier": "D1",
+                                "custom information document": {
+                                    "well identifier": 37,
+                                    "sample color": "RGB(176,23,31)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -17904,7 +18378,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 30.106,
@@ -18373,7 +18855,13 @@
                             "sample document": {
                                 "sample identifier": "800.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D2"
+                                "well location identifier": "D2",
+                                "custom information document": {
+                                    "well identifier": 38,
+                                    "sample color": "RGB(176,23,31)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -18400,7 +18888,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 30.095,
@@ -18869,7 +19365,13 @@
                             "sample document": {
                                 "sample identifier": "800.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D3"
+                                "well location identifier": "D3",
+                                "custom information document": {
+                                    "well identifier": 39,
+                                    "sample color": "RGB(176,23,31)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -18896,7 +19398,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 30.168,
@@ -19365,7 +19875,13 @@
                             "sample document": {
                                 "sample identifier": "1600.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D4"
+                                "well location identifier": "D4",
+                                "custom information document": {
+                                    "well identifier": 40,
+                                    "sample color": "RGB(0,0,255)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -19392,7 +19908,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 29.102,
@@ -19861,7 +20385,13 @@
                             "sample document": {
                                 "sample identifier": "1600.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D5"
+                                "well location identifier": "D5",
+                                "custom information document": {
+                                    "well identifier": 41,
+                                    "sample color": "RGB(0,0,255)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -19888,7 +20418,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 29.131,
@@ -20357,7 +20895,13 @@
                             "sample document": {
                                 "sample identifier": "1600.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D6"
+                                "well location identifier": "D6",
+                                "custom information document": {
+                                    "well identifier": 42,
+                                    "sample color": "RGB(0,0,255)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -20384,7 +20928,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 29.129,
@@ -20853,7 +21405,13 @@
                             "sample document": {
                                 "sample identifier": "4800.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D7"
+                                "well location identifier": "D7",
+                                "custom information document": {
+                                    "well identifier": 43,
+                                    "sample color": "RGB(238,238,0)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -20880,7 +21438,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 27.475,
@@ -21349,7 +21915,13 @@
                             "sample document": {
                                 "sample identifier": "4800.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D8"
+                                "well location identifier": "D8",
+                                "custom information document": {
+                                    "well identifier": 44,
+                                    "sample color": "RGB(238,238,0)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -21376,7 +21948,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 27.488,
@@ -21845,7 +22425,13 @@
                             "sample document": {
                                 "sample identifier": "4800.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D9"
+                                "well location identifier": "D9",
+                                "custom information document": {
+                                    "well identifier": 45,
+                                    "sample color": "RGB(238,238,0)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -21872,7 +22458,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 27.488,
@@ -22341,7 +22935,13 @@
                             "sample document": {
                                 "sample identifier": "1000.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D10"
+                                "well location identifier": "D10",
+                                "custom information document": {
+                                    "well identifier": 46,
+                                    "sample color": "RGB(139,137,112)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -22368,7 +22968,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 29.721,
@@ -22837,7 +23445,13 @@
                             "sample document": {
                                 "sample identifier": "1000.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D11"
+                                "well location identifier": "D11",
+                                "custom information document": {
+                                    "well identifier": 47,
+                                    "sample color": "RGB(139,137,112)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -22864,7 +23478,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 29.891,
@@ -23333,7 +23955,13 @@
                             "sample document": {
                                 "sample identifier": "1000.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D12"
+                                "well location identifier": "D12",
+                                "custom information document": {
+                                    "well identifier": 48,
+                                    "sample color": "RGB(139,137,112)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -23360,7 +23988,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 29.753,
@@ -23829,7 +24465,13 @@
                             "sample document": {
                                 "sample identifier": "800.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E1"
+                                "well location identifier": "E1",
+                                "custom information document": {
+                                    "well identifier": 49,
+                                    "sample color": "RGB(176,23,31)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -23856,7 +24498,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 30.052,
@@ -24325,7 +24975,13 @@
                             "sample document": {
                                 "sample identifier": "800.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E2"
+                                "well location identifier": "E2",
+                                "custom information document": {
+                                    "well identifier": 50,
+                                    "sample color": "RGB(176,23,31)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -24352,7 +25008,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 30.103,
@@ -24821,7 +25485,13 @@
                             "sample document": {
                                 "sample identifier": "800.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E3"
+                                "well location identifier": "E3",
+                                "custom information document": {
+                                    "well identifier": 51,
+                                    "sample color": "RGB(176,23,31)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -24848,7 +25518,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 30.103,
@@ -25317,7 +25995,13 @@
                             "sample document": {
                                 "sample identifier": "1600.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E4"
+                                "well location identifier": "E4",
+                                "custom information document": {
+                                    "well identifier": 52,
+                                    "sample color": "RGB(0,0,255)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -25344,7 +26028,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 29.055,
@@ -25813,7 +26505,13 @@
                             "sample document": {
                                 "sample identifier": "1600.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E5"
+                                "well location identifier": "E5",
+                                "custom information document": {
+                                    "well identifier": 53,
+                                    "sample color": "RGB(0,0,255)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -25840,7 +26538,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 29.068,
@@ -26309,7 +27015,13 @@
                             "sample document": {
                                 "sample identifier": "1600.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E6"
+                                "well location identifier": "E6",
+                                "custom information document": {
+                                    "well identifier": 54,
+                                    "sample color": "RGB(0,0,255)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -26336,7 +27048,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 29.052,
@@ -26805,7 +27525,13 @@
                             "sample document": {
                                 "sample identifier": "4800.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E7"
+                                "well location identifier": "E7",
+                                "custom information document": {
+                                    "well identifier": 55,
+                                    "sample color": "RGB(238,238,0)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -26832,7 +27558,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 27.481,
@@ -27301,7 +28035,13 @@
                             "sample document": {
                                 "sample identifier": "4800.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E8"
+                                "well location identifier": "E8",
+                                "custom information document": {
+                                    "well identifier": 56,
+                                    "sample color": "RGB(238,238,0)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -27328,7 +28068,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 27.492,
@@ -27797,7 +28545,13 @@
                             "sample document": {
                                 "sample identifier": "4800.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E9"
+                                "well location identifier": "E9",
+                                "custom information document": {
+                                    "well identifier": 57,
+                                    "sample color": "RGB(238,238,0)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -27824,7 +28578,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 27.51,
@@ -28293,7 +29055,13 @@
                             "sample document": {
                                 "sample identifier": "1000.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E10"
+                                "well location identifier": "E10",
+                                "custom information document": {
+                                    "well identifier": 58,
+                                    "sample color": "RGB(139,137,112)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -28320,7 +29088,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 29.876,
@@ -28789,7 +29565,13 @@
                             "sample document": {
                                 "sample identifier": "1000.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E11"
+                                "well location identifier": "E11",
+                                "custom information document": {
+                                    "well identifier": 59,
+                                    "sample color": "RGB(139,137,112)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -28816,7 +29598,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 29.802,
@@ -29285,7 +30075,13 @@
                             "sample document": {
                                 "sample identifier": "1000.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E12"
+                                "well location identifier": "E12",
+                                "custom information document": {
+                                    "well identifier": 60,
+                                    "sample color": "RGB(139,137,112)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -29312,7 +30108,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 29.77,
@@ -29781,7 +30585,13 @@
                             "sample document": {
                                 "sample identifier": "800.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F1"
+                                "well location identifier": "F1",
+                                "custom information document": {
+                                    "well identifier": 61,
+                                    "sample color": "RGB(176,23,31)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -29808,7 +30618,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 30.025,
@@ -30277,7 +31095,13 @@
                             "sample document": {
                                 "sample identifier": "800.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F2"
+                                "well location identifier": "F2",
+                                "custom information document": {
+                                    "well identifier": 62,
+                                    "sample color": "RGB(176,23,31)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -30304,7 +31128,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 30.098,
@@ -30773,7 +31605,13 @@
                             "sample document": {
                                 "sample identifier": "800.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F3"
+                                "well location identifier": "F3",
+                                "custom information document": {
+                                    "well identifier": 63,
+                                    "sample color": "RGB(176,23,31)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -30800,7 +31638,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 30.112,
@@ -31269,7 +32115,13 @@
                             "sample document": {
                                 "sample identifier": "1600.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F4"
+                                "well location identifier": "F4",
+                                "custom information document": {
+                                    "well identifier": 64,
+                                    "sample color": "RGB(0,0,255)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -31296,7 +32148,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 29.116,
@@ -31765,7 +32625,13 @@
                             "sample document": {
                                 "sample identifier": "1600.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F5"
+                                "well location identifier": "F5",
+                                "custom information document": {
+                                    "well identifier": 65,
+                                    "sample color": "RGB(0,0,255)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -31792,7 +32658,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 29.045,
@@ -32261,7 +33135,13 @@
                             "sample document": {
                                 "sample identifier": "1600.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F6"
+                                "well location identifier": "F6",
+                                "custom information document": {
+                                    "well identifier": 66,
+                                    "sample color": "RGB(0,0,255)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -32288,7 +33168,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 29.109,
@@ -32757,7 +33645,13 @@
                             "sample document": {
                                 "sample identifier": "4800.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F7"
+                                "well location identifier": "F7",
+                                "custom information document": {
+                                    "well identifier": 67,
+                                    "sample color": "RGB(238,238,0)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -32784,7 +33678,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 27.514,
@@ -33253,7 +34155,13 @@
                             "sample document": {
                                 "sample identifier": "4800.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F8"
+                                "well location identifier": "F8",
+                                "custom information document": {
+                                    "well identifier": 68,
+                                    "sample color": "RGB(238,238,0)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -33280,7 +34188,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 27.517,
@@ -33749,7 +34665,13 @@
                             "sample document": {
                                 "sample identifier": "4800.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F9"
+                                "well location identifier": "F9",
+                                "custom information document": {
+                                    "well identifier": 69,
+                                    "sample color": "RGB(238,238,0)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -33776,7 +34698,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 27.551,
@@ -34245,7 +35175,13 @@
                             "sample document": {
                                 "sample identifier": "1000.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F10"
+                                "well location identifier": "F10",
+                                "custom information document": {
+                                    "well identifier": 70,
+                                    "sample color": "RGB(139,137,112)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -34272,7 +35208,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 29.826,
@@ -34741,7 +35685,13 @@
                             "sample document": {
                                 "sample identifier": "1000.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F11"
+                                "well location identifier": "F11",
+                                "custom information document": {
+                                    "well identifier": 71,
+                                    "sample color": "RGB(139,137,112)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -34768,7 +35718,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 29.849,
@@ -35237,7 +36195,13 @@
                             "sample document": {
                                 "sample identifier": "1000.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "F12"
+                                "well location identifier": "F12",
+                                "custom information document": {
+                                    "well identifier": 72,
+                                    "sample color": "RGB(139,137,112)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -35264,7 +36228,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 29.789,
@@ -35733,7 +36705,13 @@
                             "sample document": {
                                 "sample identifier": "800.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G1"
+                                "well location identifier": "G1",
+                                "custom information document": {
+                                    "well identifier": 73,
+                                    "sample color": "RGB(176,23,31)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -35760,7 +36738,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 30.003,
@@ -36229,7 +37215,13 @@
                             "sample document": {
                                 "sample identifier": "800.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G2"
+                                "well location identifier": "G2",
+                                "custom information document": {
+                                    "well identifier": 74,
+                                    "sample color": "RGB(176,23,31)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -36256,7 +37248,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 30.056,
@@ -36725,7 +37725,13 @@
                             "sample document": {
                                 "sample identifier": "800.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G3"
+                                "well location identifier": "G3",
+                                "custom information document": {
+                                    "well identifier": 75,
+                                    "sample color": "RGB(176,23,31)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -36752,7 +37758,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 30.221,
@@ -37221,7 +38235,13 @@
                             "sample document": {
                                 "sample identifier": "1600.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G4"
+                                "well location identifier": "G4",
+                                "custom information document": {
+                                    "well identifier": 76,
+                                    "sample color": "RGB(0,0,255)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -37248,7 +38268,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 29.092,
@@ -37717,7 +38745,13 @@
                             "sample document": {
                                 "sample identifier": "1600.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G5"
+                                "well location identifier": "G5",
+                                "custom information document": {
+                                    "well identifier": 77,
+                                    "sample color": "RGB(0,0,255)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -37744,7 +38778,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 29.084,
@@ -38213,7 +39255,13 @@
                             "sample document": {
                                 "sample identifier": "1600.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G6"
+                                "well location identifier": "G6",
+                                "custom information document": {
+                                    "well identifier": 78,
+                                    "sample color": "RGB(0,0,255)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -38240,7 +39288,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 29.14,
@@ -38709,7 +39765,13 @@
                             "sample document": {
                                 "sample identifier": "4800.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G7"
+                                "well location identifier": "G7",
+                                "custom information document": {
+                                    "well identifier": 79,
+                                    "sample color": "RGB(238,238,0)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -38736,7 +39798,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 27.533,
@@ -39205,7 +40275,13 @@
                             "sample document": {
                                 "sample identifier": "4800.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G8"
+                                "well location identifier": "G8",
+                                "custom information document": {
+                                    "well identifier": 80,
+                                    "sample color": "RGB(238,238,0)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -39232,7 +40308,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 27.522,
@@ -39701,7 +40785,13 @@
                             "sample document": {
                                 "sample identifier": "4800.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G9"
+                                "well location identifier": "G9",
+                                "custom information document": {
+                                    "well identifier": 81,
+                                    "sample color": "RGB(238,238,0)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -39728,7 +40818,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 27.449,
@@ -40197,7 +41295,13 @@
                             "sample document": {
                                 "sample identifier": "1000.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G10"
+                                "well location identifier": "G10",
+                                "custom information document": {
+                                    "well identifier": 82,
+                                    "sample color": "RGB(139,137,112)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -40224,7 +41328,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 29.821,
@@ -40693,7 +41805,13 @@
                             "sample document": {
                                 "sample identifier": "1000.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G11"
+                                "well location identifier": "G11",
+                                "custom information document": {
+                                    "well identifier": 83,
+                                    "sample color": "RGB(139,137,112)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -40720,7 +41838,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 29.744,
@@ -41189,7 +42315,13 @@
                             "sample document": {
                                 "sample identifier": "1000.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "G12"
+                                "well location identifier": "G12",
+                                "custom information document": {
+                                    "well identifier": 84,
+                                    "sample color": "RGB(139,137,112)",
+                                    "target name": "RNaseP",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -41216,7 +42348,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 29.755,
@@ -41685,7 +42825,13 @@
                             "sample document": {
                                 "sample identifier": "800.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H1"
+                                "well location identifier": "H1",
+                                "custom information document": {
+                                    "well identifier": 85,
+                                    "sample color": "RGB(176,23,31)",
+                                    "target name": "IPC",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -41712,7 +42858,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": false,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 32.639,
@@ -42181,7 +43335,13 @@
                             "sample document": {
                                 "sample identifier": "800.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H2"
+                                "well location identifier": "H2",
+                                "custom information document": {
+                                    "well identifier": 86,
+                                    "sample color": "RGB(176,23,31)",
+                                    "target name": "IPC",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -42208,7 +43368,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": false,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 32.663,
@@ -42677,7 +43845,13 @@
                             "sample document": {
                                 "sample identifier": "800.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H3"
+                                "well location identifier": "H3",
+                                "custom information document": {
+                                    "well identifier": 87,
+                                    "sample color": "RGB(176,23,31)",
+                                    "target name": "IPC",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -42704,7 +43878,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": false,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 32.813,
@@ -43173,7 +44355,13 @@
                             "sample document": {
                                 "sample identifier": "1600.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H4"
+                                "well location identifier": "H4",
+                                "custom information document": {
+                                    "well identifier": 88,
+                                    "sample color": "RGB(0,0,255)",
+                                    "target name": "IPC",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -43200,7 +44388,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": false,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 33.054,
@@ -43669,7 +44865,13 @@
                             "sample document": {
                                 "sample identifier": "1600.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H5"
+                                "well location identifier": "H5",
+                                "custom information document": {
+                                    "well identifier": 89,
+                                    "sample color": "RGB(0,0,255)",
+                                    "target name": "IPC",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -43696,7 +44898,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": false,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 32.808,
@@ -44165,7 +45375,13 @@
                             "sample document": {
                                 "sample identifier": "1600.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H6"
+                                "well location identifier": "H6",
+                                "custom information document": {
+                                    "well identifier": 90,
+                                    "sample color": "RGB(0,0,255)",
+                                    "target name": "IPC",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -44192,7 +45408,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": false,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 32.72,
@@ -44661,7 +45885,13 @@
                             "sample document": {
                                 "sample identifier": "4800.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H7"
+                                "well location identifier": "H7",
+                                "custom information document": {
+                                    "well identifier": 91,
+                                    "sample color": "RGB(238,238,0)",
+                                    "target name": "IPC",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -44688,7 +45918,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": false,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 33.25,
@@ -45157,7 +46395,13 @@
                             "sample document": {
                                 "sample identifier": "4800.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H8"
+                                "well location identifier": "H8",
+                                "custom information document": {
+                                    "well identifier": 92,
+                                    "sample color": "RGB(238,238,0)",
+                                    "target name": "IPC",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -45184,7 +46428,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": false,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 32.881,
@@ -45653,7 +46905,13 @@
                             "sample document": {
                                 "sample identifier": "4800.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H9"
+                                "well location identifier": "H9",
+                                "custom information document": {
+                                    "well identifier": 93,
+                                    "sample color": "RGB(238,238,0)",
+                                    "target name": "IPC",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -45680,7 +46938,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": false,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 32.931,
@@ -46149,7 +47415,13 @@
                             "sample document": {
                                 "sample identifier": "1000.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H10"
+                                "well location identifier": "H10",
+                                "custom information document": {
+                                    "well identifier": 94,
+                                    "sample color": "RGB(139,137,112)",
+                                    "target name": "IPC",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -46176,7 +47448,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": false,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 32.77,
@@ -46645,7 +47925,13 @@
                             "sample document": {
                                 "sample identifier": "1000.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H11"
+                                "well location identifier": "H11",
+                                "custom information document": {
+                                    "well identifier": 95,
+                                    "sample color": "RGB(139,137,112)",
+                                    "target name": "IPC",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -46672,7 +47958,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": false,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 33.05,
@@ -47141,7 +48435,13 @@
                             "sample document": {
                                 "sample identifier": "1000.0",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H12"
+                                "well location identifier": "H12",
+                                "custom information document": {
+                                    "well identifier": 96,
+                                    "sample color": "RGB(139,137,112)",
+                                    "target name": "IPC",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -47168,7 +48468,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": false,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 1.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 40.0,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": 32.766,
@@ -47631,7 +48939,7 @@
             "software name": "Thermo QuantStudio",
             "software version": "1.0",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.52"
+            "ASM converter version": "0.1.53"
         },
         "calculated data aggregate document": {
             "calculated data document": [

@@ -48,6 +48,7 @@ NON_UNIQUE_IDENTIFIERS = {
     "sample identifier",
     "well location identifier",
     "well plate identifier",
+    "well identifier",
 }
 
 

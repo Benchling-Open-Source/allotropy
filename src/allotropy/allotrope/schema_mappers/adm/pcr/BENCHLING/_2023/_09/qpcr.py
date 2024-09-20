@@ -87,22 +87,28 @@ class CalculatedData:
 
 @dataclass
 class ProcessedData:
+    # Settings
     cycle_threshold_value_setting: float
     automatic_cycle_threshold_enabled_setting: bool | None = None
     automatic_baseline_determination_enabled_setting: bool | None = None
+    baseline_determination_start_cycle_setting: float | None = None
+    baseline_determination_end_cycle_setting: float | None = None
     genotyping_determination_method_setting: float | None = None
+
+    # Results
     genotyping_determination_result: str | None = None
     cycle_threshold_result: float | None = None
     normalized_reporter_result: float | None = None
     baseline_corrected_reporter_result: float | None = None
-    baseline_determination_start_cycle_setting: float | None = None
-    baseline_determination_end_cycle_setting: float | None = None
+
+    # Metadata
     comments: str | None = None
     highsd: str | None = None
     noamp: str | None = None
     expfail: str | None = None
     tholdfail: str | None = None
     prfdrop: str | None = None
+
     data_cubes: list[DataCube] | None = None
 
 
@@ -131,6 +137,15 @@ class Measurement:
     # Processed data
     processed_data: ProcessedData | None = None
     data_cubes: list[DataCube] | None = None
+
+    # Custom metadata
+    well_identifier: int | None = None
+    omit: bool | None = None
+    sample_color: str | None = None
+    biogroup_name: str | None = None
+    biogroup_color: str | None = None
+    target_name: str | None = None
+    target_color: str | None = None
 
 
 @dataclass
@@ -223,7 +238,10 @@ class Mapper(SchemaMapper[Data, Model]):
         measurement: Measurement,
         metadata: Metadata,
     ) -> MeasurementDocumentItem:
-        return MeasurementDocumentItem(
+        custom_doc = {
+            "omit": measurement.omit,
+        }
+        measurement_doc = MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
             measurement_time=self.get_date_time(measurement.timestamp),
             target_DNA_description=measurement.target_identifier,
@@ -258,14 +276,24 @@ class Mapper(SchemaMapper[Data, Model]):
                 MeltingCurveDataCube, "melting curve", measurement.data_cubes
             ),
         )
+        return add_custom_information_document(measurement_doc, custom_doc)
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
-        return SampleDocument(
+        custom_doc = {
+            "well identifier": measurement.well_identifier,
+            "sample color": measurement.sample_color,
+            "biogroup name": measurement.biogroup_name,
+            "biogroup color": measurement.biogroup_color,
+            "target name": measurement.target_name,
+            "target color": measurement.target_color,
+        }
+        sample_doc = SampleDocument(
             sample_identifier=measurement.sample_identifier,
             sample_role_type=measurement.sample_role_type,
             well_location_identifier=measurement.well_location_identifier,
             well_plate_identifier=measurement.well_plate_identifier,
         )
+        return add_custom_information_document(sample_doc, custom_doc)
 
     def _get_processed_data_aggregate_document(
         self, data: ProcessedData | None
