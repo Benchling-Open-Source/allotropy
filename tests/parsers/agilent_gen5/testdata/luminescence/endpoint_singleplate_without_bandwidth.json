@@ -1,0 +1,559 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
+    "plate reader aggregate document": {
+        "plate reader document": [
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-02-15T11:04:43+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_0",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 4.5,
+                                            "unit": "mm"
+                                        },
+                                        "detector gain setting": "135",
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 620.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 A1",
+                                "location identifier": "A1",
+                                "well plate identifier": "Plate 1"
+                            },
+                            "luminescence": {
+                                "value": 210530.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240208_lum_noFilter_noStepLabel.prt",
+                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\20240215_lum_noFilter_noStepLabel.xpt",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-02-15T11:04:43+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_1",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 4.5,
+                                            "unit": "mm"
+                                        },
+                                        "detector gain setting": "135",
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 620.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 A2",
+                                "location identifier": "A2",
+                                "well plate identifier": "Plate 1"
+                            },
+                            "luminescence": {
+                                "value": 213380.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240208_lum_noFilter_noStepLabel.prt",
+                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\20240215_lum_noFilter_noStepLabel.xpt",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-02-15T11:04:43+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_2",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 4.5,
+                                            "unit": "mm"
+                                        },
+                                        "detector gain setting": "135",
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 620.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 A3",
+                                "location identifier": "A3",
+                                "well plate identifier": "Plate 1"
+                            },
+                            "luminescence": {
+                                "value": 216200.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240208_lum_noFilter_noStepLabel.prt",
+                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\20240215_lum_noFilter_noStepLabel.xpt",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-02-15T11:04:43+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_3",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 4.5,
+                                            "unit": "mm"
+                                        },
+                                        "detector gain setting": "135",
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 620.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 A4",
+                                "location identifier": "A4",
+                                "well plate identifier": "Plate 1"
+                            },
+                            "luminescence": {
+                                "value": 219000.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240208_lum_noFilter_noStepLabel.prt",
+                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\20240215_lum_noFilter_noStepLabel.xpt",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-02-15T11:04:43+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_4",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 4.5,
+                                            "unit": "mm"
+                                        },
+                                        "detector gain setting": "135",
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 620.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 A5",
+                                "location identifier": "A5",
+                                "well plate identifier": "Plate 1"
+                            },
+                            "luminescence": {
+                                "value": 221780.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240208_lum_noFilter_noStepLabel.prt",
+                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\20240215_lum_noFilter_noStepLabel.xpt",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-02-15T11:04:43+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_5",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 4.5,
+                                            "unit": "mm"
+                                        },
+                                        "detector gain setting": "135",
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 620.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 A6",
+                                "location identifier": "A6",
+                                "well plate identifier": "Plate 1"
+                            },
+                            "luminescence": {
+                                "value": 224520.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240208_lum_noFilter_noStepLabel.prt",
+                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\20240215_lum_noFilter_noStepLabel.xpt",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-02-15T11:04:43+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_6",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 4.5,
+                                            "unit": "mm"
+                                        },
+                                        "detector gain setting": "135",
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 620.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 B1",
+                                "location identifier": "B1",
+                                "well plate identifier": "Plate 1"
+                            },
+                            "luminescence": {
+                                "value": 212240.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240208_lum_noFilter_noStepLabel.prt",
+                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\20240215_lum_noFilter_noStepLabel.xpt",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-02-15T11:04:43+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_7",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 4.5,
+                                            "unit": "mm"
+                                        },
+                                        "detector gain setting": "135",
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 620.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 B2",
+                                "location identifier": "B2",
+                                "well plate identifier": "Plate 1"
+                            },
+                            "luminescence": {
+                                "value": 215080.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240208_lum_noFilter_noStepLabel.prt",
+                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\20240215_lum_noFilter_noStepLabel.xpt",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-02-15T11:04:43+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_8",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 4.5,
+                                            "unit": "mm"
+                                        },
+                                        "detector gain setting": "135",
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 620.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 B3",
+                                "location identifier": "B3",
+                                "well plate identifier": "Plate 1"
+                            },
+                            "luminescence": {
+                                "value": 217890.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240208_lum_noFilter_noStepLabel.prt",
+                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\20240215_lum_noFilter_noStepLabel.xpt",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-02-15T11:04:43+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_9",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 4.5,
+                                            "unit": "mm"
+                                        },
+                                        "detector gain setting": "135",
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 620.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 B4",
+                                "location identifier": "B4",
+                                "well plate identifier": "Plate 1"
+                            },
+                            "luminescence": {
+                                "value": 220670.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240208_lum_noFilter_noStepLabel.prt",
+                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\20240215_lum_noFilter_noStepLabel.xpt",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-02-15T11:04:43+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_10",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 4.5,
+                                            "unit": "mm"
+                                        },
+                                        "detector gain setting": "135",
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 620.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 B5",
+                                "location identifier": "B5",
+                                "well plate identifier": "Plate 1"
+                            },
+                            "luminescence": {
+                                "value": 223430.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240208_lum_noFilter_noStepLabel.prt",
+                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\20240215_lum_noFilter_noStepLabel.xpt",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-02-15T11:04:43+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_11",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 4.5,
+                                            "unit": "mm"
+                                        },
+                                        "detector gain setting": "135",
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 620.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 B6",
+                                "location identifier": "B6",
+                                "well plate identifier": "Plate 1"
+                            },
+                            "luminescence": {
+                                "value": 226150.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240208_lum_noFilter_noStepLabel.prt",
+                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\20240215_lum_noFilter_noStepLabel.xpt",
+                    "container type": "well plate"
+                }
+            }
+        ],
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "Synergy H1",
+            "equipment serial number": "Unknown"
+        },
+        "data system document": {
+            "file name": "endpoint_singleplate_without_bandwidth.txt",
+            "software name": "Gen5",
+            "software version": "3.12.08",
+            "ASM converter name": "allotropy_agilent_gen5",
+            "ASM converter version": "0.1.53"
+        }
+    }
+}

@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- In Agilent Gen5, cast measurement label to string, since it can numeric when reading directly from dataframe (e.g. a single wavelength).
+
 ### Changed
 
 ### Deprecated
