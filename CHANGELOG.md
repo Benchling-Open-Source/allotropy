@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- AppBio Quantstuido - added additional metadata fields
+
 ### Fixed
 
 - In Agilent Gen5, cast measurement label to string, since it can numeric when reading directly from dataframe (e.g. a single wavelength).

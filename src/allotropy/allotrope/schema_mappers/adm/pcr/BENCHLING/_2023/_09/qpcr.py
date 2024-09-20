@@ -91,8 +91,8 @@ class ProcessedData:
     cycle_threshold_value_setting: float
     automatic_cycle_threshold_enabled_setting: bool | None = None
     automatic_baseline_determination_enabled_setting: bool | None = None
-    baseline_determination_start_cycle_setting: float | None = None
-    baseline_determination_end_cycle_setting: float | None = None
+    baseline_determination_start_cycle_setting: int | None = None
+    baseline_determination_end_cycle_setting: int | None = None
     genotyping_determination_method_setting: float | None = None
 
     # Results

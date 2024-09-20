@@ -361,8 +361,8 @@ class Result:
     cycle_threshold_result: float | None
     automatic_cycle_threshold_enabled_setting: bool | None
     automatic_baseline: bool | None
-    baseline_start: float | None
-    baseline_end: float | None
+    baseline_start: int | None
+    baseline_end: int | None
     normalized_reporter_result: float | None
     baseline_corrected_reporter_result: float | None
     genotyping_determination_result: str | None
@@ -477,8 +477,8 @@ class Result:
                     bool, f"{allele_prefix}Automatic Ct Threshold"
                 ),
                 automatic_baseline=data.get(bool, f"{allele_prefix}Automatic Baseline"),
-                baseline_start=data.get(float, f"{allele_prefix}Baseline Start"),
-                baseline_end=data.get(float, f"{allele_prefix}Baseline End"),
+                baseline_start=data.get(int, f"{allele_prefix}Baseline Start"),
+                baseline_end=data.get(int, f"{allele_prefix}Baseline End"),
                 normalized_reporter_result=data.get(float, "Rn"),
                 baseline_corrected_reporter_result=data.get(
                     float, f"{allele_prefix}Delta Rn"
