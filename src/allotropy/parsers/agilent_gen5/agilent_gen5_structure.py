@@ -485,7 +485,7 @@ def create_results(
         label for r_data in read_data for label in r_data.measurement_labels
     ]
     for row_name, row in data.iterrows():
-        label = row.iloc[-1]
+        label = str(row.iloc[-1])
         for col_index, value in enumerate(row.iloc[:-1]):
             well_pos = f"{row_name}{col_index + 1}"
             well_value = try_float_or_nan(value)
