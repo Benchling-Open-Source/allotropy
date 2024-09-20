@@ -671,8 +671,8 @@ class PlateBlock(ABC, Block):
 
     @classmethod
     def check_read_type(cls, read_type: str) -> None:
-        if read_type != ReadType.ENDPOINT.value:
-            msg = f"Only Endpoint measurements can be processed at this time, got: {read_type}"
+        if read_type not in (ReadType.ENDPOINT.value, ReadType.KINETIC.value):
+            msg = f"Only Endpoint or Kinetic measurements can be processed at this time, got: {read_type}"
             raise AllotropeConversionError(msg)
 
     @classmethod
