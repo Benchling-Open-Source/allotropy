@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from abc import ABC
 from collections.abc import Iterator
 from dataclasses import dataclass
 from enum import Enum
@@ -31,6 +32,7 @@ from allotropy.parsers.utils.values import (
     assert_not_none,
     num_to_chars,
     try_float,
+    try_float_or_none,
     try_int,
     try_int_or_none,
     try_non_nan_float_or_none,
@@ -279,6 +281,8 @@ class PlateHeader:
     concept: str
     read_mode: str
     unit: str
+    read_time: float | None
+    read_interval: float | None
     scan_position: ScanPositionSettingPlateReader | None
     reads_per_well: float | None
     pmt_gain: str | None
@@ -737,8 +741,8 @@ class FluorescencePlateBlock(PlateBlock):
             data_type,
             _,  # Pre-read, always FALSE
             kinetic_points_raw,
-            _,  # read_time_or_scan_pattern
-            _,  # read_interval_or_scan_density
+            read_time,  # read_time_or_scan_pattern
+            read_interval,  # read_interval_or_scan_density
             _,  # start_wavelength
             _,  # end_wavelength
             _,  # wavelength_step
@@ -827,6 +831,8 @@ class FluorescencePlateBlock(PlateBlock):
             concept="fluorescence",
             read_mode=cls.get_read_mode(read_type, read_mode_raw),
             unit="RFU",
+            read_time=try_float_or_none(read_time),
+            read_interval=try_float_or_none(read_interval),
             scan_position=scan_position,
             reads_per_well=try_float(reads_per_well, "reads_per_well"),
             pmt_gain=pmt_gain,
@@ -851,8 +857,8 @@ class LuminescencePlateBlock(PlateBlock):
             data_type,
             _,  # Pre-read, always FALSE
             kinetic_points_raw,
-            _,  # read_time_or_scan_pattern
-            _,  # read_interval_or_scan_density
+            read_time,  # read_time_or_scan_pattern
+            read_interval,  # read_interval_or_scan_density
             _,  # start_wavelength
             _,  # end_wavelength
             _,  # wavelength_step
@@ -899,6 +905,8 @@ class LuminescencePlateBlock(PlateBlock):
             concept="luminescence",
             read_mode=cls.get_read_mode(read_type, read_mode_raw),
             unit="RLU",
+            read_time=try_float_or_none(read_time),
+            read_interval=try_float_or_none(read_interval),
             scan_position=None,
             reads_per_well=try_int(reads_per_well, "reads_per_well"),
             pmt_gain=pmt_gain,
@@ -923,8 +931,8 @@ class AbsorbancePlateBlock(PlateBlock):
             data_type,
             _,  # Pre-read, always FALSE
             kinetic_points_raw,
-            _,  # read_time_or_scan_pattern
-            _,  # read_interval_or_scan_density
+            read_time,  # read_time_or_scan_pattern
+            read_interval,  # read_interval_or_scan_density
             _,  # start_wavelength
             _,  # end_wavelength
             _,  # wavelength_step
@@ -962,6 +970,8 @@ class AbsorbancePlateBlock(PlateBlock):
             concept="absorbance",
             read_mode=cls.get_read_mode(read_type, read_mode_raw),
             unit="mAU",
+            read_time=try_float_or_none(read_time),
+            read_interval=try_float_or_none(read_interval),
             scan_position=None,
             reads_per_well=None,
             pmt_gain=None,
