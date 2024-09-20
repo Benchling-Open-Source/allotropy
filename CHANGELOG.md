@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Handle missing 'Sample name' and missing 'Table' label before table in Unchained Labs Lunatic parser.
+
 ### Changed
 
 ### Deprecated
