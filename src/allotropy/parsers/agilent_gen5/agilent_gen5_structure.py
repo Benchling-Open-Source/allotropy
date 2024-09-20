@@ -497,12 +497,18 @@ def get_kinetic_measurements(
 ) -> tuple[dict[str, list[float | None]], list[float]] | None:
     if not kinetic_lines:
         return None
-    data = read_csv(StringIO("\n".join(kinetic_lines)), sep="\t", index_col=0).dropna(axis="columns", how="all").dropna(axis="index", how="all")
+    data = (
+        read_csv(StringIO("\n".join(kinetic_lines)), sep="\t", index_col=0)
+        .dropna(axis="columns", how="all")
+        .dropna(axis="index", how="all")
+    )
 
     kinetic_measurements: defaultdict[str, list[float | None]] = defaultdict(
         list[float | None]
     )
-    kinetic_elapsed_time: list[float] = data.index.map(lambda val: _convert_time_to_seconds(str(val))).to_list()
+    kinetic_elapsed_time: list[float] = data.index.map(
+        lambda val: _convert_time_to_seconds(str(val))
+    ).to_list()
     for col_name, column in data.items():
         if col_name == "Time":
             continue
