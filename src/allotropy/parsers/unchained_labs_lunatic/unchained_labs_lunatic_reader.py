@@ -31,7 +31,7 @@ class UnchainedLabsLunaticReader:
             data[(data == "Sample name").any(axis=1)].first_valid_index()
         )
         if table_header_index is None:
-            msg = "Unable to find a header row with 'Sample name'."
+            msg = "Unable to find a table header row with 'Sample name'."
             raise AllotropeConversionError(msg)
 
         header_data = data[:table_header_index].dropna(how="all").T.dropna(how="all")
