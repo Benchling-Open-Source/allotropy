@@ -1,11 +1,17 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2024/06/plate-reader.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
     "plate reader aggregate document": {
         "plate reader document": [
             {
                 "measurement aggregate document": {
+                    "measurement time": "2024-02-15T11:04:43+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
                     "measurement document": [
                         {
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -25,7 +31,6 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_0",
                             "sample document": {
                                 "sample identifier": "Plate 1 A1",
                                 "location identifier": "A1",
@@ -37,11 +42,6 @@
                             }
                         }
                     ],
-                    "measurement time": "2024-02-15T11:04:43+00:00",
-                    "plate well count": {
-                        "value": 12,
-                        "unit": "#"
-                    },
                     "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240208_lum_noFilter_noStepLabel.prt",
                     "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\20240215_lum_noFilter_noStepLabel.xpt",
                     "container type": "well plate"
@@ -49,8 +49,14 @@
             },
             {
                 "measurement aggregate document": {
+                    "measurement time": "2024-02-15T11:04:43+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
                     "measurement document": [
                         {
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_1",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -70,7 +76,6 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_1",
                             "sample document": {
                                 "sample identifier": "Plate 1 A2",
                                 "location identifier": "A2",
@@ -82,11 +87,6 @@
                             }
                         }
                     ],
-                    "measurement time": "2024-02-15T11:04:43+00:00",
-                    "plate well count": {
-                        "value": 12,
-                        "unit": "#"
-                    },
                     "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240208_lum_noFilter_noStepLabel.prt",
                     "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\20240215_lum_noFilter_noStepLabel.xpt",
                     "container type": "well plate"
@@ -94,8 +94,14 @@
             },
             {
                 "measurement aggregate document": {
+                    "measurement time": "2024-02-15T11:04:43+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
                     "measurement document": [
                         {
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_2",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -115,7 +121,6 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_2",
                             "sample document": {
                                 "sample identifier": "Plate 1 A3",
                                 "location identifier": "A3",
@@ -127,11 +132,6 @@
                             }
                         }
                     ],
-                    "measurement time": "2024-02-15T11:04:43+00:00",
-                    "plate well count": {
-                        "value": 12,
-                        "unit": "#"
-                    },
                     "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240208_lum_noFilter_noStepLabel.prt",
                     "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\20240215_lum_noFilter_noStepLabel.xpt",
                     "container type": "well plate"
@@ -139,8 +139,14 @@
             },
             {
                 "measurement aggregate document": {
+                    "measurement time": "2024-02-15T11:04:43+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
                     "measurement document": [
                         {
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_3",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -160,7 +166,6 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_3",
                             "sample document": {
                                 "sample identifier": "Plate 1 A4",
                                 "location identifier": "A4",
@@ -172,11 +177,6 @@
                             }
                         }
                     ],
-                    "measurement time": "2024-02-15T11:04:43+00:00",
-                    "plate well count": {
-                        "value": 12,
-                        "unit": "#"
-                    },
                     "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240208_lum_noFilter_noStepLabel.prt",
                     "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\20240215_lum_noFilter_noStepLabel.xpt",
                     "container type": "well plate"
@@ -184,8 +184,14 @@
             },
             {
                 "measurement aggregate document": {
+                    "measurement time": "2024-02-15T11:04:43+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
                     "measurement document": [
                         {
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_4",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -205,7 +211,6 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_4",
                             "sample document": {
                                 "sample identifier": "Plate 1 A5",
                                 "location identifier": "A5",
@@ -217,11 +222,6 @@
                             }
                         }
                     ],
-                    "measurement time": "2024-02-15T11:04:43+00:00",
-                    "plate well count": {
-                        "value": 12,
-                        "unit": "#"
-                    },
                     "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240208_lum_noFilter_noStepLabel.prt",
                     "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\20240215_lum_noFilter_noStepLabel.xpt",
                     "container type": "well plate"
@@ -229,8 +229,14 @@
             },
             {
                 "measurement aggregate document": {
+                    "measurement time": "2024-02-15T11:04:43+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
                     "measurement document": [
                         {
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_5",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -250,7 +256,6 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_5",
                             "sample document": {
                                 "sample identifier": "Plate 1 A6",
                                 "location identifier": "A6",
@@ -262,11 +267,6 @@
                             }
                         }
                     ],
-                    "measurement time": "2024-02-15T11:04:43+00:00",
-                    "plate well count": {
-                        "value": 12,
-                        "unit": "#"
-                    },
                     "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240208_lum_noFilter_noStepLabel.prt",
                     "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\20240215_lum_noFilter_noStepLabel.xpt",
                     "container type": "well plate"
@@ -274,8 +274,14 @@
             },
             {
                 "measurement aggregate document": {
+                    "measurement time": "2024-02-15T11:04:43+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
                     "measurement document": [
                         {
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_6",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -295,7 +301,6 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_6",
                             "sample document": {
                                 "sample identifier": "Plate 1 B1",
                                 "location identifier": "B1",
@@ -307,11 +312,6 @@
                             }
                         }
                     ],
-                    "measurement time": "2024-02-15T11:04:43+00:00",
-                    "plate well count": {
-                        "value": 12,
-                        "unit": "#"
-                    },
                     "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240208_lum_noFilter_noStepLabel.prt",
                     "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\20240215_lum_noFilter_noStepLabel.xpt",
                     "container type": "well plate"
@@ -319,8 +319,14 @@
             },
             {
                 "measurement aggregate document": {
+                    "measurement time": "2024-02-15T11:04:43+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
                     "measurement document": [
                         {
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_7",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -340,7 +346,6 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_7",
                             "sample document": {
                                 "sample identifier": "Plate 1 B2",
                                 "location identifier": "B2",
@@ -352,11 +357,6 @@
                             }
                         }
                     ],
-                    "measurement time": "2024-02-15T11:04:43+00:00",
-                    "plate well count": {
-                        "value": 12,
-                        "unit": "#"
-                    },
                     "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240208_lum_noFilter_noStepLabel.prt",
                     "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\20240215_lum_noFilter_noStepLabel.xpt",
                     "container type": "well plate"
@@ -364,8 +364,14 @@
             },
             {
                 "measurement aggregate document": {
+                    "measurement time": "2024-02-15T11:04:43+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
                     "measurement document": [
                         {
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_8",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -385,7 +391,6 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_8",
                             "sample document": {
                                 "sample identifier": "Plate 1 B3",
                                 "location identifier": "B3",
@@ -397,11 +402,6 @@
                             }
                         }
                     ],
-                    "measurement time": "2024-02-15T11:04:43+00:00",
-                    "plate well count": {
-                        "value": 12,
-                        "unit": "#"
-                    },
                     "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240208_lum_noFilter_noStepLabel.prt",
                     "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\20240215_lum_noFilter_noStepLabel.xpt",
                     "container type": "well plate"
@@ -409,8 +409,14 @@
             },
             {
                 "measurement aggregate document": {
+                    "measurement time": "2024-02-15T11:04:43+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
                     "measurement document": [
                         {
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_9",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -430,7 +436,6 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_9",
                             "sample document": {
                                 "sample identifier": "Plate 1 B4",
                                 "location identifier": "B4",
@@ -442,11 +447,6 @@
                             }
                         }
                     ],
-                    "measurement time": "2024-02-15T11:04:43+00:00",
-                    "plate well count": {
-                        "value": 12,
-                        "unit": "#"
-                    },
                     "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240208_lum_noFilter_noStepLabel.prt",
                     "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\20240215_lum_noFilter_noStepLabel.xpt",
                     "container type": "well plate"
@@ -454,8 +454,14 @@
             },
             {
                 "measurement aggregate document": {
+                    "measurement time": "2024-02-15T11:04:43+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
                     "measurement document": [
                         {
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_10",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -475,7 +481,6 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_10",
                             "sample document": {
                                 "sample identifier": "Plate 1 B5",
                                 "location identifier": "B5",
@@ -487,11 +492,6 @@
                             }
                         }
                     ],
-                    "measurement time": "2024-02-15T11:04:43+00:00",
-                    "plate well count": {
-                        "value": 12,
-                        "unit": "#"
-                    },
                     "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240208_lum_noFilter_noStepLabel.prt",
                     "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\20240215_lum_noFilter_noStepLabel.xpt",
                     "container type": "well plate"
@@ -499,8 +499,14 @@
             },
             {
                 "measurement aggregate document": {
+                    "measurement time": "2024-02-15T11:04:43+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
                     "measurement document": [
                         {
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_11",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -520,7 +526,6 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_11",
                             "sample document": {
                                 "sample identifier": "Plate 1 B6",
                                 "location identifier": "B6",
@@ -532,31 +537,23 @@
                             }
                         }
                     ],
-                    "measurement time": "2024-02-15T11:04:43+00:00",
-                    "plate well count": {
-                        "value": 12,
-                        "unit": "#"
-                    },
                     "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240208_lum_noFilter_noStepLabel.prt",
                     "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\20240215_lum_noFilter_noStepLabel.xpt",
                     "container type": "well plate"
                 }
             }
         ],
-        "data system document": {
-            "ASM file identifier": "N/A",
-            "data system instance identifier": "N/A",
-            "file name": "endpoint_singleplate_without_bandwidth.txt",
-            "UNC path": "N/A",
-            "ASM converter name": "allotropy_agilent_gen5",
-            "ASM converter version": "0.1.52",
-            "software name": "Gen5",
-            "software version": "3.12.08"
-        },
         "device system document": {
             "device identifier": "N/A",
             "model number": "Synergy H1",
             "equipment serial number": "Unknown"
+        },
+        "data system document": {
+            "file name": "endpoint_singleplate_without_bandwidth.txt",
+            "software name": "Gen5",
+            "software version": "3.12.08",
+            "ASM converter name": "allotropy_agilent_gen5",
+            "ASM converter version": "0.1.53"
         }
     }
 }
