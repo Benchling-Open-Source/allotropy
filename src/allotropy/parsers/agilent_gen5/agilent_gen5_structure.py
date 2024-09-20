@@ -244,13 +244,22 @@ class KineticData:
     @classmethod
     def _parse_kinetic_section(cls, line: str) -> KineticData:
         split_line = line.strip().split("\t")[1].split(", ")
-        if len(split_line) != KineticData.VALUES:
-            msg = f"Expected the Kinetic section '{split_line}' to contain exactly 3 values."
+        run_value = [part for part in split_line if "Runtime" in part]
+        if len(run_value) != 1:
+            msg = f"Could not find 'Runtime' in Kinetic line: {line}."
+            raise AllotropeConversionError(msg)
+        interval = [part for part in split_line if "Interval" in part]
+        if len(interval) != 1:
+            msg = f"Could not find 'Interval' in Kinetic line: {line}."
+            raise AllotropeConversionError(msg)
+        reads = [part for part in split_line if "Reads" in part]
+        if len(reads) != 1:
+            msg = f"Could not find 'Reads' in Kinetic line: {line}."
             raise AllotropeConversionError(msg)
         return KineticData(
-            run_time=split_line[0].split(" ")[1],
-            interval=split_line[1].split(" ")[1],
-            reads=int(split_line[2].split(" ")[0]),
+            run_time=run_value[0].split(" ")[1].strip(),
+            interval=interval[0].split(" ")[1].strip(),
+            reads=int(reads[0].split(" ")[0].strip()),
         )
 
 
@@ -272,7 +281,7 @@ class ReadData:
         if read_type != ReadType.ENDPOINT:
             raise AllotropeConversionError(UNSUPPORTED_READ_TYPE_ERROR)
         read_modes = cls.get_read_modes(procedure_details)
-        read_sections = list(SectionLinesReader(lines).iter_sections(r"^\s{0,4}Read\t"))
+        read_sections = list(SectionLinesReader(lines).iter_sections(r"^\s*Read\t"))
         if len(read_modes) != len(read_sections):
             msg = "Expected the number of read modes to match the number of read sections."
             raise AllotropeConversionError(msg)
@@ -488,17 +497,19 @@ def get_kinetic_measurements(
 ) -> tuple[dict[str, list[float | None]], list[float]] | None:
     if not kinetic_lines:
         return None
-    data = read_csv(StringIO("\n".join(kinetic_lines)), sep="\t")
+    data = read_csv(StringIO("\n".join(kinetic_lines)), sep="\t", index_col=0).dropna(axis="columns", how="all").dropna(axis="index", how="all")
+
     kinetic_measurements: defaultdict[str, list[float | None]] = defaultdict(
         list[float | None]
     )
-    kinetic_elapsed_time: list[float] = []
-    for col in data.columns:
-        for _idx, value in enumerate(data[col]):
-            if col == "Time":
-                kinetic_elapsed_time.append(_convert_time_to_seconds(str(value)))
-            elif not pd.isna(value):
-                kinetic_measurements[str(col)].append(float(str(value)))
+    kinetic_elapsed_time: list[float] = data.index.map(lambda val: _convert_time_to_seconds(str(val))).to_list()
+    for col_name, column in data.items():
+        if col_name == "Time":
+            continue
+        if column.isnull().any():
+            msg = f"Unable to process null value in column: {col_name} of Kinetic section."
+            raise AllotropeConversionError(msg)
+        kinetic_measurements[str(col_name)] = column.astype(float).to_list()
     return dict(kinetic_measurements.items()), kinetic_elapsed_time
 
 
@@ -533,12 +544,14 @@ def create_results(
     measurement_labels = [
         label for r_data in read_data for label in r_data.measurement_labels
     ]
+    plate_well_count = 0
     for row_name, row in data.iterrows():
         label = row.iloc[-1]
         for col_index, value in enumerate(row.iloc[:-1]):
             well_pos = f"{row_name}{col_index + 1}"
             well_value = try_non_nan_float_or_none(value)
             # TODO: Report error documents for NaN values
+            plate_well_count += 1
             if well_value is None:
                 continue
             if label in measurement_labels:
@@ -551,7 +564,7 @@ def create_results(
     groups = [
         MeasurementGroup(
             measurement_time=header_data.datetime,
-            plate_well_count=len(well_to_measurements),
+            plate_well_count=plate_well_count,
             analytical_method_identifier=header_data.protocol_file_path,
             experimental_data_identifier=header_data.experiment_file_path,
             measurements=[
@@ -617,6 +630,7 @@ def create_kinetic_results(
     measurement_labels = [
         label for r_data in read_data for label in r_data.measurement_labels
     ]
+    plate_well_count = 0
     for row_name, row in data.iterrows():
         label = row.iloc[-1]
         for col_index, value in enumerate(row.iloc[:-1]):
@@ -630,7 +644,7 @@ def create_kinetic_results(
     groups = [
         MeasurementGroup(
             measurement_time=header_data.datetime,
-            plate_well_count=len(calculated_data),
+            plate_well_count=plate_well_count,
             analytical_method_identifier=header_data.protocol_file_path,
             experimental_data_identifier=header_data.experiment_file_path,
             measurements=[
@@ -752,19 +766,18 @@ def _create_measurement(
     kinetic_measurements: list[float | None] | None = None,
     kinetic_elapsed_time: list[float] | None = None,
 ) -> Measurement:
-    match (read_data.read_mode, bool(kinetic_data)):
-        case (ReadMode.ABSORBANCE, False):
-            measurement_type = MeasurementType.ULTRAVIOLET_ABSORBANCE
-        case (ReadMode.FLUORESCENCE, False):
-            measurement_type = MeasurementType.FLUORESCENCE
-        case (ReadMode.LUMINESCENCE, False):
-            measurement_type = MeasurementType.LUMINESCENCE
-        case (ReadMode.ABSORBANCE, True):
-            measurement_type = MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_DETECTOR
-        case (ReadMode.FLUORESCENCE, True):
-            measurement_type = MeasurementType.FLUORESCENCE_CUBE_DETECTOR
-        case (ReadMode.LUMINESCENCE, True):
-            measurement_type = MeasurementType.LUMINESCENCE_CUBE_DETECTOR
+    if read_data.read_mode == ReadMode.ABSORBANCE and not kinetic_data:
+        measurement_type = MeasurementType.ULTRAVIOLET_ABSORBANCE
+    elif read_data.read_mode == ReadMode.FLUORESCENCE and not kinetic_data:
+        measurement_type = MeasurementType.FLUORESCENCE
+    elif read_data.read_mode == ReadMode.LUMINESCENCE and not kinetic_data:
+        measurement_type = MeasurementType.LUMINESCENCE
+    elif read_data.read_mode == ReadMode.ABSORBANCE and kinetic_data:
+        measurement_type = MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_DETECTOR
+    elif read_data.read_mode == ReadMode.FLUORESCENCE and kinetic_data:
+        measurement_type = MeasurementType.FLUORESCENCE_CUBE_DETECTOR
+    elif read_data.read_mode == ReadMode.LUMINESCENCE and kinetic_data:
+        measurement_type = MeasurementType.LUMINESCENCE_CUBE_DETECTOR
 
     if measurement_type in [
         MeasurementType.ULTRAVIOLET_ABSORBANCE,
