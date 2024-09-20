@@ -359,7 +359,7 @@ class PlateKineticData:
         reader: CsvReader,
         header: PlateHeader,
         columns: pd.Series[str],
-    ) -> PlateKineticData:
+    ) -> PlateMeasurementData:
 
         # use plate dimensions to determine how many rows of plate block to read
         dimensions = assert_not_none(
@@ -385,9 +385,9 @@ class PlateKineticData:
             str(data.iloc[int(pd.to_numeric(data.first_valid_index())), 1])
         )
 
-        return PlateKineticData(
+        return PlateMeasurementData(
             temperature=temperature,
-            wavelength_data=PlateKineticData._get_wavelength_data(
+            wavelength_data=PlateMeasurementData._get_wavelength_data(
                 header.name,
                 temperature,
                 header,
@@ -420,7 +420,7 @@ class PlateKineticData:
 
 @dataclass(frozen=True)
 class PlateRawData:
-    kinetic_data: list[PlateKineticData]
+    measurement_data: list[PlateMeasurementData]
 
     @staticmethod
     def create(reader: CsvReader, header: PlateHeader) -> PlateRawData:
@@ -430,8 +430,8 @@ class PlateRawData:
         )
 
         return PlateRawData(
-            kinetic_data=[
-                PlateKineticData.create(reader, header, columns)
+            measurement_data=[
+                PlateMeasurementData.create(reader, header, columns)
                 for _ in range(header.kinetic_points)
             ]
         )
@@ -485,15 +485,15 @@ class PlateData:
         )
 
     def iter_data_elements(self, position: str) -> Iterator[DataElement]:
-        for kinetic_data in self.raw_data.kinetic_data:
-            for wavelength_data in kinetic_data.wavelength_data:
+        for measurement_data in self.raw_data.measurement_data:
+            for wavelength_data in measurement_data.wavelength_data:
                 if position not in wavelength_data.data_elements:
                     continue
                 yield wavelength_data.data_elements[position]
 
 
 @dataclass(frozen=True)
-class TimeKineticData:
+class TimeMeasurementData:
     temperature: float | None
     data_elements: dict[str, DataElement]
 
@@ -502,10 +502,10 @@ class TimeKineticData:
         plate_name: str,
         wavelength: float,
         row: pd.Series[float],
-    ) -> TimeKineticData:
+    ) -> TimeMeasurementData:
         temperature = try_non_nan_float_or_none(str(row.iloc[1]))
 
-        return TimeKineticData(
+        return TimeMeasurementData(
             temperature=temperature,
             data_elements={
                 str(position): DataElement(
@@ -525,7 +525,7 @@ class TimeKineticData:
 @dataclass(frozen=True)
 class TimeWavelengthData:
     wavelength: float
-    kinetic_data: list[TimeKineticData]
+    measurement_data: list[TimeMeasurementData]
 
     @staticmethod
     def create(
@@ -541,8 +541,8 @@ class TimeWavelengthData:
         set_columns(data, columns)
         return TimeWavelengthData(
             wavelength=wavelength,
-            kinetic_data=[
-                TimeKineticData.create(plate_name, wavelength, row)
+            measurement_data=[
+                TimeMeasurementData.create(plate_name, wavelength, row)
                 for _, row in data.iterrows()
             ],
         )
@@ -622,10 +622,10 @@ class TimeData:
 
     def iter_data_elements(self, position: str) -> Iterator[DataElement]:
         for wavelength_data in self.raw_data.wavelength_data:
-            for kinetic_data in wavelength_data.kinetic_data:
-                if position not in kinetic_data.data_elements:
+            for measurement_data in wavelength_data.measurement_data:
+                if position not in measurement_data.data_elements:
                     continue
-                yield kinetic_data.data_elements[position]
+                yield measurement_data.data_elements[position]
 
 
 @dataclass(frozen=True)
@@ -727,7 +727,6 @@ class PlateBlock(ABC, Block):
 
 @dataclass(frozen=True)
 class FluorescencePlateBlock(PlateBlock):
-
     @classmethod
     def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
         [
@@ -844,7 +843,6 @@ class FluorescencePlateBlock(PlateBlock):
 
 @dataclass(frozen=True)
 class LuminescencePlateBlock(PlateBlock):
-
     @classmethod
     def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
         [
@@ -918,7 +916,6 @@ class LuminescencePlateBlock(PlateBlock):
 
 @dataclass(frozen=True)
 class AbsorbancePlateBlock(PlateBlock):
-
     @classmethod
     def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
         [
