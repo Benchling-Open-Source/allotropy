@@ -2,39 +2,38 @@
     "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest",
     "qPCR aggregate document": {
         "device system document": {
-            "device identifier": "278880034",
-            "model number": "QuantStudio(TM) 7 Flex System",
-            "device serial number": "278880034"
+            "device identifier": "278880086",
+            "model number": "ViiA 7",
+            "device serial number": "278880086"
         },
         "qPCR document": [
             {
                 "measurement aggregate document": {
                     "plate well count": {
-                        "value": 96,
+                        "value": 384,
                         "unit": "#"
                     },
                     "measurement document": [
                         {
                             "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
-                            "measurement time": "2010-10-20T02:23:34-04:00",
-                            "target DNA description": "RNaseP",
+                            "measurement time": "2001-12-31T21:09:19-05:00",
+                            "target DNA description": "B2M-Qiagen",
                             "sample document": {
-                                "sample identifier": "800",
+                                "sample identifier": "1. 200217 U251p14_-ab_-SEMA3F_8h_pA_1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D1"
+                                "well location identifier": "A1"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "Ct",
-                                        "PCR detection chemistry": "TAQMAN",
+                                        "PCR detection chemistry": "SYBR_GREEN",
                                         "total cycle number setting": {
                                             "value": 1.0,
                                             "unit": "#"
                                         },
-                                        "reporter dye setting": "FAM",
-                                        "quencher dye setting": "NFQ-MGB",
+                                        "reporter dye setting": "SYBR",
                                         "passive reference dye setting": "ROX"
                                     }
                                 ]
@@ -44,14 +43,14 @@
                                     {
                                         "data processing document": {
                                             "cycle threshold value setting": {
-                                                "value": 0.133,
+                                                "value": 0.277,
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
                                             "automatic baseline determination enabled setting": true
                                         },
                                         "cycle threshold result": {
-                                            "value": 30.155,
+                                            "value": 18.717,
                                             "unit": "(unitless)"
                                         },
                                         "normalized reporter data cube": {
@@ -80,7 +79,7 @@
                                                 ],
                                                 "measures": [
                                                     [
-                                                        0.627
+                                                        0.612
                                                     ]
                                                 ]
                                             }
@@ -111,114 +110,131 @@
                                                 ],
                                                 "measures": [
                                                     [
-                                                        0.001
+                                                        -0.007
                                                     ]
                                                 ]
                                             }
                                         }
                                     }
                                 ]
+                            },
+                            "reporter dye data cube": {
+                                "label": "reporter dye",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "integer",
+                                            "concept": "cycle count",
+                                            "unit": "#"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "reporter dye fluorescence",
+                                            "unit": "RFU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [
+                                            1
+                                        ]
+                                    ],
+                                    "measures": [
+                                        [
+                                            34014.32
+                                        ]
+                                    ]
+                                }
+                            },
+                            "passive reference dye data cube": {
+                                "label": "passive reference dye",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "integer",
+                                            "concept": "cycle count",
+                                            "unit": "#"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "passive reference dye fluorescence",
+                                            "unit": "RFU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [
+                                            1
+                                        ]
+                                    ],
+                                    "measures": [
+                                        [
+                                            55573.94
+                                        ]
+                                    ]
+                                }
+                            },
+                            "melting curve data cube": {
+                                "label": "melting curve",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "temperature",
+                                            "unit": "degrees C"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "reporter dye fluorescence",
+                                            "unit": "(unitless)"
+                                        },
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "slope",
+                                            "unit": "(unitless)"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [
+                                            1
+                                        ]
+                                    ],
+                                    "measures": [
+                                        [
+                                            3.478
+                                        ],
+                                        [
+                                            0.093
+                                        ]
+                                    ]
+                                }
                             }
                         }
                     ],
-                    "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example",
-                    "experiment type": "relative standard curve qPCR experiment",
+                    "experimental data identifier": "200224 U251p14 200217_14v9_SEMA3F_trial 1",
+                    "experiment type": "comparative CT qPCR experiment",
                     "container type": "qPCR reaction block"
                 }
             }
         ],
         "data system document": {
             "data system instance identifier": "localhost",
-            "file name": "appbio_quantstudio_broken_path_calc_doc.txt",
+            "file name": "appbio_quantstudio_minimal_test02.txt",
             "UNC path": "",
             "software name": "Thermo QuantStudio",
             "software version": "1.0",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
             "ASM converter version": "0.1.53"
-        },
-        "calculated data aggregate document": {
-            "calculated data document": [
-                {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
-                                "data source feature": "cycle threshold result"
-                            }
-                        ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "RNaseP",
-                        "reference sample description": "800"
-                    },
-                    "calculated data name": "amplification score",
-                    "calculated datum": {
-                        "value": 1.242,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_2",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
-                                "data source feature": "cycle threshold result"
-                            }
-                        ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "RNaseP",
-                        "reference sample description": "800"
-                    },
-                    "calculated data name": "cq confidence",
-                    "calculated datum": {
-                        "value": 0.967,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_3",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
-                                "data source feature": "cycle threshold result"
-                            }
-                        ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "RNaseP",
-                        "reference sample description": "800"
-                    },
-                    "calculated data name": "ct mean",
-                    "calculated datum": {
-                        "value": 30.115,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_4",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
-                                "data source feature": "cycle threshold result"
-                            }
-                        ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "RNaseP",
-                        "reference sample description": "800"
-                    },
-                    "calculated data name": "ct sd",
-                    "calculated datum": {
-                        "value": 0.051,
-                        "unit": "(unitless)"
-                    }
-                }
-            ]
         }
     }
 }
