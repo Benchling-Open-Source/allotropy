@@ -24,7 +24,7 @@ jobs:
     - name: Install hatch
       run: pip install hatch
     - name: Run Tests
-      run: hatch run test -n 0
+      run: hatch run test
 
   lint:
     runs-on: ubuntu-20.04
