@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - In Agilent Gen5, cast measurement label to string, since it can numeric when reading directly from dataframe (e.g. a single wavelength).
 
 ### Changed
+- Simplify sheets needed to infer presence/absence experiment type inference in Appbio Quantstudio Design and Analysis
+- Allow software name and version to be None in Appbio Quantstudio Design and Analysis 
 
 ### Deprecated
 
