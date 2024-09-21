@@ -21,12 +21,12 @@
 * Calibration Uniformity performed on = 10-13-2010
 * Chemistry = TAQMAN
 * Date Created = 2014-09-10 04:10:50 AM EDT
-* Experiment Barcode = 
+* Experiment Barcode =
 * Experiment Comment = NA
 * Experiment File Name = C:\Program Files (x86)\Applied BioSystems\QuantStudio Real-Time PCR Software\examples\QS7Flex\QS7_96-Well Comparative Ct Example.eds
 * Experiment Name = QuantStudio96-Well Comparative Ct Example
 * Experiment Run End Time = 2010-10-20 02:23:34 AM EDT
-* Experiment Type = Comparative Cт (ΔΔCт) 
+* Experiment Type = Comparative Cт (ΔΔCт)
 * Instrument Type = QuantStudio(TM) 7 Flex System
 * Passive Reference = ROX
 * Quantification Cycle Method = Ct
@@ -36,15 +36,15 @@
 
 [Sample Setup]
 Well	Well Position	Sample Name	Sample Color	Biogroup Name	Biogroup Color	Target Name	Target Color	Task	Reporter	Quencher	Quantity	Comments
-37	D1	Lung	"RGB(176,23,31)"			TGF-B	"RGB(176,23,31)"	UNKNOWN	FAM	NFQ-MGB		
-38	D2	Lung	"RGB(176,23,31)"			TGF-B	"RGB(176,23,31)"	UNKNOWN	FAM	NFQ-MGB		
-46	D10	Liver	"RGB(139,137,112)"			TGF-B	"RGB(176,23,31)"	UNKNOWN	FAM	NFQ-MGB		
-49	E1	Lung	"RGB(176,23,31)"			TGF-B	"RGB(176,23,31)"	UNKNOWN	FAM	NFQ-MGB		
-58	E10	Liver	"RGB(139,137,112)"			TGF-B	"RGB(176,23,31)"	UNKNOWN	FAM	NFQ-MGB		
-85	H1	Lung	"RGB(176,23,31)"			GAPDH	"RGB(0,0,255)"	UNKNOWN	VIC	NFQ-MGB		
-86	H2	Lung	"RGB(176,23,31)"			GAPDH	"RGB(0,0,255)"	UNKNOWN	VIC	NFQ-MGB		
-94	H10	Liver	"RGB(139,137,112)"			GAPDH	"RGB(0,0,255)"	UNKNOWN	VIC	NFQ-MGB		
-95	H11	Liver	"RGB(139,137,112)"			GAPDH	"RGB(0,0,255)"	UNKNOWN	VIC	NFQ-MGB		
+37	D1	Lung	"RGB(176,23,31)"			TGF-B	"RGB(176,23,31)"	UNKNOWN	FAM	NFQ-MGB
+38	D2	Lung	"RGB(176,23,31)"			TGF-B	"RGB(176,23,31)"	UNKNOWN	FAM	NFQ-MGB
+46	D10	Liver	"RGB(139,137,112)"			TGF-B	"RGB(176,23,31)"	UNKNOWN	FAM	NFQ-MGB
+49	E1	Lung	"RGB(176,23,31)"			TGF-B	"RGB(176,23,31)"	UNKNOWN	FAM	NFQ-MGB
+58	E10	Liver	"RGB(139,137,112)"			TGF-B	"RGB(176,23,31)"	UNKNOWN	FAM	NFQ-MGB
+85	H1	Lung	"RGB(176,23,31)"			GAPDH	"RGB(0,0,255)"	UNKNOWN	VIC	NFQ-MGB
+86	H2	Lung	"RGB(176,23,31)"			GAPDH	"RGB(0,0,255)"	UNKNOWN	VIC	NFQ-MGB
+94	H10	Liver	"RGB(139,137,112)"			GAPDH	"RGB(0,0,255)"	UNKNOWN	VIC	NFQ-MGB
+95	H11	Liver	"RGB(139,137,112)"			GAPDH	"RGB(0,0,255)"	UNKNOWN	VIC	NFQ-MGB
 
 [Amplification Data]
 Well	Cycle	Target Name	Rn	Delta Rn
@@ -60,18 +60,17 @@ Well	Cycle	Target Name	Rn	Delta Rn
 
 [Results]
 Well	Well Position	Omit	Sample Name	Target Name	Task	Reporter	Quencher	Quantity	Quantity Mean	Quantity SD	RQ	RQ Min	RQ Max	CT	Ct Mean	Ct SD	Delta Ct	Delta Ct Mean	Delta Ct SE	Delta Delta Ct	Automatic Ct Threshold	Ct Threshold	Automatic Baseline	Baseline Start	Baseline End	Comments	Amp Score	Cq Conf
-37	D1	false	Lung	TGF-B	UNKNOWN	FAM	NFQ-MGB				0.800	0.639	1.002	30.155	30.115	0.051		-2.647	0.150	0.323	true	0.133	true	3	25		1.242	0.967
-38	D2	false	Lung	TGF-B	UNKNOWN	FAM	NFQ-MGB				0.800	0.639	1.002	30.200	30.115	0.051		-2.647	0.150	0.323	true	0.133	true	3	25		1.242	0.964
-46	D10	false	Liver	TGF-B	UNKNOWN	FAM	NFQ-MGB				1.000	0.789	1.267	29.799	29.799	0.031		-2.969	0.158	0.000	true	0.133	true	3	25		1.230	0.968
-49	E1	false	Lung	TGF-B	UNKNOWN	FAM	NFQ-MGB				0.800	0.639	1.002	30.093	30.115	0.051		-2.647	0.150	0.323	true	0.133	true	3	25		1.247	0.965
-58	E10	false	Liver	TGF-B	UNKNOWN	FAM	NFQ-MGB				1.000	0.789	1.267	29.773	29.799	0.031		-2.969	0.158	0.000	true	0.133	true	3	25		1.232	0.970
-85	H1	false	Lung	GAPDH	UNKNOWN	VIC	NFQ-MGB							32.884	32.762	0.259					false	0.060	true	3	29		0.936	0.954
-86	H2	false	Lung	GAPDH	UNKNOWN	VIC	NFQ-MGB							32.937	32.762	0.259					false	0.060	true	3	29		0.947	0.911
-94	H10	false	Liver	GAPDH	UNKNOWN	VIC	NFQ-MGB							32.546	32.768	0.274					false	0.060	true	3	29		0.945	0.947
-95	H11	false	Liver	GAPDH	UNKNOWN	VIC	NFQ-MGB							33.074	32.768	0.274					false	0.060	true	3	29		0.947	0.912
+37	D1	false	Lung	TGF-B	UNKNOWN	FAM	NFQ-MGB				0.800	0.639	1.002	30.155	30.115	0.051		-2.647	0.150	0.323	true	0.133	true	3	25		1.242	0.968
+38	D2	false	Lung	TGF-B	UNKNOWN	FAM	NFQ-MGB				0.800	0.639	1.002	30.200	30.115	0.051		-2.647	0.150	0.323	true	0.133	true	3	25		1.242	0.965
+46	D10	false	Liver	TGF-B	UNKNOWN	FAM	NFQ-MGB				1.000	0.789	1.267	29.799	29.799	0.031		-2.969	0.158	0.000	true	0.133	true	3	25		1.230	0.969
+49	E1	false	Lung	TGF-B	UNKNOWN	FAM	NFQ-MGB				0.800	0.639	1.002	30.093	30.115	0.051		-2.647	0.150	0.323	true	0.133	true	3	25		1.247	0.966
+58	E10	false	Liver	TGF-B	UNKNOWN	FAM	NFQ-MGB				1.000	0.789	1.267	29.773	29.799	0.031		-2.969	0.158	0.000	true	0.133	true	3	25		1.232	0.971
+85	H1	false	Lung	GAPDH	UNKNOWN	VIC	NFQ-MGB							32.884	32.762	0.259					false	0.060	true	3	29		0.936	0.955
+86	H2	false	Lung	GAPDH	UNKNOWN	VIC	NFQ-MGB							32.937	32.762	0.259					false	0.060	true	3	29		0.947	0.912
+94	H10	false	Liver	GAPDH	UNKNOWN	VIC	NFQ-MGB							32.546	32.768	0.274					false	0.060	true	3	29		0.945	0.948
+95	H11	false	Liver	GAPDH	UNKNOWN	VIC	NFQ-MGB							33.074	32.768	0.274					false	0.060	true	3	29		0.947	0.913
 
 Analysis Type = Singleplex
 Endogenous Control = GAPDH
 RQ Min/Max Confidence Level = 95.0
 Reference Sample = Liver
-
