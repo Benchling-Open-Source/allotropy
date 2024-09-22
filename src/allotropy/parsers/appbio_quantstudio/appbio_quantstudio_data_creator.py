@@ -189,7 +189,7 @@ def _create_measurement(
         well_location_identifier=well_item.well_location_identifier,
         well_identifier=well_item.identifier,
         well_plate_identifier=header.barcode,
-        omit=well_item.omit,
+        omit=result.omit,
         sample_color=well_item.sample_color,
         biogroup_name=well_item.biogroup_name,
         biogroup_color=well_item.biogroup_color,

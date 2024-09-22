@@ -118,7 +118,6 @@ class WellItem(Referenceable):
     well_location_identifier: str | None = None
     quencher_dye_setting: str | None = None
     sample_role_type: str | None = None
-    omit: bool | None = None
     sample_color: str | None = None
     biogroup_name: str | None = None
     biogroup_color: str | None = None
@@ -156,7 +155,6 @@ class WellItem(Referenceable):
                 position=data.get(str, "Well Position", NOT_APPLICABLE),
                 well_location_identifier=data.get(str, "Well Position"),
                 quencher_dye_setting=data.get(str, "Quencher"),
-                omit=data.get(bool, "Omit"),
                 sample_color=data.get(str, "Sample Color"),
                 biogroup_name=data.get(str, "Biogroup Name"),
                 biogroup_color=data.get(str, "Biogroup Color"),
@@ -173,7 +171,6 @@ class WellItem(Referenceable):
                 position=data.get(str, "Well Position", NOT_APPLICABLE),
                 well_location_identifier=data.get(str, "Well Position"),
                 quencher_dye_setting=data.get(str, "Quencher"),
-                omit=data.get(bool, "Omit"),
                 sample_color=data.get(str, "Sample Color"),
                 biogroup_name=data.get(str, "Biogroup Name"),
                 biogroup_color=data.get(str, "Biogroup Color"),
@@ -199,7 +196,6 @@ class WellItem(Referenceable):
             position=data.get(str, "Well Position", NOT_APPLICABLE),
             well_location_identifier=data.get(str, "Well Position"),
             quencher_dye_setting=data.get(str, "Quencher"),
-            omit=data.get(bool, "Omit"),
             sample_color=data.get(str, "Sample Color"),
             biogroup_name=data.get(str, "Biogroup Name"),
             biogroup_color=data.get(str, "Biogroup Color"),
@@ -367,6 +363,7 @@ class Result:
     baseline_corrected_reporter_result: float | None
     genotyping_determination_result: str | None
     genotyping_determination_method_setting: float | None
+    omit: bool | None
     quantity: float | None
     quantity_mean: float | None
     quantity_sd: float | None
@@ -487,6 +484,7 @@ class Result:
                 genotyping_determination_method_setting=data.get(
                     float, "Threshold Value"
                 ),
+                omit=data.get(bool, "Omit"),
                 quantity=data.get(float, "Quantity"),
                 quantity_mean=data.get(float, "Quantity Mean"),
                 quantity_sd=data.get(float, "Quantity SD"),
