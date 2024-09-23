@@ -13,7 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- In Agilent Gen5, cast measurement label to string, since it can numeric when reading directly from dataframe (e.g. a single wavelength).
+- Unchained Labs Lunatic - handle missing 'Sample name' and missing 'Table' label before table parser.
+- Agilent Gen5 - cast measurement label to string, since it can numeric when reading directly from dataframe (e.g. a single wavelength).
 
 ### Changed
 - Simplify sheets needed to infer presence/absence experiment type inference in Appbio Quantstudio Design and Analysis
