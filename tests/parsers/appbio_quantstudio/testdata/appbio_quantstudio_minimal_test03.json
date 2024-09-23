@@ -21,7 +21,11 @@
                             "sample document": {
                                 "sample identifier": "NTC",
                                 "sample role type": "NTC",
-                                "well location identifier": "A1"
+                                "well location identifier": "A1",
+                                "custom information document": {
+                                    "well identifier": 1,
+                                    "sample color": "RGB(238,238,0)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -47,7 +51,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 3,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 39,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": null,
@@ -126,6 +138,9 @@
                                         "genotyping determination result": "Negative Control (NC)"
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "omit": false
                             }
                         },
                         {
@@ -135,7 +150,11 @@
                             "sample document": {
                                 "sample identifier": "NTC",
                                 "sample role type": "NTC",
-                                "well location identifier": "A1"
+                                "well location identifier": "A1",
+                                "custom information document": {
+                                    "well identifier": 1,
+                                    "sample color": "RGB(238,238,0)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -161,7 +180,15 @@
                                                 "unit": "(unitless)"
                                             },
                                             "automatic cycle threshold enabled setting": true,
-                                            "automatic baseline determination enabled setting": true
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 3,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 39,
+                                                "unit": "#"
+                                            }
                                         },
                                         "cycle threshold result": {
                                             "value": null,
@@ -240,6 +267,9 @@
                                         "genotyping determination result": "Negative Control (NC)"
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "omit": false
                             }
                         }
                     ],

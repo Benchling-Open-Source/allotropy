@@ -1,9 +1,5 @@
 import pandas as pd
 
-from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
-    ScanPositionSettingPlateReader,
-)
-from allotropy.allotrope.models.shared.definitions.definitions import InvalidJsonFloat
 from allotropy.parsers.agilent_gen5.agilent_gen5_structure import (
     FilterSet,
     get_identifiers,
@@ -271,10 +267,6 @@ def test_create_filter_set() -> None:
     assert filterset.excitation_wavelength_setting == 485
     assert filterset.excitation_bandwidth_setting == 20
     assert filterset.wavelength_filter_cutoff_setting == 510
-    assert (
-        filterset.scan_position_setting
-        == ScanPositionSettingPlateReader.top_scan_position__plate_reader_
-    )
 
 
 def test_create_filter_set_with_mirror() -> None:
@@ -290,24 +282,16 @@ def test_create_filter_set_with_mirror() -> None:
     assert filterset.excitation_wavelength_setting == 485
     assert filterset.excitation_bandwidth_setting is None
     assert filterset.wavelength_filter_cutoff_setting is None
-    assert (
-        filterset.scan_position_setting
-        == ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_
-    )
 
 
 def test_create_filter_set_full_light() -> None:
     filterset = FilterSet(emission="Full light", gain="135", optics="Top")
 
-    assert filterset.detector_wavelength_setting == InvalidJsonFloat.NaN
+    assert filterset.detector_wavelength_setting is None
     assert filterset.detector_bandwidth_setting is None
     assert filterset.excitation_wavelength_setting is None
     assert filterset.excitation_bandwidth_setting is None
     assert filterset.gain == "135"
-    assert (
-        filterset.scan_position_setting
-        == ScanPositionSettingPlateReader.top_scan_position__plate_reader_
-    )
 
 
 def test_create_layout_data() -> None:
