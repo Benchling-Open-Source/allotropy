@@ -1,5 +1,6 @@
 import inspect
 from pathlib import Path
+import re
 
 import pytest
 
@@ -26,5 +27,21 @@ def pytest_generate_tests(metafunc: pytest.Metafunc) -> None:
     if "test_file_path" in metafunc.fixturenames and metafunc.cls.VENDOR:
         testdata_dir = Path(Path(inspect.getfile(metafunc.cls)).parent, "testdata")
         paths = get_test_cases(testdata_dir)
+        if metafunc.cls.INCLUDE_FILTER:
+            paths = [
+                path
+                for path in paths
+                if any(
+                    re.search(regex, str(path)) for regex in metafunc.cls.INCLUDE_FILTER
+                )
+            ]
+        if metafunc.cls.EXCLUDE_FILTER:
+            paths = [
+                path
+                for path in paths
+                if not any(
+                    re.search(regex, str(path)) for regex in metafunc.cls.EXCLUDE_FILTER
+                )
+            ]
         ids = [str(path.relative_to(testdata_dir)) for path in paths]
         metafunc.parametrize("test_file_path", paths, ids=ids)

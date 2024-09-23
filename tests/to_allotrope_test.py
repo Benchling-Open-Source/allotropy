@@ -41,6 +41,10 @@ def test_allotrope_model_from_file_not_found() -> None:
 class ParserTest:
     VENDOR: Vendor
     OVERWRITE_ON_FAILURE: bool = False
+    # If set, only files matching regexes in this list will be run.
+    INCLUDE_FILTER: list[str] | None = None
+    # If set, files matching regexes in this list will be excluded.
+    EXCLUDE_FILTER: list[str] | None = None
 
     # test_file_path is automatically populated with all files in testdata folder next to the test file.
     def test_positive_cases(self, test_file_path: Path) -> None:

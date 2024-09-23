@@ -7,18 +7,10 @@ from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._03.solu
     Analyte,
 )
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.novabio_flex2.novabio_flex2_parser import NovaBioFlexParser
 from allotropy.parsers.novabio_flex2.novabio_flex2_structure import (
     Sample,
     SampleList,
     Title,
-)
-from allotropy.testing.utils import mock_uuid_generation
-from tests.parsers.novabio_flex2.novabio_flex2_data import (
-    get_data,
-    get_input_stream,
-    get_input_title,
 )
 
 
@@ -125,9 +117,3 @@ def test_create_sample_list_invalid_no_analyst() -> None:
     )
     with pytest.raises(AllotropeConversionError, match="Unable to find the Operator."):
         SampleList.create(df)
-
-
-def test_create_data() -> None:
-    named_file_contents = NamedFileContents(get_input_stream(), get_input_title())
-    with mock_uuid_generation():
-        assert NovaBioFlexParser().create_data(named_file_contents) == get_data()
