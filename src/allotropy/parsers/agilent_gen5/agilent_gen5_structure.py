@@ -232,7 +232,6 @@ class KineticData:
     run_time: str | None
     interval: str | None
     reads: int | None
-    VALUES: int = 3
 
     @classmethod
     def create(cls, lines: list[str]) -> KineticData | None:
