@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- AppBio Quantstuido - added additional metadata fields
+
 ### Fixed
 
 - Unchained Labs Lunatic - handle missing 'Sample name' and missing 'Table' label before table parser.

@@ -399,8 +399,8 @@ class Result:
     automatic_baseline_determination_enabled_setting: bool | None
     normalized_reporter_result: float | None
     baseline_corrected_reporter_result: float | None
-    baseline_determination_start_cycle_setting: float | None
-    baseline_determination_end_cycle_setting: float | None
+    baseline_determination_start_cycle_setting: int | None
+    baseline_determination_end_cycle_setting: int | None
     genotyping_determination_result: str | None
     genotyping_determination_method_setting: float | None
     quantity: float | None
@@ -492,10 +492,10 @@ class Result:
             normalized_reporter_result=target_data.get(float, "Rn"),
             baseline_corrected_reporter_result=target_data.get(float, "Delta Rn"),
             baseline_determination_start_cycle_setting=target_data.get(
-                float, "Baseline Start"
+                int, "Baseline Start"
             ),
             baseline_determination_end_cycle_setting=target_data.get(
-                float, "Baseline End"
+                int, "Baseline End"
             ),
             genotyping_determination_result=cls.get_genotyping_determination_result(
                 target_data
