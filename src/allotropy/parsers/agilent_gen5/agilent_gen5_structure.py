@@ -569,7 +569,8 @@ def create_results(
     groups = [
         MeasurementGroup(
             measurement_time=header_data.datetime,
-            plate_well_count=len(set(data.index.tolist())) * len(set(data.columns[1:].tolist())),
+            plate_well_count=len(set(data.index.tolist()))
+            * len(set(data.columns[1:].tolist())),
             analytical_method_identifier=header_data.protocol_file_path,
             experimental_data_identifier=header_data.experiment_file_path,
             measurements=[
@@ -648,7 +649,8 @@ def create_kinetic_results(
     groups = [
         MeasurementGroup(
             measurement_time=header_data.datetime,
-            plate_well_count=len(set(data.index.tolist())) * len(set(data.columns[1:].tolist())),
+            plate_well_count=len(set(data.index.tolist()))
+            * len(set(data.columns[1:].tolist())),
             analytical_method_identifier=header_data.protocol_file_path,
             experimental_data_identifier=header_data.experiment_file_path,
             measurements=[
