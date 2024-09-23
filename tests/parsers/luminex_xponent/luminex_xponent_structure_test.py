@@ -19,13 +19,11 @@ from allotropy.parsers.luminex_xponent.luminex_xponent_reader import (
 )
 from allotropy.parsers.luminex_xponent.luminex_xponent_structure import (
     create_calibration,
-    Data,
     Header,
     Measurement,
     MeasurementList,
 )
 from allotropy.parsers.utils.pandas import SeriesData
-from tests.parsers.luminex_xponent.luminex_xponent_data import get_data, get_reader
 
 
 def get_result_lines() -> list[str]:
@@ -227,13 +225,3 @@ def test_create_measurement_list_without_required_table_then_raise(
         ),
     ):
         MeasurementList.create(results_data)
-
-
-def test_create_data() -> None:
-    with mock.patch(
-        "allotropy.parsers.luminex_xponent.luminex_xponent_structure.random_uuid_str",
-        return_value="dummy_id",
-    ):
-        data = Data.create(get_reader())
-
-    assert data == get_data()

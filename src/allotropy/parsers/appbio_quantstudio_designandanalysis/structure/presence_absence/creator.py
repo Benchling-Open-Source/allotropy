@@ -25,10 +25,7 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.presence_a
 
 class PresenceAbsenceCreator(Creator):
     EXPECTED_SHEETS: ClassVar[list[str]] = [
-        "Sample Call",
-        "Well Call",
         "Target Call",
-        "Control Status",
     ]
 
     @classmethod
