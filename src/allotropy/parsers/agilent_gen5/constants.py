@@ -51,15 +51,28 @@ class ReadMode(str, Enum):
 UNSUPPORTED_READ_MODE_ERROR = (
     f"Read mode not found; expected to find one of {sorted(ReadMode._member_names_)}."
 )
+ELAPSED_TIME = "elapsed time"
 
 READ_DATA_MEASUREMENT_ERROR = "No read mode found for measurement {}"
 ALPHALISA_FLUORESCENCE_FOUND = (
     "Both ALPHALISA and FLUORESCENCE read modes detected, which is not supported."
 )
 
+DATA_SOURCE_FEATURE_VALUES = {
+    ReadMode.ABSORBANCE: "absorption profile data cube",
+    ReadMode.FLUORESCENCE: "fluorescence emission profile data cube",
+    ReadMode.LUMINESCENCE: "luminescence profile data cube",
+}
+
+READ_MODE_UNITS = {
+    ReadMode.ABSORBANCE: "mAU",
+    ReadMode.FLUORESCENCE: "RFU",
+    ReadMode.LUMINESCENCE: "RLU",
+}
+SECONDS = "s"
+
 
 class ReadType(str, Enum):
     ENDPOINT = "Endpoint"
-    KINETIC = "Kinetic"
     AREASCAN = "Area Scan"
     SPECTRAL = "Spectral"
