@@ -158,7 +158,6 @@ class WellItem(Referenceable):
                 sample_color=data.get(str, "Sample Color"),
                 biogroup_name=data.get(str, "Biogroup Name"),
                 biogroup_color=data.get(str, "Biogroup Color"),
-                target_name=data.get(str, "Target Name"),
                 target_color=data.get(str, "Target Color"),
                 sample_role_type=data.get(str, "Task"),
             ),
@@ -174,7 +173,6 @@ class WellItem(Referenceable):
                 sample_color=data.get(str, "Sample Color"),
                 biogroup_name=data.get(str, "Biogroup Name"),
                 biogroup_color=data.get(str, "Biogroup Color"),
-                target_name=data.get(str, "Target Name"),
                 target_color=data.get(str, "Target Color"),
                 sample_role_type=data.get(str, "Task"),
             ),
@@ -199,7 +197,6 @@ class WellItem(Referenceable):
             sample_color=data.get(str, "Sample Color"),
             biogroup_name=data.get(str, "Biogroup Name"),
             biogroup_color=data.get(str, "Biogroup Color"),
-            target_name=data.get(str, "Target Name"),
             target_color=data.get(str, "Target Color"),
             sample_role_type=data.get(str, "Task"),
         )

@@ -193,7 +193,6 @@ def _create_measurement(
         sample_color=well_item.sample_color,
         biogroup_name=well_item.biogroup_name,
         biogroup_color=well_item.biogroup_color,
-        target_name=well_item.target_name,
         target_color=well_item.target_color,
         total_cycle_number_setting=amplification_data.total_cycle_number_setting,
         pcr_detection_chemistry=header.pcr_detection_chemistry,

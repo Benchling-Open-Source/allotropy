@@ -144,7 +144,6 @@ class Measurement:
     sample_color: str | None = None
     biogroup_name: str | None = None
     biogroup_color: str | None = None
-    target_name: str | None = None
     target_color: str | None = None
 
 
@@ -284,7 +283,6 @@ class Mapper(SchemaMapper[Data, Model]):
             "sample color": measurement.sample_color,
             "biogroup name": measurement.biogroup_name,
             "biogroup color": measurement.biogroup_color,
-            "target name": measurement.target_name,
             "target color": measurement.target_color,
         }
         sample_doc = SampleDocument(
