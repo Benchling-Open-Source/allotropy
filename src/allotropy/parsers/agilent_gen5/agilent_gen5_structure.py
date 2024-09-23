@@ -551,14 +551,12 @@ def create_results(
     measurement_labels = [
         label for r_data in read_data for label in r_data.measurement_labels
     ]
-    plate_well_count = 0
     for row_name, row in data.iterrows():
         label = str(row.iloc[-1])
         for col_index, value in enumerate(row.iloc[:-1]):
             well_pos = f"{row_name}{col_index + 1}"
             well_value = try_non_nan_float_or_none(value)
             # TODO: Report error documents for NaN values
-            plate_well_count += 1
             if well_value is None:
                 continue
             if label in measurement_labels:
@@ -571,7 +569,7 @@ def create_results(
     groups = [
         MeasurementGroup(
             measurement_time=header_data.datetime,
-            plate_well_count=plate_well_count,
+            plate_well_count=len(set(data.index.tolist())) * len(set(data.columns[1:].tolist())),
             analytical_method_identifier=header_data.protocol_file_path,
             experimental_data_identifier=header_data.experiment_file_path,
             measurements=[
@@ -637,14 +635,12 @@ def create_kinetic_results(
     measurement_labels = [
         label for r_data in read_data for label in r_data.measurement_labels
     ]
-    plate_well_count = 0
     for row_name, row in data.iterrows():
         label = row.iloc[-1]
         for col_index, value in enumerate(row.iloc[:-1]):
             well_pos = f"{row_name}{col_index + 1}"
             well_value = try_non_nan_float_or_none(value)
             # TODO: Report error documents for NaN values
-            plate_well_count += 1
             if not well_value:
                 continue
             calculated_data[well_pos].append((label, well_value))
@@ -652,7 +648,7 @@ def create_kinetic_results(
     groups = [
         MeasurementGroup(
             measurement_time=header_data.datetime,
-            plate_well_count=plate_well_count,
+            plate_well_count=len(set(data.index.tolist())) * len(set(data.columns[1:].tolist())),
             analytical_method_identifier=header_data.protocol_file_path,
             experimental_data_identifier=header_data.experiment_file_path,
             measurements=[
