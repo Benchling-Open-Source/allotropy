@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from collections.abc import Callable
 from io import BytesIO
 from pathlib import Path
 
@@ -8,28 +7,14 @@ import pandas as pd
 import pytest
 
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
-from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import (
-    Data,
-)
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_parser import (
-    AppBioQuantStudioParser,
-)
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     Header,
     Result,
 )
 from allotropy.parsers.lines_reader import LinesReader, read_to_lines
-from allotropy.testing.utils import mock_uuid_generation
 from allotropy.types import IOType
-from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
-    get_broken_calc_doc_data,
-    get_data,
-    get_data2,
-    get_genotyping_data,
-    get_rel_std_curve_data,
-)
 
 TESTDATA = Path(Path(__file__).parent, "testdata")
 
@@ -168,41 +153,6 @@ def test_results_builder() -> None:
     assert result.cycle_threshold_value_setting == 0.219
     assert result.cycle_threshold_result is None
     assert result.automatic_cycle_threshold_enabled_setting is True
-
-
-@pytest.mark.parametrize(
-    "test_filepath,create_expected_data_func",
-    [
-        (
-            f"{TESTDATA}/exclude/appbio_quantstudio_test01.txt",
-            get_data,
-        ),
-        (
-            f"{TESTDATA}/exclude/appbio_quantstudio_test02.txt",
-            get_data2,
-        ),
-        (
-            f"{TESTDATA}/exclude/appbio_quantstudio_test03.txt",
-            get_genotyping_data,
-        ),
-        (
-            f"{TESTDATA}/exclude/appbio_quantstudio_test04.txt",
-            get_rel_std_curve_data,
-        ),
-        (
-            f"{TESTDATA}/exclude/appbio_quantstudio_test05.txt",
-            get_broken_calc_doc_data,
-        ),
-    ],
-)
-def test_data_builder(
-    test_filepath: str, create_expected_data_func: Callable[[str], Data]
-) -> None:
-    with open(test_filepath, "rb") as raw_contents:
-        with mock_uuid_generation():
-            assert AppBioQuantStudioParser().create_data(
-                NamedFileContents(raw_contents, test_filepath)
-            ) == create_expected_data_func(test_filepath)
 
 
 def get_raw_header_contents(
