@@ -9,7 +9,7 @@ from allotropy.parsers.utils.pandas import (
 
 
 class ChemometecNcViewReader:
-    SUPPORTED_EXTENSIONS = "xlsx,csv"
+    SUPPORTED_EXTENSIONS = "csv"
     header: SeriesData
     data: pd.DataFrame
 
