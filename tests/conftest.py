@@ -1,14 +1,16 @@
 import inspect
 from pathlib import Path
 import re
+from typing import Any
 
 import pytest
+from pytest import FixtureRequest, Parser
 
 # ParserTest will ignore any files with "error",  "exclude", or "invalid" in their path.
 EXCLUDE_KEYWORDS = {"error", "exclude", "invalid"}
 
 
-def pytest_addoption(parser):
+def pytest_addoption(parser: Parser) -> None:
     parser.addoption(
         "--overwrite",
         action="store_true",
@@ -29,7 +31,7 @@ def pytest_addoption(parser):
 
 
 @pytest.fixture
-def overwrite(request) -> bool:
+def overwrite(request: FixtureRequest) -> Any:
     return request.config.getoption("--overwrite")
 
 
