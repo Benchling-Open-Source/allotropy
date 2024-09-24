@@ -14,22 +14,34 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 
 @cache
 def build_quantity(
-    view_tr_data: ViewData[WellItem],  # noqa: ARG001
-    target: str,  # noqa: ARG001
+    view_tr_data: ViewData[WellItem],
+    target: str,
     well_item: WellItem,
 ) -> CalculatedDocument | None:
     if (quantity := well_item.result.quantity) is None:
         return None
 
+    data_sources = []
+    if well_item.result.cycle_threshold_result is None:
+        return None
+
+    data_sources.append(
+        DataSource(feature="cycle threshold result", reference=well_item),
+    )
+
+    if y_intercept_ref := build_y_intercept(view_tr_data, target):
+        data_sources.append(
+            DataSource(feature="Y-intercept", reference=y_intercept_ref)
+        )
+
+    if slope_ref := build_slope(view_tr_data, target):
+        data_sources.append(DataSource(feature="Slope", reference=slope_ref))
+
     return CalculatedDocument(
         uuid=random_uuid_str(),
         name="quantity",
         value=quantity,
-        data_sources=[
-            DataSource(feature="cycle threshold result", reference=well_item),
-            DataSource(feature="Y-intercept", reference=well_item),
-            DataSource(feature="Slope", reference=well_item),
-        ],
+        data_sources=data_sources,
     )
 
 
