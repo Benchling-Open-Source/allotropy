@@ -1,4 +1,4 @@
-from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
+from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat, NaN
 from allotropy.allotrope.schema_mappers.adm.cell_counting.benchling._2023._11.cell_counting import (
     Measurement,
     MeasurementGroup,
@@ -33,14 +33,14 @@ def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
                 processed_data_identifier=random_uuid_str(),
                 timestamp=_format_timestamp(data[str, "NAME"]),
                 sample_identifier=data[str, "SAMPLE ID"],
-                viability=data.get(float, "VIABILITY (%)"),
-                total_cell_density=_format_unit(data.get(str, "TOTAL (cells/ml)")),
-                viable_cell_density=_format_unit(data.get(str, "LIVE (cells/ml)")),
-                dead_cell_density=_format_unit(data.get(str, "DEAD (cells/ml)")),
-                average_total_cell_diameter=_format_unit(
+                viability=data[float, "VIABILITY (%)"],
+                total_cell_density=_format_number(data.get(str, "TOTAL (cells/ml)")),
+                viable_cell_density=_format_number(data.get(str, "LIVE (cells/ml)")),
+                dead_cell_density=_format_number(data.get(str, "DEAD (cells/ml)")),
+                average_total_cell_diameter=_format_number(
                     data.get(str, "DIAMETER (μm)")
                 ),
-                cell_aggregation_percentage=_format_unit(
+                cell_aggregation_percentage=_format_number(
                     data.get(str, "AGGREGATES (%)")
                 ),
                 debris_index=data.get(float, "DEBRIS INDEX"),
@@ -50,7 +50,9 @@ def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
     )
 
 
-def _format_unit(unit: str) -> JsonFloat:
+def _format_number(unit: str | None) -> JsonFloat:
+    if not unit:
+        return NaN
     return try_float_or_nan("".join(unit.split()))
 
 
