@@ -37,8 +37,12 @@ def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
                 total_cell_density=_format_unit(data.get(str, "TOTAL (cells/ml)")),
                 viable_cell_density=_format_unit(data.get(str, "LIVE (cells/ml)")),
                 dead_cell_density=_format_unit(data.get(str, "DEAD (cells/ml)")),
-                average_total_cell_diameter=_format_unit(data.get(str, "DIAMETER (μm)")),
-                cell_aggregation_percentage=_format_unit(data.get(str, "AGGREGATES (%)")),
+                average_total_cell_diameter=_format_unit(
+                    data.get(str, "DIAMETER (μm)")
+                ),
+                cell_aggregation_percentage=_format_unit(
+                    data.get(str, "AGGREGATES (%)")
+                ),
                 debris_index=data.get(float, "DEBRIS INDEX"),
                 cell_density_dilution_factor=data.get(float, "DILUTION FACTOR"),
             )
