@@ -8,26 +8,54 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Amp score and Cq conf calculated documents to Appbio Quantstudio
-- Add custom information to processed data document in Appbio Quantstudio
-- Add schema mapper for the `REC/2024/06/plate-reader` schema.
-- Checks for missing well item amplification and results data in quantstudio
-- Add csv support to ThermoFisher Nanodrop One
 
 ### Fixed
 
-- Fixed bad reference for y-intercept and slope in quantity calculated data document of Appbio Quantstudio
-- Correctly format timezone in SoftmaxPro adapter
-
 ### Changed
-
-- Refactor Softmaxpro adapter to use the new schema mapper.
 
 ### Deprecated
 
 ### Removed
 
 ### Security
+
+## [0.1.54] - 2024-09-23
+
+### Added
+
+- AppBio Quantstuido - added additional metadata fields
+
+### Fixed
+
+- Unchained Labs Lunatic - handle missing 'Sample name' and missing 'Table' label before table parser.
+- Agilent Gen5 - cast measurement label to string, since it can numeric when reading directly from dataframe (e.g. a single wavelength).
+
+### Changed
+
+- Simplify sheets needed to infer presence/absence experiment type inference in Appbio Quantstudio Design and Analysis
+- Allow software name and version to be None in Appbio Quantstudio Design and Analysis 
+
+## [0.1.53] - 2024-09-17
+
+### Added
+
+- Amp score and Cq conf calculated documents to Appbio Quantstudio
+- Add custom information to processed data document in Appbio Quantstudio
+- Add schema mapper for the `REC/2024/06/plate-reader` schema.
+- Checks for missing well item amplification and results data in quantstudio
+- Add csv support to ThermoFisher Nanodrop One
+- Made Agilent Gen5 adapter compatible with the new REC schema
+
+### Fixed
+
+- Fixed bad reference for y-intercept and slope in quantity calculated data document of Appbio Quantstudio
+- Correctly format timezone in SoftmaxPro adapter
+- Added support for Agilent Gen5 label format "[excitation wavelength], [emission wavelength]" for fluorescence point detection
+
+### Changed
+
+- Refactor Softmaxpro adapter to use the new schema mapper.
+- Update Thermo Fisher Genesys30 to recommended state
 
 ## [0.1.52] - 2024-09-12
 
