@@ -6,8 +6,6 @@ from allotropy.allotrope.schema_mappers.adm.cell_counting.benchling._2023._11.ce
     Mapper,
 )
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.chemometec_nc_view.constants import DISPLAY_NAME
 from allotropy.parsers.chemometec_nc_view.chemometec_nc_view_reader import (
     ChemometecNcViewReader,
 )
@@ -15,6 +13,8 @@ from allotropy.parsers.chemometec_nc_view.chemometec_nc_view_structure import (
     create_measurement_groups,
     create_metadata,
 )
+from allotropy.parsers.chemometec_nc_view.constants import DISPLAY_NAME
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.pandas import map_rows
 from allotropy.parsers.vendor_parser import MapperVendorParser
 
@@ -26,8 +26,8 @@ class ChemometecNcViewParser(MapperVendorParser[Data, Model]):
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
-        reader = ChemometecNcViewReader.read(named_file_contents)
+        reader = ChemometecNcViewReader(named_file_contents)
         return Data(
             create_metadata(reader.header, named_file_contents.original_file_name),
-            map_rows(reader.data, create_measurement_groups)
+            map_rows(reader.data, create_measurement_groups),
         )

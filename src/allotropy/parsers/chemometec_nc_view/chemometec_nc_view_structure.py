@@ -1,34 +1,54 @@
+from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
 from allotropy.allotrope.schema_mappers.adm.cell_counting.benchling._2023._11.cell_counting import (
     Measurement,
     MeasurementGroup,
     Metadata,
 )
-from allotropy.parsers.roche_cedex_hires import constants
+from allotropy.parsers.chemometec_nc_view import constants
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.values import try_float_or_nan
 
 
 def create_metadata(data: SeriesData, file_name: str) -> Metadata:
     return Metadata(
         file_name=file_name,
-        # Example of the kind of value that might be set with a constant.
+        software_name=constants.SOFTWARE_NAME,
         device_type=constants.DEVICE_TYPE,
-        # Example of the kind of value that might be set from the header data.
-        description=data[str, "System description"],
+        equipment_serial_number=data[str, "INSTRUMENT"].split(":")[-1].strip(),
+        product_manufacturer=constants.PRODUCT_MANUFACTURER,
+        detection_type=constants.DETECTION_TYPE,
+        model_number=NOT_APPLICABLE,
+        unc_path=NOT_APPLICABLE,
     )
 
 
 def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
-    # This function will be called for every row in the dataset, use it to create
-    # a corresponding measurement group.
     return MeasurementGroup(
-        analyst=data[str, "Analyst"],
+        analyst=data[str, "OPERATOR"],
         measurements=[
             Measurement(
                 measurement_identifier=random_uuid_str(),
-                # Example of the kind of value that might be set from a measurement row
-                sample_identifier=data[str, "Sample ID"],
-                viability=data[float, "Viability"],
+                processed_data_identifier=random_uuid_str(),
+                timestamp=_format_timestamp(data[str, "NAME"]),
+                sample_identifier=data[str, "SAMPLE ID"],
+                viability=data[float, "VIABILITY (%)"],
+                total_cell_density=_format_unit(data[str, "TOTAL (cells/ml)"]),
+                viable_cell_density=_format_unit(data[str, "LIVE (cells/ml)"]),
+                dead_cell_density=_format_unit(data[str, "DEAD (cells/ml)"]),
+                average_total_cell_diameter=_format_unit(data[str, "DIAMETER (μm)"]),
+                cell_aggregation_percentage=_format_unit(data[str, "AGGREGATES (%)"]),
+                debris_index=data[float, "DEBRIS INDEX"],
+                cell_density_dilution_factor=data[float, "DILUTION FACTOR"],
             )
         ],
     )
+
+
+def _format_unit(unit: str) -> JsonFloat:
+    return try_float_or_nan("".join(unit.split()))
+
+
+def _format_timestamp(timestamp: str) -> str:
+    return timestamp.split("-")[0]

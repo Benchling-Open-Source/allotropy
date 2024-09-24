@@ -9,14 +9,10 @@ from allotropy.parsers.utils.pandas import (
 
 
 class ChemometecNcViewReader:
-    SUPPORTED_EXTENSIONS = "xlsx"
+    SUPPORTED_EXTENSIONS = "xlsx,csv"
     header: SeriesData
     data: pd.DataFrame
 
-    def __init__(self, named_file_contents: NamedFileContents) -> pd.DataFrame:
-        # Example of one way to parse data. This may work if your data is a simple dataset,
-        # but will probably need some modification, or a totally different approach if the input
-        # file is a different format.
+    def __init__(self, named_file_contents: NamedFileContents) -> None:
         self.data = read_csv(named_file_contents.contents)
-        # When there is no actual header, use the first row as the "header" to parse metadata from.
         self.header = df_to_series_data(self.data.head(1))
