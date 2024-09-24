@@ -10,13 +10,21 @@ EXCLUDE_KEYWORDS = {"error", "exclude", "invalid"}
 
 def pytest_addoption(parser):
     parser.addoption(
-        "--overwrite", action="store_true", help="If set, overwrite failing tests with new data."
+        "--overwrite",
+        action="store_true",
+        help="If set, overwrite failing tests with new data.",
     )
     parser.addoption(
-        "--exclude", action="store", default="", help="Comma separated list of patterns to exclude file paths from to_allotropy_test. If set, any test file matching one of the patterns will be excluded."
+        "--exclude",
+        action="store",
+        default="",
+        help="Comma separated list of patterns to exclude file paths from to_allotropy_test. If set, any test file matching one of the patterns will be excluded.",
     )
     parser.addoption(
-        "--filter", action="store", default="", help="Comma separated list of patterns to filter file paths from to_allotropy_test. If set, only tests matching one of the patterns will be included."
+        "--filter",
+        action="store",
+        default="",
+        help="Comma separated list of patterns to filter file paths from to_allotropy_test. If set, only tests matching one of the patterns will be included.",
     )
 
 
@@ -49,7 +57,8 @@ def pytest_generate_tests(metafunc: pytest.Metafunc) -> None:
                 path
                 for path in paths
                 if any(
-                    re.search(regex, str(path)) for regex in metafunc.config.option.filter.split(",")
+                    re.search(regex, str(path))
+                    for regex in metafunc.config.option.filter.split(",")
                 )
             ]
         if metafunc.config.option.exclude:
@@ -57,7 +66,8 @@ def pytest_generate_tests(metafunc: pytest.Metafunc) -> None:
                 path
                 for path in paths
                 if not any(
-                    re.search(regex, str(path)) for regex in metafunc.config.option.exclude.split(",")
+                    re.search(regex, str(path))
+                    for regex in metafunc.config.option.exclude.split(",")
                 )
             ]
         ids = [str(path.relative_to(testdata_dir)) for path in paths]
