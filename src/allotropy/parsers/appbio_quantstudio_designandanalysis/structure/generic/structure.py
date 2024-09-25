@@ -53,7 +53,7 @@ class Header:
     model_number: str
     device_serial_number: str
     measurement_method_identifier: str
-    pcr_detection_chemistry: str
+    pcr_detection_chemistry: str | None
     passive_reference_dye_setting: str | None
     barcode: str | None
     analyst: str | None
