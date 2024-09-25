@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Add cache decorator to amp score calculated data construction in AppBio Quantstuido
 
 ### Fixed
 
