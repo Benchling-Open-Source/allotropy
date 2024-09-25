@@ -9,10 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Add cache decorator to amp score calculated data construction in AppBio Quantstuido
+- Add Amp score and Cq confidence calculated data documents to AppBio Quantstuido Design and Analysis
 
 ### Fixed
 
 - Mark "PCR Detection Chemistry" as optional in PCR schema.
+- Fix Y-intercept and Slope references as data sources for quantity calculated data document in AppBio Quantstuido Design and Analysis
 
 ### Changed
 
