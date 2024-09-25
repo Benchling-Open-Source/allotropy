@@ -2,26 +2,24 @@ from __future__ import annotations
 
 import pandas as pd
 
-from allotropy.allotrope.pandas_util import read_csv, read_excel
-from allotropy.exceptions import AllotropeConversionError
-from allotropy.types import IOType
-
-MILLION_CONVERSION = 1000000
-MILLION_SCALE_COLS = ["Total Cells/mL", "Live Cells/mL", "Dead Cells/mL"]
+from allotropy.constants import DEFAULT_ENCODING
+from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.utils.pandas import read_csv, read_excel, SeriesData
 
 
 class NexcelomMatrixReader:
-    def __init__(self, contents: IOType) -> None:
-        self.contents = contents
-        self.data = self._read_data()
+    SUPPORTED_EXTENSIONS = "csv,xlsx"
+    header: SeriesData
+    data: pd.DataFrame
 
-    def _read_data(self) -> pd.DataFrame:
+    def __init__(self, named_file_contents: NamedFileContents) -> None:
 
-        try:
-            file_data = read_excel(self.contents)
-        except AllotropeConversionError:
-            file_data = read_csv(self.contents)
-        file_data[MILLION_SCALE_COLS] = file_data[MILLION_SCALE_COLS].applymap(
-            lambda x: x / MILLION_CONVERSION
-        )
-        return file_data
+        if named_file_contents.extension == "csv":
+            df = read_csv(
+                named_file_contents.contents,
+                encoding=DEFAULT_ENCODING,
+            )
+        else:
+            df = read_excel(named_file_contents.contents)
+
+        self.data = df

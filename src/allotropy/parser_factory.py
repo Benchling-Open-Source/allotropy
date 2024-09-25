@@ -42,9 +42,6 @@ from allotropy.parsers.methodical_mind.methodical_mind_parser import (
     MethodicalMindParser,
 )
 from allotropy.parsers.moldev_softmax_pro.softmax_pro_parser import SoftmaxproParser
-from allotropy.parsers.nexcelom_matrix.nexcelom_matrix_parser import (
-    NexcelomMatrixParser,
-)
 from allotropy.parsers.novabio_flex2.novabio_flex2_parser import NovaBioFlexParser
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import (
     PerkinElmerEnvisionParser,
@@ -52,6 +49,9 @@ from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import
 from allotropy.parsers.qiacuity_dpcr.qiacuity_dpcr_parser import QiacuitydPCRParser
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.revvity_kaleido.kaleido_parser import KaleidoParser
+from allotropy.parsers.nexcelom_matrix.nexcelom_matrix_parser import (
+    NexcelomMatrixParser,
+)
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_parser import (
     RocheCedexBiohtParser,
 )

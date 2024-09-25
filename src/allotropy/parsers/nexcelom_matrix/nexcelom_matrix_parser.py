@@ -5,7 +5,7 @@ from typing import Any
 
 import pandas as pd
 
-from allotropy.allotrope.models.cell_counting_benchling_2023_11_cell_counting import (
+from allotropy.allotrope.models.adm.cell_counting.benchling._2023._11.cell_counting import (
     CellCountingAggregateDocument,
     CellCountingDetectorDeviceControlAggregateDocument,
     CellCountingDetectorMeasurementDocumentItem,
@@ -14,7 +14,7 @@ from allotropy.allotrope.models.cell_counting_benchling_2023_11_cell_counting im
     DeviceControlDocumentItemModel,
     MeasurementAggregateDocument,
     Model,
-    ProcessedDataAggregateDocument1,
+    ProcessedDataAggregateDocument,
     ProcessedDataDocumentItem,
     SampleDocument,
 )
@@ -24,13 +24,22 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMillionCellsPerMilliliter,
     TQuantityValuePercent,
 )
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.allotrope.schema_mappers.adm.cell_counting.benchling._2023._11.cell_counting import (
+    Mapper,
+)
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.nexcelom_matrix.constants import EPOCH_STR
+from allotropy.parsers.release_state import ReleaseState
+from allotropy.parsers.nexcelom_matrix.constants import (
+    EPOCH_STR,
+    MILLION_CONVERSION,
+    MILLION_SCALE_COLS,
+)
 from allotropy.parsers.nexcelom_matrix.nexcelom_matrix_reader import (
     NexcelomMatrixReader,
 )
+from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -50,27 +59,37 @@ class SampleProperty(Enum):
         self.data_type: Any = data_type
 
 
+def million_scale_conversion(num: float) -> float:
+    return num / MILLION_CONVERSION
+
+
 def get_property_from_sample(
-    sample: pd.Series[Any], sample_property: SampleProperty
+    sample: pd.Series[Any], sample_property: SampleProperty, data_type: type
 ) -> Any:
-    value = sample.get(sample_property.column_name)
+    sample = SeriesData(sample)
+
+    value = sample.get(data_type, sample_property.column_name)
+    if sample_property.column_name in MILLION_SCALE_COLS and value is not None:
+        value = million_scale_conversion(value)
     return sample_property.data_type(value=value) if value else None
 
 
 class NexcelomMatrixParser(VendorParser):
+    DISPLAY_NAME = "Nexcelom Matrix"
+    RELEASE_STATE = ReleaseState.WORKING_DRAFT
+    SUPPORTED_EXTENSIONS = "csv,xlsx"
+    SCHEMA_MAPPER = Mapper
+
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        contents = named_file_contents.contents
         filename = named_file_contents.original_file_name
-        filepath = contents.name
-        reader = NexcelomMatrixReader(contents)
+        reader = NexcelomMatrixReader(named_file_contents)
 
         return Model(
             field_asm_manifest="http://purl.allotrope.org/manifests/cell-counting/BENCHLING/2023/11/cell-counting.manifest",
             cell_counting_aggregate_document=CellCountingAggregateDocument(
                 data_system_document=DataSystemDocument(
                     file_name=filename,
-                    UNC_path=filepath,
-                    ASM_converter_name=ASM_CONVERTER_NAME,
+                    ASM_converter_name=self.asm_converter_name,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 cell_counting_document=[
@@ -87,11 +106,17 @@ class NexcelomMatrixParser(VendorParser):
             "Viability",
             "Live Cells/mL",
         ]
+        sample_data = SeriesData(sample)
+
         # Required fields
         try:
-            viability__cell_counter_ = TQuantityValuePercent(value=sample["Viability"])
+            viability__cell_counter_ = TQuantityValuePercent(
+                value=sample_data[float, "Viability"]
+            )
             viable_cell_density__cell_counter_ = (
-                TQuantityValueMillionCellsPerMilliliter(value=sample["Live Cells/mL"])
+                TQuantityValueMillionCellsPerMilliliter(
+                    value=million_scale_conversion(sample_data[float, "Live Cells/mL"])
+                )
             )
         except KeyError as e:
             error = f"Expected to find lines with all of these headers: {required_fields_list}."
@@ -104,7 +129,7 @@ class NexcelomMatrixParser(VendorParser):
                         measurement_identifier=random_uuid_str(),
                         measurement_time=self._get_date_time(EPOCH_STR),
                         sample_document=SampleDocument(
-                            sample_identifier=sample["Well Name"]
+                            sample_identifier=sample_data.get(str, "Well Name")
                         ),
                         device_control_aggregate_document=CellCountingDetectorDeviceControlAggregateDocument(
                             device_control_document=[
@@ -113,34 +138,34 @@ class NexcelomMatrixParser(VendorParser):
                                 )
                             ]
                         ),
-                        processed_data_aggregate_document=ProcessedDataAggregateDocument1(
+                        processed_data_aggregate_document=ProcessedDataAggregateDocument(
                             processed_data_document=[
                                 ProcessedDataDocumentItem(
                                     viability__cell_counter_=viability__cell_counter_,
                                     viable_cell_density__cell_counter_=viable_cell_density__cell_counter_,
                                     total_cell_count=get_property_from_sample(
-                                        sample, SampleProperty.TOTAL_COUNT
+                                        sample, SampleProperty.TOTAL_COUNT, int
                                     ),
                                     total_cell_density__cell_counter_=get_property_from_sample(
-                                        sample, SampleProperty.TOTAL_CELLS_ML
+                                        sample, SampleProperty.TOTAL_CELLS_ML, float
                                     ),
                                     average_total_cell_diameter=get_property_from_sample(
-                                        sample, SampleProperty.TOTAL_MEAN_SIZE
+                                        sample, SampleProperty.TOTAL_MEAN_SIZE, float
                                     ),
                                     viable_cell_count=get_property_from_sample(
-                                        sample, SampleProperty.LIVE_COUNT
+                                        sample, SampleProperty.LIVE_COUNT, int
                                     ),
                                     average_live_cell_diameter__cell_counter_=get_property_from_sample(
-                                        sample, SampleProperty.LIVE_MEAN_SIZE
+                                        sample, SampleProperty.LIVE_MEAN_SIZE, float
                                     ),
                                     dead_cell_count=get_property_from_sample(
-                                        sample, SampleProperty.DEAD_COUNT
+                                        sample, SampleProperty.DEAD_COUNT, int
                                     ),
                                     dead_cell_density__cell_counter_=get_property_from_sample(
-                                        sample, SampleProperty.DEAD_CELLS_ML
+                                        sample, SampleProperty.DEAD_CELLS_ML, float
                                     ),
                                     average_dead_cell_diameter__cell_counter_=get_property_from_sample(
-                                        sample, SampleProperty.DEAD_MEAN_SIZE
+                                        sample, SampleProperty.DEAD_MEAN_SIZE, float
                                     ),
                                 ),
                             ]
