@@ -121,7 +121,7 @@ class Measurement:
     sample_identifier: str
 
     # Settings
-    pcr_detection_chemistry: str
+    pcr_detection_chemistry: str | None
 
     # Optional measurement metadata
     sample_role_type: str | None = None

@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Mark "PCR Detection Chemistry" as optional in PCR schema.
+
 ### Changed
 
 ### Deprecated
