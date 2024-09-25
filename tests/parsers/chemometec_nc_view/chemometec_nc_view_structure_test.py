@@ -47,9 +47,9 @@ def test_create_measurement_groups() -> None:
     measurement = measurement_groups.measurements[0]
     assert measurement.sample_identifier == "1"
     assert measurement.viability == 90
-    assert measurement.total_cell_density == 1000
-    assert measurement.viable_cell_density == 900
-    assert measurement.dead_cell_density == 100
+    assert measurement.total_cell_density == 0.001
+    assert measurement.viable_cell_density == 0.0009
+    assert measurement.dead_cell_density == 0.0001
     assert measurement.average_total_cell_diameter == 10
     assert measurement.cell_aggregation_percentage == 5
     assert measurement.debris_index == 0.1
