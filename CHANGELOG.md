@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - AppBio Quantstuido - add cache decorator to amp score calculated data construction.
 - SoftMax Pro - Support kinetic measurements files.
 
+- Added Chemometec NC View Adapter
+
 ### Fixed
 
 - Mark "PCR Detection Chemistry" as optional in PCR schema.
@@ -38,8 +40,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Appbio Quantstudio Design and Analysis - simplify sheets needed to infer presence/absence experiment type inference.
-- Appbio Quantstudio Design and Analysis - allow software name and version to be None.
+- Simplify sheets needed to infer presence/absence experiment type inference in Appbio Quantstudio Design and Analysis
+- Allow software name and version to be None in Appbio Quantstudio Design and Analysis 
 
 ## [0.1.53] - 2024-09-17
 
