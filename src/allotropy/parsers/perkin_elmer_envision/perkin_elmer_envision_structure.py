@@ -261,7 +261,7 @@ def create_results(reader: CsvReader) -> list[Result]:
     )
     rows, cols = series.shape
     series.index = pd.Index([num_to_chars(i) for i in range(rows)])
-    series.columns = [str(i) for i in range(1, cols + 1)]
+    series.columns = pd.Index([str(i) for i in range(1, cols + 1)])
 
     return [
         Result(
