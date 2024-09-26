@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 from collections import defaultdict
 from datetime import datetime
-from io import TextIOWrapper
 import os
 from pathlib import Path
 import subprocess
@@ -24,11 +23,13 @@ SECTION_TO_PREFIX = {
 
 
 def _get_changes() -> dict[str, list[str]]:
-    p = subprocess.run(["git", "log", "--oneline"], capture_output=True, text=True)
+    p = subprocess.run(
+        ["git", "log", "--oneline"], capture_output=True, text=True, check=True
+    )
     changes = defaultdict(list)
     for line in p.stdout.split("\n"):
         parts = line.split(" ")
-        if len(parts) < 3 or not parts[1].endswith(":"):
+        if len(parts) < 3 or not parts[1].endswith(":"):  # noqa: PLR2004
             continue
         prefix = parts[1].strip(":").lower()
         if prefix == "release":
