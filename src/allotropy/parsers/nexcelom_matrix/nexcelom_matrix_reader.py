@@ -21,10 +21,10 @@ class NexcelomMatrixReader:
             df = read_csv(
                 named_file_contents.contents,
                 index_col=False,
-                encoding=DEFAULT_ENCODING,
+                encoding=named_file_contents.encoding,
             )
         else:
-            df = read_excel(named_file_contents.contents)
+            df = read_excel(named_file_contents.contents, encoding=named_file_contents.encoding)
 
         df[MILLION_SCALE_COLS] = df[MILLION_SCALE_COLS].map(
             lambda x: x / MILLION_CONVERSION
