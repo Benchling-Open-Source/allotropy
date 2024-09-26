@@ -9,8 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Add Amp score and Cq confidence calculated data documents to AppBio Quantstuido Design and Analysis
+
+### Fixed
+
 - SoftMax Pro - Support kinetic measurements files.
 - Added Revvity MatrixAdapter
+- Fix Y-intercept and Slope references as data sources for quantity calculated data document in AppBio Quantstuido Design and Analysis
 
 ### Fixed
 
