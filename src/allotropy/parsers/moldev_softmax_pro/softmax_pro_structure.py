@@ -369,9 +369,9 @@ class PlateWavelengthData:
             try:
                 self.data_elements[position].elapsed_time.append(elapsed_time)
                 self.data_elements[position].kinetic_measures.append(value)
-            except KeyError:
+            except KeyError as e:
                 msg = f"Missing kinetic measurement for well position {position} at {elapsed_time}s."
-                raise AllotropeConversionError(msg)
+                raise AllotropeConversionError(msg) from e
 
 
 @dataclass(frozen=True)
