@@ -769,7 +769,10 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
             experimental_data_identifier=data.basic_assay_info.assay_id,
             measurements=well_loc_measurements[well_location],
         )
-        for well_location in sorted(well_loc_measurements.keys(), key=lambda key: (key[0], key[1][0], int(key[1][1:])))
+        for well_location in sorted(
+            well_loc_measurements.keys(),
+            key=lambda key: (key[0], key[1][0], int(key[1][1:])),
+        )
     ]
 
 
