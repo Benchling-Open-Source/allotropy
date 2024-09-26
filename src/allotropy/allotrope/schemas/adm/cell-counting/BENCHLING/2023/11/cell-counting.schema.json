@@ -192,6 +192,9 @@
             "statistics aggregate document": {
               "$ref": "#/$defs/statisticsAggregateDocument"
             },
+            "error aggregate document": {
+              "$ref": "#/$defs/errorAggregateDocument"
+            },
             "cell counting document": {
               "type": "array",
               "items": {
@@ -264,6 +267,9 @@
                       },
                       "statistics aggregate document": {
                         "$ref": "#/$defs/statisticsAggregateDocument"
+                      },
+                      "error aggregate document": {
+                        "$ref": "#/$defs/errorAggregateDocument"
                       }
                     },
                     "required": [
@@ -518,6 +524,9 @@
         },
         "statistics aggregate document": {
           "$ref": "#/$defs/statisticsAggregateDocument"
+        },
+        "error aggregate document": {
+          "$ref": "#/$defs/errorAggregateDocument"
         }
       }
     },
@@ -712,6 +721,9 @@
         },
         "statistics aggregate document": {
           "$ref": "#/$defs/statisticsAggregateDocument"
+        },
+        "error aggregate document": {
+          "$ref": "#/$defs/errorAggregateDocument"
         }
       }
     },
@@ -1103,6 +1115,42 @@
             },
             "required": [
               "statistical feature"
+            ]
+          },
+          "minItems": 0
+        }
+      }
+    },
+    "errorAggregateDocument": {
+      "type": "object",
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002951",
+      "$asm.pattern": "aggregate datum",
+      "properties": {
+        "error document": {
+          "type": "array",
+          "$asm.array-ordered": false,
+          "$asm.array-mixed": false,
+          "$asm.pattern": "indexed datum",
+          "items": {
+            "type": "object",
+            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002952",
+            "$asm.pattern": "aggregate datum",
+            "properties": {
+              "error feature": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002953",
+                "$asm.pattern": "value datum",
+                "$asm.type": "http://www.w3.org/2001/XMLSchema#integer",
+                "$ref": "#/$defs/tStringValue"
+              },
+              "error": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002804",
+                "$asm.pattern": "value datum",
+                "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                "$ref": "#/$defs/tStringValue"
+              }
+            },
+            "required": [
+              "error"
             ]
           },
           "minItems": 0

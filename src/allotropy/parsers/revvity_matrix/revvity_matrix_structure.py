@@ -1,4 +1,5 @@
 from allotropy.allotrope.schema_mappers.adm.cell_counting.benchling._2023._11.cell_counting import (
+    Error,
     Measurement,
     MeasurementGroup,
     Metadata,
@@ -18,6 +19,7 @@ def create_metadata(file_name: str) -> Metadata:
 def create_measurement_group(data: SeriesData) -> MeasurementGroup:
     # This function will be called for every row in the dataset, use it to create
     # a corresponding measurement group.
+    errors = data.get(str, "Errors:", validate=SeriesData.NOT_NAN)
     return MeasurementGroup(
         measurements=[
             Measurement(
@@ -34,6 +36,9 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
                 dead_cell_count=data.get(float, "Dead Count"),
                 dead_cell_density=data.get(float, "Dead Cells/mL"),
                 average_dead_cell_diameter=data.get(float, "Dead Mean Size"),
+                errors=[
+                    Error(error=error) for error in (errors.split(",") if errors else [])
+                ],
             )
         ]
     )

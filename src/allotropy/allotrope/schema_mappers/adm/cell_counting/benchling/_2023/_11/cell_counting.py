@@ -10,6 +10,8 @@ from allotropy.allotrope.models.adm.cell_counting.benchling._2023._11.cell_count
     DataSystemDocument,
     DeviceControlDocumentItemModel,
     DeviceSystemDocument,
+    ErrorAggregateDocument,
+    ErrorDocumentItem,
     MeasurementAggregateDocument,
     Model,
     ProcessedDataAggregateDocument,
@@ -28,6 +30,12 @@ from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.parsers.utils.values import quantity_or_none
+
+
+@dataclass(frozen=True)
+class Error:
+    error: str
+    feature: str | None = None
 
 
 @dataclass
@@ -73,6 +81,8 @@ class Measurement:
     total_object_count: float | None = None
     standard_deviation: float | None = None
     aggregate_rate: float | None = None
+
+    errors: list[Error] | None = None
 
 
 @dataclass(frozen=True)
@@ -173,6 +183,7 @@ class Mapper(SchemaMapper[Data, Model]):
             processed_data_aggregate_document=self._get_processed_data_aggregate_document(
                 measurement
             ),
+            error_aggregate_document=self._get_error_aggregate_document(measurement.errors)
         )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
@@ -282,5 +293,18 @@ class Mapper(SchemaMapper[Data, Model]):
                 add_custom_information_document(
                     processed_data_document, custom_document
                 )
+            ]
+        )
+
+    def _get_error_aggregate_document(
+        self, errors: list[Error] | None
+    ) -> ErrorAggregateDocument | None:
+        if not errors:
+            return None
+
+        return ErrorAggregateDocument(
+            error_document=[
+                ErrorDocumentItem(error=error.error, error_feature=error.feature)
+                for error in errors
             ]
         )
