@@ -53,6 +53,8 @@ class Measurement:
     batch_identifier: str | None = None
     group_identifier: str | None = None
     sample_draw_time: str | None = None
+    written_name: str | None = None
+    processed_data_identifier: str | None = None
 
     # Optional settings
     cell_type_processing_method: str | None = None
@@ -84,6 +86,10 @@ class Measurement:
 
     errors: list[Error] | None = None
 
+    # customer information document fields
+    debris_index: float | None = None
+    cell_aggregation_percentage: JsonFloat | None = None
+
 
 @dataclass(frozen=True)
 class MeasurementGroup:
@@ -106,6 +112,7 @@ class Metadata:
     asset_management_identifier: str | None = None
     device_identifier: str | None = None
     description: str | None = None
+    unc_path: str | None = None
 
 
 @dataclass
@@ -141,6 +148,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     software_version=data.metadata.software_version,
                     ASM_converter_name=self.converter_name,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
+                    UNC_path=data.metadata.unc_path,
                 ),
                 cell_counting_document=[
                     self._get_technique_document(measurement_group, data.metadata)
@@ -199,6 +207,7 @@ class Mapper(SchemaMapper[Data, Model]):
             SampleDocument(
                 sample_identifier=measurement.sample_identifier,
                 batch_identifier=measurement.batch_identifier,
+                written_name=measurement.written_name,
             ),
             custom_document,
         )
@@ -227,6 +236,12 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
             "aggregate rate": quantity_or_none(
                 TQuantityValuePercent, measurement.aggregate_rate
+            ),
+            "cell aggregation percentage": quantity_or_none(
+                TQuantityValuePercent, measurement.cell_aggregation_percentage
+            ),
+            "debris index": quantity_or_none(
+                TQuantityValueUnitless, measurement.debris_index
             ),
         }
         data_processing_document = DataProcessingDocument(

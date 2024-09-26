@@ -23,7 +23,8 @@ We currently have parser support for the following instruments:
   - Beckman Vi-Cell BLU
   - Beckman Vi-Cell XR
   - Bio-Rad Bio-Plex Manager
-  - CTL ImmunoSpot
+  - CTL ImmunoSpot 
+  - Chemometec NC View
   - ChemoMetec Nucleoview
   - Luminex xPONENT
   - Mabtech Apex
