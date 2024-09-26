@@ -110,6 +110,8 @@ ModelClass = TypeVar("ModelClass")
 def add_custom_information_document(
     model: ModelClass, custom_info_doc: Any
 ) -> ModelClass:
+    if not custom_info_doc:
+        return model
 
     if isinstance(custom_info_doc, dict):
         custom_info_doc = structure_custom_information_document(

@@ -195,7 +195,9 @@ def _create_measurement(
     )
 
 
-def create_metadata(header: Header, file_name: str) -> Metadata:
+def create_metadata(
+    header: Header, results_metadata: ResultMetadata, file_name: str
+) -> Metadata:
     return Metadata(
         device_identifier=header.device_identifier,
         device_type=constants.DEVICE_TYPE,
@@ -209,7 +211,7 @@ def create_metadata(header: Header, file_name: str) -> Metadata:
         measurement_method_identifier=header.measurement_method_identifier,
         experiment_type=header.experiment_type,
         container_type=constants.CONTAINER_TYPE,
-        custom_info=header.custom_info,
+        custom_info=header.extra_data | results_metadata.extra_data,
     )
 
 

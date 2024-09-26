@@ -55,7 +55,7 @@ class Header:
     barcode: str | None
     analyst: str | None
     experimental_data_identifier: str | None
-    custom_info: dict[str, Any] | None
+    extra_data: dict[str, Any]
 
     @staticmethod
     def create(reader: LinesReader) -> Header:
@@ -106,7 +106,7 @@ class Header:
             barcode=data.get(str, "Experiment Barcode"),
             analyst=data.get(str, "Experiment User Name"),
             experimental_data_identifier=data.get(str, "Experiment Name"),
-            custom_info=data.get_unread(),
+            extra_data=data.get_unread(),
         )
 
 
@@ -115,12 +115,12 @@ class WellItem(Referenceable):
     identifier: int
     target_dna_description: str
     sample_identifier: str
+    extra_data: dict[str, Any]
     reporter_dye_setting: str | None = None
     position: str | None = None
     well_location_identifier: str | None = None
     quencher_dye_setting: str | None = None
     sample_role_type: str | None = None
-    extra_data: dict[str, Any] | None = None
     _result: Result | None = None
 
     # Make hashable to allow for use of caching
@@ -319,6 +319,7 @@ def create_multicomponent_data(reader: LinesReader) -> dict[int, MulticomponentD
 class ResultMetadata:
     reference_dna_description: str | None
     reference_sample_description: str | None
+    extra_data: dict[str, Any]
 
     @staticmethod
     def create(data: SeriesData, experiment_type: ExperimentType) -> ResultMetadata:
@@ -326,7 +327,7 @@ class ResultMetadata:
             ExperimentType.comparative_CT_qPCR_experiment,
             ExperimentType.relative_standard_curve_qPCR_experiment,
         ]:
-            return ResultMetadata(None, None)
+            return ResultMetadata(None, None, {})
         return ResultMetadata(
             reference_dna_description=data.get(
                 str, "Endogenous Control", NOT_APPLICABLE
@@ -334,6 +335,7 @@ class ResultMetadata:
             reference_sample_description=data.get(
                 str, "Reference Sample", NOT_APPLICABLE
             ),
+            extra_data=data.get_unread(),
         )
 
 
@@ -368,7 +370,7 @@ class Result:
     efficiency: float | None
     amp_score: float | None
     cq_conf: float | None
-    extra_data: dict[str, Any] | None
+    extra_data: dict[str, Any]
 
     @staticmethod
     def create(
