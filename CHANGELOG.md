@@ -9,15 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- AppBio Quantstuido - add cache decorator to amp score calculated data construction.
-- Revvity Matrix - added parser
-
-- Added Chemometec NC View Adapter
+- Added Revvity MatrixAdapter
 
 ### Fixed
-
-- Mark "PCR Detection Chemistry" as optional in PCR schema.
-- Perkin Elmer Envision - remove leading '0' from well identifier numbers.
 
 ### Changed
 
@@ -26,6 +20,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 ### Security
+
+## [0.1.55] - 2024-09-26
+
+### Added
+
+- AppBio Quantstuido - add cache decorator to amp score calculated data construction.
+- Added Chemometec NC View Adapter
+
+### Fixed
+
+- Mark "PCR Detection Chemistry" as optional in PCR schema.
+- Perkin Elmer Envision - remove leading '0' from well identifier numbers.
 
 ## [0.1.54] - 2024-09-23
 
@@ -41,7 +47,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Simplify sheets needed to infer presence/absence experiment type inference in Appbio Quantstudio Design and Analysis
-- Allow software name and version to be None in Appbio Quantstudio Design and Analysis 
+- Allow software name and version to be None in Appbio Quantstudio Design and Analysis
 
 ## [0.1.53] - 2024-09-17
 
