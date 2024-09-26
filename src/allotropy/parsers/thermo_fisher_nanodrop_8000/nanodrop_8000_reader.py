@@ -8,7 +8,7 @@ from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.utils.pandas import read_csv
 
 
-class NanoDrop8000Reader:
+class Nanodrop8000Reader:
     SUPPORTED_EXTENSIONS = "txt"
 
     @classmethod
