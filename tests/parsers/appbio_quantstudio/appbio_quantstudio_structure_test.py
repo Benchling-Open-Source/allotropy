@@ -67,6 +67,7 @@ def test_header_builder() -> None:
         barcode=None,
         analyst=None,
         experimental_data_identifier=experimental_data_identifier,
+        custom_info=None,
     )
 
 

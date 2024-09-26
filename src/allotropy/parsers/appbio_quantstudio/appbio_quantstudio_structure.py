@@ -120,7 +120,7 @@ class WellItem(Referenceable):
     well_location_identifier: str | None = None
     quencher_dye_setting: str | None = None
     sample_role_type: str | None = None
-    extra_data: dict[str, Any] = None
+    extra_data: dict[str, Any] | None = None
     _result: Result | None = None
 
     # Make hashable to allow for use of caching
@@ -483,14 +483,16 @@ class Result:
                 efficiency=data.get(float, "Efficiency"),
                 amp_score=data.get(float, "Amp Score"),
                 cq_conf=data.get(float, "Cq Conf"),
-                extra_data=data.get_unread(skip={
-                    "Well",
-                    "Well Position",
-                    "Task",
-                    "Quencher",
-                    "Target Name",
-                    "Reporter"
-                }),
+                extra_data=data.get_unread(
+                    skip={
+                        "Well",
+                        "Well Position",
+                        "Task",
+                        "Quencher",
+                        "Target Name",
+                        "Reporter",
+                    }
+                ),
             )
             for allele_prefix in allele_prefixes
         }

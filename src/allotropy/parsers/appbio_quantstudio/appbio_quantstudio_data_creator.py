@@ -188,7 +188,9 @@ def _create_measurement(
         quencher_dye_setting=well_item.quencher_dye_setting,
         passive_reference_dye_setting=header.passive_reference_dye_setting,
         processed_data=_create_processed_data(amplification_data, result),
-        custom_info=well_item.extra_data | result.extra_data | {"well identifier": well_item.identifier},
+        custom_info=(well_item.extra_data or {})
+        | (result.extra_data or {})
+        | {"well identifier": well_item.identifier},
         data_cubes=data_cubes,
     )
 

@@ -228,9 +228,9 @@
                                 }
                             },
                             "custom information document": {
-                                "Sample Color": "RGB(176,23,31)",
                                 "Target Color": "RGB(176,23,31)",
-                                "Tm1": "78.122",
+                                "Sample Color": "RGB(176,23,31)",
+                                "Tm1": 78.122,
                                 "Sample Name": "1. 200217 U251p14_-ab_-SEMA3F_8h_pA_1",
                                 "Omit": "False",
                                 "well identifier": 1
@@ -241,27 +241,27 @@
                     "experiment type": "comparative CT qPCR experiment",
                     "container type": "qPCR reaction block",
                     "custom information document": {
-                        "Calibration Uniformity performed on": "2016-08-25 02:35:07 AM EDT",
-                        "Calibration ROX is expired": "Yes",
-                        "Calibration VIC performed on": "2016-08-25 03:05:29 AM EDT",
-                        "Calibration FAM is expired": "Yes",
-                        "Calibration ROX performed on": "2016-08-25 02:57:52 AM EDT",
-                        "Calibration NED is expired": "Yes",
-                        "Calibration NED performed on": "2016-08-25 02:50:03 AM EDT",
                         "Calibration ROI is expired": "Yes",
-                        "Calibration Background is expired": "Yes",
-                        "Calibration VIC is expired": "Yes",
-                        "Calibration Background performed on": "2016-08-25 02:19:21 AM EDT",
-                        "Calibration Uniformity is expired": "Yes",
                         "Experiment File Name": "C:\\Users\\JoeNegri\\Downloads\\200224 U251p14 200217_14v9_SEMA3F_trial 1.eds",
-                        "Calibration SYBR is expired": "Yes",
-                        "Calibration TAMRA performed on": "2016-08-25 03:20:26 AM EDT",
-                        "Signal Smoothing On": "true",
-                        "Calibration ROI performed on": "2016-08-25 02:12:12 AM EDT",
-                        "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2",
                         "Calibration FAM performed on": "2016-08-25 02:42:38 AM EDT",
+                        "Signal Smoothing On": "true",
+                        "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2",
+                        "Calibration FAM is expired": "Yes",
+                        "Calibration Uniformity is expired": "Yes",
+                        "Calibration TAMRA performed on": "2016-08-25 03:20:26 AM EDT",
+                        "Calibration ROI performed on": "2016-08-25 02:12:12 AM EDT",
+                        "Calibration Uniformity performed on": "2016-08-25 02:35:07 AM EDT",
+                        "Calibration VIC performed on": "2016-08-25 03:05:29 AM EDT",
+                        "Calibration NED is expired": "Yes",
+                        "Calibration ROX is expired": "Yes",
+                        "Calibration TAMRA is expired": "Yes",
+                        "Calibration Background performed on": "2016-08-25 02:19:21 AM EDT",
+                        "Calibration SYBR is expired": "Yes",
                         "Calibration SYBR performed on": "2016-08-25 03:13:07 AM EDT",
-                        "Calibration TAMRA is expired": "Yes"
+                        "Calibration Background is expired": "Yes",
+                        "Calibration ROX performed on": "2016-08-25 02:57:52 AM EDT",
+                        "Calibration NED performed on": "2016-08-25 02:50:03 AM EDT",
+                        "Calibration VIC is expired": "Yes"
                     }
                 }
             }
