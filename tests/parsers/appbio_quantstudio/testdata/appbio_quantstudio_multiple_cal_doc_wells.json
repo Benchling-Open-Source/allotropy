@@ -21,23 +21,18 @@
                             "sample document": {
                                 "sample identifier": "5K",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "A1",
-                                "custom information document": {
-                                    "well identifier": 1,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(176,23,31)"
-                                }
+                                "well location identifier": "A1"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "Ct",
-                                        "PCR detection chemistry": "TAQMAN",
                                         "total cycle number setting": {
                                             "value": 1.0,
                                             "unit": "#"
                                         },
+                                        "PCR detection chemistry": "TAQMAN",
                                         "reporter dye setting": "FAM",
                                         "quencher dye setting": "NFQ-MGB",
                                         "passive reference dye setting": "ROX"
@@ -133,7 +128,11 @@
                                 ]
                             },
                             "custom information document": {
-                                "omit": false
+                                "Sample Color": "RGB(176,23,31)",
+                                "Target Color": "RGB(176,23,31)",
+                                "Omit": "False",
+                                "Sample Name": "5K",
+                                "well identifier": 1
                             }
                         },
                         {
@@ -143,23 +142,18 @@
                             "sample document": {
                                 "sample identifier": "5K",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "A1",
-                                "custom information document": {
-                                    "well identifier": 1,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(176,23,0)"
-                                }
+                                "well location identifier": "A1"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "Ct",
-                                        "PCR detection chemistry": "TAQMAN",
                                         "total cycle number setting": {
                                             "value": 2.0,
                                             "unit": "#"
                                         },
+                                        "PCR detection chemistry": "TAQMAN",
                                         "reporter dye setting": "VIC",
                                         "quencher dye setting": "NFQ-MGB",
                                         "passive reference dye setting": "ROX"
@@ -255,13 +249,22 @@
                                 ]
                             },
                             "custom information document": {
-                                "omit": false
+                                "Sample Color": "RGB(176,23,31)",
+                                "Target Color": "RGB(176,23,0)",
+                                "Omit": "False",
+                                "Sample Name": "5K",
+                                "well identifier": 1
                             }
                         }
                     ],
                     "experimental data identifier": "QuantStudio 96-Well Standard Curve Example",
                     "experiment type": "standard curve qPCR experiment",
-                    "container type": "qPCR reaction block"
+                    "container type": "qPCR reaction block",
+                    "custom information document": {
+                        "Signal Smoothing On": "true",
+                        "Experiment File Name": "C:\\Program Files (x86)\\Applied BioSystems\\QuantStudio Real-Time PCR Software\\examples\\QS7Flex\\QS7_96-Well Standard Curve Example.eds",
+                        "Date Created": "2014-09-10 04:19:15 AM EDT"
+                    }
                 }
             },
             {
@@ -278,23 +281,18 @@
                             "sample document": {
                                 "sample identifier": "5K",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "A2",
-                                "custom information document": {
-                                    "well identifier": 2,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(176,23,31)"
-                                }
+                                "well location identifier": "A2"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "Ct",
-                                        "PCR detection chemistry": "TAQMAN",
                                         "total cycle number setting": {
                                             "value": 1.0,
                                             "unit": "#"
                                         },
+                                        "PCR detection chemistry": "TAQMAN",
                                         "reporter dye setting": "FAM",
                                         "quencher dye setting": "NFQ-MGB",
                                         "passive reference dye setting": "ROX"
@@ -390,7 +388,11 @@
                                 ]
                             },
                             "custom information document": {
-                                "omit": false
+                                "Sample Color": "RGB(176,23,31)",
+                                "Target Color": "RGB(176,23,31)",
+                                "Omit": "False",
+                                "Sample Name": "5K",
+                                "well identifier": 2
                             }
                         },
                         {
@@ -400,23 +402,18 @@
                             "sample document": {
                                 "sample identifier": "5K",
                                 "sample role type": "STANDARD",
-                                "well location identifier": "A2",
-                                "custom information document": {
-                                    "well identifier": 2,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(176,23,0)"
-                                }
+                                "well location identifier": "A2"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "Ct",
-                                        "PCR detection chemistry": "TAQMAN",
                                         "total cycle number setting": {
                                             "value": 2.0,
                                             "unit": "#"
                                         },
+                                        "PCR detection chemistry": "TAQMAN",
                                         "reporter dye setting": "VIC",
                                         "quencher dye setting": "NFQ-MGB",
                                         "passive reference dye setting": "ROX"
@@ -512,13 +509,22 @@
                                 ]
                             },
                             "custom information document": {
-                                "omit": false
+                                "Sample Color": "RGB(176,23,31)",
+                                "Target Color": "RGB(176,23,0)",
+                                "Omit": "False",
+                                "Sample Name": "5K",
+                                "well identifier": 2
                             }
                         }
                     ],
                     "experimental data identifier": "QuantStudio 96-Well Standard Curve Example",
                     "experiment type": "standard curve qPCR experiment",
-                    "container type": "qPCR reaction block"
+                    "container type": "qPCR reaction block",
+                    "custom information document": {
+                        "Signal Smoothing On": "true",
+                        "Experiment File Name": "C:\\Program Files (x86)\\Applied BioSystems\\QuantStudio Real-Time PCR Software\\examples\\QS7Flex\\QS7_96-Well Standard Curve Example.eds",
+                        "Date Created": "2014-09-10 04:19:15 AM EDT"
+                    }
                 }
             }
         ],
@@ -529,7 +535,7 @@
             "software name": "Thermo QuantStudio",
             "software version": "1.0",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.53"
+            "ASM converter version": "0.1.54"
         },
         "calculated data aggregate document": {
             "calculated data document": [

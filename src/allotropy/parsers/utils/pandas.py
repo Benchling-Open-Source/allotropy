@@ -208,6 +208,11 @@ class SeriesData:
 
     def __init__(self, series: pd.Series[Any]) -> None:
         self.series = series
+        self.read_keys = set()
+
+    def get_unread(self, skip: set[str] | None = None):
+        skip = skip or set()
+        return {key: self.get(str, key) for key in set(self.series.index.to_list()) - self.read_keys - skip}
 
     def __getitem__(self, type_and_key: TypeAndKey[T] | TypeAndKeyAndMsg[T]) -> T:
         """
@@ -295,6 +300,7 @@ class SeriesData:
             return get_first_not_none(
                 lambda k: self.get(type_, k, validate=validate), key
             )
+        self.read_keys.add(key)
         raw_value = self._validate_raw(self.series.get(key), validate)
         try:
             # bool needs special handling to convert

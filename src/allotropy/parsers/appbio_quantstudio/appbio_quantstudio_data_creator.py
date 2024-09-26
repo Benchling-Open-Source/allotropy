@@ -81,14 +81,6 @@ def _create_processed_data(
         cycle_threshold_result=result.cycle_threshold_result,
         normalized_reporter_result=result.normalized_reporter_result,
         baseline_corrected_reporter_result=result.baseline_corrected_reporter_result,
-        custom_info={
-            "comments": result.comments,
-            "highsd": result.highsd,
-            "noamp": result.noamp,
-            "expfail": result.expfail,
-            "tholdfail": result.tholdfail,
-            "prfdrop": result.prfdrop,
-        },
         data_cubes=_create_processed_data_cubes(amplification_data),
     )
 
@@ -196,16 +188,7 @@ def _create_measurement(
         quencher_dye_setting=well_item.quencher_dye_setting,
         passive_reference_dye_setting=header.passive_reference_dye_setting,
         processed_data=_create_processed_data(amplification_data, result),
-        custom_sample_info={
-            "well_identifier": well_item.identifier,
-            "sample_color": well_item.sample_color,
-            "biogroup_name": well_item.biogroup_name,
-            "biogroup_color": well_item.biogroup_color,
-            "target_color": well_item.target_color,
-        },
-        custom_measurement_info={
-            "omit": result.omit,
-        },
+        custom_info=well_item.extra_data | result.extra_data | {"well identifier": well_item.identifier},
         data_cubes=data_cubes,
     )
 
@@ -224,6 +207,7 @@ def create_metadata(header: Header, file_name: str) -> Metadata:
         measurement_method_identifier=header.measurement_method_identifier,
         experiment_type=header.experiment_type,
         container_type=constants.CONTAINER_TYPE,
+        custom_info=header.custom_info,
     )
 
 

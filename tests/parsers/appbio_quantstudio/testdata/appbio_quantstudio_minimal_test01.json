@@ -21,23 +21,18 @@
                             "sample document": {
                                 "sample identifier": "NAC",
                                 "sample role type": "BlockedIPC",
-                                "well location identifier": "A1",
-                                "custom information document": {
-                                    "well identifier": 1,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(0,0,255)"
-                                }
+                                "well location identifier": "A1"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "Ct",
-                                        "PCR detection chemistry": "TAQMAN",
                                         "total cycle number setting": {
                                             "value": 1.0,
                                             "unit": "#"
                                         },
+                                        "PCR detection chemistry": "TAQMAN",
                                         "reporter dye setting": "VIC",
                                         "quencher dye setting": "NFQ-MGB",
                                         "passive reference dye setting": "ROX"
@@ -137,11 +132,7 @@
                                                 ]
                                             }
                                         },
-                                        "genotyping determination result": "Blocked IPC Control",
-                                        "custom information document": {
-                                            "noamp": "N",
-                                            "expfail": "N"
-                                        }
+                                        "genotyping determination result": "Blocked IPC Control"
                                     }
                                 ]
                             },
@@ -208,7 +199,13 @@
                                 }
                             },
                             "custom information document": {
-                                "omit": false
+                                "Sample Color": "RGB(176,23,31)",
+                                "Target Color": "RGB(0,0,255)",
+                                "NOAMP": "N",
+                                "Omit": "False",
+                                "EXPFAIL": "N",
+                                "Sample Name": "NAC",
+                                "well identifier": 1
                             }
                         },
                         {
@@ -218,23 +215,18 @@
                             "sample document": {
                                 "sample identifier": "NAC",
                                 "sample role type": "NTC",
-                                "well location identifier": "A1",
-                                "custom information document": {
-                                    "well identifier": 1,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(176,23,31)"
-                                }
+                                "well location identifier": "A1"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "Ct",
-                                        "PCR detection chemistry": "TAQMAN",
                                         "total cycle number setting": {
                                             "value": 1.0,
                                             "unit": "#"
                                         },
+                                        "PCR detection chemistry": "TAQMAN",
                                         "reporter dye setting": "FAM",
                                         "quencher dye setting": "NFQ-MGB",
                                         "passive reference dye setting": "ROX"
@@ -334,11 +326,7 @@
                                                 ]
                                             }
                                         },
-                                        "genotyping determination result": "Negative Control",
-                                        "custom information document": {
-                                            "noamp": "N",
-                                            "expfail": "N"
-                                        }
+                                        "genotyping determination result": "Negative Control"
                                     }
                                 ]
                             },
@@ -405,13 +393,43 @@
                                 }
                             },
                             "custom information document": {
-                                "omit": false
+                                "Sample Color": "RGB(176,23,31)",
+                                "Target Color": "RGB(176,23,31)",
+                                "NOAMP": "N",
+                                "Omit": "False",
+                                "EXPFAIL": "N",
+                                "Sample Name": "NAC",
+                                "well identifier": 1
                             }
                         }
                     ],
                     "experimental data identifier": "QuantStudio 96-Well Presence-Absence Example",
                     "experiment type": "presence/absence qPCR experiment",
-                    "container type": "qPCR reaction block"
+                    "container type": "qPCR reaction block",
+                    "custom information document": {
+                        "Calibration Pure Dye ROX is expired": "No",
+                        "Date Created": "2014-09-10 03:14:51 AM EDT",
+                        "Calibration ROI performed on": "09-27-2010",
+                        "Calibration Background is expired": "No",
+                        "Calibration Pure Dye FAM is expired": "No",
+                        "Calibration Pure Dye VIC performed on": "09-27-2010",
+                        "Experiment File Name": "C:\\Program Files (x86)\\Applied BioSystems\\QuantStudio Real-Time PCR Software\\examples\\QS6Flex\\QS6_96-Well Presence-Absence Example.eds",
+                        "Calibration Pure Dye ROX performed on": "09-27-2010",
+                        "Calibration Pure Dye MELTDOCTOR is expired": "No",
+                        "Calibration Uniformity is expired": "No",
+                        "Calibration HRM MELTDOCTOR performed on": "09-24-2010",
+                        "Calibration ROI is expired": "No",
+                        "Calibration Pure Dye VIC is expired": "No",
+                        "Calibration Uniformity performed on": "09-27-2010",
+                        "Stage/ Cycle where Analysis is performed": "Stage 3, Step 2",
+                        "Calibration Background performed on": "09-27-2010",
+                        "Calibration Pure Dye SYBR performed on": "09-27-2010",
+                        "Calibration Pure Dye SYBR is expired": "No",
+                        "Signal Smoothing On": "true",
+                        "Calibration HRM MELTDOCTOR is expired": "No",
+                        "Calibration Pure Dye FAM performed on": "09-27-2010",
+                        "Calibration Pure Dye MELTDOCTOR performed on": "09-24-2010"
+                    }
                 }
             }
         ],
@@ -422,7 +440,7 @@
             "software name": "Thermo QuantStudio",
             "software version": "1.0",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.53"
+            "ASM converter version": "0.1.54"
         },
         "calculated data aggregate document": {
             "calculated data document": [

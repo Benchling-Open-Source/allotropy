@@ -21,23 +21,18 @@
                             "sample document": {
                                 "sample identifier": "Lung",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D1",
-                                "custom information document": {
-                                    "well identifier": 37,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(176,23,31)"
-                                }
+                                "well location identifier": "D1"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "Ct",
-                                        "PCR detection chemistry": "TAQMAN",
                                         "total cycle number setting": {
                                             "value": 1.0,
                                             "unit": "#"
                                         },
+                                        "PCR detection chemistry": "TAQMAN",
                                         "reporter dye setting": "FAM",
                                         "quencher dye setting": "NFQ-MGB",
                                         "passive reference dye setting": "ROX"
@@ -133,13 +128,43 @@
                                 ]
                             },
                             "custom information document": {
-                                "omit": false
+                                "Sample Color": "RGB(176,23,31)",
+                                "Target Color": "RGB(176,23,31)",
+                                "Omit": "False",
+                                "Sample Name": "Lung",
+                                "well identifier": 37
                             }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
                     "experiment type": "comparative CT qPCR experiment",
-                    "container type": "qPCR reaction block"
+                    "container type": "qPCR reaction block",
+                    "custom information document": {
+                        "Calibration Pure Dye VIC performed on": "10-13-2010",
+                        "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2",
+                        "Calibration RNaseP is expired": "No",
+                        "Calibration HRM MELTDOCTOR performed on": "10-13-2010",
+                        "Calibration ROI performed on": "10-13-2010",
+                        "Calibration Pure Dye FAM is expired": "No",
+                        "Calibration ROI is expired": "No",
+                        "Calibration Pure Dye FAM performed on": "10-13-2010",
+                        "Calibration RNaseP performed on": "10-15-2010",
+                        "Calibration Background performed on": "10-13-2010",
+                        "Calibration Pure Dye ROX performed on": "10-13-2010",
+                        "Calibration Pure Dye ROX is expired": "No",
+                        "Calibration Background is expired": "No",
+                        "Calibration Uniformity performed on": "10-13-2010",
+                        "Calibration Pure Dye SYBR is expired": "No",
+                        "Date Created": "2014-09-10 04:10:50 AM EDT",
+                        "Experiment File Name": "C:\\Program Files (x86)\\Applied BioSystems\\QuantStudio Real-Time PCR Software\\examples\\QS7Flex\\QS7_96-Well Comparative Ct Example.eds",
+                        "Calibration Pure Dye MELTDOCTOR performed on": "10-13-2010",
+                        "Calibration Pure Dye MELTDOCTOR is expired": "No",
+                        "Calibration Pure Dye SYBR performed on": "10-13-2010",
+                        "Calibration Uniformity is expired": "No",
+                        "Calibration HRM MELTDOCTOR is expired": "No",
+                        "Signal Smoothing On": "true",
+                        "Calibration Pure Dye VIC is expired": "No"
+                    }
                 }
             },
             {
@@ -156,23 +181,18 @@
                             "sample document": {
                                 "sample identifier": "Lung",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D2",
-                                "custom information document": {
-                                    "well identifier": 38,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(176,23,31)"
-                                }
+                                "well location identifier": "D2"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "Ct",
-                                        "PCR detection chemistry": "TAQMAN",
                                         "total cycle number setting": {
                                             "value": 1.0,
                                             "unit": "#"
                                         },
+                                        "PCR detection chemistry": "TAQMAN",
                                         "reporter dye setting": "FAM",
                                         "quencher dye setting": "NFQ-MGB",
                                         "passive reference dye setting": "ROX"
@@ -268,13 +288,43 @@
                                 ]
                             },
                             "custom information document": {
-                                "omit": false
+                                "Sample Color": "RGB(176,23,31)",
+                                "Target Color": "RGB(176,23,31)",
+                                "Omit": "False",
+                                "Sample Name": "Lung",
+                                "well identifier": 38
                             }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
                     "experiment type": "comparative CT qPCR experiment",
-                    "container type": "qPCR reaction block"
+                    "container type": "qPCR reaction block",
+                    "custom information document": {
+                        "Calibration Pure Dye VIC performed on": "10-13-2010",
+                        "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2",
+                        "Calibration RNaseP is expired": "No",
+                        "Calibration HRM MELTDOCTOR performed on": "10-13-2010",
+                        "Calibration ROI performed on": "10-13-2010",
+                        "Calibration Pure Dye FAM is expired": "No",
+                        "Calibration ROI is expired": "No",
+                        "Calibration Pure Dye FAM performed on": "10-13-2010",
+                        "Calibration RNaseP performed on": "10-15-2010",
+                        "Calibration Background performed on": "10-13-2010",
+                        "Calibration Pure Dye ROX performed on": "10-13-2010",
+                        "Calibration Pure Dye ROX is expired": "No",
+                        "Calibration Background is expired": "No",
+                        "Calibration Uniformity performed on": "10-13-2010",
+                        "Calibration Pure Dye SYBR is expired": "No",
+                        "Date Created": "2014-09-10 04:10:50 AM EDT",
+                        "Experiment File Name": "C:\\Program Files (x86)\\Applied BioSystems\\QuantStudio Real-Time PCR Software\\examples\\QS7Flex\\QS7_96-Well Comparative Ct Example.eds",
+                        "Calibration Pure Dye MELTDOCTOR performed on": "10-13-2010",
+                        "Calibration Pure Dye MELTDOCTOR is expired": "No",
+                        "Calibration Pure Dye SYBR performed on": "10-13-2010",
+                        "Calibration Uniformity is expired": "No",
+                        "Calibration HRM MELTDOCTOR is expired": "No",
+                        "Signal Smoothing On": "true",
+                        "Calibration Pure Dye VIC is expired": "No"
+                    }
                 }
             },
             {
@@ -291,23 +341,18 @@
                             "sample document": {
                                 "sample identifier": "Liver",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D10",
-                                "custom information document": {
-                                    "well identifier": 46,
-                                    "sample color": "RGB(139,137,112)",
-                                    "target color": "RGB(176,23,31)"
-                                }
+                                "well location identifier": "D10"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "Ct",
-                                        "PCR detection chemistry": "TAQMAN",
                                         "total cycle number setting": {
                                             "value": 1.0,
                                             "unit": "#"
                                         },
+                                        "PCR detection chemistry": "TAQMAN",
                                         "reporter dye setting": "FAM",
                                         "quencher dye setting": "NFQ-MGB",
                                         "passive reference dye setting": "ROX"
@@ -403,13 +448,43 @@
                                 ]
                             },
                             "custom information document": {
-                                "omit": false
+                                "Sample Color": "RGB(139,137,112)",
+                                "Target Color": "RGB(176,23,31)",
+                                "Omit": "False",
+                                "Sample Name": "Liver",
+                                "well identifier": 46
                             }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
                     "experiment type": "comparative CT qPCR experiment",
-                    "container type": "qPCR reaction block"
+                    "container type": "qPCR reaction block",
+                    "custom information document": {
+                        "Calibration Pure Dye VIC performed on": "10-13-2010",
+                        "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2",
+                        "Calibration RNaseP is expired": "No",
+                        "Calibration HRM MELTDOCTOR performed on": "10-13-2010",
+                        "Calibration ROI performed on": "10-13-2010",
+                        "Calibration Pure Dye FAM is expired": "No",
+                        "Calibration ROI is expired": "No",
+                        "Calibration Pure Dye FAM performed on": "10-13-2010",
+                        "Calibration RNaseP performed on": "10-15-2010",
+                        "Calibration Background performed on": "10-13-2010",
+                        "Calibration Pure Dye ROX performed on": "10-13-2010",
+                        "Calibration Pure Dye ROX is expired": "No",
+                        "Calibration Background is expired": "No",
+                        "Calibration Uniformity performed on": "10-13-2010",
+                        "Calibration Pure Dye SYBR is expired": "No",
+                        "Date Created": "2014-09-10 04:10:50 AM EDT",
+                        "Experiment File Name": "C:\\Program Files (x86)\\Applied BioSystems\\QuantStudio Real-Time PCR Software\\examples\\QS7Flex\\QS7_96-Well Comparative Ct Example.eds",
+                        "Calibration Pure Dye MELTDOCTOR performed on": "10-13-2010",
+                        "Calibration Pure Dye MELTDOCTOR is expired": "No",
+                        "Calibration Pure Dye SYBR performed on": "10-13-2010",
+                        "Calibration Uniformity is expired": "No",
+                        "Calibration HRM MELTDOCTOR is expired": "No",
+                        "Signal Smoothing On": "true",
+                        "Calibration Pure Dye VIC is expired": "No"
+                    }
                 }
             },
             {
@@ -426,23 +501,18 @@
                             "sample document": {
                                 "sample identifier": "Lung",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E1",
-                                "custom information document": {
-                                    "well identifier": 49,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(176,23,31)"
-                                }
+                                "well location identifier": "E1"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "Ct",
-                                        "PCR detection chemistry": "TAQMAN",
                                         "total cycle number setting": {
                                             "value": 1.0,
                                             "unit": "#"
                                         },
+                                        "PCR detection chemistry": "TAQMAN",
                                         "reporter dye setting": "FAM",
                                         "quencher dye setting": "NFQ-MGB",
                                         "passive reference dye setting": "ROX"
@@ -538,13 +608,43 @@
                                 ]
                             },
                             "custom information document": {
-                                "omit": false
+                                "Sample Color": "RGB(176,23,31)",
+                                "Target Color": "RGB(176,23,31)",
+                                "Omit": "False",
+                                "Sample Name": "Lung",
+                                "well identifier": 49
                             }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
                     "experiment type": "comparative CT qPCR experiment",
-                    "container type": "qPCR reaction block"
+                    "container type": "qPCR reaction block",
+                    "custom information document": {
+                        "Calibration Pure Dye VIC performed on": "10-13-2010",
+                        "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2",
+                        "Calibration RNaseP is expired": "No",
+                        "Calibration HRM MELTDOCTOR performed on": "10-13-2010",
+                        "Calibration ROI performed on": "10-13-2010",
+                        "Calibration Pure Dye FAM is expired": "No",
+                        "Calibration ROI is expired": "No",
+                        "Calibration Pure Dye FAM performed on": "10-13-2010",
+                        "Calibration RNaseP performed on": "10-15-2010",
+                        "Calibration Background performed on": "10-13-2010",
+                        "Calibration Pure Dye ROX performed on": "10-13-2010",
+                        "Calibration Pure Dye ROX is expired": "No",
+                        "Calibration Background is expired": "No",
+                        "Calibration Uniformity performed on": "10-13-2010",
+                        "Calibration Pure Dye SYBR is expired": "No",
+                        "Date Created": "2014-09-10 04:10:50 AM EDT",
+                        "Experiment File Name": "C:\\Program Files (x86)\\Applied BioSystems\\QuantStudio Real-Time PCR Software\\examples\\QS7Flex\\QS7_96-Well Comparative Ct Example.eds",
+                        "Calibration Pure Dye MELTDOCTOR performed on": "10-13-2010",
+                        "Calibration Pure Dye MELTDOCTOR is expired": "No",
+                        "Calibration Pure Dye SYBR performed on": "10-13-2010",
+                        "Calibration Uniformity is expired": "No",
+                        "Calibration HRM MELTDOCTOR is expired": "No",
+                        "Signal Smoothing On": "true",
+                        "Calibration Pure Dye VIC is expired": "No"
+                    }
                 }
             },
             {
@@ -561,23 +661,18 @@
                             "sample document": {
                                 "sample identifier": "Liver",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E10",
-                                "custom information document": {
-                                    "well identifier": 58,
-                                    "sample color": "RGB(139,137,112)",
-                                    "target color": "RGB(176,23,31)"
-                                }
+                                "well location identifier": "E10"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "Ct",
-                                        "PCR detection chemistry": "TAQMAN",
                                         "total cycle number setting": {
                                             "value": 1.0,
                                             "unit": "#"
                                         },
+                                        "PCR detection chemistry": "TAQMAN",
                                         "reporter dye setting": "FAM",
                                         "quencher dye setting": "NFQ-MGB",
                                         "passive reference dye setting": "ROX"
@@ -673,13 +768,43 @@
                                 ]
                             },
                             "custom information document": {
-                                "omit": false
+                                "Sample Color": "RGB(139,137,112)",
+                                "Target Color": "RGB(176,23,31)",
+                                "Omit": "False",
+                                "Sample Name": "Liver",
+                                "well identifier": 58
                             }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
                     "experiment type": "comparative CT qPCR experiment",
-                    "container type": "qPCR reaction block"
+                    "container type": "qPCR reaction block",
+                    "custom information document": {
+                        "Calibration Pure Dye VIC performed on": "10-13-2010",
+                        "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2",
+                        "Calibration RNaseP is expired": "No",
+                        "Calibration HRM MELTDOCTOR performed on": "10-13-2010",
+                        "Calibration ROI performed on": "10-13-2010",
+                        "Calibration Pure Dye FAM is expired": "No",
+                        "Calibration ROI is expired": "No",
+                        "Calibration Pure Dye FAM performed on": "10-13-2010",
+                        "Calibration RNaseP performed on": "10-15-2010",
+                        "Calibration Background performed on": "10-13-2010",
+                        "Calibration Pure Dye ROX performed on": "10-13-2010",
+                        "Calibration Pure Dye ROX is expired": "No",
+                        "Calibration Background is expired": "No",
+                        "Calibration Uniformity performed on": "10-13-2010",
+                        "Calibration Pure Dye SYBR is expired": "No",
+                        "Date Created": "2014-09-10 04:10:50 AM EDT",
+                        "Experiment File Name": "C:\\Program Files (x86)\\Applied BioSystems\\QuantStudio Real-Time PCR Software\\examples\\QS7Flex\\QS7_96-Well Comparative Ct Example.eds",
+                        "Calibration Pure Dye MELTDOCTOR performed on": "10-13-2010",
+                        "Calibration Pure Dye MELTDOCTOR is expired": "No",
+                        "Calibration Pure Dye SYBR performed on": "10-13-2010",
+                        "Calibration Uniformity is expired": "No",
+                        "Calibration HRM MELTDOCTOR is expired": "No",
+                        "Signal Smoothing On": "true",
+                        "Calibration Pure Dye VIC is expired": "No"
+                    }
                 }
             },
             {
@@ -696,23 +821,18 @@
                             "sample document": {
                                 "sample identifier": "Lung",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H1",
-                                "custom information document": {
-                                    "well identifier": 85,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(0,0,255)"
-                                }
+                                "well location identifier": "H1"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "Ct",
-                                        "PCR detection chemistry": "TAQMAN",
                                         "total cycle number setting": {
                                             "value": 1.0,
                                             "unit": "#"
                                         },
+                                        "PCR detection chemistry": "TAQMAN",
                                         "reporter dye setting": "VIC",
                                         "quencher dye setting": "NFQ-MGB",
                                         "passive reference dye setting": "ROX"
@@ -808,13 +928,43 @@
                                 ]
                             },
                             "custom information document": {
-                                "omit": false
+                                "Sample Color": "RGB(176,23,31)",
+                                "Target Color": "RGB(0,0,255)",
+                                "Omit": "False",
+                                "Sample Name": "Lung",
+                                "well identifier": 85
                             }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
                     "experiment type": "comparative CT qPCR experiment",
-                    "container type": "qPCR reaction block"
+                    "container type": "qPCR reaction block",
+                    "custom information document": {
+                        "Calibration Pure Dye VIC performed on": "10-13-2010",
+                        "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2",
+                        "Calibration RNaseP is expired": "No",
+                        "Calibration HRM MELTDOCTOR performed on": "10-13-2010",
+                        "Calibration ROI performed on": "10-13-2010",
+                        "Calibration Pure Dye FAM is expired": "No",
+                        "Calibration ROI is expired": "No",
+                        "Calibration Pure Dye FAM performed on": "10-13-2010",
+                        "Calibration RNaseP performed on": "10-15-2010",
+                        "Calibration Background performed on": "10-13-2010",
+                        "Calibration Pure Dye ROX performed on": "10-13-2010",
+                        "Calibration Pure Dye ROX is expired": "No",
+                        "Calibration Background is expired": "No",
+                        "Calibration Uniformity performed on": "10-13-2010",
+                        "Calibration Pure Dye SYBR is expired": "No",
+                        "Date Created": "2014-09-10 04:10:50 AM EDT",
+                        "Experiment File Name": "C:\\Program Files (x86)\\Applied BioSystems\\QuantStudio Real-Time PCR Software\\examples\\QS7Flex\\QS7_96-Well Comparative Ct Example.eds",
+                        "Calibration Pure Dye MELTDOCTOR performed on": "10-13-2010",
+                        "Calibration Pure Dye MELTDOCTOR is expired": "No",
+                        "Calibration Pure Dye SYBR performed on": "10-13-2010",
+                        "Calibration Uniformity is expired": "No",
+                        "Calibration HRM MELTDOCTOR is expired": "No",
+                        "Signal Smoothing On": "true",
+                        "Calibration Pure Dye VIC is expired": "No"
+                    }
                 }
             },
             {
@@ -831,23 +981,18 @@
                             "sample document": {
                                 "sample identifier": "Lung",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H2",
-                                "custom information document": {
-                                    "well identifier": 86,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(0,0,255)"
-                                }
+                                "well location identifier": "H2"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "Ct",
-                                        "PCR detection chemistry": "TAQMAN",
                                         "total cycle number setting": {
                                             "value": 1.0,
                                             "unit": "#"
                                         },
+                                        "PCR detection chemistry": "TAQMAN",
                                         "reporter dye setting": "VIC",
                                         "quencher dye setting": "NFQ-MGB",
                                         "passive reference dye setting": "ROX"
@@ -943,13 +1088,43 @@
                                 ]
                             },
                             "custom information document": {
-                                "omit": false
+                                "Sample Color": "RGB(176,23,31)",
+                                "Target Color": "RGB(0,0,255)",
+                                "Omit": "False",
+                                "Sample Name": "Lung",
+                                "well identifier": 86
                             }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
                     "experiment type": "comparative CT qPCR experiment",
-                    "container type": "qPCR reaction block"
+                    "container type": "qPCR reaction block",
+                    "custom information document": {
+                        "Calibration Pure Dye VIC performed on": "10-13-2010",
+                        "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2",
+                        "Calibration RNaseP is expired": "No",
+                        "Calibration HRM MELTDOCTOR performed on": "10-13-2010",
+                        "Calibration ROI performed on": "10-13-2010",
+                        "Calibration Pure Dye FAM is expired": "No",
+                        "Calibration ROI is expired": "No",
+                        "Calibration Pure Dye FAM performed on": "10-13-2010",
+                        "Calibration RNaseP performed on": "10-15-2010",
+                        "Calibration Background performed on": "10-13-2010",
+                        "Calibration Pure Dye ROX performed on": "10-13-2010",
+                        "Calibration Pure Dye ROX is expired": "No",
+                        "Calibration Background is expired": "No",
+                        "Calibration Uniformity performed on": "10-13-2010",
+                        "Calibration Pure Dye SYBR is expired": "No",
+                        "Date Created": "2014-09-10 04:10:50 AM EDT",
+                        "Experiment File Name": "C:\\Program Files (x86)\\Applied BioSystems\\QuantStudio Real-Time PCR Software\\examples\\QS7Flex\\QS7_96-Well Comparative Ct Example.eds",
+                        "Calibration Pure Dye MELTDOCTOR performed on": "10-13-2010",
+                        "Calibration Pure Dye MELTDOCTOR is expired": "No",
+                        "Calibration Pure Dye SYBR performed on": "10-13-2010",
+                        "Calibration Uniformity is expired": "No",
+                        "Calibration HRM MELTDOCTOR is expired": "No",
+                        "Signal Smoothing On": "true",
+                        "Calibration Pure Dye VIC is expired": "No"
+                    }
                 }
             },
             {
@@ -966,23 +1141,18 @@
                             "sample document": {
                                 "sample identifier": "Liver",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H10",
-                                "custom information document": {
-                                    "well identifier": 94,
-                                    "sample color": "RGB(139,137,112)",
-                                    "target color": "RGB(0,0,255)"
-                                }
+                                "well location identifier": "H10"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "Ct",
-                                        "PCR detection chemistry": "TAQMAN",
                                         "total cycle number setting": {
                                             "value": 1.0,
                                             "unit": "#"
                                         },
+                                        "PCR detection chemistry": "TAQMAN",
                                         "reporter dye setting": "VIC",
                                         "quencher dye setting": "NFQ-MGB",
                                         "passive reference dye setting": "ROX"
@@ -1078,13 +1248,43 @@
                                 ]
                             },
                             "custom information document": {
-                                "omit": false
+                                "Sample Color": "RGB(139,137,112)",
+                                "Target Color": "RGB(0,0,255)",
+                                "Omit": "False",
+                                "Sample Name": "Liver",
+                                "well identifier": 94
                             }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
                     "experiment type": "comparative CT qPCR experiment",
-                    "container type": "qPCR reaction block"
+                    "container type": "qPCR reaction block",
+                    "custom information document": {
+                        "Calibration Pure Dye VIC performed on": "10-13-2010",
+                        "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2",
+                        "Calibration RNaseP is expired": "No",
+                        "Calibration HRM MELTDOCTOR performed on": "10-13-2010",
+                        "Calibration ROI performed on": "10-13-2010",
+                        "Calibration Pure Dye FAM is expired": "No",
+                        "Calibration ROI is expired": "No",
+                        "Calibration Pure Dye FAM performed on": "10-13-2010",
+                        "Calibration RNaseP performed on": "10-15-2010",
+                        "Calibration Background performed on": "10-13-2010",
+                        "Calibration Pure Dye ROX performed on": "10-13-2010",
+                        "Calibration Pure Dye ROX is expired": "No",
+                        "Calibration Background is expired": "No",
+                        "Calibration Uniformity performed on": "10-13-2010",
+                        "Calibration Pure Dye SYBR is expired": "No",
+                        "Date Created": "2014-09-10 04:10:50 AM EDT",
+                        "Experiment File Name": "C:\\Program Files (x86)\\Applied BioSystems\\QuantStudio Real-Time PCR Software\\examples\\QS7Flex\\QS7_96-Well Comparative Ct Example.eds",
+                        "Calibration Pure Dye MELTDOCTOR performed on": "10-13-2010",
+                        "Calibration Pure Dye MELTDOCTOR is expired": "No",
+                        "Calibration Pure Dye SYBR performed on": "10-13-2010",
+                        "Calibration Uniformity is expired": "No",
+                        "Calibration HRM MELTDOCTOR is expired": "No",
+                        "Signal Smoothing On": "true",
+                        "Calibration Pure Dye VIC is expired": "No"
+                    }
                 }
             },
             {
@@ -1101,23 +1301,18 @@
                             "sample document": {
                                 "sample identifier": "Liver",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H11",
-                                "custom information document": {
-                                    "well identifier": 95,
-                                    "sample color": "RGB(139,137,112)",
-                                    "target color": "RGB(0,0,255)"
-                                }
+                                "well location identifier": "H11"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "Ct",
-                                        "PCR detection chemistry": "TAQMAN",
                                         "total cycle number setting": {
                                             "value": 1.0,
                                             "unit": "#"
                                         },
+                                        "PCR detection chemistry": "TAQMAN",
                                         "reporter dye setting": "VIC",
                                         "quencher dye setting": "NFQ-MGB",
                                         "passive reference dye setting": "ROX"
@@ -1213,13 +1408,43 @@
                                 ]
                             },
                             "custom information document": {
-                                "omit": false
+                                "Sample Color": "RGB(139,137,112)",
+                                "Target Color": "RGB(0,0,255)",
+                                "Omit": "False",
+                                "Sample Name": "Liver",
+                                "well identifier": 95
                             }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
                     "experiment type": "comparative CT qPCR experiment",
-                    "container type": "qPCR reaction block"
+                    "container type": "qPCR reaction block",
+                    "custom information document": {
+                        "Calibration Pure Dye VIC performed on": "10-13-2010",
+                        "Stage/ Cycle where Analysis is performed": "Stage 2, Step 2",
+                        "Calibration RNaseP is expired": "No",
+                        "Calibration HRM MELTDOCTOR performed on": "10-13-2010",
+                        "Calibration ROI performed on": "10-13-2010",
+                        "Calibration Pure Dye FAM is expired": "No",
+                        "Calibration ROI is expired": "No",
+                        "Calibration Pure Dye FAM performed on": "10-13-2010",
+                        "Calibration RNaseP performed on": "10-15-2010",
+                        "Calibration Background performed on": "10-13-2010",
+                        "Calibration Pure Dye ROX performed on": "10-13-2010",
+                        "Calibration Pure Dye ROX is expired": "No",
+                        "Calibration Background is expired": "No",
+                        "Calibration Uniformity performed on": "10-13-2010",
+                        "Calibration Pure Dye SYBR is expired": "No",
+                        "Date Created": "2014-09-10 04:10:50 AM EDT",
+                        "Experiment File Name": "C:\\Program Files (x86)\\Applied BioSystems\\QuantStudio Real-Time PCR Software\\examples\\QS7Flex\\QS7_96-Well Comparative Ct Example.eds",
+                        "Calibration Pure Dye MELTDOCTOR performed on": "10-13-2010",
+                        "Calibration Pure Dye MELTDOCTOR is expired": "No",
+                        "Calibration Pure Dye SYBR performed on": "10-13-2010",
+                        "Calibration Uniformity is expired": "No",
+                        "Calibration HRM MELTDOCTOR is expired": "No",
+                        "Signal Smoothing On": "true",
+                        "Calibration Pure Dye VIC is expired": "No"
+                    }
                 }
             }
         ],
@@ -1230,7 +1455,7 @@
             "software name": "Thermo QuantStudio",
             "software version": "1.0",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.53"
+            "ASM converter version": "0.1.54"
         },
         "calculated data aggregate document": {
             "calculated data document": [
