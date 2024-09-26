@@ -52,6 +52,9 @@ from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import
 from allotropy.parsers.qiacuity_dpcr.qiacuity_dpcr_parser import QiacuitydPCRParser
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.revvity_kaleido.kaleido_parser import KaleidoParser
+from allotropy.parsers.revvity_matrix.revvity_matrix_parser import (
+    RevvityMatrixParser,
+)
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_parser import (
     RocheCedexBiohtParser,
 )
@@ -100,6 +103,7 @@ class Vendor(Enum):
     MABTECH_APEX = "MABTECH_APEX"
     METHODICAL_MIND = "METHODICAL_MIND"
     MOLDEV_SOFTMAX_PRO = "MOLDEV_SOFTMAX_PRO"
+    REVVITY_MATRIX = "REVVITY_MATRIX"
     NOVABIO_FLEX2 = "NOVABIO_FLEX2"
     PERKIN_ELMER_ENVISION = "PERKIN_ELMER_ENVISION"
     QIACUITY_DPCR = "QIACUITY_DPCR"
@@ -152,6 +156,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.MABTECH_APEX: MabtechApexParser,
     Vendor.METHODICAL_MIND: MethodicalMindParser,
     Vendor.MOLDEV_SOFTMAX_PRO: SoftmaxproParser,
+    Vendor.REVVITY_MATRIX: RevvityMatrixParser,
     Vendor.NOVABIO_FLEX2: NovaBioFlexParser,
     Vendor.PERKIN_ELMER_ENVISION: PerkinElmerEnvisionParser,
     Vendor.QIACUITY_DPCR: QiacuitydPCRParser,
