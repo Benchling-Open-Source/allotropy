@@ -46,6 +46,7 @@ We currently have parser support for the following instruments:
 ### Candidate Release
 
 ### Working Draft
+  - Revvity Matrix
 
 The parsers follow maturation levels of: Recommended, Candidate Release, Working Draft - see [release_state.py](https://github.com/Benchling-Open-Source/allotropy/blob/main/src/allotropy/parsers/release_state.py) for additional details.
 
