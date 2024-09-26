@@ -1,6 +1,6 @@
 from collections.abc import Callable
 from dataclasses import dataclass
-from typing import TypeVar
+from typing import Any, TypeVar
 
 from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import (
@@ -101,15 +101,9 @@ class ProcessedData:
     normalized_reporter_result: float | None = None
     baseline_corrected_reporter_result: float | None = None
 
-    # Metadata
-    comments: str | None = None
-    highsd: str | None = None
-    noamp: str | None = None
-    expfail: str | None = None
-    tholdfail: str | None = None
-    prfdrop: str | None = None
-
     data_cubes: list[DataCube] | None = None
+
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass
@@ -139,12 +133,8 @@ class Measurement:
     data_cubes: list[DataCube] | None = None
 
     # Custom metadata
-    well_identifier: int | None = None
-    omit: bool | None = None
-    sample_color: str | None = None
-    biogroup_name: str | None = None
-    biogroup_color: str | None = None
-    target_color: str | None = None
+    custom_measurement_info: dict[str, Any] | None = None
+    custom_sample_info: dict[str, Any] | None = None
 
 
 @dataclass
@@ -237,9 +227,6 @@ class Mapper(SchemaMapper[Data, Model]):
         measurement: Measurement,
         metadata: Metadata,
     ) -> MeasurementDocumentItem:
-        custom_doc = {
-            "omit": measurement.omit,
-        }
         measurement_doc = MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
             measurement_time=self.get_date_time(measurement.timestamp),
@@ -275,82 +262,72 @@ class Mapper(SchemaMapper[Data, Model]):
                 MeltingCurveDataCube, "melting curve", measurement.data_cubes
             ),
         )
-        return add_custom_information_document(measurement_doc, custom_doc)
+        return add_custom_information_document(
+            measurement_doc, measurement.custom_measurement_info
+        )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
-        custom_doc = {
-            "well identifier": measurement.well_identifier,
-            "sample color": measurement.sample_color,
-            "biogroup name": measurement.biogroup_name,
-            "biogroup color": measurement.biogroup_color,
-            "target color": measurement.target_color,
-        }
         sample_doc = SampleDocument(
             sample_identifier=measurement.sample_identifier,
             sample_role_type=measurement.sample_role_type,
             well_location_identifier=measurement.well_location_identifier,
             well_plate_identifier=measurement.well_plate_identifier,
         )
-        return add_custom_information_document(sample_doc, custom_doc)
+        return add_custom_information_document(
+            sample_doc, measurement.custom_sample_info
+        )
 
     def _get_processed_data_aggregate_document(
         self, data: ProcessedData | None
     ) -> ProcessedDataAggregateDocument | None:
         if not data:
             return None
+        processed_data_document = ProcessedDataDocumentItem(
+            data_processing_document=DataProcessingDocument(
+                automatic_cycle_threshold_enabled_setting=data.automatic_cycle_threshold_enabled_setting,
+                cycle_threshold_value_setting=TQuantityValueUnitless(
+                    value=data.cycle_threshold_value_setting,
+                ),
+                automatic_baseline_determination_enabled_setting=data.automatic_baseline_determination_enabled_setting,
+                genotyping_determination_method_setting=quantity_or_none(
+                    TQuantityValueUnitless,
+                    data.genotyping_determination_method_setting,
+                ),
+                baseline_determination_start_cycle_setting=quantity_or_none(
+                    TQuantityValueNumber,
+                    data.baseline_determination_start_cycle_setting,
+                ),
+                baseline_determination_end_cycle_setting=quantity_or_none(
+                    TQuantityValueNumber,
+                    data.baseline_determination_end_cycle_setting,
+                ),
+            ),
+            cycle_threshold_result=TNullableQuantityValueUnitless(
+                value=data.cycle_threshold_result,
+            ),
+            normalized_reporter_result=quantity_or_none(
+                TQuantityValueUnitless, data.normalized_reporter_result
+            ),
+            baseline_corrected_reporter_result=quantity_or_none(
+                TQuantityValueUnitless,
+                data.baseline_corrected_reporter_result,
+            ),
+            genotyping_determination_result=data.genotyping_determination_result,
+            normalized_reporter_data_cube=self._get_data_cube(
+                NormalizedReporterDataCube,
+                "normalized reporter",
+                data.data_cubes,
+            ),
+            baseline_corrected_reporter_data_cube=self._get_data_cube(
+                BaselineCorrectedReporterDataCube,
+                "baseline corrected reporter",
+                data.data_cubes,
+            ),
+        )
         return ProcessedDataAggregateDocument(
             processed_data_document=[
                 add_custom_information_document(
-                    ProcessedDataDocumentItem(
-                        data_processing_document=DataProcessingDocument(
-                            automatic_cycle_threshold_enabled_setting=data.automatic_cycle_threshold_enabled_setting,
-                            cycle_threshold_value_setting=TQuantityValueUnitless(
-                                value=data.cycle_threshold_value_setting,
-                            ),
-                            automatic_baseline_determination_enabled_setting=data.automatic_baseline_determination_enabled_setting,
-                            genotyping_determination_method_setting=quantity_or_none(
-                                TQuantityValueUnitless,
-                                data.genotyping_determination_method_setting,
-                            ),
-                            baseline_determination_start_cycle_setting=quantity_or_none(
-                                TQuantityValueNumber,
-                                data.baseline_determination_start_cycle_setting,
-                            ),
-                            baseline_determination_end_cycle_setting=quantity_or_none(
-                                TQuantityValueNumber,
-                                data.baseline_determination_end_cycle_setting,
-                            ),
-                        ),
-                        cycle_threshold_result=TNullableQuantityValueUnitless(
-                            value=data.cycle_threshold_result,
-                        ),
-                        normalized_reporter_result=quantity_or_none(
-                            TQuantityValueUnitless, data.normalized_reporter_result
-                        ),
-                        baseline_corrected_reporter_result=quantity_or_none(
-                            TQuantityValueUnitless,
-                            data.baseline_corrected_reporter_result,
-                        ),
-                        genotyping_determination_result=data.genotyping_determination_result,
-                        normalized_reporter_data_cube=self._get_data_cube(
-                            NormalizedReporterDataCube,
-                            "normalized reporter",
-                            data.data_cubes,
-                        ),
-                        baseline_corrected_reporter_data_cube=self._get_data_cube(
-                            BaselineCorrectedReporterDataCube,
-                            "baseline corrected reporter",
-                            data.data_cubes,
-                        ),
-                    ),
-                    custom_info_doc={
-                        "comments": data.comments,
-                        "highsd": data.highsd,
-                        "noamp": data.noamp,
-                        "expfail": data.expfail,
-                        "tholdfail": data.tholdfail,
-                        "prfdrop": data.prfdrop,
-                    },
+                    processed_data_document, data.custom_info
                 )
             ]
         )
