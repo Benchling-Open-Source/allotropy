@@ -23,6 +23,7 @@ from enum import Enum
 from re import search
 
 import numpy as np
+import pandas as pd
 
 from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
     ScanPositionSettingPlateReader,
@@ -224,7 +225,7 @@ def create_calculated_results(reader: CsvReader) -> list[CalculatedResult]:
     )
     rows, cols = series.shape
     series.index = [num_to_chars(i) for i in range(rows)]  # type: ignore[assignment]
-    series.columns = [str(i).zfill(2) for i in range(1, cols + 1)]  # type: ignore[assignment]
+    series.columns = [str(i) for i in range(1, cols + 1)]  # type: ignore[assignment]
 
     return [
         CalculatedResult(
@@ -259,8 +260,8 @@ def create_results(reader: CsvReader) -> list[Result]:
         else data_frame
     )
     rows, cols = series.shape
-    series.index = [num_to_chars(i) for i in range(rows)]  # type: ignore[assignment]
-    series.columns = [str(i).zfill(2) for i in range(1, cols + 1)]  # type: ignore[assignment]
+    series.index = pd.Index([num_to_chars(i) for i in range(rows)])
+    series.columns = [str(i) for i in range(1, cols + 1)]
 
     return [
         Result(
@@ -464,7 +465,7 @@ class PlateMap:
         )
         rows, cols = series.shape
         series.index = [num_to_chars(i) for i in range(rows)]  # type: ignore[assignment]
-        series.columns = [str(i).zfill(2) for i in range(1, cols + 1)]  # type: ignore[assignment]
+        series.columns = [str(i) for i in range(1, cols + 1)]  # type: ignore[assignment]
 
         sample_role_type_mapping: dict[str, dict[str, SampleRoleType]] = {}
         for row, row_data in series.replace([np.nan, "''"], None).to_dict().items():
@@ -768,7 +769,7 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
             experimental_data_identifier=data.basic_assay_info.assay_id,
             measurements=well_loc_measurements[well_location],
         )
-        for well_location in sorted(well_loc_measurements.keys())
+        for well_location in sorted(well_loc_measurements.keys(), key=lambda key: (key[0], key[1][0], int(key[1][1:])))
     ]
 
 
