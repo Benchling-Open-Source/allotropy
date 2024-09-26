@@ -133,7 +133,7 @@ class Measurement:
     data_cubes: list[DataCube] | None = None
 
     # Custom metadata
-    custom_measurement_info: dict[str, Any] | None = None
+    custom_info: dict[str, Any] | None = None
     custom_sample_info: dict[str, Any] | None = None
 
 
@@ -263,7 +263,7 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
         )
         return add_custom_information_document(
-            measurement_doc, measurement.custom_measurement_info
+            measurement_doc, measurement.custom_info
         )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:

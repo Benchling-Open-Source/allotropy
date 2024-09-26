@@ -203,7 +203,7 @@ def _create_measurement(
             "biogroup_color": well_item.biogroup_color,
             "target_color": well_item.target_color,
         },
-        custom_measurement_info={
+        custom_info={
             "omit": result.omit,
         },
         data_cubes=data_cubes,
