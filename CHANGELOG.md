@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added Revvity MatrixAdapter
+
 ### Fixed
 
 ### Changed
@@ -45,7 +47,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Simplify sheets needed to infer presence/absence experiment type inference in Appbio Quantstudio Design and Analysis
-- Allow software name and version to be None in Appbio Quantstudio Design and Analysis 
+- Allow software name and version to be None in Appbio Quantstudio Design and Analysis
 
 ## [0.1.53] - 2024-09-17
 
