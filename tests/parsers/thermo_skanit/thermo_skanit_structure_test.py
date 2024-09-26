@@ -118,7 +118,7 @@ def test_create_metadata() -> None:
     instrument_info_df = pd.DataFrame(data)
 
     data = {
-        "General information": [None, None, "Software version", None],
+        "General information": [None, None, None, None],
         "Unnamed: 1": [None, "Report generated with SW version", None, None],
         "Unnamed: 2": [None, None, None, None],
         "Unnamed: 3": [None, None, None, None],

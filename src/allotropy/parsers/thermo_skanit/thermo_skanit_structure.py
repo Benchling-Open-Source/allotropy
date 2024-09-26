@@ -1,11 +1,14 @@
 from __future__ import annotations
+from allotropy.parsers.thermo_skanit.constants import SAMPLE_ROLE_MAPPINGS, DEVICE_TYPE
+from allotropy.parsers.utils.pandas import df_to_series_data, parse_header_row
+from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
+
 
 from dataclasses import dataclass
 import re
 
 import pandas as pd
 
-from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
     Data,
     Measurement,
@@ -16,12 +19,7 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
 from allotropy.exceptions import AllotropyParserError
 from allotropy.parsers.utils.uuids import random_uuid_str
 
-sample_role_mappings = {
-    "Un": SampleRoleType.unknown_sample_role,
-    "Std": SampleRoleType.standard_sample_role,
-    "Blank": SampleRoleType.blank_role,
-    "Ctrl": SampleRoleType.control_sample_role,
-}
+
 
 
 def find_value_by_label_optional(df: pd.DataFrame, label: str) -> str | None:
@@ -46,14 +44,19 @@ class ThermoSkanItMetadata:
     def create_metadata(
         instrument_info_df: pd.DataFrame, general_info_df: pd.DataFrame, file_name: str
     ) -> Metadata:
-        software_info = None
-        for col in general_info_df.columns:
-            for value in general_info_df[col].dropna():
-                if "SkanIt Software" in str(value):
-                    software_info = str(value)
-                    break
-            if software_info:
-                break
+
+        # Replace empty with "" so we can add label columns together.
+        instrument_info_df = instrument_info_df.fillna("")
+        # The labels for data is spread across the first two columns for some reason, combine them as index.
+        # NOTE: This is an assumption that may not be true for future files
+        instrument_info_df.index = instrument_info_df.iloc[:, 0] + instrument_info_df.iloc[:, 1]
+        # Read data from the last column, this is where values are found
+        instrument_info_data = df_to_series_data(instrument_info_df.T, index=-1)
+
+        general_info_data = df_to_series_data(parse_header_row(general_info_df.T), index=-1)
+        import pdb;pdb.set_trace()
+
+        software_info = general_info_data.get(str, "Report generated with SW version")
         # Regular expression to extract software and version
         pattern = r"(SkanIt Software.*?)(?=,)|(\b\d+\.\d+\.\d+\.\d+\b)"
         if software_info is not None:
@@ -68,19 +71,13 @@ class ThermoSkanItMetadata:
             raise AllotropyParserError(msg)
 
         return Metadata(
-            device_identifier=find_value_by_label_required(
-                instrument_info_df, sheet_name="Instrument information", label="Name"
-            ),
-            model_number=find_value_by_label_required(
-                instrument_info_df, sheet_name="Instrument information", label="Name"
-            ),
+            device_identifier= instrument_info_data.get(str, "Name"),
+            model_number= instrument_info_data.get(str, "Name"),
             software_name=software_name,
             software_version=version_number,
             unc_path="",
             file_name=file_name,
-            equipment_serial_number=find_value_by_label_optional(
-                df=instrument_info_df, label="Serial number"
-            ),
+            equipment_serial_number=instrument_info_data.get(str, "Serial number"),
         )
 
 
@@ -101,14 +98,14 @@ class AbsorbanceDataWell(Measurement):
             sample_role_type=AbsorbanceDataWell.get_sample_role(sample_name),
             absorbance=abs_value,
             detector_wavelength_setting=detector_wavelength,
-            device_type="plate reader",
+            device_type=DEVICE_TYPE,
         )
 
     @staticmethod
     def get_sample_role(sample_name: str) -> SampleRoleType:
         stripped_text = re.sub(r"\d+", "", sample_name)
         try:
-            return sample_role_mappings[stripped_text]
+            return SAMPLE_ROLE_MAPPINGS[stripped_text]
         except KeyError as err:
             msg = f"Unable to identify sample role from {sample_name}"
             raise AllotropyParserError(msg) from err
