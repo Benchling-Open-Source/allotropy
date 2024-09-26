@@ -40,7 +40,7 @@ def _get_changes() -> dict[str, list[str]]:
     return dict(changes)
 
 
-def _write_new_section(version: str, changes: dict[list[str]]) -> str:
+def _write_new_section(version: str, changes: dict[str, list[str]]) -> str:
     body = f"## [{version}] - {datetime.now(tz.gettz('EST')).strftime('%Y-%m-%d')}\n"
     for prefix, section in SECTION_TO_PREFIX.items():
         if prefix not in changes:
