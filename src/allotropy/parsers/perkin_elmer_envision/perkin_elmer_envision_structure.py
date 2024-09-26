@@ -224,8 +224,8 @@ def create_calculated_results(reader: CsvReader) -> list[CalculatedResult]:
         else data_frame
     )
     rows, cols = series.shape
-    series.index = [num_to_chars(i) for i in range(rows)]  # type: ignore[assignment]
-    series.columns = [str(i) for i in range(1, cols + 1)]  # type: ignore[assignment]
+    series.index = pd.Index([num_to_chars(i) for i in range(rows)])
+    series.columns = pd.Index([str(i) for i in range(1, cols + 1)])
 
     return [
         CalculatedResult(
@@ -464,8 +464,8 @@ class PlateMap:
             else data_frame
         )
         rows, cols = series.shape
-        series.index = [num_to_chars(i) for i in range(rows)]  # type: ignore[assignment]
-        series.columns = [str(i) for i in range(1, cols + 1)]  # type: ignore[assignment]
+        series.index = pd.Index([num_to_chars(i) for i in range(rows)])
+        series.columns = pd.Index([str(i) for i in range(1, cols + 1)])
 
         sample_role_type_mapping: dict[str, dict[str, SampleRoleType]] = {}
         for row, row_data in series.replace([np.nan, "''"], None).to_dict().items():
