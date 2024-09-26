@@ -9,7 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- AppBio Quantstuido - add cache decorator to amp score calculated data construction.
+
 ### Fixed
+
+- Mark "PCR Detection Chemistry" as optional in PCR schema.
+- Perkin Elmer Envision - remove leading '0' from well identifier numbers.
 
 ### Changed
 
@@ -32,8 +37,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Simplify sheets needed to infer presence/absence experiment type inference in Appbio Quantstudio Design and Analysis
-- Allow software name and version to be None in Appbio Quantstudio Design and Analysis 
+- Appbio Quantstudio Design and Analysis - simplify sheets needed to infer presence/absence experiment type inference.
+- Appbio Quantstudio Design and Analysis - allow software name and version to be None.
 
 ## [0.1.53] - 2024-09-17
 

@@ -78,7 +78,6 @@ def test_header_builder() -> None:
             "measurement_method_identifier",
             "Expected non-null value for Quantification Cycle Method.",
         ),
-        ("pcr_detection_chemistry", "Expected non-null value for Chemistry."),
     ],
 )
 def test_header_builder_required_parameter_none_then_raise(

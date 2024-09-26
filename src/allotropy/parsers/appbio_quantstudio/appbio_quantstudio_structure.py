@@ -50,7 +50,7 @@ class Header:
     model_number: str
     device_serial_number: str
     measurement_method_identifier: str
-    pcr_detection_chemistry: str
+    pcr_detection_chemistry: str | None
     passive_reference_dye_setting: str | None
     barcode: str | None
     analyst: str | None
@@ -100,7 +100,7 @@ class Header:
                 str, "Instrument Serial Number", NOT_APPLICABLE
             ),
             measurement_method_identifier=data[str, "Quantification Cycle Method"],
-            pcr_detection_chemistry=data[str, "Chemistry"],
+            pcr_detection_chemistry=data.get(str, "Chemistry"),
             passive_reference_dye_setting=data.get(str, "Passive Reference"),
             barcode=data.get(str, "Experiment Barcode"),
             analyst=data.get(str, "Experiment User Name"),

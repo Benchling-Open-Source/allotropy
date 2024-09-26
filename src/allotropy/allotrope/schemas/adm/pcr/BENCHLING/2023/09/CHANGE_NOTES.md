@@ -47,10 +47,6 @@ Changes:
   * Reasoning: Proposed change to ASM when developing the model, rejected and so does not reflect published ASM
   * Proposal: TODO adjust our schema to remove requirement and conform to ASM
 
-* Added "PCR detection chemistry" as required in "device control document"
-  * Reasoning: Proposed change to ASM when developing the model, rejected and so does not reflect published ASM
-  * Proposal: TODO adjust our schema to remove requirement and conform to ASM
-
 * Removed "analyst" from required for "qPCR document"
   * Reasoning: Anaylst is not always provided by instruments.
   * Proposal: remove "analyst" from required for "qPCR document"
