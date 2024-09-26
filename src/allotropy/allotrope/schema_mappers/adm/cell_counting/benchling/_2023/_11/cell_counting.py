@@ -183,7 +183,9 @@ class Mapper(SchemaMapper[Data, Model]):
             processed_data_aggregate_document=self._get_processed_data_aggregate_document(
                 measurement
             ),
-            error_aggregate_document=self._get_error_aggregate_document(measurement.errors)
+            error_aggregate_document=self._get_error_aggregate_document(
+                measurement.errors
+            ),
         )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:

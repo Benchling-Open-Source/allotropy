@@ -37,7 +37,8 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
                 dead_cell_density=data.get(float, "Dead Cells/mL"),
                 average_dead_cell_diameter=data.get(float, "Dead Mean Size"),
                 errors=[
-                    Error(error=error) for error in (errors.split(",") if errors else [])
+                    Error(error=error)
+                    for error in (errors.split(",") if errors else [])
                 ],
             )
         ]
