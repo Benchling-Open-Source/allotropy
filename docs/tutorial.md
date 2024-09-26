@@ -225,6 +225,10 @@ tests against if by:
 1. Calling the parser specified by VENDOR on the file
 2. Comparing the output against expected output, contained in a file with the same name but a `json` extension.
 
+Note: the test runs against every file in the corresponding testdata/ folder by default, but you can use
+`--filter` to select specific cases to run, and `--exclude` to skip cases, and files with "error", "exclude" or "invalid"
+in their names will automatically be skipped.
+
 We can automatically generate the expected output by running `to_allotrope_test.py` without the corresponding
 expected output file:
 
@@ -240,9 +244,9 @@ Once created, the runs of the test in the future will compare the output of the 
 output file.
 
 If we make changes to our parser, we may need to update the results of the test file.
-We can do this by setting `OVERWRITE_ON_FAILURE = True` in the parser and running the test again.
+We can do this by passing `--overwrite` while running the test.
 The test will fail if the contents do not match, but it will then update the contents of the expected
-output file, and will pass on further runs (be sure to remove `OVERWRITE_ON_FAILURE` when done!)
+output file, and will pass on further runs.
 
 More complex parsers may require tests against helper methods, and will probably have many more input-output pairs to check.
 

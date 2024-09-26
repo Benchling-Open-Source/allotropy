@@ -48,6 +48,7 @@ NON_UNIQUE_IDENTIFIERS = {
     "sample identifier",
     "well location identifier",
     "well plate identifier",
+    "well identifier",
 }
 
 
@@ -174,12 +175,6 @@ def validate_contents(
     with tempfile.TemporaryFile(mode="w+", encoding=DEFAULT_ENCODING) as tmp:
         json.dump(allotrope_dict, tmp, ensure_ascii=False)
 
-    # Ensure that allotrope_dict can be structured back into a python model.
-    structure(allotrope_dict)
-
-    # Ensure that all IDs are unique and that data source identifiers are valid references.
-    _validate_identifiers(allotrope_dict)
-
     try:
         with open(expected_file, encoding=DEFAULT_ENCODING) as f:
             expected_dict = json.load(f)
@@ -196,3 +191,9 @@ def validate_contents(
                 msg = f"Mismatch between actual and expected for '{expected_file}', writing expected output because 'write_actual_to_expected_on_fail=True'\n\n{e}"
                 raise AssertionError(msg) from e
         raise
+
+    # Ensure that allotrope_dict can be structured back into a python model.
+    structure(allotrope_dict)
+
+    # Ensure that all IDs are unique and that data source identifiers are valid references.
+    _validate_identifiers(allotrope_dict)

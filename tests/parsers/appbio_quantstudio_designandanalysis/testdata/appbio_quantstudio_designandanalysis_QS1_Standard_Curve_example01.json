@@ -29,7 +29,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -51,11 +50,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 22.0,
+                                                "value": 22,
                                                 "unit": "#"
                                             }
                                         },
@@ -530,7 +529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -552,11 +550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 24.0,
+                                                "value": 24,
                                                 "unit": "#"
                                             }
                                         },
@@ -1031,7 +1029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -1053,11 +1050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 24.0,
+                                                "value": 24,
                                                 "unit": "#"
                                             }
                                         },
@@ -1532,7 +1529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -1554,11 +1550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 24.0,
+                                                "value": 24,
                                                 "unit": "#"
                                             }
                                         },
@@ -2033,7 +2029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -2055,11 +2050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 24.0,
+                                                "value": 24,
                                                 "unit": "#"
                                             }
                                         },
@@ -2534,7 +2529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -2556,11 +2550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 25.0,
+                                                "value": 25,
                                                 "unit": "#"
                                             }
                                         },
@@ -3035,7 +3029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -3057,11 +3050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 24.0,
+                                                "value": 24,
                                                 "unit": "#"
                                             }
                                         },
@@ -3536,7 +3529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -3558,11 +3550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 24.0,
+                                                "value": 24,
                                                 "unit": "#"
                                             }
                                         },
@@ -4037,7 +4029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -4059,11 +4050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 25.0,
+                                                "value": 25,
                                                 "unit": "#"
                                             }
                                         },
@@ -4538,7 +4529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -4560,11 +4550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 24.0,
+                                                "value": 24,
                                                 "unit": "#"
                                             }
                                         },
@@ -5039,7 +5029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -5061,11 +5050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 25.0,
+                                                "value": 25,
                                                 "unit": "#"
                                             }
                                         },
@@ -5540,7 +5529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -5562,11 +5550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 21.0,
+                                                "value": 21,
                                                 "unit": "#"
                                             }
                                         },
@@ -6041,7 +6029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -6063,11 +6050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 24.0,
+                                                "value": 24,
                                                 "unit": "#"
                                             }
                                         },
@@ -6542,7 +6529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -6564,11 +6550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 24.0,
+                                                "value": 24,
                                                 "unit": "#"
                                             }
                                         },
@@ -7043,7 +7029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -7065,11 +7050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 25.0,
+                                                "value": 25,
                                                 "unit": "#"
                                             }
                                         },
@@ -7544,7 +7529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -7566,11 +7550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 25.0,
+                                                "value": 25,
                                                 "unit": "#"
                                             }
                                         },
@@ -8045,7 +8029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -8067,11 +8050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 24.0,
+                                                "value": 24,
                                                 "unit": "#"
                                             }
                                         },
@@ -8546,7 +8529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -8568,11 +8550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 24.0,
+                                                "value": 24,
                                                 "unit": "#"
                                             }
                                         },
@@ -9047,7 +9029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -9069,11 +9050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 23.0,
+                                                "value": 23,
                                                 "unit": "#"
                                             }
                                         },
@@ -9548,7 +9529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -9570,11 +9550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 23.0,
+                                                "value": 23,
                                                 "unit": "#"
                                             }
                                         },
@@ -10049,7 +10029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -10071,11 +10050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 25.0,
+                                                "value": 25,
                                                 "unit": "#"
                                             }
                                         },
@@ -10550,7 +10529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -10572,11 +10550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 24.0,
+                                                "value": 24,
                                                 "unit": "#"
                                             }
                                         },
@@ -11051,7 +11029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -11073,11 +11050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 23.0,
+                                                "value": 23,
                                                 "unit": "#"
                                             }
                                         },
@@ -11552,7 +11529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -11574,11 +11550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 24.0,
+                                                "value": 24,
                                                 "unit": "#"
                                             }
                                         },
@@ -12053,7 +12029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -12075,11 +12050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 24.0,
+                                                "value": 24,
                                                 "unit": "#"
                                             }
                                         },
@@ -12554,7 +12529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -12576,11 +12550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 22.0,
+                                                "value": 22,
                                                 "unit": "#"
                                             }
                                         },
@@ -13055,7 +13029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -13077,11 +13050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 24.0,
+                                                "value": 24,
                                                 "unit": "#"
                                             }
                                         },
@@ -13556,7 +13529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -13578,11 +13550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 23.0,
+                                                "value": 23,
                                                 "unit": "#"
                                             }
                                         },
@@ -14057,7 +14029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -14079,11 +14050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 24.0,
+                                                "value": 24,
                                                 "unit": "#"
                                             }
                                         },
@@ -14558,7 +14529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -14580,11 +14550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 24.0,
+                                                "value": 24,
                                                 "unit": "#"
                                             }
                                         },
@@ -15059,7 +15029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -15081,11 +15050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 24.0,
+                                                "value": 24,
                                                 "unit": "#"
                                             }
                                         },
@@ -15560,7 +15529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -15582,11 +15550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 24.0,
+                                                "value": 24,
                                                 "unit": "#"
                                             }
                                         },
@@ -16061,7 +16029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -16083,11 +16050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 24.0,
+                                                "value": 24,
                                                 "unit": "#"
                                             }
                                         },
@@ -16562,7 +16529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -16584,11 +16550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 24.0,
+                                                "value": 24,
                                                 "unit": "#"
                                             }
                                         },
@@ -17063,7 +17029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -17085,11 +17050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 24.0,
+                                                "value": 24,
                                                 "unit": "#"
                                             }
                                         },
@@ -17564,7 +17529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -17586,11 +17550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 23.0,
+                                                "value": 23,
                                                 "unit": "#"
                                             }
                                         },
@@ -18065,7 +18029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -18087,11 +18050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 39.0,
+                                                "value": 39,
                                                 "unit": "#"
                                             }
                                         },
@@ -18566,7 +18529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -18588,11 +18550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 39.0,
+                                                "value": 39,
                                                 "unit": "#"
                                             }
                                         },
@@ -19067,7 +19029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -19089,11 +19050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 39.0,
+                                                "value": 39,
                                                 "unit": "#"
                                             }
                                         },
@@ -19568,7 +19529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -19590,11 +19550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 39.0,
+                                                "value": 39,
                                                 "unit": "#"
                                             }
                                         },
@@ -20069,7 +20029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -20091,11 +20050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 26.0,
+                                                "value": 26,
                                                 "unit": "#"
                                             }
                                         },
@@ -20570,7 +20529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -20592,11 +20550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 26.0,
+                                                "value": 26,
                                                 "unit": "#"
                                             }
                                         },
@@ -21071,7 +21029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -21093,11 +21050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 26.0,
+                                                "value": 26,
                                                 "unit": "#"
                                             }
                                         },
@@ -21572,7 +21529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -21594,11 +21550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 26.0,
+                                                "value": 26,
                                                 "unit": "#"
                                             }
                                         },
@@ -22073,7 +22029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -22095,11 +22050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 25.0,
+                                                "value": 25,
                                                 "unit": "#"
                                             }
                                         },
@@ -22574,7 +22529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -22596,11 +22550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 25.0,
+                                                "value": 25,
                                                 "unit": "#"
                                             }
                                         },
@@ -23075,7 +23029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -23097,11 +23050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 25.0,
+                                                "value": 25,
                                                 "unit": "#"
                                             }
                                         },
@@ -23576,7 +23529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -23598,11 +23550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 25.0,
+                                                "value": 25,
                                                 "unit": "#"
                                             }
                                         },
@@ -24077,7 +24029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -24099,11 +24050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 22.0,
+                                                "value": 22,
                                                 "unit": "#"
                                             }
                                         },
@@ -24578,7 +24529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -24600,11 +24550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 24.0,
+                                                "value": 24,
                                                 "unit": "#"
                                             }
                                         },
@@ -25079,7 +25029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -25101,11 +25050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 24.0,
+                                                "value": 24,
                                                 "unit": "#"
                                             }
                                         },
@@ -25580,7 +25529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -25602,11 +25550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 24.0,
+                                                "value": 24,
                                                 "unit": "#"
                                             }
                                         },
@@ -26081,7 +26029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -26103,11 +26050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 21.0,
+                                                "value": 21,
                                                 "unit": "#"
                                             }
                                         },
@@ -26582,7 +26529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -26604,11 +26550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 22.0,
+                                                "value": 22,
                                                 "unit": "#"
                                             }
                                         },
@@ -27083,7 +27029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -27105,11 +27050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 23.0,
+                                                "value": 23,
                                                 "unit": "#"
                                             }
                                         },
@@ -27584,7 +27529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -27606,11 +27550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 24.0,
+                                                "value": 24,
                                                 "unit": "#"
                                             }
                                         },
@@ -28085,7 +28029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -28107,11 +28050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 22.0,
+                                                "value": 22,
                                                 "unit": "#"
                                             }
                                         },
@@ -28586,7 +28529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -28608,11 +28550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 22.0,
+                                                "value": 22,
                                                 "unit": "#"
                                             }
                                         },
@@ -29087,7 +29029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -29109,11 +29050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 22.0,
+                                                "value": 22,
                                                 "unit": "#"
                                             }
                                         },
@@ -29588,7 +29529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -29610,11 +29550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 21.0,
+                                                "value": 21,
                                                 "unit": "#"
                                             }
                                         },
@@ -30089,7 +30029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -30111,11 +30050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 24.0,
+                                                "value": 24,
                                                 "unit": "#"
                                             }
                                         },
@@ -30590,7 +30529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -30612,11 +30550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 21.0,
+                                                "value": 21,
                                                 "unit": "#"
                                             }
                                         },
@@ -31091,7 +31029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -31113,11 +31050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 24.0,
+                                                "value": 24,
                                                 "unit": "#"
                                             }
                                         },
@@ -31592,7 +31529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -31614,11 +31550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 21.0,
+                                                "value": 21,
                                                 "unit": "#"
                                             }
                                         },
@@ -32093,7 +32029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -32115,11 +32050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 23.0,
+                                                "value": 23,
                                                 "unit": "#"
                                             }
                                         },
@@ -32594,7 +32529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -32616,11 +32550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 23.0,
+                                                "value": 23,
                                                 "unit": "#"
                                             }
                                         },
@@ -33095,7 +33029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -33117,11 +33050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 24.0,
+                                                "value": 24,
                                                 "unit": "#"
                                             }
                                         },
@@ -33596,7 +33529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -33618,11 +33550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 23.0,
+                                                "value": 23,
                                                 "unit": "#"
                                             }
                                         },
@@ -34097,7 +34029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -34119,11 +34050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 21.0,
+                                                "value": 21,
                                                 "unit": "#"
                                             }
                                         },
@@ -34598,7 +34529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -34620,11 +34550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 23.0,
+                                                "value": 23,
                                                 "unit": "#"
                                             }
                                         },
@@ -35099,7 +35029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -35121,11 +35050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 23.0,
+                                                "value": 23,
                                                 "unit": "#"
                                             }
                                         },
@@ -35600,7 +35529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -35622,11 +35550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 24.0,
+                                                "value": 24,
                                                 "unit": "#"
                                             }
                                         },
@@ -36101,7 +36029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -36123,11 +36050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 23.0,
+                                                "value": 23,
                                                 "unit": "#"
                                             }
                                         },
@@ -36602,7 +36529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -36624,11 +36550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 22.0,
+                                                "value": 22,
                                                 "unit": "#"
                                             }
                                         },
@@ -37103,7 +37029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -37125,11 +37050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 23.0,
+                                                "value": 23,
                                                 "unit": "#"
                                             }
                                         },
@@ -37604,7 +37529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -37626,11 +37550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 22.0,
+                                                "value": 22,
                                                 "unit": "#"
                                             }
                                         },
@@ -38105,7 +38029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -38127,11 +38050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 23.0,
+                                                "value": 23,
                                                 "unit": "#"
                                             }
                                         },
@@ -38606,7 +38529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -38628,11 +38550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 22.0,
+                                                "value": 22,
                                                 "unit": "#"
                                             }
                                         },
@@ -39107,7 +39029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -39129,11 +39050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 23.0,
+                                                "value": 23,
                                                 "unit": "#"
                                             }
                                         },
@@ -39608,7 +39529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -39630,11 +39550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 23.0,
+                                                "value": 23,
                                                 "unit": "#"
                                             }
                                         },
@@ -40109,7 +40029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -40131,11 +40050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 21.0,
+                                                "value": 21,
                                                 "unit": "#"
                                             }
                                         },
@@ -40610,7 +40529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -40632,11 +40550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 22.0,
+                                                "value": 22,
                                                 "unit": "#"
                                             }
                                         },
@@ -41111,7 +41029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -41133,11 +41050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 22.0,
+                                                "value": 22,
                                                 "unit": "#"
                                             }
                                         },
@@ -41612,7 +41529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -41634,11 +41550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 23.0,
+                                                "value": 23,
                                                 "unit": "#"
                                             }
                                         },
@@ -42113,7 +42029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -42135,11 +42050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 22.0,
+                                                "value": 22,
                                                 "unit": "#"
                                             }
                                         },
@@ -42614,7 +42529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -42636,11 +42550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 23.0,
+                                                "value": 23,
                                                 "unit": "#"
                                             }
                                         },
@@ -43115,7 +43029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -43137,11 +43050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 23.0,
+                                                "value": 23,
                                                 "unit": "#"
                                             }
                                         },
@@ -43616,7 +43529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -43638,11 +43550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 22.0,
+                                                "value": 22,
                                                 "unit": "#"
                                             }
                                         },
@@ -44117,7 +44029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -44139,11 +44050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 22.0,
+                                                "value": 22,
                                                 "unit": "#"
                                             }
                                         },
@@ -44618,7 +44529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -44640,11 +44550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 23.0,
+                                                "value": 23,
                                                 "unit": "#"
                                             }
                                         },
@@ -45119,7 +45029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -45141,11 +45050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 24.0,
+                                                "value": 24,
                                                 "unit": "#"
                                             }
                                         },
@@ -45620,7 +45529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -45642,11 +45550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 22.0,
+                                                "value": 22,
                                                 "unit": "#"
                                             }
                                         },
@@ -46121,7 +46029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -46143,11 +46050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 22.0,
+                                                "value": 22,
                                                 "unit": "#"
                                             }
                                         },
@@ -46622,7 +46529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -46644,11 +46550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 22.0,
+                                                "value": 22,
                                                 "unit": "#"
                                             }
                                         },
@@ -47123,7 +47029,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -47145,11 +47050,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 21.0,
+                                                "value": 21,
                                                 "unit": "#"
                                             }
                                         },
@@ -47624,7 +47529,6 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "CT",
-                                        "PCR detection chemistry": "N/A",
                                         "total cycle number setting": {
                                             "value": 40.0,
                                             "unit": "#"
@@ -47646,11 +47550,11 @@
                                             "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
-                                                "value": 3.0,
+                                                "value": 3,
                                                 "unit": "#"
                                             },
                                             "baseline determination end cycle setting": {
-                                                "value": 24.0,
+                                                "value": 24,
                                                 "unit": "#"
                                             }
                                         },
@@ -48112,7 +48016,7 @@
             "software name": "Design & Analysis Software",
             "software version": "2.7.0",
             "ASM converter name": "allotropy_appbio_quantstudio_design_&_analysis",
-            "ASM converter version": "0.1.49"
+            "ASM converter version": "0.1.54"
         },
         "calculated data aggregate document": {
             "calculated data document": [

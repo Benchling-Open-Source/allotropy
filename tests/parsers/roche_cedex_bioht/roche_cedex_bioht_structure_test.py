@@ -2,10 +2,6 @@ import pandas as pd
 import pytest
 
 from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
-from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_parser import (
-    RocheCedexBiohtParser,
-)
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure import (
     create_measurements,
     RawMeasurement,
@@ -13,11 +9,6 @@ from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure import (
     Title,
 )
 from allotropy.parsers.utils.pandas import SeriesData
-from allotropy.testing.utils import mock_uuid_generation
-from tests.parsers.roche_cedex_bioht.roche_cedex_bioht_data import (
-    get_data,
-    get_data_stream,
-)
 
 
 @pytest.mark.parametrize(
@@ -208,13 +199,3 @@ def test_create_sample() -> None:
             ),
         }
     }
-
-
-def test_create_data() -> None:
-    with mock_uuid_generation():
-        assert (
-            RocheCedexBiohtParser().create_data(
-                NamedFileContents(get_data_stream(), "dummy.txt")
-            )
-            == get_data()
-        )

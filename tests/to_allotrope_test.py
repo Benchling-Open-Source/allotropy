@@ -40,16 +40,15 @@ def test_allotrope_model_from_file_not_found() -> None:
 @pytest.mark.long
 class ParserTest:
     VENDOR: Vendor
-    OVERWRITE_ON_FAILURE: bool = False
 
     # test_file_path is automatically populated with all files in testdata folder next to the test file.
-    def test_positive_cases(self, test_file_path: Path) -> None:
+    def test_positive_cases(self, test_file_path: Path, *, overwrite: bool) -> None:
         expected_filepath = test_file_path.with_suffix(".json")
         allotrope_dict = from_file(
             str(test_file_path), self.VENDOR, encoding=CHARDET_ENCODING
         )
         # If expected output does not exist, assume this is a new file and write it.
-        overwrite = self.OVERWRITE_ON_FAILURE or not expected_filepath.exists()
+        overwrite = overwrite or not expected_filepath.exists()
         validate_contents(
             allotrope_dict,
             expected_filepath,

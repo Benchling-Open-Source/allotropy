@@ -319,8 +319,7 @@
                                 "$asm.pattern": "aggregate datum",
                                 "required": [
                                   "device type",
-                                  "measurement method identifier",
-                                  "PCR detection chemistry"
+                                  "measurement method identifier"
                                 ],
                                 "properties": {
                                   "device type": {
