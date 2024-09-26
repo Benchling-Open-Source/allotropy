@@ -52,9 +52,11 @@ def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
                 viable_cell_count=data.get(float, "Viable Cell Count"),
                 viable_cell_density=viable_cell_density,
                 total_cell_count=data.get(float, "Total Cell Count"),
-                total_cell_density=total_cell_density,
+                total_cell_density=total_cell_density
+                if total_cell_density_val
+                else None,
                 dead_cell_count=data.get(float, "Dead Cell Count"),
-                dead_cell_density=dead_cell_density,
+                dead_cell_density=dead_cell_density if dead_cell_density_val else None,
                 cell_type_processing_method=data.get(str, "Cell type name"),
                 cell_density_dilution_factor=data.get(float, "Dilution"),
                 sample_volume_setting=data.get(float, "Sample volume"),

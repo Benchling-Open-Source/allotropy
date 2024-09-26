@@ -10,6 +10,8 @@ from allotropy.allotrope.models.adm.cell_counting.benchling._2023._11.cell_count
     DataSystemDocument,
     DeviceControlDocumentItemModel,
     DeviceSystemDocument,
+    ErrorAggregateDocument,
+    ErrorDocumentItem,
     MeasurementAggregateDocument,
     Model,
     ProcessedDataAggregateDocument,
@@ -28,6 +30,12 @@ from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.parsers.utils.values import quantity_or_none
+
+
+@dataclass(frozen=True)
+class Error:
+    error: str
+    feature: str | None = None
 
 
 @dataclass
@@ -64,6 +72,7 @@ class Measurement:
 
     average_total_cell_diameter: JsonFloat | None = None
     average_live_cell_diameter: float | None = None
+    average_dead_cell_diameter: float | None = None
     average_total_cell_circularity: float | None = None
     average_viable_cell_circularity: float | None = None
 
@@ -74,6 +83,8 @@ class Measurement:
     total_object_count: float | None = None
     standard_deviation: float | None = None
     aggregate_rate: float | None = None
+
+    errors: list[Error] | None = None
 
     # customer information document fields
     debris_index: float | None = None
@@ -89,10 +100,11 @@ class MeasurementGroup:
 @dataclass
 class Metadata:
     device_type: str
-    detection_type: str
-    model_number: str
-    software_name: str
-    file_name: str
+    detection_type: str | None = None
+    model_number: str | None = None
+    software_name: str | None = None
+    file_name: str | None = None
+    unc_path: str | None = None
     equipment_serial_number: str | None = None
     software_version: str | None = None
     product_manufacturer: str | None = None
@@ -100,13 +112,16 @@ class Metadata:
     asset_management_identifier: str | None = None
     device_identifier: str | None = None
     description: str | None = None
-    unc_path: str | None = None
 
 
 @dataclass
 class Data:
     metadata: Metadata
     measurement_groups: list[MeasurementGroup]
+
+
+def has_value(model: object) -> bool:
+    return any(value is not None for value in model.__dict__.values())
 
 
 class Mapper(SchemaMapper[Data, Model]):
@@ -127,11 +142,11 @@ class Mapper(SchemaMapper[Data, Model]):
                 ),
                 data_system_document=DataSystemDocument(
                     file_name=data.metadata.file_name,
+                    UNC_path=data.metadata.unc_path,
                     software_name=data.metadata.software_name,
                     software_version=data.metadata.software_version,
                     ASM_converter_name=self.converter_name,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
-                    UNC_path=data.metadata.unc_path,
                 ),
                 cell_counting_document=[
                     self._get_technique_document(measurement_group, data.metadata)
@@ -173,6 +188,9 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
             processed_data_aggregate_document=self._get_processed_data_aggregate_document(
                 measurement
+            ),
+            error_aggregate_document=self._get_error_aggregate_document(
+                measurement.errors
             ),
         )
 
@@ -224,23 +242,26 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueUnitless, measurement.debris_index
             ),
         }
+        data_processing_document = DataProcessingDocument(
+            cell_type_processing_method=measurement.cell_type_processing_method,
+            minimum_cell_diameter_setting=quantity_or_none(
+                TQuantityValueMicrometer,
+                measurement.minimum_cell_diameter_setting,
+            ),
+            maximum_cell_diameter_setting=quantity_or_none(
+                TQuantityValueMicrometer,
+                measurement.maximum_cell_diameter_setting,
+            ),
+            cell_density_dilution_factor=quantity_or_none(
+                TQuantityValueUnitless,
+                measurement.cell_density_dilution_factor,
+            ),
+        )
         processed_data_document = ProcessedDataDocumentItem(
             processed_data_identifier=measurement.processed_data_identifier,
-            data_processing_document=DataProcessingDocument(
-                cell_type_processing_method=measurement.cell_type_processing_method,
-                minimum_cell_diameter_setting=quantity_or_none(
-                    TQuantityValueMicrometer,
-                    measurement.minimum_cell_diameter_setting,
-                ),
-                maximum_cell_diameter_setting=quantity_or_none(
-                    TQuantityValueMicrometer,
-                    measurement.maximum_cell_diameter_setting,
-                ),
-                cell_density_dilution_factor=quantity_or_none(
-                    TQuantityValueUnitless,
-                    measurement.cell_density_dilution_factor,
-                ),
-            ),
+            data_processing_document=data_processing_document
+            if has_value(data_processing_document)
+            else None,
             viability__cell_counter_=TQuantityValuePercent(value=measurement.viability),
             viable_cell_density__cell_counter_=TQuantityValueMillionCellsPerMilliliter(
                 value=measurement.viable_cell_density
@@ -264,6 +285,10 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueMicrometer,
                 measurement.average_live_cell_diameter,
             ),
+            average_dead_cell_diameter__cell_counter_=quantity_or_none(
+                TQuantityValueMicrometer,
+                measurement.average_dead_cell_diameter,
+            ),
             viable_cell_count=quantity_or_none(
                 TQuantityValueCell, measurement.viable_cell_count
             ),
@@ -284,5 +309,18 @@ class Mapper(SchemaMapper[Data, Model]):
                 add_custom_information_document(
                     processed_data_document, custom_document
                 )
+            ]
+        )
+
+    def _get_error_aggregate_document(
+        self, errors: list[Error] | None
+    ) -> ErrorAggregateDocument | None:
+        if not errors:
+            return None
+
+        return ErrorAggregateDocument(
+            error_document=[
+                ErrorDocumentItem(error=error.error, error_feature=error.feature)
+                for error in errors
             ]
         )
