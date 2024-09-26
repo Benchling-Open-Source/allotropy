@@ -17,6 +17,7 @@ def build_quantity(well_item: WellItem) -> CalculatedDocument | None:
     if (quantity := well_item.result.quantity) is None:
         return None
 
+    # Uesless comment
     return CalculatedDocument(
         uuid=random_uuid_str(),
         name="quantity",
