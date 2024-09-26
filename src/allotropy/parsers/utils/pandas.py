@@ -210,12 +210,18 @@ class SeriesData:
         self.series = series
         self.read_keys: set[str] = set()
 
-    def get_unread(self, skip: set[str] | None = None) -> dict[str, float | str | None] | None:
+    def get_unread(
+        self, skip: set[str] | None = None
+    ) -> dict[str, float | str | None] | None:
         skip = skip or set()
         unread_keys = set(self.series.index.to_list()) - self.read_keys - skip
         if not unread_keys:
             return None
-        return {key: self.get(float, key) or self.get(str, key) for key in unread_keys} if unread_keys else None
+        return (
+            {key: self.get(float, key) or self.get(str, key) for key in unread_keys}
+            if unread_keys
+            else None
+        )
 
     def __getitem__(self, type_and_key: TypeAndKey[T] | TypeAndKeyAndMsg[T]) -> T:
         """

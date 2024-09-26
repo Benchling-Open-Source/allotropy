@@ -200,7 +200,7 @@ def test_get_unread() -> None:
                 "unread_float": 4.5,
                 "unread_float_as_str": "5",
                 "unread_str": "hello!",
-                "skipped": "womp"
+                "skipped": "womp",
             }
         )
     )
