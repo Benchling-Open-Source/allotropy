@@ -8,13 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Add cache decorator to amp score calculated data construction in AppBio Quantstuido
+
 - Add Amp score and Cq confidence calculated data documents to AppBio Quantstuido Design and Analysis
 
 ### Fixed
 
-- Mark "PCR Detection Chemistry" as optional in PCR schema.
 - Fix Y-intercept and Slope references as data sources for quantity calculated data document in AppBio Quantstuido Design and Analysis
+
+### Fixed
 
 ### Changed
 
@@ -23,6 +24,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 ### Security
+
+## [0.1.55] - 2024-09-26
+
+### Added
+
+- AppBio Quantstuido - add cache decorator to amp score calculated data construction.
+- Added Chemometec NC View Adapter
+
+### Fixed
+
+- Mark "PCR Detection Chemistry" as optional in PCR schema.
+- Perkin Elmer Envision - remove leading '0' from well identifier numbers.
 
 ## [0.1.54] - 2024-09-23
 
