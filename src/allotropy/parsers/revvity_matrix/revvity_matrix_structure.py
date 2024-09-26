@@ -38,6 +38,8 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
         measurements=[
             Measurement(
                 measurement_identifier=random_uuid_str(),
+                # NOTE: instrument  file does not provide a timestamp, but it is required by ASM, so pass
+                # EPOCH to signal no timestamp.
                 timestamp=constants.EPOCH_STR,
                 sample_identifier=data[str, "Well Name"],
                 viability=data[float, "Viability"],
