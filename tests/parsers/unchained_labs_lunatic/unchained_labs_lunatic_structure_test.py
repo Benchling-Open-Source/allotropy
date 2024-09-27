@@ -160,6 +160,40 @@ def test_create_well_plate_with_two_measurements() -> None:
     assert len(well_plate.measurements) == 2
 
 
+def test_create_well_plate_use_datetime_from_data_over_header() -> None:
+    date = "17/10/2016"
+    time = "7:19:18"
+    plate_data = SeriesData(
+        pd.Series(
+            {
+                "Sample name": "dummy name",
+                "Plate Position": "some plate",
+                "Date": date,
+                "Time": time,
+            }
+        )
+    )
+    header_datetime = "01/08/2024 10:15:59"
+    well_plate = _create_measurement_group(plate_data, [], [], header_datetime)
+
+    assert well_plate.measurement_time == f"{date} {time}"
+
+def test_create_well_plate_with_date_from_header() -> None:
+    plate_data = SeriesData(
+        pd.Series(
+            {
+                "Sample name": "dummy name",
+                "Plate Position": "some plate",
+                "Time": "7:19:18",
+            }
+        )
+    )
+    header_datetime = "01/08/2024 10:15:59"
+    well_plate = _create_measurement_group(plate_data, [], [], header_datetime)
+
+    assert well_plate.measurement_time == header_datetime
+
+
 def test_create_well_plate_without_date_column_then_raise() -> None:
     plate_data = SeriesData(
         pd.Series(
@@ -171,7 +205,7 @@ def test_create_well_plate_without_date_column_then_raise() -> None:
         )
     )
     with pytest.raises(AllotropeConversionError, match=NO_DATE_OR_TIME_ERROR_MSG):
-        _create_measurement_group(plate_data, [], [], None)
+        _create_measurement_group(plate_data, [], [], SeriesData(pd.Series()))
 
 
 def test_get_calculated_data_items_from_data_with_the_right_values() -> None:
