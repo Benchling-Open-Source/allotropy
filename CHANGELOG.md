@@ -5,27 +5,18 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.1.56] - 2024-09-26
 
 ### Added
 
 - Add Amp score and Cq confidence calculated data documents to AppBio Quantstuido Design and Analysis
-
-### Fixed
-
 - SoftMax Pro - Support kinetic measurements files.
-- Added Revvity MatrixAdapter
-- Fix Y-intercept and Slope references as data sources for quantity calculated data document in AppBio Quantstuido Design and Analysis
+- Added Revvity MatrixAdapter.
+- Script to generate CHANGELOG from git commits.
 
 ### Fixed
 
-### Changed
-
-### Deprecated
-
-### Removed
-
-### Security
+- Fix Y-intercept and Slope references as data sources for quantity calculated data document in AppBio Quantstuido Design and Analysis
 
 ## [0.1.55] - 2024-09-26
 

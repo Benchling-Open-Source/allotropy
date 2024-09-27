@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from collections import defaultdict
 from datetime import datetime
 import os
 from pathlib import Path
@@ -11,6 +12,46 @@ import semantic_version  # type: ignore
 from allotropy.__about__ import __version__
 from allotropy.allotrope.schema_parser.path_util import ALLOTROPY_DIR, ROOT_DIR
 
+SECTION_TO_PREFIX = {
+    "feat": "Added",
+    "fix": "Fixed",
+    "refactor": "Changed",
+    "deprecate": "Deprecated",
+    "remove": "Removed",
+    "security": "Security",
+}
+
+
+def _get_changes() -> dict[str, list[str]]:
+    p = subprocess.run(
+        ["git", "log", "--oneline"], capture_output=True, text=True, check=True
+    )
+    changes = defaultdict(list)
+    for line in p.stdout.split("\n"):
+        parts = line.split(" ")
+        if len(parts) < 3 or not parts[1].endswith(":"):  # noqa: PLR2004
+            continue
+        prefix = parts[1].strip(":").lower()
+        if prefix == "release":
+            break
+        if prefix not in SECTION_TO_PREFIX:
+            continue
+        changes[prefix].append(" ".join(parts[2:]))
+    return dict(changes)
+
+
+def _write_new_section(version: str, changes: dict[str, list[str]]) -> str:
+    body = f"## [{version}] - {datetime.now(tz.gettz('EST')).strftime('%Y-%m-%d')}\n"
+    for prefix, section in SECTION_TO_PREFIX.items():
+        if prefix not in changes:
+            continue
+        body += f"\n### {section}\n\n"
+        for change in changes[prefix]:
+            body += f"- {change}\n"
+
+    body += "\n"
+    return body
+
 
 def _update_changelog(version: str) -> str:
     changelog_file = Path(ROOT_DIR, "CHANGELOG.md")
@@ -19,52 +60,10 @@ def _update_changelog(version: str) -> str:
 
     body = ""
     with open(changelog_file, "w") as f:
-        editing = None
-        current_contents: list[str] = []
         for line in contents:
-            if line.startswith("## "):
-                if editing:
-                    # Add last section to body and write body
-                    if "".join(current_contents[1:]).strip():
-                        body += "".join(
-                            f"- {c.strip()}\n"
-                            if not (c.startswith("-") or c.startswith("\n"))
-                            else c
-                            for c in current_contents
-                            if c != "\n"
-                        )
-                    f.write(body)
-
-                    # Write start of new section
-                    f.write("\n")
-
-                    editing = False
-                elif editing is None:
-                    # Start writing current changelog entry, skipping empty sections.
-                    f.write(
-                        """## [Unreleased]\n\n### Added\n\n### Fixed\n\n### Changed\n\n### Deprecated\n\n### Removed\n\n### Security\n\n"""
-                    )
-                    f.write(
-                        f"## [{version}] - {datetime.now(tz.gettz('EST')).strftime('%Y-%m-%d')}\n"
-                    )
-                    editing = True
-                    continue
-
-            if editing:
-                if line.startswith("### "):
-                    if "".join(current_contents[1:]).strip():
-                        body += "".join(
-                            f"- {c.strip()}\n"
-                            if not (c.startswith("-") or c.startswith("\n"))
-                            else c
-                            for c in current_contents
-                            if c != "\n"
-                        )
-                    current_contents = [f"\n{line}\n"]
-                else:
-                    current_contents.append(line)
-                continue
-
+            if line.startswith("## ") and not body:
+                body = _write_new_section(version, _get_changes())
+                f.write(body)
             f.write(line)
 
     return body
@@ -114,7 +113,7 @@ def _make_pr(version: str, body: str) -> None:
                 "pr",
                 "create",
                 "--title",
-                f"chore: Update allotropy version to {version}",
+                f"release: Update allotropy version to {version}",
                 "--body-file",
                 filename,
             ],
