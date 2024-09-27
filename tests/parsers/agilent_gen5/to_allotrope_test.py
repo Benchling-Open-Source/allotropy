@@ -37,18 +37,6 @@ def test_to_allotrope_absorbance_no_pm_in_time() -> None:
     validate_contents(allotrope_dict, expected_filepath)
 
 
-@pytest.mark.parametrize(
-    "filepath",
-    [
-        f"{ABSORBANCE_PATH}/exclude/kinetic_helper_gene_growth_curve.txt",
-        f"{ABSORBANCE_PATH}/exclude/kinetic_singleplate.txt",
-    ],
-)
-def test_to_allotrope_unsupported_kinetic_file(filepath: str) -> None:
-    with pytest.raises(AllotropeConversionError, match=UNSUPPORTED_READ_TYPE_ERROR):
-        from_file(filepath, VENDOR_TYPE)
-
-
 def test_to_allotrope_unsupported_spectral_scan_file() -> None:
     filepath = (
         f"{ABSORBANCE_PATH}/exclude/240307_114129_BNCH654563_spectralScan_example01.txt"

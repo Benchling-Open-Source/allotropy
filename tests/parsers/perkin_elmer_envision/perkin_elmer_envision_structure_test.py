@@ -98,25 +98,25 @@ def test_create_result() -> None:
         Result(
             uuid="TEST_ID_0",
             col="A",
-            row="01",
+            row="1",
             value=1,
         ),
         Result(
             uuid="TEST_ID_1",
             col="A",
-            row="02",
+            row="2",
             value=2,
         ),
         Result(
             uuid="TEST_ID_2",
             col="B",
-            row="01",
+            row="1",
             value=3,
         ),
         Result(
             uuid="TEST_ID_3",
             col="B",
-            row="02",
+            row="2",
             value=4,
         ),
     ]
@@ -174,19 +174,19 @@ def test_create_plates() -> None:
                     Result(
                         uuid="TEST_ID_0",
                         col="A",
-                        row="01",
+                        row="1",
                         value=6,
                     ),
                     Result(
                         uuid="TEST_ID_1",
                         col="A",
-                        row="03",
+                        row="3",
                         value=7,
                     ),
                     Result(
                         uuid="TEST_ID_2",
                         col="C",
-                        row="02",
+                        row="2",
                         value=8,
                     ),
                 ],
@@ -246,19 +246,19 @@ def test_create_plates_with_calculated_data() -> None:
                     CalculatedResult(
                         uuid="TEST_ID_0",
                         col="A",
-                        row="01",
+                        row="1",
                         value=3,
                     ),
                     CalculatedResult(
                         uuid="TEST_ID_1",
                         col="A",
-                        row="03",
+                        row="3",
                         value=3.5,
                     ),
                     CalculatedResult(
                         uuid="TEST_ID_2",
                         col="C",
-                        row="02",
+                        row="2",
                         value=4,
                     ),
                 ],
@@ -411,19 +411,19 @@ def test_create_plate_maps() -> None:
             plate_n="1",
             group_n="1",
             sample_role_type_mapping={
-                "01": {
+                "1": {
                     "A": SampleRoleType.unknown_sample_role,
                     "C": SampleRoleType.standard_sample_role,
                 },
-                "02": {"B": SampleRoleType.control_sample_role},
-                "03": {"C": SampleRoleType.sample_role},
+                "2": {"B": SampleRoleType.control_sample_role},
+                "3": {"C": SampleRoleType.sample_role},
             },
         ),
         "2": PlateMap(
             plate_n="2",
             group_n="3",
             sample_role_type_mapping={
-                "04": {"A": SampleRoleType.blank_role},
+                "4": {"A": SampleRoleType.blank_role},
             },
         ),
     }

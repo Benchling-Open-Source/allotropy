@@ -5,29 +5,68 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.1.56] - 2024-09-26
 
 ### Added
+
+- Add Amp score and Cq confidence calculated data documents to AppBio Quantstuido Design and Analysis
+- SoftMax Pro - Support kinetic measurements files.
+- Added Revvity MatrixAdapter.
+- Script to generate CHANGELOG from git commits.
+
+### Fixed
+
+- Fix Y-intercept and Slope references as data sources for quantity calculated data document in AppBio Quantstuido Design and Analysis
+
+## [0.1.55] - 2024-09-26
+
+### Added
+
+- AppBio Quantstuido - add cache decorator to amp score calculated data construction.
+- Added Chemometec NC View Adapter
+
+### Fixed
+
+- Mark "PCR Detection Chemistry" as optional in PCR schema.
+- Perkin Elmer Envision - remove leading '0' from well identifier numbers.
+
+## [0.1.54] - 2024-09-23
+
+### Added
+
+- AppBio Quantstuido - added additional metadata fields
+
+### Fixed
+
+- Unchained Labs Lunatic - handle missing 'Sample name' and missing 'Table' label before table parser.
+- Agilent Gen5 - cast measurement label to string, since it can numeric when reading directly from dataframe (e.g. a single wavelength).
+
+### Changed
+
+- Simplify sheets needed to infer presence/absence experiment type inference in Appbio Quantstudio Design and Analysis
+- Allow software name and version to be None in Appbio Quantstudio Design and Analysis
+
+## [0.1.53] - 2024-09-17
+
+### Added
+
 - Amp score and Cq conf calculated documents to Appbio Quantstudio
 - Add custom information to processed data document in Appbio Quantstudio
-
 - Add schema mapper for the `REC/2024/06/plate-reader` schema.
+- Checks for missing well item amplification and results data in quantstudio
+- Add csv support to ThermoFisher Nanodrop One
+- Made Agilent Gen5 adapter compatible with the new REC schema
 
 ### Fixed
 
 - Fixed bad reference for y-intercept and slope in quantity calculated data document of Appbio Quantstudio
 - Correctly format timezone in SoftmaxPro adapter
+- Added support for Agilent Gen5 label format "[excitation wavelength], [emission wavelength]" for fluorescence point detection
 
 ### Changed
 
 - Refactor Softmaxpro adapter to use the new schema mapper.
-- Rename Nanodrop Eight adapter to Nanodrop 8000
-
-### Deprecated
-
-### Removed
-
-### Security
+- Update Thermo Fisher Genesys30 to recommended state
 
 ## [0.1.52] - 2024-09-12
 
