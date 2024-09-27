@@ -205,6 +205,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     model_number=data.metadata.model_number,
                     brand_name=data.metadata.brand_name,
                     product_manufacturer=data.metadata.product_manufacturer,
+                    equipment_serial_number=data.metadata.equipment_serial_number
                 ),
                 data_system_document=DataSystemDocument(
                     file_name=data.metadata.file_name,
