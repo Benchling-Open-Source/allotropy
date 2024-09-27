@@ -308,7 +308,8 @@ class SeriesData:
             if type_ is float and isinstance(raw_value, str) and "%" in raw_value:
                 raw_value = raw_value.strip("%")
             convert = try_float_or_none if type_ is float else type_
-            value = None if raw_value is None else convert(raw_value)
+            # mypy can't figure out that try_float_or_none will only be used when type_ is float.
+            value = None if raw_value is None else convert(raw_value)  # type: ignore[operator]
         except ValueError:
             value = None
         return default if value is None else value
