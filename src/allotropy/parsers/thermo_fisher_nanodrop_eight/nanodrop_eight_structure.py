@@ -117,15 +117,15 @@ class SpectroscopyRow:
                     else None,
                 )
             )
-            measurements.append(
-                Measurement(
-                    type_=MeasurementType.ULTRAVIOLET_ABSORBANCE_SPECTRUM,
-                    identifier=random_uuid_str(),
-                    data_cube=spectra_data_cube,
-                    sample_identifier=sample_id,
-                    location_identifier=location_id,
-                )
+        measurements.append(
+            Measurement(
+                type_=MeasurementType.ULTRAVIOLET_ABSORBANCE_SPECTRUM,
+                identifier=random_uuid_str(),
+                data_cube=spectra_data_cube,
+                sample_identifier=sample_id,
+                location_identifier=location_id,
             )
+        )
         absorbance_ratios = {}
         for numerator, denominator in constants.ABSORBANCE_RATIOS:
             ratio = data.get(float, f"a{numerator}/a{denominator}")
