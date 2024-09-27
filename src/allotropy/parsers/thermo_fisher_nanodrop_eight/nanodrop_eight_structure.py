@@ -25,7 +25,7 @@ from allotropy.parsers.thermo_fisher_nanodrop_eight import constants
 from allotropy.parsers.utils.iterables import get_first_not_none
 from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import try_float_or_none
+from allotropy.parsers.utils.values import try_float, try_float_or_none
 
 
 @dataclass
@@ -61,12 +61,9 @@ class SpectroscopyRow:
         )
 
         spectra_data_cube = None
-        wavelength_cols = [col for col in data.series.index if try_float_or_none(col)]
-        absorbance_vals = [data.get(float, col) for col in wavelength_cols]
-        wavelengths_or_none = [try_float_or_none(col) for col in wavelength_cols]
-        wavelengths = [w for w in wavelengths_or_none if w]
-
-        if len(absorbance_vals) and len(absorbance_vals) == len(wavelengths):
+        float_cols = [col for col in data.series.index if try_float_or_none(col)]
+        spectra_data = {try_float(col, col): data.get(float, col) for col in float_cols}
+        if len(spectra_data) and None not in spectra_data.values():
             spectra_data_cube = DataCube(
                 label="absorption spectrum",
                 structure_dimensions=[
@@ -77,8 +74,8 @@ class SpectroscopyRow:
                         FieldComponentDatatype.double, "absorbance", "mAU"
                     ),
                 ],
-                dimensions=[wavelengths],
-                measures=[absorbance_vals],
+                dimensions=[list(spectra_data.keys())],
+                measures=[list(spectra_data.values())],
             )
 
         # We only capture mass concentration on one measurement document
@@ -122,15 +119,16 @@ class SpectroscopyRow:
                     else None,
                 )
             )
-        measurements.append(
-            Measurement(
-                type_=MeasurementType.ULTRAVIOLET_ABSORBANCE_SPECTRUM,
-                identifier=random_uuid_str(),
-                data_cube=spectra_data_cube,
-                sample_identifier=sample_id,
-                location_identifier=location_id,
+        if spectra_data_cube:
+            measurements.append(
+                Measurement(
+                    type_=MeasurementType.ULTRAVIOLET_ABSORBANCE_SPECTRUM,
+                    identifier=random_uuid_str(),
+                    data_cube=spectra_data_cube,
+                    sample_identifier=sample_id,
+                    location_identifier=location_id,
+                )
             )
-        )
         absorbance_ratios = {}
         for numerator, denominator in constants.ABSORBANCE_RATIOS:
             ratio = data.get(float, f"a{numerator}/a{denominator}")
