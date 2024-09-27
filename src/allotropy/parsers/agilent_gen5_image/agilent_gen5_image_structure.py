@@ -250,11 +250,32 @@ class ReadData:
 
 
 def create_results(
-    result_lines: list[str],
+    result_lines: list[str] | None,
     header_data: HeaderData,
     read_data: ReadData,
     sample_identifiers: dict[str, str],
 ) -> list[MeasurementGroup]:
+    if not result_lines:
+        return [
+            MeasurementGroup(
+                measurement_time=header_data.datetime,
+                plate_well_count=0,
+                analytical_method_identifier=header_data.protocol_file_path,
+                experimental_data_identifier=header_data.experiment_file_path,
+                measurements=[
+                    _create_measurement(
+                        "N/A",
+                        header_data,
+                        read_section,
+                        instrument_settings,
+                        None,
+                        None,
+                    )
+                    for read_section in read_data.read_sections
+                    for instrument_settings in read_section.instrument_settings_list
+                ],
+            )
+        ]
     if result_lines[0].strip() != "Results":
         msg = f"Expected the first line of the results section '{result_lines[0]}' to be 'Results'."
         raise AllotropeConversionError(msg)

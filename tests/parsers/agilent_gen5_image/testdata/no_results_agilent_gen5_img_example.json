@@ -1,0 +1,160 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
+    "plate reader aggregate document": {
+        "plate reader document": [
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-09-19T10:34:43+00:00",
+                    "plate well count": {
+                        "value": 0,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "AGILENT_GEN5_IMAGE_TEST_ID_0",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "Imager",
+                                        "detection type": "optical-imaging",
+                                        "detector gain setting": "10",
+                                        "magnification setting": {
+                                            "value": 4.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "exposure duration setting": {
+                                            "value": 100.0,
+                                            "unit": "ms"
+                                        },
+                                        "illumination setting": {
+                                            "value": 5.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "image count setting": {
+                                            "value": 2.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "auto focus setting": false
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 N/A",
+                                "location identifier": "N/A",
+                                "well plate identifier": "Plate 1"
+                            }
+                        },
+                        {
+                            "measurement identifier": "AGILENT_GEN5_IMAGE_TEST_ID_1",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "Imager",
+                                        "detection type": "optical-imaging",
+                                        "excitation wavelength setting": {
+                                            "value": 377.0,
+                                            "unit": "nm"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 447.0,
+                                            "unit": "nm"
+                                        },
+                                        "magnification setting": {
+                                            "value": 4.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "image count setting": {
+                                            "value": 2.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "auto focus setting": false,
+                                        "fluorescent tag setting": "DAPI"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 N/A",
+                                "location identifier": "N/A",
+                                "well plate identifier": "Plate 1"
+                            }
+                        },
+                        {
+                            "measurement identifier": "AGILENT_GEN5_IMAGE_TEST_ID_2",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "Imager",
+                                        "detection type": "optical-imaging",
+                                        "magnification setting": {
+                                            "value": 4.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "image count setting": {
+                                            "value": 2.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "auto focus setting": false
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 N/A",
+                                "location identifier": "N/A",
+                                "well plate identifier": "Plate 1"
+                            }
+                        },
+                        {
+                            "measurement identifier": "AGILENT_GEN5_IMAGE_TEST_ID_3",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "Imager",
+                                        "detection type": "optical-imaging",
+                                        "excitation wavelength setting": {
+                                            "value": 469.0,
+                                            "unit": "nm"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 525.0,
+                                            "unit": "nm"
+                                        },
+                                        "magnification setting": {
+                                            "value": 4.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "image count setting": {
+                                            "value": 2.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "auto focus setting": false,
+                                        "fluorescent tag setting": "GFP"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 N/A",
+                                "location identifier": "N/A",
+                                "well plate identifier": "Plate 1"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "C:\\Gen5\\Protocols\\4ChTest.prt",
+                    "experimental data identifier": "C:\\Gen5\\Experiments\\4ChTest.xpt",
+                    "container type": "well plate"
+                }
+            }
+        ],
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "Cytation5",
+            "equipment serial number": "99999999A"
+        },
+        "data system document": {
+            "file name": "no_results_agilent_gen5_img_example.txt",
+            "software name": "Gen5 Image",
+            "software version": "1.11.11",
+            "ASM converter name": "allotropy_agilent_gen5_image",
+            "ASM converter version": "0.1.54"
+        }
+    }
+}
