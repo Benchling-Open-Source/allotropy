@@ -4,10 +4,10 @@ from dataclasses import dataclass
 
 import pandas as pd
 
-from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
 )
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
     CalculatedDataItem,
     DataCube,
@@ -20,13 +20,12 @@ from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._1
     ProcessedData,
     ProcessedDataFeature,
 )
-
-from allotropy.parsers.utils.values import try_float_or_none
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.thermo_fisher_nanodrop_eight import constants
 from allotropy.parsers.utils.iterables import get_first_not_none
 from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.values import try_float_or_none
 
 
 @dataclass
@@ -58,7 +57,7 @@ class SpectroscopyRow:
 
         unit = get_first_not_none(
             lambda key: key if data.get(float, key.lower()) else None,
-            constants.CONCENTRATION_UNITS
+            constants.CONCENTRATION_UNITS,
         )
 
         wavelength_cols = [col for col in data.series.index if try_float_or_none(col)]
