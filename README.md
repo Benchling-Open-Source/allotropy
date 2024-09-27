@@ -35,7 +35,7 @@ We currently have parser support for the following instruments:
   - Revvity Kaleido
   - Roche Cedex BioHT
   - Roche Cedex HiRes
-  - Thermo Fisher NanoDrop Eight
+  - Thermo Fisher NanoDrop 8000
   - Thermo Fisher Qubit 4
   - Thermo Fisher Qubit Flex
   - Unchained Labs Lunatic
