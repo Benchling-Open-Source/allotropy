@@ -42,7 +42,9 @@ class UnchainedLabsLunaticReader:
         if table_header_index == 0 or header_data.shape == (1, 1):
             self.header = df_to_series_data(data, index=0)
         else:
-            self.header = df_to_series_data(parse_header_row(header_data))
+            self.header = df_to_series_data(
+                parse_header_row(header_data).dropna(axis="columns")
+            )
 
         # Fix column names in excel sheets with newlines/other whitespace.
         data.columns = (
