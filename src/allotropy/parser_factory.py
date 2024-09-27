@@ -67,7 +67,9 @@ from allotropy.parsers.thermo_fisher_genesys30.thermo_fisher_genesys30_parser im
 from allotropy.parsers.thermo_fisher_nanodrop_8000.nanodrop_8000_parser import (
     Nanodrop8000Parser,
 )
-from allotropy.parsers.thermo_fisher_nanodrop_eight.nanodrop_eight_parser import NanodropEightParser
+from allotropy.parsers.thermo_fisher_nanodrop_eight.nanodrop_eight_parser import (
+    NanodropEightParser,
+)
 from allotropy.parsers.thermo_fisher_nanodrop_one.thermo_fisher_nanodrop_one_parser import (
     ThermoFisherNanodropOneParser,
 )
