@@ -60,21 +60,26 @@ class SpectroscopyRow:
             constants.CONCENTRATION_UNITS,
         )
 
+        spectra_data_cube = None
         wavelength_cols = [col for col in data.series.index if try_float_or_none(col)]
-        absorbances = [data.get(float, col) for col in wavelength_cols]
-        wavelengths = [try_float_or_none(col) for col in wavelength_cols]
+        absorbance_vals = [data.get(float, col) for col in wavelength_cols]
+        wavelengths_or_none = [try_float_or_none(col) for col in wavelength_cols]
+        wavelengths = [w for w in wavelengths_or_none if w]
 
-        spectra_data_cube = DataCube(
-            label="absorption spectrum",
-            structure_dimensions=[
-                DataCubeComponent(FieldComponentDatatype.double, "wavelength", "nm")
-            ],
-            structure_measures=[
-                DataCubeComponent(FieldComponentDatatype.double, "absorbance", "mAU"),
-            ],
-            dimensions=[wavelengths],
-            measures=[absorbances],
-        )
+        if len(absorbance_vals) and len(absorbance_vals) == len(wavelengths):
+            spectra_data_cube = DataCube(
+                label="absorption spectrum",
+                structure_dimensions=[
+                    DataCubeComponent(FieldComponentDatatype.double, "wavelength", "nm")
+                ],
+                structure_measures=[
+                    DataCubeComponent(
+                        FieldComponentDatatype.double, "absorbance", "mAU"
+                    ),
+                ],
+                dimensions=[wavelengths],
+                measures=[absorbance_vals],
+            )
 
         # We only capture mass concentration on one measurement document
         # TODO(nstender): why not just capture in both? Seems relevant, and would make this so much simpler.
