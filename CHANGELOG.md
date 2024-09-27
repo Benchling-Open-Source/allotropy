@@ -24,7 +24,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - AppBio Quantstuido - add cache decorator to amp score calculated data construction.
 - Added Chemometec NC View Adapter
-- Agilent Gen5 Image - add support for no results section files.
 
 ### Fixed
 
