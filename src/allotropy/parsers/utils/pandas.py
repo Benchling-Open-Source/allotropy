@@ -21,7 +21,6 @@ from allotropy.parsers.utils.values import (
     assert_is_type,
     assert_not_none,
     str_to_bool,
-    try_float,
     try_float_or_none,
 )
 from allotropy.types import IOType
