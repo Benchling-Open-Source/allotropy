@@ -40,17 +40,6 @@ jobs:
     - name: Lint
       run: hatch run lint
 
-  changelog:
-    runs-on: ubuntu-20.04
-    name: Check CHANGELOG
-
-    steps:
-    - uses: actions/checkout@v3
-    - name: Check CHANGELOG
-      run: ./scripts/check_changelog
-      env:
-        PR_TITLE: ${{ github.event.pull_request.title }}
-
   pr-title-check:
     runs-on: ubuntu-20.04
     name: Check PR Title

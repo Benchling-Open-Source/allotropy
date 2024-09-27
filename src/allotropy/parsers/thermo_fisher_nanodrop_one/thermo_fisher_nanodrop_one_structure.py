@@ -194,9 +194,7 @@ class RowElements:
         )
 
     @staticmethod
-    def create(data: pd.DataFrame, sheet_name: str) -> RowElements:
-        experiment_type, *_ = sheet_name.split(maxsplit=1)
-
+    def create(data: pd.DataFrame, experiment_type: str) -> RowElements:
         clean_data = RowElements.filter_data(data)
 
         measurement_groups = []
@@ -216,9 +214,8 @@ class RowElements:
 @dataclass(frozen=True)
 class DataNanodrop(Data):
     @staticmethod
-    def create(data: dict[str, pd.DataFrame], file_name: str) -> Data:
-        sheet_name = next(iter(data.keys()))
-        row_elements = RowElements.create(data[sheet_name], sheet_name)
+    def create(data: pd.DataFrame, experiment_type: str, file_name: str) -> Data:
+        row_elements = RowElements.create(data, experiment_type)
 
         return Data(
             metadata=Metadata(

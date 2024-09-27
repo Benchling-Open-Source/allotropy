@@ -50,7 +50,7 @@ class Header:
     model_number: str
     device_serial_number: str
     measurement_method_identifier: str
-    pcr_detection_chemistry: str
+    pcr_detection_chemistry: str | None
     passive_reference_dye_setting: str | None
     barcode: str | None
     analyst: str | None
@@ -100,7 +100,7 @@ class Header:
                 str, "Instrument Serial Number", NOT_APPLICABLE
             ),
             measurement_method_identifier=data[str, "Quantification Cycle Method"],
-            pcr_detection_chemistry=data[str, "Chemistry"],
+            pcr_detection_chemistry=data.get(str, "Chemistry"),
             passive_reference_dye_setting=data.get(str, "Passive Reference"),
             barcode=data.get(str, "Experiment Barcode"),
             analyst=data.get(str, "Experiment User Name"),
@@ -118,6 +118,11 @@ class WellItem(Referenceable):
     well_location_identifier: str | None = None
     quencher_dye_setting: str | None = None
     sample_role_type: str | None = None
+    sample_color: str | None = None
+    biogroup_name: str | None = None
+    biogroup_color: str | None = None
+    target_name: str | None = None
+    target_color: str | None = None
     _result: Result | None = None
 
     # Make hashable to allow for use of caching
@@ -150,6 +155,10 @@ class WellItem(Referenceable):
                 position=data.get(str, "Well Position", NOT_APPLICABLE),
                 well_location_identifier=data.get(str, "Well Position"),
                 quencher_dye_setting=data.get(str, "Quencher"),
+                sample_color=data.get(str, "Sample Color"),
+                biogroup_name=data.get(str, "Biogroup Name"),
+                biogroup_color=data.get(str, "Biogroup Color"),
+                target_color=data.get(str, "Target Color"),
                 sample_role_type=data.get(str, "Task"),
             ),
             WellItem(
@@ -161,6 +170,10 @@ class WellItem(Referenceable):
                 position=data.get(str, "Well Position", NOT_APPLICABLE),
                 well_location_identifier=data.get(str, "Well Position"),
                 quencher_dye_setting=data.get(str, "Quencher"),
+                sample_color=data.get(str, "Sample Color"),
+                biogroup_name=data.get(str, "Biogroup Name"),
+                biogroup_color=data.get(str, "Biogroup Color"),
+                target_color=data.get(str, "Target Color"),
                 sample_role_type=data.get(str, "Task"),
             ),
         )
@@ -181,6 +194,10 @@ class WellItem(Referenceable):
             position=data.get(str, "Well Position", NOT_APPLICABLE),
             well_location_identifier=data.get(str, "Well Position"),
             quencher_dye_setting=data.get(str, "Quencher"),
+            sample_color=data.get(str, "Sample Color"),
+            biogroup_name=data.get(str, "Biogroup Name"),
+            biogroup_color=data.get(str, "Biogroup Color"),
+            target_color=data.get(str, "Target Color"),
             sample_role_type=data.get(str, "Task"),
         )
 
@@ -336,11 +353,14 @@ class Result:
     cycle_threshold_value_setting: float
     cycle_threshold_result: float | None
     automatic_cycle_threshold_enabled_setting: bool | None
-    automatic_baseline_determination_enabled_setting: bool | None
+    automatic_baseline: bool | None
+    baseline_start: int | None
+    baseline_end: int | None
     normalized_reporter_result: float | None
     baseline_corrected_reporter_result: float | None
     genotyping_determination_result: str | None
     genotyping_determination_method_setting: float | None
+    omit: bool | None
     quantity: float | None
     quantity_mean: float | None
     quantity_sd: float | None
@@ -450,9 +470,9 @@ class Result:
                 automatic_cycle_threshold_enabled_setting=data.get(
                     bool, f"{allele_prefix}Automatic Ct Threshold"
                 ),
-                automatic_baseline_determination_enabled_setting=data.get(
-                    bool, f"{allele_prefix}Automatic Baseline"
-                ),
+                automatic_baseline=data.get(bool, f"{allele_prefix}Automatic Baseline"),
+                baseline_start=data.get(int, f"{allele_prefix}Baseline Start"),
+                baseline_end=data.get(int, f"{allele_prefix}Baseline End"),
                 normalized_reporter_result=data.get(float, "Rn"),
                 baseline_corrected_reporter_result=data.get(
                     float, f"{allele_prefix}Delta Rn"
@@ -461,6 +481,7 @@ class Result:
                 genotyping_determination_method_setting=data.get(
                     float, "Threshold Value"
                 ),
+                omit=data.get(bool, "Omit"),
                 quantity=data.get(float, "Quantity"),
                 quantity_mean=data.get(float, "Quantity Mean"),
                 quantity_sd=data.get(float, "Quantity SD"),

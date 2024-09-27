@@ -9,22 +9,38 @@ Allotropy follows a [fork and pull model](https://docs.github.com/en/pull-reques
 ## Contribution conventions
 
 ### PR title
-The PR title must have a prefix (`<prefix>: <description>`) and must have one of the following prefixes:
+The PR title must have a prefix (`<prefix>: <description>`) and must have one of the following prefixes.
+Some of these prefixes are used to generate the CHANGELOG, see CHANGELOG below.
 
-* `feat`: A new feature
-* `fix`: A bug fix
+CHANGELOG prefixes:
+* `feat`: A new feature - `Added` section of CHANGELOG
+* `fix`: A bug fix - `Fixed` section of CHANGELOG
+* `refactor`: Major refactor-only changes (e.g. moving code, reorganizing classes) - `Changed` section of CHANGELOG
+* `deprecate`: Deprecate a feature - `Deprecated` section of CHANGELOG
+* `remove`: Deprecate a feature - `Removed` section of CHANGELOG
+* `security`: A security related fix - `Security` section of CHANGELOG
+
+other prefixes:
+* `release`: Used only for updating the package version for a new release
 * `docs`: Documentation only changes
 * `style`: Stylistic only changes (e.g. whitespace, formatting)
-* `refactor`: Refactor only changes (e.g. moving code, reorganizing classes)
 * `perf`: Performance only changes
 * `test`: A change that only introduces new tests or test data
 * `chore`: A change to internal systems (e.g. build, ci, dependencies) that does not affect tests
 
 ## CHANGELOG
-Every PR that starts with `feat` or `fix` must have a changelog entry. This ensures that all changes that affect
-the library output are documented in the changelog.
+The CHANGELOG will be automatically generated from PR titles with the titles shown above.
 
+A PR adding a new parser should use the `feat` prefix.
 If your change affects existing test cases or adds new tests with new features, it should almost certainly have a `feat` or `fix` prefix.
+Major refactors that are likely to affect other developers should have a `refactor` prefix, small refactors can use `chore`.
+Any removal of functionality must use the `deprecate` prefix.
+
+When writing a PR title that will be in the CHANGELOG, it is important to use a title that will make a good CHANGELOG entry.
+
+See: https://docs.gitlab.com/ee/development/changelog.html#writing-good-changelog-entries
+
+In short: "A good changelog entry should be descriptive and concise. It should explain the change to a reader who has zero context about the change. If you have trouble making it both concise and descriptive, err on the side of descriptive."
 
 ## Testing
 Every PR is run against all lint checks and tests before merging in git.

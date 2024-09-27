@@ -53,7 +53,7 @@ class Header:
     model_number: str
     device_serial_number: str
     measurement_method_identifier: str
-    pcr_detection_chemistry: str
+    pcr_detection_chemistry: str | None
     passive_reference_dye_setting: str | None
     barcode: str | None
     analyst: str | None
@@ -66,11 +66,15 @@ class Header:
 
     @staticmethod
     def create(header: SeriesData) -> Header:
-        software_info = assert_not_none(
-            re.match(
-                "(.*) v(.+)",
-                header[str, "Software Name and Version"],
-            )
+        software_info = re.match(
+            "(.*) v(.+)",
+            header.get(str, "Software Name and Version", ""),
+        )
+
+        software_name, software_version = (
+            (software_info.group(1), software_info.group(2))
+            if software_info
+            else (None, None)
         )
 
         stage_number_raw = header.get(str, "PCR Stage/Step Number", "")
@@ -102,7 +106,7 @@ class Header:
                 str, "Instrument Serial Number", NOT_APPLICABLE
             ),
             measurement_method_identifier=header[str, "Quantification Cycle Method"],
-            pcr_detection_chemistry=header.get(str, "Chemistry", NOT_APPLICABLE),
+            pcr_detection_chemistry=header.get(str, "Chemistry"),
             passive_reference_dye_setting=header.get(str, "Passive Reference"),
             barcode=header.get(str, "Barcode"),
             analyst=header.get(str, "Operator"),
@@ -110,8 +114,8 @@ class Header:
             block_serial_number=header.get(str, "Block Serial Number"),
             heated_cover_serial_number=header.get(str, "Heated Cover Serial Number"),
             pcr_stage_number=pcr_stage_number,
-            software_name=software_info.group(1),
-            software_version=software_info.group(2),
+            software_name=software_name,
+            software_version=software_version,
         )
 
 
@@ -395,8 +399,8 @@ class Result:
     automatic_baseline_determination_enabled_setting: bool | None
     normalized_reporter_result: float | None
     baseline_corrected_reporter_result: float | None
-    baseline_determination_start_cycle_setting: float | None
-    baseline_determination_end_cycle_setting: float | None
+    baseline_determination_start_cycle_setting: int | None
+    baseline_determination_end_cycle_setting: int | None
     genotyping_determination_result: str | None
     genotyping_determination_method_setting: float | None
     quantity: float | None
@@ -420,6 +424,8 @@ class Result:
     r_squared: float | None
     slope: float | None
     efficiency: float | None
+    amp_score: float | None
+    cq_conf: float | None
 
     @classmethod
     def get_genotyping_determination_result(cls, _: SeriesData) -> str | None:
@@ -488,10 +494,10 @@ class Result:
             normalized_reporter_result=target_data.get(float, "Rn"),
             baseline_corrected_reporter_result=target_data.get(float, "Delta Rn"),
             baseline_determination_start_cycle_setting=target_data.get(
-                float, "Baseline Start"
+                int, "Baseline Start"
             ),
             baseline_determination_end_cycle_setting=target_data.get(
-                float, "Baseline End"
+                int, "Baseline End"
             ),
             genotyping_determination_result=cls.get_genotyping_determination_result(
                 target_data
@@ -520,6 +526,8 @@ class Result:
             r_squared=target_data.get(float, "R2"),
             slope=target_data.get(float, "Slope"),
             efficiency=target_data.get(float, "Efficiency"),
+            amp_score=target_data.get(float, "Amp Score"),
+            cq_conf=target_data.get(float, "Cq Confidence"),
         )
 
 

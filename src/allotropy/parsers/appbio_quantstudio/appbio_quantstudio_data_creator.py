@@ -15,6 +15,7 @@ from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import 
     Metadata,
     ProcessedData,
 )
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_quantstudio import constants
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     AmplificationData,
@@ -72,7 +73,9 @@ def _create_processed_data(
     return ProcessedData(
         automatic_cycle_threshold_enabled_setting=result.automatic_cycle_threshold_enabled_setting,
         cycle_threshold_value_setting=result.cycle_threshold_value_setting,
-        automatic_baseline_determination_enabled_setting=result.automatic_baseline_determination_enabled_setting,
+        automatic_baseline_determination_enabled_setting=result.automatic_baseline,
+        baseline_determination_start_cycle_setting=result.baseline_start,
+        baseline_determination_end_cycle_setting=result.baseline_end,
         genotyping_determination_method_setting=result.genotyping_determination_method_setting,
         genotyping_determination_result=result.genotyping_determination_result,
         cycle_threshold_result=result.cycle_threshold_result,
@@ -184,7 +187,13 @@ def _create_measurement(
         sample_identifier=well_item.sample_identifier,
         sample_role_type=well_item.sample_role_type,
         well_location_identifier=well_item.well_location_identifier,
+        well_identifier=well_item.identifier,
         well_plate_identifier=header.barcode,
+        omit=result.omit,
+        sample_color=well_item.sample_color,
+        biogroup_name=well_item.biogroup_name,
+        biogroup_color=well_item.biogroup_color,
+        target_color=well_item.target_color,
         total_cycle_number_setting=amplification_data.total_cycle_number_setting,
         pcr_detection_chemistry=header.pcr_detection_chemistry,
         reporter_dye_setting=well_item.reporter_dye_setting,
@@ -238,6 +247,32 @@ def create_calculated_data(
     )
 
 
+def get_well_item_results(
+    well_item: WellItem,
+    results_data: dict[int, dict[str, Result]],
+) -> Result:
+    results_data_element = results_data.get(well_item.identifier, {}).get(
+        well_item.target_dna_description.replace(" ", "")
+    )
+    if results_data_element is None:
+        msg = f"No result data for well item {well_item.identifier} and target DNA {well_item.target_dna_description}"
+        raise AllotropeConversionError(msg)
+    return results_data_element
+
+
+def get_well_item_amp_data(
+    well_item: WellItem,
+    amp_data: dict[int, dict[str, AmplificationData]],
+) -> AmplificationData:
+    amp_data_element = amp_data.get(well_item.identifier, {}).get(
+        well_item.target_dna_description
+    )
+    if amp_data_element is None:
+        msg = f"No amplification data for well item {well_item.identifier} and target DNA {well_item.target_dna_description}"
+        raise AllotropeConversionError(msg)
+    return amp_data_element
+
+
 def create_measurement_groups(
     header: Header,
     wells: list[Well],
@@ -257,10 +292,8 @@ def create_measurement_groups(
                     header,
                     multi_data.get(well.identifier),
                     melt_data.get(well.identifier),
-                    amp_data[well_item.identifier][well_item.target_dna_description],
-                    results_data[well_item.identifier][
-                        well_item.target_dna_description.replace(" ", "")
-                    ],
+                    get_well_item_amp_data(well_item, amp_data),
+                    get_well_item_results(well_item, results_data),
                 )
                 for well_item in well.items
             ],

@@ -23,7 +23,8 @@ We currently have parser support for the following instruments:
   - Beckman Vi-Cell BLU
   - Beckman Vi-Cell XR
   - Bio-Rad Bio-Plex Manager
-  - CTL ImmunoSpot
+  - CTL ImmunoSpot 
+  - Chemometec NC View
   - ChemoMetec Nucleoview
   - Luminex xPONENT
   - Mabtech Apex
@@ -35,16 +36,17 @@ We currently have parser support for the following instruments:
   - Revvity Kaleido
   - Roche Cedex BioHT
   - Roche Cedex HiRes
+  - Thermo Fisher Genesys30
   - Thermo Fisher NanoDrop Eight
+  - Thermo Fisher Nanodrop One
   - Thermo Fisher Qubit 4
   - Thermo Fisher Qubit Flex
   - Unchained Labs Lunatic
-  - Thermo Fisher Nanodrop One
 
 ### Candidate Release
 
 ### Working Draft
-  - Thermo Fisher Genesys30
+  - Revvity Matrix
 
 The parsers follow maturation levels of: Recommended, Candidate Release, Working Draft - see [release_state.py](https://github.com/Benchling-Open-Source/allotropy/blob/main/src/allotropy/parsers/release_state.py) for additional details.
 

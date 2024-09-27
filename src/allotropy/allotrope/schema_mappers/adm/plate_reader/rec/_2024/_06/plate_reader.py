@@ -27,11 +27,22 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
     TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueRelativeLightUnit,
+    TQuantityValueSecondTime,
+)
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    FieldComponentDatatype,
+    TDatacube,
+    TDatacubeComponent,
+    TDatacubeData,
+    TDatacubeStructure,
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropyParserError
-from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
+from allotropy.parsers.utils.values import (
+    assert_not_none,
+    quantity_or_none,
+)
 
 
 # TODO: these two enum classes should come from the schema
@@ -67,6 +78,25 @@ class MeasurementType(Enum):
     ULTRAVIOLET_ABSORBANCE = "ULTRAVIOLET_ABSORBANCE"
     FLUORESCENCE = "FLUORESCENCE"
     LUMINESCENCE = "LUMINESCENCE"
+    ULTRAVIOLET_ABSORBANCE_CUBE_DETECTOR = "ULTRAVIOLET_ABSORBANCE_CUBE_DETECTOR"
+    FLUORESCENCE_CUBE_DETECTOR = "FLUORESCENCE_CUBE_DETECTOR"
+    LUMINESCENCE_CUBE_DETECTOR = "LUMINESCENCE_CUBE_DETECTOR"
+
+
+@dataclass
+class DataCubeComponent:
+    type_: FieldComponentDatatype
+    concept: str
+    unit: str
+
+
+@dataclass
+class DataCube:
+    label: str
+    structure_dimensions: list[DataCubeComponent]
+    structure_measures: list[DataCubeComponent]
+    dimensions: list[list[float]]
+    measures: list[list[float | None]]
 
 
 @dataclass(frozen=True)
@@ -116,6 +146,14 @@ class Measurement:
     detector_carriage_speed: str | None = None
     compartment_temperature: float | None = None
     number_of_averages: float | None = None
+
+    # Kinetic settings
+    total_measurement_time_setting: float | None = None
+    read_interval_setting: float | None = None
+    number_of_scans_setting: float | None = None
+
+    # Kinetic measurements
+    profile_data_cube: DataCube | None = None
 
 
 @dataclass(frozen=True)
@@ -214,6 +252,12 @@ class Mapper(SchemaMapper[Data, Model]):
             return self._get_luminescence_measurement_document(measurement)
         elif measurement.type_ == MeasurementType.FLUORESCENCE:
             return self._get_fluorescence_measurement_document(measurement)
+        elif measurement.type_ in [
+            MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_DETECTOR,
+            MeasurementType.LUMINESCENCE_CUBE_DETECTOR,
+            MeasurementType.FLUORESCENCE_CUBE_DETECTOR,
+        ]:
+            return self._get_profile_data_cube_measurement_document(measurement)
         else:
             msg = f"Unexpected measurement type: {measurement.type_}"
             raise AllotropyParserError(msg)
@@ -362,6 +406,80 @@ class Mapper(SchemaMapper[Data, Model]):
             sample_document=self._get_sample_document(measurement),
         )
 
+    def _get_profile_data_cube_measurement_document(
+        self, measurement: Measurement
+    ) -> MeasurementDocument:
+        if not measurement.profile_data_cube:
+            msg = "Profile data cube is required for cube detector measurements"
+            raise AllotropyParserError(msg)
+
+        profile_data_cube = self._get_data_cube(measurement.profile_data_cube)
+
+        return MeasurementDocument(
+            measurement_identifier=measurement.identifier,
+            sample_document=self._get_sample_document(measurement),
+            device_control_aggregate_document=DeviceControlAggregateDocument(
+                device_control_document=[
+                    DeviceControlDocumentItem(
+                        device_type=measurement.device_type,
+                        detection_type=measurement.detection_type,
+                        detector_wavelength_setting=quantity_or_none(
+                            TQuantityValueNanometer,
+                            measurement.detector_wavelength_setting,
+                        ),
+                        excitation_wavelength_setting=quantity_or_none(
+                            TQuantityValueNanometer,
+                            measurement.excitation_wavelength_setting,
+                        ),
+                        wavelength_filter_cutoff_setting=quantity_or_none(
+                            TQuantityValueNanometer,
+                            measurement.wavelength_filter_cutoff_setting,
+                        ),
+                        number_of_averages=quantity_or_none(
+                            TQuantityValueNumber, measurement.number_of_averages
+                        ),
+                        detector_carriage_speed_setting=measurement.detector_carriage_speed,
+                        detector_gain_setting=measurement.detector_gain_setting,
+                        detector_distance_setting__plate_reader_=quantity_or_none(
+                            TQuantityValueMillimeter,
+                            measurement.detector_distance_setting,
+                        ),
+                        total_measurement_time_setting=quantity_or_none(
+                            TQuantityValueSecondTime,
+                            measurement.total_measurement_time_setting,
+                        ),
+                        read_interval_setting=quantity_or_none(
+                            TQuantityValueSecondTime,
+                            measurement.read_interval_setting,
+                        ),
+                        number_of_scans_setting=quantity_or_none(
+                            TQuantityValueNumber,
+                            measurement.number_of_scans_setting,
+                        ),
+                    )
+                ]
+            ),
+            compartment_temperature=quantity_or_none(
+                TQuantityValueDegreeCelsius, measurement.compartment_temperature
+            ),
+            absorption_profile_data_cube=(
+                profile_data_cube
+                if measurement.type_
+                == MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_DETECTOR
+                else None
+            ),
+            luminescence_profile_data_cube=(
+                profile_data_cube
+                if measurement.type_ == MeasurementType.LUMINESCENCE_CUBE_DETECTOR
+                else None
+            ),
+            fluorescence_emission_profile_data_cube=(
+                profile_data_cube
+                if measurement.type_ == MeasurementType.FLUORESCENCE_CUBE_DETECTOR
+                else None
+            ),
+        )
+
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
         return SampleDocument(
             sample_identifier=measurement.sample_identifier,
@@ -402,4 +520,30 @@ class Mapper(SchemaMapper[Data, Model]):
                 )
                 for calculated_data_item in calculated_data_items
             ]
+        )
+
+    def _get_data_cube(self, data_cube: DataCube) -> TDatacube:
+        return TDatacube(
+            label=data_cube.label,
+            cube_structure=TDatacubeStructure(
+                dimensions=[
+                    TDatacubeComponent(
+                        field_componentDatatype=component.type_,
+                        concept=component.concept,
+                        unit=component.unit,
+                    )
+                    for component in data_cube.structure_dimensions
+                ],
+                measures=[
+                    TDatacubeComponent(
+                        field_componentDatatype=component.type_,
+                        concept=component.concept,
+                        unit=component.unit,
+                    )
+                    for component in data_cube.structure_measures
+                ],
+            ),
+            data=TDatacubeData(
+                dimensions=data_cube.dimensions, measures=data_cube.measures  # type: ignore[arg-type]
+            ),
         )

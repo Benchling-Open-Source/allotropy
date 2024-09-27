@@ -19,6 +19,7 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none
 
 
+@cache
 def build_amp_score(well_item: WellItem) -> CalculatedDocument | None:
     if (amp_score := well_item.result.amp_score) is None:
         return None

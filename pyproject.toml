@@ -13,6 +13,7 @@ keywords = ["allotropy", "allotrope", "asm", "benchling", "converters"]
 authors = [
   { name = "Benchling Open Source", email = "opensource@benchling.com" },
   { name = "Lukas Boelling", email = "lukas.boelling@deepgenomics.com" },
+  { name = "Nick Collins", email = "nick.collins@benchling.com" },
   { name = "Danielle Chou", email = "danielle.chou@benchling.com" },
   { name = "Chris Friedline", email = "chris.friedline@benchling.com" },
   { name = "Kathy Garcia", email = "kathy@benchling.com" },
@@ -41,7 +42,12 @@ classifiers = [
 dependencies = [
   "cattrs == 23.1.2",
   "chardet >= 5.2.0",
-  "jsonschema >= 4.3.3",
+  # NOTE: jsonschema 4.18.0 introduces a serious performance regression, seemingly due to use of new
+  # referencing library.
+  # Filed issue: https://github.com/python-jsonschema/referencing/issues/178
+  # TODO(nstender): investigate removing all refs from schema before use to work around perf issues
+  # while unblocking package upgrades.
+  "jsonschema >= 4.3.3, < 4.18.0",
   "numpy >= 1.25.0",
   "openpyxl >= 3.1.0",
   "pandas >= 2.2.0",

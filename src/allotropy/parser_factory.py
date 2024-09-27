@@ -27,6 +27,9 @@ from allotropy.parsers.biorad_bioplex_manager.biorad_bioplex_manager_parser impo
     BioradBioplexParser,
 )
 from allotropy.parsers.bmg_mars.bmg_mars_parser import BmgMarsParser
+from allotropy.parsers.chemometec_nc_view.chemometec_nc_view_parser import (
+    ChemometecNcViewParser,
+)
 from allotropy.parsers.chemometec_nucleoview.nucleoview_parser import (
     ChemometecNucleoviewParser,
 )
@@ -49,6 +52,9 @@ from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import
 from allotropy.parsers.qiacuity_dpcr.qiacuity_dpcr_parser import QiacuitydPCRParser
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.revvity_kaleido.kaleido_parser import KaleidoParser
+from allotropy.parsers.revvity_matrix.revvity_matrix_parser import (
+    RevvityMatrixParser,
+)
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_parser import (
     RocheCedexBiohtParser,
 )
@@ -89,6 +95,7 @@ class Vendor(Enum):
     BECKMAN_VI_CELL_BLU = "BECKMAN_VI_CELL_BLU"
     BECKMAN_VI_CELL_XR = "BECKMAN_VI_CELL_XR"
     BIORAD_BIOPLEX = "BIORAD_BIOPLEX"
+    CHEMOMETEC_NC_VIEW = "CHEMOMETEC_NC_VIEW"
     CHEMOMETEC_NUCLEOVIEW = "CHEMOMETEC_NUCLEOVIEW"
     CTL_IMMUNOSPOT = "CTL_IMMUNOSPOT"
     EXAMPLE_WEYLAND_YUTANI = "EXAMPLE_WEYLAND_YUTANI"
@@ -96,6 +103,7 @@ class Vendor(Enum):
     MABTECH_APEX = "MABTECH_APEX"
     METHODICAL_MIND = "METHODICAL_MIND"
     MOLDEV_SOFTMAX_PRO = "MOLDEV_SOFTMAX_PRO"
+    REVVITY_MATRIX = "REVVITY_MATRIX"
     NOVABIO_FLEX2 = "NOVABIO_FLEX2"
     PERKIN_ELMER_ENVISION = "PERKIN_ELMER_ENVISION"
     QIACUITY_DPCR = "QIACUITY_DPCR"
@@ -140,6 +148,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.BECKMAN_VI_CELL_XR: ViCellXRParser,
     Vendor.BIORAD_BIOPLEX: BioradBioplexParser,
     Vendor.BMG_MARS: BmgMarsParser,
+    Vendor.CHEMOMETEC_NC_VIEW: ChemometecNcViewParser,
     Vendor.CHEMOMETEC_NUCLEOVIEW: ChemometecNucleoviewParser,
     Vendor.CTL_IMMUNOSPOT: CtlImmunospotParser,
     Vendor.EXAMPLE_WEYLAND_YUTANI: ExampleWeylandYutaniParser,
@@ -147,6 +156,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.MABTECH_APEX: MabtechApexParser,
     Vendor.METHODICAL_MIND: MethodicalMindParser,
     Vendor.MOLDEV_SOFTMAX_PRO: SoftmaxproParser,
+    Vendor.REVVITY_MATRIX: RevvityMatrixParser,
     Vendor.NOVABIO_FLEX2: NovaBioFlexParser,
     Vendor.PERKIN_ELMER_ENVISION: PerkinElmerEnvisionParser,
     Vendor.QIACUITY_DPCR: QiacuitydPCRParser,

@@ -1,0 +1,787 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/spectrophotometry/BENCHLING/2023/12/spectrophotometry.manifest",
+    "spectrophotometry aggregate document": {
+        "spectrophotometry document": [
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2023-07-19T15:27:29+00:00",
+                    "measurement document": [
+                        {
+                            "measurement identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_0",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "absorbance detector",
+                                        "detector wavelength setting": {
+                                            "value": 260.0,
+                                            "unit": "nm"
+                                        },
+                                        "electronic absorbance reference bandwidth setting": {
+                                            "value": 340.0,
+                                            "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "nucleic acid factor": {
+                                                "value": 50.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 1"
+                            },
+                            "absorbance": {
+                                "value": 14.309,
+                                "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 715.462,
+                                            "unit": "ng/µL"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "baseline absorbance": {
+                                    "value": 0.812,
+                                    "unit": "mAU"
+                                }
+                            }
+                        },
+                        {
+                            "measurement identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_1",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "absorbance detector",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
+                                        "electronic absorbance reference bandwidth setting": {
+                                            "value": 340.0,
+                                            "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "nucleic acid factor": {
+                                                "value": 50.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 1"
+                            },
+                            "absorbance": {
+                                "value": 7.601,
+                                "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 715.462,
+                                            "unit": "ng/µL"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "baseline absorbance": {
+                                    "value": 0.812,
+                                    "unit": "mAU"
+                                }
+                            }
+                        }
+                    ],
+                    "experiment type": "dsDNA"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2023-07-19T15:27:48+00:00",
+                    "measurement document": [
+                        {
+                            "measurement identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_4",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "absorbance detector",
+                                        "detector wavelength setting": {
+                                            "value": 260.0,
+                                            "unit": "nm"
+                                        },
+                                        "electronic absorbance reference bandwidth setting": {
+                                            "value": 340.0,
+                                            "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "nucleic acid factor": {
+                                                "value": 50.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 2"
+                            },
+                            "absorbance": {
+                                "value": 17.128,
+                                "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 856.375,
+                                            "unit": "ng/µL"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "baseline absorbance": {
+                                    "value": 0.956,
+                                    "unit": "mAU"
+                                }
+                            }
+                        },
+                        {
+                            "measurement identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_5",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "absorbance detector",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
+                                        "electronic absorbance reference bandwidth setting": {
+                                            "value": 340.0,
+                                            "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "nucleic acid factor": {
+                                                "value": 50.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 2"
+                            },
+                            "absorbance": {
+                                "value": 8.975,
+                                "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 856.375,
+                                            "unit": "ng/µL"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "baseline absorbance": {
+                                    "value": 0.956,
+                                    "unit": "mAU"
+                                }
+                            }
+                        }
+                    ],
+                    "experiment type": "dsDNA"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2023-07-12T17:52:34+00:00",
+                    "measurement document": [
+                        {
+                            "measurement identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_8",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "absorbance detector",
+                                        "detector wavelength setting": {
+                                            "value": 260.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 1"
+                            },
+                            "absorbance": {
+                                "value": NaN,
+                                "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 1011.898,
+                                            "unit": "ng/µL"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "measurement identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_9",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "absorbance detector",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 1"
+                            },
+                            "absorbance": {
+                                "value": NaN,
+                                "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 1011.898,
+                                            "unit": "ng/µL"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experiment type": "dsDNA"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2023-07-12T17:52:54+00:00",
+                    "measurement document": [
+                        {
+                            "measurement identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_12",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "absorbance detector",
+                                        "detector wavelength setting": {
+                                            "value": 260.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 2"
+                            },
+                            "absorbance": {
+                                "value": NaN,
+                                "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 1079.211,
+                                            "unit": "ng/µL"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "measurement identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_13",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "absorbance detector",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 2"
+                            },
+                            "absorbance": {
+                                "value": NaN,
+                                "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 1079.211,
+                                            "unit": "ng/µL"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experiment type": "dsDNA"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2023-07-19T15:28:05+00:00",
+                    "measurement document": [
+                        {
+                            "measurement identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_16",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "absorbance detector",
+                                        "detector wavelength setting": {
+                                            "value": 260.0,
+                                            "unit": "nm"
+                                        },
+                                        "electronic absorbance reference bandwidth setting": {
+                                            "value": 340.0,
+                                            "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "nucleic acid factor": {
+                                                "value": 50.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 3"
+                            },
+                            "absorbance": {
+                                "value": 22.811,
+                                "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 1140.574,
+                                            "unit": "ng/µL"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "baseline absorbance": {
+                                    "value": 0.943,
+                                    "unit": "mAU"
+                                }
+                            }
+                        },
+                        {
+                            "measurement identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_17",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "absorbance detector",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
+                                        "electronic absorbance reference bandwidth setting": {
+                                            "value": 340.0,
+                                            "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "nucleic acid factor": {
+                                                "value": 50.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 3"
+                            },
+                            "absorbance": {
+                                "value": 11.917,
+                                "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 1140.574,
+                                            "unit": "ng/µL"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "baseline absorbance": {
+                                    "value": 0.943,
+                                    "unit": "mAU"
+                                }
+                            }
+                        }
+                    ],
+                    "experiment type": "dsDNA"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2023-07-19T15:28:20+00:00",
+                    "measurement document": [
+                        {
+                            "measurement identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_20",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "absorbance detector",
+                                        "detector wavelength setting": {
+                                            "value": 260.0,
+                                            "unit": "nm"
+                                        },
+                                        "electronic absorbance reference bandwidth setting": {
+                                            "value": 340.0,
+                                            "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "nucleic acid factor": {
+                                                "value": 50.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 4"
+                            },
+                            "absorbance": {
+                                "value": 23.477,
+                                "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 1173.866,
+                                            "unit": "ng/µL"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "baseline absorbance": {
+                                    "value": 1.286,
+                                    "unit": "mAU"
+                                }
+                            }
+                        },
+                        {
+                            "measurement identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_21",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "absorbance detector",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
+                                        "electronic absorbance reference bandwidth setting": {
+                                            "value": 340.0,
+                                            "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "nucleic acid factor": {
+                                                "value": 50.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 4"
+                            },
+                            "absorbance": {
+                                "value": 12.31,
+                                "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 1173.866,
+                                            "unit": "ng/µL"
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "baseline absorbance": {
+                                    "value": 1.286,
+                                    "unit": "mAU"
+                                }
+                            }
+                        }
+                    ],
+                    "experiment type": "dsDNA"
+                }
+            }
+        ],
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "NanoDrop One",
+            "brand name": "NanoDrop",
+            "product manufacturer": "ThermoFisher Scientific"
+        },
+        "data system document": {
+            "file name": "dsDNA 7_19_2023 3_27_29 PM.csv",
+            "software name": "NanoDrop One software",
+            "ASM converter name": "allotropy_thermo_fisher_nanodrop_one",
+            "ASM converter version": "0.1.52"
+        },
+        "calculated data aggregate document": {
+            "calculated data document": [
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 1.882,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_0",
+                                "data source feature": "absorbance"
+                            },
+                            {
+                                "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_1",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_2"
+                },
+                {
+                    "calculated data name": "A260/A230",
+                    "calculated result": {
+                        "value": 1.954,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_0",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_3"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 1.908,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_4",
+                                "data source feature": "absorbance"
+                            },
+                            {
+                                "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_5",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_6"
+                },
+                {
+                    "calculated data name": "A260/A230",
+                    "calculated result": {
+                        "value": 2.086,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_4",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_7"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 1.903,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_8",
+                                "data source feature": "absorbance"
+                            },
+                            {
+                                "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_9",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_10"
+                },
+                {
+                    "calculated data name": "A260/A230",
+                    "calculated result": {
+                        "value": 2.068,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_8",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_11"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 1.926,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_12",
+                                "data source feature": "absorbance"
+                            },
+                            {
+                                "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_13",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_14"
+                },
+                {
+                    "calculated data name": "A260/A230",
+                    "calculated result": {
+                        "value": 2.17,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_12",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_15"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 1.914,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_16",
+                                "data source feature": "absorbance"
+                            },
+                            {
+                                "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_17",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_18"
+                },
+                {
+                    "calculated data name": "A260/A230",
+                    "calculated result": {
+                        "value": 2.151,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_16",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_19"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 1.907,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_20",
+                                "data source feature": "absorbance"
+                            },
+                            {
+                                "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_21",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_22"
+                },
+                {
+                    "calculated data name": "A260/A230",
+                    "calculated result": {
+                        "value": 2.064,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_20",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "THERMO_FISHER_NANODROP_ONE_TEST_ID_23"
+                }
+            ]
+        }
+    }
+}
