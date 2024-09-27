@@ -55,6 +55,7 @@ class Header:
     barcode: str | None
     analyst: str | None
     experimental_data_identifier: str | None
+    extra_data: dict[str, Any]
 
     @staticmethod
     def create(reader: LinesReader) -> Header:
@@ -105,6 +106,7 @@ class Header:
             barcode=data.get(str, "Experiment Barcode"),
             analyst=data.get(str, "Experiment User Name"),
             experimental_data_identifier=data.get(str, "Experiment Name"),
+            extra_data=data.get_unread(),
         )
 
 
@@ -113,16 +115,12 @@ class WellItem(Referenceable):
     identifier: int
     target_dna_description: str
     sample_identifier: str
+    extra_data: dict[str, Any]
     reporter_dye_setting: str | None = None
     position: str | None = None
     well_location_identifier: str | None = None
     quencher_dye_setting: str | None = None
     sample_role_type: str | None = None
-    sample_color: str | None = None
-    biogroup_name: str | None = None
-    biogroup_color: str | None = None
-    target_name: str | None = None
-    target_color: str | None = None
     _result: Result | None = None
 
     # Make hashable to allow for use of caching
@@ -155,11 +153,8 @@ class WellItem(Referenceable):
                 position=data.get(str, "Well Position", NOT_APPLICABLE),
                 well_location_identifier=data.get(str, "Well Position"),
                 quencher_dye_setting=data.get(str, "Quencher"),
-                sample_color=data.get(str, "Sample Color"),
-                biogroup_name=data.get(str, "Biogroup Name"),
-                biogroup_color=data.get(str, "Biogroup Color"),
-                target_color=data.get(str, "Target Color"),
                 sample_role_type=data.get(str, "Task"),
+                extra_data=data.get_unread(),
             ),
             WellItem(
                 uuid=random_uuid_str(),
@@ -170,11 +165,8 @@ class WellItem(Referenceable):
                 position=data.get(str, "Well Position", NOT_APPLICABLE),
                 well_location_identifier=data.get(str, "Well Position"),
                 quencher_dye_setting=data.get(str, "Quencher"),
-                sample_color=data.get(str, "Sample Color"),
-                biogroup_name=data.get(str, "Biogroup Name"),
-                biogroup_color=data.get(str, "Biogroup Color"),
-                target_color=data.get(str, "Target Color"),
                 sample_role_type=data.get(str, "Task"),
+                extra_data=data.get_unread(),
             ),
         )
 
@@ -194,11 +186,8 @@ class WellItem(Referenceable):
             position=data.get(str, "Well Position", NOT_APPLICABLE),
             well_location_identifier=data.get(str, "Well Position"),
             quencher_dye_setting=data.get(str, "Quencher"),
-            sample_color=data.get(str, "Sample Color"),
-            biogroup_name=data.get(str, "Biogroup Name"),
-            biogroup_color=data.get(str, "Biogroup Color"),
-            target_color=data.get(str, "Target Color"),
             sample_role_type=data.get(str, "Task"),
+            extra_data=data.get_unread(),
         )
 
 
@@ -330,6 +319,7 @@ def create_multicomponent_data(reader: LinesReader) -> dict[int, MulticomponentD
 class ResultMetadata:
     reference_dna_description: str | None
     reference_sample_description: str | None
+    extra_data: dict[str, Any]
 
     @staticmethod
     def create(data: SeriesData, experiment_type: ExperimentType) -> ResultMetadata:
@@ -337,7 +327,7 @@ class ResultMetadata:
             ExperimentType.comparative_CT_qPCR_experiment,
             ExperimentType.relative_standard_curve_qPCR_experiment,
         ]:
-            return ResultMetadata(None, None)
+            return ResultMetadata(None, None, {})
         return ResultMetadata(
             reference_dna_description=data.get(
                 str, "Endogenous Control", NOT_APPLICABLE
@@ -345,6 +335,7 @@ class ResultMetadata:
             reference_sample_description=data.get(
                 str, "Reference Sample", NOT_APPLICABLE
             ),
+            extra_data=data.get_unread(),
         )
 
 
@@ -360,7 +351,6 @@ class Result:
     baseline_corrected_reporter_result: float | None
     genotyping_determination_result: str | None
     genotyping_determination_method_setting: float | None
-    omit: bool | None
     quantity: float | None
     quantity_mean: float | None
     quantity_sd: float | None
@@ -378,14 +368,9 @@ class Result:
     r_squared: float | None
     slope: float | None
     efficiency: float | None
-    comments: str | None
-    highsd: str | None
-    noamp: str | None
-    expfail: str | None
-    tholdfail: str | None
-    prfdrop: str | None
     amp_score: float | None
     cq_conf: float | None
+    extra_data: dict[str, Any]
 
     @staticmethod
     def create(
@@ -481,7 +466,6 @@ class Result:
                 genotyping_determination_method_setting=data.get(
                     float, "Threshold Value"
                 ),
-                omit=data.get(bool, "Omit"),
                 quantity=data.get(float, "Quantity"),
                 quantity_mean=data.get(float, "Quantity Mean"),
                 quantity_sd=data.get(float, "Quantity SD"),
@@ -499,14 +483,18 @@ class Result:
                 r_squared=data.get(float, "R(superscript 2)"),
                 slope=data.get(float, "Slope"),
                 efficiency=data.get(float, "Efficiency"),
-                comments=data.get(str, "Comments"),
-                highsd=data.get(str, "HIGHSD"),
-                noamp=data.get(str, "NOAMP"),
-                expfail=data.get(str, "EXPFAIL"),
-                tholdfail=data.get(str, "THOLDFAIL"),
-                prfdrop=data.get(str, "PRFDROP"),
                 amp_score=data.get(float, "Amp Score"),
                 cq_conf=data.get(float, "Cq Conf"),
+                extra_data=data.get_unread(
+                    skip={
+                        "Well",
+                        "Well Position",
+                        "Task",
+                        "Quencher",
+                        "Target Name",
+                        "Reporter",
+                    }
+                ),
             )
             for allele_prefix in allele_prefixes
         }

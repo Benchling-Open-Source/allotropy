@@ -191,3 +191,27 @@ def test_index_multikey() -> None:
         match=re.escape("Expected non-null value for ['Bad Plate', 'Missing Plate']."),
     ):
         data[int, ["Bad Plate", "Missing Plate"]]
+
+
+def test_get_unread() -> None:
+    data = SeriesData(
+        pd.Series(
+            {
+                "read1": "4",
+                "read2": "8",
+                "unread_float": 4.5,
+                "unread_float_as_str": "5",
+                "unread_str": "hello!",
+                "skipped": "womp",
+            }
+        )
+    )
+
+    data.get(int, "read1")
+    data[int, "read2"]
+
+    assert data.get_unread(skip={"skipped"}) == {
+        "unread_float": 4.5,
+        "unread_float_as_str": 5.0,
+        "unread_str": "hello!",
+    }

@@ -81,12 +81,6 @@ def _create_processed_data(
         cycle_threshold_result=result.cycle_threshold_result,
         normalized_reporter_result=result.normalized_reporter_result,
         baseline_corrected_reporter_result=result.baseline_corrected_reporter_result,
-        comments=result.comments,
-        highsd=result.highsd,
-        noamp=result.noamp,
-        expfail=result.expfail,
-        tholdfail=result.tholdfail,
-        prfdrop=result.prfdrop,
         data_cubes=_create_processed_data_cubes(amplification_data),
     )
 
@@ -187,24 +181,23 @@ def _create_measurement(
         sample_identifier=well_item.sample_identifier,
         sample_role_type=well_item.sample_role_type,
         well_location_identifier=well_item.well_location_identifier,
-        well_identifier=well_item.identifier,
         well_plate_identifier=header.barcode,
-        omit=result.omit,
-        sample_color=well_item.sample_color,
-        biogroup_name=well_item.biogroup_name,
-        biogroup_color=well_item.biogroup_color,
-        target_color=well_item.target_color,
         total_cycle_number_setting=amplification_data.total_cycle_number_setting,
         pcr_detection_chemistry=header.pcr_detection_chemistry,
         reporter_dye_setting=well_item.reporter_dye_setting,
         quencher_dye_setting=well_item.quencher_dye_setting,
         passive_reference_dye_setting=header.passive_reference_dye_setting,
         processed_data=_create_processed_data(amplification_data, result),
+        custom_info=(well_item.extra_data or {})
+        | (result.extra_data or {})
+        | {"well identifier": well_item.identifier},
         data_cubes=data_cubes,
     )
 
 
-def create_metadata(header: Header, file_name: str) -> Metadata:
+def create_metadata(
+    header: Header, results_metadata: ResultMetadata, file_name: str
+) -> Metadata:
     return Metadata(
         device_identifier=header.device_identifier,
         device_type=constants.DEVICE_TYPE,
@@ -218,6 +211,7 @@ def create_metadata(header: Header, file_name: str) -> Metadata:
         measurement_method_identifier=header.measurement_method_identifier,
         experiment_type=header.experiment_type,
         container_type=constants.CONTAINER_TYPE,
+        custom_info=header.extra_data | results_metadata.extra_data,
     )
 
 
