@@ -128,6 +128,7 @@ class Measurement:
     well_plate_identifier: str | None = None
     detection_type: str | None = None
     sample_role_type: SampleRoleType | None = None
+    firmware_version: str | None = None
 
     # Measurements
     absorbance: JsonFloat | None = None
@@ -280,6 +281,7 @@ class Mapper(SchemaMapper[Data, Model]):
     ) -> OpticalImagingMeasurementDocumentItems:
         device_control_document = OpticalImagingDeviceControlDocumentItem(
             device_type=measurement.device_type,
+            firmware_version=measurement.firmware_version,
             detection_type=measurement.detection_type,
             detector_wavelength_setting=quantity_or_none(
                 TQuantityValueNanometer,
@@ -346,6 +348,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 device_control_document=[
                     UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
                         device_type=measurement.device_type,
+                        firmware_version=measurement.firmware_version,
                         detection_type=measurement.detection_type,
                         detector_wavelength_setting=quantity_or_none(
                             TQuantityValueNanometer,
@@ -384,6 +387,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 device_control_document=[
                     LuminescencePointDetectionDeviceControlDocumentItem(
                         device_type=measurement.device_type,
+                        firmware_version=measurement.firmware_version,
                         detection_type=measurement.detection_type,
                         detector_wavelength_setting=quantity_or_none(
                             TQuantityValueNanometer,
@@ -423,6 +427,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 device_control_document=[
                     FluorescencePointDetectionDeviceControlDocumentItem(
                         device_type=measurement.device_type,
+                        firmware_version=measurement.firmware_version,
                         detection_type=measurement.detection_type,
                         detector_wavelength_setting=quantity_or_none(
                             TQuantityValueNanometer,
