@@ -38,6 +38,7 @@ We currently have parser support for the following instruments:
   - Roche Cedex HiRes
   - Thermo Fisher Genesys30
   - Thermo Fisher NanoDrop 8000
+  - Thermo Fisher NanoDrop Eight
   - Thermo Fisher Nanodrop One
   - Thermo Fisher Qubit 4
   - Thermo Fisher Qubit Flex

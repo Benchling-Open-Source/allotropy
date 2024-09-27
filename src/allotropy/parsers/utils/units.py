@@ -6,7 +6,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import TQuantityV
 
 
 def _clean_unit(unit: str) -> str:
-    return unit.lower().replace("µ", "u")
+    return unit.lower().replace("µ", "u").replace("μ", "u")
 
 
 def _make_unit_entry(quantity_value: type[TQuantityValue]) -> str | None:
