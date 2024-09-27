@@ -49,8 +49,9 @@ def test__create_measurement(
         "Plate ID": well_plate_identifier,
         "Plate Position": location_identifier,
     }
+    header = SeriesData(pd.Series())
     measurement = _create_measurement(
-        SeriesData(pd.Series(well_plate_data)), wavelength_column, []
+        SeriesData(pd.Series(well_plate_data)), header, wavelength_column, []
     )
 
     assert measurement.detector_wavelength_setting == wavelength
@@ -70,17 +71,19 @@ def test__create_measurement_with_no_wavelength_column() -> None:
             }
         )
     )
+    header = SeriesData(pd.Series())
     wavelength_column = "A250"
     msg = NO_MEASUREMENT_IN_PLATE_ERROR_MSG.format(wavelength_column)
     with pytest.raises(AllotropeConversionError, match=msg):
-        _create_measurement(well_plate_data, wavelength_column, [])
+        _create_measurement(well_plate_data, header, wavelength_column, [])
 
 
 def test__create_measurement_with_incorrect_wavelength_column_format() -> None:
     msg = INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG
     well_plate_data = SeriesData(pd.Series({"Sample name": "dummy name"}))
+    header = SeriesData(pd.Series())
     with pytest.raises(AllotropeConversionError, match=re.escape(msg)):
-        _create_measurement(well_plate_data, "Sample name", [])
+        _create_measurement(well_plate_data, header, "Sample name", [])
 
 
 def test__get_calculated_data_from_measurement_for_unknown_wavelength() -> None:
@@ -94,7 +97,10 @@ def test__get_calculated_data_from_measurement_for_unknown_wavelength() -> None:
         "A260 Concentration (ng/ul)": 4.5,
         "Background (A260)": 0.523,
     }
-    _create_measurement(SeriesData(pd.Series(well_plate_data)), "A240", calculated_data)
+    header = SeriesData(pd.Series())
+    _create_measurement(
+        SeriesData(pd.Series(well_plate_data)), header, "A240", calculated_data
+    )
 
     assert not calculated_data
 
@@ -111,9 +117,10 @@ def test__get_calculated_data_from_measurement_for_A260() -> None:  # noqa: N802
         "A260/A230": 2.5,
         "A260/A280": 24.9,
     }
+    header = SeriesData(pd.Series())
     wavelength = "A260"
     _create_measurement(
-        SeriesData(pd.Series(well_plate_data)), wavelength, calculated_data
+        SeriesData(pd.Series(well_plate_data)), header, wavelength, calculated_data
     )
 
     calculated_data_dict = {data.name: data for data in (calculated_data or [])}
@@ -137,7 +144,7 @@ def test_create_well_plate() -> None:
         "Time": time,
     }
     well_plate = _create_measurement_group(
-        SeriesData(pd.Series(plate_data)), ["A250"], [], None
+        SeriesData(pd.Series(plate_data)), ["A250"], [], SeriesData(pd.Series())
     )
     assert well_plate.analytical_method_identifier == analytical_method_identifier
     assert well_plate.measurement_time == f"{date} {time}"
@@ -154,7 +161,7 @@ def test_create_well_plate_with_two_measurements() -> None:
         "Time": "7:19:18",
     }
     well_plate = _create_measurement_group(
-        SeriesData(pd.Series(plate_data)), ["A452", "A280"], [], None
+        SeriesData(pd.Series(plate_data)), ["A452", "A280"], [], SeriesData(pd.Series())
     )
 
     assert len(well_plate.measurements) == 2
@@ -163,6 +170,7 @@ def test_create_well_plate_with_two_measurements() -> None:
 def test_create_well_plate_use_datetime_from_data_over_header() -> None:
     date = "17/10/2016"
     time = "7:19:18"
+    header_datetime = "01/08/2024 10:15:59"
     plate_data = SeriesData(
         pd.Series(
             {
@@ -173,10 +181,11 @@ def test_create_well_plate_use_datetime_from_data_over_header() -> None:
             }
         )
     )
-    header_datetime = "01/08/2024 10:15:59"
-    well_plate = _create_measurement_group(plate_data, [], [], header_datetime)
+    header = SeriesData(pd.Series({"Date": header_datetime}))
+    well_plate = _create_measurement_group(plate_data, [], [], header)
 
     assert well_plate.measurement_time == f"{date} {time}"
+
 
 def test_create_well_plate_with_date_from_header() -> None:
     plate_data = SeriesData(
@@ -189,9 +198,10 @@ def test_create_well_plate_with_date_from_header() -> None:
         )
     )
     header_datetime = "01/08/2024 10:15:59"
-    well_plate = _create_measurement_group(plate_data, [], [], header_datetime)
+    header = SeriesData(pd.Series({"Date": header_datetime}))
+    well_plate = _create_measurement_group(plate_data, [], [], header)
 
-    assert well_plate.measurement_time == header_datetime
+    assert well_plate.measurement_time == "01/08/2024 10:15:59"
 
 
 def test_create_well_plate_without_date_column_then_raise() -> None:
@@ -250,6 +260,31 @@ batch_id,Plate1,dummyApp,2021-05-20,16:55:51,14,23.4
     reader = UnchainedLabsLunaticReader(NamedFileContents(contents, "filename.csv"))
     _, calculated_data = create_measurement_groups(reader.header, reader.data)
     assert not calculated_data
+
+
+def test_get_additional_metadata_from_metadata_header() -> None:
+    contents = StringIO(
+        """
+Test performed by,ImmuneMed,,,,,,,,,,
+Instrument,123456,,,,,,,,,,
+Software version,8.2.0.259,,,,,,,,,,
+Client version,8.3.0.305,,,,,,,,,,
+Experiment name,BENCHLING_TEST,,,,,,,,,,
+Plate type,Lunatic Plate,,,,,,,,,,
+Nr of Plates,1,,,,,,,,,,
+Sample name,Plate Position,Application,Date,Time,Instrument ID,A250
+batch_id,Plate1,dummyApp,2021-05-20,16:55:51,14,23.4
+"""
+    )
+    reader = UnchainedLabsLunaticReader(NamedFileContents(contents, "filename.csv"))
+    measurement_groups, _ = create_measurement_groups(reader.header, reader.data)
+    metadata = create_metadata(reader.header, "filename.csv")
+
+    assert metadata.device_identifier == "123456"
+    assert metadata.software_version == "8.2.0.259"
+    assert measurement_groups[0].analyst == "ImmuneMed"
+    assert measurement_groups[0].experimental_data_identifier == "BENCHLING_TEST"
+    assert measurement_groups[0].measurements[0].firmware_version == "8.3.0.305"
 
 
 def test_create_data() -> None:

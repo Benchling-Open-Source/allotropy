@@ -36,6 +36,7 @@ from allotropy.parsers.utils.values import assert_not_none
 
 def _create_measurement(
     well_plate_data: SeriesData,
+    header: SeriesData,
     wavelength_column: str,
     calculated_data: list[CalculatedDataItem],
 ) -> Measurement:
@@ -60,6 +61,7 @@ def _create_measurement(
         sample_identifier=well_plate_data[str, "Sample name"],
         location_identifier=well_plate_data[str, "Plate Position"],
         well_plate_identifier=well_plate_data.get(str, "Plate ID"),
+        firmware_version=header.get(str, "Client version"),
     )
 
 
@@ -95,8 +97,9 @@ def _create_measurement_group(
     data: SeriesData,
     wavelength_columns: list[str],
     calculated_data: list[CalculatedDataItem],
-    timestamp: str | None,
+    header: SeriesData,
 ) -> MeasurementGroup:
+    timestamp = header.get(str, "Date")
     # Support timestamp from metadata section, but overide with columns in data if specified.
     date = data.get(str, "Date")
     time = data.get(str, "Time")
@@ -105,10 +108,12 @@ def _create_measurement_group(
 
     return MeasurementGroup(
         measurement_time=assert_not_none(timestamp, msg=NO_DATE_OR_TIME_ERROR_MSG),
+        analyst=header.get(str, "Test performed by"),
         analytical_method_identifier=data.get(str, "Application"),
+        experimental_data_identifier=header.get(str, "Experiment name"),
         plate_well_count=96,
         measurements=[
-            _create_measurement(data, wavelength_column, calculated_data)
+            _create_measurement(data, header, wavelength_column, calculated_data)
             for wavelength_column in wavelength_columns
         ],
     )
@@ -144,7 +149,7 @@ def create_measurement_groups(
 
     def make_group(data: SeriesData) -> MeasurementGroup:
         return _create_measurement_group(
-            data, wavelength_columns, calculated_data, header.get(str, "Date")
+            data, wavelength_columns, calculated_data, header
         )
 
     return map_rows(data, make_group), calculated_data
