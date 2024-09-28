@@ -145,7 +145,11 @@ class Measurement:
     calculated_data: list[CalculatedDataItem] | None = None
     processed_data: ProcessedData | None = None
 
+    # Custom metadata
     custom_info: dict[str, Any] | None = None
+    sample_custom_info: dict[str, Any] | None = None
+    device_control_custom_info: dict[str, Any] | None = None
+    processed_data_custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -381,7 +385,7 @@ class Mapper(SchemaMapper[Data, Model]):
         self, measurement: Measurement
     ) -> dict[str, Any]:
         # TODO(ASM gaps): we believe these values should be introduced to ASM.
-        return {
+        custom_info = {
             "sample volume setting": quantity_or_none(
                 TQuantityValueMicroliter, measurement.sample_volume_setting
             ),
@@ -391,6 +395,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueUnitless, measurement.dilution_factor_setting
             ),
         }
+        return (measurement.device_control_custom_info or {}) | custom_info
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
         # TODO(ASM gaps): we believe these values should be introduced to ASM.
