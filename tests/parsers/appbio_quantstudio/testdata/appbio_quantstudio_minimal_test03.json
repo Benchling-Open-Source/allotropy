@@ -131,16 +131,14 @@
                                                 ]
                                             }
                                         },
-                                        "genotyping determination result": "Negative Control (NC)",
-                                        "custom information document": {
-                                            "omit": false
-                                        }
+                                        "genotyping determination result": "Negative Control (NC)"
                                     }
                                 ]
                             },
                             "custom information document": {
                                 "well": 1,
-                                "sample color": "RGB(238,238,0)"
+                                "sample color": "RGB(238,238,0)",
+                                "omit": false
                             }
                         },
                         {
@@ -260,16 +258,14 @@
                                                 ]
                                             }
                                         },
-                                        "genotyping determination result": "Negative Control (NC)",
-                                        "custom information document": {
-                                            "omit": false
-                                        }
+                                        "genotyping determination result": "Negative Control (NC)"
                                     }
                                 ]
                             },
                             "custom information document": {
                                 "well": 1,
-                                "sample color": "RGB(238,238,0)"
+                                "sample color": "RGB(238,238,0)",
+                                "omit": false
                             }
                         }
                     ],

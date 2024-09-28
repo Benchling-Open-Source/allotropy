@@ -123,9 +123,6 @@
                                                     ]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false
                                         }
                                     }
                                 ]
@@ -133,7 +130,8 @@
                             "custom information document": {
                                 "well": 1,
                                 "sample color": "RGB(176,23,31)",
-                                "target color": "RGB(176,23,31)"
+                                "target color": "RGB(176,23,31)",
+                                "omit": false
                             }
                         },
                         {
@@ -245,9 +243,6 @@
                                                     ]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false
                                         }
                                     }
                                 ]
@@ -255,7 +250,8 @@
                             "custom information document": {
                                 "well": 1,
                                 "sample color": "RGB(176,23,31)",
-                                "target color": "RGB(176,23,0)"
+                                "target color": "RGB(176,23,0)",
+                                "omit": false
                             }
                         }
                     ],
@@ -380,9 +376,6 @@
                                                     ]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false
                                         }
                                     }
                                 ]
@@ -390,7 +383,8 @@
                             "custom information document": {
                                 "well": 2,
                                 "sample color": "RGB(176,23,31)",
-                                "target color": "RGB(176,23,31)"
+                                "target color": "RGB(176,23,31)",
+                                "omit": false
                             }
                         },
                         {
@@ -502,9 +496,6 @@
                                                     ]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false
                                         }
                                     }
                                 ]
@@ -512,7 +503,8 @@
                             "custom information document": {
                                 "well": 2,
                                 "sample color": "RGB(176,23,31)",
-                                "target color": "RGB(176,23,0)"
+                                "target color": "RGB(176,23,0)",
+                                "omit": false
                             }
                         }
                     ],

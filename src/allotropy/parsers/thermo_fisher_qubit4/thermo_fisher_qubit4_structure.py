@@ -24,6 +24,9 @@ EMISSION_WAVELENGTH_TO_MEASUREMENT_COLUMN = {
 
 
 def create_measurement_group(data: SeriesData) -> MeasurementGroup:
+    std_1_rfu = data.get(float, "Std 1 RFU", validate=SeriesData.NOT_NAN)
+    std_2_rfu = data.get(float, "Std 2 RFU", validate=SeriesData.NOT_NAN)
+    std_3_rfu = data.get(float, "Std 3 RFU", validate=SeriesData.NOT_NAN)
     return MeasurementGroup(
         measurement_time=data[str, "Test Date"],
         experiment_type=data.get(str, "Assay Name"),
@@ -61,23 +64,17 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
                         "unit": data.get(str, "Units_Qubit® tube conc.", UNITLESS),
                     },
                     "standard 1 concentration": {
-                        "value": data.get(
-                            float, "Std 1 RFU", validate=SeriesData.NOT_NAN
-                        ),
+                        "value": std_1_rfu,
                         "unit": "RFU",
-                    },
+                    } if std_1_rfu else None,
                     "standard 2 concentration": {
-                        "value": data.get(
-                            float, "Std 2 RFU", validate=SeriesData.NOT_NAN
-                        ),
+                        "value": std_2_rfu,
                         "unit": "RFU",
-                    },
+                    } if std_2_rfu else None,
                     "standard 3 concentration": {
-                        "value": data.get(
-                            float, "Std 3 RFU", validate=SeriesData.NOT_NAN
-                        ),
+                        "value": std_3_rfu,
                         "unit": "RFU",
-                    },
+                    } if std_3_rfu else None,
                 },
             )
         ],

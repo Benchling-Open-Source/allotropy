@@ -81,7 +81,6 @@ def _create_processed_data(
         cycle_threshold_result=result.cycle_threshold_result,
         normalized_reporter_result=result.normalized_reporter_result,
         baseline_corrected_reporter_result=result.baseline_corrected_reporter_result,
-        custom_info=result.extra_data,
         data_cubes=_create_processed_data_cubes(amplification_data),
     )
 
@@ -190,7 +189,7 @@ def _create_measurement(
         quencher_dye_setting=well_item.quencher_dye_setting,
         passive_reference_dye_setting=header.passive_reference_dye_setting,
         processed_data=_create_processed_data(amplification_data, result),
-        custom_info=well_item.extra_data,
+        custom_info=(well_item.extra_data or {}) | (result.extra_data or {}),
         data_cubes=data_cubes,
     )
 
