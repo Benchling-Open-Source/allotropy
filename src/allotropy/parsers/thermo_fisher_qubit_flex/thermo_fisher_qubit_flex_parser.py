@@ -323,7 +323,9 @@ class ThermoFisherQubitFlexParser(VendorParser):
             ),
         }
         # TODO(ASM gaps): we believe these values should be introduced to ASM.
-        measurement_custom_document["reagent lot number"] = _get_value(data, "Reagent Lot#", i)
+        measurement_custom_document["reagent lot number"] = _get_value(
+            data, "Reagent Lot#", i
+        )
 
         # Check if all values in sample_custom_document are None
         if all(value is None for value in measurement_custom_document.values()):
