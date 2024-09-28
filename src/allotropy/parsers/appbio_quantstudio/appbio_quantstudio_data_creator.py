@@ -81,14 +81,7 @@ def _create_processed_data(
         cycle_threshold_result=result.cycle_threshold_result,
         normalized_reporter_result=result.normalized_reporter_result,
         baseline_corrected_reporter_result=result.baseline_corrected_reporter_result,
-        custom_info={
-            "comments": result.comments,
-            "highsd": result.highsd,
-            "noamp": result.noamp,
-            "expfail": result.expfail,
-            "tholdfail": result.tholdfail,
-            "prfdrop": result.prfdrop,
-        },
+        custom_info=result.extra_data,
         data_cubes=_create_processed_data_cubes(amplification_data),
     )
 
@@ -187,6 +180,7 @@ def _create_measurement(
         timestamp=header.measurement_time,
         target_identifier=well_item.target_dna_description,
         sample_identifier=well_item.sample_identifier,
+        group_identifier=well_item.group_identifier,
         sample_role_type=well_item.sample_role_type,
         well_location_identifier=well_item.well_location_identifier,
         well_plate_identifier=header.barcode,
@@ -196,16 +190,7 @@ def _create_measurement(
         quencher_dye_setting=well_item.quencher_dye_setting,
         passive_reference_dye_setting=header.passive_reference_dye_setting,
         processed_data=_create_processed_data(amplification_data, result),
-        custom_sample_info={
-            "well_identifier": well_item.identifier,
-            "sample_color": well_item.sample_color,
-            "biogroup_name": well_item.biogroup_name,
-            "biogroup_color": well_item.biogroup_color,
-            "target_color": well_item.target_color,
-        },
-        custom_info={
-            "omit": result.omit,
-        },
+        custom_info=well_item.extra_data,
         data_cubes=data_cubes,
     )
 

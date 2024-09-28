@@ -21,23 +21,18 @@
                             "sample document": {
                                 "sample identifier": "Lung",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D1",
-                                "custom information document": {
-                                    "well identifier": 37,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(176,23,31)"
-                                }
+                                "well location identifier": "D1"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "Ct",
-                                        "PCR detection chemistry": "TAQMAN",
                                         "total cycle number setting": {
                                             "value": 1.0,
                                             "unit": "#"
                                         },
+                                        "PCR detection chemistry": "TAQMAN",
                                         "reporter dye setting": "FAM",
                                         "quencher dye setting": "NFQ-MGB",
                                         "passive reference dye setting": "ROX"
@@ -128,12 +123,17 @@
                                                     ]
                                                 ]
                                             }
+                                        },
+                                        "custom information document": {
+                                            "omit": false
                                         }
                                     }
                                 ]
                             },
                             "custom information document": {
-                                "omit": false
+                                "well": 37,
+                                "sample color": "RGB(176,23,31)",
+                                "target color": "RGB(176,23,31)"
                             }
                         }
                     ],
@@ -156,23 +156,18 @@
                             "sample document": {
                                 "sample identifier": "Lung",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D2",
-                                "custom information document": {
-                                    "well identifier": 38,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(176,23,31)"
-                                }
+                                "well location identifier": "D2"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "Ct",
-                                        "PCR detection chemistry": "TAQMAN",
                                         "total cycle number setting": {
                                             "value": 1.0,
                                             "unit": "#"
                                         },
+                                        "PCR detection chemistry": "TAQMAN",
                                         "reporter dye setting": "FAM",
                                         "quencher dye setting": "NFQ-MGB",
                                         "passive reference dye setting": "ROX"
@@ -263,12 +258,17 @@
                                                     ]
                                                 ]
                                             }
+                                        },
+                                        "custom information document": {
+                                            "omit": false
                                         }
                                     }
                                 ]
                             },
                             "custom information document": {
-                                "omit": false
+                                "well": 38,
+                                "sample color": "RGB(176,23,31)",
+                                "target color": "RGB(176,23,31)"
                             }
                         }
                     ],
@@ -291,23 +291,18 @@
                             "sample document": {
                                 "sample identifier": "Liver",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D10",
-                                "custom information document": {
-                                    "well identifier": 46,
-                                    "sample color": "RGB(139,137,112)",
-                                    "target color": "RGB(176,23,31)"
-                                }
+                                "well location identifier": "D10"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "Ct",
-                                        "PCR detection chemistry": "TAQMAN",
                                         "total cycle number setting": {
                                             "value": 1.0,
                                             "unit": "#"
                                         },
+                                        "PCR detection chemistry": "TAQMAN",
                                         "reporter dye setting": "FAM",
                                         "quencher dye setting": "NFQ-MGB",
                                         "passive reference dye setting": "ROX"
@@ -398,12 +393,17 @@
                                                     ]
                                                 ]
                                             }
+                                        },
+                                        "custom information document": {
+                                            "omit": false
                                         }
                                     }
                                 ]
                             },
                             "custom information document": {
-                                "omit": false
+                                "well": 46,
+                                "sample color": "RGB(139,137,112)",
+                                "target color": "RGB(176,23,31)"
                             }
                         }
                     ],
@@ -426,23 +426,18 @@
                             "sample document": {
                                 "sample identifier": "Lung",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E1",
-                                "custom information document": {
-                                    "well identifier": 49,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(176,23,31)"
-                                }
+                                "well location identifier": "E1"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "Ct",
-                                        "PCR detection chemistry": "TAQMAN",
                                         "total cycle number setting": {
                                             "value": 1.0,
                                             "unit": "#"
                                         },
+                                        "PCR detection chemistry": "TAQMAN",
                                         "reporter dye setting": "FAM",
                                         "quencher dye setting": "NFQ-MGB",
                                         "passive reference dye setting": "ROX"
@@ -533,12 +528,17 @@
                                                     ]
                                                 ]
                                             }
+                                        },
+                                        "custom information document": {
+                                            "omit": false
                                         }
                                     }
                                 ]
                             },
                             "custom information document": {
-                                "omit": false
+                                "well": 49,
+                                "sample color": "RGB(176,23,31)",
+                                "target color": "RGB(176,23,31)"
                             }
                         }
                     ],
@@ -561,23 +561,18 @@
                             "sample document": {
                                 "sample identifier": "Liver",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E10",
-                                "custom information document": {
-                                    "well identifier": 58,
-                                    "sample color": "RGB(139,137,112)",
-                                    "target color": "RGB(176,23,31)"
-                                }
+                                "well location identifier": "E10"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "Ct",
-                                        "PCR detection chemistry": "TAQMAN",
                                         "total cycle number setting": {
                                             "value": 1.0,
                                             "unit": "#"
                                         },
+                                        "PCR detection chemistry": "TAQMAN",
                                         "reporter dye setting": "FAM",
                                         "quencher dye setting": "NFQ-MGB",
                                         "passive reference dye setting": "ROX"
@@ -668,12 +663,17 @@
                                                     ]
                                                 ]
                                             }
+                                        },
+                                        "custom information document": {
+                                            "omit": false
                                         }
                                     }
                                 ]
                             },
                             "custom information document": {
-                                "omit": false
+                                "well": 58,
+                                "sample color": "RGB(139,137,112)",
+                                "target color": "RGB(176,23,31)"
                             }
                         }
                     ],
@@ -696,23 +696,18 @@
                             "sample document": {
                                 "sample identifier": "Lung",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H1",
-                                "custom information document": {
-                                    "well identifier": 85,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(0,0,255)"
-                                }
+                                "well location identifier": "H1"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "Ct",
-                                        "PCR detection chemistry": "TAQMAN",
                                         "total cycle number setting": {
                                             "value": 1.0,
                                             "unit": "#"
                                         },
+                                        "PCR detection chemistry": "TAQMAN",
                                         "reporter dye setting": "VIC",
                                         "quencher dye setting": "NFQ-MGB",
                                         "passive reference dye setting": "ROX"
@@ -803,12 +798,17 @@
                                                     ]
                                                 ]
                                             }
+                                        },
+                                        "custom information document": {
+                                            "omit": false
                                         }
                                     }
                                 ]
                             },
                             "custom information document": {
-                                "omit": false
+                                "well": 85,
+                                "sample color": "RGB(176,23,31)",
+                                "target color": "RGB(0,0,255)"
                             }
                         }
                     ],
@@ -831,23 +831,18 @@
                             "sample document": {
                                 "sample identifier": "Lung",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H2",
-                                "custom information document": {
-                                    "well identifier": 86,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(0,0,255)"
-                                }
+                                "well location identifier": "H2"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "Ct",
-                                        "PCR detection chemistry": "TAQMAN",
                                         "total cycle number setting": {
                                             "value": 1.0,
                                             "unit": "#"
                                         },
+                                        "PCR detection chemistry": "TAQMAN",
                                         "reporter dye setting": "VIC",
                                         "quencher dye setting": "NFQ-MGB",
                                         "passive reference dye setting": "ROX"
@@ -938,12 +933,17 @@
                                                     ]
                                                 ]
                                             }
+                                        },
+                                        "custom information document": {
+                                            "omit": false
                                         }
                                     }
                                 ]
                             },
                             "custom information document": {
-                                "omit": false
+                                "well": 86,
+                                "sample color": "RGB(176,23,31)",
+                                "target color": "RGB(0,0,255)"
                             }
                         }
                     ],
@@ -966,23 +966,18 @@
                             "sample document": {
                                 "sample identifier": "Liver",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H10",
-                                "custom information document": {
-                                    "well identifier": 94,
-                                    "sample color": "RGB(139,137,112)",
-                                    "target color": "RGB(0,0,255)"
-                                }
+                                "well location identifier": "H10"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "Ct",
-                                        "PCR detection chemistry": "TAQMAN",
                                         "total cycle number setting": {
                                             "value": 1.0,
                                             "unit": "#"
                                         },
+                                        "PCR detection chemistry": "TAQMAN",
                                         "reporter dye setting": "VIC",
                                         "quencher dye setting": "NFQ-MGB",
                                         "passive reference dye setting": "ROX"
@@ -1073,12 +1068,17 @@
                                                     ]
                                                 ]
                                             }
+                                        },
+                                        "custom information document": {
+                                            "omit": false
                                         }
                                     }
                                 ]
                             },
                             "custom information document": {
-                                "omit": false
+                                "well": 94,
+                                "sample color": "RGB(139,137,112)",
+                                "target color": "RGB(0,0,255)"
                             }
                         }
                     ],
@@ -1101,23 +1101,18 @@
                             "sample document": {
                                 "sample identifier": "Liver",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H11",
-                                "custom information document": {
-                                    "well identifier": 95,
-                                    "sample color": "RGB(139,137,112)",
-                                    "target color": "RGB(0,0,255)"
-                                }
+                                "well location identifier": "H11"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "Ct",
-                                        "PCR detection chemistry": "TAQMAN",
                                         "total cycle number setting": {
                                             "value": 1.0,
                                             "unit": "#"
                                         },
+                                        "PCR detection chemistry": "TAQMAN",
                                         "reporter dye setting": "VIC",
                                         "quencher dye setting": "NFQ-MGB",
                                         "passive reference dye setting": "ROX"
@@ -1208,12 +1203,17 @@
                                                     ]
                                                 ]
                                             }
+                                        },
+                                        "custom information document": {
+                                            "omit": false
                                         }
                                     }
                                 ]
                             },
                             "custom information document": {
-                                "omit": false
+                                "well": 95,
+                                "sample color": "RGB(139,137,112)",
+                                "target color": "RGB(0,0,255)"
                             }
                         }
                     ],
@@ -1230,7 +1230,7 @@
             "software name": "Thermo QuantStudio",
             "software version": "1.0",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.53"
+            "ASM converter version": "0.1.54"
         },
         "calculated data aggregate document": {
             "calculated data document": [

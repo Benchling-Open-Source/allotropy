@@ -101,6 +101,9 @@ class ProcessedData:
     normalized_reporter_result: float | None = None
     baseline_corrected_reporter_result: float | None = None
 
+    # Metadata
+    comments: str | None = None
+
     data_cubes: list[DataCube] | None = None
 
     custom_info: dict[str, Any] | None = None
@@ -111,8 +114,9 @@ class Measurement:
     # Measurement metadata
     identifier: str
     timestamp: str
-    target_identifier: str
     sample_identifier: str
+    target_identifier: str
+    group_identifier: str
 
     # Settings
     pcr_detection_chemistry: str | None
@@ -134,7 +138,6 @@ class Measurement:
 
     # Custom metadata
     custom_info: dict[str, Any] | None = None
-    custom_sample_info: dict[str, Any] | None = None
 
 
 @dataclass
@@ -267,15 +270,15 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
+        # TODO(ASM gaps): we believe these values should be added to ASM.
+        custom_info_doc = {"group identifier": measurement.group_identifier}
         sample_doc = SampleDocument(
             sample_identifier=measurement.sample_identifier,
             sample_role_type=measurement.sample_role_type,
             well_location_identifier=measurement.well_location_identifier,
             well_plate_identifier=measurement.well_plate_identifier,
         )
-        return add_custom_information_document(
-            sample_doc, measurement.custom_sample_info
-        )
+        return add_custom_information_document(sample_doc, custom_info_doc)
 
     def _get_processed_data_aggregate_document(
         self, data: ProcessedData | None

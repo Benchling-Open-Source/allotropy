@@ -21,23 +21,18 @@
                             "sample document": {
                                 "sample identifier": "1. 200217 U251p14_-ab_-SEMA3F_8h_pA_1",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "A1",
-                                "custom information document": {
-                                    "well identifier": 1,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(176,23,31)"
-                                }
+                                "well location identifier": "A1"
                             },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "Ct",
-                                        "PCR detection chemistry": "SYBR_GREEN",
                                         "total cycle number setting": {
                                             "value": 1.0,
                                             "unit": "#"
                                         },
+                                        "PCR detection chemistry": "SYBR_GREEN",
                                         "reporter dye setting": "SYBR",
                                         "passive reference dye setting": "ROX"
                                     }
@@ -127,6 +122,9 @@
                                                     ]
                                                 ]
                                             }
+                                        },
+                                        "custom information document": {
+                                            "omit": false
                                         }
                                     }
                                 ]
@@ -233,7 +231,9 @@
                                 }
                             },
                             "custom information document": {
-                                "omit": false
+                                "well": 1,
+                                "sample color": "RGB(176,23,31)",
+                                "target color": "RGB(176,23,31)"
                             }
                         }
                     ],
@@ -250,7 +250,7 @@
             "software name": "Thermo QuantStudio",
             "software version": "1.0",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.53"
+            "ASM converter version": "0.1.54"
         }
     }
 }
