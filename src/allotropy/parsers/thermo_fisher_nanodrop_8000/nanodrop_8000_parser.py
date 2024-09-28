@@ -7,10 +7,10 @@ from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._1
 )
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.thermo_fisher_nanodrop_eight.nanodrop_eight_reader import (
-    NanodropEightReader,
+from allotropy.parsers.thermo_fisher_nanodrop_8000.nanodrop_8000_reader import (
+    Nanodrop8000Reader,
 )
-from allotropy.parsers.thermo_fisher_nanodrop_eight.nanodrop_eight_structure import (
+from allotropy.parsers.thermo_fisher_nanodrop_8000.nanodrop_8000_structure import (
     create_measurement_group,
     create_metadata,
     SpectroscopyRow,
@@ -18,20 +18,18 @@ from allotropy.parsers.thermo_fisher_nanodrop_eight.nanodrop_eight_structure imp
 from allotropy.parsers.vendor_parser import MapperVendorParser
 
 
-class NanodropEightParser(MapperVendorParser[Data, Model]):
-    DISPLAY_NAME = "Thermo Fisher NanoDrop Eight"
+class Nanodrop8000Parser(MapperVendorParser[Data, Model]):
+    DISPLAY_NAME = "Thermo Fisher NanoDrop 8000"
     RELEASE_STATE = ReleaseState.RECOMMENDED
-    SUPPORTED_EXTENSIONS = NanodropEightReader.SUPPORTED_EXTENSIONS
-
+    SUPPORTED_EXTENSIONS = Nanodrop8000Reader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
-        data = NanodropEightReader.read(named_file_contents)
+        data = Nanodrop8000Reader.read(named_file_contents)
         rows = SpectroscopyRow.create_rows(data)
-        metadata = create_metadata(named_file_contents.original_file_name, data)
 
         return Data(
-            metadata=metadata,
+            create_metadata(named_file_contents.original_file_name),
             measurement_groups=[create_measurement_group(row) for row in rows],
             # NOTE: in current implementation, calculated data is reported at global level for some reason.
             # TODO(nstender): should we move this inside of measurements?
