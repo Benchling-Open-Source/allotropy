@@ -73,9 +73,15 @@ def create_measurement_groups(
                         dimensions=[data["wavelength(nm)"].tolist()],
                         measures=[data["ABS"].tolist()],
                     ),
-                    custom_info={
-                        "operating minimum": header.get(float, "Lower"),
-                        "operating maximum": header.get(float, "Upper"),
+                    device_control_custom_info={
+                        "operating minimum": {
+                            "value": header.get(float, "Lower"),
+                            "unit": "nm",
+                        },
+                        "operating maximum": {
+                            "value": header.get(float, "Upper"),
+                            "unit": "nm",
+                        }
                     },
                 ),
             ],
