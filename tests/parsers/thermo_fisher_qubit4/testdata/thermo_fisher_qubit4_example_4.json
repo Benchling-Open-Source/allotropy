@@ -31,6 +31,10 @@
                                 "sample identifier": "Sample_#231104-010659",
                                 "batch identifier": "2023-11-04 00:00:00",
                                 "custom information document": {
+                                    "original sample concentration": {
+                                        "value": 21.2,
+                                        "unit": "ng/µL"
+                                    },
                                     "qubit tube concentration": {
                                         "value": 106.0,
                                         "unit": "ng/mL"
@@ -42,10 +46,6 @@
                                     "standard 2 concentration": {
                                         "value": 26516.64,
                                         "unit": "RFU"
-                                    },
-                                    "original sample concentration": {
-                                        "value": 21.2,
-                                        "unit": "ng/µL"
                                     }
                                 }
                             },
@@ -88,6 +88,10 @@
                                 "sample identifier": "Sample_#231104-010649",
                                 "batch identifier": "2023-11-04 00:00:00",
                                 "custom information document": {
+                                    "original sample concentration": {
+                                        "value": 9.86,
+                                        "unit": "ng/µL"
+                                    },
                                     "qubit tube concentration": {
                                         "value": 49.3,
                                         "unit": "ng/mL"
@@ -99,10 +103,6 @@
                                     "standard 2 concentration": {
                                         "value": 26516.64,
                                         "unit": "RFU"
-                                    },
-                                    "original sample concentration": {
-                                        "value": 9.86,
-                                        "unit": "ng/µL"
                                     }
                                 }
                             },
@@ -145,6 +145,10 @@
                                 "sample identifier": "Sample_#231104-010638",
                                 "batch identifier": "2023-11-04 00:00:00",
                                 "custom information document": {
+                                    "original sample concentration": {
+                                        "value": 20.0,
+                                        "unit": "ng/µL"
+                                    },
                                     "qubit tube concentration": {
                                         "value": 100.0,
                                         "unit": "ng/mL"
@@ -156,10 +160,6 @@
                                     "standard 2 concentration": {
                                         "value": 26516.64,
                                         "unit": "RFU"
-                                    },
-                                    "original sample concentration": {
-                                        "value": 20.0,
-                                        "unit": "ng/µL"
                                     }
                                 }
                             },
@@ -202,6 +202,10 @@
                                 "sample identifier": "Sample_#231104-010630",
                                 "batch identifier": "2023-11-04 00:00:00",
                                 "custom information document": {
+                                    "original sample concentration": {
+                                        "value": 14.5,
+                                        "unit": "ng/µL"
+                                    },
                                     "qubit tube concentration": {
                                         "value": 72.7,
                                         "unit": "ng/mL"
@@ -213,10 +217,6 @@
                                     "standard 2 concentration": {
                                         "value": 26516.64,
                                         "unit": "RFU"
-                                    },
-                                    "original sample concentration": {
-                                        "value": 14.5,
-                                        "unit": "ng/µL"
                                     }
                                 }
                             },
@@ -259,6 +259,10 @@
                                 "sample identifier": "Sample_#231104-004644",
                                 "batch identifier": "2023-11-04 00:00:00",
                                 "custom information document": {
+                                    "original sample concentration": {
+                                        "value": 19.5,
+                                        "unit": "ng/µL"
+                                    },
                                     "qubit tube concentration": {
                                         "value": 97.4,
                                         "unit": "ng/mL"
@@ -270,10 +274,6 @@
                                     "standard 2 concentration": {
                                         "value": 26516.64,
                                         "unit": "RFU"
-                                    },
-                                    "original sample concentration": {
-                                        "value": 19.5,
-                                        "unit": "ng/µL"
                                     }
                                 }
                             },
@@ -316,6 +316,10 @@
                                 "sample identifier": "Sample_#231104-004155",
                                 "batch identifier": "2023-11-04 00:00:00",
                                 "custom information document": {
+                                    "original sample concentration": {
+                                        "value": "NaN",
+                                        "unit": "ng/µL"
+                                    },
                                     "qubit tube concentration": {
                                         "value": "NaN",
                                         "unit": "ng/mL"
@@ -327,10 +331,6 @@
                                     "standard 2 concentration": {
                                         "value": 26516.64,
                                         "unit": "RFU"
-                                    },
-                                    "original sample concentration": {
-                                        "value": "NaN",
-                                        "unit": "ng/µL"
                                     }
                                 }
                             },
@@ -373,6 +373,10 @@
                                 "sample identifier": "Sample_#231104-004150",
                                 "batch identifier": "2023-11-04 00:00:00",
                                 "custom information document": {
+                                    "original sample concentration": {
+                                        "value": 68.8,
+                                        "unit": "ng/µL"
+                                    },
                                     "qubit tube concentration": {
                                         "value": 344.0,
                                         "unit": "ng/mL"
@@ -384,10 +388,6 @@
                                     "standard 2 concentration": {
                                         "value": 26516.64,
                                         "unit": "RFU"
-                                    },
-                                    "original sample concentration": {
-                                        "value": 68.8,
-                                        "unit": "ng/µL"
                                     }
                                 }
                             },
@@ -412,7 +412,7 @@
             "file name": "thermo_fisher_qubit4_example_4.xlsx",
             "software name": "Qubit 4 software",
             "ASM converter name": "allotropy_thermo_fisher_qubit_4",
-            "ASM converter version": "0.1.54"
+            "ASM converter version": "0.1.38"
         }
     }
 }
