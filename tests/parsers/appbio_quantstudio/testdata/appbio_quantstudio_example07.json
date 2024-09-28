@@ -23,7 +23,7 @@
                                 "sample role type": "NTC",
                                 "well location identifier": "A1",
                                 "custom information document": {
-                                    "well": 1,
+                                    "well identifier": 1,
                                     "target color": "RGB(176,23,31)"
                                 }
                             },
@@ -532,7 +532,7 @@
                                 "sample role type": "STANDARD",
                                 "well location identifier": "A2",
                                 "custom information document": {
-                                    "well": 2,
+                                    "well identifier": 2,
                                     "target color": "RGB(176,23,31)"
                                 }
                             },
@@ -1041,7 +1041,7 @@
                                 "sample role type": "STANDARD",
                                 "well location identifier": "A3",
                                 "custom information document": {
-                                    "well": 3,
+                                    "well identifier": 3,
                                     "target color": "RGB(176,23,31)"
                                 }
                             },
@@ -1550,7 +1550,7 @@
                                 "sample role type": "STANDARD",
                                 "well location identifier": "A4",
                                 "custom information document": {
-                                    "well": 4,
+                                    "well identifier": 4,
                                     "target color": "RGB(176,23,31)"
                                 }
                             },
@@ -2059,7 +2059,7 @@
                                 "sample role type": "STANDARD",
                                 "well location identifier": "A5",
                                 "custom information document": {
-                                    "well": 5,
+                                    "well identifier": 5,
                                     "target color": "RGB(176,23,31)"
                                 }
                             },
@@ -2568,7 +2568,7 @@
                                 "sample role type": "STANDARD",
                                 "well location identifier": "A6",
                                 "custom information document": {
-                                    "well": 6,
+                                    "well identifier": 6,
                                     "target color": "RGB(176,23,31)"
                                 }
                             },
@@ -3077,7 +3077,7 @@
                                 "sample role type": "NTC",
                                 "well location identifier": "A7",
                                 "custom information document": {
-                                    "well": 7,
+                                    "well identifier": 7,
                                     "target color": "RGB(0,0,255)"
                                 }
                             },
@@ -3586,7 +3586,7 @@
                                 "sample role type": "STANDARD",
                                 "well location identifier": "A8",
                                 "custom information document": {
-                                    "well": 8,
+                                    "well identifier": 8,
                                     "target color": "RGB(0,0,255)"
                                 }
                             },
@@ -4095,7 +4095,7 @@
                                 "sample role type": "STANDARD",
                                 "well location identifier": "A9",
                                 "custom information document": {
-                                    "well": 9,
+                                    "well identifier": 9,
                                     "target color": "RGB(0,0,255)"
                                 }
                             },
@@ -4604,7 +4604,7 @@
                                 "sample role type": "STANDARD",
                                 "well location identifier": "A10",
                                 "custom information document": {
-                                    "well": 10,
+                                    "well identifier": 10,
                                     "target color": "RGB(0,0,255)"
                                 }
                             },
@@ -5113,7 +5113,7 @@
                                 "sample role type": "STANDARD",
                                 "well location identifier": "A11",
                                 "custom information document": {
-                                    "well": 11,
+                                    "well identifier": 11,
                                     "target color": "RGB(0,0,255)"
                                 }
                             },
@@ -5622,7 +5622,7 @@
                                 "sample role type": "STANDARD",
                                 "well location identifier": "A12",
                                 "custom information document": {
-                                    "well": 12,
+                                    "well identifier": 12,
                                     "target color": "RGB(0,0,255)"
                                 }
                             },
@@ -6131,7 +6131,7 @@
                                 "sample role type": "NTC",
                                 "well location identifier": "B1",
                                 "custom information document": {
-                                    "well": 13,
+                                    "well identifier": 13,
                                     "target color": "RGB(176,23,31)"
                                 }
                             },
@@ -6640,7 +6640,7 @@
                                 "sample role type": "STANDARD",
                                 "well location identifier": "B2",
                                 "custom information document": {
-                                    "well": 14,
+                                    "well identifier": 14,
                                     "target color": "RGB(176,23,31)"
                                 }
                             },
@@ -7149,7 +7149,7 @@
                                 "sample role type": "STANDARD",
                                 "well location identifier": "B3",
                                 "custom information document": {
-                                    "well": 15,
+                                    "well identifier": 15,
                                     "target color": "RGB(176,23,31)"
                                 }
                             },
@@ -7658,7 +7658,7 @@
                                 "sample role type": "STANDARD",
                                 "well location identifier": "B4",
                                 "custom information document": {
-                                    "well": 16,
+                                    "well identifier": 16,
                                     "target color": "RGB(176,23,31)"
                                 }
                             },
@@ -8167,7 +8167,7 @@
                                 "sample role type": "STANDARD",
                                 "well location identifier": "B5",
                                 "custom information document": {
-                                    "well": 17,
+                                    "well identifier": 17,
                                     "target color": "RGB(176,23,31)"
                                 }
                             },
@@ -8676,7 +8676,7 @@
                                 "sample role type": "STANDARD",
                                 "well location identifier": "B6",
                                 "custom information document": {
-                                    "well": 18,
+                                    "well identifier": 18,
                                     "target color": "RGB(176,23,31)"
                                 }
                             },
@@ -9185,7 +9185,7 @@
                                 "sample role type": "NTC",
                                 "well location identifier": "B7",
                                 "custom information document": {
-                                    "well": 19,
+                                    "well identifier": 19,
                                     "target color": "RGB(0,0,255)"
                                 }
                             },
@@ -9694,7 +9694,7 @@
                                 "sample role type": "STANDARD",
                                 "well location identifier": "B8",
                                 "custom information document": {
-                                    "well": 20,
+                                    "well identifier": 20,
                                     "target color": "RGB(0,0,255)"
                                 }
                             },
@@ -10203,7 +10203,7 @@
                                 "sample role type": "STANDARD",
                                 "well location identifier": "B9",
                                 "custom information document": {
-                                    "well": 21,
+                                    "well identifier": 21,
                                     "target color": "RGB(0,0,255)"
                                 }
                             },
@@ -10712,7 +10712,7 @@
                                 "sample role type": "STANDARD",
                                 "well location identifier": "B10",
                                 "custom information document": {
-                                    "well": 22,
+                                    "well identifier": 22,
                                     "target color": "RGB(0,0,255)"
                                 }
                             },
@@ -11221,7 +11221,7 @@
                                 "sample role type": "STANDARD",
                                 "well location identifier": "B11",
                                 "custom information document": {
-                                    "well": 23,
+                                    "well identifier": 23,
                                     "target color": "RGB(0,0,255)"
                                 }
                             },
@@ -11730,7 +11730,7 @@
                                 "sample role type": "STANDARD",
                                 "well location identifier": "B12",
                                 "custom information document": {
-                                    "well": 24,
+                                    "well identifier": 24,
                                     "target color": "RGB(0,0,255)"
                                 }
                             },
@@ -12239,7 +12239,7 @@
                                 "sample role type": "NTC",
                                 "well location identifier": "C1",
                                 "custom information document": {
-                                    "well": 25,
+                                    "well identifier": 25,
                                     "target color": "RGB(176,23,31)"
                                 }
                             },
@@ -12748,7 +12748,7 @@
                                 "sample role type": "STANDARD",
                                 "well location identifier": "C2",
                                 "custom information document": {
-                                    "well": 26,
+                                    "well identifier": 26,
                                     "target color": "RGB(176,23,31)"
                                 }
                             },
@@ -13257,7 +13257,7 @@
                                 "sample role type": "STANDARD",
                                 "well location identifier": "C3",
                                 "custom information document": {
-                                    "well": 27,
+                                    "well identifier": 27,
                                     "target color": "RGB(176,23,31)"
                                 }
                             },
@@ -13766,7 +13766,7 @@
                                 "sample role type": "STANDARD",
                                 "well location identifier": "C4",
                                 "custom information document": {
-                                    "well": 28,
+                                    "well identifier": 28,
                                     "target color": "RGB(176,23,31)"
                                 }
                             },
@@ -14275,7 +14275,7 @@
                                 "sample role type": "STANDARD",
                                 "well location identifier": "C5",
                                 "custom information document": {
-                                    "well": 29,
+                                    "well identifier": 29,
                                     "target color": "RGB(176,23,31)"
                                 }
                             },
@@ -14784,7 +14784,7 @@
                                 "sample role type": "STANDARD",
                                 "well location identifier": "C6",
                                 "custom information document": {
-                                    "well": 30,
+                                    "well identifier": 30,
                                     "target color": "RGB(176,23,31)"
                                 }
                             },
@@ -15293,7 +15293,7 @@
                                 "sample role type": "NTC",
                                 "well location identifier": "C7",
                                 "custom information document": {
-                                    "well": 31,
+                                    "well identifier": 31,
                                     "target color": "RGB(0,0,255)"
                                 }
                             },
@@ -15802,7 +15802,7 @@
                                 "sample role type": "STANDARD",
                                 "well location identifier": "C8",
                                 "custom information document": {
-                                    "well": 32,
+                                    "well identifier": 32,
                                     "target color": "RGB(0,0,255)"
                                 }
                             },
@@ -16311,7 +16311,7 @@
                                 "sample role type": "STANDARD",
                                 "well location identifier": "C9",
                                 "custom information document": {
-                                    "well": 33,
+                                    "well identifier": 33,
                                     "target color": "RGB(0,0,255)"
                                 }
                             },
@@ -16820,7 +16820,7 @@
                                 "sample role type": "STANDARD",
                                 "well location identifier": "C10",
                                 "custom information document": {
-                                    "well": 34,
+                                    "well identifier": 34,
                                     "target color": "RGB(0,0,255)"
                                 }
                             },
@@ -17329,7 +17329,7 @@
                                 "sample role type": "STANDARD",
                                 "well location identifier": "C11",
                                 "custom information document": {
-                                    "well": 35,
+                                    "well identifier": 35,
                                     "target color": "RGB(0,0,255)"
                                 }
                             },
@@ -17838,7 +17838,7 @@
                                 "sample role type": "STANDARD",
                                 "well location identifier": "C12",
                                 "custom information document": {
-                                    "well": 36,
+                                    "well identifier": 36,
                                     "target color": "RGB(0,0,255)"
                                 }
                             },
@@ -18347,7 +18347,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "D1",
                                 "custom information document": {
-                                    "well": 37,
+                                    "well identifier": 37,
                                     "sample color": "RGB(176,23,31)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -18857,7 +18857,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "D2",
                                 "custom information document": {
-                                    "well": 38,
+                                    "well identifier": 38,
                                     "sample color": "RGB(176,23,31)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -19367,7 +19367,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "D3",
                                 "custom information document": {
-                                    "well": 39,
+                                    "well identifier": 39,
                                     "sample color": "RGB(176,23,31)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -19877,7 +19877,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "D4",
                                 "custom information document": {
-                                    "well": 40,
+                                    "well identifier": 40,
                                     "sample color": "RGB(0,0,255)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -20387,7 +20387,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "D5",
                                 "custom information document": {
-                                    "well": 41,
+                                    "well identifier": 41,
                                     "sample color": "RGB(0,0,255)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -20897,7 +20897,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "D6",
                                 "custom information document": {
-                                    "well": 42,
+                                    "well identifier": 42,
                                     "sample color": "RGB(0,0,255)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -21407,7 +21407,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "D7",
                                 "custom information document": {
-                                    "well": 43,
+                                    "well identifier": 43,
                                     "sample color": "RGB(238,238,0)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -21917,7 +21917,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "D8",
                                 "custom information document": {
-                                    "well": 44,
+                                    "well identifier": 44,
                                     "sample color": "RGB(238,238,0)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -22427,7 +22427,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "D9",
                                 "custom information document": {
-                                    "well": 45,
+                                    "well identifier": 45,
                                     "sample color": "RGB(238,238,0)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -22937,7 +22937,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "D10",
                                 "custom information document": {
-                                    "well": 46,
+                                    "well identifier": 46,
                                     "sample color": "RGB(139,137,112)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -23447,7 +23447,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "D11",
                                 "custom information document": {
-                                    "well": 47,
+                                    "well identifier": 47,
                                     "sample color": "RGB(139,137,112)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -23957,7 +23957,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "D12",
                                 "custom information document": {
-                                    "well": 48,
+                                    "well identifier": 48,
                                     "sample color": "RGB(139,137,112)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -24467,7 +24467,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "E1",
                                 "custom information document": {
-                                    "well": 49,
+                                    "well identifier": 49,
                                     "sample color": "RGB(176,23,31)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -24977,7 +24977,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "E2",
                                 "custom information document": {
-                                    "well": 50,
+                                    "well identifier": 50,
                                     "sample color": "RGB(176,23,31)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -25487,7 +25487,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "E3",
                                 "custom information document": {
-                                    "well": 51,
+                                    "well identifier": 51,
                                     "sample color": "RGB(176,23,31)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -25997,7 +25997,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "E4",
                                 "custom information document": {
-                                    "well": 52,
+                                    "well identifier": 52,
                                     "sample color": "RGB(0,0,255)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -26507,7 +26507,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "E5",
                                 "custom information document": {
-                                    "well": 53,
+                                    "well identifier": 53,
                                     "sample color": "RGB(0,0,255)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -27017,7 +27017,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "E6",
                                 "custom information document": {
-                                    "well": 54,
+                                    "well identifier": 54,
                                     "sample color": "RGB(0,0,255)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -27527,7 +27527,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "E7",
                                 "custom information document": {
-                                    "well": 55,
+                                    "well identifier": 55,
                                     "sample color": "RGB(238,238,0)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -28037,7 +28037,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "E8",
                                 "custom information document": {
-                                    "well": 56,
+                                    "well identifier": 56,
                                     "sample color": "RGB(238,238,0)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -28547,7 +28547,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "E9",
                                 "custom information document": {
-                                    "well": 57,
+                                    "well identifier": 57,
                                     "sample color": "RGB(238,238,0)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -29057,7 +29057,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "E10",
                                 "custom information document": {
-                                    "well": 58,
+                                    "well identifier": 58,
                                     "sample color": "RGB(139,137,112)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -29567,7 +29567,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "E11",
                                 "custom information document": {
-                                    "well": 59,
+                                    "well identifier": 59,
                                     "sample color": "RGB(139,137,112)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -30077,7 +30077,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "E12",
                                 "custom information document": {
-                                    "well": 60,
+                                    "well identifier": 60,
                                     "sample color": "RGB(139,137,112)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -30587,7 +30587,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "F1",
                                 "custom information document": {
-                                    "well": 61,
+                                    "well identifier": 61,
                                     "sample color": "RGB(176,23,31)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -31097,7 +31097,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "F2",
                                 "custom information document": {
-                                    "well": 62,
+                                    "well identifier": 62,
                                     "sample color": "RGB(176,23,31)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -31607,7 +31607,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "F3",
                                 "custom information document": {
-                                    "well": 63,
+                                    "well identifier": 63,
                                     "sample color": "RGB(176,23,31)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -32117,7 +32117,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "F4",
                                 "custom information document": {
-                                    "well": 64,
+                                    "well identifier": 64,
                                     "sample color": "RGB(0,0,255)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -32627,7 +32627,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "F5",
                                 "custom information document": {
-                                    "well": 65,
+                                    "well identifier": 65,
                                     "sample color": "RGB(0,0,255)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -33137,7 +33137,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "F6",
                                 "custom information document": {
-                                    "well": 66,
+                                    "well identifier": 66,
                                     "sample color": "RGB(0,0,255)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -33647,7 +33647,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "F7",
                                 "custom information document": {
-                                    "well": 67,
+                                    "well identifier": 67,
                                     "sample color": "RGB(238,238,0)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -34157,7 +34157,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "F8",
                                 "custom information document": {
-                                    "well": 68,
+                                    "well identifier": 68,
                                     "sample color": "RGB(238,238,0)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -34667,7 +34667,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "F9",
                                 "custom information document": {
-                                    "well": 69,
+                                    "well identifier": 69,
                                     "sample color": "RGB(238,238,0)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -35177,7 +35177,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "F10",
                                 "custom information document": {
-                                    "well": 70,
+                                    "well identifier": 70,
                                     "sample color": "RGB(139,137,112)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -35687,7 +35687,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "F11",
                                 "custom information document": {
-                                    "well": 71,
+                                    "well identifier": 71,
                                     "sample color": "RGB(139,137,112)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -36197,7 +36197,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "F12",
                                 "custom information document": {
-                                    "well": 72,
+                                    "well identifier": 72,
                                     "sample color": "RGB(139,137,112)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -36707,7 +36707,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "G1",
                                 "custom information document": {
-                                    "well": 73,
+                                    "well identifier": 73,
                                     "sample color": "RGB(176,23,31)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -37217,7 +37217,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "G2",
                                 "custom information document": {
-                                    "well": 74,
+                                    "well identifier": 74,
                                     "sample color": "RGB(176,23,31)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -37727,7 +37727,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "G3",
                                 "custom information document": {
-                                    "well": 75,
+                                    "well identifier": 75,
                                     "sample color": "RGB(176,23,31)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -38237,7 +38237,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "G4",
                                 "custom information document": {
-                                    "well": 76,
+                                    "well identifier": 76,
                                     "sample color": "RGB(0,0,255)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -38747,7 +38747,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "G5",
                                 "custom information document": {
-                                    "well": 77,
+                                    "well identifier": 77,
                                     "sample color": "RGB(0,0,255)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -39257,7 +39257,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "G6",
                                 "custom information document": {
-                                    "well": 78,
+                                    "well identifier": 78,
                                     "sample color": "RGB(0,0,255)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -39767,7 +39767,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "G7",
                                 "custom information document": {
-                                    "well": 79,
+                                    "well identifier": 79,
                                     "sample color": "RGB(238,238,0)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -40277,7 +40277,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "G8",
                                 "custom information document": {
-                                    "well": 80,
+                                    "well identifier": 80,
                                     "sample color": "RGB(238,238,0)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -40787,7 +40787,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "G9",
                                 "custom information document": {
-                                    "well": 81,
+                                    "well identifier": 81,
                                     "sample color": "RGB(238,238,0)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -41297,7 +41297,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "G10",
                                 "custom information document": {
-                                    "well": 82,
+                                    "well identifier": 82,
                                     "sample color": "RGB(139,137,112)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -41807,7 +41807,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "G11",
                                 "custom information document": {
-                                    "well": 83,
+                                    "well identifier": 83,
                                     "sample color": "RGB(139,137,112)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -42317,7 +42317,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "G12",
                                 "custom information document": {
-                                    "well": 84,
+                                    "well identifier": 84,
                                     "sample color": "RGB(139,137,112)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -42827,7 +42827,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "H1",
                                 "custom information document": {
-                                    "well": 85,
+                                    "well identifier": 85,
                                     "sample color": "RGB(176,23,31)",
                                     "target color": "RGB(0,0,255)"
                                 }
@@ -43337,7 +43337,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "H2",
                                 "custom information document": {
-                                    "well": 86,
+                                    "well identifier": 86,
                                     "sample color": "RGB(176,23,31)",
                                     "target color": "RGB(0,0,255)"
                                 }
@@ -43847,7 +43847,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "H3",
                                 "custom information document": {
-                                    "well": 87,
+                                    "well identifier": 87,
                                     "sample color": "RGB(176,23,31)",
                                     "target color": "RGB(0,0,255)"
                                 }
@@ -44357,7 +44357,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "H4",
                                 "custom information document": {
-                                    "well": 88,
+                                    "well identifier": 88,
                                     "sample color": "RGB(0,0,255)",
                                     "target color": "RGB(0,0,255)"
                                 }
@@ -44867,7 +44867,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "H5",
                                 "custom information document": {
-                                    "well": 89,
+                                    "well identifier": 89,
                                     "sample color": "RGB(0,0,255)",
                                     "target color": "RGB(0,0,255)"
                                 }
@@ -45377,7 +45377,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "H6",
                                 "custom information document": {
-                                    "well": 90,
+                                    "well identifier": 90,
                                     "sample color": "RGB(0,0,255)",
                                     "target color": "RGB(0,0,255)"
                                 }
@@ -45887,7 +45887,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "H7",
                                 "custom information document": {
-                                    "well": 91,
+                                    "well identifier": 91,
                                     "sample color": "RGB(238,238,0)",
                                     "target color": "RGB(0,0,255)"
                                 }
@@ -46397,7 +46397,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "H8",
                                 "custom information document": {
-                                    "well": 92,
+                                    "well identifier": 92,
                                     "sample color": "RGB(238,238,0)",
                                     "target color": "RGB(0,0,255)"
                                 }
@@ -46907,7 +46907,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "H9",
                                 "custom information document": {
-                                    "well": 93,
+                                    "well identifier": 93,
                                     "sample color": "RGB(238,238,0)",
                                     "target color": "RGB(0,0,255)"
                                 }
@@ -47417,7 +47417,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "H10",
                                 "custom information document": {
-                                    "well": 94,
+                                    "well identifier": 94,
                                     "sample color": "RGB(139,137,112)",
                                     "target color": "RGB(0,0,255)"
                                 }
@@ -47927,7 +47927,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "H11",
                                 "custom information document": {
-                                    "well": 95,
+                                    "well identifier": 95,
                                     "sample color": "RGB(139,137,112)",
                                     "target color": "RGB(0,0,255)"
                                 }
@@ -48437,7 +48437,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "H12",
                                 "custom information document": {
-                                    "well": 96,
+                                    "well identifier": 96,
                                     "sample color": "RGB(139,137,112)",
                                     "target color": "RGB(0,0,255)"
                                 }

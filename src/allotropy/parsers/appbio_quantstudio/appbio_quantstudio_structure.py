@@ -155,7 +155,7 @@ class WellItem(Referenceable):
                 group_identifier=data.get(str, "Biogroup Name"),
                 sample_role_type=data.get(str, "Task"),
                 extra_data={
-                    "well": identifier,
+                    "well identifier": identifier,
                     "sample color": data.get(str, "Sample Color"),
                     "biogroup color": data.get(str, "Biogroup Color"),
                     "target color": data.get(str, "Target Color"),
@@ -173,7 +173,7 @@ class WellItem(Referenceable):
                 group_identifier=data.get(str, "Biogroup Name"),
                 sample_role_type=data.get(str, "Task"),
                 extra_data={
-                    "well": identifier,
+                    "well identifier": identifier,
                     "sample color": data.get(str, "Sample Color"),
                     "biogroup color": data.get(str, "Biogroup Color"),
                     "target color": data.get(str, "Target Color"),
@@ -200,7 +200,7 @@ class WellItem(Referenceable):
             group_identifier=data.get(str, "Biogroup Name"),
             sample_role_type=data.get(str, "Task"),
             extra_data={
-                "well": identifier,
+                "well identifier": identifier,
                 "sample color": data.get(str, "Sample Color"),
                 "biogroup color": data.get(str, "Biogroup Color"),
                 "target color": data.get(str, "Target Color"),

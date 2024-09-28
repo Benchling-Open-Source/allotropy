@@ -23,7 +23,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "D1",
                                 "custom information document": {
-                                    "well": 37,
+                                    "well identifier": 37,
                                     "sample color": "RGB(176,23,31)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -158,7 +158,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "D2",
                                 "custom information document": {
-                                    "well": 38,
+                                    "well identifier": 38,
                                     "sample color": "RGB(176,23,31)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -293,7 +293,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "D10",
                                 "custom information document": {
-                                    "well": 46,
+                                    "well identifier": 46,
                                     "sample color": "RGB(139,137,112)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -428,7 +428,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "E1",
                                 "custom information document": {
-                                    "well": 49,
+                                    "well identifier": 49,
                                     "sample color": "RGB(176,23,31)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -563,7 +563,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "E10",
                                 "custom information document": {
-                                    "well": 58,
+                                    "well identifier": 58,
                                     "sample color": "RGB(139,137,112)",
                                     "target color": "RGB(176,23,31)"
                                 }
@@ -698,7 +698,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "H1",
                                 "custom information document": {
-                                    "well": 85,
+                                    "well identifier": 85,
                                     "sample color": "RGB(176,23,31)",
                                     "target color": "RGB(0,0,255)"
                                 }
@@ -833,7 +833,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "H2",
                                 "custom information document": {
-                                    "well": 86,
+                                    "well identifier": 86,
                                     "sample color": "RGB(176,23,31)",
                                     "target color": "RGB(0,0,255)"
                                 }
@@ -968,7 +968,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "H10",
                                 "custom information document": {
-                                    "well": 94,
+                                    "well identifier": 94,
                                     "sample color": "RGB(139,137,112)",
                                     "target color": "RGB(0,0,255)"
                                 }
@@ -1103,7 +1103,7 @@
                                 "sample role type": "UNKNOWN",
                                 "well location identifier": "H11",
                                 "custom information document": {
-                                    "well": 95,
+                                    "well identifier": 95,
                                     "sample color": "RGB(139,137,112)",
                                     "target color": "RGB(0,0,255)"
                                 }
