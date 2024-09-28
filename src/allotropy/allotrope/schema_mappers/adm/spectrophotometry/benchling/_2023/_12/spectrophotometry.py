@@ -413,7 +413,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 location_identifier=measurement.location_identifier,
                 well_plate_identifier=measurement.well_plate_identifier,
             ),
-            custom_info_doc,
+            (measurement.sample_custom_info or {}) | custom_info_doc,
         )
 
     def _get_processed_data_aggregate_document(
