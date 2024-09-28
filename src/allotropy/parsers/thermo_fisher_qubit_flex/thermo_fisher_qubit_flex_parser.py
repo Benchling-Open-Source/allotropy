@@ -297,9 +297,6 @@ class ThermoFisherQubitFlexParser(VendorParser):
         # TODO(nstender): these should be in measurement.custom_info in schema mapper
         measurement_custom_document = {
             "calibrated tubes": _get_value(data, "Calibrated Tubes", i),
-            "last read standards": self._get_date_time(
-                str(_get_value(data, "Test Date", i))
-            ),
         }
         # TODO(ASM gaps): we believe these values should be introduced to ASM.
         custom_info_doc = {"reagent lot number": _get_value(data, "Reagent Lot#", i)}
@@ -454,7 +451,7 @@ class ThermoFisherQubitFlexParser(VendorParser):
                         FluorescencePointDetectionDeviceControlDocumentItem(
                             device_type=constants.DEVICE_TYPE
                         ),
-                        device_custom_data_document | custom_device_document,
+                        custom_device_document | device_custom_data_document,
                     )
                 ]
             )
