@@ -45,14 +45,14 @@ class MeasurementGroupNanodrop(MeasurementGroup):
     ) -> MeasurementGroupNanodrop:
         sample_identifier = row[(str, "Sample Name")]
         nucleic_acid = row.get(float, "Nucleic Acid", validate=SeriesData.NOT_NAN)
-        nucleic_acid_factor = row.get(
-            float, "Nucleic Acid Factor", validate=SeriesData.NOT_NAN
-        )
         baseline_absorbance = row.get(
             float, "Baseline Absorbance", validate=SeriesData.NOT_NAN
         )
         electronic_absorbance_reference_wavelength_setting = row.get(
             float, "Baseline Correction", validate=SeriesData.NOT_NAN
+        )
+        nucleic_acid_factor = row.get(
+            float, "Nucleic Acid Factor", validate=SeriesData.NOT_NAN
         )
 
         measurements = [
