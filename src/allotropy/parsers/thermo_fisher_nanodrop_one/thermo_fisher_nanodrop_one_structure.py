@@ -83,8 +83,10 @@ class MeasurementGroupNanodrop(MeasurementGroup):
                     "nucleic acid factor": {
                         "value": nucleic_acid_factor,
                         "unit": UNITLESS,
-                    } if nucleic_acid_factor is not None else None
-                }
+                    }
+                    if nucleic_acid_factor is not None
+                    else None
+                },
             )
             for column in metadata.absorbance_columns
         ]
