@@ -101,7 +101,7 @@ class MeasurementGroupNanodrop(MeasurementGroup):
     def get_measurement(self, raw_wavelength: str) -> Measurement | None:
         detector_wavelength_setting = try_float(
             raw_wavelength.removeprefix("A"),
-            "detector wavelenght setting",
+            "detector wavelength setting",
         )
         for measurement in self.measurements:
             if measurement.detector_wavelength_setting == detector_wavelength_setting:

@@ -12,17 +12,7 @@
                                 "device control document": [
                                     {
                                         "device type": "absorbance detector",
-                                        "detection type": "ABS",
-                                        "custom information document": {
-                                            "operating minimum": {
-                                                "value": 325.0,
-                                                "unit": "nm"
-                                            },
-                                            "operating maximum": {
-                                                "value": 480.0,
-                                                "unit": "nm"
-                                            }
-                                        }
+                                        "detection type": "ABS"
                                     }
                                 ]
                             },
@@ -369,6 +359,10 @@
                                         ]
                                     ]
                                 }
+                            },
+                            "custom information document": {
+                                "operating minimum": 325.0,
+                                "operating maximum": 480.0
                             }
                         }
                     ],
@@ -387,7 +381,7 @@
             "file name": "thermo_fisher_genesys30_example_01.tsv",
             "software name": "Genesys 30 instrument software",
             "ASM converter name": "allotropy_thermo_fisher_genesys30",
-            "ASM converter version": "0.1.45"
+            "ASM converter version": "0.1.54"
         }
     }
 }
