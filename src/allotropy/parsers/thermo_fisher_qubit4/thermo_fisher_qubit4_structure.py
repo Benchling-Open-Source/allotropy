@@ -63,18 +63,21 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
                         "value": data.get(float, "Qubit® tube conc.", NaN),
                         "unit": data.get(str, "Units_Qubit® tube conc.", UNITLESS),
                     },
-                    "standard 1 concentration": {
-                        "value": std_1_rfu,
-                        "unit": "RFU",
-                    } if std_1_rfu else None,
+                    "standard 1 concentration": {"value": std_1_rfu, "unit": "RFU"}
+                    if std_1_rfu
+                    else None,
                     "standard 2 concentration": {
                         "value": std_2_rfu,
                         "unit": "RFU",
-                    } if std_2_rfu else None,
+                    }
+                    if std_2_rfu
+                    else None,
                     "standard 3 concentration": {
                         "value": std_3_rfu,
                         "unit": "RFU",
-                    } if std_3_rfu else None,
+                    }
+                    if std_3_rfu
+                    else None,
                 },
             )
         ],
