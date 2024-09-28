@@ -116,10 +116,10 @@ class Measurement:
     timestamp: str
     sample_identifier: str
     target_identifier: str
-    group_identifier: str
+    group_identifier: str | None = None
 
     # Settings
-    pcr_detection_chemistry: str | None
+    pcr_detection_chemistry: str | None = None
 
     # Optional measurement metadata
     sample_role_type: str | None = None
