@@ -13,6 +13,18 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
+                                            "operating minimum": {
+                                                "value": "10.0-20.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "operating range": {
+                                                "value": "20.0-1000",
+                                                "unit": "ng/µL"
+                                            },
+                                            "operating maximum": {
+                                                "value": "1000-1200",
+                                                "unit": "ng/µL"
+                                            },
                                             "sample volume setting": {
                                                 "value": 1,
                                                 "unit": "μL"
@@ -30,6 +42,20 @@
                                 "sample identifier": "S1",
                                 "batch identifier": "131222-164034",
                                 "custom information document": {
+                                    "qubit tube concentration": {
+                                        "value": 2.64,
+                                        "unit": "ug/mL"
+                                    },
+                                    "standard 1 concentration": {
+                                        "value": 3.19791240277,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
+                                        "value": 45.4272739973,
+                                        "unit": "RFU"
+                                    },
+                                    "last read standards": "2022-12-13T16:41:09+00:00",
+                                    "selected samples": 6,
                                     "original sample concentration": {
                                         "value": 528,
                                         "unit": "ng/µL"
@@ -42,32 +68,7 @@
                             },
                             "custom information document": {
                                 "calibrated tubes": 6,
-                                "operating minimum": {
-                                    "value": "10.0-20.0",
-                                    "unit": "ng/µL"
-                                },
-                                "operating range": {
-                                    "value": "20.0-1000",
-                                    "unit": "ng/µL"
-                                },
-                                "operating maximum": {
-                                    "value": "1000-1200",
-                                    "unit": "ng/µL"
-                                },
-                                "last read standards": "2022-12-13T16:41:09+00:00",
-                                "selected samples": 6,
-                                "qubit tube concentration": {
-                                    "value": 2.64,
-                                    "unit": "ug/mL"
-                                },
-                                "standard 1 concentration": {
-                                    "value": 3.19791240277,
-                                    "unit": "RFU"
-                                },
-                                "standard 2 concentration": {
-                                    "value": 45.4272739973,
-                                    "unit": "RFU"
-                                }
+                                "last read standards": "2022-12-13T16:41:09+00:00"
                             }
                         }
                     ],
@@ -86,6 +87,18 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
+                                            "operating minimum": {
+                                                "value": "10.0-20.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "operating range": {
+                                                "value": "20.0-1000",
+                                                "unit": "ng/µL"
+                                            },
+                                            "operating maximum": {
+                                                "value": "1000-1200",
+                                                "unit": "ng/µL"
+                                            },
                                             "sample volume setting": {
                                                 "value": 1,
                                                 "unit": "μL"
@@ -103,6 +116,20 @@
                                 "sample identifier": "S2",
                                 "batch identifier": "131222-164034",
                                 "custom information document": {
+                                    "qubit tube concentration": {
+                                        "value": 3.05,
+                                        "unit": "ug/mL"
+                                    },
+                                    "standard 1 concentration": {
+                                        "value": 2.94017020913,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
+                                        "value": 42.6888518933,
+                                        "unit": "RFU"
+                                    },
+                                    "last read standards": "2022-12-13T16:41:09+00:00",
+                                    "selected samples": 6,
                                     "original sample concentration": {
                                         "value": 610,
                                         "unit": "ng/µL"
@@ -115,32 +142,7 @@
                             },
                             "custom information document": {
                                 "calibrated tubes": 6,
-                                "operating minimum": {
-                                    "value": "10.0-20.0",
-                                    "unit": "ng/µL"
-                                },
-                                "operating range": {
-                                    "value": "20.0-1000",
-                                    "unit": "ng/µL"
-                                },
-                                "operating maximum": {
-                                    "value": "1000-1200",
-                                    "unit": "ng/µL"
-                                },
-                                "last read standards": "2022-12-13T16:41:09+00:00",
-                                "selected samples": 6,
-                                "qubit tube concentration": {
-                                    "value": 3.05,
-                                    "unit": "ug/mL"
-                                },
-                                "standard 1 concentration": {
-                                    "value": 2.94017020913,
-                                    "unit": "RFU"
-                                },
-                                "standard 2 concentration": {
-                                    "value": 42.6888518933,
-                                    "unit": "RFU"
-                                }
+                                "last read standards": "2022-12-13T16:41:09+00:00"
                             }
                         }
                     ],
@@ -159,6 +161,18 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
+                                            "operating minimum": {
+                                                "value": "10.0-20.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "operating range": {
+                                                "value": "20.0-1000",
+                                                "unit": "ng/µL"
+                                            },
+                                            "operating maximum": {
+                                                "value": "1000-1200",
+                                                "unit": "ng/µL"
+                                            },
                                             "sample volume setting": {
                                                 "value": 1,
                                                 "unit": "μL"
@@ -176,6 +190,20 @@
                                 "sample identifier": "S3",
                                 "batch identifier": "131222-164034",
                                 "custom information document": {
+                                    "qubit tube concentration": {
+                                        "value": 2.67,
+                                        "unit": "ug/mL"
+                                    },
+                                    "standard 1 concentration": {
+                                        "value": 2.74925006568,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
+                                        "value": 40.589712998,
+                                        "unit": "RFU"
+                                    },
+                                    "last read standards": "2022-12-13T16:41:09+00:00",
+                                    "selected samples": 6,
                                     "original sample concentration": {
                                         "value": 534,
                                         "unit": "ng/µL"
@@ -188,32 +216,7 @@
                             },
                             "custom information document": {
                                 "calibrated tubes": 6,
-                                "operating minimum": {
-                                    "value": "10.0-20.0",
-                                    "unit": "ng/µL"
-                                },
-                                "operating range": {
-                                    "value": "20.0-1000",
-                                    "unit": "ng/µL"
-                                },
-                                "operating maximum": {
-                                    "value": "1000-1200",
-                                    "unit": "ng/µL"
-                                },
-                                "last read standards": "2022-12-13T16:41:09+00:00",
-                                "selected samples": 6,
-                                "qubit tube concentration": {
-                                    "value": 2.67,
-                                    "unit": "ug/mL"
-                                },
-                                "standard 1 concentration": {
-                                    "value": 2.74925006568,
-                                    "unit": "RFU"
-                                },
-                                "standard 2 concentration": {
-                                    "value": 40.589712998,
-                                    "unit": "RFU"
-                                }
+                                "last read standards": "2022-12-13T16:41:09+00:00"
                             }
                         }
                     ],
@@ -232,6 +235,18 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
+                                            "operating minimum": {
+                                                "value": "10.0-20.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "operating range": {
+                                                "value": "20.0-1000",
+                                                "unit": "ng/µL"
+                                            },
+                                            "operating maximum": {
+                                                "value": "1000-1200",
+                                                "unit": "ng/µL"
+                                            },
                                             "sample volume setting": {
                                                 "value": 1,
                                                 "unit": "μL"
@@ -249,6 +264,20 @@
                                 "sample identifier": "S4",
                                 "batch identifier": "131222-164034",
                                 "custom information document": {
+                                    "qubit tube concentration": {
+                                        "value": 1.86,
+                                        "unit": "ug/mL"
+                                    },
+                                    "standard 1 concentration": {
+                                        "value": 2.987900245,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
+                                        "value": 43.0991381318,
+                                        "unit": "RFU"
+                                    },
+                                    "last read standards": "2022-12-13T16:41:09+00:00",
+                                    "selected samples": 6,
                                     "original sample concentration": {
                                         "value": 372,
                                         "unit": "ng/µL"
@@ -261,32 +290,7 @@
                             },
                             "custom information document": {
                                 "calibrated tubes": 6,
-                                "operating minimum": {
-                                    "value": "10.0-20.0",
-                                    "unit": "ng/µL"
-                                },
-                                "operating range": {
-                                    "value": "20.0-1000",
-                                    "unit": "ng/µL"
-                                },
-                                "operating maximum": {
-                                    "value": "1000-1200",
-                                    "unit": "ng/µL"
-                                },
-                                "last read standards": "2022-12-13T16:41:09+00:00",
-                                "selected samples": 6,
-                                "qubit tube concentration": {
-                                    "value": 1.86,
-                                    "unit": "ug/mL"
-                                },
-                                "standard 1 concentration": {
-                                    "value": 2.987900245,
-                                    "unit": "RFU"
-                                },
-                                "standard 2 concentration": {
-                                    "value": 43.0991381318,
-                                    "unit": "RFU"
-                                }
+                                "last read standards": "2022-12-13T16:41:09+00:00"
                             }
                         }
                     ],
@@ -305,6 +309,18 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
+                                            "operating minimum": {
+                                                "value": "10.0-20.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "operating range": {
+                                                "value": "20.0-1000",
+                                                "unit": "ng/µL"
+                                            },
+                                            "operating maximum": {
+                                                "value": "1000-1200",
+                                                "unit": "ng/µL"
+                                            },
                                             "sample volume setting": {
                                                 "value": 1,
                                                 "unit": "μL"
@@ -322,6 +338,20 @@
                                 "sample identifier": "S5",
                                 "batch identifier": "131222-164034",
                                 "custom information document": {
+                                    "qubit tube concentration": {
+                                        "value": 2.73,
+                                        "unit": "ug/mL"
+                                    },
+                                    "standard 1 concentration": {
+                                        "value": 2.8447101374,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
+                                        "value": 41.381660854,
+                                        "unit": "RFU"
+                                    },
+                                    "last read standards": "2022-12-13T16:41:09+00:00",
+                                    "selected samples": 6,
                                     "original sample concentration": {
                                         "value": 546,
                                         "unit": "ng/µL"
@@ -334,32 +364,7 @@
                             },
                             "custom information document": {
                                 "calibrated tubes": 6,
-                                "operating minimum": {
-                                    "value": "10.0-20.0",
-                                    "unit": "ng/µL"
-                                },
-                                "operating range": {
-                                    "value": "20.0-1000",
-                                    "unit": "ng/µL"
-                                },
-                                "operating maximum": {
-                                    "value": "1000-1200",
-                                    "unit": "ng/µL"
-                                },
-                                "last read standards": "2022-12-13T16:41:09+00:00",
-                                "selected samples": 6,
-                                "qubit tube concentration": {
-                                    "value": 2.73,
-                                    "unit": "ug/mL"
-                                },
-                                "standard 1 concentration": {
-                                    "value": 2.8447101374,
-                                    "unit": "RFU"
-                                },
-                                "standard 2 concentration": {
-                                    "value": 41.381660854,
-                                    "unit": "RFU"
-                                }
+                                "last read standards": "2022-12-13T16:41:09+00:00"
                             }
                         }
                     ],
@@ -378,6 +383,18 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
+                                            "operating minimum": {
+                                                "value": "10.0-20.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "operating range": {
+                                                "value": "20.0-1000",
+                                                "unit": "ng/µL"
+                                            },
+                                            "operating maximum": {
+                                                "value": "1000-1200",
+                                                "unit": "ng/µL"
+                                            },
                                             "sample volume setting": {
                                                 "value": 1,
                                                 "unit": "μL"
@@ -395,6 +412,20 @@
                                 "sample identifier": "S6",
                                 "batch identifier": "131222-164034",
                                 "custom information document": {
+                                    "qubit tube concentration": {
+                                        "value": 2.43,
+                                        "unit": "ug/mL"
+                                    },
+                                    "standard 1 concentration": {
+                                        "value": 2.82561812305,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
+                                        "value": 40.2748421637,
+                                        "unit": "RFU"
+                                    },
+                                    "last read standards": "2022-12-13T16:41:09+00:00",
+                                    "selected samples": 6,
                                     "original sample concentration": {
                                         "value": 486,
                                         "unit": "ng/µL"
@@ -407,32 +438,7 @@
                             },
                             "custom information document": {
                                 "calibrated tubes": 6,
-                                "operating minimum": {
-                                    "value": "10.0-20.0",
-                                    "unit": "ng/µL"
-                                },
-                                "operating range": {
-                                    "value": "20.0-1000",
-                                    "unit": "ng/µL"
-                                },
-                                "operating maximum": {
-                                    "value": "1000-1200",
-                                    "unit": "ng/µL"
-                                },
-                                "last read standards": "2022-12-13T16:41:09+00:00",
-                                "selected samples": 6,
-                                "qubit tube concentration": {
-                                    "value": 2.43,
-                                    "unit": "ug/mL"
-                                },
-                                "standard 1 concentration": {
-                                    "value": 2.82561812305,
-                                    "unit": "RFU"
-                                },
-                                "standard 2 concentration": {
-                                    "value": 40.2748421637,
-                                    "unit": "RFU"
-                                }
+                                "last read standards": "2022-12-13T16:41:09+00:00"
                             }
                         }
                     ],
