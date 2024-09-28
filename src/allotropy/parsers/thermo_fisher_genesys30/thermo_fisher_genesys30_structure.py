@@ -54,8 +54,6 @@ def create_measurement_groups(
                     type_=MeasurementType.ULTRAVIOLET_ABSORBANCE_SPECTRUM,
                     identifier=random_uuid_str(),
                     sample_identifier=NOT_APPLICABLE,
-                    operating_minimum=header.get(float, "Lower"),
-                    operating_maximum=header.get(float, "Upper"),
                     data_cube=DataCube(
                         label="absorption spectrum",
                         structure_dimensions=[
@@ -75,6 +73,10 @@ def create_measurement_groups(
                         dimensions=[data["wavelength(nm)"].tolist()],
                         measures=[data["ABS"].tolist()],
                     ),
+                    custom_info={
+                        "operating minimum": header.get(float, "Lower"),
+                        "operating maximum": header.get(float, "Upper"),
+                    },
                 ),
             ],
         ),

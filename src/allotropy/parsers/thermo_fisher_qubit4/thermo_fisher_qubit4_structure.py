@@ -4,6 +4,7 @@ from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectr
     ContainerType,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import NaN
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
     Measurement,
     MeasurementGroup,
@@ -54,17 +55,30 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
                 original_sample_concentration_unit=data.get(
                     str, "Units_Original sample conc."
                 ),
-                qubit_tube_concentration=data.get(float, "Qubit® tube conc.", NaN),
-                qubit_tube_concentration_units=data.get(str, "Units_Qubit® tube conc."),
-                standard_1_concentration=data.get(
-                    float, "Std 1 RFU", validate=SeriesData.NOT_NAN
-                ),
-                standard_2_concentration=data.get(
-                    float, "Std 2 RFU", validate=SeriesData.NOT_NAN
-                ),
-                standard_3_concentration=data.get(
-                    float, "Std 3 RFU", validate=SeriesData.NOT_NAN
-                ),
+                custom_info={
+                    "qubit tube concentration": {
+                        "value": data.get(float, "Qubit® tube conc.", NaN),
+                        "unit": data.get(str, "Units_Qubit® tube conc.", UNITLESS),
+                    },
+                    "standard 1 concentration": {
+                        "value": data.get(
+                            float, "Std 1 RFU", validate=SeriesData.NOT_NAN
+                        ),
+                        "unit": "RFU",
+                    },
+                    "standard 2 concentration": {
+                        "value": data.get(
+                            float, "Std 2 RFU", validate=SeriesData.NOT_NAN
+                        ),
+                        "unit": "RFU",
+                    },
+                    "standard 3 concentration": {
+                        "value": data.get(
+                            float, "Std 3 RFU", validate=SeriesData.NOT_NAN
+                        ),
+                        "unit": "RFU",
+                    },
+                },
             )
         ],
     )

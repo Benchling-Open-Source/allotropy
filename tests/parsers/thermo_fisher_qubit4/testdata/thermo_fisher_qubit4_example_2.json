@@ -34,24 +34,29 @@
                                     "original sample concentration": {
                                         "value": 6.08,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 30.4,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 49.43,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 21133.11,
-                                        "unit": "RFU"
                                     }
                                 }
                             },
                             "fluorescence": {
                                 "value": 1303.11,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "qubit tube concentration": {
+                                    "value": 30.4,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 49.43,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 21133.11,
+                                    "unit": "RFU"
+                                },
+                                "standard 3 concentration": {
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -91,24 +96,29 @@
                                     "original sample concentration": {
                                         "value": 112.0,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 560.0,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 49.43,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 21133.11,
-                                        "unit": "RFU"
                                     }
                                 }
                             },
                             "fluorescence": {
                                 "value": 23709.42,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "qubit tube concentration": {
+                                    "value": 560.0,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 49.43,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 21133.11,
+                                    "unit": "RFU"
+                                },
+                                "standard 3 concentration": {
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -127,7 +137,7 @@
             "file name": "thermo_fisher_qubit4_example_2.xlsx",
             "software name": "Qubit 4 software",
             "ASM converter name": "allotropy_thermo_fisher_qubit_4",
-            "ASM converter version": "0.1.38"
+            "ASM converter version": "0.1.54"
         }
     }
 }

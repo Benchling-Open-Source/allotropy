@@ -51,9 +51,11 @@ class MeasurementGroupNanodrop(MeasurementGroup):
         electronic_absorbance_reference_wavelength_setting = row.get(
             float, "Baseline Correction", validate=SeriesData.NOT_NAN
         )
-        nucleic_acid_factor = row.get(
-            float, "Nucleic Acid Factor", validate=SeriesData.NOT_NAN
-        )
+        custom_info = {
+            "nucleic acid factor": row.get(
+                float, "Nucleic Acid Factor", validate=SeriesData.NOT_NAN
+            )
+        }
 
         measurements = [
             Measurement(
@@ -63,10 +65,9 @@ class MeasurementGroupNanodrop(MeasurementGroup):
                 absorbance=row.get(float, column, NaN),
                 baseline_absorbance=baseline_absorbance,
                 electronic_absorbance_reference_wavelength_setting=electronic_absorbance_reference_wavelength_setting,
-                nucleic_acid_factor=nucleic_acid_factor,
                 detector_wavelength_setting=try_float(
                     column.removeprefix("A"),
-                    "detector wavelenght setting",
+                    "detector wavelength setting",
                 ),
                 processed_data=(
                     None
@@ -80,6 +81,7 @@ class MeasurementGroupNanodrop(MeasurementGroup):
                         ],
                     )
                 ),
+                custom_info=custom_info,
             )
             for column in metadata.absorbance_columns
         ]

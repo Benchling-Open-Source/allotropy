@@ -265,9 +265,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 MeltingCurveDataCube, "melting curve", measurement.data_cubes
             ),
         )
-        return add_custom_information_document(
-            measurement_doc, measurement.custom_info
-        )
+        return add_custom_information_document(measurement_doc, measurement.custom_info)
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
         # TODO(ASM gaps): we believe these values should be added to ASM.

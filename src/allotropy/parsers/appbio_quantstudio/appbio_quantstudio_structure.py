@@ -159,7 +159,7 @@ class WellItem(Referenceable):
                     "sample color": data.get(str, "Sample Color"),
                     "biogroup color": data.get(str, "Biogroup Color"),
                     "target color": data.get(str, "Target Color"),
-                }
+                },
             ),
             WellItem(
                 uuid=random_uuid_str(),
@@ -177,7 +177,7 @@ class WellItem(Referenceable):
                     "sample color": data.get(str, "Sample Color"),
                     "biogroup color": data.get(str, "Biogroup Color"),
                     "target color": data.get(str, "Target Color"),
-                }
+                },
             ),
         )
 
@@ -204,7 +204,7 @@ class WellItem(Referenceable):
                 "sample color": data.get(str, "Sample Color"),
                 "biogroup color": data.get(str, "Biogroup Color"),
                 "target color": data.get(str, "Target Color"),
-            }
+            },
         )
 
 
@@ -509,7 +509,7 @@ class Result:
                     "expfail": data.get(str, "EXPFAIL"),
                     "tholdfail": data.get(str, "THOLDFAIL"),
                     "prfdrop": data.get(str, "PRFDROP"),
-                }
+                },
             )
             for allele_prefix in allele_prefixes
         }

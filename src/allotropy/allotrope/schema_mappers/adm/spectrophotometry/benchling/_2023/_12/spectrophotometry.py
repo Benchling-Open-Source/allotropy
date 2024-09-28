@@ -132,18 +132,10 @@ class Measurement:
     excitation_wavelength_setting: str | None = None
     emission_wavelength_setting: str | None = None
     dilution_factor_setting: float | None = None
-    operating_minimum: float | None = None
-    operating_maximum: float | None = None
     original_sample_concentration: JsonFloat | None = None
     original_sample_concentration_unit: str | None = None
-    qubit_tube_concentration: JsonFloat | None = None
-    qubit_tube_concentration_units: str | None = None
-    standard_1_concentration: float | None = None
-    standard_2_concentration: float | None = None
-    standard_3_concentration: float | None = None
     baseline_absorbance: float | None = None
     electronic_absorbance_reference_wavelength_setting: float | None = None
-    nucleic_acid_factor: float | None = None
 
     # Measurements
     absorbance: JsonFloat | None = None
@@ -152,6 +144,8 @@ class Measurement:
     # Processed data
     calculated_data: list[CalculatedDataItem] | None = None
     processed_data: ProcessedData | None = None
+
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -244,20 +238,26 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_measurement_document_item(
         self, measurement: Measurement, metadata: Metadata
     ) -> MeasurementDocumentItems:
+        measurement_doc: MeasurementDocumentItems
         # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
         if measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE:
-            return self._get_ultraviolet_absorbance_measurement_document(
+            measurement_doc = self._get_ultraviolet_absorbance_measurement_document(
                 measurement, metadata
             )
         elif measurement.type_ == MeasurementType.FLUORESCENCE:
-            return self._get_fluorescence_measurement_document(measurement, metadata)
-        elif measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE_SPECTRUM:
-            return self._get_ultraviolet_absorbance_spectrum_measurement_document(
+            measurement_doc = self._get_fluorescence_measurement_document(
                 measurement, metadata
+            )
+        elif measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE_SPECTRUM:
+            measurement_doc = (
+                self._get_ultraviolet_absorbance_spectrum_measurement_document(
+                    measurement, metadata
+                )
             )
         else:
             msg = f"Invalid measurement type: {measurement.type_}"
             raise AllotropyParserError(msg)
+        return add_custom_information_document(measurement_doc, measurement.custom_info)
 
     def _get_ultraviolet_absorbance_measurement_document(
         self, measurement: Measurement, metadata: Metadata
@@ -385,6 +385,7 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_device_control_custom_document(
         self, measurement: Measurement
     ) -> dict[str, Any]:
+        # TODO(ASM gaps): we believe these values should be introduced to ASM.
         return {
             "sample volume setting": quantity_or_none(
                 TQuantityValueMicroliter, measurement.sample_volume_setting
@@ -394,41 +395,16 @@ class Mapper(SchemaMapper[Data, Model]):
             "dilution factor": quantity_or_none(
                 TQuantityValueUnitless, measurement.dilution_factor_setting
             ),
-            "operating minimum": quantity_or_none(
-                TQuantityValueNanometer, measurement.operating_minimum
-            ),
-            "operating maximum": quantity_or_none(
-                TQuantityValueNanometer, measurement.operating_maximum
-            ),
-            "nucleic acid factor": quantity_or_none(
-                TQuantityValueUnitless, measurement.nucleic_acid_factor
-            ),
         }
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
-        custom_document = {
+        # TODO(ASM gaps): we believe these values should be introduced to ASM.
+        custom_info_doc = {
             "original sample concentration": quantity_or_none(
                 get_quantity_class(measurement.original_sample_concentration_unit)
                 or TQuantityValueUnitless,
                 measurement.original_sample_concentration,
-            ),
-            "qubit tube concentration": quantity_or_none(
-                get_quantity_class(measurement.qubit_tube_concentration_units)
-                or TQuantityValueUnitless,
-                measurement.qubit_tube_concentration,
-            ),
-            "standard 1 concentration": quantity_or_none(
-                TQuantityValueRelativeFluorescenceUnit,
-                measurement.standard_1_concentration,
-            ),
-            "standard 2 concentration": quantity_or_none(
-                TQuantityValueRelativeFluorescenceUnit,
-                measurement.standard_2_concentration,
-            ),
-            "standard 3 concentration": quantity_or_none(
-                TQuantityValueRelativeFluorescenceUnit,
-                measurement.standard_3_concentration,
-            ),
+            )
         }
         return add_custom_information_document(
             SampleDocument(
@@ -437,7 +413,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 location_identifier=measurement.location_identifier,
                 well_plate_identifier=measurement.well_plate_identifier,
             ),
-            custom_document,
+            custom_info_doc,
         )
 
     def _get_processed_data_aggregate_document(

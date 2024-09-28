@@ -325,7 +325,9 @@ class Mapper(SchemaMapper[Data, Model]):
             sample_document=self._get_sample_document(measurement),
             device_control_aggregate_document=OpticalImagingDeviceControlAggregateDocument(
                 device_control_document=[
-                    add_custom_information_document(device_control_document, custom_info_doc)
+                    add_custom_information_document(
+                        device_control_document, custom_info_doc
+                    )
                 ]
             ),
             processed_data_aggregate_document=self._get_processed_data_aggregate_document(
