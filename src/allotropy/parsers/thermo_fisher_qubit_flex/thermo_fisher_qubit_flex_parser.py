@@ -295,9 +295,36 @@ class ThermoFisherQubitFlexParser(VendorParser):
         Returns: the measurement document dictionary
         """
         measurement_custom_document = {
-            "reagent lot number": _get_value(data, "Reagent Lot#", i),
             "calibrated tubes": _get_value(data, "Calibrated Tubes", i),
+            "operating minimum": _get_property_value(
+                data, "Extended Low Range", i, TQuantityValueNanogramPerMicroliter
+            ),
+            "operating range": _get_property_value(
+                data, "Core Range", i, TQuantityValueNanogramPerMicroliter
+            ),
+            "operating maximum": _get_property_value(
+                data, "Extended High Range", i, TQuantityValueNanogramPerMicroliter
+            ),
+            "last read standards": self._get_date_time(
+                str(_get_value(data, "Test Date", i))
+            ),
+            "selected samples": _get_value(data, "Selected Samples", i),
+            "qubit tube concentration": _get_concentration_value(
+                data, "Qubit Tube Conc.", "Qubit tube conc. units", i
+            ),
+            "standard 1 concentration": _get_property_value(
+                data, "Std 1 RFU", i, TQuantityValueRelativeFluorescenceUnit
+            ),
+            "standard 2 concentration": _get_property_value(
+                data, "Std 2 RFU", i, TQuantityValueRelativeFluorescenceUnit
+            ),
+            "standard 3 concentration": _get_property_value(
+                data, "Std 3 RFU", i, TQuantityValueRelativeFluorescenceUnit
+            ),
         }
+        # TODO(ASM gaps): we believe these values should be introduced to ASM.
+        measurement_custom_document["reagent lot number"] = _get_value(data, "Reagent Lot#", i)
+
         # Check if all values in sample_custom_document are None
         if all(value is None for value in measurement_custom_document.values()):
             return [
@@ -356,26 +383,11 @@ class ThermoFisherQubitFlexParser(VendorParser):
         well_plate_id = _get_value(data, "Plate Barcode", i)
         if sample_id is None:
             sample_id = _get_value_not_none(data, "Sample Name", i)
+        # TODO(ASM gaps): we believe these values should be introduced to ASM.
         sample_custom_document = {
             "original sample concentration": _get_concentration_value(
                 data, "Original Sample Conc.", "Original sample conc. units", i
             ),
-            "qubit tube concentration": _get_concentration_value(
-                data, "Qubit Tube Conc.", "Qubit tube conc. units", i
-            ),
-            "standard 1 concentration": _get_property_value(
-                data, "Std 1 RFU", i, TQuantityValueRelativeFluorescenceUnit
-            ),
-            "standard 2 concentration": _get_property_value(
-                data, "Std 2 RFU", i, TQuantityValueRelativeFluorescenceUnit
-            ),
-            "standard 3 concentration": _get_property_value(
-                data, "Std 3 RFU", i, TQuantityValueRelativeFluorescenceUnit
-            ),
-            "last read standards": self._get_date_time(
-                str(_get_value(data, "Test Date", i))
-            ),
-            "selected samples": _get_value(data, "Selected Samples", i),
         }
         if all(value is None for value in sample_custom_document.values()):
             return SampleDocument(
@@ -407,18 +419,10 @@ class ThermoFisherQubitFlexParser(VendorParser):
 
         Returns: the device control document dictionary
         """
+        # TODO(ASM gaps): we believe these values should be introduced to ASM.
         custom_device_document = {
             "sample volume setting": _get_property_value(
                 data, "Sample Volume (uL)", i, TQuantityValueMicroliter
-            ),
-            "operating minimum": _get_property_value(
-                data, "Extended Low Range", i, TQuantityValueNanogramPerMicroliter
-            ),
-            "operating range": _get_property_value(
-                data, "Core Range", i, TQuantityValueNanogramPerMicroliter
-            ),
-            "operating maximum": _get_property_value(
-                data, "Extended High Range", i, TQuantityValueNanogramPerMicroliter
             ),
             "excitation setting": _get_value(data, "Excitation", i),
             "dilution factor": _get_property_value(

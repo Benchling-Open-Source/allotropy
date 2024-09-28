@@ -17,18 +17,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -45,25 +33,39 @@
                                     "original sample concentration": {
                                         "value": 8.09,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 80.9,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.76123674997,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 968.243447194,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:17:36+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 156,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:17:36+00:00",
+                                "qubit tube concentration": {
+                                    "value": 80.9,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.76123674997,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 968.243447194,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -86,18 +88,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -114,25 +104,39 @@
                                     "original sample concentration": {
                                         "value": 8.15,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 81.5,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.83263823983,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 1011.24211785,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:17:36+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 164,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:17:36+00:00",
+                                "qubit tube concentration": {
+                                    "value": 81.5,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.83263823983,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 1011.24211785,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -155,18 +159,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -183,25 +175,39 @@
                                     "original sample concentration": {
                                         "value": 8.1,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 81.0,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.78503724659,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 967.148849047,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:17:36+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 156,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:17:36+00:00",
+                                "qubit tube concentration": {
+                                    "value": 81.0,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.78503724659,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 967.148849047,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -224,18 +230,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -252,25 +246,39 @@
                                     "original sample concentration": {
                                         "value": 8.27,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 82.7,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.80883774321,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 982.615996767,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:17:36+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 162,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:17:36+00:00",
+                                "qubit tube concentration": {
+                                    "value": 82.7,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.80883774321,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 982.615996767,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -293,18 +301,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -321,25 +317,39 @@
                                     "original sample concentration": {
                                         "value": 7.85,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 78.5,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.76123674997,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 957.939947254,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:17:36+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 150,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:17:36+00:00",
+                                "qubit tube concentration": {
+                                    "value": 78.5,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.76123674997,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 957.939947254,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -362,18 +372,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -390,25 +388,39 @@
                                     "original sample concentration": {
                                         "value": 7.75,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 77.5,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.66603476348,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 855.35706446,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:17:36+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 132,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:17:36+00:00",
+                                "qubit tube concentration": {
+                                    "value": 77.5,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.66603476348,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 855.35706446,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -431,18 +443,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -459,25 +459,39 @@
                                     "original sample concentration": {
                                         "value": 7.71,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 77.1,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.47563079051,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 814.547590094,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:17:36+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 125,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:17:36+00:00",
+                                "qubit tube concentration": {
+                                    "value": 77.1,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.47563079051,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 814.547590094,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -500,18 +514,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -528,25 +530,39 @@
                                     "original sample concentration": {
                                         "value": 7.17,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 71.7,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.49943128713,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 790.63300016,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:17:36+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 113,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:17:36+00:00",
+                                "qubit tube concentration": {
+                                    "value": 71.7,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.49943128713,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 790.63300016,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -569,18 +585,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -597,25 +601,39 @@
                                     "original sample concentration": {
                                         "value": 6.93,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 69.3,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.76123674997,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 968.243447194,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:17:49+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 134,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:17:49+00:00",
+                                "qubit tube concentration": {
+                                    "value": 69.3,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.76123674997,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 968.243447194,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -638,18 +656,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -666,25 +672,39 @@
                                     "original sample concentration": {
                                         "value": 6.91,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 69.1,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.83263823983,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 1011.24211785,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:17:49+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 139,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:17:49+00:00",
+                                "qubit tube concentration": {
+                                    "value": 69.1,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.83263823983,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 1011.24211785,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -707,18 +727,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -735,25 +743,39 @@
                                     "original sample concentration": {
                                         "value": 7.02,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 70.2,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.78503724659,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 967.148849047,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:17:49+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 135,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:17:49+00:00",
+                                "qubit tube concentration": {
+                                    "value": 70.2,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.78503724659,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 967.148849047,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -776,18 +798,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -804,25 +814,39 @@
                                     "original sample concentration": {
                                         "value": 7.04,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 70.4,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.80883774321,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 982.615996767,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:17:49+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 138,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:17:49+00:00",
+                                "qubit tube concentration": {
+                                    "value": 70.4,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.80883774321,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 982.615996767,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -845,18 +869,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -873,25 +885,39 @@
                                     "original sample concentration": {
                                         "value": 7.01,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 70.1,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.76123674997,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 957.939947254,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:17:49+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 134,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:17:49+00:00",
+                                "qubit tube concentration": {
+                                    "value": 70.1,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.76123674997,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 957.939947254,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -914,18 +940,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -942,25 +956,39 @@
                                     "original sample concentration": {
                                         "value": 7.28,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 72.8,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.66603476348,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 855.35706446,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:17:49+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 124,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:17:49+00:00",
+                                "qubit tube concentration": {
+                                    "value": 72.8,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.66603476348,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 855.35706446,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -983,18 +1011,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -1011,25 +1027,39 @@
                                     "original sample concentration": {
                                         "value": 7.16,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 71.6,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.47563079051,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 814.547590094,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:17:49+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 116,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:17:49+00:00",
+                                "qubit tube concentration": {
+                                    "value": 71.6,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.47563079051,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 814.547590094,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -1052,18 +1082,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -1080,25 +1098,39 @@
                                     "original sample concentration": {
                                         "value": 7.03,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 70.3,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.49943128713,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 790.63300016,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:17:49+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 111,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:17:49+00:00",
+                                "qubit tube concentration": {
+                                    "value": 70.3,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.49943128713,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 790.63300016,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -1121,18 +1153,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -1149,25 +1169,39 @@
                                     "original sample concentration": {
                                         "value": 7.47,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 74.7,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.76123674997,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 968.243447194,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:17:58+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 144,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:17:58+00:00",
+                                "qubit tube concentration": {
+                                    "value": 74.7,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.76123674997,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 968.243447194,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -1190,18 +1224,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -1218,25 +1240,39 @@
                                     "original sample concentration": {
                                         "value": 7.19,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 71.9,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.83263823983,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 1011.24211785,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:17:58+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 145,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:17:58+00:00",
+                                "qubit tube concentration": {
+                                    "value": 71.9,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.83263823983,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 1011.24211785,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -1259,18 +1295,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -1287,25 +1311,39 @@
                                     "original sample concentration": {
                                         "value": 7.35,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 73.5,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.78503724659,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 967.148849047,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:17:58+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 142,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:17:58+00:00",
+                                "qubit tube concentration": {
+                                    "value": 73.5,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.78503724659,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 967.148849047,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -1328,18 +1366,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -1356,25 +1382,39 @@
                                     "original sample concentration": {
                                         "value": 7.36,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 73.6,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.80883774321,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 982.615996767,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:17:58+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 144,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:17:58+00:00",
+                                "qubit tube concentration": {
+                                    "value": 73.6,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.80883774321,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 982.615996767,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -1397,18 +1437,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -1425,25 +1453,39 @@
                                     "original sample concentration": {
                                         "value": 6.95,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 69.5,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.76123674997,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 957.939947254,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:17:58+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 133,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:17:58+00:00",
+                                "qubit tube concentration": {
+                                    "value": 69.5,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.76123674997,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 957.939947254,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -1466,18 +1508,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -1494,25 +1524,39 @@
                                     "original sample concentration": {
                                         "value": 7.06,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 70.6,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.66603476348,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 855.35706446,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:17:58+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 120,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:17:58+00:00",
+                                "qubit tube concentration": {
+                                    "value": 70.6,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.66603476348,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 855.35706446,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -1535,18 +1579,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -1563,25 +1595,39 @@
                                     "original sample concentration": {
                                         "value": 6.94,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 69.4,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.47563079051,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 814.547590094,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:17:58+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 113,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:17:58+00:00",
+                                "qubit tube concentration": {
+                                    "value": 69.4,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.47563079051,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 814.547590094,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -1604,18 +1650,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -1632,25 +1666,39 @@
                                     "original sample concentration": {
                                         "value": 7.01,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 70.1,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.49943128713,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 790.63300016,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:17:58+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 110,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:17:58+00:00",
+                                "qubit tube concentration": {
+                                    "value": 70.1,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.49943128713,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 790.63300016,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -1673,18 +1721,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -1701,25 +1737,39 @@
                                     "original sample concentration": {
                                         "value": 6.63,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 66.3,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.76123674997,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 968.243447194,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:18:06+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 128,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:18:06+00:00",
+                                "qubit tube concentration": {
+                                    "value": 66.3,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.76123674997,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 968.243447194,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -1742,18 +1792,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -1770,25 +1808,39 @@
                                     "original sample concentration": {
                                         "value": 6.47,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 64.7,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.83263823983,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 1011.24211785,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:18:06+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 130,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:18:06+00:00",
+                                "qubit tube concentration": {
+                                    "value": 64.7,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.83263823983,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 1011.24211785,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -1811,18 +1863,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -1839,25 +1879,39 @@
                                     "original sample concentration": {
                                         "value": 6.48,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 64.8,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.78503724659,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 967.148849047,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:18:06+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 125,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:18:06+00:00",
+                                "qubit tube concentration": {
+                                    "value": 64.8,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.78503724659,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 967.148849047,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -1880,18 +1934,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -1908,25 +1950,39 @@
                                     "original sample concentration": {
                                         "value": 6.49,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 64.9,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.80883774321,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 982.615996767,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:18:06+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 127,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:18:06+00:00",
+                                "qubit tube concentration": {
+                                    "value": 64.9,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.80883774321,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 982.615996767,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -1949,18 +2005,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -1977,25 +2021,39 @@
                                     "original sample concentration": {
                                         "value": 6.45,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 64.5,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.76123674997,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 957.939947254,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:18:06+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 123,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:18:06+00:00",
+                                "qubit tube concentration": {
+                                    "value": 64.5,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.76123674997,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 957.939947254,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -2018,18 +2076,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -2046,25 +2092,39 @@
                                     "original sample concentration": {
                                         "value": 6.53,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 65.3,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.66603476348,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 855.35706446,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:18:06+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 111,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:18:06+00:00",
+                                "qubit tube concentration": {
+                                    "value": 65.3,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.66603476348,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 855.35706446,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -2087,18 +2147,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -2115,25 +2163,39 @@
                                     "original sample concentration": {
                                         "value": 6.56,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 65.6,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.47563079051,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 814.547590094,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:18:06+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 106,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:18:06+00:00",
+                                "qubit tube concentration": {
+                                    "value": 65.6,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.47563079051,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 814.547590094,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -2156,18 +2218,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -2184,25 +2234,39 @@
                                     "original sample concentration": {
                                         "value": 6.59,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 65.9,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.49943128713,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 790.63300016,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:18:06+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 104,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:18:06+00:00",
+                                "qubit tube concentration": {
+                                    "value": 65.9,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.49943128713,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 790.63300016,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -2225,18 +2289,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -2253,25 +2305,39 @@
                                     "original sample concentration": {
                                         "value": 6.54,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 65.4,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.76123674997,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 968.243447194,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:18:15+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 126,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:18:15+00:00",
+                                "qubit tube concentration": {
+                                    "value": 65.4,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.76123674997,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 968.243447194,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -2294,18 +2360,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -2322,25 +2376,39 @@
                                     "original sample concentration": {
                                         "value": 6.61,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 66.1,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.83263823983,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 1011.24211785,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:18:15+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 133,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:18:15+00:00",
+                                "qubit tube concentration": {
+                                    "value": 66.1,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.83263823983,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 1011.24211785,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -2363,18 +2431,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -2391,25 +2447,39 @@
                                     "original sample concentration": {
                                         "value": 6.6,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 66.0,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.78503724659,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 967.148849047,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:18:15+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 127,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:18:15+00:00",
+                                "qubit tube concentration": {
+                                    "value": 66.0,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.78503724659,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 967.148849047,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -2432,18 +2502,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -2460,25 +2518,39 @@
                                     "original sample concentration": {
                                         "value": 6.86,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 68.6,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.80883774321,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 982.615996767,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:18:15+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 134,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:18:15+00:00",
+                                "qubit tube concentration": {
+                                    "value": 68.6,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.80883774321,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 982.615996767,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -2501,18 +2573,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -2529,25 +2589,39 @@
                                     "original sample concentration": {
                                         "value": 6.9,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 69.0,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.76123674997,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 957.939947254,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:18:15+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 132,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:18:15+00:00",
+                                "qubit tube concentration": {
+                                    "value": 69.0,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.76123674997,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 957.939947254,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -2570,18 +2644,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -2598,25 +2660,39 @@
                                     "original sample concentration": {
                                         "value": 6.9,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 69.0,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.66603476348,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 855.35706446,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:18:15+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 118,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:18:15+00:00",
+                                "qubit tube concentration": {
+                                    "value": 69.0,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.66603476348,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 855.35706446,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -2639,18 +2715,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -2667,25 +2731,39 @@
                                     "original sample concentration": {
                                         "value": 6.93,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 69.3,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.47563079051,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 814.547590094,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:18:15+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 112,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:18:15+00:00",
+                                "qubit tube concentration": {
+                                    "value": 69.3,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.47563079051,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 814.547590094,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -2708,18 +2786,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -2736,25 +2802,39 @@
                                     "original sample concentration": {
                                         "value": 6.84,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 68.4,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.49943128713,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 790.63300016,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:18:15+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 108,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:18:15+00:00",
+                                "qubit tube concentration": {
+                                    "value": 68.4,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.49943128713,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 790.63300016,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -2777,18 +2857,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -2805,25 +2873,39 @@
                                     "original sample concentration": {
                                         "value": 6.46,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 64.6,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.76123674997,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 968.243447194,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:18:24+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 125,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:18:24+00:00",
+                                "qubit tube concentration": {
+                                    "value": 64.6,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.76123674997,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 968.243447194,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -2846,18 +2928,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -2874,25 +2944,39 @@
                                     "original sample concentration": {
                                         "value": 6.55,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 65.5,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.83263823983,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 1011.24211785,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:18:24+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 132,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:18:24+00:00",
+                                "qubit tube concentration": {
+                                    "value": 65.5,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.83263823983,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 1011.24211785,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -2915,18 +2999,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -2943,25 +3015,39 @@
                                     "original sample concentration": {
                                         "value": 6.75,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 67.5,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.78503724659,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 967.148849047,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:18:24+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 130,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:18:24+00:00",
+                                "qubit tube concentration": {
+                                    "value": 67.5,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.78503724659,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 967.148849047,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -2984,18 +3070,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -3012,25 +3086,39 @@
                                     "original sample concentration": {
                                         "value": 6.98,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 69.8,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.80883774321,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 982.615996767,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:18:24+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 137,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:18:24+00:00",
+                                "qubit tube concentration": {
+                                    "value": 69.8,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.80883774321,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 982.615996767,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -3053,18 +3141,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -3081,25 +3157,39 @@
                                     "original sample concentration": {
                                         "value": 6.81,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 68.1,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.76123674997,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 957.939947254,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:18:24+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 130,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:18:24+00:00",
+                                "qubit tube concentration": {
+                                    "value": 68.1,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.76123674997,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 957.939947254,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -3122,18 +3212,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -3150,25 +3228,39 @@
                                     "original sample concentration": {
                                         "value": 6.74,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 67.4,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.66603476348,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 855.35706446,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:18:24+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 115,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:18:24+00:00",
+                                "qubit tube concentration": {
+                                    "value": 67.4,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.66603476348,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 855.35706446,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -3191,18 +3283,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -3219,25 +3299,39 @@
                                     "original sample concentration": {
                                         "value": 6.92,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 69.2,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.47563079051,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 814.547590094,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:18:24+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 112,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:18:24+00:00",
+                                "qubit tube concentration": {
+                                    "value": 69.2,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.47563079051,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 814.547590094,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -3260,18 +3354,6 @@
                                                 "value": 2,
                                                 "unit": "μL"
                                             },
-                                            "operating minimum": {
-                                                "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "50.0-60.0",
-                                                "unit": "ng/µL"
-                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
                                                 "value": 100,
@@ -3288,25 +3370,39 @@
                                     "original sample concentration": {
                                         "value": 6.76,
                                         "unit": "ng/µL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": 67.6,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.49943128713,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 790.63300016,
-                                        "unit": "RFU"
-                                    },
-                                    "last read standards": "2023-03-11T10:18:24+00:00"
+                                    }
                                 }
                             },
                             "fluorescence": {
                                 "value": 107,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "operating minimum": {
+                                    "value": "0.05-0.1",
+                                    "unit": "ng/µL"
+                                },
+                                "operating range": {
+                                    "value": "0.1-50.0",
+                                    "unit": "ng/µL"
+                                },
+                                "operating maximum": {
+                                    "value": "50.0-60.0",
+                                    "unit": "ng/µL"
+                                },
+                                "last read standards": "2023-03-11T10:18:24+00:00",
+                                "qubit tube concentration": {
+                                    "value": 67.6,
+                                    "unit": "ng/mL"
+                                },
+                                "standard 1 concentration": {
+                                    "value": 1.49943128713,
+                                    "unit": "RFU"
+                                },
+                                "standard 2 concentration": {
+                                    "value": 790.63300016,
+                                    "unit": "RFU"
+                                }
                             }
                         }
                     ],
@@ -3325,7 +3421,7 @@
             "file name": "thermo_fisher_qubit_flex_example_02.xlsx",
             "software name": "Qubit Flex software",
             "ASM converter name": "allotropy_thermo_fisher_qubit_flex",
-            "ASM converter version": "0.1.49"
+            "ASM converter version": "0.1.54"
         }
     }
 }
