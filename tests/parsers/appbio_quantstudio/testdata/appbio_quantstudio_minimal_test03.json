@@ -21,7 +21,11 @@
                             "sample document": {
                                 "sample identifier": "NTC",
                                 "sample role type": "NTC",
-                                "well location identifier": "A1"
+                                "well location identifier": "A1",
+                                "custom information document": {
+                                    "well": 1,
+                                    "sample color": "RGB(238,238,0)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -131,14 +135,12 @@
                                                 ]
                                             }
                                         },
-                                        "genotyping determination result": "Negative Control (NC)"
+                                        "genotyping determination result": "Negative Control (NC)",
+                                        "custom information document": {
+                                            "omit": false
+                                        }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "well": 1,
-                                "sample color": "RGB(238,238,0)",
-                                "omit": false
                             }
                         },
                         {
@@ -148,7 +150,11 @@
                             "sample document": {
                                 "sample identifier": "NTC",
                                 "sample role type": "NTC",
-                                "well location identifier": "A1"
+                                "well location identifier": "A1",
+                                "custom information document": {
+                                    "well": 1,
+                                    "sample color": "RGB(238,238,0)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -258,14 +264,12 @@
                                                 ]
                                             }
                                         },
-                                        "genotyping determination result": "Negative Control (NC)"
+                                        "genotyping determination result": "Negative Control (NC)",
+                                        "custom information document": {
+                                            "omit": false
+                                        }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "well": 1,
-                                "sample color": "RGB(238,238,0)",
-                                "omit": false
                             }
                         }
                     ],

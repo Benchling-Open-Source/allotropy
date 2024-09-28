@@ -149,7 +149,6 @@ class Measurement:
     custom_info: dict[str, Any] | None = None
     sample_custom_info: dict[str, Any] | None = None
     device_control_custom_info: dict[str, Any] | None = None
-    processed_data_custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)

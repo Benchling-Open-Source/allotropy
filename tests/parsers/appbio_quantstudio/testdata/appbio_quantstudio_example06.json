@@ -21,7 +21,12 @@
                             "sample document": {
                                 "sample identifier": "Lung",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D1"
+                                "well location identifier": "D1",
+                                "custom information document": {
+                                    "well": 37,
+                                    "sample color": "RGB(176,23,31)",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -123,15 +128,12 @@
                                                     ]
                                                 ]
                                             }
+                                        },
+                                        "custom information document": {
+                                            "omit": false
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "well": 37,
-                                "sample color": "RGB(176,23,31)",
-                                "target color": "RGB(176,23,31)",
-                                "omit": false
                             }
                         }
                     ],
@@ -154,7 +156,12 @@
                             "sample document": {
                                 "sample identifier": "Lung",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D2"
+                                "well location identifier": "D2",
+                                "custom information document": {
+                                    "well": 38,
+                                    "sample color": "RGB(176,23,31)",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -256,15 +263,12 @@
                                                     ]
                                                 ]
                                             }
+                                        },
+                                        "custom information document": {
+                                            "omit": false
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "well": 38,
-                                "sample color": "RGB(176,23,31)",
-                                "target color": "RGB(176,23,31)",
-                                "omit": false
                             }
                         }
                     ],
@@ -287,7 +291,12 @@
                             "sample document": {
                                 "sample identifier": "Liver",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "D10"
+                                "well location identifier": "D10",
+                                "custom information document": {
+                                    "well": 46,
+                                    "sample color": "RGB(139,137,112)",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -389,15 +398,12 @@
                                                     ]
                                                 ]
                                             }
+                                        },
+                                        "custom information document": {
+                                            "omit": false
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "well": 46,
-                                "sample color": "RGB(139,137,112)",
-                                "target color": "RGB(176,23,31)",
-                                "omit": false
                             }
                         }
                     ],
@@ -420,7 +426,12 @@
                             "sample document": {
                                 "sample identifier": "Lung",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E1"
+                                "well location identifier": "E1",
+                                "custom information document": {
+                                    "well": 49,
+                                    "sample color": "RGB(176,23,31)",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -522,15 +533,12 @@
                                                     ]
                                                 ]
                                             }
+                                        },
+                                        "custom information document": {
+                                            "omit": false
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "well": 49,
-                                "sample color": "RGB(176,23,31)",
-                                "target color": "RGB(176,23,31)",
-                                "omit": false
                             }
                         }
                     ],
@@ -553,7 +561,12 @@
                             "sample document": {
                                 "sample identifier": "Liver",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "E10"
+                                "well location identifier": "E10",
+                                "custom information document": {
+                                    "well": 58,
+                                    "sample color": "RGB(139,137,112)",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -655,15 +668,12 @@
                                                     ]
                                                 ]
                                             }
+                                        },
+                                        "custom information document": {
+                                            "omit": false
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "well": 58,
-                                "sample color": "RGB(139,137,112)",
-                                "target color": "RGB(176,23,31)",
-                                "omit": false
                             }
                         }
                     ],
@@ -686,7 +696,12 @@
                             "sample document": {
                                 "sample identifier": "Lung",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H1"
+                                "well location identifier": "H1",
+                                "custom information document": {
+                                    "well": 85,
+                                    "sample color": "RGB(176,23,31)",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -788,15 +803,12 @@
                                                     ]
                                                 ]
                                             }
+                                        },
+                                        "custom information document": {
+                                            "omit": false
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "well": 85,
-                                "sample color": "RGB(176,23,31)",
-                                "target color": "RGB(0,0,255)",
-                                "omit": false
                             }
                         }
                     ],
@@ -819,7 +831,12 @@
                             "sample document": {
                                 "sample identifier": "Lung",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H2"
+                                "well location identifier": "H2",
+                                "custom information document": {
+                                    "well": 86,
+                                    "sample color": "RGB(176,23,31)",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -921,15 +938,12 @@
                                                     ]
                                                 ]
                                             }
+                                        },
+                                        "custom information document": {
+                                            "omit": false
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "well": 86,
-                                "sample color": "RGB(176,23,31)",
-                                "target color": "RGB(0,0,255)",
-                                "omit": false
                             }
                         }
                     ],
@@ -952,7 +966,12 @@
                             "sample document": {
                                 "sample identifier": "Liver",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H10"
+                                "well location identifier": "H10",
+                                "custom information document": {
+                                    "well": 94,
+                                    "sample color": "RGB(139,137,112)",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -1054,15 +1073,12 @@
                                                     ]
                                                 ]
                                             }
+                                        },
+                                        "custom information document": {
+                                            "omit": false
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "well": 94,
-                                "sample color": "RGB(139,137,112)",
-                                "target color": "RGB(0,0,255)",
-                                "omit": false
                             }
                         }
                     ],
@@ -1085,7 +1101,12 @@
                             "sample document": {
                                 "sample identifier": "Liver",
                                 "sample role type": "UNKNOWN",
-                                "well location identifier": "H11"
+                                "well location identifier": "H11",
+                                "custom information document": {
+                                    "well": 95,
+                                    "sample color": "RGB(139,137,112)",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -1187,15 +1208,12 @@
                                                     ]
                                                 ]
                                             }
+                                        },
+                                        "custom information document": {
+                                            "omit": false
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "well": 95,
-                                "sample color": "RGB(139,137,112)",
-                                "target color": "RGB(0,0,255)",
-                                "omit": false
                             }
                         }
                     ],

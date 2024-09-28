@@ -106,6 +106,8 @@ class ProcessedData:
 
     data_cubes: list[DataCube] | None = None
 
+    custom_info: dict[str, Any] | None = None
+
 
 @dataclass
 class Measurement:
@@ -134,7 +136,10 @@ class Measurement:
     processed_data: ProcessedData | None = None
     data_cubes: list[DataCube] | None = None
 
+    # Custom metadata
     custom_info: dict[str, Any] | None = None
+    sample_custom_info: dict[str, Any] | None = None
+    device_control_custom_info: dict[str, Any] | None = None
 
 
 @dataclass
@@ -273,58 +278,57 @@ class Mapper(SchemaMapper[Data, Model]):
             well_location_identifier=measurement.well_location_identifier,
             well_plate_identifier=measurement.well_plate_identifier,
         )
-        return add_custom_information_document(sample_doc, custom_info_doc)
+        return add_custom_information_document(sample_doc, (measurement.sample_custom_info or {}) | custom_info_doc)
 
     def _get_processed_data_aggregate_document(
         self, data: ProcessedData | None
     ) -> ProcessedDataAggregateDocument | None:
         if not data:
             return None
+        doc = ProcessedDataDocumentItem(
+            data_processing_document=DataProcessingDocument(
+                automatic_cycle_threshold_enabled_setting=data.automatic_cycle_threshold_enabled_setting,
+                cycle_threshold_value_setting=TQuantityValueUnitless(
+                    value=data.cycle_threshold_value_setting,
+                ),
+                automatic_baseline_determination_enabled_setting=data.automatic_baseline_determination_enabled_setting,
+                genotyping_determination_method_setting=quantity_or_none(
+                    TQuantityValueUnitless,
+                    data.genotyping_determination_method_setting,
+                ),
+                baseline_determination_start_cycle_setting=quantity_or_none(
+                    TQuantityValueNumber,
+                    data.baseline_determination_start_cycle_setting,
+                ),
+                baseline_determination_end_cycle_setting=quantity_or_none(
+                    TQuantityValueNumber,
+                    data.baseline_determination_end_cycle_setting,
+                ),
+            ),
+            cycle_threshold_result=TNullableQuantityValueUnitless(
+                value=data.cycle_threshold_result,
+            ),
+            normalized_reporter_result=quantity_or_none(
+                TQuantityValueUnitless, data.normalized_reporter_result
+            ),
+            baseline_corrected_reporter_result=quantity_or_none(
+                TQuantityValueUnitless,
+                data.baseline_corrected_reporter_result,
+            ),
+            genotyping_determination_result=data.genotyping_determination_result,
+            normalized_reporter_data_cube=self._get_data_cube(
+                NormalizedReporterDataCube,
+                "normalized reporter",
+                data.data_cubes,
+            ),
+            baseline_corrected_reporter_data_cube=self._get_data_cube(
+                BaselineCorrectedReporterDataCube,
+                "baseline corrected reporter",
+                data.data_cubes,
+            ),
+        )
         return ProcessedDataAggregateDocument(
-            processed_data_document=[
-                ProcessedDataDocumentItem(
-                    data_processing_document=DataProcessingDocument(
-                        automatic_cycle_threshold_enabled_setting=data.automatic_cycle_threshold_enabled_setting,
-                        cycle_threshold_value_setting=TQuantityValueUnitless(
-                            value=data.cycle_threshold_value_setting,
-                        ),
-                        automatic_baseline_determination_enabled_setting=data.automatic_baseline_determination_enabled_setting,
-                        genotyping_determination_method_setting=quantity_or_none(
-                            TQuantityValueUnitless,
-                            data.genotyping_determination_method_setting,
-                        ),
-                        baseline_determination_start_cycle_setting=quantity_or_none(
-                            TQuantityValueNumber,
-                            data.baseline_determination_start_cycle_setting,
-                        ),
-                        baseline_determination_end_cycle_setting=quantity_or_none(
-                            TQuantityValueNumber,
-                            data.baseline_determination_end_cycle_setting,
-                        ),
-                    ),
-                    cycle_threshold_result=TNullableQuantityValueUnitless(
-                        value=data.cycle_threshold_result,
-                    ),
-                    normalized_reporter_result=quantity_or_none(
-                        TQuantityValueUnitless, data.normalized_reporter_result
-                    ),
-                    baseline_corrected_reporter_result=quantity_or_none(
-                        TQuantityValueUnitless,
-                        data.baseline_corrected_reporter_result,
-                    ),
-                    genotyping_determination_result=data.genotyping_determination_result,
-                    normalized_reporter_data_cube=self._get_data_cube(
-                        NormalizedReporterDataCube,
-                        "normalized reporter",
-                        data.data_cubes,
-                    ),
-                    baseline_corrected_reporter_data_cube=self._get_data_cube(
-                        BaselineCorrectedReporterDataCube,
-                        "baseline corrected reporter",
-                        data.data_cubes,
-                    ),
-                )
-            ]
+            processed_data_document=[add_custom_information_document(doc, data.custom_info)]
         )
 
     def _get_calculated_data_aggregate_document(
