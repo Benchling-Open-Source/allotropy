@@ -19,12 +19,6 @@
                                         "electronic absorbance reference bandwidth setting": {
                                             "value": 340.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "nucleic acid factor": {
-                                                "value": 50.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
@@ -47,6 +41,10 @@
                                 ]
                             },
                             "custom information document": {
+                                "nucleic acid factor": {
+                                    "value": 50.0,
+                                    "unit": "(unitless)"
+                                },
                                 "baseline absorbance": {
                                     "value": 0.812,
                                     "unit": "mAU"
@@ -66,12 +64,6 @@
                                         "electronic absorbance reference bandwidth setting": {
                                             "value": 340.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "nucleic acid factor": {
-                                                "value": 50.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
@@ -94,6 +86,10 @@
                                 ]
                             },
                             "custom information document": {
+                                "nucleic acid factor": {
+                                    "value": 50.0,
+                                    "unit": "(unitless)"
+                                },
                                 "baseline absorbance": {
                                     "value": 0.812,
                                     "unit": "mAU"
@@ -121,12 +117,6 @@
                                         "electronic absorbance reference bandwidth setting": {
                                             "value": 340.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "nucleic acid factor": {
-                                                "value": 50.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
@@ -149,6 +139,10 @@
                                 ]
                             },
                             "custom information document": {
+                                "nucleic acid factor": {
+                                    "value": 50.0,
+                                    "unit": "(unitless)"
+                                },
                                 "baseline absorbance": {
                                     "value": 0.956,
                                     "unit": "mAU"
@@ -168,12 +162,6 @@
                                         "electronic absorbance reference bandwidth setting": {
                                             "value": 340.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "nucleic acid factor": {
-                                                "value": 50.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
@@ -196,6 +184,10 @@
                                 ]
                             },
                             "custom information document": {
+                                "nucleic acid factor": {
+                                    "value": 50.0,
+                                    "unit": "(unitless)"
+                                },
                                 "baseline absorbance": {
                                     "value": 0.956,
                                     "unit": "mAU"
@@ -363,12 +355,6 @@
                                         "electronic absorbance reference bandwidth setting": {
                                             "value": 340.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "nucleic acid factor": {
-                                                "value": 50.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
@@ -391,6 +377,10 @@
                                 ]
                             },
                             "custom information document": {
+                                "nucleic acid factor": {
+                                    "value": 50.0,
+                                    "unit": "(unitless)"
+                                },
                                 "baseline absorbance": {
                                     "value": 0.943,
                                     "unit": "mAU"
@@ -410,12 +400,6 @@
                                         "electronic absorbance reference bandwidth setting": {
                                             "value": 340.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "nucleic acid factor": {
-                                                "value": 50.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
@@ -438,6 +422,10 @@
                                 ]
                             },
                             "custom information document": {
+                                "nucleic acid factor": {
+                                    "value": 50.0,
+                                    "unit": "(unitless)"
+                                },
                                 "baseline absorbance": {
                                     "value": 0.943,
                                     "unit": "mAU"
@@ -465,12 +453,6 @@
                                         "electronic absorbance reference bandwidth setting": {
                                             "value": 340.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "nucleic acid factor": {
-                                                "value": 50.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
@@ -493,6 +475,10 @@
                                 ]
                             },
                             "custom information document": {
+                                "nucleic acid factor": {
+                                    "value": 50.0,
+                                    "unit": "(unitless)"
+                                },
                                 "baseline absorbance": {
                                     "value": 1.286,
                                     "unit": "mAU"
@@ -512,12 +498,6 @@
                                         "electronic absorbance reference bandwidth setting": {
                                             "value": 340.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "nucleic acid factor": {
-                                                "value": 50.0,
-                                                "unit": "(unitless)"
-                                            }
                                         }
                                     }
                                 ]
@@ -540,6 +520,10 @@
                                 ]
                             },
                             "custom information document": {
+                                "nucleic acid factor": {
+                                    "value": 50.0,
+                                    "unit": "(unitless)"
+                                },
                                 "baseline absorbance": {
                                     "value": 1.286,
                                     "unit": "mAU"
@@ -561,7 +545,7 @@
             "file name": "example1.xlsx",
             "software name": "NanoDrop One software",
             "ASM converter name": "allotropy_thermo_fisher_nanodrop_one",
-            "ASM converter version": "0.1.49"
+            "ASM converter version": "0.1.54"
         },
         "calculated data aggregate document": {
             "calculated data document": [

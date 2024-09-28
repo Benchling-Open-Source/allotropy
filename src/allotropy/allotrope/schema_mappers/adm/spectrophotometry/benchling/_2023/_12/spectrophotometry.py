@@ -238,74 +238,67 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_measurement_document_item(
         self, measurement: Measurement, metadata: Metadata
     ) -> MeasurementDocumentItems:
-        measurement_doc: MeasurementDocumentItems
         # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
         if measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE:
-            measurement_doc = self._get_ultraviolet_absorbance_measurement_document(
+            return self._get_ultraviolet_absorbance_measurement_document(
                 measurement, metadata
             )
         elif measurement.type_ == MeasurementType.FLUORESCENCE:
-            measurement_doc = self._get_fluorescence_measurement_document(
-                measurement, metadata
-            )
+            return self._get_fluorescence_measurement_document(measurement, metadata)
         elif measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE_SPECTRUM:
-            measurement_doc = (
-                self._get_ultraviolet_absorbance_spectrum_measurement_document(
-                    measurement, metadata
-                )
+            return self._get_ultraviolet_absorbance_spectrum_measurement_document(
+                measurement, metadata
             )
         else:
             msg = f"Invalid measurement type: {measurement.type_}"
             raise AllotropyParserError(msg)
-        return add_custom_information_document(measurement_doc, measurement.custom_info)
 
     def _get_ultraviolet_absorbance_measurement_document(
         self, measurement: Measurement, metadata: Metadata
     ) -> UltravioletAbsorbancePointDetectionMeasurementDocumentItems:
-        return add_custom_information_document(
-            UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
-                measurement_identifier=measurement.identifier,
-                sample_document=self._get_sample_document(measurement),
-                processed_data_aggregate_document=self._get_processed_data_aggregate_document(
-                    measurement.processed_data
-                ),
-                device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
-                    device_control_document=[
-                        add_custom_information_document(
-                            UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
-                                device_type=metadata.device_type,
-                                detector_wavelength_setting=quantity_or_none(
-                                    TQuantityValueNanometer,
-                                    measurement.detector_wavelength_setting,
-                                ),
-                                electronic_absorbance_reference_bandwidth_setting=quantity_or_none(
-                                    TQuantityValueNanometer,
-                                    measurement.electronic_absorbance_reference_wavelength_setting,
-                                ),
-                            ),
-                            self._get_device_control_custom_document(measurement),
-                        )
-                    ]
-                ),
-                absorbance=TQuantityValueMilliAbsorbanceUnit(
-                    value=assert_not_none(measurement.absorbance)  # type: ignore[arg-type]
-                ),
-                calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
-                    measurement.calculated_data
-                ),
+        doc = UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
+            measurement_identifier=measurement.identifier,
+            sample_document=self._get_sample_document(measurement),
+            processed_data_aggregate_document=self._get_processed_data_aggregate_document(
+                measurement.processed_data
             ),
-            custom_info_doc={
-                "baseline absorbance": quantity_or_none(
-                    TQuantityValueMilliAbsorbanceUnit,
-                    measurement.baseline_absorbance,
-                ),
-            },
+            device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
+                device_control_document=[
+                    add_custom_information_document(
+                        UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
+                            device_type=metadata.device_type,
+                            detector_wavelength_setting=quantity_or_none(
+                                TQuantityValueNanometer,
+                                measurement.detector_wavelength_setting,
+                            ),
+                            electronic_absorbance_reference_bandwidth_setting=quantity_or_none(
+                                TQuantityValueNanometer,
+                                measurement.electronic_absorbance_reference_wavelength_setting,
+                            ),
+                        ),
+                        self._get_device_control_custom_document(measurement),
+                    )
+                ]
+            ),
+            absorbance=TQuantityValueMilliAbsorbanceUnit(
+                value=assert_not_none(measurement.absorbance)  # type: ignore[arg-type]
+            ),
+            calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
+                measurement.calculated_data
+            ),
         )
+        custom_info_doc = (measurement.custom_info or {}) | {
+            "baseline absorbance": quantity_or_none(
+                TQuantityValueMilliAbsorbanceUnit,
+                measurement.baseline_absorbance,
+            ),
+        }
+        return add_custom_information_document(doc, custom_info_doc)
 
     def _get_ultraviolet_absorbance_spectrum_measurement_document(
         self, measurement: Measurement, metadata: Metadata
     ) -> UltravioletAbsorbanceSpectrumDetectionMeasurementDocumentItems:
-        return UltravioletAbsorbanceSpectrumDetectionMeasurementDocumentItems(
+        doc = UltravioletAbsorbanceSpectrumDetectionMeasurementDocumentItems(
             measurement_identifier=measurement.identifier,
             sample_document=self._get_sample_document(measurement),
             processed_data_aggregate_document=self._get_processed_data_aggregate_document(
@@ -324,6 +317,7 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
             absorption_spectrum_data_cube=self._get_data_cube(measurement),
         )
+        return add_custom_information_document(doc, measurement.custom_info)
 
     def _get_data_cube(self, measurement: Measurement) -> TDatacube:
         if not measurement.data_cube:
@@ -357,7 +351,7 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_fluorescence_measurement_document(
         self, measurement: Measurement, metadata: Metadata
     ) -> FluorescencePointDetectionMeasurementDocumentItems:
-        return FluorescencePointDetectionMeasurementDocumentItems(
+        doc = FluorescencePointDetectionMeasurementDocumentItems(
             measurement_identifier=measurement.identifier,
             sample_document=self._get_sample_document(measurement),
             processed_data_aggregate_document=self._get_processed_data_aggregate_document(
@@ -381,6 +375,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 value=assert_not_none(measurement.fluorescence)  # type: ignore[arg-type]
             ),
         )
+        return add_custom_information_document(doc, measurement.custom_info)
 
     def _get_device_control_custom_document(
         self, measurement: Measurement
