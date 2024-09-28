@@ -278,7 +278,9 @@ class Mapper(SchemaMapper[Data, Model]):
             well_location_identifier=measurement.well_location_identifier,
             well_plate_identifier=measurement.well_plate_identifier,
         )
-        return add_custom_information_document(sample_doc, (measurement.sample_custom_info or {}) | custom_info_doc)
+        return add_custom_information_document(
+            sample_doc, (measurement.sample_custom_info or {}) | custom_info_doc
+        )
 
     def _get_processed_data_aggregate_document(
         self, data: ProcessedData | None
@@ -328,7 +330,9 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
         )
         return ProcessedDataAggregateDocument(
-            processed_data_document=[add_custom_information_document(doc, data.custom_info)]
+            processed_data_document=[
+                add_custom_information_document(doc, data.custom_info)
+            ]
         )
 
     def _get_calculated_data_aggregate_document(
