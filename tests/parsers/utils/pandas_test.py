@@ -96,11 +96,13 @@ def test_get_float() -> None:
         pd.Series(
             {
                 "percent": "10.1%",
+                "comma": "10,0",
             }
         )
     )
 
     assert data.get(float, "percent") == 10.1
+    assert data.get(float, "comma") == 10.0
 
 
 def test_get_not_nan() -> None:

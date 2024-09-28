@@ -1,0 +1,1248 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2024/06/plate-reader.manifest",
+    "plate reader aggregate document": {
+        "plate reader document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Kinetic Fluorescence",
+                                        "number of averages": {
+                                            "value": 6.0,
+                                            "unit": "#"
+                                        },
+                                        "detector gain setting": "Medium",
+                                        "detector wavelength setting": {
+                                            "value": 525.0,
+                                            "unit": "nm"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 300.0,
+                                            "unit": "s"
+                                        },
+                                        "read interval setting": {
+                                            "value": 90.0,
+                                            "unit": "s"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 4,
+                                            "unit": "#"
+                                        },
+                                        "wavelength filter cutoff setting": {
+                                            "value": 515,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_0",
+                            "sample document": {
+                                "sample identifier": "Plate1 A1",
+                                "location identifier": "A1",
+                                "well plate identifier": "Plate1"
+                            },
+                            "compartment temperature": {
+                                "value": 35.0,
+                                "unit": "degC"
+                            },
+                            "fluorescence emission profile data cube": {
+                                "label": "FLUORESCENCE_CUBE_DETECTOR",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "fluorescence",
+                                            "unit": "RFU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [
+                                            0,
+                                            90,
+                                            180,
+                                            270
+                                        ]
+                                    ],
+                                    "measures": [
+                                        [
+                                            0.0,
+                                            39.50988,
+                                            75.11719,
+                                            107.20739
+                                        ]
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Kinetic Fluorescence",
+                                        "number of averages": {
+                                            "value": 6.0,
+                                            "unit": "#"
+                                        },
+                                        "detector gain setting": "Medium",
+                                        "detector wavelength setting": {
+                                            "value": 525.0,
+                                            "unit": "nm"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 300.0,
+                                            "unit": "s"
+                                        },
+                                        "read interval setting": {
+                                            "value": 90.0,
+                                            "unit": "s"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 4,
+                                            "unit": "#"
+                                        },
+                                        "wavelength filter cutoff setting": {
+                                            "value": 515,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_6",
+                            "sample document": {
+                                "sample identifier": "Plate1 A1",
+                                "location identifier": "A1",
+                                "well plate identifier": "Plate1"
+                            },
+                            "compartment temperature": {
+                                "value": 35.0,
+                                "unit": "degC"
+                            },
+                            "fluorescence emission profile data cube": {
+                                "label": "FLUORESCENCE_CUBE_DETECTOR",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "fluorescence",
+                                            "unit": "RFU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [
+                                            0,
+                                            90,
+                                            180,
+                                            270
+                                        ]
+                                    ],
+                                    "measures": [
+                                        [
+                                            0.0,
+                                            19.75494,
+                                            37.55859,
+                                            53.60369
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "1970-01-01T00:00:00+00:00",
+                    "plate well count": {
+                        "value": 6,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Kinetic Fluorescence",
+                                        "number of averages": {
+                                            "value": 6.0,
+                                            "unit": "#"
+                                        },
+                                        "detector gain setting": "Medium",
+                                        "detector wavelength setting": {
+                                            "value": 525.0,
+                                            "unit": "nm"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 300.0,
+                                            "unit": "s"
+                                        },
+                                        "read interval setting": {
+                                            "value": 90.0,
+                                            "unit": "s"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 4,
+                                            "unit": "#"
+                                        },
+                                        "wavelength filter cutoff setting": {
+                                            "value": 515,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1",
+                            "sample document": {
+                                "sample identifier": "Plate1 A2",
+                                "location identifier": "A2",
+                                "well plate identifier": "Plate1"
+                            },
+                            "compartment temperature": {
+                                "value": 35.0,
+                                "unit": "degC"
+                            },
+                            "fluorescence emission profile data cube": {
+                                "label": "FLUORESCENCE_CUBE_DETECTOR",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "fluorescence",
+                                            "unit": "RFU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [
+                                            0,
+                                            90,
+                                            180,
+                                            270
+                                        ]
+                                    ],
+                                    "measures": [
+                                        [
+                                            0.0,
+                                            20.26845,
+                                            39.50988,
+                                            57.77632
+                                        ]
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Kinetic Fluorescence",
+                                        "number of averages": {
+                                            "value": 6.0,
+                                            "unit": "#"
+                                        },
+                                        "detector gain setting": "Medium",
+                                        "detector wavelength setting": {
+                                            "value": 525.0,
+                                            "unit": "nm"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 300.0,
+                                            "unit": "s"
+                                        },
+                                        "read interval setting": {
+                                            "value": 90.0,
+                                            "unit": "s"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 4,
+                                            "unit": "#"
+                                        },
+                                        "wavelength filter cutoff setting": {
+                                            "value": 515,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_7",
+                            "sample document": {
+                                "sample identifier": "Plate1 A2",
+                                "location identifier": "A2",
+                                "well plate identifier": "Plate1"
+                            },
+                            "compartment temperature": {
+                                "value": 35.0,
+                                "unit": "degC"
+                            },
+                            "fluorescence emission profile data cube": {
+                                "label": "FLUORESCENCE_CUBE_DETECTOR",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "fluorescence",
+                                            "unit": "RFU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [
+                                            0,
+                                            90,
+                                            180,
+                                            270
+                                        ]
+                                    ],
+                                    "measures": [
+                                        [
+                                            0.0,
+                                            10.13423,
+                                            19.75494,
+                                            28.88816
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "1970-01-01T00:00:00+00:00",
+                    "plate well count": {
+                        "value": 6,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Kinetic Fluorescence",
+                                        "number of averages": {
+                                            "value": 6.0,
+                                            "unit": "#"
+                                        },
+                                        "detector gain setting": "Medium",
+                                        "detector wavelength setting": {
+                                            "value": 525.0,
+                                            "unit": "nm"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 300.0,
+                                            "unit": "s"
+                                        },
+                                        "read interval setting": {
+                                            "value": 90.0,
+                                            "unit": "s"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 4,
+                                            "unit": "#"
+                                        },
+                                        "wavelength filter cutoff setting": {
+                                            "value": 515,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_2",
+                            "sample document": {
+                                "sample identifier": "Plate1 A3",
+                                "location identifier": "A3",
+                                "well plate identifier": "Plate1"
+                            },
+                            "compartment temperature": {
+                                "value": 35.0,
+                                "unit": "degC"
+                            },
+                            "fluorescence emission profile data cube": {
+                                "label": "FLUORESCENCE_CUBE_DETECTOR",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "fluorescence",
+                                            "unit": "RFU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [
+                                            0,
+                                            90,
+                                            180,
+                                            270
+                                        ]
+                                    ],
+                                    "measures": [
+                                        [
+                                            0.0,
+                                            10.26596,
+                                            20.26845,
+                                            30.01423
+                                        ]
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Kinetic Fluorescence",
+                                        "number of averages": {
+                                            "value": 6.0,
+                                            "unit": "#"
+                                        },
+                                        "detector gain setting": "Medium",
+                                        "detector wavelength setting": {
+                                            "value": 525.0,
+                                            "unit": "nm"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 300.0,
+                                            "unit": "s"
+                                        },
+                                        "read interval setting": {
+                                            "value": 90.0,
+                                            "unit": "s"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 4,
+                                            "unit": "#"
+                                        },
+                                        "wavelength filter cutoff setting": {
+                                            "value": 515,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_8",
+                            "sample document": {
+                                "sample identifier": "Plate1 A3",
+                                "location identifier": "A3",
+                                "well plate identifier": "Plate1"
+                            },
+                            "compartment temperature": {
+                                "value": 35.0,
+                                "unit": "degC"
+                            },
+                            "fluorescence emission profile data cube": {
+                                "label": "FLUORESCENCE_CUBE_DETECTOR",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "fluorescence",
+                                            "unit": "RFU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [
+                                            0,
+                                            90,
+                                            180,
+                                            270
+                                        ]
+                                    ],
+                                    "measures": [
+                                        [
+                                            0.0,
+                                            5.13298,
+                                            10.13423,
+                                            15.00711
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "1970-01-01T00:00:00+00:00",
+                    "plate well count": {
+                        "value": 6,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Kinetic Fluorescence",
+                                        "number of averages": {
+                                            "value": 6.0,
+                                            "unit": "#"
+                                        },
+                                        "detector gain setting": "Medium",
+                                        "detector wavelength setting": {
+                                            "value": 525.0,
+                                            "unit": "nm"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 300.0,
+                                            "unit": "s"
+                                        },
+                                        "read interval setting": {
+                                            "value": 90.0,
+                                            "unit": "s"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 4,
+                                            "unit": "#"
+                                        },
+                                        "wavelength filter cutoff setting": {
+                                            "value": 515,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_3",
+                            "sample document": {
+                                "sample identifier": "Plate1 B1",
+                                "location identifier": "B1",
+                                "well plate identifier": "Plate1"
+                            },
+                            "compartment temperature": {
+                                "value": 35.0,
+                                "unit": "degC"
+                            },
+                            "fluorescence emission profile data cube": {
+                                "label": "FLUORESCENCE_CUBE_DETECTOR",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "fluorescence",
+                                            "unit": "RFU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [
+                                            0,
+                                            90,
+                                            180,
+                                            270
+                                        ]
+                                    ],
+                                    "measures": [
+                                        [
+                                            0.0,
+                                            41.66635,
+                                            78.99248,
+                                            112.43051
+                                        ]
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Kinetic Fluorescence",
+                                        "number of averages": {
+                                            "value": 6.0,
+                                            "unit": "#"
+                                        },
+                                        "detector gain setting": "Medium",
+                                        "detector wavelength setting": {
+                                            "value": 525.0,
+                                            "unit": "nm"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 300.0,
+                                            "unit": "s"
+                                        },
+                                        "read interval setting": {
+                                            "value": 90.0,
+                                            "unit": "s"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 4,
+                                            "unit": "#"
+                                        },
+                                        "wavelength filter cutoff setting": {
+                                            "value": 515,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_9",
+                            "sample document": {
+                                "sample identifier": "Plate1 B1",
+                                "location identifier": "B1",
+                                "well plate identifier": "Plate1"
+                            },
+                            "compartment temperature": {
+                                "value": 35.0,
+                                "unit": "degC"
+                            },
+                            "fluorescence emission profile data cube": {
+                                "label": "FLUORESCENCE_CUBE_DETECTOR",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "fluorescence",
+                                            "unit": "RFU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [
+                                            0,
+                                            90,
+                                            180,
+                                            270
+                                        ]
+                                    ],
+                                    "measures": [
+                                        [
+                                            0.0,
+                                            20.83317,
+                                            39.49624,
+                                            56.21525
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "1970-01-01T00:00:00+00:00",
+                    "plate well count": {
+                        "value": 6,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Kinetic Fluorescence",
+                                        "number of averages": {
+                                            "value": 6.0,
+                                            "unit": "#"
+                                        },
+                                        "detector gain setting": "Medium",
+                                        "detector wavelength setting": {
+                                            "value": 525.0,
+                                            "unit": "nm"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 300.0,
+                                            "unit": "s"
+                                        },
+                                        "read interval setting": {
+                                            "value": 90.0,
+                                            "unit": "s"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 4,
+                                            "unit": "#"
+                                        },
+                                        "wavelength filter cutoff setting": {
+                                            "value": 515,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_4",
+                            "sample document": {
+                                "sample identifier": "Plate1 B2",
+                                "location identifier": "B2",
+                                "well plate identifier": "Plate1"
+                            },
+                            "compartment temperature": {
+                                "value": 35.0,
+                                "unit": "degC"
+                            },
+                            "fluorescence emission profile data cube": {
+                                "label": "FLUORESCENCE_CUBE_DETECTOR",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "fluorescence",
+                                            "unit": "RFU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [
+                                            0,
+                                            90,
+                                            180,
+                                            270
+                                        ]
+                                    ],
+                                    "measures": [
+                                        [
+                                            0.0,
+                                            21.40594,
+                                            41.66635,
+                                            60.84252
+                                        ]
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Kinetic Fluorescence",
+                                        "number of averages": {
+                                            "value": 6.0,
+                                            "unit": "#"
+                                        },
+                                        "detector gain setting": "Medium",
+                                        "detector wavelength setting": {
+                                            "value": 525.0,
+                                            "unit": "nm"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 300.0,
+                                            "unit": "s"
+                                        },
+                                        "read interval setting": {
+                                            "value": 90.0,
+                                            "unit": "s"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 4,
+                                            "unit": "#"
+                                        },
+                                        "wavelength filter cutoff setting": {
+                                            "value": 515,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_10",
+                            "sample document": {
+                                "sample identifier": "Plate1 B2",
+                                "location identifier": "B2",
+                                "well plate identifier": "Plate1"
+                            },
+                            "compartment temperature": {
+                                "value": 35.0,
+                                "unit": "degC"
+                            },
+                            "fluorescence emission profile data cube": {
+                                "label": "FLUORESCENCE_CUBE_DETECTOR",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "fluorescence",
+                                            "unit": "RFU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [
+                                            0,
+                                            90,
+                                            180,
+                                            270
+                                        ]
+                                    ],
+                                    "measures": [
+                                        [
+                                            0.0,
+                                            10.70297,
+                                            20.83317,
+                                            30.42126
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "1970-01-01T00:00:00+00:00",
+                    "plate well count": {
+                        "value": 6,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Kinetic Fluorescence",
+                                        "number of averages": {
+                                            "value": 6.0,
+                                            "unit": "#"
+                                        },
+                                        "detector gain setting": "Medium",
+                                        "detector wavelength setting": {
+                                            "value": 525.0,
+                                            "unit": "nm"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 300.0,
+                                            "unit": "s"
+                                        },
+                                        "read interval setting": {
+                                            "value": 90.0,
+                                            "unit": "s"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 4,
+                                            "unit": "#"
+                                        },
+                                        "wavelength filter cutoff setting": {
+                                            "value": 515,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_5",
+                            "sample document": {
+                                "sample identifier": "Plate1 B3",
+                                "location identifier": "B3",
+                                "well plate identifier": "Plate1"
+                            },
+                            "compartment temperature": {
+                                "value": 35.0,
+                                "unit": "degC"
+                            },
+                            "fluorescence emission profile data cube": {
+                                "label": "FLUORESCENCE_CUBE_DETECTOR",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "fluorescence",
+                                            "unit": "RFU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [
+                                            0,
+                                            90,
+                                            180,
+                                            270
+                                        ]
+                                    ],
+                                    "measures": [
+                                        [
+                                            0.0,
+                                            10.85013,
+                                            21.40594,
+                                            31.67542
+                                        ]
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Kinetic Fluorescence",
+                                        "number of averages": {
+                                            "value": 6.0,
+                                            "unit": "#"
+                                        },
+                                        "detector gain setting": "Medium",
+                                        "detector wavelength setting": {
+                                            "value": 525.0,
+                                            "unit": "nm"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 300.0,
+                                            "unit": "s"
+                                        },
+                                        "read interval setting": {
+                                            "value": 90.0,
+                                            "unit": "s"
+                                        },
+                                        "number of scans setting": {
+                                            "value": 4,
+                                            "unit": "#"
+                                        },
+                                        "wavelength filter cutoff setting": {
+                                            "value": 515,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_11",
+                            "sample document": {
+                                "sample identifier": "Plate1 B3",
+                                "location identifier": "B3",
+                                "well plate identifier": "Plate1"
+                            },
+                            "compartment temperature": {
+                                "value": 35.0,
+                                "unit": "degC"
+                            },
+                            "fluorescence emission profile data cube": {
+                                "label": "FLUORESCENCE_CUBE_DETECTOR",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "elapsed time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "fluorescence",
+                                            "unit": "RFU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [
+                                            0,
+                                            90,
+                                            180,
+                                            270
+                                        ]
+                                    ],
+                                    "measures": [
+                                        [
+                                            0.0,
+                                            5.42506,
+                                            10.70297,
+                                            15.83771
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "1970-01-01T00:00:00+00:00",
+                    "plate well count": {
+                        "value": 6,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            }
+        ],
+        "calculated data aggregate document": {
+            "calculated data document": [
+                {
+                    "calculated data name": "Reduced",
+                    "calculated result": {
+                        "value": 0.34262625396825386,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_12",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_0",
+                                "data source feature": "Kinetic Fluorescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_6",
+                                "data source feature": "Kinetic Fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Reduced",
+                    "calculated result": {
+                        "value": 0.19835369841269834,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_13",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1",
+                                "data source feature": "Kinetic Fluorescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_7",
+                                "data source feature": "Kinetic Fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Reduced",
+                    "calculated result": {
+                        "value": 0.10696909920634921,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_14",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_2",
+                                "data source feature": "Kinetic Fluorescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_8",
+                                "data source feature": "Kinetic Fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Reduced",
+                    "calculated result": {
+                        "value": 0.3564598492063492,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_15",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_3",
+                                "data source feature": "Kinetic Fluorescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_9",
+                                "data source feature": "Kinetic Fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Reduced",
+                    "calculated result": {
+                        "value": 0.2079952698412698,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_16",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_4",
+                                "data source feature": "Kinetic Fluorescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_10",
+                                "data source feature": "Kinetic Fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Reduced",
+                    "calculated result": {
+                        "value": 0.11264294841269841,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_17",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_5",
+                                "data source feature": "Kinetic Fluorescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_11",
+                                "data source feature": "Kinetic Fluorescence"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "data system document": {
+            "ASM file identifier": "N/A",
+            "data system instance identifier": "N/A",
+            "file name": "fl_kinetic_plates.txt",
+            "UNC path": "N/A",
+            "ASM converter name": "allotropy_molecular_devices_softmax_pro",
+            "ASM converter version": "0.1.54",
+            "software name": "SoftMax Pro"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "N/A"
+        }
+    }
+}

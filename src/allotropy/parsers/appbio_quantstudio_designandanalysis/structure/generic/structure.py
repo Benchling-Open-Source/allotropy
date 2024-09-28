@@ -424,6 +424,8 @@ class Result:
     r_squared: float | None
     slope: float | None
     efficiency: float | None
+    amp_score: float | None
+    cq_conf: float | None
 
     @classmethod
     def get_genotyping_determination_result(cls, _: SeriesData) -> str | None:
@@ -524,6 +526,8 @@ class Result:
             r_squared=target_data.get(float, "R2"),
             slope=target_data.get(float, "Slope"),
             efficiency=target_data.get(float, "Efficiency"),
+            amp_score=target_data.get(float, "Amp Score"),
+            cq_conf=target_data.get(float, "Cq Confidence"),
         )
 
 

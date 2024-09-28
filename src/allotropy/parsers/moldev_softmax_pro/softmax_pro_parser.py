@@ -5,10 +5,12 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_rea
 )
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
-from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
+from allotropy.parsers.moldev_softmax_pro.softmax_pro_data_creator import (
     create_calculated_data,
     create_measurement_groups,
     create_metadata,
+)
+from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
     StructureData,
 )
 from allotropy.parsers.release_state import ReleaseState

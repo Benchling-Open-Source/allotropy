@@ -257,13 +257,7 @@ class Mapper(SchemaMapper[Data, Model]):
             MeasurementType.LUMINESCENCE_CUBE_DETECTOR,
             MeasurementType.FLUORESCENCE_CUBE_DETECTOR,
         ]:
-            if not measurement.profile_data_cube:
-                msg = "Profile data cube is required for cube detector measurements"
-                raise AllotropyParserError(msg)
-            return self._get_profile_data_cube_measurement_document(
-                measurement,
-                measurement.profile_data_cube,
-            )
+            return self._get_profile_data_cube_measurement_document(measurement)
         else:
             msg = f"Unexpected measurement type: {measurement.type_}"
             raise AllotropyParserError(msg)
@@ -413,10 +407,14 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_profile_data_cube_measurement_document(
-        self,
-        measurement: Measurement,
-        profile_data_cube: DataCube,
+        self, measurement: Measurement
     ) -> MeasurementDocument:
+        if not measurement.profile_data_cube:
+            msg = "Profile data cube is required for cube detector measurements"
+            raise AllotropyParserError(msg)
+
+        profile_data_cube = self._get_data_cube(measurement.profile_data_cube)
+
         return MeasurementDocument(
             measurement_identifier=measurement.identifier,
             sample_document=self._get_sample_document(measurement),
@@ -428,6 +426,14 @@ class Mapper(SchemaMapper[Data, Model]):
                         detector_wavelength_setting=quantity_or_none(
                             TQuantityValueNanometer,
                             measurement.detector_wavelength_setting,
+                        ),
+                        excitation_wavelength_setting=quantity_or_none(
+                            TQuantityValueNanometer,
+                            measurement.excitation_wavelength_setting,
+                        ),
+                        wavelength_filter_cutoff_setting=quantity_or_none(
+                            TQuantityValueNanometer,
+                            measurement.wavelength_filter_cutoff_setting,
                         ),
                         number_of_averages=quantity_or_none(
                             TQuantityValueNumber, measurement.number_of_averages
@@ -456,17 +462,22 @@ class Mapper(SchemaMapper[Data, Model]):
             compartment_temperature=quantity_or_none(
                 TQuantityValueDegreeCelsius, measurement.compartment_temperature
             ),
-            absorption_profile_data_cube=self._get_data_cube(profile_data_cube)
-            if measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_DETECTOR
-            else None,
-            luminescence_profile_data_cube=self._get_data_cube(profile_data_cube)
-            if measurement.type_ == MeasurementType.LUMINESCENCE_CUBE_DETECTOR
-            else None,
-            fluorescence_emission_profile_data_cube=self._get_data_cube(
+            absorption_profile_data_cube=(
                 profile_data_cube
-            )
-            if measurement.type_ == MeasurementType.FLUORESCENCE_CUBE_DETECTOR
-            else None,
+                if measurement.type_
+                == MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_DETECTOR
+                else None
+            ),
+            luminescence_profile_data_cube=(
+                profile_data_cube
+                if measurement.type_ == MeasurementType.LUMINESCENCE_CUBE_DETECTOR
+                else None
+            ),
+            fluorescence_emission_profile_data_cube=(
+                profile_data_cube
+                if measurement.type_ == MeasurementType.FLUORESCENCE_CUBE_DETECTOR
+                else None
+            ),
         )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
