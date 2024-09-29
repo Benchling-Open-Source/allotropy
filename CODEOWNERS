@@ -1,8 +1,7 @@
-# Give senior parser developers ownership over everything except allotrope schema code and CODEOWNERS
-*			@slopez-b @alejandro-salgado
-src/allotropy/allotrope
-CODEOWNERS
-# Give ASM experts ownership over docs
-docs			@james-leinas
-# Give Benchling Connect team ownership over all
-*   			@Benchling-Open-Source/benchling-connect
+# Everything else is jointly owned by senior parser developers and Benchling Connect team
+*			            @slopez-b @alejandro-salgado @Benchling-Open-Source/benchling-connect
+# Limit allotrope schema code and CODEOWNERS to Benchling Connect team
+src/allotropy/allotrope @Benchling-Open-Source/benchling-connect
+CODEOWNERS              @Benchling-Open-Source/benchling-connect
+# Give ASM experts ownership over docs (Benchling Connect as backup)
+docs			        @james-leinas @Benchling-Open-Source/benchling-connect
