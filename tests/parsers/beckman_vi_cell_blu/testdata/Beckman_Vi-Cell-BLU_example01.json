@@ -531,14 +531,6 @@
                                             "value": 19.42,
                                             "unit": "μm"
                                         },
-                                        "total cell count": {
-                                            "value": 7001,
-                                            "unit": "cell"
-                                        },
-                                        "viable cell count": {
-                                            "value": 6896,
-                                            "unit": "cell"
-                                        },
                                         "average total cell circularity": {
                                             "value": 0.87,
                                             "unit": "(unitless)"
@@ -800,7 +792,7 @@
             "file name": "Beckman_Vi-Cell-BLU_example01.csv",
             "software name": "Vi-Cell BLU",
             "ASM converter name": "allotropy_beckman_vi_cell_blu",
-            "ASM converter version": "0.1.38"
+            "ASM converter version": "0.1.56"
         }
     }
 }
