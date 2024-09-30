@@ -30,10 +30,11 @@ from allotropy.parsers.agilent_gen5_image.constants import (
     DetectionType,
     DETECTOR_DISTANCE_REGEX,
     DEVICE_TYPE,
+    METADATA_ONLY,
     ReadType,
     SETTINGS_SECTION_REGEX,
     TRANSMITTED_LIGHT_MAP,
-    UNSUPPORTED_READ_TYPE_ERROR, METADATA_ONLY,
+    UNSUPPORTED_READ_TYPE_ERROR,
 )
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import LinesReader, SectionLinesReader
