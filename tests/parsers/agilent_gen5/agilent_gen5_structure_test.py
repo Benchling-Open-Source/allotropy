@@ -58,6 +58,7 @@ def test_create_header_data_with_well_plate_id_from_filename() -> None:
                 "Reader Type:": "Synergy H1",
                 "Reader Serial Number:": "Serial01",
                 "Reading Type": "Manual",
+                "Plate Type": "96 WELL PLATE (Use plate lid)",
             }
         )
     )

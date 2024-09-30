@@ -52,6 +52,7 @@ from allotropy.parsers.agilent_gen5.constants import (
     UNSUPPORTED_READ_TYPE_ERROR,
     WAVELENGTHS_KEY,
 )
+from allotropy.parsers.agilent_gen5_image.constants import POSSIBLE_WELL_COUNTS
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import SectionLinesReader
 from allotropy.parsers.utils.pandas import read_csv, SeriesData
@@ -94,7 +95,9 @@ class HeaderData:
 
     @staticmethod
     def _extract_well_count(plate_type: str) -> float:
-        match = re.search(r"\d+", plate_type)
+        match = re.search(
+            rf"({'|'.join(str(count) for count in POSSIBLE_WELL_COUNTS)})", plate_type
+        )
         if match:
             return float(match.group())
         return 0
