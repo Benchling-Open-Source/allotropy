@@ -53,8 +53,8 @@ class ThermoSkanItMetadata:
             raise AllotropyParserError(msg)
 
         return Metadata(
-            device_identifier=instrument_info_data.get(str, "Name"),
-            model_number=instrument_info_data.get(str, "Name"),
+            device_identifier=instrument_info_data[str, "Name"],
+            model_number=instrument_info_data[str, "Name"],
             software_name=software_name,
             software_version=version_number,
             unc_path="",
@@ -121,12 +121,10 @@ class ThermoSkanItMeasurementGroups:
         stacked = abs_df.stack()
 
         # Iterate through the MultiIndex series and unpack it correctly
-        for idx, abs_value in stacked.iteritems():
-            well_letter = idx[0]  # The first level of the MultiIndex (row label)
-            well_column = idx[1]  # The second level of the MultiIndex (column label)
+        for well_letter, well_column in stacked.index:
             abs_well = AbsorbanceDataWell.create(
                 well_location=well_letter + str(well_column),
-                abs_value=abs_value,
+                abs_value=stacked.loc[well_letter, well_column],
                 sample_name=str(name_df.loc[well_letter, well_column]),
                 detector_wavelength=wavelength,
             )
@@ -224,6 +222,8 @@ class ThermoSkanItMeasurementGroups:
 class DataThermoSkanIt(Data):
     @staticmethod
     def _clean_dataframe(df: pd.DataFrame) -> pd.DataFrame:
+        # Prevent pandas from silently downcasting values, to prevent future incompatibility.
+        pd.set_option("future.no_silent_downcasting", True)  # noqa: FBT003
         df = df.replace(r"^\s*$", np.nan, regex=True)
         df = df.dropna(axis="index", how="all")
         df = df.dropna(axis="columns", how="all")
