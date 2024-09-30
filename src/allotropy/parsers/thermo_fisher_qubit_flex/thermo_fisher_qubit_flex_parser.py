@@ -294,10 +294,13 @@ class ThermoFisherQubitFlexParser(VendorParser):
 
         Returns: the measurement document dictionary
         """
+        # TODO(nstender): these should be in measurement.custom_info in schema mapper
         measurement_custom_document = {
-            "reagent lot number": _get_value(data, "Reagent Lot#", i),
             "calibrated tubes": _get_value(data, "Calibrated Tubes", i),
         }
+        # TODO(ASM gaps): we believe these values should be introduced to ASM.
+        custom_info_doc = {"reagent lot number": _get_value(data, "Reagent Lot#", i)}
+
         # Check if all values in sample_custom_document are None
         if all(value is None for value in measurement_custom_document.values()):
             return [
@@ -322,7 +325,7 @@ class ThermoFisherQubitFlexParser(VendorParser):
                             data, i
                         ),
                     ),
-                    measurement_custom_document,
+                    measurement_custom_document | custom_info_doc,
                 )
             ]
 
@@ -356,10 +359,14 @@ class ThermoFisherQubitFlexParser(VendorParser):
         well_plate_id = _get_value(data, "Plate Barcode", i)
         if sample_id is None:
             sample_id = _get_value_not_none(data, "Sample Name", i)
+        # TODO(ASM gaps): we believe these values should be introduced to ASM.
         sample_custom_document = {
             "original sample concentration": _get_concentration_value(
                 data, "Original Sample Conc.", "Original sample conc. units", i
             ),
+        }
+        # TODO(nstender): these should go in custom_sample_info in schema mapper refactor.
+        custom_sample_info = {
             "qubit tube concentration": _get_concentration_value(
                 data, "Qubit Tube Conc.", "Qubit tube conc. units", i
             ),
@@ -392,7 +399,7 @@ class ThermoFisherQubitFlexParser(VendorParser):
                     location_identifier=location_id,
                     well_plate_identifier=well_plate_id,
                 ),
-                sample_custom_document,
+                custom_sample_info | sample_custom_document,
             )
 
     def _get_device_control_document(
@@ -407,10 +414,18 @@ class ThermoFisherQubitFlexParser(VendorParser):
 
         Returns: the device control document dictionary
         """
+        # TODO(ASM gaps): we believe these values should be introduced to ASM.
         custom_device_document = {
             "sample volume setting": _get_property_value(
                 data, "Sample Volume (uL)", i, TQuantityValueMicroliter
             ),
+            "excitation setting": _get_value(data, "Excitation", i),
+            "dilution factor": _get_property_value(
+                data, "Dilution Factor", i, TQuantityValueUnitless
+            ),
+        }
+        # TODO(nstender): these should do in device_control_custom_info in schema mapper refactor.
+        device_custom_data_document = {
             "operating minimum": _get_property_value(
                 data, "Extended Low Range", i, TQuantityValueNanogramPerMicroliter
             ),
@@ -419,10 +434,6 @@ class ThermoFisherQubitFlexParser(VendorParser):
             ),
             "operating maximum": _get_property_value(
                 data, "Extended High Range", i, TQuantityValueNanogramPerMicroliter
-            ),
-            "excitation setting": _get_value(data, "Excitation", i),
-            "dilution factor": _get_property_value(
-                data, "Dilution Factor", i, TQuantityValueUnitless
             ),
         }
         if all(value is None for value in custom_device_document.values()):
@@ -440,7 +451,7 @@ class ThermoFisherQubitFlexParser(VendorParser):
                         FluorescencePointDetectionDeviceControlDocumentItem(
                             device_type=constants.DEVICE_TYPE
                         ),
-                        custom_device_document,
+                        custom_device_document | device_custom_data_document,
                     )
                 ]
             )

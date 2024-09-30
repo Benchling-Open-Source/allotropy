@@ -33,11 +33,11 @@
                                     {
                                         "device type": "qPCR",
                                         "measurement method identifier": "Ct",
-                                        "PCR detection chemistry": "SYBR_GREEN",
                                         "total cycle number setting": {
                                             "value": 1.0,
                                             "unit": "#"
                                         },
+                                        "PCR detection chemistry": "SYBR_GREEN",
                                         "reporter dye setting": "SYBR",
                                         "passive reference dye setting": "ROX"
                                     }
@@ -127,6 +127,9 @@
                                                     ]
                                                 ]
                                             }
+                                        },
+                                        "custom information document": {
+                                            "omit": false
                                         }
                                     }
                                 ]
@@ -231,9 +234,6 @@
                                         ]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "omit": false
                             }
                         }
                     ],
@@ -250,7 +250,7 @@
             "software name": "Thermo QuantStudio",
             "software version": "1.0",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.53"
+            "ASM converter version": "0.1.54"
         }
     }
 }

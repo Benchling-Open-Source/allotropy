@@ -108,13 +108,15 @@ ModelClass = TypeVar("ModelClass")
 def add_custom_information_document(
     model: ModelClass, custom_info_doc: Any
 ) -> ModelClass:
+    if not custom_info_doc:
+        return model
 
     if isinstance(custom_info_doc, dict):
         custom_info_doc = structure_custom_information_document(
             custom_info_doc, "custom information document"
         )
     if not is_dataclass(custom_info_doc):
-        msg = "Invalid custom_info_doc"
+        msg = f"Invalid custom_info_doc: {custom_info_doc}"
         raise ValueError(msg)
 
     # Do not add custom info doc if all values are None
