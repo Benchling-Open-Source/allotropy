@@ -1,14 +1,12 @@
 from __future__ import annotations
-from allotropy.parsers.thermo_skanit.constants import SAMPLE_ROLE_MAPPINGS, DEVICE_TYPE
-from allotropy.parsers.utils.pandas import df_to_series_data, parse_header_row
-from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
-
 
 from dataclasses import dataclass
 import re
 
+import numpy as np
 import pandas as pd
 
+from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
     Data,
     Measurement,
@@ -17,25 +15,9 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
     Metadata,
 )
 from allotropy.exceptions import AllotropyParserError
+from allotropy.parsers.thermo_skanit.constants import DEVICE_TYPE, SAMPLE_ROLE_MAPPINGS
+from allotropy.parsers.utils.pandas import df_to_series_data, parse_header_row
 from allotropy.parsers.utils.uuids import random_uuid_str
-
-
-
-
-def find_value_by_label_optional(df: pd.DataFrame, label: str) -> str | None:
-    row = df[df.iloc[:, 1].str.contains(label, case=False, na=False)]
-    if not row.empty:
-        return str(row.iloc[0, 4])  # Assuming the value is in the 5th column (index 4)
-    return None
-
-
-def find_value_by_label_required(df: pd.DataFrame, sheet_name: str, label: str) -> str:
-    row = df[df.iloc[:, 1].str.contains(label, case=False, na=False)]
-    if not row.empty:
-        return str(row.iloc[0, 4])  # Assuming the value is in the 5th column (index 4)
-    else:
-        msg = f"Unable to identify {label} from {sheet_name} tab"
-        raise AllotropyParserError(msg)
 
 
 @dataclass(frozen=True)
@@ -49,13 +31,13 @@ class ThermoSkanItMetadata:
         instrument_info_df = instrument_info_df.fillna("")
         # The labels for data is spread across the first two columns for some reason, combine them as index.
         # NOTE: This is an assumption that may not be true for future files
-        instrument_info_df.index = instrument_info_df.iloc[:, 0] + instrument_info_df.iloc[:, 1]
+        # Combine the first two columns into a Series
+        combined_series = instrument_info_df.iloc[:, 0] + instrument_info_df.iloc[:, 1]
+        # Convert the Series to an Index
+        instrument_info_df.index = pd.Index(combined_series)
         # Read data from the last column, this is where values are found
         instrument_info_data = df_to_series_data(instrument_info_df.T, index=-1)
-
-        general_info_data = df_to_series_data(parse_header_row(general_info_df.T), index=-1)
-        import pdb;pdb.set_trace()
-
+        general_info_data = df_to_series_data(parse_header_row(general_info_df.T))
         software_info = general_info_data.get(str, "Report generated with SW version")
         # Regular expression to extract software and version
         pattern = r"(SkanIt Software.*?)(?=,)|(\b\d+\.\d+\.\d+\.\d+\b)"
@@ -71,8 +53,8 @@ class ThermoSkanItMetadata:
             raise AllotropyParserError(msg)
 
         return Metadata(
-            device_identifier= instrument_info_data.get(str, "Name"),
-            model_number= instrument_info_data.get(str, "Name"),
+            device_identifier=instrument_info_data.get(str, "Name"),
+            model_number=instrument_info_data.get(str, "Name"),
             software_name=software_name,
             software_version=version_number,
             unc_path="",
@@ -129,40 +111,33 @@ class ThermoSkanItMeasurementGroups:
         plate_well_count = ThermoSkanItMeasurementGroups.get_plate_well_count(
             layout_definitions_df
         )
-        session_name = find_value_by_label_optional(
-            df=session_info_df, label="Session notes"
-        )
-        exec_time = find_value_by_label_required(
-            df=session_info_df, label="Execution Time", sheet_name="Session information"
-        )
+
+        session_info_data = df_to_series_data(parse_header_row(session_info_df.T))
+        session_name = session_info_data.get(str, "Session notes")
+        exec_time = session_info_data[str, "Execution time"]
 
         meas_groups = []
-        for index, row in abs_df.iterrows():
-            well_letter = row.iloc[0]
-            for col_name, value in list(row.items())[1:]:
-                col_index = abs_df.columns.get_loc(col_name)
-                if isinstance(col_index, tuple):
-                    col_index = col_index[0]
-                if isinstance(index, int) and isinstance(col_index, int):
-                    well_name = str(name_df.iloc[index, col_index])
-                else:
-                    msg = f"Unable to identify well name for row {index} and column {col_index}"
-                    raise AllotropyParserError(msg)
-                abs_value = value
-                abs_well = AbsorbanceDataWell.create(
-                    well_location=well_letter + str(col_index),
-                    abs_value=abs_value,
-                    sample_name=well_name,
-                    detector_wavelength=wavelength,
+        # Stack the DataFrame, creating a MultiIndex
+        stacked = abs_df.stack()
+
+        # Iterate through the MultiIndex series and unpack it correctly
+        for idx, abs_value in stacked.iteritems():
+            well_letter = idx[0]  # The first level of the MultiIndex (row label)
+            well_column = idx[1]  # The second level of the MultiIndex (column label)
+            abs_well = AbsorbanceDataWell.create(
+                well_location=well_letter + str(well_column),
+                abs_value=abs_value,
+                sample_name=str(name_df.loc[well_letter, well_column]),
+                detector_wavelength=wavelength,
+            )
+            meas_groups.append(
+                MeasurementGroup(
+                    measurements=[abs_well],
+                    plate_well_count=plate_well_count,
+                    measurement_time=exec_time,
+                    experimental_data_identifier=session_name,
                 )
-                meas_groups.append(
-                    MeasurementGroup(
-                        measurements=[abs_well],
-                        plate_well_count=plate_well_count,
-                        measurement_time=exec_time,
-                        experimental_data_identifier=session_name,
-                    )
-                )
+            )
         return meas_groups
 
     @staticmethod
@@ -194,6 +169,16 @@ class ThermoSkanItMeasurementGroups:
                 raise AllotropyParserError(msg)
 
     @staticmethod
+    def _set_headers(df: pd.DataFrame) -> pd.DataFrame:
+        # Set the first column (well letters) as the index
+        df.set_index(df.columns[0], inplace=True)
+        # Set the first row (well numbers) as the columns
+        df = parse_header_row(df)
+        # Cast row numbers to int (float first to handle decimals, e.g. 1.0)
+        df.columns = df.columns.astype(float).astype(int)
+        return df
+
+    @staticmethod
     def identify_abs_and_sample_dfs(
         absorbance_sheet_df: pd.DataFrame,
     ) -> tuple[pd.DataFrame, pd.DataFrame, float]:
@@ -204,7 +189,7 @@ class ThermoSkanItMeasurementGroups:
         data_between_sample_and_blank = []
 
         # Iterate through each row
-        for _index, row in absorbance_sheet_df.iterrows():
+        for _, row in absorbance_sheet_df.iterrows():
             if pd.notna(row.iloc[0]) and "Wavelength" in row.iloc[0]:
                 match = re.search(r"Wavelength:\s*(\d{3})\s*nm", row.iloc[0])
                 if match:
@@ -212,30 +197,25 @@ class ThermoSkanItMeasurementGroups:
                 else:
                     msg = "Unable to identify Wavelength (nm) from Absorbance tab"
                     raise AllotropyParserError(msg)
+            if "Abs" in row.values.astype(str):  # Check if 'abs' is in the row
+                start_reading_abs = True
+            if "Sample" in row.values.astype(str):  # Check if 'sample' is in the row
+                start_reading_sample = True
+            if pd.notna(row.iloc[0]) and "Autoloading" in row.iloc[0]:
+                break
+
             if start_reading_sample:
-                # Check if the row is blank
-                if row.isnull().all():
-                    break
                 data_between_sample_and_blank.append(row)
             elif start_reading_abs:
-                # Check if the row is blank
-                if row.isnull().all():
-                    start_reading_abs = False
-                    start_reading_sample = False  # Reset this to prevent starting the next DataFrame before finding 'sample'
-                else:
-                    data_between_abs_and_blank.append(row)
-            elif "Abs" in row.values.astype(str):  # Check if 'abs' is in the row
-                start_reading_abs = True
-            elif "Sample" in row.values.astype(str):  # Check if 'sample' is in the row
-                start_reading_sample = True
+                data_between_abs_and_blank.append(row)
 
         # Create DataFrames with the collected data
-        df_between_abs_and_blank = pd.DataFrame(data_between_abs_and_blank).reset_index(
-            drop=True
+        df_between_abs_and_blank = ThermoSkanItMeasurementGroups._set_headers(
+            pd.DataFrame(data_between_abs_and_blank)
         )
-        df_between_sample_and_blank = pd.DataFrame(
-            data_between_sample_and_blank
-        ).reset_index(drop=True)
+        df_between_sample_and_blank = ThermoSkanItMeasurementGroups._set_headers(
+            pd.DataFrame(data_between_sample_and_blank)
+        )
 
         return (df_between_abs_and_blank, df_between_sample_and_blank, wavelength)
 
@@ -243,19 +223,27 @@ class ThermoSkanItMeasurementGroups:
 @dataclass(frozen=True)
 class DataThermoSkanIt(Data):
     @staticmethod
+    def _clean_dataframe(df: pd.DataFrame) -> pd.DataFrame:
+        df = df.replace(r"^\s*$", np.nan, regex=True)
+        df = df.dropna(axis="index", how="all")
+        df = df.dropna(axis="columns", how="all")
+        return df
+
+    @staticmethod
     def create(sheet_data: dict[str, pd.DataFrame], file_name: str) -> Data:
         for sheet_name, df in sheet_data.items():
+            clean_df = DataThermoSkanIt._clean_dataframe(df)
             # NOTE: This assumes a single absorbance plate on a single tab
             if "Absorbance" in sheet_name:
-                abs_df = df
+                abs_df = clean_df
             elif "Session information" in sheet_name:
-                session_df = df
+                session_df = clean_df
             elif "Instrument information" in sheet_name:
-                inst_info_df = df
+                inst_info_df = clean_df
             elif "Layout" in sheet_name:
-                layout_df = df
+                layout_df = clean_df
             elif "General" in sheet_name:
-                general_df = df
+                general_df = clean_df
 
         metadata = ThermoSkanItMetadata.create_metadata(
             instrument_info_df=inst_info_df,

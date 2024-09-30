@@ -115,7 +115,7 @@ def test_create_metadata() -> None:
         ],
     }
     # Creating the DataFrame
-    instrument_info_df = pd.DataFrame(data)
+    instrument_info_df = DataThermoSkanIt._clean_dataframe(pd.DataFrame(data))
 
     data = {
         "General information": [None, None, None, None],
@@ -131,7 +131,7 @@ def test_create_metadata() -> None:
     }
 
     # Create the DataFrame
-    general_info_df = pd.DataFrame(data)
+    general_info_df = DataThermoSkanIt._clean_dataframe(pd.DataFrame(data))
 
     skanit_metadata = ThermoSkanItMetadata.create_metadata(
         instrument_info_df=instrument_info_df,
@@ -172,9 +172,15 @@ def test_get_sample_role_failure() -> None:
 
 def test_create_skanit_meas_group() -> None:
     file_path = "tests/parsers/thermo_skanit/testdata/skanit_data.xlsx"
-    absorbance_df = pd.read_excel(file_path, sheet_name="Absorbance 1_01")
-    layout_definitions_df = pd.read_excel(file_path, sheet_name="Layout definitions")
-    session_info_df = pd.read_excel(file_path, sheet_name="Session information")
+    absorbance_df = DataThermoSkanIt._clean_dataframe(
+        pd.read_excel(file_path, sheet_name="Absorbance 1_01")
+    )
+    layout_definitions_df = DataThermoSkanIt._clean_dataframe(
+        pd.read_excel(file_path, sheet_name="Layout definitions")
+    )
+    session_info_df = DataThermoSkanIt._clean_dataframe(
+        pd.read_excel(file_path, sheet_name="Session information")
+    )
 
     skanit_meas_group = ThermoSkanItMeasurementGroups.create(
         absorbance_sheet_df=absorbance_df,
