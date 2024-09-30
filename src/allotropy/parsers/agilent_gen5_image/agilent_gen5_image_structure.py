@@ -259,16 +259,16 @@ def create_results(
         return [
             MeasurementGroup(
                 measurement_time=header_data.datetime,
-                plate_well_count=0,
+                plate_well_count=header_data.plate_well_count,
                 analytical_method_identifier=header_data.protocol_file_path,
                 experimental_data_identifier=header_data.experiment_file_path,
                 measurements=[
                     _create_measurement(
-                        "N/A",
+                        NOT_APPLICABLE,
                         header_data,
                         read_section,
                         instrument_settings,
-                        None,
+                        "METATADA ONLY",
                         None,
                     )
                     for read_section in read_data.read_sections

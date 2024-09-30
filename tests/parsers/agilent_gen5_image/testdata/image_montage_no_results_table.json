@@ -6,7 +6,7 @@
                 "measurement aggregate document": {
                     "measurement time": "2020-04-05T10:43:31+00:00",
                     "plate well count": {
-                        "value": 0,
+                        "value": 96.0,
                         "unit": "#"
                     },
                     "measurement document": [
@@ -35,7 +35,7 @@
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Plate 1 N/A",
+                                "sample identifier": "METATADA ONLY",
                                 "location identifier": "N/A",
                                 "well plate identifier": "Plate 1"
                             }
@@ -57,7 +57,7 @@
             "software name": "Gen5 Image",
             "software version": "3.12.08",
             "ASM converter name": "allotropy_agilent_gen5_image",
-            "ASM converter version": "0.1.54"
+            "ASM converter version": "0.1.56"
         }
     }
 }

@@ -72,12 +72,14 @@ class HeaderData:
     well_plate_identifier: str | None
     model_number: str | None
     equipment_serial_number: str | None
+    plate_well_count: float
     file_name: str
 
     @classmethod
     def create(cls, data: SeriesData, file_name: str) -> HeaderData:
         matches = re.match(FILENAME_REGEX, file_name)
         plate_identifier = matches.groupdict()["plate_identifier"] if matches else None
+        plate_well_count = cls._extract_well_count(data[str, "Plate Type"])
         return HeaderData(
             software_version=data[str, "Software Version"],
             experiment_file_path=data.get(str, "Experiment File Path:"),
@@ -87,7 +89,15 @@ class HeaderData:
             well_plate_identifier=plate_identifier or data.get(str, "Plate Number"),
             model_number=data.get(str, "Reader Type:"),
             equipment_serial_number=data.get(str, "Reader Serial Number:"),
+            plate_well_count=plate_well_count,
         )
+
+    @staticmethod
+    def _extract_well_count(plate_type: str) -> float:
+        match = re.search(r"\d+", plate_type)
+        if match:
+            return float(match.group())
+        return 0
 
 
 @dataclass(frozen=True)

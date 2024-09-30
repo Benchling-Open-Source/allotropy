@@ -25,6 +25,7 @@ HEADER_PREFIXES = frozenset(
 DEFAULT_SOFTWARE_NAME = "Gen5 Image"
 DEVICE_TYPE = "Imager"
 DETECTION_TYPE = "optical-imaging"
+METADATA_ONLY = "METADATA ONLY"
 
 AUTOFOCUS_STRINGS = frozenset(
     {
