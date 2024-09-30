@@ -1,5 +1,5 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2024/06/plate-reader.manifest",
     "plate reader aggregate document": {
         "plate reader document": [
             {
@@ -5482,6 +5482,9 @@
         },
         "data system document": {
             "file name": "PE_Envision_fluorescence_example01.csv",
+            "ASM file identifier": "N/A",
+            "UNC path": "N/A",
+            "data system instance identifier": "N/A",
             "software name": "EnVision Workstation",
             "software version": "1.14.3049.1193",
             "ASM converter name": "allotropy_perkinelmer_envision",

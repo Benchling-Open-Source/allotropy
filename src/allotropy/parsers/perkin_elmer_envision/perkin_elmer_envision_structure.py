@@ -25,18 +25,16 @@ from re import search
 import numpy as np
 import pandas as pd
 
-from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
-    ScanPositionSettingPlateReader,
-)
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
-from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
+from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
     CalculatedDataItem,
     DataSource,
     Measurement,
     MeasurementGroup,
     MeasurementType,
     Metadata,
+    ScanPositionSettingPlateReader,
 )
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.constants import NOT_APPLICABLE
@@ -697,9 +695,12 @@ def create_metadata(
 ) -> Metadata:
     return Metadata(
         file_name=file_name,
+        asm_file_identifier=NOT_APPLICABLE,
+        unc_path=NOT_APPLICABLE,
         software_name=software.software_name,
         software_version=software.software_version,
         model_number=constants.MODEL_NUMBER,
+        data_system_instance_id=NOT_APPLICABLE,
         equipment_serial_number=instrument.serial_number,
         device_identifier=instrument.nickname,
     )
