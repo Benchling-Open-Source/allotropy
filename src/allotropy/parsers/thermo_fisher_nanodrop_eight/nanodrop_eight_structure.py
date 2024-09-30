@@ -46,8 +46,20 @@ class SpectroscopyRow:
 
         is_na_experiment = experiment_type and "NA" in experiment_type
 
-        a260_absorbance = data.get(float, "a260")
-        a280_absorbance = data.get(float, "a280")
+        # TODO(nstender): the fact that there are more than two wavelength columns seems to indicate
+        # that there may be more options than 260 and 280, figure out how to handle other
+        # possible wavelengths.
+        absorbances_by_wavelength: dict[float | None, float | None] = {}
+        # NOTE: this range is just a reasonable sanity check so we don't have to use a "while True"
+        for i in range(1, len(data.series.index) + 1):
+            if not data.has_key(f"abs {i}"):
+                break
+            absorbances_by_wavelength[data.get(float, f"nm {i}")] = data.get(
+                float, f"abs {i}"
+            )
+
+        a260_absorbance = data.get(float, "a260") or absorbances_by_wavelength.get(260)
+        a280_absorbance = data.get(float, "a280") or absorbances_by_wavelength.get(280)
         measurements: list[Measurement] = []
 
         mass_concentration = get_first_not_none(
@@ -78,13 +90,15 @@ class SpectroscopyRow:
                 measures=[list(spectra_data.values())],
             )
 
-        # We only capture mass concentration on one measurement document
-        # TODO(nstender): why not just capture in both? Seems relevant, and would make this so much simpler.
+        # NOTE: mass concentration is captured by a different wavelength depending on the experiment type.
+        # DNA and RNA are captured as 260nm, while other experiment types are typically 280nm.
+        # Given this, we apply the following logic:
+        #
         # capture concentration on the 260 measurement document if:
-        #   - there is no experiment type and no 280 column add the concentration here
+        #   - there is no experiment type and no 280 column
         # capture concentration on the 280 measurement document if:
         #   - the experiment type is something other than DNA or RNA
-        #   - if the experiment type is not specified
+        #   - the experiment type is not specified
         absorbances = (
             (
                 260,
