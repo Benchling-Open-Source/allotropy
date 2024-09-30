@@ -1,6 +1,6 @@
 from collections.abc import Callable
 from dataclasses import dataclass
-from typing import TypeVar
+from typing import Any, TypeVar
 
 from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import (
@@ -103,13 +103,10 @@ class ProcessedData:
 
     # Metadata
     comments: str | None = None
-    highsd: str | None = None
-    noamp: str | None = None
-    expfail: str | None = None
-    tholdfail: str | None = None
-    prfdrop: str | None = None
 
     data_cubes: list[DataCube] | None = None
+
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass
@@ -117,11 +114,12 @@ class Measurement:
     # Measurement metadata
     identifier: str
     timestamp: str
-    target_identifier: str
     sample_identifier: str
+    target_identifier: str
+    group_identifier: str | None = None
 
     # Settings
-    pcr_detection_chemistry: str | None
+    pcr_detection_chemistry: str | None = None
 
     # Optional measurement metadata
     sample_role_type: str | None = None
@@ -139,12 +137,9 @@ class Measurement:
     data_cubes: list[DataCube] | None = None
 
     # Custom metadata
-    well_identifier: int | None = None
-    omit: bool | None = None
-    sample_color: str | None = None
-    biogroup_name: str | None = None
-    biogroup_color: str | None = None
-    target_color: str | None = None
+    custom_info: dict[str, Any] | None = None
+    sample_custom_info: dict[str, Any] | None = None
+    device_control_custom_info: dict[str, Any] | None = None
 
 
 @dataclass
@@ -237,9 +232,6 @@ class Mapper(SchemaMapper[Data, Model]):
         measurement: Measurement,
         metadata: Metadata,
     ) -> MeasurementDocumentItem:
-        custom_doc = {
-            "omit": measurement.omit,
-        }
         measurement_doc = MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
             measurement_time=self.get_date_time(measurement.timestamp),
@@ -275,83 +267,71 @@ class Mapper(SchemaMapper[Data, Model]):
                 MeltingCurveDataCube, "melting curve", measurement.data_cubes
             ),
         )
-        return add_custom_information_document(measurement_doc, custom_doc)
+        return add_custom_information_document(measurement_doc, measurement.custom_info)
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
-        custom_doc = {
-            "well identifier": measurement.well_identifier,
-            "sample color": measurement.sample_color,
-            "biogroup name": measurement.biogroup_name,
-            "biogroup color": measurement.biogroup_color,
-            "target color": measurement.target_color,
-        }
+        # TODO(ASM gaps): we believe these values should be added to ASM.
+        custom_info_doc = {"group identifier": measurement.group_identifier}
         sample_doc = SampleDocument(
             sample_identifier=measurement.sample_identifier,
             sample_role_type=measurement.sample_role_type,
             well_location_identifier=measurement.well_location_identifier,
             well_plate_identifier=measurement.well_plate_identifier,
         )
-        return add_custom_information_document(sample_doc, custom_doc)
+        return add_custom_information_document(
+            sample_doc, (measurement.sample_custom_info or {}) | custom_info_doc
+        )
 
     def _get_processed_data_aggregate_document(
         self, data: ProcessedData | None
     ) -> ProcessedDataAggregateDocument | None:
         if not data:
             return None
+        doc = ProcessedDataDocumentItem(
+            data_processing_document=DataProcessingDocument(
+                automatic_cycle_threshold_enabled_setting=data.automatic_cycle_threshold_enabled_setting,
+                cycle_threshold_value_setting=TQuantityValueUnitless(
+                    value=data.cycle_threshold_value_setting,
+                ),
+                automatic_baseline_determination_enabled_setting=data.automatic_baseline_determination_enabled_setting,
+                genotyping_determination_method_setting=quantity_or_none(
+                    TQuantityValueUnitless,
+                    data.genotyping_determination_method_setting,
+                ),
+                baseline_determination_start_cycle_setting=quantity_or_none(
+                    TQuantityValueNumber,
+                    data.baseline_determination_start_cycle_setting,
+                ),
+                baseline_determination_end_cycle_setting=quantity_or_none(
+                    TQuantityValueNumber,
+                    data.baseline_determination_end_cycle_setting,
+                ),
+            ),
+            cycle_threshold_result=TNullableQuantityValueUnitless(
+                value=data.cycle_threshold_result,
+            ),
+            normalized_reporter_result=quantity_or_none(
+                TQuantityValueUnitless, data.normalized_reporter_result
+            ),
+            baseline_corrected_reporter_result=quantity_or_none(
+                TQuantityValueUnitless,
+                data.baseline_corrected_reporter_result,
+            ),
+            genotyping_determination_result=data.genotyping_determination_result,
+            normalized_reporter_data_cube=self._get_data_cube(
+                NormalizedReporterDataCube,
+                "normalized reporter",
+                data.data_cubes,
+            ),
+            baseline_corrected_reporter_data_cube=self._get_data_cube(
+                BaselineCorrectedReporterDataCube,
+                "baseline corrected reporter",
+                data.data_cubes,
+            ),
+        )
         return ProcessedDataAggregateDocument(
             processed_data_document=[
-                add_custom_information_document(
-                    ProcessedDataDocumentItem(
-                        data_processing_document=DataProcessingDocument(
-                            automatic_cycle_threshold_enabled_setting=data.automatic_cycle_threshold_enabled_setting,
-                            cycle_threshold_value_setting=TQuantityValueUnitless(
-                                value=data.cycle_threshold_value_setting,
-                            ),
-                            automatic_baseline_determination_enabled_setting=data.automatic_baseline_determination_enabled_setting,
-                            genotyping_determination_method_setting=quantity_or_none(
-                                TQuantityValueUnitless,
-                                data.genotyping_determination_method_setting,
-                            ),
-                            baseline_determination_start_cycle_setting=quantity_or_none(
-                                TQuantityValueNumber,
-                                data.baseline_determination_start_cycle_setting,
-                            ),
-                            baseline_determination_end_cycle_setting=quantity_or_none(
-                                TQuantityValueNumber,
-                                data.baseline_determination_end_cycle_setting,
-                            ),
-                        ),
-                        cycle_threshold_result=TNullableQuantityValueUnitless(
-                            value=data.cycle_threshold_result,
-                        ),
-                        normalized_reporter_result=quantity_or_none(
-                            TQuantityValueUnitless, data.normalized_reporter_result
-                        ),
-                        baseline_corrected_reporter_result=quantity_or_none(
-                            TQuantityValueUnitless,
-                            data.baseline_corrected_reporter_result,
-                        ),
-                        genotyping_determination_result=data.genotyping_determination_result,
-                        normalized_reporter_data_cube=self._get_data_cube(
-                            NormalizedReporterDataCube,
-                            "normalized reporter",
-                            data.data_cubes,
-                        ),
-                        baseline_corrected_reporter_data_cube=self._get_data_cube(
-                            BaselineCorrectedReporterDataCube,
-                            "baseline corrected reporter",
-                            data.data_cubes,
-                        ),
-                    ),
-                    custom_info_doc={
-                        "comments": data.comments,
-                        "highsd": data.highsd,
-                        "noamp": data.noamp,
-                        "expfail": data.expfail,
-                        "tholdfail": data.tholdfail,
-                        "prfdrop": data.prfdrop,
-                    },
-                )
+                add_custom_information_document(doc, data.custom_info)
             ]
         )
 
