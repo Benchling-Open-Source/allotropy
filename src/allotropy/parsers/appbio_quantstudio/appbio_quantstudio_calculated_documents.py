@@ -595,6 +595,9 @@ def iter_comparative_ct_calc_docs(
     # Delta Ct SE, Delta Delta Ct, RQ, RQ min, RQ max, Amplification score, Cq confidence
     for sample, target in view_st_data.iter_keys():
         for well_item in view_st_data.get_leaf_item(sample, target):
+            if not well_item.has_result:
+                continue
+
             if calc_doc := build_amp_score(well_item):
                 yield calc_doc
 
@@ -633,6 +636,9 @@ def iter_standard_curve_calc_docs(
     # R(superscript 2), Slope, Efficiency, Amplification score, Cq confidence
     for sample, target in view_st_data.iter_keys():
         for well_item in view_st_data.get_leaf_item(sample, target):
+            if not well_item.has_result:
+                continue
+
             if calc_doc := build_amp_score(well_item):
                 yield calc_doc
 
@@ -674,6 +680,9 @@ def iter_relative_standard_curve_calc_docs(
     # Amplification score, Cq confidence
     for sample, target in view_st_data.iter_keys():
         for well_item in view_st_data.get_leaf_item(sample, target):
+            if not well_item.has_result:
+                continue
+
             if calc_doc := build_amp_score(well_item):
                 yield calc_doc
 
@@ -722,6 +731,9 @@ def iter_presence_absence_calc_docs(
     # Rn Mean, Rn SD, Amplification score, Cq confidence
     for sample, target in view_data.iter_keys():
         for well_item in view_data.get_leaf_item(sample, target):
+            if not well_item.has_result:
+                continue
+
             if calc_doc := build_amp_score(well_item):
                 yield calc_doc
 

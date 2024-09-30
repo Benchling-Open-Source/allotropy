@@ -157,9 +157,11 @@ def _create_measurement(
     header: Header,
     multicomponent_data: MulticomponentData | None,
     melt_curve_raw_data: MeltCurveRawData | None,
-    amplification_data: AmplificationData,
-    result: Result,
+    amplification_data: AmplificationData | None,
+    result: Result | None,
 ) -> Measurement:
+    if not result:
+        return None
     # TODO: temp workaround for cal doc result
     well_item._result = result
 
@@ -184,7 +186,7 @@ def _create_measurement(
         sample_role_type=well_item.sample_role_type,
         well_location_identifier=well_item.well_location_identifier,
         well_plate_identifier=header.barcode,
-        total_cycle_number_setting=amplification_data.total_cycle_number_setting,
+        total_cycle_number_setting=amplification_data.total_cycle_number_setting if amplification_data else None,
         pcr_detection_chemistry=header.pcr_detection_chemistry,
         reporter_dye_setting=well_item.reporter_dye_setting,
         quencher_dye_setting=well_item.quencher_dye_setting,
@@ -242,26 +244,46 @@ def get_well_item_results(
     well_item: WellItem,
     results_data: dict[int, dict[str, Result]],
 ) -> Result:
-    results_data_element = results_data.get(well_item.identifier, {}).get(
+    return results_data.get(well_item.identifier, {}).get(
         well_item.target_dna_description.replace(" ", "")
     )
-    if results_data_element is None:
-        msg = f"No result data for well item {well_item.identifier} and target DNA {well_item.target_dna_description}"
-        raise AllotropeConversionError(msg)
-    return results_data_element
 
 
 def get_well_item_amp_data(
     well_item: WellItem,
     amp_data: dict[int, dict[str, AmplificationData]],
-) -> AmplificationData:
-    amp_data_element = amp_data.get(well_item.identifier, {}).get(
+) -> AmplificationData | None:
+    return amp_data.get(well_item.identifier, {}).get(
         well_item.target_dna_description
     )
-    if amp_data_element is None:
-        msg = f"No amplification data for well item {well_item.identifier} and target DNA {well_item.target_dna_description}"
-        raise AllotropeConversionError(msg)
-    return amp_data_element
+
+
+def _create_measurement_group(
+    header: Header,
+    well: Well,
+    amp_data: dict[int, dict[str, AmplificationData]],
+    multi_data: dict[int, MulticomponentData],
+    results_data: dict[int, dict[str, Result]],
+    melt_data: dict[int, MeltCurveRawData],
+) -> MeasurementGroup | None:
+    measurements = [
+        _create_measurement(
+            well_item,
+            header,
+            multi_data.get(well.identifier),
+            melt_data.get(well.identifier),
+            get_well_item_amp_data(well_item, amp_data),
+            get_well_item_results(well_item, results_data),
+        )
+        for well_item in well.items
+    ]
+    group = MeasurementGroup(
+        analyst=header.analyst,
+        experimental_data_identifier=header.experimental_data_identifier,
+        plate_well_count=try_int_or_nan(header.plate_well_count),
+        measurements=[m for m in measurements if m is not None]
+    )
+    return group if group.measurements else None
 
 
 def create_measurement_groups(
@@ -272,22 +294,8 @@ def create_measurement_groups(
     results_data: dict[int, dict[str, Result]],
     melt_data: dict[int, MeltCurveRawData],
 ) -> list[MeasurementGroup]:
-    return [
-        MeasurementGroup(
-            analyst=header.analyst,
-            experimental_data_identifier=header.experimental_data_identifier,
-            plate_well_count=try_int_or_nan(header.plate_well_count),
-            measurements=[
-                _create_measurement(
-                    well_item,
-                    header,
-                    multi_data.get(well.identifier),
-                    melt_data.get(well.identifier),
-                    get_well_item_amp_data(well_item, amp_data),
-                    get_well_item_results(well_item, results_data),
-                )
-                for well_item in well.items
-            ],
-        )
+    groups = [
+        _create_measurement_group(header, well, amp_data, multi_data, results_data, melt_data)
         for well in wells
     ]
+    return [group for group in groups if group]
