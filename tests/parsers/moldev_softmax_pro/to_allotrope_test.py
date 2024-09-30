@@ -55,13 +55,12 @@ def test_no_plate_reader_documents() -> None:
 @pytest.mark.parametrize(
     "test_file",
     [
-        f"{TESTDATA}/errors/fl_kinetic_plates.txt",
         f"{TESTDATA}/errors/lum_spectrum_columns.txt",
     ],
 )
 def test_unrecognized_read_type(test_file: str) -> None:
     with pytest.raises(
         AllotropeConversionError,
-        match="Only Endpoint measurements can be processed at this time.",
+        match="Only Endpoint or Kinetic measurements can be processed at this time.",
     ):
         from_file(test_file, VENDOR_TYPE)

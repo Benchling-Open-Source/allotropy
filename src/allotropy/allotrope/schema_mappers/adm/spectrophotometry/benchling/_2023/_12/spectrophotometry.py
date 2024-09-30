@@ -132,18 +132,10 @@ class Measurement:
     excitation_wavelength_setting: str | None = None
     emission_wavelength_setting: str | None = None
     dilution_factor_setting: float | None = None
-    operating_minimum: float | None = None
-    operating_maximum: float | None = None
     original_sample_concentration: JsonFloat | None = None
     original_sample_concentration_unit: str | None = None
-    qubit_tube_concentration: JsonFloat | None = None
-    qubit_tube_concentration_units: str | None = None
-    standard_1_concentration: float | None = None
-    standard_2_concentration: float | None = None
-    standard_3_concentration: float | None = None
     baseline_absorbance: float | None = None
     electronic_absorbance_reference_wavelength_setting: float | None = None
-    nucleic_acid_factor: float | None = None
 
     # Measurements
     absorbance: JsonFloat | None = None
@@ -152,6 +144,11 @@ class Measurement:
     # Processed data
     calculated_data: list[CalculatedDataItem] | None = None
     processed_data: ProcessedData | None = None
+
+    # Custom metadata
+    custom_info: dict[str, Any] | None = None
+    sample_custom_info: dict[str, Any] | None = None
+    device_control_custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -205,6 +202,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     model_number=data.metadata.model_number,
                     brand_name=data.metadata.brand_name,
                     product_manufacturer=data.metadata.product_manufacturer,
+                    equipment_serial_number=data.metadata.equipment_serial_number,
                 ),
                 data_system_document=DataSystemDocument(
                     file_name=data.metadata.file_name,
@@ -262,50 +260,49 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_ultraviolet_absorbance_measurement_document(
         self, measurement: Measurement, metadata: Metadata
     ) -> UltravioletAbsorbancePointDetectionMeasurementDocumentItems:
-        return add_custom_information_document(
-            UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
-                measurement_identifier=measurement.identifier,
-                sample_document=self._get_sample_document(measurement),
-                processed_data_aggregate_document=self._get_processed_data_aggregate_document(
-                    measurement.processed_data
-                ),
-                device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
-                    device_control_document=[
-                        add_custom_information_document(
-                            UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
-                                device_type=metadata.device_type,
-                                detector_wavelength_setting=quantity_or_none(
-                                    TQuantityValueNanometer,
-                                    measurement.detector_wavelength_setting,
-                                ),
-                                electronic_absorbance_reference_bandwidth_setting=quantity_or_none(
-                                    TQuantityValueNanometer,
-                                    measurement.electronic_absorbance_reference_wavelength_setting,
-                                ),
-                            ),
-                            self._get_device_control_custom_document(measurement),
-                        )
-                    ]
-                ),
-                absorbance=TQuantityValueMilliAbsorbanceUnit(
-                    value=assert_not_none(measurement.absorbance)  # type: ignore[arg-type]
-                ),
-                calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
-                    measurement.calculated_data
-                ),
+        doc = UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
+            measurement_identifier=measurement.identifier,
+            sample_document=self._get_sample_document(measurement),
+            processed_data_aggregate_document=self._get_processed_data_aggregate_document(
+                measurement.processed_data
             ),
-            custom_info_doc={
-                "baseline absorbance": quantity_or_none(
-                    TQuantityValueMilliAbsorbanceUnit,
-                    measurement.baseline_absorbance,
-                ),
-            },
+            device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
+                device_control_document=[
+                    add_custom_information_document(
+                        UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
+                            device_type=metadata.device_type,
+                            detector_wavelength_setting=quantity_or_none(
+                                TQuantityValueNanometer,
+                                measurement.detector_wavelength_setting,
+                            ),
+                            electronic_absorbance_reference_bandwidth_setting=quantity_or_none(
+                                TQuantityValueNanometer,
+                                measurement.electronic_absorbance_reference_wavelength_setting,
+                            ),
+                        ),
+                        self._get_device_control_custom_document(measurement),
+                    )
+                ]
+            ),
+            absorbance=TQuantityValueMilliAbsorbanceUnit(
+                value=assert_not_none(measurement.absorbance)  # type: ignore[arg-type]
+            ),
+            calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
+                measurement.calculated_data
+            ),
         )
+        custom_info_doc = (measurement.custom_info or {}) | {
+            "baseline absorbance": quantity_or_none(
+                TQuantityValueMilliAbsorbanceUnit,
+                measurement.baseline_absorbance,
+            ),
+        }
+        return add_custom_information_document(doc, custom_info_doc)
 
     def _get_ultraviolet_absorbance_spectrum_measurement_document(
         self, measurement: Measurement, metadata: Metadata
     ) -> UltravioletAbsorbanceSpectrumDetectionMeasurementDocumentItems:
-        return UltravioletAbsorbanceSpectrumDetectionMeasurementDocumentItems(
+        doc = UltravioletAbsorbanceSpectrumDetectionMeasurementDocumentItems(
             measurement_identifier=measurement.identifier,
             sample_document=self._get_sample_document(measurement),
             processed_data_aggregate_document=self._get_processed_data_aggregate_document(
@@ -324,6 +321,7 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
             absorption_spectrum_data_cube=self._get_data_cube(measurement),
         )
+        return add_custom_information_document(doc, measurement.custom_info)
 
     def _get_data_cube(self, measurement: Measurement) -> TDatacube:
         if not measurement.data_cube:
@@ -357,7 +355,7 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_fluorescence_measurement_document(
         self, measurement: Measurement, metadata: Metadata
     ) -> FluorescencePointDetectionMeasurementDocumentItems:
-        return FluorescencePointDetectionMeasurementDocumentItems(
+        doc = FluorescencePointDetectionMeasurementDocumentItems(
             measurement_identifier=measurement.identifier,
             sample_document=self._get_sample_document(measurement),
             processed_data_aggregate_document=self._get_processed_data_aggregate_document(
@@ -381,11 +379,13 @@ class Mapper(SchemaMapper[Data, Model]):
                 value=assert_not_none(measurement.fluorescence)  # type: ignore[arg-type]
             ),
         )
+        return add_custom_information_document(doc, measurement.custom_info)
 
     def _get_device_control_custom_document(
         self, measurement: Measurement
     ) -> dict[str, Any]:
-        return {
+        # TODO(ASM gaps): we believe these values should be introduced to ASM.
+        custom_info = {
             "sample volume setting": quantity_or_none(
                 TQuantityValueMicroliter, measurement.sample_volume_setting
             ),
@@ -394,41 +394,17 @@ class Mapper(SchemaMapper[Data, Model]):
             "dilution factor": quantity_or_none(
                 TQuantityValueUnitless, measurement.dilution_factor_setting
             ),
-            "operating minimum": quantity_or_none(
-                TQuantityValueNanometer, measurement.operating_minimum
-            ),
-            "operating maximum": quantity_or_none(
-                TQuantityValueNanometer, measurement.operating_maximum
-            ),
-            "nucleic acid factor": quantity_or_none(
-                TQuantityValueUnitless, measurement.nucleic_acid_factor
-            ),
         }
+        return (measurement.device_control_custom_info or {}) | custom_info
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
-        custom_document = {
+        # TODO(ASM gaps): we believe these values should be introduced to ASM.
+        custom_info_doc = {
             "original sample concentration": quantity_or_none(
                 get_quantity_class(measurement.original_sample_concentration_unit)
                 or TQuantityValueUnitless,
                 measurement.original_sample_concentration,
-            ),
-            "qubit tube concentration": quantity_or_none(
-                get_quantity_class(measurement.qubit_tube_concentration_units)
-                or TQuantityValueUnitless,
-                measurement.qubit_tube_concentration,
-            ),
-            "standard 1 concentration": quantity_or_none(
-                TQuantityValueRelativeFluorescenceUnit,
-                measurement.standard_1_concentration,
-            ),
-            "standard 2 concentration": quantity_or_none(
-                TQuantityValueRelativeFluorescenceUnit,
-                measurement.standard_2_concentration,
-            ),
-            "standard 3 concentration": quantity_or_none(
-                TQuantityValueRelativeFluorescenceUnit,
-                measurement.standard_3_concentration,
-            ),
+            )
         }
         return add_custom_information_document(
             SampleDocument(
@@ -437,7 +413,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 location_identifier=measurement.location_identifier,
                 well_plate_identifier=measurement.well_plate_identifier,
             ),
-            custom_document,
+            (measurement.sample_custom_info or {}) | custom_info_doc,
         )
 
     def _get_processed_data_aggregate_document(
