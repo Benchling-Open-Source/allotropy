@@ -592,7 +592,19 @@
       "unit": {
         "type": "string",
         "const": "cm^2/g",
-        "$asm.unit-iri": "http://qudt.org/vocab/unit#SquareCentimetersPerGram"
+        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#SquareCentimetersPerGram"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
+  "SquareCentimetersPerMole": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "cm^2/mol",
+        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#SquareCentimetersPerMole"
       }
     },
     "required": [
