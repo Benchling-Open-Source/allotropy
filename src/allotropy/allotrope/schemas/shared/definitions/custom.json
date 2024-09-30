@@ -999,6 +999,26 @@
       }
     ]
   },
+  "tQuantityValueSquareCentimetersPerMole": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/SquareCentimetersPerMole"
+      }
+    ]
+  },
+  "tNullableQuantityValueSquareCentimetersPerMole": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/SquareCentimetersPerMole"
+      }
+    ]
+  },
   "tQuantityValueTODO": {
     "allOf": [
       {

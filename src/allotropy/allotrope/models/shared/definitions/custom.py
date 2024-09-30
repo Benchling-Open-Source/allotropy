@@ -56,6 +56,7 @@ from allotropy.allotrope.models.shared.definitions.units import (
     RelativeLightUnitTimesSecond,
     SecondTime,
     SquareCentimetersPerGram,
+    SquareCentimetersPerMole,
     TODO,
     Unitless,
     UnitPerLiter,
@@ -626,6 +627,18 @@ class TQuantityValueSquareCentimetersPerGram(SquareCentimetersPerGram, TQuantity
 @dataclass(frozen=True, kw_only=True)
 class TNullableQuantityValueSquareCentimetersPerGram(
     SquareCentimetersPerGram, TNullableQuantityValue
+):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueSquareCentimetersPerMole(SquareCentimetersPerMole, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValueSquareCentimetersPerMole(
+    SquareCentimetersPerMole, TNullableQuantityValue
 ):
     pass
 
