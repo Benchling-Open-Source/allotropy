@@ -1,10 +1,10 @@
 import pandas as pd
 import pytest
 
-from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
+from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
+from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
     ScanPositionSettingPlateReader,
 )
-from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure import (
@@ -482,7 +482,8 @@ def test_create_labels() -> None:
         detector_gain_setting="2",
     )
 
-    assert Labels.create(reader) == expected
+    label = Labels.create(reader)
+    assert label == expected
 
 
 def test_create_instrument() -> None:
