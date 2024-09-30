@@ -260,6 +260,11 @@ class SquareCentimetersPerGram(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class SquareCentimetersPerMole(HasUnit):
+    unit: str = "cm^2/mol"
+
+
+@dataclass(frozen=True, kw_only=True)
 class TODO(HasUnit):
     unit: str = "TODO"
 
