@@ -33,7 +33,7 @@ from allotropy.parsers.agilent_gen5_image.constants import (
     ReadType,
     SETTINGS_SECTION_REGEX,
     TRANSMITTED_LIGHT_MAP,
-    UNSUPPORTED_READ_TYPE_ERROR,
+    UNSUPPORTED_READ_TYPE_ERROR, METADATA_ONLY,
 )
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import LinesReader, SectionLinesReader
@@ -268,7 +268,7 @@ def create_results(
                         header_data,
                         read_section,
                         instrument_settings,
-                        "METATADA ONLY",
+                        METADATA_ONLY,
                         None,
                     )
                     for read_section in read_data.read_sections
