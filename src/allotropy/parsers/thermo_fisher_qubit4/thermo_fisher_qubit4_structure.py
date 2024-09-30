@@ -4,6 +4,7 @@ from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectr
     ContainerType,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import NaN
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
     Measurement,
     MeasurementGroup,
@@ -23,6 +24,9 @@ EMISSION_WAVELENGTH_TO_MEASUREMENT_COLUMN = {
 
 
 def create_measurement_group(data: SeriesData) -> MeasurementGroup:
+    std_1_rfu = data.get(float, "Std 1 RFU", validate=SeriesData.NOT_NAN)
+    std_2_rfu = data.get(float, "Std 2 RFU", validate=SeriesData.NOT_NAN)
+    std_3_rfu = data.get(float, "Std 3 RFU", validate=SeriesData.NOT_NAN)
     return MeasurementGroup(
         measurement_time=data[str, "Test Date"],
         experiment_type=data.get(str, "Assay Name"),
@@ -54,17 +58,27 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
                 original_sample_concentration_unit=data.get(
                     str, "Units_Original sample conc."
                 ),
-                qubit_tube_concentration=data.get(float, "Qubit® tube conc.", NaN),
-                qubit_tube_concentration_units=data.get(str, "Units_Qubit® tube conc."),
-                standard_1_concentration=data.get(
-                    float, "Std 1 RFU", validate=SeriesData.NOT_NAN
-                ),
-                standard_2_concentration=data.get(
-                    float, "Std 2 RFU", validate=SeriesData.NOT_NAN
-                ),
-                standard_3_concentration=data.get(
-                    float, "Std 3 RFU", validate=SeriesData.NOT_NAN
-                ),
+                sample_custom_info={
+                    "qubit tube concentration": {
+                        "value": data.get(float, "Qubit® tube conc.", NaN),
+                        "unit": data.get(str, "Units_Qubit® tube conc.", UNITLESS),
+                    },
+                    "standard 1 concentration": {"value": std_1_rfu, "unit": "RFU"}
+                    if std_1_rfu is not None
+                    else None,
+                    "standard 2 concentration": {
+                        "value": std_2_rfu,
+                        "unit": "RFU",
+                    }
+                    if std_2_rfu is not None
+                    else None,
+                    "standard 3 concentration": {
+                        "value": std_3_rfu,
+                        "unit": "RFU",
+                    }
+                    if std_3_rfu is not None
+                    else None,
+                },
             )
         ],
     )

@@ -17,11 +17,11 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 
 
 def create_measurement_group(data: SeriesData) -> MeasurementGroup:
-    total_cell_count = data.get(float, "Cell count")
+    total_cell_count = data.get(float, "Cell count", validate=SeriesData.NOT_NAN)
     total_cell_count = (
         total_cell_count if total_cell_count is None else round(total_cell_count)
     )
-    viable_cell_count = data.get(float, "Viable cells")
+    viable_cell_count = data.get(float, "Viable cells", validate=SeriesData.NOT_NAN)
     viable_cell_count = (
         viable_cell_count if viable_cell_count is None else round(viable_cell_count)
     )

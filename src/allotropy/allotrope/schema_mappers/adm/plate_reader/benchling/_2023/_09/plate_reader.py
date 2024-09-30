@@ -317,6 +317,10 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement.excitation_wavelength_setting,
             ),
         )
+        # TODO(ASM gaps): we think this should be added to ASM
+        custom_info_doc = {
+            "LED filter": measurement.led_filter,
+        }
 
         return OpticalImagingMeasurementDocumentItems(
             measurement_identifier=measurement.identifier,
@@ -324,13 +328,8 @@ class Mapper(SchemaMapper[Data, Model]):
             device_control_aggregate_document=OpticalImagingDeviceControlAggregateDocument(
                 device_control_document=[
                     add_custom_information_document(
-                        device_control_document,
-                        {
-                            "LED filter": measurement.led_filter,
-                        },
+                        device_control_document, custom_info_doc
                     )
-                    if measurement.led_filter
-                    else device_control_document
                 ]
             ),
             processed_data_aggregate_document=self._get_processed_data_aggregate_document(
