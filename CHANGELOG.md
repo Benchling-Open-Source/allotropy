@@ -55,6 +55,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add schema mapper for the `REC/2024/06/plate-reader` schema.
 - Checks for missing well item amplification and results data in quantstudio
 - Add csv support to ThermoFisher Nanodrop One
+- Add Thermo SkanIt adapter
 - Made Agilent Gen5 adapter compatible with the new REC schema
 
 ### Fixed
