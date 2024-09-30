@@ -1,5 +1,5 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2024/06/plate-reader.manifest",
     "plate reader aggregate document": {
         "plate reader document": [
             {
@@ -12995,6 +12995,8 @@
             "product manufacturer": "BMG LABTECH"
         },
         "data system document": {
+            "ASM file identifier": "N/A",
+            "data system instance identifier": "N/A",
             "file name": "16-02-29 14-34-46 Transcreener ADP2 FI.csv",
             "UNC path": "C:\\Program Files (x86)\\BMG\\PHERAstar\\User\\Data",
             "software name": "BMG MARS",
