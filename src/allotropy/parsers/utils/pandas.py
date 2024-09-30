@@ -21,6 +21,7 @@ from allotropy.parsers.utils.values import (
     assert_is_type,
     assert_not_none,
     str_to_bool,
+    try_float_or_none,
 )
 from allotropy.types import IOType
 
@@ -306,7 +307,9 @@ class SeriesData:
                 )
             if type_ is float and isinstance(raw_value, str) and "%" in raw_value:
                 raw_value = raw_value.strip("%")
-            value = None if raw_value is None else type_(raw_value)
+            convert = try_float_or_none if type_ is float else type_
+            # mypy can't figure out that try_float_or_none will only be used when type_ is float.
+            value = None if raw_value is None else convert(raw_value)  # type: ignore[operator]
         except ValueError:
             value = None
         return default if value is None else value
