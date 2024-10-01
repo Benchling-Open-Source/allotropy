@@ -74,7 +74,7 @@ def get_schema_path_from_reference(reference: str) -> Path:
     if not ref_match:
         msg = f"Could not parse reference: {reference}"
         raise ValueError(msg)
-    return Path(f"{ref_match.groups()[0]}.json")
+    return Path(f"{ref_match.groups()[0]}.json".replace("embed", ""))
 
 
 def get_model_path_from_schema_path(schema_path: Path) -> Path:
