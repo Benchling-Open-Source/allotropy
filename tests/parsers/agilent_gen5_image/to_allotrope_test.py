@@ -6,7 +6,6 @@ from allotropy.constants import CHARDET_ENCODING
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parser_factory import Vendor
 from allotropy.parsers.agilent_gen5_image.constants import (
-    DEFAULT_EXPORT_FORMAT_ERROR,
     NO_PLATE_DATA_ERROR,
     UNSUPPORTED_READ_TYPE_ERROR,
 )
@@ -25,15 +24,6 @@ def test_to_allotrope_unsupported_kinetic_file() -> None:
     with pytest.raises(AllotropeConversionError, match=UNSUPPORTED_READ_TYPE_ERROR):
         from_file(
             f"{TESTDATA}/errors/kinetics_single_image.txt",
-            VENDOR_TYPE,
-            encoding=CHARDET_ENCODING,
-        )
-
-
-def test_to_allotrope_results_in_separate_matrices() -> None:
-    with pytest.raises(AllotropeConversionError, match=DEFAULT_EXPORT_FORMAT_ERROR):
-        from_file(
-            f"{TESTDATA}/errors/image_montage_no_results_table.txt",
             VENDOR_TYPE,
             encoding=CHARDET_ENCODING,
         )

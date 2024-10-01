@@ -1,0 +1,64 @@
+
+
+Software Version	1.11.11
+
+
+
+Experiment File Path:	C:\Gen5\Experiments\4ChTest.xpt
+Protocol File Path:	C:\Gen5\Protocols\4ChTest.prt
+
+
+
+Plate Number	Plate 1
+Date	9/19/2024
+Time	10:34:43 AM
+Reader Type:	Cytation5
+Reader Serial Number:	99999999A
+Reading Type	Reader
+
+Procedure Details
+
+Plate Type	Costar 6 well (Use plate lid)
+Eject plate on completion
+Set Temperature	Setpoint 37�C, Gradient 0 �C
+	Preheat before moving to next step
+Read	four_channels
+	Image Montage
+	Full Plate
+	Objective: 4x
+	Field of View: Full WFOV
+	Channel 1:  Bright Field
+	    LED intensity: 5, Integration time: 100 msec, Camera gain: 10
+	    Fixed focal height at bottom elevation plus 10 �m
+	    Vibration CV threshold: 0.01
+	    Images to average: 1
+	Channel 2:  DAPI 377,447
+	    Auto exposure: A1
+	    Target exposure percentage: 75
+	    Skip percentage: 0.1
+	    Use default integration threshold
+	    Use focal height from first channel with offset of 0 �m
+	    Vibration CV threshold: 0.01
+	    Images to average: 1
+	Channel 3:  Bright Field:High Contrast
+	    Auto exposure: A1
+	    Target exposure percentage: 75
+	    Skip percentage: 0.1
+	    Use default integration threshold
+	    Use focal height from first channel with offset of 0 �m
+	    Vibration CV threshold: 0.01
+	    Images to average: 1
+	Channel 4:  GFP 469,525
+	    Auto exposure: A1
+	    Target exposure percentage: 75
+	    Skip percentage: 0.1
+	    Use default integration threshold
+	    Use focal height from first channel with offset of 0 �m
+	    Vibration CV threshold: 0.01
+	    Images to average: 1
+	Horizontal offset: 0 �m, Vertical offset: 0 �m
+	Delay after plate movement: 300 msec
+	Montage rows: 1, columns: 2
+	Montage horizontal spacing: 1773 �m, vertical spacing: 1257 �m
+	Montage autofocus option: Autofocus option based on objective size
+	Ignore montage images outside of well
