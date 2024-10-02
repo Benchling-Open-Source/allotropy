@@ -30,7 +30,7 @@ class MethodicalMindParser(MapperVendorParser[Data, Model]):
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = MethodicalMindReader(named_file_contents)
         return Data(
-            create_metadata(Header.create(reader.plate_headers[0])),
+            create_metadata(Header.create(reader.plate_headers[0]), named_file_contents.original_file_name),
             create_measurement_groups(
                 [PlateData.create(header, data) for header, data in reader]
             ),

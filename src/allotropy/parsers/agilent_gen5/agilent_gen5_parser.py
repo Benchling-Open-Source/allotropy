@@ -81,7 +81,7 @@ class AgilentGen5Parser(MapperVendorParser[Data, Model]):
             raise AllotropeConversionError(NO_MEASUREMENTS_ERROR)
 
         return Data(
-            metadata=create_metadata(header_data),
+            metadata=create_metadata(header_data, named_file_contents.original_file_name),
             measurement_groups=measurement_groups,
             calculated_data=calculated_data,
         )

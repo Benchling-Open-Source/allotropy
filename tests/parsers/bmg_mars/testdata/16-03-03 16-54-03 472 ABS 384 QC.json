@@ -4,14 +4,8 @@
         "plate reader document": [
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -24,6 +18,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_0",
                             "sample document": {
                                 "sample identifier": "472-0016 A1",
                                 "location identifier": "A1",
@@ -35,6 +30,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -42,14 +42,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_1",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -62,6 +56,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_1",
                             "sample document": {
                                 "sample identifier": "472-0016 A2",
                                 "location identifier": "A2",
@@ -73,6 +68,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -80,14 +80,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_2",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -100,6 +94,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_2",
                             "sample document": {
                                 "sample identifier": "472-0016 A3",
                                 "location identifier": "A3",
@@ -111,6 +106,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -118,14 +118,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_3",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -138,6 +132,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_3",
                             "sample document": {
                                 "sample identifier": "472-0016 A4",
                                 "location identifier": "A4",
@@ -149,6 +144,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -156,14 +156,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_4",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -176,6 +170,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_4",
                             "sample document": {
                                 "sample identifier": "472-0016 A5",
                                 "location identifier": "A5",
@@ -187,6 +182,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -194,14 +194,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_5",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -214,6 +208,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_5",
                             "sample document": {
                                 "sample identifier": "472-0016 A6",
                                 "location identifier": "A6",
@@ -225,6 +220,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -232,14 +232,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_6",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -252,6 +246,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_6",
                             "sample document": {
                                 "sample identifier": "472-0016 A7",
                                 "location identifier": "A7",
@@ -263,6 +258,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -270,14 +270,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_7",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -290,6 +284,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_7",
                             "sample document": {
                                 "sample identifier": "472-0016 A18",
                                 "location identifier": "A18",
@@ -301,6 +296,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -308,14 +308,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_8",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -328,6 +322,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_8",
                             "sample document": {
                                 "sample identifier": "472-0016 A19",
                                 "location identifier": "A19",
@@ -339,6 +334,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -346,14 +346,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_9",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -366,6 +360,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_9",
                             "sample document": {
                                 "sample identifier": "472-0016 A20",
                                 "location identifier": "A20",
@@ -377,6 +372,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -384,14 +384,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_10",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -404,6 +398,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_10",
                             "sample document": {
                                 "sample identifier": "472-0016 A21",
                                 "location identifier": "A21",
@@ -415,6 +410,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -422,14 +422,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_11",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -442,6 +436,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_11",
                             "sample document": {
                                 "sample identifier": "472-0016 A22",
                                 "location identifier": "A22",
@@ -453,6 +448,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -460,14 +460,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_12",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -480,6 +474,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_12",
                             "sample document": {
                                 "sample identifier": "472-0016 A23",
                                 "location identifier": "A23",
@@ -491,6 +486,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -498,14 +498,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_13",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -518,6 +512,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_13",
                             "sample document": {
                                 "sample identifier": "472-0016 A24",
                                 "location identifier": "A24",
@@ -529,6 +524,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -536,14 +536,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_14",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -556,6 +550,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_14",
                             "sample document": {
                                 "sample identifier": "472-0016 B1",
                                 "location identifier": "B1",
@@ -567,6 +562,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -574,14 +574,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_15",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -594,6 +588,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_15",
                             "sample document": {
                                 "sample identifier": "472-0016 B2",
                                 "location identifier": "B2",
@@ -605,6 +600,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -612,14 +612,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_16",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -632,6 +626,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_16",
                             "sample document": {
                                 "sample identifier": "472-0016 B3",
                                 "location identifier": "B3",
@@ -643,6 +638,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -650,14 +650,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_17",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -670,6 +664,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_17",
                             "sample document": {
                                 "sample identifier": "472-0016 B4",
                                 "location identifier": "B4",
@@ -681,6 +676,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -688,14 +688,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_18",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -708,6 +702,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_18",
                             "sample document": {
                                 "sample identifier": "472-0016 B5",
                                 "location identifier": "B5",
@@ -719,6 +714,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -726,14 +726,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_19",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -746,6 +740,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_19",
                             "sample document": {
                                 "sample identifier": "472-0016 B6",
                                 "location identifier": "B6",
@@ -757,6 +752,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -764,14 +764,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_20",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -784,6 +778,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_20",
                             "sample document": {
                                 "sample identifier": "472-0016 B7",
                                 "location identifier": "B7",
@@ -795,6 +790,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -802,14 +802,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_21",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -822,6 +816,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_21",
                             "sample document": {
                                 "sample identifier": "472-0016 B18",
                                 "location identifier": "B18",
@@ -833,6 +828,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -840,14 +840,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_22",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -860,6 +854,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_22",
                             "sample document": {
                                 "sample identifier": "472-0016 B19",
                                 "location identifier": "B19",
@@ -871,6 +866,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -878,14 +878,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_23",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -898,6 +892,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_23",
                             "sample document": {
                                 "sample identifier": "472-0016 B20",
                                 "location identifier": "B20",
@@ -909,6 +904,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -916,14 +916,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_24",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -936,6 +930,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_24",
                             "sample document": {
                                 "sample identifier": "472-0016 B21",
                                 "location identifier": "B21",
@@ -947,6 +942,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -954,14 +954,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_25",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -974,6 +968,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_25",
                             "sample document": {
                                 "sample identifier": "472-0016 B22",
                                 "location identifier": "B22",
@@ -985,6 +980,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -992,14 +992,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_26",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1012,6 +1006,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_26",
                             "sample document": {
                                 "sample identifier": "472-0016 B23",
                                 "location identifier": "B23",
@@ -1023,6 +1018,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -1030,14 +1030,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_27",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1050,6 +1044,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_27",
                             "sample document": {
                                 "sample identifier": "472-0016 B24",
                                 "location identifier": "B24",
@@ -1061,6 +1056,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -1068,14 +1068,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_28",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1088,6 +1082,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_28",
                             "sample document": {
                                 "sample identifier": "472-0016 C1",
                                 "location identifier": "C1",
@@ -1099,6 +1094,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -1106,14 +1106,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_29",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1126,6 +1120,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_29",
                             "sample document": {
                                 "sample identifier": "472-0016 C2",
                                 "location identifier": "C2",
@@ -1137,6 +1132,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -1144,14 +1144,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_30",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1164,6 +1158,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_30",
                             "sample document": {
                                 "sample identifier": "472-0016 C3",
                                 "location identifier": "C3",
@@ -1175,6 +1170,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -1182,14 +1182,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_31",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1202,6 +1196,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_31",
                             "sample document": {
                                 "sample identifier": "472-0016 C4",
                                 "location identifier": "C4",
@@ -1213,6 +1208,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -1220,14 +1220,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_32",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1240,6 +1234,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_32",
                             "sample document": {
                                 "sample identifier": "472-0016 C5",
                                 "location identifier": "C5",
@@ -1251,6 +1246,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -1258,14 +1258,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_33",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1278,6 +1272,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_33",
                             "sample document": {
                                 "sample identifier": "472-0016 C6",
                                 "location identifier": "C6",
@@ -1289,6 +1284,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -1296,14 +1296,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_34",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1316,6 +1310,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_34",
                             "sample document": {
                                 "sample identifier": "472-0016 D1",
                                 "location identifier": "D1",
@@ -1327,6 +1322,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -1334,14 +1334,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_35",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1354,6 +1348,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_35",
                             "sample document": {
                                 "sample identifier": "472-0016 D2",
                                 "location identifier": "D2",
@@ -1365,6 +1360,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -1372,14 +1372,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_36",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1392,6 +1386,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_36",
                             "sample document": {
                                 "sample identifier": "472-0016 D3",
                                 "location identifier": "D3",
@@ -1403,6 +1398,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -1410,14 +1410,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_37",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1430,6 +1424,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_37",
                             "sample document": {
                                 "sample identifier": "472-0016 D4",
                                 "location identifier": "D4",
@@ -1441,6 +1436,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -1448,14 +1448,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_38",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1468,6 +1462,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_38",
                             "sample document": {
                                 "sample identifier": "472-0016 D5",
                                 "location identifier": "D5",
@@ -1479,6 +1474,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -1486,14 +1486,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_39",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1506,6 +1500,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_39",
                             "sample document": {
                                 "sample identifier": "472-0016 D6",
                                 "location identifier": "D6",
@@ -1517,6 +1512,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -1524,14 +1524,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_40",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1544,6 +1538,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_40",
                             "sample document": {
                                 "sample identifier": "472-0016 E1",
                                 "location identifier": "E1",
@@ -1555,6 +1550,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -1562,14 +1562,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_41",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1582,6 +1576,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_41",
                             "sample document": {
                                 "sample identifier": "472-0016 E2",
                                 "location identifier": "E2",
@@ -1593,6 +1588,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -1600,14 +1600,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_42",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1620,6 +1614,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_42",
                             "sample document": {
                                 "sample identifier": "472-0016 E3",
                                 "location identifier": "E3",
@@ -1631,6 +1626,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -1638,14 +1638,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_43",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1658,6 +1652,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_43",
                             "sample document": {
                                 "sample identifier": "472-0016 E4",
                                 "location identifier": "E4",
@@ -1669,6 +1664,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -1676,14 +1676,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_44",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1696,6 +1690,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_44",
                             "sample document": {
                                 "sample identifier": "472-0016 E5",
                                 "location identifier": "E5",
@@ -1707,6 +1702,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -1714,14 +1714,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_45",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1734,6 +1728,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_45",
                             "sample document": {
                                 "sample identifier": "472-0016 E6",
                                 "location identifier": "E6",
@@ -1745,6 +1740,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -1752,14 +1752,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_46",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1772,6 +1766,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_46",
                             "sample document": {
                                 "sample identifier": "472-0016 F1",
                                 "location identifier": "F1",
@@ -1783,6 +1778,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -1790,14 +1790,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_47",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1810,6 +1804,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_47",
                             "sample document": {
                                 "sample identifier": "472-0016 F2",
                                 "location identifier": "F2",
@@ -1821,6 +1816,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -1828,14 +1828,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_48",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1848,6 +1842,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_48",
                             "sample document": {
                                 "sample identifier": "472-0016 F3",
                                 "location identifier": "F3",
@@ -1859,6 +1854,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -1866,14 +1866,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_49",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1886,6 +1880,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_49",
                             "sample document": {
                                 "sample identifier": "472-0016 F4",
                                 "location identifier": "F4",
@@ -1897,6 +1892,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -1904,14 +1904,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_50",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1924,6 +1918,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_50",
                             "sample document": {
                                 "sample identifier": "472-0016 F5",
                                 "location identifier": "F5",
@@ -1935,6 +1930,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -1942,14 +1942,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_51",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1962,6 +1956,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_51",
                             "sample document": {
                                 "sample identifier": "472-0016 F6",
                                 "location identifier": "F6",
@@ -1973,6 +1968,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -1980,14 +1980,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_52",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2000,6 +1994,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_52",
                             "sample document": {
                                 "sample identifier": "472-0016 G1",
                                 "location identifier": "G1",
@@ -2011,6 +2006,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -2018,14 +2018,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_53",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2038,6 +2032,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_53",
                             "sample document": {
                                 "sample identifier": "472-0016 G2",
                                 "location identifier": "G2",
@@ -2049,6 +2044,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -2056,14 +2056,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_54",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2076,6 +2070,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_54",
                             "sample document": {
                                 "sample identifier": "472-0016 G3",
                                 "location identifier": "G3",
@@ -2087,6 +2082,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -2094,14 +2094,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_55",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2114,6 +2108,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_55",
                             "sample document": {
                                 "sample identifier": "472-0016 G4",
                                 "location identifier": "G4",
@@ -2125,6 +2120,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -2132,14 +2132,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_56",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2152,6 +2146,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_56",
                             "sample document": {
                                 "sample identifier": "472-0016 G5",
                                 "location identifier": "G5",
@@ -2163,6 +2158,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -2170,14 +2170,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_57",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2190,6 +2184,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_57",
                             "sample document": {
                                 "sample identifier": "472-0016 G6",
                                 "location identifier": "G6",
@@ -2201,6 +2196,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -2208,14 +2208,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_58",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2228,6 +2222,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_58",
                             "sample document": {
                                 "sample identifier": "472-0016 H1",
                                 "location identifier": "H1",
@@ -2239,6 +2234,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -2246,14 +2246,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_59",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2266,6 +2260,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_59",
                             "sample document": {
                                 "sample identifier": "472-0016 H2",
                                 "location identifier": "H2",
@@ -2277,6 +2272,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -2284,14 +2284,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_60",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2304,6 +2298,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_60",
                             "sample document": {
                                 "sample identifier": "472-0016 H3",
                                 "location identifier": "H3",
@@ -2315,6 +2310,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -2322,14 +2322,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_61",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2342,6 +2336,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_61",
                             "sample document": {
                                 "sample identifier": "472-0016 H4",
                                 "location identifier": "H4",
@@ -2353,6 +2348,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -2360,14 +2360,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_62",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2380,6 +2374,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_62",
                             "sample document": {
                                 "sample identifier": "472-0016 H5",
                                 "location identifier": "H5",
@@ -2391,6 +2386,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -2398,14 +2398,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_63",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2418,6 +2412,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_63",
                             "sample document": {
                                 "sample identifier": "472-0016 H6",
                                 "location identifier": "H6",
@@ -2429,6 +2424,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -2436,14 +2436,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_64",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2456,6 +2450,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_64",
                             "sample document": {
                                 "sample identifier": "472-0016 I1",
                                 "location identifier": "I1",
@@ -2467,6 +2462,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -2474,14 +2474,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_65",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2494,6 +2488,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_65",
                             "sample document": {
                                 "sample identifier": "472-0016 I2",
                                 "location identifier": "I2",
@@ -2505,6 +2500,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -2512,14 +2512,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_66",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2532,6 +2526,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_66",
                             "sample document": {
                                 "sample identifier": "472-0016 I3",
                                 "location identifier": "I3",
@@ -2543,6 +2538,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -2550,14 +2550,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_67",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2570,6 +2564,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_67",
                             "sample document": {
                                 "sample identifier": "472-0016 I4",
                                 "location identifier": "I4",
@@ -2581,6 +2576,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -2588,14 +2588,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_68",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2608,6 +2602,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_68",
                             "sample document": {
                                 "sample identifier": "472-0016 I5",
                                 "location identifier": "I5",
@@ -2619,6 +2614,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -2626,14 +2626,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_69",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2646,6 +2640,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_69",
                             "sample document": {
                                 "sample identifier": "472-0016 I6",
                                 "location identifier": "I6",
@@ -2657,6 +2652,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -2664,14 +2664,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_70",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2684,6 +2678,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_70",
                             "sample document": {
                                 "sample identifier": "472-0016 I7",
                                 "location identifier": "I7",
@@ -2695,6 +2690,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -2702,14 +2702,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_71",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2722,6 +2716,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_71",
                             "sample document": {
                                 "sample identifier": "472-0016 O1",
                                 "location identifier": "O1",
@@ -2733,6 +2728,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -2740,14 +2740,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_72",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2760,6 +2754,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_72",
                             "sample document": {
                                 "sample identifier": "472-0016 O2",
                                 "location identifier": "O2",
@@ -2771,6 +2766,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -2778,14 +2778,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_73",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2798,6 +2792,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_73",
                             "sample document": {
                                 "sample identifier": "472-0016 O3",
                                 "location identifier": "O3",
@@ -2809,6 +2804,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -2816,14 +2816,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_74",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2836,6 +2830,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_74",
                             "sample document": {
                                 "sample identifier": "472-0016 O4",
                                 "location identifier": "O4",
@@ -2847,6 +2842,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -2854,14 +2854,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_75",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2874,6 +2868,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_75",
                             "sample document": {
                                 "sample identifier": "472-0016 O5",
                                 "location identifier": "O5",
@@ -2885,6 +2880,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -2892,14 +2892,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_76",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2912,6 +2906,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_76",
                             "sample document": {
                                 "sample identifier": "472-0016 O6",
                                 "location identifier": "O6",
@@ -2923,6 +2918,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -2930,14 +2930,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_77",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2950,6 +2944,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_77",
                             "sample document": {
                                 "sample identifier": "472-0016 O7",
                                 "location identifier": "O7",
@@ -2961,6 +2956,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -2968,14 +2968,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_78",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2988,6 +2982,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_78",
                             "sample document": {
                                 "sample identifier": "472-0016 O18",
                                 "location identifier": "O18",
@@ -2999,6 +2994,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -3006,14 +3006,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_79",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3026,6 +3020,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_79",
                             "sample document": {
                                 "sample identifier": "472-0016 O19",
                                 "location identifier": "O19",
@@ -3037,6 +3032,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -3044,14 +3044,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_80",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3064,6 +3058,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_80",
                             "sample document": {
                                 "sample identifier": "472-0016 O20",
                                 "location identifier": "O20",
@@ -3075,6 +3070,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -3082,14 +3082,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_81",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3102,6 +3096,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_81",
                             "sample document": {
                                 "sample identifier": "472-0016 O21",
                                 "location identifier": "O21",
@@ -3113,6 +3108,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -3120,14 +3120,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_82",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3140,6 +3134,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_82",
                             "sample document": {
                                 "sample identifier": "472-0016 O22",
                                 "location identifier": "O22",
@@ -3151,6 +3146,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -3158,14 +3158,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_83",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3178,6 +3172,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_83",
                             "sample document": {
                                 "sample identifier": "472-0016 O23",
                                 "location identifier": "O23",
@@ -3189,6 +3184,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -3196,14 +3196,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_84",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3216,6 +3210,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_84",
                             "sample document": {
                                 "sample identifier": "472-0016 O24",
                                 "location identifier": "O24",
@@ -3227,6 +3222,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -3234,14 +3234,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_85",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3254,6 +3248,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_85",
                             "sample document": {
                                 "sample identifier": "472-0016 P1",
                                 "location identifier": "P1",
@@ -3265,6 +3260,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -3272,14 +3272,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_86",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3292,6 +3286,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_86",
                             "sample document": {
                                 "sample identifier": "472-0016 P2",
                                 "location identifier": "P2",
@@ -3303,6 +3298,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -3310,14 +3310,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_87",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3330,6 +3324,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_87",
                             "sample document": {
                                 "sample identifier": "472-0016 P3",
                                 "location identifier": "P3",
@@ -3341,6 +3336,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -3348,14 +3348,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_88",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3368,6 +3362,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_88",
                             "sample document": {
                                 "sample identifier": "472-0016 P4",
                                 "location identifier": "P4",
@@ -3379,6 +3374,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -3386,14 +3386,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_89",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3406,6 +3400,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_89",
                             "sample document": {
                                 "sample identifier": "472-0016 P5",
                                 "location identifier": "P5",
@@ -3417,6 +3412,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -3424,14 +3424,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_90",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3444,6 +3438,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_90",
                             "sample document": {
                                 "sample identifier": "472-0016 P6",
                                 "location identifier": "P6",
@@ -3455,6 +3450,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -3462,14 +3462,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_91",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3482,6 +3476,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_91",
                             "sample document": {
                                 "sample identifier": "472-0016 P7",
                                 "location identifier": "P7",
@@ -3493,6 +3488,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -3500,14 +3500,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_92",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3520,6 +3514,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_92",
                             "sample document": {
                                 "sample identifier": "472-0016 P18",
                                 "location identifier": "P18",
@@ -3531,6 +3526,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -3538,14 +3538,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_93",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3558,6 +3552,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_93",
                             "sample document": {
                                 "sample identifier": "472-0016 P19",
                                 "location identifier": "P19",
@@ -3569,6 +3564,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -3576,14 +3576,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_94",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3596,6 +3590,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_94",
                             "sample document": {
                                 "sample identifier": "472-0016 P20",
                                 "location identifier": "P20",
@@ -3607,6 +3602,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -3614,14 +3614,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_95",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3634,6 +3628,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_95",
                             "sample document": {
                                 "sample identifier": "472-0016 P21",
                                 "location identifier": "P21",
@@ -3645,6 +3640,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -3652,14 +3652,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_96",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3672,6 +3666,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_96",
                             "sample document": {
                                 "sample identifier": "472-0016 P22",
                                 "location identifier": "P22",
@@ -3683,6 +3678,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -3690,14 +3690,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_97",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3710,6 +3704,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_97",
                             "sample document": {
                                 "sample identifier": "472-0016 P23",
                                 "location identifier": "P23",
@@ -3721,6 +3716,11 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
@@ -3728,14 +3728,8 @@
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2016-03-03T16:54:03+00:00",
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "BMG_MARS_TEST_ID_98",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3748,6 +3742,7 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "BMG_MARS_TEST_ID_98",
                             "sample document": {
                                 "sample identifier": "472-0016 P24",
                                 "location identifier": "P24",
@@ -3759,25 +3754,30 @@
                             }
                         }
                     ],
+                    "measurement time": "2016-03-03T16:54:03+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
                     "experiment type": "472 ABS 384 QC",
                     "container type": "well plate"
                 },
                 "analyst": "USER"
             }
         ],
+        "data system document": {
+            "ASM file identifier": "16-03-03 16-54-03 472 ABS 384 QC.json",
+            "data system instance identifier": "N/A",
+            "file name": "16-03-03 16-54-03 472 ABS 384 QC.csv",
+            "UNC path": "C:\\Program Files (x86)\\BMG\\PHERAstar\\User\\Data",
+            "ASM converter name": "allotropy_bmg_mars",
+            "ASM converter version": "0.1.56",
+            "software name": "BMG MARS"
+        },
         "device system document": {
             "device identifier": "N/A",
             "model number": "N/A",
             "product manufacturer": "BMG LABTECH"
-        },
-        "data system document": {
-            "ASM file identifier": "N/A",
-            "data system instance identifier": "N/A",
-            "file name": "16-03-03 16-54-03 472 ABS 384 QC.csv",
-            "UNC path": "C:\\Program Files (x86)\\BMG\\PHERAstar\\User\\Data",
-            "software name": "BMG MARS",
-            "ASM converter name": "allotropy_bmg_mars",
-            "ASM converter version": "0.1.49"
         }
     }
 }
