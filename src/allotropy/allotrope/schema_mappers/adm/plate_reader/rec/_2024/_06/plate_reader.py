@@ -10,6 +10,8 @@ from allotropy.allotrope.models.adm.plate_reader.rec._2024._06.plate_reader impo
     DeviceControlAggregateDocument,
     DeviceControlDocumentItem,
     DeviceSystemDocument,
+    ErrorAggregateDocument,
+    ErrorDocumentItem,
     MeasurementAggregateDocument,
     MeasurementDocument,
     Model,
@@ -116,6 +118,12 @@ class CalculatedDataItem:
 
 
 @dataclass(frozen=True)
+class ErrorDocument:
+    error: str
+    error_feature: str
+
+
+@dataclass(frozen=True)
 class Measurement:
     # Measurement metadata
     type_: MeasurementType
@@ -154,6 +162,9 @@ class Measurement:
 
     # Kinetic measurements
     profile_data_cube: DataCube | None = None
+
+    # error documents
+    error_document: list[ErrorDocument] | None = None
 
 
 @dataclass(frozen=True)
@@ -298,6 +309,17 @@ class Mapper(SchemaMapper[Data, Model]):
             compartment_temperature=quantity_or_none(
                 TQuantityValueDegreeCelsius, measurement.compartment_temperature
             ),
+            error_aggregate_document=ErrorAggregateDocument(
+                error_document=[
+                    ErrorDocumentItem(
+                        error=error.error,
+                        error_feature=error.error_feature,
+                    )
+                    for error in measurement.error_document
+                ]
+            )
+            if measurement.error_document
+            else None,
         )
 
     def _get_luminescence_measurement_document(
@@ -345,6 +367,17 @@ class Mapper(SchemaMapper[Data, Model]):
             compartment_temperature=quantity_or_none(
                 TQuantityValueDegreeCelsius, measurement.compartment_temperature
             ),
+            error_aggregate_document=ErrorAggregateDocument(
+                error_document=[
+                    ErrorDocumentItem(
+                        error=error.error,
+                        error_feature=error.error_feature,
+                    )
+                    for error in measurement.error_document
+                ]
+            )
+            if measurement.error_document
+            else None,
         )
 
     def _get_fluorescence_measurement_document(
@@ -404,6 +437,17 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueDegreeCelsius, measurement.compartment_temperature
             ),
             sample_document=self._get_sample_document(measurement),
+            error_aggregate_document=ErrorAggregateDocument(
+                error_document=[
+                    ErrorDocumentItem(
+                        error=error.error,
+                        error_feature=error.error_feature,
+                    )
+                    for error in measurement.error_document
+                ]
+            )
+            if measurement.error_document
+            else None,
         )
 
     def _get_profile_data_cube_measurement_document(

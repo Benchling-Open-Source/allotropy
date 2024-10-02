@@ -16,6 +16,7 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_rea
     DataCube,
     DataCubeComponent,
     DataSource,
+    ErrorDocument,
     Measurement,
     MeasurementGroup,
     MeasurementType,
@@ -39,6 +40,7 @@ from allotropy.parsers.agilent_gen5.constants import (
     MEASUREMENTS_DATA_POINT_KEY,
     MIRROR_KEY,
     NAN_EMISSION_EXCITATION,
+    NEGATIVE_ZERO,
     OPTICS_KEY,
     PATHLENGTH_CORRECTION_KEY,
     READ_DATA_MEASUREMENT_ERROR,
@@ -564,14 +566,23 @@ def create_results(
     measurement_labels = [
         label for r_data in read_data for label in r_data.measurement_labels
     ]
+    error_documents_per_well: defaultdict[str, list[ErrorDocument]] = defaultdict(
+        list[ErrorDocument]
+    )
     for row_name, row in data.iterrows():
         label = str(row.iloc[-1])
         for col_index, value in enumerate(row.iloc[:-1]):
             well_pos = f"{row_name}{col_index + 1}"
             well_value = try_non_nan_float_or_none(value)
-            # TODO: Report error documents for NaN values
+            # Report error documents for NaN values
             if well_value is None:
-                continue
+                error_documents_per_well[well_pos].append(
+                    ErrorDocument(
+                        error=str(value),
+                        error_feature=label,
+                    )
+                )
+                well_value = NEGATIVE_ZERO
             if label in measurement_labels:
                 well_to_measurements[well_pos].append(
                     MeasurementData(random_uuid_str(), well_value, label)
@@ -594,6 +605,7 @@ def create_results(
                     get_read_data_from_measurement(measurement, read_data),
                     sample_identifiers.get(well_position),
                     actual_temperature,
+                    error_documents=error_documents_per_well.get(well_position),
                 )
                 for measurement in measurements
             ],
@@ -784,6 +796,7 @@ def _create_measurement(
     kinetic_data: KineticData | None = None,
     kinetic_measurements: list[float | None] | None = None,
     kinetic_elapsed_time: list[float] | None = None,
+    error_documents: list[ErrorDocument] | None = None,
 ) -> Measurement:
     if read_data.read_mode == ReadMode.ABSORBANCE and not kinetic_data:
         measurement_type = MeasurementType.ULTRAVIOLET_ABSORBANCE
@@ -878,6 +891,7 @@ def _create_measurement(
         )
         if kinetic_elapsed_time and kinetic_measurements
         else None,
+        error_document=error_documents,
     )
 
 

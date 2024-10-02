@@ -1,0 +1,56 @@
+
+
+Software Version	3.12.08
+
+
+
+Experiment File Path:	\\Mac\Home\Downloads\ExperimentFile.xpt
+Protocol File Path:	C:\Users\user\Desktop\Plate123.prt
+
+
+
+Plate Number	Plate 1
+Date	9/15/2023
+Time	12:30:00 PM
+Reader Type:	Generic Reader
+Reader Serial Number:	12345678
+Reading Type	Reader
+
+Procedure Details
+
+Plate Type	Generic 96 UV
+Eject plate on completion
+Read	260
+	Absorbance Endpoint
+	Full Plate
+	Wavelengths:  260
+	Pathlength Correction: 977 / 900
+	    Absorbance at 1 cm: 0.18
+	Read Speed: Normal,  Delay: 100 msec,  Measurements/Data Point: 8
+
+Layout
+	1	2	3	4	5	6	7	8	9	10	11	12
+A	SPL1	SPL9	SPL17	SPL25	SPL33	SPL41	SPL49	SPL57	SPL65	SPL73	SPL81	SPL89	Well ID
+B	SPL2	SPL10	SPL18	SPL26	SPL34	SPL42	SPL50	SPL58	SPL66	SPL74	SPL82	SPL90	Well ID
+C	SPL3	SPL11	SPL19	SPL27	SPL35	SPL43	SPL51	SPL59	SPL67	SPL75	SPL83	SPL91	Well ID
+D	SPL4	SPL12	SPL20	SPL28	SPL36	SPL44	SPL52	SPL60	SPL68	SPL76	SPL84	SPL92	Well ID
+E	SPL5	SPL13	SPL21	SPL29	SPL37	SPL45	SPL53	SPL61	SPL69	SPL77	SPL85	SPL93	Well ID
+F	SPL6	SPL14	SPL22	SPL30	SPL38	SPL46	SPL54	SPL62	SPL70	SPL78	SPL86	SPL94	Well ID
+G	SPL7	SPL15	SPL23	SPL31	SPL39	SPL47	SPL55	SPL63	SPL71	SPL79	SPL87	BLK	Well ID
+H	SPL8	SPL16	SPL24	SPL32	SPL40	SPL48	SPL56	SPL64	SPL72	SPL80	SPL88	BLK	Well ID
+
+
+
+Actual Temperature:	26.3
+
+
+
+Actual Temperature:	26.3
+
+
+
+Actual Temperature:	26.3
+
+Results
+	1	2	3	4	5	6	7	8	9	10	11	12
+A	OVRFLW	0.560	0.481	0.554	0.416	0.587	0.522	0.487	0.574	0.496	0.605	0.650	260:260
