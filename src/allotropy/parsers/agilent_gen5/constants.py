@@ -39,7 +39,6 @@ DEVICE_TYPE = "plate reader"
 FILENAME_REGEX = r"^\d{6}_\d{6}_(?P<plate_identifier>.[^_]*)_.*\.txt$"
 
 NAN_EMISSION_EXCITATION = ["Full light", "Plug", "Hole"]
-NEGATIVE_ZERO = -0.0
 
 
 class ReadMode(str, Enum):

@@ -309,17 +309,9 @@ class Mapper(SchemaMapper[Data, Model]):
             compartment_temperature=quantity_or_none(
                 TQuantityValueDegreeCelsius, measurement.compartment_temperature
             ),
-            error_aggregate_document=ErrorAggregateDocument(
-                error_document=[
-                    ErrorDocumentItem(
-                        error=error.error,
-                        error_feature=error.error_feature,
-                    )
-                    for error in measurement.error_document
-                ]
-            )
-            if measurement.error_document
-            else None,
+            error_aggregate_document=self._get_error_aggregate_document(
+                measurement.error_document
+            ),
         )
 
     def _get_luminescence_measurement_document(
@@ -367,17 +359,9 @@ class Mapper(SchemaMapper[Data, Model]):
             compartment_temperature=quantity_or_none(
                 TQuantityValueDegreeCelsius, measurement.compartment_temperature
             ),
-            error_aggregate_document=ErrorAggregateDocument(
-                error_document=[
-                    ErrorDocumentItem(
-                        error=error.error,
-                        error_feature=error.error_feature,
-                    )
-                    for error in measurement.error_document
-                ]
-            )
-            if measurement.error_document
-            else None,
+            error_aggregate_document=self._get_error_aggregate_document(
+                measurement.error_document
+            ),
         )
 
     def _get_fluorescence_measurement_document(
@@ -437,17 +421,9 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueDegreeCelsius, measurement.compartment_temperature
             ),
             sample_document=self._get_sample_document(measurement),
-            error_aggregate_document=ErrorAggregateDocument(
-                error_document=[
-                    ErrorDocumentItem(
-                        error=error.error,
-                        error_feature=error.error_feature,
-                    )
-                    for error in measurement.error_document
-                ]
-            )
-            if measurement.error_document
-            else None,
+            error_aggregate_document=self._get_error_aggregate_document(
+                measurement.error_document
+            ),
         )
 
     def _get_profile_data_cube_measurement_document(
@@ -590,4 +566,21 @@ class Mapper(SchemaMapper[Data, Model]):
             data=TDatacubeData(
                 dimensions=data_cube.dimensions, measures=data_cube.measures  # type: ignore[arg-type]
             ),
+        )
+
+    def _get_error_aggregate_document(
+        self, error_documents: list[ErrorDocument] | None
+    ) -> ErrorAggregateDocument | None:
+        return (
+            ErrorAggregateDocument(
+                error_document=[
+                    ErrorDocumentItem(
+                        error=error.error,
+                        error_feature=error.error_feature,
+                    )
+                    for error in error_documents
+                ]
+            )
+            if error_documents
+            else None
         )

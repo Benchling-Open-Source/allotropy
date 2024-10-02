@@ -40,7 +40,6 @@ from allotropy.parsers.agilent_gen5.constants import (
     MEASUREMENTS_DATA_POINT_KEY,
     MIRROR_KEY,
     NAN_EMISSION_EXCITATION,
-    NEGATIVE_ZERO,
     OPTICS_KEY,
     PATHLENGTH_CORRECTION_KEY,
     READ_DATA_MEASUREMENT_ERROR,
@@ -55,7 +54,7 @@ from allotropy.parsers.agilent_gen5.constants import (
     WAVELENGTHS_KEY,
 )
 from allotropy.parsers.agilent_gen5_image.constants import POSSIBLE_WELL_COUNTS
-from allotropy.parsers.constants import NOT_APPLICABLE
+from allotropy.parsers.constants import NEGATIVE_ZERO, NOT_APPLICABLE
 from allotropy.parsers.lines_reader import SectionLinesReader
 from allotropy.parsers.utils.pandas import read_csv, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
