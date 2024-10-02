@@ -87,7 +87,7 @@ class WellData:
 def create_metadata(header: Header) -> Metadata:
     return Metadata(
         file_name=header.file_name.rsplit("\\", 1)[-1],
-        unc_path=NOT_APPLICABLE,
+        unc_path=header.file_name,
         software_name=header.version,
         software_version=header.version,
         device_identifier=NOT_APPLICABLE,
