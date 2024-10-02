@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import Enum
-import re
 from pathlib import Path
+import re
 
 import pandas as pd
 
