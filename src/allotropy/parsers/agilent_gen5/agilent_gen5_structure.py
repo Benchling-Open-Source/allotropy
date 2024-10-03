@@ -3,6 +3,7 @@ from __future__ import annotations
 from collections import defaultdict
 from dataclasses import dataclass
 from io import StringIO
+import math
 import re
 
 import pandas as pd
@@ -573,6 +574,8 @@ def create_results(
         for col_index, value in enumerate(row.iloc[:-1]):
             well_pos = f"{row_name}{col_index + 1}"
             well_value = try_non_nan_float_or_none(value)
+            if isinstance(value, float) and math.isnan(value):
+                continue
             # Report error documents for NaN values
             if well_value is None:
                 error_documents_per_well[well_pos].append(
