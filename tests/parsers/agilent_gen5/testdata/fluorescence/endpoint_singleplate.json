@@ -12022,9 +12022,9 @@
                     }
                 },
                 {
-                    "calculated data name": "normDAPI",
+                    "calculated data name": "normGFP",
                     "calculated result": {
-                        "value": -0.0,
+                        "value": -0.001,
                         "unit": "(unitless)"
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_236",
@@ -12042,7 +12042,7 @@
                     }
                 },
                 {
-                    "calculated data name": "normGFP",
+                    "calculated data name": "meanNormDAPI",
                     "calculated result": {
                         "value": -0.001,
                         "unit": "(unitless)"
@@ -12062,7 +12062,7 @@
                     }
                 },
                 {
-                    "calculated data name": "meanNormDAPI",
+                    "calculated data name": "meanNormGFP",
                     "calculated result": {
                         "value": -0.001,
                         "unit": "(unitless)"
@@ -12082,32 +12082,12 @@
                     }
                 },
                 {
-                    "calculated data name": "meanNormGFP",
-                    "calculated result": {
-                        "value": -0.001,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_239",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_11",
-                                "data source feature": "fluorescence"
-                            },
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_23",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
                     "calculated data name": "normDAPI",
                     "calculated result": {
                         "value": 1.008,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_240",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_239",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12127,7 +12107,7 @@
                         "value": 1.004,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_241",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_240",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12147,7 +12127,7 @@
                         "value": 0.997,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_242",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_241",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12167,7 +12147,7 @@
                         "value": 0.998,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_243",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_242",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12187,7 +12167,7 @@
                         "value": 0.577,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_244",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_243",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12207,7 +12187,7 @@
                         "value": 0.055,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_245",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_244",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12227,7 +12207,7 @@
                         "value": 0.437,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_246",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_245",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12247,7 +12227,7 @@
                         "value": 0.333,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_247",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_246",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12267,7 +12247,7 @@
                         "value": 0.756,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_248",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_247",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12287,7 +12267,7 @@
                         "value": 0.945,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_249",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_248",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12307,7 +12287,7 @@
                         "value": 0.408,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_250",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_249",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12327,7 +12307,7 @@
                         "value": 0.424,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_251",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_250",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12347,7 +12327,7 @@
                         "value": 0.127,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_252",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_251",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12367,7 +12347,7 @@
                         "value": 0.764,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_253",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_252",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12387,7 +12367,7 @@
                         "value": 0.4,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_254",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_253",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12407,7 +12387,7 @@
                         "value": 0.431,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_255",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_254",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12427,7 +12407,7 @@
                         "value": 0.352,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_256",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_255",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12447,7 +12427,7 @@
                         "value": 1.029,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_257",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_256",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12467,7 +12447,7 @@
                         "value": 0.45,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_258",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_257",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12487,7 +12467,7 @@
                         "value": 0.748,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_259",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_258",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12507,7 +12487,7 @@
                         "value": 0.99,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_260",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_259",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12527,7 +12507,7 @@
                         "value": 0.184,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_261",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_260",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12547,7 +12527,7 @@
                         "value": 0.668,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_262",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_261",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12567,7 +12547,7 @@
                         "value": 0.366,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_263",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_262",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12587,7 +12567,7 @@
                         "value": 0.468,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_264",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_263",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12607,7 +12587,7 @@
                         "value": 0.636,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_265",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_264",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12627,7 +12607,7 @@
                         "value": 0.542,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_266",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_265",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12647,7 +12627,7 @@
                         "value": 0.783,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_267",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_266",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12667,7 +12647,7 @@
                         "value": 0.801,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_268",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_267",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12687,7 +12667,7 @@
                         "value": 0.342,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_269",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_268",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12707,7 +12687,7 @@
                         "value": 0.541,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_270",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_269",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12727,7 +12707,7 @@
                         "value": 0.275,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_271",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_270",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12747,7 +12727,7 @@
                         "value": 0.913,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_272",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_271",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12767,7 +12747,7 @@
                         "value": 0.994,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_273",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_272",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12787,7 +12767,7 @@
                         "value": 0.564,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_274",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_273",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12807,7 +12787,7 @@
                         "value": 0.547,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_275",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_274",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12827,7 +12807,7 @@
                         "value": 0.112,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_276",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_275",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12847,7 +12827,7 @@
                         "value": 0.587,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_277",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_276",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12867,7 +12847,7 @@
                         "value": 0.613,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_278",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_277",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12887,7 +12867,7 @@
                         "value": 0.515,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_279",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_278",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12907,7 +12887,7 @@
                         "value": 0.38,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_280",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_279",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12927,7 +12907,7 @@
                         "value": 0.496,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_281",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_280",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12947,7 +12927,7 @@
                         "value": 0.572,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_282",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_281",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12967,7 +12947,7 @@
                         "value": 0.624,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_283",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_282",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -12982,9 +12962,29 @@
                     }
                 },
                 {
-                    "calculated data name": "normDAPI",
+                    "calculated data name": "normGFP",
                     "calculated result": {
-                        "value": -0.0,
+                        "value": -0.001,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_283",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_35",
+                                "data source feature": "fluorescence"
+                            },
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_47",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "meanNormDAPI",
+                    "calculated result": {
+                        "value": -0.001,
                         "unit": "(unitless)"
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_284",
@@ -13002,7 +13002,7 @@
                     }
                 },
                 {
-                    "calculated data name": "normGFP",
+                    "calculated data name": "meanNormGFP",
                     "calculated result": {
                         "value": -0.001,
                         "unit": "(unitless)"
@@ -13022,52 +13022,12 @@
                     }
                 },
                 {
-                    "calculated data name": "meanNormDAPI",
-                    "calculated result": {
-                        "value": -0.001,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_286",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_35",
-                                "data source feature": "fluorescence"
-                            },
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_47",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "meanNormGFP",
-                    "calculated result": {
-                        "value": -0.001,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_287",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_35",
-                                "data source feature": "fluorescence"
-                            },
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_47",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
                     "calculated data name": "normDAPI",
                     "calculated result": {
                         "value": 1.012,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_288",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_286",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13087,7 +13047,7 @@
                         "value": 0.999,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_289",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_287",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13107,7 +13067,7 @@
                         "value": 0.997,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_290",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_288",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13127,7 +13087,7 @@
                         "value": 0.998,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_291",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_289",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13147,7 +13107,7 @@
                         "value": 0.803,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_292",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_290",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13167,7 +13127,7 @@
                         "value": 0.401,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_293",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_291",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13187,7 +13147,7 @@
                         "value": 0.437,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_294",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_292",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13207,7 +13167,7 @@
                         "value": 0.333,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_295",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_293",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13227,7 +13187,7 @@
                         "value": 0.044,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_296",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_294",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13247,7 +13207,7 @@
                         "value": 0.387,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_297",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_295",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13267,7 +13227,7 @@
                         "value": 0.408,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_298",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_296",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13287,7 +13247,7 @@
                         "value": 0.424,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_299",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_297",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13307,7 +13267,7 @@
                         "value": 0.473,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_300",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_298",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13327,7 +13287,7 @@
                         "value": 0.34,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_301",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_299",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13347,7 +13307,7 @@
                         "value": 0.4,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_302",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_300",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13367,7 +13327,7 @@
                         "value": 0.431,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_303",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_301",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13387,7 +13347,7 @@
                         "value": 0.509,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_304",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_302",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13407,7 +13367,7 @@
                         "value": 0.411,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_305",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_303",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13427,7 +13387,7 @@
                         "value": 0.45,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_306",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_304",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13447,7 +13407,7 @@
                         "value": 0.748,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_307",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_305",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13467,7 +13427,7 @@
                         "value": 0.431,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_308",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_306",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13487,7 +13447,7 @@
                         "value": 0.209,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_309",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_307",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13507,7 +13467,7 @@
                         "value": 0.668,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_310",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_308",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13527,7 +13487,7 @@
                         "value": 0.366,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_311",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_309",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13547,7 +13507,7 @@
                         "value": 0.748,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_312",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_310",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13567,7 +13527,7 @@
                         "value": 0.655,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_313",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_311",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13587,7 +13547,7 @@
                         "value": 0.542,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_314",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_312",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13607,7 +13567,7 @@
                         "value": 0.783,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_315",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_313",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13627,7 +13587,7 @@
                         "value": 0.227,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_316",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_314",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13647,7 +13607,7 @@
                         "value": 0.172,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_317",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_315",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13667,7 +13627,7 @@
                         "value": 0.541,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_318",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_316",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13687,7 +13647,7 @@
                         "value": 0.275,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_319",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_317",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13707,7 +13667,7 @@
                         "value": 0.872,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_320",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_318",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13727,7 +13687,7 @@
                         "value": 0.829,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_321",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_319",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13747,7 +13707,7 @@
                         "value": 0.564,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_322",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_320",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13767,7 +13727,7 @@
                         "value": 0.547,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_323",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_321",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13787,7 +13747,7 @@
                         "value": 1.043,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_324",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_322",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13807,7 +13767,7 @@
                         "value": 0.415,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_325",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_323",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13827,7 +13787,7 @@
                         "value": 0.613,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_326",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_324",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13847,7 +13807,7 @@
                         "value": 0.515,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_327",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_325",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13867,7 +13827,7 @@
                         "value": 0.806,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_328",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_326",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13887,7 +13847,7 @@
                         "value": 0.916,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_329",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_327",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13907,7 +13867,7 @@
                         "value": 0.572,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_330",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_328",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13927,7 +13887,7 @@
                         "value": 0.624,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_331",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_329",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13942,32 +13902,12 @@
                     }
                 },
                 {
-                    "calculated data name": "normDAPI",
-                    "calculated result": {
-                        "value": -0.0,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_332",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_59",
-                                "data source feature": "fluorescence"
-                            },
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_71",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
                     "calculated data name": "normGFP",
                     "calculated result": {
                         "value": -0.002,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_333",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_330",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13987,7 +13927,7 @@
                         "value": -0.001,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_334",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_331",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14007,7 +13947,7 @@
                         "value": -0.001,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_335",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_332",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14027,7 +13967,7 @@
                         "value": 0.977,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_336",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_333",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14047,7 +13987,7 @@
                         "value": 1.001,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_337",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_334",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14067,7 +14007,7 @@
                         "value": 0.997,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_338",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_335",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14087,7 +14027,7 @@
                         "value": 0.998,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_339",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_336",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14107,7 +14047,7 @@
                         "value": 0.036,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_340",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_337",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14127,7 +14067,7 @@
                         "value": 0.701,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_341",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_338",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14147,7 +14087,7 @@
                         "value": 0.437,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_342",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_339",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14167,7 +14107,7 @@
                         "value": 0.333,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_343",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_340",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14187,7 +14127,7 @@
                         "value": 0.023,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_344",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_341",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14207,7 +14147,7 @@
                         "value": 0.033,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_345",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_342",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14227,7 +14167,7 @@
                         "value": 0.408,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_346",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_343",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14247,7 +14187,7 @@
                         "value": 0.424,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_347",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_344",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14267,7 +14207,7 @@
                         "value": 0.972,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_348",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_345",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14287,7 +14227,7 @@
                         "value": 0.196,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_349",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_346",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14307,7 +14247,7 @@
                         "value": 0.4,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_350",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_347",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14327,7 +14267,7 @@
                         "value": 0.431,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_351",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_348",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14347,7 +14287,7 @@
                         "value": 0.753,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_352",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_349",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14367,7 +14307,7 @@
                         "value": 1.056,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_353",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_350",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14387,7 +14327,7 @@
                         "value": 0.45,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_354",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_351",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14407,7 +14347,7 @@
                         "value": 0.748,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_355",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_352",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14427,7 +14367,7 @@
                         "value": 0.751,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_356",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_353",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14447,7 +14387,7 @@
                         "value": 0.965,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_357",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_354",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14467,7 +14407,7 @@
                         "value": 0.668,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_358",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_355",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14487,7 +14427,7 @@
                         "value": 0.366,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_359",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_356",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14507,7 +14447,7 @@
                         "value": 0.646,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_360",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_357",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14527,7 +14467,7 @@
                         "value": 0.758,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_361",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_358",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14547,7 +14487,7 @@
                         "value": 0.542,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_362",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_359",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14567,7 +14507,7 @@
                         "value": 0.783,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_363",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_360",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14587,7 +14527,7 @@
                         "value": 0.126,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_364",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_361",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14607,7 +14547,7 @@
                         "value": 0.216,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_365",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_362",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14627,7 +14567,7 @@
                         "value": 0.541,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_366",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_363",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14647,7 +14587,7 @@
                         "value": 0.275,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_367",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_364",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14667,7 +14607,7 @@
                         "value": 0.39,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_368",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_365",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14687,7 +14627,7 @@
                         "value": 0.04,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_369",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_366",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14707,7 +14647,7 @@
                         "value": 0.564,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_370",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_367",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14727,7 +14667,7 @@
                         "value": 0.547,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_371",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_368",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14747,7 +14687,7 @@
                         "value": 1.039,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_372",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_369",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14767,7 +14707,7 @@
                         "value": 0.819,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_373",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_370",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14787,7 +14727,7 @@
                         "value": 0.613,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_374",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_371",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14807,7 +14747,7 @@
                         "value": 0.515,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_375",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_372",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14827,7 +14767,7 @@
                         "value": 0.489,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_376",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_373",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14847,7 +14787,7 @@
                         "value": 1.009,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_377",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_374",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14867,7 +14807,7 @@
                         "value": 0.572,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_378",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_375",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14887,7 +14827,7 @@
                         "value": 0.624,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_379",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_376",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14907,27 +14847,7 @@
                         "value": -0.002,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_380",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_83",
-                                "data source feature": "fluorescence"
-                            },
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_95",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "normGFP",
-                    "calculated result": {
-                        "value": 0.0,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_381",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_377",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14947,7 +14867,7 @@
                         "value": -0.001,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_382",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_378",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14967,7 +14887,7 @@
                         "value": -0.001,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_383",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_379",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -14976,86 +14896,6 @@
                             },
                             {
                                 "data source identifier": "AGILENT_GEN5_TEST_ID_95",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "normDAPI",
-                    "calculated result": {
-                        "value": -0.0,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_384",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_96",
-                                "data source feature": "fluorescence"
-                            },
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_108",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "normGFP",
-                    "calculated result": {
-                        "value": -0.0,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_385",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_96",
-                                "data source feature": "fluorescence"
-                            },
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_108",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "meanNormDAPI",
-                    "calculated result": {
-                        "value": -0.0,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_386",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_96",
-                                "data source feature": "fluorescence"
-                            },
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_108",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "meanNormGFP",
-                    "calculated result": {
-                        "value": -0.0,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_387",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_96",
-                                "data source feature": "fluorescence"
-                            },
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_108",
                                 "data source feature": "fluorescence"
                             }
                         ]
@@ -15067,7 +14907,7 @@
                         "value": 0.491,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_388",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_380",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15087,7 +14927,7 @@
                         "value": 0.053,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_389",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_381",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15107,7 +14947,7 @@
                         "value": 0.462,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_390",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_382",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15127,7 +14967,7 @@
                         "value": 0.305,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_391",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_383",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15147,7 +14987,7 @@
                         "value": 0.063,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_392",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_384",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15167,7 +15007,7 @@
                         "value": 0.567,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_393",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_385",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15187,7 +15027,7 @@
                         "value": 0.147,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_394",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_386",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15207,7 +15047,7 @@
                         "value": 0.42,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_395",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_387",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15227,7 +15067,7 @@
                         "value": 0.971,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_396",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_388",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15247,7 +15087,7 @@
                         "value": 0.743,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_397",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_389",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15267,7 +15107,7 @@
                         "value": 0.669,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_398",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_390",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15287,7 +15127,7 @@
                         "value": 0.792,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_399",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_391",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15307,7 +15147,7 @@
                         "value": 0.878,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_400",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_392",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15327,7 +15167,7 @@
                         "value": 0.128,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_401",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_393",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15347,7 +15187,7 @@
                         "value": 0.634,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_402",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_394",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15367,7 +15207,7 @@
                         "value": 0.686,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_403",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_395",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15387,7 +15227,7 @@
                         "value": 0.385,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_404",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_396",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15407,7 +15247,7 @@
                         "value": 0.103,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_405",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_397",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15427,7 +15267,7 @@
                         "value": 0.504,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_406",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_398",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15447,7 +15287,7 @@
                         "value": 0.301,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_407",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_399",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15467,7 +15307,7 @@
                         "value": 0.476,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_408",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_400",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15487,7 +15327,7 @@
                         "value": 0.127,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_409",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_401",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15507,7 +15347,7 @@
                         "value": 0.308,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_410",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_402",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15527,7 +15367,7 @@
                         "value": 0.474,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_411",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_403",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15547,7 +15387,7 @@
                         "value": 0.269,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_412",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_404",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15567,7 +15407,7 @@
                         "value": 0.263,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_413",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_405",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15587,7 +15427,7 @@
                         "value": 0.625,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_414",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_406",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15607,7 +15447,7 @@
                         "value": 0.559,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_415",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_407",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15627,7 +15467,7 @@
                         "value": 0.268,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_416",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_408",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15647,7 +15487,7 @@
                         "value": 0.904,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_417",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_409",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15667,7 +15507,7 @@
                         "value": 0.313,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_418",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_410",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15687,7 +15527,7 @@
                         "value": 0.522,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_419",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_411",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15707,7 +15547,7 @@
                         "value": 0.755,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_420",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_412",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15727,7 +15567,7 @@
                         "value": 0.435,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_421",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_413",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15747,7 +15587,7 @@
                         "value": 0.623,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_422",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_414",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15767,7 +15607,7 @@
                         "value": 0.561,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_423",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_415",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15787,7 +15627,7 @@
                         "value": 0.466,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_424",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_416",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15807,7 +15647,7 @@
                         "value": 0.736,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_425",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_417",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15827,7 +15667,7 @@
                         "value": 0.605,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_426",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_418",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15847,7 +15687,7 @@
                         "value": 0.814,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_427",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_419",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15867,7 +15707,7 @@
                         "value": 0.991,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_428",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_420",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15887,7 +15727,7 @@
                         "value": 0.976,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_429",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_421",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15907,7 +15747,7 @@
                         "value": 1.001,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_430",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_422",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15927,7 +15767,7 @@
                         "value": 0.98,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_431",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_423",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15947,7 +15787,7 @@
                         "value": -0.001,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_432",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_424",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15967,47 +15807,7 @@
                         "value": -0.001,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_433",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_120",
-                                "data source feature": "fluorescence"
-                            },
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_132",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "meanNormDAPI",
-                    "calculated result": {
-                        "value": -0.0,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_434",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_120",
-                                "data source feature": "fluorescence"
-                            },
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_132",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "meanNormGFP",
-                    "calculated result": {
-                        "value": -0.0,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_435",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_425",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16027,7 +15827,7 @@
                         "value": 0.313,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_436",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_426",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16047,7 +15847,7 @@
                         "value": 0.158,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_437",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_427",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16067,7 +15867,7 @@
                         "value": 0.462,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_438",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_428",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16087,7 +15887,7 @@
                         "value": 0.305,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_439",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_429",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16107,7 +15907,7 @@
                         "value": 0.126,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_440",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_430",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16127,7 +15927,7 @@
                         "value": 0.45,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_441",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_431",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16147,7 +15947,7 @@
                         "value": 0.147,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_442",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_432",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16167,7 +15967,7 @@
                         "value": 0.42,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_443",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_433",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16187,7 +15987,7 @@
                         "value": 0.458,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_444",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_434",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16207,7 +16007,7 @@
                         "value": 0.997,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_445",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_435",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16227,7 +16027,7 @@
                         "value": 0.669,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_446",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_436",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16247,7 +16047,7 @@
                         "value": 0.792,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_447",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_437",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16267,7 +16067,7 @@
                         "value": 0.039,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_448",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_438",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16287,7 +16087,7 @@
                         "value": 1.002,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_449",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_439",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16307,7 +16107,7 @@
                         "value": 0.634,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_450",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_440",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16327,7 +16127,7 @@
                         "value": 0.686,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_451",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_441",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16347,7 +16147,7 @@
                         "value": 0.234,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_452",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_442",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16367,7 +16167,7 @@
                         "value": 0.26,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_453",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_443",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16387,7 +16187,7 @@
                         "value": 0.504,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_454",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_444",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16407,7 +16207,7 @@
                         "value": 0.301,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_455",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_445",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16427,7 +16227,7 @@
                         "value": 0.469,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_456",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_446",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16447,7 +16247,7 @@
                         "value": 0.094,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_457",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_447",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16467,7 +16267,7 @@
                         "value": 0.308,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_458",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_448",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16487,7 +16287,7 @@
                         "value": 0.474,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_459",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_449",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16507,7 +16307,7 @@
                         "value": 0.545,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_460",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_450",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16527,7 +16327,7 @@
                         "value": 0.982,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_461",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_451",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16547,7 +16347,7 @@
                         "value": 0.625,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_462",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_452",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16567,7 +16367,7 @@
                         "value": 0.559,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_463",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_453",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16587,7 +16387,7 @@
                         "value": 0.151,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_464",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_454",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16607,7 +16407,7 @@
                         "value": 0.781,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_465",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_455",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16627,7 +16427,7 @@
                         "value": 0.313,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_466",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_456",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16647,7 +16447,7 @@
                         "value": 0.522,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_467",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_457",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16667,7 +16467,7 @@
                         "value": 0.5,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_468",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_458",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16687,7 +16487,7 @@
                         "value": 0.313,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_469",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_459",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16707,7 +16507,7 @@
                         "value": 0.623,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_470",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_460",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16727,7 +16527,7 @@
                         "value": 0.561,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_471",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_461",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16747,7 +16547,7 @@
                         "value": 1.021,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_472",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_462",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16767,7 +16567,7 @@
                         "value": 1.038,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_473",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_463",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16787,7 +16587,7 @@
                         "value": 0.605,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_474",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_464",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16807,7 +16607,7 @@
                         "value": 0.814,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_475",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_465",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16827,7 +16627,7 @@
                         "value": 1.016,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_476",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_466",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16847,7 +16647,7 @@
                         "value": 0.961,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_477",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_467",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16867,7 +16667,7 @@
                         "value": 1.001,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_478",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_468",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16887,7 +16687,7 @@
                         "value": 0.98,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_479",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_469",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -16904,90 +16704,10 @@
                 {
                     "calculated data name": "normDAPI",
                     "calculated result": {
-                        "value": 0.0,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_480",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_144",
-                                "data source feature": "fluorescence"
-                            },
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_156",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "normGFP",
-                    "calculated result": {
-                        "value": 0.0,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_481",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_144",
-                                "data source feature": "fluorescence"
-                            },
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_156",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "meanNormDAPI",
-                    "calculated result": {
-                        "value": -0.0,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_482",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_144",
-                                "data source feature": "fluorescence"
-                            },
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_156",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "meanNormGFP",
-                    "calculated result": {
-                        "value": -0.0,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_483",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_144",
-                                "data source feature": "fluorescence"
-                            },
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_156",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "normDAPI",
-                    "calculated result": {
                         "value": 0.086,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_484",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_470",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17007,7 +16727,7 @@
                         "value": 0.487,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_485",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_471",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17027,7 +16747,7 @@
                         "value": 0.462,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_486",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_472",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17047,7 +16767,7 @@
                         "value": 0.305,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_487",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_473",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17067,7 +16787,7 @@
                         "value": 0.204,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_488",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_474",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17087,7 +16807,7 @@
                         "value": 0.28,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_489",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_475",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17107,7 +16827,7 @@
                         "value": 0.147,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_490",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_476",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17127,7 +16847,7 @@
                         "value": 0.42,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_491",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_477",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17147,7 +16867,7 @@
                         "value": 0.948,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_492",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_478",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17167,7 +16887,7 @@
                         "value": 0.688,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_493",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_479",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17187,7 +16907,7 @@
                         "value": 0.669,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_494",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_480",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17207,7 +16927,7 @@
                         "value": 0.792,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_495",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_481",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17227,7 +16947,7 @@
                         "value": 0.799,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_496",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_482",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17247,7 +16967,7 @@
                         "value": 0.562,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_497",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_483",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17267,7 +16987,7 @@
                         "value": 0.634,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_498",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_484",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17287,7 +17007,7 @@
                         "value": 0.686,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_499",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_485",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17307,7 +17027,7 @@
                         "value": 0.465,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_500",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_486",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17327,7 +17047,7 @@
                         "value": 0.554,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_501",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_487",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17347,7 +17067,7 @@
                         "value": 0.504,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_502",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_488",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17367,7 +17087,7 @@
                         "value": 0.301,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_503",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_489",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17387,7 +17107,7 @@
                         "value": 0.144,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_504",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_490",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17407,7 +17127,7 @@
                         "value": 0.977,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_505",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_491",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17427,7 +17147,7 @@
                         "value": 0.308,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_506",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_492",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17447,7 +17167,7 @@
                         "value": 0.474,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_507",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_493",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17467,7 +17187,7 @@
                         "value": 0.764,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_508",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_494",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17487,7 +17207,7 @@
                         "value": 0.744,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_509",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_495",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17507,7 +17227,7 @@
                         "value": 0.625,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_510",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_496",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17527,7 +17247,7 @@
                         "value": 0.559,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_511",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_497",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17547,7 +17267,7 @@
                         "value": 0.182,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_512",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_498",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17567,7 +17287,7 @@
                         "value": 0.213,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_513",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_499",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17587,7 +17307,7 @@
                         "value": 0.313,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_514",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_500",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17607,7 +17327,7 @@
                         "value": 0.522,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_515",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_501",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17627,7 +17347,7 @@
                         "value": 0.254,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_516",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_502",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17647,7 +17367,7 @@
                         "value": 0.814,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_517",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_503",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17667,7 +17387,7 @@
                         "value": 0.623,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_518",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_504",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17687,7 +17407,7 @@
                         "value": 0.561,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_519",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_505",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17707,7 +17427,7 @@
                         "value": 0.871,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_520",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_506",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17727,7 +17447,7 @@
                         "value": 1.052,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_521",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_507",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17747,7 +17467,7 @@
                         "value": 0.605,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_522",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_508",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17767,7 +17487,7 @@
                         "value": 0.814,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_523",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_509",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17787,7 +17507,7 @@
                         "value": 0.981,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_524",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_510",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17807,7 +17527,7 @@
                         "value": 0.987,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_525",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_511",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17827,7 +17547,7 @@
                         "value": 1.001,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_526",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_512",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17847,7 +17567,7 @@
                         "value": 0.98,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_527",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_513",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17864,90 +17584,10 @@
                 {
                     "calculated data name": "normDAPI",
                     "calculated result": {
-                        "value": 0.0,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_528",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_168",
-                                "data source feature": "fluorescence"
-                            },
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_180",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "normGFP",
-                    "calculated result": {
-                        "value": 0.0,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_529",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_168",
-                                "data source feature": "fluorescence"
-                            },
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_180",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "meanNormDAPI",
-                    "calculated result": {
-                        "value": -0.0,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_530",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_168",
-                                "data source feature": "fluorescence"
-                            },
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_180",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "meanNormGFP",
-                    "calculated result": {
-                        "value": -0.0,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_531",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_168",
-                                "data source feature": "fluorescence"
-                            },
-                            {
-                                "data source identifier": "AGILENT_GEN5_TEST_ID_180",
-                                "data source feature": "fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "normDAPI",
-                    "calculated result": {
                         "value": 0.958,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_532",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_514",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17967,7 +17607,7 @@
                         "value": 0.521,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_533",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_515",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -17987,7 +17627,7 @@
                         "value": 0.462,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_534",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_516",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18007,7 +17647,7 @@
                         "value": 0.305,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_535",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_517",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18027,7 +17667,7 @@
                         "value": 0.193,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_536",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_518",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18047,7 +17687,7 @@
                         "value": 0.384,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_537",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_519",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18067,7 +17707,7 @@
                         "value": 0.147,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_538",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_520",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18087,7 +17727,7 @@
                         "value": 0.42,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_539",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_521",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18107,7 +17747,7 @@
                         "value": 0.296,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_540",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_522",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18127,7 +17767,7 @@
                         "value": 0.739,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_541",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_523",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18147,7 +17787,7 @@
                         "value": 0.669,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_542",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_524",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18167,7 +17807,7 @@
                         "value": 0.792,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_543",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_525",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18187,7 +17827,7 @@
                         "value": 0.822,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_544",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_526",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18207,7 +17847,7 @@
                         "value": 1.054,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_545",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_527",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18227,7 +17867,7 @@
                         "value": 0.634,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_546",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_528",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18247,7 +17887,7 @@
                         "value": 0.686,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_547",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_529",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18267,7 +17907,7 @@
                         "value": 0.93,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_548",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_530",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18287,7 +17927,7 @@
                         "value": 0.288,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_549",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_531",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18307,7 +17947,7 @@
                         "value": 0.504,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_550",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_532",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18327,7 +17967,7 @@
                         "value": 0.301,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_551",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_533",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18347,7 +17987,7 @@
                         "value": 0.145,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_552",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_534",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18367,7 +18007,7 @@
                         "value": 0.698,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_553",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_535",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18387,7 +18027,7 @@
                         "value": 0.308,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_554",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_536",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18407,7 +18047,7 @@
                         "value": 0.474,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_555",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_537",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18427,7 +18067,7 @@
                         "value": 0.92,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_556",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_538",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18447,7 +18087,7 @@
                         "value": 0.247,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_557",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_539",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18467,7 +18107,7 @@
                         "value": 0.625,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_558",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_540",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18487,7 +18127,7 @@
                         "value": 0.559,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_559",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_541",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18507,7 +18147,7 @@
                         "value": 0.652,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_560",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_542",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18527,7 +18167,7 @@
                         "value": 0.192,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_561",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_543",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18547,7 +18187,7 @@
                         "value": 0.313,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_562",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_544",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18567,7 +18207,7 @@
                         "value": 0.522,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_563",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_545",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18587,7 +18227,7 @@
                         "value": 0.984,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_564",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_546",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18607,7 +18247,7 @@
                         "value": 0.684,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_565",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_547",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18627,7 +18267,7 @@
                         "value": 0.623,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_566",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_548",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18647,7 +18287,7 @@
                         "value": 0.561,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_567",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_549",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18667,7 +18307,7 @@
                         "value": 0.061,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_568",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_550",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18687,7 +18327,7 @@
                         "value": 0.43,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_569",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_551",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18707,7 +18347,7 @@
                         "value": 0.605,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_570",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_552",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18727,7 +18367,7 @@
                         "value": 0.814,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_571",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_553",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18747,7 +18387,7 @@
                         "value": 1.018,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_572",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_554",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18767,7 +18407,7 @@
                         "value": 0.995,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_573",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_555",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18787,7 +18427,7 @@
                         "value": 1.001,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_574",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_556",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -18807,7 +18447,7 @@
                         "value": 0.98,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_575",
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_557",
                     "data source aggregate document": {
                         "data source document": [
                             {

@@ -634,6 +634,7 @@ def create_results(
         )
         for well_position, well_calculated_data in calculated_data.items()
         for label, value in well_calculated_data
+        if value != NEGATIVE_ZERO
     ]
 
     return groups, calculated_data_items
