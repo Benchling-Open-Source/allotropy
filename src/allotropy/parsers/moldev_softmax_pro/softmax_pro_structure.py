@@ -209,7 +209,7 @@ class GroupData:
                 for _, sample_entries in samples.groupby(samples)
             ]
         except ValueError as e:
-            msg = "Invalid data - unsupported Group data format."
+            msg = f"Unable to read Group data format for group {name}."
             raise AllotropeConversionError(msg) from e
         return GroupData(name=name, sample_data=sample_data)
 
