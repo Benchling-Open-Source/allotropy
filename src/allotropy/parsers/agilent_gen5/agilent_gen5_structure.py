@@ -561,7 +561,7 @@ def create_results(
         list[MeasurementData]
     )
     calculated_data: defaultdict[str, list[tuple[str, float | None]]] = defaultdict(
-        list[tuple[str, float]]
+        list[tuple[str, float | None]]
     )
     measurement_labels = [
         label for r_data in read_data for label in r_data.measurement_labels
