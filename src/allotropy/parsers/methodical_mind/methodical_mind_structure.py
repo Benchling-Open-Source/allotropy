@@ -4,7 +4,7 @@ from dataclasses import dataclass
 
 import pandas as pd
 
-from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
+from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
     Measurement,
     MeasurementGroup,
     MeasurementType,
@@ -93,6 +93,8 @@ def create_metadata(header: Header) -> Metadata:
         device_identifier=NOT_APPLICABLE,
         model_number=header.model,
         equipment_serial_number=header.serial_number,
+        asm_file_identifier=NOT_APPLICABLE,
+        data_system_instance_id=NOT_APPLICABLE,
     )
 
 

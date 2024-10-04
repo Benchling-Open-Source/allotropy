@@ -6,11 +6,7 @@ import re
 
 import pandas as pd
 
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    InvalidJsonFloat,
-    JsonFloat,
-)
-from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
+from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
     Measurement,
     MeasurementGroup,
     MeasurementType,
@@ -48,7 +44,7 @@ class ReadType(Enum):
 class Header:
     read_type: ReadType
     wavelength: float
-    excitation_wavelength: JsonFloat
+    excitation_wavelength: float | None
     user: str
     test_name: str
     date: str
@@ -77,7 +73,7 @@ class Header:
             ),
             msg="Wavelengths not found in input file.",
         )
-        excitation_wavelength: JsonFloat = InvalidJsonFloat.NaN
+        excitation_wavelength = None
         if raw_wavelengths.group("wavelength2"):
             wavelength = float(raw_wavelengths.group("wavelength2"))
             excitation_wavelength = float(raw_wavelengths.group("wavelength1"))
@@ -103,9 +99,11 @@ class Header:
 def create_metadata(header: Header, file_name: str) -> Metadata:
     return Metadata(
         file_name=file_name,
+        asm_file_identifier=NOT_APPLICABLE,
         unc_path=header.path,
         device_identifier=NOT_APPLICABLE,
         model_number=NOT_APPLICABLE,
+        data_system_instance_id=NOT_APPLICABLE,
         product_manufacturer=constants.PRODUCT_MANUFACTURER,
         software_name=constants.SOFTWARE_NAME,
     )

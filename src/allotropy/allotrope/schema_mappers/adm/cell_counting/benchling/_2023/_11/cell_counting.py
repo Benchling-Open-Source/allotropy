@@ -195,6 +195,7 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
+        # TODO(ASM gaps): we believe these values should be introduced to ASM.
         custom_document = {
             "group identifier": measurement.group_identifier,
             "sample draw time": self.get_date_time(measurement.sample_draw_time)
@@ -213,6 +214,8 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_processed_data_aggregate_document(
         self, measurement: Measurement
     ) -> ProcessedDataAggregateDocument:
+        # TODO: average values and stddev should be calculated data
+        # TODO(ASM gaps): we believe "total object count" and "aggregate rate" should be introduced to ASM.
         custom_document = {
             "average compactness": quantity_or_none(
                 TQuantityValueUnitless, measurement.average_compactness
