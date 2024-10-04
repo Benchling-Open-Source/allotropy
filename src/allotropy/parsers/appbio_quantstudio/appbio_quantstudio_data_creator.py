@@ -15,7 +15,6 @@ from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import 
     Metadata,
     ProcessedData,
 )
-from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_quantstudio import constants
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     AmplificationData,
@@ -186,7 +185,9 @@ def _create_measurement(
         sample_role_type=well_item.sample_role_type,
         well_location_identifier=well_item.well_location_identifier,
         well_plate_identifier=header.barcode,
-        total_cycle_number_setting=amplification_data.total_cycle_number_setting if amplification_data else None,
+        total_cycle_number_setting=amplification_data.total_cycle_number_setting
+        if amplification_data
+        else None,
         pcr_detection_chemistry=header.pcr_detection_chemistry,
         reporter_dye_setting=well_item.reporter_dye_setting,
         quencher_dye_setting=well_item.quencher_dye_setting,
@@ -253,9 +254,7 @@ def get_well_item_amp_data(
     well_item: WellItem,
     amp_data: dict[int, dict[str, AmplificationData]],
 ) -> AmplificationData | None:
-    return amp_data.get(well_item.identifier, {}).get(
-        well_item.target_dna_description
-    )
+    return amp_data.get(well_item.identifier, {}).get(well_item.target_dna_description)
 
 
 def _create_measurement_group(
@@ -281,7 +280,7 @@ def _create_measurement_group(
         analyst=header.analyst,
         experimental_data_identifier=header.experimental_data_identifier,
         plate_well_count=try_int_or_nan(header.plate_well_count),
-        measurements=[m for m in measurements if m is not None]
+        measurements=[m for m in measurements if m is not None],
     )
     return group if group.measurements else None
 
@@ -295,7 +294,9 @@ def create_measurement_groups(
     melt_data: dict[int, MeltCurveRawData],
 ) -> list[MeasurementGroup]:
     groups = [
-        _create_measurement_group(header, well, amp_data, multi_data, results_data, melt_data)
+        _create_measurement_group(
+            header, well, amp_data, multi_data, results_data, melt_data
+        )
         for well in wells
     ]
     return [group for group in groups if group]
