@@ -129,7 +129,7 @@ class SpectroscopyRow:
 
         # NOTE: this range is just a reasonable sanity check so we don't have to use a "while True"
         for i in range(1, len(data.series.index) + 1):
-            if not data.has_key(f"formula {i}"):
+            if not data.has_key(f"formula {i}") and data.has_key(f"formula name {i}"):
                 break
             if (
                 value := data.get(
@@ -141,7 +141,7 @@ class SpectroscopyRow:
             calculated_data.append(
                 CalculatedDataItem(
                     identifier=random_uuid_str(),
-                    name=data.get(str, f"formula name {i}"),
+                    name=data[str, f"formula name {i}"],
                     value=value,
                     unit=UNITLESS,
                     data_sources=[
@@ -149,10 +149,11 @@ class SpectroscopyRow:
                             identifier=measurement.identifier, feature="absorbance"
                         )
                         for measurement in measurements
+                        # Check if the measurement wavelengh is in the forumula, remove ".0" from int floats.
                         if str(measurement.detector_wavelength_setting).replace(
                             ".0", ""
                         )
-                        in data.get(str, f"formula {i}")
+                        in data[str, f"formula {i}"]
                     ],
                 )
             )
