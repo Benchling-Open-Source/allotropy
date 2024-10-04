@@ -560,8 +560,8 @@ def create_results(
     well_to_measurements: defaultdict[str, list[MeasurementData]] = defaultdict(
         list[MeasurementData]
     )
-    calculated_data: defaultdict[str, list[tuple[str, float | None]]] = defaultdict(
-        list[tuple[str, float | None]]
+    calculated_data: defaultdict[str, list[tuple[str, float]]] = defaultdict(
+        list[tuple[str, float]]
     )
     measurement_labels = [
         label for r_data in read_data for label in r_data.measurement_labels
@@ -599,7 +599,7 @@ def create_results(
                         label,
                     )
                 )
-            else:
+            elif well_value is not None:
                 calculated_data[well_pos].append((label, well_value))
 
     groups = [
@@ -644,7 +644,6 @@ def create_results(
         )
         for well_position, well_calculated_data in calculated_data.items()
         for label, value in well_calculated_data
-        if value is not None
     ]
 
     return groups, calculated_data_items
