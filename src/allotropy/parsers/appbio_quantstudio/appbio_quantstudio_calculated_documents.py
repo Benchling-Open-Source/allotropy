@@ -711,6 +711,7 @@ def iter_calculated_data_documents(
     view_tr = TargetRoleView()
     view_tr_data = view_tr.apply(well_items)
 
+    calc_docs: list[CalculatedDocument] = []
     if experiment_type == ExperimentType.relative_standard_curve_qPCR_experiment:
         calc_docs = iter_relative_standard_curve_calc_docs(
             view_st_data,
@@ -734,4 +735,5 @@ def iter_calculated_data_documents(
         )
 
     for calc_doc in calc_docs:
-        yield from calc_doc.iter_struct()
+        if calc_doc:
+            yield from calc_doc.iter_struct()
