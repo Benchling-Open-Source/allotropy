@@ -23,6 +23,7 @@ def test_create_header_data_no_well_plate_id_in_filename() -> None:
                 "Reader Type:": "Synergy H1",
                 "Reader Serial Number:": "Serial01",
                 "Reading Type": "Manual",
+                "Plate Type": "96 WELL PLATE (Use plate lid)",
             }
         )
     )
@@ -38,6 +39,7 @@ def test_create_header_data_no_well_plate_id_in_filename() -> None:
         model_number="Synergy H1",
         equipment_serial_number="Serial01",
         file_name="dummy_filename.txt",
+        plate_well_count=96,
     )
 
 
@@ -56,6 +58,7 @@ def test_create_header_data_with_well_plate_id_from_filename() -> None:
                 "Reader Type:": "Synergy H1",
                 "Reader Serial Number:": "Serial01",
                 "Reading Type": "Manual",
+                "Plate Type": "96 WELL PLATE (Use plate lid)",
             }
         )
     )
