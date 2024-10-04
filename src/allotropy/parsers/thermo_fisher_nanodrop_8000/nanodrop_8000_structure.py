@@ -40,32 +40,19 @@ class SpectroscopyRow:
         well_plate_id = data.get(str, "plate id", validate=SeriesData.NOT_NAN)
         location_id = data[str, "well"]
 
-        is_na_experiment = experiment_type and "NA" in experiment_type
-
-        # TODO(nstender): the fact that there are more than two wavelength columns seems to indicate
-        # that there may be more options than 260 and 280, figure out how to handle other
-        # possible wavelengths.
-        absorbances_by_wavelength: dict[float | None, float | None] = {}
+        absorbances: dict[float | None, float | None] = {}
         # NOTE: this range is just a reasonable sanity check so we don't have to use a "while True"
         for i in range(1, len(data.series.index) + 1):
             if not data.has_key(f"abs {i}"):
                 break
-            absorbances_by_wavelength[data.get(float, f"nm {i}")] = data.get(
-                float, f"abs {i}"
-            )
+            absorbances[
+                data.get(float, f"nm {i}", validate=SeriesData.NOT_NAN)
+            ] = data.get(float, f"abs {i}", validate=SeriesData.NOT_NAN)
 
-        a260_absorbance = data.get(float, "a260") or absorbances_by_wavelength.get(260)
-        a280_absorbance = get_first_not_none(
-            lambda key: data.get(float, key), ["a280", "a280 10mm"]
-        ) or absorbances_by_wavelength.get(280)
-
-        measurements: list[Measurement] = []
-
-        mass_concentration = get_first_not_none(
-            lambda key: data.get(float, key),
-            ["conc.", "conc", "concentration"],
-        )
-        unit = data.get(str, "units")
+        if (a260_absorbance := data.get(float, "a260")) is not None:
+            absorbances[260] = a260_absorbance
+        if (a280_absorbance := data.get(float, ["a280", "a280 10mm"])) is not None:
+            absorbances[280] = a280_absorbance
 
         # NOTE: mass concentration is captured by a different wavelength depending on the experiment type.
         # DNA and RNA are captured as 260nm, while other experiment types are typically 280nm.
@@ -76,17 +63,22 @@ class SpectroscopyRow:
         # capture concentration on the 280 measurement document if:
         #   - the experiment type is something other than DNA or RNA
         #   - the experiment type is not specified
-        absorbances = (
-            (
-                260,
-                a260_absorbance,
-                is_na_experiment
-                or not (experiment_type or a280_absorbance is not None),
-            ),
-            (280, a280_absorbance, not (experiment_type and is_na_experiment)),
-        )
+        mass_concentration_capture_wavelength = data.get(float, "cursor nm")
+        if mass_concentration_capture_wavelength is None:
+            is_na_experiment = experiment_type and "NA" in experiment_type
+            if not is_na_experiment and a280_absorbance is not None:
+                mass_concentration_capture_wavelength = 280
+            else:
+                mass_concentration_capture_wavelength = 260
 
-        for wavelength, absorbance, capture_concentration in absorbances:
+        mass_concentration = get_first_not_none(
+            lambda key: data.get(float, key),
+            ["conc.", "conc", "concentration"],
+        )
+        unit = data.get(str, "units")
+
+        measurements: list[Measurement] = []
+        for wavelength, absorbance in absorbances.items():
             if absorbance is None:
                 continue
             measurements.append(
@@ -106,7 +98,9 @@ class SpectroscopyRow:
                             )
                         ],
                     )
-                    if capture_concentration and mass_concentration and unit
+                    if mass_concentration_capture_wavelength == wavelength
+                    and mass_concentration
+                    and unit
                     else None,
                 )
             )
@@ -132,6 +126,36 @@ class SpectroscopyRow:
             )
             for (numerator, denominator), ratio in absorbance_ratios.items()
         ]
+
+        # NOTE: this range is just a reasonable sanity check so we don't have to use a "while True"
+        for i in range(1, len(data.series.index) + 1):
+            if not data.has_key(f"formula {i}"):
+                break
+            if (
+                value := data.get(
+                    float, f"formula value {i}", validate=SeriesData.NOT_NAN
+                )
+            ) is None:
+                continue
+
+            calculated_data.append(
+                CalculatedDataItem(
+                    identifier=random_uuid_str(),
+                    name=data.get(str, f"formula name {i}"),
+                    value=value,
+                    unit=UNITLESS,
+                    data_sources=[
+                        DataSource(
+                            identifier=measurement.identifier, feature="absorbance"
+                        )
+                        for measurement in measurements
+                        if str(measurement.detector_wavelength_setting).replace(
+                            ".0", ""
+                        )
+                        in data.get(str, f"formula {i}")
+                    ],
+                )
+            )
 
         return SpectroscopyRow(
             analyst,
