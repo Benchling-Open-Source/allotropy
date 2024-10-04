@@ -23,7 +23,7 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 
 
 def read_absorbances(data: SeriesData) -> dict[float, float]:
-    # Read absorbances from abs <idx> columns.
+    # Read absorbances from abs <idx>, nm <idx> pair columns.
     absorbances: dict[float, float] = {}
     # NOTE: this range is just a reasonable sanity check so we don't have to use a "while True"
     for i in range(1, len(data.series.index) + 1):
@@ -35,8 +35,9 @@ def read_absorbances(data: SeriesData) -> dict[float, float]:
             continue
         absorbances[wavelength] = absorbance
 
-    # Alternative format for absorbance columns that list them as "a<wavelength> <suffix>?", handle these
-    # as they come up.
+    # Read absorbance columns with format "a<wavelength> <suffix>?", handle these as they come up.
+    if (a230_absorbance := data.get(float, "a230")) is not None:
+        absorbances[230] = a230_absorbance
     if (a260_absorbance := data.get(float, "a260")) is not None:
         absorbances[260] = a260_absorbance
     if (a280_absorbance := data.get(float, ["a280", "a280 10mm"])) is not None:
