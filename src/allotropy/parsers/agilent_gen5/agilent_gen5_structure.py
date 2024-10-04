@@ -560,7 +560,7 @@ def create_results(
     well_to_measurements: defaultdict[str, list[MeasurementData]] = defaultdict(
         list[MeasurementData]
     )
-    calculated_data: defaultdict[str, list[tuple[str, float]]] = defaultdict(
+    calculated_data: defaultdict[str, list[tuple[str, float | None]]] = defaultdict(
         list[tuple[str, float]]
     )
     measurement_labels = [
@@ -573,21 +573,25 @@ def create_results(
         label = str(row.iloc[-1])
         for col_index, value in enumerate(row.iloc[:-1]):
             well_pos = f"{row_name}{col_index + 1}"
-            well_value = try_non_nan_float_or_none(value)
-            if isinstance(value, float) and math.isnan(value):
+            well_value = try_float_or_none(value)
+            is_measurement = label in measurement_labels
+            # skip empty values
+            if isinstance(well_value, float) and math.isnan(well_value):
                 continue
+
             # Report error documents for NaN values
             if well_value is None:
                 error_documents_per_well[well_pos].append(
                     ErrorDocument(
-                        error=str(value),
-                        error_feature=label,
+                        error=value,
+                        # TODO Add support for multiple read modes
+                        error_feature=read_data[0].read_mode.lower() if is_measurement else label,
                     )
                 )
-                well_value = NEGATIVE_ZERO
-            if label in measurement_labels:
+            if is_measurement:
+
                 well_to_measurements[well_pos].append(
-                    MeasurementData(random_uuid_str(), well_value, label)
+                    MeasurementData(random_uuid_str(), NEGATIVE_ZERO if well_value is None else well_value, label)
                 )
             else:
                 calculated_data[well_pos].append((label, well_value))
@@ -634,7 +638,7 @@ def create_results(
         )
         for well_position, well_calculated_data in calculated_data.items()
         for label, value in well_calculated_data
-        if value != NEGATIVE_ZERO
+        if value is not None
     ]
 
     return groups, calculated_data_items
