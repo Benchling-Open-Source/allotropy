@@ -591,10 +591,10 @@ def iter_comparative_ct_calc_docs(
     view_tr_data: ViewData[WellItem],
     r_sample: str,
     r_target: str,
-) -> Iterator[CalculatedDocument]:
+) -> list[CalculatedDocument | None]:
     # Quantity, Quantity Mean, Quantity SD, Ct Mean, Ct SD, Delta Ct Mean,
     # Delta Ct SE, Delta Delta Ct, RQ, RQ min, RQ max, Amplification score, Cq confidence
-    calc_docs: list[CalculatedDocument] = []
+    calc_docs: list[CalculatedDocument | None] = []
     for sample, target in view_st_data.iter_keys():
         for well_item in view_st_data.get_leaf_item(sample, target):
             if not well_item.has_result:
@@ -604,14 +604,20 @@ def iter_comparative_ct_calc_docs(
             calc_docs.append(build_amp_score(well_item))
             calc_docs.append(build_cq_conf(well_item))
 
-        calc_docs.append(build_quantity_mean(view_st_data, view_tr_data, sample, target))
+        calc_docs.append(
+            build_quantity_mean(view_st_data, view_tr_data, sample, target)
+        )
         calc_docs.append(build_quantity_sd(view_st_data, view_tr_data, sample, target))
         calc_docs.append(build_ct_sd(view_st_data, sample, target))
         calc_docs.append(build_delta_ct_se(view_st_data, sample, target, r_target))
 
         if target != r_target:
-            calc_docs.append(build_rq_min(view_st_data, sample, target, r_sample, r_target))
-            calc_docs.append(build_rq_max(view_st_data, sample, target, r_sample, r_target))
+            calc_docs.append(
+                build_rq_min(view_st_data, sample, target, r_sample, r_target)
+            )
+            calc_docs.append(
+                build_rq_max(view_st_data, sample, target, r_sample, r_target)
+            )
 
     return calc_docs
 
@@ -619,10 +625,10 @@ def iter_comparative_ct_calc_docs(
 def iter_standard_curve_calc_docs(
     view_st_data: ViewData[WellItem],
     view_tr_data: ViewData[WellItem],
-) -> Iterator[CalculatedDocument]:
+) -> list[CalculatedDocument | None]:
     # Quantity, Quantity Mean, Quantity SD, Ct Mean, Ct SD, Y-Intercept,
     # R(superscript 2), Slope, Efficiency, Amplification score, Cq confidence
-    calc_docs: list[CalculatedDocument] = []
+    calc_docs: list[CalculatedDocument | None] = []
     for sample, target in view_st_data.iter_keys():
         for well_item in view_st_data.get_leaf_item(sample, target):
             if not well_item.has_result:
@@ -632,7 +638,9 @@ def iter_standard_curve_calc_docs(
             calc_docs.append(build_amp_score(well_item))
             calc_docs.append(build_cq_conf(well_item))
 
-        calc_docs.append(build_quantity_mean(view_st_data, view_tr_data, sample, target))
+        calc_docs.append(
+            build_quantity_mean(view_st_data, view_tr_data, sample, target)
+        )
         calc_docs.append(build_quantity_sd(view_st_data, view_tr_data, sample, target))
         calc_docs.append(build_ct_mean(view_st_data, sample, target))
         calc_docs.append(build_ct_sd(view_st_data, sample, target))
@@ -649,11 +657,11 @@ def iter_standard_curve_calc_docs(
 def iter_relative_standard_curve_calc_docs(
     view_st_data: ViewData[WellItem],
     view_tr_data: ViewData[WellItem],
-) -> Iterator[CalculatedDocument]:
+) -> list[CalculatedDocument | None]:
     # Quantity, Quantity Mean, Quantity SD, Ct Mean, Ct SD, RQ, RQ min,
     # RQ max, Y-Intercept, R(superscript 2), Slope, Efficiency,
     # Amplification score, Cq confidence
-    calc_docs: list[CalculatedDocument] = []
+    calc_docs: list[CalculatedDocument | None] = []
     for sample, target in view_st_data.iter_keys():
         for well_item in view_st_data.get_leaf_item(sample, target):
             if not well_item.has_result:
@@ -663,12 +671,18 @@ def iter_relative_standard_curve_calc_docs(
             calc_docs.append(build_amp_score(well_item))
             calc_docs.append(build_cq_conf(well_item))
 
-        calc_docs.append(build_quantity_mean(view_st_data, view_tr_data, sample, target))
+        calc_docs.append(
+            build_quantity_mean(view_st_data, view_tr_data, sample, target)
+        )
         calc_docs.append(build_quantity_sd(view_st_data, view_tr_data, sample, target))
         calc_docs.append(build_ct_mean(view_st_data, sample, target))
         calc_docs.append(build_ct_sd(view_st_data, sample, target))
-        calc_docs.append(build_relative_rq_min(view_st_data, view_tr_data, sample, target))
-        calc_docs.append(build_relative_rq_max(view_st_data, view_tr_data, sample, target))
+        calc_docs.append(
+            build_relative_rq_min(view_st_data, view_tr_data, sample, target)
+        )
+        calc_docs.append(
+            build_relative_rq_max(view_st_data, view_tr_data, sample, target)
+        )
 
     for target in view_tr_data.data:
         calc_docs.append(build_y_intercept(view_tr_data, target))
@@ -681,9 +695,9 @@ def iter_relative_standard_curve_calc_docs(
 
 def iter_presence_absence_calc_docs(
     view_data: ViewData[WellItem],
-) -> Iterator[CalculatedDocument]:
+) -> list[CalculatedDocument | None]:
     # Rn Mean, Rn SD, Amplification score, Cq confidence
-    calc_docs: list[CalculatedDocument] = []
+    calc_docs: list[CalculatedDocument | None] = []
     for sample, target in view_data.iter_keys():
         for well_item in view_data.get_leaf_item(sample, target):
             if not well_item.has_result:
@@ -711,7 +725,7 @@ def iter_calculated_data_documents(
     view_tr = TargetRoleView()
     view_tr_data = view_tr.apply(well_items)
 
-    calc_docs: list[CalculatedDocument] = []
+    calc_docs: list[CalculatedDocument | None] = []
     if experiment_type == ExperimentType.relative_standard_curve_qPCR_experiment:
         calc_docs = iter_relative_standard_curve_calc_docs(
             view_st_data,

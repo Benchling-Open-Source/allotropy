@@ -158,7 +158,7 @@ def _create_measurement(
     melt_curve_raw_data: MeltCurveRawData | None,
     amplification_data: AmplificationData | None,
     result: Result | None,
-) -> Measurement:
+) -> Measurement | None:
     if not result:
         return None
     # TODO: temp workaround for cal doc result
@@ -192,7 +192,9 @@ def _create_measurement(
         reporter_dye_setting=well_item.reporter_dye_setting,
         quencher_dye_setting=well_item.quencher_dye_setting,
         passive_reference_dye_setting=header.passive_reference_dye_setting,
-        processed_data=_create_processed_data(amplification_data, result),
+        processed_data=_create_processed_data(amplification_data, result)
+        if amplification_data
+        else None,
         sample_custom_info=well_item.extra_data,
         data_cubes=data_cubes,
     )
@@ -244,7 +246,7 @@ def create_calculated_data(
 def get_well_item_results(
     well_item: WellItem,
     results_data: dict[int, dict[str, Result]],
-) -> Result:
+) -> Result | None:
     return results_data.get(well_item.identifier, {}).get(
         well_item.target_dna_description.replace(" ", "")
     )
@@ -275,6 +277,7 @@ def _create_measurement_group(
             get_well_item_results(well_item, results_data),
         )
         for well_item in well.items
+        if get_well_item_results(well_item, results_data)
     ]
     group = MeasurementGroup(
         analyst=header.analyst,
