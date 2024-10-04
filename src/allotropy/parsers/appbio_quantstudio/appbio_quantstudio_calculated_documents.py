@@ -599,13 +599,13 @@ def iter_comparative_ct_calc_docs(
                 continue
 
             if calc_doc := build_quantity(view_tr_data, target, well_item):
-                yield calc_doc
+                yield from calc_doc.iter_struct()
 
             if calc_doc := build_amp_score(well_item):
-                yield calc_doc
+                yield from calc_doc.iter_struct()
 
             if calc_doc := build_cq_conf(well_item):
-                yield calc_doc
+                yield from calc_doc.iter_struct()
 
         if calc_doc := build_quantity_mean(view_st_data, view_tr_data, sample, target):
             yield from calc_doc.iter_struct()
@@ -643,13 +643,13 @@ def iter_standard_curve_calc_docs(
                 continue
 
             if calc_doc := build_quantity(view_tr_data, target, well_item):
-                yield calc_doc
+                yield from calc_doc.iter_struct()
 
             if calc_doc := build_amp_score(well_item):
-                yield calc_doc
+                yield from calc_doc.iter_struct()
 
             if calc_doc := build_cq_conf(well_item):
-                yield calc_doc
+                yield from calc_doc.iter_struct()
 
         if calc_doc := build_quantity_mean(view_st_data, view_tr_data, sample, target):
             yield from calc_doc.iter_struct()
@@ -690,13 +690,13 @@ def iter_relative_standard_curve_calc_docs(
                 continue
 
             if calc_doc := build_quantity(view_tr_data, target, well_item):
-                yield calc_doc
+                yield from calc_doc.iter_struct()
 
             if calc_doc := build_amp_score(well_item):
-                yield calc_doc
+                yield from calc_doc.iter_struct()
 
             if calc_doc := build_cq_conf(well_item):
-                yield calc_doc
+                yield from calc_doc.iter_struct()
 
         if calc_doc := build_quantity_mean(view_st_data, view_tr_data, sample, target):
             yield from calc_doc.iter_struct()
@@ -744,10 +744,10 @@ def iter_presence_absence_calc_docs(
                 continue
 
             if calc_doc := build_amp_score(well_item):
-                yield calc_doc
+                yield from calc_doc.iter_struct()
 
             if calc_doc := build_cq_conf(well_item):
-                yield calc_doc
+                yield from calc_doc.iter_struct()
 
         if calc_doc := build_rn_mean(view_data, sample, target):
             yield from calc_doc.iter_struct()
