@@ -585,13 +585,19 @@ def create_results(
                     ErrorDocument(
                         error=value,
                         # TODO Add support for multiple read modes
-                        error_feature=read_data[0].read_mode.lower() if is_measurement else label,
+                        error_feature=read_data[0].read_mode.lower()
+                        if is_measurement
+                        else label,
                     )
                 )
             if is_measurement:
 
                 well_to_measurements[well_pos].append(
-                    MeasurementData(random_uuid_str(), NEGATIVE_ZERO if well_value is None else well_value, label)
+                    MeasurementData(
+                        random_uuid_str(),
+                        NEGATIVE_ZERO if well_value is None else well_value,
+                        label,
+                    )
                 )
             else:
                 calculated_data[well_pos].append((label, well_value))
