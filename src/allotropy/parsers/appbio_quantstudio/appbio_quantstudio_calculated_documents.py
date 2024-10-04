@@ -598,6 +598,9 @@ def iter_comparative_ct_calc_docs(
             if not well_item.has_result:
                 continue
 
+            if calc_doc := build_quantity(view_tr_data, target, well_item):
+                yield calc_doc
+
             if calc_doc := build_amp_score(well_item):
                 yield calc_doc
 
@@ -638,6 +641,9 @@ def iter_standard_curve_calc_docs(
         for well_item in view_st_data.get_leaf_item(sample, target):
             if not well_item.has_result:
                 continue
+
+            if calc_doc := build_quantity(view_tr_data, target, well_item):
+                yield calc_doc
 
             if calc_doc := build_amp_score(well_item):
                 yield calc_doc
@@ -682,6 +688,9 @@ def iter_relative_standard_curve_calc_docs(
         for well_item in view_st_data.get_leaf_item(sample, target):
             if not well_item.has_result:
                 continue
+
+            if calc_doc := build_quantity(view_tr_data, target, well_item):
+                yield calc_doc
 
             if calc_doc := build_amp_score(well_item):
                 yield calc_doc
