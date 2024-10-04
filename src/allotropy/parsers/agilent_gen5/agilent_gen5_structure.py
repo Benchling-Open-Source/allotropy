@@ -773,8 +773,8 @@ def _get_sources(
     return sources or measurements
 
 
-def create_metadata(header_data: HeaderData, file_name: str) -> Metadata:
-    asm_file_identifier = Path(file_name).with_suffix(".json")
+def create_metadata(header_data: HeaderData) -> Metadata:
+    asm_file_identifier = Path(header_data.file_name).with_suffix(".json")
     return Metadata(
         device_identifier=NOT_APPLICABLE,
         model_number=header_data.model_number or NOT_APPLICABLE,

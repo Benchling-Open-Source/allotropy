@@ -82,7 +82,7 @@ class AgilentGen5Parser(MapperVendorParser[Data, Model]):
 
         return Data(
             metadata=create_metadata(
-                header_data, named_file_contents.original_file_name
+                header_data
             ),
             measurement_groups=measurement_groups,
             calculated_data=calculated_data,
