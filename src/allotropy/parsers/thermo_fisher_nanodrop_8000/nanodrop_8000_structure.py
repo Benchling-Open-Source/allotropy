@@ -22,6 +22,108 @@ from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
+def read_absorbances(data: SeriesData) -> dict[float, float]:
+    # Read absorbances from abs <idx> columns.
+    absorbances: dict[float, float] = {}
+    # NOTE: this range is just a reasonable sanity check so we don't have to use a "while True"
+    for i in range(1, len(data.series.index) + 1):
+        if not data.has_key(f"nm {i}"):
+            break
+        wavelength = data.get(float, f"nm {i}", validate=SeriesData.NOT_NAN)
+        absorbance = data.get(float, f"abs {i}", validate=SeriesData.NOT_NAN)
+        if wavelength is None or absorbance is None:
+            continue
+        absorbances[wavelength] = absorbance
+
+    # Alternative format for absorbance columns that list them as "a<wavelength> <suffix>?", handle these
+    # as they come up.
+    if (a260_absorbance := data.get(float, "a260")) is not None:
+        absorbances[260] = a260_absorbance
+    if (a280_absorbance := data.get(float, ["a280", "a280 10mm"])) is not None:
+        absorbances[280] = a280_absorbance
+
+    return absorbances
+
+
+def read_mass_concentration_capture_wavelength(
+    data: SeriesData, experiment_type: str | None, absorbances: dict[float, float]
+) -> float:
+    # NOTE: mass concentration is captured by a different wavelength depending on the experiment type.
+    # DNA and RNA are captured as 260nm, while other experiment types are typically 280nm.
+    # Given this, we apply the following logic:
+    #
+    # capture concentration on the 260 measurement document if:
+    #   - there is no experiment type and no 280 column
+    # capture concentration on the 280 measurement document if:
+    #   - the experiment type is something other than DNA or RNA
+    #   - the experiment type is not specified
+    mass_concentration_capture_wavelength = data.get(float, "cursor nm")
+    if mass_concentration_capture_wavelength is None:
+        is_na_experiment = experiment_type and "NA" in experiment_type
+        if not is_na_experiment and absorbances.get(280) is not None:
+            mass_concentration_capture_wavelength = 280
+        else:
+            mass_concentration_capture_wavelength = 260
+
+    return mass_concentration_capture_wavelength
+
+
+def create_calculated_data(
+    data: SeriesData, measurements: list[Measurement]
+) -> list[CalculatedDataItem]:
+    # Read absorbance ratios from pre-calculated columns.
+    absorbance_ratios = {}
+    for numerator, denominator in constants.ABSORBANCE_RATIOS:
+        ratio = data.get(
+            float, [f"{numerator}/{denominator}", f"a{numerator}/a{denominator}"]
+        )
+        if ratio:
+            absorbance_ratios[(numerator, denominator)] = ratio
+
+    calculated_data = [
+        CalculatedDataItem(
+            identifier=random_uuid_str(),
+            name=f"A{numerator}/{denominator}",
+            value=ratio,
+            unit=UNITLESS,
+            data_sources=[
+                DataSource(identifier=measurement.identifier, feature="absorbance")
+                for measurement in measurements
+                if measurement.detector_wavelength_setting in (numerator, denominator)
+            ],
+        )
+        for (numerator, denominator), ratio in absorbance_ratios.items()
+    ]
+
+    # Read all formulas <idx> columns into calculated data.
+    # NOTE: this range is just a reasonable sanity check so we don't have to use a "while True"
+    for i in range(1, len(data.series.index) + 1):
+        if not data.has_key(f"formula {i}") and data.has_key(f"formula name {i}"):
+            break
+        if (
+            value := data.get(float, f"formula value {i}", validate=SeriesData.NOT_NAN)
+        ) is None:
+            continue
+
+        calculated_data.append(
+            CalculatedDataItem(
+                identifier=random_uuid_str(),
+                name=data[str, f"formula name {i}"],
+                value=value,
+                unit=UNITLESS,
+                data_sources=[
+                    DataSource(identifier=measurement.identifier, feature="absorbance")
+                    for measurement in measurements
+                    # Check if the measurement wavelengh is in the forumula, remove ".0" from int floats.
+                    if str(measurement.detector_wavelength_setting).replace(".0", "")
+                    in data[str, f"formula {i}"]
+                ],
+            )
+        )
+
+    return calculated_data
+
+
 @dataclass
 class SpectroscopyRow:
     analyst: str | None
@@ -32,45 +134,13 @@ class SpectroscopyRow:
 
     @staticmethod
     def create(data: SeriesData) -> SpectroscopyRow:
-        analyst = data.get(str, "user id")
-        timestamp = f'{data[str, "date"]} {data.get(str, "time")}'
+        absorbances = read_absorbances(data)
         experiment_type = data.get(str, "na type")
-
-        sample_id = data.get(str, "sample id", NOT_APPLICABLE, SeriesData.NOT_NAN)
-        well_plate_id = data.get(str, "plate id", validate=SeriesData.NOT_NAN)
-        location_id = data[str, "well"]
-
-        absorbances: dict[float | None, float | None] = {}
-        # NOTE: this range is just a reasonable sanity check so we don't have to use a "while True"
-        for i in range(1, len(data.series.index) + 1):
-            if not data.has_key(f"abs {i}"):
-                break
-            absorbances[
-                data.get(float, f"nm {i}", validate=SeriesData.NOT_NAN)
-            ] = data.get(float, f"abs {i}", validate=SeriesData.NOT_NAN)
-
-        if (a260_absorbance := data.get(float, "a260")) is not None:
-            absorbances[260] = a260_absorbance
-        if (a280_absorbance := data.get(float, ["a280", "a280 10mm"])) is not None:
-            absorbances[280] = a280_absorbance
-
-        # NOTE: mass concentration is captured by a different wavelength depending on the experiment type.
-        # DNA and RNA are captured as 260nm, while other experiment types are typically 280nm.
-        # Given this, we apply the following logic:
-        #
-        # capture concentration on the 260 measurement document if:
-        #   - there is no experiment type and no 280 column
-        # capture concentration on the 280 measurement document if:
-        #   - the experiment type is something other than DNA or RNA
-        #   - the experiment type is not specified
-        mass_concentration_capture_wavelength = data.get(float, "cursor nm")
-        if mass_concentration_capture_wavelength is None:
-            is_na_experiment = experiment_type and "NA" in experiment_type
-            if not is_na_experiment and a280_absorbance is not None:
-                mass_concentration_capture_wavelength = 280
-            else:
-                mass_concentration_capture_wavelength = 260
-
+        mass_concentration_capture_wavelength = (
+            read_mass_concentration_capture_wavelength(
+                data, experiment_type, absorbances
+            )
+        )
         mass_concentration = get_first_not_none(
             lambda key: data.get(float, key),
             ["conc.", "conc", "concentration"],
@@ -87,9 +157,13 @@ class SpectroscopyRow:
                     identifier=random_uuid_str(),
                     absorbance=absorbance,
                     detector_wavelength_setting=wavelength,
-                    sample_identifier=sample_id,
-                    well_plate_identifier=well_plate_id,
-                    location_identifier=location_id,
+                    sample_identifier=data.get(
+                        str, "sample id", NOT_APPLICABLE, SeriesData.NOT_NAN
+                    ),
+                    well_plate_identifier=data.get(
+                        str, "plate id", validate=SeriesData.NOT_NAN
+                    ),
+                    location_identifier=data[str, "well"],
                     processed_data=ProcessedData(
                         features=[
                             ProcessedDataFeature(
@@ -105,62 +179,11 @@ class SpectroscopyRow:
                 )
             )
 
-        absorbance_ratios = {}
-        for numerator, denominator in constants.ABSORBANCE_RATIOS:
-            ratio = data.get(float, f"{numerator}/{denominator}")
-            if ratio:
-                absorbance_ratios[(numerator, denominator)] = ratio
-
-        calculated_data = [
-            CalculatedDataItem(
-                identifier=random_uuid_str(),
-                name=f"A{numerator}/{denominator}",
-                value=ratio,
-                unit=UNITLESS,
-                data_sources=[
-                    DataSource(identifier=measurement.identifier, feature="absorbance")
-                    for measurement in measurements
-                    if measurement.detector_wavelength_setting
-                    in (numerator, denominator)
-                ],
-            )
-            for (numerator, denominator), ratio in absorbance_ratios.items()
-        ]
-
-        # NOTE: this range is just a reasonable sanity check so we don't have to use a "while True"
-        for i in range(1, len(data.series.index) + 1):
-            if not data.has_key(f"formula {i}") and data.has_key(f"formula name {i}"):
-                break
-            if (
-                value := data.get(
-                    float, f"formula value {i}", validate=SeriesData.NOT_NAN
-                )
-            ) is None:
-                continue
-
-            calculated_data.append(
-                CalculatedDataItem(
-                    identifier=random_uuid_str(),
-                    name=data[str, f"formula name {i}"],
-                    value=value,
-                    unit=UNITLESS,
-                    data_sources=[
-                        DataSource(
-                            identifier=measurement.identifier, feature="absorbance"
-                        )
-                        for measurement in measurements
-                        # Check if the measurement wavelengh is in the forumula, remove ".0" from int floats.
-                        if str(measurement.detector_wavelength_setting).replace(
-                            ".0", ""
-                        )
-                        in data[str, f"formula {i}"]
-                    ],
-                )
-            )
+        calculated_data = create_calculated_data(data, measurements)
 
         return SpectroscopyRow(
-            analyst,
-            timestamp,
+            data.get(str, "user id"),
+            f'{data[str, "date"]} {data.get(str, "time")}',
             experiment_type,
             measurements,
             calculated_data,
