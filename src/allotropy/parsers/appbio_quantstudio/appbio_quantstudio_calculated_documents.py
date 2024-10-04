@@ -613,9 +613,7 @@ def iter_comparative_ct_calc_docs(
             calc_docs.append(build_rq_min(view_st_data, sample, target, r_sample, r_target))
             calc_docs.append(build_rq_max(view_st_data, sample, target, r_sample, r_target))
 
-    for calc_doc in calc_docs:
-        if calc_doc:
-            yield from calc_doc.iter_struct()
+    return calc_docs
 
 
 def iter_standard_curve_calc_docs(
@@ -645,9 +643,7 @@ def iter_standard_curve_calc_docs(
         calc_docs.append(build_slope(view_tr_data, target))
         calc_docs.append(build_efficiency(view_tr_data, target))
 
-    for calc_doc in calc_docs:
-        if calc_doc:
-            yield from calc_doc.iter_struct()
+    return calc_docs
 
 
 def iter_relative_standard_curve_calc_docs(
@@ -680,9 +676,7 @@ def iter_relative_standard_curve_calc_docs(
         calc_docs.append(build_slope(view_tr_data, target))
         calc_docs.append(build_efficiency(view_tr_data, target))
 
-    for calc_doc in calc_docs:
-        if calc_doc:
-            yield from calc_doc.iter_struct()
+    return calc_docs
 
 
 def iter_presence_absence_calc_docs(
@@ -702,9 +696,7 @@ def iter_presence_absence_calc_docs(
         calc_docs.append(build_rn_mean(view_data, sample, target))
         calc_docs.append(build_rn_sd(view_data, sample, target))
 
-    for calc_doc in calc_docs:
-        if calc_doc:
-            yield from calc_doc.iter_struct()
+    return calc_docs
 
 
 def iter_calculated_data_documents(
@@ -720,23 +712,26 @@ def iter_calculated_data_documents(
     view_tr_data = view_tr.apply(well_items)
 
     if experiment_type == ExperimentType.relative_standard_curve_qPCR_experiment:
-        yield from iter_relative_standard_curve_calc_docs(
+        calc_docs = iter_relative_standard_curve_calc_docs(
             view_st_data,
             view_tr_data,
         )
     elif experiment_type == ExperimentType.comparative_CT_qPCR_experiment:
-        yield from iter_comparative_ct_calc_docs(
+        calc_docs = iter_comparative_ct_calc_docs(
             view_st_data,
             view_tr_data,
             assert_not_none(r_sample),
             assert_not_none(r_target),
         )
     elif experiment_type == ExperimentType.standard_curve_qPCR_experiment:
-        yield from iter_standard_curve_calc_docs(
+        calc_docs = iter_standard_curve_calc_docs(
             view_st_data,
             view_tr_data,
         )
     elif experiment_type == ExperimentType.presence_absence_qPCR_experiment:
-        yield from iter_presence_absence_calc_docs(
+        calc_docs = iter_presence_absence_calc_docs(
             view_st_data,
         )
+
+    for calc_doc in calc_docs:
+        yield from calc_doc.iter_struct()
