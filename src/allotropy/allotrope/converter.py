@@ -111,6 +111,7 @@ def add_custom_information_document(
     if not custom_info_doc:
         return model
 
+    # Convert to a dictionary first, so we can clean up values.
     if is_dataclass(custom_info_doc):
         custom_info_dict = asdict(custom_info_doc)
     elif isinstance(custom_info_doc, dict):
@@ -128,6 +129,7 @@ def add_custom_information_document(
             continue
         cleaned_dict[key] = value
 
+    # If dict is empty after cleaning, do not attach.
     if not cleaned_dict:
         return model
 
