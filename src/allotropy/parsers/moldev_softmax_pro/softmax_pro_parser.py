@@ -14,10 +14,10 @@ from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
     StructureData,
 )
 from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class SoftmaxproParser(MapperVendorParser[Data, Model]):
+class SoftmaxproParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Molecular Devices SoftMax Pro"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "txt"

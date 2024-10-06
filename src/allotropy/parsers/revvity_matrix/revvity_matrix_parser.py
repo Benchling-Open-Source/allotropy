@@ -16,10 +16,10 @@ from allotropy.parsers.revvity_matrix.revvity_matrix_structure import (
     create_metadata,
 )
 from allotropy.parsers.utils.pandas import map_rows
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class RevvityMatrixParser(MapperVendorParser[Data, Model]):
+class RevvityMatrixParser(VendorParser[Data, Model]):
     DISPLAY_NAME = DISPLAY_NAME
     RELEASE_STATE = ReleaseState.WORKING_DRAFT
     SUPPORTED_EXTENSIONS = RevvityMatrixReader.SUPPORTED_EXTENSIONS

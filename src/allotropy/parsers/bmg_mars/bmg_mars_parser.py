@@ -15,10 +15,10 @@ from allotropy.parsers.bmg_mars.bmg_mars_structure import (
     Header,
 )
 from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class BmgMarsParser(MapperVendorParser[Data, Model]):
+class BmgMarsParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "BMG MARS"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "csv"

@@ -24,10 +24,10 @@ from allotropy.parsers.agilent_gen5.constants import (
     NO_MEASUREMENTS_ERROR,
 )
 from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class AgilentGen5Parser(MapperVendorParser[Data, Model]):
+class AgilentGen5Parser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Agilent Gen5"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = AgilentGen5Reader.SUPPORTED_EXTENSIONS

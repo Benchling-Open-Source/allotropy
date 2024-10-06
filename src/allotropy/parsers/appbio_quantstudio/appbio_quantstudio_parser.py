@@ -23,10 +23,10 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
 )
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class AppBioQuantStudioParser(MapperVendorParser[Data, Model]):
+class AppBioQuantStudioParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "AppBio QuantStudio RT-PCR"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "txt"

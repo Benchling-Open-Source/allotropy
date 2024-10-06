@@ -16,10 +16,10 @@ from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_structure i
     create_measurement_groups,
     create_metadata,
 )
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class UnchainedLabsLunaticParser(MapperVendorParser[Data, Model]):
+class UnchainedLabsLunaticParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Unchained Labs Lunatic"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = UnchainedLabsLunaticReader.SUPPORTED_EXTENSIONS
