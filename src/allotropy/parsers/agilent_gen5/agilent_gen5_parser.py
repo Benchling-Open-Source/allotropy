@@ -19,7 +19,10 @@ from allotropy.parsers.agilent_gen5.agilent_gen5_structure import (
     KineticData,
     ReadData,
 )
-from allotropy.parsers.agilent_gen5.constants import DEFAULT_EXPORT_FORMAT_ERROR
+from allotropy.parsers.agilent_gen5.constants import (
+    DEFAULT_EXPORT_FORMAT_ERROR,
+    NO_MEASUREMENTS_ERROR,
+)
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.vendor_parser import MapperVendorParser
 
@@ -73,6 +76,9 @@ class AgilentGen5Parser(MapperVendorParser[Data, Model]):
                 sample_identifiers,
                 actual_temperature,
             )
+
+        if not measurement_groups:
+            raise AllotropeConversionError(NO_MEASUREMENTS_ERROR)
 
         return Data(
             metadata=create_metadata(header_data),

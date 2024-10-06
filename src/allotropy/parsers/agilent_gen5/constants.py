@@ -6,6 +6,7 @@ DEFAULT_EXPORT_FORMAT_ERROR = "Could not find 'Results' section. This export for
 UNSUPPORTED_READ_TYPE_ERROR = (
     "Only Endpoint measurements can be processed at this time."
 )
+NO_MEASUREMENTS_ERROR = "Invalid data - the file contains invalid or missing measurement data. Unable to construct ASM."
 
 HEADER_PREFIXES = frozenset(
     {
