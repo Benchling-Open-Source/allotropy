@@ -13,25 +13,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -42,10 +42,7 @@
                                 "sample identifier": "S1",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 8.09,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:17:36+00:00",
                                     "qubit tube concentration": {
                                         "value": 80.9,
                                         "unit": "ng/mL"
@@ -58,11 +55,14 @@
                                         "value": 968.243447194,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:17:36+00:00"
+                                    "original sample concentration": {
+                                        "value": 8.09,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 156,
+                                "value": 156.0,
                                 "unit": "RFU"
                             }
                         }
@@ -82,25 +82,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -111,10 +111,7 @@
                                 "sample identifier": "S2",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 8.15,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:17:36+00:00",
                                     "qubit tube concentration": {
                                         "value": 81.5,
                                         "unit": "ng/mL"
@@ -127,11 +124,14 @@
                                         "value": 1011.24211785,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:17:36+00:00"
+                                    "original sample concentration": {
+                                        "value": 8.15,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 164,
+                                "value": 164.0,
                                 "unit": "RFU"
                             }
                         }
@@ -151,25 +151,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -180,10 +180,7 @@
                                 "sample identifier": "S3",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 8.1,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:17:36+00:00",
                                     "qubit tube concentration": {
                                         "value": 81.0,
                                         "unit": "ng/mL"
@@ -196,11 +193,14 @@
                                         "value": 967.148849047,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:17:36+00:00"
+                                    "original sample concentration": {
+                                        "value": 8.1,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 156,
+                                "value": 156.0,
                                 "unit": "RFU"
                             }
                         }
@@ -220,25 +220,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -249,10 +249,7 @@
                                 "sample identifier": "S4",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 8.27,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:17:36+00:00",
                                     "qubit tube concentration": {
                                         "value": 82.7,
                                         "unit": "ng/mL"
@@ -265,11 +262,14 @@
                                         "value": 982.615996767,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:17:36+00:00"
+                                    "original sample concentration": {
+                                        "value": 8.27,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 162,
+                                "value": 162.0,
                                 "unit": "RFU"
                             }
                         }
@@ -289,25 +289,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -318,10 +318,7 @@
                                 "sample identifier": "S5",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 7.85,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:17:36+00:00",
                                     "qubit tube concentration": {
                                         "value": 78.5,
                                         "unit": "ng/mL"
@@ -334,11 +331,14 @@
                                         "value": 957.939947254,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:17:36+00:00"
+                                    "original sample concentration": {
+                                        "value": 7.85,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 150,
+                                "value": 150.0,
                                 "unit": "RFU"
                             }
                         }
@@ -358,25 +358,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -387,10 +387,7 @@
                                 "sample identifier": "S6",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 7.75,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:17:36+00:00",
                                     "qubit tube concentration": {
                                         "value": 77.5,
                                         "unit": "ng/mL"
@@ -403,11 +400,14 @@
                                         "value": 855.35706446,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:17:36+00:00"
+                                    "original sample concentration": {
+                                        "value": 7.75,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 132,
+                                "value": 132.0,
                                 "unit": "RFU"
                             }
                         }
@@ -427,25 +427,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -456,10 +456,7 @@
                                 "sample identifier": "S7",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 7.71,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:17:36+00:00",
                                     "qubit tube concentration": {
                                         "value": 77.1,
                                         "unit": "ng/mL"
@@ -472,11 +469,14 @@
                                         "value": 814.547590094,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:17:36+00:00"
+                                    "original sample concentration": {
+                                        "value": 7.71,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 125,
+                                "value": 125.0,
                                 "unit": "RFU"
                             }
                         }
@@ -496,25 +496,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -525,10 +525,7 @@
                                 "sample identifier": "S8",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 7.17,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:17:36+00:00",
                                     "qubit tube concentration": {
                                         "value": 71.7,
                                         "unit": "ng/mL"
@@ -541,11 +538,14 @@
                                         "value": 790.63300016,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:17:36+00:00"
+                                    "original sample concentration": {
+                                        "value": 7.17,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 113,
+                                "value": 113.0,
                                 "unit": "RFU"
                             }
                         }
@@ -565,25 +565,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -594,10 +594,7 @@
                                 "sample identifier": "S9",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 6.93,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:17:49+00:00",
                                     "qubit tube concentration": {
                                         "value": 69.3,
                                         "unit": "ng/mL"
@@ -610,11 +607,14 @@
                                         "value": 968.243447194,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:17:49+00:00"
+                                    "original sample concentration": {
+                                        "value": 6.93,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 134,
+                                "value": 134.0,
                                 "unit": "RFU"
                             }
                         }
@@ -634,25 +634,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -663,10 +663,7 @@
                                 "sample identifier": "S10",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 6.91,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:17:49+00:00",
                                     "qubit tube concentration": {
                                         "value": 69.1,
                                         "unit": "ng/mL"
@@ -679,11 +676,14 @@
                                         "value": 1011.24211785,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:17:49+00:00"
+                                    "original sample concentration": {
+                                        "value": 6.91,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 139,
+                                "value": 139.0,
                                 "unit": "RFU"
                             }
                         }
@@ -703,25 +703,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -732,10 +732,7 @@
                                 "sample identifier": "S11",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 7.02,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:17:49+00:00",
                                     "qubit tube concentration": {
                                         "value": 70.2,
                                         "unit": "ng/mL"
@@ -748,11 +745,14 @@
                                         "value": 967.148849047,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:17:49+00:00"
+                                    "original sample concentration": {
+                                        "value": 7.02,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 135,
+                                "value": 135.0,
                                 "unit": "RFU"
                             }
                         }
@@ -772,25 +772,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -801,10 +801,7 @@
                                 "sample identifier": "S12",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 7.04,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:17:49+00:00",
                                     "qubit tube concentration": {
                                         "value": 70.4,
                                         "unit": "ng/mL"
@@ -817,11 +814,14 @@
                                         "value": 982.615996767,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:17:49+00:00"
+                                    "original sample concentration": {
+                                        "value": 7.04,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 138,
+                                "value": 138.0,
                                 "unit": "RFU"
                             }
                         }
@@ -841,25 +841,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -870,10 +870,7 @@
                                 "sample identifier": "S13",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 7.01,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:17:49+00:00",
                                     "qubit tube concentration": {
                                         "value": 70.1,
                                         "unit": "ng/mL"
@@ -886,11 +883,14 @@
                                         "value": 957.939947254,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:17:49+00:00"
+                                    "original sample concentration": {
+                                        "value": 7.01,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 134,
+                                "value": 134.0,
                                 "unit": "RFU"
                             }
                         }
@@ -910,25 +910,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -939,10 +939,7 @@
                                 "sample identifier": "S14",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 7.28,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:17:49+00:00",
                                     "qubit tube concentration": {
                                         "value": 72.8,
                                         "unit": "ng/mL"
@@ -955,11 +952,14 @@
                                         "value": 855.35706446,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:17:49+00:00"
+                                    "original sample concentration": {
+                                        "value": 7.28,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 124,
+                                "value": 124.0,
                                 "unit": "RFU"
                             }
                         }
@@ -979,25 +979,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -1008,10 +1008,7 @@
                                 "sample identifier": "S15",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 7.16,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:17:49+00:00",
                                     "qubit tube concentration": {
                                         "value": 71.6,
                                         "unit": "ng/mL"
@@ -1024,11 +1021,14 @@
                                         "value": 814.547590094,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:17:49+00:00"
+                                    "original sample concentration": {
+                                        "value": 7.16,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 116,
+                                "value": 116.0,
                                 "unit": "RFU"
                             }
                         }
@@ -1048,25 +1048,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -1077,10 +1077,7 @@
                                 "sample identifier": "S16",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 7.03,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:17:49+00:00",
                                     "qubit tube concentration": {
                                         "value": 70.3,
                                         "unit": "ng/mL"
@@ -1093,11 +1090,14 @@
                                         "value": 790.63300016,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:17:49+00:00"
+                                    "original sample concentration": {
+                                        "value": 7.03,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 111,
+                                "value": 111.0,
                                 "unit": "RFU"
                             }
                         }
@@ -1117,25 +1117,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -1146,10 +1146,7 @@
                                 "sample identifier": "S17",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 7.47,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:17:58+00:00",
                                     "qubit tube concentration": {
                                         "value": 74.7,
                                         "unit": "ng/mL"
@@ -1162,11 +1159,14 @@
                                         "value": 968.243447194,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:17:58+00:00"
+                                    "original sample concentration": {
+                                        "value": 7.47,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 144,
+                                "value": 144.0,
                                 "unit": "RFU"
                             }
                         }
@@ -1186,25 +1186,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -1215,10 +1215,7 @@
                                 "sample identifier": "S18",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 7.19,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:17:58+00:00",
                                     "qubit tube concentration": {
                                         "value": 71.9,
                                         "unit": "ng/mL"
@@ -1231,11 +1228,14 @@
                                         "value": 1011.24211785,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:17:58+00:00"
+                                    "original sample concentration": {
+                                        "value": 7.19,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 145,
+                                "value": 145.0,
                                 "unit": "RFU"
                             }
                         }
@@ -1255,25 +1255,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -1284,10 +1284,7 @@
                                 "sample identifier": "S19",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 7.35,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:17:58+00:00",
                                     "qubit tube concentration": {
                                         "value": 73.5,
                                         "unit": "ng/mL"
@@ -1300,11 +1297,14 @@
                                         "value": 967.148849047,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:17:58+00:00"
+                                    "original sample concentration": {
+                                        "value": 7.35,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 142,
+                                "value": 142.0,
                                 "unit": "RFU"
                             }
                         }
@@ -1324,25 +1324,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -1353,10 +1353,7 @@
                                 "sample identifier": "S20",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 7.36,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:17:58+00:00",
                                     "qubit tube concentration": {
                                         "value": 73.6,
                                         "unit": "ng/mL"
@@ -1369,11 +1366,14 @@
                                         "value": 982.615996767,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:17:58+00:00"
+                                    "original sample concentration": {
+                                        "value": 7.36,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 144,
+                                "value": 144.0,
                                 "unit": "RFU"
                             }
                         }
@@ -1393,25 +1393,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -1422,10 +1422,7 @@
                                 "sample identifier": "S21",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 6.95,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:17:58+00:00",
                                     "qubit tube concentration": {
                                         "value": 69.5,
                                         "unit": "ng/mL"
@@ -1438,11 +1435,14 @@
                                         "value": 957.939947254,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:17:58+00:00"
+                                    "original sample concentration": {
+                                        "value": 6.95,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 133,
+                                "value": 133.0,
                                 "unit": "RFU"
                             }
                         }
@@ -1462,25 +1462,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -1491,10 +1491,7 @@
                                 "sample identifier": "S22",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 7.06,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:17:58+00:00",
                                     "qubit tube concentration": {
                                         "value": 70.6,
                                         "unit": "ng/mL"
@@ -1507,11 +1504,14 @@
                                         "value": 855.35706446,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:17:58+00:00"
+                                    "original sample concentration": {
+                                        "value": 7.06,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 120,
+                                "value": 120.0,
                                 "unit": "RFU"
                             }
                         }
@@ -1531,25 +1531,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -1560,10 +1560,7 @@
                                 "sample identifier": "S23",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 6.94,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:17:58+00:00",
                                     "qubit tube concentration": {
                                         "value": 69.4,
                                         "unit": "ng/mL"
@@ -1576,11 +1573,14 @@
                                         "value": 814.547590094,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:17:58+00:00"
+                                    "original sample concentration": {
+                                        "value": 6.94,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 113,
+                                "value": 113.0,
                                 "unit": "RFU"
                             }
                         }
@@ -1600,25 +1600,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -1629,10 +1629,7 @@
                                 "sample identifier": "S24",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 7.01,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:17:58+00:00",
                                     "qubit tube concentration": {
                                         "value": 70.1,
                                         "unit": "ng/mL"
@@ -1645,11 +1642,14 @@
                                         "value": 790.63300016,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:17:58+00:00"
+                                    "original sample concentration": {
+                                        "value": 7.01,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 110,
+                                "value": 110.0,
                                 "unit": "RFU"
                             }
                         }
@@ -1669,25 +1669,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -1698,10 +1698,7 @@
                                 "sample identifier": "S25",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 6.63,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:18:06+00:00",
                                     "qubit tube concentration": {
                                         "value": 66.3,
                                         "unit": "ng/mL"
@@ -1714,11 +1711,14 @@
                                         "value": 968.243447194,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:18:06+00:00"
+                                    "original sample concentration": {
+                                        "value": 6.63,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 128,
+                                "value": 128.0,
                                 "unit": "RFU"
                             }
                         }
@@ -1738,25 +1738,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -1767,10 +1767,7 @@
                                 "sample identifier": "S26",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 6.47,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:18:06+00:00",
                                     "qubit tube concentration": {
                                         "value": 64.7,
                                         "unit": "ng/mL"
@@ -1783,11 +1780,14 @@
                                         "value": 1011.24211785,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:18:06+00:00"
+                                    "original sample concentration": {
+                                        "value": 6.47,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 130,
+                                "value": 130.0,
                                 "unit": "RFU"
                             }
                         }
@@ -1807,25 +1807,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -1836,10 +1836,7 @@
                                 "sample identifier": "S27",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 6.48,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:18:06+00:00",
                                     "qubit tube concentration": {
                                         "value": 64.8,
                                         "unit": "ng/mL"
@@ -1852,11 +1849,14 @@
                                         "value": 967.148849047,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:18:06+00:00"
+                                    "original sample concentration": {
+                                        "value": 6.48,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 125,
+                                "value": 125.0,
                                 "unit": "RFU"
                             }
                         }
@@ -1876,25 +1876,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -1905,10 +1905,7 @@
                                 "sample identifier": "S28",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 6.49,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:18:06+00:00",
                                     "qubit tube concentration": {
                                         "value": 64.9,
                                         "unit": "ng/mL"
@@ -1921,11 +1918,14 @@
                                         "value": 982.615996767,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:18:06+00:00"
+                                    "original sample concentration": {
+                                        "value": 6.49,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 127,
+                                "value": 127.0,
                                 "unit": "RFU"
                             }
                         }
@@ -1945,25 +1945,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -1974,10 +1974,7 @@
                                 "sample identifier": "S29",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 6.45,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:18:06+00:00",
                                     "qubit tube concentration": {
                                         "value": 64.5,
                                         "unit": "ng/mL"
@@ -1990,11 +1987,14 @@
                                         "value": 957.939947254,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:18:06+00:00"
+                                    "original sample concentration": {
+                                        "value": 6.45,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 123,
+                                "value": 123.0,
                                 "unit": "RFU"
                             }
                         }
@@ -2014,25 +2014,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -2043,10 +2043,7 @@
                                 "sample identifier": "S30",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 6.53,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:18:06+00:00",
                                     "qubit tube concentration": {
                                         "value": 65.3,
                                         "unit": "ng/mL"
@@ -2059,11 +2056,14 @@
                                         "value": 855.35706446,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:18:06+00:00"
+                                    "original sample concentration": {
+                                        "value": 6.53,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 111,
+                                "value": 111.0,
                                 "unit": "RFU"
                             }
                         }
@@ -2083,25 +2083,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -2112,10 +2112,7 @@
                                 "sample identifier": "S31",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 6.56,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:18:06+00:00",
                                     "qubit tube concentration": {
                                         "value": 65.6,
                                         "unit": "ng/mL"
@@ -2128,11 +2125,14 @@
                                         "value": 814.547590094,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:18:06+00:00"
+                                    "original sample concentration": {
+                                        "value": 6.56,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 106,
+                                "value": 106.0,
                                 "unit": "RFU"
                             }
                         }
@@ -2152,25 +2152,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -2181,10 +2181,7 @@
                                 "sample identifier": "S32",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 6.59,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:18:06+00:00",
                                     "qubit tube concentration": {
                                         "value": 65.9,
                                         "unit": "ng/mL"
@@ -2197,11 +2194,14 @@
                                         "value": 790.63300016,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:18:06+00:00"
+                                    "original sample concentration": {
+                                        "value": 6.59,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 104,
+                                "value": 104.0,
                                 "unit": "RFU"
                             }
                         }
@@ -2221,25 +2221,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -2250,10 +2250,7 @@
                                 "sample identifier": "S33",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 6.54,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:18:15+00:00",
                                     "qubit tube concentration": {
                                         "value": 65.4,
                                         "unit": "ng/mL"
@@ -2266,11 +2263,14 @@
                                         "value": 968.243447194,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:18:15+00:00"
+                                    "original sample concentration": {
+                                        "value": 6.54,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 126,
+                                "value": 126.0,
                                 "unit": "RFU"
                             }
                         }
@@ -2290,25 +2290,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -2319,10 +2319,7 @@
                                 "sample identifier": "S34",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 6.61,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:18:15+00:00",
                                     "qubit tube concentration": {
                                         "value": 66.1,
                                         "unit": "ng/mL"
@@ -2335,11 +2332,14 @@
                                         "value": 1011.24211785,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:18:15+00:00"
+                                    "original sample concentration": {
+                                        "value": 6.61,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 133,
+                                "value": 133.0,
                                 "unit": "RFU"
                             }
                         }
@@ -2359,25 +2359,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -2388,10 +2388,7 @@
                                 "sample identifier": "S35",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 6.6,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:18:15+00:00",
                                     "qubit tube concentration": {
                                         "value": 66.0,
                                         "unit": "ng/mL"
@@ -2404,11 +2401,14 @@
                                         "value": 967.148849047,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:18:15+00:00"
+                                    "original sample concentration": {
+                                        "value": 6.6,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 127,
+                                "value": 127.0,
                                 "unit": "RFU"
                             }
                         }
@@ -2428,25 +2428,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -2457,10 +2457,7 @@
                                 "sample identifier": "S36",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 6.86,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:18:15+00:00",
                                     "qubit tube concentration": {
                                         "value": 68.6,
                                         "unit": "ng/mL"
@@ -2473,11 +2470,14 @@
                                         "value": 982.615996767,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:18:15+00:00"
+                                    "original sample concentration": {
+                                        "value": 6.86,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 134,
+                                "value": 134.0,
                                 "unit": "RFU"
                             }
                         }
@@ -2497,25 +2497,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -2526,10 +2526,7 @@
                                 "sample identifier": "S37",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 6.9,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:18:15+00:00",
                                     "qubit tube concentration": {
                                         "value": 69.0,
                                         "unit": "ng/mL"
@@ -2542,11 +2539,14 @@
                                         "value": 957.939947254,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:18:15+00:00"
+                                    "original sample concentration": {
+                                        "value": 6.9,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 132,
+                                "value": 132.0,
                                 "unit": "RFU"
                             }
                         }
@@ -2566,25 +2566,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -2595,10 +2595,7 @@
                                 "sample identifier": "S38",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 6.9,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:18:15+00:00",
                                     "qubit tube concentration": {
                                         "value": 69.0,
                                         "unit": "ng/mL"
@@ -2611,11 +2608,14 @@
                                         "value": 855.35706446,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:18:15+00:00"
+                                    "original sample concentration": {
+                                        "value": 6.9,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 118,
+                                "value": 118.0,
                                 "unit": "RFU"
                             }
                         }
@@ -2635,25 +2635,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -2664,10 +2664,7 @@
                                 "sample identifier": "S39",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 6.93,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:18:15+00:00",
                                     "qubit tube concentration": {
                                         "value": 69.3,
                                         "unit": "ng/mL"
@@ -2680,11 +2677,14 @@
                                         "value": 814.547590094,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:18:15+00:00"
+                                    "original sample concentration": {
+                                        "value": 6.93,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 112,
+                                "value": 112.0,
                                 "unit": "RFU"
                             }
                         }
@@ -2704,25 +2704,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -2733,10 +2733,7 @@
                                 "sample identifier": "S40",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 6.84,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:18:15+00:00",
                                     "qubit tube concentration": {
                                         "value": 68.4,
                                         "unit": "ng/mL"
@@ -2749,11 +2746,14 @@
                                         "value": 790.63300016,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:18:15+00:00"
+                                    "original sample concentration": {
+                                        "value": 6.84,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 108,
+                                "value": 108.0,
                                 "unit": "RFU"
                             }
                         }
@@ -2773,25 +2773,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -2802,10 +2802,7 @@
                                 "sample identifier": "S41",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 6.46,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:18:24+00:00",
                                     "qubit tube concentration": {
                                         "value": 64.6,
                                         "unit": "ng/mL"
@@ -2818,11 +2815,14 @@
                                         "value": 968.243447194,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:18:24+00:00"
+                                    "original sample concentration": {
+                                        "value": 6.46,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 125,
+                                "value": 125.0,
                                 "unit": "RFU"
                             }
                         }
@@ -2842,25 +2842,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -2871,10 +2871,7 @@
                                 "sample identifier": "S42",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 6.55,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:18:24+00:00",
                                     "qubit tube concentration": {
                                         "value": 65.5,
                                         "unit": "ng/mL"
@@ -2887,11 +2884,14 @@
                                         "value": 1011.24211785,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:18:24+00:00"
+                                    "original sample concentration": {
+                                        "value": 6.55,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 132,
+                                "value": 132.0,
                                 "unit": "RFU"
                             }
                         }
@@ -2911,25 +2911,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -2940,10 +2940,7 @@
                                 "sample identifier": "S43",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 6.75,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:18:24+00:00",
                                     "qubit tube concentration": {
                                         "value": 67.5,
                                         "unit": "ng/mL"
@@ -2956,11 +2953,14 @@
                                         "value": 967.148849047,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:18:24+00:00"
+                                    "original sample concentration": {
+                                        "value": 6.75,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 130,
+                                "value": 130.0,
                                 "unit": "RFU"
                             }
                         }
@@ -2980,25 +2980,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -3009,10 +3009,7 @@
                                 "sample identifier": "S44",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 6.98,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:18:24+00:00",
                                     "qubit tube concentration": {
                                         "value": 69.8,
                                         "unit": "ng/mL"
@@ -3025,11 +3022,14 @@
                                         "value": 982.615996767,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:18:24+00:00"
+                                    "original sample concentration": {
+                                        "value": 6.98,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 137,
+                                "value": 137.0,
                                 "unit": "RFU"
                             }
                         }
@@ -3049,25 +3049,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -3078,10 +3078,7 @@
                                 "sample identifier": "S45",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 6.81,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:18:24+00:00",
                                     "qubit tube concentration": {
                                         "value": 68.1,
                                         "unit": "ng/mL"
@@ -3094,11 +3091,14 @@
                                         "value": 957.939947254,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:18:24+00:00"
+                                    "original sample concentration": {
+                                        "value": 6.81,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 130,
+                                "value": 130.0,
                                 "unit": "RFU"
                             }
                         }
@@ -3118,25 +3118,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -3147,10 +3147,7 @@
                                 "sample identifier": "S46",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 6.74,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:18:24+00:00",
                                     "qubit tube concentration": {
                                         "value": 67.4,
                                         "unit": "ng/mL"
@@ -3163,11 +3160,14 @@
                                         "value": 855.35706446,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:18:24+00:00"
+                                    "original sample concentration": {
+                                        "value": 6.74,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 115,
+                                "value": 115.0,
                                 "unit": "RFU"
                             }
                         }
@@ -3187,25 +3187,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -3216,10 +3216,7 @@
                                 "sample identifier": "S47",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 6.92,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:18:24+00:00",
                                     "qubit tube concentration": {
                                         "value": 69.2,
                                         "unit": "ng/mL"
@@ -3232,11 +3229,14 @@
                                         "value": 814.547590094,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:18:24+00:00"
+                                    "original sample concentration": {
+                                        "value": 6.92,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 112,
+                                "value": 112.0,
                                 "unit": "RFU"
                             }
                         }
@@ -3256,25 +3256,25 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "custom information document": {
-                                            "sample volume setting": {
-                                                "value": 2,
-                                                "unit": "μL"
-                                            },
                                             "operating minimum": {
                                                 "value": "0.05-0.1",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.1-50.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
+                                            "operating range": {
+                                                "value": "0.1-50.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 2.0,
+                                                "unit": "μL"
+                                            },
                                             "excitation setting": "BLUE",
                                             "dilution factor": {
-                                                "value": 100,
+                                                "value": 100.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -3285,10 +3285,7 @@
                                 "sample identifier": "S48",
                                 "batch identifier": "031123-101734",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": 6.76,
-                                        "unit": "ng/µL"
-                                    },
+                                    "last read standards": "2023-03-11T10:18:24+00:00",
                                     "qubit tube concentration": {
                                         "value": 67.6,
                                         "unit": "ng/mL"
@@ -3301,11 +3298,14 @@
                                         "value": 790.63300016,
                                         "unit": "RFU"
                                     },
-                                    "last read standards": "2023-03-11T10:18:24+00:00"
+                                    "original sample concentration": {
+                                        "value": 6.76,
+                                        "unit": "ng/µL"
+                                    }
                                 }
                             },
                             "fluorescence": {
-                                "value": 107,
+                                "value": 107.0,
                                 "unit": "RFU"
                             }
                         }
@@ -3325,7 +3325,7 @@
             "file name": "thermo_fisher_qubit_flex_example_02.xlsx",
             "software name": "Qubit Flex software",
             "ASM converter name": "allotropy_thermo_fisher_qubit_flex",
-            "ASM converter version": "0.1.49"
+            "ASM converter version": "0.1.56"
         }
     }
 }

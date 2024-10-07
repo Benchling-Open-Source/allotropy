@@ -1,5 +1,6 @@
 """" Reader file for Thermo Fisher Qubit Flex Parser"""
 
+import numpy as np
 import pandas as pd
 
 from allotropy.constants import DEFAULT_ENCODING
@@ -26,10 +27,12 @@ class ThermoFisherQubitFlexReader:
         AllotropeConversionError: If the file format is not supported.
         """
         if named_file_contents.extension == "csv":
-            return read_csv(
+            df = read_csv(
                 named_file_contents.contents,
                 index_col=False,
                 encoding=DEFAULT_ENCODING,
             )
         else:
-            return read_excel(named_file_contents.contents)
+            df = read_excel(named_file_contents.contents)
+        df = df.replace(np.nan, None)
+        return df
