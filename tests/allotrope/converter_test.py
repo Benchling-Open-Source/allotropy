@@ -82,14 +82,14 @@ def test_omits_null_values_except_for_specified_classes() -> None:
         cycle_threshold_result=TNullableQuantityValueUnitless(value=None),
         data_processing_document=DataProcessingDocument(
             cycle_threshold_value_setting=TQuantityValueUnitless(value=1.0),
-        )
+        ),
     )
     asm_dict = unstructure(item)
     assert asm_dict == {
         "cycle threshold result": {"value": None, "unit": "(unitless)"},
         "data processing document": {
             "cycle threshold value setting": {"value": 1.0, "unit": "(unitless)"},
-        }
+        },
     }
     assert structure(asm_dict, ProcessedDataDocumentItem) == item
 
@@ -133,7 +133,7 @@ def test_custom_information_document() -> None:
             cycle_threshold_result=TNullableQuantityValueUnitless(value=None),
             data_processing_document=DataProcessingDocument(
                 cycle_threshold_value_setting=TQuantityValueUnitless(value=1.0),
-            )
+            ),
         ),
         {"extra key": "Value", "weird-key/(value)°": "Other value"},
     )
