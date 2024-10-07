@@ -16,10 +16,10 @@ from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure import (
     Sample,
     Title,
 )
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class RocheCedexBiohtParser(MapperVendorParser[Data, Model]):
+class RocheCedexBiohtParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Roche Cedex BioHT"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = RocheCedexBiohtReader.SUPPORTED_EXTENSIONS

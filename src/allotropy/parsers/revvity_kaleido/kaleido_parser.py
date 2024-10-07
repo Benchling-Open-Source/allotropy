@@ -13,10 +13,10 @@ from allotropy.parsers.revvity_kaleido.kaleido_structure import (
     create_measurement_groups,
     create_metadata,
 )
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class KaleidoParser(MapperVendorParser[Data, Model]):
+class KaleidoParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Revvity Kaleido"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SCHEMA_MAPPER = Mapper

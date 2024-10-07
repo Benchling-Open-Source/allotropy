@@ -16,10 +16,10 @@ from allotropy.parsers.roche_cedex_hires.roche_cedex_hires_structure import (
     create_metadata,
 )
 from allotropy.parsers.utils.pandas import map_rows
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class RocheCedexHiResParser(MapperVendorParser[Data, Model]):
+class RocheCedexHiResParser(VendorParser[Data, Model]):
     DISPLAY_NAME = DISPLAY_NAME
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = RocheCedexHiResReader.SUPPORTED_EXTENSIONS
