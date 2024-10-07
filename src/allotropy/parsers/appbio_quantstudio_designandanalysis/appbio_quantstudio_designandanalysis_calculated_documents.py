@@ -1,7 +1,9 @@
 from collections.abc import Iterator
 from functools import cache
 
-from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_calculated_documents import yield_documents
+from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_calculated_documents import (
+    yield_documents,
+)
 from allotropy.parsers.appbio_quantstudio.views import ViewData
 from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.structure import (
     WellItem,
@@ -732,12 +734,20 @@ def iter_relative_standard_curve_calc_docs(
         calc_docs.append(build_ct_sd(view_st_data, sample, target))
         calc_docs.append(build_delta_ct_sd(view_st_data, sample, target, r_target))
         calc_docs.append(build_delta_ct_se(view_st_data, sample, target, r_target))
-        calc_docs.append(build_relative_rq_min(view_st_data, view_tr_data, sample, target))
-        calc_docs.append(build_relative_rq_min(view_st_data, view_tr_data, sample, target))
+        calc_docs.append(
+            build_relative_rq_min(view_st_data, view_tr_data, sample, target)
+        )
+        calc_docs.append(
+            build_relative_rq_min(view_st_data, view_tr_data, sample, target)
+        )
 
         if target != r_target:
-            calc_docs.append(build_rq_min(view_st_data, sample, target, r_sample, r_target))
-            calc_docs.append(build_rq_max(view_st_data, sample, target, r_sample, r_target))
+            calc_docs.append(
+                build_rq_min(view_st_data, sample, target, r_sample, r_target)
+            )
+            calc_docs.append(
+                build_rq_max(view_st_data, sample, target, r_sample, r_target)
+            )
 
     yield from yield_documents(calc_docs)
 

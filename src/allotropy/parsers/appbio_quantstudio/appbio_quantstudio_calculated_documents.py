@@ -586,7 +586,9 @@ def build_efficiency(
     )
 
 
-def yield_documents(calc_docs: list[CalculatedDocument | None]) -> Iterator[CalculatedDocument]:
+def yield_documents(
+    calc_docs: list[CalculatedDocument | None],
+) -> Iterator[CalculatedDocument]:
     for calc_doc in calc_docs:
         if calc_doc:
             yield from calc_doc.iter_struct()
