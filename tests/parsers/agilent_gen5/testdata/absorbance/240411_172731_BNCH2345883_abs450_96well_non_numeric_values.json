@@ -326,6 +326,57 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_7",
                             "sample document": {
+                                "sample identifier": "BNCH2345883 A8",
+                                "location identifier": "A8",
+                                "well plate identifier": "BNCH2345883"
+                            },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "OVRFLW",
+                                        "error feature": "absorbance"
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "measurement time": "2024-04-11T17:27:15+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
+                    "experimental data identifier": "",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 450.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_8",
+                            "sample document": {
                                 "sample identifier": "BNCH2345883 A9",
                                 "location identifier": "A9",
                                 "well plate identifier": "BNCH2345883"
@@ -367,7 +418,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_8",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_9",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 A10",
                                 "location identifier": "A10",
@@ -410,7 +461,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_9",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_10",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 A11",
                                 "location identifier": "A11",
@@ -453,7 +504,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_10",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_11",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 A12",
                                 "location identifier": "A12",
@@ -496,7 +547,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_11",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_12",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 B1",
                                 "location identifier": "B1",
@@ -539,7 +590,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_12",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_13",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 B2",
                                 "location identifier": "B2",
@@ -582,7 +633,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_13",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_14",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 B3",
                                 "location identifier": "B3",
@@ -625,7 +676,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_14",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_15",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 B4",
                                 "location identifier": "B4",
@@ -668,7 +719,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_15",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_16",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 B5",
                                 "location identifier": "B5",
@@ -711,7 +762,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_16",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_17",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 B6",
                                 "location identifier": "B6",
@@ -754,7 +805,58 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_17",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_18",
+                            "sample document": {
+                                "sample identifier": "BNCH2345883 B7",
+                                "location identifier": "B7",
+                                "well plate identifier": "BNCH2345883"
+                            },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "OVRFLW",
+                                        "error feature": "absorbance"
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "measurement time": "2024-04-11T17:27:15+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
+                    "experimental data identifier": "",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 450.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_19",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 B8",
                                 "location identifier": "B8",
@@ -797,7 +899,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_18",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_20",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 B9",
                                 "location identifier": "B9",
@@ -840,7 +942,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_19",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_21",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 B10",
                                 "location identifier": "B10",
@@ -883,7 +985,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_20",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_22",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 B11",
                                 "location identifier": "B11",
@@ -926,7 +1028,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_21",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_23",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 B12",
                                 "location identifier": "B12",
@@ -969,7 +1071,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_22",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_24",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 C1",
                                 "location identifier": "C1",
@@ -1012,7 +1114,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_23",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_25",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 C2",
                                 "location identifier": "C2",
@@ -1055,7 +1157,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_24",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_26",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 C3",
                                 "location identifier": "C3",
@@ -1098,7 +1200,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_25",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_27",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 C4",
                                 "location identifier": "C4",
@@ -1141,7 +1243,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_26",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_28",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 C5",
                                 "location identifier": "C5",
@@ -1184,7 +1286,58 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_27",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_29",
+                            "sample document": {
+                                "sample identifier": "BNCH2345883 C6",
+                                "location identifier": "C6",
+                                "well plate identifier": "BNCH2345883"
+                            },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "OVRFLW",
+                                        "error feature": "absorbance"
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "measurement time": "2024-04-11T17:27:15+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
+                    "experimental data identifier": "",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 450.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_30",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 C7",
                                 "location identifier": "C7",
@@ -1227,7 +1380,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_28",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_31",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 C8",
                                 "location identifier": "C8",
@@ -1270,7 +1423,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_29",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_32",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 C9",
                                 "location identifier": "C9",
@@ -1313,7 +1466,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_30",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_33",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 C10",
                                 "location identifier": "C10",
@@ -1356,7 +1509,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_31",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_34",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 C11",
                                 "location identifier": "C11",
@@ -1399,7 +1552,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_32",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_35",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 C12",
                                 "location identifier": "C12",
@@ -1442,7 +1595,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_33",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_36",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 D1",
                                 "location identifier": "D1",
@@ -1485,7 +1638,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_34",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_37",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 D2",
                                 "location identifier": "D2",
@@ -1528,7 +1681,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_35",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_38",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 D3",
                                 "location identifier": "D3",
@@ -1571,7 +1724,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_36",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_39",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 D4",
                                 "location identifier": "D4",
@@ -1614,7 +1767,58 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_37",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_40",
+                            "sample document": {
+                                "sample identifier": "BNCH2345883 D5",
+                                "location identifier": "D5",
+                                "well plate identifier": "BNCH2345883"
+                            },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "OVRFLW",
+                                        "error feature": "absorbance"
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "measurement time": "2024-04-11T17:27:15+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
+                    "experimental data identifier": "",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 450.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_41",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 D6",
                                 "location identifier": "D6",
@@ -1657,7 +1861,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_38",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_42",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 D7",
                                 "location identifier": "D7",
@@ -1700,7 +1904,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_39",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_43",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 D8",
                                 "location identifier": "D8",
@@ -1743,7 +1947,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_40",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_44",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 D9",
                                 "location identifier": "D9",
@@ -1786,7 +1990,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_41",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_45",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 D10",
                                 "location identifier": "D10",
@@ -1829,7 +2033,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_42",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_46",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 D11",
                                 "location identifier": "D11",
@@ -1872,7 +2076,58 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_43",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_47",
+                            "sample document": {
+                                "sample identifier": "BNCH2345883 D12",
+                                "location identifier": "D12",
+                                "well plate identifier": "BNCH2345883"
+                            },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "MISSED",
+                                        "error feature": "absorbance"
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "measurement time": "2024-04-11T17:27:15+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
+                    "experimental data identifier": "",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 450.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_48",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 E1",
                                 "location identifier": "E1",
@@ -1915,7 +2170,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_44",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_49",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 E2",
                                 "location identifier": "E2",
@@ -1958,7 +2213,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_45",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_50",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 E3",
                                 "location identifier": "E3",
@@ -2001,7 +2256,58 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_46",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_51",
+                            "sample document": {
+                                "sample identifier": "BNCH2345883 E4",
+                                "location identifier": "E4",
+                                "well plate identifier": "BNCH2345883"
+                            },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "OVRFLW",
+                                        "error feature": "absorbance"
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "measurement time": "2024-04-11T17:27:15+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
+                    "experimental data identifier": "",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 450.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_52",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 E5",
                                 "location identifier": "E5",
@@ -2044,7 +2350,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_47",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_53",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 E6",
                                 "location identifier": "E6",
@@ -2087,7 +2393,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_48",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_54",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 E7",
                                 "location identifier": "E7",
@@ -2130,7 +2436,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_49",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_55",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 E8",
                                 "location identifier": "E8",
@@ -2173,7 +2479,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_50",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_56",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 E9",
                                 "location identifier": "E9",
@@ -2216,7 +2522,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_51",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_57",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 E10",
                                 "location identifier": "E10",
@@ -2259,7 +2565,58 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_52",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_58",
+                            "sample document": {
+                                "sample identifier": "BNCH2345883 E11",
+                                "location identifier": "E11",
+                                "well plate identifier": "BNCH2345883"
+                            },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "MISSED",
+                                        "error feature": "absorbance"
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "measurement time": "2024-04-11T17:27:15+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
+                    "experimental data identifier": "",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 450.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_59",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 E12",
                                 "location identifier": "E12",
@@ -2302,7 +2659,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_53",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_60",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 F1",
                                 "location identifier": "F1",
@@ -2345,7 +2702,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_54",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_61",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 F2",
                                 "location identifier": "F2",
@@ -2388,7 +2745,58 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_55",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_62",
+                            "sample document": {
+                                "sample identifier": "BNCH2345883 F3",
+                                "location identifier": "F3",
+                                "well plate identifier": "BNCH2345883"
+                            },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "OVRFLW",
+                                        "error feature": "absorbance"
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "measurement time": "2024-04-11T17:27:15+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
+                    "experimental data identifier": "",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 450.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_63",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 F4",
                                 "location identifier": "F4",
@@ -2431,7 +2839,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_56",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_64",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 F5",
                                 "location identifier": "F5",
@@ -2474,7 +2882,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_57",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_65",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 F6",
                                 "location identifier": "F6",
@@ -2517,7 +2925,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_58",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_66",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 F7",
                                 "location identifier": "F7",
@@ -2560,7 +2968,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_59",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_67",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 F8",
                                 "location identifier": "F8",
@@ -2603,7 +3011,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_60",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_68",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 F9",
                                 "location identifier": "F9",
@@ -2646,7 +3054,58 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_61",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_69",
+                            "sample document": {
+                                "sample identifier": "BNCH2345883 F10",
+                                "location identifier": "F10",
+                                "well plate identifier": "BNCH2345883"
+                            },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "MISSED",
+                                        "error feature": "absorbance"
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "measurement time": "2024-04-11T17:27:15+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
+                    "experimental data identifier": "",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 450.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_70",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 F11",
                                 "location identifier": "F11",
@@ -2689,7 +3148,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_62",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_71",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 F12",
                                 "location identifier": "F12",
@@ -2732,7 +3191,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_63",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_72",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 G1",
                                 "location identifier": "G1",
@@ -2775,7 +3234,58 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_64",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_73",
+                            "sample document": {
+                                "sample identifier": "BNCH2345883 G2",
+                                "location identifier": "G2",
+                                "well plate identifier": "BNCH2345883"
+                            },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "OVRFLW",
+                                        "error feature": "absorbance"
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "measurement time": "2024-04-11T17:27:15+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
+                    "experimental data identifier": "",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 450.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_74",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 G3",
                                 "location identifier": "G3",
@@ -2818,7 +3328,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_65",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_75",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 G4",
                                 "location identifier": "G4",
@@ -2861,7 +3371,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_66",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_76",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 G5",
                                 "location identifier": "G5",
@@ -2904,7 +3414,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_67",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_77",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 G6",
                                 "location identifier": "G6",
@@ -2947,7 +3457,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_68",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_78",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 G7",
                                 "location identifier": "G7",
@@ -2990,7 +3500,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_69",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_79",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 G8",
                                 "location identifier": "G8",
@@ -3033,7 +3543,58 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_70",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_80",
+                            "sample document": {
+                                "sample identifier": "BNCH2345883 G9",
+                                "location identifier": "G9",
+                                "well plate identifier": "BNCH2345883"
+                            },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "MISSED",
+                                        "error feature": "absorbance"
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "measurement time": "2024-04-11T17:27:15+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
+                    "experimental data identifier": "",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 450.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_81",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 G10",
                                 "location identifier": "G10",
@@ -3076,7 +3637,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_71",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_82",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 G11",
                                 "location identifier": "G11",
@@ -3119,7 +3680,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_72",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_83",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 G12",
                                 "location identifier": "G12",
@@ -3162,7 +3723,58 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_73",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_84",
+                            "sample document": {
+                                "sample identifier": "BNCH2345883 H1",
+                                "location identifier": "H1",
+                                "well plate identifier": "BNCH2345883"
+                            },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "OVRFLW",
+                                        "error feature": "absorbance"
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "measurement time": "2024-04-11T17:27:15+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
+                    "experimental data identifier": "",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 450.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_85",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 H2",
                                 "location identifier": "H2",
@@ -3205,7 +3817,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_74",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_86",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 H3",
                                 "location identifier": "H3",
@@ -3248,7 +3860,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_75",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_87",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 H4",
                                 "location identifier": "H4",
@@ -3291,7 +3903,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_76",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_88",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 H5",
                                 "location identifier": "H5",
@@ -3334,7 +3946,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_77",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_89",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 H6",
                                 "location identifier": "H6",
@@ -3377,7 +3989,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_78",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_90",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 H7",
                                 "location identifier": "H7",
@@ -3420,7 +4032,58 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_79",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_91",
+                            "sample document": {
+                                "sample identifier": "BNCH2345883 H8",
+                                "location identifier": "H8",
+                                "well plate identifier": "BNCH2345883"
+                            },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "MISSED",
+                                        "error feature": "absorbance"
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "measurement time": "2024-04-11T17:27:15+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
+                    "experimental data identifier": "",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 450.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_92",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 H9",
                                 "location identifier": "H9",
@@ -3463,7 +4126,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_80",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_93",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 H10",
                                 "location identifier": "H10",
@@ -3506,7 +4169,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_81",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_94",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 H11",
                                 "location identifier": "H11",
@@ -3549,7 +4212,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "AGILENT_GEN5_TEST_ID_82",
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_95",
                             "sample document": {
                                 "sample identifier": "BNCH2345883 H12",
                                 "location identifier": "H12",
@@ -3573,12 +4236,12 @@
             }
         ],
         "data system document": {
-            "ASM file identifier": "N/A",
+            "ASM file identifier": "240411_172731_BNCH2345883_abs450_96well_non_numeric_values.json",
             "data system instance identifier": "N/A",
             "file name": "240411_172731_BNCH2345883_abs450_96well_non_numeric_values.txt",
             "UNC path": "N/A",
             "ASM converter name": "allotropy_agilent_gen5",
-            "ASM converter version": "0.1.52",
+            "ASM converter version": "0.1.56",
             "software name": "Gen5",
             "software version": "3.12.08"
         },

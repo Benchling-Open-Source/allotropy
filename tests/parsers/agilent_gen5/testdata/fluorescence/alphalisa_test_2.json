@@ -1057,6 +1057,14 @@
                                 "location identifier": "E1",
                                 "well plate identifier": "Plate 1"
                             },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": ">105.000",
+                                        "error feature": "[Concentration]"
+                                    }
+                                ]
+                            },
                             "compartment temperature": {
                                 "value": 28.2,
                                 "unit": "degC"
@@ -2046,6 +2054,14 @@
                                 "location identifier": "E24",
                                 "well plate identifier": "Plate 1"
                             },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "<0.000",
+                                        "error feature": "[Concentration]"
+                                    }
+                                ]
+                            },
                             "compartment temperature": {
                                 "value": 28.2,
                                 "unit": "degC"
@@ -2808,12 +2824,12 @@
             ]
         },
         "data system document": {
-            "ASM file identifier": "N/A",
+            "ASM file identifier": "alphalisa_test_2.json",
             "data system instance identifier": "N/A",
             "file name": "alphalisa_test_2.txt",
             "UNC path": "N/A",
             "ASM converter name": "allotropy_agilent_gen5",
-            "ASM converter version": "0.1.53",
+            "ASM converter version": "0.1.56",
             "software name": "Gen5",
             "software version": "3.12.08"
         },
