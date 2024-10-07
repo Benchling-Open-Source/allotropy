@@ -1,9 +1,10 @@
 from __future__ import annotations
 
+from os.path import splitext
 from xml.etree import ElementTree as ET  # noqa: N817
 
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
-from allotropy.allotrope.schema_mappers.adm.electrophoresis.benchling._2024._06.electrophoresis import (
+from allotropy.allotrope.schema_mappers.adm.electrophoresis.rec._2024._09.electrophoresis import (
     CalculatedDataItem,
     DataSource,
     Error,
@@ -63,28 +64,30 @@ def _get_calculated_data(
 
 
 def create_metadata(root_element: ET.Element, file_name: str) -> Metadata:
+    file_identifier, _ = splitext(file_name)
     file_information = get_element_from_xml(root_element, "FileInformation")
     environment = get_element_from_xml(
         root_element, "ScreenTapes/ScreenTape/Environment"
     )
     return Metadata(
         file_name=file_name,
-        analyst=get_val_from_xml_or_none(environment, "Experimenter"),
-        analytical_method_identifier=get_val_from_xml_or_none(
+        file_identifier=f"{file_identifier}.json",
+        analyst=get_val_from_xml(environment, "Experimenter"),
+        analytical_method_identifier=get_val_from_xml_or_none(  # stored in custom info, should be part of allotrope
             file_information, "Assay"
         ),
-        data_system_instance_identifier=get_val_from_xml_or_none(
-            environment, "Computer"
-        ),
+        data_system_instance_identifier=get_val_from_xml(environment, "Computer"),
         device_identifier=get_val_from_xml_or_none(environment, "InstrumentType"),
         equipment_serial_number=get_val_from_xml_or_none(
             environment, "InstrumentSerialNumber"
         ),
-        experimental_data_identifier=get_val_from_xml_or_none(
+        experimental_data_identifier=get_val_from_xml_or_none(  # stored in custom info, should be part of allotrope
             file_information, "FileName"
         ),
         # If any, only one of those should appear, so we arbitrarily take the first one
-        method_version=get_val_from_xml_or_none(file_information, "RINeVersion")
+        method_version=get_val_from_xml_or_none(
+            file_information, "RINeVersion"
+        )  # stored in custom info, should be part of allotrope
         or get_val_from_xml_or_none(file_information, "DINVersion"),
         software_version=get_val_from_xml_or_none(environment, "AnalysisVersion"),
         software_name=SOFTWARE_NAME,
@@ -109,15 +112,21 @@ def _create_peak(peak_element: ET.Element, unit: str) -> ProcessedDataFeature:
         start_unit=unit,
         end=get_float_from_xml_or_nan(peak_element, "ToMW"),
         end_unit=unit,
-        position=get_float_from_xml_or_nan(peak_element, "Size"),
+        position=get_float_from_xml_or_nan(
+            peak_element, "Size"
+        ),  # stored in custom info, should be part of allotrope
         position_unit=unit,
         area=get_float_from_xml_or_nan(peak_element, "Area"),
         relative_area=get_float_from_xml_or_nan(peak_element, "PercentOfTotal"),
-        relative_corrected_area=get_float_from_xml_or_nan(
+        relative_corrected_area=get_float_from_xml_or_nan(  # stored in custom info, should be part of allotrope
             peak_element, "PercentIntegratedArea"
         ),
-        name=get_val_from_xml_or_none(peak_element, "Number"),
-        comment=_get_description(peak_element),
+        name=get_val_from_xml_or_none(
+            peak_element, "Number"
+        ),  # stored in custom info, should be part of allotrope
+        comment=_get_description(
+            peak_element
+        ),  # stored in custom info, should be part of allotrope
     )
 
 
@@ -133,7 +142,9 @@ def _create_region(
         area=get_float_from_xml_or_nan(region_element, "Area"),
         relative_area=get_float_from_xml_or_nan(region_element, "PercentOfTotal"),
         name=region_name,
-        comment=get_val_from_xml_or_none(region_element, "Comment"),
+        comment=get_val_from_xml_or_none(
+            region_element, "Comment"
+        ),  # stored in custom info, should be part of allotrope
     )
 
 
@@ -189,10 +200,10 @@ def _create_measurement(
     measurement = Measurement(
         identifier=measurement_id,
         measurement_time=get_val_from_xml(screen_tape, "TapeRunDate"),
-        compartment_temperature=get_float_from_xml_or_none(
+        compartment_temperature=get_float_from_xml_or_none(  # stored in custom info, should be part of allotrope
             screen_tape, "ElectrophoresisTemp"
         ),
-        location_identifier=well_number,
+        location_identifier=well_number,  # stored in custom info, should be part of allotrope
         sample_identifier=f"{get_val_from_xml(sample_element, 'ScreenTapeID')}_{well_number}",
         description=_get_description(sample_element),
         processed_data=ProcessedData(
