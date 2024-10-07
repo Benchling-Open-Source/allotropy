@@ -15,10 +15,10 @@ from allotropy.parsers.thermo_fisher_genesys30.thermo_fisher_genesys30_structure
     create_measurement_groups,
     create_metadata,
 )
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class ThermoFisherGenesys30Parser(MapperVendorParser[Data, Model]):
+class ThermoFisherGenesys30Parser(VendorParser[Data, Model]):
     DISPLAY_NAME = DISPLAY_NAME
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = ThermoFisherGenesys30Reader.SUPPORTED_EXTENSIONS

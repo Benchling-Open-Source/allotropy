@@ -166,7 +166,7 @@ and *must* define set `DISPLAY_NAME`, `RELEASE_STATE`, and `SCHEMA_MAPPER` and i
 `create_data` that takes a `NamedFileContents` objects as input and produces an instance of (something derived from) `Data` as a result:
 
 ```python
-class ExampleWeylandYutaniParser(MapperVendorParser[Data, Model]):
+class ExampleWeylandYutaniParser(VendorParser[Data, Model]):
     DISPLAY_NAME = DISPLAY_NAME
     RELEASE_STATE = ReleaseState.WORKING_DRAFT
     SCHEMA_MAPPER = Mapper

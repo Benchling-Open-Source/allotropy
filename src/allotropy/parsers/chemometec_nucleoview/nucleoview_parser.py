@@ -13,10 +13,10 @@ from allotropy.parsers.chemometec_nucleoview.nucleoview_structure import (
 )
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.pandas import df_to_series_data, map_rows
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class ChemometecNucleoviewParser(MapperVendorParser[Data, Model]):
+class ChemometecNucleoviewParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "ChemoMetec Nucleoview"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = NucleoviewReader.SUPPORTED_EXTENSIONS

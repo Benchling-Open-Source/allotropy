@@ -15,10 +15,10 @@ from allotropy.parsers.thermo_fisher_nanodrop_one.thermo_fisher_nanodrop_one_str
     DataNanodrop,
 )
 from allotropy.parsers.utils.pandas import read_csv, read_multisheet_excel
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class ThermoFisherNanodropOneParser(MapperVendorParser[Data, Model]):
+class ThermoFisherNanodropOneParser(VendorParser[Data, Model]):
     DISPLAY_NAME = DISPLAY_NAME
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "csv,xlsx"

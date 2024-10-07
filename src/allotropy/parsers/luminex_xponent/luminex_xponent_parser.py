@@ -15,10 +15,10 @@ from allotropy.parsers.luminex_xponent.luminex_xponent_structure import (
     Data,
 )
 from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class LuminexXponentParser(MapperVendorParser[MapperData, Model]):
+class LuminexXponentParser(VendorParser[MapperData, Model]):
     DISPLAY_NAME = "Luminex xPONENT"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = LuminexXponentReader.SUPPORTED_EXTENSIONS
