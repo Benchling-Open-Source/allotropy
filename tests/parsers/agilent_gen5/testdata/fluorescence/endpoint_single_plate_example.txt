@@ -1,0 +1,55 @@
+
+
+Software Version	3.15.15
+
+
+
+Experiment File Path:	\\CB-NAS01\Data\prod\neo\neo2_1_24030606\protocols\BenchlingConnectTest2.xpt
+Protocol File Path:	Q:\prod\neo\neo2_1_24030606\protocols\QuantiFluorDNA.prt
+
+
+
+Plate Number	Plate 1
+Date	8/15/2024
+Time	11:51:56 AM
+Reader Type:	Synergy Neo2
+Reader Serial Number:	12345678
+Reading Type	Reader
+
+Procedure Details
+
+Plate Type	Nunc 384 flat bottom
+Well Selection	Runtime
+Eject plate on completion
+Read	Fluorescence Endpoint
+	Full Plate
+	Filter Set 1
+	    Excitation: 504/20,  Emission: 531/20
+	    Optics: Top,  Gain: 55
+	Light Source: Xenon Flash,  Lamp Energy: Low,  Standard Dynamic Range
+	Read Speed: Normal,  Delay: 0 msec,  Measurements/Data Point: 10
+	Read Height: 8 mm
+
+Layout
+	1	2	3
+A	SPL1	SPL9	SPL17	Well ID
+B	SPL2	SPL10	SPL18	Well ID
+C	SPL3	SPL11	SPL19	Well ID
+
+
+
+Actual Temperature:	21.6
+
+Results
+	1	2	3
+A	190	223	23	504,531
+	112	145	-55	Blank 504,531
+	>209.845	>209.845	<0.000	[Concentration]
+B	183	203	24	504,531
+	105	125	-54	Blank 504,531
+	205.170	>209.845	<0.000	[Concentration]
+
+StdCurve Fitting Results
+
+Curve Name	Curve Formula	A	B	R2	Fit F Prob
+StdCurve	Y=A*X+B	0.557	68.7	0.824	?????
