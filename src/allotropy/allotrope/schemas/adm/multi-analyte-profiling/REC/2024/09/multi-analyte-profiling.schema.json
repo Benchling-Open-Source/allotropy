@@ -11814,7 +11814,7 @@
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μm",
+              "const": "µm",
               "$asm.unit-iri": "http://qudt.org/vocab/unit#Micrometer"
             }
           },
