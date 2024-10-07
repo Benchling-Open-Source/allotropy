@@ -14,10 +14,10 @@ from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure imp
     Data as StructureData,
 )
 from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class PerkinElmerEnvisionParser(MapperVendorParser[Data, Model]):
+class PerkinElmerEnvisionParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "PerkinElmer Envision"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "csv"

@@ -19,10 +19,10 @@ from allotropy.parsers.biorad_bioplex_manager.biorad_bioplex_manager_structure i
     Well,
 )
 from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class BioradBioplexParser(MapperVendorParser[Data, Model]):
+class BioradBioplexParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Bio-Rad Bio-Plex Manager"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "xml"

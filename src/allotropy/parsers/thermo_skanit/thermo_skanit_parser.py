@@ -9,10 +9,10 @@ from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.thermo_skanit.thermo_skanit_structure import DataThermoSkanIt
 from allotropy.parsers.utils.pandas import read_multisheet_excel
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class ThermoSkanItParser(MapperVendorParser[Data, Model]):
+class ThermoSkanItParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Thermo SkanIt"
     RELEASE_STATE = ReleaseState.WORKING_DRAFT
     SUPPORTED_EXTENSIONS = "xlsx"

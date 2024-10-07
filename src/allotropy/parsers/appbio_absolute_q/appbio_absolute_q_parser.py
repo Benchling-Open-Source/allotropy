@@ -15,10 +15,10 @@ from allotropy.parsers.appbio_absolute_q.appbio_absolute_q_structure import (
 )
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.pandas import read_csv
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class AppbioAbsoluteQParser(MapperVendorParser[Data, Model]):
+class AppbioAbsoluteQParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "AppBio AbsoluteQ"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "csv"

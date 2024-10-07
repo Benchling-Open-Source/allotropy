@@ -2,6 +2,7 @@ from collections import defaultdict
 from datetime import tzinfo
 from enum import Enum
 from pathlib import Path
+from typing import Any
 
 from allotropy.allotrope.schema_parser.path_util import ROOT_DIR
 from allotropy.parsers.agilent_gen5.agilent_gen5_parser import AgilentGen5Parser
@@ -137,12 +138,14 @@ class Vendor(Enum):
             ext.strip() for ext in self.get_parser().SUPPORTED_EXTENSIONS.split(",")
         ]
 
-    def get_parser(self, default_timezone: tzinfo | None = None) -> VendorParser:
+    def get_parser(
+        self, default_timezone: tzinfo | None = None
+    ) -> VendorParser[Any, Any]:
         timestamp_parser = TimestampParser(default_timezone)
         return _VENDOR_TO_PARSER[self](timestamp_parser)
 
 
-_VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
+_VENDOR_TO_PARSER: dict[Vendor, type[VendorParser[Any, Any]]] = {
     Vendor.AGILENT_GEN5: AgilentGen5Parser,
     Vendor.AGILENT_GEN5_IMAGE: AgilentGen5ImageParser,
     Vendor.AGILENT_TAPESTATION_ANALYSIS: AgilentTapestationAnalysisParser,

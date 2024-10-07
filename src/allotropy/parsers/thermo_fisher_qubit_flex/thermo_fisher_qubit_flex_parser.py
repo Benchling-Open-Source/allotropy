@@ -17,10 +17,10 @@ from allotropy.parsers.thermo_fisher_qubit_flex.thermo_fisher_qubit_flex_reader 
 from allotropy.parsers.thermo_fisher_qubit_flex.thermo_fisher_qubit_flex_structure import (
     create_data,
 )
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class ThermoFisherQubitFlexParser(MapperVendorParser[Data, Model]):
+class ThermoFisherQubitFlexParser(VendorParser[Data, Model]):
     DISPLAY_NAME = constants.DISPLAY_NAME
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = ThermoFisherQubit4Reader.SUPPORTED_EXTENSIONS

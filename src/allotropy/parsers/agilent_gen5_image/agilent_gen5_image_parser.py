@@ -17,10 +17,10 @@ from allotropy.parsers.agilent_gen5_image.agilent_gen5_image_structure import (
     ReadData,
 )
 from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class AgilentGen5ImageParser(MapperVendorParser[Data, Model]):
+class AgilentGen5ImageParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Agilent Gen5 Image"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = AgilentGen5Reader.SUPPORTED_EXTENSIONS

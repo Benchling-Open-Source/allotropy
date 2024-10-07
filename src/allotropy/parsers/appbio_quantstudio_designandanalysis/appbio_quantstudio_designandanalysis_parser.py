@@ -14,10 +14,10 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_d
     DesignQuantstudioReader,
 )
 from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class AppBioQuantStudioDesignandanalysisParser(MapperVendorParser[Data, Model]):
+class AppBioQuantStudioDesignandanalysisParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "AppBio QuantStudio Design & Analysis"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = DesignQuantstudioReader.SUPPORTED_EXTENSIONS
