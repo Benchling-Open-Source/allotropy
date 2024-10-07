@@ -22,6 +22,7 @@ from allotropy.parsers.moldev_softmax_pro.constants import DEVICE_TYPE, EPOCH
 from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
     DataElement,
     GroupBlock,
+    GroupGeneralData,
     GroupSampleData,
     PlateBlock,
     StructureData,
@@ -248,14 +249,56 @@ def _get_group_simple_calc_docs(
     return calculated_documents
 
 
-def _get_group_calc_docs(data: StructureData) -> list[CalculatedDataItem]:
+def _get_group_general_calc_docs(
+    data: StructureData,
+    group_block: GroupBlock,
+    group_general_data: GroupGeneralData,
+    group_calc_docs: dict[str, list[CalculatedDataItem]]
+) -> list[CalculatedDataItem]:
     calculated_documents = []
-    for group_block in data.block_list.group_blocks:
-        for group_sample_data in group_block.group_data.sample_data:
-            calculated_documents += _get_group_agg_calc_docs(
-                data, group_block, group_sample_data
+    for entry in group_general_data.data_elements:
+        description = group_block.group_columns.data.get(entry.name)
+        print("HERE")
+        print(description)
+        data_sources = {}
+        for group_name, docs in group_calc_docs.items():
+            print(group_name)
+            if group_name in description:
+                print("FOUND!!!")
+                for calc_doc in docs:
+                    for data_source in calc_doc.data_sources:
+                        data_sources[data_source.identifier] = data_source
+        calculated_documents.append(
+            _build_calc_doc(
+                name=entry.name,
+                value=entry.value,
+                data_sources=list(data_sources.values()),
+                description=group_block.group_columns.data.get(entry.name),
             )
-            calculated_documents += _get_group_simple_calc_docs(
-                data, group_block, group_sample_data
-            )
+        )
     return calculated_documents
+
+
+def _get_group_calc_docs(data: StructureData) -> list[CalculatedDataItem]:
+    calculated_documents: dict[str, list[CalculatedDataItem]] = {}
+    for group_block in data.block_list.group_blocks:
+        calculated_documents[group_block.group_data.name] = []
+        for group_sample_data in group_block.group_data.sample_data:
+            calculated_documents[group_block.group_data.name] += _get_group_agg_calc_docs(
+                data, group_block, group_sample_data
+            )
+            calculated_documents[group_block.group_data.name] += _get_group_simple_calc_docs(
+                data, group_block, group_sample_data
+            )
+
+    for group_block in data.block_list.group_blocks:
+        for group_general_data in group_block.group_data.general_data:
+            calculated_documents[group_block.group_data.name] += _get_group_general_calc_docs(
+                data, group_block, group_general_data, calculated_documents
+            )
+
+    return [
+        doc
+        for calc_docs in calculated_documents.values()
+        for doc in calc_docs
+    ]
