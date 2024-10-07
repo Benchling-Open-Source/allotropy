@@ -5,11 +5,14 @@ from allotropy.allotrope.converter import (
     structure,
     unstructure,
 )
-from allotropy.allotrope.models.adm.cell_culture_analyzer.benchling._2023._09.cell_culture_analyzer import (
-    AnalyteDocumentItem,
+from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import (
+    DataProcessingDocument,
+    ProcessedDataDocumentItem,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TNullableQuantityValueMillimolePerLiter,
+    TNullableQuantityValueUnitless,
+    TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
@@ -76,16 +79,20 @@ def test_data_cube() -> None:
 
 
 def test_omits_null_values_except_for_specified_classes() -> None:
-    item = AnalyteDocumentItem(
-        analyte_name="test",
-        molar_concentration=TNullableQuantityValueMillimolePerLiter(value=None),
+    item = ProcessedDataDocumentItem(
+        cycle_threshold_result=TNullableQuantityValueUnitless(value=None),
+        data_processing_document=DataProcessingDocument(
+            cycle_threshold_value_setting=TQuantityValueUnitless(value=1.0),
+        )
     )
     asm_dict = unstructure(item)
     assert asm_dict == {
-        "analyte name": "test",
-        "molar concentration": {"unit": "mmol/L", "value": None},
+        "cycle threshold result": {"value": None, "unit": "(unitless)"},
+        "data processing document": {
+            "cycle threshold value setting": {"value": 1.0, "unit": "(unitless)"},
+        }
     }
-    assert structure(asm_dict, AnalyteDocumentItem) == item
+    assert structure(asm_dict, ProcessedDataDocumentItem) == item
 
 
 def test_remove_none_fields_from_data_class_optional_none() -> None:
@@ -123,8 +130,11 @@ def test_remove_none_fields_from_data_class_with_required_none() -> None:
 
 def test_custom_information_document() -> None:
     item = add_custom_information_document(
-        AnalyteDocumentItem(
-            analyte_name="test",
+        ProcessedDataDocumentItem(
+            cycle_threshold_result=TNullableQuantityValueUnitless(value=None),
+            data_processing_document=DataProcessingDocument(
+                cycle_threshold_value_setting=TQuantityValueUnitless(value=1.0),
+            )
         ),
         {"extra key": "Value", "weird-key/(value)°": "Other value"},
     )
@@ -133,10 +143,13 @@ def test_custom_information_document() -> None:
     assert item.custom_information_document.weird_DASH_key_SLASH__OPAREN_value_CPAREN__DEG_ == "Other value"  # type: ignore
     asm_dict = unstructure(item)
     assert asm_dict == {
-        "analyte name": "test",
+        "cycle threshold result": {"value": None, "unit": "(unitless)"},
+        "data processing document": {
+            "cycle threshold value setting": {"value": 1.0, "unit": "(unitless)"},
+        },
         "custom information document": {
             "extra key": "Value",
             "weird-key/(value)°": "Other value",
         },
     }
-    assert structure(asm_dict, AnalyteDocumentItem) == item
+    assert structure(asm_dict, ProcessedDataDocumentItem) == item

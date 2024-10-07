@@ -11,10 +11,6 @@ from cattrs.errors import ClassValidationError
 from cattrs.gen import make_dict_structure_fn, make_dict_unstructure_fn, override
 import numpy as np
 
-from allotropy.allotrope.models.adm.cell_culture_analyzer.benchling._2023._09.cell_culture_analyzer import (
-    AnalyteDocumentItem,
-    MeasurementDocumentItem,
-)
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import (
     ProcessedDataDocumentItem,
 )
@@ -317,33 +313,11 @@ def register_dataclass_hooks(converter: Converter) -> None:
     converter.register_structure_hook_factory(is_dataclass, dataclass_structure_fn)
 
 
-CELL_CULTURE_NULLABLE_VALUE_CLASSES: dict[Any, set[str]] = {
-    MeasurementDocumentItem: {
-        "pco2",
-        "co2_saturation",
-        "po2",
-        "o2_saturation",
-        "optical_density",
-        "pH",
-        "osmolality",
-        "viability__cell_counter_",
-        "total_cell_density__cell_counter_",
-        "viable_cell_density__cell_counter_",
-        "average_live_cell_diameter__cell_counter_",
-        "average_total_cell_diameter__cell_counter_",
-        "total_cell_diameter_distribution__cell_counter_",
-        "viable_cell_count__cell_counter_",
-        "total_cell_count__cell_counter_",
-    },
-    AnalyteDocumentItem: {"molar_concentration"},
-}
-
 QPCR_NULLABLE_VALUE_CLASSES: dict[Any, set[str]] = {
     ProcessedDataDocumentItem: {"cycle_threshold_result"}
 }
 
 EMPTY_VALUE_CLASS_AND_FIELD = {
-    **CELL_CULTURE_NULLABLE_VALUE_CLASSES,
     **QPCR_NULLABLE_VALUE_CLASSES,
 }
 
