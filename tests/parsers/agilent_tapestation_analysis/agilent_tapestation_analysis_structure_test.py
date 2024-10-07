@@ -4,7 +4,7 @@ import xml.etree.ElementTree as ET  # noqa: N817
 import pytest
 
 from allotropy.allotrope.models.shared.definitions.definitions import InvalidJsonFloat
-from allotropy.allotrope.schema_mappers.adm.electrophoresis.benchling._2024._06.electrophoresis import (
+from allotropy.allotrope.schema_mappers.adm.electrophoresis.rec._2024._09.electrophoresis import (
     CalculatedDataItem,
     DataSource,
     Measurement,
@@ -37,6 +37,7 @@ from tests.parsers.agilent_tapestation_analysis.agilent_tapestation_test_data im
 def test_create_metadata() -> None:
     metadata = create_metadata(get_metadata_xml(), "file.txt")
     assert metadata == Metadata(
+        file_identifier="file.json",
         file_name="file.txt",
         analyst="TapeStation User",
         analytical_method_identifier="cfDNA",
