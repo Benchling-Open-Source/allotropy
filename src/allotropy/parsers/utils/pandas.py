@@ -210,6 +210,9 @@ class SeriesData:
     def __init__(self, series: pd.Series[Any]) -> None:
         self.series = series
 
+    def has_key(self, key: str) -> bool:
+        return key in self.series
+
     def __getitem__(self, type_and_key: TypeAndKey[T] | TypeAndKeyAndMsg[T]) -> T:
         """
         Get a value of the specified type with the specified key, raising an error if the

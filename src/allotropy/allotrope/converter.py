@@ -111,17 +111,31 @@ def add_custom_information_document(
     if not custom_info_doc:
         return model
 
-    if isinstance(custom_info_doc, dict):
-        custom_info_doc = structure_custom_information_document(
-            custom_info_doc, "custom information document"
-        )
-    if not is_dataclass(custom_info_doc):
+    # Convert to a dictionary first, so we can clean up values.
+    if is_dataclass(custom_info_doc):
+        custom_info_dict = asdict(custom_info_doc)
+    elif isinstance(custom_info_doc, dict):
+        custom_info_dict = custom_info_doc
+    else:
         msg = f"Invalid custom_info_doc: {custom_info_doc}"
         raise ValueError(msg)
 
-    # Do not add custom info doc if all values are None
-    if all(value is None for value in asdict(custom_info_doc).values()):
+    # Remove None and {"value": None, "unit"...} values
+    cleaned_dict = {}
+    for key, value in custom_info_dict.items():
+        if value is None:
+            continue
+        if isinstance(value, dict) and "value" in value and value["value"] is None:
+            continue
+        cleaned_dict[key] = value
+
+    # If dict is empty after cleaning, do not attach.
+    if not cleaned_dict:
         return model
+
+    custom_info_doc = structure_custom_information_document(
+        cleaned_dict, "custom information document"
+    )
 
     model.custom_information_document = custom_info_doc  # type: ignore
     return model
