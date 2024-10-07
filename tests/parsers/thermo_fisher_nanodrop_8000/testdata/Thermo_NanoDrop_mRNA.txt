@@ -1,0 +1,5 @@
+Plate ID	Well 	Sample ID	User ID	Date 	Time 	Conc. 	Units 	nm 1	Abs 1	nm 2	Abs 2	nm 3	Abs 3	nm 4	Abs 4	Cursor nm	Cursor abs.	Ext.C. (L/(mol*cm))	M.W. (g/mol)	Factor 	Formula Name 1	Formula 1	Formula Value 1
+		SAMPLE1	Default	1/13/2023	1:45 PM	0.3929	mg/ml	260	0.982	280	0.678					260	0.982	2.500E+1	1.000E+0		260/280	A(260)/A(280)	1.449E+0
+		SAMPLE2	Default	1/13/2023	1:47 PM	0.000	mg/ml	260	0.000	280	0.000					260	0.982	2.500E+1	1.000E+0		260/280	A(260)/A(280)	NaN
+		SAMPLE3	Default	1/13/2023	1:47 PM	0.6844	mg/ml	260	1.711	280	1.016					260	1.711	2.500E+1	1.000E+0		260/280	A(260)/A(280)	1.685E+0
+		SAMPLE4	Default	1/13/2023	1:49 PM	0.6685	mg/ml	260	1.671	280	1.182					260	1.671	2.500E+1	1.000E+0		260/280	A(260)/A(280)	1.414E+0

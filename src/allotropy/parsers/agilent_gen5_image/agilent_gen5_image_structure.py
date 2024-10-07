@@ -30,6 +30,7 @@ from allotropy.parsers.agilent_gen5_image.constants import (
     DetectionType,
     DETECTOR_DISTANCE_REGEX,
     DEVICE_TYPE,
+    METADATA_ONLY,
     ReadType,
     SETTINGS_SECTION_REGEX,
     TRANSMITTED_LIGHT_MAP,
@@ -250,11 +251,32 @@ class ReadData:
 
 
 def create_results(
-    result_lines: list[str],
+    result_lines: list[str] | None,
     header_data: HeaderData,
     read_data: ReadData,
     sample_identifiers: dict[str, str],
 ) -> list[MeasurementGroup]:
+    if not result_lines:
+        return [
+            MeasurementGroup(
+                measurement_time=header_data.datetime,
+                plate_well_count=header_data.plate_well_count,
+                analytical_method_identifier=header_data.protocol_file_path,
+                experimental_data_identifier=header_data.experiment_file_path,
+                measurements=[
+                    _create_measurement(
+                        NOT_APPLICABLE,
+                        header_data,
+                        read_section,
+                        instrument_settings,
+                        METADATA_ONLY,
+                        None,
+                    )
+                    for read_section in read_data.read_sections
+                    for instrument_settings in read_section.instrument_settings_list
+                ],
+            )
+        ]
     if result_lines[0].strip() != "Results":
         msg = f"Expected the first line of the results section '{result_lines[0]}' to be 'Results'."
         raise AllotropeConversionError(msg)

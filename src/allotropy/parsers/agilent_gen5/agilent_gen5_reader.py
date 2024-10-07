@@ -50,6 +50,8 @@ class AgilentGen5Reader:
         )
         plate_reader.pop()
         plate_reader.drop_empty()
+        # add the plate type to the header data to extract the well count if needed
+        self.header_data.series["Plate Type"] = plate_reader.get()
         self.sections["Procedure Details"] = list(plate_reader.pop_until_empty())
         plate_reader.drop_empty()
 

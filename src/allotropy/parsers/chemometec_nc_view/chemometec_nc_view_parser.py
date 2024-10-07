@@ -16,10 +16,10 @@ from allotropy.parsers.chemometec_nc_view.chemometec_nc_view_structure import (
 from allotropy.parsers.chemometec_nc_view.constants import DISPLAY_NAME
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.pandas import map_rows
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class ChemometecNcViewParser(MapperVendorParser[Data, Model]):
+class ChemometecNcViewParser(VendorParser[Data, Model]):
     DISPLAY_NAME = DISPLAY_NAME
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = ChemometecNcViewReader.SUPPORTED_EXTENSIONS

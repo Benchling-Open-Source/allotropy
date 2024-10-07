@@ -17,10 +17,10 @@ from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.pandas import (
     SeriesData,
 )
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class MabtechApexParser(MapperVendorParser[Data, Model]):
+class MabtechApexParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Mabtech Apex"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = MabtechApexReader.SUPPORTED_EXTENSIONS

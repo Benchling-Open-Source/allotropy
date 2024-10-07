@@ -1,0 +1,63 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
+    "plate reader aggregate document": {
+        "plate reader document": [
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2020-04-05T10:43:31+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "AGILENT_GEN5_IMAGE_TEST_ID_0",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "Imager",
+                                        "detection type": "optical-imaging",
+                                        "detector gain setting": "5",
+                                        "magnification setting": {
+                                            "value": 2.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "exposure duration setting": {
+                                            "value": 5.0,
+                                            "unit": "ms"
+                                        },
+                                        "illumination setting": {
+                                            "value": 1.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "auto focus setting": false
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "METADATA ONLY",
+                                "location identifier": "N/A",
+                                "well plate identifier": "Plate 1"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "D:\\Cytation 7\\ColonyCount 96well Cyt7UprCBF.prt",
+                    "experimental data identifier": "Y:\\Downloads\\HeLa 96well Colony 11pt Doxorubicin UprBF.xpt",
+                    "container type": "well plate"
+                }
+            }
+        ],
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "Cytation7",
+            "equipment serial number": "172-EM-04"
+        },
+        "data system document": {
+            "file name": "image_montage_no_results_table.txt",
+            "software name": "Gen5 Image",
+            "software version": "3.12.08",
+            "ASM converter name": "allotropy_agilent_gen5_image",
+            "ASM converter version": "0.1.56"
+        }
+    }
+}

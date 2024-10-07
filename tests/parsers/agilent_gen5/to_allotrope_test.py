@@ -7,6 +7,7 @@ from allotropy.exceptions import AllotropeConversionError
 from allotropy.parser_factory import Vendor
 from allotropy.parsers.agilent_gen5.constants import (
     MULTIPLATE_FILE_ERROR,
+    NO_MEASUREMENTS_ERROR,
     NO_PLATE_DATA_ERROR,
     UNSUPPORTED_READ_TYPE_ERROR,
 )
@@ -26,13 +27,13 @@ class TestParser(ParserTest):
 def test_to_allotrope_absorbance_no_pm_in_time() -> None:
     test_filepath = f"{ABSORBANCE_PATH}/exclude/endpoint_pathlength_correct_singleplate_no_pm_in_time.txt"
     expected_filepath = (
-        f"{ABSORBANCE_PATH}/endpoint_pathlength_correct_singleplate.json"
+        f"{ABSORBANCE_PATH}/endpoint_pathlength_correct_singleplate_no_pm_in_time.json"
     )
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
 
     allotrope_dict["plate reader aggregate document"]["data system document"][
         "file name"
-    ] = "endpoint_pathlength_correct_singleplate.txt"
+    ] = "endpoint_pathlength_correct_singleplate_no_pm_in_time.txt"
 
     validate_contents(allotrope_dict, expected_filepath)
 
@@ -76,3 +77,10 @@ def test_to_allotrope_invalid_plate_data() -> None:
 def test_to_allotrope_missing_results() -> None:
     with pytest.raises(AllotropeConversionError):
         from_file(f"{TESTDATA}/missing_results_error.txt", VENDOR_TYPE)
+
+
+def test_to_allotrope_no_measurements_error() -> None:
+    with pytest.raises(AllotropeConversionError, match=NO_MEASUREMENTS_ERROR):
+        from_file(
+            f"{TESTDATA}/calculated_data_with_no_measurements_error.txt", VENDOR_TYPE
+        )

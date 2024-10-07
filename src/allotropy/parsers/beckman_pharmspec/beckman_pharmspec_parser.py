@@ -17,10 +17,10 @@ from allotropy.parsers.beckman_pharmspec.beckman_pharmspec_structure import (
     Header,
 )
 from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class PharmSpecParser(MapperVendorParser[Data, Model]):
+class PharmSpecParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Beckman PharmSpec"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = BeckmanPharmspecReader.SUPPORTED_EXTENSIONS

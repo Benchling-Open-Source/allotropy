@@ -3,6 +3,8 @@ from __future__ import annotations
 from collections import defaultdict
 from dataclasses import dataclass
 from io import StringIO
+import math
+from pathlib import Path
 import re
 
 import pandas as pd
@@ -16,6 +18,7 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_rea
     DataCube,
     DataCubeComponent,
     DataSource,
+    ErrorDocument,
     Measurement,
     MeasurementGroup,
     MeasurementType,
@@ -52,7 +55,8 @@ from allotropy.parsers.agilent_gen5.constants import (
     UNSUPPORTED_READ_TYPE_ERROR,
     WAVELENGTHS_KEY,
 )
-from allotropy.parsers.constants import NOT_APPLICABLE
+from allotropy.parsers.agilent_gen5_image.constants import POSSIBLE_WELL_COUNTS
+from allotropy.parsers.constants import NEGATIVE_ZERO, NOT_APPLICABLE
 from allotropy.parsers.lines_reader import SectionLinesReader
 from allotropy.parsers.utils.pandas import read_csv, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
@@ -72,12 +76,14 @@ class HeaderData:
     well_plate_identifier: str | None
     model_number: str | None
     equipment_serial_number: str | None
+    plate_well_count: float
     file_name: str
 
     @classmethod
     def create(cls, data: SeriesData, file_name: str) -> HeaderData:
         matches = re.match(FILENAME_REGEX, file_name)
         plate_identifier = matches.groupdict()["plate_identifier"] if matches else None
+        plate_well_count = cls._extract_well_count(data[str, "Plate Type"])
         return HeaderData(
             software_version=data[str, "Software Version"],
             experiment_file_path=data.get(str, "Experiment File Path:"),
@@ -87,7 +93,17 @@ class HeaderData:
             well_plate_identifier=plate_identifier or data.get(str, "Plate Number"),
             model_number=data.get(str, "Reader Type:"),
             equipment_serial_number=data.get(str, "Reader Serial Number:"),
+            plate_well_count=plate_well_count,
         )
+
+    @staticmethod
+    def _extract_well_count(plate_type: str) -> float:
+        match = re.search(
+            rf"({'|'.join(str(count) for count in POSSIBLE_WELL_COUNTS)})", plate_type
+        )
+        if match:
+            return float(match.group())
+        return 0
 
 
 @dataclass(frozen=True)
@@ -551,19 +567,40 @@ def create_results(
     measurement_labels = [
         label for r_data in read_data for label in r_data.measurement_labels
     ]
+    error_documents_per_well: defaultdict[str, list[ErrorDocument]] = defaultdict(
+        list[ErrorDocument]
+    )
     for row_name, row in data.iterrows():
         label = str(row.iloc[-1])
         for col_index, value in enumerate(row.iloc[:-1]):
             well_pos = f"{row_name}{col_index + 1}"
-            well_value = try_non_nan_float_or_none(value)
-            # TODO: Report error documents for NaN values
-            if well_value is None:
+            well_value = try_float_or_none(value)
+            is_measurement = label in measurement_labels
+            # skip empty values
+            if isinstance(well_value, float) and math.isnan(well_value):
                 continue
-            if label in measurement_labels:
-                well_to_measurements[well_pos].append(
-                    MeasurementData(random_uuid_str(), well_value, label)
+
+            # Report error documents for NaN values
+            if well_value is None:
+                error_documents_per_well[well_pos].append(
+                    ErrorDocument(
+                        error=value,
+                        # TODO Add support for multiple read modes
+                        error_feature=read_data[0].read_mode.lower()
+                        if is_measurement
+                        else label,
+                    )
                 )
-            else:
+            if is_measurement:
+
+                well_to_measurements[well_pos].append(
+                    MeasurementData(
+                        random_uuid_str(),
+                        NEGATIVE_ZERO if well_value is None else well_value,
+                        label,
+                    )
+                )
+            elif well_value is not None:
                 calculated_data[well_pos].append((label, well_value))
 
     groups = [
@@ -581,6 +618,7 @@ def create_results(
                     get_read_data_from_measurement(measurement, read_data),
                     sample_identifiers.get(well_position),
                     actual_temperature,
+                    error_documents=error_documents_per_well.get(well_position),
                 )
                 for measurement in measurements
             ],
@@ -736,6 +774,7 @@ def _get_sources(
 
 
 def create_metadata(header_data: HeaderData) -> Metadata:
+    asm_file_identifier = Path(header_data.file_name).with_suffix(".json")
     return Metadata(
         device_identifier=NOT_APPLICABLE,
         model_number=header_data.model_number or NOT_APPLICABLE,
@@ -743,7 +782,7 @@ def create_metadata(header_data: HeaderData) -> Metadata:
         software_name=DEFAULT_SOFTWARE_NAME,
         software_version=header_data.software_version,
         file_name=header_data.file_name,
-        asm_file_identifier=NOT_APPLICABLE,
+        asm_file_identifier=asm_file_identifier.name,
         data_system_instance_id=NOT_APPLICABLE,
         unc_path=NOT_APPLICABLE,
     )
@@ -771,6 +810,7 @@ def _create_measurement(
     kinetic_data: KineticData | None = None,
     kinetic_measurements: list[float | None] | None = None,
     kinetic_elapsed_time: list[float] | None = None,
+    error_documents: list[ErrorDocument] | None = None,
 ) -> Measurement:
     if read_data.read_mode == ReadMode.ABSORBANCE and not kinetic_data:
         measurement_type = MeasurementType.ULTRAVIOLET_ABSORBANCE
@@ -865,6 +905,7 @@ def _create_measurement(
         )
         if kinetic_elapsed_time and kinetic_measurements
         else None,
+        error_document=error_documents,
     )
 
 

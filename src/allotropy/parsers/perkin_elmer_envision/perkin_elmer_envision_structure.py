@@ -20,6 +20,7 @@ from collections import defaultdict
 from collections.abc import Iterator
 from dataclasses import dataclass
 from enum import Enum
+from pathlib import Path
 from re import search
 
 import numpy as np
@@ -693,9 +694,10 @@ class Data:
 def create_metadata(
     software: Software, instrument: Instrument, file_name: str
 ) -> Metadata:
+    asm_file_identifier = Path(file_name).with_suffix(".json")
     return Metadata(
         file_name=file_name,
-        asm_file_identifier=NOT_APPLICABLE,
+        asm_file_identifier=asm_file_identifier.name,
         unc_path=NOT_APPLICABLE,
         software_name=software.software_name,
         software_version=software.software_version,

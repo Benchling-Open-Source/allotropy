@@ -1,0 +1,594 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2024/06/plate-reader.manifest",
+    "plate reader aggregate document": {
+        "plate reader document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 260.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_0",
+                            "sample document": {
+                                "sample identifier": "SPL1",
+                                "location identifier": "A1",
+                                "well plate identifier": "Plate 1"
+                            },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "OVRFLW",
+                                        "error feature": "260:260"
+                                    }
+                                ]
+                            },
+                            "compartment temperature": {
+                                "value": 26.3,
+                                "unit": "degC"
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:00+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
+                    "analytical method identifier": "C:\\Users\\user\\Desktop\\Plate123.prt",
+                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\ExperimentFile.xpt",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 260.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_1",
+                            "sample document": {
+                                "sample identifier": "SPL9",
+                                "location identifier": "A2",
+                                "well plate identifier": "Plate 1"
+                            },
+                            "absorbance": {
+                                "value": 0.56,
+                                "unit": "mAU"
+                            },
+                            "compartment temperature": {
+                                "value": 26.3,
+                                "unit": "degC"
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:00+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
+                    "analytical method identifier": "C:\\Users\\user\\Desktop\\Plate123.prt",
+                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\ExperimentFile.xpt",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 260.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_2",
+                            "sample document": {
+                                "sample identifier": "SPL17",
+                                "location identifier": "A3",
+                                "well plate identifier": "Plate 1"
+                            },
+                            "absorbance": {
+                                "value": 0.481,
+                                "unit": "mAU"
+                            },
+                            "compartment temperature": {
+                                "value": 26.3,
+                                "unit": "degC"
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:00+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
+                    "analytical method identifier": "C:\\Users\\user\\Desktop\\Plate123.prt",
+                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\ExperimentFile.xpt",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 260.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_3",
+                            "sample document": {
+                                "sample identifier": "SPL25",
+                                "location identifier": "A4",
+                                "well plate identifier": "Plate 1"
+                            },
+                            "absorbance": {
+                                "value": 0.554,
+                                "unit": "mAU"
+                            },
+                            "compartment temperature": {
+                                "value": 26.3,
+                                "unit": "degC"
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:00+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
+                    "analytical method identifier": "C:\\Users\\user\\Desktop\\Plate123.prt",
+                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\ExperimentFile.xpt",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 260.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_4",
+                            "sample document": {
+                                "sample identifier": "SPL33",
+                                "location identifier": "A5",
+                                "well plate identifier": "Plate 1"
+                            },
+                            "absorbance": {
+                                "value": 0.416,
+                                "unit": "mAU"
+                            },
+                            "compartment temperature": {
+                                "value": 26.3,
+                                "unit": "degC"
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:00+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
+                    "analytical method identifier": "C:\\Users\\user\\Desktop\\Plate123.prt",
+                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\ExperimentFile.xpt",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 260.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_5",
+                            "sample document": {
+                                "sample identifier": "SPL41",
+                                "location identifier": "A6",
+                                "well plate identifier": "Plate 1"
+                            },
+                            "absorbance": {
+                                "value": 0.587,
+                                "unit": "mAU"
+                            },
+                            "compartment temperature": {
+                                "value": 26.3,
+                                "unit": "degC"
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:00+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
+                    "analytical method identifier": "C:\\Users\\user\\Desktop\\Plate123.prt",
+                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\ExperimentFile.xpt",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 260.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_6",
+                            "sample document": {
+                                "sample identifier": "SPL49",
+                                "location identifier": "A7",
+                                "well plate identifier": "Plate 1"
+                            },
+                            "absorbance": {
+                                "value": 0.522,
+                                "unit": "mAU"
+                            },
+                            "compartment temperature": {
+                                "value": 26.3,
+                                "unit": "degC"
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:00+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
+                    "analytical method identifier": "C:\\Users\\user\\Desktop\\Plate123.prt",
+                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\ExperimentFile.xpt",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 260.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_7",
+                            "sample document": {
+                                "sample identifier": "SPL57",
+                                "location identifier": "A8",
+                                "well plate identifier": "Plate 1"
+                            },
+                            "absorbance": {
+                                "value": 0.487,
+                                "unit": "mAU"
+                            },
+                            "compartment temperature": {
+                                "value": 26.3,
+                                "unit": "degC"
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:00+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
+                    "analytical method identifier": "C:\\Users\\user\\Desktop\\Plate123.prt",
+                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\ExperimentFile.xpt",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 260.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_8",
+                            "sample document": {
+                                "sample identifier": "SPL65",
+                                "location identifier": "A9",
+                                "well plate identifier": "Plate 1"
+                            },
+                            "absorbance": {
+                                "value": 0.574,
+                                "unit": "mAU"
+                            },
+                            "compartment temperature": {
+                                "value": 26.3,
+                                "unit": "degC"
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:00+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
+                    "analytical method identifier": "C:\\Users\\user\\Desktop\\Plate123.prt",
+                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\ExperimentFile.xpt",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 260.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_9",
+                            "sample document": {
+                                "sample identifier": "SPL73",
+                                "location identifier": "A10",
+                                "well plate identifier": "Plate 1"
+                            },
+                            "absorbance": {
+                                "value": 0.496,
+                                "unit": "mAU"
+                            },
+                            "compartment temperature": {
+                                "value": 26.3,
+                                "unit": "degC"
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:00+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
+                    "analytical method identifier": "C:\\Users\\user\\Desktop\\Plate123.prt",
+                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\ExperimentFile.xpt",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 260.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_10",
+                            "sample document": {
+                                "sample identifier": "SPL81",
+                                "location identifier": "A11",
+                                "well plate identifier": "Plate 1"
+                            },
+                            "absorbance": {
+                                "value": 0.605,
+                                "unit": "mAU"
+                            },
+                            "compartment temperature": {
+                                "value": 26.3,
+                                "unit": "degC"
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:00+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
+                    "analytical method identifier": "C:\\Users\\user\\Desktop\\Plate123.prt",
+                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\ExperimentFile.xpt",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "number of averages": {
+                                            "value": 8.0,
+                                            "unit": "#"
+                                        },
+                                        "detector carriage speed setting": "Normal",
+                                        "detector wavelength setting": {
+                                            "value": 260.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_11",
+                            "sample document": {
+                                "sample identifier": "SPL89",
+                                "location identifier": "A12",
+                                "well plate identifier": "Plate 1"
+                            },
+                            "absorbance": {
+                                "value": 0.65,
+                                "unit": "mAU"
+                            },
+                            "compartment temperature": {
+                                "value": 26.3,
+                                "unit": "degC"
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-15T12:30:00+00:00",
+                    "plate well count": {
+                        "value": 12,
+                        "unit": "#"
+                    },
+                    "analytical method identifier": "C:\\Users\\user\\Desktop\\Plate123.prt",
+                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\ExperimentFile.xpt",
+                    "container type": "well plate"
+                }
+            }
+        ],
+        "data system document": {
+            "ASM file identifier": "N/A",
+            "data system instance identifier": "N/A",
+            "file name": "absorbance_error_document_example.txt",
+            "UNC path": "N/A",
+            "ASM converter name": "allotropy_agilent_gen5",
+            "ASM converter version": "0.1.56",
+            "software name": "Gen5",
+            "software version": "3.12.08"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "Generic Reader",
+            "equipment serial number": "12345678"
+        }
+    }
+}

@@ -16,10 +16,10 @@ from allotropy.parsers.$PARSER_NAME$.$PARSER_NAME$_structure import (
     create_metadata,
 )
 from allotropy.parsers.utils.pandas import map_rows
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class $CLASS_NAME_PREFIX$Parser(MapperVendorParser[Data, Model]):
+class $CLASS_NAME_PREFIX$Parser(VendorParser[Data, Model]):
     DISPLAY_NAME = DISPLAY_NAME
     RELEASE_STATE = ReleaseState.WORKING_DRAFT
     SUPPORTED_EXTENSIONS = $CLASS_NAME_PREFIX$Reader.SUPPORTED_EXTENSIONS

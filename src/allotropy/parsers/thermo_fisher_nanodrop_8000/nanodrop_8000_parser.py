@@ -15,10 +15,10 @@ from allotropy.parsers.thermo_fisher_nanodrop_8000.nanodrop_8000_structure impor
     create_metadata,
     SpectroscopyRow,
 )
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class Nanodrop8000Parser(MapperVendorParser[Data, Model]):
+class Nanodrop8000Parser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Thermo Fisher NanoDrop 8000"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = Nanodrop8000Reader.SUPPORTED_EXTENSIONS
