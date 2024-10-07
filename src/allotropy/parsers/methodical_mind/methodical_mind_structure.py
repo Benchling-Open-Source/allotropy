@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from pathlib import Path
 
 import pandas as pd
 
@@ -84,7 +85,8 @@ class WellData:
         )
 
 
-def create_metadata(header: Header) -> Metadata:
+def create_metadata(header: Header, file_name: str) -> Metadata:
+    asm_file_identifier = Path(file_name).with_suffix(".json")
     return Metadata(
         file_name=header.file_name.rsplit("\\", 1)[-1],
         unc_path=header.file_name,
@@ -93,7 +95,7 @@ def create_metadata(header: Header) -> Metadata:
         device_identifier=NOT_APPLICABLE,
         model_number=header.model,
         equipment_serial_number=header.serial_number,
-        asm_file_identifier=NOT_APPLICABLE,
+        asm_file_identifier=asm_file_identifier.name,
         data_system_instance_id=NOT_APPLICABLE,
     )
 

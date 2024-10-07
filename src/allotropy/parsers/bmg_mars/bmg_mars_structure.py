@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import Enum
+from pathlib import Path
 import re
 
 import pandas as pd
@@ -97,9 +98,10 @@ class Header:
 
 
 def create_metadata(header: Header, file_name: str) -> Metadata:
+    asm_file_identifier = Path(file_name).with_suffix(".json")
     return Metadata(
         file_name=file_name,
-        asm_file_identifier=NOT_APPLICABLE,
+        asm_file_identifier=asm_file_identifier.name,
         unc_path=header.path,
         device_identifier=NOT_APPLICABLE,
         model_number=NOT_APPLICABLE,
