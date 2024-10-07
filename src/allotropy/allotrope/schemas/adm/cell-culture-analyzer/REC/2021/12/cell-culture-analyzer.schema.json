@@ -1,0 +1,486 @@
+{
+  "$id" : "http://purl.allotrope.org/json-schemas/adm/cell-culture-analyzer/REC/2021/12/cell-culture-analyzer.embed.schema",
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "properties" : {
+    "phosphate analysis document (cell-culture)" : {
+      "type" : "object",
+      "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0002092",
+      "$asm.pattern" : "aggregate datum",
+      "required" : [ "concentration" ],
+      "properties" : {
+        "concentration" : {
+          "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0002036",
+          "$asm.pattern" : "any datum"
+        }
+      }
+    },
+    "sample identifier" : {
+      "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0001118",
+      "$asm.pattern" : "value datum",
+      "$asm.type" : "http://www.w3.org/2001/XMLSchema#string",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "object",
+        "required" : [ "@type", "value" ],
+        "properties" : {
+          "value" : {
+            "type" : "string"
+          },
+          "@type" : {
+            "type" : "string",
+            "$asm.type" : "http://www.w3.org/2000/01/rdf-schema#Class",
+            "$asm.lookup-property" : "http://www.w3.org/2004/02/skos/core#prefLabel"
+          }
+        }
+      } ]
+    },
+    "glucose analysis document (cell-culture)" : {
+      "type" : "object",
+      "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0002087",
+      "$asm.pattern" : "aggregate datum",
+      "required" : [ "concentration" ],
+      "properties" : {
+        "concentration" : {
+          "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0002036",
+          "$asm.pattern" : "any datum"
+        }
+      }
+    },
+    "viability (cell counter)" : {
+      "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0001111",
+      "$asm.pattern" : "quantity datum",
+      "type" : "object",
+      "properties" : {
+        "value" : {
+          "type" : "number"
+        },
+        "unit" : {
+          "description" : "A unit is referenced by its QUDT symbol. It MUST be unique within the QUDT units defined in the vocabularies declared in the manifest.",
+          "type" : "string",
+          "$asm.lookup-property" : "http://purl.allotrope.org/ontology/qudt-ext/schema#symbol",
+          "$asm.type" : "http://qudt.org/schema/qudt#Unit",
+          "const" : "%",
+          "$asm.unit-iri" : "http://qudt.org/vocab/unit#Percent"
+        },
+        "@type" : {
+          "description" : "A class reference is the SKOS preferred label of a class. This label MUST be unique within the transitive closure of the vocabulary referenced by the manifest.",
+          "type" : "string",
+          "$asm.lookup-property" : "http://www.w3.org/2004/02/skos/core#prefLabel",
+          "$asm.type" : "http://www.w3.org/2000/01/rdf-schema#Class"
+        }
+      },
+      "$asm.type" : "http://qudt.org/schema/qudt#QuantityValue",
+      "required" : [ "value", "unit" ]
+    },
+    "analyst" : {
+      "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0001116",
+      "$asm.pattern" : "value datum",
+      "$asm.type" : "http://www.w3.org/2001/XMLSchema#string",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "object",
+        "required" : [ "@type", "value" ],
+        "properties" : {
+          "value" : {
+            "type" : "string"
+          },
+          "@type" : {
+            "type" : "string",
+            "$asm.type" : "http://www.w3.org/2000/01/rdf-schema#Class",
+            "$asm.lookup-property" : "http://www.w3.org/2004/02/skos/core#prefLabel"
+          }
+        }
+      } ]
+    },
+    "volume concentration" : {
+      "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0002110",
+      "$asm.pattern" : "quantity datum",
+      "type" : "object",
+      "properties" : {
+        "value" : {
+          "type" : "number"
+        },
+        "unit" : {
+          "description" : "A unit is referenced by its QUDT symbol. It MUST be unique within the QUDT units defined in the vocabularies declared in the manifest.",
+          "type" : "string",
+          "$asm.lookup-property" : "http://purl.allotrope.org/ontology/qudt-ext/schema#symbol",
+          "$asm.type" : "http://qudt.org/schema/qudt#Unit",
+          "const" : "mL/L",
+          "$asm.unit-iri" : "http://purl.allotrope.org/ontology/qudt-ext/unit#MilliliterPerLiter"
+        },
+        "@type" : {
+          "description" : "A class reference is the SKOS preferred label of a class. This label MUST be unique within the transitive closure of the vocabulary referenced by the manifest.",
+          "type" : "string",
+          "$asm.lookup-property" : "http://www.w3.org/2004/02/skos/core#prefLabel",
+          "$asm.type" : "http://www.w3.org/2000/01/rdf-schema#Class"
+        }
+      },
+      "$asm.type" : "http://qudt.org/schema/qudt#QuantityValue",
+      "required" : [ "value", "unit" ]
+    },
+    "calcium analysis document (cell-culture)" : {
+      "type" : "object",
+      "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0002093",
+      "$asm.pattern" : "aggregate datum",
+      "required" : [ "concentration" ],
+      "properties" : {
+        "concentration" : {
+          "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0002036",
+          "$asm.pattern" : "any datum"
+        }
+      }
+    },
+    "ammonium analysis document (cell-culture)" : {
+      "type" : "object",
+      "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0002089",
+      "$asm.pattern" : "aggregate datum",
+      "required" : [ "concentration" ],
+      "properties" : {
+        "concentration" : {
+          "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0002036",
+          "$asm.pattern" : "any datum"
+        }
+      }
+    },
+    "data processing time" : {
+      "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0002095",
+      "$asm.pattern" : "value datum",
+      "$asm.type" : "http://www.w3.org/2001/XMLSchema#dateTimeStamp",
+      "oneOf" : [ {
+        "type" : "string",
+        "format" : "date-time"
+      }, {
+        "type" : "object",
+        "required" : [ "@type", "value" ],
+        "properties" : {
+          "value" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "@type" : {
+            "type" : "string",
+            "$asm.type" : "http://www.w3.org/2000/01/rdf-schema#Class",
+            "$asm.lookup-property" : "http://www.w3.org/2004/02/skos/core#prefLabel"
+          }
+        }
+      } ]
+    },
+    "glutamine analysis document (cell-culture)" : {
+      "type" : "object",
+      "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0002086",
+      "$asm.pattern" : "aggregate datum",
+      "required" : [ "concentration" ],
+      "properties" : {
+        "concentration" : {
+          "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0002036",
+          "$asm.pattern" : "any datum"
+        }
+      }
+    },
+    "sodium analysis document (cell-culture)" : {
+      "type" : "object",
+      "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0002090",
+      "$asm.pattern" : "aggregate datum",
+      "required" : [ "concentration" ],
+      "properties" : {
+        "concentration" : {
+          "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0002036",
+          "$asm.pattern" : "any datum"
+        }
+      }
+    },
+    "potassium analysis document (cell-culture)" : {
+      "type" : "object",
+      "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0002091",
+      "$asm.pattern" : "aggregate datum",
+      "required" : [ "concentration" ],
+      "properties" : {
+        "concentration" : {
+          "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0002036",
+          "$asm.pattern" : "any datum"
+        }
+      }
+    },
+    "measurement time" : {
+      "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0000952",
+      "$asm.pattern" : "value datum",
+      "$asm.type" : "http://www.w3.org/2001/XMLSchema#dateTimeStamp",
+      "oneOf" : [ {
+        "type" : "string",
+        "format" : "date-time"
+      }, {
+        "type" : "object",
+        "required" : [ "@type", "value" ],
+        "properties" : {
+          "value" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "@type" : {
+            "type" : "string",
+            "$asm.type" : "http://www.w3.org/2000/01/rdf-schema#Class",
+            "$asm.lookup-property" : "http://www.w3.org/2004/02/skos/core#prefLabel"
+          }
+        }
+      } ]
+    },
+    "measurement identifier" : {
+      "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0001121",
+      "$asm.pattern" : "value datum",
+      "$asm.type" : "http://www.w3.org/2001/XMLSchema#string",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "object",
+        "required" : [ "@type", "value" ],
+        "properties" : {
+          "value" : {
+            "type" : "string"
+          },
+          "@type" : {
+            "type" : "string",
+            "$asm.type" : "http://www.w3.org/2000/01/rdf-schema#Class",
+            "$asm.lookup-property" : "http://www.w3.org/2004/02/skos/core#prefLabel"
+          }
+        }
+      } ]
+    },
+    "average live cell diameter (cell counter)" : {
+      "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0001113",
+      "$asm.pattern" : "quantity datum",
+      "type" : "object",
+      "properties" : {
+        "value" : {
+          "type" : "number"
+        },
+        "unit" : {
+          "description" : "A unit is referenced by its QUDT symbol. It MUST be unique within the QUDT units defined in the vocabularies declared in the manifest.",
+          "type" : "string",
+          "$asm.lookup-property" : "http://purl.allotrope.org/ontology/qudt-ext/schema#symbol",
+          "$asm.type" : "http://qudt.org/schema/qudt#Unit",
+          "const" : "µm",
+          "$asm.unit-iri" : "http://qudt.org/vocab/unit#Micrometer"
+        },
+        "@type" : {
+          "description" : "A class reference is the SKOS preferred label of a class. This label MUST be unique within the transitive closure of the vocabulary referenced by the manifest.",
+          "type" : "string",
+          "$asm.lookup-property" : "http://www.w3.org/2004/02/skos/core#prefLabel",
+          "$asm.type" : "http://www.w3.org/2000/01/rdf-schema#Class"
+        }
+      },
+      "$asm.type" : "http://qudt.org/schema/qudt#QuantityValue",
+      "required" : [ "value", "unit" ]
+    },
+    "molar concentration" : {
+      "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0002006",
+      "$asm.pattern" : "quantity datum",
+      "type" : "object",
+      "properties" : {
+        "value" : {
+          "type" : "number"
+        },
+        "unit" : {
+          "description" : "A unit is referenced by its QUDT symbol. It MUST be unique within the QUDT units defined in the vocabularies declared in the manifest.",
+          "type" : "string",
+          "$asm.lookup-property" : "http://purl.allotrope.org/ontology/qudt-ext/schema#symbol",
+          "$asm.type" : "http://qudt.org/schema/qudt#Unit",
+          "const" : "mmol/L",
+          "$asm.unit-iri" : "http://purl.allotrope.org/ontology/qudt-ext/unit#MillimolePerLiter"
+        },
+        "@type" : {
+          "description" : "A class reference is the SKOS preferred label of a class. This label MUST be unique within the transitive closure of the vocabulary referenced by the manifest.",
+          "type" : "string",
+          "$asm.lookup-property" : "http://www.w3.org/2004/02/skos/core#prefLabel",
+          "$asm.type" : "http://www.w3.org/2000/01/rdf-schema#Class"
+        }
+      },
+      "$asm.type" : "http://qudt.org/schema/qudt#QuantityValue",
+      "required" : [ "value", "unit" ]
+    },
+    "total cell density (cell counter)" : {
+      "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0001112",
+      "$asm.pattern" : "quantity datum",
+      "type" : "object",
+      "properties" : {
+        "value" : {
+          "type" : "number"
+        },
+        "unit" : {
+          "description" : "A unit is referenced by its QUDT symbol. It MUST be unique within the QUDT units defined in the vocabularies declared in the manifest.",
+          "type" : "string",
+          "$asm.lookup-property" : "http://purl.allotrope.org/ontology/qudt-ext/schema#symbol",
+          "$asm.type" : "http://qudt.org/schema/qudt#Unit",
+          "const" : "10^6 cells/mL",
+          "$asm.unit-iri" : "http://purl.allotrope.org/ontology/qudt-ext/unit#MillionCellsPerMilliliter"
+        },
+        "@type" : {
+          "description" : "A class reference is the SKOS preferred label of a class. This label MUST be unique within the transitive closure of the vocabulary referenced by the manifest.",
+          "type" : "string",
+          "$asm.lookup-property" : "http://www.w3.org/2004/02/skos/core#prefLabel",
+          "$asm.type" : "http://www.w3.org/2000/01/rdf-schema#Class"
+        }
+      },
+      "$asm.type" : "http://qudt.org/schema/qudt#QuantityValue",
+      "required" : [ "value", "unit" ]
+    },
+    "batch identifier" : {
+      "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0001120",
+      "$asm.pattern" : "value datum",
+      "$asm.type" : "http://www.w3.org/2001/XMLSchema#string",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "object",
+        "required" : [ "@type", "value" ],
+        "properties" : {
+          "value" : {
+            "type" : "string"
+          },
+          "@type" : {
+            "type" : "string",
+            "$asm.type" : "http://www.w3.org/2000/01/rdf-schema#Class",
+            "$asm.lookup-property" : "http://www.w3.org/2004/02/skos/core#prefLabel"
+          }
+        }
+      } ]
+    },
+    "equipment serial number" : {
+      "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0001119",
+      "$asm.pattern" : "value datum",
+      "$asm.type" : "http://www.w3.org/2001/XMLSchema#string",
+      "oneOf" : [ {
+        "type" : "string"
+      }, {
+        "type" : "object",
+        "required" : [ "@type", "value" ],
+        "properties" : {
+          "value" : {
+            "type" : "string"
+          },
+          "@type" : {
+            "type" : "string",
+            "$asm.type" : "http://www.w3.org/2000/01/rdf-schema#Class",
+            "$asm.lookup-property" : "http://www.w3.org/2004/02/skos/core#prefLabel"
+          }
+        }
+      } ]
+    },
+    "osmolality" : {
+      "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0001586",
+      "$asm.pattern" : "quantity datum",
+      "type" : "object",
+      "properties" : {
+        "value" : {
+          "type" : "number"
+        },
+        "unit" : {
+          "description" : "A unit is referenced by its QUDT symbol. It MUST be unique within the QUDT units defined in the vocabularies declared in the manifest.",
+          "type" : "string",
+          "$asm.lookup-property" : "http://purl.allotrope.org/ontology/qudt-ext/schema#symbol",
+          "$asm.type" : "http://qudt.org/schema/qudt#Unit",
+          "const" : "mosm/kg",
+          "$asm.unit-iri" : "http://purl.allotrope.org/ontology/qudt-ext/unit#MilliOsmolesPerKilogram"
+        },
+        "@type" : {
+          "description" : "A class reference is the SKOS preferred label of a class. This label MUST be unique within the transitive closure of the vocabulary referenced by the manifest.",
+          "type" : "string",
+          "$asm.lookup-property" : "http://www.w3.org/2004/02/skos/core#prefLabel",
+          "$asm.type" : "http://www.w3.org/2000/01/rdf-schema#Class"
+        }
+      },
+      "$asm.type" : "http://qudt.org/schema/qudt#QuantityValue",
+      "required" : [ "value", "unit" ]
+    },
+    "lactate analysis document (cell-culture)" : {
+      "type" : "object",
+      "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0002088",
+      "$asm.pattern" : "aggregate datum",
+      "required" : [ "concentration" ],
+      "properties" : {
+        "concentration" : {
+          "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0002036",
+          "$asm.pattern" : "any datum"
+        }
+      }
+    },
+    "viable cell density (cell counter)" : {
+      "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0001108",
+      "$asm.pattern" : "quantity datum",
+      "type" : "object",
+      "properties" : {
+        "value" : {
+          "type" : "number"
+        },
+        "unit" : {
+          "description" : "A unit is referenced by its QUDT symbol. It MUST be unique within the QUDT units defined in the vocabularies declared in the manifest.",
+          "type" : "string",
+          "$asm.lookup-property" : "http://purl.allotrope.org/ontology/qudt-ext/schema#symbol",
+          "$asm.type" : "http://qudt.org/schema/qudt#Unit",
+          "const" : "10^6 cells/mL",
+          "$asm.unit-iri" : "http://purl.allotrope.org/ontology/qudt-ext/unit#MillionCellsPerMilliliter"
+        },
+        "@type" : {
+          "description" : "A class reference is the SKOS preferred label of a class. This label MUST be unique within the transitive closure of the vocabulary referenced by the manifest.",
+          "type" : "string",
+          "$asm.lookup-property" : "http://www.w3.org/2004/02/skos/core#prefLabel",
+          "$asm.type" : "http://www.w3.org/2000/01/rdf-schema#Class"
+        }
+      },
+      "$asm.type" : "http://qudt.org/schema/qudt#QuantityValue",
+      "required" : [ "value", "unit" ]
+    },
+    "glutamate analysis document (cell-culture)" : {
+      "type" : "object",
+      "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0002085",
+      "$asm.pattern" : "aggregate datum",
+      "required" : [ "concentration" ],
+      "properties" : {
+        "concentration" : {
+          "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0002036",
+          "$asm.pattern" : "any datum"
+        }
+      }
+    },
+    "lactase dehydrogenate analysis document (cell-culture)" : {
+      "type" : "object",
+      "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0002094",
+      "$asm.pattern" : "aggregate datum",
+      "required" : [ "concentration" ],
+      "properties" : {
+        "concentration" : {
+          "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0002036",
+          "$asm.pattern" : "any datum"
+        }
+      }
+    },
+    "mass concentration" : {
+      "$asm.property-class" : "http://purl.allotrope.org/ontologies/result#AFR_0001661",
+      "$asm.pattern" : "quantity datum",
+      "type" : "object",
+      "properties" : {
+        "value" : {
+          "type" : "number"
+        },
+        "unit" : {
+          "description" : "A unit is referenced by its QUDT symbol. It MUST be unique within the QUDT units defined in the vocabularies declared in the manifest.",
+          "type" : "string",
+          "$asm.lookup-property" : "http://purl.allotrope.org/ontology/qudt-ext/schema#symbol",
+          "$asm.type" : "http://qudt.org/schema/qudt#Unit",
+          "const" : "g/L",
+          "$asm.unit-iri" : "http://purl.allotrope.org/ontology/qudt-ext/unit#GramPerLiter"
+        },
+        "@type" : {
+          "description" : "A class reference is the SKOS preferred label of a class. This label MUST be unique within the transitive closure of the vocabulary referenced by the manifest.",
+          "type" : "string",
+          "$asm.lookup-property" : "http://www.w3.org/2004/02/skos/core#prefLabel",
+          "$asm.type" : "http://www.w3.org/2000/01/rdf-schema#Class"
+        }
+      },
+      "$asm.type" : "http://qudt.org/schema/qudt#QuantityValue",
+      "required" : [ "value", "unit" ]
+    }
+  },
+  "required" : [ "analyst", "measurement time", "measurement identifier" ]
+}
