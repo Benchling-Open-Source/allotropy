@@ -10,7 +10,6 @@ from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import (
     ProcessedDataDocumentItem,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
-    TNullableQuantityValueMillimolePerLiter,
     TNullableQuantityValueUnitless,
     TQuantityValueUnitless,
 )
