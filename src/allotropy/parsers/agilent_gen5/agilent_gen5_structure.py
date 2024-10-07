@@ -4,8 +4,8 @@ from collections import defaultdict
 from dataclasses import dataclass
 from io import StringIO
 import math
-import re
 from pathlib import Path
+import re
 
 import pandas as pd
 
