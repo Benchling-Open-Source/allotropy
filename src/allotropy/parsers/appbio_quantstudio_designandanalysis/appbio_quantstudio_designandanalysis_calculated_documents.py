@@ -738,7 +738,7 @@ def iter_relative_standard_curve_calc_docs(
             build_relative_rq_min(view_st_data, view_tr_data, sample, target)
         )
         calc_docs.append(
-            build_relative_rq_min(view_st_data, view_tr_data, sample, target)
+            build_relative_rq_max(view_st_data, view_tr_data, sample, target)
         )
 
         if target != r_target:
