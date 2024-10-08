@@ -586,12 +586,20 @@ def build_efficiency(
     )
 
 
+def yield_documents(
+    calc_docs: list[CalculatedDocument | None],
+) -> Iterator[CalculatedDocument]:
+    for calc_doc in calc_docs:
+        if calc_doc:
+            yield from calc_doc.iter_struct()
+
+
 def iter_comparative_ct_calc_docs(
     view_st_data: ViewData[WellItem],
     view_tr_data: ViewData[WellItem],
     r_sample: str,
     r_target: str,
-) -> list[CalculatedDocument | None]:
+) -> Iterator[CalculatedDocument]:
     # Quantity, Quantity Mean, Quantity SD, Ct Mean, Ct SD, Delta Ct Mean,
     # Delta Ct SE, Delta Delta Ct, RQ, RQ min, RQ max, Amplification score, Cq confidence
     calc_docs: list[CalculatedDocument | None] = []
@@ -619,13 +627,13 @@ def iter_comparative_ct_calc_docs(
                 build_rq_max(view_st_data, sample, target, r_sample, r_target)
             )
 
-    return calc_docs
+    yield from yield_documents(calc_docs)
 
 
 def iter_standard_curve_calc_docs(
     view_st_data: ViewData[WellItem],
     view_tr_data: ViewData[WellItem],
-) -> list[CalculatedDocument | None]:
+) -> Iterator[CalculatedDocument]:
     # Quantity, Quantity Mean, Quantity SD, Ct Mean, Ct SD, Y-Intercept,
     # R(superscript 2), Slope, Efficiency, Amplification score, Cq confidence
     calc_docs: list[CalculatedDocument | None] = []
@@ -651,13 +659,13 @@ def iter_standard_curve_calc_docs(
         calc_docs.append(build_slope(view_tr_data, target))
         calc_docs.append(build_efficiency(view_tr_data, target))
 
-    return calc_docs
+    yield from yield_documents(calc_docs)
 
 
 def iter_relative_standard_curve_calc_docs(
     view_st_data: ViewData[WellItem],
     view_tr_data: ViewData[WellItem],
-) -> list[CalculatedDocument | None]:
+) -> Iterator[CalculatedDocument]:
     # Quantity, Quantity Mean, Quantity SD, Ct Mean, Ct SD, RQ, RQ min,
     # RQ max, Y-Intercept, R(superscript 2), Slope, Efficiency,
     # Amplification score, Cq confidence
@@ -690,12 +698,12 @@ def iter_relative_standard_curve_calc_docs(
         calc_docs.append(build_slope(view_tr_data, target))
         calc_docs.append(build_efficiency(view_tr_data, target))
 
-    return calc_docs
+    yield from yield_documents(calc_docs)
 
 
 def iter_presence_absence_calc_docs(
     view_data: ViewData[WellItem],
-) -> list[CalculatedDocument | None]:
+) -> Iterator[CalculatedDocument]:
     # Rn Mean, Rn SD, Amplification score, Cq confidence
     calc_docs: list[CalculatedDocument | None] = []
     for sample, target in view_data.iter_keys():
@@ -710,7 +718,7 @@ def iter_presence_absence_calc_docs(
         calc_docs.append(build_rn_mean(view_data, sample, target))
         calc_docs.append(build_rn_sd(view_data, sample, target))
 
-    return calc_docs
+    yield from yield_documents(calc_docs)
 
 
 def iter_calculated_data_documents(
@@ -725,29 +733,24 @@ def iter_calculated_data_documents(
     view_tr = TargetRoleView()
     view_tr_data = view_tr.apply(well_items)
 
-    calc_docs: list[CalculatedDocument | None] = []
     if experiment_type == ExperimentType.relative_standard_curve_qPCR_experiment:
-        calc_docs = iter_relative_standard_curve_calc_docs(
+        yield from iter_relative_standard_curve_calc_docs(
             view_st_data,
             view_tr_data,
         )
     elif experiment_type == ExperimentType.comparative_CT_qPCR_experiment:
-        calc_docs = iter_comparative_ct_calc_docs(
+        yield from iter_comparative_ct_calc_docs(
             view_st_data,
             view_tr_data,
             assert_not_none(r_sample),
             assert_not_none(r_target),
         )
     elif experiment_type == ExperimentType.standard_curve_qPCR_experiment:
-        calc_docs = iter_standard_curve_calc_docs(
+        yield from iter_standard_curve_calc_docs(
             view_st_data,
             view_tr_data,
         )
     elif experiment_type == ExperimentType.presence_absence_qPCR_experiment:
-        calc_docs = iter_presence_absence_calc_docs(
+        yield from iter_presence_absence_calc_docs(
             view_st_data,
         )
-
-    for calc_doc in calc_docs:
-        if calc_doc:
-            yield from calc_doc.iter_struct()
