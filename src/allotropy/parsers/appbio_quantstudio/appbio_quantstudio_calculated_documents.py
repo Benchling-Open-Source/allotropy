@@ -605,6 +605,9 @@ def iter_comparative_ct_calc_docs(
     calc_docs: list[CalculatedDocument | None] = []
     for sample, target in view_st_data.iter_keys():
         for well_item in view_st_data.get_leaf_item(sample, target):
+            if not well_item.has_result:
+                continue
+
             calc_docs.append(build_quantity(view_tr_data, target, well_item))
             calc_docs.append(build_amp_score(well_item))
             calc_docs.append(build_cq_conf(well_item))
@@ -636,6 +639,9 @@ def iter_standard_curve_calc_docs(
     calc_docs: list[CalculatedDocument | None] = []
     for sample, target in view_st_data.iter_keys():
         for well_item in view_st_data.get_leaf_item(sample, target):
+            if not well_item.has_result:
+                continue
+
             calc_docs.append(build_quantity(view_tr_data, target, well_item))
             calc_docs.append(build_amp_score(well_item))
             calc_docs.append(build_cq_conf(well_item))
@@ -666,6 +672,9 @@ def iter_relative_standard_curve_calc_docs(
     calc_docs: list[CalculatedDocument | None] = []
     for sample, target in view_st_data.iter_keys():
         for well_item in view_st_data.get_leaf_item(sample, target):
+            if not well_item.has_result:
+                continue
+
             calc_docs.append(build_quantity(view_tr_data, target, well_item))
             calc_docs.append(build_amp_score(well_item))
             calc_docs.append(build_cq_conf(well_item))
@@ -699,6 +708,9 @@ def iter_presence_absence_calc_docs(
     calc_docs: list[CalculatedDocument | None] = []
     for sample, target in view_data.iter_keys():
         for well_item in view_data.get_leaf_item(sample, target):
+            if not well_item.has_result:
+                continue
+
             calc_docs.append(build_quantity(None, target, well_item))
             calc_docs.append(build_amp_score(well_item))
             calc_docs.append(build_cq_conf(well_item))
