@@ -343,7 +343,7 @@ class PlateWavelengthData:
         data_elements = {}
         for position, raw_value in data.items():
             value = try_non_nan_float_or_none(raw_value)
-            if value is None and elapsed_time:
+            if value is None and elapsed_time is not None:
                 msg = f"Missing kinetic measurement for well position {position} at {elapsed_time}s."
                 raise AllotropeConversionError(msg)
 
