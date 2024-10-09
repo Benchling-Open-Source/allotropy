@@ -11,6 +11,7 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_rea
     DataCube,
     DataCubeComponent,
     DataSource,
+    ErrorDocument,
     Measurement,
     MeasurementGroup,
     MeasurementType,
@@ -121,6 +122,11 @@ def _create_measurements(plate_block: PlateBlock, position: str) -> list[Measure
             total_measurement_time_setting=plate_block.header.read_time,
             read_interval_setting=plate_block.header.read_interval,
             number_of_scans_setting=plate_block.header.kinetic_points,
+            error_document=(
+                None
+                if (error := data_element.error) is None
+                else [ErrorDocument(error, plate_block.header.read_mode)]
+            ),
         )
         for idx, data_element in enumerate(plate_block.iter_data_elements(position))
     ]
