@@ -209,6 +209,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     ASM_converter_name=self.converter_name,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                     software_name=data.metadata.software_name,
+                    software_version=data.metadata.software_version,
                 ),
                 spectrophotometry_document=[
                     self._get_technique_document(measurement_group, data.metadata)
