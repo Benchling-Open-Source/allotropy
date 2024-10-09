@@ -83,6 +83,12 @@
                                                                         },
                                                                         {
                                                                           "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/mL"
+                                                                        },
+                                                                        {
+                                                                          "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/03/units.schema#/$defs/#"
+                                                                        },
+                                                                        {
+                                                                          "$ref": "#/$custom/tQuantityValueKiloDalton"
                                                                         }
                                                                       ]
                                                                     }
@@ -102,7 +108,20 @@
                                                                       "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
                                                                     },
                                                                     {
-                                                                      "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/%25"
+                                                                      "oneOf": [
+                                                                        {
+                                                                          "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/%25"
+                                                                        },
+                                                                        {
+                                                                          "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/03/units.schema#/$defs/s"
+                                                                        },
+                                                                        {
+                                                                          "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/03/units.schema#/$defs/#"
+                                                                        },
+                                                                        {
+                                                                          "$ref": "#/$custom/tQuantityValueKiloDalton"
+                                                                        }
+                                                                      ]
                                                                     }
                                                                   ]
                                                                 },
@@ -192,6 +211,12 @@
                                                                         },
                                                                         {
                                                                           "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/mL"
+                                                                        },
+                                                                        {
+                                                                          "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/03/units.schema#/$defs/#"
+                                                                        },
+                                                                        {
+                                                                          "$ref": "#/$custom/tQuantityValueKiloDalton"
                                                                         }
                                                                       ]
                                                                     }
@@ -747,6 +772,12 @@
                                                                         },
                                                                         {
                                                                           "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/mL"
+                                                                        },
+                                                                        {
+                                                                          "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/03/units.schema#/$defs/#"
+                                                                        },
+                                                                        {
+                                                                          "$ref": "#/$custom/tQuantityValueKiloDalton"
                                                                         }
                                                                       ]
                                                                     }
@@ -799,6 +830,12 @@
                                                                         },
                                                                         {
                                                                           "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/mL"
+                                                                        },
+                                                                        {
+                                                                          "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/03/units.schema#/$defs/#"
+                                                                        },
+                                                                        {
+                                                                          "$ref": "#/$custom/tQuantityValueKiloDalton"
                                                                         }
                                                                       ]
                                                                     }
@@ -12957,7 +12994,14 @@
                                               "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
                                             },
                                             {
-                                              "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/mAU"
+                                              "oneOf": [
+                                                {
+                                                  "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/mAU"
+                                                },
+                                                {
+                                                  "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/03/units.schema#/$defs/RFU"
+                                                }
+                                              ]
                                             }
                                           ]
                                         },
