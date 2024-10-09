@@ -17,6 +17,7 @@ from allotropy.exceptions import (
     AllotropeConversionError,
     get_key_or_error,
 )
+from allotropy.parsers.constants import NEGATIVE_ZERO
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.utils.pandas import rm_df_columns, SeriesData, set_columns
 from allotropy.parsers.utils.uuids import random_uuid_str
@@ -304,6 +305,7 @@ class DataElement:
     wavelength: float
     position: str
     value: float
+    error: str | None
     elapsed_time: list[float] = field(default_factory=list)
     kinetic_measures: list[float | None] = field(default_factory=list)
     sample_id: str | None = None
@@ -332,48 +334,48 @@ class PlateWavelengthData:
         wavelength: float,
         df_data: pd.DataFrame,
     ) -> PlateWavelengthData:
-        # Since value is required for the measurement class (absorbance, luminescense and fluorescence)
-        # we don't store data for NaN values
-        # TODO: Report error documents for NaN values
         data = {
-            f"{num_to_chars(row_idx)}{col}": value
+            f"{num_to_chars(row_idx)}{col}": raw_value
             for row_idx, *row_data in df_data.itertuples()
             for col, raw_value in zip(df_data.columns, row_data, strict=True)
-            if (value := try_non_nan_float_or_none(raw_value)) is not None
         }
-        return PlateWavelengthData(
-            wavelength,
-            data_elements={
-                str(position): DataElement(
-                    uuid=random_uuid_str(),
-                    plate=plate_name,
-                    temperature=temperature,
-                    wavelength=wavelength,
-                    position=str(position),
-                    value=value,
-                    elapsed_time=[elapsed_time] if elapsed_time is not None else [],
-                    kinetic_measures=[value] if elapsed_time is not None else [],
-                )
-                for position, value in data.items()
-            },
-        )
+
+        data_elements = {}
+        for position, raw_value in data.items():
+            value = try_non_nan_float_or_none(raw_value)
+            if value is None and elapsed_time:
+                msg = f"Missing kinetic measurement for well position {position} at {elapsed_time}s."
+                raise AllotropeConversionError(msg)
+
+            data_elements[str(position)] = DataElement(
+                uuid=random_uuid_str(),
+                plate=plate_name,
+                temperature=temperature,
+                wavelength=wavelength,
+                position=str(position),
+                value=NEGATIVE_ZERO if value is None else value,
+                error=str(raw_value) if value is None else None,
+                elapsed_time=[elapsed_time] if elapsed_time is not None else [],
+                kinetic_measures=[value] if elapsed_time is not None else [],
+            )
+
+        return PlateWavelengthData(wavelength, data_elements)
 
     def update_kinetic_data_elements(
         self, elapsed_time: float, df_data: pd.DataFrame
     ) -> None:
         data = {
-            f"{num_to_chars(row_idx)}{col}": value
+            f"{num_to_chars(row_idx)}{col}": try_non_nan_float_or_none(raw_value)
             for row_idx, *row_data in df_data.itertuples()
             for col, raw_value in zip(df_data.columns, row_data, strict=True)
-            if (value := try_non_nan_float_or_none(raw_value)) is not None
         }
         for position, value in data.items():
-            try:
-                self.data_elements[position].elapsed_time.append(elapsed_time)
-                self.data_elements[position].kinetic_measures.append(value)
-            except KeyError as e:
+            if value is None:
                 msg = f"Missing kinetic measurement for well position {position} at {elapsed_time}s."
-                raise AllotropeConversionError(msg) from e
+                raise AllotropeConversionError(msg)
+
+            self.data_elements[position].elapsed_time.append(elapsed_time)
+            self.data_elements[position].kinetic_measures.append(value)
 
 
 @dataclass(frozen=True)
@@ -524,8 +526,6 @@ class PlateData:
 
     def iter_data_elements(self, position: str) -> Iterator[DataElement]:
         for wavelength_data in self.raw_data.wavelength_data:
-            if position not in wavelength_data.data_elements:
-                continue
             yield wavelength_data.data_elements[position]
 
 
@@ -540,21 +540,21 @@ class TimeMeasurementData:
         row: pd.Series[float],
     ) -> TimeMeasurementData:
         temperature = try_non_nan_float_or_none(str(row.iloc[1]))
+        data_elements = {}
 
-        return TimeMeasurementData(
-            data_elements={
-                str(position): DataElement(
-                    uuid=random_uuid_str(),
-                    plate=plate_name,
-                    temperature=temperature,
-                    wavelength=wavelength,
-                    position=str(position),
-                    value=value,
-                )
-                for position, raw_value in row.iloc[2:].items()
-                if (value := try_non_nan_float_or_none(str(raw_value))) is not None
-            },
-        )
+        for position, raw_value in row.iloc[2:].items():
+            value = try_non_nan_float_or_none(raw_value)
+            data_elements[str(position)] = DataElement(
+                uuid=random_uuid_str(),
+                plate=plate_name,
+                temperature=temperature,
+                wavelength=wavelength,
+                position=str(position),
+                value=NEGATIVE_ZERO if value is None else value,
+                error=str(raw_value) if value is None else None,
+            )
+
+        return TimeMeasurementData(data_elements)
 
 
 @dataclass(frozen=True)
@@ -658,8 +658,6 @@ class TimeData:
     def iter_data_elements(self, position: str) -> Iterator[DataElement]:
         for wavelength_data in self.raw_data.wavelength_data:
             for measurement_data in wavelength_data.measurement_data:
-                if position not in measurement_data.data_elements:
-                    continue
                 yield measurement_data.data_elements[position]
 
 
