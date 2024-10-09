@@ -47,12 +47,12 @@ from allotropy.parsers.utils.values import (
 @dataclass(frozen=True)
 class ProcessedDataFeature:
     identifier: str
-    start: JsonFloat
-    start_unit: str
-    end: JsonFloat
-    end_unit: str
-    area: JsonFloat
-    relative_area: JsonFloat
+    start: JsonFloat | None = None
+    start_unit: str | None = None
+    end: JsonFloat | None = None
+    end_unit: str | None = None
+    area: JsonFloat | None = None
+    relative_area: JsonFloat | None = None
     position: JsonFloat | None = None
     position_unit: str | None = None
     height: JsonFloat | None = None
@@ -285,15 +285,31 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_peak(self, peak: ProcessedDataFeature) -> Peak:
         return Peak(
             identifier=peak.identifier,
-            peak_height=quantity_or_none(
-                TQuantityValueRelativeFluorescenceUnit, peak.height
+            peak_height=(
+                quantity_or_none(TQuantityValueRelativeFluorescenceUnit, peak.height)
+                if peak.height
+                else None
             ),
             # TODO(nstender): figure out how to limit possible classes from get_quantity_class for typing.
-            peak_start=quantity_or_none_from_unit(peak.start_unit, peak.start),  # type: ignore[arg-type]
-            peak_end=quantity_or_none_from_unit(peak.end_unit, peak.end),  # type: ignore[arg-type]
-            peak_area=quantity_or_none(TQuantityValueUnitless, peak.area),
-            relative_peak_area=quantity_or_none(
-                TQuantityValuePercent, peak.relative_area
+            peak_start=(
+                quantity_or_none_from_unit(peak.start_unit, peak.start)  # type: ignore[arg-type]
+                if peak.start
+                else None
+            ),
+            peak_end=(
+                quantity_or_none_from_unit(peak.end_unit, peak.end)  # type: ignore[arg-type]
+                if peak.end
+                else None
+            ),
+            peak_area=(
+                quantity_or_none(TQuantityValueUnitless, peak.area)
+                if peak.area
+                else None
+            ),
+            relative_peak_area=(
+                quantity_or_none(TQuantityValuePercent, peak.relative_area)
+                if peak.relative_area
+                else None
             ),
         )
 
@@ -301,11 +317,15 @@ class Mapper(SchemaMapper[Data, Model]):
         # TODO(ASM gaps): we believe these values should be introduced to ASM.
         return {
             "peak name": peak.name,
-            "peak position": quantity_or_none_from_unit(
-                peak.position_unit, peak.position
+            "peak position": (
+                quantity_or_none_from_unit(peak.position_unit, peak.position)
+                if peak.position
+                else None
             ),
-            "relative corrected peak area": quantity_or_none(
-                TQuantityValuePercent, peak.relative_corrected_area
+            "relative corrected peak area": (
+                quantity_or_none(TQuantityValuePercent, peak.relative_corrected_area)
+                if peak.relative_corrected_area
+                else None
             ),
             "comment": peak.comment,
         }
@@ -317,11 +337,25 @@ class Mapper(SchemaMapper[Data, Model]):
             data_region_identifier=data_region.identifier,
             data_region_name=data_region.name,
             # TODO(nstender): figure out how to limit possible classes from get_quantity_class for typing.
-            data_region_start=quantity_or_none_from_unit(data_region.start_unit, data_region.start),  # type: ignore[arg-type]
-            data_region_end=quantity_or_none_from_unit(data_region.end_unit, data_region.end),  # type: ignore[arg-type]
-            data_region_area=TQuantityValueUnitless(value=data_region.area),
-            relative_data_region_area=TQuantityValuePercent(
-                value=data_region.relative_area
+            data_region_start=(
+                quantity_or_none_from_unit(data_region.start_unit, data_region.start)  # type: ignore[arg-type]
+                if data_region.start
+                else None
+            ),
+            data_region_end=(
+                quantity_or_none_from_unit(data_region.end_unit, data_region.end)  # type: ignore[arg-type]
+                if data_region.end
+                else None
+            ),
+            data_region_area=(
+                TQuantityValueUnitless(value=data_region.area)
+                if data_region.area
+                else None
+            ),
+            relative_data_region_area=(
+                TQuantityValuePercent(value=data_region.relative_area)
+                if data_region.relative_area
+                else None
             ),
         )
 

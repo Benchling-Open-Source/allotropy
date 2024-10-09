@@ -35,7 +35,6 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import try_float_or_none
 from allotropy.parsers.utils.xml import (
     get_element_from_xml,
-    get_float_from_xml_or_nan,
     get_float_from_xml_or_none,
     get_val_from_xml,
     get_val_from_xml_or_none,
@@ -109,18 +108,18 @@ def _get_description(xml_element: ET.Element) -> str | None:
 def _create_peak(peak_element: ET.Element, unit: str) -> ProcessedDataFeature:
     return ProcessedDataFeature(
         identifier=random_uuid_str(),
-        height=get_float_from_xml_or_nan(peak_element, "Height"),
-        start=get_float_from_xml_or_nan(peak_element, "FromMW"),
+        height=get_float_from_xml_or_none(peak_element, "Height"),
+        start=get_float_from_xml_or_none(peak_element, "FromMW"),
         start_unit=unit,
-        end=get_float_from_xml_or_nan(peak_element, "ToMW"),
+        end=get_float_from_xml_or_none(peak_element, "ToMW"),
         end_unit=unit,
-        position=get_float_from_xml_or_nan(
+        position=get_float_from_xml_or_none(
             peak_element, "Size"
         ),  # stored in custom info, should be part of allotrope
         position_unit=unit,
-        area=get_float_from_xml_or_nan(peak_element, "Area"),
-        relative_area=get_float_from_xml_or_nan(peak_element, "PercentOfTotal"),
-        relative_corrected_area=get_float_from_xml_or_nan(  # stored in custom info, should be part of allotrope
+        area=get_float_from_xml_or_none(peak_element, "Area"),
+        relative_area=get_float_from_xml_or_none(peak_element, "PercentOfTotal"),
+        relative_corrected_area=get_float_from_xml_or_none(  # stored in custom info, should be part of allotrope
             peak_element, "PercentIntegratedArea"
         ),
         name=get_val_from_xml_or_none(
@@ -137,12 +136,12 @@ def _create_region(
 ) -> ProcessedDataFeature:
     return ProcessedDataFeature(
         identifier=random_uuid_str(),
-        start=get_float_from_xml_or_nan(region_element, "From"),
+        start=get_float_from_xml_or_none(region_element, "From"),
         start_unit=unit,
-        end=get_float_from_xml_or_nan(region_element, "To"),
+        end=get_float_from_xml_or_none(region_element, "To"),
         end_unit=unit,
-        area=get_float_from_xml_or_nan(region_element, "Area"),
-        relative_area=get_float_from_xml_or_nan(region_element, "PercentOfTotal"),
+        area=get_float_from_xml_or_none(region_element, "Area"),
+        relative_area=get_float_from_xml_or_none(region_element, "PercentOfTotal"),
         name=region_name,
         comment=get_val_from_xml_or_none(
             region_element, "Comment"
