@@ -39,6 +39,14 @@ def test_handles_unrecognized_read_mode() -> None:
         )
 
 
+def test_missing_kinetic_measurement() -> None:
+    with pytest.raises(
+        AllotropeConversionError,
+        match="Missing kinetic measurement for well position A1 at 0s.",
+    ):
+        from_file(f"{TESTDATA}/errors/missing_kinetic_measurement.txt", VENDOR_TYPE)
+
+
 @pytest.mark.parametrize(
     "test_file",
     [
