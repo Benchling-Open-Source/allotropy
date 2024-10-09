@@ -178,7 +178,7 @@ CubeClass = TypeVar("CubeClass")
 
 
 class Mapper(SchemaMapper[Data, Model]):
-    MANIFEST = "http://purl.allotrope.org/manifests/cell-counting/BENCHLING/2023/11/cell-counting.manifest"
+    MANIFEST = "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest"
 
     def map_model(self, data: Data) -> Model:
         return Model(

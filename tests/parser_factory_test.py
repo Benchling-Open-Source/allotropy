@@ -1,7 +1,6 @@
 from pathlib import Path
 
-from allotropy.parser_factory import Vendor
-from allotropy.parsers.release_state import ReleaseState
+from allotropy.parser_factory import get_table_contents, Vendor
 
 
 def test_vendor_display_name() -> None:
@@ -18,37 +17,17 @@ def test_get_parser() -> None:
         assert vendor.get_parser()
 
 
-def test_vendors_in_readme() -> None:
-    readme_path = Path(__file__).parent.parent.joinpath("README.md")
-    parsers: dict[ReleaseState, set[str]] = {
-        ReleaseState.RECOMMENDED: set(),
-        ReleaseState.CANDIDATE_RELEASE: set(),
-        ReleaseState.WORKING_DRAFT: set(),
-    }
-    # We don't include example parser in README
-    parsers[ReleaseState.WORKING_DRAFT].add(Vendor.EXAMPLE_WEYLAND_YUTANI.display_name)
-    section = None
-    with open(readme_path) as f:
-        for line in f:
-            if line.startswith("### Recommended"):
-                section = ReleaseState.RECOMMENDED
-            elif line.startswith("### Candidate Release"):
-                section = ReleaseState.CANDIDATE_RELEASE
-            elif line.startswith("### Working Draft"):
-                section = ReleaseState.WORKING_DRAFT
-            elif section and line.strip().startswith("-"):
-                parsers[section].add(line.strip()[2:])
-            else:
-                section = None
+def test_supported_schemas() -> None:
+    assert Vendor.AGILENT_GEN5.asm_versions == ["REC/2024/06"]
+    assert Vendor.AGILENT_GEN5.technique == "Plate Reader"
+    assert Vendor.APPBIO_ABSOLUTE_Q.technique == "dPCR"
 
-    # Assert all vendors are in README
-    for vendor in Vendor:
+
+def test_table_contents() -> None:
+    table_path = Path(__file__).parent.parent.joinpath(
+        "SUPPORTED_INSTRUMENT_SOFTWARE.adoc"
+    )
+    with open(table_path) as f:
         assert (
-            vendor.display_name in parsers[vendor.release_state]
-        ), f"Missing vendor in README: '{vendor.display_name}'. Hint: run 'hatch run scripts:update-readme'"
-
-    # Assert not extra parsers in README
-    assert (
-        set.union(*parsers.values()) - {vendor.display_name for vendor in Vendor}
-        == set()
-    ), f"Extra vendor in README: '{vendor.display_name}'. Hint: run 'hatch run scripts:update-readme'"
+            get_table_contents() == f.read()
+        ), "Supported instruments table out-of-date. Hint: run 'hatch run scripts:update-instrument-table"

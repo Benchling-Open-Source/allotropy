@@ -133,10 +133,9 @@ def _create_parser(
 
     create_parser(name, schema_paths[0], display_name)
 
-    # Import update_readme now to get updated files.
-    from allotropy.parser_factory import update_readme
+    from allotropy.parser_factory import update_supported_instruments
 
-    update_readme()
+    update_supported_instruments()
 
 
 if __name__ == "__main__":
