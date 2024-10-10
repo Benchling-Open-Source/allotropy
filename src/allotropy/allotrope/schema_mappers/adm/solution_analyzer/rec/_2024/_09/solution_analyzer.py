@@ -158,7 +158,7 @@ class Data:
 
 
 class Mapper(SchemaMapper[Data, Model]):
-    MANIFEST = "http://purl.allotrope.org/manifests/solution-analyzer/REC/2024/03/solution-analyzer.manifest"
+    MANIFEST = "http://purl.allotrope.org/manifests/solution-analyzer/REC/2024/09/solution-analyzer.manifest"
 
     def map_model(self, data: Data) -> Model:
         return Model(
