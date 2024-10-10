@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import Any
 
+from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
     AnalyteAggregateDocument,
     AnalyteDocument,
@@ -161,27 +162,36 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def map_model(self, data: Data) -> Model:
         return Model(
-            solution_analyzer_aggregate_document=SolutionAnalyzerAggregateDocument(
-                device_system_document=DeviceSystemDocument(
-                    model_number=data.metadata.model_number,
-                    equipment_serial_number=data.metadata.equipment_serial_number,
-                    device_identifier=data.metadata.device_identifier,
-                    product_manufacturer=data.metadata.product_manufacturer,
+            solution_analyzer_aggregate_document=add_custom_information_document(
+                SolutionAnalyzerAggregateDocument(
+                    device_system_document=add_custom_information_document(
+                        DeviceSystemDocument(
+                            model_number=data.metadata.model_number,
+                            equipment_serial_number=data.metadata.equipment_serial_number,
+                            device_identifier=data.metadata.device_identifier,
+                            product_manufacturer=data.metadata.product_manufacturer,
+                        ),
+                        None,
+                    ),
+                    data_system_document=add_custom_information_document(
+                        DataSystemDocument(
+                            ASM_file_identifier=data.metadata.asm_file_identifier,
+                            data_system_instance_identifier=data.metadata.data_system_instance_identifier,
+                            file_name=data.metadata.file_name,
+                            UNC_path=data.metadata.unc_path,
+                            software_name=data.metadata.software_name,
+                            software_version=data.metadata.software_version,
+                            ASM_converter_name=self.converter_name,
+                            ASM_converter_version=ASM_CONVERTER_VERSION,
+                        ),
+                        None,
+                    ),
+                    solution_analyzer_document=[
+                        self._get_technique_document(measurement_group, data.metadata)
+                        for measurement_group in data.measurement_groups
+                    ],
                 ),
-                data_system_document=DataSystemDocument(
-                    ASM_file_identifier=data.metadata.asm_file_identifier,
-                    data_system_instance_identifier=data.metadata.data_system_instance_identifier,
-                    file_name=data.metadata.file_name,
-                    UNC_path=data.metadata.unc_path,
-                    software_name=data.metadata.software_name,
-                    software_version=data.metadata.software_version,
-                    ASM_converter_name=self.converter_name,
-                    ASM_converter_version=ASM_CONVERTER_VERSION,
-                ),
-                solution_analyzer_document=[
-                    self._get_technique_document(measurement_group, data.metadata)
-                    for measurement_group in data.measurement_groups
-                ],
+                None,
             ),
             field_asm_manifest=self.MANIFEST,
         )
@@ -191,86 +201,105 @@ class Mapper(SchemaMapper[Data, Model]):
     ) -> SolutionAnalyzerDocumentItem:
         return SolutionAnalyzerDocumentItem(
             analyst=measurement_group.analyst,
-            measurement_aggregate_document=MeasurementAggregateDocument(
-                data_processing_time=self.get_date_time(
-                    measurement_group.data_processing_time
-                )
-                if measurement_group.data_processing_time
-                else None,
-                measurement_document=[
-                    self._get_measurement_document_item(measurement, metadata)
-                    for measurement in measurement_group.measurements
-                ],
-                error_aggregate_document=self._get_error_aggregate_document(
-                    measurement_group.errors
+            measurement_aggregate_document=add_custom_information_document(
+                MeasurementAggregateDocument(
+                    data_processing_time=self.get_date_time(
+                        measurement_group.data_processing_time
+                    )
+                    if measurement_group.data_processing_time
+                    else None,
+                    measurement_document=[
+                        self._get_measurement_document_item(measurement, metadata)
+                        for measurement in measurement_group.measurements
+                    ],
+                    error_aggregate_document=self._get_error_aggregate_document(
+                        measurement_group.errors
+                    ),
                 ),
+                None,
             ),
         )
 
     def _get_measurement_document_item(
         self, measurement: Measurement, metadata: Metadata
     ) -> MeasurementDocument:
-        return MeasurementDocument(
-            measurement_identifier=measurement.identifier,
-            measurement_time=self.get_date_time(measurement.measurement_time),
-            sample_document=self._get_sample_document(measurement),
-            device_control_aggregate_document=DeviceControlAggregateDocument(
-                device_control_document=[
-                    DeviceControlDocumentItem(
-                        device_type=metadata.device_type,
-                        detection_type=measurement.detection_type,
-                        flush_volume_setting=quantity_or_none(
-                            TQuantityValueMilliliter, metadata.flush_volume_setting
+        return add_custom_information_document(
+            MeasurementDocument(
+                measurement_identifier=measurement.identifier,
+                measurement_time=self.get_date_time(measurement.measurement_time),
+                sample_document=self._get_sample_document(measurement),
+                device_control_aggregate_document=DeviceControlAggregateDocument(
+                    device_control_document=[
+                        add_custom_information_document(
+                            DeviceControlDocumentItem(
+                                device_type=metadata.device_type,
+                                detection_type=measurement.detection_type,
+                                flush_volume_setting=quantity_or_none(
+                                    TQuantityValueMilliliter,
+                                    metadata.flush_volume_setting,
+                                ),
+                                detector_view_volume=quantity_or_none(
+                                    TQuantityValueMilliliter,
+                                    metadata.detector_view_volume,
+                                ),
+                                repetition_setting=metadata.repetition_setting,
+                                sample_volume_setting=quantity_or_none(
+                                    TQuantityValueMilliliter,
+                                    metadata.sample_volume_setting,
+                                ),
+                            ),
+                            None,
                         ),
-                        detector_view_volume=quantity_or_none(
-                            TQuantityValueMilliliter, metadata.detector_view_volume
-                        ),
-                        repetition_setting=metadata.repetition_setting,
-                        sample_volume_setting=quantity_or_none(
-                            TQuantityValueMilliliter, metadata.sample_volume_setting
-                        ),
-                    ),
-                ]
+                    ]
+                ),
+                analyte_aggregate_document=AnalyteAggregateDocument(
+                    analyte_document=[
+                        self._create_analyte_document(analyte)
+                        for analyte in measurement.analytes
+                    ]
+                )
+                if measurement.analytes
+                else None,
+                processed_data_aggregate_document=self._create_processed_data_document(
+                    measurement
+                ),
+                error_aggregate_document=self._get_error_aggregate_document(
+                    measurement.errors
+                ),
+                absorbance=quantity_or_none(
+                    TQuantityValueMilliAbsorbanceUnit, measurement.absorbance
+                ),
+                pO2=quantity_or_none(
+                    TQuantityValueMillimeterOfMercury, measurement.po2
+                ),
+                pCO2=quantity_or_none(
+                    TQuantityValueMillimeterOfMercury, measurement.pco2
+                ),
+                carbon_dioxide_saturation=quantity_or_none(
+                    TQuantityValuePercent, measurement.carbon_dioxide_saturation
+                ),
+                oxygen_saturation=quantity_or_none(
+                    TQuantityValuePercent, measurement.oxygen_saturation
+                ),
+                pH=quantity_or_none(TQuantityValuePH, measurement.ph),
+                temperature=quantity_or_none(
+                    TQuantityValueDegreeCelsius, measurement.temperature
+                ),
+                osmolality=quantity_or_none(
+                    TQuantityValueMilliOsmolesPerKilogram, measurement.osmolality
+                ),
             ),
-            analyte_aggregate_document=AnalyteAggregateDocument(
-                analyte_document=[
-                    self._create_analyte_document(analyte)
-                    for analyte in measurement.analytes
-                ]
-            )
-            if measurement.analytes
-            else None,
-            processed_data_aggregate_document=self._create_processed_data_document(
-                measurement
-            ),
-            error_aggregate_document=self._get_error_aggregate_document(
-                measurement.errors
-            ),
-            absorbance=quantity_or_none(
-                TQuantityValueMilliAbsorbanceUnit, measurement.absorbance
-            ),
-            pO2=quantity_or_none(TQuantityValueMillimeterOfMercury, measurement.po2),
-            pCO2=quantity_or_none(TQuantityValueMillimeterOfMercury, measurement.pco2),
-            carbon_dioxide_saturation=quantity_or_none(
-                TQuantityValuePercent, measurement.carbon_dioxide_saturation
-            ),
-            oxygen_saturation=quantity_or_none(
-                TQuantityValuePercent, measurement.oxygen_saturation
-            ),
-            pH=quantity_or_none(TQuantityValuePH, measurement.ph),
-            temperature=quantity_or_none(
-                TQuantityValueDegreeCelsius, measurement.temperature
-            ),
-            osmolality=quantity_or_none(
-                TQuantityValueMilliOsmolesPerKilogram, measurement.osmolality
-            ),
+            None,
         )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
-        return SampleDocument(
-            sample_identifier=measurement.sample_identifier,
-            batch_identifier=measurement.batch_identifier,
-            description=measurement.description,
+        return add_custom_information_document(
+            SampleDocument(
+                sample_identifier=measurement.sample_identifier,
+                batch_identifier=measurement.batch_identifier,
+                description=measurement.description,
+            ),
+            None,
         )
 
     def _create_analyte_document(self, analyte: Analyte) -> AnalyteDocument:
@@ -313,64 +342,69 @@ class Mapper(SchemaMapper[Data, Model]):
     def _create_processed_data_document(
         self, measurement: Measurement
     ) -> ProcessedDataAggregateDocument | None:
-        processed_data_document = ProcessedDataDocumentItem(
-            viability__cell_counter_=quantity_or_none(
-                TQuantityValuePercent, measurement.viability
-            ),
-            total_cell_density__cell_counter_=quantity_or_none(
-                TQuantityValueMillionCellsPerMilliliter, measurement.total_cell_density
-            ),
-            viable_cell_density__cell_counter_=quantity_or_none(
-                TQuantityValueMillionCellsPerMilliliter, measurement.viable_cell_density
-            ),
-            average_live_cell_diameter__cell_counter_=quantity_or_none(
-                TQuantityValueMicrometer, measurement.average_live_cell_diameter
-            ),
-            total_cell_count=quantity_or_none(
-                TQuantityValueCell, measurement.total_cell_count
-            ),
-            viable_cell_count=quantity_or_none(
-                TQuantityValueCell, measurement.viable_cell_count
-            ),
-            data_processing_document=DataProcessingDocument(
-                cell_type_processing_method=measurement.data_processing.cell_type_processing_method,
-                cell_density_dilution_factor=quantity_or_none(
-                    TQuantityValueUnitless,
-                    measurement.data_processing.cell_density_dilution_factor,
+        processed_data_document = add_custom_information_document(
+            ProcessedDataDocumentItem(
+                viability__cell_counter_=quantity_or_none(
+                    TQuantityValuePercent, measurement.viability
                 ),
-                dilution_factor_setting=quantity_or_none(
-                    TQuantityValueUnitless,
-                    measurement.data_processing.dilution_factor_setting,
+                total_cell_density__cell_counter_=quantity_or_none(
+                    TQuantityValueMillionCellsPerMilliliter,
+                    measurement.total_cell_density,
                 ),
-                data_processing_omission_setting=measurement.data_processing.data_processing_omission_setting,
-            )
-            if measurement.data_processing
-            else None,
-            distribution_aggregate_document=DistributionAggregateDocument(
-                distribution_document=[
-                    DistributionDocumentItem(
-                        distribution_identifier=random_uuid_str(),
-                        particle_size=TQuantityValueMicrometer(
-                            value=distribution.particle_size
-                        ),
-                        cumulative_count=TQuantityValueUnitless(
-                            value=distribution.cumulative_count
-                        ),
-                        cumulative_particle_density=TQuantityValueCountsPerMilliliter(
-                            value=distribution.cumulative_particle_density
-                        ),
-                        differential_particle_density=TQuantityValueCountsPerMilliliter(
-                            value=distribution.differential_particle_density
-                        ),
-                        differential_count=TQuantityValueUnitless(
-                            value=distribution.differential_count
-                        ),
-                    )
-                    for distribution in measurement.distribution_documents
-                ]
-            )
-            if measurement.distribution_documents
-            else None,
+                viable_cell_density__cell_counter_=quantity_or_none(
+                    TQuantityValueMillionCellsPerMilliliter,
+                    measurement.viable_cell_density,
+                ),
+                average_live_cell_diameter__cell_counter_=quantity_or_none(
+                    TQuantityValueMicrometer, measurement.average_live_cell_diameter
+                ),
+                total_cell_count=quantity_or_none(
+                    TQuantityValueCell, measurement.total_cell_count
+                ),
+                viable_cell_count=quantity_or_none(
+                    TQuantityValueCell, measurement.viable_cell_count
+                ),
+                data_processing_document=DataProcessingDocument(
+                    cell_type_processing_method=measurement.data_processing.cell_type_processing_method,
+                    cell_density_dilution_factor=quantity_or_none(
+                        TQuantityValueUnitless,
+                        measurement.data_processing.cell_density_dilution_factor,
+                    ),
+                    dilution_factor_setting=quantity_or_none(
+                        TQuantityValueUnitless,
+                        measurement.data_processing.dilution_factor_setting,
+                    ),
+                    data_processing_omission_setting=measurement.data_processing.data_processing_omission_setting,
+                )
+                if measurement.data_processing
+                else None,
+                distribution_aggregate_document=DistributionAggregateDocument(
+                    distribution_document=[
+                        DistributionDocumentItem(
+                            distribution_identifier=random_uuid_str(),
+                            particle_size=TQuantityValueMicrometer(
+                                value=distribution.particle_size
+                            ),
+                            cumulative_count=TQuantityValueUnitless(
+                                value=distribution.cumulative_count
+                            ),
+                            cumulative_particle_density=TQuantityValueCountsPerMilliliter(
+                                value=distribution.cumulative_particle_density
+                            ),
+                            differential_particle_density=TQuantityValueCountsPerMilliliter(
+                                value=distribution.differential_particle_density
+                            ),
+                            differential_count=TQuantityValueUnitless(
+                                value=distribution.differential_count
+                            ),
+                        )
+                        for distribution in measurement.distribution_documents
+                    ]
+                )
+                if measurement.distribution_documents
+                else None,
+            ),
+            None,
         )
 
         if all(value is None for value in processed_data_document.__dict__.values()):
