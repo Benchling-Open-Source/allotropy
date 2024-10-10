@@ -9,6 +9,8 @@ from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._09.solution_ana
     DeviceControlAggregateDocument,
     DeviceControlDocumentItem,
     DeviceSystemDocument,
+    DistributionAggregateDocument,
+    DistributionDocumentItem,
     ErrorAggregateDocument,
     ErrorDocumentItem,
     MeasurementAggregateDocument,
@@ -19,15 +21,15 @@ from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._09.solution_ana
     SampleDocument,
     SolutionAnalyzerAggregateDocument,
     SolutionAnalyzerDocumentItem,
-    DistributionAggregateDocument,
-    DistributionDocumentItem,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueCell,
+    TQuantityValueCountsPerMilliliter,
     TQuantityValueDegreeCelsius,
     TQuantityValueGramPerLiter,
     TQuantityValueMicrometer,
     TQuantityValueMilliAbsorbanceUnit,
+    TQuantityValueMilliliter,
     TQuantityValueMilliliterPerLiter,
     TQuantityValueMillimeterOfMercury,
     TQuantityValueMillimolePerLiter,
@@ -35,7 +37,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMilliOsmolesPerKilogram,
     TQuantityValuePercent,
     TQuantityValuePH,
-    TQuantityValueUnitless, TQuantityValueCountsPerMilliliter, TQuantityValueMilliliter,
+    TQuantityValueUnitless,
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
@@ -136,10 +138,7 @@ class Metadata:
     equipment_serial_number: str | None = None
     product_manufacturer: str | None = None
     brand_name: str | None = None
-
     file_name: str | None = None
-    data_system_instance_identifier: str | None = None
-
     analyst: str | None = None
     measurement_time: str | None = None
     analytical_method_identifier: str | None = None
@@ -202,7 +201,9 @@ class Mapper(SchemaMapper[Data, Model]):
                     self._get_measurement_document_item(measurement, metadata)
                     for measurement in measurement_group.measurements
                 ],
-                error_aggregate_document=self._get_error_aggregate_document(measurement_group.errors)
+                error_aggregate_document=self._get_error_aggregate_document(
+                    measurement_group.errors
+                ),
             ),
         )
 
@@ -228,7 +229,6 @@ class Mapper(SchemaMapper[Data, Model]):
                         sample_volume_setting=quantity_or_none(
                             TQuantityValueMilliliter, metadata.sample_volume_setting
                         ),
-
                     ),
                 ]
             ),
@@ -344,36 +344,33 @@ class Mapper(SchemaMapper[Data, Model]):
                 ),
                 data_processing_omission_setting=measurement.data_processing.data_processing_omission_setting,
             )
-            if any(
-                value is not None
-                for value in measurement.data_processing.__dict__.values()
-            )
+            if measurement.data_processing
             else None,
             distribution_aggregate_document=DistributionAggregateDocument(
                 distribution_document=[
                     DistributionDocumentItem(
                         distribution_identifier=random_uuid_str(),
-                        particle_size=quantity_or_none(
-                            TQuantityValueMicrometer, distribution.particle_size
+                        particle_size=TQuantityValueMicrometer(
+                            value=distribution.particle_size
                         ),
-                        cumulative_count=quantity_or_none(
-                            TQuantityValueUnitless, distribution.cumulative_count
+                        cumulative_count=TQuantityValueUnitless(
+                            value=distribution.cumulative_count
                         ),
-                        cumulative_particle_density=quantity_or_none(
-                            TQuantityValueCountsPerMilliliter,
-                            distribution.cumulative_particle_density,
+                        cumulative_particle_density=TQuantityValueCountsPerMilliliter(
+                            value=distribution.cumulative_particle_density
                         ),
-                        differential_particle_density=quantity_or_none(
-                            TQuantityValueCountsPerMilliliter,
-                            distribution.differential_particle_density,
+                        differential_particle_density=TQuantityValueCountsPerMilliliter(
+                            value=distribution.differential_particle_density
                         ),
-                        differential_count=quantity_or_none(
-                            TQuantityValueUnitless, distribution.differential_count
+                        differential_count=TQuantityValueUnitless(
+                            value=distribution.differential_count
                         ),
                     )
                     for distribution in measurement.distribution_documents
                 ]
-            ),
+            )
+            if measurement.distribution_documents
+            else None,
         )
 
         if all(value is None for value in processed_data_document.__dict__.values()):
