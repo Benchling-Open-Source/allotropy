@@ -1,20 +1,45 @@
-from allotropy.allotrope.schema_mappers.adm.pcr.rec._2024._09.qpcr import (
+from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import (
     Measurement,
     MeasurementGroup,
     Metadata,
+    CalculatedDataDocumentItem,
+    CalculatedDataItem,
+    ProcessedDataDocumentItem,
+    ProcessedDataAggregateDocument,
+    DataSource,
+
 )
-from allotropy.parsers.roche_cedex_hires import constants
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
+from allotropy.parsers.cfxmaestro import constants
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
+from dataclasses import dataclass
+
+
 
 
 def create_metadata(data: SeriesData, file_name: str) -> Metadata:
     return Metadata(
+
+        product_manufacturer=constants.PRODUCT_MANUFACTURER,
         file_name=file_name,
-        # Example of the kind of value that might be set with a constant.
+        software_name=constants.SOFTWARE_NAME,
+        container_type=constants.CONTAINER_TYPE,
         device_type=constants.DEVICE_TYPE,
-        # Example of the kind of value that might be set from the header data.
-        description=data[str, "System description"],
+
+
+        #TypeError: Metadata.__init__() missing 7 required positional arguments: 'device_identifier', 'device_serial_number', 'model_number', 'data_system_instance_identifier', 'unc_path', 'experiment_type', and 'measurement_method_identifier'
+
+         #adding in feilds from Termainal (above) about requred feilds, set them to N/A using constants tab
+
+        device_identifier=constants.NOT_APPLICABLE,
+        device_serial_number=constants.NOT_APPLICABLE,
+        model_number=constants.NOT_APPLICABLE,
+        data_system_instance_identifier=constants.NOT_APPLICABLE,
+        unc_path=constants.NOT_APPLICABLE,
+        experiment_type=constants.NOT_APPLICABLE,
+        measurement_method_identifier=constants.NOT_APPLICABLE,
+
     )
 
 
@@ -22,13 +47,79 @@ def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
     # This function will be called for every row in the dataset, use it to create
     # a corresponding measurement group.
     return MeasurementGroup(
-        analyst=data[str, "Analyst"],
+        plate_well_count=constants.PLATE_WELL_COUNT,
+        analyst=constants.NOT_APPLICABLE,
+        experimental_data_identifier=constants.NOT_APPLICABLE,
         measurements=[
             Measurement(
-                measurement_identifier=random_uuid_str(),
-                # Example of the kind of value that might be set from a measurement row
-                sample_identifier=data[str, "Sample ID"],
-                viability=data[float, "Viability"],
+
+                #Measurement Meta Data
+                identifier=random_uuid_str(),
+
+
+                #Is this a good way to generate a timestamp for this .CSV file
+                # that does not include a Timestamp?
+                #timestamp=_format_timestamp(data[str, "NAME"]),
+
+                sample_identifier=data[str, "Sample"],
+                target_idenitifier=constants.NOT_APPLICABLE,
+                group_identifier=data[str,"Biological Set Name"],
+
+                #Settings
+                pcr_detection_chemistry=constants.NOT_APPLICABLE,
+
+                #Optional Measurement Metadata
+                sample_role_type=data[str,"Content"],
+                well_location_identifier=data[str,"Well"],
+
+                #Optional Settings
+                reporter_dye_setting=data[str,"Flour"],
+
+                #Processed Data
+                processed_data=data[float,"Cq"],
+
             )
         ],
     )
+# Define new classes here, make one for Cq mean and one for Cq STD
+
+def create_calculated_data(data: SeriesData) -> CalculatedDataItem:
+    return CalculatedDataItem(
+                identifier=random_uuid_str(),
+                name=constants.CALCULATED_DATA_NAME,
+                value=data[int,"Cq Mean"],
+                unit=UNITLESS,
+                data_sources=[
+                    DataSource(
+                        identifier=data_source.reference.uuid,
+                        feature=data_source.feature,
+                    )
+                    for data_source in cal_doc.data_sources
+                ],
+
+            #for cal_doc in CalculatedDataDocumentItem
+    )
+
+def create_processed_data(data: SeriesData) -> ProcessedDataDocumentItem:
+
+    return ProcessedDataDocumentItem(
+        items=[
+            ProcessedDataDocumentItem(
+                identifier=random_uuid_str(),
+                name=constants.PROCESSED_DATA_NAME,
+                value=data[int,"Cq Std. Dev"],
+                unit=UNITLESS,
+                data_sources=[
+                    DataSource(
+                        identifier=data_source.reference.uuid,
+                        feature=data_source.feature,
+                    )
+                    for data_source in cal_doc.data_sources
+                ],
+            )
+            #for cal_doc in calculated_data_documents
+        ],
+    )
+
+def _format_timestamp(timestamp: str) -> str:
+    return timestamp.split("-")[0]
