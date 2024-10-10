@@ -1,8 +1,8 @@
 import pandas as pd
 
-from allotropy.exceptions import AllotropeConversionError
+#from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.roche_cedex_hires import constants
+#from allotropy.parsers.roche_cedex_hires import constants
 from allotropy.parsers.utils.pandas import (
     df_to_series_data,
     read_csv,
@@ -10,8 +10,8 @@ from allotropy.parsers.utils.pandas import (
 )
 
 
-class CfxmaestroReader:
-    SUPPORTED_EXTENSIONS = "txt,csv"
+class cfxmaestroreader:
+    SUPPORTED_EXTENSIONS = "csv"
     header: SeriesData
     data: pd.DataFrame
 
