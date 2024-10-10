@@ -85,9 +85,7 @@ def create_metadata(root_element: ET.Element, file_name: str) -> Metadata:
             file_information, "FileName"
         ),
         # If any, only one of those should appear, so we arbitrarily take the first one
-        method_version=get_val_from_xml_or_none(
-            file_information, "RINeVersion"
-        )
+        method_version=get_val_from_xml_or_none(file_information, "RINeVersion")
         or get_val_from_xml_or_none(file_information, "DINVersion"),
         software_version=get_val_from_xml_or_none(environment, "AnalysisVersion"),
         software_name=SOFTWARE_NAME,
@@ -113,21 +111,15 @@ def _create_peak(peak_element: ET.Element, unit: str) -> ProcessedDataFeature:
         start_unit=unit,
         end=get_float_from_xml_or_none(peak_element, "ToMW"),
         end_unit=unit,
-        position=get_float_from_xml_or_none(
-            peak_element, "Size"
-        ),
+        position=get_float_from_xml_or_none(peak_element, "Size"),
         position_unit=unit,
         area=get_float_from_xml_or_none(peak_element, "Area"),
         relative_area=get_float_from_xml_or_none(peak_element, "PercentOfTotal"),
         relative_corrected_area=get_float_from_xml_or_none(
             peak_element, "PercentIntegratedArea"
         ),
-        name=get_val_from_xml_or_none(
-            peak_element, "Number"
-        ),
-        comment=_get_description(
-            peak_element
-        ),
+        name=get_val_from_xml_or_none(peak_element, "Number"),
+        comment=_get_description(peak_element),
     )
 
 
@@ -143,9 +135,7 @@ def _create_region(
         area=get_float_from_xml_or_none(region_element, "Area"),
         relative_area=get_float_from_xml_or_none(region_element, "PercentOfTotal"),
         name=region_name,
-        comment=get_val_from_xml_or_none(
-            region_element, "Comment"
-        ),
+        comment=get_val_from_xml_or_none(region_element, "Comment"),
     )
 
 

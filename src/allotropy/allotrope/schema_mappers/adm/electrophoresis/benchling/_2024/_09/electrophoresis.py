@@ -241,9 +241,7 @@ class Mapper(SchemaMapper[Data, Model]):
             processed_data_document=[
                 ProcessedDataDocumentItem(
                     peak_list=PeakList(
-                        peak=[
-                            self._get_peak(peak)
-                            for peak in data.peaks]
+                        peak=[self._get_peak(peak) for peak in data.peaks]
                     ),
                     data_region_aggregate_document=DataRegionAggregateDocument(
                         data_region_document=[
@@ -269,7 +267,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 else None
             ),
             peak_position=(
-                quantity_or_none_from_unit(peak.position_unit, peak.position)
+                quantity_or_none_from_unit(peak.position_unit, peak.position)  # type: ignore[arg-type]
                 if peak.position
                 else None
             ),

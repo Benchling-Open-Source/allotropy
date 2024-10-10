@@ -136,7 +136,6 @@ class ProcessedDataAggregateDocument:
     electronic_project_record: ElectronicProjectRecord | None = None
 
 
-
 @dataclass(kw_only=True)
 class StatisticsDocumentItem:
     statistical_feature: TClass
@@ -358,8 +357,6 @@ class PeakList:
         None
     )
     peak: list[PeakItem] | list[Peak] | None = None
-
-
 
 
 @dataclass(kw_only=True)

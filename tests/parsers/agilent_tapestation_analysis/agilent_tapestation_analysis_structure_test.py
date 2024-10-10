@@ -3,7 +3,6 @@ import xml.etree.ElementTree as ET  # noqa: N817
 
 import pytest
 
-from allotropy.allotrope.models.shared.definitions.definitions import InvalidJsonFloat
 from allotropy.allotrope.schema_mappers.adm.electrophoresis.benchling._2024._09.electrophoresis import (
     CalculatedDataItem,
     DataSource,
