@@ -73,7 +73,7 @@ def create_metadata(root_element: ET.Element, file_name: str) -> Metadata:
         file_name=file_name,
         file_identifier=f"{file_identifier}.json",
         analyst=get_val_from_xml(environment, "Experimenter"),
-        analytical_method_identifier=get_val_from_xml_or_none(  # stored in custom info, should be part of allotrope
+        analytical_method_identifier=get_val_from_xml_or_none(
             file_information, "Assay"
         ),
         data_system_instance_identifier=get_val_from_xml(environment, "Computer"),
@@ -81,13 +81,13 @@ def create_metadata(root_element: ET.Element, file_name: str) -> Metadata:
         equipment_serial_number=get_val_from_xml_or_none(
             environment, "InstrumentSerialNumber"
         ),
-        experimental_data_identifier=get_val_from_xml_or_none(  # stored in custom info, should be part of allotrope
+        experimental_data_identifier=get_val_from_xml_or_none(
             file_information, "FileName"
         ),
         # If any, only one of those should appear, so we arbitrarily take the first one
         method_version=get_val_from_xml_or_none(
             file_information, "RINeVersion"
-        )  # stored in custom info, should be part of allotrope
+        )
         or get_val_from_xml_or_none(file_information, "DINVersion"),
         software_version=get_val_from_xml_or_none(environment, "AnalysisVersion"),
         software_name=SOFTWARE_NAME,
@@ -115,19 +115,19 @@ def _create_peak(peak_element: ET.Element, unit: str) -> ProcessedDataFeature:
         end_unit=unit,
         position=get_float_from_xml_or_none(
             peak_element, "Size"
-        ),  # stored in custom info, should be part of allotrope
+        ),
         position_unit=unit,
         area=get_float_from_xml_or_none(peak_element, "Area"),
         relative_area=get_float_from_xml_or_none(peak_element, "PercentOfTotal"),
-        relative_corrected_area=get_float_from_xml_or_none(  # stored in custom info, should be part of allotrope
+        relative_corrected_area=get_float_from_xml_or_none(
             peak_element, "PercentIntegratedArea"
         ),
         name=get_val_from_xml_or_none(
             peak_element, "Number"
-        ),  # stored in custom info, should be part of allotrope
+        ),
         comment=_get_description(
             peak_element
-        ),  # stored in custom info, should be part of allotrope
+        ),
     )
 
 
@@ -145,7 +145,7 @@ def _create_region(
         name=region_name,
         comment=get_val_from_xml_or_none(
             region_element, "Comment"
-        ),  # stored in custom info, should be part of allotrope
+        ),
     )
 
 
@@ -201,10 +201,10 @@ def _create_measurement(
     measurement = Measurement(
         identifier=measurement_id,
         measurement_time=get_val_from_xml(screen_tape, "TapeRunDate"),
-        compartment_temperature=get_float_from_xml_or_none(  # stored in custom info, should be part of allotrope
+        compartment_temperature=get_float_from_xml_or_none(
             screen_tape, "ElectrophoresisTemp"
         ),
-        location_identifier=well_number,  # stored in custom info, should be part of allotrope
+        location_identifier=well_number,
         sample_identifier=f"{get_val_from_xml(sample_element, 'ScreenTapeID')}_{well_number}",
         description=_get_description(sample_element),
         processed_data=ProcessedData(

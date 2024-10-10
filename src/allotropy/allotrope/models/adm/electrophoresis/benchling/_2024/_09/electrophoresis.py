@@ -8,6 +8,7 @@ from dataclasses import dataclass
 from typing import Any
 
 from allotropy.allotrope.models.shared.definitions.custom import (
+    TQuantityValueDegreeCelsius,
     TQuantityValueKiloDalton,
     TQuantityValueMilliAbsorbanceUnit,
     TQuantityValueMilliAbsorbanceUnitTimesMilliliter,
@@ -135,6 +136,7 @@ class ProcessedDataAggregateDocument:
     electronic_project_record: ElectronicProjectRecord | None = None
 
 
+
 @dataclass(kw_only=True)
 class StatisticsDocumentItem:
     statistical_feature: TClass
@@ -259,6 +261,7 @@ class DeviceControlAggregateDocument:
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         None
     )
+    compartment_temperature: TQuantityValueDegreeCelsius | None = None
 
 
 @dataclass(kw_only=True)
@@ -269,6 +272,10 @@ class Peak:
     peak_end: TQuantityValueKiloDalton | TQuantityValueMilliliter | TQuantityValueNumber | TQuantityValueSecondTime | None = (
         None
     )
+    peak_position: TQuantityValueKiloDalton | TQuantityValueMilliliter | TQuantityValueNumber | TQuantityValueSecondTime | None = (
+        None
+    )
+    peak_name: TStringValue | None = None
     identifier: TStringValue | None = None
     relative_peak_height: TQuantityValueKiloDalton | TQuantityValueNumber | TQuantityValuePercent | TQuantityValueSecondTime | None = (
         None
@@ -282,6 +289,8 @@ class Peak:
         None
     )
     relative_peak_area: TQuantityValuePercent | None = None
+    relative_corrected_peak_area: TQuantityValuePercent | None = None
+    comment: TStringValue | None = None
     retention_time: TQuantityValueSecondTime | None = None
     retention_volume: TQuantityValueMilliliter | None = None
     peak_start: TQuantityValueKiloDalton | TQuantityValueMilliliter | TQuantityValueNumber | TQuantityValueSecondTime | None = (
@@ -351,6 +360,8 @@ class PeakList:
     peak: list[PeakItem] | list[Peak] | None = None
 
 
+
+
 @dataclass(kw_only=True)
 class DataRegionDocumentItem:
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
@@ -363,6 +374,7 @@ class DataRegionDocumentItem:
     data_region_name: TStringValue | None = None
     data_region_area: TQuantityValue | None = None
     relative_data_region_area: TQuantityValuePercent | None = None
+    comment: TStringValue | None = None
     data_region_start: TQuantityValueKiloDalton | TQuantityValueMilliliter | TQuantityValueNumber | TQuantityValueSecondTime | None = (
         None
     )
@@ -382,6 +394,7 @@ class SampleDocument:
     sample_identifier: TStringValue
     batch_identifier: TStringValue | None = None
     description: Any | None = None
+    location_identifier: TStringValue | None = None
     sample_role_type: TClass | None = None
     written_name: TStringValue | None = None
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
@@ -452,6 +465,7 @@ class MeasurementDocument:
     measurement_time: TDateTimeStampValue | None = None
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
+    compartment_temperature: TQuantityValueDegreeCelsius | None = None
     absorption_profile_data_cube: TDatacube | None = None
     chromatogram_data_cube: TDatacube | None = None
     three_dimensional_ultraviolet_spectrum_data_cube: TDatacube | None = None
@@ -472,6 +486,9 @@ class MeasurementAggregateDocument:
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         None
     )
+    analytical_method_identifier: TStringValue | None = None
+    method_version: TStringValue | None = None
+    experimental_data_identifier: TStringValue | None = None
     diagnostic_trace_aggregate_document: DiagnosticTraceAggregateDocument | None = None
     error_aggregate_document: ErrorAggregateDocument | None = None
     image_aggregate_document: ImageAggregateDocument | None = None

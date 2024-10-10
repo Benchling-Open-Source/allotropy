@@ -1,7 +1,5 @@
 from dataclasses import dataclass
-from typing import Any
 
-from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.electrophoresis.benchling._2024._09.electrophoresis import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
@@ -162,6 +160,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     equipment_serial_number=data.metadata.equipment_serial_number,
                 ),
                 data_system_document=DataSystemDocument(
+                    UNC_path=data.metadata.unc_path,
                     data_system_instance_identifier=data.metadata.data_system_instance_identifier,
                     file_name=data.metadata.file_name,
                     software_name=data.metadata.software_name,
@@ -171,10 +170,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     ASM_file_identifier=data.metadata.file_identifier,
                 ),
                 electrophoresis_document=[
-                    add_custom_information_document(
-                        self._get_technique_document(measurement_group, data.metadata),
-                        self._get_technique_doc_custom_document(data.metadata),
-                    )
+                    self._get_technique_document(measurement_group, data.metadata)
                     for measurement_group in data.measurement_groups
                 ],
                 calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
@@ -184,40 +180,21 @@ class Mapper(SchemaMapper[Data, Model]):
             field_asm_manifest=self.MANIFEST,
         )
 
-    def _get_technique_doc_custom_document(self, metadata: Metadata) -> dict[str, Any]:
-        # TODO(ASM gaps): we believe these values should be introduced to ASM.
-        return {
-            "analytical method identifier": metadata.analytical_method_identifier,
-            "method version": metadata.method_version,
-            "experimental data identifier": metadata.experimental_data_identifier,
-        }
-
     def _get_technique_document(
         self, measurement_group: MeasurementGroup, metadata: Metadata
     ) -> ElectrophoresisDocumentItem:
         return ElectrophoresisDocumentItem(
             analyst=metadata.analyst,
             measurement_aggregate_document=MeasurementAggregateDocument(
+                analytical_method_identifier=metadata.analytical_method_identifier,
+                method_version=metadata.method_version,
+                experimental_data_identifier=metadata.experimental_data_identifier,
                 measurement_document=[
-                    add_custom_information_document(
-                        self._get_measurement_document_item(measurement, metadata),
-                        self._get_measurement_custom_document(measurement),
-                    )
+                    self._get_measurement_document_item(measurement, metadata)
                     for measurement in measurement_group.measurements
                 ],
             ),
         )
-
-    def _get_measurement_custom_document(
-        self, measurement: Measurement
-    ) -> dict[str, Any]:
-        # TODO(ASM gaps): we believe these values should be introduced to ASM.
-        return {
-            "compartment temperature": quantity_or_none(
-                TQuantityValueDegreeCelsius,
-                measurement.compartment_temperature,
-            ),
-        }
 
     def _get_measurement_document_item(
         self, measurement: Measurement, metadata: Metadata
@@ -225,6 +202,10 @@ class Mapper(SchemaMapper[Data, Model]):
         return MeasurementDocument(
             measurement_identifier=measurement.identifier,
             measurement_time=self.get_date_time(measurement.measurement_time),
+            compartment_temperature=quantity_or_none(
+                TQuantityValueDegreeCelsius,
+                measurement.compartment_temperature,
+            ),
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
                     DeviceControlDocumentItem(
@@ -234,10 +215,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     ),
                 ]
             ),
-            sample_document=add_custom_information_document(
-                self._get_sample_document(measurement),
-                self._get_measurement_custom_document(measurement),
-            ),
+            sample_document=self._get_sample_document(measurement),
             error_aggregate_document=self._get_error_aggregate_document(
                 measurement.errors
             ),
@@ -253,13 +231,8 @@ class Mapper(SchemaMapper[Data, Model]):
         return SampleDocument(
             sample_identifier=measurement.sample_identifier,
             description=measurement.description,
+            location_identifier=measurement.location_identifier,
         )
-
-    def _get_sample_custom_document(self, measurement: Measurement) -> dict[str, Any]:
-        # TODO(ASM gaps): we believe these values should be introduced to ASM.
-        return {
-            "location identifier": measurement.location_identifier,
-        }
 
     def _get_processed_data_aggregate_document(
         self, data: ProcessedData
@@ -268,7 +241,9 @@ class Mapper(SchemaMapper[Data, Model]):
             processed_data_document=[
                 ProcessedDataDocumentItem(
                     peak_list=PeakList(
-                        peak=[self._get_peak(peak) for peak in data.peaks]
+                        peak=[
+                            self._get_peak(peak)
+                            for peak in data.peaks]
                     ),
                     data_region_aggregate_document=DataRegionAggregateDocument(
                         data_region_document=[
@@ -285,12 +260,24 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_peak(self, peak: ProcessedDataFeature) -> Peak:
         return Peak(
             identifier=peak.identifier,
+            peak_name=peak.name,
+            comment=peak.comment,
+            # TODO(nstender): figure out how to limit possible classes from get_quantity_class for typing.
             peak_height=(
                 quantity_or_none(TQuantityValueRelativeFluorescenceUnit, peak.height)
                 if peak.height
                 else None
             ),
-            # TODO(nstender): figure out how to limit possible classes from get_quantity_class for typing.
+            peak_position=(
+                quantity_or_none_from_unit(peak.position_unit, peak.position)
+                if peak.position
+                else None
+            ),
+            relative_corrected_peak_area=(
+                quantity_or_none(TQuantityValuePercent, peak.relative_corrected_area)
+                if peak.relative_corrected_area
+                else None
+            ),
             peak_start=(
                 quantity_or_none_from_unit(peak.start_unit, peak.start)  # type: ignore[arg-type]
                 if peak.start
@@ -313,29 +300,13 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
         )
 
-    def _get_peak_custom_document(self, peak: ProcessedDataFeature) -> dict[str, Any]:
-        # TODO(ASM gaps): we believe these values should be introduced to ASM.
-        return {
-            "peak name": peak.name,
-            "peak position": (
-                quantity_or_none_from_unit(peak.position_unit, peak.position)
-                if peak.position
-                else None
-            ),
-            "relative corrected peak area": (
-                quantity_or_none(TQuantityValuePercent, peak.relative_corrected_area)
-                if peak.relative_corrected_area
-                else None
-            ),
-            "comment": peak.comment,
-        }
-
     def _get_data_region_agg_document(
         self, data_region: ProcessedDataFeature
     ) -> DataRegionDocumentItem:
         return DataRegionDocumentItem(
             data_region_identifier=data_region.identifier,
             data_region_name=data_region.name,
+            comment=data_region.comment,
             # TODO(nstender): figure out how to limit possible classes from get_quantity_class for typing.
             data_region_start=(
                 quantity_or_none_from_unit(data_region.start_unit, data_region.start)  # type: ignore[arg-type]
@@ -358,14 +329,6 @@ class Mapper(SchemaMapper[Data, Model]):
                 else None
             ),
         )
-
-    def _get_data_region_agg_custom_document(
-        self, data_region: ProcessedDataFeature
-    ) -> dict[str, Any]:
-        # TODO(ASM gaps): we believe these values should be introduced to ASM.
-        return {
-            "comment": data_region.comment,
-        }
 
     def _get_calculated_data_aggregate_document(
         self, calculated_data_items: list[CalculatedDataItem] | None
