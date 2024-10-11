@@ -40,11 +40,11 @@ class ThermoFisherNanodropOneParser(VendorParser[Data, Model]):
             named_file_contents.contents,
             encoding=DEFAULT_ENCODING,
         )
-        experiment_type, *_ = named_file_contents.original_file_name.split(maxsplit=1)
+        experiment_type, *_ = named_file_contents.original_file_path.split(maxsplit=1)
         return csv_data, experiment_type
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         data, experiment_type = self.read_data(named_file_contents)
         return DataNanodrop.create(
-            data, experiment_type, named_file_contents.original_file_name
+            data, experiment_type, named_file_contents.original_file_path
         )

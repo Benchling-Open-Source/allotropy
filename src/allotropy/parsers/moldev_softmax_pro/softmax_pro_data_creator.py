@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from itertools import chain
+from pathlib import Path
 
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
@@ -29,15 +30,15 @@ from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
-def create_metadata(file_name: str) -> Metadata:
+def create_metadata(file_path: str) -> Metadata:
     return Metadata(
         asm_file_identifier=NOT_APPLICABLE,
         device_identifier=NOT_APPLICABLE,
         model_number=NOT_APPLICABLE,
         data_system_instance_id=NOT_APPLICABLE,
-        unc_path=NOT_APPLICABLE,
         software_name="SoftMax Pro",
-        file_name=file_name,
+        file_name=Path(file_path).name,
+        unc_path=file_path,
     )
 
 

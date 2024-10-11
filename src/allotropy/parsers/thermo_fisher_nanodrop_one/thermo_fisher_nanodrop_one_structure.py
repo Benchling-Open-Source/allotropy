@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from pathlib import Path
 import re
 
 import pandas as pd
@@ -221,7 +222,7 @@ class RowElements:
 @dataclass(frozen=True)
 class DataNanodrop(Data):
     @staticmethod
-    def create(data: pd.DataFrame, experiment_type: str, file_name: str) -> Data:
+    def create(data: pd.DataFrame, experiment_type: str, file_path: str) -> Data:
         row_elements = RowElements.create(data, experiment_type)
 
         return Data(
@@ -231,7 +232,8 @@ class DataNanodrop(Data):
                 model_number="NanoDrop One",
                 brand_name="NanoDrop",
                 product_manufacturer="ThermoFisher Scientific",
-                file_name=file_name,
+                file_name=Path(file_path).name,
+                unc_path=file_path,
                 software_name="NanoDrop One software",
             ),
             measurement_groups=list(row_elements.measurement_groups),

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from pathlib import Path
 import re
 
 import numpy as np
@@ -24,7 +25,7 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 class ThermoSkanItMetadata:
     @staticmethod
     def create_metadata(
-        instrument_info_df: pd.DataFrame, general_info_df: pd.DataFrame, file_name: str
+        instrument_info_df: pd.DataFrame, general_info_df: pd.DataFrame, file_path: str
     ) -> Metadata:
 
         # Replace empty with "" so we can add label columns together.
@@ -57,8 +58,8 @@ class ThermoSkanItMetadata:
             model_number=instrument_info_data[str, "Name"],
             software_name=software_name,
             software_version=version_number,
-            unc_path="",
-            file_name=file_name,
+            file_name=Path(file_path).name,
+            unc_path=file_path,
             equipment_serial_number=instrument_info_data.get(str, "Serial number"),
         )
 

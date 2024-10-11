@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from pathlib import Path
 import re
 from typing import Any
 
@@ -177,9 +178,10 @@ def _get_measurements(sample: Sample) -> list[Measurement]:
     return measurements
 
 
-def create_metadata(title: Title, file_name: str) -> Metadata:
+def create_metadata(title: Title, file_path: str) -> Metadata:
     return Metadata(
-        file_name=file_name,
+        file_name=Path(file_path).name,
+        unc_path=file_path,
         device_type=DEVICE_TYPE,
         model_number=MODEL_NUMBER,
         product_manufacturer=PRODUCT_MANUFACTURER,

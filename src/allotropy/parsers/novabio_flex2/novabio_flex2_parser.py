@@ -30,9 +30,9 @@ class NovaBioFlexParser(VendorParser[Data, Model]):
         data = read_csv(
             named_file_contents.contents, parse_dates=["Date & Time"]
         ).replace(np.nan, None)
-        title = Title.create(named_file_contents.original_file_name)
+        title = Title.create(named_file_contents.original_file_path)
         sample_list = SampleList.create(data)
         return Data(
-            create_metadata(title, named_file_contents.original_file_name),
+            create_metadata(title, named_file_contents.original_file_path),
             create_measurement_groups(title, sample_list),
         )

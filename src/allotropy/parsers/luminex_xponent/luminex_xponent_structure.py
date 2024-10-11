@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from pathlib import Path
 import re
 
 import pandas as pd
@@ -259,10 +260,11 @@ class Data:
 
 
 def create_metadata(
-    header: Header, calibrations: list[Calibration], file_name: str
+    header: Header, calibrations: list[Calibration], file_path: str
 ) -> Metadata:
     return Metadata(
-        file_name=file_name,
+        file_name=Path(file_path).name,
+        unc_path=file_path,
         equipment_serial_number=header.equipment_serial_number,
         model_number=header.model_number,
         calibrations=calibrations,

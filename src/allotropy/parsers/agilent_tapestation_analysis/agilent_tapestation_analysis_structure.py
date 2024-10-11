@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from pathlib import Path
 from xml.etree import ElementTree as ET  # noqa: N817
 
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
@@ -62,13 +63,14 @@ def _get_calculated_data(
     return calculated_data
 
 
-def create_metadata(root_element: ET.Element, file_name: str) -> Metadata:
+def create_metadata(root_element: ET.Element, file_path: str) -> Metadata:
     file_information = get_element_from_xml(root_element, "FileInformation")
     environment = get_element_from_xml(
         root_element, "ScreenTapes/ScreenTape/Environment"
     )
     return Metadata(
-        file_name=file_name,
+        file_name=Path(file_path).name,
+        unc_path=file_path,
         analyst=get_val_from_xml_or_none(environment, "Experimenter"),
         analytical_method_identifier=get_val_from_xml_or_none(
             file_information, "Assay"

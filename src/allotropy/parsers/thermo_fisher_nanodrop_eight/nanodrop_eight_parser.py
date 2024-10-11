@@ -28,7 +28,7 @@ class NanodropEightParser(VendorParser[Data, Model]):
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         data = NanodropEightReader.read(named_file_contents)
         rows = SpectroscopyRow.create_rows(data)
-        metadata = create_metadata(named_file_contents.original_file_name, data)
+        metadata = create_metadata(named_file_contents.original_file_path, data)
 
         return Data(
             metadata=metadata,

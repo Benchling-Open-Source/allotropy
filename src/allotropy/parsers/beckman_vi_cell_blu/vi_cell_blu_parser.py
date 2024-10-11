@@ -26,7 +26,7 @@ class ViCellBluParser(VendorParser[Data, Model]):
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         return Data(
-            create_metadata(named_file_contents.original_file_name),
+            create_metadata(named_file_contents.original_file_path),
             map_rows(
                 ViCellBluReader.read(named_file_contents), create_measurement_group
             ),

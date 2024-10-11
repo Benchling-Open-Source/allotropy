@@ -38,6 +38,6 @@ class ExampleWeylandYutaniParser(VendorParser[Data, Model]):
             raise AllotropeConversionError(msg)
 
         return Data(
-            create_metadata(instrument, named_file_contents.original_file_name),
+            create_metadata(instrument, named_file_contents.original_file_path),
             [create_measurement_group(plate, basic_assay_info) for plate in plates],
         )

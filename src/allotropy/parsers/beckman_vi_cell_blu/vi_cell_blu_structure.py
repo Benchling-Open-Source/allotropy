@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from pathlib import Path
+
 from allotropy.allotrope.schema_mappers.adm.cell_counting.benchling._2023._11.cell_counting import (
     Measurement,
     MeasurementGroup,
@@ -55,11 +57,12 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
     )
 
 
-def create_metadata(file_name: str) -> Metadata:
+def create_metadata(file_path: str) -> Metadata:
     return Metadata(
         device_type=DEVICE_TYPE,
         detection_type=DETECTION_TYPE,
         model_number=DEFAULT_MODEL_NUMBER,
         software_name=VICELL_BLU_SOFTWARE_NAME,
-        file_name=file_name,
+        file_name=Path(file_path).name,
+        unc_path=file_path,
     )

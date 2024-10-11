@@ -21,9 +21,9 @@ class NamedFileContents:
     """
 
     contents: IOType
-    original_file_name: str
+    original_file_path: str
     encoding: str | None = None
 
     @cached_property
     def extension(self) -> str:
-        return PureWindowsPath(self.original_file_name).suffix[1:]
+        return PureWindowsPath(self.original_file_path).suffix[1:]
