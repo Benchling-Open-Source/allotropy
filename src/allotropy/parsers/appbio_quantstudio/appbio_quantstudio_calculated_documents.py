@@ -110,6 +110,8 @@ def build_quantity_mean(
 
     data_sources = []
     for well_item in well_items:
+        if not well_item.has_result:
+            continue
         quantity_ref = build_quantity(view_tr_data, target, well_item)
         if quantity_ref is None:
             return None
@@ -142,6 +144,9 @@ def build_quantity_sd(
 
     data_sources = []
     for well_item in well_items:
+        if not well_item.has_result:
+            continue
+
         quantity_ref = build_quantity(view_tr_data, target, well_item)
         if quantity_ref is None:
             return None
@@ -175,7 +180,7 @@ def build_ct_mean(
         value=ct_mean,
         data_sources=[
             DataSource(feature="cycle threshold result", reference=well_item)
-            for well_item in well_items
+            for well_item in well_items if well_item.has_result
         ],
     )
 
@@ -194,7 +199,7 @@ def build_ct_sd(
         value=ct_sd,
         data_sources=[
             DataSource(feature="cycle threshold result", reference=well_item)
-            for well_item in well_items
+            for well_item in well_items if well_item.has_result
         ],
     )
 
@@ -486,7 +491,7 @@ def build_rn_mean(
         value=rn_mean,
         data_sources=[
             DataSource(feature="normalized reporter result", reference=well_item)
-            for well_item in well_items
+            for well_item in well_items if well_item.has_result
         ],
     )
 
@@ -505,7 +510,7 @@ def build_rn_sd(
         value=rn_sd,
         data_sources=[
             DataSource(feature="normalized reporter result", reference=well_item)
-            for well_item in well_items
+            for well_item in well_items if well_item.has_result
         ],
     )
 
@@ -524,7 +529,7 @@ def build_y_intercept(
         value=y_intercept,
         data_sources=[
             DataSource(feature="cycle threshold result", reference=well_item)
-            for well_item in well_items
+            for well_item in well_items if well_item.has_result
         ],
     )
 
@@ -543,7 +548,7 @@ def build_r_squared(
         value=r_squared,
         data_sources=[
             DataSource(feature="cycle threshold result", reference=well_item)
-            for well_item in well_items
+            for well_item in well_items if well_item.has_result
         ],
     )
 
@@ -562,7 +567,7 @@ def build_slope(
         value=slope,
         data_sources=[
             DataSource(feature="cycle threshold result", reference=well_item)
-            for well_item in well_items
+            for well_item in well_items if well_item.has_result
         ],
     )
 
@@ -581,7 +586,7 @@ def build_efficiency(
         value=efficiency,
         data_sources=[
             DataSource(feature="cycle threshold result", reference=well_item)
-            for well_item in well_items
+            for well_item in well_items if well_item.has_result
         ],
     )
 
