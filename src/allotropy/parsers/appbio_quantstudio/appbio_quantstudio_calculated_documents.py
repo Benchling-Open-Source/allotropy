@@ -110,8 +110,6 @@ def build_quantity_mean(
 
     data_sources = []
     for well_item in well_items:
-        if not well_item.has_result:
-            continue
         quantity_ref = build_quantity(view_tr_data, target, well_item)
         if quantity_ref is None:
             return None
@@ -144,9 +142,6 @@ def build_quantity_sd(
 
     data_sources = []
     for well_item in well_items:
-        if not well_item.has_result:
-            continue
-
         quantity_ref = build_quantity(view_tr_data, target, well_item)
         if quantity_ref is None:
             return None
@@ -180,7 +175,7 @@ def build_ct_mean(
         value=ct_mean,
         data_sources=[
             DataSource(feature="cycle threshold result", reference=well_item)
-            for well_item in well_items if well_item.has_result
+            for well_item in well_items
         ],
     )
 
@@ -199,7 +194,7 @@ def build_ct_sd(
         value=ct_sd,
         data_sources=[
             DataSource(feature="cycle threshold result", reference=well_item)
-            for well_item in well_items if well_item.has_result
+            for well_item in well_items
         ],
     )
 
@@ -491,7 +486,7 @@ def build_rn_mean(
         value=rn_mean,
         data_sources=[
             DataSource(feature="normalized reporter result", reference=well_item)
-            for well_item in well_items if well_item.has_result
+            for well_item in well_items
         ],
     )
 
@@ -510,7 +505,7 @@ def build_rn_sd(
         value=rn_sd,
         data_sources=[
             DataSource(feature="normalized reporter result", reference=well_item)
-            for well_item in well_items if well_item.has_result
+            for well_item in well_items
         ],
     )
 
@@ -529,7 +524,7 @@ def build_y_intercept(
         value=y_intercept,
         data_sources=[
             DataSource(feature="cycle threshold result", reference=well_item)
-            for well_item in well_items if well_item.has_result
+            for well_item in well_items
         ],
     )
 
@@ -548,7 +543,7 @@ def build_r_squared(
         value=r_squared,
         data_sources=[
             DataSource(feature="cycle threshold result", reference=well_item)
-            for well_item in well_items if well_item.has_result
+            for well_item in well_items
         ],
     )
 
@@ -567,7 +562,7 @@ def build_slope(
         value=slope,
         data_sources=[
             DataSource(feature="cycle threshold result", reference=well_item)
-            for well_item in well_items if well_item.has_result
+            for well_item in well_items
         ],
     )
 
@@ -586,7 +581,7 @@ def build_efficiency(
         value=efficiency,
         data_sources=[
             DataSource(feature="cycle threshold result", reference=well_item)
-            for well_item in well_items if well_item.has_result
+            for well_item in well_items
         ],
     )
 
@@ -610,9 +605,6 @@ def iter_comparative_ct_calc_docs(
     calc_docs: list[CalculatedDocument | None] = []
     for sample, target in view_st_data.iter_keys():
         for well_item in view_st_data.get_leaf_item(sample, target):
-            if not well_item.has_result:
-                continue
-
             calc_docs.append(build_quantity(view_tr_data, target, well_item))
             calc_docs.append(build_amp_score(well_item))
             calc_docs.append(build_cq_conf(well_item))
@@ -644,9 +636,6 @@ def iter_standard_curve_calc_docs(
     calc_docs: list[CalculatedDocument | None] = []
     for sample, target in view_st_data.iter_keys():
         for well_item in view_st_data.get_leaf_item(sample, target):
-            if not well_item.has_result:
-                continue
-
             calc_docs.append(build_quantity(view_tr_data, target, well_item))
             calc_docs.append(build_amp_score(well_item))
             calc_docs.append(build_cq_conf(well_item))
@@ -677,9 +666,6 @@ def iter_relative_standard_curve_calc_docs(
     calc_docs: list[CalculatedDocument | None] = []
     for sample, target in view_st_data.iter_keys():
         for well_item in view_st_data.get_leaf_item(sample, target):
-            if not well_item.has_result:
-                continue
-
             calc_docs.append(build_quantity(view_tr_data, target, well_item))
             calc_docs.append(build_amp_score(well_item))
             calc_docs.append(build_cq_conf(well_item))
@@ -713,9 +699,6 @@ def iter_presence_absence_calc_docs(
     calc_docs: list[CalculatedDocument | None] = []
     for sample, target in view_data.iter_keys():
         for well_item in view_data.get_leaf_item(sample, target):
-            if not well_item.has_result:
-                continue
-
             calc_docs.append(build_quantity(None, target, well_item))
             calc_docs.append(build_amp_score(well_item))
             calc_docs.append(build_cq_conf(well_item))
@@ -732,6 +715,7 @@ def iter_calculated_data_documents(
     r_sample: str | None,
     r_target: str | None,
 ) -> Iterator[CalculatedDocument]:
+    well_items = [well_item for well_item in well_items if well_item.has_result]
     view_st = SampleView(sub_view=TargetView())
     view_st_data = view_st.apply(well_items)
 
