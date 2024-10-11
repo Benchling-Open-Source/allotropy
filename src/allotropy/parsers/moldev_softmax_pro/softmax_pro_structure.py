@@ -10,6 +10,7 @@ import re
 import pandas as pd
 
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
+    ErrorDocument,
     MeasurementType,
     ScanPositionSettingPlateReader,
 )
@@ -105,6 +106,7 @@ class Block:
 class GroupDataElementEntry:
     name: str
     value: float
+    error: str | None = None
 
 
 @dataclass(frozen=True)
@@ -113,6 +115,12 @@ class GroupDataElement:
     position: str
     plate: str
     entries: list[GroupDataElementEntry]
+    errors: list[ErrorDocument] = field(default_factory=list, init=False)
+
+    def __post_init__(self) -> None:
+        for entry in self.entries:
+            if entry.error is not None:
+                self.errors.append(ErrorDocument(entry.error, entry.name))
 
 
 @dataclass(frozen=True)
@@ -120,6 +128,12 @@ class GroupSampleData:
     identifier: str
     data_elements: list[GroupDataElement]
     aggregated_entries: list[GroupDataElementEntry]
+    aggregated_errors: list[ErrorDocument] = field(default_factory=list, init=False)
+
+    def __post_init__(self) -> None:
+        for entry in self.aggregated_entries:
+            if entry.error is not None:
+                self.aggregated_errors.append(ErrorDocument(entry.error, entry.name))
 
     @classmethod
     def create(cls, data: pd.DataFrame) -> GroupSampleData:
@@ -128,7 +142,7 @@ class GroupSampleData:
         identifier = top_row[str, "Sample"]
         data = rm_df_columns(data, r"^Sample$|^Standard Value|^R$|^Unnamed: \d+$")
         # Columns are considered "numeric" if the value of the first row is a float
-        # "Mask" and "Range?" are special cases that will be considered NaN.
+        # "Mask" and "Range?" are special cases that will also be considered.
         numeric_columns = [
             column
             for column in data.columns
@@ -152,32 +166,29 @@ class GroupSampleData:
                     position=row[str, ["Well", "Wells"]],
                     plate=row[str, "WellPlateName"],
                     entries=[
-                        element_entry
+                        cls._get_element_entry(row, column_name)
                         for column_name in normal_columns
-                        if (element_entry := cls._get_element_entry(row, column_name))
-                        is not None
                     ],
                 )
                 for row in row_data
             ],
             aggregated_entries=[
-                element_entry
+                cls._get_element_entry(top_row, column_name)
                 for column_name in aggregated_columns
-                if (element_entry := cls._get_element_entry(top_row, column_name))
-                is not None
             ],
         )
 
     @classmethod
     def _get_element_entry(
         cls, data_row: SeriesData, column_name: str
-    ) -> GroupDataElementEntry | None:
-        if (value := data_row.get(float, column_name)) is not None:
-            return GroupDataElementEntry(
-                name=column_name,
-                value=value,
-            )
-        return None
+    ) -> GroupDataElementEntry:
+        value = data_row.get(float, column_name)
+        error = data_row.get(str, column_name)
+        return GroupDataElementEntry(
+            name=column_name,
+            value=NEGATIVE_ZERO if value is None else value,
+            error=error if value is None else None,
+        )
 
 
 @dataclass(frozen=True)
@@ -305,7 +316,7 @@ class DataElement:
     wavelength: float
     position: str
     value: float
-    error: str | None
+    error_document: list[ErrorDocument]
     elapsed_time: list[float] = field(default_factory=list)
     kinetic_measures: list[float | None] = field(default_factory=list)
     sample_id: str | None = None
@@ -328,7 +339,7 @@ class PlateWavelengthData:
 
     @staticmethod
     def create(
-        plate_name: str,
+        header: PlateHeader,
         temperature: float | None,
         elapsed_time: float | None,
         wavelength: float,
@@ -349,12 +360,16 @@ class PlateWavelengthData:
 
             data_elements[str(position)] = DataElement(
                 uuid=random_uuid_str(),
-                plate=plate_name,
+                plate=header.name,
                 temperature=temperature,
                 wavelength=wavelength,
                 position=str(position),
                 value=NEGATIVE_ZERO if value is None else value,
-                error=str(raw_value) if value is None else None,
+                error_document=(
+                    [ErrorDocument(str(raw_value), header.read_mode)]
+                    if value is None
+                    else []
+                ),
                 elapsed_time=[elapsed_time] if elapsed_time is not None else [],
                 kinetic_measures=[value] if elapsed_time is not None else [],
             )
@@ -457,7 +472,7 @@ class PlateRawData:
             end = start + header.num_columns
             wavelength_data.append(
                 PlateWavelengthData.create(
-                    plate_name=header.name,
+                    header=header,
                     temperature=temperature,
                     elapsed_time=elapsed_time,
                     wavelength=header.wavelengths[idx],
@@ -535,7 +550,7 @@ class TimeMeasurementData:
 
     @staticmethod
     def create(
-        plate_name: str,
+        header: PlateHeader,
         wavelength: float,
         row: pd.Series[float],
     ) -> TimeMeasurementData:
@@ -544,14 +559,17 @@ class TimeMeasurementData:
 
         for position, raw_value in row.iloc[2:].items():
             value = try_non_nan_float_or_none(raw_value)
+            error_document = []
+            if value is None:
+                error_document.append(ErrorDocument(str(raw_value), header.read_mode))
             data_elements[str(position)] = DataElement(
                 uuid=random_uuid_str(),
-                plate=plate_name,
+                plate=header.name,
                 temperature=temperature,
                 wavelength=wavelength,
                 position=str(position),
                 value=NEGATIVE_ZERO if value is None else value,
-                error=str(raw_value) if value is None else None,
+                error_document=error_document,
             )
 
         return TimeMeasurementData(data_elements)
@@ -565,7 +583,7 @@ class TimeWavelengthData:
     @staticmethod
     def create(
         reader: CsvReader,
-        plate_name: str,
+        header: PlateHeader,
         wavelength: float,
         columns: pd.Series[str],
     ) -> TimeWavelengthData:
@@ -577,7 +595,7 @@ class TimeWavelengthData:
         return TimeWavelengthData(
             wavelength=wavelength,
             measurement_data=[
-                TimeMeasurementData.create(plate_name, wavelength, row)
+                TimeMeasurementData.create(header, wavelength, row)
                 for _, row in data.iterrows()
             ],
         )
@@ -598,7 +616,7 @@ class TimeRawData:
             wavelength_data=[
                 TimeWavelengthData.create(
                     reader,
-                    header.name,
+                    header,
                     wavelength,
                     columns,
                 )
@@ -1081,6 +1099,7 @@ class StructureData:
     def create(reader: CsvReader) -> StructureData:
         block_list = BlockList.create(reader)
 
+        # update sample_id if it was reported in the group blocks and include erros from calculated data
         for group_block in block_list.group_blocks:
             for group_sample_data in group_block.group_data.sample_data:
                 for group_data_element in group_sample_data.data_elements:
@@ -1089,5 +1108,9 @@ class StructureData:
                         group_data_element.position
                     ):
                         data_element.sample_id = group_data_element.sample
+                        data_element.error_document += (
+                            group_data_element.errors
+                            + group_sample_data.aggregated_errors
+                        )
 
         return StructureData(block_list)
