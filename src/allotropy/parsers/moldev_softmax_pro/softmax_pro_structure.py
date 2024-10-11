@@ -106,7 +106,6 @@ class Block:
 class GroupDataElementEntry:
     name: str
     value: float
-    error: str | None = None
 
 
 @dataclass(frozen=True)
@@ -115,12 +114,7 @@ class GroupDataElement:
     position: str
     plate: str
     entries: list[GroupDataElementEntry]
-    errors: list[ErrorDocument] = field(default_factory=list, init=False)
-
-    def __post_init__(self) -> None:
-        for entry in self.entries:
-            if entry.error is not None:
-                self.errors.append(ErrorDocument(entry.error, entry.name))
+    errors: list[ErrorDocument]
 
 
 @dataclass(frozen=True)
@@ -128,12 +122,7 @@ class GroupSampleData:
     identifier: str
     data_elements: list[GroupDataElement]
     aggregated_entries: list[GroupDataElementEntry]
-    aggregated_errors: list[ErrorDocument] = field(default_factory=list, init=False)
-
-    def __post_init__(self) -> None:
-        for entry in self.aggregated_entries:
-            if entry.error is not None:
-                self.aggregated_errors.append(ErrorDocument(entry.error, entry.name))
+    aggregated_errors: list[ErrorDocument]
 
     @classmethod
     def create(cls, data: pd.DataFrame) -> GroupSampleData:
@@ -158,37 +147,43 @@ class GroupSampleData:
             else:
                 normal_columns.append(column)
 
-        return GroupSampleData(
-            identifier=identifier,
-            data_elements=[
+        data_elements = []
+        for row in row_data:
+            entries, errors = cls._get_entries_and_errors(row, normal_columns)
+            data_elements.append(
                 GroupDataElement(
                     sample=identifier,
                     position=row[str, ["Well", "Wells"]],
                     plate=row[str, "WellPlateName"],
-                    entries=[
-                        cls._get_element_entry(row, column_name)
-                        for column_name in normal_columns
-                    ],
+                    entries=entries,
+                    errors=errors,
                 )
-                for row in row_data
-            ],
-            aggregated_entries=[
-                cls._get_element_entry(top_row, column_name)
-                for column_name in aggregated_columns
-            ],
+            )
+
+        aggregated_entries, aggregated_errors = cls._get_entries_and_errors(
+            top_row, aggregated_columns
+        )
+
+        return GroupSampleData(
+            identifier=identifier,
+            data_elements=data_elements,
+            aggregated_entries=aggregated_entries,
+            aggregated_errors=aggregated_errors,
         )
 
     @classmethod
-    def _get_element_entry(
-        cls, data_row: SeriesData, column_name: str
-    ) -> GroupDataElementEntry:
-        value = data_row.get(float, column_name)
-        error = data_row.get(str, column_name)
-        return GroupDataElementEntry(
-            name=column_name,
-            value=NEGATIVE_ZERO if value is None else value,
-            error=error if value is None else None,
-        )
+    def _get_entries_and_errors(
+        cls, data_row: SeriesData, column_names: list[str]
+    ) -> tuple[list[GroupDataElementEntry], list[ErrorDocument]]:
+        entries = []
+        errors = []
+        for column in column_names:
+            value = data_row.get(float, column)
+            if value is not None:
+                entries.append(GroupDataElementEntry(column, value))
+            elif (error := data_row.get(str, column)) is not None:
+                errors.append(ErrorDocument(error, column))
+        return entries, errors
 
 
 @dataclass(frozen=True)

@@ -224,7 +224,6 @@ def _get_group_agg_calc_docs(
             description=group_block.group_columns.data.get(aggregated_entry.name),
         )
         for aggregated_entry in group_sample_data.aggregated_entries
-        if aggregated_entry.error is None
     ]
 
 
@@ -240,8 +239,6 @@ def _get_group_simple_calc_docs(
             group_data_element.position,
         )
         for entry in group_data_element.entries:
-            if entry.error is not None:
-                continue
             calculated_documents.append(
                 _build_calc_doc(
                     name=entry.name,
