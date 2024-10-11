@@ -21,7 +21,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 class RevvityMatrixParser(VendorParser[Data, Model]):
     DISPLAY_NAME = DISPLAY_NAME
-    RELEASE_STATE = ReleaseState.WORKING_DRAFT
+    RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = RevvityMatrixReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 
