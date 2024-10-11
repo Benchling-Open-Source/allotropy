@@ -231,7 +231,7 @@ class DataThermoSkanIt(Data):
         return df
 
     @staticmethod
-    def create(sheet_data: dict[str, pd.DataFrame], file_name: str) -> Data:
+    def create(sheet_data: dict[str, pd.DataFrame], file_path: str) -> Data:
         for sheet_name, df in sheet_data.items():
             clean_df = DataThermoSkanIt._clean_dataframe(df)
             # NOTE: This assumes a single absorbance plate on a single tab
@@ -249,7 +249,7 @@ class DataThermoSkanIt(Data):
         metadata = ThermoSkanItMetadata.create_metadata(
             instrument_info_df=inst_info_df,
             general_info_df=general_df,
-            file_name=file_name,
+            file_path=file_path,
         )
         measurement_groups = ThermoSkanItMeasurementGroups.create(
             absorbance_sheet_df=abs_df,

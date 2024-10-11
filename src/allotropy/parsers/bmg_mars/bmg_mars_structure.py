@@ -98,7 +98,7 @@ class Header:
 
 
 def create_metadata(header: Header, file_path: str) -> Metadata:
-    asm_file_identifier = Path(file_path).with_suffix(".json").name
+    asm_file_identifier = Path(file_path).with_suffix(".json")
     return Metadata(
         file_name=Path(file_path).name,
         asm_file_identifier=asm_file_identifier.name,

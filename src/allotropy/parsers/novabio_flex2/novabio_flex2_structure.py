@@ -35,7 +35,8 @@ class Title:
     device_identifier: str | None
 
     @staticmethod
-    def create(filename: str) -> Title:
+    def create(file_path: str) -> Title:
+        filename = Path(file_path).name
         matches = re.match(FILENAME_REGEX, filename, flags=re.IGNORECASE)
 
         if not matches:
