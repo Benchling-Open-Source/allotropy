@@ -18,7 +18,7 @@ from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._1
 )
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.thermo_fisher_qubit_flex import constants
-from allotropy.parsers.utils.pandas import map_rows, SeriesData
+from allotropy.parsers.utils.pandas import df_to_series_data, map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
@@ -54,7 +54,7 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
                 },
                 sample_custom_info={
                     "last read standards": data.get(str, "Test Date"),
-                    "selected standards": data.get(int, "Selected Samples"),
+                    "selected samples": data.get(int, "Selected Samples"),
                     "qubit tube concentration": {
                         "value": data.get(float, "Qubit Tube Conc.", NaN),
                         "unit": data.get(str, "Qubit tube conc. units", UNITLESS),
@@ -99,17 +99,19 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
     )
 
 
-def create_data(data_frame: pd.DataFrame, file_name: str) -> Data:
+def create_data(df: pd.DataFrame, file_name: str) -> Data:
+    header = df_to_series_data(df.head(1))
     return Data(
         metadata=Metadata(
             file_name=file_name,
             device_identifier=NOT_APPLICABLE,
             model_number=constants.MODEL_NUMBER,
             software_name=constants.SOFTWARE_NAME,
+            software_version=header.get(str, "Software Version"),
             product_manufacturer=constants.PRODUCT_MANUFACTURER,
             brand_name=constants.BRAND_NAME,
             device_type=constants.DEVICE_TYPE,
             container_type=ContainerType.tube,
         ),
-        measurement_groups=map_rows(data_frame, create_measurement_group),
+        measurement_groups=map_rows(df, create_measurement_group),
     )
