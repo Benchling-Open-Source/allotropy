@@ -11,7 +11,6 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_rea
     DataCube,
     DataCubeComponent,
     DataSource,
-    ErrorDocument,
     Measurement,
     MeasurementGroup,
     MeasurementType,
@@ -122,11 +121,8 @@ def _create_measurements(plate_block: PlateBlock, position: str) -> list[Measure
             total_measurement_time_setting=plate_block.header.read_time,
             read_interval_setting=plate_block.header.read_interval,
             number_of_scans_setting=plate_block.header.kinetic_points,
-            error_document=(
-                None
-                if (error := data_element.error) is None
-                else [ErrorDocument(error, plate_block.header.read_mode)]
-            ),
+            # Error documents
+            error_document=data_element.error_document,
         )
         for idx, data_element in enumerate(plate_block.iter_data_elements(position))
     ]
@@ -228,6 +224,7 @@ def _get_group_agg_calc_docs(
             description=group_block.group_columns.data.get(aggregated_entry.name),
         )
         for aggregated_entry in group_sample_data.aggregated_entries
+        if aggregated_entry.error is None
     ]
 
 
@@ -243,6 +240,8 @@ def _get_group_simple_calc_docs(
             group_data_element.position,
         )
         for entry in group_data_element.entries:
+            if entry.error is not None:
+                continue
             calculated_documents.append(
                 _build_calc_doc(
                     name=entry.name,
