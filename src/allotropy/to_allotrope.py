@@ -1,5 +1,4 @@
 from datetime import tzinfo
-from pathlib import Path
 from typing import Any
 
 from allotropy.allotrope.allotrope import serialize_and_validate_allotrope
@@ -13,20 +12,20 @@ VendorType = Vendor | str
 
 def allotrope_from_io(
     contents: IOType,
-    filename: str,
+    filepath: str,
     vendor_type: VendorType,
     default_timezone: tzinfo | None = None,
     encoding: str | None = None,
 ) -> dict[str, Any]:
     model = allotrope_model_from_io(
-        contents, filename, vendor_type, default_timezone, encoding
+        contents, filepath, vendor_type, default_timezone, encoding
     )
     return serialize_and_validate_allotrope(model)
 
 
 def allotrope_model_from_io(
     contents: IOType,
-    filename: str,
+    filepath: str,
     vendor_type: VendorType,
     default_timezone: tzinfo | None = None,
     encoding: str | None = None,
@@ -36,7 +35,7 @@ def allotrope_model_from_io(
     except ValueError as e:
         msg = f"Failed to create parser, unregistered vendor: {vendor_type}."
         raise AllotropeConversionError(msg) from e
-    named_file_contents = NamedFileContents(contents, filename, encoding)
+    named_file_contents = NamedFileContents(contents, filepath, encoding)
     if named_file_contents.extension not in vendor.supported_extensions:
         msg = f"Unsupported file extension '{named_file_contents.extension}' for parser '{vendor.display_name}', expected one of '{vendor.supported_extensions}'."
         raise AllotropeConversionError(msg)
@@ -64,7 +63,7 @@ def allotrope_model_from_file(
         with open(filepath, "rb") as f:
             return allotrope_model_from_io(
                 f,
-                Path(filepath).name,
+                filepath,
                 vendor_type,
                 default_timezone=default_timezone,
                 encoding=encoding,

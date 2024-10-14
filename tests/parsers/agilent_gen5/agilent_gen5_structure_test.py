@@ -28,7 +28,7 @@ def test_create_header_data_no_well_plate_id_in_filename() -> None:
         )
     )
 
-    header_data = HeaderData.create(data, "dummy_filename.txt")
+    header_data = HeaderData.create(data, "users/files/dummy_filename.txt")
 
     assert header_data == HeaderData(
         software_version="3.12.08",
@@ -39,6 +39,7 @@ def test_create_header_data_no_well_plate_id_in_filename() -> None:
         model_number="Synergy H1",
         equipment_serial_number="Serial01",
         file_name="dummy_filename.txt",
+        unc_path="users/files/dummy_filename.txt",
         plate_well_count=96,
     )
 

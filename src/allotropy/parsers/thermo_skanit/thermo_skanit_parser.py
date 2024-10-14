@@ -23,5 +23,5 @@ class ThermoSkanItParser(VendorParser[Data, Model]):
             named_file_contents.contents, engine="calamine"
         )
         return DataThermoSkanIt.create(
-            sheet_data=contents, file_name=named_file_contents.original_file_name
+            sheet_data=contents, file_path=named_file_contents.original_file_path
         )

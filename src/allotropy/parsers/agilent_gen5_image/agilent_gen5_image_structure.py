@@ -345,6 +345,7 @@ def create_metadata(header_data: HeaderData) -> Metadata:
         software_name=DEFAULT_SOFTWARE_NAME,
         software_version=header_data.software_version,
         file_name=header_data.file_name,
+        unc_path=header_data.unc_path,
     )
 
 

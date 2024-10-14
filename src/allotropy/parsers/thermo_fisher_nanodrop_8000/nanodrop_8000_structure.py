@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from pathlib import Path
 
 import pandas as pd
 
@@ -196,12 +197,13 @@ class SpectroscopyRow:
         return map_rows(data, SpectroscopyRow.create)
 
 
-def create_metadata(file_name: str) -> Metadata:
+def create_metadata(file_path: str) -> Metadata:
     return Metadata(
         device_identifier=constants.DEVICE_IDENTIFIER,
         device_type=constants.DEVICE_TYPE,
         model_number=constants.MODEL_NUBMER,
-        file_name=file_name,
+        file_name=Path(file_path).name,
+        unc_path=file_path,
     )
 
 

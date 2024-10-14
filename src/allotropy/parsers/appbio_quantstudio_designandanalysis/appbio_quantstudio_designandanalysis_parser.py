@@ -28,7 +28,7 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser[Data, Model]):
         return Data(
             create_metadata(
                 data.header,
-                named_file_contents.original_file_name,
+                named_file_contents.original_file_path,
                 data.experiment_type,
             ),
             create_measurement_groups(data.wells.wells, data.header),

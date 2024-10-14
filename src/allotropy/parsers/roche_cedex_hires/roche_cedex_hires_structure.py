@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from decimal import Decimal
+from pathlib import Path
 
 from allotropy.allotrope.schema_mappers.adm.cell_counting.benchling._2023._11.cell_counting import (
     Measurement,
@@ -12,9 +13,10 @@ from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
-def create_metadata(data: SeriesData, file_name: str) -> Metadata:
+def create_metadata(data: SeriesData, file_path: str) -> Metadata:
     return Metadata(
-        file_name=file_name,
+        file_name=Path(file_path).name,
+        unc_path=file_path,
         device_type=constants.DEVICE_TYPE,
         detection_type=constants.DETECTION_TYPE,
         model_number=constants.MODEL_NUMBER,

@@ -35,9 +35,10 @@ from tests.parsers.agilent_tapestation_analysis.agilent_tapestation_test_data im
 
 
 def test_create_metadata() -> None:
-    metadata = create_metadata(get_metadata_xml(), "file.txt")
+    metadata = create_metadata(get_metadata_xml(), "users/files/file.txt")
     assert metadata == Metadata(
         file_name="file.txt",
+        unc_path="users/files/file.txt",
         analyst="TapeStation User",
         analytical_method_identifier="cfDNA",
         data_system_instance_identifier="TAPESTATIONPC",
