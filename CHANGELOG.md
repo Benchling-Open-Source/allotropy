@@ -12,6 +12,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update Agilent Tapestation Analysis parser to use electrophoresis benchling 09/24 schema
 - Move electrophoresis rec 09/24 as benchling 09/24 schema
 
+## [0.1.59] - 2024-10-11
+
+### Added
+
+- Update Thermo SkanIt and Revvity Matrix adapters release status to RECCOMMENDED (#719)
+
+### Fixed
+
+- AppBio Quantstudio - remove omitted wells from calculated data document data sources (#717)
+
 ## [0.1.58] - 2024-10-09
 
 ### Fixed
