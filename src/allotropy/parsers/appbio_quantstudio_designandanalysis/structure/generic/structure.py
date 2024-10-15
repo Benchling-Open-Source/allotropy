@@ -338,7 +338,9 @@ def create_multicomponent_data(
     stage_number = well_data.get("Stage Number")
     stage_data = (
         well_data
-        if header.pcr_stage_number is None or stage_number is None
+        if header.pcr_stage_number is None
+        or stage_number is None
+        or well_data["Stage Number"].isnull().all()
         else assert_not_empty_df(
             well_data[stage_number == header.pcr_stage_number],  # type: ignore[arg-type]
             msg=f"Unable to find multi component data for stage {header.pcr_stage_number}.",
