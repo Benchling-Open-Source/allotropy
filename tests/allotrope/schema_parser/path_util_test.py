@@ -16,9 +16,9 @@ from allotropy.allotrope.schema_parser.path_util import (
     SCHEMA_DIR_PATH,
 )
 
-REL_SCHEMA_PATH = Path("adm/fluorescence/BENCHLING/2023/09/fluorescence.schema.json")
-REL_MODEL_PATH = Path("adm/fluorescence/benchling/_2023/_09/fluorescence.py")
-MANIFEST = "http://purl.allotrope.org/manifests/fluorescence/BENCHLING/2023/09/fluorescence.manifest"
+REL_SCHEMA_PATH = Path("adm/plate-reader/BENCHLING/2023/09/plate-reader.schema.json")
+REL_MODEL_PATH = Path("adm/plate_reader/benchling/_2023/_09/plate_reader.py")
+MANIFEST = "http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest"
 
 
 def test_get_rel_schema_path() -> None:
@@ -57,7 +57,7 @@ def test_get_schema_path_from_manifest() -> None:
 def test_get_schema_path_from_reference() -> None:
     assert (
         get_schema_path_from_reference(
-            "http://purl.allotrope.org/json-schemas/adm/fluorescence/BENCHLING/2023/09/fluorescence.schema"
+            "http://purl.allotrope.org/json-schemas/adm/plate-reader/BENCHLING/2023/09/plate-reader.schema"
         )
         == REL_SCHEMA_PATH
     )
@@ -65,13 +65,13 @@ def test_get_schema_path_from_reference() -> None:
 
 def test_get_model_path_from_schema_path() -> None:
     assert get_model_path_from_schema_path(REL_SCHEMA_PATH) == Path(
-        "adm/fluorescence/benchling/_2023/_09/fluorescence.py"
+        "adm/plate_reader/benchling/_2023/_09/plate_reader.py"
     )
 
 
 def test_get_schema_path_from_model_path() -> None:
     assert get_schema_path_from_model_path(REL_MODEL_PATH) == Path(
-        "adm/fluorescence/BENCHLING/2023/09/fluorescence.schema.json"
+        "adm/plate-reader/BENCHLING/2023/09/plate-reader.schema.json"
     )
 
 
@@ -84,7 +84,7 @@ def test_get_model_path_from_schema_path_windows_path() -> None:
     ) as mock_get_rel:
         mock_get_rel.return_value = rel_windows_path
         assert get_model_path_from_schema_path(rel_windows_path) == Path(
-            "adm/fluorescence/benchling/_2023/_09/fluorescence.py"
+            "adm/plate_reader/benchling/_2023/_09/plate_reader.py"
         )
 
 
@@ -98,7 +98,7 @@ def test_get_model_class_from_schema() -> None:
         mock_import.return_value = fake_module
         assert get_model_class_from_schema(schema) == "fake_model"
         mock_import.assert_called_with(
-            "allotropy.allotrope.models.adm.fluorescence.benchling._2023._09.fluorescence"
+            "allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader"
         )
 
 
@@ -113,9 +113,9 @@ def test_get_model_class_from_schema_windows_path() -> None:
     ) as mock_get_model_file:
         mock_import.return_value = fake_module
         mock_get_model_file.return_value = Path(
-            "adm\\fluorescence\\benchling\\_2023\\_09\\fluorescence.py"
+            "adm\\plate_reader\\benchling\\_2023\\_09\\plate_reader.py"
         )
         assert get_model_class_from_schema(schema) == "fake_model"
         mock_import.assert_called_with(
-            "allotropy.allotrope.models.adm.fluorescence.benchling._2023._09.fluorescence"
+            "allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader"
         )
