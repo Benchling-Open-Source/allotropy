@@ -24,7 +24,7 @@ Reasoning: This should have been included in REC/2024/06 electrophoresis schema 
 Proposal: Add "peak name", "peak position", "relative corrected peak area", "comment" to peak
 
 Added TQuantityValueNumber and TQuantityValueKiloDalton units for "peak position", "peak end", "relative peak height", "peak start"
-Reasoning: This should have been included in REC/2024/06 electrophoresis schema from original proposal
-Proposal: Add TQuantityValueNumber and TQuantityValueKiloDalton units for "peak position", "peak end", "relative peak height", "peak start" to peak fields
 
-Removed "processed data document" outside of "processed data aggreagete document" in fluorescence-cube-detector measurementDocumentItems definition
+Added "processed data aggregate document" to fluorescence-cube-detector measurementDocumentItems definition
+Reasoning: "processed data aggregate document" was excluded from REC/2024/09 schema in fluorescence-cube-detector measurementDocumentItems definition, should be included as parent document to "processed data document"
+Proposal: Add "processed data aggregate document" to fluorescence-cube-detector measurementDocumentItems, raise https://gitlab.com/allotrope-public/asm/-/issues/7 with Allotrope on missing from REC/2024/09
