@@ -110,7 +110,7 @@ dependencies = [
   # Without jsonschema-spec and pydantic, pydantic spews a bunch of errors when parsing schemas
   "jsonschema-specifications == 2023.7.1",
   "pydantic == 1.10.17",
-  "ruff == 0.0.289",
+  "ruff == 0.2.2",
   "semantic-version",
 ]
 
