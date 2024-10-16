@@ -536,6 +536,8 @@ class PlateData:
 
     def iter_data_elements(self, position: str) -> Iterator[DataElement]:
         for wavelength_data in self.raw_data.wavelength_data:
+            if position not in wavelength_data.data_elements:
+                continue
             yield wavelength_data.data_elements[position]
 
 
@@ -671,6 +673,8 @@ class TimeData:
     def iter_data_elements(self, position: str) -> Iterator[DataElement]:
         for wavelength_data in self.raw_data.wavelength_data:
             for measurement_data in wavelength_data.measurement_data:
+                if position not in measurement_data.data_elements:
+                    continue
                 yield measurement_data.data_elements[position]
 
 
