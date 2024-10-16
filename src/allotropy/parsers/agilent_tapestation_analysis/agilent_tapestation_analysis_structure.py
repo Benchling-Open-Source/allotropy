@@ -1,9 +1,10 @@
 from __future__ import annotations
 
+from os.path import splitext
 from xml.etree import ElementTree as ET  # noqa: N817
 
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
-from allotropy.allotrope.schema_mappers.adm.electrophoresis.benchling._2024._06.electrophoresis import (
+from allotropy.allotrope.schema_mappers.adm.electrophoresis.benchling._2024._09.electrophoresis import (
     CalculatedDataItem,
     DataSource,
     Error,
@@ -29,11 +30,11 @@ from allotropy.parsers.agilent_tapestation_analysis.constants import (
     SOFTWARE_NAME,
     UNIT_CLASS_LOOKUP,
 )
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import try_float_or_none
 from allotropy.parsers.utils.xml import (
     get_element_from_xml,
-    get_float_from_xml_or_nan,
     get_float_from_xml_or_none,
     get_val_from_xml,
     get_val_from_xml_or_none,
@@ -63,19 +64,19 @@ def _get_calculated_data(
 
 
 def create_metadata(root_element: ET.Element, file_name: str) -> Metadata:
+    file_identifier, _ = splitext(file_name)
     file_information = get_element_from_xml(root_element, "FileInformation")
     environment = get_element_from_xml(
         root_element, "ScreenTapes/ScreenTape/Environment"
     )
     return Metadata(
         file_name=file_name,
-        analyst=get_val_from_xml_or_none(environment, "Experimenter"),
+        file_identifier=f"{file_identifier}.json",
+        analyst=get_val_from_xml(environment, "Experimenter"),
         analytical_method_identifier=get_val_from_xml_or_none(
             file_information, "Assay"
         ),
-        data_system_instance_identifier=get_val_from_xml_or_none(
-            environment, "Computer"
-        ),
+        data_system_instance_identifier=get_val_from_xml(environment, "Computer"),
         device_identifier=get_val_from_xml_or_none(environment, "InstrumentType"),
         equipment_serial_number=get_val_from_xml_or_none(
             environment, "InstrumentSerialNumber"
@@ -92,6 +93,7 @@ def create_metadata(root_element: ET.Element, file_name: str) -> Metadata:
         product_manufacturer=PRODUCT_MANUFACTURER,
         device_type=DEVICE_TYPE,
         detection_type=DETECTION_TYPE,
+        unc_path=NOT_APPLICABLE,
     )
 
 
@@ -104,16 +106,16 @@ def _get_description(xml_element: ET.Element) -> str | None:
 def _create_peak(peak_element: ET.Element, unit: str) -> ProcessedDataFeature:
     return ProcessedDataFeature(
         identifier=random_uuid_str(),
-        height=get_float_from_xml_or_nan(peak_element, "Height"),
-        start=get_float_from_xml_or_nan(peak_element, "FromMW"),
+        height=get_float_from_xml_or_none(peak_element, "Height"),
+        start=get_float_from_xml_or_none(peak_element, "FromMW"),
         start_unit=unit,
-        end=get_float_from_xml_or_nan(peak_element, "ToMW"),
+        end=get_float_from_xml_or_none(peak_element, "ToMW"),
         end_unit=unit,
-        position=get_float_from_xml_or_nan(peak_element, "Size"),
+        position=get_float_from_xml_or_none(peak_element, "Size"),
         position_unit=unit,
-        area=get_float_from_xml_or_nan(peak_element, "Area"),
-        relative_area=get_float_from_xml_or_nan(peak_element, "PercentOfTotal"),
-        relative_corrected_area=get_float_from_xml_or_nan(
+        area=get_float_from_xml_or_none(peak_element, "Area"),
+        relative_area=get_float_from_xml_or_none(peak_element, "PercentOfTotal"),
+        relative_corrected_area=get_float_from_xml_or_none(
             peak_element, "PercentIntegratedArea"
         ),
         name=get_val_from_xml_or_none(peak_element, "Number"),
@@ -126,12 +128,12 @@ def _create_region(
 ) -> ProcessedDataFeature:
     return ProcessedDataFeature(
         identifier=random_uuid_str(),
-        start=get_float_from_xml_or_nan(region_element, "From"),
+        start=get_float_from_xml_or_none(region_element, "From"),
         start_unit=unit,
-        end=get_float_from_xml_or_nan(region_element, "To"),
+        end=get_float_from_xml_or_none(region_element, "To"),
         end_unit=unit,
-        area=get_float_from_xml_or_nan(region_element, "Area"),
-        relative_area=get_float_from_xml_or_nan(region_element, "PercentOfTotal"),
+        area=get_float_from_xml_or_none(region_element, "Area"),
+        relative_area=get_float_from_xml_or_none(region_element, "PercentOfTotal"),
         name=region_name,
         comment=get_val_from_xml_or_none(region_element, "Comment"),
     )
