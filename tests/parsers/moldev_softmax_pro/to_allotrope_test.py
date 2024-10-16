@@ -39,12 +39,17 @@ def test_handles_unrecognized_read_mode() -> None:
         )
 
 
-def test_missing_kinetic_measurement() -> None:
+def test_no_plate_reader_documents() -> None:
     with pytest.raises(
         AllotropeConversionError,
-        match="Missing kinetic measurement for well position A1 at 0s.",
+        match=re.escape(
+            "Invalid data - the file contains invalid or missing measurement data. Unable to construct ASM."
+        ),
     ):
-        from_file(f"{TESTDATA}/errors/missing_kinetic_measurement.txt", VENDOR_TYPE)
+        from_file(
+            f"{TESTDATA}/errors/no_measurements.txt",
+            VENDOR_TYPE,
+        )
 
 
 @pytest.mark.parametrize(
