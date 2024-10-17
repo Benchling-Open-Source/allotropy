@@ -18,3 +18,5 @@ NEGATIVE_ZERO = -0.0
 #Maybe use something like this...from AB QuantStudio
 #plate_well_count_search = re.search("(96)|(384)", data[str, "Block Type"])
 PLATE_WELL_COUNT = 96
+
+DEFAULT_EPOCH_TIMESTAMP = "1970-01-01"

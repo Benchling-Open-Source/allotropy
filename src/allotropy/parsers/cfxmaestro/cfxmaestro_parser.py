@@ -29,5 +29,5 @@ class CfxmaestroParser(VendorParser[Data, Model]):
         reader = cfxmaestroreader(named_file_contents)
         return Data(
             create_metadata(reader.header, named_file_contents.original_file_name),
-            map_rows(reader.data, create_measurement_groups)
+            create_measurement_groups(reader.data)
         )
