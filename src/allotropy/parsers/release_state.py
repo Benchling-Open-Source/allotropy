@@ -8,3 +8,6 @@ class ReleaseState(Enum):
     CANDIDATE_RELEASE = "CANDIDATE_RELEASE"
     # In development, not recommended for production use
     WORKING_DRAFT = "WORKING_DRAFT"
+
+    def __str__(self) -> str:
+        return self.value.replace("_", " ").title()
