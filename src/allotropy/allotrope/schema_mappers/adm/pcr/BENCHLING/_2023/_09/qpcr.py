@@ -152,15 +152,15 @@ class MeasurementGroup:
 
 @dataclass
 class Metadata:
-    device_identifier: str
     device_type: str
-    device_serial_number: str
-    model_number: str
     file_name: str
-    unc_path: str
     experiment_type: ExperimentType
     container_type: ContainerType
-    measurement_method_identifier: str
+    unc_path: str | None = None
+    model_number: str | None = None
+    device_serial_number: str | None = None
+    device_identifier: str | None = None
+    measurement_method_identifier: str | None = None
     data_system_instance_identifier: str | None = None
     software_name: str | None = None
     software_version: str | None = None
