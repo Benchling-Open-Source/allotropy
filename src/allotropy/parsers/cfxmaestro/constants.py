@@ -1,3 +1,5 @@
+from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ContainerType
+
 DISPLAY_NAME = "cfxmaestro"
 DEVICE_TYPE = "<some device type>"
 
@@ -6,7 +8,7 @@ PRODUCT_MANUFACTURER = "Bio-Rad"
 SOFTWARE_NAME = "CFX Maestro"
 ASM_CONVERTER_NAME = "<this adapter>"
 ASM_CONVERTER_VERSION = ""
-CONTAINER_TYPE = "qPCR Reaction Block"
+CONTAINER_TYPE = ContainerType.well_plate
 CALCULATED_DATA_NAME = "Cq Mean"
 PROCESSED_DATA_NAME = "Cq Std. Dev"
 
