@@ -24,8 +24,8 @@ We currently have parser support for the following instruments:
   - Beckman Vi-Cell XR
   - Bio-Rad Bio-Plex Manager
   - CTL ImmunoSpot
-  - Chemometec NC View
   - ChemoMetec Nucleoview
+  - Chemometec NC View
   - Luminex xPONENT
   - Mabtech Apex
   - Methodical Mind
@@ -47,8 +47,9 @@ We currently have parser support for the following instruments:
 ### Candidate Release
 
 ### Working Draft
-  - Thermo SkanIt
   - Revvity Matrix
+  - Thermo SkanIt
+  - cfxmaestro
 
 The parsers follow maturation levels of: Recommended, Candidate Release, Working Draft - see [release_state.py](https://github.com/Benchling-Open-Source/allotropy/blob/main/src/allotropy/parsers/release_state.py) for additional details.
 
