@@ -41,7 +41,7 @@ def create_measurement_group(well_data: list[SeriesData], plate_well_count: int)
                 group_identifier=data.get(str, "Biological Set Name"),
 
                 #Optional Measurement Metadata
-                sample_role_type=data[str, "Content"],
+                sample_role_type=data.get(str, "Content"),
                 well_location_identifier=data[str, "Well"],
 
                 #Optional Settings
