@@ -9,12 +9,18 @@ from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import 
     DataSource,
 
 )
+<<<<<<< HEAD
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.parsers.cfxmaestro import constants
 from allotropy.parsers.utils.pandas import SeriesData, map_rows
+=======
+from allotropy.parsers.cfxmaestro import constants
+from allotropy.parsers.utils.pandas import SeriesData
+>>>>>>> e3725c03c1f79bbe7c9ce489097ca360e16d9fd8
 from allotropy.parsers.utils.uuids import random_uuid_str
 from dataclasses import dataclass
 import pandas as pd
+
 
 
 
@@ -27,6 +33,7 @@ def create_metadata(data: SeriesData, file_name: str) -> Metadata:
         container_type=constants.CONTAINER_TYPE,
         device_type=constants.DEVICE_TYPE,
 
+<<<<<<< HEAD
 
         #TypeError: Metadata.__init__() missing 7 required positional arguments: 'device_identifier', 'device_serial_number', 'model_number', 'data_system_instance_identifier', 'unc_path', 'experiment_type', and 'measurement_method_identifier'
 
@@ -40,6 +47,11 @@ def create_metadata(data: SeriesData, file_name: str) -> Metadata:
         experiment_type=constants.NOT_APPLICABLE,
         measurement_method_identifier=constants.NOT_APPLICABLE,
 
+=======
+        #plate_well_count=constants.PLATE_WELL_COUNT,
+
+
+>>>>>>> e3725c03c1f79bbe7c9ce489097ca360e16d9fd8
     )
 
 #read well, count
