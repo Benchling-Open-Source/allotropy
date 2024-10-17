@@ -5,6 +5,16 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.61] - 2024-10-16
+
+### Added
+
+- QuantStudio Design & Analysis - add xls support and additional filter check for empty stage number column (#724)
+
+### Removed
+
+- SoftMax Pro report non numeric values in error document (#725)
+
 ## [0.1.60] - 2024-10-15
 
 ### Added
