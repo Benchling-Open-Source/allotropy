@@ -149,7 +149,7 @@ class GroupSampleData:
                 GroupDataElement(
                     sample=identifier,
                     position=row[str, ["Well", "Wells"]],
-                    plate=row[str, "WellPlateName"],
+                    plate=row[str, ["WellPlateName", "PlateName"]],
                     entries=[
                         element_entry
                         for column_name in normal_columns
@@ -180,9 +180,22 @@ class GroupSampleData:
 
 
 @dataclass(frozen=True)
+class GroupGeneralData:
+    data_elements: list[GroupDataElementEntry]
+
+    @classmethod
+    def create(cls, data: pd.Series) -> GroupGeneralData:
+        return GroupGeneralData(
+            GroupDataElementEntry(key, float(value))
+            for key, value in data.items() if try_non_nan_float_or_none(value) is not None
+        )
+
+
+@dataclass(frozen=True)
 class GroupData:
     name: str
     sample_data: list[GroupSampleData]
+    general_data: list[GroupGeneralData]
 
     @staticmethod
     def create(reader: CsvReader) -> GroupData:
@@ -197,21 +210,27 @@ class GroupData:
                 msg="Unable to find group block data.",
             ).replace(r"^\s+$", None, regex=True)
 
-        assert_not_none(
-            data.get("Sample"),
-            msg=f"Unable to find sample identifier column in group data {name}",
-        )
-
-        samples = data["Sample"].ffill()
-        try:
-            sample_data = [
-                GroupSampleData.create(data.iloc[sample_entries.index])
-                for _, sample_entries in samples.groupby(samples)
-            ]
-        except ValueError as e:
-            msg = f"Unable to read Group data format for group {name}."
-            raise AllotropeConversionError(msg) from e
-        return GroupData(name=name, sample_data=sample_data)
+        if "Sample" in data.columns:
+            samples = data["Sample"].ffill()
+            try:
+                sample_data = [
+                    GroupSampleData.create(data.iloc[sample_entries.index])
+                    for _, sample_entries in samples.groupby(samples)
+                ]
+            except ValueError as e:
+                msg = f"Unable to read Sample Group data format for group '{name}'."
+                raise AllotropeConversionError(msg) from e
+            return GroupData(name=name, sample_data=sample_data, general_data=[])
+        else:
+            try:
+                data = [
+                    GroupGeneralData.create(row)
+                    for _, row in data.iterrows()
+                ]
+            except ValueError as e:
+                msg = f"Unable to read General Group data format for group '{name}'."
+                raise AllotropeConversionError(msg) from e
+            return GroupData(name=name, sample_data=[], general_data=data)
 
 
 @dataclass(frozen=True)
@@ -1025,10 +1044,11 @@ class BlockList:
 
         for sub_reader in BlockList._iter_blocks_reader(reader):
             if sub_reader.match("^Group"):
-                if "WellPlateName" in assert_not_none(
+                header_line = assert_not_none(
                     sub_reader.get_line(sub_reader.current_line + 1),
                     msg="Unable to get columns from group block",
-                ):
+                )
+                if "WellPlateName" in header_line or "PlateName" in header_line:
                     group_blocks.append(GroupBlock.create(sub_reader))
             elif sub_reader.match("^Plate"):
                 header_series = PlateBlock.read_header(sub_reader)
