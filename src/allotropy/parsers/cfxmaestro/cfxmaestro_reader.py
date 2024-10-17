@@ -1,4 +1,4 @@
-import pandas as pd
+import pandas as pd # type: ignore
 
 #from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
@@ -10,7 +10,7 @@ from allotropy.parsers.utils.pandas import (
 )
 
 
-class cfxmaestroreader:
+class CFXMaestroReader:
     SUPPORTED_EXTENSIONS = "csv"
     header: SeriesData
     data: pd.DataFrame

@@ -1,4 +1,4 @@
-import pandas as pd
+import pandas as pd # type: ignore
 
 from collections import defaultdict
 from allotropy.parsers.cfxmaestro import constants
@@ -22,7 +22,6 @@ def create_metadata(data: SeriesData, file_name: str) -> Metadata:
         container_type=constants.CONTAINER_TYPE,
         software_name=constants.SOFTWARE_NAME,
         product_manufacturer=constants.PRODUCT_MANUFACTURER,
-
     )
 
 def create_measurement_group(well_data: list[SeriesData], plate_well_count: int) -> MeasurementGroup:
@@ -41,7 +40,6 @@ def create_measurement_group(well_data: list[SeriesData], plate_well_count: int)
                 target_identifier=constants.NOT_APPLICABLE,
                 group_identifier=data.get(str, "Biological Set Name"),
 
-
                 #Optional Measurement Metadata
                 sample_role_type=data[str, "Content"],
                 well_location_identifier=data[str, "Well"],
@@ -55,12 +53,10 @@ def create_measurement_group(well_data: list[SeriesData], plate_well_count: int)
                     # TODO: get the exported column name for cycle number
                     cycle_threshold_value_setting=data.get(float, "Cycle Number", -0)
                 )
-
             )
             for data in well_data
         ],
     )
-
 
 def create_measurement_groups(df: pd.DataFrame) -> list[MeasurementGroup]:
     well_to_rows = defaultdict(list)

@@ -1,10 +1,7 @@
 from pathlib import Path
 
-import pytest
 
-from allotropy.exceptions import AllotropeConversionError
 from allotropy.parser_factory import Vendor
-from allotropy.testing.utils import from_file, validate_contents
 from tests.to_allotrope_test import ParserTest
 
 VENDOR_TYPE = Vendor.CFXMAESTRO
