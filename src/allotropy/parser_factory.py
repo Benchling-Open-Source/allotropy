@@ -211,7 +211,7 @@ def get_table_contents() -> str:
 The parsers follow maturation levels of: Recommended, Candidate Release, Working Draft.
 
 * Recommended - the parser is ready for production use.
-* Candidate Release - "beta" - the parser is working for some cases, but may have bugs or need more test test cases for hardening.
+* Candidate Release - "beta" - the parser is working for some cases, but may have bugs or need more test cases for hardening.
 * Working Draft - "alpha" - in development, not recommended for production use.
 """
     table_data: defaultdict[str, list[Vendor]] = defaultdict(list)
