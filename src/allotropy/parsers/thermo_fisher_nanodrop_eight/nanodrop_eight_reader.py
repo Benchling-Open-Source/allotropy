@@ -11,9 +11,18 @@ from allotropy.parsers.utils.pandas import read_csv
 class NanodropEightReader:
     SUPPORTED_EXTENSIONS = "txt,tsv"
 
+    COLUMNS_MAP = {
+        "Sample Name": ["Sample"],
+        "Sample ID": ["UID"],
+        "Date & Time": ["Date"],
+    }
+
     @classmethod
     def read(cls, named_file_contents: NamedFileContents) -> pd.DataFrame:
         all_lines = lines_reader.read_to_lines(named_file_contents)
+        for i, line in enumerate(all_lines):
+            all_lines[i] = cls.standardize_columns(line)
+
         reader = CsvReader(all_lines)
 
         preamble = [*reader.pop_until(".*?Sample Name.*?")]
@@ -36,3 +45,11 @@ class NanodropEightReader:
 
         raw_data = raw_data.rename(columns=lambda x: x.strip())
         return raw_data
+
+    @classmethod
+    def standardize_columns(cls, column_line) -> str:
+        for column, aliases in cls.COLUMNS_MAP.items():
+            for alias in aliases:
+                if alias in column_line:
+                    column_line = column_line.replace(alias, column) if column not in column_line else column_line
+        return column_line
