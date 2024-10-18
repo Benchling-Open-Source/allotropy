@@ -75,6 +75,20 @@ def _write_version_file(version: str) -> None:
 
 
 def _make_pr(version: str, body: str) -> None:
+    print("Making commit...")
+    subprocess.run(
+        [
+            "git",
+            "commit",
+            "-am",
+            f"Update allotropy version to {version}",
+        ],
+        check=True,
+    )
+    print("Pushing commit...")
+    subprocess.run(["git", "push", "-u"], check=True)
+
+    # Check if gh is installed.
     try:
         subprocess.run(
             ["gh", "--help"],
@@ -87,19 +101,6 @@ def _make_pr(version: str, body: str) -> None:
             "gh not installed - cannot create PR automatically. Try: 'brew install gh'"
         )
         return
-
-    print("Making commit...")
-    subprocess.run(
-        [
-            "git",
-            "commit",
-            "-am",
-            f"Update allotropy version to {version}",
-        ],
-        check=True,
-    )
-    print("Pushing commit...")
-    subprocess.run(["git", "push"], check=True)
 
     print("Creating PR...")
     filename = ".temp_pr_description.txt"
@@ -142,9 +143,16 @@ def _update_version(
 
     version = str(semver)
 
+    # Checkout a new branch
+    print("Checking out a clean branch from main...")
+    subprocess.run(["git", "checkout", "main"], check=True)
+    subprocess.run(["git", "pull"], check=True)
+    subprocess.run(["git", "checkout", "-b", "release-v{version}"], check=True)
+
     print("Updating version file and CHANGELOG...")
     _write_version_file(version)
     body = _update_changelog(version)
+
     if not skip_pr:
         _make_pr(version, body)
 
