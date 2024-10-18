@@ -1,4 +1,5 @@
 from io import StringIO
+from typing import ClassVar
 
 import pandas as pd
 
@@ -11,7 +12,7 @@ from allotropy.parsers.utils.pandas import read_csv
 class NanodropEightReader:
     SUPPORTED_EXTENSIONS = "txt,tsv"
 
-    COLUMNS_MAP = {
+    COLUMNS_MAP = ClassVar[dict[str, list[str]]] = {
         "Sample Name": ["Sample"],
         "Sample ID": ["UID"],
         "Date & Time": ["Date"],
