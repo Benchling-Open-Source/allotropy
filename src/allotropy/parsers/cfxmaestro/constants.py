@@ -3,7 +3,7 @@ from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import Containe
 DISPLAY_NAME = "cfxmaestro"
 DEVICE_TYPE = "<some device type>"
 
-    #PO added this below
+# PO added this below
 PRODUCT_MANUFACTURER = "Bio-Rad"
 SOFTWARE_NAME = "CFX Maestro"
 ASM_CONVERTER_NAME = "<this adapter>"
