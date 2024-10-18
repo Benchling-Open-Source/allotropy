@@ -89,7 +89,9 @@ def _make_pr(version: str, body: str) -> None:
     subprocess.run(["git", "push", "-u"], check=True)
 
     print("Tagging branch...")
-    subprocess.run(["git", "tag", "-a", f"v{version}", "-m", f"'allotropy v{version}'"], check=True)
+    subprocess.run(
+        ["git", "tag", "-a", f"v{version}", "-m", f"'allotropy v{version}'"], check=True
+    )
     subprocess.run(["git", "push", "origin", "tag", f"v{version}"], check=True)
 
     # Check if gh is installed.
