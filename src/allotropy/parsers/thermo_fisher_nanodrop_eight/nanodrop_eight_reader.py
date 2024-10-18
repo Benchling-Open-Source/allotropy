@@ -1,5 +1,4 @@
 from io import StringIO
-from typing import ClassVar
 
 import pandas as pd
 
@@ -8,15 +7,15 @@ from allotropy.parsers import lines_reader
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.utils.pandas import read_csv
 
+COLUMNS_MAP = {
+    "Sample Name": ["Sample"],
+    "Sample ID": ["UID"],
+    "Date & Time": ["Date"],
+}
+
 
 class NanodropEightReader:
     SUPPORTED_EXTENSIONS = "txt,tsv"
-
-    COLUMNS_MAP = ClassVar[dict[str, list[str]]] = {
-        "Sample Name": ["Sample"],
-        "Sample ID": ["UID"],
-        "Date & Time": ["Date"],
-    }
 
     @classmethod
     def read(cls, named_file_contents: NamedFileContents) -> pd.DataFrame:
@@ -48,9 +47,13 @@ class NanodropEightReader:
         return raw_data
 
     @classmethod
-    def standardize_columns(cls, column_line) -> str:
-        for column, aliases in cls.COLUMNS_MAP.items():
+    def standardize_columns(cls, column_line: str) -> str:
+        for column, aliases in COLUMNS_MAP.items():
             for alias in aliases:
                 if alias in column_line:
-                    column_line = column_line.replace(alias, column) if column not in column_line else column_line
+                    column_line = (
+                        column_line.replace(alias, column)
+                        if column not in column_line
+                        else column_line
+                    )
         return column_line
