@@ -16,9 +16,5 @@ NOT_APPLICABLE = "N/A"
 # Used to fill an error value in a required ASM field.
 NEGATIVE_ZERO = -0.0
 
-#Hard coded plate well count to 96 wells for now....will need to return with a function to decuce the number of wells in a plate
-#Maybe use something like this...from AB QuantStudio
-#plate_well_count_search = re.search("(96)|(384)", data[str, "Block Type"])
-PLATE_WELL_COUNT = 96
 
 DEFAULT_EPOCH_TIMESTAMP = "1970-01-01"

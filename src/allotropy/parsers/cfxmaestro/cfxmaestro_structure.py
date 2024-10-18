@@ -10,10 +10,9 @@ from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import 
     MeasurementGroup,
     Metadata,
     ProcessedData,
-
 )
 
-def create_metadata(data: SeriesData, file_name: str) -> Metadata:
+def create_metadata(data: SeriesData, file_name: str)-> Metadata:
     return Metadata(
 
         device_type=constants.DEVICE_TYPE,
@@ -23,6 +22,11 @@ def create_metadata(data: SeriesData, file_name: str) -> Metadata:
         container_type=constants.CONTAINER_TYPE,
         software_name=constants.SOFTWARE_NAME,
         product_manufacturer=constants.PRODUCT_MANUFACTURER,
+        device_identifier=constants.NOT_APPLICABLE,
+        model_number=constants.NOT_APPLICABLE,
+        measurement_method_identifier=constants.NOT_APPLICABLE,
+        unc_path=constants.NOT_APPLICABLE,
+
     )
 
 def create_measurement_group(well_data: list[SeriesData], plate_well_count: int) -> MeasurementGroup:
@@ -30,6 +34,7 @@ def create_measurement_group(well_data: list[SeriesData], plate_well_count: int)
     # a corresponding measurement group.
     return MeasurementGroup(
         plate_well_count=plate_well_count,
+        analyst=constants.NOT_APPLICABLE,
         measurements=[
             Measurement(
                 #Measurement Meta Data

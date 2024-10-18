@@ -146,7 +146,7 @@ class Measurement:
 class MeasurementGroup:
     measurements: list[Measurement]
     plate_well_count: int | InvalidJsonFloat
-    analyst: str | None = None
+    analyst: str
     experimental_data_identifier: str | None = None
 
 
@@ -156,11 +156,11 @@ class Metadata:
     file_name: str
     experiment_type: ExperimentType
     container_type: ContainerType
-    unc_path: str | None = None
-    model_number: str | None = None
+    device_identifier: str
+    model_number: str
+    measurement_method_identifier: str
+    unc_path: str
     device_serial_number: str | None = None
-    device_identifier: str | None = None
-    measurement_method_identifier: str | None = None
     data_system_instance_identifier: str | None = None
     software_name: str | None = None
     software_version: str | None = None
