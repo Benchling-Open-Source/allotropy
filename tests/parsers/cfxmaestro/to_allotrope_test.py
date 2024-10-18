@@ -1,4 +1,4 @@
-from pathlib import Path
+from pathlib import Path # type: ignore
 
 
 from allotropy.parser_factory import Vendor

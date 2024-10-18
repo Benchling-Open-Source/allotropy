@@ -1,4 +1,4 @@
-import pandas as pd # type: ignore
+import pandas as pd  # type: ignore
 
 #from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
