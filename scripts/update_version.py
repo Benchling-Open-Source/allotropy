@@ -94,26 +94,12 @@ def _make_pr(version: str, body: str) -> None:
     )
     subprocess.run(["git", "push", "origin", "tag", f"v{version}"], check=True)
 
-    # Check if gh is installed.
-    try:
-        subprocess.run(
-            ["gh", "--help"],
-            check=True,
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
-        )
-    except FileNotFoundError:
-        print(
-            "gh not installed - cannot create PR automatically. Try: 'brew install gh'"
-        )
-        return
-
-    print("Creating PR...")
     filename = ".temp_pr_description.txt"
     with open(filename, "w") as f:
         f.write(body)
 
     try:
+        print("Creating PR...")
         subprocess.run(
             [
                 "gh",
@@ -122,6 +108,18 @@ def _make_pr(version: str, body: str) -> None:
                 "--title",
                 f"release: Update allotropy version to {version}",
                 "--body-file",
+                filename,
+            ],
+            check=True,
+        )
+        print("Creating release...")
+        subprocess.run(
+            [
+                "gh",
+                "release",
+                "create",
+                f"v{version}",
+                "-F",
                 filename,
             ],
             check=True,
@@ -140,6 +138,21 @@ def _make_pr(version: str, body: str) -> None:
 def _update_version(
     version: str | None = None, skip_pr: bool = False  # noqa: FBT001, FBT002
 ) -> None:
+    # Check if gh is installed, if not, print hint and exit.
+    if not skip_pr:
+        try:
+            subprocess.run(
+                ["gh", "--help"],
+                check=True,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+            )
+        except FileNotFoundError:
+            print(
+                "gh not installed - cannot create PR and release automatically. Try: 'brew install gh'"
+            )
+            return
+
     """Update allotropy version."""
     if version:
         semver = semantic_version.Version(version)
