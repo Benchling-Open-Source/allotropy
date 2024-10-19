@@ -72,7 +72,7 @@ class SpectroscopyRow:
                 measures=[list(spectra_data.values())],
             )
 
-        sample_id = data.get(str, "sample id", NOT_APPLICABLE, SeriesData.NOT_NAN)
+        sample_id = data.get(str, ["sample id", "uid"], NOT_APPLICABLE, SeriesData.NOT_NAN)
         location_id = data.get(str, "location")
         measurements: list[Measurement] = []
         for wavelength, absorbance in absorbances.items():
@@ -115,7 +115,7 @@ class SpectroscopyRow:
         calculated_data = create_calculated_data(data, measurements)
 
         return SpectroscopyRow(
-            data[str, "date & time"],
+            data[str, ["date", "date & time"]],
             experiment_type,
             measurements,
             calculated_data,

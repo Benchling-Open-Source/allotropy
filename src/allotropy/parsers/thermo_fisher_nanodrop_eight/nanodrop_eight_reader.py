@@ -41,5 +41,4 @@ class NanodropEightReader:
             # Prevent pandas from rounding decimal values, at the cost of some speed.
             float_precision="round_trip",
         )
-
         self.data.columns = self.data.columns.str.lower()
