@@ -40,7 +40,8 @@ def _get_changes() -> dict[str, list[str]]:
     return dict(changes)
 
 
-def _get_new_section(changes: dict[str, list[str]]) -> str:
+def _get_new_section() -> str:
+    changes = _get_changes()
     body = ""
     for prefix, section in SECTION_TO_PREFIX.items():
         if prefix not in changes:
@@ -61,7 +62,7 @@ def _update_changelog(version: str) -> str:
     with open(changelog_file, "w") as f:
         for line in contents:
             if line.startswith("## ") and not body:
-                body = _get_new_section(version, _get_changes())
+                body = _get_new_section()
                 f.write(
                     f"## [{version}] - {datetime.now(tz.gettz('EST')).strftime('%Y-%m-%d')}\n"
                 )
