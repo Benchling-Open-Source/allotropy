@@ -193,7 +193,6 @@ class SpectroscopyRow:
     @staticmethod
     def create_rows(data: pd.DataFrame) -> list[SpectroscopyRow]:
         data.columns = data.columns.str.lower()
-        return map_rows(data, SpectroscopyRow.create)
 
 
 def create_metadata(file_name: str) -> Metadata:
