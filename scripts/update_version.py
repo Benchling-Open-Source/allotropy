@@ -62,7 +62,9 @@ def _update_changelog(version: str) -> str:
         for line in contents:
             if line.startswith("## ") and not body:
                 body = _get_new_section(version, _get_changes())
-                f.write(f"## [{version}] - {datetime.now(tz.gettz('EST')).strftime('%Y-%m-%d')}\n")
+                f.write(
+                    f"## [{version}] - {datetime.now(tz.gettz('EST')).strftime('%Y-%m-%d')}\n"
+                )
                 f.write(body)
                 f.write("\n")
             f.write(line)
