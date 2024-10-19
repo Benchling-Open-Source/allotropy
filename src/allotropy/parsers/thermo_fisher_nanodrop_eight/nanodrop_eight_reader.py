@@ -17,22 +17,20 @@ class NanodropEightReader:
         reader = CsvReader(read_to_lines(named_file_contents))
 
         header_data = {}
-        while line := reader.get():
-            if not line:
-                msg = "Failed to parse file, reached end of file before parsing expected data."
-                raise AllotropeConversionError(msg)
-            if ":" in line:
-                key, value = line.split(":")
-                header_data[key.strip()] = value.strip()
-            else:
-                break
-            reader.pop()
+        for line in reader.pop_while(match_pat=r":\t"):
+            print(line)
+            key, value = line.split(":")
+            header_data[key] = value.strip()
 
         header = pd.Series(header_data)
-        header.index = header.index.str.lower()
+        header.index = header.index.str.strip().str.lower()
         self.header = SeriesData(header)
 
         lines = reader.pop_csv_block_as_lines()
+        print(lines)
+        if not lines:
+            msg = "Reached end of file without finding table data."
+            raise AllotropeConversionError(msg)
 
         self.data = read_csv(
             StringIO("\n".join(lines)),
@@ -41,4 +39,6 @@ class NanodropEightReader:
             # Prevent pandas from rounding decimal values, at the cost of some speed.
             float_precision="round_trip",
         )
+        print("DATA")
+        print(self.data)
         self.data.columns = self.data.columns.str.lower()
