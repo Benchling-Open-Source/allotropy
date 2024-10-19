@@ -17,8 +17,10 @@ class NanodropEightReader:
         reader = CsvReader(read_to_lines(named_file_contents))
 
         header_data = {}
-        for line in reader.pop_while(match_pat=r":\t"):
-            print(line)
+        # Header lines are expected to have a single 'key: value' pair, while table will have multiple
+        # tab-separated column headers. So, detect header lines as:
+        #   <anything but a tab>:<any number of tabs><anything but a tab>
+        for line in reader.pop_while(match_pat=r"^[^\t]*:[\t]*[^\t]*$"):
             key, value = line.split(":")
             header_data[key] = value.strip()
 
@@ -27,7 +29,6 @@ class NanodropEightReader:
         self.header = SeriesData(header)
 
         lines = reader.pop_csv_block_as_lines()
-        print(lines)
         if not lines:
             msg = "Reached end of file without finding table data."
             raise AllotropeConversionError(msg)
@@ -39,6 +40,4 @@ class NanodropEightReader:
             # Prevent pandas from rounding decimal values, at the cost of some speed.
             float_precision="round_trip",
         )
-        print("DATA")
-        print(self.data)
         self.data.columns = self.data.columns.str.lower()
