@@ -2,8 +2,6 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-import pandas as pd
-
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
 )
@@ -26,7 +24,7 @@ from allotropy.parsers.thermo_fisher_nanodrop_8000.nanodrop_8000_structure impor
 )
 from allotropy.parsers.thermo_fisher_nanodrop_eight import constants
 from allotropy.parsers.utils.iterables import get_first_not_none
-from allotropy.parsers.utils.pandas import map_rows, SeriesData
+from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import try_float, try_float_or_none
 
@@ -122,10 +120,6 @@ class SpectroscopyRow:
             measurements,
             calculated_data,
         )
-
-    @staticmethod
-    def create_rows(data: pd.DataFrame) -> list[SpectroscopyRow]:
-        return map_rows(data, SpectroscopyRow.create)
 
 
 def create_metadata(data: SeriesData, file_name: str) -> Metadata:

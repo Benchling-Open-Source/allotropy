@@ -13,7 +13,7 @@ class NanodropEightReader:
     header: SeriesData
     data: pd.DataFrame
 
-    def __init__(self, named_file_contents: NamedFileContents) -> pd.DataFrame:
+    def __init__(self, named_file_contents: NamedFileContents) -> None:
         reader = CsvReader(read_to_lines(named_file_contents))
 
         header_data = {}

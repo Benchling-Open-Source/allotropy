@@ -2,8 +2,6 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-import pandas as pd
-
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
     CalculatedDataItem,
@@ -189,10 +187,6 @@ class SpectroscopyRow:
             measurements,
             calculated_data,
         )
-
-    @staticmethod
-    def create_rows(data: pd.DataFrame) -> list[SpectroscopyRow]:
-        data.columns = data.columns.str.lower()
 
 
 def create_metadata(file_name: str) -> Metadata:
