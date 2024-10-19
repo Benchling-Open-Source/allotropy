@@ -30,12 +30,18 @@ class NanodropEightParser(VendorParser[Data, Model]):
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = NanodropEightReader(named_file_contents)
-        rows = map_rows(reader.data, partial(SpectroscopyRow.create, header=reader.header))
-        metadata = create_metadata(reader.header, named_file_contents.original_file_name)
+        rows = map_rows(
+            reader.data, partial(SpectroscopyRow.create, header=reader.header)
+        )
+        metadata = create_metadata(
+            reader.header, named_file_contents.original_file_name
+        )
 
         return Data(
             metadata=metadata,
-            measurement_groups=[create_measurement_group(row, reader.header) for row in rows],
+            measurement_groups=[
+                create_measurement_group(row, reader.header) for row in rows
+            ],
             # NOTE: in current implementation, calculated data is reported at global level for some reason.
             # TODO(nstender): should we move this inside of measurements?
             calculated_data=[item for row in rows for item in row.calculated_data],

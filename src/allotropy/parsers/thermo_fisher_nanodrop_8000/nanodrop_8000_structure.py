@@ -18,7 +18,7 @@ from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._1
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.thermo_fisher_nanodrop_8000 import constants
 from allotropy.parsers.utils.iterables import get_first_not_none
-from allotropy.parsers.utils.pandas import map_rows, SeriesData
+from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 

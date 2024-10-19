@@ -138,7 +138,9 @@ def create_metadata(data: SeriesData, file_name: str) -> Metadata:
     )
 
 
-def create_measurement_group(row: SpectroscopyRow, header: SeriesData) -> MeasurementGroup:
+def create_measurement_group(
+    row: SpectroscopyRow, header: SeriesData
+) -> MeasurementGroup:
     return MeasurementGroup(
         measurement_time=row.timestamp,
         analyst=header.get(str, "user name"),
