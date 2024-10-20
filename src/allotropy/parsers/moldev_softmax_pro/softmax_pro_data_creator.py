@@ -17,8 +17,8 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_rea
     Metadata,
 )
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.constants import NOT_APPLICABLE
-from allotropy.parsers.moldev_softmax_pro.constants import DEVICE_TYPE, EPOCH
+from allotropy.parsers.constants import DEFAULT_EPOCH_TIMESTAMP, NOT_APPLICABLE
+from allotropy.parsers.moldev_softmax_pro.constants import DEVICE_TYPE
 from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
     DataElement,
     GroupBlock,
@@ -136,7 +136,7 @@ def _create_measurement_group(
     return MeasurementGroup(
         measurements=measurements,
         plate_well_count=plate_block.header.num_wells,
-        measurement_time=EPOCH,
+        measurement_time=DEFAULT_EPOCH_TIMESTAMP,
     )
 
 
