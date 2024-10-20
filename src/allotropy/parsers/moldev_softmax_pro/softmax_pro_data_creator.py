@@ -22,8 +22,8 @@ from allotropy.parsers.moldev_softmax_pro.constants import DEVICE_TYPE, EPOCH
 from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
     DataElement,
     GroupBlock,
-    GroupGeneralData,
     GroupSampleData,
+    GroupSummaryData,
     PlateBlock,
     StructureData,
 )
@@ -249,31 +249,47 @@ def _get_group_simple_calc_docs(
     return calculated_documents
 
 
-def _get_group_general_calc_docs(
-    data: StructureData,
+def _get_group_summary_calc_docs(
     group_block: GroupBlock,
-    group_general_data: GroupGeneralData,
-    group_calc_docs: dict[str, list[CalculatedDataItem]]
+    group_summary_data: GroupSummaryData,
+    group_calc_docs: dict[str, list[CalculatedDataItem]],
 ) -> list[CalculatedDataItem]:
     calculated_documents = []
-    for entry in group_general_data.data_elements:
-        description = group_block.group_columns.data.get(entry.name)
-        print("HERE")
-        print(description)
+    for entry in group_summary_data.data_elements:
+        description = group_block.group_columns.data.get(entry.name, "")
+
+        # For a group summary calculation, the data sources are all measurements of the corresponding group.
+        # First, figure out which group or groups are being summarized by checking if the column name of the
+        # value or the description contains group names.
+        matching_groups = set()
+        for group_name in group_calc_docs:
+            if group_name in entry.name or group_name in description:
+                matching_groups.add(group_name)
+
+        # If no matching group is found, skip this value, because we cannot attribute it.
+        # TODO(nstender): add to custom info doc in a follow-up.
+        if not matching_groups:
+            continue
+
+        # For matching groups, compose data source documents.
         data_sources = {}
-        for group_name, docs in group_calc_docs.items():
-            print(group_name)
-            if group_name in description:
-                print("FOUND!!!")
-                for calc_doc in docs:
-                    for data_source in calc_doc.data_sources:
-                        data_sources[data_source.identifier] = data_source
+        for group_name in matching_groups:
+            for calc_doc in group_calc_docs[group_name]:
+                for data_source in calc_doc.data_sources:
+                    data_sources[data_source.identifier] = data_source
+            # Attempt to clean up the description of the calculated data by removing group names, if present.
+            description = (
+                description.replace(f"@{group_name}", "")
+                .replace(group_name, "")
+                .strip("'")
+            )
+
         calculated_documents.append(
             _build_calc_doc(
                 name=entry.name,
                 value=entry.value,
                 data_sources=list(data_sources.values()),
-                description=group_block.group_columns.data.get(entry.name),
+                description=description or None,
             )
         )
     return calculated_documents
@@ -284,21 +300,19 @@ def _get_group_calc_docs(data: StructureData) -> list[CalculatedDataItem]:
     for group_block in data.block_list.group_blocks:
         calculated_documents[group_block.group_data.name] = []
         for group_sample_data in group_block.group_data.sample_data:
-            calculated_documents[group_block.group_data.name] += _get_group_agg_calc_docs(
-                data, group_block, group_sample_data
-            )
-            calculated_documents[group_block.group_data.name] += _get_group_simple_calc_docs(
-                data, group_block, group_sample_data
-            )
+            calculated_documents[
+                group_block.group_data.name
+            ] += _get_group_agg_calc_docs(data, group_block, group_sample_data)
+            calculated_documents[
+                group_block.group_data.name
+            ] += _get_group_simple_calc_docs(data, group_block, group_sample_data)
 
     for group_block in data.block_list.group_blocks:
-        for group_general_data in group_block.group_data.general_data:
-            calculated_documents[group_block.group_data.name] += _get_group_general_calc_docs(
-                data, group_block, group_general_data, calculated_documents
+        for group_summary_data in group_block.group_data.summary_data:
+            calculated_documents[
+                group_block.group_data.name
+            ] += _get_group_summary_calc_docs(
+                group_block, group_summary_data, calculated_documents
             )
 
-    return [
-        doc
-        for calc_docs in calculated_documents.values()
-        for doc in calc_docs
-    ]
+    return [doc for calc_docs in calculated_documents.values() for doc in calc_docs]

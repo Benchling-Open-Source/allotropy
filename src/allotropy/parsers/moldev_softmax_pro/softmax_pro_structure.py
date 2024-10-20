@@ -180,14 +180,17 @@ class GroupSampleData:
 
 
 @dataclass(frozen=True)
-class GroupGeneralData:
+class GroupSummaryData:
     data_elements: list[GroupDataElementEntry]
 
     @classmethod
-    def create(cls, data: pd.Series) -> GroupGeneralData:
-        return GroupGeneralData(
-            GroupDataElementEntry(key, float(value))
-            for key, value in data.items() if try_non_nan_float_or_none(value) is not None
+    def create(cls, data: pd.Series[str]) -> GroupSummaryData:
+        return GroupSummaryData(
+            [
+                GroupDataElementEntry(str(key), float(value))
+                for key, value in data.items()
+                if try_non_nan_float_or_none(value) is not None
+            ]
         )
 
 
@@ -195,7 +198,7 @@ class GroupGeneralData:
 class GroupData:
     name: str
     sample_data: list[GroupSampleData]
-    general_data: list[GroupGeneralData]
+    summary_data: list[GroupSummaryData]
 
     @staticmethod
     def create(reader: CsvReader) -> GroupData:
@@ -220,17 +223,16 @@ class GroupData:
             except ValueError as e:
                 msg = f"Unable to read Sample Group data format for group '{name}'."
                 raise AllotropeConversionError(msg) from e
-            return GroupData(name=name, sample_data=sample_data, general_data=[])
+            return GroupData(name=name, sample_data=sample_data, summary_data=[])
         else:
             try:
-                data = [
-                    GroupGeneralData.create(row)
-                    for _, row in data.iterrows()
+                summary_data = [
+                    GroupSummaryData.create(row) for _, row in data.iterrows()
                 ]
             except ValueError as e:
-                msg = f"Unable to read General Group data format for group '{name}'."
+                msg = f"Unable to read Summary Group data format for group '{name}'."
                 raise AllotropeConversionError(msg) from e
-            return GroupData(name=name, sample_data=[], general_data=data)
+            return GroupData(name=name, sample_data=[], summary_data=summary_data)
 
 
 @dataclass(frozen=True)
