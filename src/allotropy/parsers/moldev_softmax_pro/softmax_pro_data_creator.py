@@ -262,17 +262,18 @@ def _get_group_summary_calc_docs(
         # For a group summary calculation, the data sources are all measurements of the corresponding group.
         # First, figure out which group or groups are being summarized by checking if the column name of the
         # value or the description contains group names.
-        matching_groups = set()
-        for group_name in group_calc_docs:
-            if group_name in entry.name or group_name in description:
-                matching_groups.add(group_name)
-
+        matching_groups = {
+            group_name
+            for group_name in group_calc_docs
+            if group_name in entry.name or group_name in description
+        }
         # If no matching group is found, skip this value, because we cannot attribute it.
         # TODO(nstender): add to custom info doc in a follow-up.
         if not matching_groups:
             continue
 
-        # For matching groups, compose data source documents.
+        # The data sources for this calc data doc are all the data sources of all the calc docs in the matching
+        # groups.
         data_sources = {}
         for group_name in matching_groups:
             for calc_doc in group_calc_docs[group_name]:
@@ -285,10 +286,12 @@ def _get_group_summary_calc_docs(
                 .strip("'")
             )
 
-        # If the column name (entry.name) is the group_name use description for name.
-        name = entry.name
-        if len(matching_groups) == 1 and next(iter(matching_groups)) == entry.name:
-            name = description
+        # If the column name (entry.name) is the group_name, use description for name.
+        name = (
+            description
+            if len(matching_groups) == 1 and next(iter(matching_groups)) == entry.name
+            else entry.name
+        )
 
         calculated_documents.append(
             _build_calc_doc(
@@ -298,6 +301,7 @@ def _get_group_summary_calc_docs(
                 description=description or None,
             )
         )
+
     return calculated_documents
 
 
