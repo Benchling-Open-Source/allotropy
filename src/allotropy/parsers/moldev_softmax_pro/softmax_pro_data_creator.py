@@ -285,9 +285,14 @@ def _get_group_summary_calc_docs(
                 .strip("'")
             )
 
+        # If the column name (entry.name) is the group_name use description for name.
+        name = entry.name
+        if len(matching_groups) == 1 and next(iter(matching_groups)) == entry.name:
+            name = description
+
         calculated_documents.append(
             _build_calc_doc(
-                name=entry.name,
+                name=name,
                 value=entry.value,
                 data_sources=list(data_sources.values()),
                 description=description or None,
