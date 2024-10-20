@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections import defaultdict
 from itertools import chain
 
 from allotropy.allotrope.models.shared.definitions.definitions import (
@@ -296,23 +297,22 @@ def _get_group_summary_calc_docs(
 
 
 def _get_group_calc_docs(data: StructureData) -> list[CalculatedDataItem]:
-    calculated_documents: dict[str, list[CalculatedDataItem]] = {}
+    calculated_documents: defaultdict[str, list[CalculatedDataItem]] = defaultdict(list)
     for group_block in data.block_list.group_blocks:
-        calculated_documents[group_block.group_data.name] = []
         for group_sample_data in group_block.group_data.sample_data:
             calculated_documents[
                 group_block.group_data.name
-            ] += _get_group_agg_calc_docs(data, group_block, group_sample_data)
+            ].extend(_get_group_agg_calc_docs(data, group_block, group_sample_data))
             calculated_documents[
                 group_block.group_data.name
-            ] += _get_group_simple_calc_docs(data, group_block, group_sample_data)
+            ].extend(_get_group_simple_calc_docs(data, group_block, group_sample_data))
 
     for group_block in data.block_list.group_blocks:
         for group_summary_data in group_block.group_data.summary_data:
             calculated_documents[
                 group_block.group_data.name
-            ] += _get_group_summary_calc_docs(
+            ].extend(_get_group_summary_calc_docs(
                 group_block, group_summary_data, calculated_documents
-            )
+            ))
 
     return [doc for calc_docs in calculated_documents.values() for doc in calc_docs]
