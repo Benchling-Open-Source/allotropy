@@ -211,7 +211,7 @@ def is_subclass(obj: type, bases: builtins._ClassInfo) -> bool:
 def is_sequence(type_: Any) -> bool:
     origin = getattr(type_, "__origin__", None)
     return type_ in (list, tuple) or (
-        type_.__class__ is GenericAlias
+        type_.__class__ in (GenericAlias, type)
         and origin
         and (origin not in (Union, tuple) and is_subclass(origin, Sequence))
         or (origin is tuple and type_.__args__[1] is ...)
