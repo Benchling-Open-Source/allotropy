@@ -133,7 +133,7 @@ script_path = "scripts/"
 generate-schemas = "scripts/generate_schemas.py {args:}"
 download-schema = "scripts/download_schema.py {args:}"
 create-parser = "scripts/create_parser.py {args:}"
-update-readme = "scripts/update_readme.py {args:}"
+update-instrument-table = "scripts/update_supported_instruments_table.py {args:}"
 update-version = "scripts/update_version.py {args:}"
 
 [tool.hatch.envs.win-scripts]
@@ -143,7 +143,7 @@ platforms = ["windows"]
 generate-schemas = "python scripts\\generate_schemas.py {args:}"
 download-schema = "python scripts\\download_schema.py {args:}"
 create-parser = "python scripts\\create_parser.py {args:}"
-update-readme = "python scripts\\update_readme.py {args:}"
+update-instrument-table = "scripts\\update_supported_instruments_table.py {args:}"
 update-version = "python scripts\\update_version.py {args:}"
 
 [tool.hatch.envs.viz.scripts]

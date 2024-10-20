@@ -8,6 +8,9 @@ Model = TypeVar("Model")
 
 
 class SchemaMapper(Generic[Data, Model]):
+    # The manifest of the schema this mapper supports
+    MANIFEST: str
+
     def __init__(
         self, asm_converter_name: str, get_date_time: Callable[[str], TDateTimeValue]
     ) -> None:

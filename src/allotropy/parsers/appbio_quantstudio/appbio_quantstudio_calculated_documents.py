@@ -57,7 +57,7 @@ def build_cq_conf(well_item: WellItem) -> CalculatedDocument | None:
 
 @cache
 def build_quantity(
-    view_tr_data: ViewData[WellItem],
+    view_tr_data: ViewData[WellItem] | None,
     target: str,
     well_item: WellItem,
 ) -> CalculatedDocument | None:
@@ -72,21 +72,22 @@ def build_quantity(
         DataSource(feature="cycle threshold result", reference=well_item)
     )
 
-    if y_intercept_ref := build_y_intercept(view_tr_data, target):
-        data_sources.append(
-            DataSource(
-                feature="y-intercept",
-                reference=y_intercept_ref,
+    if view_tr_data:
+        if y_intercept_ref := build_y_intercept(view_tr_data, target):
+            data_sources.append(
+                DataSource(
+                    feature="y-intercept",
+                    reference=y_intercept_ref,
+                )
             )
-        )
 
-    if slope_ref := build_slope(view_tr_data, target):
-        data_sources.append(
-            DataSource(
-                feature="slope",
-                reference=slope_ref,
+        if slope_ref := build_slope(view_tr_data, target):
+            data_sources.append(
+                DataSource(
+                    feature="slope",
+                    reference=slope_ref,
+                )
             )
-        )
 
     return CalculatedDocument(
         uuid=random_uuid_str(),
@@ -585,6 +586,14 @@ def build_efficiency(
     )
 
 
+def yield_documents(
+    calc_docs: list[CalculatedDocument | None],
+) -> Iterator[CalculatedDocument]:
+    for calc_doc in calc_docs:
+        if calc_doc:
+            yield from calc_doc.iter_struct()
+
+
 def iter_comparative_ct_calc_docs(
     view_st_data: ViewData[WellItem],
     view_tr_data: ViewData[WellItem],
@@ -593,36 +602,29 @@ def iter_comparative_ct_calc_docs(
 ) -> Iterator[CalculatedDocument]:
     # Quantity, Quantity Mean, Quantity SD, Ct Mean, Ct SD, Delta Ct Mean,
     # Delta Ct SE, Delta Delta Ct, RQ, RQ min, RQ max, Amplification score, Cq confidence
+    calc_docs: list[CalculatedDocument | None] = []
     for sample, target in view_st_data.iter_keys():
         for well_item in view_st_data.get_leaf_item(sample, target):
-            if calc_doc := build_amp_score(well_item):
-                yield calc_doc
+            calc_docs.append(build_quantity(view_tr_data, target, well_item))
+            calc_docs.append(build_amp_score(well_item))
+            calc_docs.append(build_cq_conf(well_item))
 
-            if calc_doc := build_cq_conf(well_item):
-                yield calc_doc
-
-        if calc_doc := build_quantity_mean(view_st_data, view_tr_data, sample, target):
-            yield from calc_doc.iter_struct()
-
-        if calc_doc := build_quantity_sd(view_st_data, view_tr_data, sample, target):
-            yield from calc_doc.iter_struct()
-
-        if calc_doc := build_ct_sd(view_st_data, sample, target):
-            yield from calc_doc.iter_struct()
-
-        if calc_doc := build_delta_ct_se(view_st_data, sample, target, r_target):
-            yield from calc_doc.iter_struct()
+        calc_docs.append(
+            build_quantity_mean(view_st_data, view_tr_data, sample, target)
+        )
+        calc_docs.append(build_quantity_sd(view_st_data, view_tr_data, sample, target))
+        calc_docs.append(build_ct_sd(view_st_data, sample, target))
+        calc_docs.append(build_delta_ct_se(view_st_data, sample, target, r_target))
 
         if target != r_target:
-            if calc_doc := build_rq_min(
-                view_st_data, sample, target, r_sample, r_target
-            ):
-                yield from calc_doc.iter_struct()
+            calc_docs.append(
+                build_rq_min(view_st_data, sample, target, r_sample, r_target)
+            )
+            calc_docs.append(
+                build_rq_max(view_st_data, sample, target, r_sample, r_target)
+            )
 
-            if calc_doc := build_rq_max(
-                view_st_data, sample, target, r_sample, r_target
-            ):
-                yield from calc_doc.iter_struct()
+    yield from yield_documents(calc_docs)
 
 
 def iter_standard_curve_calc_docs(
@@ -631,38 +633,27 @@ def iter_standard_curve_calc_docs(
 ) -> Iterator[CalculatedDocument]:
     # Quantity, Quantity Mean, Quantity SD, Ct Mean, Ct SD, Y-Intercept,
     # R(superscript 2), Slope, Efficiency, Amplification score, Cq confidence
+    calc_docs: list[CalculatedDocument | None] = []
     for sample, target in view_st_data.iter_keys():
         for well_item in view_st_data.get_leaf_item(sample, target):
-            if calc_doc := build_amp_score(well_item):
-                yield calc_doc
+            calc_docs.append(build_quantity(view_tr_data, target, well_item))
+            calc_docs.append(build_amp_score(well_item))
+            calc_docs.append(build_cq_conf(well_item))
 
-            if calc_doc := build_cq_conf(well_item):
-                yield calc_doc
-
-        if calc_doc := build_quantity_mean(view_st_data, view_tr_data, sample, target):
-            yield from calc_doc.iter_struct()
-
-        if calc_doc := build_quantity_sd(view_st_data, view_tr_data, sample, target):
-            yield from calc_doc.iter_struct()
-
-        if calc_doc := build_ct_mean(view_st_data, sample, target):
-            yield from calc_doc.iter_struct()
-
-        if calc_doc := build_ct_sd(view_st_data, sample, target):
-            yield from calc_doc.iter_struct()
+        calc_docs.append(
+            build_quantity_mean(view_st_data, view_tr_data, sample, target)
+        )
+        calc_docs.append(build_quantity_sd(view_st_data, view_tr_data, sample, target))
+        calc_docs.append(build_ct_mean(view_st_data, sample, target))
+        calc_docs.append(build_ct_sd(view_st_data, sample, target))
 
     for target in view_tr_data.data:
-        if calc_doc := build_y_intercept(view_tr_data, target):
-            yield from calc_doc.iter_struct()
+        calc_docs.append(build_y_intercept(view_tr_data, target))
+        calc_docs.append(build_r_squared(view_tr_data, target))
+        calc_docs.append(build_slope(view_tr_data, target))
+        calc_docs.append(build_efficiency(view_tr_data, target))
 
-        if calc_doc := build_r_squared(view_tr_data, target):
-            yield from calc_doc.iter_struct()
-
-        if calc_doc := build_slope(view_tr_data, target):
-            yield from calc_doc.iter_struct()
-
-        if calc_doc := build_efficiency(view_tr_data, target):
-            yield from calc_doc.iter_struct()
+    yield from yield_documents(calc_docs)
 
 
 def iter_relative_standard_curve_calc_docs(
@@ -672,67 +663,50 @@ def iter_relative_standard_curve_calc_docs(
     # Quantity, Quantity Mean, Quantity SD, Ct Mean, Ct SD, RQ, RQ min,
     # RQ max, Y-Intercept, R(superscript 2), Slope, Efficiency,
     # Amplification score, Cq confidence
+    calc_docs: list[CalculatedDocument | None] = []
     for sample, target in view_st_data.iter_keys():
         for well_item in view_st_data.get_leaf_item(sample, target):
-            if calc_doc := build_amp_score(well_item):
-                yield calc_doc
+            calc_docs.append(build_quantity(view_tr_data, target, well_item))
+            calc_docs.append(build_amp_score(well_item))
+            calc_docs.append(build_cq_conf(well_item))
 
-            if calc_doc := build_cq_conf(well_item):
-                yield calc_doc
-
-        if calc_doc := build_quantity_mean(view_st_data, view_tr_data, sample, target):
-            yield from calc_doc.iter_struct()
-
-        if calc_doc := build_quantity_sd(view_st_data, view_tr_data, sample, target):
-            yield from calc_doc.iter_struct()
-
-        if calc_doc := build_ct_mean(view_st_data, sample, target):
-            yield from calc_doc.iter_struct()
-
-        if calc_doc := build_ct_sd(view_st_data, sample, target):
-            yield from calc_doc.iter_struct()
-
-        if calc_doc := build_relative_rq_min(
-            view_st_data, view_tr_data, sample, target
-        ):
-            yield from calc_doc.iter_struct()
-
-        if calc_doc := build_relative_rq_max(
-            view_st_data, view_tr_data, sample, target
-        ):
-            yield from calc_doc.iter_struct()
+        calc_docs.append(
+            build_quantity_mean(view_st_data, view_tr_data, sample, target)
+        )
+        calc_docs.append(build_quantity_sd(view_st_data, view_tr_data, sample, target))
+        calc_docs.append(build_ct_mean(view_st_data, sample, target))
+        calc_docs.append(build_ct_sd(view_st_data, sample, target))
+        calc_docs.append(
+            build_relative_rq_min(view_st_data, view_tr_data, sample, target)
+        )
+        calc_docs.append(
+            build_relative_rq_max(view_st_data, view_tr_data, sample, target)
+        )
 
     for target in view_tr_data.data:
-        if calc_doc := build_y_intercept(view_tr_data, target):
-            yield from calc_doc.iter_struct()
+        calc_docs.append(build_y_intercept(view_tr_data, target))
+        calc_docs.append(build_r_squared(view_tr_data, target))
+        calc_docs.append(build_slope(view_tr_data, target))
+        calc_docs.append(build_efficiency(view_tr_data, target))
 
-        if calc_doc := build_r_squared(view_tr_data, target):
-            yield from calc_doc.iter_struct()
-
-        if calc_doc := build_slope(view_tr_data, target):
-            yield from calc_doc.iter_struct()
-
-        if calc_doc := build_efficiency(view_tr_data, target):
-            yield from calc_doc.iter_struct()
+    yield from yield_documents(calc_docs)
 
 
 def iter_presence_absence_calc_docs(
     view_data: ViewData[WellItem],
 ) -> Iterator[CalculatedDocument]:
     # Rn Mean, Rn SD, Amplification score, Cq confidence
+    calc_docs: list[CalculatedDocument | None] = []
     for sample, target in view_data.iter_keys():
         for well_item in view_data.get_leaf_item(sample, target):
-            if calc_doc := build_amp_score(well_item):
-                yield calc_doc
+            calc_docs.append(build_quantity(None, target, well_item))
+            calc_docs.append(build_amp_score(well_item))
+            calc_docs.append(build_cq_conf(well_item))
 
-            if calc_doc := build_cq_conf(well_item):
-                yield calc_doc
+        calc_docs.append(build_rn_mean(view_data, sample, target))
+        calc_docs.append(build_rn_sd(view_data, sample, target))
 
-        if calc_doc := build_rn_mean(view_data, sample, target):
-            yield from calc_doc.iter_struct()
-
-        if calc_doc := build_rn_sd(view_data, sample, target):
-            yield from calc_doc.iter_struct()
+    yield from yield_documents(calc_docs)
 
 
 def iter_calculated_data_documents(
@@ -741,6 +715,7 @@ def iter_calculated_data_documents(
     r_sample: str | None,
     r_target: str | None,
 ) -> Iterator[CalculatedDocument]:
+    well_items = [well_item for well_item in well_items if well_item.has_result]
     view_st = SampleView(sub_view=TargetView())
     view_st_data = view_st.apply(well_items)
 

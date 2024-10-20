@@ -1,9 +1,9 @@
 from xml.etree import ElementTree as ET  # noqa: N817
 
-from allotropy.allotrope.models.adm.electrophoresis.benchling._2024._06.electrophoresis import (
+from allotropy.allotrope.models.adm.electrophoresis.benchling._2024._09.electrophoresis import (
     Model,
 )
-from allotropy.allotrope.schema_mappers.adm.electrophoresis.benchling._2024._06.electrophoresis import (
+from allotropy.allotrope.schema_mappers.adm.electrophoresis.benchling._2024._09.electrophoresis import (
     Data,
     Mapper,
 )
@@ -14,10 +14,10 @@ from allotropy.parsers.agilent_tapestation_analysis.agilent_tapestation_analysis
     create_metadata,
 )
 from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class AgilentTapestationAnalysisParser(MapperVendorParser[Data, Model]):
+class AgilentTapestationAnalysisParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Agilent TapeStation Analysis"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "xml"

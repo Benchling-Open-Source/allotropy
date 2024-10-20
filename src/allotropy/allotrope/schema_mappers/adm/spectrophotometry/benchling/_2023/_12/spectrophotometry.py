@@ -209,6 +209,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     ASM_converter_name=self.converter_name,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                     software_name=data.metadata.software_name,
+                    software_version=data.metadata.software_version,
                 ),
                 spectrophotometry_document=[
                     self._get_technique_document(measurement_group, data.metadata)
@@ -406,6 +407,16 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement.original_sample_concentration,
             )
         }
+        # TODO: this is a temporary work around until we implement the new REC custom info doc logic, at which
+        # time we will detect and convert timestamps generically.
+        if (
+            measurement.sample_custom_info
+            and "last read standards" in measurement.sample_custom_info
+        ):
+            measurement.sample_custom_info["last read standards"] = self.get_date_time(
+                measurement.sample_custom_info["last read standards"]
+            )
+
         return add_custom_information_document(
             SampleDocument(
                 sample_identifier=measurement.sample_identifier,

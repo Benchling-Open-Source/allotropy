@@ -15,10 +15,10 @@ from allotropy.parsers.beckman_vi_cell_blu.vi_cell_blu_structure import (
 )
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.pandas import map_rows
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class ViCellBluParser(MapperVendorParser[Data, Model]):
+class ViCellBluParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Beckman Vi-Cell BLU"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = ViCellBluReader.SUPPORTED_EXTENSIONS

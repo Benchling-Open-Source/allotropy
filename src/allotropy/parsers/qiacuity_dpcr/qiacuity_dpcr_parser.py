@@ -14,10 +14,10 @@ from allotropy.parsers.qiacuity_dpcr.qiacuity_dpcr_structure import (
 )
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.pandas import map_rows
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class QiacuitydPCRParser(MapperVendorParser[Data, Model]):
+class QiacuitydPCRParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Qiacuity dPCR"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = QiacuitydPCRReader.SUPPORTED_EXTENSIONS

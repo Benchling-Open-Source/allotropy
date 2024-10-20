@@ -15,10 +15,10 @@ from allotropy.parsers.thermo_fisher_qubit4.thermo_fisher_qubit4_structure impor
     create_metadata,
 )
 from allotropy.parsers.utils.pandas import map_rows
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class ThermoFisherQubit4Parser(MapperVendorParser[Data, Model]):
+class ThermoFisherQubit4Parser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Thermo Fisher Qubit 4"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = ThermoFisherQubit4Reader.SUPPORTED_EXTENSIONS

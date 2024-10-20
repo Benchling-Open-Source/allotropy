@@ -127,6 +127,10 @@ class WellItem(Referenceable):
         return hash(self.identifier)
 
     @property
+    def has_result(self) -> bool:
+        return self._result is not None
+
+    @property
     def result(self) -> Result:
         return assert_not_none(self._result)
 

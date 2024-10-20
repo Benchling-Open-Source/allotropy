@@ -18,10 +18,10 @@ from allotropy.parsers.methodical_mind.methodical_mind_structure import (
     PlateData,
 )
 from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class MethodicalMindParser(MapperVendorParser[Data, Model]):
+class MethodicalMindParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Methodical Mind"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "txt"
@@ -30,7 +30,10 @@ class MethodicalMindParser(MapperVendorParser[Data, Model]):
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = MethodicalMindReader(named_file_contents)
         return Data(
-            create_metadata(Header.create(reader.plate_headers[0])),
+            create_metadata(
+                Header.create(reader.plate_headers[0]),
+                named_file_contents.original_file_name,
+            ),
             create_measurement_groups(
                 [PlateData.create(header, data) for header, data in reader]
             ),

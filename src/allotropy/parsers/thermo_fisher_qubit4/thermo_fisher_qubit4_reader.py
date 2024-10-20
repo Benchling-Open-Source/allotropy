@@ -1,5 +1,6 @@
 """Reader file for ThermoFisher Qubit 4 Adapter"""
 
+import numpy as np
 import pandas as pd
 
 from allotropy.constants import DEFAULT_ENCODING
@@ -35,18 +36,17 @@ class ThermoFisherQubit4Reader:
         AllotropeConversionError: If the file format is not supported.
         """
         if named_file_contents.extension == "xlsx":
-            dataframe = read_excel(named_file_contents.contents)
+            df = read_excel(named_file_contents.contents)
         else:
-            dataframe = read_csv(
-                named_file_contents.contents,
-                index_col=False,
-                encoding=DEFAULT_ENCODING,
+            df = read_csv(
+                named_file_contents.contents, index_col=False, encoding=DEFAULT_ENCODING
             )
 
-        columns = dataframe.columns.tolist()
+        columns = df.columns.tolist()
         new_columns = [
             f"Units_{columns[i - 1]}" if "Units" in col else col
             for i, col in enumerate(columns)
         ]
-        set_columns(dataframe, new_columns)
-        return dataframe
+        set_columns(df, new_columns)
+        df = df.replace(np.nan, None)
+        return df

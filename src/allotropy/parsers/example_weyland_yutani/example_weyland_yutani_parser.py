@@ -18,10 +18,10 @@ from allotropy.parsers.example_weyland_yutani.example_weyland_yutani_structure i
     Plate,
 )
 from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class ExampleWeylandYutaniParser(MapperVendorParser[Data, Model]):
+class ExampleWeylandYutaniParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Example Weyland Yutani"
     RELEASE_STATE = ReleaseState.WORKING_DRAFT
     SUPPORTED_EXTENSIONS = ExampleWeylandYutaniReader.SUPPORTED_EXTENSIONS

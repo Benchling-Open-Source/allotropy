@@ -4,6 +4,7 @@ from collections import defaultdict
 from dataclasses import dataclass
 from io import StringIO
 import math
+from pathlib import Path
 import re
 
 import pandas as pd
@@ -773,6 +774,7 @@ def _get_sources(
 
 
 def create_metadata(header_data: HeaderData) -> Metadata:
+    asm_file_identifier = Path(header_data.file_name).with_suffix(".json")
     return Metadata(
         device_identifier=NOT_APPLICABLE,
         model_number=header_data.model_number or NOT_APPLICABLE,
@@ -780,7 +782,7 @@ def create_metadata(header_data: HeaderData) -> Metadata:
         software_name=DEFAULT_SOFTWARE_NAME,
         software_version=header_data.software_version,
         file_name=header_data.file_name,
-        asm_file_identifier=NOT_APPLICABLE,
+        asm_file_identifier=asm_file_identifier.name,
         data_system_instance_id=NOT_APPLICABLE,
         unc_path=NOT_APPLICABLE,
     )

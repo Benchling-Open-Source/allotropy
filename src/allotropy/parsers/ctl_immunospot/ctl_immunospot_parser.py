@@ -14,10 +14,10 @@ from allotropy.parsers.ctl_immunospot.ctl_immunospot_structure import (
 )
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class CtlImmunospotParser(MapperVendorParser[Data, Model]):
+class CtlImmunospotParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "CTL ImmunoSpot"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "txt"

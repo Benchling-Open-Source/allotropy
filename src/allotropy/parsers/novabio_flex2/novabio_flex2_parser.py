@@ -16,10 +16,10 @@ from allotropy.parsers.novabio_flex2.novabio_flex2_structure import (
 )
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.pandas import read_csv
-from allotropy.parsers.vendor_parser import MapperVendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
-class NovaBioFlexParser(MapperVendorParser[Data, Model]):
+class NovaBioFlexParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "NovaBio Flex2"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "csv"

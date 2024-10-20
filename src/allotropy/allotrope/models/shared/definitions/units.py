@@ -25,6 +25,11 @@ class Counts(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class CountsPerMicroliter(HasUnit):
+    unit: str = "Counts/μL"
+
+
+@dataclass(frozen=True, kw_only=True)
 class CountsPerMilliliter(HasUnit):
     unit: str = "Counts/mL"
 
