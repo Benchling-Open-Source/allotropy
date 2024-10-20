@@ -18,7 +18,7 @@ from allotropy.parsers.utils.values import (
 
 
 class DesignQuantstudioReader:
-    SUPPORTED_EXTENSIONS = "xlsx"
+    SUPPORTED_EXTENSIONS = "xlsx,xls"
     header: SeriesData
     data: dict[str, pd.DataFrame]
 
