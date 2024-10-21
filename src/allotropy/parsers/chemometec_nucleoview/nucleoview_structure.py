@@ -12,12 +12,12 @@ from allotropy.allotrope.schema_mappers.adm.cell_counting.benchling._2023._11.ce
 )
 from allotropy.parsers.chemometec_nucleoview.constants import (
     DEFAULT_ANALYST,
-    DEFAULT_EPOCH_TIMESTAMP,
     DEFAULT_MODEL_NUMBER,
     NUCLEOCOUNTER_DETECTION_TYPE,
     NUCLEOCOUNTER_DEVICE_TYPE,
     NUCLEOCOUNTER_SOFTWARE_NAME,
 )
+from allotropy.parsers.constants import DEFAULT_EPOCH_TIMESTAMP
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
