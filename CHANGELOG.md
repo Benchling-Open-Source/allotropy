@@ -5,6 +5,75 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.61] - 2024-10-16
+
+### Added
+
+- QuantStudio Design & Analysis - add xls support and additional filter check for empty stage number column (#724)
+
+### Removed
+
+- SoftMax Pro report non numeric values in error document (#725)
+
+## [0.1.60] - 2024-10-15
+
+### Added
+
+- Add electrophoresis/BENCHLING/2024/09 schema and mapper and update Aglient Tapestation parser to use it. (#715)
+- Add solution-analyzer/rec/2024/09 schema mapper (#714)
+- SoftMax Pro - report non numeric values in error document (#713)
+
+## [0.1.59] - 2024-10-11
+
+### Added
+
+- Update Thermo SkanIt and Revvity Matrix adapters release status to RECCOMMENDED (#719)
+
+### Fixed
+
+- AppBio Quantstudio - remove omitted wells from calculated data document data sources (#717)
+
+## [0.1.58] - 2024-10-09
+
+### Fixed
+
+- ThermoFisher Qubit Flex - add fields that were accidentally removed/renamed in refactor (#711)
+
+## [0.1.57] - 2024-10-09
+
+### Added
+
+- Revvity Kaleido - add v3.5 to supported software versions (#707)
+- Add new REC chema for solution analyzer 2024/09 (#706)
+- AppBio Quantstudio - support skipping wells that have no results in the raw data file, indicating an omitted well (#689)
+- AppBio Quantstudio - add "quantity" calculated data documents for non-STANDARD wells (#698)
+- Update adapters using 2024/06 Plate Reader schema to include ASM file identifier (#695)
+- NanoDrop 8000 & NanoDrop Eight - support alternative reporting format for absorbance measurements (#688)
+- Add support for error documents in the Agilent Gen5 adapter (#694)
+- Add the REC/2024/06 electrophoresis schema (#693)
+- Update Methodical Mind adapter to use REC schema (#692)
+- Update Methodical Mind to use the plate reader REC schema (#690)
+- Agilent Gen5 Image adapter, add support for no result sections file examples (#679)
+- ThermoSkanIt Adapter (#658)
+- Perkin Elmer Envision - Update adapter to use Plate Reader REC 2024/06 schema (#686)
+- BMG Mars - Update adapter to Plate Reader REC 2024/06 schema (#685)
+- Add REC/2024/06 spectrophotometry schema (#684)
+- Add Nanodrop Eight parser (#683)
+- Unchained Labs Lunatic - add additional metadata from header block (#680)
+
+### Fixed
+
+- SoftMax Pro - raise error for unsupported Group data format (#696)
+- Agilent Gen5 - raise error when there are calculated data but no measurements in results (#691)
+- Beckman VI-Cell Blu - filter NaN values when reading cell counts (#687)
+- Update DataSeries to use float parsing utility when reading a float value, in order to better handle edge cases (#682)
+
+### Changed
+
+- ThermoFisher Qubit Flex - refactor parser to use schema mapper design pattern (#699)
+- Change the way custom information is organized in schema mappers and ASM outputs to be consistent with future expectations of ASM (#673)
+- Rebrand nanodrop eight adapter to nanodrop 8000 (#652)
+
 ## [0.1.56] - 2024-09-26
 
 ### Added

@@ -15,6 +15,7 @@ from allotropy.parsers.utils.values import assert_not_none
 class Version(Enum):
     V2 = "2.0"
     V3 = "3.0"
+    V3_5 = "3.5"
 
 
 def get_version(reader: CsvReader) -> str:
@@ -34,10 +35,10 @@ def create_data(reader: CsvReader) -> Data:
 
     if version.startswith(Version.V2.value):
         return create_data_v2(version, reader)
-    elif version.startswith(Version.V3.value):
+    elif version.startswith(Version.V3.value) or version.startswith(Version.V3_5.value):
         return create_data_v3(version, reader)
     else:
-        valid_versions = [f"v{v.value}.0+" for v in Version]
+        valid_versions = [f"v{v.value}+" for v in Version]
         msg = msg_for_error_on_unrecognized_value(
             "Revvity Kaleido version", version, valid_versions
         )

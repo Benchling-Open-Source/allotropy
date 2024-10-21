@@ -140,6 +140,29 @@ class Vendor(Enum):
             ext.strip() for ext in self.get_parser().SUPPORTED_EXTENSIONS.split(",")
         ]
 
+    @property
+    def asm_versions(self) -> list[str]:
+        # NOTE: this is a list because soon parsers will support multiple schemas as they are upgraded.
+        manifests = [
+            Path(manifest) for manifest in [self.get_parser()._get_mapper().MANIFEST]
+        ]
+        return ["/".join(manifest.parts[-4:-1]).split(".")[0] for manifest in manifests]
+
+    @property
+    def technique(self) -> str:
+        techniques = [
+            Path(manifest).stem
+            for manifest in [self.get_parser()._get_mapper().MANIFEST]
+        ]
+        if not all(tech == techniques[0] for tech in techniques):
+            msg = f"Parser {self} supports multiple technique types, if this is expected please update logic."
+            raise AssertionError(msg)
+        technique = techniques[0].replace("-", " ").title()
+        return {
+            "Dpcr": "dPCR",
+            "Qpcr": "qPCR",
+        }.get(technique, technique)
+
     def get_parser(
         self, default_timezone: tzinfo | None = None
     ) -> VendorParser[Any, Any]:
@@ -186,41 +209,36 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser[Any, Any]]] = {
 }
 
 
-def update_readme() -> None:
-    release_state_to_parser = defaultdict(set)
+def get_table_contents() -> str:
+    contents = """
+The parsers follow maturation levels of: Recommended, Candidate Release, Working Draft.
+
+* Recommended - the parser is ready for production use.
+* Candidate Release - "beta" - the parser is working for some cases, but may have bugs or need more test cases for hardening.
+* Working Draft - "alpha" - in development, not recommended for production use.
+"""
+    table_data: defaultdict[str, list[Vendor]] = defaultdict(list)
+
     for vendor in Vendor:
         if "example" in str(vendor).lower():
             continue
-        release_state_to_parser[vendor.release_state].add(vendor.display_name)
+        table_data[vendor.technique].append(vendor)
 
-    readme_file = Path(ROOT_DIR, "README.md")
-    with open(readme_file) as f:
-        contents = f.readlines()
+    contents += '[cols="4*^.^"]\n'
+    contents += "|===\n"
+    contents += (
+        "|Instrument Category|Instrument Software|Release Status|Exported ASM Schema\n"
+    )
+    for technique in sorted(table_data):
+        vendors = table_data[technique]
+        contents += f".{len(vendors)}+|{technique}|{vendors[0].display_name}|{vendors[0].release_state}|{vendors[0].asm_versions[0]}\n"
+        for vendor in vendors[1:]:
+            contents += f"|{vendor.display_name}|{vendor.release_state}|{vendor.asm_versions[0]}\n"
+    contents += "|==="
 
-    with open(readme_file, "w") as f:
-        in_block = False
-        newline_count = 0
-        for line in contents:
-            if line.startswith("### Recommended"):
-                in_block = True
-                continue
-            if in_block:
-                if line == "\n":
-                    newline_count += 1
-                if newline_count == 3:  # noqa: PLR2004
-                    for release_state in [
-                        ReleaseState.RECOMMENDED,
-                        ReleaseState.CANDIDATE_RELEASE,
-                        ReleaseState.WORKING_DRAFT,
-                    ]:
-                        f.write(
-                            f'### {release_state.value.replace("_", " ").title()}\n'
-                        )
-                        for display_name in sorted(
-                            release_state_to_parser.get(release_state, [])
-                        ):
-                            f.write(f"  - {display_name}\n")
-                        f.write("\n")
-                    in_block = False
-                continue
-            f.write(line)
+    return contents
+
+
+def update_supported_instruments() -> None:
+    with open(Path(ROOT_DIR, "SUPPORTED_INSTRUMENT_SOFTWARE.adoc"), "w") as f:
+        f.write(get_table_contents())
