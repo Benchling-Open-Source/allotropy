@@ -81,9 +81,20 @@ Auto-fix all possible lint issues:
 hatch run fix
 ```
 
-Run all tests:
+Run all tests in the default python enviroment (currently: 3.11.9)
 ```sh
 hatch run test
+```
+
+Run all tests against all supported python versions (currently 3.10-3.12)
+Note: this is checked against in CI - your change must pass this to merge.
+```sh
+hatch run test_all:test
+```
+
+Run against a specific python version (useful for debugging if a test is failing in one environment)
+```sh
+hatch run test_all.py3.12:test
 ```
 
 Run a specific test file (replace the filepath with your own):
