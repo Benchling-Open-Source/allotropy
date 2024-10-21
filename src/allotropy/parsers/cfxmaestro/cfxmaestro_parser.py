@@ -25,7 +25,7 @@ class CfxmaestroParser(VendorParser[Data, Model]):
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
-        reader = CFXMaestroReader.create(named_file_contents)
+        reader = CFXMaestroReader(named_file_contents)
         return Data(
             create_metadata(named_file_contents.original_file_name),
             create_measurement_groups(reader.data),

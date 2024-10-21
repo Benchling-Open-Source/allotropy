@@ -1,7 +1,7 @@
 from collections import defaultdict
 from copy import deepcopy
 
-import pandas as pd  # type: ignore
+import pandas as pd
 
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
 from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import (
@@ -62,10 +62,8 @@ def create_measurement_group(
                 reporter_dye_setting=data[str, "Fluor"],
                 # Processed data
                 processed_data=ProcessedData(
-                    # TODO: add error document if Cq is NaN
-                    cycle_threshold_result=data.get(
-                        float, "Cq", NEGATIVE_ZERO, SeriesData.NOT_NAN
-                    ),
+                    # TODO: add add error document (or omit?) if Cq is NaN.
+                    cycle_threshold_result=data.get(float, "Cq", validate=SeriesData.NOT_NAN),
                     # TODO: confirm the exported column name for cycle number
                     cycle_threshold_value_setting=data.get(
                         float, "Cycle Number", NEGATIVE_ZERO
@@ -77,7 +75,7 @@ def create_measurement_group(
     )
 
 
-def create_measurement_groups(df: pd.DataFrame) -> int:
+def create_measurement_groups(df: pd.DataFrame) -> list[MeasurementGroup]:
     well_to_rows = defaultdict(list)
 
     def map_to_dict(data: SeriesData) -> None:
