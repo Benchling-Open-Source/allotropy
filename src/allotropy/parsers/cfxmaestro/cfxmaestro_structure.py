@@ -63,7 +63,9 @@ def create_measurement_group(
                 # Processed data
                 processed_data=ProcessedData(
                     # TODO: add add error document (or omit?) if Cq is NaN.
-                    cycle_threshold_result=data.get(float, "Cq", validate=SeriesData.NOT_NAN),
+                    cycle_threshold_result=data.get(
+                        float, "Cq", validate=SeriesData.NOT_NAN
+                    ),
                     # TODO: confirm the exported column name for cycle number
                     cycle_threshold_value_setting=data.get(
                         float, "Cycle Number", NEGATIVE_ZERO
