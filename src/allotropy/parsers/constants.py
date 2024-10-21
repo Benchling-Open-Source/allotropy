@@ -3,4 +3,3 @@ NOT_APPLICABLE = "N/A"
 NEGATIVE_ZERO = -0.0
 # Used to fill in timestamp for required ASM fields when not available in source
 DEFAULT_EPOCH_TIMESTAMP = "1970-01-01"
-# EPOCH = "1970-01-01T00:00:00-00:00"
