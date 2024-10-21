@@ -1,4 +1,5 @@
 from collections import defaultdict
+from copy import deepcopy
 
 import pandas as pd  # type: ignore
 
@@ -10,6 +11,11 @@ from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import 
     ProcessedData,
 )
 from allotropy.parsers.cfxmaestro import constants
+from allotropy.parsers.constants import (
+    DEFAULT_EPOCH_TIMESTAMP,
+    NEGATIVE_ZERO,
+    NOT_APPLICABLE,
+)
 from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
@@ -17,62 +23,69 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 def create_metadata(file_name: str) -> Metadata:
     return Metadata(
         device_type=constants.DEVICE_TYPE,
-        device_serial_number=constants.NOT_APPLICABLE,
+        device_serial_number=NOT_APPLICABLE,
         file_name=file_name,
         experiment_type=ExperimentType.comparative_CT_qPCR_experiment,
         container_type=constants.CONTAINER_TYPE,
         software_name=constants.SOFTWARE_NAME,
         product_manufacturer=constants.PRODUCT_MANUFACTURER,
-        device_identifier=constants.NOT_APPLICABLE,
-        model_number=constants.NOT_APPLICABLE,
-        measurement_method_identifier=constants.NOT_APPLICABLE,
-        unc_path=constants.NOT_APPLICABLE,
+        device_identifier=NOT_APPLICABLE,
+        model_number=NOT_APPLICABLE,
+        measurement_method_identifier=NOT_APPLICABLE,
     )
-
-#Code below is used to create an integer value to represent the total number of wells
-#even if the wells are reported multiple times due to multiple readings
-def create_measurement_groups(df: pd.DataFrame) -> int:
-    well_to_rows = defaultdict(list)
-    unique_wells = set()
-
-    def map_to_dict(data: SeriesData) -> None:
-        well_id = data[str, "Well"]
-        well_to_rows[data[well_id]].append(data)
-        unique_wells.add(well_id)
-
-        map_rows(df, map_to_dict)
-
-        return len(unique_wells)
-
 
 
 def create_measurement_group(
-    well_data: list[SeriesData], plate_well_count: int,
+    well_data: list[SeriesData],
+    plate_well_count: int,
 ) -> MeasurementGroup:
     return MeasurementGroup(
-        plate_well_count= plate_well_count,
-        analyst=constants.NOT_APPLICABLE,
+        plate_well_count=plate_well_count,
         measurements=[
             Measurement(
-                # Measurement Meta Data
+                # Measurement metadata
                 identifier=random_uuid_str(),
-                sample_identifier=data.get(str, "Sample"),
-                target_identifier=constants.NOT_APPLICABLE,
-                group_identifier=data.get(str, "Biological Set Name"),
-                 # Is this a good way to generate a timestamp for this .CSV file
-                timestamp=constants.DEFAULT_EPOCH_TIMESTAMP,
-                # Optional Measurement Metadata
+                sample_identifier=data.get(
+                    str, "Sample", NOT_APPLICABLE, SeriesData.NOT_NAN
+                ),
+                target_identifier=data.get(
+                    str, "Target", NOT_APPLICABLE, SeriesData.NOT_NAN
+                ),
+                group_identifier=data.get(
+                    str, "Biological Set Name", NOT_APPLICABLE, SeriesData.NOT_NAN
+                ),
+                timestamp=DEFAULT_EPOCH_TIMESTAMP,
+                # Optional measurement metadata
                 sample_role_type=data.get(str, "Content"),
                 well_location_identifier=data[str, "Well"],
-                # Optional Settings
+                # Optional settings
                 reporter_dye_setting=data[str, "Fluor"],
-                # Processed Data
+                # Processed data
                 processed_data=ProcessedData(
-                    cycle_threshold_result=data[float, "Cq"],
-                    # TODO: get the exported column name for cycle number
-                    cycle_threshold_value_setting=data.get(float, "Cycle Number", -0),
+                    # TODO: add error document if Cq is NaN
+                    cycle_threshold_result=data.get(
+                        float, "Cq", NEGATIVE_ZERO, SeriesData.NOT_NAN
+                    ),
+                    # TODO: confirm the exported column name for cycle number
+                    cycle_threshold_value_setting=data.get(
+                        float, "Cycle Number", NEGATIVE_ZERO
+                    ),
                 ),
             )
             for data in well_data
         ],
     )
+
+
+def create_measurement_groups(df: pd.DataFrame) -> int:
+    well_to_rows = defaultdict(list)
+
+    def map_to_dict(data: SeriesData) -> None:
+        well_to_rows[data[str, "Well"]].append(deepcopy(data))
+
+    map_rows(df, map_to_dict)
+
+    return [
+        create_measurement_group(well_to_rows[well_id], len(well_to_rows))
+        for well_id in well_to_rows
+    ]

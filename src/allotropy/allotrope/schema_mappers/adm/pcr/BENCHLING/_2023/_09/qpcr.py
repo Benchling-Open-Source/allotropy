@@ -89,15 +89,19 @@ class CalculatedData:
 class ProcessedData:
     # Settings
     cycle_threshold_value_setting: float
+
+    # Results
+    cycle_threshold_result: float
+
+    # Optional settings
     automatic_cycle_threshold_enabled_setting: bool | None = None
     automatic_baseline_determination_enabled_setting: bool | None = None
     baseline_determination_start_cycle_setting: int | None = None
     baseline_determination_end_cycle_setting: int | None = None
     genotyping_determination_method_setting: float | None = None
 
-    # Results
+    # Optional results
     genotyping_determination_result: str | None = None
-    cycle_threshold_result: float | None = None
     normalized_reporter_result: float | None = None
     baseline_corrected_reporter_result: float | None = None
 
@@ -146,21 +150,21 @@ class Measurement:
 class MeasurementGroup:
     measurements: list[Measurement]
     plate_well_count: int | InvalidJsonFloat
-    analyst: str
+    analyst: str | None = None
     experimental_data_identifier: str | None = None
 
 
 @dataclass
 class Metadata:
-    device_type: str
-    file_name: str
-    experiment_type: ExperimentType
-    container_type: ContainerType
     device_identifier: str
+    device_type: str
+    device_serial_number: str
     model_number: str
-    unc_path: str
+    file_name: str
     measurement_method_identifier: str
-    device_serial_number: str | None = None
+    unc_path: str | None = None
+    experiment_type: ExperimentType | None = None
+    container_type: ContainerType | None = None
     data_system_instance_identifier: str | None = None
     software_name: str | None = None
     software_version: str | None = None
