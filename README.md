@@ -82,7 +82,7 @@ Auto-fix all possible lint issues:
 hatch run fix
 ```
 
-Run all tests in the default python enviroment (currently: 3.9.11)
+Run all tests in the default python enviroment (currently: 3.11.9)
 ```sh
 hatch run test
 ```
