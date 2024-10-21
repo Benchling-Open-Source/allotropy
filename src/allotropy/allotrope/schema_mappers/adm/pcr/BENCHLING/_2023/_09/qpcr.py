@@ -158,8 +158,8 @@ class Metadata:
     container_type: ContainerType
     device_identifier: str
     model_number: str
-    measurement_method_identifier: str
     unc_path: str
+    measurement_method_identifier: str
     device_serial_number: str | None = None
     data_system_instance_identifier: str | None = None
     software_name: str | None = None

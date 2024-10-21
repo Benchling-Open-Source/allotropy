@@ -29,12 +29,22 @@ def create_metadata(file_name: str) -> Metadata:
         unc_path=constants.NOT_APPLICABLE,
     )
 
-#well_to_rows = defaultdict(list)
+#Code below is used to create an integer value to represent the total number of wells
+#even if the wells are reported multiple times due to multiple readings
+def create_measurement_groups(df: pd.DataFrame) -> int:
+    well_to_rows = defaultdict(list)
+    unique_wells = set()
 
-#def map_to_dict(data: SeriesData) -> None:
-#        well_to_rows[data[str, "Well"]].append(data)
-#
-#        map_rows(df, map_to_dict)
+    def map_to_dict(data: SeriesData) -> None:
+        well_id = data[str, "Well"]
+        well_to_rows[data[well_id]].append(data)
+        unique_wells.add(well_id)
+
+        map_rows(df, map_to_dict)
+
+        return len(unique_wells)
+
+
 
 def create_measurement_group(
     well_data: list[SeriesData], plate_well_count: int,
@@ -46,11 +56,11 @@ def create_measurement_group(
             Measurement(
                 # Measurement Meta Data
                 identifier=random_uuid_str(),
-                # Is this a good way to generate a timestamp for this .CSV file
-                timestamp=constants.DEFAULT_EPOCH_TIMESTAMP,
                 sample_identifier=data.get(str, "Sample"),
                 target_identifier=constants.NOT_APPLICABLE,
                 group_identifier=data.get(str, "Biological Set Name"),
+                 # Is this a good way to generate a timestamp for this .CSV file
+                timestamp=constants.DEFAULT_EPOCH_TIMESTAMP,
                 # Optional Measurement Metadata
                 sample_role_type=data.get(str, "Content"),
                 well_location_identifier=data[str, "Well"],

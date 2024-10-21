@@ -31,12 +31,14 @@ class CfxmaestroParser(VendorParser[Data, Model]):
         reader = CFXMaestroReader.create(named_file_contents)
         plate_data = reader.data
         measurements_per_well = defaultdict(list)
+        unique_wells = set() #Added unique_wells to get an intager values for the total number of wells
         for _, row in plate_data.iterrows():
             well_row = SeriesData(row)
             well = well_row.get(str, "Well")
             measurements_per_well[well].append(well_row)
+            unique_wells.add(well) #Added by PO
         data_measurement = [
-            create_measurement_group(measurements, 96)
+            create_measurement_group(measurements, len(unique_wells))
             for measurements in measurements_per_well.values()
         ]
 

@@ -1,7 +1,7 @@
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ContainerType
 
 DISPLAY_NAME = "cfxmaestro"
-DEVICE_TYPE = "<some device type>"
+DEVICE_TYPE = "qPCR"
 
 # PO added this below
 PRODUCT_MANUFACTURER = "Bio-Rad"
