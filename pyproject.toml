@@ -103,7 +103,7 @@ path = "src/allotropy/__about__.py"
 # Pin default enviroment to 3.11. We aim to support 3.10+, but for fast testing, the default test command runs
 # 3.11. Use hatch run test_all to tests against 3.10-3.12
 # Note: if your hatch env is not picking up this setting, run hatch env prune.
-python = "3.11"
+python = "3.11.9"
 # We define dependencies for linting and datamodel codegen in the default environment because we lint in
 # the generation script, and we test generation in tests, so we need them everywhere except the actual project.
 dependencies = [
