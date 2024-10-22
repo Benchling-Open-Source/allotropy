@@ -7,11 +7,11 @@ from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.dpcr import 
     Metadata,
 )
 from allotropy.exceptions import get_key_or_error
+from allotropy.parsers.constants import DEFAULT_EPOCH_TIMESTAMP
 from allotropy.parsers.qiacuity_dpcr.constants import (
     BRAND_NAME,
     DEVICE_IDENTIFIER,
     DEVICE_TYPE,
-    EPOCH,
     PRODUCT_MANUFACTURER,
     SAMPLE_ROLE_TYPE_MAPPING,
     SOFTWARE_NAME,
@@ -31,7 +31,7 @@ def create_measurements(data: SeriesData) -> Measurement:
 
     return Measurement(
         identifier=random_uuid_str(),
-        measurement_time=EPOCH,
+        measurement_time=DEFAULT_EPOCH_TIMESTAMP,
         sample_identifier=data[str, "Sample/NTC/Control"],
         sample_role_type=sample_role_type,
         location_identifier=data[str, "Well Name"],

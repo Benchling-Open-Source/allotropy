@@ -3,8 +3,7 @@ import xml.etree.ElementTree as ET  # noqa: N817
 
 import pytest
 
-from allotropy.allotrope.models.shared.definitions.definitions import InvalidJsonFloat
-from allotropy.allotrope.schema_mappers.adm.electrophoresis.benchling._2024._06.electrophoresis import (
+from allotropy.allotrope.schema_mappers.adm.electrophoresis.benchling._2024._09.electrophoresis import (
     CalculatedDataItem,
     DataSource,
     Measurement,
@@ -26,6 +25,7 @@ from allotropy.parsers.agilent_tapestation_analysis.constants import (
     PRODUCT_MANUFACTURER,
     SOFTWARE_NAME,
 )
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.utils.values import assert_not_none
 from allotropy.testing.utils import mock_uuid_generation
 from tests.parsers.agilent_tapestation_analysis.agilent_tapestation_test_data import (
@@ -37,6 +37,7 @@ from tests.parsers.agilent_tapestation_analysis.agilent_tapestation_test_data im
 def test_create_metadata() -> None:
     metadata = create_metadata(get_metadata_xml(), "users/files/file.txt")
     assert metadata == Metadata(
+        file_identifier="file.json",
         file_name="file.txt",
         unc_path="users/files/file.txt",
         analyst="TapeStation User",
@@ -52,6 +53,7 @@ def test_create_metadata() -> None:
         product_manufacturer=PRODUCT_MANUFACTURER,
         device_type=DEVICE_TYPE,
         detection_type=DETECTION_TYPE,
+        unc_path=NOT_APPLICABLE,
     )
 
 
@@ -143,8 +145,8 @@ def testcreate_measurement_groups() -> None:
                                 position=100.0,
                                 position_unit="#",
                                 area=1.0,
-                                relative_area=InvalidJsonFloat.NaN,
-                                relative_corrected_area=InvalidJsonFloat.NaN,
+                                relative_area=None,
+                                relative_corrected_area=None,
                                 comment="Lower Marker",
                             ),
                             ProcessedDataFeature(
@@ -153,7 +155,7 @@ def testcreate_measurement_groups() -> None:
                                 height=284.723,
                                 start=3812.0,
                                 start_unit="#",
-                                end=InvalidJsonFloat.NaN,
+                                end=None,
                                 end_unit="#",
                                 position=8525.0,
                                 position_unit="#",
