@@ -73,6 +73,8 @@ def create_measurement_group(
                 ),
             )
             for data in well_data
+            if data.get(str, "Sample", validate=SeriesData.NOT_NAN)
+            or data.get(float, "Cq", validate=SeriesData.NOT_NAN)
         ],
     )
 
@@ -85,7 +87,8 @@ def create_measurement_groups(df: pd.DataFrame) -> list[MeasurementGroup]:
 
     map_rows(df, map_to_dict)
 
-    return [
+    groups = [
         create_measurement_group(well_to_rows[well_id], len(well_to_rows))
         for well_id in well_to_rows
     ]
+    return [group for group in groups if group.measurements]
