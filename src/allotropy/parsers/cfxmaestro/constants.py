@@ -1,6 +1,6 @@
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ContainerType
 
-DISPLAY_NAME = "CFX Maestro"
+DISPLAY_NAME = "Bio-Rad CFX Maestro"
 DEVICE_TYPE = "qPCR"
 
 PRODUCT_MANUFACTURER = "Bio-Rad"
