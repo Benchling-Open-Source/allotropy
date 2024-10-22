@@ -131,7 +131,7 @@ class GroupSampleData:
         identifier = top_row[str, "Sample"]
         data = rm_df_columns(data, r"^Sample$|^Standard Value|^R$|^Unnamed: \d+$")
         # Columns are considered "numeric" if the value of the first row is a float
-        # "Mask" and "Range?" are special cases that will also be considered.
+        # Non-numeric values such as "Mask" and "Range?" will be reported as errors.
         numeric_columns = [
             column
             for column in data.columns
