@@ -25,7 +25,6 @@ from allotropy.parsers.agilent_tapestation_analysis.constants import (
     PRODUCT_MANUFACTURER,
     SOFTWARE_NAME,
 )
-from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.utils.values import assert_not_none
 from allotropy.testing.utils import mock_uuid_generation
 from tests.parsers.agilent_tapestation_analysis.agilent_tapestation_test_data import (
@@ -53,7 +52,6 @@ def test_create_metadata() -> None:
         product_manufacturer=PRODUCT_MANUFACTURER,
         device_type=DEVICE_TYPE,
         detection_type=DETECTION_TYPE,
-        unc_path=NOT_APPLICABLE,
     )
 
 

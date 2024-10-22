@@ -30,7 +30,6 @@ from allotropy.parsers.agilent_tapestation_analysis.constants import (
     SOFTWARE_NAME,
     UNIT_CLASS_LOOKUP,
 )
-from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import try_float_or_none
 from allotropy.parsers.utils.xml import (
@@ -94,7 +93,6 @@ def create_metadata(root_element: ET.Element, file_path: str) -> Metadata:
         product_manufacturer=PRODUCT_MANUFACTURER,
         device_type=DEVICE_TYPE,
         detection_type=DETECTION_TYPE,
-        unc_path=NOT_APPLICABLE,
     )
 
 
