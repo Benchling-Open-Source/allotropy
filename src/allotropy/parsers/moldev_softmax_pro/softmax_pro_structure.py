@@ -290,7 +290,7 @@ class GroupBlock(Block):
     group_summaries: GroupSummaries
 
     @staticmethod
-    def create(reader: CsvReader) -> GroupBlock:
+    def create(reader: CsvReader) -> GroupBlock | None:
         # Read in block, and return GroupBlock if data is valid format.
         # Note that we always read in all sections, in order to consume the lines.
         group_data = GroupData.create(reader)
