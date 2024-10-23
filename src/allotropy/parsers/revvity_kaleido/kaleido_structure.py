@@ -24,7 +24,7 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
     ProcessedData,
 )
 from allotropy.exceptions import AllotropeConversionError, AllotropeParsingError
-from allotropy.parsers.lines_reader import CsvReader
+from allotropy.parsers.lines_reader import CsvReader, EMPTY_STR_OR_CSV_LINE
 from allotropy.parsers.revvity_kaleido import constants
 from allotropy.parsers.utils.pandas import df_to_series_data, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
@@ -33,6 +33,19 @@ from allotropy.parsers.utils.values import (
     try_float,
     try_float_or_none,
 )
+
+# The max number of columns we expect to see in a CSV formatted input file. This is probably bounded by the
+# size of the plate map.
+# This is required for reading in some metadata sections that have empty column padding in CSV formatted files.
+# If a file is failing to parse due to:
+#
+# Error calling pd.read_csv(): Could not construct index. Requested to use 1 number of columns...
+#
+# this value probably needs to be increased.
+#
+# TODO(nstender): we can probably read this from an empty line via some pre-processing, but this value can be
+# set absurdely high and the code will still work, so do that for now.
+MAX_EXPECTED_CSV_COLUMN_COUNT = 100
 
 
 class ExperimentType(Enum):
@@ -126,7 +139,9 @@ class Results:
         barcode = cls.read_barcode(reader)
 
         results = assert_not_none(
-            reader.pop_csv_block_as_df(header=0, index_col=0),
+            reader.pop_csv_block_as_df(
+                header=0, index_col=0, empty_pat=EMPTY_STR_OR_CSV_LINE
+            ),
             msg="Unable to find results table.",
         )
 
@@ -158,7 +173,7 @@ class AnalysisResult:
         reader: CsvReader, next_section_title: str
     ) -> list[AnalysisResult]:
         section_title = assert_not_none(
-            reader.drop_until(f"^Results for|^{next_section_title}"),
+            reader.drop_until(f"^Results? for|^{next_section_title}"),
             msg=f"Unable to find Analysis Result or {next_section_title} section.",
         )
 
@@ -193,7 +208,9 @@ class AnalysisResult:
 
         try:
             results_df = assert_not_none(
-                reader.pop_csv_block_as_df(header=0, index_col=0),
+                reader.pop_csv_block_as_df(
+                    header=0, index_col=0, empty_pat=EMPTY_STR_OR_CSV_LINE
+                ),
                 msg="Unable to find results table.",
             ).dropna(how="all")
         except AllotropeParsingError:
@@ -242,7 +259,9 @@ class MeasurementInfo:
 
         lines = list(reader.pop_until(f"^{next_section_title}"))
         df = assert_not_none(
-            reader.lines_as_df(lines, index_col=0, names=range(7)),
+            reader.lines_as_df(
+                lines, index_col=0, names=range(MAX_EXPECTED_CSV_COLUMN_COUNT)
+            ),
             msg=f"Unable to parser data for {section_name} section.",
         ).T.dropna(how="all")
         df.columns = df.columns.astype(str).str.strip(":")
@@ -269,7 +288,9 @@ class Platemap:
         reader.pop_if_match("^Plate")
 
         data = assert_not_none(
-            reader.pop_csv_block_as_df(header=0, index_col=0),
+            reader.pop_csv_block_as_df(
+                header=0, index_col=0, empty_pat=EMPTY_STR_OR_CSV_LINE
+            ),
             msg="Unable to find platemap information.",
         )
 
@@ -357,7 +378,9 @@ class Measurements:
 
         lines = list(reader.pop_until(f"^{next_section_title}"))
         df = assert_not_none(
-            reader.lines_as_df(lines, index_col=0, names=range(7)),
+            reader.lines_as_df(
+                lines, index_col=0, names=range(MAX_EXPECTED_CSV_COLUMN_COUNT)
+            ),
             msg=f"Unable to parser data for {section_title} section.",
         ).T.dropna(how="all")
         df.columns = df.columns.astype(str).str.lower()
