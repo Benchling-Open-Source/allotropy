@@ -8,7 +8,7 @@ from dateutil import parser
 import pandas as pd
 
 from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat, NaN
-from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
+from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
     Analyte,
     Measurement,
     MeasurementGroup,
@@ -204,8 +204,9 @@ def create_measurement_groups(
 
 
 def create_metadata(title: Title, file_path: str) -> Metadata:
+    path = Path(file_path)
     return Metadata(
-        file_name=Path(file_path).name,
+        file_name=path.name,
         unc_path=file_path,
         device_type=SOLUTION_ANALYZER,
         model_number=title.model_number,
@@ -213,4 +214,6 @@ def create_metadata(title: Title, file_path: str) -> Metadata:
         device_identifier=NOT_APPLICABLE,
         software_name=title.model_number,
         software_version=title.software_version,
+        asm_file_identifier=path.with_suffix(".json").name,
+        data_system_instance_identifier=NOT_APPLICABLE,
     )
