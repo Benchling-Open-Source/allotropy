@@ -222,7 +222,10 @@ class GroupData:
             ).replace(r"^\s+$", None, regex=True)
 
         if "Sample" in data.columns:
-            if not any(plate_column in data.columns for plate_column in constants.WELL_PLATE_COLUMN_NAMES):
+            if not any(
+                plate_column in data.columns
+                for plate_column in constants.WELL_PLATE_COLUMN_NAMES
+            ):
                 return None
             samples = data["Sample"].ffill()
             try:
