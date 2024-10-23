@@ -1,4 +1,4 @@
-from dataclasses import field, make_dataclass
+from dataclasses import dataclass, field, make_dataclass
 
 from allotropy.allotrope.converter import (
     add_custom_information_document,
@@ -152,3 +152,56 @@ def test_custom_information_document() -> None:
         },
     }
     assert structure(asm_dict, ProcessedDataDocumentItem) == item
+
+
+def test_union_of_lists() -> None:
+    @dataclass
+    class D1:
+        x: int
+
+    @dataclass
+    class D2:
+        y: int
+
+    @dataclass
+    class HasUnionOfList:
+        z: list[D1] | list[D2] | D2 | None = None
+
+    obj = HasUnionOfList(z=[D1(1), D1(2)])
+    obj_dict = unstructure(obj)
+    assert obj_dict == {
+        "z": [
+            {
+                "x": 1,
+            },
+            {
+                "x": 2,
+            },
+        ]
+    }
+    assert structure(obj_dict, HasUnionOfList) == obj
+
+    obj = HasUnionOfList(z=[D2(1)])
+    obj_dict = unstructure(obj)
+    assert obj_dict == {
+        "z": [
+            {
+                "y": 1,
+            },
+        ]
+    }
+    assert structure(obj_dict, HasUnionOfList) == obj
+
+    obj = HasUnionOfList(z=D2(1))
+    obj_dict = unstructure(obj)
+    assert obj_dict == {
+        "z": {
+            "y": 1,
+        }
+    }
+    assert structure(obj_dict, HasUnionOfList) == obj
+
+    obj = HasUnionOfList(z=None)
+    obj_dict = unstructure(obj)
+    assert obj_dict == {}
+    assert structure(obj_dict, HasUnionOfList) == obj
