@@ -27,6 +27,14 @@
                             "absorbance": {
                                 "value": 0.1003,
                                 "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "Result"
+                                    }
+                                ]
                             }
                         },
                         {
@@ -51,6 +59,14 @@
                             "absorbance": {
                                 "value": 0.0338,
                                 "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "Result"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -2847,6 +2863,18 @@
                             "absorbance": {
                                 "value": 0.1015,
                                 "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "Result"
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "Result*Dilution"
+                                    }
+                                ]
                             }
                         },
                         {
@@ -2871,6 +2899,18 @@
                             "absorbance": {
                                 "value": 0.0356,
                                 "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "Result"
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "Result*Dilution"
+                                    }
+                                ]
                             }
                         }
                     ],
