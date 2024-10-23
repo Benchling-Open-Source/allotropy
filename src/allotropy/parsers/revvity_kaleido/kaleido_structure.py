@@ -245,6 +245,8 @@ class MeasurementInfo:
         )
 
         lines = list(reader.pop_until(f"^{next_section_title}"))
+        # Because we may read over multiple sections of data to get all metadata for this section, there may
+        # be varying number of columns. Get the max number of columns, so we can read in all sections without error.
         max_num_cols = max(len(line.split(",")) for line in lines)
         df = assert_not_none(
             reader.lines_as_df(lines, index_col=0, names=range(max_num_cols)),
@@ -363,6 +365,8 @@ class Measurements:
         )
 
         lines = list(reader.pop_until(f"^{next_section_title}"))
+        # Because we may read over multiple sections of data to get all metadata for this section, there may
+        # be varying number of columns. Get the max number of columns, so we can read in all sections without error.
         max_num_cols = max(len(line.split(",")) for line in lines)
         df = assert_not_none(
             reader.lines_as_df(lines, index_col=0, names=range(max_num_cols)),
