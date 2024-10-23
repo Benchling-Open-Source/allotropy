@@ -1,7 +1,7 @@
-from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
+from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
     Model,
 )
-from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
+from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
     Data,
     Mapper,
 )

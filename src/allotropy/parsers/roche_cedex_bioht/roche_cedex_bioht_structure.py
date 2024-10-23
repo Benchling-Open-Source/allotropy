@@ -2,12 +2,13 @@ from __future__ import annotations
 
 from collections import defaultdict
 from dataclasses import dataclass
+from pathlib import Path
 
 from dateutil import parser
 import pandas as pd
 
 from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat, NaN
-from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
+from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
     Analyte,
     Measurement,
     MeasurementGroup,
@@ -203,6 +204,7 @@ def create_measurement_groups(
 
 
 def create_metadata(title: Title, file_name: str) -> Metadata:
+    asm_file_identifier = Path(file_name).with_suffix(".json")
     return Metadata(
         file_name=file_name,
         device_type=SOLUTION_ANALYZER,
@@ -212,4 +214,6 @@ def create_metadata(title: Title, file_name: str) -> Metadata:
         unc_path="",
         software_name=title.model_number,
         software_version=title.software_version,
+        asm_file_identifier=asm_file_identifier.name,
+        data_system_instance_identifier=NOT_APPLICABLE,
     )
