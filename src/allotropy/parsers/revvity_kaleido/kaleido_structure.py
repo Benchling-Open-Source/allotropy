@@ -34,19 +34,6 @@ from allotropy.parsers.utils.values import (
     try_float_or_none,
 )
 
-# The max number of columns we expect to see in a CSV formatted input file. This is probably bounded by the
-# size of the plate map.
-# This is required for reading in some metadata sections that have empty column padding in CSV formatted files.
-# If a file is failing to parse due to:
-#
-# Error calling pd.read_csv(): Could not construct index. Requested to use 1 number of columns...
-#
-# this value probably needs to be increased.
-#
-# TODO(nstender): we can probably read this from an empty line via some pre-processing, but this value can be
-# set absurdely high and the code will still work, so do that for now.
-MAX_EXPECTED_CSV_COLUMN_COUNT = 100
-
 
 class ExperimentType(Enum):
     FLUORESCENCE = "fluorescence"
@@ -258,10 +245,9 @@ class MeasurementInfo:
         )
 
         lines = list(reader.pop_until(f"^{next_section_title}"))
+        max_num_cols = max(len(line.split(",")) for line in lines)
         df = assert_not_none(
-            reader.lines_as_df(
-                lines, index_col=0, names=range(MAX_EXPECTED_CSV_COLUMN_COUNT)
-            ),
+            reader.lines_as_df(lines, index_col=0, names=range(max_num_cols)),
             msg=f"Unable to parser data for {section_name} section.",
         ).T.dropna(how="all")
         df.columns = df.columns.astype(str).str.strip(":")
@@ -377,10 +363,9 @@ class Measurements:
         )
 
         lines = list(reader.pop_until(f"^{next_section_title}"))
+        max_num_cols = max(len(line.split(",")) for line in lines)
         df = assert_not_none(
-            reader.lines_as_df(
-                lines, index_col=0, names=range(MAX_EXPECTED_CSV_COLUMN_COUNT)
-            ),
+            reader.lines_as_df(lines, index_col=0, names=range(max_num_cols)),
             msg=f"Unable to parser data for {section_title} section.",
         ).T.dropna(how="all")
         df.columns = df.columns.astype(str).str.lower()
