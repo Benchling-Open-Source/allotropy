@@ -176,3 +176,8 @@ def test_reader_pop_until() -> None:
 def test_reader_pop_until_empty() -> None:
     test_reader = get_test_reader()
     assert list(test_reader.pop_until_empty()) == INPUT_LINES[:5]
+
+
+def test_reader_pop_while() -> None:
+    lines = ["k1: v1", "k2 : v2", "Something else"]
+    assert list(LinesReader(lines).pop_while(":")) == lines[:2]
