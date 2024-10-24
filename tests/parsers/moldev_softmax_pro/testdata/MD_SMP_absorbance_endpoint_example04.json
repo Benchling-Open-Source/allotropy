@@ -31639,6 +31639,533 @@
                 {
                     "calculated data name": "MeanValue",
                     "calculated result": {
+                        "value": 0.902,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1318",
+                    "calculation description": "Average(!WellValues)",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_288",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_384",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_480",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_289",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_385",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_481",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_300",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_396",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_492",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_301",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_397",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_493",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_312",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_408",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_504",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_313",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_409",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_505",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_324",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_420",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_516",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_325",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_421",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_517",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Std.Dev.",
+                    "calculated result": {
+                        "value": 1.434,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1319",
+                    "calculation description": "Stdev(!WellValues)",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_288",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_384",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_480",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_289",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_385",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_481",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_300",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_396",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_492",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_301",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_397",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_493",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_312",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_408",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_504",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_313",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_409",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_505",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_324",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_420",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_516",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_325",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_421",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_517",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "CV%",
+                    "calculated result": {
+                        "value": 159.024,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1320",
+                    "calculation description": "Cv(!WellValues)",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_288",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_384",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_480",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_289",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_385",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_481",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_300",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_396",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_492",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_301",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_397",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_493",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_312",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_408",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_504",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_313",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_409",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_505",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_324",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_420",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_516",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_325",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_421",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_517",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Values",
+                    "calculated result": {
+                        "value": 0.486,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1321",
+                    "calculation description": "!WellValues",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_288",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_384",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_480",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Values",
+                    "calculated result": {
+                        "value": 4.155,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1322",
+                    "calculation description": "!WellValues",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_289",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_385",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_481",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Values",
+                    "calculated result": {
+                        "value": -0.526,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1323",
+                    "calculation description": "!WellValues",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_300",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_396",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_492",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Values",
+                    "calculated result": {
+                        "value": 0.57,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1324",
+                    "calculation description": "!WellValues",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_301",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_397",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_493",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Values",
+                    "calculated result": {
+                        "value": 0.89,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1325",
+                    "calculation description": "!WellValues",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_312",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_408",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_504",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Values",
+                    "calculated result": {
+                        "value": -0.294,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1326",
+                    "calculation description": "!WellValues",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_313",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_409",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_505",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Values",
+                    "calculated result": {
+                        "value": 1.117,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1327",
+                    "calculation description": "!WellValues",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_324",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_420",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_516",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Values",
+                    "calculated result": {
+                        "value": 0.814,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1328",
+                    "calculation description": "!WellValues",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_325",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_421",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_517",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "MeanValue",
+                    "calculated result": {
                         "value": 0.282,
                         "unit": "(unitless)"
                     },
@@ -32158,6 +32685,533 @@
                             },
                             {
                                 "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_277",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "MeanValue",
+                    "calculated result": {
+                        "value": 0.547,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1329",
+                    "calculation description": "Average(!WellValues)",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_336",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_432",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_528",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_337",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_433",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_529",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_348",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_444",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_540",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_349",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_445",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_541",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_360",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_456",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_552",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_361",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_457",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_553",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_372",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_468",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_564",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_373",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_469",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_565",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Std.Dev.",
+                    "calculated result": {
+                        "value": 4.031,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1330",
+                    "calculation description": "Stdev(!WellValues)",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_336",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_432",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_528",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_337",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_433",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_529",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_348",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_444",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_540",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_349",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_445",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_541",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_360",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_456",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_552",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_361",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_457",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_553",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_372",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_468",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_564",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_373",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_469",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_565",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "CV%",
+                    "calculated result": {
+                        "value": 737.275,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1331",
+                    "calculation description": "Cv(!WellValues)",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_336",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_432",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_528",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_337",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_433",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_529",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_348",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_444",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_540",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_349",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_445",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_541",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_360",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_456",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_552",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_361",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_457",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_553",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_372",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_468",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_564",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_373",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_469",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_565",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Values",
+                    "calculated result": {
+                        "value": 5.507,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1332",
+                    "calculation description": "!WellValues",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_336",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_432",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_528",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Values",
+                    "calculated result": {
+                        "value": 0.521,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1333",
+                    "calculation description": "!WellValues",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_337",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_433",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_529",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Values",
+                    "calculated result": {
+                        "value": 0.449,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1334",
+                    "calculation description": "!WellValues",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_348",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_444",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_540",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Values",
+                    "calculated result": {
+                        "value": 3.28,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1335",
+                    "calculation description": "!WellValues",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_349",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_445",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_541",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Values",
+                    "calculated result": {
+                        "value": -8.383,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1336",
+                    "calculation description": "!WellValues",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_360",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_456",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_552",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Values",
+                    "calculated result": {
+                        "value": 0.794,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1337",
+                    "calculation description": "!WellValues",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_361",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_457",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_553",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Values",
+                    "calculated result": {
+                        "value": 0.315,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1338",
+                    "calculation description": "!WellValues",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_372",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_468",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_564",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Values",
+                    "calculated result": {
+                        "value": 1.891,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1339",
+                    "calculation description": "!WellValues",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_373",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_469",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_565",
                                 "data source feature": "Absorbance"
                             }
                         ]
@@ -37486,1060 +38540,6 @@
                             },
                             {
                                 "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_286",
-                                "data source feature": "Absorbance"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "MeanValue",
-                    "calculated result": {
-                        "value": 0.902,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1318",
-                    "calculation description": "Average(!WellValues)",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_288",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_384",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_480",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_289",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_385",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_481",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_300",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_396",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_492",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_301",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_397",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_493",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_312",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_408",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_504",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_313",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_409",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_505",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_324",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_420",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_516",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_325",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_421",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_517",
-                                "data source feature": "Absorbance"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Std.Dev.",
-                    "calculated result": {
-                        "value": 1.434,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1319",
-                    "calculation description": "Stdev(!WellValues)",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_288",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_384",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_480",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_289",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_385",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_481",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_300",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_396",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_492",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_301",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_397",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_493",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_312",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_408",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_504",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_313",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_409",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_505",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_324",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_420",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_516",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_325",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_421",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_517",
-                                "data source feature": "Absorbance"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "CV%",
-                    "calculated result": {
-                        "value": 159.024,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1320",
-                    "calculation description": "Cv(!WellValues)",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_288",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_384",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_480",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_289",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_385",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_481",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_300",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_396",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_492",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_301",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_397",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_493",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_312",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_408",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_504",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_313",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_409",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_505",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_324",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_420",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_516",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_325",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_421",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_517",
-                                "data source feature": "Absorbance"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Values",
-                    "calculated result": {
-                        "value": 0.486,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1321",
-                    "calculation description": "!WellValues",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_288",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_384",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_480",
-                                "data source feature": "Absorbance"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Values",
-                    "calculated result": {
-                        "value": 4.155,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1322",
-                    "calculation description": "!WellValues",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_289",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_385",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_481",
-                                "data source feature": "Absorbance"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Values",
-                    "calculated result": {
-                        "value": -0.526,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1323",
-                    "calculation description": "!WellValues",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_300",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_396",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_492",
-                                "data source feature": "Absorbance"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Values",
-                    "calculated result": {
-                        "value": 0.57,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1324",
-                    "calculation description": "!WellValues",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_301",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_397",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_493",
-                                "data source feature": "Absorbance"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Values",
-                    "calculated result": {
-                        "value": 0.89,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1325",
-                    "calculation description": "!WellValues",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_312",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_408",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_504",
-                                "data source feature": "Absorbance"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Values",
-                    "calculated result": {
-                        "value": -0.294,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1326",
-                    "calculation description": "!WellValues",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_313",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_409",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_505",
-                                "data source feature": "Absorbance"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Values",
-                    "calculated result": {
-                        "value": 1.117,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1327",
-                    "calculation description": "!WellValues",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_324",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_420",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_516",
-                                "data source feature": "Absorbance"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Values",
-                    "calculated result": {
-                        "value": 0.814,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1328",
-                    "calculation description": "!WellValues",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_325",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_421",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_517",
-                                "data source feature": "Absorbance"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "MeanValue",
-                    "calculated result": {
-                        "value": 0.547,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1329",
-                    "calculation description": "Average(!WellValues)",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_336",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_432",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_528",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_337",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_433",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_529",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_348",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_444",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_540",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_349",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_445",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_541",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_360",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_456",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_552",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_361",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_457",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_553",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_372",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_468",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_564",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_373",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_469",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_565",
-                                "data source feature": "Absorbance"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Std.Dev.",
-                    "calculated result": {
-                        "value": 4.031,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1330",
-                    "calculation description": "Stdev(!WellValues)",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_336",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_432",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_528",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_337",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_433",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_529",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_348",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_444",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_540",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_349",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_445",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_541",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_360",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_456",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_552",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_361",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_457",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_553",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_372",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_468",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_564",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_373",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_469",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_565",
-                                "data source feature": "Absorbance"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "CV%",
-                    "calculated result": {
-                        "value": 737.275,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1331",
-                    "calculation description": "Cv(!WellValues)",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_336",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_432",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_528",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_337",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_433",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_529",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_348",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_444",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_540",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_349",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_445",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_541",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_360",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_456",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_552",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_361",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_457",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_553",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_372",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_468",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_564",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_373",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_469",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_565",
-                                "data source feature": "Absorbance"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Values",
-                    "calculated result": {
-                        "value": 5.507,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1332",
-                    "calculation description": "!WellValues",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_336",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_432",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_528",
-                                "data source feature": "Absorbance"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Values",
-                    "calculated result": {
-                        "value": 0.521,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1333",
-                    "calculation description": "!WellValues",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_337",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_433",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_529",
-                                "data source feature": "Absorbance"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Values",
-                    "calculated result": {
-                        "value": 0.449,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1334",
-                    "calculation description": "!WellValues",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_348",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_444",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_540",
-                                "data source feature": "Absorbance"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Values",
-                    "calculated result": {
-                        "value": 3.28,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1335",
-                    "calculation description": "!WellValues",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_349",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_445",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_541",
-                                "data source feature": "Absorbance"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Values",
-                    "calculated result": {
-                        "value": -8.383,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1336",
-                    "calculation description": "!WellValues",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_360",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_456",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_552",
-                                "data source feature": "Absorbance"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Values",
-                    "calculated result": {
-                        "value": 0.794,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1337",
-                    "calculation description": "!WellValues",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_361",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_457",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_553",
-                                "data source feature": "Absorbance"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Values",
-                    "calculated result": {
-                        "value": 0.315,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1338",
-                    "calculation description": "!WellValues",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_372",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_468",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_564",
-                                "data source feature": "Absorbance"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Values",
-                    "calculated result": {
-                        "value": 1.891,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1339",
-                    "calculation description": "!WellValues",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_373",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_469",
-                                "data source feature": "Absorbance"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_565",
                                 "data source feature": "Absorbance"
                             }
                         ]
@@ -43881,7 +43881,7 @@
             "file name": "MD_SMP_absorbance_endpoint_example04.txt",
             "UNC path": "N/A",
             "ASM converter name": "allotropy_molecular_devices_softmax_pro",
-            "ASM converter version": "0.1.51",
+            "ASM converter version": "0.1.61",
             "software name": "SoftMax Pro"
         },
         "device system document": {

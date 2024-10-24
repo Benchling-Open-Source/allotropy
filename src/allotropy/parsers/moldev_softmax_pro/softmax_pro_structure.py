@@ -20,6 +20,7 @@ from allotropy.exceptions import (
 )
 from allotropy.parsers.constants import NEGATIVE_ZERO
 from allotropy.parsers.lines_reader import CsvReader
+from allotropy.parsers.moldev_softmax_pro import constants
 from allotropy.parsers.utils.pandas import rm_df_columns, SeriesData, set_columns
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
@@ -154,7 +155,7 @@ class GroupSampleData:
                 GroupDataElement(
                     sample=identifier,
                     position=row[str, ["Well", "Wells"]],
-                    plate=row[str, "WellPlateName"],
+                    plate=row[str, constants.WELL_PLATE_COLUMN_NAMES],
                     entries=entries,
                     errors=errors,
                 )
@@ -187,12 +188,28 @@ class GroupSampleData:
 
 
 @dataclass(frozen=True)
+class GroupSummaryData:
+    data_elements: list[GroupDataElementEntry]
+
+    @classmethod
+    def create(cls, data: pd.Series[str]) -> GroupSummaryData:
+        return GroupSummaryData(
+            [
+                GroupDataElementEntry(str(key), float(value))
+                for key, value in data.items()
+                if try_non_nan_float_or_none(value) is not None
+            ]
+        )
+
+
+@dataclass(frozen=True)
 class GroupData:
     name: str
     sample_data: list[GroupSampleData]
+    summary_data: list[GroupSummaryData]
 
     @staticmethod
-    def create(reader: CsvReader) -> GroupData:
+    def create(reader: CsvReader) -> GroupData | None:
         name = assert_not_none(
             reader.pop(),
             msg="Unable to find group block name.",
@@ -204,21 +221,31 @@ class GroupData:
                 msg="Unable to find group block data.",
             ).replace(r"^\s+$", None, regex=True)
 
-        assert_not_none(
-            data.get("Sample"),
-            msg=f"Unable to find sample identifier column in group data {name}",
-        )
-
-        samples = data["Sample"].ffill()
-        try:
-            sample_data = [
-                GroupSampleData.create(data.iloc[sample_entries.index])
-                for _, sample_entries in samples.groupby(samples)
-            ]
-        except ValueError as e:
-            msg = f"Unable to read Group data format for group {name}."
-            raise AllotropeConversionError(msg) from e
-        return GroupData(name=name, sample_data=sample_data)
+        if "Sample" in data.columns:
+            if not any(
+                plate_column in data.columns
+                for plate_column in constants.WELL_PLATE_COLUMN_NAMES
+            ):
+                return None
+            samples = data["Sample"].ffill()
+            try:
+                sample_data = [
+                    GroupSampleData.create(data.iloc[sample_entries.index])
+                    for _, sample_entries in samples.groupby(samples)
+                ]
+            except ValueError as e:
+                msg = f"Unable to read Sample Group data format for group '{name}'."
+                raise AllotropeConversionError(msg) from e
+            return GroupData(name=name, sample_data=sample_data, summary_data=[])
+        else:
+            try:
+                summary_data = [
+                    GroupSummaryData.create(row) for _, row in data.iterrows()
+                ]
+            except ValueError as e:
+                msg = f"Unable to read Summary Group data format for group '{name}'."
+                raise AllotropeConversionError(msg) from e
+            return GroupData(name=name, sample_data=[], summary_data=summary_data)
 
 
 @dataclass(frozen=True)
@@ -263,13 +290,15 @@ class GroupBlock(Block):
     group_summaries: GroupSummaries
 
     @staticmethod
-    def create(reader: CsvReader) -> GroupBlock:
-        return GroupBlock(
-            block_type="Group",
-            group_data=GroupData.create(reader),
-            group_columns=GroupColumns.create(reader),
-            group_summaries=GroupSummaries.create(reader),
-        )
+    def create(reader: CsvReader) -> GroupBlock | None:
+        # Read in block, and return GroupBlock if data is valid format.
+        # Note that we always read in all sections, in order to consume the lines.
+        group_data = GroupData.create(reader)
+        group_columns = GroupColumns.create(reader)
+        group_summaries = GroupSummaries.create(reader)
+        if not group_data:
+            return None
+        return GroupBlock("Group", group_data, group_columns, group_summaries)
 
 
 # TODO do we need to do anything with these?
@@ -1036,11 +1065,8 @@ class BlockList:
 
         for sub_reader in BlockList._iter_blocks_reader(reader):
             if sub_reader.match("^Group"):
-                if "WellPlateName" in assert_not_none(
-                    sub_reader.get_line(sub_reader.current_line + 1),
-                    msg="Unable to get columns from group block",
-                ):
-                    group_blocks.append(GroupBlock.create(sub_reader))
+                if group_block := GroupBlock.create(sub_reader):
+                    group_blocks.append(group_block)
             elif sub_reader.match("^Plate"):
                 header_series = PlateBlock.read_header(sub_reader)
                 plate_block_cls = PlateBlock.get_plate_block_cls(header_series)

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections import defaultdict
 from itertools import chain
 
 from allotropy.allotrope.models.shared.definitions.definitions import (
@@ -23,6 +24,7 @@ from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
     DataElement,
     GroupBlock,
     GroupSampleData,
+    GroupSummaryData,
     PlateBlock,
     StructureData,
 )
@@ -250,14 +252,78 @@ def _get_group_simple_calc_docs(
     return calculated_documents
 
 
-def _get_group_calc_docs(data: StructureData) -> list[CalculatedDataItem]:
+def _get_group_summary_calc_docs(
+    group_block: GroupBlock,
+    group_summary_data: GroupSummaryData,
+    group_calc_docs: dict[str, list[CalculatedDataItem]],
+) -> list[CalculatedDataItem]:
     calculated_documents = []
+    for entry in group_summary_data.data_elements:
+        description = group_block.group_columns.data.get(entry.name, "")
+
+        # For a group summary calculation, the data sources are all measurements of the corresponding group.
+        # First, figure out which group or groups are being summarized by checking if the column name of the
+        # value or the description contains group names.
+        matching_groups = {
+            group_name
+            for group_name in group_calc_docs
+            if group_name in entry.name or group_name in description
+        }
+        # If no matching group is found, skip this value, because we cannot attribute it.
+        # TODO(nstender): add to custom info doc in a follow-up.
+        if not matching_groups:
+            continue
+
+        # The data sources for this calc data doc are all the data sources of all the calc docs in the matching
+        # groups.
+        data_sources = {}
+        for group_name in matching_groups:
+            for calc_doc in group_calc_docs[group_name]:
+                for data_source in calc_doc.data_sources:
+                    data_sources[data_source.identifier] = data_source
+            # Attempt to clean up the description of the calculated data by removing group names, if present.
+            description = (
+                description.replace(f"@{group_name}", "")
+                .replace(group_name, "")
+                .strip("'")
+            )
+
+        # If the column name (entry.name) is the group_name, use description for name.
+        name = (
+            description
+            if len(matching_groups) == 1 and next(iter(matching_groups)) == entry.name
+            else entry.name
+        )
+
+        calculated_documents.append(
+            _build_calc_doc(
+                name=name,
+                value=entry.value,
+                data_sources=list(data_sources.values()),
+                description=description or None,
+            )
+        )
+
+    return calculated_documents
+
+
+def _get_group_calc_docs(data: StructureData) -> list[CalculatedDataItem]:
+    calculated_documents: defaultdict[str, list[CalculatedDataItem]] = defaultdict(list)
     for group_block in data.block_list.group_blocks:
         for group_sample_data in group_block.group_data.sample_data:
-            calculated_documents += _get_group_agg_calc_docs(
-                data, group_block, group_sample_data
+            calculated_documents[group_block.group_data.name].extend(
+                _get_group_agg_calc_docs(data, group_block, group_sample_data)
             )
-            calculated_documents += _get_group_simple_calc_docs(
-                data, group_block, group_sample_data
+            calculated_documents[group_block.group_data.name].extend(
+                _get_group_simple_calc_docs(data, group_block, group_sample_data)
             )
-    return calculated_documents
+
+    for group_block in data.block_list.group_blocks:
+        for group_summary_data in group_block.group_data.summary_data:
+            calculated_documents[group_block.group_data.name].extend(
+                _get_group_summary_calc_docs(
+                    group_block, group_summary_data, calculated_documents
+                )
+            )
+
+    return [doc for calc_docs in calculated_documents.values() for doc in calc_docs]
