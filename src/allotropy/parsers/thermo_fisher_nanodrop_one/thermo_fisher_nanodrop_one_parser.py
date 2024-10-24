@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import pandas as pd
 
 from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
@@ -40,7 +42,8 @@ class ThermoFisherNanodropOneParser(VendorParser[Data, Model]):
             named_file_contents.contents,
             encoding=DEFAULT_ENCODING,
         )
-        experiment_type, *_ = named_file_contents.original_file_path.split(maxsplit=1)
+        file_name = Path(named_file_contents.original_file_path).name
+        experiment_type, *_ = file_name.split(maxsplit=1)
         return csv_data, experiment_type
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
