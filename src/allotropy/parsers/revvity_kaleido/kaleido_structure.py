@@ -24,7 +24,7 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
     ProcessedData,
 )
 from allotropy.exceptions import AllotropeConversionError, AllotropeParsingError
-from allotropy.parsers.lines_reader import CsvReader
+from allotropy.parsers.lines_reader import CsvReader, EMPTY_STR_OR_CSV_LINE
 from allotropy.parsers.revvity_kaleido import constants
 from allotropy.parsers.utils.pandas import df_to_series_data, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
@@ -126,7 +126,9 @@ class Results:
         barcode = cls.read_barcode(reader)
 
         results = assert_not_none(
-            reader.pop_csv_block_as_df(header=0, index_col=0),
+            reader.pop_csv_block_as_df(
+                header=0, index_col=0, empty_pat=EMPTY_STR_OR_CSV_LINE
+            ),
             msg="Unable to find results table.",
         )
 
@@ -158,7 +160,7 @@ class AnalysisResult:
         reader: CsvReader, next_section_title: str
     ) -> list[AnalysisResult]:
         section_title = assert_not_none(
-            reader.drop_until(f"^Results for|^{next_section_title}"),
+            reader.drop_until(f"^Results? for|^{next_section_title}"),
             msg=f"Unable to find Analysis Result or {next_section_title} section.",
         )
 
@@ -193,7 +195,9 @@ class AnalysisResult:
 
         try:
             results_df = assert_not_none(
-                reader.pop_csv_block_as_df(header=0, index_col=0),
+                reader.pop_csv_block_as_df(
+                    header=0, index_col=0, empty_pat=EMPTY_STR_OR_CSV_LINE
+                ),
                 msg="Unable to find results table.",
             ).dropna(how="all")
         except AllotropeParsingError:
@@ -241,8 +245,11 @@ class MeasurementInfo:
         )
 
         lines = list(reader.pop_until(f"^{next_section_title}"))
+        # Because we may read over multiple sections of data to get all metadata for this section, there may
+        # be varying number of columns. Get the max number of columns, so we can read in all sections without error.
+        max_num_cols = max(len(line.split(",")) for line in lines)
         df = assert_not_none(
-            reader.lines_as_df(lines, index_col=0, names=range(7)),
+            reader.lines_as_df(lines, index_col=0, names=range(max_num_cols)),
             msg=f"Unable to parser data for {section_name} section.",
         ).T.dropna(how="all")
         df.columns = df.columns.astype(str).str.strip(":")
@@ -269,7 +276,9 @@ class Platemap:
         reader.pop_if_match("^Plate")
 
         data = assert_not_none(
-            reader.pop_csv_block_as_df(header=0, index_col=0),
+            reader.pop_csv_block_as_df(
+                header=0, index_col=0, empty_pat=EMPTY_STR_OR_CSV_LINE
+            ),
             msg="Unable to find platemap information.",
         )
 
@@ -356,8 +365,11 @@ class Measurements:
         )
 
         lines = list(reader.pop_until(f"^{next_section_title}"))
+        # Because we may read over multiple sections of data to get all metadata for this section, there may
+        # be varying number of columns. Get the max number of columns, so we can read in all sections without error.
+        max_num_cols = max(len(line.split(",")) for line in lines)
         df = assert_not_none(
-            reader.lines_as_df(lines, index_col=0, names=range(7)),
+            reader.lines_as_df(lines, index_col=0, names=range(max_num_cols)),
             msg=f"Unable to parser data for {section_title} section.",
         ).T.dropna(how="all")
         df.columns = df.columns.astype(str).str.lower()

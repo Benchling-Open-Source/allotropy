@@ -15,6 +15,10 @@ from allotropy.parsers.utils.pandas import read_csv
 from allotropy.parsers.utils.values import assert_not_none
 
 EMPTY_STR_PATTERN = r"^\s*$"
+# Use to match empty line in a CSV file
+EMPTY_CSV_LINE = r"^,*$"
+# Use to match empty string or empty CSV line
+EMPTY_STR_OR_CSV_LINE = r"^[\s,]*$"
 
 
 def read_to_lines(named_file_contents: NamedFileContents) -> list[str]:
