@@ -197,7 +197,7 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_technique_document(
-        self, measurement_group: MeasurementGroup, metadata: Metadata
+            self, measurement_group: MeasurementGroup, metadata: Metadata
     ) -> SolutionAnalyzerDocumentItem:
         return SolutionAnalyzerDocumentItem(
             analyst=measurement_group.analyst,
@@ -221,7 +221,7 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_measurement_document_item(
-        self, measurement: Measurement, metadata: Metadata
+            self, measurement: Measurement, metadata: Metadata
     ) -> MeasurementDocument:
         return add_custom_information_document(
             MeasurementDocument(
@@ -340,7 +340,7 @@ class Mapper(SchemaMapper[Data, Model]):
         raise AllotropeConversionError(msg)
 
     def _create_processed_data_document(
-        self, measurement: Measurement
+            self, measurement: Measurement
     ) -> ProcessedDataAggregateDocument | None:
         processed_data_document = add_custom_information_document(
             ProcessedDataDocumentItem(
@@ -415,7 +415,7 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_error_aggregate_document(
-        self, errors: list[Error] | None
+            self, errors: list[Error] | None
     ) -> ErrorAggregateDocument | None:
         if not errors:
             return None

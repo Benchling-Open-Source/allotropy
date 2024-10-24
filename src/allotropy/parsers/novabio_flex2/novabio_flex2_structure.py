@@ -2,17 +2,19 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import re
+from pathlib import Path
 from typing import Any
 
 import pandas as pd
 
-from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
+from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
     Analyte,
     Measurement,
     MeasurementGroup,
-    Metadata,
+    Metadata, DataProcessing,
 )
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.novabio_flex2.constants import (
     ANALYTE_MAPPINGS,
     DETECTION_PROPERTY_MAPPING,
@@ -21,7 +23,7 @@ from allotropy.parsers.novabio_flex2.constants import (
     INVALID_FILENAME_MESSAGE,
     MODEL_NUMBER,
     PRODUCT_MANUFACTURER,
-    SOFTWARE_NAME,
+    SOFTWARE_NAME, DATA_PROCESSING_FIELDS,
 )
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
@@ -165,6 +167,10 @@ def _get_measurements(sample: Sample) -> list[Measurement]:
             key: getattr(sample, key)
             for key in DETECTION_PROPERTY_MAPPING[detection_type]
         }
+        data_processing = {key: kwargs.pop(key) for key in DATA_PROCESSING_FIELDS if key in kwargs}
+        data_processing = dict(filter(lambda item: item[1] is not None, data_processing.items()))
+        if data_processing:
+            kwargs["data_processing"] = DataProcessing(**data_processing)
         if any(value is not None for value in kwargs.values()):
             measurements.append(
                 _create_measurement(
@@ -178,6 +184,7 @@ def _get_measurements(sample: Sample) -> list[Measurement]:
 
 
 def create_metadata(title: Title, file_name: str) -> Metadata:
+    asm_file_identifier = Path(file_name).with_suffix(".json")
     return Metadata(
         file_name=file_name,
         device_type=DEVICE_TYPE,
@@ -185,6 +192,9 @@ def create_metadata(title: Title, file_name: str) -> Metadata:
         product_manufacturer=PRODUCT_MANUFACTURER,
         device_identifier=title.device_identifier,
         software_name=SOFTWARE_NAME,
+        asm_file_identifier=asm_file_identifier.name,
+        data_system_instance_identifier=NOT_APPLICABLE,
+        unc_path=NOT_APPLICABLE,
     )
 
 
