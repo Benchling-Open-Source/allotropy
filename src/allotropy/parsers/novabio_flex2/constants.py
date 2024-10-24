@@ -73,3 +73,8 @@ DETECTION_PROPERTY_MAPPING = {
         "cell_density_dilution_factor",
     ],
 }
+
+DATA_PROCESSING_FIELDS = [
+    "cell_type_processing_method",
+    "cell_density_dilution_factor",
+]

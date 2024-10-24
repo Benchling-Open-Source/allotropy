@@ -3,7 +3,7 @@ import re
 import pandas as pd
 import pytest
 
-from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
+from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
     Analyte,
 )
 from allotropy.exceptions import AllotropeConversionError
