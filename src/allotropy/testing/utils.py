@@ -21,13 +21,31 @@ from allotropy.to_allotrope import allotrope_from_file
 DictType = Mapping[str, Any]
 
 
-def _replace_asm_converter_name_and_version(allotrope_dict: DictType) -> DictType:
+def _mock_unc_path(unc_path: str) -> str:
+    path = Path(unc_path)
+    if str(path) == path.name:
+        return path.name
+    return f'test/path/{path.name}'
+
+
+def _replace_unc_path(allotrope_dict: DictType) -> DictType:
+    new_dict = dict(allotrope_dict)
+    for key, value in new_dict.items():
+        if key == "data system document":
+            value["UNC path"] = _mock_unc_path(value["UNC path"])
+        if isinstance(value, dict):
+            _replace_unc_path(value)
+
+    return new_dict
+
+
+def _replace_asm_converter_version(allotrope_dict: DictType) -> DictType:
     new_dict = dict(allotrope_dict)
     for key, value in new_dict.items():
         if key == "data system document":
             value["ASM converter version"] = ASM_CONVERTER_VERSION
         if isinstance(value, dict):
-            _replace_asm_converter_name_and_version(value)
+            _replace_asm_converter_version(value)
 
     return new_dict
 
@@ -107,8 +125,7 @@ def _assert_allotrope_dicts_equal(
     expected: DictType,
     actual: DictType,
 ) -> None:
-    expected_replaced = _replace_asm_converter_name_and_version(expected)
-
+    expected_replaced = _replace_asm_converter_version(expected)
     ddiff = DeepDiff(
         expected_replaced,
         actual,
@@ -175,6 +192,7 @@ def validate_contents(
     with tempfile.TemporaryFile(mode="w+", encoding=DEFAULT_ENCODING) as tmp:
         json.dump(allotrope_dict, tmp, ensure_ascii=False)
 
+    allotrope_dict = _replace_unc_path(allotrope_dict)
     try:
         with open(expected_file, encoding=DEFAULT_ENCODING) as f:
             expected_dict = json.load(f)

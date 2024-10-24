@@ -794,10 +794,10 @@
         ],
         "data system document": {
             "file name": "Appbio_AbsoluteQ_example02.csv",
-            "UNC path": "/Users/sebastian.cardona/workspace/allotropy/tests/parsers/appbio_absolute_q/testdata/Appbio_AbsoluteQ_example02.csv",
+            "UNC path": "test/path/Appbio_AbsoluteQ_example02.csv",
             "software name": "QuantStudio Absolute Q Digital PCR Software",
             "ASM converter name": "allotropy_appbio_absoluteq",
-            "ASM converter version": "0.1.58"
+            "ASM converter version": "0.1.61"
         }
     }
 }
