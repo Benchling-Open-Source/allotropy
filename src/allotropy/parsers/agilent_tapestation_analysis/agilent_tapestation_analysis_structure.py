@@ -72,7 +72,7 @@ def create_metadata(root_element: ET.Element, file_path: str) -> Metadata:
         file_name=path.name,
         file_identifier=path.with_suffix(".json").name,
         unc_path=file_path,
-        analyst=get_val_from_xml_or_none(environment, "Experimenter"),
+        analyst=get_val_from_xml(environment, "Experimenter"),
         analytical_method_identifier=get_val_from_xml_or_none(
             file_information, "Assay"
         ),
