@@ -1,6 +1,6 @@
 import re
 
-from allotropy.parsers.lines_reader import CsvReader
+from allotropy.parsers.lines_reader import CsvReader, EMPTY_STR_OR_CSV_LINE
 from allotropy.parsers.revvity_kaleido.kaleido_structure import (
     AnalysisResult,
     BackgroundInfo,
@@ -21,15 +21,15 @@ def create_background_info(reader: CsvReader) -> BackgroundInfo:
         msg="Unable to find EnSight section.",
     )
 
-    reader.drop_until("^Result for")
+    reader.drop_until("^Results? for")
 
     line = assert_not_none(
-        reader.drop_until_inclusive("^Result for.(.+) 1"),
+        reader.drop_until_inclusive("^Results? for.(.+) 1"),
         msg="Unable to find background information.",
     )
 
     experiment_type = assert_not_none(
-        re.match("^Result for.(.+) 1", line),
+        re.match("^Results? for.(.+) 1", line),
         msg="Unable to find experiment type from background information section.",
     ).group(1)
 
@@ -49,7 +49,7 @@ def create_results(reader: CsvReader) -> Results:
     barcode = raw_barcode.strip()
 
     results = assert_not_none(
-        reader.pop_csv_block_as_df(header=0, index_col=0),
+        reader.pop_csv_block_as_df(header=0, index_col=0, empty_pat=EMPTY_STR_OR_CSV_LINE),
         msg="Unable to find results table.",
     )
 
@@ -69,7 +69,7 @@ def create_results(reader: CsvReader) -> Results:
 
 def create_analysis_results(reader: CsvReader) -> list[AnalysisResult]:
     section_title = assert_not_none(
-        reader.drop_until("^Results for|^Measurement Information"),
+        reader.drop_until("^Results? for|^Measurement Information"),
         msg="Unable to find Analysis Result or Measurement Information section.",
     )
 
@@ -134,7 +134,7 @@ def create_platemap(reader: CsvReader) -> Platemap:
     )
 
     data = assert_not_none(
-        reader.pop_csv_block_as_df(header=0, index_col=0),
+        reader.pop_csv_block_as_df(header=0, index_col=0, empty_pat=EMPTY_STR_OR_CSV_LINE),
         msg="Unable to find platemap information.",
     )
 

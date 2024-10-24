@@ -14,6 +14,8 @@ from allotropy.exceptions import AllotropeConversionError, AllotropeParsingError
 from allotropy.named_file_contents import NamedFileContents
 
 EMPTY_STR_PATTERN = r"^\s*$"
+# Use to match empty string or empty CSV line
+EMPTY_STR_OR_CSV_LINE = r"^[\s,]*$"
 
 
 def read_to_lines(named_file_contents: NamedFileContents) -> list[str]:
