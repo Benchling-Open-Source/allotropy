@@ -25,7 +25,7 @@ def _mock_unc_path(unc_path: str) -> str:
     path = Path(unc_path)
     if str(path) == path.name:
         return path.name
-    return f'test/path/{path.name}'
+    return f"test/path/{path.name}"
 
 
 def _replace_unc_path(allotrope_dict: DictType) -> DictType:
