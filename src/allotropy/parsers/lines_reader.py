@@ -134,6 +134,12 @@ class LinesReader:
         self.drop_until_empty(empty_pat)
         return self.pop()
 
+    def pop_while(self, match_pat: str) -> Iterator[str]:
+        while self.current_line_exists() and self.match(match_pat):
+            line = self.pop()
+            if line is not None:
+                yield line
+
     def pop_until(self, match_pat: str) -> Iterator[str]:
         while self.current_line_exists() and not self.match(match_pat):
             line = self.pop()

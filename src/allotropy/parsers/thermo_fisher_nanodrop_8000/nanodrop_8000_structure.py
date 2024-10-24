@@ -3,8 +3,6 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
-import pandas as pd
-
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
     CalculatedDataItem,
@@ -19,7 +17,7 @@ from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._1
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.thermo_fisher_nanodrop_8000 import constants
 from allotropy.parsers.utils.iterables import get_first_not_none
-from allotropy.parsers.utils.pandas import map_rows, SeriesData
+from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
@@ -190,11 +188,6 @@ class SpectroscopyRow:
             measurements,
             calculated_data,
         )
-
-    @staticmethod
-    def create_rows(data: pd.DataFrame) -> list[SpectroscopyRow]:
-        data.columns = data.columns.str.lower()
-        return map_rows(data, SpectroscopyRow.create)
 
 
 def create_metadata(file_path: str) -> Metadata:
