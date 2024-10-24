@@ -97,12 +97,12 @@ class Header:
         )
 
 
-def create_metadata(header: Header, file_name: str) -> Metadata:
-    asm_file_identifier = Path(file_name).with_suffix(".json")
+def create_metadata(header: Header, file_path: str) -> Metadata:
+    asm_file_identifier = Path(file_path).with_suffix(".json")
     return Metadata(
-        file_name=file_name,
+        file_name=Path(file_path).name,
         asm_file_identifier=asm_file_identifier.name,
-        unc_path=header.path,
+        unc_path=header.path or file_path,
         device_identifier=NOT_APPLICABLE,
         model_number=NOT_APPLICABLE,
         data_system_instance_id=NOT_APPLICABLE,

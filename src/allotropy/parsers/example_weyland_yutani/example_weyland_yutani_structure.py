@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from pathlib import Path
 
 import pandas as pd
 
@@ -86,9 +87,10 @@ class Plate:
         ]
 
 
-def create_metadata(instrument: Instrument, file_name: str) -> Metadata:
+def create_metadata(instrument: Instrument, file_path: str) -> Metadata:
     return Metadata(
-        file_name=file_name,
+        file_name=Path(file_path).name,
+        unc_path=file_path,
         model_number=instrument.serial_number,
         device_identifier=instrument.nickname,
     )

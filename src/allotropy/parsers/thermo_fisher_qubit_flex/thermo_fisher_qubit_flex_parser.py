@@ -28,4 +28,4 @@ class ThermoFisherQubitFlexParser(VendorParser[Data, Model]):
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         df = ThermoFisherQubitFlexReader.read(named_file_contents)
-        return create_data(df, named_file_contents.original_file_name)
+        return create_data(df, named_file_contents.original_file_path)

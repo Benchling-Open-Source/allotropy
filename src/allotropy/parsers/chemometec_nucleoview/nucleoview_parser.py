@@ -26,7 +26,7 @@ class ChemometecNucleoviewParser(VendorParser[Data, Model]):
         df = NucleoviewReader.read(named_file_contents.contents)
         return Data(
             create_metadata(
-                df_to_series_data(df.head(1)), named_file_contents.original_file_name
+                df_to_series_data(df.head(1)), named_file_contents.original_file_path
             ),
             map_rows(df, create_measurement_groups),
         )

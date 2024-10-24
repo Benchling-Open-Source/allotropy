@@ -1,4 +1,5 @@
 from collections.abc import Iterable
+from pathlib import Path
 
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
@@ -200,7 +201,7 @@ def _create_measurement(
     )
 
 
-def create_metadata(header: Header, file_name: str) -> Metadata:
+def create_metadata(header: Header, file_path: str) -> Metadata:
     return Metadata(
         device_identifier=header.device_identifier,
         device_type=constants.DEVICE_TYPE,
@@ -209,8 +210,8 @@ def create_metadata(header: Header, file_name: str) -> Metadata:
         software_name=constants.SOFTWARE_NAME,
         software_version=constants.SOFTWARE_VERSION,
         data_system_instance_identifier=constants.DATA_SYSTEM_INSTANCE_IDENTIFIER,
-        file_name=file_name,
-        unc_path="",  # unknown
+        file_name=Path(file_path).name,
+        unc_path=file_path,
         measurement_method_identifier=header.measurement_method_identifier,
         experiment_type=header.experiment_type,
         container_type=constants.CONTAINER_TYPE,

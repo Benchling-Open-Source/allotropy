@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from pathlib import Path
 
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
@@ -124,13 +125,14 @@ class SpectroscopyRow:
         )
 
 
-def create_metadata(data: SeriesData, file_name: str) -> Metadata:
+def create_metadata(data: SeriesData, file_path: str) -> Metadata:
     return Metadata(
         device_identifier=constants.DEVICE_IDENTIFIER,
         device_type=constants.DEVICE_TYPE,
         model_number=constants.MODEL_NUBMER,
         equipment_serial_number=data[str, "serial number"],
-        file_name=file_name,
+        file_name=Path(file_path).name,
+        unc_path=file_path,
     )
 
 

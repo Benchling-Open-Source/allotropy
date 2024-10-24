@@ -121,6 +121,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 ),
                 data_system_document=DataSystemDocument(
                     file_name=data.metadata.file_name,
+                    UNC_path=data.metadata.unc_path,
                     software_name=data.metadata.software_name,
                     ASM_converter_name=self.converter_name,
                     ASM_converter_version=ASM_CONVERTER_VERSION,

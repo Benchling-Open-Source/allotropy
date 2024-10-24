@@ -25,7 +25,6 @@ from allotropy.parsers.agilent_tapestation_analysis.constants import (
     PRODUCT_MANUFACTURER,
     SOFTWARE_NAME,
 )
-from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.utils.values import assert_not_none
 from allotropy.testing.utils import mock_uuid_generation
 from tests.parsers.agilent_tapestation_analysis.agilent_tapestation_test_data import (
@@ -35,10 +34,11 @@ from tests.parsers.agilent_tapestation_analysis.agilent_tapestation_test_data im
 
 
 def test_create_metadata() -> None:
-    metadata = create_metadata(get_metadata_xml(), "file.txt")
+    metadata = create_metadata(get_metadata_xml(), "users/files/file.txt")
     assert metadata == Metadata(
         file_identifier="file.json",
         file_name="file.txt",
+        unc_path="users/files/file.txt",
         analyst="TapeStation User",
         analytical_method_identifier="cfDNA",
         data_system_instance_identifier="TAPESTATIONPC",
@@ -52,7 +52,6 @@ def test_create_metadata() -> None:
         product_manufacturer=PRODUCT_MANUFACTURER,
         device_type=DEVICE_TYPE,
         detection_type=DETECTION_TYPE,
-        unc_path=NOT_APPLICABLE,
     )
 
 

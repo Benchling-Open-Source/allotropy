@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from os.path import splitext
+from pathlib import Path
 from xml.etree import ElementTree as ET  # noqa: N817
 
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
@@ -30,7 +30,6 @@ from allotropy.parsers.agilent_tapestation_analysis.constants import (
     SOFTWARE_NAME,
     UNIT_CLASS_LOOKUP,
 )
-from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import try_float_or_none
 from allotropy.parsers.utils.xml import (
@@ -63,15 +62,16 @@ def _get_calculated_data(
     return calculated_data
 
 
-def create_metadata(root_element: ET.Element, file_name: str) -> Metadata:
-    file_identifier, _ = splitext(file_name)
+def create_metadata(root_element: ET.Element, file_path: str) -> Metadata:
     file_information = get_element_from_xml(root_element, "FileInformation")
     environment = get_element_from_xml(
         root_element, "ScreenTapes/ScreenTape/Environment"
     )
+    path = Path(file_path)
     return Metadata(
-        file_name=file_name,
-        file_identifier=f"{file_identifier}.json",
+        file_name=path.name,
+        file_identifier=path.with_suffix(".json").name,
+        unc_path=file_path,
         analyst=get_val_from_xml(environment, "Experimenter"),
         analytical_method_identifier=get_val_from_xml_or_none(
             file_information, "Assay"
@@ -93,7 +93,6 @@ def create_metadata(root_element: ET.Element, file_name: str) -> Metadata:
         product_manufacturer=PRODUCT_MANUFACTURER,
         device_type=DEVICE_TYPE,
         detection_type=DETECTION_TYPE,
-        unc_path=NOT_APPLICABLE,
     )
 
 

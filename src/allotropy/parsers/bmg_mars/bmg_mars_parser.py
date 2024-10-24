@@ -28,6 +28,6 @@ class BmgMarsParser(VendorParser[Data, Model]):
         reader = BmgMarsReader(named_file_contents)
         header = Header.create(reader.header, reader.header_content)
         return Data(
-            create_metadata(header, named_file_contents.original_file_name),
+            create_metadata(header, named_file_contents.original_file_path),
             create_measurement_groups(reader.data, header),
         )

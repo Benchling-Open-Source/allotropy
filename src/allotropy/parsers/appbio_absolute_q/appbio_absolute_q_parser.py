@@ -32,7 +32,7 @@ class AppbioAbsoluteQParser(VendorParser[Data, Model]):
         return Data(
             create_metadata(
                 wells[0].items[0].instrument_identifier,
-                named_file_contents.original_file_name,
+                named_file_contents.original_file_path,
             ),
             create_measurement_groups(wells),
             calculated_data=create_calculated_data(wells, groups),

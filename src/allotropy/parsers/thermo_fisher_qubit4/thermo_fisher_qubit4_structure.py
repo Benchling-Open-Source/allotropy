@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from pathlib import Path
+
 from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
     ContainerType,
 )
@@ -84,9 +86,10 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
     )
 
 
-def create_metadata(file_name: str) -> Metadata:
+def create_metadata(file_path: str) -> Metadata:
     return Metadata(
-        file_name=file_name,
+        file_name=Path(file_path).name,
+        unc_path=file_path,
         device_identifier=NOT_APPLICABLE,
         model_number=constants.MODEL_NUMBER,
         software_name=constants.QUBIT_SOFTWARE,

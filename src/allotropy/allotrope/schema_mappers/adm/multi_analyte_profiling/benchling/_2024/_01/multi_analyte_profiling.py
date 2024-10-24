@@ -97,6 +97,7 @@ class Calibration:
 @dataclass(frozen=True)
 class Metadata:
     file_name: str
+    unc_path: str
     device_type: str
     model_number: str | None = None
     software_name: str | None = None
@@ -133,6 +134,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 data_system_document=DataSystemDocument(
                     data_system_instance_identifier=data.metadata.data_system_instance_identifier,
                     file_name=data.metadata.file_name,
+                    UNC_path=data.metadata.unc_path,
                     software_name=data.metadata.software_name,
                     software_version=data.metadata.software_version,
                     ASM_converter_name=self.converter_name,
