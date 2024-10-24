@@ -1,29 +1,31 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-import re
 from pathlib import Path
+import re
 from typing import Any
 
 import pandas as pd
 
 from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
     Analyte,
+    DataProcessing,
     Measurement,
     MeasurementGroup,
-    Metadata, DataProcessing,
+    Metadata,
 )
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.novabio_flex2.constants import (
     ANALYTE_MAPPINGS,
+    DATA_PROCESSING_FIELDS,
     DETECTION_PROPERTY_MAPPING,
     DEVICE_TYPE,
     FILENAME_REGEX,
     INVALID_FILENAME_MESSAGE,
     MODEL_NUMBER,
     PRODUCT_MANUFACTURER,
-    SOFTWARE_NAME, DATA_PROCESSING_FIELDS,
+    SOFTWARE_NAME,
 )
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
@@ -167,8 +169,12 @@ def _get_measurements(sample: Sample) -> list[Measurement]:
             key: getattr(sample, key)
             for key in DETECTION_PROPERTY_MAPPING[detection_type]
         }
-        data_processing = {key: kwargs.pop(key) for key in DATA_PROCESSING_FIELDS if key in kwargs}
-        data_processing = dict(filter(lambda item: item[1] is not None, data_processing.items()))
+        data_processing = {
+            key: kwargs.pop(key) for key in DATA_PROCESSING_FIELDS if key in kwargs
+        }
+        data_processing = dict(
+            filter(lambda item: item[1] is not None, data_processing.items())
+        )
         if data_processing:
             kwargs["data_processing"] = DataProcessing(**data_processing)
         if any(value is not None for value in kwargs.values()):
