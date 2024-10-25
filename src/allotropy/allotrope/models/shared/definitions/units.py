@@ -196,7 +196,7 @@ class Nanometer(HasUnit):
 
 @dataclass(frozen=True, kw_only=True)
 class Nanomolar(HasUnit):
-    unit: str = "nmol/dm^3"
+    unit: str = "nM"
 
 
 @dataclass(frozen=True, kw_only=True)
