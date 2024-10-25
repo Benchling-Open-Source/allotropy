@@ -150,6 +150,7 @@ class InstrumentSettings:
         pattern = rf"\b(?:{keys})\b"
         if match := re.search(pattern, channel_setting):
             return TRANSMITTED_LIGHT_MAP[match.group()]
+        return None
 
 
 @dataclass(frozen=True)
