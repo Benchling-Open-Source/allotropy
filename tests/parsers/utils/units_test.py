@@ -14,8 +14,6 @@ def test_get_quantity_class() -> None:
     for property_class in TQuantityValue.__subclasses__():
         # Typing does not know that all subclasses of TQuantityValue have default value for unit set.
         instance = property_class(value=1.0)  # type: ignore[call-arg]
-        print(get_quantity_class(instance.unit))
-        print(property_class)
         assert get_quantity_class(instance.unit) == property_class
 
 
