@@ -164,8 +164,9 @@ class Measurement:
             float, "Dilution Factor"
         ]
         # Keys in the median data that are not analyte data.
-        metadata_keys = ["Location", "Sample", "Total Events"]
-
+        analyte_names = [
+            key for key in median_data.series.index if key not in ["Location", "Sample", "Total Events"]
+        ]
         well_location, location_id = cls._get_location_details(location)
 
         return Measurement(
@@ -182,9 +183,7 @@ class Measurement:
                     ],
                     fluorescence=median_data[float, analyte],
                 )
-                for analyte in [
-                    key for key in median_data.series.index if key not in metadata_keys
-                ]
+                for analyte in analyte_names
             ],
             errors=cls._get_errors(errors_data, well_location),
         )
