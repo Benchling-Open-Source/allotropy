@@ -159,14 +159,10 @@ class Measurement:
         dilution_factor_data: pd.DataFrame,
         errors_data: pd.DataFrame,
     ) -> Measurement:
-        print(median_data.series)
-        print(median_data.series.index)
         location = median_data[str, "Location"]
         dilution_factor_setting = SeriesData(dilution_factor_data.loc[location])[
             float, "Dilution Factor"
         ]
-        well_location, location_id = cls._get_location_details(location)
-
         # Keys in the median data that are not analyte data.
         metadata_keys = ["Location", "Sample", "Total Events"]
 
