@@ -159,12 +159,16 @@ class Measurement:
         dilution_factor_data: pd.DataFrame,
         errors_data: pd.DataFrame,
     ) -> Measurement:
+        print(median_data.series)
+        print(median_data.series.index)
         location = median_data[str, "Location"]
         dilution_factor_setting = SeriesData(dilution_factor_data.loc[location])[
             float, "Dilution Factor"
         ]
-        # analyte names are columns 3 through the penultimate
-        analyte_names = list(median_data.series.index)[2:-1]
+        well_location, location_id = cls._get_location_details(location)
+
+        # Keys in the median data that are not analyte data.
+        metadata_keys = ["Location", "Sample", "Total Events"]
 
         well_location, location_id = cls._get_location_details(location)
 
@@ -182,7 +186,9 @@ class Measurement:
                     ],
                     fluorescence=median_data[float, analyte],
                 )
-                for analyte in analyte_names
+                for analyte in [
+                    key for key in median_data.series.index if key not in metadata_keys
+                ]
             ],
             errors=cls._get_errors(errors_data, well_location),
         )
@@ -241,10 +247,12 @@ class MeasurementList:
     @classmethod
     def _get_median_data(cls, reader: CsvReader) -> pd.DataFrame:
         reader.drop_until_inclusive(TABLE_HEADER_PATTERN.format("Median"))
-        return assert_not_none(
+        df = assert_not_none(
             reader.pop_csv_block_as_df(empty_pat=LUMINEX_EMPTY_PATTERN, header="infer"),
             msg="Unable to find Median table.",
         )
+        df = df.dropna(how="all", axis="columns")
+        return df
 
     @classmethod
     def _get_bead_ids_data(cls, reader: CsvReader) -> pd.Series[str]:
