@@ -1,0 +1,1117 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
+    "plate reader aggregate document": {
+        "plate reader document": [
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-18T11:07:06+00:00",
+                    "plate well count": {
+                        "value": 6,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "AGILENT_GEN5_IMAGE_TEST_ID_43",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "Imager",
+                                        "detection type": "optical-imaging",
+                                        "detector gain setting": "16.6",
+                                        "magnification setting": {
+                                            "value": 4.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "exposure duration setting": {
+                                            "value": 5.0,
+                                            "unit": "ms"
+                                        },
+                                        "illumination setting": {
+                                            "value": 10.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "image count setting": {
+                                            "value": 121.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "auto focus setting": false
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 A1",
+                                "location identifier": "A1",
+                                "well plate identifier": "Plate 1"
+                            }
+                        },
+                        {
+                            "measurement identifier": "AGILENT_GEN5_IMAGE_TEST_ID_44",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "Imager",
+                                        "detection type": "optical-imaging",
+                                        "excitation wavelength setting": {
+                                            "value": 377.0,
+                                            "unit": "nm"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 447.0,
+                                            "unit": "nm"
+                                        },
+                                        "magnification setting": {
+                                            "value": 4.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "image count setting": {
+                                            "value": 121.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "auto focus setting": false,
+                                        "fluorescent tag setting": "DAPI"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 A1",
+                                "location identifier": "A1",
+                                "well plate identifier": "Plate 1"
+                            }
+                        },
+                        {
+                            "measurement identifier": "AGILENT_GEN5_IMAGE_TEST_ID_45",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "Imager",
+                                        "detection type": "optical-imaging",
+                                        "excitation wavelength setting": {
+                                            "value": 469.0,
+                                            "unit": "nm"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 525.0,
+                                            "unit": "nm"
+                                        },
+                                        "magnification setting": {
+                                            "value": 4.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "image count setting": {
+                                            "value": 121.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "auto focus setting": false,
+                                        "fluorescent tag setting": "GFP"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 A1",
+                                "location identifier": "A1",
+                                "well plate identifier": "Plate 1"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "C:\\Gen5\\Protocols\\6W_HCBF_Confluence_3Ch.prt",
+                    "experimental data identifier": "C:\\Gen5\\Experiments\\3ChTest.xpt",
+                    "container type": "well plate",
+                    "processed data aggregate document": {
+                        "processed data document": [
+                            {
+                                "processed data identifier": "AGILENT_GEN5_IMAGE_TEST_ID_42",
+                                "image feature aggregate document": {
+                                    "image feature document": [
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_0",
+                                            "image feature name": "Cell Count",
+                                            "image feature result": {
+                                                "value": 434.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_3",
+                                            "image feature name": "Object Sum Area",
+                                            "image feature result": {
+                                                "value": 88200000.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_6",
+                                            "image feature name": "Object Sum Area[DAPI 377,447]",
+                                            "image feature result": {
+                                                "value": 88200000.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_9",
+                                            "image feature name": "Object Sum Area[GFP 469,525]",
+                                            "image feature result": {
+                                                "value": 88200000.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_12",
+                                            "image feature name": "Confluence %",
+                                            "image feature result": {
+                                                "value": 11.25,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_15",
+                                            "image feature name": "Confluence %_GFP",
+                                            "image feature result": {
+                                                "value": 11.25,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_18",
+                                            "image feature name": "Confluence %_DAPI",
+                                            "image feature result": {
+                                                "value": 11.25,
+                                                "unit": "(unitless)"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-18T11:07:06+00:00",
+                    "plate well count": {
+                        "value": 6,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "AGILENT_GEN5_IMAGE_TEST_ID_47",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "Imager",
+                                        "detection type": "optical-imaging",
+                                        "detector gain setting": "16.6",
+                                        "magnification setting": {
+                                            "value": 4.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "exposure duration setting": {
+                                            "value": 5.0,
+                                            "unit": "ms"
+                                        },
+                                        "illumination setting": {
+                                            "value": 10.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "image count setting": {
+                                            "value": 121.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "auto focus setting": false
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 A2",
+                                "location identifier": "A2",
+                                "well plate identifier": "Plate 1"
+                            }
+                        },
+                        {
+                            "measurement identifier": "AGILENT_GEN5_IMAGE_TEST_ID_48",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "Imager",
+                                        "detection type": "optical-imaging",
+                                        "excitation wavelength setting": {
+                                            "value": 377.0,
+                                            "unit": "nm"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 447.0,
+                                            "unit": "nm"
+                                        },
+                                        "magnification setting": {
+                                            "value": 4.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "image count setting": {
+                                            "value": 121.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "auto focus setting": false,
+                                        "fluorescent tag setting": "DAPI"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 A2",
+                                "location identifier": "A2",
+                                "well plate identifier": "Plate 1"
+                            }
+                        },
+                        {
+                            "measurement identifier": "AGILENT_GEN5_IMAGE_TEST_ID_49",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "Imager",
+                                        "detection type": "optical-imaging",
+                                        "excitation wavelength setting": {
+                                            "value": 469.0,
+                                            "unit": "nm"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 525.0,
+                                            "unit": "nm"
+                                        },
+                                        "magnification setting": {
+                                            "value": 4.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "image count setting": {
+                                            "value": 121.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "auto focus setting": false,
+                                        "fluorescent tag setting": "GFP"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 A2",
+                                "location identifier": "A2",
+                                "well plate identifier": "Plate 1"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "C:\\Gen5\\Protocols\\6W_HCBF_Confluence_3Ch.prt",
+                    "experimental data identifier": "C:\\Gen5\\Experiments\\3ChTest.xpt",
+                    "container type": "well plate",
+                    "processed data aggregate document": {
+                        "processed data document": [
+                            {
+                                "processed data identifier": "AGILENT_GEN5_IMAGE_TEST_ID_46",
+                                "image feature aggregate document": {
+                                    "image feature document": [
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_1",
+                                            "image feature name": "Cell Count",
+                                            "image feature result": {
+                                                "value": 411.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_4",
+                                            "image feature name": "Object Sum Area",
+                                            "image feature result": {
+                                                "value": 29500000.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_7",
+                                            "image feature name": "Object Sum Area[DAPI 377,447]",
+                                            "image feature result": {
+                                                "value": 29500000.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_10",
+                                            "image feature name": "Object Sum Area[GFP 469,525]",
+                                            "image feature result": {
+                                                "value": 29500000.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_13",
+                                            "image feature name": "Confluence %",
+                                            "image feature result": {
+                                                "value": 3.76,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_16",
+                                            "image feature name": "Confluence %_GFP",
+                                            "image feature result": {
+                                                "value": 3.76,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_19",
+                                            "image feature name": "Confluence %_DAPI",
+                                            "image feature result": {
+                                                "value": 3.76,
+                                                "unit": "(unitless)"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-18T11:07:06+00:00",
+                    "plate well count": {
+                        "value": 6,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "AGILENT_GEN5_IMAGE_TEST_ID_51",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "Imager",
+                                        "detection type": "optical-imaging",
+                                        "detector gain setting": "16.6",
+                                        "magnification setting": {
+                                            "value": 4.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "exposure duration setting": {
+                                            "value": 5.0,
+                                            "unit": "ms"
+                                        },
+                                        "illumination setting": {
+                                            "value": 10.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "image count setting": {
+                                            "value": 121.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "auto focus setting": false
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 A3",
+                                "location identifier": "A3",
+                                "well plate identifier": "Plate 1"
+                            }
+                        },
+                        {
+                            "measurement identifier": "AGILENT_GEN5_IMAGE_TEST_ID_52",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "Imager",
+                                        "detection type": "optical-imaging",
+                                        "excitation wavelength setting": {
+                                            "value": 377.0,
+                                            "unit": "nm"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 447.0,
+                                            "unit": "nm"
+                                        },
+                                        "magnification setting": {
+                                            "value": 4.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "image count setting": {
+                                            "value": 121.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "auto focus setting": false,
+                                        "fluorescent tag setting": "DAPI"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 A3",
+                                "location identifier": "A3",
+                                "well plate identifier": "Plate 1"
+                            }
+                        },
+                        {
+                            "measurement identifier": "AGILENT_GEN5_IMAGE_TEST_ID_53",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "Imager",
+                                        "detection type": "optical-imaging",
+                                        "excitation wavelength setting": {
+                                            "value": 469.0,
+                                            "unit": "nm"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 525.0,
+                                            "unit": "nm"
+                                        },
+                                        "magnification setting": {
+                                            "value": 4.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "image count setting": {
+                                            "value": 121.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "auto focus setting": false,
+                                        "fluorescent tag setting": "GFP"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 A3",
+                                "location identifier": "A3",
+                                "well plate identifier": "Plate 1"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "C:\\Gen5\\Protocols\\6W_HCBF_Confluence_3Ch.prt",
+                    "experimental data identifier": "C:\\Gen5\\Experiments\\3ChTest.xpt",
+                    "container type": "well plate",
+                    "processed data aggregate document": {
+                        "processed data document": [
+                            {
+                                "processed data identifier": "AGILENT_GEN5_IMAGE_TEST_ID_50",
+                                "image feature aggregate document": {
+                                    "image feature document": [
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_2",
+                                            "image feature name": "Cell Count",
+                                            "image feature result": {
+                                                "value": "NaN",
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_5",
+                                            "image feature name": "Object Sum Area",
+                                            "image feature result": {
+                                                "value": "NaN",
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_8",
+                                            "image feature name": "Object Sum Area[DAPI 377,447]",
+                                            "image feature result": {
+                                                "value": "NaN",
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_11",
+                                            "image feature name": "Object Sum Area[GFP 469,525]",
+                                            "image feature result": {
+                                                "value": "NaN",
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_14",
+                                            "image feature name": "Confluence %",
+                                            "image feature result": {
+                                                "value": "NaN",
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_17",
+                                            "image feature name": "Confluence %_GFP",
+                                            "image feature result": {
+                                                "value": "NaN",
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_20",
+                                            "image feature name": "Confluence %_DAPI",
+                                            "image feature result": {
+                                                "value": "NaN",
+                                                "unit": "(unitless)"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-18T11:07:06+00:00",
+                    "plate well count": {
+                        "value": 6,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "AGILENT_GEN5_IMAGE_TEST_ID_55",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "Imager",
+                                        "detection type": "optical-imaging",
+                                        "detector gain setting": "16.6",
+                                        "magnification setting": {
+                                            "value": 4.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "exposure duration setting": {
+                                            "value": 5.0,
+                                            "unit": "ms"
+                                        },
+                                        "illumination setting": {
+                                            "value": 10.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "image count setting": {
+                                            "value": 121.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "auto focus setting": false
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 B1",
+                                "location identifier": "B1",
+                                "well plate identifier": "Plate 1"
+                            }
+                        },
+                        {
+                            "measurement identifier": "AGILENT_GEN5_IMAGE_TEST_ID_56",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "Imager",
+                                        "detection type": "optical-imaging",
+                                        "excitation wavelength setting": {
+                                            "value": 377.0,
+                                            "unit": "nm"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 447.0,
+                                            "unit": "nm"
+                                        },
+                                        "magnification setting": {
+                                            "value": 4.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "image count setting": {
+                                            "value": 121.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "auto focus setting": false,
+                                        "fluorescent tag setting": "DAPI"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 B1",
+                                "location identifier": "B1",
+                                "well plate identifier": "Plate 1"
+                            }
+                        },
+                        {
+                            "measurement identifier": "AGILENT_GEN5_IMAGE_TEST_ID_57",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "Imager",
+                                        "detection type": "optical-imaging",
+                                        "excitation wavelength setting": {
+                                            "value": 469.0,
+                                            "unit": "nm"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 525.0,
+                                            "unit": "nm"
+                                        },
+                                        "magnification setting": {
+                                            "value": 4.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "image count setting": {
+                                            "value": 121.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "auto focus setting": false,
+                                        "fluorescent tag setting": "GFP"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 B1",
+                                "location identifier": "B1",
+                                "well plate identifier": "Plate 1"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "C:\\Gen5\\Protocols\\6W_HCBF_Confluence_3Ch.prt",
+                    "experimental data identifier": "C:\\Gen5\\Experiments\\3ChTest.xpt",
+                    "container type": "well plate",
+                    "processed data aggregate document": {
+                        "processed data document": [
+                            {
+                                "processed data identifier": "AGILENT_GEN5_IMAGE_TEST_ID_54",
+                                "image feature aggregate document": {
+                                    "image feature document": [
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_21",
+                                            "image feature name": "Cell Count",
+                                            "image feature result": {
+                                                "value": "NaN",
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_24",
+                                            "image feature name": "Object Sum Area",
+                                            "image feature result": {
+                                                "value": "NaN",
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_27",
+                                            "image feature name": "Object Sum Area[DAPI 377,447]",
+                                            "image feature result": {
+                                                "value": "NaN",
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_30",
+                                            "image feature name": "Object Sum Area[GFP 469,525]",
+                                            "image feature result": {
+                                                "value": "NaN",
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_33",
+                                            "image feature name": "Confluence %",
+                                            "image feature result": {
+                                                "value": "NaN",
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_36",
+                                            "image feature name": "Confluence %_GFP",
+                                            "image feature result": {
+                                                "value": "NaN",
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_39",
+                                            "image feature name": "Confluence %_DAPI",
+                                            "image feature result": {
+                                                "value": "NaN",
+                                                "unit": "(unitless)"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-18T11:07:06+00:00",
+                    "plate well count": {
+                        "value": 6,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "AGILENT_GEN5_IMAGE_TEST_ID_59",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "Imager",
+                                        "detection type": "optical-imaging",
+                                        "detector gain setting": "16.6",
+                                        "magnification setting": {
+                                            "value": 4.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "exposure duration setting": {
+                                            "value": 5.0,
+                                            "unit": "ms"
+                                        },
+                                        "illumination setting": {
+                                            "value": 10.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "image count setting": {
+                                            "value": 121.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "auto focus setting": false
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 B2",
+                                "location identifier": "B2",
+                                "well plate identifier": "Plate 1"
+                            }
+                        },
+                        {
+                            "measurement identifier": "AGILENT_GEN5_IMAGE_TEST_ID_60",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "Imager",
+                                        "detection type": "optical-imaging",
+                                        "excitation wavelength setting": {
+                                            "value": 377.0,
+                                            "unit": "nm"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 447.0,
+                                            "unit": "nm"
+                                        },
+                                        "magnification setting": {
+                                            "value": 4.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "image count setting": {
+                                            "value": 121.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "auto focus setting": false,
+                                        "fluorescent tag setting": "DAPI"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 B2",
+                                "location identifier": "B2",
+                                "well plate identifier": "Plate 1"
+                            }
+                        },
+                        {
+                            "measurement identifier": "AGILENT_GEN5_IMAGE_TEST_ID_61",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "Imager",
+                                        "detection type": "optical-imaging",
+                                        "excitation wavelength setting": {
+                                            "value": 469.0,
+                                            "unit": "nm"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 525.0,
+                                            "unit": "nm"
+                                        },
+                                        "magnification setting": {
+                                            "value": 4.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "image count setting": {
+                                            "value": 121.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "auto focus setting": false,
+                                        "fluorescent tag setting": "GFP"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 B2",
+                                "location identifier": "B2",
+                                "well plate identifier": "Plate 1"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "C:\\Gen5\\Protocols\\6W_HCBF_Confluence_3Ch.prt",
+                    "experimental data identifier": "C:\\Gen5\\Experiments\\3ChTest.xpt",
+                    "container type": "well plate",
+                    "processed data aggregate document": {
+                        "processed data document": [
+                            {
+                                "processed data identifier": "AGILENT_GEN5_IMAGE_TEST_ID_58",
+                                "image feature aggregate document": {
+                                    "image feature document": [
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_22",
+                                            "image feature name": "Cell Count",
+                                            "image feature result": {
+                                                "value": "NaN",
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_25",
+                                            "image feature name": "Object Sum Area",
+                                            "image feature result": {
+                                                "value": "NaN",
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_28",
+                                            "image feature name": "Object Sum Area[DAPI 377,447]",
+                                            "image feature result": {
+                                                "value": "NaN",
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_31",
+                                            "image feature name": "Object Sum Area[GFP 469,525]",
+                                            "image feature result": {
+                                                "value": "NaN",
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_34",
+                                            "image feature name": "Confluence %",
+                                            "image feature result": {
+                                                "value": "NaN",
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_37",
+                                            "image feature name": "Confluence %_GFP",
+                                            "image feature result": {
+                                                "value": "NaN",
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_40",
+                                            "image feature name": "Confluence %_DAPI",
+                                            "image feature result": {
+                                                "value": "NaN",
+                                                "unit": "(unitless)"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-18T11:07:06+00:00",
+                    "plate well count": {
+                        "value": 6,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "AGILENT_GEN5_IMAGE_TEST_ID_63",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "Imager",
+                                        "detection type": "optical-imaging",
+                                        "detector gain setting": "16.6",
+                                        "magnification setting": {
+                                            "value": 4.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "exposure duration setting": {
+                                            "value": 5.0,
+                                            "unit": "ms"
+                                        },
+                                        "illumination setting": {
+                                            "value": 10.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "image count setting": {
+                                            "value": 121.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "auto focus setting": false
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 B3",
+                                "location identifier": "B3",
+                                "well plate identifier": "Plate 1"
+                            }
+                        },
+                        {
+                            "measurement identifier": "AGILENT_GEN5_IMAGE_TEST_ID_64",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "Imager",
+                                        "detection type": "optical-imaging",
+                                        "excitation wavelength setting": {
+                                            "value": 377.0,
+                                            "unit": "nm"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 447.0,
+                                            "unit": "nm"
+                                        },
+                                        "magnification setting": {
+                                            "value": 4.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "image count setting": {
+                                            "value": 121.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "auto focus setting": false,
+                                        "fluorescent tag setting": "DAPI"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 B3",
+                                "location identifier": "B3",
+                                "well plate identifier": "Plate 1"
+                            }
+                        },
+                        {
+                            "measurement identifier": "AGILENT_GEN5_IMAGE_TEST_ID_65",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "Imager",
+                                        "detection type": "optical-imaging",
+                                        "excitation wavelength setting": {
+                                            "value": 469.0,
+                                            "unit": "nm"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 525.0,
+                                            "unit": "nm"
+                                        },
+                                        "magnification setting": {
+                                            "value": 4.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "image count setting": {
+                                            "value": 121.0,
+                                            "unit": "(unitless)"
+                                        },
+                                        "auto focus setting": false,
+                                        "fluorescent tag setting": "GFP"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Plate 1 B3",
+                                "location identifier": "B3",
+                                "well plate identifier": "Plate 1"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "C:\\Gen5\\Protocols\\6W_HCBF_Confluence_3Ch.prt",
+                    "experimental data identifier": "C:\\Gen5\\Experiments\\3ChTest.xpt",
+                    "container type": "well plate",
+                    "processed data aggregate document": {
+                        "processed data document": [
+                            {
+                                "processed data identifier": "AGILENT_GEN5_IMAGE_TEST_ID_62",
+                                "image feature aggregate document": {
+                                    "image feature document": [
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_23",
+                                            "image feature name": "Cell Count",
+                                            "image feature result": {
+                                                "value": "NaN",
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_26",
+                                            "image feature name": "Object Sum Area",
+                                            "image feature result": {
+                                                "value": "NaN",
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_29",
+                                            "image feature name": "Object Sum Area[DAPI 377,447]",
+                                            "image feature result": {
+                                                "value": "NaN",
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_32",
+                                            "image feature name": "Object Sum Area[GFP 469,525]",
+                                            "image feature result": {
+                                                "value": "NaN",
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_35",
+                                            "image feature name": "Confluence %",
+                                            "image feature result": {
+                                                "value": "NaN",
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_38",
+                                            "image feature name": "Confluence %_GFP",
+                                            "image feature result": {
+                                                "value": "NaN",
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        {
+                                            "image feature identifier": "AGILENT_GEN5_IMAGE_TEST_ID_41",
+                                            "image feature name": "Confluence %_DAPI",
+                                            "image feature result": {
+                                                "value": "NaN",
+                                                "unit": "(unitless)"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "Cytation5",
+            "equipment serial number": "2403051A"
+        },
+        "data system document": {
+            "file name": "transmitted_light_setting_example.txt",
+            "software name": "Gen5 Image",
+            "software version": "3.15.15",
+            "ASM converter name": "allotropy_agilent_gen5_image",
+            "ASM converter version": "0.1.61"
+        }
+    }
+}

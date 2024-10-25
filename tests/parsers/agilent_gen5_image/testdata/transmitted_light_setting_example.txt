@@ -1,0 +1,74 @@
+
+
+Software Version	3.15.15
+
+
+
+Experiment File Path:	C:\Gen5\Experiments\3ChTest.xpt
+Protocol File Path:	C:\Gen5\Protocols\6W_HCBF_Confluence_3Ch.prt
+
+
+
+Plate Number	Plate 1
+Date	10/18/2024
+Time	11:07:06 AM
+Reader Type:	Cytation5
+Reader Serial Number:	2403051A
+Reading Type	Reader
+
+Procedure Details
+
+Plate Type	Costar 6 well (Use plate lid)
+Well Selection	Runtime
+Eject plate on completion
+Set Temperature	Setpoint 37∞C, Gradient 0 ∞C
+	Preheat before moving to next step
+Read	Image Montage
+	Full Plate
+	Objective: 4x
+	Field of View: Full WFOV
+	Channel 1:  Bright Field:High Contrast
+	    LED intensity: 10, Integration time: 5 msec, Camera gain: 16.6
+	    Fixed focal height at bottom elevation plus 0 µm
+	    Vibration CV threshold: 0.01
+	    Images to average: 1
+	Channel 2:  DAPI 377,447
+	    Auto exposure: A1
+	    Target exposure percentage: 75
+	    Skip percentage: 0.1
+	    Use default integration threshold
+	    Use focal height from first channel with offset of 0 µm
+	    Vibration CV threshold: 0.01
+	    Images to average: 1
+	Channel 3:  GFP 469,525
+	    Auto exposure: A1
+	    Target exposure percentage: 75
+	    Skip percentage: 0.1
+	    Use default integration threshold
+	    Use focal height from first channel with offset of 0 µm
+	    Vibration CV threshold: 0.01
+	    Images to average: 1
+	Horizontal offset: 0 µm, Vertical offset: 0 µm
+	Delay after plate movement: 300 msec
+	Montage rows: 11, columns: 11
+	Montage horizontal spacing: 1673 µm, vertical spacing: 1157 µm
+	Montage autofocus option: Autofocus option based on objective size
+	Ignore montage images outside of well
+Plate In
+
+Results
+	1	2	3
+A	434	411	?????	Cell Count
+	8.82E+07	2.95E+07	?????	Object Sum Area
+	8.82E+07	2.95E+07	?????	Object Sum Area[DAPI 377,447]
+	8.82E+07	2.95E+07	?????	Object Sum Area[GFP 469,525]
+	11.250	3.760	?????	Confluence %
+	11.250	3.760	?????	Confluence %_GFP
+	11.250	3.760	?????	Confluence %_DAPI
+B	?????	?????	?????	Cell Count
+	?????	?????	?????	Object Sum Area
+	?????	?????	?????	Object Sum Area[DAPI 377,447]
+	?????	?????	?????	Object Sum Area[GFP 469,525]
+	?????	?????	?????	Confluence %
+	?????	?????	?????	Confluence %_GFP
+	?????	?????	?????	Confluence %_DAPI
