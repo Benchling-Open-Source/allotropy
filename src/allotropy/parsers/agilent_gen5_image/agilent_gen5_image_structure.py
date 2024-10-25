@@ -91,7 +91,9 @@ class InstrumentSettings:
         channel_settings = cls._get_channel_line_settings(settings_lines[0])
         transmitted_light = None
         if not channel_settings:
-            transmitted_light = cls._get_transmitted_light_out_of_channel_settings(settings_lines[0])
+            transmitted_light = cls._get_transmitted_light_out_of_channel_settings(
+                settings_lines[0]
+            )
         settings_dict, non_kv_settings = parse_settings(settings_lines[1:])
         if not transmitted_light:
             transmitted_light = cls._get_transmitted_light(non_kv_settings)
@@ -144,8 +146,8 @@ class InstrumentSettings:
     def _get_transmitted_light_out_of_channel_settings(
         cls, channel_setting: str
     ) -> TransmittedLightSetting | None:
-        # example line setting '	Channel 1:  Bright Field:High Contrast'
-        pattern = rf"\b(?:{"|".join(TRANSMITTED_LIGHT_MAP.keys())})\b"
+        keys = "|".join(TRANSMITTED_LIGHT_MAP.keys())
+        pattern = rf"\b(?:{keys})\b"
         if match := re.search(pattern, channel_setting):
             return TRANSMITTED_LIGHT_MAP[match.group()]
 
