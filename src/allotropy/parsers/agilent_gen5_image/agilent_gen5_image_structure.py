@@ -89,8 +89,12 @@ class InstrumentSettings:
     @classmethod
     def create(cls, settings_lines: list[str]) -> InstrumentSettings:
         channel_settings = cls._get_channel_line_settings(settings_lines[0])
-
+        transmitted_light = None
+        if not channel_settings:
+            transmitted_light = cls._get_transmitted_light_out_of_channel_settings(settings_lines[0])
         settings_dict, non_kv_settings = parse_settings(settings_lines[1:])
+        if not transmitted_light:
+            transmitted_light = cls._get_transmitted_light(non_kv_settings)
 
         if exposure_duration := settings_dict.get("Integration time"):
             exposure_duration = str(exposure_duration).split()[0]
@@ -105,7 +109,7 @@ class InstrumentSettings:
             detector_wavelength=try_float_or_none(
                 channel_settings.get("detector_wavelength")
             ),
-            transmitted_light=cls._get_transmitted_light(non_kv_settings),
+            transmitted_light=transmitted_light,
             illumination=try_float_or_none(settings_dict.get("LED intensity")),
             exposure_duration=try_float_or_none(exposure_duration),
             detector_gain=settings_dict.get("Camera gain"),
@@ -135,6 +139,15 @@ class InstrumentSettings:
             if line in TRANSMITTED_LIGHT_MAP:
                 return TRANSMITTED_LIGHT_MAP[line]
         return None
+
+    @classmethod
+    def _get_transmitted_light_out_of_channel_settings(
+        cls, channel_setting: str
+    ) -> TransmittedLightSetting | None:
+        # example line setting '	Channel 1:  Bright Field:High Contrast'
+        pattern = rf"\b(?:{"|".join(TRANSMITTED_LIGHT_MAP.keys())})\b"
+        if match := re.search(pattern, channel_setting):
+            return TRANSMITTED_LIGHT_MAP[match.group()]
 
 
 @dataclass(frozen=True)
