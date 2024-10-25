@@ -170,7 +170,8 @@ def _get_measurements(sample: Sample) -> list[Measurement]:
             for key in DETECTION_PROPERTY_MAPPING[detection_type]
         }
         data_processing = {
-            key: value for key in DATA_PROCESSING_FIELDS
+            key: value
+            for key in DATA_PROCESSING_FIELDS
             if key in kwargs and (value := kwargs.pop(key)) is not None
         }
         if data_processing:
