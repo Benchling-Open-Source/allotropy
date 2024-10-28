@@ -21,6 +21,7 @@ from allotropy.allotrope.models.shared.definitions.units import (
     MicrogramPerMicroliter,
     MicrogramPerMilliliter,
     Microliter,
+    MicroliterPerMinute,
     Micrometer,
     MilliAbsorbanceUnit,
     MilliAbsorbanceUnitTimesMilliliter,
@@ -36,15 +37,18 @@ from allotropy.allotrope.models.shared.definitions.units import (
     MilliSecond,
     Millivolt,
     MillivoltTimesSecond,
+    Molar,
     NanoCoulomb,
     NanoCoulombTimesSecond,
     NanogramPerMicroliter,
     NanogramPerMilliliter,
     Nanometer,
+    Nanomolar,
     Number,
     NumberPerMicroliter,
     OpticalDensity,
     Percent,
+    PerSecond,
     PH,
     PicoAmpere,
     PicoAmpereTimesSecond,
@@ -225,6 +229,18 @@ class TNullableQuantityValueMicroliter(Microliter, TNullableQuantityValue):
 
 
 @dataclass(frozen=True, kw_only=True)
+class TQuantityValueMicroliterPerMinute(MicroliterPerMinute, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValueMicroliterPerMinute(
+    MicroliterPerMinute, TNullableQuantityValue
+):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
 class TQuantityValueMicrometer(Micrometer, TQuantityValue):
     pass
 
@@ -401,6 +417,16 @@ class TNullableQuantityValueMillivoltTimesSecond(
 
 
 @dataclass(frozen=True, kw_only=True)
+class TQuantityValueMolar(Molar, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValueMolar(Molar, TNullableQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
 class TQuantityValueNanoCoulomb(NanoCoulomb, TQuantityValue):
     pass
 
@@ -457,6 +483,16 @@ class TNullableQuantityValueNanometer(Nanometer, TNullableQuantityValue):
 
 
 @dataclass(frozen=True, kw_only=True)
+class TQuantityValueNanomolar(Nanomolar, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValueNanomolar(Nanomolar, TNullableQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
 class TQuantityValueNumber(Number, TQuantityValue):
     pass
 
@@ -495,6 +531,16 @@ class TQuantityValuePH(PH, TQuantityValue):
 
 @dataclass(frozen=True, kw_only=True)
 class TNullableQuantityValuePH(PH, TNullableQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValuePerSecond(PerSecond, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValuePerSecond(PerSecond, TNullableQuantityValue):
     pass
 
 

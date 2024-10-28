@@ -10137,11 +10137,11 @@
             "unit"
           ]
         },
-        "nmol/dm^3": {
+        "nM": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "nmol/dm^3",
+              "const": "nM",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Nanomolar"
             }
           },
