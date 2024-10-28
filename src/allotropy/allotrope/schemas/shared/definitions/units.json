@@ -179,6 +179,18 @@
       "unit"
     ]
   },
+  "MicroliterPerMinute": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "μL/min",
+        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MicroliterPerMinute"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
   "Micrometer": {
     "properties": {
       "unit": {
@@ -359,6 +371,18 @@
       "unit"
     ]
   },
+  "Molar": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "M",
+        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Molar"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
   "NanoCoulomb": {
     "properties": {
       "unit": {
@@ -419,6 +443,18 @@
       "unit"
     ]
   },
+  "Nanomolar": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "nM",
+        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Nanomolar"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
   "Number": {
     "properties": {
       "unit": {
@@ -461,6 +497,18 @@
         "type": "string",
         "const": "pH",
         "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#PH"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
+  "PerSecond": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "s^-1",
+        "$asm.unit-iri": "http://qudt.org/vocab/unit#PerSecond"
       }
     },
     "required": [
