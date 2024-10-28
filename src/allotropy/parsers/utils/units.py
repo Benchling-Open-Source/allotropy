@@ -17,8 +17,12 @@ def _make_unit_entry(quantity_value: type[TQuantityValue]) -> str | None:
 
 
 UNIT_TO_PROPERTY = {
-    _make_unit_entry(quantity_value): quantity_value
-    for quantity_value in TQuantityValue.__subclasses__()
+    unit_entry: quantity_value
+    for unit_entry, quantity_value in [
+        (_make_unit_entry(quantity_value), quantity_value)
+        for quantity_value in TQuantityValue.__subclasses__()
+    ]
+    if unit_entry
 }
 
 # Some input files have units with incorrect capitalization. Try to handle this by checking with case insensitive.
