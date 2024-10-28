@@ -28,6 +28,7 @@ from allotropy.parsers.biorad_bioplex_manager.biorad_bioplex_manager_parser impo
     BioradBioplexParser,
 )
 from allotropy.parsers.bmg_mars.bmg_mars_parser import BmgMarsParser
+from allotropy.parsers.cfxmaestro.cfxmaestro_parser import CfxmaestroParser
 from allotropy.parsers.chemometec_nc_view.chemometec_nc_view_parser import (
     ChemometecNcViewParser,
 )
@@ -100,6 +101,7 @@ class Vendor(Enum):
     BECKMAN_VI_CELL_BLU = "BECKMAN_VI_CELL_BLU"
     BECKMAN_VI_CELL_XR = "BECKMAN_VI_CELL_XR"
     BIORAD_BIOPLEX = "BIORAD_BIOPLEX"
+    CFXMAESTRO = "CFXMAESTRO"
     CHEMOMETEC_NC_VIEW = "CHEMOMETEC_NC_VIEW"
     CHEMOMETEC_NUCLEOVIEW = "CHEMOMETEC_NUCLEOVIEW"
     CTL_IMMUNOSPOT = "CTL_IMMUNOSPOT"
@@ -180,6 +182,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser[Any, Any]]] = {
     Vendor.BECKMAN_VI_CELL_XR: ViCellXRParser,
     Vendor.BIORAD_BIOPLEX: BioradBioplexParser,
     Vendor.BMG_MARS: BmgMarsParser,
+    Vendor.CFXMAESTRO: CfxmaestroParser,
     Vendor.CHEMOMETEC_NC_VIEW: ChemometecNcViewParser,
     Vendor.CHEMOMETEC_NUCLEOVIEW: ChemometecNucleoviewParser,
     Vendor.CTL_IMMUNOSPOT: CtlImmunospotParser,
