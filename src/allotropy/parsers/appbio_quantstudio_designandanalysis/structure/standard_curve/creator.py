@@ -25,6 +25,7 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.standard_c
 
 
 class StandardCurveCreator(Creator):
+    PLUGIN_REGEX: ClassVar[str] = r"Standard Curve"
     EXPECTED_SHEETS: ClassVar[list[str]] = [
         "Standard Curve Result",
     ]

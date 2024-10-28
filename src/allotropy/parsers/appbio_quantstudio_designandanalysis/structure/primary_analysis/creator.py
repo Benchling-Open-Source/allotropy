@@ -1,3 +1,5 @@
+from typing import ClassVar
+
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
     DesignQuantstudioReader,
@@ -15,9 +17,12 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.primary_an
 
 
 class PrimaryAnalysisCreator(Creator):
+    PLUGIN_REGEX: ClassVar[str] = r"^Primary Analysis v\d+\.\d+\.\d+$"
+    EXPECTED_SHEETS: ClassVar[list[str]] = ["Results"]
+
     @classmethod
-    def check_type(cls, reader: DesignQuantstudioReader) -> bool:
-        return list(reader.data.keys()) == ["Results"]
+    def check_sheets(cls, reader: DesignQuantstudioReader) -> bool:
+        return list(reader.data.keys()) == cls.EXPECTED_SHEETS
 
     @classmethod
     def create(cls, reader: DesignQuantstudioReader) -> Data:

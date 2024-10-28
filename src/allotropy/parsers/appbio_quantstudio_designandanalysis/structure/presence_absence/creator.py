@@ -24,6 +24,7 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.presence_a
 
 
 class PresenceAbsenceCreator(Creator):
+    PLUGIN_REGEX: ClassVar[str] = r"Presence Absence"
     EXPECTED_SHEETS: ClassVar[list[str]] = [
         "Target Call",
     ]

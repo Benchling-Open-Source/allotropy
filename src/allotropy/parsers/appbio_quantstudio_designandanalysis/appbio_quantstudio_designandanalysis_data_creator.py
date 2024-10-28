@@ -201,12 +201,12 @@ def create_data(reader: DesignQuantstudioReader) -> Data:
         PresenceAbsenceCreator,
         PrimaryAnalysisCreator,
     ]
-    matching_creator = [
-        creator for creator in possible_creators if creator.check_type(reader)
-    ]
 
-    if len(matching_creator) == 1:
-        return matching_creator[0].create(reader)
+    raw_plugin_name = reader.header.get(str, "Plugin Name and Version")
+
+    for creator in possible_creators:
+        if creator.check_experiment_type(reader, raw_plugin_name):
+            return creator.create(reader)
 
     msg = "Unable to infer experiment type from sheets in the input"
     raise AllotropeConversionError(msg)

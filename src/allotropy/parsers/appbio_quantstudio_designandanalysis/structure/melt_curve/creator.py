@@ -15,10 +15,15 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.st
 
 
 class MeltCurveCreator(Creator):
+    PLUGIN_REGEX: ClassVar[str] = r"Melt Curve"
     EXPECTED_SHEETS: ClassVar[list[str]] = [
         "Melt Curve Raw",
         "Melt Curve Result",
     ]
+
+    @classmethod
+    def check_plugin_name(cls, _: str) -> bool:
+        return True
 
     @classmethod
     def create(cls, reader: DesignQuantstudioReader) -> Data:

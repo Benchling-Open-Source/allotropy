@@ -17,6 +17,7 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.genotyping
 
 
 class GenotypingCreator(Creator):
+    PLUGIN_REGEX: ClassVar[str] = r"Genotyping"
     EXPECTED_SHEETS: ClassVar[list[str]] = [
         "Genotyping Result",
     ]
