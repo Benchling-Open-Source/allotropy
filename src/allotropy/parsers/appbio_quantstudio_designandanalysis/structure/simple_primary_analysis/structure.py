@@ -16,7 +16,7 @@ from allotropy.parsers.utils.pandas import (
 
 
 @dataclass
-class PrimaryAnalysisWellItem(WellItem):
+class SimplePrimaryAnalysisWellItem(WellItem):
     @classmethod
     def get_amplification_data_sheet(
         cls, reader: DesignQuantstudioReader
@@ -25,22 +25,22 @@ class PrimaryAnalysisWellItem(WellItem):
 
 
 @dataclass
-class PrimaryAnalysisWell(Well):
+class SimplePrimaryAnalysisWell(Well):
     @classmethod
     def get_well_item_class(cls) -> type[WellItem]:
-        return PrimaryAnalysisWellItem
+        return SimplePrimaryAnalysisWellItem
 
 
 @dataclass(frozen=True)
-class PrimaryAnalysisWellList(WellList):
+class SimplePrimaryAnalysisWellList(WellList):
     @classmethod
     def get_well_class(cls) -> type[Well]:
-        return PrimaryAnalysisWell
+        return SimplePrimaryAnalysisWell
 
     @classmethod
     def get_well_result_data(cls, reader: DesignQuantstudioReader) -> pd.DataFrame:
         results_data = super(  # noqa: UP008
-            PrimaryAnalysisWellList, cls
+            SimplePrimaryAnalysisWellList, cls
         ).get_well_result_data(reader)
 
         if "Well" not in results_data:

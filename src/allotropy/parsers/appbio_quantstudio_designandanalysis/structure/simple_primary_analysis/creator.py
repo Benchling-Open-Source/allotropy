@@ -11,12 +11,12 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.st
     Data,
     Header,
 )
-from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.primary_analysis.structure import (
-    PrimaryAnalysisWellList,
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.simple_primary_analysis.structure import (
+    SimplePrimaryAnalysisWellList,
 )
 
 
-class PrimaryAnalysisCreator(Creator):
+class SimplePrimaryAnalysisCreator(Creator):
     PLUGIN_REGEX: ClassVar[str] = r"^Primary Analysis v\d+\.\d+\.\d+$"
     EXPECTED_SHEETS: ClassVar[list[str]] = ["Results"]
 
@@ -27,7 +27,7 @@ class PrimaryAnalysisCreator(Creator):
     @classmethod
     def create(cls, reader: DesignQuantstudioReader) -> Data:
         header = Header.create(reader.header)
-        wells = PrimaryAnalysisWellList.create(reader, header)
+        wells = SimplePrimaryAnalysisWellList.create(reader, header)
         return Data(
             header,
             wells,

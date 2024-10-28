@@ -48,11 +48,11 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.melt_curve
 from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.presence_absence.creator import (
     PresenceAbsenceCreator,
 )
-from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.primary_analysis.creator import (
-    PrimaryAnalysisCreator,
-)
 from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.relative_standard_curve.creator import (
     RelativeStandardCurveCreator,
+)
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.simple_primary_analysis.creator import (
+    SimplePrimaryAnalysisCreator,
 )
 from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.standard_curve.creator import (
     StandardCurveCreator,
@@ -199,7 +199,7 @@ def create_data(reader: DesignQuantstudioReader) -> Data:
         GenotypingCreator,
         MeltCurveCreator,
         PresenceAbsenceCreator,
-        PrimaryAnalysisCreator,
+        SimplePrimaryAnalysisCreator,
     ]
 
     raw_plugin_name = reader.header.get(str, "Plugin Name and Version")
