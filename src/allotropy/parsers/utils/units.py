@@ -25,8 +25,7 @@ UNIT_TO_PROPERTY = {
 # We don't do this by default, however, because there are some cases where capitalization matters, e.g.
 # namometer (nm) != nanomolar (nM).
 LOWER_UNIT_TO_PROPERTY = {
-    unit.lower(): quantity_value
-    for unit, quantity_value in UNIT_TO_PROPERTY.items()
+    unit.lower(): quantity_value for unit, quantity_value in UNIT_TO_PROPERTY.items()
 }
 
 
@@ -36,4 +35,8 @@ def get_quantity_class(
     clean_unit = _clean_unit(unit or "")
     # Try to get case-sensitive unit, falling back to default if provided, finally checking case-insensitive unit,
     # which may not always have the correct result.
-    return UNIT_TO_PROPERTY.get(clean_unit) or default or LOWER_UNIT_TO_PROPERTY.get(clean_unit.lower())
+    return (
+        UNIT_TO_PROPERTY.get(clean_unit)
+        or default
+        or LOWER_UNIT_TO_PROPERTY.get(clean_unit.lower())
+    )
