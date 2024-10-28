@@ -30,7 +30,6 @@ def test_to_allotrope_absorbance_no_pm_in_time() -> None:
     expected_filepath = (
         f"{ABSORBANCE_PATH}/endpoint_pathlength_correct_singleplate_no_pm_in_time.json"
     )
-    print(test_filepath)
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
 
     allotrope_dict["plate reader aggregate document"]["data system document"][

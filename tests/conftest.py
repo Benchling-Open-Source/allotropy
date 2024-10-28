@@ -6,7 +6,7 @@ from typing import Any
 import pytest
 from pytest import FixtureRequest, Parser
 
-from allotropy.testing.utils import get_testdata_dir, ROOT_DIR
+from allotropy.testing.utils import get_testdata_dir
 
 # ParserTest will ignore any files with "error",  "exclude", or "invalid" in their path.
 EXCLUDE_KEYWORDS = {"error", "exclude", "invalid"}
