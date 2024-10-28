@@ -6,9 +6,10 @@ import pytest
 from allotropy.allotrope.models.shared.definitions.definitions import NaN
 from allotropy.exceptions import AllotropeConversionError, AllotropeParsingError
 from allotropy.parsers.utils.pandas import read_csv, read_excel, SeriesData
+from allotropy.testing.utils import get_testdata_dir
 
 EXPECTED_DATA_FRAME = pd.DataFrame({"Hello": ["World"]})
-TESTDATA = "tests/parsers/utils/testdata"
+TESTDATA = get_testdata_dir(__file__)
 CSV_FILE = f"{TESTDATA}/HelloWorld.csv"
 EXCEL_FILE = f"{TESTDATA}/HelloWorld.xlsx"
 EXCEL_FILE_TWO_SHEETS = f"{TESTDATA}/HelloWorldTwoSheets.xlsx"

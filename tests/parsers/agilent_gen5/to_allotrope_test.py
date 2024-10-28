@@ -11,12 +11,13 @@ from allotropy.parsers.agilent_gen5.constants import (
     NO_PLATE_DATA_ERROR,
     UNSUPPORTED_READ_TYPE_ERROR,
 )
-from allotropy.testing.utils import from_file, validate_contents
+from allotropy.testing.utils import from_file, get_testdata_dir, validate_contents
 from tests.to_allotrope_test import ParserTest
 
 VENDOR_TYPE = Vendor.AGILENT_GEN5
-TESTDATA = f"{Path(__file__).parent}/testdata"
-ABSORBANCE_PATH = f"{TESTDATA}/absorbance"
+
+TESTDATA = get_testdata_dir(__file__)
+ABSORBANCE_PATH = Path(TESTDATA, "absorbance")
 
 
 class TestParser(ParserTest):
@@ -29,6 +30,7 @@ def test_to_allotrope_absorbance_no_pm_in_time() -> None:
     expected_filepath = (
         f"{ABSORBANCE_PATH}/endpoint_pathlength_correct_singleplate_no_pm_in_time.json"
     )
+    print(test_filepath)
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
 
     allotrope_dict["plate reader aggregate document"]["data system document"][

@@ -1,5 +1,3 @@
-from pathlib import Path
-
 import pytest
 
 from allotropy.constants import CHARDET_ENCODING
@@ -9,11 +7,11 @@ from allotropy.parsers.agilent_gen5_image.constants import (
     NO_PLATE_DATA_ERROR,
     UNSUPPORTED_READ_TYPE_ERROR,
 )
-from allotropy.testing.utils import from_file
+from allotropy.testing.utils import from_file, get_testdata_dir
 from tests.to_allotrope_test import ParserTest
 
 VENDOR_TYPE = Vendor.AGILENT_GEN5_IMAGE
-TESTDATA = Path(Path(__file__).parent, "testdata")
+TESTDATA = get_testdata_dir(__file__)
 
 
 class TestParser(ParserTest):

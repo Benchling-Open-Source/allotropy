@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from io import BytesIO
-from pathlib import Path
 
 import pandas as pd
 import pytest
@@ -15,8 +14,6 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
 )
 from allotropy.parsers.lines_reader import LinesReader, read_to_lines
 from allotropy.types import IOType
-
-TESTDATA = Path(Path(__file__).parent, "testdata")
 
 
 def _read_to_lines(io_: IOType, encoding: str | None = None) -> list[str]:
