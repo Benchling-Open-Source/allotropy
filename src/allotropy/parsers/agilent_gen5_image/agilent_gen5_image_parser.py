@@ -30,7 +30,7 @@ class AgilentGen5ImageParser(VendorParser[Data, Model]):
         reader = AgilentGen5Reader(named_file_contents)
 
         header_data = HeaderData.create(
-            reader.header_data, named_file_contents.original_file_name
+            reader.header_data, named_file_contents.original_file_path
         )
         read_data = ReadData.create(reader.sections["Procedure Details"])
 

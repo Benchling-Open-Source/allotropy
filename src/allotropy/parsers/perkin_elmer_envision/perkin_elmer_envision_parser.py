@@ -30,7 +30,7 @@ class PerkinElmerEnvisionParser(VendorParser[Data, Model]):
 
         return Data(
             create_metadata(
-                data.software, data.instrument, named_file_contents.original_file_name
+                data.software, data.instrument, named_file_contents.original_file_path
             ),
             create_measurement_groups(data),
             create_calculated_data(data.plate_list, data.labels.get_read_type()),

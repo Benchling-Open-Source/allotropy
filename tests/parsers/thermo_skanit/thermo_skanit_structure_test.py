@@ -136,7 +136,7 @@ def test_create_metadata() -> None:
     skanit_metadata = ThermoSkanItMetadata.create_metadata(
         instrument_info_df=instrument_info_df,
         general_info_df=general_info_df,
-        file_name="test file",
+        file_path="test_file",
     )
 
     assert skanit_metadata.device_identifier == "Varioskan LUX"
@@ -213,6 +213,6 @@ def test_create_skanit_data() -> None:
         ),
         "Layout definitions": pd.read_excel(file_path, sheet_name="Layout definitions"),
     }
-    skanit_data = DataThermoSkanIt.create(sheet_data=sheet_data, file_name="abc")
+    skanit_data = DataThermoSkanIt.create(sheet_data=sheet_data, file_path="abc")
     assert len(skanit_data.measurement_groups) == 96
     assert skanit_data.metadata.equipment_serial_number == "3020-81776"

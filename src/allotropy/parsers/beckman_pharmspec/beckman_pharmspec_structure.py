@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 from dataclasses import dataclass
+from pathlib import Path
 import re
 
 import pandas as pd
@@ -102,9 +103,10 @@ class Header:
         )
 
 
-def create_metadata(header: Header, file_name: str) -> Metadata:
+def create_metadata(header: Header, file_path: str) -> Metadata:
     return Metadata(
-        file_name=file_name,
+        file_name=Path(file_path).name,
+        unc_path=file_path,
         software_name=PHARMSPEC_SOFTWARE_NAME,
         software_version=header.software_version,
         detector_identifier=header.detector_identifier,

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from pathlib import Path
+
 from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.dpcr import (
     Measurement,
     Metadata,
@@ -43,12 +45,13 @@ def create_measurements(data: SeriesData) -> Measurement:
     )
 
 
-def create_metadata(file_name: str) -> Metadata:
+def create_metadata(file_path: str) -> Metadata:
     return Metadata(
         device_identifier=DEVICE_IDENTIFIER,
         brand_name=BRAND_NAME,
         device_type=DEVICE_TYPE,
         software_name=SOFTWARE_NAME,
         product_manufacturer=PRODUCT_MANUFACTURER,
-        file_name=file_name,
+        file_name=Path(file_path).name,
+        unc_path=file_path,
     )

@@ -3,14 +3,16 @@ from $MAPPER_IMPORT_PATH$ import (
     MeasurementGroup,
     Metadata,
 )
+from pathlib import Path
 from allotropy.parsers.roche_cedex_hires import constants
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
-def create_metadata(data: SeriesData, file_name: str) -> Metadata:
+def create_metadata(data: SeriesData, file_path: str) -> Metadata:
     return Metadata(
-        file_name=file_name,
+        file_name=Path(file_path).name,
+        unc_path=file_path,
         # Example of the kind of value that might be set with a constant.
         device_type=constants.DEVICE_TYPE,
         # Example of the kind of value that might be set from the header data.

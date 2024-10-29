@@ -1,13 +1,11 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/solution-analyzer/REC/2024/03/solution-analyzer.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/solution-analyzer/REC/2024/09/solution-analyzer.manifest",
     "solution analyzer aggregate document": {
         "solution analyzer document": [
             {
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2021-02-18T10:28:04+00:00",
-                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -16,6 +14,8 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_0",
+                            "measurement time": "2021-02-18T10:28:04+00:00",
                             "sample document": {
                                 "sample identifier": "SAMPLE 0001",
                                 "description": "Default"
@@ -89,8 +89,6 @@
                             }
                         },
                         {
-                            "measurement time": "2021-02-18T10:28:04+00:00",
-                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_1",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -99,6 +97,8 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_1",
+                            "measurement time": "2021-02-18T10:28:04+00:00",
                             "sample document": {
                                 "sample identifier": "SAMPLE 0001",
                                 "description": "Default"
@@ -137,8 +137,6 @@
                             }
                         },
                         {
-                            "measurement time": "2021-02-18T10:28:04+00:00",
-                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_2",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -147,6 +145,8 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_2",
+                            "measurement time": "2021-02-18T10:28:04+00:00",
                             "sample document": {
                                 "sample identifier": "SAMPLE 0001",
                                 "description": "Default"
@@ -169,8 +169,6 @@
                             }
                         },
                         {
-                            "measurement time": "2021-02-18T10:28:04+00:00",
-                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_3",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -179,6 +177,8 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_3",
+                            "measurement time": "2021-02-18T10:28:04+00:00",
                             "sample document": {
                                 "sample identifier": "SAMPLE 0001",
                                 "description": "Default"
@@ -189,8 +189,6 @@
                             }
                         },
                         {
-                            "measurement time": "2021-02-18T10:28:04+00:00",
-                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_4",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -199,6 +197,8 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_4",
+                            "measurement time": "2021-02-18T10:28:04+00:00",
                             "sample document": {
                                 "sample identifier": "SAMPLE 0001",
                                 "description": "Default"
@@ -221,8 +221,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2021-02-18T10:33:17+00:00",
-                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_5",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -231,6 +229,8 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_5",
+                            "measurement time": "2021-02-18T10:33:17+00:00",
                             "sample document": {
                                 "sample identifier": "SAMPLE 0002",
                                 "description": "Default"
@@ -304,8 +304,6 @@
                             }
                         },
                         {
-                            "measurement time": "2021-02-18T10:33:17+00:00",
-                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_6",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -314,6 +312,8 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_6",
+                            "measurement time": "2021-02-18T10:33:17+00:00",
                             "sample document": {
                                 "sample identifier": "SAMPLE 0002",
                                 "description": "Default"
@@ -352,8 +352,6 @@
                             }
                         },
                         {
-                            "measurement time": "2021-02-18T10:33:17+00:00",
-                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_7",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -362,6 +360,8 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_7",
+                            "measurement time": "2021-02-18T10:33:17+00:00",
                             "sample document": {
                                 "sample identifier": "SAMPLE 0002",
                                 "description": "Default"
@@ -384,8 +384,6 @@
                             }
                         },
                         {
-                            "measurement time": "2021-02-18T10:33:17+00:00",
-                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_8",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -394,6 +392,8 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_8",
+                            "measurement time": "2021-02-18T10:33:17+00:00",
                             "sample document": {
                                 "sample identifier": "SAMPLE 0002",
                                 "description": "Default"
@@ -404,8 +404,6 @@
                             }
                         },
                         {
-                            "measurement time": "2021-02-18T10:33:17+00:00",
-                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_9",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -414,6 +412,8 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_9",
+                            "measurement time": "2021-02-18T10:33:17+00:00",
                             "sample document": {
                                 "sample identifier": "SAMPLE 0002",
                                 "description": "Default"
@@ -436,8 +436,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2021-02-18T10:38:33+00:00",
-                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_10",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -446,6 +444,8 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_10",
+                            "measurement time": "2021-02-18T10:38:33+00:00",
                             "sample document": {
                                 "sample identifier": "SAMPLE 0003",
                                 "description": "Simple"
@@ -519,8 +519,6 @@
                             }
                         },
                         {
-                            "measurement time": "2021-02-18T10:38:33+00:00",
-                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_11",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -529,6 +527,8 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_11",
+                            "measurement time": "2021-02-18T10:38:33+00:00",
                             "sample document": {
                                 "sample identifier": "SAMPLE 0003",
                                 "description": "Simple"
@@ -551,8 +551,6 @@
                             }
                         },
                         {
-                            "measurement time": "2021-02-18T10:38:33+00:00",
-                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_12",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -561,6 +559,8 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_12",
+                            "measurement time": "2021-02-18T10:38:33+00:00",
                             "sample document": {
                                 "sample identifier": "SAMPLE 0003",
                                 "description": "Simple"
@@ -583,8 +583,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2021-02-18T10:41:08+00:00",
-                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_13",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -593,6 +591,8 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_13",
+                            "measurement time": "2021-02-18T10:41:08+00:00",
                             "sample document": {
                                 "sample identifier": "SAMPLE 0004",
                                 "description": "Simple"
@@ -666,8 +666,6 @@
                             }
                         },
                         {
-                            "measurement time": "2021-02-18T10:41:08+00:00",
-                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_14",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -676,6 +674,8 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_14",
+                            "measurement time": "2021-02-18T10:41:08+00:00",
                             "sample document": {
                                 "sample identifier": "SAMPLE 0004",
                                 "description": "Simple"
@@ -698,8 +698,6 @@
                             }
                         },
                         {
-                            "measurement time": "2021-02-18T10:41:08+00:00",
-                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_15",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -708,6 +706,8 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_15",
+                            "measurement time": "2021-02-18T10:41:08+00:00",
                             "sample document": {
                                 "sample identifier": "SAMPLE 0004",
                                 "description": "Simple"
@@ -730,8 +730,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2021-02-18T10:43:33+00:00",
-                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_16",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -740,6 +738,8 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_16",
+                            "measurement time": "2021-02-18T10:43:33+00:00",
                             "sample document": {
                                 "sample identifier": "SAMPLE 0005",
                                 "description": "Simple"
@@ -813,8 +813,6 @@
                             }
                         },
                         {
-                            "measurement time": "2021-02-18T10:43:33+00:00",
-                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_17",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -823,6 +821,8 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_17",
+                            "measurement time": "2021-02-18T10:43:33+00:00",
                             "sample document": {
                                 "sample identifier": "SAMPLE 0005",
                                 "description": "Simple"
@@ -845,8 +845,6 @@
                             }
                         },
                         {
-                            "measurement time": "2021-02-18T10:43:33+00:00",
-                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_18",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -855,6 +853,8 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_18",
+                            "measurement time": "2021-02-18T10:43:33+00:00",
                             "sample document": {
                                 "sample identifier": "SAMPLE 0005",
                                 "description": "Simple"
@@ -877,8 +877,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2021-02-18T10:46:05+00:00",
-                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_19",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -887,6 +885,8 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_19",
+                            "measurement time": "2021-02-18T10:46:05+00:00",
                             "sample document": {
                                 "sample identifier": "SAMPLE 0006",
                                 "description": "Simple"
@@ -960,8 +960,6 @@
                             }
                         },
                         {
-                            "measurement time": "2021-02-18T10:46:05+00:00",
-                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_20",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -970,6 +968,8 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_20",
+                            "measurement time": "2021-02-18T10:46:05+00:00",
                             "sample document": {
                                 "sample identifier": "SAMPLE 0006",
                                 "description": "Simple"
@@ -992,8 +992,6 @@
                             }
                         },
                         {
-                            "measurement time": "2021-02-18T10:46:05+00:00",
-                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_21",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1002,6 +1000,8 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_21",
+                            "measurement time": "2021-02-18T10:46:05+00:00",
                             "sample document": {
                                 "sample identifier": "SAMPLE 0006",
                                 "description": "Simple"
@@ -1021,16 +1021,19 @@
                 "analyst": "Unither"
             }
         ],
-        "device system document": {
-            "product manufacturer": "Nova Biomedical",
-            "device identifier": "DEVICE123",
-            "model number": "Flex2"
-        },
         "data system document": {
+            "ASM file identifier": "SampleResultsDEVICE1232021-02-18_104838.json",
+            "data system instance identifier": "N/A",
             "file name": "SampleResultsDEVICE1232021-02-18_104838.csv",
-            "software name": "NovaBio Flex",
+            "UNC path": "tests/parsers/novabio_flex2/testdata/SampleResultsDEVICE1232021-02-18_104838.csv",
             "ASM converter name": "allotropy_novabio_flex2",
-            "ASM converter version": "0.1.47"
+            "ASM converter version": "0.1.61",
+            "software name": "NovaBio Flex"
+        },
+        "device system document": {
+            "device identifier": "DEVICE123",
+            "model number": "Flex2",
+            "product manufacturer": "Nova Biomedical"
         }
     }
 }
