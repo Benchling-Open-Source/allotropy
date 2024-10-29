@@ -24,11 +24,14 @@ from allotropy.parsers.utils.values import assert_not_none
 class ReadType(Enum):
     ABSORBANCE = "Absorbance"
     FLUORESCENCE = "Fluorescence"
+    LUMINESCENCE = "Luminescence"
 
     @property
     def measurement_type(self) -> MeasurementType:
         if self is ReadType.ABSORBANCE:
             return MeasurementType.ULTRAVIOLET_ABSORBANCE
+        elif self is ReadType.LUMINESCENCE:
+            return MeasurementType.LUMINESCENCE
         else:
             return MeasurementType.FLUORESCENCE
 
@@ -44,7 +47,7 @@ class ReadType(Enum):
 @dataclass(frozen=True)
 class Header:
     read_type: ReadType
-    wavelength: float
+    wavelength: float | None
     excitation_wavelength: float | None
     user: str
     test_name: str
@@ -67,19 +70,24 @@ class Header:
         read_type = valid_value_or_raise("read type", read_types, ReadType)
 
         # Get wavelengths from RawData line
-        raw_wavelengths = assert_not_none(
-            re.search(
-                r"Raw Data \((?P<wavelength1>\d+)(?:/)?(?P<wavelength2>\d+)?(?:\))",
-                header_content,
-            ),
-            msg="Wavelengths not found in input file.",
+        raw_data_match = assert_not_none(
+            re.search(r"Raw Data \(.*?\)", header_content),
+            msg="Raw Data line not found in input file.",
         )
+
+        wavelength = None
         excitation_wavelength = None
-        if raw_wavelengths.group("wavelength2"):
-            wavelength = float(raw_wavelengths.group("wavelength2"))
-            excitation_wavelength = float(raw_wavelengths.group("wavelength1"))
+
+        # Formats: "Raw Data (Ex/Em)", "Raw Data (Em)", "Raw Data (No filter)"
+        filter_info = raw_data_match.group(0).split("(")[1].rstrip(")")
+        if filter_info == "No filter":
+            pass
+        elif "/" in filter_info:
+            w1, w2 = filter_info.split("/")
+            wavelength = float(w2)
+            excitation_wavelength = float(w1)
         else:
-            wavelength = float(raw_wavelengths.group("wavelength1"))
+            wavelength = float(filter_info)
 
         return Header(
             read_type=read_type,
@@ -130,6 +138,7 @@ def _create_measurement(
         excitation_wavelength_setting=header.excitation_wavelength,
         absorbance=value if header.read_type is ReadType.ABSORBANCE else None,
         fluorescence=value if header.read_type is ReadType.FLUORESCENCE else None,
+        luminescence=value if header.read_type is ReadType.LUMINESCENCE else None,
     )
 
 
