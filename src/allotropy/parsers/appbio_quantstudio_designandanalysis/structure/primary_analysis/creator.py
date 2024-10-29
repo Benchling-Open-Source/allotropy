@@ -30,7 +30,7 @@ class PrimaryAnalysisCreator(Creator):
         return Data(
             header,
             wells,
-            experiment_type=ExperimentType.presence_absence_qPCR_experiment,
+            experiment_type=ExperimentType.primary_analysis_experiment,
             calculated_documents=[],
             reference_target=None,
             reference_sample=None,
