@@ -1,4 +1,5 @@
 PHARMSPEC_SOFTWARE_NAME = "PharmSpec"
+DEVICE_TYPE = "solution-analyzer"
 
 # This map is used to map the column names to units, for calculated data items.
 UNIT_LOOKUP = {

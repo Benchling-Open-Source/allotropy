@@ -21,7 +21,8 @@ from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._09.solution_ana
     ProcessedDataDocumentItem,
     SampleDocument,
     SolutionAnalyzerAggregateDocument,
-    SolutionAnalyzerDocumentItem,
+    SolutionAnalyzerDocumentItem, CalculatedDataAggregateDocument, CalculatedDataDocumentItem,
+    DataSourceAggregateDocument, DataSourceDocumentItem, TQuantityValueModel,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueCell,
@@ -152,9 +153,25 @@ class Metadata:
 
 
 @dataclass(frozen=True)
+class DataSource:
+    identifier: str
+    feature: str
+
+
+@dataclass(frozen=True)
+class CalculatedDataItem:
+    identifier: str
+    name: str
+    value: float
+    unit: str
+    data_sources: list[DataSource]
+
+
+@dataclass(frozen=True)
 class Data:
     metadata: Metadata
     measurement_groups: list[MeasurementGroup]
+    calculated_data: list[CalculatedDataItem] | None = None
 
 
 class Mapper(SchemaMapper[Data, Model]):
@@ -190,6 +207,9 @@ class Mapper(SchemaMapper[Data, Model]):
                         self._get_technique_document(measurement_group, data.metadata)
                         for measurement_group in data.measurement_groups
                     ],
+                    calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
+                        data.calculated_data
+                    ),
                 ),
                 None,
             ),
@@ -392,10 +412,10 @@ class Mapper(SchemaMapper[Data, Model]):
                                 value=distribution.cumulative_particle_density
                             ),
                             differential_particle_density=TQuantityValueCountsPerMilliliter(
-                                value=distribution.differential_particle_density
+                                value=1.0
                             ),
                             differential_count=TQuantityValueUnitless(
-                                value=distribution.differential_count
+                                value=1.0
                             ),
                         )
                         for distribution in measurement.distribution_documents
@@ -424,5 +444,34 @@ class Mapper(SchemaMapper[Data, Model]):
             error_document=[
                 ErrorDocumentItem(error=error.error, error_feature=error.feature)
                 for error in errors
+            ]
+        )
+
+    def _get_calculated_data_aggregate_document(
+        self, calculated_data_items: list[CalculatedDataItem] | None
+    ) -> CalculatedDataAggregateDocument | None:
+        if not calculated_data_items:
+            return None
+
+        return CalculatedDataAggregateDocument(
+            calculated_data_document=[
+                CalculatedDataDocumentItem(
+                    calculated_data_identifier=calculated_data_item.identifier,
+                    calculated_data_name=calculated_data_item.name,
+                    calculated_result=TQuantityValueModel(
+                        value=calculated_data_item.value,
+                        unit=calculated_data_item.unit,
+                    ),
+                    data_source_aggregate_document=DataSourceAggregateDocument(
+                        data_source_document=[
+                            DataSourceDocumentItem(
+                                data_source_identifier=item.identifier,
+                                data_source_feature=item.feature,
+                            )
+                            for item in calculated_data_item.data_sources
+                        ]
+                    ),
+                )
+                for calculated_data_item in calculated_data_items
             ]
         )
