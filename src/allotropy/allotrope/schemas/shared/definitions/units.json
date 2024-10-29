@@ -39,7 +39,7 @@
     "properties": {
       "unit": {
         "type": "string",
-        "const": "Counts/μL",
+        "const": "Counts/µL",
         "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#CountsPerMicroliter"
       }
     },
@@ -171,7 +171,7 @@
     "properties": {
       "unit": {
         "type": "string",
-        "const": "μL",
+        "const": "µL",
         "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Microliter"
       }
     },
@@ -183,7 +183,7 @@
     "properties": {
       "unit": {
         "type": "string",
-        "const": "μL/min",
+        "const": "µL/min",
         "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MicroliterPerMinute"
       }
     },
@@ -195,7 +195,7 @@
     "properties": {
       "unit": {
         "type": "string",
-        "const": "μm",
+        "const": "µm",
         "$asm.unit-iri": "http://qudt.org/vocab/unit#Micrometer"
       }
     },
@@ -471,7 +471,7 @@
     "properties": {
       "unit": {
         "type": "string",
-        "const": "#/μL",
+        "const": "#/µL",
         "$asm.unit-iri": "http://qudt.org/vocab/unit#NumberPerMicroliter"
       }
     },

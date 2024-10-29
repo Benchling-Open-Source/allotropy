@@ -54,14 +54,14 @@ CALCULATED_DATA_REFERENCE: dict[AggregationType, list[CalculatedDataReference]] 
             name="Average Concentration",
             source=CalculatedDataSource.MEASUREMENT,
             source_feature="number concentration",
-            unit="#/μL",
+            unit="#/µL",
         ),
         CalculatedDataReference(
             column="SD",
             name="SD Concentration",
             source=CalculatedDataSource.MEASUREMENT,
             source_feature="number concentration",
-            unit="#/μL",
+            unit="#/µL",
         ),
         CalculatedDataReference(
             column="Positives",
@@ -91,7 +91,7 @@ CALCULATED_DATA_REFERENCE: dict[AggregationType, list[CalculatedDataReference]] 
             name="Pooled Concentration",
             source=CalculatedDataSource.MEASUREMENT,
             source_feature="number concentration",
-            unit="#/μL",
+            unit="#/µL",
         ),
         CalculatedDataReference(
             column="Positives",

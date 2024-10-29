@@ -3705,11 +3705,11 @@
             "unit"
           ]
         },
-        "Counts/μL": {
+        "Counts/µL": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "Counts/μL",
+              "const": "Counts/µL",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#CountsPerMicroliter"
             }
           },
@@ -6561,11 +6561,11 @@
             "unit"
           ]
         },
-        "fg/μL": {
+        "fg/µL": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "fg/μL",
+              "const": "fg/µL",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#FemtogramPerMicroliter"
             }
           },
@@ -7101,11 +7101,11 @@
             "unit"
           ]
         },
-        "g/μL": {
+        "g/µL": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "g/μL",
+              "const": "g/µL",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#GramPerMicroliter"
             }
           },
@@ -7869,11 +7869,11 @@
             "unit"
           ]
         },
-        "kg/μL": {
+        "kg/µL": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "kg/μL",
+              "const": "kg/µL",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#KilogramPerMicroliter"
             }
           },
@@ -9333,11 +9333,11 @@
             "unit"
           ]
         },
-        "mg/μL": {
+        "mg/µL": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "mg/μL",
+              "const": "mg/µL",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MilligramPerMicroliter"
             }
           },
@@ -9957,11 +9957,11 @@
             "unit"
           ]
         },
-        "ng/μL": {
+        "ng/µL": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "ng/μL",
+              "const": "ng/µL",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#NanogramPerMicroliter"
             }
           },
@@ -10389,11 +10389,11 @@
             "unit"
           ]
         },
-        "pg/μL": {
+        "pg/µL": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "pg/μL",
+              "const": "pg/µL",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#PicogramPerMicroliter"
             }
           },
@@ -11805,11 +11805,11 @@
             "unit"
           ]
         },
-        "μL": {
+        "µL": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μL",
+              "const": "µL",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Microliter"
             }
           },
@@ -11817,11 +11817,11 @@
             "unit"
           ]
         },
-        "μM": {
+        "µM": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μM",
+              "const": "µM",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Micromolar"
             }
           },
@@ -11829,11 +11829,11 @@
             "unit"
           ]
         },
-        "μS/cm": {
+        "µS/cm": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μS/cm",
+              "const": "µS/cm",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MicroSiemensPerCentimeter"
             }
           },
@@ -11841,11 +11841,11 @@
             "unit"
           ]
         },
-        "μV.s": {
+        "µV.s": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μV.s",
+              "const": "µV.s",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MicroVoltTimesSecond"
             }
           },
@@ -11853,11 +11853,11 @@
             "unit"
           ]
         },
-        "μg": {
+        "µg": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μg",
+              "const": "µg",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Microgram"
             }
           },
@@ -11865,11 +11865,11 @@
             "unit"
           ]
         },
-        "μg/L": {
+        "µg/L": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μg/L",
+              "const": "µg/L",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MicrogramPerLiter"
             }
           },
@@ -11877,11 +11877,11 @@
             "unit"
           ]
         },
-        "μg/cm^2": {
+        "µg/cm^2": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μg/cm^2",
+              "const": "µg/cm^2",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MicrogramPerSquareCentimeter"
             }
           },
@@ -11889,11 +11889,11 @@
             "unit"
           ]
         },
-        "μg/fL": {
+        "µg/fL": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μg/fL",
+              "const": "µg/fL",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MicrogramPerFemtoliter"
             }
           },
@@ -11901,11 +11901,11 @@
             "unit"
           ]
         },
-        "μg/mL": {
+        "µg/mL": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μg/mL",
+              "const": "µg/mL",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MicrogramPerMilliliter"
             }
           },
@@ -11913,11 +11913,11 @@
             "unit"
           ]
         },
-        "μg/m^2": {
+        "µg/m^2": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μg/m^2",
+              "const": "µg/m^2",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MicrogramPerSquareMeter"
             }
           },
@@ -11925,11 +11925,11 @@
             "unit"
           ]
         },
-        "μg/min": {
+        "µg/min": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μg/min",
+              "const": "µg/min",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MicrogramPerMinute"
             }
           },
@@ -11937,11 +11937,11 @@
             "unit"
           ]
         },
-        "μg/nL": {
+        "µg/nL": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μg/nL",
+              "const": "µg/nL",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MicrogramPerNanoliter"
             }
           },
@@ -11949,11 +11949,11 @@
             "unit"
           ]
         },
-        "μg/pL": {
+        "µg/pL": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μg/pL",
+              "const": "µg/pL",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MicrogramPerPicoliter"
             }
           },
@@ -11961,11 +11961,11 @@
             "unit"
           ]
         },
-        "μg/μL": {
+        "µg/µL": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μg/μL",
+              "const": "µg/µL",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MicrogramPerMicroliter"
             }
           },
@@ -11973,11 +11973,11 @@
             "unit"
           ]
         },
-        "μmol": {
+        "µmol": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μmol",
+              "const": "µmol",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Micromole"
             }
           },
@@ -11985,11 +11985,11 @@
             "unit"
           ]
         },
-        "μr": {
+        "µr": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μr",
+              "const": "µr",
               "$asm.unit-iri": "http://qudt.org/vocab/unit#RelativePermeability"
             }
           },

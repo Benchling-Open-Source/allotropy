@@ -26,7 +26,7 @@ class Counts(HasUnit):
 
 @dataclass(frozen=True, kw_only=True)
 class CountsPerMicroliter(HasUnit):
-    unit: str = "Counts/μL"
+    unit: str = "Counts/µL"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -81,17 +81,17 @@ class MicrogramPerMilliliter(HasUnit):
 
 @dataclass(frozen=True, kw_only=True)
 class Microliter(HasUnit):
-    unit: str = "μL"
+    unit: str = "µL"
 
 
 @dataclass(frozen=True, kw_only=True)
 class MicroliterPerMinute(HasUnit):
-    unit: str = "μL/min"
+    unit: str = "µL/min"
 
 
 @dataclass(frozen=True, kw_only=True)
 class Micrometer(HasUnit):
-    unit: str = "μm"
+    unit: str = "µm"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -206,7 +206,7 @@ class Number(HasUnit):
 
 @dataclass(frozen=True, kw_only=True)
 class NumberPerMicroliter(HasUnit):
-    unit: str = "#/μL"
+    unit: str = "#/µL"
 
 
 @dataclass(frozen=True, kw_only=True)
