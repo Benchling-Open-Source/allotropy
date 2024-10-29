@@ -767,3 +767,16 @@ def iter_presence_absence_calc_docs(
         calc_docs.append(build_rn_sd(view_data, sample, target))
 
     yield from yield_documents(calc_docs)
+
+
+def iter_primary_analysis_calc_docs(
+    view_st_data: ViewData[WellItem],
+) -> Iterator[CalculatedDocument]:
+    # Ct Mean, Ct SD, Ct SE
+    calc_docs: list[CalculatedDocument | None] = []
+
+    for sample, target in view_st_data.iter_keys():
+        calc_docs.append(build_ct_mean(view_st_data, sample, target))
+        calc_docs.append(build_ct_sd(view_st_data, sample, target))
+        calc_docs.append(build_ct_se(view_st_data, sample, target))
+    yield from yield_documents(calc_docs)
