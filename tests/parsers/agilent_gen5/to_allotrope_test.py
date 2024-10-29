@@ -11,12 +11,12 @@ from allotropy.parsers.agilent_gen5.constants import (
     NO_PLATE_DATA_ERROR,
     UNSUPPORTED_READ_TYPE_ERROR,
 )
-from allotropy.testing.utils import from_file, validate_contents
+from allotropy.testing.utils import from_file, get_testdata_dir, validate_contents
 from tests.to_allotrope_test import ParserTest
 
 VENDOR_TYPE = Vendor.AGILENT_GEN5
-TESTDATA = f"{Path(__file__).parent}/testdata"
-ABSORBANCE_PATH = f"{TESTDATA}/absorbance"
+TESTDATA = get_testdata_dir(__file__)
+ABSORBANCE_PATH = Path(TESTDATA, "absorbance")
 
 
 class TestParser(ParserTest):

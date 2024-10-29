@@ -201,7 +201,6 @@ def create_metadata(title: Title, file_path: str) -> Metadata:
         software_name=SOFTWARE_NAME,
         asm_file_identifier=path.with_suffix(".json").name,
         data_system_instance_identifier=NOT_APPLICABLE,
-        unc_path=NOT_APPLICABLE,
     )
 
 

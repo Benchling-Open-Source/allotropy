@@ -21,24 +21,6 @@ from allotropy.to_allotrope import allotrope_from_file
 DictType = Mapping[str, Any]
 
 
-def _mock_unc_path(unc_path: str) -> str:
-    path = Path(unc_path)
-    if str(path) == path.name:
-        return path.name
-    return f"test/path/{path.name}"
-
-
-def _replace_unc_path(allotrope_dict: DictType) -> DictType:
-    new_dict = dict(allotrope_dict)
-    for key, value in new_dict.items():
-        if key == "data system document":
-            value["UNC path"] = _mock_unc_path(value["UNC path"])
-        if isinstance(value, dict):
-            _replace_unc_path(value)
-
-    return new_dict
-
-
 def _replace_asm_converter_version(allotrope_dict: DictType) -> DictType:
     new_dict = dict(allotrope_dict)
     for key, value in new_dict.items():
@@ -160,6 +142,13 @@ def mock_uuid_generation(prefix: str | None = None) -> Iterator[None]:
         yield
 
 
+ROOT_DIR = Path(__file__).parent.parent.parent.parent
+
+
+def get_testdata_dir(test_filepath: str) -> Path:
+    return Path(Path(test_filepath).parent.relative_to(ROOT_DIR), "testdata")
+
+
 def from_file(
     test_file: Path | str, vendor: Vendor, encoding: str | None = None
 ) -> DictType:
@@ -192,7 +181,6 @@ def validate_contents(
     with tempfile.TemporaryFile(mode="w+", encoding=DEFAULT_ENCODING) as tmp:
         json.dump(allotrope_dict, tmp, ensure_ascii=False)
 
-    allotrope_dict = _replace_unc_path(allotrope_dict)
     try:
         with open(expected_file, encoding=DEFAULT_ENCODING) as f:
             expected_dict = json.load(f)
