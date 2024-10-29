@@ -34,7 +34,7 @@ class NanodropEightParser(VendorParser[Data, Model]):
             reader.data, partial(SpectroscopyRow.create, header=reader.header)
         )
         metadata = create_metadata(
-            reader.header, named_file_contents.original_file_name
+            reader.header, named_file_contents.original_file_path
         )
 
         return Data(

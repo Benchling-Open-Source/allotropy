@@ -14,16 +14,16 @@ def test_create_metadata() -> None:
         "INSTRUMENT": "S/N: 9002029999999999",
     }
     df_data = pd.DataFrame(data, index=[0])
-    file_name = "chemometec_nc_view_example.csv"
-    metadata = create_metadata(df_to_series_data(df_data), file_name)
-    assert metadata.file_name == file_name
+    file_path = "chemometec_nc_view_example.csv"
+    metadata = create_metadata(df_to_series_data(df_data), file_path)
+    assert metadata.file_name == file_path
     assert metadata.software_name == constants.SOFTWARE_NAME
     assert metadata.device_type == constants.DEVICE_TYPE
     assert metadata.equipment_serial_number == "9002029999999999"
     assert metadata.product_manufacturer == constants.PRODUCT_MANUFACTURER
     assert metadata.detection_type == constants.DETECTION_TYPE
     assert metadata.model_number == NOT_APPLICABLE
-    assert metadata.unc_path == NOT_APPLICABLE
+    assert metadata.unc_path == file_path
 
 
 def test_create_measurement_groups() -> None:

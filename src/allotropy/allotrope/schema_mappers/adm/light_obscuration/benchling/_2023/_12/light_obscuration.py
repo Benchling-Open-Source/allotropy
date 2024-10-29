@@ -95,6 +95,7 @@ class MeasurementGroup:
 @dataclass(frozen=True)
 class Metadata:
     file_name: str
+    unc_path: str
     equipment_serial_number: str
     detector_identifier: str
     detector_model_number: str
@@ -127,6 +128,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 data_system_document=DataSystemDocument(
                     file_name=data.metadata.file_name,
                     software_name=data.metadata.software_name,
+                    UNC_path=data.metadata.unc_path,
                     software_version=data.metadata.software_version,
                     ASM_converter_name=self.converter_name,
                     ASM_converter_version=ASM_CONVERTER_VERSION,

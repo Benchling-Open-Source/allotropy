@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from pathlib import Path
+
 from allotropy.allotrope.schema_mappers.adm.cell_counting.benchling._2023._11.cell_counting import (
     Measurement,
     MeasurementGroup,
@@ -48,7 +50,7 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
     )
 
 
-def create_metadata(reader_data: ViCellData, file_name: str) -> Metadata:
+def create_metadata(reader_data: ViCellData, file_path: str) -> Metadata:
     return Metadata(
         device_type=DEVICE_TYPE,
         detection_type=DETECTION_TYPE,
@@ -56,5 +58,6 @@ def create_metadata(reader_data: ViCellData, file_name: str) -> Metadata:
         equipment_serial_number=reader_data.serial_number,
         software_name=SOFTWARE_NAME,
         software_version=reader_data.version.value,
-        file_name=file_name,
+        file_name=Path(file_path).name,
+        unc_path=file_path,
     )

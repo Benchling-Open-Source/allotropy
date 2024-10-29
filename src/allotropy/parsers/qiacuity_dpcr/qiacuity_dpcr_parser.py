@@ -26,7 +26,7 @@ class QiacuitydPCRParser(VendorParser[Data, Model]):
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = QiacuitydPCRReader(named_file_contents.contents)
         return Data(
-            create_metadata(named_file_contents.original_file_name),
+            create_metadata(named_file_contents.original_file_path),
             measurement_groups=[
                 MeasurementGroup(
                     measurements=map_rows(reader.well_data, create_measurements),

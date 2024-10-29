@@ -26,7 +26,7 @@ class ThermoFisherQubit4Parser(VendorParser[Data, Model]):
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         return Data(
-            create_metadata(named_file_contents.original_file_name),
+            create_metadata(named_file_contents.original_file_path),
             measurement_groups=map_rows(
                 ThermoFisherQubit4Reader.read(named_file_contents),
                 create_measurement_group,
