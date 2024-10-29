@@ -1,5 +1,3 @@
-from pathlib import Path
-
 from allotropy.parser_factory import Vendor
 from allotropy.testing.utils import get_testdata_dir
 from tests.to_allotrope_test import ParserTest

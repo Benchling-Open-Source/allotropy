@@ -27,9 +27,7 @@ class TestParser(ParserTest):
 def test_to_allotrope_absorbance_no_pm_in_time() -> None:
     test_filename = "endpoint_pathlength_correct_singleplate_no_pm_in_time"
     test_filepath = f"{ABSORBANCE_PATH}/exclude/{test_filename}.txt"
-    expected_filepath = (
-        f"{ABSORBANCE_PATH}/{test_filename}.json"
-    )
+    expected_filepath = f"{ABSORBANCE_PATH}/{test_filename}.json"
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
 
     allotrope_dict["plate reader aggregate document"]["data system document"][
