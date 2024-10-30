@@ -1,17 +1,173 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/light-obscuration/BENCHLING/2023/12/light-obscuration.manifest",
-    "light obscuration aggregate document": {
-        "light obscuration document": [
+    "$asm.manifest": "http://purl.allotrope.org/manifests/solution-analyzer/REC/2024/09/solution-analyzer.manifest",
+    "solution analyzer aggregate document": {
+        "solution analyzer document": [
             {
                 "measurement aggregate document": {
-                    "analyst": "MFC7094",
                     "measurement document": [
                         {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer",
+                                        "flush volume setting": {
+                                            "value": 0,
+                                            "unit": "mL"
+                                        },
+                                        "detector view volume": {
+                                            "value": 100.0,
+                                            "unit": "mL"
+                                        },
+                                        "repetition setting": 2,
+                                        "sample volume setting": {
+                                            "value": 0.2,
+                                            "unit": "mL"
+                                        }
+                                    }
+                                ]
+                            },
                             "measurement identifier": "Fake",
                             "measurement time": "2022-08-12T07:51:50+00:00",
+                            "sample document": {
+                                "sample identifier": "ExampleTimepoint"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "data processing document": {
+                                            "dilution factor setting": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "distribution aggregate document": {
+                                            "distribution document": [
+                                                {
+                                                    "particle size": {
+                                                        "value": 2.0,
+                                                        "unit": "μm"
+                                                    },
+                                                    "cumulative count": {
+                                                        "value": 24.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "cumulative particle density": {
+                                                        "value": 110.0,
+                                                        "unit": "Counts/mL"
+                                                    },
+                                                    "differential particle density": {
+                                                        "value": -0.0,
+                                                        "unit": "Counts/mL"
+                                                    },
+                                                    "differential count": {
+                                                        "value": -0.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_15"
+                                                },
+                                                {
+                                                    "particle size": {
+                                                        "value": 5.0,
+                                                        "unit": "μm"
+                                                    },
+                                                    "cumulative count": {
+                                                        "value": 9.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "cumulative particle density": {
+                                                        "value": 120.0,
+                                                        "unit": "Counts/mL"
+                                                    },
+                                                    "differential particle density": {
+                                                        "value": -0.0,
+                                                        "unit": "Counts/mL"
+                                                    },
+                                                    "differential count": {
+                                                        "value": -0.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_16"
+                                                },
+                                                {
+                                                    "particle size": {
+                                                        "value": 10.0,
+                                                        "unit": "μm"
+                                                    },
+                                                    "cumulative count": {
+                                                        "value": 4.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "cumulative particle density": {
+                                                        "value": 130.0,
+                                                        "unit": "Counts/mL"
+                                                    },
+                                                    "differential particle density": {
+                                                        "value": -0.0,
+                                                        "unit": "Counts/mL"
+                                                    },
+                                                    "differential count": {
+                                                        "value": -0.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_17"
+                                                },
+                                                {
+                                                    "particle size": {
+                                                        "value": 25.0,
+                                                        "unit": "μm"
+                                                    },
+                                                    "cumulative count": {
+                                                        "value": 0.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "cumulative particle density": {
+                                                        "value": 140.0,
+                                                        "unit": "Counts/mL"
+                                                    },
+                                                    "differential particle density": {
+                                                        "value": -0.0,
+                                                        "unit": "Counts/mL"
+                                                    },
+                                                    "differential count": {
+                                                        "value": -0.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_18"
+                                                },
+                                                {
+                                                    "particle size": {
+                                                        "value": 50.0,
+                                                        "unit": "μm"
+                                                    },
+                                                    "cumulative count": {
+                                                        "value": 0.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "cumulative particle density": {
+                                                        "value": 150.0,
+                                                        "unit": "Counts/mL"
+                                                    },
+                                                    "differential particle density": {
+                                                        "value": -0.0,
+                                                        "unit": "Counts/mL"
+                                                    },
+                                                    "differential count": {
+                                                        "value": -0.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_19"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
                             "device control aggregate document": {
                                 "device control document": [
                                     {
+                                        "device type": "solution-analyzer",
                                         "flush volume setting": {
                                             "value": 0,
                                             "unit": "mL"
@@ -28,127 +184,8 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "ExampleTimepoint"
-                            },
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "dilution factor setting": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "distribution aggregate document": {
-                                            "distribution document": [
-                                                {
-                                                    "distribution": [
-                                                        {
-                                                            "particle size": {
-                                                                "value": 2.0,
-                                                                "unit": "μm"
-                                                            },
-                                                            "cumulative count": {
-                                                                "value": 24.0,
-                                                                "unit": "(unitless)"
-                                                            },
-                                                            "cumulative particle density": {
-                                                                "value": 110.0,
-                                                                "unit": "Counts/mL"
-                                                            },
-                                                            "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_0"
-                                                        },
-                                                        {
-                                                            "particle size": {
-                                                                "value": 5.0,
-                                                                "unit": "μm"
-                                                            },
-                                                            "cumulative count": {
-                                                                "value": 9.0,
-                                                                "unit": "(unitless)"
-                                                            },
-                                                            "cumulative particle density": {
-                                                                "value": 120.0,
-                                                                "unit": "Counts/mL"
-                                                            },
-                                                            "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_1"
-                                                        },
-                                                        {
-                                                            "particle size": {
-                                                                "value": 10.0,
-                                                                "unit": "μm"
-                                                            },
-                                                            "cumulative count": {
-                                                                "value": 4.0,
-                                                                "unit": "(unitless)"
-                                                            },
-                                                            "cumulative particle density": {
-                                                                "value": 130.0,
-                                                                "unit": "Counts/mL"
-                                                            },
-                                                            "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_2"
-                                                        },
-                                                        {
-                                                            "particle size": {
-                                                                "value": 25.0,
-                                                                "unit": "μm"
-                                                            },
-                                                            "cumulative count": {
-                                                                "value": 0.0,
-                                                                "unit": "(unitless)"
-                                                            },
-                                                            "cumulative particle density": {
-                                                                "value": 140.0,
-                                                                "unit": "Counts/mL"
-                                                            },
-                                                            "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_3"
-                                                        },
-                                                        {
-                                                            "particle size": {
-                                                                "value": 50.0,
-                                                                "unit": "μm"
-                                                            },
-                                                            "cumulative count": {
-                                                                "value": 0.0,
-                                                                "unit": "(unitless)"
-                                                            },
-                                                            "cumulative particle density": {
-                                                                "value": 150.0,
-                                                                "unit": "Counts/mL"
-                                                            },
-                                                            "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_4"
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        }
-                                    }
-                                ]
-                            }
-                        },
-                        {
                             "measurement identifier": "Run1",
                             "measurement time": "2022-08-12T07:51:50+00:00",
-                            "device control aggregate document": {
-                                "device control document": [
-                                    {
-                                        "flush volume setting": {
-                                            "value": 0,
-                                            "unit": "mL"
-                                        },
-                                        "detector view volume": {
-                                            "value": 100.0,
-                                            "unit": "mL"
-                                        },
-                                        "repetition setting": 2,
-                                        "sample volume setting": {
-                                            "value": 0.2,
-                                            "unit": "mL"
-                                        }
-                                    }
-                                ]
-                            },
                             "sample document": {
                                 "sample identifier": "ExampleTimepoint"
                             },
@@ -164,83 +201,119 @@
                                         "distribution aggregate document": {
                                             "distribution document": [
                                                 {
-                                                    "distribution": [
-                                                        {
-                                                            "particle size": {
-                                                                "value": 2.0,
-                                                                "unit": "μm"
-                                                            },
-                                                            "cumulative count": {
-                                                                "value": 48.0,
-                                                                "unit": "(unitless)"
-                                                            },
-                                                            "cumulative particle density": {
-                                                                "value": 10.0,
-                                                                "unit": "Counts/mL"
-                                                            },
-                                                            "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_5"
-                                                        },
-                                                        {
-                                                            "particle size": {
-                                                                "value": 5.0,
-                                                                "unit": "μm"
-                                                            },
-                                                            "cumulative count": {
-                                                                "value": 1.0,
-                                                                "unit": "(unitless)"
-                                                            },
-                                                            "cumulative particle density": {
-                                                                "value": 20.0,
-                                                                "unit": "Counts/mL"
-                                                            },
-                                                            "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_6"
-                                                        },
-                                                        {
-                                                            "particle size": {
-                                                                "value": 10.0,
-                                                                "unit": "μm"
-                                                            },
-                                                            "cumulative count": {
-                                                                "value": 0.0,
-                                                                "unit": "(unitless)"
-                                                            },
-                                                            "cumulative particle density": {
-                                                                "value": 30.0,
-                                                                "unit": "Counts/mL"
-                                                            },
-                                                            "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_7"
-                                                        },
-                                                        {
-                                                            "particle size": {
-                                                                "value": 25.0,
-                                                                "unit": "μm"
-                                                            },
-                                                            "cumulative count": {
-                                                                "value": 0.0,
-                                                                "unit": "(unitless)"
-                                                            },
-                                                            "cumulative particle density": {
-                                                                "value": 40.0,
-                                                                "unit": "Counts/mL"
-                                                            },
-                                                            "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_8"
-                                                        },
-                                                        {
-                                                            "particle size": {
-                                                                "value": 50.0,
-                                                                "unit": "μm"
-                                                            },
-                                                            "cumulative count": {
-                                                                "value": 0.0,
-                                                                "unit": "(unitless)"
-                                                            },
-                                                            "cumulative particle density": {
-                                                                "value": 50.0,
-                                                                "unit": "Counts/mL"
-                                                            },
-                                                            "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_9"
-                                                        }
-                                                    ]
+                                                    "particle size": {
+                                                        "value": 2.0,
+                                                        "unit": "μm"
+                                                    },
+                                                    "cumulative count": {
+                                                        "value": 48.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "cumulative particle density": {
+                                                        "value": 10.0,
+                                                        "unit": "Counts/mL"
+                                                    },
+                                                    "differential particle density": {
+                                                        "value": -0.0,
+                                                        "unit": "Counts/mL"
+                                                    },
+                                                    "differential count": {
+                                                        "value": -0.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_20"
+                                                },
+                                                {
+                                                    "particle size": {
+                                                        "value": 5.0,
+                                                        "unit": "μm"
+                                                    },
+                                                    "cumulative count": {
+                                                        "value": 1.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "cumulative particle density": {
+                                                        "value": 20.0,
+                                                        "unit": "Counts/mL"
+                                                    },
+                                                    "differential particle density": {
+                                                        "value": -0.0,
+                                                        "unit": "Counts/mL"
+                                                    },
+                                                    "differential count": {
+                                                        "value": -0.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_21"
+                                                },
+                                                {
+                                                    "particle size": {
+                                                        "value": 10.0,
+                                                        "unit": "μm"
+                                                    },
+                                                    "cumulative count": {
+                                                        "value": 0.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "cumulative particle density": {
+                                                        "value": 30.0,
+                                                        "unit": "Counts/mL"
+                                                    },
+                                                    "differential particle density": {
+                                                        "value": -0.0,
+                                                        "unit": "Counts/mL"
+                                                    },
+                                                    "differential count": {
+                                                        "value": -0.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_22"
+                                                },
+                                                {
+                                                    "particle size": {
+                                                        "value": 25.0,
+                                                        "unit": "μm"
+                                                    },
+                                                    "cumulative count": {
+                                                        "value": 0.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "cumulative particle density": {
+                                                        "value": 40.0,
+                                                        "unit": "Counts/mL"
+                                                    },
+                                                    "differential particle density": {
+                                                        "value": -0.0,
+                                                        "unit": "Counts/mL"
+                                                    },
+                                                    "differential count": {
+                                                        "value": -0.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_23"
+                                                },
+                                                {
+                                                    "particle size": {
+                                                        "value": 50.0,
+                                                        "unit": "μm"
+                                                    },
+                                                    "cumulative count": {
+                                                        "value": 0.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "cumulative particle density": {
+                                                        "value": 50.0,
+                                                        "unit": "Counts/mL"
+                                                    },
+                                                    "differential particle density": {
+                                                        "value": -0.0,
+                                                        "unit": "Counts/mL"
+                                                    },
+                                                    "differential count": {
+                                                        "value": -0.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_24"
                                                 }
                                             ]
                                         }
@@ -249,11 +322,10 @@
                             }
                         },
                         {
-                            "measurement identifier": "Run2",
-                            "measurement time": "2022-08-12T07:51:50+00:00",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
+                                        "device type": "solution-analyzer",
                                         "flush volume setting": {
                                             "value": 0,
                                             "unit": "mL"
@@ -270,6 +342,8 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "Run2",
+                            "measurement time": "2022-08-12T07:51:50+00:00",
                             "sample document": {
                                 "sample identifier": "ExampleTimepoint"
                             },
@@ -285,83 +359,119 @@
                                         "distribution aggregate document": {
                                             "distribution document": [
                                                 {
-                                                    "distribution": [
-                                                        {
-                                                            "particle size": {
-                                                                "value": 2.0,
-                                                                "unit": "μm"
-                                                            },
-                                                            "cumulative count": {
-                                                                "value": 24.0,
-                                                                "unit": "(unitless)"
-                                                            },
-                                                            "cumulative particle density": {
-                                                                "value": 60.0,
-                                                                "unit": "Counts/mL"
-                                                            },
-                                                            "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_10"
-                                                        },
-                                                        {
-                                                            "particle size": {
-                                                                "value": 5.0,
-                                                                "unit": "μm"
-                                                            },
-                                                            "cumulative count": {
-                                                                "value": 9.0,
-                                                                "unit": "(unitless)"
-                                                            },
-                                                            "cumulative particle density": {
-                                                                "value": 70.0,
-                                                                "unit": "Counts/mL"
-                                                            },
-                                                            "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_11"
-                                                        },
-                                                        {
-                                                            "particle size": {
-                                                                "value": 10.0,
-                                                                "unit": "μm"
-                                                            },
-                                                            "cumulative count": {
-                                                                "value": 4.0,
-                                                                "unit": "(unitless)"
-                                                            },
-                                                            "cumulative particle density": {
-                                                                "value": 80.0,
-                                                                "unit": "Counts/mL"
-                                                            },
-                                                            "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_12"
-                                                        },
-                                                        {
-                                                            "particle size": {
-                                                                "value": 25.0,
-                                                                "unit": "μm"
-                                                            },
-                                                            "cumulative count": {
-                                                                "value": 0.0,
-                                                                "unit": "(unitless)"
-                                                            },
-                                                            "cumulative particle density": {
-                                                                "value": 90.0,
-                                                                "unit": "Counts/mL"
-                                                            },
-                                                            "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_13"
-                                                        },
-                                                        {
-                                                            "particle size": {
-                                                                "value": 50.0,
-                                                                "unit": "μm"
-                                                            },
-                                                            "cumulative count": {
-                                                                "value": 0.0,
-                                                                "unit": "(unitless)"
-                                                            },
-                                                            "cumulative particle density": {
-                                                                "value": 100.0,
-                                                                "unit": "Counts/mL"
-                                                            },
-                                                            "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_14"
-                                                        }
-                                                    ]
+                                                    "particle size": {
+                                                        "value": 2.0,
+                                                        "unit": "μm"
+                                                    },
+                                                    "cumulative count": {
+                                                        "value": 24.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "cumulative particle density": {
+                                                        "value": 60.0,
+                                                        "unit": "Counts/mL"
+                                                    },
+                                                    "differential particle density": {
+                                                        "value": -0.0,
+                                                        "unit": "Counts/mL"
+                                                    },
+                                                    "differential count": {
+                                                        "value": -0.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_25"
+                                                },
+                                                {
+                                                    "particle size": {
+                                                        "value": 5.0,
+                                                        "unit": "μm"
+                                                    },
+                                                    "cumulative count": {
+                                                        "value": 9.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "cumulative particle density": {
+                                                        "value": 70.0,
+                                                        "unit": "Counts/mL"
+                                                    },
+                                                    "differential particle density": {
+                                                        "value": -0.0,
+                                                        "unit": "Counts/mL"
+                                                    },
+                                                    "differential count": {
+                                                        "value": -0.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_26"
+                                                },
+                                                {
+                                                    "particle size": {
+                                                        "value": 10.0,
+                                                        "unit": "μm"
+                                                    },
+                                                    "cumulative count": {
+                                                        "value": 4.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "cumulative particle density": {
+                                                        "value": 80.0,
+                                                        "unit": "Counts/mL"
+                                                    },
+                                                    "differential particle density": {
+                                                        "value": -0.0,
+                                                        "unit": "Counts/mL"
+                                                    },
+                                                    "differential count": {
+                                                        "value": -0.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_27"
+                                                },
+                                                {
+                                                    "particle size": {
+                                                        "value": 25.0,
+                                                        "unit": "μm"
+                                                    },
+                                                    "cumulative count": {
+                                                        "value": 0.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "cumulative particle density": {
+                                                        "value": 90.0,
+                                                        "unit": "Counts/mL"
+                                                    },
+                                                    "differential particle density": {
+                                                        "value": -0.0,
+                                                        "unit": "Counts/mL"
+                                                    },
+                                                    "differential count": {
+                                                        "value": -0.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_28"
+                                                },
+                                                {
+                                                    "particle size": {
+                                                        "value": 50.0,
+                                                        "unit": "μm"
+                                                    },
+                                                    "cumulative count": {
+                                                        "value": 0.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "cumulative particle density": {
+                                                        "value": 100.0,
+                                                        "unit": "Counts/mL"
+                                                    },
+                                                    "differential particle density": {
+                                                        "value": -0.0,
+                                                        "unit": "Counts/mL"
+                                                    },
+                                                    "differential count": {
+                                                        "value": -0.0,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_29"
                                                 }
                                             ]
                                         }
@@ -369,26 +479,24 @@
                                 ]
                             }
                         }
-                    ]
-                }
+                    ],
+                    "data processing time": "2022-08-12T07:51:50+00:00"
+                },
+                "analyst": "MFC7094"
             }
         ],
         "data system document": {
+            "ASM file identifier": "hiac_example_5.json",
+            "data system instance identifier": "N/A",
             "file name": "hiac_example_5.xlsx",
             "UNC path": "tests/parsers/beckman_pharmspec/testdata/hiac_example_5.xlsx",
-            "software name": "PharmSpec",
-            "software version": "3.0",
             "ASM converter name": "allotropy_beckman_pharmspec",
-            "ASM converter version": "0.1.61"
+            "ASM converter version": "0.1.61",
+            "software name": "PharmSpec",
+            "software version": "3.0"
         },
         "device system document": {
-            "equipment serial number": "1808303021",
-            "device document": [
-                {
-                    "detector identifier": "",
-                    "detector model number": "HRLD150@10ml"
-                }
-            ]
+            "equipment serial number": "1808303021"
         }
     }
 }
