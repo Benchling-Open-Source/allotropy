@@ -5,8 +5,6 @@ import pytest
 from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
     DeviceSystemDocument,
     DistributionAggregateDocument,
-    # DistributionItem,
-    # MeasurementDocumentItem,
     ProcessedDataAggregateDocument,
     SampleDocument, MeasurementDocument, DistributionDocumentItem,
 )
@@ -64,8 +62,6 @@ def test_get_model() -> None:
         == "ExampleTimepoint"
     )
 
-    # # Single distribution document
-
     assert (
         len(
             model.solution_analyzer_aggregate_document.solution_analyzer_document[
@@ -104,25 +100,23 @@ def test_get_model() -> None:
             DistributionDocumentItem,
         )
 
-        # # 5 rows in the distribution document
-        # assert (
-        #     len(
-        #         elem.processed_data_aggregate_document.processed_data_document[0]
-        #         .distribution_aggregate_document.distribution_document[0]
-        #         .distribution
-        #     )
-        #     == 5
-        # )
+        # 5 rows in the distribution document
+        assert (
+            len(
+                elem.processed_data_aggregate_document.processed_data_document[0]
+                .distribution_aggregate_document.distribution_document
+            )
+            == 5
+        )
 
         # Ensure correct order and particle sizes
-        # for i, particle_size in enumerate([2, 5, 10, 25, 50]):
-        #     test = (
-        #         elem.processed_data_aggregate_document.processed_data_document[0]
-        #         .distribution_aggregate_document.distribution_document[0]
-        #         .distribution[i]
-        #         .particle_size
-        #     )
-        #     assert test.value == particle_size
+        for i, particle_size in enumerate([2, 5, 10, 25, 50]):
+            test = (
+                elem.processed_data_aggregate_document.processed_data_document[0]
+                .distribution_aggregate_document.distribution_document[i]
+                .particle_size
+            )
+            assert test.value == particle_size
 
 
 @pytest.mark.parametrize(

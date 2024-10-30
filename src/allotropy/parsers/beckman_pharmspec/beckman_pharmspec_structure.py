@@ -74,8 +74,6 @@ class Header:
     dilution_factor_setting: float
     analyst: str
     equipment_serial_number: str
-    detector_identifier: str
-    detector_model_number: str
     software_version: str
 
     @staticmethod
@@ -100,8 +98,6 @@ class Header:
                 data.series.iloc[0]
             ),
             equipment_serial_number=data[str, "Sensor Serial Number"],
-            detector_identifier="",
-            detector_model_number=data[str, "Sensor Model"],
         )
 
 
