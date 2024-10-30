@@ -416,9 +416,11 @@ class Mapper(SchemaMapper[Data, Model]):
                                 value=distribution.cumulative_particle_density
                             ),
                             differential_particle_density=TQuantityValueCountsPerMilliliter(
-                                value=1.0
+                                value=distribution.differential_particle_density
                             ),
-                            differential_count=TQuantityValueUnitless(value=1.0),
+                            differential_count=TQuantityValueUnitless(
+                                value=distribution.differential_count
+                            ),
                         )
                         for distribution in measurement.distribution_documents
                     ]
