@@ -5,11 +5,12 @@ import pytest
 from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
     DeviceSystemDocument,
     DistributionAggregateDocument,
+    DistributionDocumentItem,
+    MeasurementDocument,
     ProcessedDataAggregateDocument,
-    SampleDocument, MeasurementDocument, DistributionDocumentItem,
+    SampleDocument,
+    SolutionAnalyzerAggregateDocument,
 )
-from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._09.solution_analyzer import \
-    SolutionAnalyzerAggregateDocument
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.beckman_pharmspec.beckman_pharmspec_parser import PharmSpecParser
 from allotropy.parsers.beckman_pharmspec.beckman_pharmspec_structure import Header
@@ -20,7 +21,9 @@ TESTDATA = get_testdata_dir(__file__)
 
 def test_get_model() -> None:
     model = PharmSpecParser().to_allotrope(
-        NamedFileContents(open(Path(TESTDATA, "hiac_example_1.xlsx"), "rb"), "hiac_example_1.xlsx")
+        NamedFileContents(
+            open(Path(TESTDATA, "hiac_example_1.xlsx"), "rb"), "hiac_example_1.xlsx"
+        )
     )
     assert isinstance(
         model.solution_analyzer_aggregate_document, SolutionAnalyzerAggregateDocument
@@ -95,16 +98,18 @@ def test_get_model() -> None:
         )
 
         assert isinstance(
-            elem.processed_data_aggregate_document.processed_data_document[0]
-            .distribution_aggregate_document.distribution_document[0],
+            elem.processed_data_aggregate_document.processed_data_document[
+                0
+            ].distribution_aggregate_document.distribution_document[0],
             DistributionDocumentItem,
         )
 
         # 5 rows in the distribution document
         assert (
             len(
-                elem.processed_data_aggregate_document.processed_data_document[0]
-                .distribution_aggregate_document.distribution_document
+                elem.processed_data_aggregate_document.processed_data_document[
+                    0
+                ].distribution_aggregate_document.distribution_document
             )
             == 5
         )

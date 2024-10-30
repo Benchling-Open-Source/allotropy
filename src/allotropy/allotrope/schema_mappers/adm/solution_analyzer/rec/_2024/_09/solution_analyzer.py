@@ -5,7 +5,11 @@ from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
     AnalyteAggregateDocument,
     AnalyteDocument,
+    CalculatedDataAggregateDocument,
+    CalculatedDataDocumentItem,
     DataProcessingDocument,
+    DataSourceAggregateDocument,
+    DataSourceDocumentItem,
     DataSystemDocument,
     DeviceControlAggregateDocument,
     DeviceControlDocumentItem,
@@ -21,8 +25,8 @@ from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._09.solution_ana
     ProcessedDataDocumentItem,
     SampleDocument,
     SolutionAnalyzerAggregateDocument,
-    SolutionAnalyzerDocumentItem, CalculatedDataAggregateDocument, CalculatedDataDocumentItem,
-    DataSourceAggregateDocument, DataSourceDocumentItem, TQuantityValueModel,
+    SolutionAnalyzerDocumentItem,
+    TQuantityValueModel,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueCell,
@@ -414,9 +418,7 @@ class Mapper(SchemaMapper[Data, Model]):
                             differential_particle_density=TQuantityValueCountsPerMilliliter(
                                 value=1.0
                             ),
-                            differential_count=TQuantityValueUnitless(
-                                value=1.0
-                            ),
+                            differential_count=TQuantityValueUnitless(value=1.0),
                         )
                         for distribution in measurement.distribution_documents
                     ]

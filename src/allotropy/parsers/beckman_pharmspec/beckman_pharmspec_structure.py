@@ -4,23 +4,23 @@ from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
 import re
-from pathlib import Path
 
 import pandas as pd
 
 from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
     CalculatedDataItem,
+    DataProcessing,
     DataSource,
+    DistributionDocument,
     Measurement,
     MeasurementGroup,
     Metadata,
-    DataProcessing,
-    DistributionDocument,
 )
 from allotropy.parsers.beckman_pharmspec.constants import (
+    DEVICE_TYPE,
     PHARMSPEC_SOFTWARE_NAME,
     UNIT_LOOKUP,
-    VALID_CALCS, DEVICE_TYPE,
+    VALID_CALCS,
 )
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.utils.pandas import (
@@ -133,7 +133,7 @@ def create_measurement_groups(
                     data_processing=DataProcessing(
                         dilution_factor_setting=header.dilution_factor_setting,
                     ),
-                    distribution_documents=distribution.features
+                    distribution_documents=distribution.features,
                 )
                 for distribution in [x for x in distributions if not x.is_calculated]
             ],
