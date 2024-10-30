@@ -88,9 +88,11 @@ class InstrumentSettings:
 
     @classmethod
     def create(cls, settings_lines: list[str]) -> InstrumentSettings:
-        channel_settings = cls._get_channel_line_settings(settings_lines[0])
+        fluorescence_channel_settings = cls._get_fluorescence_settings(
+            settings_lines[0]
+        )
         transmitted_light = None
-        if not channel_settings:
+        if not fluorescence_channel_settings:
             transmitted_light = cls._get_transmitted_light_out_of_channel_settings(
                 settings_lines[0]
             )
@@ -104,12 +106,12 @@ class InstrumentSettings:
         return InstrumentSettings(
             auto_focus=cls._get_auto_focus(non_kv_settings),
             detector_distance=cls._get_detector_distance(non_kv_settings),
-            fluorescent_tag=channel_settings.get("fluorescent_tag"),
+            fluorescent_tag=fluorescence_channel_settings.get("fluorescent_tag"),
             excitation_wavelength=try_float_or_none(
-                channel_settings.get("excitation_wavelength")
+                fluorescence_channel_settings.get("excitation_wavelength")
             ),
             detector_wavelength=try_float_or_none(
-                channel_settings.get("detector_wavelength")
+                fluorescence_channel_settings.get("detector_wavelength")
             ),
             transmitted_light=transmitted_light,
             illumination=try_float_or_none(settings_dict.get("LED intensity")),
@@ -118,7 +120,7 @@ class InstrumentSettings:
         )
 
     @classmethod
-    def _get_channel_line_settings(cls, settings_header: str) -> dict[str, str]:
+    def _get_fluorescence_settings(cls, settings_header: str) -> dict[str, str]:
         if matches := re.match(CHANNEL_HEADER_REGEX, settings_header):
             return {key: str(value) for key, value in matches.groupdict().items()}
         return {}
