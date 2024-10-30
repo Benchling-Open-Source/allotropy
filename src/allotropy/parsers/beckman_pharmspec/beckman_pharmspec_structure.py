@@ -22,7 +22,7 @@ from allotropy.parsers.beckman_pharmspec.constants import (
     UNIT_LOOKUP,
     VALID_CALCS,
 )
-from allotropy.parsers.constants import NOT_APPLICABLE
+from allotropy.parsers.constants import NEGATIVE_ZERO, NOT_APPLICABLE
 from allotropy.parsers.utils.pandas import (
     map_rows,
     SeriesData,
@@ -31,13 +31,16 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 
 
 def _create_processed_data(data: SeriesData) -> DistributionDocument:
+
     return DistributionDocument(
         distribution_identifier=random_uuid_str(),
         particle_size=data[float, "Particle Size(µm)"],
         cumulative_count=data[float, "Cumulative Count"],
         cumulative_particle_density=data[float, "Cumulative Counts/mL"],
-        differential_particle_density=data.get(float, "Differential Counts/mL"),
-        differential_count=data.get(float, "Differential Count"),
+        differential_particle_density=data.get(
+            float, "Differential Counts/mL", NEGATIVE_ZERO
+        ),
+        differential_count=data.get(float, "Differential Count", NEGATIVE_ZERO),
     )
 
 
@@ -162,7 +165,7 @@ def create_calculated_data(
             unit=UNIT_LOOKUP[name],
             data_sources=[
                 DataSource(
-                    identifier=x.distribution_identifier,
+                    identifier=x.distribution_identifier or random_uuid_str(),
                     feature=name.replace("_", " "),
                 )
                 for x in particle_size_sources[feature.particle_size]
