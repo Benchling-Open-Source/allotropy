@@ -225,34 +225,6 @@
                                                                                             }
                                                                                         }
                                                                                     }
-                                                                                },
-                                                                                "sensor chip document": {
-                                                                                    "$asm.property-class": "TODO",
-                                                                                    "$asm.pattern": "aggregate datum",
-                                                                                    "type": "object",
-                                                                                    "required": [
-                                                                                        "sensor chip identifier"
-                                                                                    ],
-                                                                                    "properties": {
-                                                                                        "sensor chip identifier": {
-                                                                                            "$asm.pattern": "value datum",
-                                                                                            "$asm.property-class": "TODO",
-                                                                                            "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                                                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
-                                                                                        },
-                                                                                        "sensor chip type": {
-                                                                                            "$asm.pattern": "value datum",
-                                                                                            "$asm.property-class": "TODO",
-                                                                                            "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                                                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
-                                                                                        },
-                                                                                        "product manufacturer": {
-                                                                                            "$asm.pattern": "value datum",
-                                                                                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001258",
-                                                                                            "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                                                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
-                                                                                        }
-                                                                                    }
                                                                                 }
                                                                             }
                                                                         },
@@ -12199,6 +12171,41 @@
                                         ]
                                     },
                                     "minItems": 1
+                                }
+                            }
+                        },
+                        "sensor chip document": {
+                            "$asm.property-class": "TODO",
+                            "$asm.pattern": "aggregate datum",
+                            "type": "object",
+                            "required": [
+                                "sensor chip identifier"
+                            ],
+                            "properties": {
+                                "sensor chip identifier": {
+                                    "$asm.pattern": "value datum",
+                                    "$asm.property-class": "TODO",
+                                    "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+                                },
+                                "sensor chip type": {
+                                    "$asm.pattern": "value datum",
+                                    "$asm.property-class": "TODO",
+                                    "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+                                },
+                                "product manufacturer": {
+                                    "$asm.pattern": "value datum",
+                                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001258",
+                                    "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+                                },
+                                "custom information aggregate document": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/$defs/customInformationAggregateDocument"
+                                        }
+                                    ]
                                 }
                             }
                         }
