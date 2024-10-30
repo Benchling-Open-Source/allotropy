@@ -1,9 +1,12 @@
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
 import re
+from re import Match
+from typing import ClassVar, TypeAlias
 
 import pandas as pd
 
@@ -13,7 +16,10 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_rea
     MeasurementType,
     Metadata,
 )
-from allotropy.exceptions import valid_value_or_raise
+from allotropy.exceptions import (
+    AllotropeConversionError,
+    valid_value_or_raise,
+)
 from allotropy.parsers.bmg_mars import constants
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.utils.pandas import SeriesData
@@ -44,6 +50,9 @@ class ReadType(Enum):
         return self.value.lower()
 
 
+FilterHandler: TypeAlias = Callable[[Match[str]], tuple[float | None, float | None]]
+
+
 @dataclass(frozen=True)
 class Header:
     read_type: ReadType
@@ -59,6 +68,21 @@ class Header:
     path: str | None
     test_id: str | None
 
+    FILTER_FORMATS: ClassVar[dict[str, tuple[str, FilterHandler]]] = {
+        "Raw Data (Ex/Em)": (
+            r"Raw Data \((\d+\.?\d*)/(\d+\.?\d*)\)",
+            lambda m: (float(m.group(2)), float(m.group(1))),
+        ),
+        "Raw Data (Em)": (
+            r"Raw Data \((\d+\.?\d*)\)",
+            lambda m: (float(m.group(1)), None),
+        ),
+        "Raw Data (No filter)": (
+            r"Raw Data \(No filter\)",
+            lambda _: (None, None),
+        ),
+    }
+
     @staticmethod
     def create(data: SeriesData, header_content: str) -> Header:
         # Search for read type in header content
@@ -70,24 +94,28 @@ class Header:
         read_type = valid_value_or_raise("read type", read_types, ReadType)
 
         # Get wavelengths from RawData line
-        raw_data_match = assert_not_none(
+        raw_data_line = assert_not_none(
             re.search(r"Raw Data \(.*?\)", header_content),
             msg="Raw Data line not found in input file.",
-        )
+        ).group(0)
 
-        wavelength = None
-        excitation_wavelength = None
-
-        # Formats: "Raw Data (Ex/Em)", "Raw Data (Em)", "Raw Data (No filter)"
-        filter_info = raw_data_match.group(0).split("(")[1].rstrip(")")
-        if filter_info == "No filter":
-            pass
-        elif "/" in filter_info:
-            w1, w2 = filter_info.split("/")
-            wavelength = float(w2)
-            excitation_wavelength = float(w1)
+        # iterate over filter formats, to parse Ex/Em
+        for _, (pattern, handler) in Header.FILTER_FORMATS.items():
+            match = re.match(pattern, raw_data_line)
+            if match:
+                try:
+                    wavelength, excitation_wavelength = handler(match)
+                    break
+                except ValueError as err:
+                    msg = f"Failed to convert filters in line: '{raw_data_line}'"
+                    raise AllotropeConversionError(msg) from err
         else:
-            wavelength = float(filter_info)
+            msg = (
+                f"Invalid Raw Data format: '{raw_data_line}'. "
+                "Expected/supported formats include: "
+                f"{', '.join(Header.FILTER_FORMATS.keys())}"
+            )
+            raise AllotropeConversionError(msg)
 
         return Header(
             read_type=read_type,
