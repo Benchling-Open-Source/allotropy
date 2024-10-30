@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from pathlib import Path
+
 import pandas as pd
 
 from allotropy.allotrope.models.shared.definitions.definitions import NaN
@@ -119,7 +121,7 @@ def _create_measurement_group(
     )
 
 
-def create_metadata(header: SeriesData, file_name: str) -> Metadata:
+def create_metadata(header: SeriesData, file_path: str) -> Metadata:
     device_identifier = header.get(str, "Instrument ID") or header.get(
         str, "Instrument"
     )
@@ -131,7 +133,8 @@ def create_metadata(header: SeriesData, file_name: str) -> Metadata:
         ),
         software_name=SOFTWARE_NAME,
         software_version=header.get(str, "Software version"),
-        file_name=file_name,
+        file_name=Path(file_path).name,
+        unc_path=file_path,
     )
 
 

@@ -27632,11 +27632,11 @@
         "data system document": {
             "data system instance identifier": "localhost",
             "file name": "appbio_quantstudio_example04.txt",
-            "UNC path": "",
+            "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_example04.txt",
             "software name": "Thermo QuantStudio",
             "software version": "1.0",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.58"
+            "ASM converter version": "0.1.61"
         },
         "calculated data aggregate document": {
             "calculated data document": [

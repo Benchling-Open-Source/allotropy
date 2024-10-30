@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from pathlib import Path
+
 import pandas as pd
 
 from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
@@ -99,11 +101,12 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
     )
 
 
-def create_data(df: pd.DataFrame, file_name: str) -> Data:
+def create_data(df: pd.DataFrame, file_path: str) -> Data:
     header = df_to_series_data(df.head(1))
     return Data(
         metadata=Metadata(
-            file_name=file_name,
+            file_name=Path(file_path).name,
+            unc_path=file_path,
             device_identifier=NOT_APPLICABLE,
             model_number=constants.MODEL_NUMBER,
             software_name=constants.SOFTWARE_NAME,

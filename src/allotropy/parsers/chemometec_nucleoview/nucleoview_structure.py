@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from pathlib import Path
+
 import pandas as pd
 
 from allotropy.allotrope.models.shared.definitions.definitions import (
@@ -22,9 +24,10 @@ from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
-def create_metadata(data: SeriesData, file_name: str) -> Metadata:
+def create_metadata(data: SeriesData, file_path: str) -> Metadata:
     return Metadata(
-        file_name=file_name,
+        file_name=Path(file_path).name,
+        unc_path=file_path,
         model_number=data.get(str, "Instrument type", DEFAULT_MODEL_NUMBER),
         equipment_serial_number=data.get(str, "Instrument s/n"),
         software_name=NUCLEOCOUNTER_SOFTWARE_NAME,

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from pathlib import Path
 import xml.etree.ElementTree as Et
 
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
@@ -210,10 +211,11 @@ def get_well_name(well_attrib: dict[str, str]) -> str:
 
 
 def create_metadata(
-    root_xml: Et.Element, system_metadata: SystemMetadata, file_name: str
+    root_xml: Et.Element, system_metadata: SystemMetadata, file_path: str
 ) -> Metadata:
     return Metadata(
-        file_name=file_name,
+        file_name=Path(file_path).name,
+        unc_path=file_path,
         software_name=constants.SOFTWARE_NAME,
         software_version=root_xml.attrib["BioPlexManagerVersion"],
         equipment_serial_number=system_metadata.serial_number,

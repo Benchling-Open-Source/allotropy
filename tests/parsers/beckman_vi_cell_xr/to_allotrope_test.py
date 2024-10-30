@@ -1,15 +1,14 @@
-from pathlib import Path
 import re
 
 import pytest
 
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parser_factory import Vendor
-from allotropy.testing.utils import from_file
+from allotropy.testing.utils import from_file, get_testdata_dir
 from tests.to_allotrope_test import ParserTest
 
 VENDOR_TYPE = Vendor.BECKMAN_VI_CELL_XR
-TESTDATA = f"{Path(__file__).parent}/testdata"
+TESTDATA = get_testdata_dir(__file__)
 
 
 class TestParser(ParserTest):

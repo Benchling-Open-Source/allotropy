@@ -31,7 +31,7 @@ class UnchainedLabsLunaticParser(VendorParser[Data, Model]):
             reader.header, reader.data
         )
         return Data(
-            create_metadata(reader.header, named_file_contents.original_file_name),
+            create_metadata(reader.header, named_file_contents.original_file_path),
             measurement_groups=measurement_groups,
             calculated_data=calculated_data,
         )

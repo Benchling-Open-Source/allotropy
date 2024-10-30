@@ -4,6 +4,7 @@ from collections.abc import Iterator
 from dataclasses import dataclass
 from enum import Enum
 import logging
+from pathlib import Path
 import re
 
 import pandas as pd
@@ -468,9 +469,10 @@ class Data:
         )
 
 
-def create_metadata(data: Data, file_name: str) -> Metadata:
+def create_metadata(data: Data, file_path: str) -> Metadata:
     return Metadata(
-        file_name=file_name,
+        file_name=Path(file_path).name,
+        unc_path=file_path,
         software_name=constants.SOFTWARE_NAME,
         software_version=data.version,
         device_identifier=constants.DEVICE_IDENTIFIER,
