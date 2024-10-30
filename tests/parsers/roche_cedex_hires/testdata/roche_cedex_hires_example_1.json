@@ -861,9 +861,10 @@
         },
         "data system document": {
             "file name": "roche_cedex_hires_example_1.csv",
+            "UNC path": "tests/parsers/roche_cedex_hires/testdata/roche_cedex_hires_example_1.csv",
             "software name": "Cedex software",
             "ASM converter name": "allotropy_roche_cedex_hires",
-            "ASM converter version": "0.1.38"
+            "ASM converter version": "0.1.61"
         }
     }
 }

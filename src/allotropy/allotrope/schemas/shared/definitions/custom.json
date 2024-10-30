@@ -299,6 +299,26 @@
       }
     ]
   },
+  "tQuantityValueMicroliterPerMinute": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/MicroliterPerMinute"
+      }
+    ]
+  },
+  "tNullableQuantityValueMicroliterPerMinute": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/MicroliterPerMinute"
+      }
+    ]
+  },
   "tQuantityValueMicrometer": {
     "allOf": [
       {
@@ -599,6 +619,26 @@
       }
     ]
   },
+  "tQuantityValueMolar": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/Molar"
+      }
+    ]
+  },
+  "tNullableQuantityValueMolar": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/Molar"
+      }
+    ]
+  },
   "tQuantityValueNanoCoulomb": {
     "allOf": [
       {
@@ -699,6 +739,26 @@
       }
     ]
   },
+  "tQuantityValueNanomolar": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/Nanomolar"
+      }
+    ]
+  },
+  "tNullableQuantityValueNanomolar": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/Nanomolar"
+      }
+    ]
+  },
   "tQuantityValueNumber": {
     "allOf": [
       {
@@ -776,6 +836,26 @@
       },
       {
         "$ref": "#/$defs/PH"
+      }
+    ]
+  },
+  "tQuantityValuePerSecond": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/PerSecond"
+      }
+    ]
+  },
+  "tNullableQuantityValuePerSecond": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/PerSecond"
       }
     ]
   },

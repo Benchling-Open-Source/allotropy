@@ -25,6 +25,6 @@ class KaleidoParser(VendorParser[Data, Model]):
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         data = create_data(CsvReader(read_to_lines(named_file_contents)))
         return Data(
-            create_metadata(data, named_file_contents.original_file_name),
+            create_metadata(data, named_file_contents.original_file_path),
             create_measurement_groups(data),
         )

@@ -6,6 +6,8 @@ from typing import Any
 import pytest
 from pytest import FixtureRequest, Parser
 
+from allotropy.testing.utils import get_testdata_dir
+
 # ParserTest will ignore any files with "error",  "exclude", or "invalid" in their path.
 EXCLUDE_KEYWORDS = {"error", "exclude", "invalid"}
 
@@ -56,7 +58,7 @@ def get_test_cases(testdata_dir: Path) -> list[Path]:
 def pytest_generate_tests(metafunc: pytest.Metafunc) -> None:
     # Only parametrize test_file_path if class variable VENDOR is defined, signifying a ParserTest
     if "test_file_path" in metafunc.fixturenames and metafunc.cls.VENDOR:
-        testdata_dir = Path(Path(inspect.getfile(metafunc.cls)).parent, "testdata")
+        testdata_dir = get_testdata_dir(inspect.getfile(metafunc.cls))
         paths = get_test_cases(testdata_dir)
         if metafunc.config.option.filter:
             paths = [

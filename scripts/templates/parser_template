@@ -28,6 +28,6 @@ class $CLASS_NAME_PREFIX$Parser(VendorParser[Data, Model]):
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = $CLASS_NAME_PREFIX$Reader.read(named_file_contents)
         return Data(
-            create_metadata(reader.header, named_file_contents.original_file_name),
+            create_metadata(reader.header, named_file_contents.original_file_path),
             map_rows(reader.data, create_measurement_groups)
         )

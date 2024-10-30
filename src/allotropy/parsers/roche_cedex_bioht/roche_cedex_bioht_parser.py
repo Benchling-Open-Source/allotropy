@@ -32,6 +32,6 @@ class RocheCedexBiohtParser(VendorParser[Data, Model]):
         samples = Sample.create_samples(reader.samples_data)
 
         return Data(
-            create_metadata(title, named_file_contents.original_file_name),
+            create_metadata(title, named_file_contents.original_file_path),
             measurement_groups=create_measurement_groups(samples, title),
         )

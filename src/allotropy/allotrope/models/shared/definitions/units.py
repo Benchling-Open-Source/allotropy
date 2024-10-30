@@ -85,6 +85,11 @@ class Microliter(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class MicroliterPerMinute(HasUnit):
+    unit: str = "μL/min"
+
+
+@dataclass(frozen=True, kw_only=True)
 class Micrometer(HasUnit):
     unit: str = "μm"
 
@@ -160,6 +165,11 @@ class MillivoltTimesSecond(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class Molar(HasUnit):
+    unit: str = "M"
+
+
+@dataclass(frozen=True, kw_only=True)
 class NanoCoulomb(HasUnit):
     unit: str = "nC"
 
@@ -185,6 +195,11 @@ class Nanometer(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class Nanomolar(HasUnit):
+    unit: str = "nM"
+
+
+@dataclass(frozen=True, kw_only=True)
 class Number(HasUnit):
     unit: str = "#"
 
@@ -202,6 +217,11 @@ class OpticalDensity(HasUnit):
 @dataclass(frozen=True, kw_only=True)
 class PH(HasUnit):
     unit: str = "pH"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PerSecond(HasUnit):
+    unit: str = "s^-1"
 
 
 @dataclass(frozen=True, kw_only=True)

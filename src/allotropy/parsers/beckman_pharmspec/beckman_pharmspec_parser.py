@@ -32,7 +32,7 @@ class PharmSpecParser(VendorParser[Data, Model]):
         header = Header.create(reader.header)
 
         return Data(
-            create_metadata(header, named_file_contents.original_file_name),
+            create_metadata(header, named_file_contents.original_file_path),
             create_measurement_groups(header, distributions),
             create_calculated_data(distributions),
         )

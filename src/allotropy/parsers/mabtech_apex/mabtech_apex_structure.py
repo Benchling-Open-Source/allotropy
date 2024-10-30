@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import logging
+from pathlib import Path
 import re
 
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
@@ -20,7 +21,7 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none
 
 
-def create_metadata(plate_info: SeriesData, file_name: str) -> Metadata:
+def create_metadata(plate_info: SeriesData, file_path: str) -> Metadata:
     machine_id = assert_not_none(
         re.match(
             "([A-Z]+[a-z]*) ([0-9]+)",
@@ -32,11 +33,11 @@ def create_metadata(plate_info: SeriesData, file_name: str) -> Metadata:
     return Metadata(
         device_identifier=NOT_APPLICABLE,
         software_name=constants.SOFTWARE_NAME,
-        unc_path=plate_info.get(str, "Path:"),
         software_version=plate_info.get(str, "Software Version:"),
         model_number=machine_id.group(1),
         equipment_serial_number=machine_id.group(2),
-        file_name=file_name,
+        file_name=Path(file_path).name,
+        unc_path=plate_info.get(str, "Path:", file_path),
     )
 
 

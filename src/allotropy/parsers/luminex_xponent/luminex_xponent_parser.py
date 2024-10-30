@@ -29,7 +29,7 @@ class LuminexXponentParser(VendorParser[MapperData, Model]):
         data = Data.create(reader)
         return MapperData(
             create_metadata(
-                data.header, data.calibrations, named_file_contents.original_file_name
+                data.header, data.calibrations, named_file_contents.original_file_path
             ),
             create_measurement_groups(data.measurement_list.measurements, data.header),
         )

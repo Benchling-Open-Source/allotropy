@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 from dataclasses import dataclass
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
@@ -218,7 +219,7 @@ def create_calculated_data(
     ]
 
 
-def create_metadata(device_identifier: str, file_name: str) -> Metadata:
+def create_metadata(device_identifier: str, file_path: str) -> Metadata:
     return Metadata(
         device_identifier=device_identifier,
         brand_name=BRAND_NAME,
@@ -226,5 +227,6 @@ def create_metadata(device_identifier: str, file_name: str) -> Metadata:
         container_type=ContainerType.well_plate,
         software_name=SOFTWARE_NAME,
         product_manufacturer=PRODUCT_MANUFACTURER,
-        file_name=file_name,
+        file_name=Path(file_path).name,
+        unc_path=file_path,
     )
