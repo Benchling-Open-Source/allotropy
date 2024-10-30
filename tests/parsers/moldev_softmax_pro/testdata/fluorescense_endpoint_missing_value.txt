@@ -1,0 +1,209 @@
+##BLOCKS= 12
+Plate:	BNCH_28465721_96w	1.3	TimeFormat	Endpoint	Fluorescence	FALSE	Raw	FALSE	1						3	445 535 780 	1	12	96	404 485 569 	Manual				6				1	8	404 485 569
+	Temperature(¡C)	A1	A2	A3	A4	A5	A6	A7	A8	A9	A10	A11	A12
+	0	2138332.25	-421432.75	477671.25	-589398.75	-955180.75	-1378114.75	2090725.25	1758730.25	451699.25	1093684.25	-922064.75	-727815.75
+
+	0	-961071.375	1651907.625	202843.625	-876766.375	906447.625	-718798.375	29154.625	-243999.375	1067223.625	1406308.625	622558.625	124736.625
+
+	0	-147052	613510	2282375	1265363	740946	2234608	1932730	1722810	1661795	509188	469896	-1148088
+
+		A1	A2	A3	A4	A5	A6	A7	A8	A9	A10	A11	A12
+		-2.8075305332873679	-0.99667287856133147	0.86784155877426949	0.86584954748589826	-10.248399373722162	1.2232393010934703	-0.082999208791508974	-0.018263208654880445	2.0352405125456974	0.65152470438409549	-9.11788821920231	0.3301886542303501
+~End
+Group: PositiveControl
+Sample	Well	Concentration	Values	MeanValue	Std.Dev.	CV%	WellPlateName
+CONTROL_85196	A1		-2.808	-1.213	5.447	449.251	BNCH_28465721_96w
+ 	A2	 	-0.997	 	 	 	BNCH_28465721_96w
+
+Group Column	Formula Name	Formula	Precision	Notation
+1	Sample	!SampleNames	3 decimal places	Numeric
+2	Well	!WellIDs	3 decimal places	Numeric
+3	Concentration	!SampleDescriptor	3 decimal places	Numeric
+4	Values	!WellValues	3 decimal places	Numeric
+5	MeanValue	Average(!WellValues)	3 decimal places	Numeric
+6	Std.Dev.	Stdev(!WellValues)	3 decimal places	Numeric
+7	CV%	Cv(!WellValues)	3 decimal places	Numeric
+8	WellPlateName	!WellPlateName	3 decimal places	Numeric
+
+Group Summaries
+
+~End
+Group: NegativeControl
+Sample	Well	Concentration	Values	MeanValue	Std.Dev.	CV%	WellPlateName
+ 	A3	 	-3.004	 	 	 	BNCH_28465721_96w
+
+Group Column	Formula Name	Formula	Precision	Notation
+1	Sample	!SampleNames	3 decimal places	Numeric
+2	Well	!WellIDs	3 decimal places	Numeric
+3	Concentration	!SampleDescriptor	3 decimal places	Numeric
+4	Values	!WellValues	3 decimal places	Numeric
+5	MeanValue	Average(!WellValues)	3 decimal places	Numeric
+6	Std.Dev.	Stdev(!WellValues)	3 decimal places	Numeric
+7	CV%	Cv(!WellValues)	3 decimal places	Numeric
+8	WellPlateName	!WellPlateName	3 decimal places	Numeric
+
+Group Summaries
+~End
+Group: Unknowns
+Sample	Wells	Value	MeanValue	Std.Dev.	CV%	WellPlateName
+SAMPLE_38901	A3	0.868	-2.838	6.417	226.1	BNCH_28465721_96w
+ 	A4	0.866	 	 	 	BNCH_28465721_96w
+ 	A5	-10.248	 	 	 	BNCH_28465721_96w
+SAMPLE_38909	A6	1.223	0.374	0.736	196.8	BNCH_28465721_96w
+ 	A7	-0.083	 	 	 	BNCH_28465721_96w
+ 	A8	-0.018	 	 	 	BNCH_28465721_96w
+SAMPLE_38917	A9	2.035	-2.144	6.079	283.6	BNCH_28465721_96w
+ 	A10	0.652	 	 	 	BNCH_28465721_96w
+ 	A11	-9.118	 	 	 	BNCH_28465721_96w
+
+Group Column	Formula Name	Formula	Precision	Notation
+1	Sample	!SampleNames	2 decimal places	Numeric
+2	Wells	!WellIDs	2 decimal places	Numeric
+3	Value	!WellValues	3 decimal places	Numeric
+4	MeanValue	Average(Value)	3 decimal places	Numeric
+5	Std.Dev.	Stdev(Value)	3 decimal places	Numeric
+6	CV%	Cv(Value)	1 decimal places	Numeric
+7	WellPlateName	!WellPlateName	3 decimal places	Numeric
+
+Group Summaries
+InRange	R - Outside standard range			0 decimal places	Numeric Notation
+~End
+Plate:	BNCH_49917577_96w	1.3	TimeFormat	Endpoint	Fluorescence	FALSE	Raw	FALSE	1						3	445 535 780 	1	12	96	404 485 569 	Manual				6				1	8	404 485 569
+	Temperature(¡C)	A1	A2	A3	A4	A5	A6	A7	A8	A9	A10	A11	A12
+	0	1194741.125	680456.125	1287117.125	1558377.125	-36608.875	-1745676.875	-462678.875	1539696.125	-143137.875	313436.125	1261548.125	550799.125
+
+	0	-582381.125	-691764.125	2075859.875	740123.875	339415.875	-1677110.125	285890.875	1683946.875	-1173877.125	339726.875	-1519742.125	1187267.875
+
+	0	-1901180.875	1551806.125	205458.125	-1623743.875	-930536.875	1845432.125	624736.125	-1401255.875	1412932.125	-309725.875	1779189.125	-1976813.875
+
+		A1	A2	A3	A4	A5	A6	A7	A8	A9	A10	A11	A12
+		2.3475300173510041	0.38837651729425454	0.57830303035163433	1.3461501812019729	0.70390650360810669	1.0194651320363866	3.2091788213055961	0.95324432081489618	0.60154029524983332	0.95951861009134232	0.15691172709343368	0.79884566825746517
+~End
+Group: PositiveControl
+Sample	Well	Concentration	Values	MeanValue	Std.Dev.	CV%	WellPlateName
+CONTROL_85121	A1		2.348	0.518	9.866	1903.923	BNCH_49917577_96w
+ 	A2	 	0.388	 	 	 	BNCH_49917577_96w
+
+Group Column	Formula Name	Formula	Precision	Notation
+1	Sample	!SampleNames	3 decimal places	Numeric
+2	Well	!WellIDs	3 decimal places	Numeric
+3	Concentration	!SampleDescriptor	3 decimal places	Numeric
+4	Values	!WellValues	3 decimal places	Numeric
+5	MeanValue	Average(!WellValues)	3 decimal places	Numeric
+6	Std.Dev.	Stdev(!WellValues)	3 decimal places	Numeric
+7	CV%	Cv(!WellValues)	3 decimal places	Numeric
+8	WellPlateName	!WellPlateName	3 decimal places	Numeric
+
+Group Summaries
+
+~End
+Group: NegativeControl
+Sample	Well	Concentration	Values	MeanValue	Std.Dev.	CV%	WellPlateName
+ 	A3	 	-2.526	 	 	 	BNCH_49917577_96w
+
+Group Column	Formula Name	Formula	Precision	Notation
+1	Sample	!SampleNames	3 decimal places	Numeric
+2	Well	!WellIDs	3 decimal places	Numeric
+3	Concentration	!SampleDescriptor	3 decimal places	Numeric
+4	Values	!WellValues	3 decimal places	Numeric
+5	MeanValue	Average(!WellValues)	3 decimal places	Numeric
+6	Std.Dev.	Stdev(!WellValues)	3 decimal places	Numeric
+7	CV%	Cv(!WellValues)	3 decimal places	Numeric
+8	WellPlateName	!WellPlateName	3 decimal places	Numeric
+
+Group Summaries
+~End
+Group: Unknowns
+Sample	Wells	Value	MeanValue	Std.Dev.	CV%	WellPlateName
+SAMPLE_33701	A3	0.578	0.876	0.412	47.0	BNCH_49917577_96w
+ 	A4	1.346	 	 	 	BNCH_49917577_96w
+ 	A5	0.704	 	 	 	BNCH_49917577_96w
+SAMPLE_33709	A6	1.019	1.727	1.284	74.3	BNCH_49917577_96w
+ 	A7	3.209	 	 	 	BNCH_49917577_96w
+ 	A8	0.953	 	 	 	BNCH_49917577_96w
+SAMPLE_33717	A9	0.602	0.573	0.402	70.2	BNCH_49917577_96w
+ 	A10	0.960	 	 	 	BNCH_49917577_96w
+ 	A11	0.157	 	 	 	BNCH_49917577_96w
+
+Group Column	Formula Name	Formula	Precision	Notation
+1	Sample	!SampleNames	2 decimal places	Numeric
+2	Wells	!WellIDs	2 decimal places	Numeric
+3	Value	!WellValues	3 decimal places	Numeric
+4	MeanValue	Average(Value)	3 decimal places	Numeric
+5	Std.Dev.	Stdev(Value)	3 decimal places	Numeric
+6	CV%	Cv(Value)	1 decimal places	Numeric
+7	WellPlateName	!WellPlateName	3 decimal places	Numeric
+
+Group Summaries
+InRange	R - Outside standard range			0 decimal places	Numeric Notation
+~End
+Plate:	BNCH_94389207_96w	1.3	TimeFormat	Endpoint	Fluorescence	FALSE	Raw	FALSE	1						3	445 535 780 	1	12	96	404 485 569 	Manual				6				1	8	404 485 569
+	Temperature(¡C)	A1	A2	A3	A4	A5	A6	A7	A8	A9	A10	A11	A12
+	0	367146.125	-1742363.875	1187302.125	-2030883.875	-1603071.875	-2081065.875	914109.125	520201.125	354805.125	-238122.875	1691059.125	1839597.125
+
+	0	-145924.5	-1300354.5	-323989.5	682304.5	-1243314.5	344726.5	848943.5	646205.5	-1347786.5	19136.5	1596195.5	77164.5
+
+	0	275228.375	-575752.625	1069930.375	148629.375	1289162.375	546339.375	-2108023.625	-2609099.625	-1336472.625	-1452966.625	-1106418.625	-649003.625
+
+		A1	A2	A3	A4	A5	A6	A7	A8	A9	A10	A11	A12
+		-0.21825269505758449	1.6100030792771547	-0.084202651892025	-4.083970093228535	1.1420575163198676	13.031931864470462	1.0220379944197047	0.96129260694110819	-149.48704577344191	0.82524364588927834	1.0351006916312924	3.4270311024736868
+~End
+Group: PositiveControl
+Sample	Well	Concentration	Values	MeanValue	Std.Dev.	CV%	WellPlateName
+CONTROL_59196	A1		-0.218	0.296	1.102	371.942	BNCH_94389207_96w
+ 	A2	 	1.610	 	 	 	BNCH_94389207_96w
+
+Group Column	Formula Name	Formula	Precision	Notation
+1	Sample	!SampleNames	3 decimal places	Numeric
+2	Well	!WellIDs	3 decimal places	Numeric
+3	Concentration	!SampleDescriptor	3 decimal places	Numeric
+4	Values	!WellValues	3 decimal places	Numeric
+5	MeanValue	Average(!WellValues)	3 decimal places	Numeric
+6	Std.Dev.	Stdev(!WellValues)	3 decimal places	Numeric
+7	CV%	Cv(!WellValues)	3 decimal places	Numeric
+8	WellPlateName	!WellPlateName	3 decimal places	Numeric
+
+Group Summaries
+
+~End
+Group: NegativeControl
+Sample	Well	Concentration	Values	MeanValue	Std.Dev.	CV%	WellPlateName
+ 	A3	 	-7.417	 	 	 	BNCH_94389207_96w
+
+Group Column	Formula Name	Formula	Precision	Notation
+1	Sample	!SampleNames	3 decimal places	Numeric
+2	Well	!WellIDs	3 decimal places	Numeric
+3	Concentration	!SampleDescriptor	3 decimal places	Numeric
+4	Values	!WellValues	3 decimal places	Numeric
+5	MeanValue	Average(!WellValues)	3 decimal places	Numeric
+6	Std.Dev.	Stdev(!WellValues)	3 decimal places	Numeric
+7	CV%	Cv(!WellValues)	3 decimal places	Numeric
+8	WellPlateName	!WellPlateName	3 decimal places	Numeric
+
+Group Summaries
+~End
+Group: Unknowns
+Sample	Wells	Value	MeanValue	Std.Dev.	CV%	WellPlateName
+SAMPLE_91501	A3	-0.084	-1.009	2.733	270.9	BNCH_94389207_96w
+ 	A4	-4.084	 	 	 	BNCH_94389207_96w
+ 	A5	1.142	 	 	 	BNCH_94389207_96w
+SAMPLE_91509	A6	13.032	5.005	6.952	138.9	BNCH_94389207_96w
+ 	A7	1.022	 	 	 	BNCH_94389207_96w
+ 	A8	0.961	 	 	 	BNCH_94389207_96w
+SAMPLE_91517	A9	-149.487	-49.209	86.843	176.5	BNCH_94389207_96w
+ 	A10	0.825	 	 	 	BNCH_94389207_96w
+ 	A11	1.035	 	 	 	BNCH_94389207_96w
+
+Group Column	Formula Name	Formula	Precision	Notation
+1	Sample	!SampleNames	2 decimal places	Numeric
+2	Wells	!WellIDs	2 decimal places	Numeric
+3	Value	!WellValues	3 decimal places	Numeric
+4	MeanValue	Average(Value)	3 decimal places	Numeric
+5	Std.Dev.	Stdev(Value)	3 decimal places	Numeric
+6	CV%	Cv(Value)	1 decimal places	Numeric
+7	WellPlateName	!WellPlateName	3 decimal places	Numeric
+
+Group Summaries
+InRange	R - Outside standard range			0 decimal places	Numeric Notation
+~End
+Original Filename: 231212_fluorescence_endpoint_multiPlate_multiWavelength_RawReduced_GroupWithWellPlateName_ColumnFormat; Date Last Saved: 12/12/2023 1:27:11 PM
