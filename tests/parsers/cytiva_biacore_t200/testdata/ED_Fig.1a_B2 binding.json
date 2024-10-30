@@ -1,0 +1,454 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/binding-affinity-analyzer/WD/2024/12/binding-affinity-analyzer.manifest",
+    "binding affinity analyzer aggregate document": {
+        "binding affinity analyzer document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "custom information document": {
+                                            "number of fcs": "4",
+                                            "number of spots": "1",
+                                            "buffer volume": {
+                                                "value": 100,
+                                                "unit": "mL"
+                                            },
+                                            "DetectionDual": "4-3"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_TEST_ID_0",
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "sample role type": "blank role",
+                                "location identifier": "R2E1"
+                            },
+                            "POSIX path": "D:\\Users\\aishwarya.a\\Documents\\binding affinity\\benchling-connect\\tests\\parsers\\cytiva_biacore_t200\\testdata\\ED_Fig.1a_B2 binding_cycle_1_sensorgram.parquet",
+                            "detection type": "surface_plasmon_resonance",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "POSIX path": "D:\\Users\\aishwarya.a\\Documents\\binding affinity\\benchling-connect\\tests\\parsers\\cytiva_biacore_t200\\testdata\\ED_Fig.1a_B2 binding_cycle_1_rpoint.parquet",
+                                        "identifier": "ED_Fig.1a_B2 binding_cycle_1_rpoint.parquet"
+                                    }
+                                ]
+                            },
+                            "identifier": "ED_Fig.1a_B2 binding_cycle_1_sensorgram.parquet",
+                            "sensor chip document": {
+                                "sensor chip identifier": "171208-1131:1950172",
+                                "sensor chip type": "CM3",
+                                "product manufacturer": "Cytiva",
+                                "custom information document": {
+                                    "ifc identifier": "IFC105",
+                                    "last modified time": "2017-12-08T11:31:37.686003+00:00",
+                                    "last use time": "2017-12-08T11:33:03.908001+00:00",
+                                    "first dock date": "2017-12-08T11:31:37.686003+00:00"
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "custom information document": {
+                                            "number of fcs": "4",
+                                            "number of spots": "1",
+                                            "buffer volume": {
+                                                "value": 100,
+                                                "unit": "mL"
+                                            },
+                                            "DetectionDual": "4-3"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_TEST_ID_1",
+                            "sample document": {
+                                "sample identifier": "B2",
+                                "sample role type": "sample role",
+                                "location identifier": "R2C1",
+                                "custom information document": {
+                                    "molecule weight unit": {
+                                        "value": "33000",
+                                        "unit": "Da"
+                                    }
+                                }
+                            },
+                            "POSIX path": "D:\\Users\\aishwarya.a\\Documents\\binding affinity\\benchling-connect\\tests\\parsers\\cytiva_biacore_t200\\testdata\\ED_Fig.1a_B2 binding_cycle_2_sensorgram.parquet",
+                            "detection type": "surface_plasmon_resonance",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "POSIX path": "D:\\Users\\aishwarya.a\\Documents\\binding affinity\\benchling-connect\\tests\\parsers\\cytiva_biacore_t200\\testdata\\ED_Fig.1a_B2 binding_cycle_2_rpoint.parquet",
+                                        "identifier": "ED_Fig.1a_B2 binding_cycle_2_rpoint.parquet"
+                                    }
+                                ]
+                            },
+                            "identifier": "ED_Fig.1a_B2 binding_cycle_2_sensorgram.parquet",
+                            "sensor chip document": {
+                                "sensor chip identifier": "171208-1131:1950172",
+                                "sensor chip type": "CM3",
+                                "product manufacturer": "Cytiva",
+                                "custom information document": {
+                                    "ifc identifier": "IFC105",
+                                    "last modified time": "2017-12-08T11:31:37.686003+00:00",
+                                    "last use time": "2017-12-08T11:33:03.908001+00:00",
+                                    "first dock date": "2017-12-08T11:31:37.686003+00:00"
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "custom information document": {
+                                            "number of fcs": "4",
+                                            "number of spots": "1",
+                                            "buffer volume": {
+                                                "value": 100,
+                                                "unit": "mL"
+                                            },
+                                            "DetectionDual": "4-3"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_TEST_ID_2",
+                            "sample document": {
+                                "sample identifier": "B2",
+                                "sample role type": "sample role",
+                                "location identifier": "R2B1",
+                                "custom information document": {
+                                    "molecule weight unit": {
+                                        "value": "33000",
+                                        "unit": "Da"
+                                    }
+                                }
+                            },
+                            "POSIX path": "D:\\Users\\aishwarya.a\\Documents\\binding affinity\\benchling-connect\\tests\\parsers\\cytiva_biacore_t200\\testdata\\ED_Fig.1a_B2 binding_cycle_3_sensorgram.parquet",
+                            "detection type": "surface_plasmon_resonance",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "POSIX path": "D:\\Users\\aishwarya.a\\Documents\\binding affinity\\benchling-connect\\tests\\parsers\\cytiva_biacore_t200\\testdata\\ED_Fig.1a_B2 binding_cycle_3_rpoint.parquet",
+                                        "identifier": "ED_Fig.1a_B2 binding_cycle_3_rpoint.parquet"
+                                    }
+                                ]
+                            },
+                            "identifier": "ED_Fig.1a_B2 binding_cycle_3_sensorgram.parquet",
+                            "sensor chip document": {
+                                "sensor chip identifier": "171208-1131:1950172",
+                                "sensor chip type": "CM3",
+                                "product manufacturer": "Cytiva",
+                                "custom information document": {
+                                    "ifc identifier": "IFC105",
+                                    "last modified time": "2017-12-08T11:31:37.686003+00:00",
+                                    "last use time": "2017-12-08T11:33:03.908001+00:00",
+                                    "first dock date": "2017-12-08T11:31:37.686003+00:00"
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "custom information document": {
+                                            "number of fcs": "4",
+                                            "number of spots": "1",
+                                            "buffer volume": {
+                                                "value": 100,
+                                                "unit": "mL"
+                                            },
+                                            "DetectionDual": "4-3"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_TEST_ID_3",
+                            "sample document": {
+                                "sample identifier": "B2",
+                                "sample role type": "sample role",
+                                "location identifier": "R2B2",
+                                "custom information document": {
+                                    "molecule weight unit": {
+                                        "value": "33000",
+                                        "unit": "Da"
+                                    }
+                                }
+                            },
+                            "POSIX path": "D:\\Users\\aishwarya.a\\Documents\\binding affinity\\benchling-connect\\tests\\parsers\\cytiva_biacore_t200\\testdata\\ED_Fig.1a_B2 binding_cycle_4_sensorgram.parquet",
+                            "detection type": "surface_plasmon_resonance",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "POSIX path": "D:\\Users\\aishwarya.a\\Documents\\binding affinity\\benchling-connect\\tests\\parsers\\cytiva_biacore_t200\\testdata\\ED_Fig.1a_B2 binding_cycle_4_rpoint.parquet",
+                                        "identifier": "ED_Fig.1a_B2 binding_cycle_4_rpoint.parquet"
+                                    }
+                                ]
+                            },
+                            "identifier": "ED_Fig.1a_B2 binding_cycle_4_sensorgram.parquet",
+                            "sensor chip document": {
+                                "sensor chip identifier": "171208-1131:1950172",
+                                "sensor chip type": "CM3",
+                                "product manufacturer": "Cytiva",
+                                "custom information document": {
+                                    "ifc identifier": "IFC105",
+                                    "last modified time": "2017-12-08T11:31:37.686003+00:00",
+                                    "last use time": "2017-12-08T11:33:03.908001+00:00",
+                                    "first dock date": "2017-12-08T11:31:37.686003+00:00"
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "custom information document": {
+                                            "number of fcs": "4",
+                                            "number of spots": "1",
+                                            "buffer volume": {
+                                                "value": 100,
+                                                "unit": "mL"
+                                            },
+                                            "DetectionDual": "4-3"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_TEST_ID_4",
+                            "sample document": {
+                                "sample identifier": "B2",
+                                "sample role type": "sample role",
+                                "location identifier": "R2B3",
+                                "custom information document": {
+                                    "molecule weight unit": {
+                                        "value": "33000",
+                                        "unit": "Da"
+                                    }
+                                }
+                            },
+                            "POSIX path": "D:\\Users\\aishwarya.a\\Documents\\binding affinity\\benchling-connect\\tests\\parsers\\cytiva_biacore_t200\\testdata\\ED_Fig.1a_B2 binding_cycle_5_sensorgram.parquet",
+                            "detection type": "surface_plasmon_resonance",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "POSIX path": "D:\\Users\\aishwarya.a\\Documents\\binding affinity\\benchling-connect\\tests\\parsers\\cytiva_biacore_t200\\testdata\\ED_Fig.1a_B2 binding_cycle_5_rpoint.parquet",
+                                        "identifier": "ED_Fig.1a_B2 binding_cycle_5_rpoint.parquet"
+                                    }
+                                ]
+                            },
+                            "identifier": "ED_Fig.1a_B2 binding_cycle_5_sensorgram.parquet",
+                            "sensor chip document": {
+                                "sensor chip identifier": "171208-1131:1950172",
+                                "sensor chip type": "CM3",
+                                "product manufacturer": "Cytiva",
+                                "custom information document": {
+                                    "ifc identifier": "IFC105",
+                                    "last modified time": "2017-12-08T11:31:37.686003+00:00",
+                                    "last use time": "2017-12-08T11:33:03.908001+00:00",
+                                    "first dock date": "2017-12-08T11:31:37.686003+00:00"
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "custom information document": {
+                                            "number of fcs": "4",
+                                            "number of spots": "1",
+                                            "buffer volume": {
+                                                "value": 100,
+                                                "unit": "mL"
+                                            },
+                                            "DetectionDual": "4-3"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_TEST_ID_5",
+                            "sample document": {
+                                "sample identifier": "B2",
+                                "sample role type": "sample role",
+                                "location identifier": "R2B4",
+                                "custom information document": {
+                                    "molecule weight unit": {
+                                        "value": "33000",
+                                        "unit": "Da"
+                                    }
+                                }
+                            },
+                            "POSIX path": "D:\\Users\\aishwarya.a\\Documents\\binding affinity\\benchling-connect\\tests\\parsers\\cytiva_biacore_t200\\testdata\\ED_Fig.1a_B2 binding_cycle_6_sensorgram.parquet",
+                            "detection type": "surface_plasmon_resonance",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "POSIX path": "D:\\Users\\aishwarya.a\\Documents\\binding affinity\\benchling-connect\\tests\\parsers\\cytiva_biacore_t200\\testdata\\ED_Fig.1a_B2 binding_cycle_6_rpoint.parquet",
+                                        "identifier": "ED_Fig.1a_B2 binding_cycle_6_rpoint.parquet"
+                                    }
+                                ]
+                            },
+                            "identifier": "ED_Fig.1a_B2 binding_cycle_6_sensorgram.parquet",
+                            "sensor chip document": {
+                                "sensor chip identifier": "171208-1131:1950172",
+                                "sensor chip type": "CM3",
+                                "product manufacturer": "Cytiva",
+                                "custom information document": {
+                                    "ifc identifier": "IFC105",
+                                    "last modified time": "2017-12-08T11:31:37.686003+00:00",
+                                    "last use time": "2017-12-08T11:33:03.908001+00:00",
+                                    "first dock date": "2017-12-08T11:31:37.686003+00:00"
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "custom information document": {
+                                            "number of fcs": "4",
+                                            "number of spots": "1",
+                                            "buffer volume": {
+                                                "value": 100,
+                                                "unit": "mL"
+                                            },
+                                            "DetectionDual": "4-3"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_TEST_ID_6",
+                            "sample document": {
+                                "sample identifier": "B2",
+                                "sample role type": "sample role",
+                                "location identifier": "R2B5",
+                                "custom information document": {
+                                    "molecule weight unit": {
+                                        "value": "33000",
+                                        "unit": "Da"
+                                    }
+                                }
+                            },
+                            "POSIX path": "D:\\Users\\aishwarya.a\\Documents\\binding affinity\\benchling-connect\\tests\\parsers\\cytiva_biacore_t200\\testdata\\ED_Fig.1a_B2 binding_cycle_7_sensorgram.parquet",
+                            "detection type": "surface_plasmon_resonance",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "POSIX path": "D:\\Users\\aishwarya.a\\Documents\\binding affinity\\benchling-connect\\tests\\parsers\\cytiva_biacore_t200\\testdata\\ED_Fig.1a_B2 binding_cycle_7_rpoint.parquet",
+                                        "identifier": "ED_Fig.1a_B2 binding_cycle_7_rpoint.parquet"
+                                    }
+                                ]
+                            },
+                            "identifier": "ED_Fig.1a_B2 binding_cycle_7_sensorgram.parquet",
+                            "sensor chip document": {
+                                "sensor chip identifier": "171208-1131:1950172",
+                                "sensor chip type": "CM3",
+                                "product manufacturer": "Cytiva",
+                                "custom information document": {
+                                    "ifc identifier": "IFC105",
+                                    "last modified time": "2017-12-08T11:31:37.686003+00:00",
+                                    "last use time": "2017-12-08T11:33:03.908001+00:00",
+                                    "first dock date": "2017-12-08T11:31:37.686003+00:00"
+                                }
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "custom information document": {
+                                            "number of fcs": "4",
+                                            "number of spots": "1",
+                                            "buffer volume": {
+                                                "value": 100,
+                                                "unit": "mL"
+                                            },
+                                            "DetectionDual": "4-3"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_TEST_ID_7",
+                            "sample document": {
+                                "sample identifier": "B2",
+                                "sample role type": "sample role",
+                                "location identifier": "R2B6",
+                                "custom information document": {
+                                    "molecule weight unit": {
+                                        "value": "33000",
+                                        "unit": "Da"
+                                    }
+                                }
+                            },
+                            "POSIX path": "D:\\Users\\aishwarya.a\\Documents\\binding affinity\\benchling-connect\\tests\\parsers\\cytiva_biacore_t200\\testdata\\ED_Fig.1a_B2 binding_cycle_8_sensorgram.parquet",
+                            "detection type": "surface_plasmon_resonance",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "POSIX path": "D:\\Users\\aishwarya.a\\Documents\\binding affinity\\benchling-connect\\tests\\parsers\\cytiva_biacore_t200\\testdata\\ED_Fig.1a_B2 binding_cycle_8_rpoint.parquet",
+                                        "identifier": "ED_Fig.1a_B2 binding_cycle_8_rpoint.parquet"
+                                    }
+                                ]
+                            },
+                            "identifier": "ED_Fig.1a_B2 binding_cycle_8_sensorgram.parquet",
+                            "sensor chip document": {
+                                "sensor chip identifier": "171208-1131:1950172",
+                                "sensor chip type": "CM3",
+                                "product manufacturer": "Cytiva",
+                                "custom information document": {
+                                    "ifc identifier": "IFC105",
+                                    "last modified time": "2017-12-08T11:31:37.686003+00:00",
+                                    "last use time": "2017-12-08T11:33:03.908001+00:00",
+                                    "first dock date": "2017-12-08T11:31:37.686003+00:00"
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2017-12-13T16:27:25+00:00",
+                    "experiment type": "kineticsWizard",
+                    "compartment temperature": {
+                        "value": 25.0,
+                        "unit": "degC"
+                    },
+                    "custom information document": {
+                        "baseline flow": {
+                            "value": "30",
+                            "unit": "microlitre/min"
+                        },
+                        "data collection rate": {
+                            "value": "10",
+                            "unit": "Hz"
+                        }
+                    }
+                }
+            }
+        ],
+        "data system document": {
+            "ASM file identifier": "ED_Fig.1a_B2 binding.json",
+            "data system instance identifier": "N/A",
+            "file name": "ED_Fig.1a_B2 binding.blr",
+            "UNC path": "D:\\Users\\aishwarya.a\\Documents\\binding affinity\\benchling-connect\\tests\\parsers\\cytiva_biacore_t200\\testdata\\ED_Fig.1a_B2 binding.blr",
+            "ASM converter name": "allotropy_cytiva_biacore_t200",
+            "ASM converter version": "0.1.61",
+            "software name": "Biacore T200 Control Software",
+            "software version": "2.0.1"
+        },
+        "device system document": {
+            "device identifier": "1950172",
+            "model number": "T200",
+            "brand name": "Biacore"
+        }
+    }
+}

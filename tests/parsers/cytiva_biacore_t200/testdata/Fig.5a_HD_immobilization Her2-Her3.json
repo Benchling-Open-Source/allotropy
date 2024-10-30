@@ -1,0 +1,256 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/binding-affinity-analyzer/WD/2024/12/binding-affinity-analyzer.manifest",
+    "binding affinity analyzer aggregate document": {
+        "binding affinity analyzer document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "flow cell identifier": "Flowcell 1",
+                                        "contact time": {
+                                            "value": 420,
+                                            "unit": "s"
+                                        },
+                                        "flow path": "1",
+                                        "custom information document": {
+                                            "number of fcs": "4",
+                                            "number of spots": "1",
+                                            "buffer volume": {
+                                                "value": 100,
+                                                "unit": "mL"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_TEST_ID_0",
+                            "sample document": {
+                                "sample identifier": "N/A"
+                            },
+                            "POSIX path": "D:\\Users\\aishwarya.a\\Documents\\binding affinity\\benchling-connect\\tests\\parsers\\cytiva_biacore_t200\\testdata\\Fig.5a_HD_immobilization Her2-Her3_cycle_1_sensorgram.parquet",
+                            "detection type": "surface_plasmon_resonance",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "POSIX path": "D:\\Users\\aishwarya.a\\Documents\\binding affinity\\benchling-connect\\tests\\parsers\\cytiva_biacore_t200\\testdata\\Fig.5a_HD_immobilization Her2-Her3_cycle_1_rpoint.parquet",
+                                        "identifier": "Fig.5a_HD_immobilization Her2-Her3_cycle_1_rpoint.parquet"
+                                    }
+                                ]
+                            },
+                            "identifier": "Fig.5a_HD_immobilization Her2-Her3_cycle_1_sensorgram.parquet",
+                            "sensor chip document": {
+                                "sensor chip identifier": "190904-1227:1950172",
+                                "sensor chip type": "CM5",
+                                "product manufacturer": "Cytiva",
+                                "custom information document": {
+                                    "ifc identifier": "IFC105",
+                                    "last modified time": "2019-09-04T15:21:36.301000+00:00",
+                                    "last use time": "2019-09-04T12:33:50.039997+00:00",
+                                    "first dock date": "2019-09-04T12:32:23.242004+00:00"
+                                }
+                            },
+                            "method name": "Amine",
+                            "ligand identifier": ""
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "flow cell identifier": "Flowcell 2",
+                                        "contact time": {
+                                            "value": 600,
+                                            "unit": "s"
+                                        },
+                                        "flow path": "2",
+                                        "custom information document": {
+                                            "number of fcs": "4",
+                                            "number of spots": "1",
+                                            "buffer volume": {
+                                                "value": 100,
+                                                "unit": "mL"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_TEST_ID_1",
+                            "sample document": {
+                                "sample identifier": "N/A"
+                            },
+                            "POSIX path": "D:\\Users\\aishwarya.a\\Documents\\binding affinity\\benchling-connect\\tests\\parsers\\cytiva_biacore_t200\\testdata\\Fig.5a_HD_immobilization Her2-Her3_cycle_2_sensorgram.parquet",
+                            "detection type": "surface_plasmon_resonance",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "POSIX path": "D:\\Users\\aishwarya.a\\Documents\\binding affinity\\benchling-connect\\tests\\parsers\\cytiva_biacore_t200\\testdata\\Fig.5a_HD_immobilization Her2-Her3_cycle_2_rpoint.parquet",
+                                        "identifier": "Fig.5a_HD_immobilization Her2-Her3_cycle_2_rpoint.parquet"
+                                    }
+                                ]
+                            },
+                            "identifier": "Fig.5a_HD_immobilization Her2-Her3_cycle_2_sensorgram.parquet",
+                            "sensor chip document": {
+                                "sensor chip identifier": "190904-1227:1950172",
+                                "sensor chip type": "CM5",
+                                "product manufacturer": "Cytiva",
+                                "custom information document": {
+                                    "ifc identifier": "IFC105",
+                                    "last modified time": "2019-09-04T15:21:36.301000+00:00",
+                                    "last use time": "2019-09-04T12:33:50.039997+00:00",
+                                    "first dock date": "2019-09-04T12:32:23.242004+00:00"
+                                }
+                            },
+                            "method name": "Amine",
+                            "ligand identifier": "Her2-Her3"
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "flow cell identifier": "Flowcell 3",
+                                        "contact time": {
+                                            "value": 600,
+                                            "unit": "s"
+                                        },
+                                        "flow path": "3",
+                                        "custom information document": {
+                                            "number of fcs": "4",
+                                            "number of spots": "1",
+                                            "buffer volume": {
+                                                "value": 100,
+                                                "unit": "mL"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_TEST_ID_2",
+                            "sample document": {
+                                "sample identifier": "N/A"
+                            },
+                            "POSIX path": "D:\\Users\\aishwarya.a\\Documents\\binding affinity\\benchling-connect\\tests\\parsers\\cytiva_biacore_t200\\testdata\\Fig.5a_HD_immobilization Her2-Her3_cycle_3_sensorgram.parquet",
+                            "detection type": "surface_plasmon_resonance",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "POSIX path": "D:\\Users\\aishwarya.a\\Documents\\binding affinity\\benchling-connect\\tests\\parsers\\cytiva_biacore_t200\\testdata\\Fig.5a_HD_immobilization Her2-Her3_cycle_3_rpoint.parquet",
+                                        "identifier": "Fig.5a_HD_immobilization Her2-Her3_cycle_3_rpoint.parquet"
+                                    }
+                                ]
+                            },
+                            "identifier": "Fig.5a_HD_immobilization Her2-Her3_cycle_3_sensorgram.parquet",
+                            "sensor chip document": {
+                                "sensor chip identifier": "190904-1227:1950172",
+                                "sensor chip type": "CM5",
+                                "product manufacturer": "Cytiva",
+                                "custom information document": {
+                                    "ifc identifier": "IFC105",
+                                    "last modified time": "2019-09-04T15:21:36.301000+00:00",
+                                    "last use time": "2019-09-04T12:33:50.039997+00:00",
+                                    "first dock date": "2019-09-04T12:32:23.242004+00:00"
+                                }
+                            },
+                            "method name": "Amine",
+                            "ligand identifier": "Her2-Her3"
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "binding affinity analyzer",
+                                        "flow cell identifier": "Flowcell 4",
+                                        "contact time": {
+                                            "value": 600,
+                                            "unit": "s"
+                                        },
+                                        "flow path": "4",
+                                        "custom information document": {
+                                            "number of fcs": "4",
+                                            "number of spots": "1",
+                                            "buffer volume": {
+                                                "value": 100,
+                                                "unit": "mL"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CYTIVA_BIACORE_T200_TEST_ID_3",
+                            "sample document": {
+                                "sample identifier": "N/A"
+                            },
+                            "POSIX path": "D:\\Users\\aishwarya.a\\Documents\\binding affinity\\benchling-connect\\tests\\parsers\\cytiva_biacore_t200\\testdata\\Fig.5a_HD_immobilization Her2-Her3_cycle_4_sensorgram.parquet",
+                            "detection type": "surface_plasmon_resonance",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "POSIX path": "D:\\Users\\aishwarya.a\\Documents\\binding affinity\\benchling-connect\\tests\\parsers\\cytiva_biacore_t200\\testdata\\Fig.5a_HD_immobilization Her2-Her3_cycle_4_rpoint.parquet",
+                                        "identifier": "Fig.5a_HD_immobilization Her2-Her3_cycle_4_rpoint.parquet"
+                                    }
+                                ]
+                            },
+                            "identifier": "Fig.5a_HD_immobilization Her2-Her3_cycle_4_sensorgram.parquet",
+                            "sensor chip document": {
+                                "sensor chip identifier": "190904-1227:1950172",
+                                "sensor chip type": "CM5",
+                                "product manufacturer": "Cytiva",
+                                "custom information document": {
+                                    "ifc identifier": "IFC105",
+                                    "last modified time": "2019-09-04T15:21:36.301000+00:00",
+                                    "last use time": "2019-09-04T12:33:50.039997+00:00",
+                                    "first dock date": "2019-09-04T12:32:23.242004+00:00"
+                                }
+                            },
+                            "method name": "Amine",
+                            "ligand identifier": "Her2-Her3"
+                        }
+                    ],
+                    "measurement time": "2019-09-04T13:16:14+00:00",
+                    "experiment type": "immobilizationWizard",
+                    "compartment temperature": {
+                        "value": 25.0,
+                        "unit": "degC"
+                    }
+                }
+            }
+        ],
+        "data system document": {
+            "ASM file identifier": "Fig.5a_HD_immobilization Her2-Her3.json",
+            "data system instance identifier": "N/A",
+            "file name": "Fig.5a_HD_immobilization Her2-Her3.blr",
+            "UNC path": "D:\\Users\\aishwarya.a\\Documents\\binding affinity\\benchling-connect\\tests\\parsers\\cytiva_biacore_t200\\testdata\\Fig.5a_HD_immobilization Her2-Her3.blr",
+            "ASM converter name": "allotropy_cytiva_biacore_t200",
+            "ASM converter version": "0.1.61",
+            "software name": "Biacore T200 Control Software",
+            "software version": "2.0.1"
+        },
+        "device system document": {
+            "device identifier": "1950172",
+            "model number": "T200",
+            "brand name": "Biacore",
+            "device document": [
+                {
+                    "device type": "Flowcell",
+                    "device identifier": "1"
+                },
+                {
+                    "device type": "Flowcell",
+                    "device identifier": "2"
+                },
+                {
+                    "device type": "Flowcell",
+                    "device identifier": "3"
+                },
+                {
+                    "device type": "Flowcell",
+                    "device identifier": "4"
+                }
+            ]
+        }
+    }
+}

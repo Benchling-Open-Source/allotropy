@@ -161,6 +161,8 @@ extra-dependencies = [
   "more-itertools >= 10.1.0",
   "mypy == 1.8.0",
   "pandas-stubs == 2.1.4.231227",
+  "olefile >= 0.47",
+  "types-olefile",
   # For pytest types
   "pytest >= 7.4.0",
   # For check graph generation
@@ -197,6 +199,9 @@ extra-dependencies = [
   "more-itertools >= 10.1.0",
   "pytest >= 7.4.0",
   "pytest-xdist >= 3.6.1",
+  "xmltodict >= 0.13.0",
+  "pyarrow >= 17.0.0",
+  "fastparquet >= 2024.5.0"
 ]
 
 [tool.hatch.envs.test.scripts]
