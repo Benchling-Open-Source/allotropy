@@ -121,7 +121,7 @@ class MilliSecond(HasUnit):
 
 @dataclass(frozen=True, kw_only=True)
 class MilligramPerLiter(HasUnit):
-    unit: str = "mg/mL"
+    unit: str = "mg/L"
 
 
 @dataclass(frozen=True, kw_only=True)

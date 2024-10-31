@@ -267,7 +267,7 @@
     "properties": {
       "unit": {
         "type": "string",
-        "const": "mg/mL",
+        "const": "mg/L",
         "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MilligramPerLiter"
       }
     },
