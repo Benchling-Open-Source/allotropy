@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import (
     ExperimentType,
 )
@@ -60,16 +62,16 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.standard_c
 
 
 def create_metadata(
-    header: Header, file_name: str, experiment_type: ExperimentType
+    header: Header, file_path: str, experiment_type: ExperimentType
 ) -> Metadata:
     return Metadata(
-        file_name=file_name,
+        file_name=Path(file_path).name,
+        unc_path=file_path,
         product_manufacturer=constants.PRODUCT_MANUFACTURER,
         device_identifier=header.device_identifier,
         model_number=header.model_number,
         device_serial_number=header.device_serial_number,
         data_system_instance_identifier=constants.DATA_SYSTEM_INSTANCE_IDENTIFIER,
-        unc_path="",  # unknown
         software_name=header.software_name,
         software_version=header.software_version,
         container_type=constants.CONTAINER_TYPE,

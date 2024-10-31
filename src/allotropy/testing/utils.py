@@ -21,13 +21,13 @@ from allotropy.to_allotrope import allotrope_from_file
 DictType = Mapping[str, Any]
 
 
-def _replace_asm_converter_name_and_version(allotrope_dict: DictType) -> DictType:
+def _replace_asm_converter_version(allotrope_dict: DictType) -> DictType:
     new_dict = dict(allotrope_dict)
     for key, value in new_dict.items():
         if key == "data system document":
             value["ASM converter version"] = ASM_CONVERTER_VERSION
         if isinstance(value, dict):
-            _replace_asm_converter_name_and_version(value)
+            _replace_asm_converter_version(value)
 
     return new_dict
 
@@ -107,8 +107,7 @@ def _assert_allotrope_dicts_equal(
     expected: DictType,
     actual: DictType,
 ) -> None:
-    expected_replaced = _replace_asm_converter_name_and_version(expected)
-
+    expected_replaced = _replace_asm_converter_version(expected)
     ddiff = DeepDiff(
         expected_replaced,
         actual,
@@ -141,6 +140,13 @@ def mock_uuid_generation(prefix: str | None = None) -> Iterator[None]:
         return_value=TestIdGenerator(prefix),
     ):
         yield
+
+
+ROOT_DIR = Path(__file__).parent.parent.parent.parent
+
+
+def get_testdata_dir(test_filepath: str) -> Path:
+    return Path(Path(test_filepath).parent.relative_to(ROOT_DIR), "testdata")
 
 
 def from_file(

@@ -28,6 +28,7 @@ from allotropy.parsers.biorad_bioplex_manager.biorad_bioplex_manager_parser impo
     BioradBioplexParser,
 )
 from allotropy.parsers.bmg_mars.bmg_mars_parser import BmgMarsParser
+from allotropy.parsers.cfxmaestro.cfxmaestro_parser import CfxmaestroParser
 from allotropy.parsers.chemometec_nc_view.chemometec_nc_view_parser import (
     ChemometecNcViewParser,
 )
@@ -100,6 +101,7 @@ class Vendor(Enum):
     BECKMAN_VI_CELL_BLU = "BECKMAN_VI_CELL_BLU"
     BECKMAN_VI_CELL_XR = "BECKMAN_VI_CELL_XR"
     BIORAD_BIOPLEX = "BIORAD_BIOPLEX"
+    CFXMAESTRO = "CFXMAESTRO"
     CHEMOMETEC_NC_VIEW = "CHEMOMETEC_NC_VIEW"
     CHEMOMETEC_NUCLEOVIEW = "CHEMOMETEC_NUCLEOVIEW"
     CTL_IMMUNOSPOT = "CTL_IMMUNOSPOT"
@@ -180,6 +182,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser[Any, Any]]] = {
     Vendor.BECKMAN_VI_CELL_XR: ViCellXRParser,
     Vendor.BIORAD_BIOPLEX: BioradBioplexParser,
     Vendor.BMG_MARS: BmgMarsParser,
+    Vendor.CFXMAESTRO: CfxmaestroParser,
     Vendor.CHEMOMETEC_NC_VIEW: ChemometecNcViewParser,
     Vendor.CHEMOMETEC_NUCLEOVIEW: ChemometecNucleoviewParser,
     Vendor.CTL_IMMUNOSPOT: CtlImmunospotParser,
@@ -207,12 +210,20 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser[Any, Any]]] = {
 
 
 def get_table_contents() -> str:
-    contents = """
-The parsers follow maturation levels of: Recommended, Candidate Release, Working Draft.
+    contents = """The parsers follow maturation levels of: Recommended, Candidate Release, Working Draft.
 
-* Recommended - the parser is ready for production use.
-* Candidate Release - "beta" - the parser is working for some cases, but may have bugs or need more test cases for hardening.
-* Working Draft - "alpha" - in development, not recommended for production use.
+* Recommended - "General Availability" - the parser has good coverage of input formats, and exports the majority of data from source files.
+** Note that while we judge release status based on observed use cases, it is still a judgement call - it is still possible that we miss some cases.
+** If you have an example case for an instrument that is not supported or discover a bug, please https://github.com/Benchling-Open-Source/allotropy/issues[open an issue] with sample data and will work to add support!
+* Candidate Release - "Limited Availability" - the parser exports correct data for supported cases, but may be missing some functionality, including:
+** May not handle all possible input formats from the target instrument software (because they have not been seen before).
+** May not export all available data from the input, either because it cannot be supported yet by ASM, or because we have not determined how to add it.
+** Increased likelihood of bugs due to lack of "bake time" for discovering issues.
+* Working Draft - "Beta" - in development, not ready for production use:
+** May be missing enough sample data for us to be confident about correctness of parser
+** May be in-progress, with signifcant known TODO work
+
+'''
 """
     table_data: defaultdict[str, list[Vendor]] = defaultdict(list)
 

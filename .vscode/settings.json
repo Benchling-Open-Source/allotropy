@@ -24,7 +24,7 @@
   // Use Black for formatting
   "black-formatter.args": [
     "--config",
-    "${workspaceRoot}/pyproject.toml"
+    "${workspaceFolder}/pyproject.toml"
   ],
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter",
@@ -33,6 +33,9 @@
     "editor.codeActionsOnSave": {
       "source.organizeImports": "explicit"
     }
+  },
+  "[plaintext]": {
+    "files.trimTrailingWhitespace": false
   },
   "search.useIgnoreFiles": true,
   "python.testing.pytestArgs": [

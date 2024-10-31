@@ -156,12 +156,12 @@ class Metadata:
     device_type: str
     device_serial_number: str
     model_number: str
-    data_system_instance_identifier: str
     file_name: str
-    unc_path: str
-    experiment_type: ExperimentType
-    container_type: ContainerType
     measurement_method_identifier: str
+    unc_path: str | None = None
+    experiment_type: ExperimentType | None = None
+    container_type: ContainerType | None = None
+    data_system_instance_identifier: str | None = None
     software_name: str | None = None
     software_version: str | None = None
     product_manufacturer: str | None = None
@@ -171,7 +171,7 @@ class Metadata:
 class Data:
     metadata: Metadata
     measurement_groups: list[MeasurementGroup]
-    calculated_data: CalculatedData
+    calculated_data: CalculatedData | None = None
 
 
 CubeClass = TypeVar("CubeClass")

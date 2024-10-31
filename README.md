@@ -3,16 +3,15 @@
 # Introduction
 Welcome to `allotropy` -- a Python library by Benchling for converting instrument data into the Allotrope Simple Model (ASM).
 
+View the list of instrument software currently supported in [SUPPORTED_INSTRUMENT_SOFTWARE](https://github.com/Benchling-Open-Source/allotropy/blob/main/SUPPORTED_INSTRUMENT_SOFTWARE.adoc).
+
 The objective of this library is to read text or Excel based instrument software output and return a JSON representation that conforms to the published ASM schema. Note that some schemas do not yet match the published ASM schema, in these cases the CHANGE_NOTES.md file included alongside the schema details the differences and proposed changes to ASM or the library schema. The code in this library does not convert from proprietary/binary output formats and so has no need to interact with any of the specific vendor softwares.
 
 If you aren't familiar with Allotrope, we suggest you start by reading the [Allotrope Product Overview](https://www.allotrope.org/product-overview).
 
 We have chosen to have this library output ASM since JSON is easy to read and consume in most modern systems and can be checked by humans without any special tools needed. All of the published open source ASMs can be found in the [ASM Gitlab repository](https://gitlab.com/allotrope-public/asm).
 
-View the list of instrument software currently supported in [SUPPORTED_INSTRUMENT_SOFTWARE](https://github.com/Benchling-Open-Source/allotropy/blob/main/SUPPORTED_INSTRUMENT_SOFTWARE.adoc).
-
 This code is published under the permissive MIT license because we believe that standardized instrument data is a benefit for everyone in science.
-
 
 # Contributing
 We welcome community contributions to this library and we hope that together we can expand the coverage of ASM-ready data for everyone. If you are interested, please read our [contribution guidelines](CONTRIBUTING.md).
@@ -82,9 +81,20 @@ Auto-fix all possible lint issues:
 hatch run fix
 ```
 
-Run all tests:
+Run all tests in the default python enviroment (currently: 3.11.9)
 ```sh
 hatch run test
+```
+
+Run all tests against all supported python versions (currently 3.10-3.12)
+Note: this is checked against in CI - your change must pass this to merge.
+```sh
+hatch run test_all:test
+```
+
+Run against a specific python version (useful for debugging if a test is failing in one environment)
+```sh
+hatch run test_all.py3.12:test
 ```
 
 Run a specific test file (replace the filepath with your own):

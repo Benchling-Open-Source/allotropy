@@ -1,8 +1,7 @@
 import pandas as pd
 
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.example_weyland_yutani.constants import EMPTY_CSV_LINE
-from allotropy.parsers.lines_reader import CsvReader, read_to_lines
+from allotropy.parsers.lines_reader import CsvReader, EMPTY_CSV_LINE, read_to_lines
 
 
 class ExampleWeylandYutaniReader:

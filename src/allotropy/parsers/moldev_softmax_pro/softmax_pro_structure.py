@@ -10,6 +10,7 @@ import re
 import pandas as pd
 
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
+    ErrorDocument,
     MeasurementType,
     ScanPositionSettingPlateReader,
 )
@@ -17,6 +18,7 @@ from allotropy.exceptions import (
     AllotropeConversionError,
     get_key_or_error,
 )
+from allotropy.parsers.constants import NEGATIVE_ZERO
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.utils.pandas import rm_df_columns, SeriesData, set_columns
 from allotropy.parsers.utils.uuids import random_uuid_str
@@ -112,6 +114,7 @@ class GroupDataElement:
     position: str
     plate: str
     entries: list[GroupDataElementEntry]
+    errors: list[ErrorDocument]
 
 
 @dataclass(frozen=True)
@@ -119,6 +122,7 @@ class GroupSampleData:
     identifier: str
     data_elements: list[GroupDataElement]
     aggregated_entries: list[GroupDataElementEntry]
+    aggregated_errors: list[ErrorDocument]
 
     @classmethod
     def create(cls, data: pd.DataFrame) -> GroupSampleData:
@@ -127,7 +131,7 @@ class GroupSampleData:
         identifier = top_row[str, "Sample"]
         data = rm_df_columns(data, r"^Sample$|^Standard Value|^R$|^Unnamed: \d+$")
         # Columns are considered "numeric" if the value of the first row is a float
-        # "Mask" and "Range?" are special cases that will be considered NaN.
+        # Non-numeric values such as "Mask" and "Range?" will be reported as errors.
         numeric_columns = [
             column
             for column in data.columns
@@ -143,40 +147,43 @@ class GroupSampleData:
             else:
                 normal_columns.append(column)
 
-        return GroupSampleData(
-            identifier=identifier,
-            data_elements=[
+        data_elements = []
+        for row in row_data:
+            entries, errors = cls._get_entries_and_errors(row, normal_columns)
+            data_elements.append(
                 GroupDataElement(
                     sample=identifier,
                     position=row[str, ["Well", "Wells"]],
                     plate=row[str, "WellPlateName"],
-                    entries=[
-                        element_entry
-                        for column_name in normal_columns
-                        if (element_entry := cls._get_element_entry(row, column_name))
-                        is not None
-                    ],
+                    entries=entries,
+                    errors=errors,
                 )
-                for row in row_data
-            ],
-            aggregated_entries=[
-                element_entry
-                for column_name in aggregated_columns
-                if (element_entry := cls._get_element_entry(top_row, column_name))
-                is not None
-            ],
+            )
+
+        aggregated_entries, aggregated_errors = cls._get_entries_and_errors(
+            top_row, aggregated_columns
+        )
+
+        return GroupSampleData(
+            identifier=identifier,
+            data_elements=data_elements,
+            aggregated_entries=aggregated_entries,
+            aggregated_errors=aggregated_errors,
         )
 
     @classmethod
-    def _get_element_entry(
-        cls, data_row: SeriesData, column_name: str
-    ) -> GroupDataElementEntry | None:
-        if (value := data_row.get(float, column_name)) is not None:
-            return GroupDataElementEntry(
-                name=column_name,
-                value=value,
-            )
-        return None
+    def _get_entries_and_errors(
+        cls, data_row: SeriesData, column_names: list[str]
+    ) -> tuple[list[GroupDataElementEntry], list[ErrorDocument]]:
+        entries = []
+        errors = []
+        for column in column_names:
+            value = data_row.get(float, column)
+            if value is not None:
+                entries.append(GroupDataElementEntry(column, value))
+            elif (error := data_row.get(str, column)) is not None:
+                errors.append(ErrorDocument(error, column))
+        return entries, errors
 
 
 @dataclass(frozen=True)
@@ -304,6 +311,7 @@ class DataElement:
     wavelength: float
     position: str
     value: float
+    error_document: list[ErrorDocument]
     elapsed_time: list[float] = field(default_factory=list)
     kinetic_measures: list[float | None] = field(default_factory=list)
     sample_id: str | None = None
@@ -326,54 +334,58 @@ class PlateWavelengthData:
 
     @staticmethod
     def create(
-        plate_name: str,
+        header: PlateHeader,
         temperature: float | None,
         elapsed_time: float | None,
         wavelength: float,
         df_data: pd.DataFrame,
     ) -> PlateWavelengthData:
-        # Since value is required for the measurement class (absorbance, luminescense and fluorescence)
-        # we don't store data for NaN values
-        # TODO: Report error documents for NaN values
         data = {
-            f"{num_to_chars(row_idx)}{col}": value
+            f"{num_to_chars(row_idx)}{col}": raw_value
             for row_idx, *row_data in df_data.itertuples()
             for col, raw_value in zip(df_data.columns, row_data, strict=True)
-            if (value := try_non_nan_float_or_none(raw_value)) is not None
         }
-        return PlateWavelengthData(
-            wavelength,
-            data_elements={
-                str(position): DataElement(
-                    uuid=random_uuid_str(),
-                    plate=plate_name,
-                    temperature=temperature,
-                    wavelength=wavelength,
-                    position=str(position),
-                    value=value,
-                    elapsed_time=[elapsed_time] if elapsed_time is not None else [],
-                    kinetic_measures=[value] if elapsed_time is not None else [],
-                )
-                for position, value in data.items()
-            },
-        )
+
+        data_elements = {}
+        for position, raw_value in data.items():
+            value = try_non_nan_float_or_none(raw_value)
+            if value is None and elapsed_time is not None:
+                msg = f"Missing kinetic measurement for well position {position} at {elapsed_time}s."
+                raise AllotropeConversionError(msg)
+
+            data_elements[str(position)] = DataElement(
+                uuid=random_uuid_str(),
+                plate=header.name,
+                temperature=temperature,
+                wavelength=wavelength,
+                position=str(position),
+                value=NEGATIVE_ZERO if value is None else value,
+                error_document=(
+                    [ErrorDocument(str(raw_value), header.read_mode)]
+                    if value is None
+                    else []
+                ),
+                elapsed_time=[elapsed_time] if elapsed_time is not None else [],
+                kinetic_measures=[value] if elapsed_time is not None else [],
+            )
+
+        return PlateWavelengthData(wavelength, data_elements)
 
     def update_kinetic_data_elements(
         self, elapsed_time: float, df_data: pd.DataFrame
     ) -> None:
         data = {
-            f"{num_to_chars(row_idx)}{col}": value
+            f"{num_to_chars(row_idx)}{col}": try_non_nan_float_or_none(raw_value)
             for row_idx, *row_data in df_data.itertuples()
             for col, raw_value in zip(df_data.columns, row_data, strict=True)
-            if (value := try_non_nan_float_or_none(raw_value)) is not None
         }
         for position, value in data.items():
-            try:
-                self.data_elements[position].elapsed_time.append(elapsed_time)
-                self.data_elements[position].kinetic_measures.append(value)
-            except KeyError as e:
+            if value is None:
                 msg = f"Missing kinetic measurement for well position {position} at {elapsed_time}s."
-                raise AllotropeConversionError(msg) from e
+                raise AllotropeConversionError(msg)
+
+            self.data_elements[position].elapsed_time.append(elapsed_time)
+            self.data_elements[position].kinetic_measures.append(value)
 
 
 @dataclass(frozen=True)
@@ -455,7 +467,7 @@ class PlateRawData:
             end = start + header.num_columns
             wavelength_data.append(
                 PlateWavelengthData.create(
-                    plate_name=header.name,
+                    header=header,
                     temperature=temperature,
                     elapsed_time=elapsed_time,
                     wavelength=header.wavelengths[idx],
@@ -524,8 +536,6 @@ class PlateData:
 
     def iter_data_elements(self, position: str) -> Iterator[DataElement]:
         for wavelength_data in self.raw_data.wavelength_data:
-            if position not in wavelength_data.data_elements:
-                continue
             yield wavelength_data.data_elements[position]
 
 
@@ -535,26 +545,29 @@ class TimeMeasurementData:
 
     @staticmethod
     def create(
-        plate_name: str,
+        header: PlateHeader,
         wavelength: float,
         row: pd.Series[float],
     ) -> TimeMeasurementData:
         temperature = try_non_nan_float_or_none(str(row.iloc[1]))
+        data_elements = {}
 
-        return TimeMeasurementData(
-            data_elements={
-                str(position): DataElement(
-                    uuid=random_uuid_str(),
-                    plate=plate_name,
-                    temperature=temperature,
-                    wavelength=wavelength,
-                    position=str(position),
-                    value=value,
-                )
-                for position, raw_value in row.iloc[2:].items()
-                if (value := try_non_nan_float_or_none(str(raw_value))) is not None
-            },
-        )
+        for position, raw_value in row.iloc[2:].items():
+            value = try_non_nan_float_or_none(raw_value)
+            error_document = []
+            if value is None:
+                error_document.append(ErrorDocument(str(raw_value), header.read_mode))
+            data_elements[str(position)] = DataElement(
+                uuid=random_uuid_str(),
+                plate=header.name,
+                temperature=temperature,
+                wavelength=wavelength,
+                position=str(position),
+                value=NEGATIVE_ZERO if value is None else value,
+                error_document=error_document,
+            )
+
+        return TimeMeasurementData(data_elements)
 
 
 @dataclass(frozen=True)
@@ -565,7 +578,7 @@ class TimeWavelengthData:
     @staticmethod
     def create(
         reader: CsvReader,
-        plate_name: str,
+        header: PlateHeader,
         wavelength: float,
         columns: pd.Series[str],
     ) -> TimeWavelengthData:
@@ -577,7 +590,7 @@ class TimeWavelengthData:
         return TimeWavelengthData(
             wavelength=wavelength,
             measurement_data=[
-                TimeMeasurementData.create(plate_name, wavelength, row)
+                TimeMeasurementData.create(header, wavelength, row)
                 for _, row in data.iterrows()
             ],
         )
@@ -598,7 +611,7 @@ class TimeRawData:
             wavelength_data=[
                 TimeWavelengthData.create(
                     reader,
-                    header.name,
+                    header,
                     wavelength,
                     columns,
                 )
@@ -658,8 +671,6 @@ class TimeData:
     def iter_data_elements(self, position: str) -> Iterator[DataElement]:
         for wavelength_data in self.raw_data.wavelength_data:
             for measurement_data in wavelength_data.measurement_data:
-                if position not in measurement_data.data_elements:
-                    continue
                 yield measurement_data.data_elements[position]
 
 
@@ -1083,6 +1094,7 @@ class StructureData:
     def create(reader: CsvReader) -> StructureData:
         block_list = BlockList.create(reader)
 
+        # update sample_id if it was reported in the group blocks and include erros from calculated data
         for group_block in block_list.group_blocks:
             for group_sample_data in group_block.group_data.sample_data:
                 for group_data_element in group_sample_data.data_elements:
@@ -1091,5 +1103,9 @@ class StructureData:
                         group_data_element.position
                     ):
                         data_element.sample_id = group_data_element.sample
+                        data_element.error_document += (
+                            group_data_element.errors
+                            + group_sample_data.aggregated_errors
+                        )
 
         return StructureData(block_list)

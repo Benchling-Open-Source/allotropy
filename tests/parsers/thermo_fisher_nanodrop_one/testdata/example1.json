@@ -559,8 +559,9 @@
         },
         "data system document": {
             "file name": "example1.xlsx",
+            "UNC path": "tests/parsers/thermo_fisher_nanodrop_one/testdata/example1.xlsx",
             "software name": "NanoDrop One software",
-            "ASM converter name": "allotropy_thermo_fisher_scientific_nanodrop_one",
+            "ASM converter name": "allotropy_thermo_fisher_nanodrop_one",
             "ASM converter version": "0.1.61"
         },
         "calculated data aggregate document": {

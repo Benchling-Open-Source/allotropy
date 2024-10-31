@@ -8,7 +8,7 @@ from allotropy.types import IOType
 @dataclass(frozen=True)
 class NamedFileContents:
     """
-    A file's contents, the name of the file whence they came, and an optional encoding.
+    A file's contents, the path of the file whence they came, and an optional encoding.
 
     In order to support use cases where the file contents of a vendor file are not stored locally,
     we accept an IO object for file contents. However, some vendor file parsers extract information
@@ -21,9 +21,9 @@ class NamedFileContents:
     """
 
     contents: IOType
-    original_file_name: str
+    original_file_path: str
     encoding: str | None = None
 
     @cached_property
     def extension(self) -> str:
-        return PureWindowsPath(self.original_file_name).suffix[1:]
+        return PureWindowsPath(self.original_file_path).suffix[1:]

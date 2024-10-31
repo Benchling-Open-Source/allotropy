@@ -14,8 +14,9 @@ from allotropy.allotrope.models.adm.light_obscuration.benchling._2023._12.light_
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.beckman_pharmspec.beckman_pharmspec_parser import PharmSpecParser
 from allotropy.parsers.beckman_pharmspec.beckman_pharmspec_structure import Header
+from allotropy.testing.utils import get_testdata_dir
 
-TESTDATA = f"{Path(__file__).parent}/testdata"
+TESTDATA = get_testdata_dir(__file__)
 
 
 def test_get_model() -> None:

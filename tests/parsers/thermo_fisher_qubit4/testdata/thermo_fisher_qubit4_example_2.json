@@ -125,8 +125,9 @@
         },
         "data system document": {
             "file name": "thermo_fisher_qubit4_example_2.xlsx",
+            "UNC path": "tests/parsers/thermo_fisher_qubit4/testdata/thermo_fisher_qubit4_example_2.xlsx",
             "software name": "Qubit 4 software",
-            "ASM converter name": "allotropy_thermo_fisher_scientific_qubit_4",
+            "ASM converter name": "allotropy_thermo_fisher_qubit_4",
             "ASM converter version": "0.1.61"
         }
     }

@@ -3323,8 +3323,9 @@
         },
         "data system document": {
             "file name": "thermo_fisher_qubit_flex_example_02.xlsx",
+            "UNC path": "tests/parsers/thermo_fisher_qubit_flex/testdata/thermo_fisher_qubit_flex_example_02.xlsx",
             "software name": "Qubit Flex software",
-            "ASM converter name": "allotropy_thermo_fisher_scientific_qubit_flex",
+            "ASM converter name": "allotropy_thermo_fisher_qubit_flex",
             "ASM converter version": "0.1.61"
         }
     }

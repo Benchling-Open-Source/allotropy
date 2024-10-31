@@ -24,6 +24,7 @@ authors = [
   { name = "Mindren Lu", email = "mindren.lu@benchling.com" },
   { name = "Keith Macaulay", email = "keith.macaulay@benchling.com" },
   { name = "Joe Negri", email = "joe.negri@benchling.com" },
+  { name = "Preston Olinger", email = "preston.olinger@benchling.com" },
   { name = "Alejando Salgado", email = "alejando.salgado@benchling.com" },
   { name = "Nathan Stender", email = "nathan.stender@benchling.com" },
   { name = "Eihab Syed", email = "eihabsyed@gmail.com" },
@@ -100,6 +101,10 @@ packages = ["src/allotropy"]
 path = "src/allotropy/__about__.py"
 
 [tool.hatch.envs.default]
+# Pin default enviroment to 3.11. We aim to support 3.10+, but for fast testing, the default test command runs
+# 3.11. Use hatch run test_all to tests against 3.10-3.12
+# Note: if your hatch env is not picking up this setting, run hatch env prune.
+python = "3.11.9"
 # We define dependencies for linting and datamodel codegen in the default environment because we lint in
 # the generation script, and we test generation in tests, so we need them everywhere except the actual project.
 dependencies = [
@@ -177,6 +182,13 @@ all = [
   "style",
   "typing",
 ]
+
+# Running hatch run test_all:test will run tests against all python verisons specified here.
+[tool.hatch.envs.test_all]
+template = "test"
+
+[[tool.hatch.envs.test_all.matrix]]
+python = ["3.10", "3.11", "3.12"]
 
 [tool.hatch.envs.test]
 extra-dependencies = [

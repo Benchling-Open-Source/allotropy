@@ -1,0 +1,35 @@
+##BLOCKS= 3
+Note:
+Basic Endpoint Protocol
+
+Use this protocol for endpoint assays that have unknowns that will have concentrations interpolated from a standard curve.  Modify the instrument setup for the wavelength(s) of interest for your assay.  You may also modify the template to include additional standards, unknowns, and controls.  To make modifications, click the plate section to make it active.
+
+READER SUITABILITY:
+SpectraMax M2, M2e, M3, M4, M5, and M5e.
+SpectraMax Plus 384, 190, SpectraMax 190,  340PC 384 and VersaMax
+Emax and Vmax
+
+
+PROTOCOL REVISION HISTORY:
+03/02/11 - Imported from 5.4 and edited.  (ELM)
+10/11/11 - Updated with the additional instruments supported in SMP 6.1
+~End
+Note:
+Summary1		9.000	5+4	3 decimal places	Numeric Notation
+foo bar baz
+
+~End
+
+Plate:	Plate1	1.3	PlateFormat	Kinetic	Fluorescence	FALSE	Raw	FALSE	4	120	90				1	525	1	3	6	485	Automatic	515			6	Medium			1	2
+	Temperature(¡C)	1	2	3
+00:00:00	35	NaN	0	0
+		0	0	0
+
+00:01:30	35	39.50988	20.26845	10.26596
+		41.66635	21.40594	10.85013
+
+		1	2	3
+		0.34262625396825386	0.19835369841269834	0.10696909920634921
+		0.35645984920634921	0.20799526984126979	0.11264294841269841
+~End
+Original Filename: fl_kinetic_plates; Date Last Saved: 1/6/2023 3:33:58 PM

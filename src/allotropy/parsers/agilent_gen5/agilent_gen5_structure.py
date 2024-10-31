@@ -78,9 +78,11 @@ class HeaderData:
     equipment_serial_number: str | None
     plate_well_count: float
     file_name: str
+    unc_path: str
 
     @classmethod
-    def create(cls, data: SeriesData, file_name: str) -> HeaderData:
+    def create(cls, data: SeriesData, file_path: str) -> HeaderData:
+        file_name = Path(file_path).name
         matches = re.match(FILENAME_REGEX, file_name)
         plate_identifier = matches.groupdict()["plate_identifier"] if matches else None
         plate_well_count = cls._extract_well_count(data[str, "Plate Type"])
@@ -88,6 +90,7 @@ class HeaderData:
             software_version=data[str, "Software Version"],
             experiment_file_path=data.get(str, "Experiment File Path:"),
             file_name=file_name,
+            unc_path=file_path,
             protocol_file_path=data.get(str, "Protocol File Path:"),
             datetime=f'{data[str, "Date"]} {data[str, "Time"]}',
             well_plate_identifier=plate_identifier or data.get(str, "Plate Number"),
@@ -784,7 +787,7 @@ def create_metadata(header_data: HeaderData) -> Metadata:
         file_name=header_data.file_name,
         asm_file_identifier=asm_file_identifier.name,
         data_system_instance_id=NOT_APPLICABLE,
-        unc_path=NOT_APPLICABLE,
+        unc_path=header_data.unc_path,
     )
 
 

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from pathlib import Path
+
 import pandas as pd
 
 from allotropy.allotrope.models.shared.definitions.definitions import (
@@ -12,19 +14,20 @@ from allotropy.allotrope.schema_mappers.adm.cell_counting.benchling._2023._11.ce
 )
 from allotropy.parsers.chemometec_nucleoview.constants import (
     DEFAULT_ANALYST,
-    DEFAULT_EPOCH_TIMESTAMP,
     DEFAULT_MODEL_NUMBER,
     NUCLEOCOUNTER_DETECTION_TYPE,
     NUCLEOCOUNTER_DEVICE_TYPE,
     NUCLEOCOUNTER_SOFTWARE_NAME,
 )
+from allotropy.parsers.constants import DEFAULT_EPOCH_TIMESTAMP
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
-def create_metadata(data: SeriesData, file_name: str) -> Metadata:
+def create_metadata(data: SeriesData, file_path: str) -> Metadata:
     return Metadata(
-        file_name=file_name,
+        file_name=Path(file_path).name,
+        unc_path=file_path,
         model_number=data.get(str, "Instrument type", DEFAULT_MODEL_NUMBER),
         equipment_serial_number=data.get(str, "Instrument s/n"),
         software_name=NUCLEOCOUNTER_SOFTWARE_NAME,

@@ -42,7 +42,7 @@ class MabtechApexParser(VendorParser[Data, Model]):
             for measurements in measurements_per_well.values()
         ]
         data = Data(
-            create_metadata(reader.plate_info, named_file_contents.original_file_name),
+            create_metadata(reader.plate_info, named_file_contents.original_file_path),
             data_measurement,
         )
         return data

@@ -9,15 +9,22 @@ Allotropy follows a [fork and pull model](https://docs.github.com/en/pull-reques
 ## Contribution conventions
 
 ### PR title
-The PR title must have a prefix (`<prefix>: <description>`) and must have one of the following prefixes.
-Some of these prefixes are used to generate the CHANGELOG, see CHANGELOG below.
+The PR title must have a form (`<prefix>: <description>`) and must have one of the following prefixes.
+
+Some prefixes cause the PR title to be included in CHANGELOG generation for a release.
+
+If the prefix is included in the CHANGELOG, the description should have a `<scope> -` prefix (`<prefix>: <scope> - <description>`), e.g.:
+
+`feat: Molecular Devices SoftMax Pro - report non numeric values in error document`
+
+#### Prefix
 
 CHANGELOG prefixes:
 * `feat`: A new feature - `Added` section of CHANGELOG
 * `fix`: A bug fix - `Fixed` section of CHANGELOG
 * `refactor`: Major refactor-only changes (e.g. moving code, reorganizing classes) - `Changed` section of CHANGELOG
 * `deprecate`: Deprecate a feature - `Deprecated` section of CHANGELOG
-* `remove`: Deprecate a feature - `Removed` section of CHANGELOG
+* `remove`: Remove a feature - `Removed` section of CHANGELOG
 * `security`: A security related fix - `Security` section of CHANGELOG
 
 other prefixes:
@@ -28,13 +35,27 @@ other prefixes:
 * `test`: A change that only introduces new tests or test data
 * `chore`: A change to internal systems (e.g. build, ci, dependencies) that does not affect tests
 
-## CHANGELOG
-The CHANGELOG will be automatically generated from PR titles with the titles shown above.
+Rules of thumb:
+* Changes that affect existing test cases or add new parser tests should almost certainly have a `feat` or `fix` prefix.
+* Changes that add a new parser should use the `feat` prefix, (e.g. `feat: ThermoSkanIt - initial implementation`).
+* Major refactors that are likely to affect other developers should have a `refactor` prefix, small refactors can use `chore`.
+* Removal of functionality must first be deprecated in a PR with the `deprecate` prefix.
+* Deprecated functionality can then be removed in the next major version with the `remove` prefix.
 
-A PR adding a new parser should use the `feat` prefix.
-If your change affects existing test cases or adds new tests with new features, it should almost certainly have a `feat` or `fix` prefix.
-Major refactors that are likely to affect other developers should have a `refactor` prefix, small refactors can use `chore`.
-Any removal of functionality must use the `deprecate` prefix.
+#### Scope
+
+If the change should be included in the CHANGELOG, the description should be prefixed with a scope that
+makes it clear which parsers are affected by the change.
+
+The scope should be capitalized and end with a dash. The value of the scope prefix depends on how much of the codebase the change affects:
+
+* `Single parser`: Changes that only affects one parser. The scope should be the `DISPLAY_NAME` of that parser (e.g. `Molecular Devices SoftMax Pro -`).
+* `Instrument category`: Change that affect all parsers of one instrument category (e.g. changing an ASM schema). The scope should be the `title case` name of that category (e.g. `Plate Reader` for `plate-reader` schemas - see `SUPPORTED_INSTRUMENT_SOFTWARE.adoc` for all categories).
+* `Global`: Changes that affect all parsers (e.g. a change that modifies a utility used by all parsers, or the ASM export behavior).
+* `Internal`: Change that does not change parser behavior, but is still significant enough to include in CHANGELOG (e.g. major dev utility improvements).
+
+## CHANGELOG
+The CHANGELOG will be automatically generated from PR titles with the title prefixes detailed above.
 
 When writing a PR title that will be in the CHANGELOG, it is important to use a title that will make a good CHANGELOG entry.
 

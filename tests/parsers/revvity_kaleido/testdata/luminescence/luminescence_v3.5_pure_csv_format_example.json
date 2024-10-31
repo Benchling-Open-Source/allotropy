@@ -1,0 +1,3765 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
+    "plate reader aggregate document": {
+        "plate reader document": [
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_0",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_A1",
+                                "location identifier": "A1",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 3330.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_1",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_A2",
+                                "location identifier": "A2",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 2830.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_2",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_A3",
+                                "location identifier": "A3",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 2920.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_3",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_A4",
+                                "location identifier": "A4",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 3330.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_4",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_A5",
+                                "location identifier": "A5",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 2950.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_5",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_A6",
+                                "location identifier": "A6",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 2860.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_6",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_A7",
+                                "location identifier": "A7",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 3380.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_7",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_A8",
+                                "location identifier": "A8",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 2800.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_8",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_A9",
+                                "location identifier": "A9",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 2630.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_9",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_A10",
+                                "location identifier": "A10",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 2990.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_10",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_A11",
+                                "location identifier": "A11",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 2930.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_11",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_A12",
+                                "location identifier": "A12",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 3510.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_12",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_B1",
+                                "location identifier": "B1",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 3020.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_13",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_B2",
+                                "location identifier": "B2",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 218540.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_14",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_B3",
+                                "location identifier": "B3",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 3250.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_15",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_B4",
+                                "location identifier": "B4",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 197470.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_16",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_B5",
+                                "location identifier": "B5",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 2880.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_17",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_B6",
+                                "location identifier": "B6",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 172430.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_18",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_B7",
+                                "location identifier": "B7",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 2900.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_19",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_B8",
+                                "location identifier": "B8",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 170130.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_20",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_B9",
+                                "location identifier": "B9",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 2660.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_21",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_B10",
+                                "location identifier": "B10",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 261580.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_22",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_B11",
+                                "location identifier": "B11",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 2820.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_23",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_B12",
+                                "location identifier": "B12",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 2650.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_24",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_C1",
+                                "location identifier": "C1",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 2820.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_25",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_C2",
+                                "location identifier": "C2",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 213790.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_26",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_C3",
+                                "location identifier": "C3",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 2830.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_27",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_C4",
+                                "location identifier": "C4",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 269460.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_28",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_C5",
+                                "location identifier": "C5",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 6720.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_29",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_C6",
+                                "location identifier": "C6",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 201850.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_30",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_C7",
+                                "location identifier": "C7",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 4390.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_31",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_C8",
+                                "location identifier": "C8",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 236470.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_32",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_C9",
+                                "location identifier": "C9",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 3460.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_33",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_C10",
+                                "location identifier": "C10",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 211460.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_34",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_C11",
+                                "location identifier": "C11",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 2800.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_35",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_C12",
+                                "location identifier": "C12",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 2410.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_36",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_D1",
+                                "location identifier": "D1",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 3540.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_37",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_D2",
+                                "location identifier": "D2",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 255970.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_38",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_D3",
+                                "location identifier": "D3",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 3630.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_39",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_D4",
+                                "location identifier": "D4",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 322290.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_40",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_D5",
+                                "location identifier": "D5",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 3420.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_41",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_D6",
+                                "location identifier": "D6",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 211790.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_42",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_D7",
+                                "location identifier": "D7",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 3750.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_43",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_D8",
+                                "location identifier": "D8",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 273740.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_44",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_D9",
+                                "location identifier": "D9",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 2460.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_45",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_D10",
+                                "location identifier": "D10",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 241270.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_46",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_D11",
+                                "location identifier": "D11",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 1490.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_47",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_D12",
+                                "location identifier": "D12",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 1880.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_48",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_E1",
+                                "location identifier": "E1",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 2890.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_49",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_E2",
+                                "location identifier": "E2",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 309020.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_50",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_E3",
+                                "location identifier": "E3",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 3020.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_51",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_E4",
+                                "location identifier": "E4",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 374560.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_52",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_E5",
+                                "location identifier": "E5",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 6840.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_53",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_E6",
+                                "location identifier": "E6",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 228560.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_54",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_E7",
+                                "location identifier": "E7",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 6740.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_55",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_E8",
+                                "location identifier": "E8",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 271290.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_56",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_E9",
+                                "location identifier": "E9",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 6070.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_57",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_E10",
+                                "location identifier": "E10",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 211600.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_58",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_E11",
+                                "location identifier": "E11",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 6840.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_59",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_E12",
+                                "location identifier": "E12",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 5430.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_60",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_F1",
+                                "location identifier": "F1",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 10030.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_61",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_F2",
+                                "location identifier": "F2",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 325560.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_62",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_F3",
+                                "location identifier": "F3",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 11730.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_63",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_F4",
+                                "location identifier": "F4",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 326460.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_64",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_F5",
+                                "location identifier": "F5",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 12010.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_65",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_F6",
+                                "location identifier": "F6",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 298280.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_66",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_F7",
+                                "location identifier": "F7",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 10560.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_67",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_F8",
+                                "location identifier": "F8",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 315940.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_68",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_F9",
+                                "location identifier": "F9",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 5480.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_69",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_F10",
+                                "location identifier": "F10",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 198810.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_70",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_F11",
+                                "location identifier": "F11",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 2010.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_71",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_F12",
+                                "location identifier": "F12",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 2440.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_72",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_G1",
+                                "location identifier": "G1",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 3390.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_73",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_G2",
+                                "location identifier": "G2",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 343520.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_74",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_G3",
+                                "location identifier": "G3",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 3400.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_75",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_G4",
+                                "location identifier": "G4",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 339770.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_76",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_G5",
+                                "location identifier": "G5",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 3130.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_77",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_G6",
+                                "location identifier": "G6",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 355030.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_78",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_G7",
+                                "location identifier": "G7",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 3650.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_79",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_G8",
+                                "location identifier": "G8",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 357670.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_80",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_G9",
+                                "location identifier": "G9",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 3750.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_81",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_G10",
+                                "location identifier": "G10",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 195330.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_82",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_G11",
+                                "location identifier": "G11",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 4880.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_83",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_G12",
+                                "location identifier": "G12",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 3730.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_84",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_H1",
+                                "location identifier": "H1",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 1510.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_85",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_H2",
+                                "location identifier": "H2",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 1290.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_86",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_H3",
+                                "location identifier": "H3",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 1570.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_87",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_H4",
+                                "location identifier": "H4",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 1650.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_88",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_H5",
+                                "location identifier": "H5",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 1870.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_89",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_H6",
+                                "location identifier": "H6",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 1920.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_90",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_H7",
+                                "location identifier": "H7",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 2010.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_91",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_H8",
+                                "location identifier": "H8",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 1870.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_92",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_H9",
+                                "location identifier": "H9",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 1650.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_93",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_H10",
+                                "location identifier": "H10",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 1920.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_94",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_H11",
+                                "location identifier": "H11",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 2200.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2024-10-16T13:39:00+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "REVVITY_KALEIDO_TEST_ID_95",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "Luminescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 0.1,
+                                            "unit": "mm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "BARCODE_1 13:39:01_H12",
+                                "location identifier": "H12",
+                                "well plate identifier": "BARCODE_1 13:39:01"
+                            },
+                            "luminescence": {
+                                "value": 2460.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "PROTOCOL UUID",
+                    "experimental data identifier": "SIGNATURE_UUID",
+                    "experiment type": "Luminescence",
+                    "container type": "well plate"
+                }
+            }
+        ],
+        "device system document": {
+            "device identifier": "EnSight",
+            "model number": "EnSight",
+            "product manufacturer": "Revvity",
+            "equipment serial number": "1712111"
+        },
+        "data system document": {
+            "file name": "luminescence_v3.5_pure_csv_format_example.csv",
+            "UNC path": "tests/parsers/revvity_kaleido/testdata/luminescence/luminescence_v3.5_pure_csv_format_example.csv",
+            "software name": "Kaleido",
+            "software version": "3.5.3082.227",
+            "ASM converter name": "allotropy_revvity_kaleido",
+            "ASM converter version": "0.1.61"
+        }
+    }
+}
