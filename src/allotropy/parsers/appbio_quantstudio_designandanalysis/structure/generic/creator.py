@@ -19,19 +19,18 @@ class Creator(ABC):
         return all(reader.has_sheet(sheet_name) for sheet_name in cls.EXPECTED_SHEETS)
 
     @classmethod
-    def check_plugin_name(cls, raw_plugin_name: str) -> bool:
-        return bool(search(cls.PLUGIN_REGEX, raw_plugin_name))
+    def check_plugin_name(cls, raw_plugin_name: str | None) -> bool:
+        return (
+            True
+            if raw_plugin_name is None
+            else bool(search(cls.PLUGIN_REGEX, raw_plugin_name))
+        )
 
     @classmethod
     def check_experiment_type(
         cls, reader: DesignQuantstudioReader, raw_plugin_name: str | None
     ) -> bool:
-        if not cls.check_sheets(reader):
-            return False
-        elif raw_plugin_name is not None:
-            return cls.check_plugin_name(raw_plugin_name)
-        else:
-            return True
+        return cls.check_sheets(reader) and cls.check_plugin_name(raw_plugin_name)
 
     @classmethod
     @abstractmethod
