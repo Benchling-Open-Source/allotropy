@@ -6,7 +6,7 @@ SOFTWARE_NAME = "VISIONlite"
 PRODUCT_MANUFACTURER = "Thermo Fisher Scientific"
 
 # Errors
-NOT_SUPPORTED_KINETIC_MEASUREMENTS_ERROR = (
+UNSUPPORTED_KINETIC_MEASUREMENTS_ERROR = (
     "Kinetic measurements are not supported at this time."
 )
 

@@ -27,7 +27,7 @@ from allotropy.parsers.constants import DEFAULT_EPOCH_TIMESTAMP, NOT_APPLICABLE
 from allotropy.parsers.thermo_fisher_visionlite.constants import (
     DETECTION_TYPE,
     DEVICE_TYPE,
-    NOT_SUPPORTED_KINETIC_MEASUREMENTS_ERROR,
+    UNSUPPORTED_KINETIC_MEASUREMENTS_ERROR,
     PRODUCT_MANUFACTURER,
     SOFTWARE_NAME,
 )
@@ -58,10 +58,10 @@ _EXPERIMENT_TO_MEASUREMENT_TYPE = {
 
 def _get_experiment_type(reader: ThermoFisherVisionliteReader) -> ExperimentType:
     if reader.header:
-        if reader.data.columns[0] == "nm":
+        if "nm" in reader.data.columns:
             return ExperimentType.SCAN
         else:
-            raise AllotropeConversionError(NOT_SUPPORTED_KINETIC_MEASUREMENTS_ERROR)
+            raise AllotropeConversionError(UNSUPPORTED_KINETIC_MEASUREMENTS_ERROR)
     elif "Dilution factor" in reader.data.columns:
         return ExperimentType.QUANT
     else:
