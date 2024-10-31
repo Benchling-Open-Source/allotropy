@@ -19,7 +19,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 
 class ThermoFisherQubit4Parser(VendorParser[Data, Model]):
-    DISPLAY_NAME = "Thermo Fisher Qubit 4"
+    DISPLAY_NAME = "Thermo Fisher Scientific Qubit 4"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = ThermoFisherQubit4Reader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper

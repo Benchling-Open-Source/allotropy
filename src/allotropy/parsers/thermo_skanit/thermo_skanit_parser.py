@@ -13,7 +13,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 
 class ThermoSkanItParser(VendorParser[Data, Model]):
-    DISPLAY_NAME = "Thermo Fisher SkanIt"
+    DISPLAY_NAME = "Thermo Fisher Scientific SkanIt"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "xlsx"
     SCHEMA_MAPPER = Mapper
