@@ -2,7 +2,6 @@ DISPLAY_NAME = "Thermo Fisher Visionlite"
 DEVICE_TYPE = "spectrophotometer"
 DETECTION_TYPE = "absorbance"
 SOFTWARE_NAME = "VISIONlite"
-# TODO: what is the correct spelling of the manufacturer?
 PRODUCT_MANUFACTURER = "Thermo Fisher Scientific"
 
 # Errors
