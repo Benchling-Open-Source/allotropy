@@ -24,8 +24,8 @@ class ThermoFisherVisionliteReader:
             )
             reader.pop()
 
-        data = reader.pop_csv_block_as_df(header="infer").replace(np.nan, None)
+        data = reader.pop_csv_block_as_df(header="infer")
         if data is None:
             msg = "Unable to get data, empty file."
             raise AllotropeConversionError(msg)
-        self.data = data
+        self.data = data.replace(np.nan, None)

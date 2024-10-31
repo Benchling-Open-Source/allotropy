@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
 import re
+from typing import Any
 
 import pandas as pd
 
@@ -87,7 +88,7 @@ class Header:
 @dataclass(frozen=True)
 class AbsorbanceMeasurement:
     absorbance: float
-    wavelength: float | None = None
+    wavelength: int | None = None
 
 
 def create_metadata(file_path: str) -> Metadata:
@@ -115,6 +116,9 @@ def _get_measurement_groups(
     data: pd.DataFrame, header: Header, experiment_type: ExperimentType
 ) -> list[MeasurementGroup]:
     if experiment_type == ExperimentType.SCAN:
+        if header.sample_name is None:
+            msg = "Missing Sample Name."
+            raise AllotropeConversionError(msg)
         return [
             MeasurementGroup(
                 analyst=header.analyst,
@@ -136,14 +140,14 @@ def _get_measurement_groups(
             analyst=header.analyst,
             measurement_time=header.measurement_time,
             experiment_type=experiment_type.value,
-            measurements=_get_absorbance_measurements(header, row, experiment_type),
+            measurements=_get_absorbance_measurements(row, experiment_type),
         )
         for _, row in data.iterrows()
     ]
 
 
 def _get_absorbance_measurements(
-    row: pd.Series, experiment_type: ExperimentType
+    row: pd.Series[Any], experiment_type: ExperimentType
 ) -> list[Measurement]:
     data = SeriesData(row)
     if experiment_type == ExperimentType.QUANT:
@@ -208,11 +212,11 @@ def _get_concentration_unit(columns: list[str]) -> str:
     return ""
 
 
-def _get_wavelengths(columns: list[str]) -> list[float]:
+def _get_wavelengths(columns: list[str]) -> list[int]:
     wavelengths = []
     for col in columns:
         if match := re.match(r"(\d{1,}) nm   \[A\]", col):
-            wavelengths.append(match.groups()[0])
+            wavelengths.append(int(match.groups()[0]))
     return wavelengths
 
 
