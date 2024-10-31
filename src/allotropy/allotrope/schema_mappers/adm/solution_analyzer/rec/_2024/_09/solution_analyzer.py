@@ -72,7 +72,7 @@ class DistributionDocument:
     cumulative_particle_density: float
     differential_particle_density: float
     differential_count: float
-    distribution_identifier: str | None = None
+    distribution_identifier: str
 
 
 @dataclass(frozen=True)

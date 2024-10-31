@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 from dataclasses import dataclass
+import math
 from pathlib import Path
 import re
 
@@ -12,6 +13,7 @@ from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._09.solu
     DataProcessing,
     DataSource,
     DistributionDocument,
+    Error,
     Measurement,
     MeasurementGroup,
     Metadata,
@@ -19,6 +21,7 @@ from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._09.solu
 from allotropy.parsers.beckman_pharmspec.constants import (
     DEVICE_TYPE,
     PHARMSPEC_SOFTWARE_NAME,
+    REQUIRED_DISTRIBUTION_DOCUMENT_KEYS,
     UNIT_LOOKUP,
     VALID_CALCS,
 )
@@ -28,6 +31,8 @@ from allotropy.parsers.utils.pandas import (
     SeriesData,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
+
+ZERO_FLOAT = 0.0
 
 
 def _create_processed_data(data: SeriesData) -> DistributionDocument:
@@ -137,6 +142,16 @@ def create_measurement_groups(
                         dilution_factor_setting=header.dilution_factor_setting,
                     ),
                     distribution_documents=distribution.features,
+                    errors=[
+                        Error(
+                            error=NOT_APPLICABLE,
+                            feature=f"{key.replace('_', ' ')} - {feature.distribution_identifier}",
+                        )
+                        for feature in distribution.features
+                        for key in feature.__dict__.keys()
+                        if key in REQUIRED_DISTRIBUTION_DOCUMENT_KEYS
+                        and is_negative_zero(feature.__dict__[key])
+                    ],
                 )
                 for distribution in [x for x in distributions if not x.is_calculated]
             ],
@@ -165,7 +180,7 @@ def create_calculated_data(
             unit=UNIT_LOOKUP[name],
             data_sources=[
                 DataSource(
-                    identifier=x.distribution_identifier or random_uuid_str(),
+                    identifier=x.distribution_identifier,
                     feature=name.replace("_", " "),
                 )
                 for x in particle_size_sources[feature.particle_size]
@@ -174,7 +189,13 @@ def create_calculated_data(
         for distribution in distributions
         for feature in distribution.features
         if distribution.is_calculated
-        # Ignore "distribution_identifier" attribute, and skip empty values
+        # Ignore "distribution_identifier" attribute, and skip empty or -0.0 values
         for name, value in feature.__dict__.items()
-        if name != "distribution_identifier" and value is not None
+        if name != "distribution_identifier"
+        and value is not None
+        and not is_negative_zero(value)
     ]
+
+
+def is_negative_zero(x: float) -> bool:
+    return x == ZERO_FLOAT and math.copysign(1, x) == -1

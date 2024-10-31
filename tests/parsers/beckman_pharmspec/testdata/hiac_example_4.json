@@ -31,6 +31,50 @@
                             "sample document": {
                                 "sample identifier": "ExampleTimepoint"
                             },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "differential particle density - BECKMAN_PHARMSPEC_TEST_ID_0"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "differential count - BECKMAN_PHARMSPEC_TEST_ID_0"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "differential particle density - BECKMAN_PHARMSPEC_TEST_ID_1"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "differential count - BECKMAN_PHARMSPEC_TEST_ID_1"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "differential particle density - BECKMAN_PHARMSPEC_TEST_ID_2"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "differential count - BECKMAN_PHARMSPEC_TEST_ID_2"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "differential particle density - BECKMAN_PHARMSPEC_TEST_ID_3"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "differential count - BECKMAN_PHARMSPEC_TEST_ID_3"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "differential particle density - BECKMAN_PHARMSPEC_TEST_ID_4"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "differential count - BECKMAN_PHARMSPEC_TEST_ID_4"
+                                    }
+                                ]
+                            },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {

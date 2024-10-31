@@ -31,6 +31,50 @@
                             "sample document": {
                                 "sample identifier": "ExampleTimepoint"
                             },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "differential particle density - BECKMAN_PHARMSPEC_TEST_ID_5"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "differential count - BECKMAN_PHARMSPEC_TEST_ID_5"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "differential particle density - BECKMAN_PHARMSPEC_TEST_ID_6"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "differential count - BECKMAN_PHARMSPEC_TEST_ID_6"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "differential particle density - BECKMAN_PHARMSPEC_TEST_ID_7"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "differential count - BECKMAN_PHARMSPEC_TEST_ID_7"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "differential particle density - BECKMAN_PHARMSPEC_TEST_ID_8"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "differential count - BECKMAN_PHARMSPEC_TEST_ID_8"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "differential particle density - BECKMAN_PHARMSPEC_TEST_ID_9"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "differential count - BECKMAN_PHARMSPEC_TEST_ID_9"
+                                    }
+                                ]
+                            },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -63,7 +107,7 @@
                                                         "value": -0.0,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_40"
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_30"
                                                 },
                                                 {
                                                     "particle size": {
@@ -86,7 +130,7 @@
                                                         "value": -0.0,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_41"
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_31"
                                                 },
                                                 {
                                                     "particle size": {
@@ -109,7 +153,7 @@
                                                         "value": -0.0,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_42"
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_32"
                                                 },
                                                 {
                                                     "particle size": {
@@ -132,7 +176,7 @@
                                                         "value": -0.0,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_43"
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_33"
                                                 },
                                                 {
                                                     "particle size": {
@@ -155,7 +199,7 @@
                                                         "value": -0.0,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_44"
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_34"
                                                 }
                                             ]
                                         }
@@ -189,6 +233,50 @@
                             "sample document": {
                                 "sample identifier": "ExampleTimepoint"
                             },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "differential particle density - BECKMAN_PHARMSPEC_TEST_ID_10"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "differential count - BECKMAN_PHARMSPEC_TEST_ID_10"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "differential particle density - BECKMAN_PHARMSPEC_TEST_ID_11"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "differential count - BECKMAN_PHARMSPEC_TEST_ID_11"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "differential particle density - BECKMAN_PHARMSPEC_TEST_ID_12"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "differential count - BECKMAN_PHARMSPEC_TEST_ID_12"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "differential particle density - BECKMAN_PHARMSPEC_TEST_ID_13"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "differential count - BECKMAN_PHARMSPEC_TEST_ID_13"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "differential particle density - BECKMAN_PHARMSPEC_TEST_ID_14"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "differential count - BECKMAN_PHARMSPEC_TEST_ID_14"
+                                    }
+                                ]
+                            },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -221,7 +309,7 @@
                                                         "value": -0.0,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_45"
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_35"
                                                 },
                                                 {
                                                     "particle size": {
@@ -244,7 +332,7 @@
                                                         "value": -0.0,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_46"
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_36"
                                                 },
                                                 {
                                                     "particle size": {
@@ -267,7 +355,7 @@
                                                         "value": -0.0,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_47"
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_37"
                                                 },
                                                 {
                                                     "particle size": {
@@ -290,7 +378,7 @@
                                                         "value": -0.0,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_48"
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_38"
                                                 },
                                                 {
                                                     "particle size": {
@@ -313,7 +401,7 @@
                                                         "value": -0.0,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_49"
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_39"
                                                 }
                                             ]
                                         }
@@ -390,52 +478,12 @@
                     }
                 },
                 {
-                    "calculated data name": "average_differential_particle_density",
-                    "calculated result": {
-                        "value": -0.0,
-                        "unit": "Counts/mL"
-                    },
-                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_18",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "BECKMAN_PHARMSPEC_TEST_ID_5",
-                                "data source feature": "differential particle density"
-                            },
-                            {
-                                "data source identifier": "BECKMAN_PHARMSPEC_TEST_ID_10",
-                                "data source feature": "differential particle density"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "average_differential_count",
-                    "calculated result": {
-                        "value": -0.0,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_19",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "BECKMAN_PHARMSPEC_TEST_ID_5",
-                                "data source feature": "differential count"
-                            },
-                            {
-                                "data source identifier": "BECKMAN_PHARMSPEC_TEST_ID_10",
-                                "data source feature": "differential count"
-                            }
-                        ]
-                    }
-                },
-                {
                     "calculated data name": "average_particle_size",
                     "calculated result": {
                         "value": 5.0,
                         "unit": "μm"
                     },
-                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_20",
+                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_18",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -455,7 +503,7 @@
                         "value": 9.0,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_21",
+                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_19",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -475,7 +523,7 @@
                         "value": 120.0,
                         "unit": "Counts/mL"
                     },
-                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_22",
+                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_20",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -485,46 +533,6 @@
                             {
                                 "data source identifier": "BECKMAN_PHARMSPEC_TEST_ID_11",
                                 "data source feature": "cumulative particle density"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "average_differential_particle_density",
-                    "calculated result": {
-                        "value": -0.0,
-                        "unit": "Counts/mL"
-                    },
-                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_23",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "BECKMAN_PHARMSPEC_TEST_ID_6",
-                                "data source feature": "differential particle density"
-                            },
-                            {
-                                "data source identifier": "BECKMAN_PHARMSPEC_TEST_ID_11",
-                                "data source feature": "differential particle density"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "average_differential_count",
-                    "calculated result": {
-                        "value": -0.0,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_24",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "BECKMAN_PHARMSPEC_TEST_ID_6",
-                                "data source feature": "differential count"
-                            },
-                            {
-                                "data source identifier": "BECKMAN_PHARMSPEC_TEST_ID_11",
-                                "data source feature": "differential count"
                             }
                         ]
                     }
@@ -535,7 +543,7 @@
                         "value": 10.0,
                         "unit": "μm"
                     },
-                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_25",
+                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_21",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -555,7 +563,7 @@
                         "value": 4.0,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_26",
+                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_22",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -575,7 +583,7 @@
                         "value": 130.0,
                         "unit": "Counts/mL"
                     },
-                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_27",
+                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_23",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -585,46 +593,6 @@
                             {
                                 "data source identifier": "BECKMAN_PHARMSPEC_TEST_ID_12",
                                 "data source feature": "cumulative particle density"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "average_differential_particle_density",
-                    "calculated result": {
-                        "value": -0.0,
-                        "unit": "Counts/mL"
-                    },
-                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_28",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "BECKMAN_PHARMSPEC_TEST_ID_7",
-                                "data source feature": "differential particle density"
-                            },
-                            {
-                                "data source identifier": "BECKMAN_PHARMSPEC_TEST_ID_12",
-                                "data source feature": "differential particle density"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "average_differential_count",
-                    "calculated result": {
-                        "value": -0.0,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_29",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "BECKMAN_PHARMSPEC_TEST_ID_7",
-                                "data source feature": "differential count"
-                            },
-                            {
-                                "data source identifier": "BECKMAN_PHARMSPEC_TEST_ID_12",
-                                "data source feature": "differential count"
                             }
                         ]
                     }
@@ -635,7 +603,7 @@
                         "value": 25.0,
                         "unit": "μm"
                     },
-                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_30",
+                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_24",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -655,7 +623,7 @@
                         "value": 0.0,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_31",
+                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_25",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -675,7 +643,7 @@
                         "value": 140.0,
                         "unit": "Counts/mL"
                     },
-                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_32",
+                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_26",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -685,46 +653,6 @@
                             {
                                 "data source identifier": "BECKMAN_PHARMSPEC_TEST_ID_13",
                                 "data source feature": "cumulative particle density"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "average_differential_particle_density",
-                    "calculated result": {
-                        "value": -0.0,
-                        "unit": "Counts/mL"
-                    },
-                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_33",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "BECKMAN_PHARMSPEC_TEST_ID_8",
-                                "data source feature": "differential particle density"
-                            },
-                            {
-                                "data source identifier": "BECKMAN_PHARMSPEC_TEST_ID_13",
-                                "data source feature": "differential particle density"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "average_differential_count",
-                    "calculated result": {
-                        "value": -0.0,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_34",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "BECKMAN_PHARMSPEC_TEST_ID_8",
-                                "data source feature": "differential count"
-                            },
-                            {
-                                "data source identifier": "BECKMAN_PHARMSPEC_TEST_ID_13",
-                                "data source feature": "differential count"
                             }
                         ]
                     }
@@ -735,7 +663,7 @@
                         "value": 50.0,
                         "unit": "μm"
                     },
-                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_35",
+                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_27",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -755,7 +683,7 @@
                         "value": 0.0,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_36",
+                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_28",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -775,7 +703,7 @@
                         "value": 150.0,
                         "unit": "Counts/mL"
                     },
-                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_37",
+                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_29",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -785,46 +713,6 @@
                             {
                                 "data source identifier": "BECKMAN_PHARMSPEC_TEST_ID_14",
                                 "data source feature": "cumulative particle density"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "average_differential_particle_density",
-                    "calculated result": {
-                        "value": -0.0,
-                        "unit": "Counts/mL"
-                    },
-                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_38",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "BECKMAN_PHARMSPEC_TEST_ID_9",
-                                "data source feature": "differential particle density"
-                            },
-                            {
-                                "data source identifier": "BECKMAN_PHARMSPEC_TEST_ID_14",
-                                "data source feature": "differential particle density"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "average_differential_count",
-                    "calculated result": {
-                        "value": -0.0,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "BECKMAN_PHARMSPEC_TEST_ID_39",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "BECKMAN_PHARMSPEC_TEST_ID_9",
-                                "data source feature": "differential count"
-                            },
-                            {
-                                "data source identifier": "BECKMAN_PHARMSPEC_TEST_ID_14",
-                                "data source feature": "differential count"
                             }
                         ]
                     }

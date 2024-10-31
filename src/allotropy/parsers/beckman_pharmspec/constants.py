@@ -10,3 +10,11 @@ UNIT_LOOKUP = {
     "differential_count": "(unitless)",
 }
 VALID_CALCS = ["Average"]
+
+REQUIRED_DISTRIBUTION_DOCUMENT_KEYS = [
+    "particle_size",
+    "cumulative_count",
+    "cumulative_particle_density",
+    "differential_particle_density",
+    "differential_count",
+]
