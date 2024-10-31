@@ -120,6 +120,11 @@ class MilliSecond(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class MilligramPerLiter(HasUnit):
+    unit: str = "mg/mL"
+
+
+@dataclass(frozen=True, kw_only=True)
 class MilligramPerMilliliter(HasUnit):
     unit: str = "mg/mL"
 
@@ -217,6 +222,16 @@ class OpticalDensity(HasUnit):
 @dataclass(frozen=True, kw_only=True)
 class PH(HasUnit):
     unit: str = "pH"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PartsPerBillion(HasUnit):
+    unit: str = "ppb"
+
+
+@dataclass(frozen=True, kw_only=True)
+class PartsPerMillion(HasUnit):
+    unit: str = "ppm"
 
 
 @dataclass(frozen=True, kw_only=True)

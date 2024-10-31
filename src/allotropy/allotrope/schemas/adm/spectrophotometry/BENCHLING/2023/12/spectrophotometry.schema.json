@@ -511,6 +511,26 @@
                         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
                         "$asm.pattern": "quantity datum",
                         "$ref": "#/$custom/tQuantityValueMilligramPerMilliliter"
+                      },
+                      {
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
+                        "$asm.pattern": "quantity datum",
+                        "$ref": "#/$custom/tQuantityValueGramPerLiter"
+                      },
+                      {
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
+                        "$asm.pattern": "quantity datum",
+                        "$ref": "#/$custom/tQuantityValueMilligramPerLiter"
+                      },
+                      {
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
+                        "$asm.pattern": "quantity datum",
+                        "$ref": "#/$custom/tQuantityValuePartsPerMillion"
+                      },
+                      {
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
+                        "$asm.pattern": "quantity datum",
+                        "$ref": "#/$custom/tQuantityValuePartsPerBillion"
                       }
                     ]
                   }
