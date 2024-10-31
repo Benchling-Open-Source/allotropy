@@ -68,6 +68,141 @@ def _get_experiment_type(reader: ThermoFisherVisionliteReader) -> ExperimentType
         return ExperimentType.FIXED
 
 
+@dataclass(frozen=True)
+class Header:
+    sample_name: str | None = None
+    analyst: str | None = None
+    measurement_time: str = DEFAULT_EPOCH_TIMESTAMP
+
+    @staticmethod
+    def create(header_data: SeriesData | None) -> Header:
+        if header_data is None:
+            return Header()
+
+        return Header(
+            sample_name=header_data[str, "Sample Name"],
+            analyst=header_data[str, "Analyst"],
+            measurement_time=header_data[str, "Measurement Time"],
+        )
+
+
+@dataclass(frozen=True)
+class AbsorbanceMeasurement:
+    absorbance: float
+    wavelength: float | None = None
+
+
+def create_metadata(file_path: str) -> Metadata:
+    return Metadata(
+        file_name=Path(file_path).name,
+        unc_path=file_path,
+        device_identifier=NOT_APPLICABLE,
+        device_type=DEVICE_TYPE,
+        model_number=NOT_APPLICABLE,
+        software_name=SOFTWARE_NAME,
+        detection_type=DETECTION_TYPE,
+        product_manufacturer=PRODUCT_MANUFACTURER,
+    )
+
+
+def create_measurement_groups(
+    reader: ThermoFisherVisionliteReader,
+) -> list[MeasurementGroup]:
+    experiment_type = _get_experiment_type(reader)
+    header = Header.create(reader.header)
+    return _get_measurement_groups(reader.data, header, experiment_type)
+
+
+def _get_measurement_groups(
+    data: pd.DataFrame, header: Header, experiment_type: ExperimentType
+) -> list[MeasurementGroup]:
+    if experiment_type == ExperimentType.SCAN:
+        return [
+            MeasurementGroup(
+                analyst=header.analyst,
+                measurement_time=header.measurement_time,
+                experiment_type=experiment_type.value,
+                measurements=[
+                    Measurement(
+                        type_=experiment_type.measurement_type,
+                        identifier=random_uuid_str(),
+                        sample_identifier=header.sample_name,
+                        data_cube=_get_data_cube(data),
+                    )
+                ],
+            )
+        ]
+
+    return [
+        MeasurementGroup(
+            analyst=header.analyst,
+            measurement_time=header.measurement_time,
+            experiment_type=experiment_type.value,
+            measurements=_get_absorbance_measurements(header, row, experiment_type),
+        )
+        for _, row in data.iterrows()
+    ]
+
+
+def _get_absorbance_measurements(
+    header: Header, row: pd.Series, experiment_type: ExperimentType
+) -> list[Measurement]:
+    data = SeriesData(row)
+    if experiment_type == ExperimentType.QUANT:
+        ordinate_col = "Ordinate [A]"
+        if not data.has_key(ordinate_col):
+            msg = "Unable to determine Quant absorbance measurements, Ordinate column missing."
+            raise AllotropeConversionError(msg)
+        absorbance_measurements = [
+            AbsorbanceMeasurement(absorbance=data[float, ordinate_col])
+        ]
+    elif experiment_type == ExperimentType.FIXED:
+        if not (wavelengths := _get_wavelengths(list(data.series.index))):
+            msg = "Only Fixed absorbance measurements are supported at this time."
+        absorbance_measurements = [
+            AbsorbanceMeasurement(
+                absorbance=data[float, f"{wavelength} nm   [A]"],
+                wavelength=wavelength,
+            )
+            for wavelength in wavelengths
+        ]
+
+    return [
+        Measurement(
+            type_=experiment_type.measurement_type,
+            identifier=random_uuid_str(),
+            sample_identifier=data[str, "Sample Name"],
+            processed_data=(
+                _get_processed_data(data)
+                if experiment_type == ExperimentType.QUANT
+                else None
+            ),
+            absorbance=measurement.absorbance,
+            detector_wavelength_setting=try_float_or_none(measurement.wavelength),
+        )
+        for measurement in absorbance_measurements
+    ]
+
+
+def _get_processed_data(data: SeriesData) -> ProcessedData:
+    concentration_unit = _get_concentration_unit(list(data.series.index))
+
+    concentration_col = f"Concentration [{concentration_unit}]"
+    if not data.has_key(concentration_col):
+        msg = "Unable to find Concentration data."
+        raise AllotropeConversionError(msg)
+
+    return ProcessedData(
+        identifier=random_uuid_str(),
+        features=[
+            ProcessedDataFeature(
+                result=data[float, concentration_col],
+                unit=concentration_unit,
+            )
+        ],
+    )
+
+
 def _get_concentration_unit(columns: list[str]) -> str:
     for col in columns:
         if match := re.match(r"Concentration \[(.*)\]", col):
@@ -103,147 +238,3 @@ def _get_data_cube(data: pd.DataFrame) -> DataCube:
         dimensions=[data["nm"].to_list()],
         measures=[data["A"].to_list()],
     )
-
-
-@dataclass(frozen=True)
-class Header:
-    sample_name: str | None = None
-    analyst: str | None = None
-    measurement_time: str = DEFAULT_EPOCH_TIMESTAMP
-
-    @staticmethod
-    def create(header_data: SeriesData | None) -> Header:
-        if header_data is None:
-            return Header()
-
-        return Header(
-            sample_name=header_data[str, "Sample Name"],
-            analyst=header_data[str, "Analyst"],
-            measurement_time=header_data[str, "Measurement Time"],
-        )
-
-
-@dataclass(frozen=True)
-class AbsorbanceMeasurement:
-    absorbance: float
-    wavelength: float | None = None
-
-
-# TODO: Make this data more structured.
-class VisionLiteData(Data):
-    @classmethod
-    def create(cls, reader: ThermoFisherVisionliteReader, file_path: str) -> Data:
-        experiment_type = _get_experiment_type(reader)
-        header = Header.create(reader.header)
-
-        return Data(
-            metadata=Metadata(
-                file_name=Path(file_path).name,
-                unc_path=file_path,
-                device_identifier=NOT_APPLICABLE,
-                device_type=DEVICE_TYPE,
-                model_number=NOT_APPLICABLE,
-                software_name=SOFTWARE_NAME,
-                detection_type=DETECTION_TYPE,
-                product_manufacturer=PRODUCT_MANUFACTURER,
-            ),
-            measurement_groups=cls._get_measurement_groups(
-                reader.data, header, experiment_type
-            ),
-        )
-
-    @classmethod
-    def _get_measurement_groups(
-        cls,
-        data: pd.DataFrame,
-        header: Header,
-        experiment_type: ExperimentType,
-    ) -> list[MeasurementGroup]:
-
-        # TODO: this will probably be ugly
-        if experiment_type == ExperimentType.SCAN:
-            return [
-                MeasurementGroup(
-                    analyst=header.analyst,
-                    measurement_time=header.measurement_time,
-                    experiment_type=experiment_type.value,
-                    measurements=[
-                        Measurement(
-                            type_=experiment_type.measurement_type,
-                            identifier=random_uuid_str(),
-                            sample_identifier=header.sample_name
-                            or data[str, "Sample Name"],
-                            data_cube=_get_data_cube(data),
-                        )
-                    ],
-                )
-            ]
-
-        return [
-            MeasurementGroup(
-                analyst=header.analyst,
-                measurement_time=header.measurement_time,
-                experiment_type=experiment_type.value,
-                measurements=cls._get_measurements(header, row, experiment_type),
-            )
-            for _, row in data.iterrows()
-        ]
-
-    @classmethod
-    def _get_measurements(
-        cls, header: Header, row: pd.Series, experiment_type: ExperimentType
-    ) -> list[Measurement]:
-        data = SeriesData(row)
-        if experiment_type == ExperimentType.QUANT:
-            ordinate_col = "Ordinate [A]"
-            if not data.has_key(ordinate_col):
-                msg = "Unable to determine Quant absorbance measurements, Ordinate column missing."
-                raise AllotropeConversionError(msg)
-            absorbance_measurements = [
-                AbsorbanceMeasurement(absorbance=data[float, ordinate_col])
-            ]
-        elif experiment_type == ExperimentType.FIXED:
-            if not (wavelengths := _get_wavelengths(list(data.series.index))):
-                msg = "Only Fixed absorbance measurements are supported at this time."
-            absorbance_measurements = [
-                AbsorbanceMeasurement(
-                    absorbance=data[float, f"{wavelength} nm   [A]"],
-                    wavelength=wavelength,
-                )
-                for wavelength in wavelengths
-            ]
-
-        return [
-            Measurement(
-                type_=experiment_type.measurement_type,
-                identifier=random_uuid_str(),
-                sample_identifier=header.sample_name or data[str, "Sample Name"],
-                processed_data=(
-                    cls._get_processed_data(data)
-                    if experiment_type == ExperimentType.QUANT
-                    else None
-                ),
-                absorbance=measurement.absorbance,
-                detector_wavelength_setting=try_float_or_none(measurement.wavelength),
-            )
-            for measurement in absorbance_measurements
-        ]
-
-    @classmethod
-    def _get_processed_data(cls, data: SeriesData) -> ProcessedData:
-        concentration_unit = _get_concentration_unit(list(data.series.index))
-
-        concentration_col = f"Concentration [{concentration_unit}]"
-        if not data.has_key(concentration_col):
-            msg = "Unable to find Concentration data."
-            raise AllotropeConversionError(msg)
-
-        return ProcessedData(
-            identifier=random_uuid_str(),
-            features=[
-                ProcessedDataFeature(
-                    result=data[float, concentration_col],
-                    unit=concentration_unit,
-                )
-            ],
-        )
