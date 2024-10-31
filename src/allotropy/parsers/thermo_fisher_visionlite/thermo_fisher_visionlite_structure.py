@@ -4,7 +4,6 @@ from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
 import re
-from typing import Any
 
 import pandas as pd
 
@@ -12,7 +11,6 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
 )
 from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
-    Data,
     DataCube,
     DataCubeComponent,
     Measurement,
@@ -27,9 +25,9 @@ from allotropy.parsers.constants import DEFAULT_EPOCH_TIMESTAMP, NOT_APPLICABLE
 from allotropy.parsers.thermo_fisher_visionlite.constants import (
     DETECTION_TYPE,
     DEVICE_TYPE,
-    UNSUPPORTED_KINETIC_MEASUREMENTS_ERROR,
     PRODUCT_MANUFACTURER,
     SOFTWARE_NAME,
+    UNSUPPORTED_KINETIC_MEASUREMENTS_ERROR,
 )
 from allotropy.parsers.thermo_fisher_visionlite.thermo_fisher_visionlite_reader import (
     ThermoFisherVisionliteReader,
@@ -145,7 +143,7 @@ def _get_measurement_groups(
 
 
 def _get_absorbance_measurements(
-    header: Header, row: pd.Series, experiment_type: ExperimentType
+    row: pd.Series, experiment_type: ExperimentType
 ) -> list[Measurement]:
     data = SeriesData(row)
     if experiment_type == ExperimentType.QUANT:

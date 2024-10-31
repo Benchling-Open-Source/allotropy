@@ -28,5 +28,5 @@ class ThermoFisherVisionliteParser(VendorParser[Data, Model]):
         reader = ThermoFisherVisionliteReader(named_file_contents)
         return Data(
             create_metadata(named_file_contents.original_file_path),
-            create_measurement_groups(reader)
+            create_measurement_groups(reader),
         )
