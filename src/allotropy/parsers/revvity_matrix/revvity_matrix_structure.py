@@ -1,4 +1,5 @@
 from decimal import Decimal
+from pathlib import Path
 
 from allotropy.allotrope.schema_mappers.adm.cell_counting.benchling._2023._11.cell_counting import (
     Error,
@@ -6,14 +7,16 @@ from allotropy.allotrope.schema_mappers.adm.cell_counting.benchling._2023._11.ce
     MeasurementGroup,
     Metadata,
 )
+from allotropy.parsers.constants import DEFAULT_EPOCH_TIMESTAMP
 from allotropy.parsers.revvity_matrix import constants
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
-def create_metadata(file_name: str) -> Metadata:
+def create_metadata(file_path: str) -> Metadata:
     return Metadata(
-        file_name=file_name,
+        file_name=Path(file_path).name,
+        unc_path=file_path,
         device_type=constants.DEVICE_TYPE,
     )
 
@@ -38,9 +41,9 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
         measurements=[
             Measurement(
                 measurement_identifier=random_uuid_str(),
-                # NOTE: instrument  file does not provide a timestamp, but it is required by ASM, so pass
+                # NOTE: instrument file does not provide a timestamp, but it is required by ASM, so pass
                 # EPOCH to signal no timestamp.
-                timestamp=constants.EPOCH_STR,
+                timestamp=DEFAULT_EPOCH_TIMESTAMP,
                 sample_identifier=data[str, "Well Name"],
                 viability=data[float, "Viability"],
                 total_cell_count=data.get(float, "Total Count"),

@@ -692,13 +692,13 @@ class Data:
 
 
 def create_metadata(
-    software: Software, instrument: Instrument, file_name: str
+    software: Software, instrument: Instrument, file_path: str
 ) -> Metadata:
-    asm_file_identifier = Path(file_name).with_suffix(".json")
+    path = Path(file_path)
     return Metadata(
-        file_name=file_name,
-        asm_file_identifier=asm_file_identifier.name,
-        unc_path=NOT_APPLICABLE,
+        file_name=path.name,
+        unc_path=file_path,
+        asm_file_identifier=path.with_suffix(".json").name,
         software_name=software.software_name,
         software_version=software.software_version,
         model_number=constants.MODEL_NUMBER,

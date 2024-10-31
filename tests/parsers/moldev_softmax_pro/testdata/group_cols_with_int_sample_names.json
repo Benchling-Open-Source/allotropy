@@ -63,6 +63,14 @@
                             "absorbance": {
                                 "value": 1.672,
                                 "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Masked",
+                                        "error feature": "OD"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -423,6 +431,26 @@
                             "absorbance": {
                                 "value": -0.06,
                                 "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "Result"
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "MeanResult"
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "Std.Dev."
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "CV%"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -855,6 +883,26 @@
                             "absorbance": {
                                 "value": 0.002,
                                 "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "Result"
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "MeanResult"
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "Std.Dev."
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "CV%"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -1179,6 +1227,26 @@
                             "absorbance": {
                                 "value": 0.053,
                                 "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "Result"
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "MeanResult"
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "Std.Dev."
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "CV%"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -1323,6 +1391,14 @@
                             "absorbance": {
                                 "value": 0.354,
                                 "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Masked",
+                                        "error feature": "%Diff"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -1359,6 +1435,14 @@
                             "absorbance": {
                                 "value": 0.355,
                                 "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Masked",
+                                        "error feature": "%Diff"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -1539,6 +1623,26 @@
                             "absorbance": {
                                 "value": 0.056,
                                 "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "Result"
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "MeanResult"
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "Std.Dev."
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "CV%"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -1575,6 +1679,26 @@
                             "absorbance": {
                                 "value": 0.055,
                                 "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "Result"
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "MeanResult"
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "Std.Dev."
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "CV%"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -1611,6 +1735,26 @@
                             "absorbance": {
                                 "value": 0.052,
                                 "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "Result"
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "MeanResult"
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "Std.Dev."
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "CV%"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -2223,6 +2367,14 @@
                             "absorbance": {
                                 "value": 0.135,
                                 "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "OD"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -2835,6 +2987,26 @@
                             "absorbance": {
                                 "value": 0.053,
                                 "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "Result"
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "MeanResult"
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "Std.Dev."
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "CV%"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -2871,6 +3043,26 @@
                             "absorbance": {
                                 "value": 0.054,
                                 "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "Result"
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "MeanResult"
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "Std.Dev."
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "CV%"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -2907,6 +3099,26 @@
                             "absorbance": {
                                 "value": 0.056,
                                 "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "Result"
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "MeanResult"
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "Std.Dev."
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "CV%"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -3051,6 +3263,18 @@
                             "absorbance": {
                                 "value": 0.055,
                                 "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "BackCalcConc"
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "%Diff"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -3087,6 +3311,18 @@
                             "absorbance": {
                                 "value": 0.052,
                                 "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "BackCalcConc"
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "%Diff"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -3267,6 +3503,26 @@
                             "absorbance": {
                                 "value": 0.053,
                                 "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "Result"
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "MeanResult"
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "Std.Dev."
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "CV%"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -3303,6 +3559,26 @@
                             "absorbance": {
                                 "value": 0.054,
                                 "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "Result"
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "MeanResult"
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "Std.Dev."
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "CV%"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -3339,6 +3615,26 @@
                             "absorbance": {
                                 "value": 0.053,
                                 "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "Result"
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "MeanResult"
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "Std.Dev."
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "CV%"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -3447,6 +3743,26 @@
                             "absorbance": {
                                 "value": 0.055,
                                 "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "Result"
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "MeanResult"
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "Std.Dev."
+                                    },
+                                    {
+                                        "error": "Range?",
+                                        "error feature": "CV%"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -11946,9 +12262,9 @@
             "ASM file identifier": "N/A",
             "data system instance identifier": "N/A",
             "file name": "group_cols_with_int_sample_names.txt",
-            "UNC path": "N/A",
+            "UNC path": "tests/parsers/moldev_softmax_pro/testdata/group_cols_with_int_sample_names.txt",
             "ASM converter name": "allotropy_molecular_devices_softmax_pro",
-            "ASM converter version": "0.1.51",
+            "ASM converter version": "0.1.61",
             "software name": "SoftMax Pro"
         },
         "device system document": {

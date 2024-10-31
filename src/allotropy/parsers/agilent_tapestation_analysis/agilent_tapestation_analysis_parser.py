@@ -34,7 +34,7 @@ class AgilentTapestationAnalysisParser(VendorParser[Data, Model]):
 
         measurement_groups, calculated_data = create_measurement_groups(root_element)
         return Data(
-            create_metadata(root_element, named_file_contents.original_file_name),
+            create_metadata(root_element, named_file_contents.original_file_path),
             measurement_groups,
             # NOTE: in current implementation, calculated data is reported at global level for some reason.
             # TODO(nstender): should we move this inside of measurements?

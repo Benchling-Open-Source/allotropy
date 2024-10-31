@@ -40,7 +40,7 @@ class AgilentGen5Parser(VendorParser[Data, Model]):
             raise AllotropeConversionError(DEFAULT_EXPORT_FORMAT_ERROR)
 
         header_data = HeaderData.create(
-            reader.header_data, named_file_contents.original_file_name
+            reader.header_data, named_file_contents.original_file_path
         )
         read_data = ReadData.create(reader.sections["Procedure Details"])
         kinetic_data = KineticData.create(reader.sections["Procedure Details"])

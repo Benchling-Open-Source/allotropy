@@ -1,10 +1,18 @@
 from __future__ import annotations
 
+import builtins
 from collections.abc import Callable, Mapping, Sequence
 from dataclasses import asdict, field, fields, is_dataclass, make_dataclass, MISSING
 from enum import Enum
-from types import UnionType
-from typing import Any, cast, get_args, get_origin, TypeVar, Union
+from types import GenericAlias, UnionType
+from typing import (
+    Any,
+    cast,
+    get_args,
+    get_origin,
+    TypeVar,
+    Union,
+)
 
 from cattrs import Converter
 from cattrs.errors import ClassValidationError
@@ -189,20 +197,79 @@ def register_data_cube_hooks(converter: Converter) -> None:
     converter.register_structure_hook(TMeasureArray, lambda val, _: val)
 
 
+# TODO: this code is copied from cattrs 24.1.0. We currently pin to 23.1.2 because some other libraries that
+# allotropy is currently used with pin cattrs (i.e. ddtrace). When possible, upgrade to cattrs>=24.1.0 and
+# import is_sequence from cattrs.cols
+def is_subclass(obj: type, bases: builtins._ClassInfo) -> bool:
+    """A safe version of issubclass (won't raise)."""
+    try:
+        return issubclass(obj, bases)
+    except TypeError:
+        return False
+
+
+def is_sequence(type_: Any) -> bool:
+    origin = getattr(type_, "__origin__", None)
+    return type_ in (list, tuple) or (
+        type_.__class__ in (GenericAlias, type)
+        and origin
+        and (origin not in (Union, tuple) and is_subclass(origin, Sequence))
+        or (origin is tuple and type_.__args__[1] is ...)
+    )
+
+
 def register_dataclass_union_hooks(converter: Converter) -> None:
-    # Handles any union of a set of dataclasses and primitive values. First checks if the value is a
-    # primitive value or None, and if so returns that. Then tries structuring with each specified dataclass,
-    # if any.
+    # Handles any union of dataclass, lists of dataclasses, and primitive values.
+    # First checks if the value is a list, and if so tries to parse with any of the list types.
+    # Then checks if the value is a primitive value or None, and if so returns that.
+    # Then tries structuring with each specified dataclass, if any.
+    def _is_valid(arg: Any) -> bool:
+        if is_sequence(arg):
+            return all(is_dataclass(sub) for sub in arg.__args__)
+        if is_dataclass(arg):
+            return True
+        if arg in PRIMITIVE_TYPES:
+            return True
+        return False
+
     def is_dataclass_union(val: Any) -> bool:
         if get_origin(val) not in (Union, UnionType):
             return False
         args = set(get_args(val))
-        return all(is_dataclass(arg) or arg in PRIMITIVE_TYPES for arg in args)
+        return all(_is_valid(arg) for arg in args)
 
     def dataclass_union_structure_fn(
         cls: Any,
     ) -> Callable[[dict[str, Any] | str | None, Any], Any | None]:
         def structure_item(val: dict[str, Any] | str | None, _: Any) -> Any | None:
+            if isinstance(val, list):
+                valid_models = []
+                for subcls in get_args(cls):
+                    if not is_sequence(subcls):
+                        continue
+                    # I don't think this should be possible, but check and raise a readable error just in case.
+                    if len(subcls.__args__) > 1:
+                        msg = (
+                            f"Encountered a list type with more than one arg: {subcls}!"
+                        )
+                        raise AssertionError(msg)
+                    try:
+                        valid_models.append(
+                            [converter.structure(v, subcls.__args__[0]) for v in val]
+                        )
+                    except (ClassValidationError, TypeError):
+                        pass
+
+                if len(valid_models) == 1:
+                    return valid_models[0]
+                elif len(valid_models) > 1:
+                    for model in valid_models:
+                        try:
+                            _validate_structuring(val, model)
+                            return model
+                        except AssertionError:
+                            pass
+
             if type(val) in PRIMITIVE_TYPES:
                 return val
             valid_models = []

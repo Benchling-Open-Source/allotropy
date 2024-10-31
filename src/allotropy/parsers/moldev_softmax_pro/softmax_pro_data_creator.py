@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from itertools import chain
+from pathlib import Path
 
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
@@ -17,8 +18,8 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_rea
     Metadata,
 )
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.constants import NOT_APPLICABLE
-from allotropy.parsers.moldev_softmax_pro.constants import DEVICE_TYPE, EPOCH
+from allotropy.parsers.constants import DEFAULT_EPOCH_TIMESTAMP, NOT_APPLICABLE
+from allotropy.parsers.moldev_softmax_pro.constants import DEVICE_TYPE
 from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
     DataElement,
     GroupBlock,
@@ -29,15 +30,15 @@ from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
-def create_metadata(file_name: str) -> Metadata:
+def create_metadata(file_path: str) -> Metadata:
     return Metadata(
         asm_file_identifier=NOT_APPLICABLE,
         device_identifier=NOT_APPLICABLE,
         model_number=NOT_APPLICABLE,
         data_system_instance_id=NOT_APPLICABLE,
-        unc_path=NOT_APPLICABLE,
         software_name="SoftMax Pro",
-        file_name=file_name,
+        file_name=Path(file_path).name,
+        unc_path=file_path,
     )
 
 
@@ -121,6 +122,8 @@ def _create_measurements(plate_block: PlateBlock, position: str) -> list[Measure
             total_measurement_time_setting=plate_block.header.read_time,
             read_interval_setting=plate_block.header.read_interval,
             number_of_scans_setting=plate_block.header.kinetic_points,
+            # Error documents
+            error_document=data_element.error_document,
         )
         for idx, data_element in enumerate(plate_block.iter_data_elements(position))
     ]
@@ -136,7 +139,7 @@ def _create_measurement_group(
     return MeasurementGroup(
         measurements=measurements,
         plate_well_count=plate_block.header.num_wells,
-        measurement_time=EPOCH,
+        measurement_time=DEFAULT_EPOCH_TIMESTAMP,
     )
 
 

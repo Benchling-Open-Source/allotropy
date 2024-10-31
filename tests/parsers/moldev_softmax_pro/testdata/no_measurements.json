@@ -1,0 +1,386 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2024/06/plate-reader.manifest",
+    "plate reader aggregate document": {
+        "plate reader document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Fluorescence",
+                                        "number of averages": {
+                                            "value": 6.0,
+                                            "unit": "#"
+                                        },
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "detector wavelength setting": {
+                                            "value": 505.0,
+                                            "unit": "nm"
+                                        },
+                                        "wavelength filter cutoff setting": {
+                                            "value": 495,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 380,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_0",
+                            "sample document": {
+                                "sample identifier": "PLate1 A1",
+                                "location identifier": "A1",
+                                "well plate identifier": "PLate1"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "nan",
+                                        "error feature": "Fluorescence"
+                                    }
+                                ]
+                            },
+                            "compartment temperature": {
+                                "value": 21.9,
+                                "unit": "degC"
+                            },
+                            "fluorescence": {
+                                "value": -0.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "measurement time": "1970-01-01T00:00:00+00:00",
+                    "plate well count": {
+                        "value": 6,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Fluorescence",
+                                        "number of averages": {
+                                            "value": 6.0,
+                                            "unit": "#"
+                                        },
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "detector wavelength setting": {
+                                            "value": 505.0,
+                                            "unit": "nm"
+                                        },
+                                        "wavelength filter cutoff setting": {
+                                            "value": 495,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 380,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1",
+                            "sample document": {
+                                "sample identifier": "PLate1 A2",
+                                "location identifier": "A2",
+                                "well plate identifier": "PLate1"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "nan",
+                                        "error feature": "Fluorescence"
+                                    }
+                                ]
+                            },
+                            "compartment temperature": {
+                                "value": 21.9,
+                                "unit": "degC"
+                            },
+                            "fluorescence": {
+                                "value": -0.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "measurement time": "1970-01-01T00:00:00+00:00",
+                    "plate well count": {
+                        "value": 6,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Fluorescence",
+                                        "number of averages": {
+                                            "value": 6.0,
+                                            "unit": "#"
+                                        },
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "detector wavelength setting": {
+                                            "value": 505.0,
+                                            "unit": "nm"
+                                        },
+                                        "wavelength filter cutoff setting": {
+                                            "value": 495,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 380,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_2",
+                            "sample document": {
+                                "sample identifier": "PLate1 A3",
+                                "location identifier": "A3",
+                                "well plate identifier": "PLate1"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "nan",
+                                        "error feature": "Fluorescence"
+                                    }
+                                ]
+                            },
+                            "compartment temperature": {
+                                "value": 21.9,
+                                "unit": "degC"
+                            },
+                            "fluorescence": {
+                                "value": -0.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "measurement time": "1970-01-01T00:00:00+00:00",
+                    "plate well count": {
+                        "value": 6,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Fluorescence",
+                                        "number of averages": {
+                                            "value": 6.0,
+                                            "unit": "#"
+                                        },
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "detector wavelength setting": {
+                                            "value": 505.0,
+                                            "unit": "nm"
+                                        },
+                                        "wavelength filter cutoff setting": {
+                                            "value": 495,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 380,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_3",
+                            "sample document": {
+                                "sample identifier": "PLate1 B1",
+                                "location identifier": "B1",
+                                "well plate identifier": "PLate1"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "nan",
+                                        "error feature": "Fluorescence"
+                                    }
+                                ]
+                            },
+                            "compartment temperature": {
+                                "value": 21.9,
+                                "unit": "degC"
+                            },
+                            "fluorescence": {
+                                "value": -0.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "measurement time": "1970-01-01T00:00:00+00:00",
+                    "plate well count": {
+                        "value": 6,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Fluorescence",
+                                        "number of averages": {
+                                            "value": 6.0,
+                                            "unit": "#"
+                                        },
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "detector wavelength setting": {
+                                            "value": 505.0,
+                                            "unit": "nm"
+                                        },
+                                        "wavelength filter cutoff setting": {
+                                            "value": 495,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 380,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_4",
+                            "sample document": {
+                                "sample identifier": "PLate1 B2",
+                                "location identifier": "B2",
+                                "well plate identifier": "PLate1"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "nan",
+                                        "error feature": "Fluorescence"
+                                    }
+                                ]
+                            },
+                            "compartment temperature": {
+                                "value": 21.9,
+                                "unit": "degC"
+                            },
+                            "fluorescence": {
+                                "value": -0.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "measurement time": "1970-01-01T00:00:00+00:00",
+                    "plate well count": {
+                        "value": 6,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Fluorescence",
+                                        "number of averages": {
+                                            "value": 6.0,
+                                            "unit": "#"
+                                        },
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "detector wavelength setting": {
+                                            "value": 505.0,
+                                            "unit": "nm"
+                                        },
+                                        "wavelength filter cutoff setting": {
+                                            "value": 495,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 380,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_5",
+                            "sample document": {
+                                "sample identifier": "PLate1 B3",
+                                "location identifier": "B3",
+                                "well plate identifier": "PLate1"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "nan",
+                                        "error feature": "Fluorescence"
+                                    }
+                                ]
+                            },
+                            "compartment temperature": {
+                                "value": 21.9,
+                                "unit": "degC"
+                            },
+                            "fluorescence": {
+                                "value": -0.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "measurement time": "1970-01-01T00:00:00+00:00",
+                    "plate well count": {
+                        "value": 6,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            }
+        ],
+        "data system document": {
+            "ASM file identifier": "N/A",
+            "data system instance identifier": "N/A",
+            "file name": "no_measurements.txt",
+            "UNC path": "tests/parsers/moldev_softmax_pro/testdata/no_measurements.txt",
+            "ASM converter name": "allotropy_molecular_devices_softmax_pro",
+            "ASM converter version": "0.1.61",
+            "software name": "SoftMax Pro"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "N/A"
+        }
+    }
+}

@@ -1,8 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-
-import pandas as pd
+from pathlib import Path
 
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
@@ -26,23 +25,22 @@ from allotropy.parsers.thermo_fisher_nanodrop_8000.nanodrop_8000_structure impor
 )
 from allotropy.parsers.thermo_fisher_nanodrop_eight import constants
 from allotropy.parsers.utils.iterables import get_first_not_none
-from allotropy.parsers.utils.pandas import map_rows, SeriesData
+from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import try_float, try_float_or_none
 
 
 @dataclass
 class SpectroscopyRow:
-    analyst: str | None
     timestamp: str
     experiment_type: str | None
     measurements: list[Measurement]
     calculated_data: list[CalculatedDataItem]
 
     @staticmethod
-    def create(data: SeriesData) -> SpectroscopyRow:
+    def create(data: SeriesData, header: SeriesData) -> SpectroscopyRow:
         absorbances = read_absorbances(data)
-        experiment_type = data.get(str, "application")
+        experiment_type = header.get(str, "application")
         mass_concentration_capture_wavelength = (
             read_mass_concentration_capture_wavelength(
                 data, experiment_type, absorbances
@@ -75,7 +73,9 @@ class SpectroscopyRow:
                 measures=[list(spectra_data.values())],
             )
 
-        sample_id = data.get(str, "sample id", NOT_APPLICABLE, SeriesData.NOT_NAN)
+        sample_id = data.get(
+            str, ["sample id", "uid"], NOT_APPLICABLE, SeriesData.NOT_NAN
+        )
         location_id = data.get(str, "location")
         measurements: list[Measurement] = []
         for wavelength, absorbance in absorbances.items():
@@ -118,33 +118,30 @@ class SpectroscopyRow:
         calculated_data = create_calculated_data(data, measurements)
 
         return SpectroscopyRow(
-            data.get(str, "user name"),
-            data[str, "date & time"],
+            data[str, ["date", "date & time"]],
             experiment_type,
             measurements,
             calculated_data,
         )
 
-    @staticmethod
-    def create_rows(data: pd.DataFrame) -> list[SpectroscopyRow]:
-        data.columns = data.columns.str.lower()
-        return map_rows(data, SpectroscopyRow.create)
 
-
-def create_metadata(file_name: str, data: pd.DataFrame) -> Metadata:
+def create_metadata(data: SeriesData, file_path: str) -> Metadata:
     return Metadata(
         device_identifier=constants.DEVICE_IDENTIFIER,
         device_type=constants.DEVICE_TYPE,
         model_number=constants.MODEL_NUBMER,
-        equipment_serial_number=data.iloc[0]["serial number"],
-        file_name=file_name,
+        equipment_serial_number=data[str, "serial number"],
+        file_name=Path(file_path).name,
+        unc_path=file_path,
     )
 
 
-def create_measurement_group(row: SpectroscopyRow) -> MeasurementGroup:
+def create_measurement_group(
+    row: SpectroscopyRow, header: SeriesData
+) -> MeasurementGroup:
     return MeasurementGroup(
         measurement_time=row.timestamp,
-        analyst=row.analyst,
+        analyst=header.get(str, "user name"),
         experiment_type=row.experiment_type,
         measurements=row.measurements,
     )

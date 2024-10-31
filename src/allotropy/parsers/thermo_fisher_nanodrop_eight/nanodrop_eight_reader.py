@@ -2,37 +2,42 @@ from io import StringIO
 
 import pandas as pd
 
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers import lines_reader
-from allotropy.parsers.lines_reader import CsvReader
-from allotropy.parsers.utils.pandas import read_csv
+from allotropy.parsers.lines_reader import CsvReader, read_to_lines
+from allotropy.parsers.utils.pandas import read_csv, SeriesData
 
 
 class NanodropEightReader:
     SUPPORTED_EXTENSIONS = "txt,tsv"
+    header: SeriesData
+    data: pd.DataFrame
 
-    @classmethod
-    def read(cls, named_file_contents: NamedFileContents) -> pd.DataFrame:
-        all_lines = lines_reader.read_to_lines(named_file_contents)
-        reader = CsvReader(all_lines)
+    def __init__(self, named_file_contents: NamedFileContents) -> None:
+        reader = CsvReader(read_to_lines(named_file_contents))
 
-        preamble = [*reader.pop_until(".*?Sample Name.*?")]
+        header_data = {}
+        # Header lines are expected to have a single 'key: value' pair, while table will have multiple
+        # tab-separated column headers. So, detect header lines as:
+        #   <anything but a tab>:<any number of tabs><anything but a tab>
+        for line in reader.pop_while(match_pat=r"^[^\t]*:[\t]*[^\t]*$"):
+            key, value = line.split(":")
+            header_data[key] = value.strip()
+
+        header = pd.Series(header_data)
+        header.index = header.index.str.strip().str.lower()
+        self.header = SeriesData(header)
 
         lines = reader.pop_csv_block_as_lines()
+        if not lines:
+            msg = "Reached end of file without finding table data."
+            raise AllotropeConversionError(msg)
 
-        raw_data = read_csv(
+        self.data = read_csv(
             StringIO("\n".join(lines)),
             sep="\t",
             dtype={"Sample Name": str, "Sample ID": str},
             # Prevent pandas from rounding decimal values, at the cost of some speed.
             float_precision="round_trip",
         )
-
-        for line in preamble:
-            key, val = line.split("\t")
-            key = key.replace(":", "").strip()
-            val = val.strip()
-            raw_data[key] = val
-
-        raw_data = raw_data.rename(columns=lambda x: x.strip())
-        return raw_data
+        self.data.columns = self.data.columns.str.lower()

@@ -1,9 +1,17 @@
-
 The parsers follow maturation levels of: Recommended, Candidate Release, Working Draft.
 
-* Recommended - the parser is ready for production use.
-* Candidate Release - "beta" - the parser is working for some cases, but may have bugs or need more test cases for hardening.
-* Working Draft - "alpha" - in development, not recommended for production use.
+* Recommended - "General Availability" - the parser has good coverage of input formats, and exports the majority of data from source files.
+** Note that while we judge release status based on observed use cases, it is still a judgement call - it is still possible that we miss some cases.
+** If you have an example case for an instrument that is not supported or discover a bug, please https://github.com/Benchling-Open-Source/allotropy/issues[open an issue] with sample data and will work to add support!
+* Candidate Release - "Limited Availability" - the parser exports correct data for supported cases, but may be missing some functionality, including:
+** May not handle all possible input formats from the target instrument software (because they have not been seen before).
+** May not export all available data from the input, either because it cannot be supported yet by ASM, or because we have not determined how to add it.
+** Increased likelihood of bugs due to lack of "bake time" for discovering issues.
+* Working Draft - "Beta" - in development, not ready for production use:
+** May be missing enough sample data for us to be confident about correctness of parser
+** May be in-progress, with signifcant known TODO work
+
+'''
 [cols="4*^.^"]
 |===
 |Instrument Category|Instrument Software|Release Status|Exported ASM Schema
@@ -28,7 +36,7 @@ The parsers follow maturation levels of: Recommended, Candidate Release, Working
 |Revvity Kaleido|Recommended|BENCHLING/2023/09
 |Thermo Fisher Scientific SkanIt|Recommended|BENCHLING/2023/09
 |Unchained Labs Lunatic|Recommended|BENCHLING/2023/09
-.2+|Solution Analyzer|NovaBio Flex2|Recommended|REC/2024/03
+.2+|Solution Analyzer|NovaBio Flex2|Recommended|REC/2024/09
 |Roche Cedex BioHT|Recommended|REC/2024/03
 .6+|Spectrophotometry|Thermo Fisher Scientific Genesys30|Recommended|BENCHLING/2023/12
 |Thermo Fisher Scientific NanoDrop 8000|Recommended|BENCHLING/2023/12
@@ -38,6 +46,7 @@ The parsers follow maturation levels of: Recommended, Candidate Release, Working
 |Thermo Fisher Scientific Qubit Flex|Recommended|BENCHLING/2023/12
 .2+|dPCR|AppBio AbsoluteQ|Recommended|BENCHLING/2023/09
 |Qiacuity dPCR|Recommended|BENCHLING/2023/09
-.2+|qPCR|AppBio QuantStudio RT-PCR|Recommended|BENCHLING/2023/09
+.3+|qPCR|AppBio QuantStudio RT-PCR|Recommended|BENCHLING/2023/09
 |AppBio QuantStudio Design & Analysis|Recommended|BENCHLING/2023/09
+|Bio-Rad CFX Maestro|Working Draft|BENCHLING/2023/09
 |===

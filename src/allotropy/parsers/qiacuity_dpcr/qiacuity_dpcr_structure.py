@@ -1,15 +1,17 @@
 from __future__ import annotations
 
+from pathlib import Path
+
 from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.dpcr import (
     Measurement,
     Metadata,
 )
 from allotropy.exceptions import get_key_or_error
+from allotropy.parsers.constants import DEFAULT_EPOCH_TIMESTAMP
 from allotropy.parsers.qiacuity_dpcr.constants import (
     BRAND_NAME,
     DEVICE_IDENTIFIER,
     DEVICE_TYPE,
-    EPOCH,
     PRODUCT_MANUFACTURER,
     SAMPLE_ROLE_TYPE_MAPPING,
     SOFTWARE_NAME,
@@ -29,7 +31,7 @@ def create_measurements(data: SeriesData) -> Measurement:
 
     return Measurement(
         identifier=random_uuid_str(),
-        measurement_time=EPOCH,
+        measurement_time=DEFAULT_EPOCH_TIMESTAMP,
         sample_identifier=data[str, "Sample/NTC/Control"],
         sample_role_type=sample_role_type,
         location_identifier=data[str, "Well Name"],
@@ -43,12 +45,13 @@ def create_measurements(data: SeriesData) -> Measurement:
     )
 
 
-def create_metadata(file_name: str) -> Metadata:
+def create_metadata(file_path: str) -> Metadata:
     return Metadata(
         device_identifier=DEVICE_IDENTIFIER,
         brand_name=BRAND_NAME,
         device_type=DEVICE_TYPE,
         software_name=SOFTWARE_NAME,
         product_manufacturer=PRODUCT_MANUFACTURER,
-        file_name=file_name,
+        file_name=Path(file_path).name,
+        unc_path=file_path,
     )
