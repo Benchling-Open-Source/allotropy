@@ -87,6 +87,7 @@ def test_create_read_section_channel_settings() -> None:
                 detector_gain="15.6",
                 exposure_duration=144,
                 illumination=10,
+                transmitted_light=TransmittedLightSetting.phase_contrast,
             ),
             InstrumentSettings(
                 auto_focus=True,

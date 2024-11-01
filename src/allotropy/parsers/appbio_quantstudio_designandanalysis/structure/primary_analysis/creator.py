@@ -1,6 +1,15 @@
+from typing import ClassVar
+
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
+from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_calculated_documents import (
+    iter_primary_analysis_calc_docs,
+)
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
     DesignQuantstudioReader,
+)
+from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_views import (
+    SampleView,
+    TargetView,
 )
 from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.creator import (
     Creator,
@@ -15,19 +24,29 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.primary_an
 
 
 class PrimaryAnalysisCreator(Creator):
-    @classmethod
-    def check_type(cls, reader: DesignQuantstudioReader) -> bool:
-        return list(reader.data.keys()) == ["Results"]
+    PLUGIN_REGEX: ClassVar[str] = r"^Primary Analysis v\d+\.\d+\.\d+$"
+    EXPECTED_SHEETS: ClassVar[list[str]] = [
+        "Results",
+        "Amplification Data",
+        "Multicomponent",
+        "Replicate Group Result",
+    ]
 
     @classmethod
     def create(cls, reader: DesignQuantstudioReader) -> Data:
         header = Header.create(reader.header)
         wells = PrimaryAnalysisWellList.create(reader, header)
+        well_items = wells.get_well_items()
+
         return Data(
             header,
             wells,
-            experiment_type=ExperimentType.presence_absence_qPCR_experiment,
-            calculated_documents=[],
+            experiment_type=ExperimentType.primary_analysis_experiment,
+            calculated_documents=list(
+                iter_primary_analysis_calc_docs(
+                    view_st_data=SampleView(sub_view=TargetView()).apply(well_items),
+                )
+            ),
             reference_target=None,
             reference_sample=None,
         )
