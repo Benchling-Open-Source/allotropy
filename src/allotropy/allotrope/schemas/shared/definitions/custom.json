@@ -439,6 +439,26 @@
       }
     ]
   },
+  "tQuantityValueMilligramPerLiter": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/MilligramPerLiter"
+      }
+    ]
+  },
+  "tNullableQuantityValueMilligramPerLiter": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/MilligramPerLiter"
+      }
+    ]
+  },
   "tQuantityValueMilligramPerMilliliter": {
     "allOf": [
       {
@@ -836,6 +856,46 @@
       },
       {
         "$ref": "#/$defs/PH"
+      }
+    ]
+  },
+  "tQuantityValuePartsPerBillion": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/PartsPerBillion"
+      }
+    ]
+  },
+  "tNullableQuantityValuePartsPerBillion": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/PartsPerBillion"
+      }
+    ]
+  },
+  "tQuantityValuePartsPerMillion": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/PartsPerMillion"
+      }
+    ]
+  },
+  "tNullableQuantityValuePartsPerMillion": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/PartsPerMillion"
       }
     ]
   },
