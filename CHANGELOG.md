@@ -5,6 +5,22 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.62] - 2024-10-30
+
+### Added
+
+- Global - include unc path in all existing adapters (#721)
+- Binding Affinity Analyzer - initial version of schema (#740)
+- Novabio Flex2 - Update Adapter to use Solution Analyzer schema REC/2024/09 (#743)
+- CFX Maestro - initial implementation (#744)
+- Internal - add the ability to handle lists of dataclasses in json structuring library (#716)
+-  Molecular Devices SoftMax Pro - report non numeric values in error document #713 (#739)
+
+### Fixed
+
+- Thermo Fisher NanoDrop Eight - handle alternative column names (#731)
+- Revvity Kaleido - update v3/3.5 parser to handle a pure CSV export file where empty lines are populated with commas (#742)
+
 ## [0.1.61] - 2024-10-16
 
 ### Added
