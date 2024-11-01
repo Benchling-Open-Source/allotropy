@@ -1,4 +1,4 @@
-DISPLAY_NAME = "Thermo Fisher Visionlite"
+DISPLAY_NAME = "Thermo Fisher Scientific VISIONlite"
 DEVICE_TYPE = "spectrophotometer"
 DETECTION_TYPE = "absorbance"
 SOFTWARE_NAME = "VISIONlite"
