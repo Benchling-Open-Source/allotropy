@@ -263,6 +263,18 @@
       "unit"
     ]
   },
+  "MilligramPerLiter": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "mg/L",
+        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MilligramPerLiter"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
   "MilligramPerMilliliter": {
     "properties": {
       "unit": {
@@ -497,6 +509,30 @@
         "type": "string",
         "const": "pH",
         "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#PH"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
+  "PartsPerBillion": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "ppb",
+        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#PartsPerBillion"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
+  "PartsPerMillion": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "ppm",
+        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#PartsPerMillion"
       }
     },
     "required": [
