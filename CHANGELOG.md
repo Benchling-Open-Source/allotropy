@@ -5,6 +5,19 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.63] - 2024-11-01
+
+### Added
+
+- Thermo Fisher Scientific VISIONlite - initial implementation (#759)
+- AppBio QuantStudio Design & Analysis - update primary analysis experiment type (#753)
+- Roche Cedex BioHT - update adapter to use Solution Analyzer schema REC/2024/09 (#741)
+- BMG MARS - Added support for Luminescence readout for BMG Mars parser (#748)
+
+### Fixed
+
+- Agilent Gen5 Image - include transmission light setting when it is inside the channel setting (#745)
+
 ## [0.1.62] - 2024-10-30
 
 ### Added
