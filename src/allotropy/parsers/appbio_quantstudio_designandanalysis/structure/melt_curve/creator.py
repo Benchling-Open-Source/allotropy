@@ -21,6 +21,10 @@ class MeltCurveCreator(Creator):
     ]
 
     @classmethod
+    def check_plugin_name(cls, _: str | None) -> bool:
+        return True
+
+    @classmethod
     def create(cls, reader: DesignQuantstudioReader) -> Data:
         header = Header.create(reader.header)
         wells = WellList.create(reader, header)

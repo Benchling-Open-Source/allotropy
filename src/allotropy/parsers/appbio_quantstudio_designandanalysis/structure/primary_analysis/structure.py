@@ -6,49 +6,20 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_d
     DesignQuantstudioReader,
 )
 from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.structure import (
-    Well,
-    WellItem,
     WellList,
 )
-from allotropy.parsers.utils.pandas import (
-    assert_df_column,
-)
-
-
-@dataclass
-class PrimaryAnalysisWellItem(WellItem):
-    @classmethod
-    def get_amplification_data_sheet(
-        cls, reader: DesignQuantstudioReader
-    ) -> pd.DataFrame | None:
-        return reader.get_non_empty_sheet_or_none("Amplification Data")
-
-
-@dataclass
-class PrimaryAnalysisWell(Well):
-    @classmethod
-    def get_well_item_class(cls) -> type[WellItem]:
-        return PrimaryAnalysisWellItem
 
 
 @dataclass(frozen=True)
 class PrimaryAnalysisWellList(WellList):
     @classmethod
-    def get_well_class(cls) -> type[Well]:
-        return PrimaryAnalysisWell
-
-    @classmethod
     def get_well_result_data(cls, reader: DesignQuantstudioReader) -> pd.DataFrame:
-        results_data = super(  # noqa: UP008
-            PrimaryAnalysisWellList, cls
-        ).get_well_result_data(reader)
-
-        if "Well" not in results_data:
-            pos = assert_df_column(results_data, "Well Position")
-            pos_to_id = {p: i for i, p in enumerate(pos.unique(), start=1)}
-            results_data["Well"] = [pos_to_id[pos] for pos in pos]
-
-        if "Target" not in results_data:
-            results_data["Target"] = "N/A"
-
-        return results_data
+        return cls._add_data(
+            data=reader.get_non_empty_sheet(cls.get_data_sheet()),
+            extra_data=reader.get_non_empty_sheet("Replicate Group Result"),
+            columns=[
+                "Cq Mean",
+                "Cq SD",
+                "Cq SE",
+            ],
+        )
