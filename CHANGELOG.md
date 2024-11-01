@@ -12,13 +12,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global - include unc path in all existing adapters (#721)
 - Binding Affinity Analyzer - initial version of schema (#740)
 - Novabio Flex2 - Update Adapter to use Solution Analyzer schema REC/2024/09 (#743)
-- CFX Maestro - initial implementation (#744)
+- Bio-Rad CFX Maestro - initial implementation (#744)
 - Internal - add the ability to handle lists of dataclasses in json structuring library (#716)
 -  Molecular Devices SoftMax Pro - report non numeric values in error document #713 (#739)
 
 ### Fixed
 
-- Thermo Fisher NanoDrop Eight - handle alternative column names (#731)
+- Thermo Fisher Scientific NanoDrop Eight - handle alternative column names (#731)
 - Revvity Kaleido - update v3/3.5 parser to handle a pure CSV export file where empty lines are populated with commas (#742)
 
 ## [0.1.61] - 2024-10-16
@@ -44,7 +44,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Thermo SkanIt & Revvity Matrix - update adapters release statuses to RECOMMENDED (#719)
+- Thermo Fisher Scientific SkanIt & Revvity Matrix - update adapters release statuses to RECOMMENDED (#719)
 
 ### Fixed
 
@@ -54,7 +54,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- ThermoFisher Qubit Flex - add fields that were accidentally removed/renamed in refactor (#711)
+- Thermo Fisher Scientific Qubit Flex - add fields that were accidentally removed/renamed in refactor (#711)
 
 ## [0.1.57] - 2024-10-09
 
@@ -65,16 +65,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - AppBio QuantStudio RT-PCR - support skipping wells that have no results in the raw data file, indicating an omitted well (#689)
 - AppBio QuantStudio RT-PCR - add "quantity" calculated data documents for non-STANDARD wells (#698)
 - Plate Reader - update adapters using plate-reader/2024/06 schema to include ASM file identifier (#695)
-- NanoDrop 8000 & NanoDrop Eight - support alternative reporting format for absorbance measurements (#688)
+- Thermo Fisher Scientific NanoDrop 8000 & Thermo Fisher Scientific NanoDrop Eight - support alternative reporting format for absorbance measurements (#688)
 - Agilent Gen5 - add support for error documents in the  (#694)
 - Electrophoresis - add the electrophoresis/REC/2024/06 schema (#693)
-- Methodical Mind - update to use plate-reader/REC/2024/06 schema (#692)
+- MSD Methodical Mind - update to use plate-reader/REC/2024/06 schema (#692)
 - Agilent Gen5 Image - add support for no result sections file examples (#679)
-- ThermoSkanIt - initial implementation (#658)
+- Thermo Fisher Scientific SkanIt - initial implementation (#658)
 - Perkin Elmer Envision - update to use plate-reader/REC/2024/06 schema (#686)
 - BMG Mars - update to use plate-reader/REC/2024/06 schema (#685)
 - Spectrophotometry - add spectrophotometry/REC/2024/06 schema (#684)
-- Nanodrop Eight - initial implementation (#683)
+- Thermo Fisher Scientific Nanodrop Eight - initial implementation (#683)
 - Unchained Labs Lunatic - add additional metadata from header block (#680)
 
 ### Fixed
@@ -86,9 +86,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- ThermoFisher Qubit Flex - refactor parser to use schema mapper design pattern (#699)
+- Thermo Fisher Scientific Qubit Flex - refactor parser to use schema mapper design pattern (#699)
 - Global - change the way custom information is organized in schema mappers and ASM outputs to be consistent with future expectations of ASM (#673)
-- Thermo Fisher NanoDrop 8000 & Nanodrop EIght - rebrand NanoDrop Eight parser to NanoDrop 8000 (#652)
+- Thermo Fisher Scientific NanoDrop 8000 & Nanodrop Eight - rebrand NanoDrop Eight parser to NanoDrop 8000 (#652)
 
 ## [0.1.56] - 2024-09-26
 
@@ -107,7 +107,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - AppBio Quantstuido - add cache decorator to amp score calculated data construction (#666)
-- Chemometec NC View - initial implementation (#665)
+- ChemoMetec NC View - initial implementation (#665)
 
 ### Fixed
 
@@ -138,8 +138,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - AppBio QuantStudio RT-PCR - add custom information to processed data document (#645)
 - Plate Reader - add schema mapper for plate-reader/REC/2024/06 schema (#642)
 - AppBio QuantStudio RT-PCR - add checks for missing well item amplification and results data in quantstudio (#643)
-- ThermoFisher Nanodrop One - add support for CSV files (#649)
-- Thermo SkanIt - initial implementation (#658)
+- Thermo Fisher Scientific Nanodrop One - add support for CSV files (#649)
+- Thermo Fisher Scientific SkanIt - initial implementation (#658)
 - Agilent Gen5 - add support for label format "[excitation wavelength], [emission wavelength]" for fluorescence point detection (#650)
 
 ### Fixed
@@ -151,13 +151,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Molecular Devices SoftMax Pro - refactor to use the schema mapper (#642)
 - Agilent Gen5 - update to use plate-reader/REC/2024/06 schema (#633)
-- Thermo Fisher Genesys30 - update release state to RECOMMENDED (#654)
+- Thermo Fisher Scientific Genesys30 - update release state to RECOMMENDED (#654)
 
 ## [0.1.52] - 2024-09-12
 
 ### Fixed
 
-- Roche Cedex Bioht, Thermo Fisher Qubit 4 & Flex - fix bug where name of contents instead of contents was being passed to reader (#648)
+- Roche Cedex Bioht, Thermo Fisher Scientific Qubit 4 & Flex - fix bug where name of contents instead of contents was being passed to reader (#648)
 
 ### Changed
 
@@ -187,7 +187,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Global - add `supported_extensions` to Vendor, allowing parsers to specify supported file extensions (#617)
 - Agilent Gen5 - add support for multiple read modes (#624)
-- Thermo Fisher Nanodrop One - initial implementation
+- Thermo Fisher Scientific Nanodrop One - initial implementation
 
 ### Fixed
 
@@ -198,7 +198,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - AppBio QuantStudio Design & Analysis - add primary analysis experiment type
-- ThermoFisher Genesys 30 - initial implementation
+- Thermo Fisher Scientific Genesys30 - initial implementation
 - Unchained Lunatic - add support for xlsx exports in
 - Global - add column special character normalization to pandas util
 
@@ -265,8 +265,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Roche Cedex HiRes - update release status to RECOMMENDED
-- Thermo Fisher Qubit Flex - update release status to RECOMMENDED
-- Thermo Fisher Qubit 4 - update release status to RECOMMENDED
+- Thermo Fisher Scientific Qubit Flex - update release status to RECOMMENDED
+- Thermo Fisher Scientific Qubit 4 - update release status to RECOMMENDED
 - MabTech Apex - update release status to RECOMMENDED
 - Qiacuity dPCR - update release status to RECOMMENDED
 
@@ -281,7 +281,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Thermo Fisher Qubit 4 - initial implementation
+- Thermo Fisher Scientific Qubit 4 - initial implementation
 - Documentation - add dPCR and solution analyzer parser requirement templates
 
 ## [0.1.40] - 2024-07-15
@@ -294,7 +294,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Thermo Fisher Qubit 4 - initial implementation
+- Thermo Fisher Scientific Qubit 4 - initial implementation
 - Roche Cedex HiRes - initial implementation
 
 ### Fixed
@@ -377,7 +377,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Methodical Mind - initial implementation
+- MSD Methodical Mind - initial implementation
 
 ### Fixed
 
@@ -425,7 +425,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Global - add definition of calculated data documents representation
 - Bio-Rad Bio-Plex Manager - update to use _get_date_time
-- Methodical Mind - refactor to use structure pattern
+- MSD Methodical Mind - refactor to use structure pattern
 
 ### Fixed
 
@@ -459,7 +459,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - AppBio QuantStudio Design & Analysis - initial implementation
-- Chemometec Nucleoview - add software version field
+- ChemoMetec Nucleoview - add software version field
 - Bio-Rad Bio-Plex Manager - initial implementation (#377)
 - Internal - add utils for parsing xml (#377)
 - Internal - add utility to remove non-required None values from a dataclass
@@ -547,7 +547,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - AppBio QuantStudio RT-PCR - remove duplicated delta ct mean calculated data documents
-- Thermo Fisher NanoDrop Eight - fix problem where data source IDs were being used that did not refer to any existing measurement ID
+- Thermo Fisher Scientific NanoDrop Eight - fix problem where data source IDs were being used that did not refer to any existing measurement ID
 
 ### Changed
 
@@ -597,7 +597,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Beckman Vi-Cell XR - total cells column no longer required
 - Beckman Vi-Cell XR - ignore invalid first row when present
-- Thermo Fisher NanoDrop Eight - capture concentration in files that do not have NA Type column
+- Thermo Fisher Scientific NanoDrop Eight - capture concentration in files that do not have NA Type column
 - Agilent Gen5 - removed hardcoding of date parsing
 
 ### Changed
@@ -620,13 +620,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Chemometec NC View - initial implementation
-- Thermo Fisher NanoDrop Eight - initial implementation
+- ChemoMetec NC View - initial implementation
+- Thermo Fisher Scientific NanoDrop Eight - initial implementation
 - Unchained Labs Lunatic - add calculated data documents
 - Molecular Devices Softmax Pro - add calculated data documents
 - Multi Analyte Profiling - add multi-analyte-profiling/BENCHLING/2024/01 schema
 - Global - add non-numeric options for tQuantityValue value property
-- ChemoMetic Nucleoview - Add support for non-numeric values
+- ChemoMetec Nucleoview - Add support for non-numeric values
 - Internal - add context manager to handle backups to schema generation script
 - Internal - Add --regex argument to schema generation script
 

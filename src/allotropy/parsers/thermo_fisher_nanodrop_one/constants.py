@@ -1,1 +1,1 @@
-DISPLAY_NAME = "Thermo Fisher Nanodrop One"
+DISPLAY_NAME = "Thermo Fisher Scientific Nanodrop One"
