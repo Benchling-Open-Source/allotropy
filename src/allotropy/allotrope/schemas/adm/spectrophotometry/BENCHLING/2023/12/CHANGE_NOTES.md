@@ -16,3 +16,6 @@ Changes:
   * Proposal: Request extension be reflected in the Allotrope schema
 * Addition of allotrope cube.schema
   * Reasoning: require validation of tDataCube objects based on dimension/measure concepts and units
+* Add GramPerLiter, MilligramPerLiter, PartsPerBillion, PartsPerMillion units to dervived mass concentration available units
+  * Reasoning: proposed extension to the spectrophotometry model to support additional derived mass concentration units obtained
+  * Proposal: Request extension be reflected in the Allotrope schema
