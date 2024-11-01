@@ -90,7 +90,7 @@ def _make_pr(version: str, body: str) -> None:
         check=True,
     )
     print("Pushing commit...")
-    subprocess.run(["git", "push", "-u"], check=True)
+    subprocess.run(["git", "push", "-u", "origin", "release-v0.1.63"], check=True)
 
     print("Tagging branch...")
     subprocess.run(
