@@ -47,6 +47,8 @@ TRANSMITTED_LIGHT_MAP = {
     "Transmitted Light": TransmittedLightSetting.brightfield,
     "Reflected Light": TransmittedLightSetting.brightfield,
     "Color Bright Field": TransmittedLightSetting.brightfield,
+    "Bright Field": TransmittedLightSetting.brightfield,
+    "Bright Field:High Contrast": TransmittedLightSetting.brightfield,
 }
 
 
