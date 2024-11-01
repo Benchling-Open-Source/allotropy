@@ -180,6 +180,7 @@ def _get_absorbance_measurements(
                 else None
             ),
             absorbance=measurement.absorbance,
+            dilution_factor_setting=data.get(float, "Dilution factor"),
             detector_wavelength_setting=try_float_or_none(measurement.wavelength),
         )
         for measurement in absorbance_measurements

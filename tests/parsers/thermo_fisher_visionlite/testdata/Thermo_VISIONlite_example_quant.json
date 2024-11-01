@@ -12,7 +12,13 @@
                                 "device control document": [
                                     {
                                         "device type": "spectrophotometer",
-                                        "detection type": "absorbance"
+                                        "detection type": "absorbance",
+                                        "custom information document": {
+                                            "dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        }
                                     }
                                 ]
                             },
@@ -49,7 +55,13 @@
                                 "device control document": [
                                     {
                                         "device type": "spectrophotometer",
-                                        "detection type": "absorbance"
+                                        "detection type": "absorbance",
+                                        "custom information document": {
+                                            "dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        }
                                     }
                                 ]
                             },
