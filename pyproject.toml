@@ -201,8 +201,10 @@ extra-dependencies = [
   "pytest >= 7.4.0",
   "pytest-xdist >= 3.6.1",
   "xmltodict >= 0.13.0",
+  "olefile >= 0.47",
   "pyarrow >= 17.0.0",
-  "fastparquet >= 2024.5.0"
+  "fastparquet >= 2024.5.0",
+  "types-olefile"
 ]
 
 [tool.hatch.envs.test.scripts]

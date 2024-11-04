@@ -11,7 +11,7 @@ from allotropy.parsers.cytiva_biacore_t200.cytiva_biacore_t200_decoder import (
     decode_data,
 )
 from allotropy.parsers.cytiva_biacore_t200.cytiva_biacore_t200_structure import (
-    create_data,
+    create_metadata,create_measurement_groups
 )
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.vendor_parser import VendorParser
@@ -24,7 +24,9 @@ class CytivaBiacoreT200Parser(VendorParser[Data, Model]):
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
-        structure_data = decode_data(
-            named_file_contents.contents, named_file_contents.contents.name
+        structured_data = decode_data(
+            named_file_contents)
+        return Data(
+            metadata=create_metadata(structured_data, named_file_contents),
+            measurement_groups=[create_measurement_groups(structured_data)],
         )
-        return create_data(structure_data, named_file_contents)

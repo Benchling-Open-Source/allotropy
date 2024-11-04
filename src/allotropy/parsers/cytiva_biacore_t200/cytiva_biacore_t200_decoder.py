@@ -19,7 +19,7 @@ window_pattern = re.compile(r"_Window (\d+)")
 curve_pattern = re.compile(r"_Curve (\d+)")
 
 
-def find_or_create_cycle_by_window(
+def get_cycle_data(
     cycles: list[dict[Any, Any]],
     cycle_number: int,
     curve_number: int,
@@ -51,10 +51,6 @@ def find_or_create_cycle_by_window(
     return new_cycle
 
 
-def extract_cycle_number(cycle_number: dict[Any, Any]) -> int:
-    return int(cycle_number["cycle_number"].replace("Cycle", ""))
-
-
 def get_sample_data(sample_json: dict[str, Any]) -> list[dict[Any, Any]]:
     sample_data = []
     sample_details = []
@@ -81,7 +77,7 @@ def get_sample_data(sample_json: dict[str, Any]) -> list[dict[Any, Any]]:
 
             sample_details.append(samples)
 
-    sorted_data = sorted(sample_details, key=extract_cycle_number)
+    sorted_data = sorted(sample_details, key=lambda d: int(d['cycle_number'].replace('Cycle', '')))
     sample_iter = iter(sample_json["sample_data"])
     for item in sorted_data:
         if item["role"] == "blank role":
@@ -274,7 +270,7 @@ def decode_application_data(
     return application_template, total_samples
 
 
-def date_conversion(days_str: str) -> str:
+def convert_datetime(days_str: str) -> str:
     """
     converts the str to iso datetime format
     :param days_str: string of datetime
@@ -300,21 +296,20 @@ def extract_stream_data(data: str) -> dict[Any, Any]:
     for line in data.strip().split("\n"):
         key, value = line.split("=")
         data_dict[key] = value
-        if any(time_key in key.lower() for time_key in ("time", "date")):
-            if isinstance(value, str):
-                if key in (
+        if any(time_key in key.lower() for time_key in (
                     "Timestamp",
                     "EndTime",
                     "FirstDockDate",
                     "LastUseTime",
                     "LastModTime",
-                ):
-                    data_dict[key] = date_conversion(value)
+                )) and isinstance(value, str):
+
+                    data_dict[key] = convert_datetime(value)
 
     return data_dict
 
 
-def decode_dip(input_data: str) -> dict[Any, Any]:
+def get_dip_data(input_data: str) -> dict[Any, Any]:
     """
     Parses the input string data and returns a structured JSON of the decoded data.
     :param input_data: string stream data
@@ -332,7 +327,7 @@ def decode_dip(input_data: str) -> dict[Any, Any]:
             result["count"] = int(each_line.split("=")[1])
         elif each_line.startswith("Timestamp1"):
             timestamp_value = each_line.split("=")[1]
-            result["timestamp"] = date_conversion(timestamp_value)
+            result["timestamp"] = convert_datetime(timestamp_value)
         elif "Norm" in each_line:
             current_section = "norm"
         elif "Raw" in each_line:
@@ -356,7 +351,7 @@ def decode_dip(input_data: str) -> dict[Any, Any]:
     return result
 
 
-def decode_r_point_data(r_point_data: str) -> list[dict[Any, Any]]:
+def get_r_point_data(r_point_data: str) -> list[dict[Any, Any]]:
     """
     decodes the r-point data
     :param r_point_data: str of r point data
@@ -375,13 +370,15 @@ def decode_r_point_data(r_point_data: str) -> list[dict[Any, Any]]:
     return r_data_list
 
 
-def decode_data(input_data: IOType, file_path: str) -> dict[Any, Any]:
+def decode_data(input_data: str) -> dict[str, Any]:
+    file_path = input_data.contents.name
+    file_content = input_data.original_file_path
     base_name = os.path.basename(file_path).split(".blr")[0]
     dir_name = os.path.dirname(file_path)
-    intermediate_json: dict[Any, Any] = {}
-    content = ole.OleFileIO(input_data)
+    intermediate_json: dict[str, Any] = {}
+    content = ole.OleFileIO(file_content)
     streams = content.listdir()
-    cycles: list[dict[Any, Any]] = []
+    cycles: list[dict[str, Any]] = []
     cycle_df_list = []
     cycle_details = []
     for stream in streams:
@@ -396,7 +393,7 @@ def decode_data(input_data: IOType, file_path: str) -> dict[Any, Any]:
             )
 
         elif stream == ["AppData", "Dip"]:
-            intermediate_json["dip"] = decode_dip(stream_content.decode("utf-8"))
+            intermediate_json["dip"] = get_dip_data(stream_content.decode("utf-8"))
         elif stream == ["AppData", "ApplicationTemplate"]:
             (
                 intermediate_json["application_template_details"],
@@ -405,7 +402,7 @@ def decode_data(input_data: IOType, file_path: str) -> dict[Any, Any]:
             if sample_data:
                 intermediate_json["sample_data"] = sample_data
         elif stream == ["RPoint Table"]:
-            r_point_data = decode_r_point_data(stream_content.decode("utf-8"))
+            r_point_data = get_r_point_data(stream_content.decode("utf-8"))
             r_point_dataframe = pd.DataFrame(r_point_data)
             report_point_data = r_point_dataframe.groupby("Cycle")
             for _name, group in report_point_data:
@@ -444,7 +441,7 @@ def decode_data(input_data: IOType, file_path: str) -> dict[Any, Any]:
                 if (window_match := window_pattern.search(part))
             )
             # gets the cycle number
-            cycle = find_or_create_cycle_by_window(
+            cycle = get_cycle_data(
                 cycles, cycle_number, curve_number, window_number
             )
 
@@ -521,6 +518,7 @@ def decode_data(input_data: IOType, file_path: str) -> dict[Any, Any]:
             group["time (s)"] = group.groupby("Flow Cell Number").cumcount() + 1
         cycle_number = group["Cycle Number"].iloc[0]
         cycle_name = f"_cycle_{cycle_number}"
+        group = group[["Flow Cell Number", "Cycle Number", "Curve Number", "Window Number", "time (s)", "Sensorgram (RU)"]]
         sensorgram_parquet_path = os.path.join(
             dir_name, base_name + cycle_name + "_sensorgram.parquet"
         )

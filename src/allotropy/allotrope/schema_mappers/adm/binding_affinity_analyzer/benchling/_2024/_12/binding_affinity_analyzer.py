@@ -27,7 +27,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNanomolar,
     TQuantityValuePerSecond,
     TQuantityValueSecondTime,
-    TQuantityValueTODO,
+    TQuantityValueTODO, TQuantityValuePercent,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
@@ -99,6 +99,7 @@ class Measurements:
     flow_path: str | None = None
     flow_rate: float | None = None
     contact_time: float | None = None
+    dilution: float | None = None
     device_control_custom_info: dict[str, Any] | None = None
     binding_on_rate_measurement: JsonFloat | None = None
     binding_off_rate_measurement: JsonFloat | None = None
@@ -243,6 +244,9 @@ class Mapper(SchemaMapper[Data, Model]):
                             # ),
                             contact_time=quantity_or_none(
                                 TQuantityValueSecondTime, measurements.contact_time
+                            ), 
+                            dilution_factor=quantity_or_none(
+                                TQuantityValuePercent, measurements.dilution
                             ),
                             device_type=measurements.device_type,
                         ),
