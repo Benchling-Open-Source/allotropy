@@ -37,7 +37,7 @@ class BioradBioplexParser(VendorParser[Data, Model]):
 
         return Data(
             create_metadata(
-                reader.root, system_metadata, named_file_contents.original_file_name
+                reader.root, system_metadata, named_file_contents.original_file_path
             ),
             [
                 create_measurement_group(

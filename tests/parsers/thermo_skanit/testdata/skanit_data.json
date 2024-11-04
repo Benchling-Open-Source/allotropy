@@ -3466,11 +3466,11 @@
         },
         "data system document": {
             "file name": "skanit_data.xlsx",
-            "UNC path": "",
+            "UNC path": "tests/parsers/thermo_skanit/testdata/skanit_data.xlsx",
             "software name": "SkanIt Software 7.0 RE for Microplate Readers RE",
             "software version": "7.0.0.50",
-            "ASM converter name": "allotropy_thermo_skanit",
-            "ASM converter version": "0.1.52"
+            "ASM converter name": "allotropy_thermo_fisher_scientific_skanit",
+            "ASM converter version": "0.1.62"
         }
     }
 }

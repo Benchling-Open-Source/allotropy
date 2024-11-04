@@ -1,5 +1,6 @@
 from collections import defaultdict
 from copy import deepcopy
+from pathlib import Path
 
 import pandas as pd
 
@@ -20,11 +21,12 @@ from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
-def create_metadata(file_name: str) -> Metadata:
+def create_metadata(file_path: str) -> Metadata:
     return Metadata(
         device_type=constants.DEVICE_TYPE,
         device_serial_number=NOT_APPLICABLE,
-        file_name=file_name,
+        file_name=Path(file_path).name,
+        unc_path=file_path,
         experiment_type=ExperimentType.comparative_CT_qPCR_experiment,
         container_type=constants.CONTAINER_TYPE,
         software_name=constants.SOFTWARE_NAME,

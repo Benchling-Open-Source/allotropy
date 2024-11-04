@@ -1,4 +1,5 @@
 from decimal import Decimal
+from pathlib import Path
 
 from allotropy.allotrope.schema_mappers.adm.cell_counting.benchling._2023._11.cell_counting import (
     Measurement,
@@ -12,16 +13,16 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import try_float_or_none
 
 
-def create_metadata(data: SeriesData, file_name: str) -> Metadata:
+def create_metadata(data: SeriesData, file_path: str) -> Metadata:
     return Metadata(
-        file_name=file_name,
+        file_name=Path(file_path).name,
+        unc_path=file_path,
         software_name=constants.SOFTWARE_NAME,
         device_type=constants.DEVICE_TYPE,
         equipment_serial_number=data[str, "INSTRUMENT"].split(":")[-1].strip(),
         product_manufacturer=constants.PRODUCT_MANUFACTURER,
         detection_type=constants.DETECTION_TYPE,
         model_number=NOT_APPLICABLE,
-        unc_path=NOT_APPLICABLE,
     )
 
 

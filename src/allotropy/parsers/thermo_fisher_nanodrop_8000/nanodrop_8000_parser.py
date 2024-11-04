@@ -20,7 +20,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 
 class Nanodrop8000Parser(VendorParser[Data, Model]):
-    DISPLAY_NAME = "Thermo Fisher NanoDrop 8000"
+    DISPLAY_NAME = "Thermo Fisher Scientific NanoDrop 8000"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = Nanodrop8000Reader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
@@ -30,7 +30,7 @@ class Nanodrop8000Parser(VendorParser[Data, Model]):
         rows = map_rows(reader.data, SpectroscopyRow.create)
 
         return Data(
-            create_metadata(named_file_contents.original_file_name),
+            create_metadata(named_file_contents.original_file_path),
             measurement_groups=[create_measurement_group(row) for row in rows],
             # NOTE: in current implementation, calculated data is reported at global level for some reason.
             # TODO(nstender): should we move this inside of measurements?

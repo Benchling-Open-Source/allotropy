@@ -1,9 +1,12 @@
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
 import re
+from re import Match
+from typing import ClassVar, TypeAlias
 
 import pandas as pd
 
@@ -13,7 +16,10 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_rea
     MeasurementType,
     Metadata,
 )
-from allotropy.exceptions import valid_value_or_raise
+from allotropy.exceptions import (
+    AllotropeConversionError,
+    valid_value_or_raise,
+)
 from allotropy.parsers.bmg_mars import constants
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.utils.pandas import SeriesData
@@ -24,11 +30,14 @@ from allotropy.parsers.utils.values import assert_not_none
 class ReadType(Enum):
     ABSORBANCE = "Absorbance"
     FLUORESCENCE = "Fluorescence"
+    LUMINESCENCE = "Luminescence"
 
     @property
     def measurement_type(self) -> MeasurementType:
         if self is ReadType.ABSORBANCE:
             return MeasurementType.ULTRAVIOLET_ABSORBANCE
+        elif self is ReadType.LUMINESCENCE:
+            return MeasurementType.LUMINESCENCE
         else:
             return MeasurementType.FLUORESCENCE
 
@@ -41,10 +50,13 @@ class ReadType(Enum):
         return self.value.lower()
 
 
+FilterHandler: TypeAlias = Callable[[Match[str]], tuple[float | None, float | None]]
+
+
 @dataclass(frozen=True)
 class Header:
     read_type: ReadType
-    wavelength: float
+    wavelength: float | None
     excitation_wavelength: float | None
     user: str
     test_name: str
@@ -55,6 +67,21 @@ class Header:
     id3: str | None
     path: str | None
     test_id: str | None
+
+    FILTER_FORMATS: ClassVar[dict[str, tuple[str, FilterHandler]]] = {
+        "Raw Data (Ex/Em)": (
+            r"Raw Data \((\d+\.?\d*)/(\d+\.?\d*)\)",
+            lambda m: (float(m.group(2)), float(m.group(1))),
+        ),
+        "Raw Data (Em)": (
+            r"Raw Data \((\d+\.?\d*)\)",
+            lambda m: (float(m.group(1)), None),
+        ),
+        "Raw Data (No filter)": (
+            r"Raw Data \(No filter\)",
+            lambda _: (None, None),
+        ),
+    }
 
     @staticmethod
     def create(data: SeriesData, header_content: str) -> Header:
@@ -67,19 +94,28 @@ class Header:
         read_type = valid_value_or_raise("read type", read_types, ReadType)
 
         # Get wavelengths from RawData line
-        raw_wavelengths = assert_not_none(
-            re.search(
-                r"Raw Data \((?P<wavelength1>\d+)(?:/)?(?P<wavelength2>\d+)?(?:\))",
-                header_content,
-            ),
-            msg="Wavelengths not found in input file.",
-        )
-        excitation_wavelength = None
-        if raw_wavelengths.group("wavelength2"):
-            wavelength = float(raw_wavelengths.group("wavelength2"))
-            excitation_wavelength = float(raw_wavelengths.group("wavelength1"))
+        raw_data_line = assert_not_none(
+            re.search(r"Raw Data \(.*?\)", header_content),
+            msg="Raw Data line not found in input file.",
+        ).group(0)
+
+        # iterate over filter formats, to parse Ex/Em
+        for _, (pattern, handler) in Header.FILTER_FORMATS.items():
+            match = re.match(pattern, raw_data_line)
+            if match:
+                try:
+                    wavelength, excitation_wavelength = handler(match)
+                    break
+                except ValueError as err:
+                    msg = f"Failed to convert filters in line: '{raw_data_line}'"
+                    raise AllotropeConversionError(msg) from err
         else:
-            wavelength = float(raw_wavelengths.group("wavelength1"))
+            msg = (
+                f"Invalid Raw Data format: '{raw_data_line}'. "
+                "Expected/supported formats include: "
+                f"{', '.join(Header.FILTER_FORMATS.keys())}"
+            )
+            raise AllotropeConversionError(msg)
 
         return Header(
             read_type=read_type,
@@ -97,12 +133,12 @@ class Header:
         )
 
 
-def create_metadata(header: Header, file_name: str) -> Metadata:
-    asm_file_identifier = Path(file_name).with_suffix(".json")
+def create_metadata(header: Header, file_path: str) -> Metadata:
+    asm_file_identifier = Path(file_path).with_suffix(".json")
     return Metadata(
-        file_name=file_name,
+        file_name=Path(file_path).name,
         asm_file_identifier=asm_file_identifier.name,
-        unc_path=header.path,
+        unc_path=header.path or file_path,
         device_identifier=NOT_APPLICABLE,
         model_number=NOT_APPLICABLE,
         data_system_instance_id=NOT_APPLICABLE,
@@ -130,6 +166,7 @@ def _create_measurement(
         excitation_wavelength_setting=header.excitation_wavelength,
         absorbance=value if header.read_type is ReadType.ABSORBANCE else None,
         fluorescence=value if header.read_type is ReadType.FLUORESCENCE else None,
+        luminescence=value if header.read_type is ReadType.LUMINESCENCE else None,
     )
 
 

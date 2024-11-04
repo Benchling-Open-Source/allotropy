@@ -31,6 +31,6 @@ class ViCellXRParser(VendorParser[Data, Model]):
             raise AllotropeConversionError(msg)
 
         return Data(
-            create_metadata(reader_data, named_file_contents.original_file_name),
+            create_metadata(reader_data, named_file_contents.original_file_path),
             [create_measurement_group(row) for row in reader_data.data],
         )

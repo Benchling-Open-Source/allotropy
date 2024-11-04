@@ -22,7 +22,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 
 class NanodropEightParser(VendorParser[Data, Model]):
-    DISPLAY_NAME = "Thermo Fisher NanoDrop Eight"
+    DISPLAY_NAME = "Thermo Fisher Scientific NanoDrop Eight"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = NanodropEightReader.SUPPORTED_EXTENSIONS
 
@@ -34,7 +34,7 @@ class NanodropEightParser(VendorParser[Data, Model]):
             reader.data, partial(SpectroscopyRow.create, header=reader.header)
         )
         metadata = create_metadata(
-            reader.header, named_file_contents.original_file_name
+            reader.header, named_file_contents.original_file_path
         )
 
         return Data(

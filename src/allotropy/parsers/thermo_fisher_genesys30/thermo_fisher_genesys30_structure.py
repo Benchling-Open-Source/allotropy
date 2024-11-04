@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from datetime import datetime
+from pathlib import Path
 
 import pandas as pd
 
@@ -26,9 +27,10 @@ from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
-def create_metadata(header: SeriesData, file_name: str) -> Metadata:
+def create_metadata(header: SeriesData, file_path: str) -> Metadata:
     return Metadata(
-        file_name=file_name,
+        file_name=Path(file_path).name,
+        unc_path=file_path,
         device_type=constants.DEVICE_TYPE,
         device_identifier=NOT_APPLICABLE,
         model_number=constants.MODEL_NUMBER,

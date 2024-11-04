@@ -1,7 +1,7 @@
-from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
+from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
     Model,
 )
-from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
+from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
     Data,
     Mapper,
 )
@@ -32,6 +32,6 @@ class RocheCedexBiohtParser(VendorParser[Data, Model]):
         samples = Sample.create_samples(reader.samples_data)
 
         return Data(
-            create_metadata(title, named_file_contents.original_file_name),
+            create_metadata(title, named_file_contents.original_file_path),
             measurement_groups=create_measurement_groups(samples, title),
         )

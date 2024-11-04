@@ -798,9 +798,10 @@
         },
         "data system document": {
             "file name": "Beckman_Vi-Cell-BLU_example01_utf16.csv",
+            "UNC path": "tests/parsers/beckman_vi_cell_blu/testdata/Beckman_Vi-Cell-BLU_example01_utf16.csv",
             "software name": "Vi-Cell BLU",
             "ASM converter name": "allotropy_beckman_vi_cell_blu",
-            "ASM converter version": "0.1.38"
+            "ASM converter version": "0.1.61"
         }
     }
 }

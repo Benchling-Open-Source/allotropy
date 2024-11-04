@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import (
     ExperimentType,
 )
@@ -54,22 +56,25 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.primary_an
 from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.relative_standard_curve.creator import (
     RelativeStandardCurveCreator,
 )
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.simple_primary_analysis.creator import (
+    SimplePrimaryAnalysisCreator,
+)
 from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.standard_curve.creator import (
     StandardCurveCreator,
 )
 
 
 def create_metadata(
-    header: Header, file_name: str, experiment_type: ExperimentType
+    header: Header, file_path: str, experiment_type: ExperimentType
 ) -> Metadata:
     return Metadata(
-        file_name=file_name,
+        file_name=Path(file_path).name,
+        unc_path=file_path,
         product_manufacturer=constants.PRODUCT_MANUFACTURER,
         device_identifier=header.device_identifier,
         model_number=header.model_number,
         device_serial_number=header.device_serial_number,
         data_system_instance_identifier=constants.DATA_SYSTEM_INSTANCE_IDENTIFIER,
-        unc_path="",  # unknown
         software_name=header.software_name,
         software_version=header.software_version,
         container_type=constants.CONTAINER_TYPE,
@@ -199,14 +204,15 @@ def create_data(reader: DesignQuantstudioReader) -> Data:
         GenotypingCreator,
         MeltCurveCreator,
         PresenceAbsenceCreator,
+        SimplePrimaryAnalysisCreator,
         PrimaryAnalysisCreator,
     ]
-    matching_creator = [
-        creator for creator in possible_creators if creator.check_type(reader)
-    ]
 
-    if len(matching_creator) == 1:
-        return matching_creator[0].create(reader)
+    raw_plugin_name = reader.header.get(str, "Plugin Name and Version")
+
+    for creator in possible_creators:
+        if creator.check_experiment_type(reader, raw_plugin_name):
+            return creator.create(reader)
 
     msg = "Unable to infer experiment type from sheets in the input"
     raise AllotropeConversionError(msg)

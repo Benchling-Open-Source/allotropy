@@ -22,7 +22,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 
 class MethodicalMindParser(VendorParser[Data, Model]):
-    DISPLAY_NAME = "Methodical Mind"
+    DISPLAY_NAME = "MSD Methodical Mind"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "txt"
     SCHEMA_MAPPER = Mapper
@@ -32,7 +32,7 @@ class MethodicalMindParser(VendorParser[Data, Model]):
         return Data(
             create_metadata(
                 Header.create(reader.plate_headers[0]),
-                named_file_contents.original_file_name,
+                named_file_contents.original_file_path,
             ),
             create_measurement_groups(
                 [PlateData.create(header, data) for header, data in reader]

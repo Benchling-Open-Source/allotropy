@@ -38,7 +38,8 @@ class Title:
     device_identifier: str | None
 
     @staticmethod
-    def create(filename: str) -> Title:
+    def create(file_path: str) -> Title:
+        filename = Path(file_path).name
         matches = re.match(FILENAME_REGEX, filename, flags=re.IGNORECASE)
 
         if not matches:
@@ -188,18 +189,18 @@ def _get_measurements(sample: Sample) -> list[Measurement]:
     return measurements
 
 
-def create_metadata(title: Title, file_name: str) -> Metadata:
-    asm_file_identifier = Path(file_name).with_suffix(".json")
+def create_metadata(title: Title, file_path: str) -> Metadata:
+    path = Path(file_path)
     return Metadata(
-        file_name=file_name,
+        file_name=path.name,
+        unc_path=file_path,
         device_type=DEVICE_TYPE,
         model_number=MODEL_NUMBER,
         product_manufacturer=PRODUCT_MANUFACTURER,
         device_identifier=title.device_identifier,
         software_name=SOFTWARE_NAME,
-        asm_file_identifier=asm_file_identifier.name,
+        asm_file_identifier=path.with_suffix(".json").name,
         data_system_instance_identifier=NOT_APPLICABLE,
-        unc_path=NOT_APPLICABLE,
     )
 
 

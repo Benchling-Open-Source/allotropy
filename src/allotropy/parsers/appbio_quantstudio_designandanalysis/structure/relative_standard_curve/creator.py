@@ -26,6 +26,7 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.relative_s
 
 
 class RelativeStandardCurveCreator(Creator):
+    PLUGIN_REGEX: ClassVar[str] = r"Relative Quantification"
     EXPECTED_SHEETS: ClassVar[list[str]] = [
         "RQ Replicate Group Result",
     ]

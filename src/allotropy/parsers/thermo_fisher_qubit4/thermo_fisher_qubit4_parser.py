@@ -19,14 +19,14 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 
 class ThermoFisherQubit4Parser(VendorParser[Data, Model]):
-    DISPLAY_NAME = "Thermo Fisher Qubit 4"
+    DISPLAY_NAME = "Thermo Fisher Scientific Qubit 4"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = ThermoFisherQubit4Reader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         return Data(
-            create_metadata(named_file_contents.original_file_name),
+            create_metadata(named_file_contents.original_file_path),
             measurement_groups=map_rows(
                 ThermoFisherQubit4Reader.read(named_file_contents),
                 create_measurement_group,
