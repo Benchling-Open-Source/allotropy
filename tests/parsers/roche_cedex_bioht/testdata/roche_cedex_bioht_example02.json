@@ -1,13 +1,11 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/solution-analyzer/REC/2024/03/solution-analyzer.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/solution-analyzer/REC/2024/09/solution-analyzer.manifest",
     "solution analyzer aggregate document": {
         "solution analyzer document": [
             {
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2021-05-20T16:55:51+00:00",
-                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -15,6 +13,8 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_0",
+                            "measurement time": "2021-05-20T16:55:51+00:00",
                             "sample document": {
                                 "sample identifier": "PPDTEST1"
                             },
@@ -74,8 +74,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2021-05-20T16:56:58+00:00",
-                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_1",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -83,6 +81,8 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_1",
+                            "measurement time": "2021-05-20T16:56:58+00:00",
                             "sample document": {
                                 "sample identifier": "PPDTEST2"
                             },
@@ -128,8 +128,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2021-05-20T16:58:34+00:00",
-                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_2",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -137,6 +135,8 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_2",
+                            "measurement time": "2021-05-20T16:58:34+00:00",
                             "sample document": {
                                 "sample identifier": "PPDTEST3"
                             },
@@ -182,8 +182,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2021-05-21T10:12:10+00:00",
-                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_3",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -191,6 +189,8 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_3",
+                            "measurement time": "2021-05-21T10:12:10+00:00",
                             "sample document": {
                                 "sample identifier": "PPDTEST4"
                             },
@@ -240,18 +240,20 @@
                 "analyst": "ADMIN"
             }
         ],
-        "device system document": {
-            "device identifier": "N/A",
-            "model number": "CEDEX BIO HT",
-            "equipment serial number": "12345"
-        },
         "data system document": {
+            "ASM file identifier": "roche_cedex_bioht_example02.json",
+            "data system instance identifier": "N/A",
             "file name": "roche_cedex_bioht_example02.txt",
             "UNC path": "tests/parsers/roche_cedex_bioht/testdata/roche_cedex_bioht_example02.txt",
-            "software name": "CEDEX BIO HT",
-            "software version": "6.0.0.1905 (1905)",
             "ASM converter name": "allotropy_roche_cedex_bioht",
-            "ASM converter version": "0.1.61"
+            "ASM converter version": "0.1.61",
+            "software name": "CEDEX BIO HT",
+            "software version": "6.0.0.1905 (1905)"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "equipment serial number": "12345",
+            "model number": "CEDEX BIO HT"
         }
     }
 }

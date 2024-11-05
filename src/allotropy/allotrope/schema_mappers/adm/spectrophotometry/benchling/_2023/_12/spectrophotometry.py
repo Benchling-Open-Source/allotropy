@@ -273,6 +273,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     add_custom_information_document(
                         UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
                             device_type=metadata.device_type,
+                            detection_type=metadata.detection_type,
                             detector_wavelength_setting=quantity_or_none(
                                 TQuantityValueNanometer,
                                 measurement.detector_wavelength_setting,
@@ -462,17 +463,19 @@ class Mapper(SchemaMapper[Data, Model]):
                         value=calculated_data_item.value,
                         unit=calculated_data_item.unit,
                     ),
-                    data_source_aggregate_document=DataSourceAggregateDocument(
-                        data_source_document=[
-                            DataSourceDocumentItem(
-                                data_source_identifier=item.identifier,
-                                data_source_feature=item.feature,
-                            )
-                            for item in calculated_data_item.data_sources
-                        ]
-                    )
-                    if calculated_data_item.data_sources
-                    else None,
+                    data_source_aggregate_document=(
+                        DataSourceAggregateDocument(
+                            data_source_document=[
+                                DataSourceDocumentItem(
+                                    data_source_identifier=item.identifier,
+                                    data_source_feature=item.feature,
+                                )
+                                for item in calculated_data_item.data_sources
+                            ]
+                        )
+                        if calculated_data_item.data_sources
+                        else None
+                    ),
                 )
                 for calculated_data_item in calculated_data_items
             ]
