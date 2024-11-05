@@ -56,6 +56,9 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.primary_an
 from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.relative_standard_curve.creator import (
     RelativeStandardCurveCreator,
 )
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.simple_primary_analysis.creator import (
+    SimplePrimaryAnalysisCreator,
+)
 from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.standard_curve.creator import (
     StandardCurveCreator,
 )
@@ -201,14 +204,15 @@ def create_data(reader: DesignQuantstudioReader) -> Data:
         GenotypingCreator,
         MeltCurveCreator,
         PresenceAbsenceCreator,
+        SimplePrimaryAnalysisCreator,
         PrimaryAnalysisCreator,
     ]
-    matching_creator = [
-        creator for creator in possible_creators if creator.check_type(reader)
-    ]
 
-    if len(matching_creator) == 1:
-        return matching_creator[0].create(reader)
+    raw_plugin_name = reader.header.get(str, "Plugin Name and Version")
+
+    for creator in possible_creators:
+        if creator.check_experiment_type(reader, raw_plugin_name):
+            return creator.create(reader)
 
     msg = "Unable to infer experiment type from sheets in the input"
     raise AllotropeConversionError(msg)

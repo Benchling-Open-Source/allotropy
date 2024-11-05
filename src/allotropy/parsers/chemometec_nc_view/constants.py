@@ -1,5 +1,5 @@
-DISPLAY_NAME = "Chemometec NC View"
+DISPLAY_NAME = "ChemoMetec NC View"
 DEVICE_TYPE = "Cell counter"
 DETECTION_TYPE = "fluorescence"
-PRODUCT_MANUFACTURER = "Chemometec"
+PRODUCT_MANUFACTURER = "ChemoMetec"
 SOFTWARE_NAME = "NC-View"

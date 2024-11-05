@@ -26,6 +26,7 @@ from allotropy.allotrope.models.shared.definitions.units import (
     MilliAbsorbanceUnit,
     MilliAbsorbanceUnitTimesMilliliter,
     MilliAbsorbanceUnitTimesSecond,
+    MilligramPerLiter,
     MilligramPerMilliliter,
     Milliliter,
     MilliliterPerLiter,
@@ -47,6 +48,8 @@ from allotropy.allotrope.models.shared.definitions.units import (
     Number,
     NumberPerMicroliter,
     OpticalDensity,
+    PartsPerBillion,
+    PartsPerMillion,
     Percent,
     PerSecond,
     PH,
@@ -313,6 +316,18 @@ class TNullableQuantityValueMilliSecond(MilliSecond, TNullableQuantityValue):
 
 
 @dataclass(frozen=True, kw_only=True)
+class TQuantityValueMilligramPerLiter(MilligramPerLiter, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValueMilligramPerLiter(
+    MilligramPerLiter, TNullableQuantityValue
+):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
 class TQuantityValueMilligramPerMilliliter(MilligramPerMilliliter, TQuantityValue):
     pass
 
@@ -531,6 +546,26 @@ class TQuantityValuePH(PH, TQuantityValue):
 
 @dataclass(frozen=True, kw_only=True)
 class TNullableQuantityValuePH(PH, TNullableQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValuePartsPerBillion(PartsPerBillion, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValuePartsPerBillion(PartsPerBillion, TNullableQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValuePartsPerMillion(PartsPerMillion, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValuePartsPerMillion(PartsPerMillion, TNullableQuantityValue):
     pass
 
 
