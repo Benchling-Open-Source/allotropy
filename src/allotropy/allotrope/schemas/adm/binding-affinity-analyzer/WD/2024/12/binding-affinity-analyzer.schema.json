@@ -12200,6 +12200,12 @@
                                     "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
                                     "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
                                 },
+                                "lot number":{
+                                    "$asm.pattern": "value datum",
+                                    "$asm.property-class": "http://purl.obolibrary.org/obo/IAO_0000132",
+                                    "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+                                },
                                 "custom information aggregate document": {
                                     "allOf": [
                                         {
