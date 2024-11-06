@@ -55,6 +55,11 @@ def _create_measurement(
         wavelength = wavelength_match.groups()[0]
         path_length = None
 
+    background_wavelength = well_plate_data.get(float, "Background Wvl. (nm)")
+    background_absorbance = None
+    if background_wavelength is not None:
+        background_absorbance = well_plate_data.get(float, f"Background (A{int(background_wavelength)})")
+
     measurement_identifier = random_uuid_str()
     calculated_data.extend(
         _get_calculated_data(well_plate_data, wavelength_column, measurement_identifier)
@@ -65,6 +70,8 @@ def _create_measurement(
         detection_type=DETECTION_TYPE,
         identifier=measurement_identifier,
         detector_wavelength_setting=float(wavelength),
+        electronic_absorbance_reference_wavelength_setting=background_wavelength,
+        electronic_absorbance_reference_absorbance=background_absorbance,
         absorbance=well_plate_data.get(float, wavelength_column, NaN),
         sample_identifier=well_plate_data[str, "Sample name"],
         location_identifier=well_plate_data[str, "Plate Position"],
