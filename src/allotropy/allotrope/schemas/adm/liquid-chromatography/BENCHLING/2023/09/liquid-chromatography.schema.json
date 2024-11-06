@@ -12355,13 +12355,13 @@
                         }
                       }
                     }
-                  }
+                  },
+                  "required": [
+                    "chromatogram data cube"
+                  ]
                 }
               ]
-            },
-            "required": [
-              "chromatogram data cube"
-            ]
+            }
           }
         }
       }
