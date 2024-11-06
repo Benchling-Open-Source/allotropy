@@ -361,7 +361,7 @@ def get_dip_data(input_data: str) -> dict[str, Any]:
                 len(parts) == max_length
                 and len(index_part := parts[0].split("=")) == max_length
             ):
-                sweep_row, flow_cell = map(int, index_part[1].split(","))
+                sweep_row, flow_cell = index_part[1].split(",")
                 response = list(map(int, parts[1].split(",")))
                 data = {
                     "flow_cell": flow_cell,

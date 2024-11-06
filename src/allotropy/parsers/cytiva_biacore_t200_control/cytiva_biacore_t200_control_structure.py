@@ -135,7 +135,7 @@ def create_measurements(
                     else None
                 ),
                 type_=MeasurementType.SURFACE_PLASMON_RESONANCE,
-                device_type=constants.BINDING_AFFINITY_ANALYZER,
+                device_type=constants.DEVICE_TYPE,
                 sample_identifier=intermediate_structured_data["sample_data"][i].get(
                     "sample_name", NOT_APPLICABLE
                 ),
