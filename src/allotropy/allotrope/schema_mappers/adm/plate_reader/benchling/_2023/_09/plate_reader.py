@@ -334,7 +334,8 @@ class Mapper(SchemaMapper[Data, Model]):
             device_control_aggregate_document=OpticalImagingDeviceControlAggregateDocument(
                 device_control_document=[
                     add_custom_information_document(
-                        device_control_document, (measurement.device_control_custom_info or {}) | custom_info
+                        device_control_document,
+                        (measurement.device_control_custom_info or {}) | custom_info,
                     )
                 ]
             ),
@@ -350,25 +351,28 @@ class Mapper(SchemaMapper[Data, Model]):
         custom_info = {
             "electronic absorbance reference absorbance": measurement.electronic_absorbance_reference_absorbance
         }
-        device_control_document = UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
-            device_type=measurement.device_type,
-            firmware_version=measurement.firmware_version,
-            detection_type=measurement.detection_type,
-            detector_wavelength_setting=quantity_or_none(
-                TQuantityValueNanometer,
-                measurement.detector_wavelength_setting,
-            ),
-            number_of_averages=quantity_or_none(
-                TQuantityValueNumber, measurement.number_of_averages
-            ),
-            detector_carriage_speed_setting=measurement.detector_carriage_speed,
-            detector_gain_setting=measurement.detector_gain_setting,
-            detector_distance_setting__plate_reader_=quantity_or_none(
-                TQuantityValueMillimeter,
-                measurement.detector_distance_setting,
-            ),
-            electronic_absorbance_reference_wavelength_setting=quantity_or_none(
-                TQuantityValueNanometer, measurement.electronic_absorbance_reference_wavelength_setting,
+        device_control_document = (
+            UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
+                device_type=measurement.device_type,
+                firmware_version=measurement.firmware_version,
+                detection_type=measurement.detection_type,
+                detector_wavelength_setting=quantity_or_none(
+                    TQuantityValueNanometer,
+                    measurement.detector_wavelength_setting,
+                ),
+                number_of_averages=quantity_or_none(
+                    TQuantityValueNumber, measurement.number_of_averages
+                ),
+                detector_carriage_speed_setting=measurement.detector_carriage_speed,
+                detector_gain_setting=measurement.detector_gain_setting,
+                detector_distance_setting__plate_reader_=quantity_or_none(
+                    TQuantityValueMillimeter,
+                    measurement.detector_distance_setting,
+                ),
+                electronic_absorbance_reference_wavelength_setting=quantity_or_none(
+                    TQuantityValueNanometer,
+                    measurement.electronic_absorbance_reference_wavelength_setting,
+                ),
             )
         )
         return UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
@@ -377,7 +381,8 @@ class Mapper(SchemaMapper[Data, Model]):
             device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
                 device_control_document=[
                     add_custom_information_document(
-                        device_control_document, (measurement.device_control_custom_info or {}) | custom_info
+                        device_control_document,
+                        (measurement.device_control_custom_info or {}) | custom_info,
                     )
                 ]
             ),
@@ -422,7 +427,8 @@ class Mapper(SchemaMapper[Data, Model]):
             device_control_aggregate_document=LuminescencePointDetectionDeviceControlAggregateDocument(
                 device_control_document=[
                     add_custom_information_document(
-                        device_control_document, measurement.device_control_custom_info or {}
+                        device_control_document,
+                        measurement.device_control_custom_info or {},
                     )
                 ]
             ),
@@ -481,7 +487,8 @@ class Mapper(SchemaMapper[Data, Model]):
             device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
                 device_control_document=[
                     add_custom_information_document(
-                        device_control_document, measurement.device_control_custom_info or {}
+                        device_control_document,
+                        measurement.device_control_custom_info or {},
                     )
                 ]
             ),
