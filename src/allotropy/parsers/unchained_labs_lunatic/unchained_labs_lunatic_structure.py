@@ -46,7 +46,11 @@ def _create_measurement(
         msg = NO_MEASUREMENT_IN_PLATE_ERROR_MSG.format(wavelength_column)
         raise AllotropeConversionError(msg)
 
-    if not WAVELENGTH_COLUMNS_RE.match(wavelength_column):
+    wavelength_match = WAVELENGTH_COLUMNS_RE.match(wavelength_column)
+    if "/" in wavelength_column:
+        print(wavelength_column)
+        assert False
+    if not wavelength_match:
         raise AllotropeConversionError(INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG)
 
     measurement_identifier = random_uuid_str()
@@ -58,7 +62,7 @@ def _create_measurement(
         device_type=DEVICE_TYPE,
         detection_type=DETECTION_TYPE,
         identifier=measurement_identifier,
-        detector_wavelength_setting=float(wavelength_column[1:]),
+        detector_wavelength_setting=float(wavelength_match.groups()[0]),
         absorbance=well_plate_data.get(float, wavelength_column, NaN),
         sample_identifier=well_plate_data[str, "Sample name"],
         location_identifier=well_plate_data[str, "Plate Position"],

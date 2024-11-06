@@ -8,7 +8,8 @@ MODEL_NUMBER = "Lunatic"
 PRODUCT_MANUFACTURER = "Unchained Labs"
 SOFTWARE_NAME = "Lunatic and Stunner Analysis"
 
-WAVELENGTH_COLUMNS_RE = re.compile(r"^A\d{3}$")
+# Wavelength columns will be "A<3-digit number>" with an optional mm specification, e.g. 'A260' or 'A260 (10mm)'
+WAVELENGTH_COLUMNS_RE = re.compile(r"^A(\d{3})( \(.*\))?$")
 NO_WAVELENGTH_COLUMN_ERROR_MSG = (
     "The file is required to include an absorbance measurement column (e.g. A280)"
 )
