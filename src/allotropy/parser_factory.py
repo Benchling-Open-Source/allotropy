@@ -36,8 +36,8 @@ from allotropy.parsers.chemometec_nucleoview.nucleoview_parser import (
     ChemometecNucleoviewParser,
 )
 from allotropy.parsers.ctl_immunospot.ctl_immunospot_parser import CtlImmunospotParser
-from allotropy.parsers.cytiva_biacore_t200.cytiva_biacore_t200_parser import (
-    CytivaBiacoreT200Parser,
+from allotropy.parsers.cytiva_biacore_t200_control.cytiva_biacore_t200_control_parser import (
+    CytivaBiacoreT200ControlParser,
 )
 from allotropy.parsers.example_weyland_yutani.example_weyland_yutani_parser import (
     ExampleWeylandYutaniParser,
@@ -111,7 +111,7 @@ class Vendor(Enum):
     CHEMOMETEC_NC_VIEW = "CHEMOMETEC_NC_VIEW"
     CHEMOMETEC_NUCLEOVIEW = "CHEMOMETEC_NUCLEOVIEW"
     CTL_IMMUNOSPOT = "CTL_IMMUNOSPOT"
-    CYTIVA_BIACORE_T200 = "CYTIVA_BIACORE_T200"
+    CYTIVA_BIACORE_T200_CONTROL = "CYTIVA_BIACORE_T200_CONTROL"
     EXAMPLE_WEYLAND_YUTANI = "EXAMPLE_WEYLAND_YUTANI"
     LUMINEX_XPONENT = "LUMINEX_XPONENT"
     MABTECH_APEX = "MABTECH_APEX"
@@ -194,7 +194,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser[Any, Any]]] = {
     Vendor.CHEMOMETEC_NC_VIEW: ChemometecNcViewParser,
     Vendor.CHEMOMETEC_NUCLEOVIEW: ChemometecNucleoviewParser,
     Vendor.CTL_IMMUNOSPOT: CtlImmunospotParser,
-    Vendor.CYTIVA_BIACORE_T200: CytivaBiacoreT200Parser,
+    Vendor.CYTIVA_BIACORE_T200_CONTROL: CytivaBiacoreT200ControlParser,
     Vendor.EXAMPLE_WEYLAND_YUTANI: ExampleWeylandYutaniParser,
     Vendor.LUMINEX_XPONENT: LuminexXponentParser,
     Vendor.MABTECH_APEX: MabtechApexParser,

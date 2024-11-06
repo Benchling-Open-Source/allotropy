@@ -1,0 +1,5 @@
+BRAND_NAME = "Biacore"
+PRODUCT_MANUFACTURER = "Cytiva"
+DISPLAY_NAME = "Cytiva Biacore T200 Control"
+SURFACE_PLASMON_RESONANCE = "surface plasmon resonance"
+BINDING_AFFINITY_ANALYZER = "binding affinity analyzer"

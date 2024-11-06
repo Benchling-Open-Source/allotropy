@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 from enum import Enum
-import os
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
@@ -22,18 +21,18 @@ from allotropy.allotrope.models.adm.binding_affinity_analyzer.wd._2024._12.bindi
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueDegreeCelsius,
-    TQuantityValueMicroliterPerMinute,
+    # TQuantityValueMicroliterPerMinute,
     TQuantityValueMolar,
-    TQuantityValueNanomolar,
+    TQuantityValuePercent,
+    # TQuantityValueNanomolar,
     TQuantityValuePerSecond,
     TQuantityValueSecondTime,
-    TQuantityValueTODO, TQuantityValuePercent,
+    TQuantityValueTODO,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropyParserError
-from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
 
 
@@ -54,6 +53,7 @@ class CalculatedDataItem:
     value: float
     unit: str
     data_sources: list[DataSource]
+    description: str | None = None
 
 
 @dataclass(frozen=True)
@@ -65,6 +65,8 @@ class DeviceDocument:
 @dataclass(frozen=True)
 class Metadata:
     device_identifier: str
+    asm_file_identifier: str
+    data_system_instance_identifier: str
     model_number: str
     sensor_chip_identifier: str
     brand_name: str | None = None
@@ -135,10 +137,8 @@ class Mapper(SchemaMapper[Data, Model]):
         return Model(
             binding_affinity_analyzer_aggregate_document=BindingAffinityAnalyzerAggregateDocument(
                 data_system_document=DataSystemDocument(
-                    ASM_file_identifier=f"{os.path.splitext(data.metadata.file_name)[0]}.json"
-                    if data.metadata.file_name
-                    else "N/A",
-                    data_system_instance_identifier=NOT_APPLICABLE,
+                    ASM_file_identifier=data.metadata.asm_file_identifier,
+                    data_system_instance_identifier=data.metadata.data_system_instance_identifier,
                     ASM_converter_name=self.converter_name,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                     file_name=data.metadata.file_name,
@@ -150,16 +150,18 @@ class Mapper(SchemaMapper[Data, Model]):
                     device_identifier=data.metadata.device_identifier,
                     model_number=data.metadata.model_number,
                     brand_name=data.metadata.brand_name,
-                    device_document=[
-                        DeviceDocumentItem(
-                            device_type=device_document_item.device_type,
-                            device_identifier=device_document_item.device_identifier,
-                        )
-                        for device_document_item in data.metadata.device_document
-                    ]
-                    if data.metadata.device_document is not None
-                    else None,
-                    product_manufacturer=Metadata.product_manufacturer,
+                    product_manufacturer=data.metadata.product_manufacturer,
+                    device_document=(
+                        [
+                            DeviceDocumentItem(
+                                device_type=device_document_item.device_type,
+                                device_identifier=device_document_item.device_identifier,
+                            )
+                            for device_document_item in data.metadata.device_document
+                        ]
+                        if data.metadata.device_document is not None
+                        else None
+                    ),
                 ),
                 binding_affinity_analyzer_document=[
                     self._get_technique_document(measurement_group, data.metadata)
@@ -244,7 +246,7 @@ class Mapper(SchemaMapper[Data, Model]):
                             # ),
                             contact_time=quantity_or_none(
                                 TQuantityValueSecondTime, measurements.contact_time
-                            ), 
+                            ),
                             dilution_factor=quantity_or_none(
                                 TQuantityValuePercent, measurements.dilution
                             ),
@@ -269,6 +271,10 @@ class Mapper(SchemaMapper[Data, Model]):
                         equilibrium_dissociation_constant__KD_=quantity_or_none(
                             TQuantityValueMolar,
                             measurements.equilibrium_dissociation_constant,
+                        ),
+                        maximum_binding_capacity__Rmax_=quantity_or_none(
+                            TQuantityValueTODO,
+                            measurements.Rmax,
                         ),
                     )
                 ]
