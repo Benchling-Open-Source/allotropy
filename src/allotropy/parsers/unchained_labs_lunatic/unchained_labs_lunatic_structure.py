@@ -58,7 +58,9 @@ def _create_measurement(
     background_wavelength = well_plate_data.get(float, "Background Wvl. (nm)")
     background_absorbance = None
     if background_wavelength is not None:
-        background_absorbance = well_plate_data.get(float, f"Background (A{int(background_wavelength)})")
+        background_absorbance = well_plate_data.get(
+            float, f"Background (A{int(background_wavelength)})"
+        )
 
     measurement_identifier = random_uuid_str()
     calculated_data.extend(
