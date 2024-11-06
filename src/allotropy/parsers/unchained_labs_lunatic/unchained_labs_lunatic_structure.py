@@ -47,9 +47,6 @@ def _create_measurement(
         raise AllotropeConversionError(msg)
 
     wavelength_match = WAVELENGTH_COLUMNS_RE.match(wavelength_column)
-    if "/" in wavelength_column:
-        print(wavelength_column)
-        assert False
     if not wavelength_match:
         raise AllotropeConversionError(INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG)
 
