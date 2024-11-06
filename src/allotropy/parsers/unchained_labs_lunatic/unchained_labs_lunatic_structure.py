@@ -49,6 +49,11 @@ def _create_measurement(
     wavelength_match = WAVELENGTH_COLUMNS_RE.match(wavelength_column)
     if not wavelength_match:
         raise AllotropeConversionError(INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG)
+    if len(wavelength_match.groups()) > 1:
+        wavelength, path_length = wavelength_match.groups()
+    else:
+        wavelength = wavelength_match.groups()[0]
+        path_length = None
 
     measurement_identifier = random_uuid_str()
     calculated_data.extend(
@@ -59,12 +64,18 @@ def _create_measurement(
         device_type=DEVICE_TYPE,
         detection_type=DETECTION_TYPE,
         identifier=measurement_identifier,
-        detector_wavelength_setting=float(wavelength_match.groups()[0]),
+        detector_wavelength_setting=float(wavelength),
         absorbance=well_plate_data.get(float, wavelength_column, NaN),
         sample_identifier=well_plate_data[str, "Sample name"],
         location_identifier=well_plate_data[str, "Plate Position"],
         well_plate_identifier=well_plate_data.get(str, "Plate ID"),
+        batch_identifier=well_plate_data.get(str, "Sample Group"),
         firmware_version=header.get(str, "Client version"),
+        path_length=path_length,
+        device_control_custom_info={
+            "path length mode": well_plate_data.get(str, "Path length mode"),
+            "pump": well_plate_data.get(str, "Pump"),
+        }
     )
 
 
