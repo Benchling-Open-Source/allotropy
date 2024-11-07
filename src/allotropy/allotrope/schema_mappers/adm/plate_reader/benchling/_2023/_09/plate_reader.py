@@ -165,7 +165,7 @@ class Measurement:
     # Custom information
     led_filter: str | None = None
 
-    custom_info: dict[str, Any] = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -196,7 +196,7 @@ class Metadata:
     file_name: str | None = None
     data_system_instance_id: str | None = None
 
-    custom_info: dict[str, Any] = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
