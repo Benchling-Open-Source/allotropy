@@ -347,10 +347,6 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_ultraviolet_absorbance_measurement_document(
         self, measurement: Measurement
     ) -> UltravioletAbsorbancePointDetectionMeasurementDocumentItems:
-        # TODO(ASM gaps): we think this should be added to ASM
-        custom_info = {
-            "electronic absorbance reference absorbance": measurement.electronic_absorbance_reference_absorbance
-        }
         device_control_document = (
             UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
                 device_type=measurement.device_type,
@@ -375,14 +371,18 @@ class Mapper(SchemaMapper[Data, Model]):
                 ),
             )
         )
-        return UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
+        # TODO(ASM gaps): we think this should be added to ASM
+        measurement_custom_info = {
+            "electronic absorbance reference absorbance": measurement.electronic_absorbance_reference_absorbance
+        }
+        measurement_doc = UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
             measurement_identifier=measurement.identifier,
             sample_document=self._get_sample_document(measurement),
             device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
                 device_control_document=[
                     add_custom_information_document(
                         device_control_document,
-                        (measurement.device_control_custom_info or {}) | custom_info,
+                        measurement.device_control_custom_info or {},
                     )
                 ]
             ),
@@ -396,6 +396,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueDegreeCelsius, measurement.compartment_temperature
             ),
         )
+        return add_custom_information_document(measurement_doc, measurement_custom_info)
 
     def _get_luminescence_measurement_document(
         self, measurement: Measurement
