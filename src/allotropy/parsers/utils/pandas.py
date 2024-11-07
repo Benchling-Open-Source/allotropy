@@ -209,6 +209,25 @@ class SeriesData:
 
     def __init__(self, series: pd.Series[Any]) -> None:
         self.series = series
+        self.read_keys: set[str] = set()
+        self.errored = False
+
+    def __del__(self) -> None:
+        if self.errored:
+            return
+        # NOTE: this will be turned on when all callers have been updated to pass the warning.
+        # if unread_keys := set(self.series.index.to_list()) - self.read_keys:
+        #    warnings.warn(f"SeriesData went out of scope without reading all keys, unread: {sorted(unread_keys)}.", stacklevel=2)
+
+    def get_unread(self, skip: set[str] | None = None) -> dict[str, float | str | None]:
+        skip = skip or set()
+        # Mark explicitly skipped keys as "read". This not only covers the check below, but removes
+        # them from the destructor warning.
+        self.read_keys |= skip
+        return {
+            key: self.get(float, key) or self.get(str, key)
+            for key in set(self.series.index.to_list()) - self.read_keys
+        }
 
     def has_key(self, key: str) -> bool:
         return key in self.series
@@ -238,7 +257,11 @@ class SeriesData:
             msg = None
         elif len(type_and_key) == 3:  # noqa: PLR2004
             type_, key, msg = type_and_key
-        return assert_not_none(self.get(type_, key), str(key), msg=msg)
+        try:
+            return assert_not_none(self.get(type_, key), str(key), msg=msg)
+        except Exception:
+            self.errored = True
+            raise
 
     # This overload tells typing that if default is "None" then get might return None
     @overload
@@ -299,6 +322,7 @@ class SeriesData:
             return get_first_not_none(
                 lambda k: self.get(type_, k, validate=validate), key
             )
+        self.read_keys.add(key)
         raw_value = self._validate_raw(self.series.get(key), validate)
         try:
             # bool needs special handling to convert

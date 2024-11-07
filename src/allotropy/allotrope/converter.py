@@ -84,12 +84,14 @@ SPECIAL_KEYS_INVERSE: dict[str, str] = dict(
 
 
 DICT_KEY_TO_MODEL_KEY_REPLACEMENTS = {
+    ".": "_POINT_",
     "-": "_DASH_",
     "°": "_DEG_",
     "/": "_SLASH_",
     "\\": "_BSLASH_",
     "(": "_OPAREN_",
     ")": "_CPAREN_",
+    "%": "_PERCENT_",
     # NOTE: this MUST be at the end, or it will break other key replacements.
     " ": "_",
 }
