@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import Enum
-from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
@@ -165,8 +164,6 @@ class Measurement:
     # Custom information
     led_filter: str | None = None
 
-    custom_info: dict[str, Any] | None = None
-
 
 @dataclass(frozen=True)
 class MeasurementGroup:
@@ -196,8 +193,6 @@ class Metadata:
     file_name: str | None = None
     data_system_instance_id: str | None = None
 
-    custom_info: dict[str, Any] | None = None
-
 
 @dataclass(frozen=True)
 class Data:
@@ -211,32 +206,29 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def map_model(self, data: Data) -> Model:
         return Model(
-            plate_reader_aggregate_document=add_custom_information_document(
-                PlateReaderAggregateDocument(
-                    device_system_document=DeviceSystemDocument(
-                        device_identifier=data.metadata.device_identifier,
-                        model_number=data.metadata.model_number,
-                        equipment_serial_number=data.metadata.equipment_serial_number,
-                        product_manufacturer=data.metadata.product_manufacturer,
-                    ),
-                    data_system_document=DataSystemDocument(
-                        data_system_instance_identifier=data.metadata.data_system_instance_id,
-                        file_name=data.metadata.file_name,
-                        UNC_path=data.metadata.unc_path,
-                        software_name=data.metadata.software_name,
-                        software_version=data.metadata.software_version,
-                        ASM_converter_name=self.converter_name,
-                        ASM_converter_version=ASM_CONVERTER_VERSION,
-                    ),
-                    plate_reader_document=[
-                        self._get_technique_document(measurement_group)
-                        for measurement_group in data.measurement_groups
-                    ],
-                    calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
-                        data.calculated_data
-                    ),
+            plate_reader_aggregate_document=PlateReaderAggregateDocument(
+                device_system_document=DeviceSystemDocument(
+                    device_identifier=data.metadata.device_identifier,
+                    model_number=data.metadata.model_number,
+                    equipment_serial_number=data.metadata.equipment_serial_number,
+                    product_manufacturer=data.metadata.product_manufacturer,
                 ),
-                data.metadata.custom_info,
+                data_system_document=DataSystemDocument(
+                    data_system_instance_identifier=data.metadata.data_system_instance_id,
+                    file_name=data.metadata.file_name,
+                    UNC_path=data.metadata.unc_path,
+                    software_name=data.metadata.software_name,
+                    software_version=data.metadata.software_version,
+                    ASM_converter_name=self.converter_name,
+                    ASM_converter_version=ASM_CONVERTER_VERSION,
+                ),
+                plate_reader_document=[
+                    self._get_technique_document(measurement_group)
+                    for measurement_group in data.measurement_groups
+                ],
+                calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
+                    data.calculated_data
+                ),
             ),
             field_asm_manifest=self.MANIFEST,
         )
@@ -272,19 +264,17 @@ class Mapper(SchemaMapper[Data, Model]):
         self, measurement: Measurement
     ) -> MeasurementDocumentItems:
         # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
-        doc: MeasurementDocumentItems
         if measurement.type_ == MeasurementType.OPTICAL_IMAGING:
-            doc = self._get_optical_imaging_measurement_document(measurement)
+            return self._get_optical_imaging_measurement_document(measurement)
         elif measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE:
-            doc = self._get_ultraviolet_absorbance_measurement_document(measurement)
+            return self._get_ultraviolet_absorbance_measurement_document(measurement)
         elif measurement.type_ == MeasurementType.LUMINESCENCE:
-            doc = self._get_luminescence_measurement_document(measurement)
+            return self._get_luminescence_measurement_document(measurement)
         elif measurement.type_ == MeasurementType.FLUORESCENCE:
-            doc = self._get_fluorescence_measurement_document(measurement)
+            return self._get_fluorescence_measurement_document(measurement)
         else:
             msg = f"Unexpected measurement type: {measurement.type}"
             raise AllotropyParserError(msg)
-        return add_custom_information_document(doc, measurement.custom_info)
 
     def _get_optical_imaging_measurement_document(
         self, measurement: Measurement
