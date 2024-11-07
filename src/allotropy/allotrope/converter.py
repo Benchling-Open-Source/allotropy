@@ -92,6 +92,7 @@ DICT_KEY_TO_MODEL_KEY_REPLACEMENTS = {
     "(": "_OPAREN_",
     ")": "_CPAREN_",
     "%": "_PERCENT_",
+    ":": "_COLON_",
     # NOTE: this MUST be at the end, or it will break other key replacements.
     " ": "_",
 }

@@ -38,6 +38,7 @@ def create_metadata(plate_info: SeriesData, file_path: str) -> Metadata:
         equipment_serial_number=machine_id.group(2),
         file_name=Path(file_path).name,
         unc_path=plate_info.get(str, "Path:", file_path),
+        custom_info=plate_info.get_unread(),
     )
 
 
@@ -81,6 +82,7 @@ def _create_measurement(plate_data: SeriesData) -> Measurement:
             identifier=random_uuid_str(),
             features=features,
         ),
+        custom_info=plate_data.get_unread(),
     )
     if not (measurement.processed_data and measurement.processed_data.features):
         logging.warning(f"no image features identified for {well_plate}")

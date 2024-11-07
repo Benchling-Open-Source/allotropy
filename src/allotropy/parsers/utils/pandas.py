@@ -5,6 +5,7 @@ from enum import Enum
 import re
 from typing import Any, Literal, overload, TypeVar
 import unicodedata
+import warnings
 
 import pandas as pd
 from pandas._typing import FilePath, ReadCsvBuffer
@@ -216,8 +217,8 @@ class SeriesData:
         if self.errored:
             return
         # NOTE: this will be turned on when all callers have been updated to pass the warning.
-        # if unread_keys := set(self.series.index.to_list()) - self.read_keys:
-        #    warnings.warn(f"SeriesData went out of scope without reading all keys, unread: {sorted(unread_keys)}.", stacklevel=2)
+        if unread_keys := set(self.series.index.to_list()) - self.read_keys:
+            warnings.warn(f"SeriesData went out of scope without reading all keys, unread: {sorted(unread_keys)}.", stacklevel=2)
 
     def get_unread(self, skip: set[str] | None = None) -> dict[str, float | str | None]:
         skip = skip or set()
