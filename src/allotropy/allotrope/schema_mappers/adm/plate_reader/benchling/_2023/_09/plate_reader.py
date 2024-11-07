@@ -236,7 +236,7 @@ class Mapper(SchemaMapper[Data, Model]):
                         data.calculated_data
                     ),
                 ),
-                data.metadata.custom_info
+                data.metadata.custom_info,
             ),
             field_asm_manifest=self.MANIFEST,
         )
