@@ -79,7 +79,7 @@ def create_metadata(
         sensor_chip_custom_info={
             "ifc identifier": intermediate_structured_data["chip"].get("IFC"),
             "lot number": intermediate_structured_data["chip"].get("LotNo"),
-            "last modified_time": intermediate_structured_data["chip"].get(
+            "last modified time": intermediate_structured_data["chip"].get(
                 "LastModTime"
             ),
             "last use time": intermediate_structured_data["chip"].get("LastUseTime"),
@@ -318,7 +318,7 @@ def create_measurement_groups(
                 {
                     "datum label": "norm_dip_details",
                     "datum value": norm_datum.get("response"),
-                    "sweep_row": norm_datum.get("sweep_row"),
+                    "sweep row": norm_datum.get("sweep_row"),
                     "flow cell identifier": norm_datum.get("flow_cell"),
                 }
                 for norm_datum in intermediate_structured_data["dip"]["norm_data"]
