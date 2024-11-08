@@ -479,14 +479,6 @@ class ReadData:
         return filter_data
 
 
-def _is_results(section: list[str]) -> bool:
-    return (
-        len(section) > 2  # noqa: PLR2004
-        and section[1].startswith("\t1")
-        and section[2].startswith("A\t")
-    )
-
-
 def _validate_result_sections(result_sections: list[list[str]]) -> None:
     """Validates whether all the result sections dimensions are consistent."""
     first_section = result_sections[0]
@@ -507,11 +499,18 @@ def get_results_section(reader: AgilentGen5Reader) -> list[str] | None:
     if "Results" in reader.sections:
         return reader.sections["Results"]
 
+    def is_results(section: list[str]) -> bool:
+        return (
+            len(section) > 2  # noqa: PLR2004
+            and section[1].startswith("\t1")
+            and section[2].startswith("A\t")
+        )
+
     result_sections = []
     for name, section in reader.sections.items():
         if name == "Layout":
             continue
-        if _is_results(section):
+        if is_results(section):
             result_sections.append(section[1:])
 
     if result_sections:
