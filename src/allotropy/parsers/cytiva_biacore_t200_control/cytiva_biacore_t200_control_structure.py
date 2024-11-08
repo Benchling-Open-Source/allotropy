@@ -11,6 +11,9 @@ from allotropy.allotrope.schema_mappers.adm.binding_affinity_analyzer.benchling.
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.cytiva_biacore_t200_control import constants
+from allotropy.parsers.cytiva_biacore_t200_control.constants import (
+    SAMPLE_ROLE_TYPE_MAPPING,
+)
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
@@ -142,9 +145,9 @@ def create_measurements(
                 location_identifier=intermediate_structured_data["sample_data"][i].get(
                     "rack"
                 ),
-                sample_role_type=intermediate_structured_data["sample_data"][i].get(
-                    "role"
-                ),
+                sample_role_type=SAMPLE_ROLE_TYPE_MAPPING[
+                    intermediate_structured_data["sample_data"][i].get("role")
+                ],
                 concentration=try_float_or_none(
                     intermediate_structured_data["sample_data"][i].get("concentration")
                 )

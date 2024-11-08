@@ -19,6 +19,7 @@ from allotropy.allotrope.models.adm.binding_affinity_analyzer.wd._2024._12.bindi
     SampleDocument,
     SensorChipDocument,
 )
+from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueDegreeCelsius,
     # TQuantityValueMicroliterPerMinute,
@@ -93,7 +94,7 @@ class Measurements:
     location_identifier: str | None = None
     batch_identifier: str | None = None
     well_plate_identifier: str | None = None
-    sample_role_type: str | None = None
+    sample_role_type: SampleRoleType | None = None
     concentration: JsonFloat | None = None
     method_name: str | None = None
     ligand_identifier: str | None = None
