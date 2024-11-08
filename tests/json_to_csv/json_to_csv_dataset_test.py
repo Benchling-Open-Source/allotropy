@@ -1,6 +1,7 @@
 import json
 from pathlib import Path
 from typing import Any
+import warnings
 
 from deepdiff import DeepDiff
 import pandas as pd
@@ -29,7 +30,12 @@ def _assert_dicts_equal(expected: dict[str, Any], actual: dict[str, Any]) -> Non
             "tests/json_to_csv/testdata/plate_reader.json",
             "tests/json_to_csv/testdata/plate_reader_config.json",
             {"dataset": "tests/json_to_csv/testdata/plate_reader.csv"},
-        )
+        ),
+        (
+            "tests/json_to_csv/testdata/plate_reader.json",
+            None,
+            {"dataset": "tests/json_to_csv/testdata/plate_reader_no_config.csv"},
+        ),
     ],
 )
 def test_json_to_csv_dataset(
@@ -65,8 +71,17 @@ def test_json_to_csv_dataset(
                 raise
         elif isinstance(actual, pd.DataFrame):
             try:
-                expected = pd.read_csv(expected_file)
-                assert expected.equals(actual)
+                with warnings.catch_warnings():
+                    # We don't care if the expected data can have mixed types in this scenario.
+                    warnings.filterwarnings(
+                        "ignore",
+                        category=pd.errors.DtypeWarning,
+                        message=".*have mixed types.*",
+                    )
+                    expected = pd.read_csv(
+                        expected_file, na_values=[""], keep_default_na=False
+                    )
+                pd.testing.assert_frame_equal(expected, actual)
             except Exception:
                 if overwrite or not Path(expected_file).exists():
                     actual.to_csv(expected_file, index=False)

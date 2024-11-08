@@ -79,6 +79,10 @@ def map_dataset(data: dict[str, Any], config: DatasetConfig) -> pd.DataFrame:
         msg = f"Mapped dataset is missing required columns: {missing_columns}"
         raise ValueError(msg)
 
+    # Put columns in the order of the config
+    if config.columns:
+        df = df[[column.name for column in config.columns if column.name in df.columns]]
+
     # Sub column names
     for column in config.columns:
         if column.has_labels:
