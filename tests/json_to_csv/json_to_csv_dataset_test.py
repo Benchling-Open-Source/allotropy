@@ -1,0 +1,71 @@
+import json
+from pathlib import Path
+from typing import Any
+
+from deepdiff import DeepDiff
+import pandas as pd
+import pytest
+
+from allotropy.json_to_csv.json_to_csv import json_to_csv
+from allotropy.json_to_csv.mapper_config import MapperConfig
+
+
+def _assert_dicts_equal(expected: dict[str, Any], actual: dict[str, Any]) -> None:
+    ddiff = DeepDiff(
+        expected,
+        actual,
+        # ignore_type_in_groups=[(float, np.float64)],
+        # ignore_nan_inequality=True,
+    )
+    if ddiff:
+        msg = f"actual != expected: \n{ddiff.pretty()}"
+        raise AssertionError(msg)
+
+
+@pytest.mark.parametrize(
+    "input_file,config_file,expected_results",
+    [
+        (
+            "tests/json_to_csv/testdata/plate_reader.json",
+            "tests/json_to_csv/testdata/plate_reader_config.json",
+            {"dataset": "tests/json_to_csv/testdata/plate_reader.csv"},
+        )
+    ],
+)
+def test_json_to_csv_dataset(
+    input_file: str,
+    config_file: str | None,
+    expected_results: dict[str, str],
+    *,
+    overwrite: bool,
+):
+    with open(input_file) as infile:
+        input_json = json.load(infile)
+
+    with open(config_file) as infile:
+        config = MapperConfig(json.load(infile))
+
+    results = json_to_csv(input_json, config)
+
+    assert results.keys() == expected_results.keys()
+
+    for name, actual in results.items():
+        expected_file = expected_results[name]
+        if isinstance(actual, dict):
+            try:
+                with open(expected_file) as f:
+                    expected = json.load(f)
+                _assert_dicts_equal(expected, actual)
+            except Exception:
+                if overwrite or not Path(expected_file).exists():
+                    with open(expected_file, "w") as f:
+                        json.dump(actual, f, index=4)
+                raise
+        elif isinstance(actual, pd.DataFrame):
+            try:
+                expected = pd.read_csv(expected_file)
+                assert expected.equals(actual)
+            except Exception:
+                if overwrite or not Path(expected_file).exists():
+                    actual.to_csv(expected_file, index=False)
+                raise
