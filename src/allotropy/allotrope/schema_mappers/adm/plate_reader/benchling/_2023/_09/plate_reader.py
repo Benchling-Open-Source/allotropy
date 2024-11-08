@@ -126,6 +126,7 @@ class Measurement:
     location_identifier: str
 
     # Optional metadata
+    batch_identifier: str | None = None
     well_plate_identifier: str | None = None
     detection_type: str | None = None
     sample_role_type: SampleRoleType | None = None
@@ -151,6 +152,8 @@ class Measurement:
     detector_carriage_speed: str | None = None
     compartment_temperature: float | None = None
     number_of_averages: float | None = None
+    electronic_absorbance_reference_wavelength_setting: float | None = None
+    electronic_absorbance_reference_absorbance: float | None = None
 
     # Optical imaging
     exposure_duration_setting: float | None = None
@@ -164,6 +167,8 @@ class Measurement:
 
     # Custom information
     led_filter: str | None = None
+    path_length: float | None = None
+    device_control_custom_info: dict[str, Any] | None = None
 
     custom_info: dict[str, Any] | None = None
 
@@ -328,7 +333,7 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
         )
         # TODO(ASM gaps): we think this should be added to ASM
-        custom_info_doc = {
+        custom_info = {
             "LED filter": measurement.led_filter,
         }
 
@@ -338,7 +343,8 @@ class Mapper(SchemaMapper[Data, Model]):
             device_control_aggregate_document=OpticalImagingDeviceControlAggregateDocument(
                 device_control_document=[
                     add_custom_information_document(
-                        device_control_document, custom_info_doc
+                        device_control_document,
+                        (measurement.device_control_custom_info or {}) | custom_info,
                     )
                 ]
             ),
@@ -350,28 +356,42 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_ultraviolet_absorbance_measurement_document(
         self, measurement: Measurement
     ) -> UltravioletAbsorbancePointDetectionMeasurementDocumentItems:
-        return UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
+        device_control_document = (
+            UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
+                device_type=measurement.device_type,
+                firmware_version=measurement.firmware_version,
+                detection_type=measurement.detection_type,
+                detector_wavelength_setting=quantity_or_none(
+                    TQuantityValueNanometer,
+                    measurement.detector_wavelength_setting,
+                ),
+                number_of_averages=quantity_or_none(
+                    TQuantityValueNumber, measurement.number_of_averages
+                ),
+                detector_carriage_speed_setting=measurement.detector_carriage_speed,
+                detector_gain_setting=measurement.detector_gain_setting,
+                detector_distance_setting__plate_reader_=quantity_or_none(
+                    TQuantityValueMillimeter,
+                    measurement.detector_distance_setting,
+                ),
+                electronic_absorbance_reference_wavelength_setting=quantity_or_none(
+                    TQuantityValueNanometer,
+                    measurement.electronic_absorbance_reference_wavelength_setting,
+                ),
+            )
+        )
+        # TODO(ASM gaps): we think this should be added to ASM
+        measurement_custom_info = {
+            "electronic absorbance reference absorbance": measurement.electronic_absorbance_reference_absorbance
+        }
+        measurement_doc = UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
             measurement_identifier=measurement.identifier,
             sample_document=self._get_sample_document(measurement),
             device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
                 device_control_document=[
-                    UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
-                        device_type=measurement.device_type,
-                        firmware_version=measurement.firmware_version,
-                        detection_type=measurement.detection_type,
-                        detector_wavelength_setting=quantity_or_none(
-                            TQuantityValueNanometer,
-                            measurement.detector_wavelength_setting,
-                        ),
-                        number_of_averages=quantity_or_none(
-                            TQuantityValueNumber, measurement.number_of_averages
-                        ),
-                        detector_carriage_speed_setting=measurement.detector_carriage_speed,
-                        detector_gain_setting=measurement.detector_gain_setting,
-                        detector_distance_setting__plate_reader_=quantity_or_none(
-                            TQuantityValueMillimeter,
-                            measurement.detector_distance_setting,
-                        ),
+                    add_custom_information_document(
+                        device_control_document,
+                        measurement.device_control_custom_info or {},
                     )
                 ]
             ),
@@ -385,34 +405,40 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueDegreeCelsius, measurement.compartment_temperature
             ),
         )
+        return add_custom_information_document(measurement_doc, measurement_custom_info)
 
     def _get_luminescence_measurement_document(
         self, measurement: Measurement
     ) -> LuminescencePointDetectionMeasurementDocumentItems:
+        device_control_document = LuminescencePointDetectionDeviceControlDocumentItem(
+            device_type=measurement.device_type,
+            firmware_version=measurement.firmware_version,
+            detection_type=measurement.detection_type,
+            detector_wavelength_setting=quantity_or_none(
+                TQuantityValueNanometer,
+                measurement.detector_wavelength_setting,
+            ),
+            detector_bandwidth_setting=quantity_or_none(
+                TQuantityValueNanometer,
+                measurement.detector_bandwidth_setting,
+            ),
+            detector_distance_setting__plate_reader_=quantity_or_none(
+                TQuantityValueMillimeter,
+                measurement.detector_distance_setting,
+            ),
+            scan_position_setting__plate_reader_=measurement.scan_position_setting,
+            detector_gain_setting=measurement.detector_gain_setting,
+            detector_carriage_speed_setting=measurement.detector_carriage_speed,
+        )
+
         return LuminescencePointDetectionMeasurementDocumentItems(
             measurement_identifier=measurement.identifier,
             sample_document=self._get_sample_document(measurement),
             device_control_aggregate_document=LuminescencePointDetectionDeviceControlAggregateDocument(
                 device_control_document=[
-                    LuminescencePointDetectionDeviceControlDocumentItem(
-                        device_type=measurement.device_type,
-                        firmware_version=measurement.firmware_version,
-                        detection_type=measurement.detection_type,
-                        detector_wavelength_setting=quantity_or_none(
-                            TQuantityValueNanometer,
-                            measurement.detector_wavelength_setting,
-                        ),
-                        detector_bandwidth_setting=quantity_or_none(
-                            TQuantityValueNanometer,
-                            measurement.detector_bandwidth_setting,
-                        ),
-                        detector_distance_setting__plate_reader_=quantity_or_none(
-                            TQuantityValueMillimeter,
-                            measurement.detector_distance_setting,
-                        ),
-                        scan_position_setting__plate_reader_=measurement.scan_position_setting,
-                        detector_gain_setting=measurement.detector_gain_setting,
-                        detector_carriage_speed_setting=measurement.detector_carriage_speed,
+                    add_custom_information_document(
+                        device_control_document,
+                        measurement.device_control_custom_info or {},
                     )
                 ]
             ),
@@ -430,44 +456,49 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_fluorescence_measurement_document(
         self, measurement: Measurement
     ) -> FluorescencePointDetectionMeasurementDocumentItems:
+        device_control_document = FluorescencePointDetectionDeviceControlDocumentItem(
+            device_type=measurement.device_type,
+            firmware_version=measurement.firmware_version,
+            detection_type=measurement.detection_type,
+            detector_wavelength_setting=quantity_or_none(
+                TQuantityValueNanometer,
+                measurement.detector_wavelength_setting,
+            ),
+            detector_bandwidth_setting=quantity_or_none(
+                TQuantityValueNanometer,
+                measurement.detector_bandwidth_setting,
+            ),
+            excitation_wavelength_setting=quantity_or_none(
+                TQuantityValueNanometer,
+                measurement.excitation_wavelength_setting,
+            ),
+            excitation_bandwidth_setting=quantity_or_none(
+                TQuantityValueNanometer,
+                measurement.excitation_bandwidth_setting,
+            ),
+            wavelength_filter_cutoff_setting=quantity_or_none(
+                TQuantityValueNanometer,
+                measurement.wavelength_filter_cutoff_setting,
+            ),
+            detector_distance_setting__plate_reader_=quantity_or_none(
+                TQuantityValueMillimeter,
+                measurement.detector_distance_setting,
+            ),
+            scan_position_setting__plate_reader_=measurement.scan_position_setting,
+            detector_gain_setting=measurement.detector_gain_setting,
+            number_of_averages=quantity_or_none(
+                TQuantityValueNumber, measurement.number_of_averages
+            ),
+            detector_carriage_speed_setting=measurement.detector_carriage_speed,
+        )
+
         return FluorescencePointDetectionMeasurementDocumentItems(
             measurement_identifier=measurement.identifier,
             device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
                 device_control_document=[
-                    FluorescencePointDetectionDeviceControlDocumentItem(
-                        device_type=measurement.device_type,
-                        firmware_version=measurement.firmware_version,
-                        detection_type=measurement.detection_type,
-                        detector_wavelength_setting=quantity_or_none(
-                            TQuantityValueNanometer,
-                            measurement.detector_wavelength_setting,
-                        ),
-                        detector_bandwidth_setting=quantity_or_none(
-                            TQuantityValueNanometer,
-                            measurement.detector_bandwidth_setting,
-                        ),
-                        excitation_wavelength_setting=quantity_or_none(
-                            TQuantityValueNanometer,
-                            measurement.excitation_wavelength_setting,
-                        ),
-                        excitation_bandwidth_setting=quantity_or_none(
-                            TQuantityValueNanometer,
-                            measurement.excitation_bandwidth_setting,
-                        ),
-                        wavelength_filter_cutoff_setting=quantity_or_none(
-                            TQuantityValueNanometer,
-                            measurement.wavelength_filter_cutoff_setting,
-                        ),
-                        detector_distance_setting__plate_reader_=quantity_or_none(
-                            TQuantityValueMillimeter,
-                            measurement.detector_distance_setting,
-                        ),
-                        scan_position_setting__plate_reader_=measurement.scan_position_setting,
-                        detector_gain_setting=measurement.detector_gain_setting,
-                        number_of_averages=quantity_or_none(
-                            TQuantityValueNumber, measurement.number_of_averages
-                        ),
-                        detector_carriage_speed_setting=measurement.detector_carriage_speed,
+                    add_custom_information_document(
+                        device_control_document,
+                        measurement.device_control_custom_info or {},
                     )
                 ]
             ),
@@ -484,14 +515,20 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
-        return SampleDocument(
+        # TODO(ASM gaps): we think this should be added to ASM
+        custom_info = {
+            "path length": measurement.path_length,
+        }
+        sample_doc = SampleDocument(
             sample_identifier=measurement.sample_identifier,
             location_identifier=measurement.location_identifier,
             well_plate_identifier=measurement.well_plate_identifier,
+            batch_identifier=measurement.batch_identifier,
             sample_role_type=measurement.sample_role_type.value
             if measurement.sample_role_type
             else None,
         )
+        return add_custom_information_document(sample_doc, custom_info)
 
     def _get_processed_data_aggregate_document(
         self, data: ProcessedData | None
