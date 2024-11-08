@@ -48,7 +48,6 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import quantity_or_none
 
 
@@ -405,7 +404,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 distribution_aggregate_document=DistributionAggregateDocument(
                     distribution_document=[
                         DistributionDocumentItem(
-                            distribution_identifier=random_uuid_str(),
+                            distribution_identifier=distribution.distribution_identifier,
                             particle_size=TQuantityValueMicrometer(
                                 value=distribution.particle_size
                             ),
