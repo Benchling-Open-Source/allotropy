@@ -55,7 +55,7 @@ def _rename_column(df: pd.DataFrame, column_name: str) -> pd.DataFrame:
     }
     for index, row in df.iterrows():
         label_tuple = tuple(row.loc[labels])
-        new_column_values[label_tuple][index] = row.loc[column_name]
+        new_column_values[label_tuple][int(str(index))] = row.loc[column_name]
 
     insert_index = df.columns.get_loc(column_name)
     df = df.drop(columns=[column_name])

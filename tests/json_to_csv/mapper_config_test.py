@@ -55,7 +55,8 @@ def test_create_dataset_config() -> None:
     assert not dataset_config.is_metadata
     assert dataset_config.include
     assert len(dataset_config.columns) == 1
-    assert dataset_config.get_column_config("path/to/column1").name == "Column1"
+    column_config = dataset_config.get_column_config("path/to/column1")
+    assert column_config and column_config.name == "Column1"
     assert not dataset_config.get_column_config("missing.path")
 
 
@@ -66,7 +67,8 @@ def test_create_empty_dataset_config() -> None:
     assert not dataset_config.is_metadata
     assert dataset_config.include
     assert not dataset_config.columns
-    assert dataset_config.get_column_config("missing/path").name == "missing.path"
+    column_config = dataset_config.get_column_config("missing/path")
+    assert column_config and column_config.name == "missing.path"
 
 
 def test_create_dataset_config_use_path_name_if_unique() -> None:

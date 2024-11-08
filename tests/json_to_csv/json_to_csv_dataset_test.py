@@ -38,12 +38,14 @@ def test_json_to_csv_dataset(
     expected_results: dict[str, str],
     *,
     overwrite: bool,
-):
+) -> None:
     with open(input_file) as infile:
         input_json = json.load(infile)
 
-    with open(config_file) as infile:
-        config = MapperConfig(json.load(infile))
+    config = MapperConfig()
+    if config_file:
+        with open(config_file) as infile:
+            config = MapperConfig(json.load(infile))
 
     results = json_to_csv(input_json, config)
 

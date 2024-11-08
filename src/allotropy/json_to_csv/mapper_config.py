@@ -31,7 +31,7 @@ class DatasetConfig:
     is_metadata: bool
     include: bool
     columns: list[ColumnConfig]
-    path_to_config: dict[str, list[ColumnConfig]]
+    path_to_config: dict[str, ColumnConfig]
 
     def __init__(self, config_json: dict[str, Any]) -> None:
         if "name" not in config_json:
@@ -63,7 +63,7 @@ class DatasetConfig:
             column_config.path: column_config for column_config in self.columns
         }
 
-    def _validate(self):
+    def _validate(self) -> None:
         # Assert all column names are different
         names = [column_config.name for column_config in self.columns]
         if not len(names) == len(set(names)):
@@ -74,7 +74,7 @@ class DatasetConfig:
         # Assert all paths are different
         paths = [column_config.path for column_config in self.columns]
         if not len(paths) == len(set(paths)):
-            duplicate_paths = {path for path in paths if paths.count(paths) > 1}
+            duplicate_paths = {path for path in paths if paths.count(path) > 1}
             msg = f"Error parsing dataset config, all columns must have unique paths, duplicate paths: {duplicate_paths}"
             raise ValueError(msg)
 
