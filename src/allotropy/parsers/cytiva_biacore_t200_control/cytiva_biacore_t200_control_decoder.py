@@ -536,6 +536,15 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
                         group.at[idx, "Time (s)"] = time_map[
                             list(time_map.keys())[i % len(time_map)]
                         ]
+        elif intermediate_json["application_template_details"].get(
+            "DataCollectionRate"
+        ):
+            group["Time (s)"] = group.groupby("Flow Cell Number").cumcount() * (
+                1
+                / intermediate_json["application_template_details"][
+                    "DataCollectionRate"
+                ]["value"]
+            )
         else:
             group["Time (s)"] = group.groupby("Flow Cell Number").cumcount() + 1
         cycle_number = group["Cycle Number"].iloc[0]
