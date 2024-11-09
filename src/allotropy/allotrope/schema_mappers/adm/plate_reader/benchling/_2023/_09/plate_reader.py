@@ -143,9 +143,6 @@ class Measurement:
     image_count_setting: float | None = None
     fluorescent_tag_setting: str | None = None
 
-    # Custom info
-    path_length: float | None = None
-
 
 @dataclass(frozen=True)
 class MeasurementGroup:
@@ -462,16 +459,11 @@ class Mapper:
         )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
-        # TODO(ASM gaps): we think this should be added to ASM
-        custom_info = {
-            "path length": measurement.path_length,
-        }
-        sample_doc = SampleDocument(
+        return SampleDocument(
             sample_identifier=measurement.sample_identifier,
             location_identifier=measurement.location_identifier,
             well_plate_identifier=measurement.well_plate_identifier,
         )
-        return add_custom_information_document(sample_doc, custom_info)
 
     def _get_processed_data_aggregate_document(
         self, data: ProcessedData | None

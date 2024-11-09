@@ -38,10 +38,9 @@ def _create_measurement(
     if not wavelength_match:
         raise AllotropeConversionError(INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG)
     if len(wavelength_match.groups()) > 1:
-        wavelength, path_length = wavelength_match.groups()
+        wavelength, _ = wavelength_match.groups()
     else:
         wavelength = wavelength_match.groups()[0]
-        path_length = None
 
     background_wavelength = well_plate_data.get(float, "Background Wvl. (nm)")
     background_absorbance = None
@@ -64,7 +63,6 @@ def _create_measurement(
         sample_identifier=well_plate_data[str, "Sample name"],
         location_identifier=well_plate_data[str, "Plate Position"],
         well_plate_identifier=well_plate_data.get(str, "Plate ID"),
-        path_length=float(path_length) if path_length else None,
     )
 
 
