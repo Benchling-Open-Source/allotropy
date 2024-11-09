@@ -191,15 +191,19 @@ class ReadData:
 
         read_mode = cls.get_read_mode(procedure_details)
         device_control_data = cls._get_device_control_data(procedure_details, read_mode)
-        measurement_labels = cls._get_measurement_labels(device_control_data, read_mode)
-
+        measurement_labels, label_aliases = cls._get_measurement_labels(
+            device_control_data, read_mode
+        )
+        all_labels = {
+            alias for aliases in label_aliases.values() for alias in aliases
+        }
         number_of_averages = device_control_data.get(MEASUREMENTS_DATA_POINT_KEY)
         read_height = device_control_data.get(READ_HEIGHT_KEY, "")
 
         return ReadData(
             read_mode=read_mode,
             step_label=device_control_data.get("Step Label"),
-            measurement_labels=measurement_labels,
+            measurement_labels=set(measurement_labels) | all_labels,
             detector_carriage_speed=device_control_data.get(READ_SPEED_KEY),
             # Absorbance attributes
             pathlength_correction=device_control_data.get(PATHLENGTH_CORRECTION_KEY),
@@ -208,7 +212,7 @@ class ReadData:
             detector_distance=try_float_or_none(read_height.split(" ")[0]),
             # Fluorescence attributes
             filter_sets=cls._get_filter_sets(
-                measurement_labels, device_control_data, read_mode
+                measurement_labels, label_aliases, device_control_data, read_mode
             ),
         )
 
@@ -242,11 +246,15 @@ class ReadData:
         raise AllotropeConversionError(msg)
 
     @classmethod
-    def _get_measurement_labels(cls, device_control_data: dict, read_mode: str) -> list:
+    def _get_measurement_labels(
+        cls, device_control_data: dict, read_mode: str
+    ) -> tuple[list[str], dict[str, set[str]]]:
         step_label = device_control_data.get("Step Label")
         label_prefix = f"{step_label}:" if step_label else ""
         measurement_labels = []
-
+        # Some measurement labels may be reported in more than one format in the result rows, e.g.
+        # fluorescence measurements may include bandwidths, or not: 360/40,460/40 or 360,460.
+        label_aliases: dict[str, set[str]] = {}
         if read_mode == ReadMode.ABSORBANCE:
             measurement_labels = cls._get_absorbance_measurement_labels(
                 label_prefix, device_control_data
@@ -259,16 +267,22 @@ class ReadData:
                 f"{label_prefix}{excitation},{emission}"
                 for excitation, emission in zip(excitations, emissions, strict=True)
             ]
+            label_aliases = {
+                f"{label_prefix}{excitation},{emission}": {
+                    f"{label_prefix}{excitation.split('/')[0]},{emission.split('/')[0]}"
+                }
+                for excitation, emission in zip(excitations, emissions, strict=True)
+            }
             if not measurement_labels:
                 measurement_labels = ["Alpha"]
 
         if read_mode == ReadMode.LUMINESCENCE:
-            emissions = device_control_data.get(EMISSION_KEY)
+            emissions = device_control_data.get(EMISSION_KEY, [])
             for emission in emissions:
                 label = "Lum" if emission in NAN_EMISSION_EXCITATION else emission
                 measurement_labels.append(f"{label_prefix}{label}")
 
-        return measurement_labels
+        return measurement_labels, label_aliases
 
     @classmethod
     def _get_absorbance_measurement_labels(
@@ -347,6 +361,7 @@ class ReadData:
     def _get_filter_sets(
         cls,
         measurement_labels: list[str],
+        label_aliases: dict[str, set[str]],
         device_control_data: dict,
         read_mode: ReadMode,
     ) -> dict[str, FilterSet]:
@@ -371,6 +386,10 @@ class ReadData:
                 mirror=mirror,
                 optics=optics[idx] if optics else None,
             )
+        for measurement_label, aliases in label_aliases.items():
+            for alias in aliases:
+                filter_data[alias] = filter_data[measurement_label]
+
         return filter_data
 
 
