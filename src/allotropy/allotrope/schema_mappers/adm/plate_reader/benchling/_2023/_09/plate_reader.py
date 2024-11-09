@@ -2,6 +2,7 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from enum import Enum
 
+from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
@@ -130,6 +131,8 @@ class Measurement:
     detector_carriage_speed: str | None = None
     compartment_temperature: float | None = None
     number_of_averages: float | None = None
+    electronic_absorbance_reference_wavelength_setting: float | None = None
+    electronic_absorbance_reference_absorbance: float | None = None
 
     # Optical imaging
     exposure_duration_setting: float | None = None
@@ -139,6 +142,9 @@ class Measurement:
     auto_focus_setting: bool | None = None
     image_count_setting: float | None = None
     fluorescent_tag_setting: str | None = None
+
+    # Custom info
+    path_length: float | None = None
 
 
 @dataclass(frozen=True)
@@ -322,7 +328,11 @@ class Mapper:
     def _get_ultraviolet_absorbance_measurement_document(
         self, measurement: Measurement, metadata: Metadata
     ) -> UltravioletAbsorbancePointDetectionMeasurementDocumentItems:
-        return UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
+        # TODO(ASM gaps): we think this should be added to ASM
+        measurement_custom_info = {
+            "electronic absorbance reference absorbance": measurement.electronic_absorbance_reference_absorbance
+        }
+        measurement_doc = UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
             measurement_identifier=measurement.identifier,
             sample_document=self._get_sample_document(measurement),
             device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
@@ -340,6 +350,10 @@ class Mapper:
                             TQuantityValueNumber, measurement.number_of_averages
                         ),
                         detector_carriage_speed_setting=measurement.detector_carriage_speed,
+                        electronic_absorbance_reference_wavelength_setting=quantity_or_none(
+                            TQuantityValueNanometer,
+                            measurement.electronic_absorbance_reference_wavelength_setting,
+                        ),
                     )
                 ]
             ),
@@ -353,6 +367,7 @@ class Mapper:
                 TQuantityValueDegreeCelsius, measurement.compartment_temperature
             ),
         )
+        return add_custom_information_document(measurement_doc, measurement_custom_info)
 
     def _get_luminescence_measurement_document(
         self, measurement: Measurement, metadata: Metadata
@@ -447,11 +462,16 @@ class Mapper:
         )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
-        return SampleDocument(
+        # TODO(ASM gaps): we think this should be added to ASM
+        custom_info = {
+            "path length": measurement.path_length,
+        }
+        sample_doc = SampleDocument(
             sample_identifier=measurement.sample_identifier,
             location_identifier=measurement.location_identifier,
             well_plate_identifier=measurement.well_plate_identifier,
         )
+        return add_custom_information_document(sample_doc, custom_info)
 
     def _get_processed_data_aggregate_document(
         self, data: ProcessedData | None

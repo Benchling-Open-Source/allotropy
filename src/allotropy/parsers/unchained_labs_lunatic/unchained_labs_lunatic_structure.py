@@ -34,8 +34,21 @@ def _create_measurement(
         msg = NO_MEASUREMENT_IN_PLATE_ERROR_MSG.format(wavelength_column)
         raise AllotropeConversionError(msg)
 
-    if not WAVELENGTH_COLUMNS_RE.match(wavelength_column):
+    wavelength_match = WAVELENGTH_COLUMNS_RE.match(wavelength_column)
+    if not wavelength_match:
         raise AllotropeConversionError(INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG)
+    if len(wavelength_match.groups()) > 1:
+        wavelength, path_length = wavelength_match.groups()
+    else:
+        wavelength = wavelength_match.groups()[0]
+        path_length = None
+
+    background_wavelength = well_plate_data.get(float, "Background Wvl. (nm)")
+    background_absorbance = None
+    if background_wavelength is not None:
+        background_absorbance = well_plate_data.get(
+            float, f"Background (A{int(background_wavelength)})"
+        )
 
     measurement_identifier = random_uuid_str()
     calculated_data.extend(
@@ -44,11 +57,14 @@ def _create_measurement(
     return Measurement(
         type_=MeasurementType.ULTRAVIOLET_ABSORBANCE,
         identifier=measurement_identifier,
-        detector_wavelength_setting=float(wavelength_column[1:]),
+        detector_wavelength_setting=float(wavelength),
+        electronic_absorbance_reference_wavelength_setting=background_wavelength,
+        electronic_absorbance_reference_absorbance=background_absorbance,
         absorbance=well_plate_data.get(float, wavelength_column, NaN),
         sample_identifier=well_plate_data[str, "Sample name"],
         location_identifier=well_plate_data[str, "Plate Position"],
         well_plate_identifier=well_plate_data.get(str, "Plate ID"),
+        path_length=float(path_length) if path_length else None,
     )
 
 
