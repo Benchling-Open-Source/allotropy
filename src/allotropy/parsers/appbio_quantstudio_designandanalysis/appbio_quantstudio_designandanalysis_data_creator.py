@@ -1,6 +1,7 @@
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_calculated_documents import (
     iter_presence_absence_calc_docs,
+    iter_primary_analysis_calc_docs,
     iter_relative_standard_curve_calc_docs,
     iter_standard_curve_calc_docs,
 )
@@ -52,6 +53,10 @@ def create_data(contents: DesignQuantstudioContents) -> Data:
             iter_presence_absence_calc_docs(
                 view_st_data,
             )
+        )
+    elif experiment_type == ExperimentType.primary_analysis_experiment:
+        calculated_documents = list(
+            iter_primary_analysis_calc_docs(view_st_data)
         )
     else:
         calculated_documents = []

@@ -33,6 +33,7 @@ class ExperimentType(Enum):
     standard_curve_qPCR_experiment = "standard curve qPCR experiment"
     qPCR_experiment = "qPCR experiment"
     presence_absence_qPCR_experiment = "presence/absence qPCR experiment"
+    primary_analysis_experiment = "primary analysis experiment"
 
 
 class ContainerType(Enum):

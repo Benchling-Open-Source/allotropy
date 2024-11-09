@@ -597,16 +597,29 @@ class Data:
                 "Target Call",
                 "Control Status",
             ],
+            ExperimentType.primary_analysis_experiment: [
+                "Results",
+                "Amplification Data",
+                "Multicomponent",
+                "Replicate Group Result",
+            ]
         }
 
-        possible_experiment_types = {
-            experiment_type
-            for experiment_type, expected_sheets in experiment_type_to_expected_sheets.items()
-            if all(contents.has_sheet(sheet_name) for sheet_name in expected_sheets)
+        raw_plugin_name = contents.header.get(str, "Plugin Name and Version")
+        experiment_type_to_plugin_regex = {
+            ExperimentType.standard_curve_qPCR_experiment: r"Standard Curve",
+            ExperimentType.relative_standard_curve_qPCR_experiment: r"Relative Quantification",
+            ExperimentType.genotyping_qPCR_experiment: r"Genotyping",
+            ExperimentType.melt_curve_qPCR_experiment: None,
+            ExperimentType.presence_absence_qPCR_experiment: r"Presence Absence",
+            ExperimentType.primary_analysis_experiment: r"^Primary Analysis v\d+\.\d+\.\d+$",
         }
 
-        if len(possible_experiment_types) == 1:
-            return possible_experiment_types.pop()
+        for experiment_type in experiment_type_to_expected_sheets:
+            expected_sheets = experiment_type_to_expected_sheets[experiment_type]
+            plugin_regex = experiment_type_to_plugin_regex[experiment_type]
+            if all(contents.has_sheet(sheet_name) for sheet_name in expected_sheets) and (not raw_plugin_name or not plugin_regex or bool(re.search(plugin_regex, raw_plugin_name))):
+                return experiment_type
 
-        msg = f"Unable to infer experiment type from sheets in the input, expected exactly one set of sheets from: {list(experiment_type_to_expected_sheets.values())}, got {list(contents.data.keys())}"
+        msg = "Unable to infer experiment type from sheets in the input"
         raise AllotropeConversionError(msg)
