@@ -276,9 +276,7 @@ def create_measurement_groups(
 ) -> MeasurementGroup:
     return MeasurementGroup(
         measurement_time=assert_not_none(
-            intermediate_structured_data["application_template_details"][
-                "properties"
-            ].get("Timestamp"),
+            intermediate_structured_data["system_information"].get("Timestamp"),
             "Timestamp",
         ),
         measurements=create_measurements(intermediate_structured_data),
