@@ -227,8 +227,12 @@ class Well:
         )
 
     @staticmethod
-    def create(reader: AppBioQuantStudioReader, experiment_type: ExperimentType) -> list[Well]:
-        if not (lines := reader.sections.get("Sample Setup", reader.sections.get("Results"))):
+    def create(
+        reader: AppBioQuantStudioReader, experiment_type: ExperimentType
+    ) -> list[Well]:
+        if not (
+            lines := reader.sections.get("Sample Setup", reader.sections.get("Results"))
+        ):
             msg = "Expected 'Sample Setup' or 'Results' section"
             raise AllotropeConversionError(msg)
 
@@ -299,7 +303,9 @@ class MulticomponentData:
         )
 
 
-def create_multicomponent_data(reader: AppBioQuantStudioReader) -> dict[int, MulticomponentData]:
+def create_multicomponent_data(
+    reader: AppBioQuantStudioReader,
+) -> dict[int, MulticomponentData]:
     if not (lines := reader.sections.get("Multicomponent Data")):
         return {}
     csv_stream = StringIO("\n".join(lines))

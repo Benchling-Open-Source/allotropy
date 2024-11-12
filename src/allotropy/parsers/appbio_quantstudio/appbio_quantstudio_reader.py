@@ -21,8 +21,15 @@ class AppBioQuantStudioReader:
         self.header = self._parse_header(reader)
         self.sections = {}
         for section_reader in reader.iter_sections(r"^\[.+\]"):
-            match = re.match(r"^\[(.+)\]", assert_not_none(section_reader.pop(), "Unexpected empty section"))
-            title = str(assert_not_none(match, f"Cannot read title section: {section_reader.get()}").groups()[0])
+            match = re.match(
+                r"^\[(.+)\]",
+                assert_not_none(section_reader.pop(), "Unexpected empty section"),
+            )
+            title = str(
+                assert_not_none(
+                    match, f"Cannot read title section: {section_reader.get()}"
+                ).groups()[0]
+            )
             self.sections[title] = list(section_reader.pop_until_empty())
 
     def _parse_header(self, reader: LinesReader) -> SeriesData:

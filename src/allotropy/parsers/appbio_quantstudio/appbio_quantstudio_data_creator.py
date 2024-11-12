@@ -81,7 +81,9 @@ def _create_processed_data(
         cycle_threshold_result=result.cycle_threshold_result,
         normalized_reporter_result=result.normalized_reporter_result,
         baseline_corrected_reporter_result=result.baseline_corrected_reporter_result,
-        data_cubes=_create_processed_data_cubes(amplification_data) if amplification_data else None,
+        data_cubes=_create_processed_data_cubes(amplification_data)
+        if amplification_data
+        else None,
         custom_info=result.extra_data,
     )
 
@@ -252,8 +254,7 @@ def get_well_item_results(
 
 
 def get_well_item_amp_data(
-    well_item: WellItem,
-    amp_data: dict[int, dict[str, AmplificationData]]
+    well_item: WellItem, amp_data: dict[int, dict[str, AmplificationData]]
 ) -> AmplificationData | None:
     return amp_data.get(well_item.identifier, {}).get(well_item.target_dna_description)
 
