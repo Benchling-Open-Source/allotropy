@@ -30,7 +30,7 @@ class AppBioQuantStudioReader:
                     match, f"Cannot read title section: {section_reader.get()}"
                 ).groups()[0]
             )
-            self.sections[title] = list(section_reader.pop_until_empty())
+            self.sections[title] = list(section_reader.lines)[1:]
 
     def _parse_header(self, reader: LinesReader) -> SeriesData:
         lines = [line.strip() for line in reader.pop_until(r"^\[.+\]") if line.strip()]

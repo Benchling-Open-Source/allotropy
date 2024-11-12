@@ -389,6 +389,7 @@ class Result:
             raise AllotropeConversionError(msg)
 
         lines_reader = LinesReader(lines)
+
         data_lines = list(lines_reader.pop_until_empty())
         csv_stream = StringIO("\n".join(data_lines))
         data = read_csv(csv_stream, sep="\t", thousands=r",").replace(np.nan, None)
