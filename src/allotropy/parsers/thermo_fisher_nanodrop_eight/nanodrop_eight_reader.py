@@ -19,8 +19,8 @@ class NanodropEightReader:
         header_data = {}
         # Header lines are expected to have a single 'key: value' pair, while table will have multiple
         # tab-separated column headers. So, detect header lines as:
-        #   <anything but a tab>:<any number of tabs><anything but a tab>
-        for line in reader.pop_while(match_pat=r"^[^\t]*:[\t]*[^\t]*$"):
+        #   <anything but a tab>:<any number of tabs><anything else>
+        for line in reader.pop_while(match_pat=r"^[^\t]*:[\t]*.*$"):
             key, value = line.split(":")
             header_data[key] = value.strip()
 
