@@ -296,7 +296,12 @@ def _get_plate_well_count(header: Header, wells: list[Well]) -> int | None:
 
     # Get well numbers via Well ID (1, 2, 3, ...) and well location (A1, B1, ...)
     well_ids = [well_item.identifier for well in wells for well_item in well.items]
-    well_location = [well_item.position for well in wells for well_item in well.items]
+    well_location = [
+        well_item.position
+        for well in wells
+        for well_item in well.items
+        if well_item.position
+    ]
     largest_column = sorted([str(loc[0]) for loc in well_location])[-1]
     largest_row = sorted(int(loc[1:]) for loc in well_location)[-1]
     well_number_by_position = (ord(largest_column.upper()) - ord("A") + 1) * largest_row
