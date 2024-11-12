@@ -68,7 +68,7 @@ def _create_processed_data_cubes(
 
 
 def _create_processed_data(
-    amplification_data: AmplificationData, result: Result
+    amplification_data: AmplificationData | None, result: Result
 ) -> ProcessedData:
     return ProcessedData(
         automatic_cycle_threshold_enabled_setting=result.automatic_cycle_threshold_enabled_setting,
@@ -81,7 +81,7 @@ def _create_processed_data(
         cycle_threshold_result=result.cycle_threshold_result,
         normalized_reporter_result=result.normalized_reporter_result,
         baseline_corrected_reporter_result=result.baseline_corrected_reporter_result,
-        data_cubes=_create_processed_data_cubes(amplification_data),
+        data_cubes=_create_processed_data_cubes(amplification_data) if amplification_data else None,
         custom_info=result.extra_data,
     )
 
@@ -193,9 +193,7 @@ def _create_measurement(
         reporter_dye_setting=well_item.reporter_dye_setting,
         quencher_dye_setting=well_item.quencher_dye_setting,
         passive_reference_dye_setting=header.passive_reference_dye_setting,
-        processed_data=_create_processed_data(amplification_data, result)
-        if amplification_data
-        else None,
+        processed_data=_create_processed_data(amplification_data, result),
         sample_custom_info=well_item.extra_data,
         data_cubes=data_cubes,
     )
@@ -255,7 +253,7 @@ def get_well_item_results(
 
 def get_well_item_amp_data(
     well_item: WellItem,
-    amp_data: dict[int, dict[str, AmplificationData]],
+    amp_data: dict[int, dict[str, AmplificationData]]
 ) -> AmplificationData | None:
     return amp_data.get(well_item.identifier, {}).get(well_item.target_dna_description)
 
