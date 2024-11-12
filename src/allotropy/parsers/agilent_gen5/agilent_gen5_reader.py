@@ -57,5 +57,5 @@ class AgilentGen5Reader:
 
         while plate_reader.current_line_exists():
             lines = list(plate_reader.pop_until_empty())
-            self.sections[lines[0].strip().split(":")[0].split("\t")[0]] = lines
+            self.sections[lines[0].split("\t")[0].strip(":")] = lines
             plate_reader.drop_empty()

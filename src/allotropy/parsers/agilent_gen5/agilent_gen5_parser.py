@@ -14,13 +14,13 @@ from allotropy.parsers.agilent_gen5.agilent_gen5_structure import (
     create_results,
     get_identifiers,
     get_kinetic_measurements,
+    get_results_section,
     get_temperature,
     HeaderData,
     KineticData,
     ReadData,
 )
 from allotropy.parsers.agilent_gen5.constants import (
-    DEFAULT_EXPORT_FORMAT_ERROR,
     NO_MEASUREMENTS_ERROR,
 )
 from allotropy.parsers.release_state import ReleaseState
@@ -36,8 +36,8 @@ class AgilentGen5Parser(VendorParser[Data, Model]):
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = AgilentGen5Reader(named_file_contents)
 
-        if "Results" not in reader.sections:
-            raise AllotropeConversionError(DEFAULT_EXPORT_FORMAT_ERROR)
+        if (results_section := get_results_section(reader)) is None:
+            raise AllotropeConversionError(NO_MEASUREMENTS_ERROR)
 
         header_data = HeaderData.create(
             reader.header_data, named_file_contents.original_file_path
@@ -59,7 +59,7 @@ class AgilentGen5Parser(VendorParser[Data, Model]):
         # otherwise each well will contain multiple measurement documents
         if kinetic_data:
             measurement_groups, calculated_data = create_kinetic_results(
-                reader.sections["Results"],
+                results_section,
                 header_data,
                 read_data,
                 sample_identifiers,
@@ -70,7 +70,7 @@ class AgilentGen5Parser(VendorParser[Data, Model]):
             )
         else:
             measurement_groups, calculated_data = create_results(
-                reader.sections["Results"],
+                results_section,
                 header_data,
                 read_data,
                 sample_identifiers,
