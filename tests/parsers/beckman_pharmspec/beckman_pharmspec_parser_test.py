@@ -2,14 +2,14 @@ from pathlib import Path
 
 import pytest
 
-from allotropy.allotrope.models.adm.light_obscuration.benchling._2023._12.light_obscuration import (
+from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
     DeviceSystemDocument,
     DistributionAggregateDocument,
-    DistributionItem,
-    LightObscurationAggregateDocument,
-    MeasurementDocumentItem,
+    DistributionDocumentItem,
+    MeasurementDocument,
     ProcessedDataAggregateDocument,
     SampleDocument,
+    SolutionAnalyzerAggregateDocument,
 )
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.beckman_pharmspec.beckman_pharmspec_parser import PharmSpecParser
@@ -21,62 +21,62 @@ TESTDATA = get_testdata_dir(__file__)
 
 def test_get_model() -> None:
     model = PharmSpecParser().to_allotrope(
-        NamedFileContents(open(Path(TESTDATA, "hiac_example_1.xlsx"), "rb"), "")
+        NamedFileContents(
+            open(Path(TESTDATA, "hiac_example_1.xlsx"), "rb"), "hiac_example_1.xlsx"
+        )
     )
     assert isinstance(
-        model.light_obscuration_aggregate_document, LightObscurationAggregateDocument
+        model.solution_analyzer_aggregate_document, SolutionAnalyzerAggregateDocument
     )
     assert isinstance(
-        model.light_obscuration_aggregate_document.device_system_document,
+        model.solution_analyzer_aggregate_document.device_system_document,
         DeviceSystemDocument,
     )
     assert (
-        model.light_obscuration_aggregate_document.device_system_document.equipment_serial_number
+        model.solution_analyzer_aggregate_document.device_system_document.equipment_serial_number
         == "1808303021"
     )
 
     assert (
-        model.light_obscuration_aggregate_document.light_obscuration_document[
+        model.solution_analyzer_aggregate_document.solution_analyzer_document[
             0
         ].measurement_aggregate_document.measurement_document
         is not None
     )
 
     assert isinstance(
-        model.light_obscuration_aggregate_document.light_obscuration_document[
+        model.solution_analyzer_aggregate_document.solution_analyzer_document[
             0
         ].measurement_aggregate_document.measurement_document[0],
-        MeasurementDocumentItem,
+        MeasurementDocument,
     )
 
     assert isinstance(
-        model.light_obscuration_aggregate_document.light_obscuration_document[0]
+        model.solution_analyzer_aggregate_document.solution_analyzer_document[0]
         .measurement_aggregate_document.measurement_document[0]
         .sample_document,
         SampleDocument,
     )
 
     assert (
-        model.light_obscuration_aggregate_document.light_obscuration_document[0]
+        model.solution_analyzer_aggregate_document.solution_analyzer_document[0]
         .measurement_aggregate_document.measurement_document[0]
         .sample_document.sample_identifier
         == "ExampleTimepoint"
     )
 
-    # # Single distribution document
-
     assert (
         len(
-            model.light_obscuration_aggregate_document.light_obscuration_document[
+            model.solution_analyzer_aggregate_document.solution_analyzer_document[
                 0
             ].measurement_aggregate_document.measurement_document
         )
         == 2
     )
-    for elem in model.light_obscuration_aggregate_document.light_obscuration_document[
+    for elem in model.solution_analyzer_aggregate_document.solution_analyzer_document[
         0
     ].measurement_aggregate_document.measurement_document:
-        assert isinstance(elem, MeasurementDocumentItem)
+        assert isinstance(elem, MeasurementDocument)
         assert isinstance(elem.measurement_identifier, str)
         assert isinstance(
             elem.processed_data_aggregate_document, ProcessedDataAggregateDocument
@@ -94,22 +94,22 @@ def test_get_model() -> None:
                     0
                 ].distribution_aggregate_document.distribution_document,
             )
-            == 1
+            == 5
         )
 
         assert isinstance(
-            elem.processed_data_aggregate_document.processed_data_document[0]
-            .distribution_aggregate_document.distribution_document[0]
-            .distribution[0],
-            DistributionItem,
+            elem.processed_data_aggregate_document.processed_data_document[
+                0
+            ].distribution_aggregate_document.distribution_document[0],
+            DistributionDocumentItem,
         )
 
         # 5 rows in the distribution document
         assert (
             len(
-                elem.processed_data_aggregate_document.processed_data_document[0]
-                .distribution_aggregate_document.distribution_document[0]
-                .distribution
+                elem.processed_data_aggregate_document.processed_data_document[
+                    0
+                ].distribution_aggregate_document.distribution_document
             )
             == 5
         )
@@ -118,8 +118,7 @@ def test_get_model() -> None:
         for i, particle_size in enumerate([2, 5, 10, 25, 50]):
             test = (
                 elem.processed_data_aggregate_document.processed_data_document[0]
-                .distribution_aggregate_document.distribution_document[0]
-                .distribution[i]
+                .distribution_aggregate_document.distribution_document[i]
                 .particle_size
             )
             assert test.value == particle_size
