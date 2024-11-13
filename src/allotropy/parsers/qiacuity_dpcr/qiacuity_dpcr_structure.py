@@ -6,7 +6,7 @@ from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.dpcr import 
     Measurement,
     Metadata,
 )
-from allotropy.exceptions import get_key_or_error, AllotropeConversionError
+from allotropy.exceptions import get_key_or_error
 from allotropy.parsers.constants import DEFAULT_EPOCH_TIMESTAMP
 from allotropy.parsers.qiacuity_dpcr.constants import (
     BRAND_NAME,
