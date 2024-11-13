@@ -19,6 +19,9 @@ import pandas as pd
 
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_reader import (
+    AppBioQuantStudioReader,
+)
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.calculated_data_documents.definition import Referenceable
@@ -57,19 +60,7 @@ class Header:
     experimental_data_identifier: str | None
 
     @staticmethod
-    def create(reader: LinesReader) -> Header:
-        lines = [line.strip() for line in reader.pop_until(r"^\[.+\]") if line.strip()]
-        if not lines:
-            msg = "Cannot parse data from empty header."
-            raise AllotropeConversionError(msg)
-
-        csv_stream = StringIO("\n".join(lines))
-        raw_data = read_csv(
-            csv_stream, header=None, sep="=", skipinitialspace=True, index_col=0
-        )
-        raw_data.index = raw_data.index.str.replace("*", "")
-        data = df_to_series_data(raw_data.T.replace(np.nan, None))
-
+    def create(data: SeriesData) -> Header:
         experiments_type_options = {
             "Standard Curve": ExperimentType.standard_curve_qPCR_experiment,
             "Relative Standard Curve": ExperimentType.relative_standard_curve_qPCR_experiment,
@@ -79,15 +70,16 @@ class Header:
             "Presence/Absence": ExperimentType.presence_absence_qPCR_experiment,
         }
 
-        plate_well_count_search = re.search("(96)|(384)", data[str, "Block Type"])
+        plate_well_count = None
+        block_type = data.get(str, "Block Type")
+        if block_type:
+            plate_well_count_search = re.search("(96)|(384)", block_type)
+            if plate_well_count_search:
+                plate_well_count = int(plate_well_count_search.group())
 
         return Header(
             measurement_time=data[str, "Experiment Run End Time"],
-            plate_well_count=(
-                None
-                if plate_well_count_search is None
-                else int(plate_well_count_search.group())
-            ),
+            plate_well_count=plate_well_count,
             experiment_type=assert_not_none(
                 experiments_type_options.get(
                     data[str, "Experiment Type"],
@@ -235,14 +227,15 @@ class Well:
         )
 
     @staticmethod
-    def create(reader: LinesReader, experiment_type: ExperimentType) -> list[Well]:
-        assert_not_none(
-            reader.drop_until(r"^\[Sample Setup\]"),
-            msg="Unable to find 'Sample Setup' section in file.",
-        )
+    def create(
+        reader: AppBioQuantStudioReader, experiment_type: ExperimentType
+    ) -> list[Well]:
+        if not (
+            lines := reader.sections.get("Sample Setup", reader.sections.get("Results"))
+        ):
+            msg = "Expected 'Sample Setup' or 'Results' section"
+            raise AllotropeConversionError(msg)
 
-        reader.pop()  # remove title
-        lines = list(reader.pop_until(r"^\[.+\]"))
         csv_stream = StringIO("\n".join(lines))
         data = read_csv(csv_stream, sep="\t").replace(np.nan, None)
 
@@ -261,11 +254,10 @@ class RawData:
     lines: list[str]
 
     @staticmethod
-    def create(reader: LinesReader) -> RawData | None:
-        if reader.match(r"^\[Raw Data\]"):
-            reader.pop()  # remove title
-            return RawData(lines=list(reader.pop_until(r"^\[.+\]")))
-        return None
+    def create(reader: AppBioQuantStudioReader) -> RawData | None:
+        if not (lines := reader.sections.get("Raw Data")):
+            return None
+        return RawData(lines)
 
 
 @dataclass(frozen=True)
@@ -277,15 +269,11 @@ class AmplificationData:
 
 
 def create_amplification_data(
-    reader: LinesReader,
+    reader: AppBioQuantStudioReader,
 ) -> dict[int, dict[str, AmplificationData]]:
-    assert_not_none(
-        reader.drop_until(r"^\[Amplification Data\]"),
-        msg="Unable to find 'Amplification Data' section in file.",
-    )
+    if not (lines := reader.sections.get("Amplification Data")):
+        return {}
 
-    reader.pop()  # remove title
-    lines = list(reader.pop_until(r"^\[.+\]"))
     csv_stream = StringIO("\n".join(lines))
     data = read_csv(csv_stream, sep="\t", thousands=r",")
 
@@ -315,11 +303,11 @@ class MulticomponentData:
         )
 
 
-def create_multicomponent_data(reader: LinesReader) -> dict[int, MulticomponentData]:
-    if not reader.match(r"^\[Multicomponent Data\]"):
+def create_multicomponent_data(
+    reader: AppBioQuantStudioReader,
+) -> dict[int, MulticomponentData]:
+    if not (lines := reader.sections.get("Multicomponent Data")):
         return {}
-    reader.pop()  # remove title
-    lines = list(reader.pop_until(r"^\[.+\]"))
     csv_stream = StringIO("\n".join(lines))
     data = read_csv(csv_stream, sep="\t", thousands=r",")
 
@@ -394,35 +382,33 @@ class Result:
 
     @staticmethod
     def create(
-        reader: LinesReader, experiment_type: ExperimentType
+        reader: AppBioQuantStudioReader, experiment_type: ExperimentType
     ) -> tuple[dict[int, dict[str, Result]], ResultMetadata]:
-        assert_not_none(
-            reader.drop_until(r"^\[Results\]"),
-            msg="Unable to find 'Results' section in file.",
-        )
+        if not (lines := reader.sections.get("Results")):
+            msg = "Expected 'Results' section in file"
+            raise AllotropeConversionError(msg)
 
-        reader.pop()  # remove title
-        data_lines = list(reader.pop_until_empty())
+        lines_reader = LinesReader(lines)
+
+        data_lines = list(lines_reader.pop_until_empty())
         csv_stream = StringIO("\n".join(data_lines))
         data = read_csv(csv_stream, sep="\t", thousands=r",").replace(np.nan, None)
         result = Result.create_results(data, experiment_type)
 
-        reader.drop_empty()
+        lines_reader.drop_empty()
 
-        if reader.match(r"\[.+\]"):
+        if lines_reader.is_empty():
             return result, ResultMetadata.create(
                 SeriesData(pd.Series()), experiment_type
             )
 
-        metadata_lines = list(reader.pop_until_empty())
+        metadata_lines = list(lines_reader.pop_until_empty())
         csv_stream = StringIO("\n".join(metadata_lines))
         raw_data = read_csv(
             csv_stream, header=None, sep="=", names=["index", "values"]
         ).astype(str)
         metadata = pd.Series(raw_data["values"].values, index=raw_data["index"])
         metadata.index = metadata.index.str.strip()
-
-        reader.drop_empty()
 
         return result, ResultMetadata.create(
             SeriesData(metadata.str.strip()), experiment_type
@@ -526,11 +512,9 @@ class MeltCurveRawData:
     derivative: list[float | None]
 
     @staticmethod
-    def create(reader: LinesReader) -> dict[int, MeltCurveRawData]:
-        if not reader.match(r"^\[Melt Curve Raw Data\]"):
+    def create(reader: AppBioQuantStudioReader) -> dict[int, MeltCurveRawData]:
+        if not (lines := reader.sections.get("Melt Curve Raw Data")):
             return {}
-        reader.pop()  # remove title
-        lines = list(reader.pop_until_empty())
         csv_stream = StringIO("\n".join(lines))
         data = read_csv(csv_stream, sep="\t", thousands=r",")
 

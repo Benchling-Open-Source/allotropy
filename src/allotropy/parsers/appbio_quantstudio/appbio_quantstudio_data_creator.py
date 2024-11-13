@@ -16,6 +16,7 @@ from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import 
     Metadata,
     ProcessedData,
 )
+from allotropy.parsers.agilent_gen5_image.constants import POSSIBLE_WELL_COUNTS
 from allotropy.parsers.appbio_quantstudio import constants
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     AmplificationData,
@@ -68,7 +69,7 @@ def _create_processed_data_cubes(
 
 
 def _create_processed_data(
-    amplification_data: AmplificationData, result: Result
+    amplification_data: AmplificationData | None, result: Result
 ) -> ProcessedData:
     return ProcessedData(
         automatic_cycle_threshold_enabled_setting=result.automatic_cycle_threshold_enabled_setting,
@@ -81,7 +82,9 @@ def _create_processed_data(
         cycle_threshold_result=result.cycle_threshold_result,
         normalized_reporter_result=result.normalized_reporter_result,
         baseline_corrected_reporter_result=result.baseline_corrected_reporter_result,
-        data_cubes=_create_processed_data_cubes(amplification_data),
+        data_cubes=_create_processed_data_cubes(amplification_data)
+        if amplification_data
+        else None,
         custom_info=result.extra_data,
     )
 
@@ -193,9 +196,7 @@ def _create_measurement(
         reporter_dye_setting=well_item.reporter_dye_setting,
         quencher_dye_setting=well_item.quencher_dye_setting,
         passive_reference_dye_setting=header.passive_reference_dye_setting,
-        processed_data=_create_processed_data(amplification_data, result)
-        if amplification_data
-        else None,
+        processed_data=_create_processed_data(amplification_data, result),
         sample_custom_info=well_item.extra_data,
         data_cubes=data_cubes,
     )
@@ -254,8 +255,7 @@ def get_well_item_results(
 
 
 def get_well_item_amp_data(
-    well_item: WellItem,
-    amp_data: dict[int, dict[str, AmplificationData]],
+    well_item: WellItem, amp_data: dict[int, dict[str, AmplificationData]]
 ) -> AmplificationData | None:
     return amp_data.get(well_item.identifier, {}).get(well_item.target_dna_description)
 
@@ -267,6 +267,7 @@ def _create_measurement_group(
     multi_data: dict[int, MulticomponentData],
     results_data: dict[int, dict[str, Result]],
     melt_data: dict[int, MeltCurveRawData],
+    plate_well_count: int | None,
 ) -> MeasurementGroup | None:
     measurements = [
         _create_measurement(
@@ -283,10 +284,37 @@ def _create_measurement_group(
     group = MeasurementGroup(
         analyst=header.analyst,
         experimental_data_identifier=header.experimental_data_identifier,
-        plate_well_count=try_int_or_nan(header.plate_well_count),
+        plate_well_count=try_int_or_nan(plate_well_count),
         measurements=[m for m in measurements if m is not None],
     )
     return group if group.measurements else None
+
+
+def _get_plate_well_count(header: Header, wells: list[Well]) -> int | None:
+    if header.plate_well_count is not None:
+        return header.plate_well_count
+
+    # Get well numbers via Well ID (1, 2, 3, ...) and well location (A1, B1, ...)
+    well_ids = [well_item.identifier for well in wells for well_item in well.items]
+    well_location = [
+        well_item.position
+        for well in wells
+        for well_item in well.items
+        if well_item.position
+    ]
+    largest_column = sorted([str(loc[0]) for loc in well_location])[-1]
+    largest_row = sorted(int(loc[1:]) for loc in well_location)[-1]
+    well_number_by_position = (ord(largest_column.upper()) - ord("A") + 1) * largest_row
+    largest_well_number = max(sorted(well_ids)[-1], well_number_by_position)
+
+    # Round up to the first possible well count GTE the count e.g:
+    # - If we have well id 94 but none greater than 96, it's a 96-well plate
+    for possible_count in POSSIBLE_WELL_COUNTS:
+        if largest_well_number > possible_count:
+            continue
+        return possible_count
+
+    return None
 
 
 def create_measurement_groups(
@@ -297,9 +325,17 @@ def create_measurement_groups(
     results_data: dict[int, dict[str, Result]],
     melt_data: dict[int, MeltCurveRawData],
 ) -> list[MeasurementGroup]:
+
+    plate_well_count = _get_plate_well_count(header, wells)
     groups = [
         _create_measurement_group(
-            header, well, amp_data, multi_data, results_data, melt_data
+            header,
+            well,
+            amp_data,
+            multi_data,
+            results_data,
+            melt_data,
+            plate_well_count,
         )
         for well in wells
     ]
