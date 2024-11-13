@@ -27,15 +27,17 @@ from allotropy.parsers.thermo_fisher_visionlite.constants import (
     DETECTION_TYPE,
     DEVICE_TYPE,
     PRODUCT_MANUFACTURER,
+    SAMPLE_NAME_COLS,
     SOFTWARE_NAME,
     UNSUPPORTED_KINETIC_MEASUREMENTS_ERROR,
 )
 from allotropy.parsers.thermo_fisher_visionlite.thermo_fisher_visionlite_reader import (
     ThermoFisherVisionliteReader,
 )
+from allotropy.parsers.utils.iterables import get_first_not_none
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import try_float_or_none
+from allotropy.parsers.utils.values import try_float_or_none, try_int_or_none
 
 
 class ExperimentType(Enum):
@@ -135,19 +137,23 @@ def _get_measurement_groups(
             )
         ]
 
+    wavelength_cols = _get_wavelength_cols(list(data.columns))
+
     return [
         MeasurementGroup(
             analyst=header.analyst,
             measurement_time=header.measurement_time,
             experiment_type=experiment_type.value,
-            measurements=_get_absorbance_measurements(row, experiment_type),
+            measurements=_get_absorbance_measurements(
+                row, experiment_type, wavelength_cols
+            ),
         )
         for _, row in data.iterrows()
     ]
 
 
 def _get_absorbance_measurements(
-    row: pd.Series[Any], experiment_type: ExperimentType
+    row: pd.Series[Any], experiment_type: ExperimentType, wavelength_cols=dict[int, str]
 ) -> list[Measurement]:
     data = SeriesData(row)
     if experiment_type == ExperimentType.QUANT:
@@ -159,21 +165,21 @@ def _get_absorbance_measurements(
             AbsorbanceMeasurement(absorbance=data[float, ordinate_col])
         ]
     elif experiment_type == ExperimentType.FIXED:
-        if not (wavelengths := _get_wavelengths(list(data.series.index))):
+        if not wavelength_cols:
             msg = "Only Fixed absorbance measurements are supported at this time."
         absorbance_measurements = [
             AbsorbanceMeasurement(
-                absorbance=data[float, f"{wavelength} nm   [A]"],
+                absorbance=data[float, col],
                 wavelength=wavelength,
             )
-            for wavelength in wavelengths
+            for wavelength, col in wavelength_cols.items()
         ]
 
     return [
         Measurement(
             type_=experiment_type.measurement_type,
             identifier=random_uuid_str(),
-            sample_identifier=data[str, "Sample Name"],
+            sample_identifier=data[str, SAMPLE_NAME_COLS],
             processed_data=(
                 _get_processed_data(data)
                 if experiment_type == ExperimentType.QUANT
@@ -213,12 +219,13 @@ def _get_concentration_unit(columns: list[str]) -> str:
     return ""
 
 
-def _get_wavelengths(columns: list[str]) -> list[int]:
-    wavelengths = []
+def _get_wavelength_cols(columns: list[str]) -> dict[int, str]:
+    wavelength_cols = {}
     for col in columns:
-        if match := re.match(r"(\d{1,}) nm   \[A\]", col):
-            wavelengths.append(int(match.groups()[0]))
-    return wavelengths
+        if match := re.match(r"(\d{1,}) nm   \[A\]|A(\d{1,})", col):
+            wavelength = get_first_not_none(try_int_or_none, match.groups())
+            wavelength_cols[wavelength] = col
+    return wavelength_cols
 
 
 def _get_data_cube(data: pd.DataFrame) -> DataCube:

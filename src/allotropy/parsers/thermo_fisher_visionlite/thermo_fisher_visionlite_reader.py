@@ -18,13 +18,14 @@ class ThermoFisherVisionliteReader:
         # try to get the header data (Scan and Kinetic files)
 
         first_line = reader.get()
-        if first_line is not None and not first_line.startswith("Sample Name"):
+        if first_line is not None and not first_line.lower().startswith("sample name"):
             self.header = SeriesData(
                 pd.Series(first_line.split(",")[:4], index=HEADER_COLS)
             )
             reader.pop()
 
-        data = reader.pop_csv_block_as_df(header="infer")
+        sep = "\t" if "\t" in first_line else ","
+        data = reader.pop_csv_block_as_df(header="infer", sep=sep)
         if data is None:
             msg = "Unable to get data, empty file."
             raise AllotropeConversionError(msg)
