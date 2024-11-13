@@ -37,7 +37,11 @@ from allotropy.parsers.thermo_fisher_visionlite.thermo_fisher_visionlite_reader 
 from allotropy.parsers.utils.iterables import get_first_not_none
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import try_float_or_none, try_int_or_none
+from allotropy.parsers.utils.values import (
+    assert_not_none,
+    try_float_or_none,
+    try_int_or_none,
+)
 
 
 class ExperimentType(Enum):
@@ -153,7 +157,9 @@ def _get_measurement_groups(
 
 
 def _get_absorbance_measurements(
-    row: pd.Series[Any], experiment_type: ExperimentType, wavelength_cols=dict[int, str]
+    row: pd.Series[Any],
+    experiment_type: ExperimentType,
+    wavelength_cols: dict[int, str],
 ) -> list[Measurement]:
     data = SeriesData(row)
     if experiment_type == ExperimentType.QUANT:
@@ -223,7 +229,9 @@ def _get_wavelength_cols(columns: list[str]) -> dict[int, str]:
     wavelength_cols = {}
     for col in columns:
         if match := re.match(r"(\d{1,}) nm   \[A\]|A(\d{1,})", col):
-            wavelength = get_first_not_none(try_int_or_none, match.groups())
+            wavelength = assert_not_none(
+                get_first_not_none(try_int_or_none, match.groups())
+            )
             wavelength_cols[wavelength] = col
     return wavelength_cols
 
