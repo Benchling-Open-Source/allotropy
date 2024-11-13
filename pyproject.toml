@@ -8,7 +8,6 @@ dynamic = ["version"]
 description = 'Converts to ASM (Allotrope Simple Model) from various file formats.'
 readme = "README.md"
 requires-python = ">=3.10"
-license = "MIT"
 keywords = ["allotropy", "allotrope", "asm", "benchling", "converters"]
 authors = [
   { name = "Benchling Open Source", email = "opensource@benchling.com" },
@@ -36,6 +35,7 @@ authors = [
   { name = "Alex Reis", email = "alex@manifold.bio" },
 ]
 classifiers = [
+  "License :: OSI Approved :: MIT License",
   "Development Status :: 4 - Beta",
   "Programming Language :: Python",
   "Programming Language :: Python :: 3.10",
