@@ -305,7 +305,7 @@ def _get_plate_well_count(header: Header, wells: list[Well]) -> int | None:
     largest_column = sorted([str(loc[0]) for loc in well_location])[-1]
     largest_row = sorted(int(loc[1:]) for loc in well_location)[-1]
     well_number_by_position = (ord(largest_column.upper()) - ord("A") + 1) * largest_row
-    largest_well_nubmer = max(sorted(well_ids)[-1], well_number_by_position)
+    largest_well_number = max(sorted(well_ids)[-1], well_number_by_position)
 
     # Round up to the first possible well count GTE the count e.g:
     # - If we have well id 94 but none greater than 96, it's a 96-well plate
