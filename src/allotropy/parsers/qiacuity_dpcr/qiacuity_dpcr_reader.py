@@ -14,6 +14,7 @@ class QiacuitydPCRReader:
         qiacuity_dpcr_data = read_csv(filepath_or_buffer=contents, header=1).replace(
             np.nan, None
         )
+        qiacuity_dpcr_data.columns = qiacuity_dpcr_data.columns.str.replace("�", "μ")
         column_names = qiacuity_dpcr_data.columns.tolist()
         # Rename the blank column to specify that it's the Well Name column
         column_names[0] = "Well Name"
