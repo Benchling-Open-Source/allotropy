@@ -37,7 +37,7 @@
                     "measurement time": "1970-01-01T00:00:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_FISHER_VISIONLITE_TEST_ID_1",
+                            "measurement identifier": "THERMO_FISHER_VISIONLITE_TEST_ID_2",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -67,7 +67,7 @@
                     "measurement time": "1970-01-01T00:00:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_FISHER_VISIONLITE_TEST_ID_2",
+                            "measurement identifier": "THERMO_FISHER_VISIONLITE_TEST_ID_4",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -104,6 +104,58 @@
             "software name": "VISIONlite",
             "ASM converter name": "allotropy_thermo_fisher_scientific_visionlite",
             "ASM converter version": "0.1.63"
+        },
+        "calculated data aggregate document": {
+            "calculated data document": [
+                {
+                    "calculated data name": "Result",
+                    "calculated result": {
+                        "value": 1.41361,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "THERMO_FISHER_VISIONLITE_TEST_ID_0",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "THERMO_FISHER_VISIONLITE_TEST_ID_1"
+                },
+                {
+                    "calculated data name": "Result",
+                    "calculated result": {
+                        "value": 1.16243,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "THERMO_FISHER_VISIONLITE_TEST_ID_2",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "THERMO_FISHER_VISIONLITE_TEST_ID_3"
+                },
+                {
+                    "calculated data name": "Result",
+                    "calculated result": {
+                        "value": 1.29738,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "THERMO_FISHER_VISIONLITE_TEST_ID_4",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "THERMO_FISHER_VISIONLITE_TEST_ID_5"
+                }
+            ]
         }
     }
 }
