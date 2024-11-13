@@ -2,47 +2,57 @@ from __future__ import annotations
 
 from collections import defaultdict
 from dataclasses import dataclass
+import math
 from pathlib import Path
 import re
 
 import pandas as pd
 
-from allotropy.allotrope.schema_mappers.adm.light_obscuration.benchling._2023._12.light_obscuration import (
+from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
     CalculatedDataItem,
+    DataProcessing,
     DataSource,
+    DistributionDocument,
+    Error,
     Measurement,
     MeasurementGroup,
     Metadata,
-    ProcessedData,
-    ProcessedDataFeature,
 )
 from allotropy.parsers.beckman_pharmspec.constants import (
+    DEVICE_TYPE,
     PHARMSPEC_SOFTWARE_NAME,
+    REQUIRED_DISTRIBUTION_DOCUMENT_KEYS,
     UNIT_LOOKUP,
     VALID_CALCS,
 )
+from allotropy.parsers.constants import NEGATIVE_ZERO, NOT_APPLICABLE
 from allotropy.parsers.utils.pandas import (
     map_rows,
     SeriesData,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
 
+ZERO_FLOAT = 0.0
 
-def _create_processed_data(data: SeriesData) -> ProcessedDataFeature:
-    return ProcessedDataFeature(
-        identifier=random_uuid_str(),
+
+def _create_processed_data(data: SeriesData) -> DistributionDocument:
+
+    return DistributionDocument(
+        distribution_identifier=random_uuid_str(),
         particle_size=data[float, "Particle Size(µm)"],
         cumulative_count=data[float, "Cumulative Count"],
         cumulative_particle_density=data[float, "Cumulative Counts/mL"],
-        differential_particle_density=data.get(float, "Differential Counts/mL"),
-        differential_count=data.get(float, "Differential Count"),
+        differential_particle_density=data.get(
+            float, "Differential Counts/mL", NEGATIVE_ZERO
+        ),
+        differential_count=data.get(float, "Differential Count", NEGATIVE_ZERO),
     )
 
 
 @dataclass(frozen=True, kw_only=True)
 class Distribution:
     name: str
-    features: list[ProcessedDataFeature]
+    features: list[DistributionDocument]
     is_calculated: bool
 
     @staticmethod
@@ -72,8 +82,6 @@ class Header:
     dilution_factor_setting: float
     analyst: str
     equipment_serial_number: str
-    detector_identifier: str
-    detector_model_number: str
     software_version: str
 
     @staticmethod
@@ -98,20 +106,24 @@ class Header:
                 data.series.iloc[0]
             ),
             equipment_serial_number=data[str, "Sensor Serial Number"],
-            detector_identifier="",
-            detector_model_number=data[str, "Sensor Model"],
         )
 
 
 def create_metadata(header: Header, file_path: str) -> Metadata:
+    path = Path(file_path)
     return Metadata(
-        file_name=Path(file_path).name,
+        file_name=path.name,
         unc_path=file_path,
         software_name=PHARMSPEC_SOFTWARE_NAME,
         software_version=header.software_version,
-        detector_identifier=header.detector_identifier,
-        detector_model_number=header.detector_model_number,
         equipment_serial_number=header.equipment_serial_number,
+        asm_file_identifier=path.with_suffix(".json").name,
+        data_system_instance_identifier=NOT_APPLICABLE,
+        flush_volume_setting=header.flush_volume_setting,
+        detector_view_volume=header.detector_view_volume,
+        repetition_setting=header.repetition_setting,
+        sample_volume_setting=header.sample_volume_setting,
+        device_type=DEVICE_TYPE,
     )
 
 
@@ -125,18 +137,25 @@ def create_measurement_groups(
                 Measurement(
                     identifier=distribution.name,
                     measurement_time=header.measurement_time,
-                    flush_volume_setting=header.flush_volume_setting,
-                    detector_view_volume=header.detector_view_volume,
-                    repetition_setting=header.repetition_setting,
-                    sample_volume_setting=header.sample_volume_setting,
                     sample_identifier=header.sample_identifier,
-                    processed_data=ProcessedData(
+                    data_processing=DataProcessing(
                         dilution_factor_setting=header.dilution_factor_setting,
-                        distributions=distribution.features,
                     ),
+                    distribution_documents=distribution.features,
+                    errors=[
+                        Error(
+                            error=NOT_APPLICABLE,
+                            feature=f"{key.replace('_', ' ')} - {feature.distribution_identifier}",
+                        )
+                        for feature in distribution.features
+                        for key in feature.__dict__.keys()
+                        if key in REQUIRED_DISTRIBUTION_DOCUMENT_KEYS
+                        and is_negative_zero(feature.__dict__[key])
+                    ],
                 )
                 for distribution in [x for x in distributions if not x.is_calculated]
             ],
+            data_processing_time=header.measurement_time,
         )
     ]
 
@@ -161,7 +180,7 @@ def create_calculated_data(
             unit=UNIT_LOOKUP[name],
             data_sources=[
                 DataSource(
-                    identifier=x.identifier,
+                    identifier=x.distribution_identifier,
                     feature=name.replace("_", " "),
                 )
                 for x in particle_size_sources[feature.particle_size]
@@ -170,7 +189,13 @@ def create_calculated_data(
         for distribution in distributions
         for feature in distribution.features
         if distribution.is_calculated
-        # Ignore "identifier" attribute, and skip empty values
+        # Ignore "distribution_identifier" attribute, and skip empty or -0.0 values
         for name, value in feature.__dict__.items()
-        if name != "identifier" and value is not None
+        if name != "distribution_identifier"
+        and value is not None
+        and not is_negative_zero(value)
     ]
+
+
+def is_negative_zero(x: float) -> bool:
+    return x == ZERO_FLOAT and math.copysign(1, x) == -1
