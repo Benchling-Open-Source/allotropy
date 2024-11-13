@@ -20,7 +20,6 @@ class ThermoFisherVisionliteReader:
     def __init__(self, named_file_contents: NamedFileContents) -> None:
         reader = CsvReader(read_to_lines(named_file_contents))
 
-        first_line = reader.get()
         if (first_line := reader.get()) is None:
             msg = "Unable to get data, empty file."
             raise AllotropeConversionError(msg)
