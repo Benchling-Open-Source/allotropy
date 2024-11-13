@@ -4,8 +4,12 @@ import pandas as pd
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
-from allotropy.parsers.thermo_fisher_visionlite.constants import HEADER_COLS
+from allotropy.parsers.thermo_fisher_visionlite.constants import (
+    HEADER_COLS,
+    SAMPLE_NAME_COLS,
+)
 from allotropy.parsers.utils.pandas import SeriesData
+from allotropy.parsers.utils.values import assert_not_none
 
 
 class ThermoFisherVisionliteReader:
@@ -18,15 +22,20 @@ class ThermoFisherVisionliteReader:
         # try to get the header data (Scan and Kinetic files)
 
         first_line = reader.get()
-        if first_line is not None and not first_line.lower().startswith("sample name"):
+        if (first_line := reader.get()) is None:
+            msg = "Unable to get data, empty file."
+            raise AllotropeConversionError(msg)
+
+        if not first_line.lower().startswith("sample name"):
             self.header = SeriesData(
                 pd.Series(first_line.split(",")[:4], index=HEADER_COLS)
             )
             reader.pop()
 
         sep = "\t" if "\t" in first_line else ","
-        data = reader.pop_csv_block_as_df(header="infer", sep=sep)
-        if data is None:
-            msg = "Unable to get data, empty file."
-            raise AllotropeConversionError(msg)
+        data = assert_not_none(
+            reader.pop_csv_block_as_df(
+                header="infer", sep=sep, dtype={col: str for col in SAMPLE_NAME_COLS}
+            )
+        )
         self.data = data.replace(np.nan, None)
