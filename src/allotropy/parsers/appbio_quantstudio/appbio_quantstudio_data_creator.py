@@ -310,7 +310,7 @@ def _get_plate_well_count(header: Header, wells: list[Well]) -> int | None:
     # Round up to the first possible well count GTE the count e.g:
     # - If we have well id 94 but none greater than 96, it's a 96-well plate
     for possible_count in POSSIBLE_WELL_COUNTS:
-        if largest_well_nubmer > possible_count:
+        if largest_well_number > possible_count:
             continue
         return possible_count
 
