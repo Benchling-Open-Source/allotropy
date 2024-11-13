@@ -22,7 +22,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 
 class MethodicalMindParser(VendorParser[Data, Model]):
-    DISPLAY_NAME = "Methodical Mind"
+    DISPLAY_NAME = "MSD Methodical Mind"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "txt"
     SCHEMA_MAPPER = Mapper

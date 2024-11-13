@@ -1,0 +1,137 @@
+
+
+Software Version	3.12.08
+
+
+
+Experiment File Path:	Y:\Downloads\Cell_Count_DAPI_GFP (1).xpt
+Protocol File Path:	
+
+
+
+Plate Number	Plate 1
+Date	3/5/2020
+Time	8:23:01 AM
+Reader Type:	Cytation7
+Reader Serial Number:	172EM-02
+Reading Type	Reader
+
+Procedure Details
+
+Plate Type	Corning 96 well for AutoScratch (Use plate lid)
+Eject plate on completion	
+Read	Image Montage
+	Full Plate
+	Objective: 4x
+	Field of View: Full WFOV
+	Channel 1:  DAPI 377,447
+	    LED intensity: 10, Integration time: 10 msec, Camera gain: 24
+	    Autofocus with optional scan
+	    Minimum focus metric ratio: 3
+	    Scan distance: 600 µm
+	    Scan increment: 50 µm
+	    Minimum focus delta: 8
+	    Percent of capture exposure for focus: 75
+	    Offset from bottom of well: 0 µm
+	    Vibration CV threshold: 0.01
+	    Images to average: 1
+	Channel 2:  GFP 469,525
+	    LED intensity: 10, Integration time: 78 msec, Camera gain: 24
+	    Use focal height from first channel with offset of 0 µm
+	    Vibration CV threshold: 0.01
+	    Images to average: 1
+	Horizontal offset: 0 µm, Vertical offset: 0 µm
+	Delay after plate movement: 300 msec
+	Montage rows: 2, columns: 2
+	Montage horizontal spacing: 3130 µm, vertical spacing: 3130 µm
+	Montage autofocus option: Autofocus option based on objective size
+	Ignore montage images outside of well
+
+Cell Count
+	1	2	3	4	5	6	7	8	9	10	11	12
+A	12087	13478	11855	10405	8320	6743	5933	4055	2661	1410	1133	483	Cell Count
+B	8528	9229	9145	7898	7794	6313	5804	3457	2598	1464	718	455	Cell Count
+C	8559	9370	9998	9297	7498	6272	5678	3923	2556	2143	1572	408	Cell Count
+D	8211	8761	8555	8219	7422	6171	5996	3768	2880	1897	1056	662	Cell Count
+E	9432	11057	10717	10603	7918	6689	5053	3871	2209	1506	1099	660	Cell Count
+F	8917	10619	10173	9313	8295	6691	5342	4180	2862	1691	874	660	Cell Count
+G	9378	10857	9894	9165	7524	6009	5683	4306	2857	1480	613	445	Cell Count
+H	8900	9140	9763	8966	8285	6484	6503	3939	3241	1495	708	477	Cell Count
+
+Cell Count_2
+	1	2	3	4	5	6	7	8	9	10	11	12
+A	10589	11794	10390	8799	6939	5103	3724	2803	1728	807	444	203	Cell Count_2
+B	7182	7154	6409	5652	4955	3938	3243	2496	1612	820	401	212	Cell Count_2
+C	7591	8092	8460	7327	6061	4927	3805	2853	1885	940	429	195	Cell Count_2
+D	7349	7337	7323	6549	5825	4665	3838	3021	2021	972	432	206	Cell Count_2
+E	8170	9176	8679	7550	6010	4973	3831	2807	1706	842	396	212	Cell Count_2
+F	7934	8936	8496	7550	6174	5194	4152	3058	1989	944	437	198	Cell Count_2
+G	8527	8971	7291	6101	5103	4175	3355	2477	1678	800	367	187	Cell Count_2
+H	7765	7865	7945	7261	5968	5128	3969	2881	2060	910	445	214	Cell Count_2
+
+Object Size
+	1	2	3	4	5	6	7	8	9	10	11	12
+A	20.2	20.0	19.3	19.3	20.1	21.4	24.3	23.3	23.8	24.6	24.9	22.0	Object Size
+B	22.9	23.1	23.3	23.0	23.7	24.1	25.9	23.0	24.1	24.4	23.6	23.3	Object Size
+C	22.0	21.4	20.6	21.5	21.1	22.0	22.2	21.9	21.6	24.9	25.0	22.4	Object Size
+D	21.4	22.1	21.3	22.2	21.9	22.3	23.8	21.0	22.6	23.7	23.3	22.5	Object Size
+E	21.8	21.1	20.6	22.0	22.0	22.8	22.1	21.9	22.3	23.8	23.5	20.9	Object Size
+F	21.7	21.3	20.6	20.7	21.5	21.1	21.6	21.6	22.3	22.9	23.2	22.2	Object Size
+G	21.5	21.2	21.8	23.2	23.1	23.0	24.0	24.8	24.7	23.9	22.8	21.3	Object Size
+H	22.1	21.6	21.3	20.6	23.0	20.7	24.5	21.9	24.5	23.9	21.6	23.9	Object Size
+
+Object Area
+	1	2	3	4	5	6	7	8	9	10	11	12
+A	326	319	296	297	320	363	460	425	441	469	489	380	Object Area
+B	411	420	428	418	443	454	522	415	454	462	435	430	Object Area
+C	381	364	338	367	352	383	389	379	367	483	489	395	Object Area
+D	363	387	358	388	380	394	443	347	402	440	429	399	Object Area
+E	377	352	337	383	384	409	385	378	391	443	441	353	Object Area
+F	374	360	337	339	366	353	370	367	393	411	423	393	Object Area
+G	369	355	375	423	420	415	453	478	474	444	405	360	Object Area
+H	385	372	359	338	418	338	468	377	466	446	365	447	Object Area
+
+Object Sum Area
+	1	2	3	4	5	6	7	8	9	10	11	12
+A	3.45E+06	3.77E+06	3.07E+06	2.61E+06	2.22E+06	1.85E+06	1.71E+06	1.19E+06	7.63E+05	3.79E+05	2.17E+05	7.72E+04	Object Sum Area
+B	2.95E+06	3E+06	2.74E+06	2.36E+06	2.19E+06	1.79E+06	1.69E+06	1.04E+06	7.31E+05	3.79E+05	1.74E+05	9.11E+04	Object Sum Area
+C	2.89E+06	2.94E+06	2.86E+06	2.69E+06	2.13E+06	1.89E+06	1.48E+06	1.08E+06	6.91E+05	4.54E+05	2.1E+05	7.7E+04	Object Sum Area
+D	2.67E+06	2.84E+06	2.62E+06	2.54E+06	2.21E+06	1.84E+06	1.7E+06	1.05E+06	8.13E+05	4.27E+05	1.85E+05	8.22E+04	Object Sum Area
+E	3.08E+06	3.23E+06	2.92E+06	2.89E+06	2.31E+06	2.04E+06	1.47E+06	1.06E+06	6.68E+05	3.73E+05	1.75E+05	7.49E+04	Object Sum Area
+F	2.96E+06	3.22E+06	2.87E+06	2.56E+06	2.26E+06	1.83E+06	1.53E+06	1.12E+06	7.83E+05	3.88E+05	1.85E+05	7.78E+04	Object Sum Area
+G	3.14E+06	3.19E+06	2.73E+06	2.58E+06	2.14E+06	1.73E+06	1.52E+06	1.19E+06	7.96E+05	3.55E+05	1.49E+05	6.74E+04	Object Sum Area
+H	2.99E+06	2.92E+06	2.85E+06	2.46E+06	2.5E+06	1.73E+06	1.86E+06	1.09E+06	9.61E+05	4.06E+05	1.62E+05	9.56E+04	Object Sum Area
+
+Object Mean[Tsf[Stitched[DAPI 377,447]]]
+	1	2	3	4	5	6	7	8	9	10	11	12
+A	29978	30502	29207	28494	28941	29588	31133	29925	29419	29523	29856	28169	Object Mean[Tsf[Stitched[DAPI 377,447]]]
+B	28394	27926	28053	27385	29000	28888	29732	26770	27708	28847	28678	28854	Object Mean[Tsf[Stitched[DAPI 377,447]]]
+C	30733	30208	28882	29725	29076	29615	29814	28767	28303	31411	30461	28965	Object Mean[Tsf[Stitched[DAPI 377,447]]]
+D	29700	30392	28902	29764	29981	29761	31536	28276	30094	30450	29375	29872	Object Mean[Tsf[Stitched[DAPI 377,447]]]
+E	30769	29808	29437	31015	29974	30629	30142	30012	29005	30434	29565	28581	Object Mean[Tsf[Stitched[DAPI 377,447]]]
+F	30372	29884	28914	28494	29806	28929	29768	29492	29710	29759	30022	28197	Object Mean[Tsf[Stitched[DAPI 377,447]]]
+G	29429	28747	27536	28312	27400	26779	27755	28413	27710	26450	26883	25753	Object Mean[Tsf[Stitched[DAPI 377,447]]]
+H	30721	30188	29917	28459	30438	28202	30675	28435	29589	28281	26776	27079	Object Mean[Tsf[Stitched[DAPI 377,447]]]
+
+Object Circularity
+	1	2	3	4	5	6	7	8	9	10	11	12
+A	0.605	0.622	0.632	0.626	0.62	0.609	0.553	0.597	0.599	0.557	0.522	0.555	Object Circularity
+B	0.671	0.669	0.662	0.664	0.634	0.631	0.577	0.635	0.602	0.568	0.559	0.572	Object Circularity
+C	0.606	0.597	0.594	0.592	0.597	0.591	0.599	0.601	0.581	0.51	0.482	0.581	Object Circularity
+D	0.613	0.611	0.595	0.589	0.59	0.586	0.556	0.587	0.564	0.537	0.524	0.54	Object Circularity
+E	0.601	0.593	0.6	0.591	0.582	0.569	0.583	0.579	0.563	0.566	0.528	0.564	Object Circularity
+F	0.595	0.592	0.6	0.596	0.583	0.587	0.578	0.57	0.567	0.556	0.538	0.552	Object Circularity
+G	0.607	0.636	0.659	0.655	0.65	0.655	0.628	0.603	0.593	0.594	0.57	0.598	Object Circularity
+H	0.607	0.593	0.592	0.602	0.574	0.619	0.546	0.611	0.547	0.557	0.588	0.55	Object Circularity
+
+Object Perimeter
+	1	2	3	4	5	6	7	8	9	10	11	12
+A	66.3	65.7	63.0	63.0	65.6	70.2	81.6	76.8	78.2	82.0	84.6	72.9	Object Perimeter
+B	74.6	75.4	76.3	75.2	78.1	79.1	87.4	75.3	79.4	80.5	77.9	77.2	Object Perimeter
+C	72.0	70.0	67.5	70.7	69.0	72.5	73.0	71.8	70.8	84.3	85.5	73.5	Object Perimeter
+D	70.0	72.4	69.6	72.9	72.0	73.5	79.3	68.4	74.6	78.7	77.3	74.5	Object Perimeter
+E	71.6	68.9	67.4	72.6	72.6	75.4	72.5	71.6	73.2	78.4	78.7	69.0	Object Perimeter
+F	71.3	69.8	67.4	67.6	70.7	69.1	70.9	70.7	73.4	75.6	76.8	73.4	Object Perimeter
+G	70.7	69.1	70.9	75.9	75.5	75.0	79.1	81.8	81.7	78.5	74.6	69.6	Object Perimeter
+H	72.5	71.1	70.0	67.6	76.9	67.4	83.0	71.7	82.8	79.9	70.7	79.7	Object Perimeter
+
