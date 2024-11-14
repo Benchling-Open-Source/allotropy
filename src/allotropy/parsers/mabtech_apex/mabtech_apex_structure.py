@@ -101,7 +101,7 @@ def _create_measurement(plate_data: SeriesData) -> Measurement:
                 "Preset Brightness",
             }
         ),
-        custom_info=plate_data.get_unread({"Machine ID"}),
+        custom_info=plate_data.get_unread(skip={"Machine ID"}),
     )
     if not (measurement.processed_data and measurement.processed_data.features):
         logging.warning(f"no image features identified for {well_plate}")
