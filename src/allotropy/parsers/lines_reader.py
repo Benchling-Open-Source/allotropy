@@ -200,7 +200,6 @@ class CsvReader(LinesReader):
         if lines := self.pop_csv_block_as_lines(empty_pat):
             return read_csv(
                 StringIO("\n".join(lines)),
-                dtype=None,
                 # Prevent pandas from rounding decimal values, at the cost of some speed.
                 float_precision="round_trip",
                 header=header,
