@@ -225,6 +225,17 @@ class SeriesData:
                     stacklevel=2,
                 )
 
+    def get_custom_keys(self, key_or_keys: str | set[str]) -> dict[str, str]:
+        keys = key_or_keys if isinstance(key_or_keys, set) else {key_or_keys}
+        return {
+            key: self.get(str, key)
+            for key in keys
+            if self.has_key(key)
+        }
+
+    def mark_read(self, key_or_keys: str | set[str]) -> None:
+        self.read_keys |= key_or_keys if isinstance(key_or_keys, set) else {key_or_keys}
+
     def get_unread(self, skip: set[str] | None = None) -> dict[str, float | str | None]:
         skip = skip or set()
         # Mark explicitly skipped keys as "read". This not only covers the check below, but removes

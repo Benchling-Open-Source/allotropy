@@ -24,6 +24,17 @@
                                         "illumination setting": {
                                             "value": 400.0,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Calibrated Exposure By Mabtech": "13400.0",
+                                            "Preset AOI": "1650",
+                                            "Average Sensor Value": "2729.0",
+                                            "Analyte Secreting Population": "White LED",
+                                            "Preset Emphasis": "Normal",
+                                            "Max Sensor Value": "2969.0",
+                                            "Preset Brightness": "100",
+                                            "Preset Name": "User-Defined Normal",
+                                            "Preset Contrast": "100"
                                         }
                                     }
                                 ]
@@ -36,6 +47,10 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "Preset Size": "150",
+                                            "Masked": "NO"
+                                        },
                                         "processed data identifier": "MABTECH_APEX_TEST_ID_4",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -67,26 +82,14 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Machine ID": "0.0",
-                                "Preset Size": 150.0,
-                                "Read Date": "2024-01-29 09:06:35",
-                                "Max Sensor Value": 2969.0,
-                                "Calibrated Exposure By Mabtech": 13400.0,
-                                "Preset AOI": 1650.0,
-                                "Analyte Secreting Population": "White LED",
-                                "Preset Emphasis": "Normal",
-                                "Average Sensor Value": 2729.0,
-                                "Preset Contrast": 100.0,
-                                "Saved Date": "2024-01-29 09:18:05",
-                                "Preset Name": "User-Defined Normal",
-                                "Preset Brightness": 100.0,
-                                "Masked": "NO"
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Saved Date": "2024-01-29 09:18:05",
+                        "Read Date": "2024-01-29 09:06:35"
+                    }
                 },
                 "analyst": "Admin"
             },
@@ -112,6 +115,17 @@
                                         "illumination setting": {
                                             "value": 400.0,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Calibrated Exposure By Mabtech": "13400.0",
+                                            "Preset AOI": "1650",
+                                            "Average Sensor Value": "2751.0",
+                                            "Analyte Secreting Population": "White LED",
+                                            "Preset Emphasis": "Normal",
+                                            "Max Sensor Value": "2988.0",
+                                            "Preset Brightness": "100",
+                                            "Preset Name": "User-Defined Normal",
+                                            "Preset Contrast": "100"
                                         }
                                     }
                                 ]
@@ -124,6 +138,10 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "Preset Size": "150",
+                                            "Masked": "NO"
+                                        },
                                         "processed data identifier": "MABTECH_APEX_TEST_ID_9",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -155,26 +173,14 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Machine ID": "0.0",
-                                "Preset Size": 150.0,
-                                "Read Date": "2024-01-29 09:06:39",
-                                "Max Sensor Value": 2988.0,
-                                "Calibrated Exposure By Mabtech": 13400.0,
-                                "Preset AOI": 1650.0,
-                                "Analyte Secreting Population": "White LED",
-                                "Preset Emphasis": "Normal",
-                                "Average Sensor Value": 2751.0,
-                                "Preset Contrast": 100.0,
-                                "Saved Date": "2024-01-29 09:18:05",
-                                "Preset Name": "User-Defined Normal",
-                                "Preset Brightness": 100.0,
-                                "Masked": "NO"
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Saved Date": "2024-01-29 09:18:05",
+                        "Read Date": "2024-01-29 09:06:39"
+                    }
                 },
                 "analyst": "Admin"
             },
@@ -200,6 +206,17 @@
                                         "illumination setting": {
                                             "value": 400.0,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Calibrated Exposure By Mabtech": "13400.0",
+                                            "Preset AOI": "1650",
+                                            "Average Sensor Value": "1328.0",
+                                            "Analyte Secreting Population": "White LED",
+                                            "Preset Emphasis": "Normal",
+                                            "Max Sensor Value": "2149.0",
+                                            "Preset Brightness": "100",
+                                            "Preset Name": "User-Defined Normal",
+                                            "Preset Contrast": "100"
                                         }
                                     }
                                 ]
@@ -212,6 +229,10 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "Preset Size": "150",
+                                            "Masked": "NO"
+                                        },
                                         "processed data identifier": "MABTECH_APEX_TEST_ID_14",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -243,26 +264,14 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Machine ID": "0.0",
-                                "Preset Size": 150.0,
-                                "Read Date": "2024-01-29 09:06:40",
-                                "Max Sensor Value": 2149.0,
-                                "Calibrated Exposure By Mabtech": 13400.0,
-                                "Preset AOI": 1650.0,
-                                "Analyte Secreting Population": "White LED",
-                                "Preset Emphasis": "Normal",
-                                "Average Sensor Value": 1328.0,
-                                "Preset Contrast": 100.0,
-                                "Saved Date": "2024-01-29 09:18:05",
-                                "Preset Name": "User-Defined Normal",
-                                "Preset Brightness": 100.0,
-                                "Masked": "NO"
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Saved Date": "2024-01-29 09:18:05",
+                        "Read Date": "2024-01-29 09:06:40"
+                    }
                 },
                 "analyst": "Admin"
             },
@@ -288,6 +297,17 @@
                                         "illumination setting": {
                                             "value": 400.0,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Calibrated Exposure By Mabtech": "13400.0",
+                                            "Preset AOI": "1650",
+                                            "Average Sensor Value": "1382.0",
+                                            "Analyte Secreting Population": "White LED",
+                                            "Preset Emphasis": "Normal",
+                                            "Max Sensor Value": "2187.0",
+                                            "Preset Brightness": "100",
+                                            "Preset Name": "User-Defined Normal",
+                                            "Preset Contrast": "100"
                                         }
                                     }
                                 ]
@@ -300,6 +320,10 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "Preset Size": "150",
+                                            "Masked": "NO"
+                                        },
                                         "processed data identifier": "MABTECH_APEX_TEST_ID_19",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -331,26 +355,14 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Machine ID": "0.0",
-                                "Preset Size": 150.0,
-                                "Read Date": "2024-01-29 09:06:45",
-                                "Max Sensor Value": 2187.0,
-                                "Calibrated Exposure By Mabtech": 13400.0,
-                                "Preset AOI": 1650.0,
-                                "Analyte Secreting Population": "White LED",
-                                "Preset Emphasis": "Normal",
-                                "Average Sensor Value": 1382.0,
-                                "Preset Contrast": 100.0,
-                                "Saved Date": "2024-01-29 09:18:05",
-                                "Preset Name": "User-Defined Normal",
-                                "Preset Brightness": 100.0,
-                                "Masked": "NO"
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Saved Date": "2024-01-29 09:18:05",
+                        "Read Date": "2024-01-29 09:06:45"
+                    }
                 },
                 "analyst": "Admin"
             },
@@ -376,6 +388,17 @@
                                         "illumination setting": {
                                             "value": 400.0,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Calibrated Exposure By Mabtech": "13400.0",
+                                            "Preset AOI": "1650",
+                                            "Average Sensor Value": "605.0",
+                                            "Analyte Secreting Population": "White LED",
+                                            "Preset Emphasis": "Normal",
+                                            "Max Sensor Value": "1128.0",
+                                            "Preset Brightness": "100",
+                                            "Preset Name": "User-Defined Normal",
+                                            "Preset Contrast": "100"
                                         }
                                     }
                                 ]
@@ -388,6 +411,10 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "Preset Size": "150",
+                                            "Masked": "NO"
+                                        },
                                         "processed data identifier": "MABTECH_APEX_TEST_ID_24",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -419,26 +446,14 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Machine ID": "0.0",
-                                "Preset Size": 150.0,
-                                "Read Date": "2024-01-29 09:06:46",
-                                "Max Sensor Value": 1128.0,
-                                "Calibrated Exposure By Mabtech": 13400.0,
-                                "Preset AOI": 1650.0,
-                                "Analyte Secreting Population": "White LED",
-                                "Preset Emphasis": "Normal",
-                                "Average Sensor Value": 605.0,
-                                "Preset Contrast": 100.0,
-                                "Saved Date": "2024-01-29 09:18:05",
-                                "Preset Name": "User-Defined Normal",
-                                "Preset Brightness": 100.0,
-                                "Masked": "NO"
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Saved Date": "2024-01-29 09:18:05",
+                        "Read Date": "2024-01-29 09:06:46"
+                    }
                 },
                 "analyst": "Admin"
             },
@@ -464,6 +479,17 @@
                                         "illumination setting": {
                                             "value": 400.0,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Calibrated Exposure By Mabtech": "13400.0",
+                                            "Preset AOI": "1650",
+                                            "Average Sensor Value": "658.0",
+                                            "Analyte Secreting Population": "White LED",
+                                            "Preset Emphasis": "Normal",
+                                            "Max Sensor Value": "1185.0",
+                                            "Preset Brightness": "100",
+                                            "Preset Name": "User-Defined Normal",
+                                            "Preset Contrast": "100"
                                         }
                                     }
                                 ]
@@ -476,6 +502,10 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "Preset Size": "150",
+                                            "Masked": "NO"
+                                        },
                                         "processed data identifier": "MABTECH_APEX_TEST_ID_29",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -507,26 +537,14 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Machine ID": "0.0",
-                                "Preset Size": 150.0,
-                                "Read Date": "2024-01-29 09:06:50",
-                                "Max Sensor Value": 1185.0,
-                                "Calibrated Exposure By Mabtech": 13400.0,
-                                "Preset AOI": 1650.0,
-                                "Analyte Secreting Population": "White LED",
-                                "Preset Emphasis": "Normal",
-                                "Average Sensor Value": 658.0,
-                                "Preset Contrast": 100.0,
-                                "Saved Date": "2024-01-29 09:18:05",
-                                "Preset Name": "User-Defined Normal",
-                                "Preset Brightness": 100.0,
-                                "Masked": "NO"
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Saved Date": "2024-01-29 09:18:05",
+                        "Read Date": "2024-01-29 09:06:50"
+                    }
                 },
                 "analyst": "Admin"
             },
@@ -552,6 +570,17 @@
                                         "illumination setting": {
                                             "value": 400.0,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Calibrated Exposure By Mabtech": "13400.0",
+                                            "Preset AOI": "1650",
+                                            "Average Sensor Value": "2644.0",
+                                            "Analyte Secreting Population": "White LED",
+                                            "Preset Emphasis": "Normal",
+                                            "Max Sensor Value": "2876.0",
+                                            "Preset Brightness": "100",
+                                            "Preset Name": "User-Defined Normal",
+                                            "Preset Contrast": "100"
                                         }
                                     }
                                 ]
@@ -564,6 +593,10 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "Preset Size": "150",
+                                            "Masked": "NO"
+                                        },
                                         "processed data identifier": "MABTECH_APEX_TEST_ID_34",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -595,26 +628,14 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Machine ID": "0.0",
-                                "Preset Size": 150.0,
-                                "Read Date": "2024-01-29 09:06:36",
-                                "Max Sensor Value": 2876.0,
-                                "Calibrated Exposure By Mabtech": 13400.0,
-                                "Preset AOI": 1650.0,
-                                "Analyte Secreting Population": "White LED",
-                                "Preset Emphasis": "Normal",
-                                "Average Sensor Value": 2644.0,
-                                "Preset Contrast": 100.0,
-                                "Saved Date": "2024-01-29 09:18:05",
-                                "Preset Name": "User-Defined Normal",
-                                "Preset Brightness": 100.0,
-                                "Masked": "NO"
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Saved Date": "2024-01-29 09:18:05",
+                        "Read Date": "2024-01-29 09:06:36"
+                    }
                 },
                 "analyst": "Admin"
             },
@@ -640,6 +661,17 @@
                                         "illumination setting": {
                                             "value": 400.0,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Calibrated Exposure By Mabtech": "13400.0",
+                                            "Preset AOI": "1650",
+                                            "Average Sensor Value": "2712.0",
+                                            "Analyte Secreting Population": "White LED",
+                                            "Preset Emphasis": "Normal",
+                                            "Max Sensor Value": "2964.0",
+                                            "Preset Brightness": "100",
+                                            "Preset Name": "User-Defined Normal",
+                                            "Preset Contrast": "100"
                                         }
                                     }
                                 ]
@@ -652,6 +684,10 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "Preset Size": "150",
+                                            "Masked": "NO"
+                                        },
                                         "processed data identifier": "MABTECH_APEX_TEST_ID_39",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -683,26 +719,14 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Machine ID": "0.0",
-                                "Preset Size": 150.0,
-                                "Read Date": "2024-01-29 09:06:38",
-                                "Max Sensor Value": 2964.0,
-                                "Calibrated Exposure By Mabtech": 13400.0,
-                                "Preset AOI": 1650.0,
-                                "Analyte Secreting Population": "White LED",
-                                "Preset Emphasis": "Normal",
-                                "Average Sensor Value": 2712.0,
-                                "Preset Contrast": 100.0,
-                                "Saved Date": "2024-01-29 09:18:05",
-                                "Preset Name": "User-Defined Normal",
-                                "Preset Brightness": 100.0,
-                                "Masked": "NO"
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Saved Date": "2024-01-29 09:18:05",
+                        "Read Date": "2024-01-29 09:06:38"
+                    }
                 },
                 "analyst": "Admin"
             },
@@ -728,6 +752,17 @@
                                         "illumination setting": {
                                             "value": 400.0,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Calibrated Exposure By Mabtech": "13400.0",
+                                            "Preset AOI": "1650",
+                                            "Average Sensor Value": "1125.0",
+                                            "Analyte Secreting Population": "White LED",
+                                            "Preset Emphasis": "Normal",
+                                            "Max Sensor Value": "2026.0",
+                                            "Preset Brightness": "100",
+                                            "Preset Name": "User-Defined Normal",
+                                            "Preset Contrast": "100"
                                         }
                                     }
                                 ]
@@ -740,6 +775,10 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "Preset Size": "150",
+                                            "Masked": "NO"
+                                        },
                                         "processed data identifier": "MABTECH_APEX_TEST_ID_44",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -771,26 +810,14 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Machine ID": "0.0",
-                                "Preset Size": 150.0,
-                                "Read Date": "2024-01-29 09:06:41",
-                                "Max Sensor Value": 2026.0,
-                                "Calibrated Exposure By Mabtech": 13400.0,
-                                "Preset AOI": 1650.0,
-                                "Analyte Secreting Population": "White LED",
-                                "Preset Emphasis": "Normal",
-                                "Average Sensor Value": 1125.0,
-                                "Preset Contrast": 100.0,
-                                "Saved Date": "2024-01-29 09:18:05",
-                                "Preset Name": "User-Defined Normal",
-                                "Preset Brightness": 100.0,
-                                "Masked": "NO"
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Saved Date": "2024-01-29 09:18:05",
+                        "Read Date": "2024-01-29 09:06:41"
+                    }
                 },
                 "analyst": "Admin"
             },
@@ -816,6 +843,17 @@
                                         "illumination setting": {
                                             "value": 400.0,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Calibrated Exposure By Mabtech": "13400.0",
+                                            "Preset AOI": "1650",
+                                            "Average Sensor Value": "1091.0",
+                                            "Analyte Secreting Population": "White LED",
+                                            "Preset Emphasis": "Normal",
+                                            "Max Sensor Value": "1998.0",
+                                            "Preset Brightness": "100",
+                                            "Preset Name": "User-Defined Normal",
+                                            "Preset Contrast": "100"
                                         }
                                     }
                                 ]
@@ -828,6 +866,10 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "Preset Size": "150",
+                                            "Masked": "NO"
+                                        },
                                         "processed data identifier": "MABTECH_APEX_TEST_ID_49",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -859,26 +901,14 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Machine ID": "0.0",
-                                "Preset Size": 150.0,
-                                "Read Date": "2024-01-29 09:06:44",
-                                "Max Sensor Value": 1998.0,
-                                "Calibrated Exposure By Mabtech": 13400.0,
-                                "Preset AOI": 1650.0,
-                                "Analyte Secreting Population": "White LED",
-                                "Preset Emphasis": "Normal",
-                                "Average Sensor Value": 1091.0,
-                                "Preset Contrast": 100.0,
-                                "Saved Date": "2024-01-29 09:18:05",
-                                "Preset Name": "User-Defined Normal",
-                                "Preset Brightness": 100.0,
-                                "Masked": "NO"
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Saved Date": "2024-01-29 09:18:05",
+                        "Read Date": "2024-01-29 09:06:44"
+                    }
                 },
                 "analyst": "Admin"
             },
@@ -904,6 +934,17 @@
                                         "illumination setting": {
                                             "value": 400.0,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Calibrated Exposure By Mabtech": "13400.0",
+                                            "Preset AOI": "1650",
+                                            "Average Sensor Value": "732.0",
+                                            "Analyte Secreting Population": "White LED",
+                                            "Preset Emphasis": "Normal",
+                                            "Max Sensor Value": "1466.0",
+                                            "Preset Brightness": "100",
+                                            "Preset Name": "User-Defined Normal",
+                                            "Preset Contrast": "100"
                                         }
                                     }
                                 ]
@@ -916,6 +957,10 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "Preset Size": "150",
+                                            "Masked": "NO"
+                                        },
                                         "processed data identifier": "MABTECH_APEX_TEST_ID_54",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -947,26 +992,14 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Machine ID": "0.0",
-                                "Preset Size": 150.0,
-                                "Read Date": "2024-01-29 09:06:46",
-                                "Max Sensor Value": 1466.0,
-                                "Calibrated Exposure By Mabtech": 13400.0,
-                                "Preset AOI": 1650.0,
-                                "Analyte Secreting Population": "White LED",
-                                "Preset Emphasis": "Normal",
-                                "Average Sensor Value": 732.0,
-                                "Preset Contrast": 100.0,
-                                "Saved Date": "2024-01-29 09:18:05",
-                                "Preset Name": "User-Defined Normal",
-                                "Preset Brightness": 100.0,
-                                "Masked": "NO"
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Saved Date": "2024-01-29 09:18:05",
+                        "Read Date": "2024-01-29 09:06:46"
+                    }
                 },
                 "analyst": "Admin"
             },
@@ -992,6 +1025,17 @@
                                         "illumination setting": {
                                             "value": 400.0,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Calibrated Exposure By Mabtech": "13400.0",
+                                            "Preset AOI": "1650",
+                                            "Average Sensor Value": "792.0",
+                                            "Analyte Secreting Population": "White LED",
+                                            "Preset Emphasis": "Normal",
+                                            "Max Sensor Value": "1754.0",
+                                            "Preset Brightness": "100",
+                                            "Preset Name": "User-Defined Normal",
+                                            "Preset Contrast": "100"
                                         }
                                     }
                                 ]
@@ -1004,6 +1048,10 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "Preset Size": "150",
+                                            "Masked": "NO"
+                                        },
                                         "processed data identifier": "MABTECH_APEX_TEST_ID_59",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -1035,26 +1083,14 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Machine ID": "0.0",
-                                "Preset Size": 150.0,
-                                "Read Date": "2024-01-29 09:06:49",
-                                "Max Sensor Value": 1754.0,
-                                "Calibrated Exposure By Mabtech": 13400.0,
-                                "Preset AOI": 1650.0,
-                                "Analyte Secreting Population": "White LED",
-                                "Preset Emphasis": "Normal",
-                                "Average Sensor Value": 792.0,
-                                "Preset Contrast": 100.0,
-                                "Saved Date": "2024-01-29 09:18:05",
-                                "Preset Name": "User-Defined Normal",
-                                "Preset Brightness": 100.0,
-                                "Masked": "NO"
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Saved Date": "2024-01-29 09:18:05",
+                        "Read Date": "2024-01-29 09:06:49"
+                    }
                 },
                 "analyst": "Admin"
             },
@@ -1080,6 +1116,17 @@
                                         "illumination setting": {
                                             "value": 400.0,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Calibrated Exposure By Mabtech": "13400.0",
+                                            "Preset AOI": "1650",
+                                            "Average Sensor Value": "2621.0",
+                                            "Analyte Secreting Population": "White LED",
+                                            "Preset Emphasis": "Normal",
+                                            "Max Sensor Value": "2859.0",
+                                            "Preset Brightness": "100",
+                                            "Preset Name": "User-Defined Normal",
+                                            "Preset Contrast": "100"
                                         }
                                     }
                                 ]
@@ -1092,6 +1139,10 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "Preset Size": "150",
+                                            "Masked": "NO"
+                                        },
                                         "processed data identifier": "MABTECH_APEX_TEST_ID_64",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -1123,26 +1174,14 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Machine ID": "0.0",
-                                "Preset Size": 150.0,
-                                "Read Date": "2024-01-29 09:06:37",
-                                "Max Sensor Value": 2859.0,
-                                "Calibrated Exposure By Mabtech": 13400.0,
-                                "Preset AOI": 1650.0,
-                                "Analyte Secreting Population": "White LED",
-                                "Preset Emphasis": "Normal",
-                                "Average Sensor Value": 2621.0,
-                                "Preset Contrast": 100.0,
-                                "Saved Date": "2024-01-29 09:18:05",
-                                "Preset Name": "User-Defined Normal",
-                                "Preset Brightness": 100.0,
-                                "Masked": "NO"
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Saved Date": "2024-01-29 09:18:05",
+                        "Read Date": "2024-01-29 09:06:37"
+                    }
                 },
                 "analyst": "Admin"
             },
@@ -1168,6 +1207,17 @@
                                         "illumination setting": {
                                             "value": 400.0,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Calibrated Exposure By Mabtech": "13400.0",
+                                            "Preset AOI": "1650",
+                                            "Average Sensor Value": "2684.0",
+                                            "Analyte Secreting Population": "White LED",
+                                            "Preset Emphasis": "Normal",
+                                            "Max Sensor Value": "2938.0",
+                                            "Preset Brightness": "100",
+                                            "Preset Name": "User-Defined Normal",
+                                            "Preset Contrast": "100"
                                         }
                                     }
                                 ]
@@ -1180,6 +1230,10 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "Preset Size": "150",
+                                            "Masked": "NO"
+                                        },
                                         "processed data identifier": "MABTECH_APEX_TEST_ID_69",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -1211,26 +1265,14 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Machine ID": "0.0",
-                                "Preset Size": 150.0,
-                                "Read Date": "2024-01-29 09:06:37",
-                                "Max Sensor Value": 2938.0,
-                                "Calibrated Exposure By Mabtech": 13400.0,
-                                "Preset AOI": 1650.0,
-                                "Analyte Secreting Population": "White LED",
-                                "Preset Emphasis": "Normal",
-                                "Average Sensor Value": 2684.0,
-                                "Preset Contrast": 100.0,
-                                "Saved Date": "2024-01-29 09:18:05",
-                                "Preset Name": "User-Defined Normal",
-                                "Preset Brightness": 100.0,
-                                "Masked": "NO"
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Saved Date": "2024-01-29 09:18:05",
+                        "Read Date": "2024-01-29 09:06:37"
+                    }
                 },
                 "analyst": "Admin"
             },
@@ -1256,6 +1298,17 @@
                                         "illumination setting": {
                                             "value": 400.0,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Calibrated Exposure By Mabtech": "13400.0",
+                                            "Preset AOI": "1650",
+                                            "Average Sensor Value": "1379.0",
+                                            "Analyte Secreting Population": "White LED",
+                                            "Preset Emphasis": "Normal",
+                                            "Max Sensor Value": "2186.0",
+                                            "Preset Brightness": "100",
+                                            "Preset Name": "User-Defined Normal",
+                                            "Preset Contrast": "100"
                                         }
                                     }
                                 ]
@@ -1268,6 +1321,10 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "Preset Size": "150",
+                                            "Masked": "NO"
+                                        },
                                         "processed data identifier": "MABTECH_APEX_TEST_ID_74",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -1299,26 +1356,14 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Machine ID": "0.0",
-                                "Preset Size": 150.0,
-                                "Read Date": "2024-01-29 09:06:42",
-                                "Max Sensor Value": 2186.0,
-                                "Calibrated Exposure By Mabtech": 13400.0,
-                                "Preset AOI": 1650.0,
-                                "Analyte Secreting Population": "White LED",
-                                "Preset Emphasis": "Normal",
-                                "Average Sensor Value": 1379.0,
-                                "Preset Contrast": 100.0,
-                                "Saved Date": "2024-01-29 09:18:05",
-                                "Preset Name": "User-Defined Normal",
-                                "Preset Brightness": 100.0,
-                                "Masked": "NO"
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Saved Date": "2024-01-29 09:18:05",
+                        "Read Date": "2024-01-29 09:06:42"
+                    }
                 },
                 "analyst": "Admin"
             },
@@ -1344,6 +1389,17 @@
                                         "illumination setting": {
                                             "value": 400.0,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Calibrated Exposure By Mabtech": "13400.0",
+                                            "Preset AOI": "1650",
+                                            "Average Sensor Value": "1420.0",
+                                            "Analyte Secreting Population": "White LED",
+                                            "Preset Emphasis": "Normal",
+                                            "Max Sensor Value": "2290.0",
+                                            "Preset Brightness": "100",
+                                            "Preset Name": "User-Defined Normal",
+                                            "Preset Contrast": "100"
                                         }
                                     }
                                 ]
@@ -1356,6 +1412,10 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "Preset Size": "150",
+                                            "Masked": "NO"
+                                        },
                                         "processed data identifier": "MABTECH_APEX_TEST_ID_79",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -1387,26 +1447,14 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Machine ID": "0.0",
-                                "Preset Size": 150.0,
-                                "Read Date": "2024-01-29 09:06:43",
-                                "Max Sensor Value": 2290.0,
-                                "Calibrated Exposure By Mabtech": 13400.0,
-                                "Preset AOI": 1650.0,
-                                "Analyte Secreting Population": "White LED",
-                                "Preset Emphasis": "Normal",
-                                "Average Sensor Value": 1420.0,
-                                "Preset Contrast": 100.0,
-                                "Saved Date": "2024-01-29 09:18:05",
-                                "Preset Name": "User-Defined Normal",
-                                "Preset Brightness": 100.0,
-                                "Masked": "NO"
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Saved Date": "2024-01-29 09:18:05",
+                        "Read Date": "2024-01-29 09:06:43"
+                    }
                 },
                 "analyst": "Admin"
             },
@@ -1432,6 +1480,17 @@
                                         "illumination setting": {
                                             "value": 400.0,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Calibrated Exposure By Mabtech": "13400.0",
+                                            "Preset AOI": "1650",
+                                            "Average Sensor Value": "993.0",
+                                            "Analyte Secreting Population": "White LED",
+                                            "Preset Emphasis": "Normal",
+                                            "Max Sensor Value": "1842.0",
+                                            "Preset Brightness": "100",
+                                            "Preset Name": "User-Defined Normal",
+                                            "Preset Contrast": "100"
                                         }
                                     }
                                 ]
@@ -1444,6 +1503,10 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "Preset Size": "150",
+                                            "Masked": "NO"
+                                        },
                                         "processed data identifier": "MABTECH_APEX_TEST_ID_84",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -1475,26 +1538,14 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Machine ID": "0.0",
-                                "Preset Size": 150.0,
-                                "Read Date": "2024-01-29 09:06:47",
-                                "Max Sensor Value": 1842.0,
-                                "Calibrated Exposure By Mabtech": 13400.0,
-                                "Preset AOI": 1650.0,
-                                "Analyte Secreting Population": "White LED",
-                                "Preset Emphasis": "Normal",
-                                "Average Sensor Value": 993.0,
-                                "Preset Contrast": 100.0,
-                                "Saved Date": "2024-01-29 09:18:05",
-                                "Preset Name": "User-Defined Normal",
-                                "Preset Brightness": 100.0,
-                                "Masked": "NO"
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Saved Date": "2024-01-29 09:18:05",
+                        "Read Date": "2024-01-29 09:06:47"
+                    }
                 },
                 "analyst": "Admin"
             },
@@ -1520,6 +1571,17 @@
                                         "illumination setting": {
                                             "value": 400.0,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Calibrated Exposure By Mabtech": "13400.0",
+                                            "Preset AOI": "1650",
+                                            "Average Sensor Value": "938.0",
+                                            "Analyte Secreting Population": "White LED",
+                                            "Preset Emphasis": "Normal",
+                                            "Max Sensor Value": "1794.0",
+                                            "Preset Brightness": "100",
+                                            "Preset Name": "User-Defined Normal",
+                                            "Preset Contrast": "100"
                                         }
                                     }
                                 ]
@@ -1532,6 +1594,10 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "Preset Size": "150",
+                                            "Masked": "NO"
+                                        },
                                         "processed data identifier": "MABTECH_APEX_TEST_ID_89",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -1563,26 +1629,14 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Machine ID": "0.0",
-                                "Preset Size": 150.0,
-                                "Read Date": "2024-01-29 09:06:48",
-                                "Max Sensor Value": 1794.0,
-                                "Calibrated Exposure By Mabtech": 13400.0,
-                                "Preset AOI": 1650.0,
-                                "Analyte Secreting Population": "White LED",
-                                "Preset Emphasis": "Normal",
-                                "Average Sensor Value": 938.0,
-                                "Preset Contrast": 100.0,
-                                "Saved Date": "2024-01-29 09:18:05",
-                                "Preset Name": "User-Defined Normal",
-                                "Preset Brightness": 100.0,
-                                "Masked": "NO"
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Saved Date": "2024-01-29 09:18:05",
+                        "Read Date": "2024-01-29 09:06:48"
+                    }
                 },
                 "analyst": "Admin"
             },
@@ -1608,6 +1662,17 @@
                                         "illumination setting": {
                                             "value": 400.0,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Calibrated Exposure By Mabtech": "13400.0",
+                                            "Preset AOI": "1650",
+                                            "Average Sensor Value": "2878.0",
+                                            "Analyte Secreting Population": "White LED",
+                                            "Preset Emphasis": "Normal",
+                                            "Max Sensor Value": "3077.0",
+                                            "Preset Brightness": "100",
+                                            "Preset Name": "User-Defined Normal",
+                                            "Preset Contrast": "100"
                                         }
                                     }
                                 ]
@@ -1620,6 +1685,10 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "Preset Size": "150",
+                                            "Masked": "NO"
+                                        },
                                         "processed data identifier": "MABTECH_APEX_TEST_ID_94",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -1651,26 +1720,14 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Machine ID": "0.0",
-                                "Preset Size": 150.0,
-                                "Read Date": "2024-01-29 09:06:52",
-                                "Max Sensor Value": 3077.0,
-                                "Calibrated Exposure By Mabtech": 13400.0,
-                                "Preset AOI": 1650.0,
-                                "Analyte Secreting Population": "White LED",
-                                "Preset Emphasis": "Normal",
-                                "Average Sensor Value": 2878.0,
-                                "Preset Contrast": 100.0,
-                                "Saved Date": "2024-01-29 09:18:05",
-                                "Preset Name": "User-Defined Normal",
-                                "Preset Brightness": 100.0,
-                                "Masked": "NO"
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Saved Date": "2024-01-29 09:18:05",
+                        "Read Date": "2024-01-29 09:06:52"
+                    }
                 },
                 "analyst": "Admin"
             },
@@ -1696,6 +1753,17 @@
                                         "illumination setting": {
                                             "value": 400.0,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Calibrated Exposure By Mabtech": "13400.0",
+                                            "Preset AOI": "1650",
+                                            "Average Sensor Value": "2880.0",
+                                            "Analyte Secreting Population": "White LED",
+                                            "Preset Emphasis": "Normal",
+                                            "Max Sensor Value": "3103.0",
+                                            "Preset Brightness": "100",
+                                            "Preset Name": "User-Defined Normal",
+                                            "Preset Contrast": "100"
                                         }
                                     }
                                 ]
@@ -1708,6 +1776,10 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "Preset Size": "150",
+                                            "Masked": "NO"
+                                        },
                                         "processed data identifier": "MABTECH_APEX_TEST_ID_99",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -1739,26 +1811,14 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Machine ID": "0.0",
-                                "Preset Size": 150.0,
-                                "Read Date": "2024-01-29 09:06:53",
-                                "Max Sensor Value": 3103.0,
-                                "Calibrated Exposure By Mabtech": 13400.0,
-                                "Preset AOI": 1650.0,
-                                "Analyte Secreting Population": "White LED",
-                                "Preset Emphasis": "Normal",
-                                "Average Sensor Value": 2880.0,
-                                "Preset Contrast": 100.0,
-                                "Saved Date": "2024-01-29 09:18:05",
-                                "Preset Name": "User-Defined Normal",
-                                "Preset Brightness": 100.0,
-                                "Masked": "NO"
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Saved Date": "2024-01-29 09:18:05",
+                        "Read Date": "2024-01-29 09:06:53"
+                    }
                 },
                 "analyst": "Admin"
             },
@@ -1784,6 +1844,17 @@
                                         "illumination setting": {
                                             "value": 400.0,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Calibrated Exposure By Mabtech": "13400.0",
+                                            "Preset AOI": "1650",
+                                            "Average Sensor Value": "2858.0",
+                                            "Analyte Secreting Population": "White LED",
+                                            "Preset Emphasis": "Normal",
+                                            "Max Sensor Value": "3083.0",
+                                            "Preset Brightness": "100",
+                                            "Preset Name": "User-Defined Normal",
+                                            "Preset Contrast": "100"
                                         }
                                     }
                                 ]
@@ -1796,6 +1867,10 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "Preset Size": "150",
+                                            "Masked": "NO"
+                                        },
                                         "processed data identifier": "MABTECH_APEX_TEST_ID_104",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -1827,26 +1902,14 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Machine ID": "0.0",
-                                "Preset Size": 150.0,
-                                "Read Date": "2024-01-29 09:06:53",
-                                "Max Sensor Value": 3083.0,
-                                "Calibrated Exposure By Mabtech": 13400.0,
-                                "Preset AOI": 1650.0,
-                                "Analyte Secreting Population": "White LED",
-                                "Preset Emphasis": "Normal",
-                                "Average Sensor Value": 2858.0,
-                                "Preset Contrast": 100.0,
-                                "Saved Date": "2024-01-29 09:18:05",
-                                "Preset Name": "User-Defined Normal",
-                                "Preset Brightness": 100.0,
-                                "Masked": "NO"
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Saved Date": "2024-01-29 09:18:05",
+                        "Read Date": "2024-01-29 09:06:53"
+                    }
                 },
                 "analyst": "Admin"
             },
@@ -1872,6 +1935,17 @@
                                         "illumination setting": {
                                             "value": 400.0,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Calibrated Exposure By Mabtech": "13400.0",
+                                            "Preset AOI": "1650",
+                                            "Average Sensor Value": "2843.0",
+                                            "Analyte Secreting Population": "White LED",
+                                            "Preset Emphasis": "Normal",
+                                            "Max Sensor Value": "3073.0",
+                                            "Preset Brightness": "100",
+                                            "Preset Name": "User-Defined Normal",
+                                            "Preset Contrast": "100"
                                         }
                                     }
                                 ]
@@ -1884,6 +1958,10 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "Preset Size": "150",
+                                            "Masked": "NO"
+                                        },
                                         "processed data identifier": "MABTECH_APEX_TEST_ID_109",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -1915,26 +1993,14 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Machine ID": "0.0",
-                                "Preset Size": 150.0,
-                                "Read Date": "2024-01-29 09:06:54",
-                                "Max Sensor Value": 3073.0,
-                                "Calibrated Exposure By Mabtech": 13400.0,
-                                "Preset AOI": 1650.0,
-                                "Analyte Secreting Population": "White LED",
-                                "Preset Emphasis": "Normal",
-                                "Average Sensor Value": 2843.0,
-                                "Preset Contrast": 100.0,
-                                "Saved Date": "2024-01-29 09:18:05",
-                                "Preset Name": "User-Defined Normal",
-                                "Preset Brightness": 100.0,
-                                "Masked": "NO"
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Saved Date": "2024-01-29 09:18:05",
+                        "Read Date": "2024-01-29 09:06:54"
+                    }
                 },
                 "analyst": "Admin"
             },
@@ -1960,6 +2026,17 @@
                                         "illumination setting": {
                                             "value": 400.0,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Calibrated Exposure By Mabtech": "13400.0",
+                                            "Preset AOI": "1650",
+                                            "Average Sensor Value": "2790.0",
+                                            "Analyte Secreting Population": "White LED",
+                                            "Preset Emphasis": "Normal",
+                                            "Max Sensor Value": "3017.0",
+                                            "Preset Brightness": "100",
+                                            "Preset Name": "User-Defined Normal",
+                                            "Preset Contrast": "100"
                                         }
                                     }
                                 ]
@@ -1972,6 +2049,10 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "Preset Size": "150",
+                                            "Masked": "NO"
+                                        },
                                         "processed data identifier": "MABTECH_APEX_TEST_ID_114",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -2003,26 +2084,14 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Machine ID": "0.0",
-                                "Preset Size": 150.0,
-                                "Read Date": "2024-01-29 09:06:55",
-                                "Max Sensor Value": 3017.0,
-                                "Calibrated Exposure By Mabtech": 13400.0,
-                                "Preset AOI": 1650.0,
-                                "Analyte Secreting Population": "White LED",
-                                "Preset Emphasis": "Normal",
-                                "Average Sensor Value": 2790.0,
-                                "Preset Contrast": 100.0,
-                                "Saved Date": "2024-01-29 09:18:05",
-                                "Preset Name": "User-Defined Normal",
-                                "Preset Brightness": 100.0,
-                                "Masked": "NO"
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Saved Date": "2024-01-29 09:18:05",
+                        "Read Date": "2024-01-29 09:06:55"
+                    }
                 },
                 "analyst": "Admin"
             },
@@ -2048,6 +2117,17 @@
                                         "illumination setting": {
                                             "value": 400.0,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Calibrated Exposure By Mabtech": "13400.0",
+                                            "Preset AOI": "1650",
+                                            "Average Sensor Value": "2708.0",
+                                            "Analyte Secreting Population": "White LED",
+                                            "Preset Emphasis": "Normal",
+                                            "Max Sensor Value": "2948.0",
+                                            "Preset Brightness": "100",
+                                            "Preset Name": "User-Defined Normal",
+                                            "Preset Contrast": "100"
                                         }
                                     }
                                 ]
@@ -2060,6 +2140,10 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "Preset Size": "150",
+                                            "Masked": "NO"
+                                        },
                                         "processed data identifier": "MABTECH_APEX_TEST_ID_119",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -2091,26 +2175,14 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Machine ID": "0.0",
-                                "Preset Size": 150.0,
-                                "Read Date": "2024-01-29 09:06:56",
-                                "Max Sensor Value": 2948.0,
-                                "Calibrated Exposure By Mabtech": 13400.0,
-                                "Preset AOI": 1650.0,
-                                "Analyte Secreting Population": "White LED",
-                                "Preset Emphasis": "Normal",
-                                "Average Sensor Value": 2708.0,
-                                "Preset Contrast": 100.0,
-                                "Saved Date": "2024-01-29 09:18:05",
-                                "Preset Name": "User-Defined Normal",
-                                "Preset Brightness": 100.0,
-                                "Masked": "NO"
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Saved Date": "2024-01-29 09:18:05",
+                        "Read Date": "2024-01-29 09:06:56"
+                    }
                 },
                 "analyst": "Admin"
             }
@@ -2126,13 +2198,13 @@
             "software name": "Apex",
             "software version": "1.1.58.127",
             "ASM converter name": "allotropy_mabtech_apex",
-            "ASM converter version": "0.1.63"
+            "ASM converter version": "0.1.64"
         },
         "custom information document": {
-            "Excel File Export Date:": "2024-01-29 09:18:07",
-            "Exporting User:": "Admin",
-            "Last Saved Date:": "2024-01-29 09:18:05",
             "Plate Read Date:": "2024-01-29 09:06:56",
+            "Exporting User:": "Admin",
+            "Excel File Export Date:": "2024-01-29 09:18:07",
+            "Last Saved Date:": "2024-01-29 09:18:05",
             "Plate Name:": "mabtech_apex_example1"
         }
     }

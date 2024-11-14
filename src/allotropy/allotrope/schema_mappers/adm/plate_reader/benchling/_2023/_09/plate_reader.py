@@ -99,6 +99,7 @@ class ImageFeature:
 class ProcessedData:
     features: list[ImageFeature]
     identifier: str | None = None
+    data_processing_document: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -187,6 +188,8 @@ class MeasurementGroup:
     processed_data: ProcessedData | None = None
     images: list[ImageSource] | None = None
 
+    custom_info: dict[str, Any] | None = None
+
 
 @dataclass(frozen=True)
 class Metadata:
@@ -251,25 +254,28 @@ class Mapper(SchemaMapper[Data, Model]):
     ) -> PlateReaderDocumentItem:
         return PlateReaderDocumentItem(
             analyst=measurement_group.analyst,
-            measurement_aggregate_document=MeasurementAggregateDocument(
-                analytical_method_identifier=measurement_group.analytical_method_identifier,
-                experimental_data_identifier=measurement_group.experimental_data_identifier,
-                experiment_type=measurement_group.experiment_type,
-                container_type=ContainerType.well_plate,
-                plate_well_count=TQuantityValueNumber(
-                    value=measurement_group.plate_well_count
+            measurement_aggregate_document=add_custom_information_document(
+                MeasurementAggregateDocument(
+                    analytical_method_identifier=measurement_group.analytical_method_identifier,
+                    experimental_data_identifier=measurement_group.experimental_data_identifier,
+                    experiment_type=measurement_group.experiment_type,
+                    container_type=ContainerType.well_plate,
+                    plate_well_count=TQuantityValueNumber(
+                        value=measurement_group.plate_well_count
+                    ),
+                    measurement_time=self.get_date_time(measurement_group.measurement_time),
+                    measurement_document=[
+                        self._get_measurement_document(measurement)
+                        for measurement in measurement_group.measurements
+                    ],
+                    processed_data_aggregate_document=self._get_processed_data_aggregate_document(
+                        measurement_group.processed_data
+                    ),
+                    image_aggregate_document=self._get_image_source_aggregate_document(
+                        measurement_group.images
+                    ),
                 ),
-                measurement_time=self.get_date_time(measurement_group.measurement_time),
-                measurement_document=[
-                    self._get_measurement_document(measurement)
-                    for measurement in measurement_group.measurements
-                ],
-                processed_data_aggregate_document=self._get_processed_data_aggregate_document(
-                    measurement_group.processed_data
-                ),
-                image_aggregate_document=self._get_image_source_aggregate_document(
-                    measurement_group.images
-                ),
+                measurement_group.custom_info,
             ),
         )
 
@@ -557,6 +563,7 @@ class Mapper(SchemaMapper[Data, Model]):
                             for image_feature in data.features
                         ]
                     ),
+                    data_processing_document=data.data_processing_document,
                 )
             ]
         )
