@@ -230,7 +230,9 @@ class SeriesData:
             return float_value
         return self.get(str, key)
 
-    def get_custom_keys(self, key_or_keys: str | set[str]) -> dict[str, float | str | None]:
+    def get_custom_keys(
+        self, key_or_keys: str | set[str]
+    ) -> dict[str, float | str | None]:
         keys = key_or_keys if isinstance(key_or_keys, set) else {key_or_keys}
         return {key: self._get_custom_key(key) for key in keys if self.has_key(key)}
 
