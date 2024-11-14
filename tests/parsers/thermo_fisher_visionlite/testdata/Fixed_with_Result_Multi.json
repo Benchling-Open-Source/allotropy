@@ -1,0 +1,311 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/spectrophotometry/BENCHLING/2023/12/spectrophotometry.manifest",
+    "spectrophotometry aggregate document": {
+        "spectrophotometry document": [
+            {
+                "measurement aggregate document": {
+                    "measurement time": "1970-01-01T00:00:00+00:00",
+                    "measurement document": [
+                        {
+                            "measurement identifier": "THERMO_FISHER_VISIONLITE_TEST_ID_0",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "spectrophotometer",
+                                        "detection type": "absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 500.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "1"
+                            },
+                            "absorbance": {
+                                "value": 0.027,
+                                "unit": "mAU"
+                            }
+                        },
+                        {
+                            "measurement identifier": "THERMO_FISHER_VISIONLITE_TEST_ID_1",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "spectrophotometer",
+                                        "detection type": "absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "1"
+                            },
+                            "absorbance": {
+                                "value": 0.029,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "experiment type": "Fixed"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "1970-01-01T00:00:00+00:00",
+                    "measurement document": [
+                        {
+                            "measurement identifier": "THERMO_FISHER_VISIONLITE_TEST_ID_3",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "spectrophotometer",
+                                        "detection type": "absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 500.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "2"
+                            },
+                            "absorbance": {
+                                "value": 0.047,
+                                "unit": "mAU"
+                            }
+                        },
+                        {
+                            "measurement identifier": "THERMO_FISHER_VISIONLITE_TEST_ID_4",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "spectrophotometer",
+                                        "detection type": "absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "2"
+                            },
+                            "absorbance": {
+                                "value": 0.049,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "experiment type": "Fixed"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "1970-01-01T00:00:00+00:00",
+                    "measurement document": [
+                        {
+                            "measurement identifier": "THERMO_FISHER_VISIONLITE_TEST_ID_6",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "spectrophotometer",
+                                        "detection type": "absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 500.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "3"
+                            },
+                            "absorbance": {
+                                "value": 0.067,
+                                "unit": "mAU"
+                            }
+                        },
+                        {
+                            "measurement identifier": "THERMO_FISHER_VISIONLITE_TEST_ID_7",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "spectrophotometer",
+                                        "detection type": "absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "3"
+                            },
+                            "absorbance": {
+                                "value": 0.069,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "experiment type": "Fixed"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "1970-01-01T00:00:00+00:00",
+                    "measurement document": [
+                        {
+                            "measurement identifier": "THERMO_FISHER_VISIONLITE_TEST_ID_9",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "spectrophotometer",
+                                        "detection type": "absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 500.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "4"
+                            },
+                            "absorbance": {
+                                "value": 0.087,
+                                "unit": "mAU"
+                            }
+                        },
+                        {
+                            "measurement identifier": "THERMO_FISHER_VISIONLITE_TEST_ID_10",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "spectrophotometer",
+                                        "detection type": "absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "4"
+                            },
+                            "absorbance": {
+                                "value": 0.089,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "experiment type": "Fixed"
+                }
+            }
+        ],
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "N/A",
+            "product manufacturer": "Thermo Fisher Scientific"
+        },
+        "data system document": {
+            "file name": "Fixed_with_Result_Multi.csv",
+            "UNC path": "tests/parsers/thermo_fisher_visionlite/testdata/Fixed_with_Result_Multi.csv",
+            "software name": "VISIONlite",
+            "ASM converter name": "allotropy_thermo_fisher_scientific_visionlite",
+            "ASM converter version": "0.1.63"
+        },
+        "calculated data aggregate document": {
+            "calculated data document": [
+                {
+                    "calculated data name": "Result",
+                    "calculated result": {
+                        "value": 0.027,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "THERMO_FISHER_VISIONLITE_TEST_ID_0",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "THERMO_FISHER_VISIONLITE_TEST_ID_1",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "THERMO_FISHER_VISIONLITE_TEST_ID_2"
+                },
+                {
+                    "calculated data name": "Result",
+                    "calculated result": {
+                        "value": 0.047,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "THERMO_FISHER_VISIONLITE_TEST_ID_3",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "THERMO_FISHER_VISIONLITE_TEST_ID_4",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "THERMO_FISHER_VISIONLITE_TEST_ID_5"
+                },
+                {
+                    "calculated data name": "Result",
+                    "calculated result": {
+                        "value": 0.067,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "THERMO_FISHER_VISIONLITE_TEST_ID_6",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "THERMO_FISHER_VISIONLITE_TEST_ID_7",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "THERMO_FISHER_VISIONLITE_TEST_ID_8"
+                },
+                {
+                    "calculated data name": "Result",
+                    "calculated result": {
+                        "value": 0.087,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "THERMO_FISHER_VISIONLITE_TEST_ID_9",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "THERMO_FISHER_VISIONLITE_TEST_ID_10",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "THERMO_FISHER_VISIONLITE_TEST_ID_11"
+                }
+            ]
+        }
+    }
+}
