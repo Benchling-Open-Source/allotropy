@@ -81,22 +81,26 @@ def _create_measurement(plate_data: SeriesData) -> Measurement:
         processed_data=ProcessedData(
             identifier=random_uuid_str(),
             features=features,
-            data_processing_document=plate_data.get_custom_keys({
-                "Masked",
-                "Preset Size",
-            })
+            data_processing_document=plate_data.get_custom_keys(
+                {
+                    "Masked",
+                    "Preset Size",
+                }
+            ),
         ),
-        device_control_custom_info=plate_data.get_custom_keys({
-            "Max Sensor Value",
-            "Calibrated Exposure By Mabtech",
-            "Preset AOI",
-            "Analyte Secreting Population",
-            "Preset Emphasis",
-            "Average Sensor Value",
-            "Preset Contrast",
-            "Preset Name",
-            "Preset Brightness",
-        }),
+        device_control_custom_info=plate_data.get_custom_keys(
+            {
+                "Max Sensor Value",
+                "Calibrated Exposure By Mabtech",
+                "Preset AOI",
+                "Analyte Secreting Population",
+                "Preset Emphasis",
+                "Average Sensor Value",
+                "Preset Contrast",
+                "Preset Name",
+                "Preset Brightness",
+            }
+        ),
         custom_info=plate_data.get_unread({"Machine ID"}),
     )
     if not (measurement.processed_data and measurement.processed_data.features):
@@ -153,5 +157,5 @@ def create_measurement_group(
         plate_well_count=96,
         measurement_time=well_data[0][str, "Read Date"],
         analyst=plate_info.get(str, "Saved By:"),
-        custom_info=well_data[0].get_custom_keys(custom_info_keys)
+        custom_info=well_data[0].get_custom_keys(custom_info_keys),
     )

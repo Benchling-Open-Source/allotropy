@@ -263,7 +263,9 @@ class Mapper(SchemaMapper[Data, Model]):
                     plate_well_count=TQuantityValueNumber(
                         value=measurement_group.plate_well_count
                     ),
-                    measurement_time=self.get_date_time(measurement_group.measurement_time),
+                    measurement_time=self.get_date_time(
+                        measurement_group.measurement_time
+                    ),
                     measurement_document=[
                         self._get_measurement_document(measurement)
                         for measurement in measurement_group.measurements
