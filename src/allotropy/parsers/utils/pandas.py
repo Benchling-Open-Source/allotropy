@@ -225,19 +225,19 @@ class SeriesData:
                     stacklevel=2,
                 )
 
-    def _get_custom_key(self, key: str) -> float | str:
+    def _get_custom_key(self, key: str) -> float | str | None:
         if (float_value := self.get(float, key)) is not None:
             return float_value
-        return self[str, key]
+        return self.get(str, key)
 
-    def get_custom_keys(self, key_or_keys: str | set[str]) -> dict[str, float | str]:
+    def get_custom_keys(self, key_or_keys: str | set[str]) -> dict[str, float | str | None]:
         keys = key_or_keys if isinstance(key_or_keys, set) else {key_or_keys}
         return {key: self._get_custom_key(key) for key in keys if self.has_key(key)}
 
     def mark_read(self, key_or_keys: str | set[str]) -> None:
         self.read_keys |= key_or_keys if isinstance(key_or_keys, set) else {key_or_keys}
 
-    def get_unread(self, skip: set[str] | None = None) -> dict[str, float | str]:
+    def get_unread(self, skip: set[str] | None = None) -> dict[str, float | str | None]:
         skip = skip or set()
         # Mark explicitly skipped keys as "read". This not only covers the check below, but removes
         # them from the destructor warning.
