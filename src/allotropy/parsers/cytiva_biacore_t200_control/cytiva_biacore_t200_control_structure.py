@@ -61,7 +61,9 @@ def create_metadata(
         if compartment_temperature is not None
         else None,
         sensor_chip_type=intermediate_structured_data["chip"].get("Name"),
-        lot_number=intermediate_structured_data["chip"].get("LotNo"),
+        lot_number=None
+        if intermediate_structured_data["chip"].get("LotNo") == ""
+        else intermediate_structured_data["chip"].get("LotNo"),
         sensor_chip_identifier=assert_not_none(
             intermediate_structured_data["chip"].get("Id"), "Chip ID"
         ),
