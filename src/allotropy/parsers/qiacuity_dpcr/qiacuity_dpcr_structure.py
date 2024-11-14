@@ -38,7 +38,7 @@ def create_measurements(data: SeriesData) -> Measurement:
         plate_identifier=data.get(str, "Plate ID"),
         target_identifier=data[str, "Target"],
         total_partition_count=data[int, "Partitions (valid)"],
-        concentration=data[float, "Concentration (copies/μL)"],
+        concentration=data[float, ["Concentration (copies/μL)", "Conc. [copies/μL]"]],
         positive_partition_count=data[int, "Partitions (positive)"],
         negative_partition_count=data.get(int, "Partitions (negative)"),
         flourescence_intensity_threshold_setting=data.get(float, "Threshold"),

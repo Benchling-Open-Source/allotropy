@@ -24,7 +24,7 @@ class QiacuitydPCRParser(VendorParser[Data, Model]):
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
-        reader = QiacuitydPCRReader(named_file_contents.contents)
+        reader = QiacuitydPCRReader(named_file_contents)
         return Data(
             create_metadata(named_file_contents.original_file_path),
             measurement_groups=[
