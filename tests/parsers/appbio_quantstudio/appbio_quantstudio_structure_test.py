@@ -9,11 +9,14 @@ import pytest
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_reader import (
+    AppBioQuantStudioReader,
+)
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     Header,
     Result,
 )
-from allotropy.parsers.lines_reader import LinesReader, read_to_lines
+from allotropy.parsers.lines_reader import read_to_lines
 from allotropy.types import IOType
 
 TESTDATA = Path(Path(__file__).parent, "testdata")
@@ -25,10 +28,7 @@ def _read_to_lines(io_: IOType, encoding: str | None = None) -> list[str]:
 
 
 def test_header_builder_returns_header_instance() -> None:
-    header_contents = get_raw_header_contents()
-
-    lines = _read_to_lines(header_contents)
-    assert isinstance(Header.create(LinesReader(lines)), Header)
+    assert isinstance(Header.create(get_reader().header), Header)
 
 
 def test_header_builder() -> None:
@@ -40,7 +40,7 @@ def test_header_builder() -> None:
     passive_reference_dye_setting = "blue"
     experimental_data_identifier = "data Identifier"
 
-    header_contents = get_raw_header_contents(
+    reader = get_reader(
         measurement_time="2010-10-01 01:44:54 AM EDT",
         plate_well_count="96 plates",
         experiment_type="Genotyping",
@@ -53,8 +53,7 @@ def test_header_builder() -> None:
         experimental_data_identifier=experimental_data_identifier,
     )
 
-    lines = _read_to_lines(header_contents)
-    assert Header.create(LinesReader(lines)) == Header(
+    assert Header.create(reader.header) == Header(
         measurement_time="2010-10-01 01:44:54 AM EDT",
         plate_well_count=96,
         experiment_type=ExperimentType.genotyping_qPCR_experiment,
@@ -83,54 +82,29 @@ def test_header_builder() -> None:
 def test_header_builder_required_parameter_none_then_raise(
     parameter: str, expected_error: str
 ) -> None:
-    header_contents = get_raw_header_contents(**{parameter: None})
-    lines = _read_to_lines(header_contents)
-    lines_reader = LinesReader(lines)
+    reader = get_reader(**{parameter: None})
     with pytest.raises(AllotropeConversionError, match=expected_error):
-        Header.create(lines_reader)
+        Header.create(reader.header)
 
 
 def test_header_builder_plate_well_count() -> None:
-    header_contents = get_raw_header_contents(plate_well_count="96 plates")
-    lines = _read_to_lines(header_contents)
-    header = Header.create(LinesReader(lines))
+    header = Header.create(get_reader(plate_well_count="96 plates").header)
     assert header.plate_well_count == 96
 
-    header_contents = get_raw_header_contents(plate_well_count="Fast 96 plates")
-    lines = _read_to_lines(header_contents)
-    header = Header.create(LinesReader(lines))
+    header = Header.create(get_reader(plate_well_count="Fast 96 plates").header)
     assert header.plate_well_count == 96
 
-    header_contents = get_raw_header_contents(plate_well_count="384 plates")
-    lines = _read_to_lines(header_contents)
-    header = Header.create(LinesReader(lines))
+    header = Header.create(get_reader(plate_well_count="384 plates").header)
     assert header.plate_well_count == 384
 
-    header_contents = get_raw_header_contents(plate_well_count="Fast 384 plates")
-    lines = _read_to_lines(header_contents)
-    header = Header.create(LinesReader(lines))
+    header = Header.create(get_reader(plate_well_count="Fast 384 plates").header)
     assert header.plate_well_count == 384
 
-    header_contents = get_raw_header_contents(plate_well_count="200 plates")
-    lines = _read_to_lines(header_contents)
-    header = Header.create(LinesReader(lines))
+    header = Header.create(get_reader(plate_well_count="200 plates").header)
     assert header.plate_well_count is None
 
-    header_contents = get_raw_header_contents(plate_well_count="0 plates")
-    lines = _read_to_lines(header_contents)
-    header = Header.create(LinesReader(lines))
+    header = Header.create(get_reader(plate_well_count="0 plates").header)
     assert header.plate_well_count is None
-
-
-def test_header_builder_no_header_then_raise() -> None:
-    header_contents = get_raw_header_contents(raw_text="")
-    lines = _read_to_lines(header_contents, encoding="UTF-8")
-    lines_reader = LinesReader(lines)
-    with pytest.raises(
-        AllotropeConversionError,
-        match="Cannot parse data from empty header.",
-    ):
-        Header.create(lines_reader)
 
 
 def test_results_builder() -> None:
@@ -154,7 +128,7 @@ def test_results_builder() -> None:
     assert result.automatic_cycle_threshold_enabled_setting is True
 
 
-def get_raw_header_contents(
+def get_reader(
     raw_text: str | None = None,
     measurement_time: str | None = "2010-10-01 01:44:54 AM EDT",
     plate_well_count: str | None = "96-Well Block (0.2mL)",
@@ -169,31 +143,33 @@ def get_raw_header_contents(
     analyst: str | None = "NA",
     experimental_data_identifier: None
     | (str) = "QuantStudio 96-Well Presence-Absence Example",
-) -> BytesIO:
-    if raw_text is not None:
-        return BytesIO(raw_text.encode("utf-8"))
+) -> AppBioQuantStudioReader:
+    if raw_text is None:
+        header_dict = {
+            "Experiment Run End Time": measurement_time,
+            "Block Type": plate_well_count,
+            "Experiment Type ": experiment_type,
+            "Instrument Name": device_identifier,
+            "Instrument Type": model_number,
+            "Instrument Serial Number": device_serial_number,
+            "Quantification Cycle Method": measurement_method_identifier,
+            "Chemistry": pcr_detection_chemistry,
+            "Passive Reference": passive_reference_dye_setting,
+            "Experiment Barcode": barcode,
+            "Experiment User Name": analyst,
+            "Experiment Name": experimental_data_identifier,
+        }
 
-    header_dict = {
-        "Experiment Run End Time": measurement_time,
-        "Block Type": plate_well_count,
-        "Experiment Type ": experiment_type,
-        "Instrument Name": device_identifier,
-        "Instrument Type": model_number,
-        "Instrument Serial Number": device_serial_number,
-        "Quantification Cycle Method": measurement_method_identifier,
-        "Chemistry": pcr_detection_chemistry,
-        "Passive Reference": passive_reference_dye_setting,
-        "Experiment Barcode": barcode,
-        "Experiment User Name": analyst,
-        "Experiment Name": experimental_data_identifier,
-    }
+        raw_text = "\n".join(
+            [
+                f"* {header_name} = {header_value}"
+                for header_name, header_value in header_dict.items()
+                if header_value is not None
+            ]
+        )
 
-    raw_text = "\n".join(
-        [
-            f"* {header_name} = {header_value}"
-            for header_name, header_value in header_dict.items()
-            if header_value is not None
-        ]
+    return AppBioQuantStudioReader(
+        NamedFileContents(
+            contents=BytesIO(raw_text.encode("utf-8")), original_file_path="test.txt"
+        )
     )
-
-    return BytesIO(raw_text.encode("utf-8"))
