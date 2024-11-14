@@ -11,6 +11,10 @@
                                     {
                                         "device type": "binding affinity analyzer",
                                         "flow cell identifier": "Flowcell 1",
+                                        "flow rate": {
+                                            "value": 10,
+                                            "unit": "µL/min"
+                                        },
                                         "contact time": {
                                             "value": 420,
                                             "unit": "s"
@@ -46,20 +50,20 @@
                                 ]
                             },
                             "identifier": "ED_Fig.6a_immobilization Her2-Her3_cycle_1_sensorgram.parquet",
+                            "method name": "Amine",
+                            "ligand identifier": "",
                             "sensor chip document": {
                                 "sensor chip identifier": "200116-0445:1950172",
                                 "sensor chip type": "CM3",
                                 "product manufacturer": "Cytiva",
+                                "lot number": "",
                                 "custom information document": {
                                     "ifc identifier": "IFC105",
-                                    "lot number": "",
                                     "last modified time": "2020-01-16T18:53:26.190997+00:00",
                                     "last use time": "2020-01-16T16:47:26.248998+00:00",
                                     "first dock date": "2020-01-16T16:45:59.091995+00:00"
                                 }
-                            },
-                            "method name": "Amine",
-                            "ligand identifier": ""
+                            }
                         },
                         {
                             "device control aggregate document": {
@@ -67,6 +71,10 @@
                                     {
                                         "device type": "binding affinity analyzer",
                                         "flow cell identifier": "Flowcell 2",
+                                        "flow rate": {
+                                            "value": 5,
+                                            "unit": "µL/min"
+                                        },
                                         "contact time": {
                                             "value": 600,
                                             "unit": "s"
@@ -102,20 +110,20 @@
                                 ]
                             },
                             "identifier": "ED_Fig.6a_immobilization Her2-Her3_cycle_2_sensorgram.parquet",
+                            "method name": "Amine",
+                            "ligand identifier": "Her2-Her3",
                             "sensor chip document": {
                                 "sensor chip identifier": "200116-0445:1950172",
                                 "sensor chip type": "CM3",
                                 "product manufacturer": "Cytiva",
+                                "lot number": "",
                                 "custom information document": {
                                     "ifc identifier": "IFC105",
-                                    "lot number": "",
                                     "last modified time": "2020-01-16T18:53:26.190997+00:00",
                                     "last use time": "2020-01-16T16:47:26.248998+00:00",
                                     "first dock date": "2020-01-16T16:45:59.091995+00:00"
                                 }
-                            },
-                            "method name": "Amine",
-                            "ligand identifier": "Her2-Her3"
+                            }
                         },
                         {
                             "device control aggregate document": {
@@ -123,6 +131,10 @@
                                     {
                                         "device type": "binding affinity analyzer",
                                         "flow cell identifier": "Flowcell 3",
+                                        "flow rate": {
+                                            "value": 5,
+                                            "unit": "µL/min"
+                                        },
                                         "contact time": {
                                             "value": 460,
                                             "unit": "s"
@@ -158,20 +170,20 @@
                                 ]
                             },
                             "identifier": "ED_Fig.6a_immobilization Her2-Her3_cycle_3_sensorgram.parquet",
+                            "method name": "Amine",
+                            "ligand identifier": "",
                             "sensor chip document": {
                                 "sensor chip identifier": "200116-0445:1950172",
                                 "sensor chip type": "CM3",
                                 "product manufacturer": "Cytiva",
+                                "lot number": "",
                                 "custom information document": {
                                     "ifc identifier": "IFC105",
-                                    "lot number": "",
                                     "last modified time": "2020-01-16T18:53:26.190997+00:00",
                                     "last use time": "2020-01-16T16:47:26.248998+00:00",
                                     "first dock date": "2020-01-16T16:45:59.091995+00:00"
                                 }
-                            },
-                            "method name": "Amine",
-                            "ligand identifier": ""
+                            }
                         },
                         {
                             "device control aggregate document": {
@@ -179,6 +191,10 @@
                                     {
                                         "device type": "binding affinity analyzer",
                                         "flow cell identifier": "Flowcell 4",
+                                        "flow rate": {
+                                            "value": 5,
+                                            "unit": "µL/min"
+                                        },
                                         "contact time": {
                                             "value": 600,
                                             "unit": "s"
@@ -214,20 +230,20 @@
                                 ]
                             },
                             "identifier": "ED_Fig.6a_immobilization Her2-Her3_cycle_4_sensorgram.parquet",
+                            "method name": "Amine",
+                            "ligand identifier": "Her2-Her3",
                             "sensor chip document": {
                                 "sensor chip identifier": "200116-0445:1950172",
                                 "sensor chip type": "CM3",
                                 "product manufacturer": "Cytiva",
+                                "lot number": "",
                                 "custom information document": {
                                     "ifc identifier": "IFC105",
-                                    "lot number": "",
                                     "last modified time": "2020-01-16T18:53:26.190997+00:00",
                                     "last use time": "2020-01-16T16:47:26.248998+00:00",
                                     "first dock date": "2020-01-16T16:45:59.091995+00:00"
                                 }
-                            },
-                            "method name": "Amine",
-                            "ligand identifier": "Her2-Her3"
+                            }
                         }
                     ],
                     "measurement time": "2020-01-16T16:59:38.402001+00:00",

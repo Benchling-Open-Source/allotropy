@@ -43,9 +43,9 @@
                                 "sensor chip identifier": "170916-0148:1950172",
                                 "sensor chip type": "SA",
                                 "product manufacturer": "Cytiva",
+                                "lot number": "",
                                 "custom information document": {
                                     "ifc identifier": "IFC105",
-                                    "lot number": "",
                                     "last modified time": "2017-09-16T13:49:16.998004+00:00",
                                     "last use time": "2017-09-16T13:50:43.094999+00:00",
                                     "first dock date": "2017-09-16T13:49:16.998004+00:00"
@@ -90,9 +90,9 @@
                                 "sensor chip identifier": "170916-0148:1950172",
                                 "sensor chip type": "SA",
                                 "product manufacturer": "Cytiva",
+                                "lot number": "",
                                 "custom information document": {
                                     "ifc identifier": "IFC105",
-                                    "lot number": "",
                                     "last modified time": "2017-09-16T13:49:16.998004+00:00",
                                     "last use time": "2017-09-16T13:50:43.094999+00:00",
                                     "first dock date": "2017-09-16T13:49:16.998004+00:00"
@@ -137,9 +137,9 @@
                                 "sensor chip identifier": "170916-0148:1950172",
                                 "sensor chip type": "SA",
                                 "product manufacturer": "Cytiva",
+                                "lot number": "",
                                 "custom information document": {
                                     "ifc identifier": "IFC105",
-                                    "lot number": "",
                                     "last modified time": "2017-09-16T13:49:16.998004+00:00",
                                     "last use time": "2017-09-16T13:50:43.094999+00:00",
                                     "first dock date": "2017-09-16T13:49:16.998004+00:00"
@@ -168,6 +168,10 @@
                                 "sample identifier": "buffer",
                                 "sample role type": "sample role",
                                 "location identifier": "R2B1",
+                                "concentration": {
+                                    "value": 0.0,
+                                    "unit": "nM"
+                                },
                                 "custom information document": {
                                     "molecular weight": {
                                         "value": 16000.0,
@@ -190,9 +194,9 @@
                                 "sensor chip identifier": "170916-0148:1950172",
                                 "sensor chip type": "SA",
                                 "product manufacturer": "Cytiva",
+                                "lot number": "",
                                 "custom information document": {
                                     "ifc identifier": "IFC105",
-                                    "lot number": "",
                                     "last modified time": "2017-09-16T13:49:16.998004+00:00",
                                     "last use time": "2017-09-16T13:50:43.094999+00:00",
                                     "first dock date": "2017-09-16T13:49:16.998004+00:00"
@@ -221,6 +225,10 @@
                                 "sample identifier": "Prong1",
                                 "sample role type": "sample role",
                                 "location identifier": "R2B2",
+                                "concentration": {
+                                    "value": 0.5,
+                                    "unit": "nM"
+                                },
                                 "custom information document": {
                                     "molecular weight": {
                                         "value": 16000.0,
@@ -243,9 +251,9 @@
                                 "sensor chip identifier": "170916-0148:1950172",
                                 "sensor chip type": "SA",
                                 "product manufacturer": "Cytiva",
+                                "lot number": "",
                                 "custom information document": {
                                     "ifc identifier": "IFC105",
-                                    "lot number": "",
                                     "last modified time": "2017-09-16T13:49:16.998004+00:00",
                                     "last use time": "2017-09-16T13:50:43.094999+00:00",
                                     "first dock date": "2017-09-16T13:49:16.998004+00:00"
@@ -274,6 +282,10 @@
                                 "sample identifier": "Prong2",
                                 "sample role type": "sample role",
                                 "location identifier": "R2B3",
+                                "concentration": {
+                                    "value": 0.5,
+                                    "unit": "nM"
+                                },
                                 "custom information document": {
                                     "molecular weight": {
                                         "value": 16000.0,
@@ -296,9 +308,9 @@
                                 "sensor chip identifier": "170916-0148:1950172",
                                 "sensor chip type": "SA",
                                 "product manufacturer": "Cytiva",
+                                "lot number": "",
                                 "custom information document": {
                                     "ifc identifier": "IFC105",
-                                    "lot number": "",
                                     "last modified time": "2017-09-16T13:49:16.998004+00:00",
                                     "last use time": "2017-09-16T13:50:43.094999+00:00",
                                     "first dock date": "2017-09-16T13:49:16.998004+00:00"
@@ -327,6 +339,10 @@
                                 "sample identifier": "Prong3",
                                 "sample role type": "sample role",
                                 "location identifier": "R2B4",
+                                "concentration": {
+                                    "value": 0.5,
+                                    "unit": "nM"
+                                },
                                 "custom information document": {
                                     "molecular weight": {
                                         "value": 16000.0,
@@ -349,9 +365,9 @@
                                 "sensor chip identifier": "170916-0148:1950172",
                                 "sensor chip type": "SA",
                                 "product manufacturer": "Cytiva",
+                                "lot number": "",
                                 "custom information document": {
                                     "ifc identifier": "IFC105",
-                                    "lot number": "",
                                     "last modified time": "2017-09-16T13:49:16.998004+00:00",
                                     "last use time": "2017-09-16T13:50:43.094999+00:00",
                                     "first dock date": "2017-09-16T13:49:16.998004+00:00"
@@ -380,6 +396,10 @@
                                 "sample identifier": "Prong4",
                                 "sample role type": "sample role",
                                 "location identifier": "R2B5",
+                                "concentration": {
+                                    "value": 0.5,
+                                    "unit": "nM"
+                                },
                                 "custom information document": {
                                     "molecular weight": {
                                         "value": 16000.0,
@@ -402,9 +422,9 @@
                                 "sensor chip identifier": "170916-0148:1950172",
                                 "sensor chip type": "SA",
                                 "product manufacturer": "Cytiva",
+                                "lot number": "",
                                 "custom information document": {
                                     "ifc identifier": "IFC105",
-                                    "lot number": "",
                                     "last modified time": "2017-09-16T13:49:16.998004+00:00",
                                     "last use time": "2017-09-16T13:50:43.094999+00:00",
                                     "first dock date": "2017-09-16T13:49:16.998004+00:00"
@@ -433,6 +453,10 @@
                                 "sample identifier": "Prong5",
                                 "sample role type": "sample role",
                                 "location identifier": "R2B6",
+                                "concentration": {
+                                    "value": 0.5,
+                                    "unit": "nM"
+                                },
                                 "custom information document": {
                                     "molecular weight": {
                                         "value": 16000.0,
@@ -455,9 +479,9 @@
                                 "sensor chip identifier": "170916-0148:1950172",
                                 "sensor chip type": "SA",
                                 "product manufacturer": "Cytiva",
+                                "lot number": "",
                                 "custom information document": {
                                     "ifc identifier": "IFC105",
-                                    "lot number": "",
                                     "last modified time": "2017-09-16T13:49:16.998004+00:00",
                                     "last use time": "2017-09-16T13:50:43.094999+00:00",
                                     "first dock date": "2017-09-16T13:49:16.998004+00:00"

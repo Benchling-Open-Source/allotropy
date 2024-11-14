@@ -21,10 +21,10 @@ from allotropy.allotrope.models.adm.binding_affinity_analyzer.wd._2024._12.bindi
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueDegreeCelsius,
-    # TQuantityValueMicroliterPerMinute,
+    TQuantityValueMicroliterPerMinute,
     TQuantityValueMolar,
+    TQuantityValueNanomolar,
     TQuantityValuePercent,
-    # TQuantityValueNanomolar,
     TQuantityValuePerSecond,
     TQuantityValueSecondTime,
     TQuantityValueTODO,
@@ -80,6 +80,7 @@ class Metadata:
     equipment_serial_number: str | None = None
     compartment_temperature: float | None = None
     sensor_chip_type: str | None = None
+    lot_number: str | None = None
     sensor_chip_custom_info: dict[str, Any] | None = None
 
 
@@ -217,9 +218,9 @@ class Mapper(SchemaMapper[Data, Model]):
                     sample_identifier=measurements.sample_identifier,
                     sample_role_type=measurements.sample_role_type,
                     location_identifier=measurements.location_identifier,
-                    # concentration=quantity_or_none(
-                    #     TQuantityValueNanomolar, measurements.concentration
-                    # ),
+                    concentration=quantity_or_none(
+                        TQuantityValueNanomolar, measurements.concentration
+                    ),
                 ),
                 custom_info_doc=measurements.sample_custom_info,
             ),
@@ -230,6 +231,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 SensorChipDocument(
                     sensor_chip_identifier=metadata.sensor_chip_identifier,
                     sensor_chip_type=metadata.sensor_chip_type,
+                    lot_number=metadata.lot_number,
                     product_manufacturer=metadata.product_manufacturer,
                 ),
                 custom_info_doc=metadata.sensor_chip_custom_info,
@@ -240,10 +242,10 @@ class Mapper(SchemaMapper[Data, Model]):
                         DeviceControlDocumentItem(
                             flow_cell_identifier=measurements.flow_cell_identifier,
                             flow_path=measurements.flow_path,
-                            # flow_rate=quantity_or_none(
-                            #     TQuantityValueMicroliterPerMinute,
-                            #     measurements.flow_rate,
-                            # ),
+                            flow_rate=quantity_or_none(
+                                TQuantityValueMicroliterPerMinute,
+                                measurements.flow_rate,
+                            ),
                             contact_time=quantity_or_none(
                                 TQuantityValueSecondTime, measurements.contact_time
                             ),

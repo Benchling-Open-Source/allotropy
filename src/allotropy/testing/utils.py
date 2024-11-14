@@ -107,6 +107,7 @@ def _validate_identifiers(asm: DictType) -> None:
         raise AssertionError(msg)
 
 
+
 def _assert_allotrope_dicts_equal(
     expected: DictType,
     actual: DictType,
