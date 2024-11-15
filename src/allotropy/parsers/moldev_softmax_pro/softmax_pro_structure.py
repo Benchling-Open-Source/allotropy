@@ -161,7 +161,7 @@ class GroupSampleData:
                             sample=identifier,
                             positions=[position],
                             plate=plate,
-                            entries=[GroupDataElementEntry(column, column_result)] if isinstance(column_result, float) else [],
+                            entries=[GroupDataElementEntry(column, column_result if isinstance(column_result, float) else NEGATIVE_ZERO)],
                             errors=[ErrorDocument(column_result, column)] if isinstance(column_result, str) else [],
                         )
                     )
