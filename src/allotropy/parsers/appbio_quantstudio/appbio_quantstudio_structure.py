@@ -250,17 +250,6 @@ class Well:
 
 
 @dataclass(frozen=True)
-class RawData:
-    lines: list[str]
-
-    @staticmethod
-    def create(reader: AppBioQuantStudioReader) -> RawData | None:
-        if not (lines := reader.sections.get("Raw Data")):
-            return None
-        return RawData(lines)
-
-
-@dataclass(frozen=True)
 class AmplificationData:
     total_cycle_number_setting: float
     cycle: list[float]

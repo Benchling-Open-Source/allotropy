@@ -20,7 +20,6 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     create_multicomponent_data,
     Header,
     MeltCurveRawData,
-    RawData,
     Result,
     Well,
 )
@@ -40,8 +39,6 @@ class AppBioQuantStudioParser(VendorParser[Data, Model]):
         # Data sections must be read in order from the file.
         header = Header.create(reader.header)
         wells = Well.create(reader, header.experiment_type)
-        # Skip raw data section
-        RawData.create(reader)
         amp_data = create_amplification_data(reader)
         multi_data = create_multicomponent_data(reader)
         results_data, results_metadata = Result.create(reader, header.experiment_type)
