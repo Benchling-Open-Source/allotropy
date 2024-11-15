@@ -235,9 +235,18 @@ def _get_group_simple_calc_docs(
 ) -> list[CalculatedDataItem]:
     calculated_documents = []
     for group_data_element in group_sample_data.data_elements:
-        data_sources = _get_calc_docs_data_sources(
-            data.block_list.plate_blocks[group_data_element.plate],
-            group_data_element.position,
+        #data_sources = _get_calc_docs_data_sources(
+        #    data.block_list.plate_blocks[group_data_element.plate],
+        #    group_data_element.position,
+        #)
+        data_sources = list(
+            chain.from_iterable(
+                _get_calc_docs_data_sources(
+                    data.block_list.plate_blocks[group_data_element.plate],
+                    position,
+                )
+                for position in group_data_element.positions
+            )
         )
         for entry in group_data_element.entries:
             calculated_documents.append(
