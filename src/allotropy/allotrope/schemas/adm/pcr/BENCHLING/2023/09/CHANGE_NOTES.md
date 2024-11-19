@@ -56,6 +56,10 @@ Changes:
   * Reasoning: these fields are required for interpreting data source document
   * Proposal: add these fields as required in the ASM schema
 
+* Added reporter dye and passive dye data cubes to "measurement document"
+  * Reasoning: added support for data capture of real-time fluorescence results
+  * Proposal: Added reporter dye and passive dye data cubes to "measurement document"
+
 * Fields that were renamed from our originally proposed schema to the accepted version
   * Proposal: TODO implement these name changes to confirm with ASM
   * Changes:
