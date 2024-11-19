@@ -60,6 +60,10 @@ Changes:
   * Reasoning: added support for data capture of real-time fluorescence results
   * Proposal: Added reporter dye and passive dye data cubes to "measurement document"
 
+* Added error aggregate document to "measurement document" and "measurement aggregate document"
+  * Reasoning: added support for error reporting -- added in future ASM schema versions
+  * Proposal: Added error aggregate document to "measurement document" and "measurement aggregate document"
+
 * Fields that were renamed from our originally proposed schema to the accepted version
   * Proposal: TODO implement these name changes to confirm with ASM
   * Changes:

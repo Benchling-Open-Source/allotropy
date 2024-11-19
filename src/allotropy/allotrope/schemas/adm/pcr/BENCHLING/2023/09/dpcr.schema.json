@@ -212,6 +212,44 @@
                     "$asm.pattern": "quantity datum",
                     "$ref": "#/$custom/tQuantityValueMicroliter"
                   },
+                  "error aggregate document": {
+                    "type": "object",
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002951",
+                    "$asm.pattern": "aggregate datum",
+                    "required": [
+                      "error document"
+                    ],
+                    "properties": {
+                      "error document": {
+                        "type": "array",
+                        "$asm.array-ordered": false,
+                        "$asm.array-mixed": false,
+                        "$asm.pattern": "indexed datum",
+                        "items": {
+                          "type": "object",
+                          "$asm.property-class": "",
+                          "$asm.pattern": "aggregate datum",
+                          "properties": {
+                            "error": {
+                              "$asm.property-class": "",
+                              "$asm.pattern": "value datum",
+                              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                              "$ref": "#/$defs/tStringValue"
+                            },
+                            "error feature": {
+                              "$asm.property-class": "",
+                              "$asm.pattern": "value datum",
+                              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                              "$ref": "#/$defs/tStringValue"
+                            }
+                          },
+                          "required": [
+                                "error"
+                          ]
+                        }
+                      }
+                    }
+                  },
                   "measurement document": {
                     "type": "array",
                     "$asm.array-ordered": false,
@@ -248,6 +286,44 @@
                           "$asm.pattern": "value datum",
                           "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
                           "$ref": "#/$defs/tStringValue"
+                        },
+                        "error aggregate document": {
+                          "type": "object",
+                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002951",
+                          "$asm.pattern": "aggregate datum",
+                          "required": [
+                            "error document"
+                          ],
+                          "properties": {
+                            "error document": {
+                              "type": "array",
+                              "$asm.array-ordered": false,
+                              "$asm.array-mixed": false,
+                              "$asm.pattern": "indexed datum",
+                              "items": {
+                                "type": "object",
+                                "$asm.property-class": "",
+                                "$asm.pattern": "aggregate datum",
+                                "properties": {
+                                  "error": {
+                                    "$asm.property-class": "",
+                                    "$asm.pattern": "value datum",
+                                    "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                    "$ref": "#/$defs/tStringValue"
+                                  },
+                                  "error feature": {
+                                    "$asm.property-class": "",
+                                    "$asm.pattern": "value datum",
+                                    "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                    "$ref": "#/$defs/tStringValue"
+                                  }
+                                },
+                                "required": [
+                                  "error"
+                                ]
+                              }
+                            }
+                          }
                         },
                         "sample document": {
                           "type": "object",
