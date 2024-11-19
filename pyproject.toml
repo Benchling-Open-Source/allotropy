@@ -56,6 +56,7 @@ dependencies = [
   "python-calamine >= 0.2.3",
   "xlrd >= 2.0.0",
   "rfc3339-validator >= 0.1.4",
+  "defusedxml >= 0.7.1",
 ]
 
 [project.urls]

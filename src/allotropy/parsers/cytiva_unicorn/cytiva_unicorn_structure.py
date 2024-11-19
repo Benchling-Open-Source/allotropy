@@ -11,10 +11,12 @@ def create_metadata(handler: UnicornFileHandler) -> Metadata:
     instrument_config_data = handler.get_instrument_config_data()
 
     return Metadata(
-        asset_management_id=system_data.find("System").find("InstrumentConfiguration").get("Description"),
+        asset_management_id=system_data.find_attr(
+            ["System", "InstrumentConfiguration"], "Description"
+        ),
         product_manufacturer="Cytiva Life Sciences",
-        device_id=results.find("SystemName").text,
-        firmware_version=instrument_config_data.find("FirmwareVersion").text,
+        device_id=results.find_text(["SystemName"]),
+        firmware_version=instrument_config_data.find_text(["FirmwareVersion"]),
     )
 
 

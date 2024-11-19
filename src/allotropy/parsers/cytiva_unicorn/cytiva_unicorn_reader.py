@@ -2,9 +2,11 @@ from __future__ import annotations
 
 from io import BytesIO
 from re import search
+from xml.etree import ElementTree
 from zipfile import Path, ZipFile
 
-from defusedxml import ElementTree
+# xml fromstring is vulnerable so defusedxml version is used instead
+from defusedxml.ElementTree import fromstring  # type: ignore[import-untyped]
 
 from allotropy.parsers.utils.values import assert_not_none
 
@@ -42,20 +44,54 @@ class ZipHandler:
         return self.__get_content(self.get_file_path(pattern))
 
 
+class StrictElement:
+    def __init__(self, element: ElementTree.Element):
+        self.element = element
+
+    def find(self, name: str) -> StrictElement:
+        return StrictElement(
+            assert_not_none(
+                self.element.find(name),
+                msg=f"Unable to find {name} in xml file contents",
+            )
+        )
+
+    def get(self, name: str) -> str:
+        return assert_not_none(
+            self.element.get(name),
+            msg=f"Unable to find {name} in xml file contents",
+        )
+
+    def recursive_find(self, names: list[str]) -> StrictElement:
+        if len(names) == 0:
+            return self
+        name, *sub_names = names
+        return self.find(name).recursive_find(sub_names)
+
+    def find_attr(self, names: list[str], attr: str) -> str:
+        return self.recursive_find(names).get(attr)
+
+    def find_text(self, names: list[str]) -> str:
+        return str(self.recursive_find(names).element.text)
+
+
 class UnicornFileHandler(ZipHandler):
-    def get_system_data(self) -> ElementTree.Element:
+    def get_system_data(self) -> StrictElement:
         system_data = self.get_content_from_pattern("SystemData.zip$")
         b_stream = system_data.get_file_from_pattern("^Xml$")
         raw_content = b_stream.read()
-        return ElementTree.fromstring(raw_content[25:-1])
+        element = fromstring(raw_content[25:-1])
+        return StrictElement(element)
 
-    def get_results(self) -> ElementTree.Element:
+    def get_results(self) -> StrictElement:
         b_stream = self.get_file_from_pattern("Result.xml$")
-        return ElementTree.fromstring(b_stream.read())
+        element = fromstring(b_stream.read())
+        return StrictElement(element)
 
-    def get_instrument_config_data(self) -> ElementTree.Element:
+    def get_instrument_config_data(self) -> StrictElement:
         instrument_regex = "InstrumentConfigurationData.zip$"
         instrument_config_data = self.get_content_from_pattern(instrument_regex)
         b_stream = instrument_config_data.get_file_from_pattern("^Xml$")
         raw_content = b_stream.read()
-        return ElementTree.fromstring(raw_content[24:-1])
+        element = fromstring(raw_content[24:-1])
+        return StrictElement(element)
