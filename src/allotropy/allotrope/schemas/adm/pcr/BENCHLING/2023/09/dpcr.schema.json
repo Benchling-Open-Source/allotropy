@@ -404,6 +404,36 @@
                           "$asm.pattern": "quantity datum",
                           "$ref": "#/$custom/tQuantityValueNumber"
                         },
+                        "reporter dye data cube": {
+                          "$asm.property-class": "TODO",
+                          "$asm.pattern": "datacube",
+                          "properties": {
+                            "label": {
+                              "type": "string"
+                            },
+                            "cube-structure": {
+                              "$ref": "#/$defs/tDatacubeStructure"
+                            },
+                            "data": {
+                              "$ref": "#/$defs/tDatacubeData"
+                            }
+                          }
+                        },
+                        "passive reference dye data cube": {
+                          "$asm.property-class": "TODO",
+                          "$asm.pattern": "datacube",
+                          "properties": {
+                            "label": {
+                              "type": "string"
+                            },
+                            "cube-structure": {
+                              "$ref": "#/$defs/tDatacubeStructure"
+                            },
+                            "data": {
+                              "$ref": "#/$defs/tDatacubeData"
+                            }
+                          }
+                        },
                         "processed data aggregate document": {
                           "type": "object",
                           "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002658",
