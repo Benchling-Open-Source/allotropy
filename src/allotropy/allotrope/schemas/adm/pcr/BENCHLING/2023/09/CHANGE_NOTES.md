@@ -56,6 +56,18 @@ Changes:
   * Reasoning: these fields are required for interpreting data source document
   * Proposal: add these fields as required in the ASM schema
 
+* Added reporter dye and passive dye data cubes to "measurement document"
+  * Reasoning: added support for data capture of real-time fluorescence results
+  * Proposal: Added reporter dye and passive dye data cubes to "measurement document"
+
+* Added error aggregate document to "measurement document" and "measurement aggregate document"
+  * Reasoning: added support for error reporting -- added in future ASM schema versions
+  * Proposal: Added error aggregate document to "measurement document" and "measurement aggregate document"
+
+* Added confidence interval (95%) to "processed data document"
+  * Reasoning: adding support for standard statistic from dPCR experiments
+  * Proposal: Add confidence interval (95%) to "processed data document"
+
 * Fields that were renamed from our originally proposed schema to the accepted version
   * Proposal: TODO implement these name changes to confirm with ASM
   * Changes:

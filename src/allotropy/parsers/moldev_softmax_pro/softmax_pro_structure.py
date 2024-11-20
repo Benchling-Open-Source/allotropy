@@ -441,8 +441,11 @@ class PlateRawData:
     ) -> pd.DataFrame:
         lines = []
         # read number of rows in plate section
-        for _ in range(rows):
-            lines.append(reader.pop() or "")
+        for i in range(rows):
+            if not (line := reader.pop()):
+                msg = f"Expected {rows} rows in measurement table, got {i}."
+                raise AllotropeConversionError(msg)
+            lines.append(line)
         reader.drop_empty()
 
         # convert rows to df
