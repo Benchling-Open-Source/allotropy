@@ -66,7 +66,7 @@ class Header:
             plate_well_count=plate_well_count,
             experiment_type=assert_not_none(
                 experiments_type_options.get(
-                    data[str, "Experiment Type"],
+                    data[str, "Experiment Type"].strip(),
                 ),
                 msg="Unable to find valid experiment type",
             ),
