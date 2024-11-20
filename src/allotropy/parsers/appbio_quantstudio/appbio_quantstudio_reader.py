@@ -2,6 +2,7 @@ from io import StringIO
 import re
 
 import numpy as np
+import pandas as pd
 
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
@@ -13,7 +14,7 @@ from allotropy.parsers.utils.values import assert_not_none
 class AppBioQuantStudioReader:
     SUPPORTED_EXTENSIONS = "txt"
     header: SeriesData
-    sections: dict[str, list[str]]
+    sections: dict[str, pd.DataFrame]
 
     def __init__(self, named_file_contents: NamedFileContents) -> None:
         reader = SectionLinesReader.create(named_file_contents)
@@ -30,7 +31,19 @@ class AppBioQuantStudioReader:
                     match, f"Cannot read title section: {section_reader.get()}"
                 ).groups()[0]
             )
-            self.sections[title] = list(section_reader.lines)[1:]
+            data_lines = list(section_reader.pop_until_empty())
+            section_reader.drop_empty()
+            metadata_lines = list(section_reader.pop_until_empty())
+            if title == "Results" and metadata_lines:
+                # Treat results metadata as an additional section
+                csv_stream = StringIO("\n".join(metadata_lines))
+                self.sections["Results Metadata"] = read_csv(
+                    csv_stream, header=None, sep="=", skipinitialspace=True, index_col=0
+                )
+
+            self.sections[title] = read_csv(
+                StringIO("\n".join(data_lines)), sep="\t", thousands=r","
+            ).replace(np.nan, None)
 
     def _parse_header(self, reader: LinesReader) -> SeriesData:
         lines = [line.strip() for line in reader.pop_until(r"^\[.+\]") if line.strip()]
