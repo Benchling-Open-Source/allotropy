@@ -356,7 +356,7 @@ class Result:
         result = Result.create_results(data, experiment_type)
         metadata = SeriesData(pd.Series())
         if (raw_metadata := reader.sections.get("Results Metadata")) is not None:
-            metadata = df_to_series_data(raw_metadata.T)
+            metadata = df_to_series_data(raw_metadata)
 
         return result, ResultMetadata.create(metadata, experiment_type)
 

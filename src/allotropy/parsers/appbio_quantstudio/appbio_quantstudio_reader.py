@@ -7,19 +7,68 @@ import pandas as pd
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.lines_reader import LinesReader, SectionLinesReader
-from allotropy.parsers.utils.pandas import df_to_series_data, read_csv, SeriesData
+from allotropy.parsers.utils.pandas import (
+    df_to_series_data,
+    parse_header_row,
+    read_csv,
+    read_multisheet_excel,
+    SeriesData,
+    split_dataframe,
+    split_header_and_data,
+)
 from allotropy.parsers.utils.values import assert_not_none
 
 
 class AppBioQuantStudioReader:
-    SUPPORTED_EXTENSIONS = "txt"
+    SUPPORTED_EXTENSIONS = "txt, xlsx"
     header: SeriesData
     sections: dict[str, pd.DataFrame]
 
     def __init__(self, named_file_contents: NamedFileContents) -> None:
+        if named_file_contents.extension == "xlsx":
+            self._read_xlsx_file(named_file_contents)
+        else:
+            self._read_txt_file(named_file_contents)
+
+    def _read_xlsx_file(self, named_file_contents: NamedFileContents) -> None:
+        raw_contents = read_multisheet_excel(
+            named_file_contents.contents,
+            header=None,
+            engine="calamine",
+        )
+        contents = {
+            str(name): df.replace(np.nan, None) for name, df in raw_contents.items()
+        }
+        self.header = self._get_xlsx_header(contents)
+        self.sections = self._get_xlsx_sections(contents)
+
+    def _get_xlsx_header(self, contents: dict[str, pd.DataFrame]) -> SeriesData:
+        sheet = assert_not_none(
+            contents.get("Results"),
+            msg="Unable to find 'Results' sheet.",
+        )
+        df, _ = split_header_and_data(sheet, lambda row: row[0] is None)
+        return df_to_series_data(parse_header_row(df.T))
+
+    def _get_xlsx_sections(
+        self, contents: dict[str, pd.DataFrame]
+    ) -> dict[str, pd.DataFrame]:
+        sections = {}
+        for name, sheet in contents.items():
+            _, data = split_header_and_data(sheet, lambda row: row[0] is None)
+            if name == "Results":
+                data = data.reset_index(drop=True)
+                data, metadata = split_dataframe(data, lambda row: row[0] is None)
+                if metadata is not None:
+                    sections["Results Metadata"] = parse_header_row(metadata.T)
+
+            sections[name] = parse_header_row(data.replace(np.nan, None))
+        return sections
+
+    def _read_txt_file(self, named_file_contents: NamedFileContents) -> None:
         reader = SectionLinesReader.create(named_file_contents)
 
-        self.header = self._parse_header(reader)
+        self.header = self._parse_txt_header(reader)
         self.sections = {}
         for section_reader in reader.iter_sections(r"^\[.+\]"):
             match = re.match(
@@ -39,13 +88,13 @@ class AppBioQuantStudioReader:
                 csv_stream = StringIO("\n".join(metadata_lines))
                 self.sections["Results Metadata"] = read_csv(
                     csv_stream, header=None, sep="=", skipinitialspace=True, index_col=0
-                )
+                ).T
 
             self.sections[title] = read_csv(
                 StringIO("\n".join(data_lines)), sep="\t", thousands=r","
             ).replace(np.nan, None)
 
-    def _parse_header(self, reader: LinesReader) -> SeriesData:
+    def _parse_txt_header(self, reader: LinesReader) -> SeriesData:
         lines = [line.strip() for line in reader.pop_until(r"^\[.+\]") if line.strip()]
         if not lines:
             msg = "Cannot parse data from empty header."
