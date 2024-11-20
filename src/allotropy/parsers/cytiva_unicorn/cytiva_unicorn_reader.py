@@ -121,3 +121,8 @@ class UnicornFileHandler(ZipHandler):
             ):
                 return match.group(1)
         return "Default"
+
+    def get_chrom_1(self) -> StrictElement:
+        b_stream = self.get_file_from_pattern("Chrom.1.Xml$")
+        element = fromstring(b_stream.read())
+        return StrictElement(element)

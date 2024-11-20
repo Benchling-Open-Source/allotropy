@@ -5,6 +5,9 @@ from allotropy.allotrope.models.adm.liquid_chromatography.benchling._2023._09.li
     LiquidChromatographyAggregateDocument,
     Model,
 )
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    FieldComponentDatatype,
+)
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 
 
@@ -18,8 +21,25 @@ class Metadata:
 
 
 @dataclass(frozen=True)
+class DataCubeComponent:
+    type_: FieldComponentDatatype
+    concept: str
+    unit: str
+
+
+@dataclass(frozen=True)
+class DataCube:
+    label: str
+    structure_dimensions: list[DataCubeComponent]
+    structure_measures: list[DataCubeComponent]
+    dimensions: list[tuple[float, ...]]
+    measures: list[tuple[float | None, ...]]
+
+
+@dataclass(frozen=True)
 class Measurement:
     measurement_identifier: str
+    data_cube: DataCube | None = None
 
 
 @dataclass(frozen=True)
