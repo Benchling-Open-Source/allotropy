@@ -558,6 +558,11 @@
                                     "$asm.property-class": "TODO",
                                     "$asm.pattern": "quantity datum",
                                     "$ref": "#/$custom/tQuantityValueNumber"
+                                  },
+                                  "confidence interval (95%)": {
+                                    "$asm.property-class": "TODO",
+                                    "$asm.pattern": "quantity datum",
+                                    "$ref": "#/$custom/tQuantityValueNumber"
                                   }
                                 }
                               },
