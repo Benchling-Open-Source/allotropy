@@ -17,6 +17,7 @@ def create_metadata(handler: UnicornFileHandler) -> Metadata:
         product_manufacturer="Cytiva Life Sciences",
         device_id=results.find_text(["SystemName"]),
         firmware_version=instrument_config_data.find_text(["FirmwareVersion"]),
+        analyst=handler.get_audit_trail_entry_user(),
     )
 
 

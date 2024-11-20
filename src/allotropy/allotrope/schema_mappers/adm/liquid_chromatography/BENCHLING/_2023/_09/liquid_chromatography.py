@@ -14,6 +14,7 @@ class Metadata:
     product_manufacturer: str
     device_id: str
     firmware_version: str
+    analyst: str
 
 
 @dataclass(frozen=True)

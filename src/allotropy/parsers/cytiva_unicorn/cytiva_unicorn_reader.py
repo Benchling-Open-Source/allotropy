@@ -56,6 +56,9 @@ class StrictElement:
             )
         )
 
+    def findall(self, name: str) -> list[StrictElement]:
+        return [StrictElement(element) for element in self.element.findall(name)]
+
     def get(self, name: str) -> str:
         return assert_not_none(
             self.element.get(name),
@@ -95,3 +98,26 @@ class UnicornFileHandler(ZipHandler):
         raw_content = b_stream.read()
         element = fromstring(raw_content[24:-1])
         return StrictElement(element)
+
+    def get_evaluation_log(self) -> StrictElement:
+        b_stream = self.get_file_from_pattern("EvaluationLog.xml$")
+        element = fromstring(b_stream.read())
+        return StrictElement(element)
+
+    def __get_audit_trail_entry(self, element: StrictElement) -> StrictElement | None:
+        audit_trail_entries = element.recursive_find(
+            ["AuditTrail", "AuditTrailEntries"]
+        )
+        for element in audit_trail_entries.findall("AuditTrailEntry"):
+            if element.find_text(["GroupName"]) == "EvaluationLoggingStarted":
+                return element
+        return None
+
+    def get_audit_trail_entry_user(self) -> str:
+        if audit_trail_entry := self.__get_audit_trail_entry(self.get_evaluation_log()):
+            if match := search(
+                r"User: (.+)\. ",
+                audit_trail_entry.find_text(["LogEntry"]),
+            ):
+                return match.group(1)
+        return "Default"
