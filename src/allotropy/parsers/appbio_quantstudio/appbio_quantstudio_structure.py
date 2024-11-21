@@ -385,10 +385,12 @@ class Result:
     def create_result(
         data: SeriesData, experiment_type: ExperimentType, target_id: str
     ) -> dict[str, Result]:
+        ct_col = Result.get_ct_col(list(data.series.index.astype(str)))
+        ct_prefix = ct_col.capitalize()
         if experiment_type == ExperimentType.genotyping_qPCR_experiment:
             allele_prefixes = []
             for column in data.series.index:
-                if match := re.match("(^\\w+) Ct$", column):
+                if match := re.match(rf"(^\w+) {ct_prefix}$", column):
                     allele_prefixes.append(f"{match.groups()[0]} ")
         else:
             allele_prefixes = [""]
@@ -398,14 +400,12 @@ class Result:
                 " ", ""
             ): Result(
                 cycle_threshold_value_setting=data[
-                    float, f"{allele_prefix}Ct Threshold"
+                    float, f"{allele_prefix}{ct_prefix} Threshold"
                 ],
                 # TODO(nstender): really seems like this should be NaN if invalid value. Keeping to preserve tests.
-                cycle_threshold_result=data.get(
-                    float, [f"{allele_prefix}Ct", f"{allele_prefix}CT"]
-                ),
+                cycle_threshold_result=data.get(float, f"{allele_prefix}{ct_col}"),
                 automatic_cycle_threshold_enabled_setting=data.get(
-                    bool, f"{allele_prefix}Automatic Ct Threshold"
+                    bool, f"{allele_prefix}Automatic {ct_prefix} Threshold"
                 ),
                 automatic_baseline=data.get(bool, f"{allele_prefix}Automatic Baseline"),
                 baseline_start=data.get(int, f"{allele_prefix}Baseline Start"),
@@ -421,11 +421,11 @@ class Result:
                 quantity=data.get(float, "Quantity"),
                 quantity_mean=data.get(float, "Quantity Mean"),
                 quantity_sd=data.get(float, "Quantity SD"),
-                ct_mean=data.get(float, "Ct Mean"),
-                ct_sd=data.get(float, "Ct SD"),
-                delta_ct_mean=data.get(float, "Delta Ct Mean"),
-                delta_ct_se=data.get(float, "Delta Ct SE"),
-                delta_delta_ct=data.get(float, "Delta Delta Ct"),
+                ct_mean=data.get(float, f"{ct_prefix} Mean"),
+                ct_sd=data.get(float, f"{ct_prefix} SD"),
+                delta_ct_mean=data.get(float, f"Delta {ct_prefix} Mean"),
+                delta_ct_se=data.get(float, f"Delta {ct_prefix} SE"),
+                delta_delta_ct=data.get(float, f"Delta Delta {ct_prefix}"),
                 rq=data.get(float, "RQ"),
                 rq_min=data.get(float, "RQ Min"),
                 rq_max=data.get(float, "RQ Max"),
@@ -449,6 +449,25 @@ class Result:
             )
             for allele_prefix in allele_prefixes
         }
+
+    @staticmethod
+    def get_ct_col(columns: list[str]) -> str:
+        """Looks for any column matching the pattern of the cycle threshhold.
+
+        The pattern for the threshold column is `[allele prefix]<cuantification_method>`
+        where `allele prefix` is optional and `cuantification_method` can be any of
+        Ct, Crt or Cq with different capitalyzations.
+
+        This identifier is used as a prefix to all the cycle threshold related
+        columns (always capitalyzed)
+        """
+        r = re.compile(r".*(C[tT]|C(?:rt|RT)|C[qQ])$")
+        for column in columns:
+            if match := r.match(column):
+                return match.groups()[0]
+
+        msg = "Unable to identify ct prefix"
+        raise AllotropeConversionError(msg)
 
 
 @dataclass(frozen=True)
