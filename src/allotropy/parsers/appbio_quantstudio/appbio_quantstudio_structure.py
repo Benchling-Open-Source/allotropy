@@ -454,8 +454,8 @@ class Result:
     def get_ct_col(columns: list[str]) -> str:
         """Looks for any column matching the pattern of the cycle threshhold.
 
-        The pattern for the threshold column is `[allele prefix]<cuantification_method>`
-        where `allele prefix` is optional and `cuantification_method` can be any of
+        The pattern for the threshold column is `[allele prefix]<quantification_method>`
+        where `allele prefix` is optional and `quantification_method` can be any of
         Ct, Crt or Cq with different capitalyzations.
 
         This identifier is used as a prefix to all the cycle threshold related
