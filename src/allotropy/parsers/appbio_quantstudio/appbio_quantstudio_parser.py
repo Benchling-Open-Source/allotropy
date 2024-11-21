@@ -34,7 +34,7 @@ class AppBioQuantStudioParser(VendorParser[Data, Model]):
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
-        reader = AppBioQuantStudioReader(named_file_contents)
+        reader = AppBioQuantStudioReader.create(named_file_contents)
 
         # Data sections must be read in order from the file.
         header = Header.create(reader.header)

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from io import StringIO
 import re
 
@@ -24,25 +26,26 @@ class AppBioQuantStudioReader:
     header: SeriesData
     sections: dict[str, pd.DataFrame]
 
-    def __init__(self, named_file_contents: NamedFileContents) -> None:
+    @staticmethod
+    def create(named_file_contents: NamedFileContents) -> AppBioQuantStudioReader:
         if named_file_contents.extension == "xlsx":
-            self._read_xlsx_file(named_file_contents)
+            return AppBioQuantStudioXLSXReader(named_file_contents)
         else:
-            self._read_txt_file(named_file_contents)
+            return AppBioQuantStudioTXTReader(named_file_contents)
 
-    def _read_xlsx_file(self, named_file_contents: NamedFileContents) -> None:
+
+class AppBioQuantStudioXLSXReader(AppBioQuantStudioReader):
+    def __init__(self, named_file_contents: NamedFileContents) -> None:
         raw_contents = read_multisheet_excel(
             named_file_contents.contents,
             header=None,
             engine="calamine",
         )
-        contents = {
-            str(name): df.replace(np.nan, None) for name, df in raw_contents.items()
-        }
-        self.header = self._get_xlsx_header(contents)
-        self.sections = self._get_xlsx_sections(contents)
+        contents = {name: df.replace(np.nan, None) for name, df in raw_contents.items()}
+        self.header = self.get_header(contents)
+        self.sections = self.get_sections(contents)
 
-    def _get_xlsx_header(self, contents: dict[str, pd.DataFrame]) -> SeriesData:
+    def get_header(self, contents: dict[str, pd.DataFrame]) -> SeriesData:
         sheet = assert_not_none(
             contents.get("Results"),
             msg="Unable to find 'Results' sheet.",
@@ -50,7 +53,7 @@ class AppBioQuantStudioReader:
         df, _ = split_header_and_data(sheet, lambda row: row[0] is None)
         return df_to_series_data(parse_header_row(df.T))
 
-    def _get_xlsx_sections(
+    def get_sections(
         self, contents: dict[str, pd.DataFrame]
     ) -> dict[str, pd.DataFrame]:
         sections = {}
@@ -65,11 +68,28 @@ class AppBioQuantStudioReader:
             sections[name] = parse_header_row(data.replace(np.nan, None))
         return sections
 
-    def _read_txt_file(self, named_file_contents: NamedFileContents) -> None:
-        reader = SectionLinesReader.create(named_file_contents)
 
-        self.header = self._parse_txt_header(reader)
-        self.sections = {}
+class AppBioQuantStudioTXTReader(AppBioQuantStudioReader):
+    def __init__(self, named_file_contents: NamedFileContents) -> None:
+        reader = SectionLinesReader.create(named_file_contents)
+        self.header = self.get_header(reader)
+        self.sections = self.get_sections(reader)
+
+    def get_header(self, reader: LinesReader) -> SeriesData:
+        lines = [line.strip() for line in reader.pop_until(r"^\[.+\]") if line.strip()]
+        if not lines:
+            msg = "Cannot parse data from empty header."
+            raise AllotropeConversionError(msg)
+
+        csv_stream = StringIO("\n".join(lines))
+        raw_data = read_csv(
+            csv_stream, header=None, sep="=", skipinitialspace=True, index_col=0
+        )
+        raw_data.index = raw_data.index.str.replace("*", "")
+        return df_to_series_data(raw_data.T.replace(np.nan, None))
+
+    def get_sections(self, reader: SectionLinesReader) -> dict[str, pd.DataFrame]:
+        sections = {}
         for section_reader in reader.iter_sections(r"^\[.+\]"):
             match = re.match(
                 r"^\[(.+)\]",
@@ -86,23 +106,11 @@ class AppBioQuantStudioReader:
             if title == "Results" and metadata_lines:
                 # Treat results metadata as an additional section
                 csv_stream = StringIO("\n".join(metadata_lines))
-                self.sections["Results Metadata"] = read_csv(
+                sections["Results Metadata"] = read_csv(
                     csv_stream, header=None, sep="=", skipinitialspace=True, index_col=0
                 ).T
 
-            self.sections[title] = read_csv(
+            sections[title] = read_csv(
                 StringIO("\n".join(data_lines)), sep="\t", thousands=r","
             ).replace(np.nan, None)
-
-    def _parse_txt_header(self, reader: LinesReader) -> SeriesData:
-        lines = [line.strip() for line in reader.pop_until(r"^\[.+\]") if line.strip()]
-        if not lines:
-            msg = "Cannot parse data from empty header."
-            raise AllotropeConversionError(msg)
-
-        csv_stream = StringIO("\n".join(lines))
-        raw_data = read_csv(
-            csv_stream, header=None, sep="=", skipinitialspace=True, index_col=0
-        )
-        raw_data.index = raw_data.index.str.replace("*", "")
-        return df_to_series_data(raw_data.T.replace(np.nan, None))
+        return sections
