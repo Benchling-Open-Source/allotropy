@@ -148,6 +148,9 @@ class Data:
     calculated_data: list[CalculatedDataItem] | None = None
 
 
+CubeClass = TypeVar("CubeClass")
+
+
 class Mapper(SchemaMapper[Data, Model]):
     MANIFEST = "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/dpcr.manifest"
 
@@ -291,8 +294,6 @@ class Mapper(SchemaMapper[Data, Model]):
                 for calculated_data_item in calculated_data_items
             ]
         )
-
-    CubeClass = TypeVar("CubeClass")
 
     def _get_data_cube(
         self,
