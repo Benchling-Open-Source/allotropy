@@ -14746,11 +14746,12 @@
           "minItems": 1
         }
 
+        
       },
       "required": [
         "vocabulary",
         "json-schemas"
-        
+
       ]
     }
   }
