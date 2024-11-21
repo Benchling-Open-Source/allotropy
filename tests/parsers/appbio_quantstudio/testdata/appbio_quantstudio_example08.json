@@ -2,9 +2,9 @@
     "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest",
     "qPCR aggregate document": {
         "device system document": {
-            "device identifier": "278872347",
+            "device identifier": "12345",
             "model number": "QuantStudio(TM) 7 Flex System",
-            "device serial number": "278872347"
+            "device serial number": "12345"
         },
         "qPCR document": [
             {
@@ -11692,8 +11692,8 @@
         ],
         "data system document": {
             "data system instance identifier": "localhost",
-            "file name": "2022-08-12 145003.xlsx",
-            "UNC path": "tests/parsers/appbio_quantstudio/testdata/2022-08-12 145003.xlsx",
+            "file name": "appbio_quantstudio_example08.xlsx",
+            "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_example08.xlsx",
             "software name": "Thermo QuantStudio",
             "software version": "1.0",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
