@@ -37,9 +37,30 @@ class DataCube:
 
 
 @dataclass(frozen=True)
+class ProcessedDataDoc:
+    chromatogram_data_cube: DataCube | None = None
+    derived_column_pressure_data_cube: DataCube | None = None
+
+
+@dataclass(frozen=True)
+class DeviceControlDoc:
+    device_type: str
+    solvent_conc_data_cube: DataCube | None = None
+    pre_column_pressure_data_cube: DataCube | None = None
+    sample_pressure_data_cube: DataCube | None = None
+    system_pressure_data_cube: DataCube | None = None
+    post_column_pressure_data_cube: DataCube | None = None
+    sample_flow_data_cube: DataCube | None = None
+    system_flow_data_cube: DataCube | None = None
+    temperature_profile_data_cube: DataCube | None = None
+
+
+@dataclass(frozen=True)
 class Measurement:
     measurement_identifier: str
     data_cube: DataCube | None = None
+    processed_data_doc: ProcessedDataDoc | None = None
+    device_control_docs: list[DeviceControlDoc] | None = None
 
 
 @dataclass(frozen=True)
