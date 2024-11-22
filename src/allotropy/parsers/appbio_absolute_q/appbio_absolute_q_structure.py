@@ -143,7 +143,7 @@ class WellItem:
             measurement_identifier=random_uuid_str(),
             well_identifier=WellItem.get_well_id(data),
             plate_identifier=data[str, "Plate"],
-            group_identifier=data.get(str, "Group"),
+            group_identifier=data.get(str, "Group", ""),
             target_identifier=data.get(str, "Target", NOT_APPLICABLE),
             run_identifier=data[str, "Run"],
             instrument_identifier=data[str, "Instrument"],
@@ -155,7 +155,7 @@ class WellItem:
         )
 
     @staticmethod
-    def get_well_id(data: SeriesData):
+    def get_well_id(data: SeriesData) -> str:
         if not data.has_key("Channels"):
             return data[str, "Well"]
 
