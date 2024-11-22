@@ -71,6 +71,12 @@ class InjectionDoc:
 
 
 @dataclass(frozen=True)
+class SampleDoc:
+    sample_identifier: str
+    batch_identifier: str
+
+
+@dataclass(frozen=True)
 class Measurement:
     measurement_identifier: str
     data_cube: DataCube | None = None
@@ -78,6 +84,7 @@ class Measurement:
     device_control_docs: list[DeviceControlDoc] | None = None
     chromatography_column_doc: ChromatographyDoc | None = None
     injection_doc: InjectionDoc | None = None
+    sample_doc: SampleDoc | None = None
 
 
 @dataclass(frozen=True)

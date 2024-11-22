@@ -15,6 +15,7 @@ from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._202
     MeasurementGroup,
     Metadata,
     ProcessedDataDoc,
+    SampleDoc,
 )
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.cytiva_unicorn.constants import DEVICE_TYPE
@@ -125,6 +126,31 @@ def get_injection_doc(
         injection_identifier=random_uuid_str(),
         injection_time=curve_element.find_text(["MethodStartTime"]),
         autosampler_injection_volume_setting=result.find_text(["Keyword2"]),
+    )
+
+
+def filter_method_doc_data_questions(method_doc_data: StrictElement) -> StrictElement:
+    for question in method_doc_data.find("Questions").findall("Question"):
+        if re.search("^Sample Volume .+ ID$", question.find_text(["Name"])):
+            return question
+    msg = "Unable to find question about sample volume and id"
+    raise AllotropeConversionError(msg)
+
+
+def get_sample_doc(handler: UnicornFileHandler, results: StrictElement) -> SampleDoc:
+    method_doc_data = handler.get_method_doc_data()
+    question = filter_method_doc_data_questions(method_doc_data)
+    raw_sample_id = question.find_text(["Answer", "AnswerValue"])
+
+    if match := re.search(".+, (.+)", raw_sample_id):
+        sample_id = match.group(1)
+    else:
+        msg = f"Unable to parse sample id from '{raw_sample_id}'"
+        raise AllotropeConversionError(msg)
+
+    return SampleDoc(
+        sample_identifier=sample_id,
+        batch_identifier=results.find_text(["BatchId"]),
     )
 
 
@@ -252,6 +278,7 @@ def create_measurement_groups(
     temperature_profile_data_cube = filter_curve(elements, r"^Cond temp$")
 
     injection_doc = get_injection_doc(uv1_curve, results)
+    sample_doc = get_sample_doc(handler, results)
 
     return [
         MeasurementGroup(
@@ -260,24 +287,28 @@ def create_measurement_groups(
                     measurement_identifier=random_uuid_str(),
                     chromatography_column_doc=chromatography_doc,
                     injection_doc=injection_doc,
+                    sample_doc=sample_doc,
                     data_cube=create_data_cube(handler, uv1_curve, uv_component),
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
                     chromatography_column_doc=chromatography_doc,
                     injection_doc=injection_doc,
+                    sample_doc=sample_doc,
                     data_cube=create_data_cube(handler, uv2_curve, uv_component),
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
                     chromatography_column_doc=chromatography_doc,
                     injection_doc=injection_doc,
+                    sample_doc=sample_doc,
                     data_cube=create_data_cube(handler, uv3_curve, uv_component),
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
                     chromatography_column_doc=chromatography_doc,
                     injection_doc=injection_doc,
+                    sample_doc=sample_doc,
                     data_cube=create_data_cube(handler, cond_curve, cond_component),
                     processed_data_doc=ProcessedDataDoc(
                         chromatogram_data_cube=create_data_cube(
@@ -289,12 +320,14 @@ def create_measurement_groups(
                     measurement_identifier=random_uuid_str(),
                     chromatography_column_doc=chromatography_doc,
                     injection_doc=injection_doc,
+                    sample_doc=sample_doc,
                     data_cube=create_data_cube(handler, ph_curve, ph_component),
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
                     chromatography_column_doc=chromatography_doc,
                     injection_doc=injection_doc,
+                    sample_doc=sample_doc,
                     device_control_docs=[
                         DeviceControlDoc(
                             device_type=DEVICE_TYPE,
@@ -308,6 +341,7 @@ def create_measurement_groups(
                     measurement_identifier=random_uuid_str(),
                     chromatography_column_doc=chromatography_doc,
                     injection_doc=injection_doc,
+                    sample_doc=sample_doc,
                     processed_data_doc=ProcessedDataDoc(
                         derived_column_pressure_data_cube=create_data_cube(
                             handler, derived_pressure_curve, derived_pressure_component
@@ -343,6 +377,7 @@ def create_measurement_groups(
                     measurement_identifier=random_uuid_str(),
                     chromatography_column_doc=chromatography_doc,
                     injection_doc=injection_doc,
+                    sample_doc=sample_doc,
                     device_control_docs=[
                         DeviceControlDoc(
                             device_type=DEVICE_TYPE,
@@ -380,6 +415,7 @@ def create_measurement_groups(
                     measurement_identifier=random_uuid_str(),
                     chromatography_column_doc=chromatography_doc,
                     injection_doc=injection_doc,
+                    sample_doc=sample_doc,
                     device_control_docs=[
                         DeviceControlDoc(
                             device_type=DEVICE_TYPE,
