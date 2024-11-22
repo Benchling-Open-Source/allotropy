@@ -456,7 +456,7 @@ class Result:
 
         The pattern for the threshold column is `[allele prefix]<quantification_method>`
         where `allele prefix` is optional and `quantification_method` can be any of
-        Ct, Crt or Cq with different capitalyzations.
+        Ct, Crt or Cq with different capitalizations.
 
         This identifier is used as a prefix to all the cycle threshold related
         columns (always capitalized)
