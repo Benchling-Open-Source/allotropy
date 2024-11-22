@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from abc import ABC
-from collections import defaultdict
 from collections.abc import Iterator
 from dataclasses import dataclass, field
 from datetime import datetime
@@ -122,8 +121,6 @@ class GroupDataElement:
 class GroupSampleData:
     identifier: str
     data_elements: list[GroupDataElement]
-    aggregated_entries: list[GroupDataElementEntry]
-    aggregated_errors: list[ErrorDocument]
 
     @classmethod
     def create(cls, data: pd.DataFrame) -> GroupSampleData:
@@ -140,16 +137,9 @@ class GroupSampleData:
             or top_row.get(str, column) in VALID_NAN_VALUES
         ]
 
-        """
-        normal_columns = []
-        aggregated_columns = []
-        for column in numeric_columns:
-            if data[column].iloc[1:].isnull().any():
-                aggregated_columns.append(column)
-            else:
-                normal_columns.append(column)
-        """
-        data_elements: dict[str, list[GroupDataElement]] = {column: [] for column in numeric_columns}
+        data_elements: dict[str, list[GroupDataElement]] = {
+            column: [] for column in numeric_columns
+        }
         for row in row_data:
             row_results = cls._get_entries_and_errors(row, numeric_columns)
             position = row[str, ["Well", "Wells"]]
@@ -161,35 +151,28 @@ class GroupSampleData:
                             sample=identifier,
                             positions=[position],
                             plate=plate,
-                            entries=[GroupDataElementEntry(column, column_result if isinstance(column_result, float) else NEGATIVE_ZERO)],
-                            errors=[ErrorDocument(column_result, column)] if isinstance(column_result, str) else [],
+                            entries=[
+                                GroupDataElementEntry(
+                                    column,
+                                    column_result
+                                    if isinstance(column_result, float)
+                                    else NEGATIVE_ZERO,
+                                )
+                            ],
+                            errors=[ErrorDocument(column_result, column)]
+                            if isinstance(column_result, str)
+                            else [],
                         )
                     )
                 else:
                     data_elements[column][-1].positions.append(position)
 
-        """
-        aggregated_entries, aggregated_errors = cls._get_entries_and_errors(
-            top_row, aggregated_columns
-        )
-
-        ret = GroupSampleData(
+        return GroupSampleData(
             identifier=identifier,
-            data_elements=data_elements,
-            aggregated_entries=aggregated_entries,
-            aggregated_errors=aggregated_errors,
+            data_elements=[
+                elem for elements in data_elements.values() for elem in elements
+            ],
         )
-        """
-        ret = GroupSampleData(
-            identifier=identifier,
-            data_elements=[elem for elements in data_elements.values() for elem in elements],
-            aggregated_entries=[],
-            aggregated_errors=[],
-        )
-        # if identifier == "Sample 1":
-        #     print(ret)
-        #     assert False
-        return ret
 
     @classmethod
     def _get_entries_and_errors(
@@ -1127,9 +1110,6 @@ class StructureData:
                         group_data_element.positions
                     ):
                         data_element.sample_id = group_data_element.sample
-                        data_element.error_document += (
-                            group_data_element.errors
-                            + group_sample_data.aggregated_errors
-                        )
+                        data_element.error_document += group_data_element.errors
 
         return StructureData(block_list)

@@ -204,30 +204,6 @@ def _get_reduced_calc_docs(data: StructureData) -> list[CalculatedDataItem]:
     ]
 
 
-def _get_group_agg_calc_docs(
-    data: StructureData,
-    group_block: GroupBlock,
-    group_sample_data: GroupSampleData,
-) -> list[CalculatedDataItem]:
-    return [
-        _build_calc_doc(
-            name=aggregated_entry.name,
-            value=aggregated_entry.value,
-            data_sources=list(
-                chain.from_iterable(
-                    _get_calc_docs_data_sources(
-                        data.block_list.plate_blocks[group_data_element.plate],
-                        group_data_element.position,
-                    )
-                    for group_data_element in group_sample_data.data_elements
-                )
-            ),
-            description=group_block.group_columns.data.get(aggregated_entry.name),
-        )
-        for aggregated_entry in group_sample_data.aggregated_entries
-    ]
-
-
 def _get_group_simple_calc_docs(
     data: StructureData,
     group_block: GroupBlock,
@@ -235,10 +211,6 @@ def _get_group_simple_calc_docs(
 ) -> list[CalculatedDataItem]:
     calculated_documents = []
     for group_data_element in group_sample_data.data_elements:
-        #data_sources = _get_calc_docs_data_sources(
-        #    data.block_list.plate_blocks[group_data_element.plate],
-        #    group_data_element.position,
-        #)
         data_sources = list(
             chain.from_iterable(
                 _get_calc_docs_data_sources(
@@ -264,9 +236,6 @@ def _get_group_calc_docs(data: StructureData) -> list[CalculatedDataItem]:
     calculated_documents = []
     for group_block in data.block_list.group_blocks:
         for group_sample_data in group_block.group_data.sample_data:
-            calculated_documents += _get_group_agg_calc_docs(
-                data, group_block, group_sample_data
-            )
             calculated_documents += _get_group_simple_calc_docs(
                 data, group_block, group_sample_data
             )
