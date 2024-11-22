@@ -14,6 +14,6 @@ def test_header_builder_no_header_then_raise() -> None:
         AllotropeConversionError,
         match="Cannot parse data from empty header.",
     ):
-        AppBioQuantStudioReader(
+        AppBioQuantStudioReader.create(
             NamedFileContents(contents=StringIO(""), original_file_path="tmp.txt")
         )
