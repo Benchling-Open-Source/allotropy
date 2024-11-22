@@ -4,7 +4,6 @@ from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
 
-import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.dpcr import ContainerType
