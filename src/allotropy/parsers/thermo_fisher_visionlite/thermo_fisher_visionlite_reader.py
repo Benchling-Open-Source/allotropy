@@ -25,7 +25,9 @@ class ThermoFisherVisionliteReader:
             raise AllotropeConversionError(msg)
 
         # try to get the header data (Scan and Kinetic files)
-        if not first_line.lower().startswith("sample name"):
+        if not first_line.lower().startswith(
+            "sample name"
+        ) and not first_line.lower().startswith("well position"):
             self.header = SeriesData(
                 pd.Series(first_line.split(",")[:4], index=HEADER_COLS)
             )
