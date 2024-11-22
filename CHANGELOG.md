@@ -45,7 +45,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Novabio Flex2 - Update Adapter to use Solution Analyzer schema REC/2024/09 (#743)
 - Bio-Rad CFX Maestro - initial implementation (#744)
 - Internal - add the ability to handle lists of dataclasses in json structuring library (#716)
--  Molecular Devices SoftMax Pro - report non numeric values in error document #713 (#739)
+- Molecular Devices SoftMax Pro - report non numeric values in error document #713 (#739)
 
 ### Fixed
 
