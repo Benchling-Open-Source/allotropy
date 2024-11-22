@@ -24,7 +24,8 @@ class CytivaUnicornParser(VendorParser[Data, Model]):
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         handler = UnicornFileHandler(named_file_contents.original_file_path)
+        results = handler.get_results()
         return Data(
-            create_metadata(handler),
-            create_measurement_groups(handler),
+            create_metadata(handler, results),
+            create_measurement_groups(handler, results),
         )

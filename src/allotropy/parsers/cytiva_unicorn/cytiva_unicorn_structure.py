@@ -10,6 +10,7 @@ from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._202
     DataCube,
     DataCubeComponent,
     DeviceControlDoc,
+    InjectionDoc,
     Measurement,
     MeasurementGroup,
     Metadata,
@@ -24,9 +25,8 @@ from allotropy.parsers.cytiva_unicorn.cytiva_unicorn_reader import (
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
-def create_metadata(handler: UnicornFileHandler) -> Metadata:
+def create_metadata(handler: UnicornFileHandler, results: StrictElement) -> Metadata:
     system_data = handler.get_system_data()
-    results = handler.get_results()
     instrument_config_data = handler.get_instrument_config_data()
 
     return Metadata(
@@ -107,7 +107,30 @@ def get_chromatography_doc(handler: UnicornFileHandler) -> ChromatographyDoc:
     )
 
 
-def create_measurement_groups(handler: UnicornFileHandler) -> list[MeasurementGroup]:
+def filter_result_criteria(results: StrictElement) -> StrictElement:
+    for result_criteria in results.find("ResultSearchCriterias").findall(
+        "ResultSearchCriteria"
+    ):
+        if result_criteria.find_text(["Keyword1"]) == "Sample volume":
+            return result_criteria
+    msg = "Unable to find result criteria with keyword 1 'Sample volume'"
+    raise AllotropeConversionError(msg)
+
+
+def get_injection_doc(
+    curve_element: StrictElement, results: StrictElement
+) -> InjectionDoc:
+    result = filter_result_criteria(results)
+    return InjectionDoc(
+        injection_identifier=random_uuid_str(),
+        injection_time=curve_element.find_text(["MethodStartTime"]),
+        autosampler_injection_volume_setting=result.find_text(["Keyword2"]),
+    )
+
+
+def create_measurement_groups(
+    handler: UnicornFileHandler, results: StrictElement
+) -> list[MeasurementGroup]:
     chromatography_doc = get_chromatography_doc(handler)
 
     chrom_1 = handler.get_chrom_1()
@@ -228,27 +251,33 @@ def create_measurement_groups(handler: UnicornFileHandler) -> list[MeasurementGr
     sample_linear_flow_data_cube = filter_curve(elements, r"^Sample linear flow$")
     temperature_profile_data_cube = filter_curve(elements, r"^Cond temp$")
 
+    injection_doc = get_injection_doc(uv1_curve, results)
+
     return [
         MeasurementGroup(
             measurements=[
                 Measurement(
                     measurement_identifier=random_uuid_str(),
                     chromatography_column_doc=chromatography_doc,
+                    injection_doc=injection_doc,
                     data_cube=create_data_cube(handler, uv1_curve, uv_component),
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
                     chromatography_column_doc=chromatography_doc,
+                    injection_doc=injection_doc,
                     data_cube=create_data_cube(handler, uv2_curve, uv_component),
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
                     chromatography_column_doc=chromatography_doc,
+                    injection_doc=injection_doc,
                     data_cube=create_data_cube(handler, uv3_curve, uv_component),
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
                     chromatography_column_doc=chromatography_doc,
+                    injection_doc=injection_doc,
                     data_cube=create_data_cube(handler, cond_curve, cond_component),
                     processed_data_doc=ProcessedDataDoc(
                         chromatogram_data_cube=create_data_cube(
@@ -259,11 +288,13 @@ def create_measurement_groups(handler: UnicornFileHandler) -> list[MeasurementGr
                 Measurement(
                     measurement_identifier=random_uuid_str(),
                     chromatography_column_doc=chromatography_doc,
+                    injection_doc=injection_doc,
                     data_cube=create_data_cube(handler, ph_curve, ph_component),
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
                     chromatography_column_doc=chromatography_doc,
+                    injection_doc=injection_doc,
                     device_control_docs=[
                         DeviceControlDoc(
                             device_type=DEVICE_TYPE,
@@ -276,6 +307,7 @@ def create_measurement_groups(handler: UnicornFileHandler) -> list[MeasurementGr
                 Measurement(
                     measurement_identifier=random_uuid_str(),
                     chromatography_column_doc=chromatography_doc,
+                    injection_doc=injection_doc,
                     processed_data_doc=ProcessedDataDoc(
                         derived_column_pressure_data_cube=create_data_cube(
                             handler, derived_pressure_curve, derived_pressure_component
@@ -310,6 +342,7 @@ def create_measurement_groups(handler: UnicornFileHandler) -> list[MeasurementGr
                 Measurement(
                     measurement_identifier=random_uuid_str(),
                     chromatography_column_doc=chromatography_doc,
+                    injection_doc=injection_doc,
                     device_control_docs=[
                         DeviceControlDoc(
                             device_type=DEVICE_TYPE,
@@ -346,6 +379,7 @@ def create_measurement_groups(handler: UnicornFileHandler) -> list[MeasurementGr
                 Measurement(
                     measurement_identifier=random_uuid_str(),
                     chromatography_column_doc=chromatography_doc,
+                    injection_doc=injection_doc,
                     device_control_docs=[
                         DeviceControlDoc(
                             device_type=DEVICE_TYPE,

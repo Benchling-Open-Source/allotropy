@@ -64,12 +64,20 @@ class ChromatographyDoc:
 
 
 @dataclass(frozen=True)
+class InjectionDoc:
+    injection_identifier: str
+    injection_time: str
+    autosampler_injection_volume_setting: str
+
+
+@dataclass(frozen=True)
 class Measurement:
     measurement_identifier: str
     data_cube: DataCube | None = None
     processed_data_doc: ProcessedDataDoc | None = None
     device_control_docs: list[DeviceControlDoc] | None = None
     chromatography_column_doc: ChromatographyDoc | None = None
+    injection_doc: InjectionDoc | None = None
 
 
 @dataclass(frozen=True)
