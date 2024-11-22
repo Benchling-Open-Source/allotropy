@@ -156,8 +156,8 @@ class WellItem:
 
     @staticmethod
     def get_well_id(data: SeriesData) -> str:
-        if not data.has_key("Channels"):
-            return data[str, "Well"]
+        if well_id := data.get(str, "Well", ""):
+            return well_id
 
         sample_name = data[str, "Sample"]
         if match := re.match(r"Sample ([a-zA-Z0-9]+)", sample_name):
