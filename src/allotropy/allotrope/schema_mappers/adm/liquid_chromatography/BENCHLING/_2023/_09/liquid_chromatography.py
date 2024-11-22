@@ -56,11 +56,20 @@ class DeviceControlDoc:
 
 
 @dataclass(frozen=True)
+class ChromatographyDoc:
+    chromatography_serial_num: str
+    column_inner_diameter: str
+    chromatography_chemistry_type: str
+    chromatography_particle_size: str
+
+
+@dataclass(frozen=True)
 class Measurement:
     measurement_identifier: str
     data_cube: DataCube | None = None
     processed_data_doc: ProcessedDataDoc | None = None
     device_control_docs: list[DeviceControlDoc] | None = None
+    chromatography_column_doc: ChromatographyDoc | None = None
 
 
 @dataclass(frozen=True)

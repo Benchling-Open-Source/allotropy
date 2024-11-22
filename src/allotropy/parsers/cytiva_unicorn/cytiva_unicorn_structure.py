@@ -6,6 +6,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
 )
 from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
+    ChromatographyDoc,
     DataCube,
     DataCubeComponent,
     DeviceControlDoc,
@@ -88,7 +89,27 @@ def create_data_cube(
     )
 
 
+def get_chromatography_doc(handler: UnicornFileHandler) -> ChromatographyDoc:
+    column_type_data = handler.get_column_type_data()
+    return ChromatographyDoc(
+        chromatography_serial_num=column_type_data.find_text(
+            ["ColumnType", "Hardware", "ArticleNumber"]
+        ),
+        column_inner_diameter=column_type_data.find_text(
+            ["ColumnType", "Hardware", "Diameter"]
+        ),
+        chromatography_chemistry_type=column_type_data.find_text(
+            ["ColumnType", "Media", "TechniqueName"]
+        ),
+        chromatography_particle_size=column_type_data.find_text(
+            ["ColumnType", "Media", "AverageParticleDiameter"]
+        ),
+    )
+
+
 def create_measurement_groups(handler: UnicornFileHandler) -> list[MeasurementGroup]:
+    chromatography_doc = get_chromatography_doc(handler)
+
     chrom_1 = handler.get_chrom_1()
     elements = chrom_1.find("Curves").findall("Curve")
 
@@ -212,18 +233,22 @@ def create_measurement_groups(handler: UnicornFileHandler) -> list[MeasurementGr
             measurements=[
                 Measurement(
                     measurement_identifier=random_uuid_str(),
+                    chromatography_column_doc=chromatography_doc,
                     data_cube=create_data_cube(handler, uv1_curve, uv_component),
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
+                    chromatography_column_doc=chromatography_doc,
                     data_cube=create_data_cube(handler, uv2_curve, uv_component),
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
+                    chromatography_column_doc=chromatography_doc,
                     data_cube=create_data_cube(handler, uv3_curve, uv_component),
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
+                    chromatography_column_doc=chromatography_doc,
                     data_cube=create_data_cube(handler, cond_curve, cond_component),
                     processed_data_doc=ProcessedDataDoc(
                         chromatogram_data_cube=create_data_cube(
@@ -233,10 +258,12 @@ def create_measurement_groups(handler: UnicornFileHandler) -> list[MeasurementGr
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
+                    chromatography_column_doc=chromatography_doc,
                     data_cube=create_data_cube(handler, ph_curve, ph_component),
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
+                    chromatography_column_doc=chromatography_doc,
                     device_control_docs=[
                         DeviceControlDoc(
                             device_type=DEVICE_TYPE,
@@ -248,6 +275,7 @@ def create_measurement_groups(handler: UnicornFileHandler) -> list[MeasurementGr
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
+                    chromatography_column_doc=chromatography_doc,
                     processed_data_doc=ProcessedDataDoc(
                         derived_column_pressure_data_cube=create_data_cube(
                             handler, derived_pressure_curve, derived_pressure_component
@@ -281,6 +309,7 @@ def create_measurement_groups(handler: UnicornFileHandler) -> list[MeasurementGr
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
+                    chromatography_column_doc=chromatography_doc,
                     device_control_docs=[
                         DeviceControlDoc(
                             device_type=DEVICE_TYPE,
@@ -316,6 +345,7 @@ def create_measurement_groups(handler: UnicornFileHandler) -> list[MeasurementGr
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
+                    chromatography_column_doc=chromatography_doc,
                     device_control_docs=[
                         DeviceControlDoc(
                             device_type=DEVICE_TYPE,

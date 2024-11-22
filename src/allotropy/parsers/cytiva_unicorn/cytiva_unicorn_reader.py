@@ -126,3 +126,10 @@ class UnicornFileHandler(ZipHandler):
         b_stream = self.get_file_from_pattern("Chrom.1.Xml$")
         element = fromstring(b_stream.read())
         return StrictElement(element)
+
+    def get_column_type_data(self) -> StrictElement:
+        column_type_data = self.get_content_from_pattern("ColumnTypeData.zip$")
+        b_stream = column_type_data.get_file_from_pattern("^Xml$")
+        raw_content = b_stream.read()
+        element = fromstring(raw_content[24:-1])
+        return StrictElement(element)
