@@ -24,6 +24,7 @@ from allotropy.parsers.cytiva_unicorn.cytiva_unicorn_reader import (
     UnicornFileHandler,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.values import try_float
 
 
 def create_metadata(handler: UnicornFileHandler, results: StrictElement) -> Metadata:
@@ -96,14 +97,18 @@ def get_chromatography_doc(handler: UnicornFileHandler) -> ChromatographyDoc:
         chromatography_serial_num=column_type_data.find_text(
             ["ColumnType", "Hardware", "ArticleNumber"]
         ),
-        column_inner_diameter=column_type_data.find_text(
-            ["ColumnType", "Hardware", "Diameter"]
+        column_inner_diameter=try_float(
+            column_type_data.find_text(["ColumnType", "Hardware", "Diameter"]),
+            "column inner diameter",
         ),
         chromatography_chemistry_type=column_type_data.find_text(
             ["ColumnType", "Media", "TechniqueName"]
         ),
-        chromatography_particle_size=column_type_data.find_text(
-            ["ColumnType", "Media", "AverageParticleDiameter"]
+        chromatography_particle_size=try_float(
+            column_type_data.find_text(
+                ["ColumnType", "Media", "AverageParticleDiameter"]
+            ),
+            "chromatography particle size",
         ),
     )
 
@@ -125,7 +130,10 @@ def get_injection_doc(
     return InjectionDoc(
         injection_identifier=random_uuid_str(),
         injection_time=curve_element.find_text(["MethodStartTime"]),
-        autosampler_injection_volume_setting=result.find_text(["Keyword2"]),
+        autosampler_injection_volume_setting=try_float(
+            result.find_text(["Keyword2"]),
+            "autosampler injection volume setting",
+        ),
     )
 
 
