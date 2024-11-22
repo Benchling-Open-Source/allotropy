@@ -1,6 +1,8 @@
 from dataclasses import dataclass
 from enum import Enum
+from typing import Any
 
+from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.plate_reader.rec._2024._06.plate_reader import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
@@ -27,6 +29,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMillimeter,
     TQuantityValueNanometer,
     TQuantityValueNumber,
+    TQuantityValuePicogramPerMilliliter,
     TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueRelativeLightUnit,
     TQuantityValueSecondTime,
@@ -136,6 +139,7 @@ class Measurement:
     well_plate_identifier: str | None = None
     detection_type: str | None = None
     sample_role_type: SampleRoleType | None = None
+    mass_concentration: float | None = None
 
     # Measurements
     absorbance: float | None = None
@@ -154,6 +158,8 @@ class Measurement:
     detector_carriage_speed: str | None = None
     compartment_temperature: float | None = None
     number_of_averages: float | None = None
+    measurement_custom_info: dict[str, Any] | None = None
+    sample_custom_info: dict[str, Any] | None = None
 
     # Kinetic settings
     total_measurement_time_setting: float | None = None
@@ -317,7 +323,7 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_luminescence_measurement_document(
         self, measurement: Measurement
     ) -> MeasurementDocument:
-        return MeasurementDocument(
+        doc = MeasurementDocument(
             measurement_identifier=measurement.identifier,
             sample_document=self._get_sample_document(measurement),
             device_control_aggregate_document=DeviceControlAggregateDocument(
@@ -363,6 +369,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement.error_document
             ),
         )
+        return add_custom_information_document(doc, measurement.measurement_custom_info)
 
     def _get_fluorescence_measurement_document(
         self, measurement: Measurement
@@ -501,7 +508,7 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
-        return SampleDocument(
+        sample_doc = SampleDocument(
             sample_identifier=measurement.sample_identifier,
             location_identifier=measurement.location_identifier,
             well_plate_identifier=measurement.well_plate_identifier,
@@ -510,6 +517,13 @@ class Mapper(SchemaMapper[Data, Model]):
                 if measurement.sample_role_type
                 else None
             ),
+            mass_concentration=quantity_or_none(
+                TQuantityValuePicogramPerMilliliter,
+                measurement.mass_concentration,
+            ),
+        )
+        return add_custom_information_document(
+            sample_doc, measurement.sample_custom_info
         )
 
     def _get_calculated_data_aggregate_document(
