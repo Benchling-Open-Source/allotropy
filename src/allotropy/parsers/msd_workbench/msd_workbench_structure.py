@@ -74,11 +74,9 @@ class PlateData:
                 )
             )
 
-        if "Well" in data:
-            well_column = data["Well"]
-            plate_well_count = len(well_column.unique())
-        else:
-            plate_well_count = 96
+        well_column = data["Well"]
+        plate_well_count = len(well_column.unique())
+
         return PlateData(
             measurement_time=DEFAULT_EPOCH_TIMESTAMP,
             well_plate_id=well_plate_id,
