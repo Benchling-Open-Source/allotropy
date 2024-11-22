@@ -140,8 +140,6 @@ def get_sample_doc(results: StrictElement) -> SampleDoc:
 def create_measurement_groups(
     handler: UnicornFileHandler, results: StrictElement
 ) -> list[MeasurementGroup]:
-    chromatography_doc = get_chromatography_doc(handler)
-
     chrom_1 = handler.get_chrom_1()
     elements = chrom_1.find("Curves").findall("Curve")
 
@@ -260,6 +258,7 @@ def create_measurement_groups(
     sample_linear_flow_data_cube = filter_curve(elements, r"^Sample linear flow$")
     temperature_profile_data_cube = filter_curve(elements, r"^Cond temp$")
 
+    chromatography_doc = get_chromatography_doc(handler)
     injection_doc = get_injection_doc(uv1_curve, results)
     sample_doc = get_sample_doc(results)
 
