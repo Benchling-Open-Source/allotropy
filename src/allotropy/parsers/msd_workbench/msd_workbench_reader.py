@@ -17,6 +17,8 @@ class MSDWorkbenchReader:
         reader = CsvReader(file_lines)
         csv_lines = reader.pop_csv_block_as_df()
         data = assert_not_none(csv_lines, "Luminescence data table")
-        data = data.dropna(axis=1, how="all")
         data = data.where(pd.notna(data), None)
+        data.index = pd.Index(data.index.to_series().ffill())
+        data.index = data.index.astype(str).str.strip()
+        data.columns = data.columns.astype(str).str.strip()
         self.plate_data = data

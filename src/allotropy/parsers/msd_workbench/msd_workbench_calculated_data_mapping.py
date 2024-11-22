@@ -122,7 +122,7 @@ def _get_measurement_by_identifier(
     raise AllotropeConversionError(msg)
 
 
-def _format_r_squared_name(name: str):
+def _format_r_squared_name(name: str) -> str:
     return name.split(":")[-1].strip()
 
 
@@ -140,13 +140,16 @@ def _get_measurement_aggregate_properties(
     measurement: Measurement, aggregating_property: list[str]
 ) -> list[str]:
     aggregating_property = aggregating_property.copy()
-    agg_properties = []
-    if AggregatingProperty.ASSAY_IDENTIFIER.value in aggregating_property:
-        agg_properties.append(
-            measurement.measurement_custom_info.get(
-                AggregatingProperty.ASSAY_IDENTIFIER.value
-            )
+    agg_properties: list[str] = []
+    if (
+        AggregatingProperty.ASSAY_IDENTIFIER.value in aggregating_property
+        and measurement.measurement_custom_info
+    ):
+        assay_id = measurement.measurement_custom_info.get(
+            AggregatingProperty.ASSAY_IDENTIFIER.value
         )
+        if assay_id:
+            agg_properties.append(assay_id)
         del aggregating_property[
             aggregating_property.index(AggregatingProperty.ASSAY_IDENTIFIER.value)
         ]
@@ -230,7 +233,7 @@ def create_calculated_data_groups(
     data: pd.DataFrame, measurements: list[Measurement]
 ) -> list[CalculatedDataItem]:
     data = data.iloc[1:].reset_index(drop=True)
-    data.columns = data.iloc[0]
+    data.columns = pd.Index(data.iloc[0])
     data = data[1:].reset_index(drop=True)
     calculated_data: list[CalculatedDataItem] = []
     for _row_index, row in data.iterrows():
@@ -268,10 +271,10 @@ def create_calculated_data_groups(
         if not calc_data_mapping.is_data_source_id_measurement
     ]
     for calc_data_mapping in not_data_source_measurement_id_mappings:
-        calc_data = [
-            calc_data
-            for calc_data in calculated_data
-            if calc_data.name == calc_data_mapping.msd_column.value
+        calc_data: list[CalculatedDataItem] = [
+            calc_data_item
+            for calc_data_item in calculated_data
+            if calc_data_item.name == calc_data_mapping.msd_column.value
         ]
         if not calc_data:
             continue
@@ -293,8 +296,7 @@ def create_calculated_data_groups(
                 name=calc_data_mapping.msd_column.value,
                 value=value,
             )
-            # remove old calculated data items
-            for calc_data_item in calc_data:
-                calculated_data.remove(calc_data_item)
+            for item in calc_data:
+                calculated_data.remove(item)
             calculated_data.append(new_calc_data_item)
     return calculated_data

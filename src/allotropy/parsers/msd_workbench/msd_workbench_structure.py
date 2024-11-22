@@ -7,6 +7,7 @@ from typing import Any
 
 import pandas as pd
 
+from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
     Measurement,
     MeasurementGroup,
@@ -50,20 +51,18 @@ class PlateData:
     def create(
         data: pd.DataFrame,
     ) -> PlateData:
-        first_row = data.iloc[0, 0]
-        if "Plate" not in first_row:
-            msg = "CSV file does not contain Well Plate Identifier"
-            raise ValueError(msg)
+        first_row = str(data.iloc[0, 0])
         well_plate_id = first_row.split("_")[-1].strip()
         data = data.iloc[1:].reset_index(drop=True)
-        data.columns = data.iloc[0]
+        # Set the first row as the header
+        data.columns = pd.Index(data.iloc[0])
         data = data[1:].reset_index(drop=True)
         well_data = []
         for _row_index, row in data.iterrows():
             row_series = SeriesData(row)
             well_data.append(
                 WellData.create(
-                    luminescence=row_series.get(int, "Signal"),
+                    luminescence=row_series[int, "Signal"],
                     location_id=row_series[str, "Well"] + "_" + row_series[str, "Spot"],
                     sample_id=row_series[str, "Sample"] + "_" + row_series[str, "Well"],
                     concentration=row_series[float, "Concentration"],
@@ -74,10 +73,16 @@ class PlateData:
                     dilution_factor=row_series.get(int, "Dilution Factor"),
                 )
             )
+
+        if "Well" in data:
+            well_column = data["Well"]
+            plate_well_count = len(well_column.unique())
+        else:
+            plate_well_count = 96
         return PlateData(
             measurement_time=DEFAULT_EPOCH_TIMESTAMP,
             well_plate_id=well_plate_id,
-            plate_well_count=len(data.get("Well").unique()),
+            plate_well_count=plate_well_count,
             well_data=well_data,
         )
 
@@ -87,7 +92,7 @@ class WellData:
     luminescence: int
     location_identifier: str
     sample_identifier: str
-    sample_role_type: str | None
+    sample_role_type: SampleRoleType | None
     mass_concentration: float | None
     dilution_factor: int | None = None
     measurement_custom_info: dict[str, Any] | None = None
@@ -129,7 +134,11 @@ def create_measurement_groups(plate_data: PlateData) -> list[MeasurementGroup]:
     grouped_wells = defaultdict(list)
 
     for well in plate_data.well_data:
-        assay_id = well.measurement_custom_info["assay identifier"]
+        assay_id = (
+            well.measurement_custom_info.get("assay identifier")
+            if well.measurement_custom_info
+            else None
+        )
         grouped_wells[assay_id].append(well)
 
     well_data: list[list[WellData]] = list(grouped_wells.values())
