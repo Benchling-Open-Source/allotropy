@@ -271,28 +271,36 @@ def create_measurement_groups(
                     chromatography_column_doc=chromatography_doc,
                     injection_doc=injection_doc,
                     sample_doc=sample_doc,
-                    data_cube=create_data_cube(handler, uv1_curve, uv_component),
+                    chromatogram_data_cube=create_data_cube(
+                        handler, uv1_curve, uv_component
+                    ),
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
                     chromatography_column_doc=chromatography_doc,
                     injection_doc=injection_doc,
                     sample_doc=sample_doc,
-                    data_cube=create_data_cube(handler, uv2_curve, uv_component),
+                    chromatogram_data_cube=create_data_cube(
+                        handler, uv2_curve, uv_component
+                    ),
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
                     chromatography_column_doc=chromatography_doc,
                     injection_doc=injection_doc,
                     sample_doc=sample_doc,
-                    data_cube=create_data_cube(handler, uv3_curve, uv_component),
+                    chromatogram_data_cube=create_data_cube(
+                        handler, uv3_curve, uv_component
+                    ),
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
                     chromatography_column_doc=chromatography_doc,
                     injection_doc=injection_doc,
                     sample_doc=sample_doc,
-                    data_cube=create_data_cube(handler, cond_curve, cond_component),
+                    chromatogram_data_cube=create_data_cube(
+                        handler, cond_curve, cond_component
+                    ),
                     processed_data_doc=ProcessedDataDoc(
                         chromatogram_data_cube=create_data_cube(
                             handler, perc_cond_curve, perc_cond_component
@@ -304,7 +312,9 @@ def create_measurement_groups(
                     chromatography_column_doc=chromatography_doc,
                     injection_doc=injection_doc,
                     sample_doc=sample_doc,
-                    data_cube=create_data_cube(handler, ph_curve, ph_component),
+                    chromatogram_data_cube=create_data_cube(
+                        handler, ph_curve, ph_component
+                    ),
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
