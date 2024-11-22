@@ -22,7 +22,7 @@ from allotropy.parsers.utils.values import assert_not_none
 
 
 class AppBioQuantStudioReader:
-    SUPPORTED_EXTENSIONS = "txt, xlsx"
+    SUPPORTED_EXTENSIONS = "txt,xlsx"
     header: SeriesData
     sections: dict[str, pd.DataFrame]
 
@@ -46,10 +46,7 @@ class AppBioQuantStudioXLSXReader(AppBioQuantStudioReader):
         self.sections = self.get_sections(contents)
 
     def get_header(self, contents: dict[str, pd.DataFrame]) -> SeriesData:
-        sheet = assert_not_none(
-            contents.get("Results"),
-            msg="Unable to find 'Results' sheet.",
-        )
+        sheet = next(iter(contents.values()))
         df, _ = split_header_and_data(sheet, lambda row: row[0] is None)
         return df_to_series_data(parse_header_row(df.T))
 

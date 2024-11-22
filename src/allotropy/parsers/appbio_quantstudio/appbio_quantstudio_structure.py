@@ -459,7 +459,7 @@ class Result:
         Ct, Crt or Cq with different capitalyzations.
 
         This identifier is used as a prefix to all the cycle threshold related
-        columns (always capitalyzed)
+        columns (always capitalized)
         """
         r = re.compile(r".*(C[tT]|C(?:rt|RT)|C[qQ])$")
         for column in columns:
