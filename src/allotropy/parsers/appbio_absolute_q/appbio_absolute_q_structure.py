@@ -15,7 +15,6 @@ from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.dpcr import 
     MeasurementGroup,
     Metadata,
 )
-from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_absolute_q.constants import (
     AGGREGATION_LOOKUP,
     BRAND_NAME,
@@ -108,7 +107,7 @@ class Group:
 
     @staticmethod
     def create_rows(data: pd.DataFrame) -> list[Group]:
-        data = data.replace(np.nan, None)[data["Name"].isna()]
+        data = data[data["Sample"].isna()]
         return map_rows(data, Group.create)
 
 
@@ -135,7 +134,7 @@ class WellItem:
     @staticmethod
     def create(data: SeriesData) -> WellItem:
         return WellItem(
-            name=data[str, "Name"],
+            name=data[str, "Sample"],
             measurement_identifier=random_uuid_str(),
             well_identifier=data[str, "Well"],
             plate_identifier=data[str, "Plate"],
@@ -157,10 +156,7 @@ class Well:
 
     @staticmethod
     def create_wells(data: pd.DataFrame) -> list[Well]:
-        if "Name" not in data:
-            msg = "Input is missing required column 'Name'."
-            raise AllotropeConversionError(msg)
-        data = data.dropna(subset=["Name"]).replace(np.nan, None)
+        data = data.dropna(subset=["Sample"])
         return [
             Well(map_rows(well_data, WellItem.create))
             for _, well_data in data.groupby("Well")
