@@ -183,7 +183,7 @@
     "properties": {
       "unit": {
         "type": "string",
-        "const": "µL/min",
+        "const": "μL/min",
         "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MicroliterPerMinute"
       }
     },
