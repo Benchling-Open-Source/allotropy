@@ -274,6 +274,11 @@ def create_measurement_groups(
                     chromatogram_data_cube=create_data_cube(
                         handler, uv1_curve, uv_component
                     ),
+                    device_control_docs=[
+                        DeviceControlDoc(
+                            device_type=DEVICE_TYPE,
+                        )
+                    ],
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
@@ -283,6 +288,11 @@ def create_measurement_groups(
                     chromatogram_data_cube=create_data_cube(
                         handler, uv2_curve, uv_component
                     ),
+                    device_control_docs=[
+                        DeviceControlDoc(
+                            device_type=DEVICE_TYPE,
+                        )
+                    ],
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
@@ -292,6 +302,11 @@ def create_measurement_groups(
                     chromatogram_data_cube=create_data_cube(
                         handler, uv3_curve, uv_component
                     ),
+                    device_control_docs=[
+                        DeviceControlDoc(
+                            device_type=DEVICE_TYPE,
+                        )
+                    ],
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
@@ -306,6 +321,11 @@ def create_measurement_groups(
                             handler, perc_cond_curve, perc_cond_component
                         )
                     ),
+                    device_control_docs=[
+                        DeviceControlDoc(
+                            device_type=DEVICE_TYPE,
+                        )
+                    ],
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
@@ -315,6 +335,11 @@ def create_measurement_groups(
                     chromatogram_data_cube=create_data_cube(
                         handler, ph_curve, ph_component
                     ),
+                    device_control_docs=[
+                        DeviceControlDoc(
+                            device_type=DEVICE_TYPE,
+                        )
+                    ],
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
