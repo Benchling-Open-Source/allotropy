@@ -133,10 +133,3 @@ class UnicornFileHandler(ZipHandler):
         raw_content = b_stream.read()
         element = fromstring(raw_content[24:-1])
         return StrictElement(element)
-
-    def get_method_doc_data(self) -> StrictElement:
-        method_doc_data = self.get_content_from_pattern("MethodDocumentationData.zip$")
-        b_stream = method_doc_data.get_file_from_pattern("^Xml$")
-        raw_content = b_stream.read()
-        element = fromstring(raw_content[24:-1])
-        return StrictElement(element)

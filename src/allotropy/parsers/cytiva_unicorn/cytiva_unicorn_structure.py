@@ -108,20 +108,20 @@ def get_chromatography_doc(handler: UnicornFileHandler) -> ChromatographyDoc:
     )
 
 
-def filter_result_criteria(results: StrictElement) -> StrictElement:
+def filter_result_criteria(results: StrictElement, keyword: str) -> StrictElement:
     for result_criteria in results.find("ResultSearchCriterias").findall(
         "ResultSearchCriteria"
     ):
-        if result_criteria.find_text(["Keyword1"]) == "Sample volume":
+        if result_criteria.find_text(["Keyword1"]) == keyword:
             return result_criteria
-    msg = "Unable to find result criteria with keyword 1 'Sample volume'"
+    msg = f"Unable to find result criteria with keyword 1 '{keyword}'"
     raise AllotropeConversionError(msg)
 
 
 def get_injection_doc(
     curve_element: StrictElement, results: StrictElement
 ) -> InjectionDoc:
-    result = filter_result_criteria(results)
+    result = filter_result_criteria(results, keyword="Sample volume")
     return InjectionDoc(
         injection_identifier=random_uuid_str(),
         injection_time=curve_element.find_text(["MethodStartTime"]),
@@ -129,27 +129,10 @@ def get_injection_doc(
     )
 
 
-def filter_method_doc_data_questions(method_doc_data: StrictElement) -> StrictElement:
-    for question in method_doc_data.find("Questions").findall("Question"):
-        if re.search("^Sample Volume .+ ID$", question.find_text(["Name"])):
-            return question
-    msg = "Unable to find question about sample volume and id"
-    raise AllotropeConversionError(msg)
-
-
-def get_sample_doc(handler: UnicornFileHandler, results: StrictElement) -> SampleDoc:
-    method_doc_data = handler.get_method_doc_data()
-    question = filter_method_doc_data_questions(method_doc_data)
-    raw_sample_id = question.find_text(["Answer", "AnswerValue"])
-
-    if match := re.search(".+, (.+)", raw_sample_id):
-        sample_id = match.group(1)
-    else:
-        msg = f"Unable to parse sample id from '{raw_sample_id}'"
-        raise AllotropeConversionError(msg)
-
+def get_sample_doc(results: StrictElement) -> SampleDoc:
+    result = filter_result_criteria(results, keyword="Sample_ID")
     return SampleDoc(
-        sample_identifier=sample_id,
+        sample_identifier=result.find_text(["Keyword2"]),
         batch_identifier=results.find_text(["BatchId"]),
     )
 
@@ -278,7 +261,7 @@ def create_measurement_groups(
     temperature_profile_data_cube = filter_curve(elements, r"^Cond temp$")
 
     injection_doc = get_injection_doc(uv1_curve, results)
-    sample_doc = get_sample_doc(handler, results)
+    sample_doc = get_sample_doc(results)
 
     return [
         MeasurementGroup(
