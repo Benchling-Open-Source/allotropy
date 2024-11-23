@@ -24,8 +24,13 @@ class ThermoFisherVisionliteReader:
             msg = "Unable to get data, empty file."
             raise AllotropeConversionError(msg)
 
-        # try to get the header data (Scan and Kinetic files)
-        if not first_line.lower().startswith("sample name"):
+        expected_required_columns = ("sample name", "well position")
+        # If the first line in the file does not contain one of the required columns for QUANT or FIXED
+        # experiments, then we expect the experiment type to be SCAN or KINETIC, and the first line to be a
+        # header with comma separated key value pairs.
+        if all(
+            col_name not in first_line.lower() for col_name in expected_required_columns
+        ):
             self.header = SeriesData(
                 pd.Series(first_line.split(",")[:4], index=HEADER_COLS)
             )

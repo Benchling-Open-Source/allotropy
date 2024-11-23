@@ -32,6 +32,7 @@ from allotropy.parsers.appbio_absolute_q.constants import (
     DEVICE_TYPE,
     get_dye_settings,
     PLATE_WELL_COUNT,
+    POSSIBLE_DYE_SETTING_LENGTHS,
     PRODUCT_MANUFACTURER,
     SOFTWARE_NAME,
 )
@@ -300,6 +301,14 @@ class WellItem:
             )
 
         return well_items
+
+    @staticmethod
+    def get_dye_settings(columns: list[str]) -> list[str]:
+        return [
+            col
+            for col in columns
+            if len(col) in POSSIBLE_DYE_SETTING_LENGTHS and col == col.upper()
+        ]
 
     @staticmethod
     def get_well_id(data: SeriesData) -> str:
