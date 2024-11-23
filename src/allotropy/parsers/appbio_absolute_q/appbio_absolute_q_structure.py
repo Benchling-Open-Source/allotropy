@@ -8,9 +8,15 @@ import re
 import pandas as pd
 
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.dpcr import ContainerType
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    FieldComponentDatatype,
+)
 from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.dpcr import (
     CalculatedDataItem,
+    DataCube,
+    DataCubeComponent,
     DataSource,
+    Error,
     Measurement,
     MeasurementGroup,
     Metadata,
@@ -23,10 +29,11 @@ from allotropy.parsers.appbio_absolute_q.constants import (
     CalculatedDataSource,
     DEVICE_TYPE,
     PLATE_WELL_COUNT,
+    POSSIBLE_DYE_SETTING_LENGTHS,
     PRODUCT_MANUFACTURER,
     SOFTWARE_NAME,
 )
-from allotropy.parsers.constants import NOT_APPLICABLE
+from allotropy.parsers.constants import NEGATIVE_ZERO, NOT_APPLICABLE
 from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
@@ -109,8 +116,8 @@ class Group:
 
     @staticmethod
     def create_rows(data: pd.DataFrame) -> list[Group]:
-        # No calculated data is expected for multichannel files
-        if "Channels" in data:
+        # If there is no Group column, we expect there to be no calculated data.
+        if "Group" not in data:
             return []
         data = data[data["Sample"].isna()]
         return map_rows(data, Group.create)
@@ -131,6 +138,11 @@ class WellItem:
     reporter_dye_setting: str
     concentration: float
     positive_partition_count: float
+    negative_partition_count: float | None = None
+    passive_reference_dye_setting: str | None = None
+    flourescence_intensity_threshold_setting: float | None = None
+    data_cubes: list[DataCube] | None = None
+    errors: list[Error] | None = None
 
     @property
     def group_key(self) -> str:
@@ -143,6 +155,7 @@ class WellItem:
             measurement_identifier=random_uuid_str(),
             well_identifier=WellItem.get_well_id(data),
             plate_identifier=data[str, "Plate"],
+            # Group column may be missing if there is no calculated data to group with.
             group_identifier=data.get(str, "Group", ""),
             target_identifier=data.get(str, "Target", NOT_APPLICABLE),
             run_identifier=data[str, "Run"],
@@ -153,6 +166,113 @@ class WellItem:
             concentration=data[float, ("Conc. cp/uL", "Copies per microliter")],
             positive_partition_count=round(data[float, ("Positives", "Count")]),
         )
+
+    @staticmethod
+    def create_cube_well_items(well_data: pd.DataFrame) -> list[WellItem]:
+        dye_settings = WellItem.get_dye_settings(list(well_data.columns))
+
+        # Order rows by data cube index (this is probably always true, but to be safe).
+        well_data = well_data.sort_values("Index", axis="index")
+        total_partition_count = float(well_data["Index"].max())
+
+        # Assume that any dye setting that does not have a '_target' column is the passive dye setting.
+        passive_dye_settings = [
+            ds for ds in dye_settings if f"{ds}_target" not in well_data
+        ]
+        # Assume there is only one passive dye setting.
+        if len(passive_dye_settings) != 1:
+            msg = f"Expected exactly one possible passive dye setting, got: '{passive_dye_settings}'"
+            raise AllotropeConversionError(msg)
+
+        cycle_count = DataCubeComponent(
+            FieldComponentDatatype.integer, "cycle count", "#"
+        )
+        index_column = well_data["Index"].astype(float).tolist()
+        passive_reference_dye_cube = DataCube(
+            label="passive reference dye",
+            structure_dimensions=[cycle_count],
+            structure_measures=[
+                DataCubeComponent(
+                    FieldComponentDatatype.double,
+                    "passive reference dye fluorescence",
+                    "RFU",
+                )
+            ],
+            dimensions=[index_column],
+            measures=[well_data[passive_dye_settings[0]].astype(float).tolist()],
+        )
+
+        data = SeriesData(well_data.iloc[0])
+        well_items: list[WellItem] = []
+        for dye_setting in [ds for ds in dye_settings if f"{ds}_target" in well_data]:
+            positives_column = f"{dye_setting}_pos"
+            if positives_column not in well_data:
+                msg = f"Expected {positives_column} column to exist."
+                raise AllotropeConversionError(msg)
+            pos_counts = well_data[positives_column].value_counts().to_dict()
+            positive_partition_count = float(pos_counts.get(True, 0))
+            negative_partition_count = float(pos_counts.get(False, 0))
+            if (
+                positive_partition_count + negative_partition_count
+            ) != total_partition_count:
+                msg = f"positive partition count ({positive_partition_count}) + negative partition count ({negative_partition_count}) != total partition count ({total_partition_count}). This probaby means the values in '{positives_column}' are not bools as expected."
+
+            concentration = data.get(float, ("Conc. cp/uL", "Copies per microliter"))
+            errors = []
+            if concentration is None:
+                concentration = NEGATIVE_ZERO
+                errors.append(Error(error="N/A", error_feature="number concentration"))
+
+            well_items.append(
+                WellItem(
+                    name=data[str, "Sample"],
+                    measurement_identifier=random_uuid_str(),
+                    well_identifier=data[str, "Well"],
+                    plate_identifier=data[str, "Plate"],
+                    # Group column may be missing if there is no calculated data to group with.
+                    group_identifier=data.get(str, "Group", ""),
+                    target_identifier=data[str, f"{dye_setting}_target"],
+                    run_identifier=data[str, "Run"],
+                    instrument_identifier=data[str, "Instrument"],
+                    timestamp=data[str, "Date"],
+                    total_partition_count=total_partition_count,
+                    reporter_dye_setting=dye_setting,
+                    passive_reference_dye_setting=passive_dye_settings[0],
+                    flourescence_intensity_threshold_setting=data[
+                        float, f"{dye_setting}_threshold"
+                    ],
+                    concentration=concentration,
+                    positive_partition_count=positive_partition_count,
+                    negative_partition_count=negative_partition_count,
+                    data_cubes=[
+                        DataCube(
+                            label="reporter dye",
+                            structure_dimensions=[cycle_count],
+                            structure_measures=[
+                                DataCubeComponent(
+                                    FieldComponentDatatype.double,
+                                    "reporter dye fluorescence",
+                                    "RFU",
+                                )
+                            ],
+                            dimensions=[index_column],
+                            measures=[well_data[dye_setting].astype(float).tolist()],
+                        ),
+                        passive_reference_dye_cube,
+                    ],
+                    errors=errors,
+                )
+            )
+
+        return well_items
+
+    @staticmethod
+    def get_dye_settings(columns: list[str]) -> list[str]:
+        return [
+            col
+            for col in columns
+            if len(col) in POSSIBLE_DYE_SETTING_LENGTHS and col == col.upper()
+        ]
 
     @staticmethod
     def get_well_id(data: SeriesData) -> str:
@@ -172,7 +292,6 @@ class Well:
 
     @staticmethod
     def create_wells(data: pd.DataFrame) -> list[Well]:
-        data = data.dropna(subset=["Sample"])
         if "Channels" in data:
             subset_col = "Channels"
             groupby_col = "Sample"
@@ -180,10 +299,17 @@ class Well:
             subset_col = "Sample"
             groupby_col = "Well"
         data = data.dropna(subset=[subset_col])
-        return [
-            Well(map_rows(well_data, WellItem.create))
-            for _, well_data in data.groupby(groupby_col)
-        ]
+
+        well_groups = [well_data for _, well_data in data.groupby(groupby_col)]
+        if "Index" in data:
+            return [
+                Well(WellItem.create_cube_well_items(well_data))
+                for well_data in well_groups
+            ]
+        else:
+            return [
+                Well(map_rows(well_data, WellItem.create)) for well_data in well_groups
+            ]
 
 
 def create_measurement_groups(wells: list[Well]) -> list[MeasurementGroup]:
@@ -202,7 +328,12 @@ def create_measurement_groups(wells: list[Well]) -> list[MeasurementGroup]:
                     total_partition_count=item.total_partition_count,
                     concentration=item.concentration,
                     positive_partition_count=item.positive_partition_count,
+                    negative_partition_count=item.negative_partition_count,
                     reporter_dye_setting=item.reporter_dye_setting,
+                    passive_reference_dye_setting=item.passive_reference_dye_setting,
+                    flourescence_intensity_threshold_setting=item.flourescence_intensity_threshold_setting,
+                    data_cubes=item.data_cubes,
+                    errors=item.errors,
                 )
                 for item in well.items
             ],
