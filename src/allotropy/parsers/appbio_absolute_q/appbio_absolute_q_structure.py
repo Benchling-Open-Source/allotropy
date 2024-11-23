@@ -116,9 +116,8 @@ class Group:
 
     @staticmethod
     def create_rows(data: pd.DataFrame) -> list[Group]:
-        # No calculated data is expected for multichannel files or data cube files
-        # TODO: check for group instead?
-        if "Channels" in data or "Index" in data:
+        # If there is no Group column, we expect there to be no calculated data.
+        if "Group" not in data:
             return []
         data = data[data["Sample"].isna()]
         return map_rows(data, Group.create)
