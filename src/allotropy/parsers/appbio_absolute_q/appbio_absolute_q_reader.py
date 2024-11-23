@@ -1,5 +1,8 @@
+import warnings
+
 import numpy as np
 import pandas as pd
+from pandas.errors import ParserWarning
 
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
@@ -13,7 +16,16 @@ class AppbioAbsoluteQReader:
     common_columns: list[str]
 
     def __init__(self, named_file_contents: NamedFileContents) -> None:
-        df = read_csv(named_file_contents.contents, index_col=False)
+        with warnings.catch_warnings():
+            # The dataset does not have row labels, and is sometimes formatted with the wrong
+            # number of commas, this does not cause any problems.
+            warnings.filterwarnings(
+                "ignore",
+                category=ParserWarning,
+                message="Length of header or names does not match length of data",
+            )
+            df = read_csv(named_file_contents.contents, index_col=False)
+
         df, self.common_columns = AppbioAbsoluteQReader.transform_if_summary_file(df)
 
         columns_to_rename = {}
@@ -61,14 +73,14 @@ class AppbioAbsoluteQReader:
         # The columns before the first dye setting section are common columns
         base_df = df.iloc[:, : dye_column_indices[0]]
         # The group column is left blank on a ffill basis.
-        base_df["Group"] = base_df["Group"].ffill()
+        base_df.loc[:, "Group"] = base_df["Group"].ffill()
 
         # For each dye setting, pull the columns for the section out and combine with the common columns
         # to create a dataset that looks like non-summary files, with one dye setting per row.
         dye_dfs: list[pd.DataFrame] = []
         for i, dye_setting in enumerate(dye_setting_columns):
             dye_df = df.iloc[:, dye_column_indices[i] : dye_column_indices[i + 1]]
-            dye_df["Dye"] = dye_setting
+            dye_df.loc[:, ["Dye"]] = dye_setting
             dye_dfs.append(pd.concat([base_df, dye_df], axis="columns"))
 
         return pd.concat(dye_dfs, axis="index"), list(base_df.columns)
