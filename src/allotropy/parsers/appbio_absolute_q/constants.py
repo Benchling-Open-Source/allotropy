@@ -1,5 +1,5 @@
+from collections.abc import Sequence
 from enum import Enum
-from typing import Sequence
 
 from attr import dataclass
 
@@ -49,6 +49,10 @@ class CalculatedDataReference:
     @property
     def source_features(self) -> list[str]:
         return self.source_feature.split(",")
+
+    @property
+    def column_key(self) -> str:
+        return self.column if isinstance(self.column, str) else ",".join(self.column)
 
 
 CALCULATED_DATA_REFERENCE: dict[AggregationType, list[CalculatedDataReference]] = {

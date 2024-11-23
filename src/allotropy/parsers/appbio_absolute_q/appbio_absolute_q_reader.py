@@ -55,7 +55,7 @@ class AppbioAbsoluteQReader:
         dye_column_indices.append(df.shape[1])
 
         # Remove the first row and reset the columns
-        df.columns = df.iloc[0]
+        df.columns = pd.Index(df.iloc[0].astype(str).tolist())
         df = df[1:]
 
         # The columns before the first dye setting section are common columns

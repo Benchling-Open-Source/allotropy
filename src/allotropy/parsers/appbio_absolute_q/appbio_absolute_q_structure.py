@@ -70,7 +70,9 @@ class CalculatedItem:
             ]
 
 
-def get_calculated_data(aggregation_type: AggregationType, data: SeriesData) -> list[CalculatedItem]:
+def get_calculated_data(
+    aggregation_type: AggregationType, data: SeriesData
+) -> list[CalculatedItem]:
     # TODO: if aggregation type is Replicate(Average), check for required columns
     # Raise if column(s) do not exist
     return [
@@ -81,7 +83,7 @@ def get_calculated_data(aggregation_type: AggregationType, data: SeriesData) -> 
             reference.unit,
             reference.source,
             reference.source_features,
-            reference.column,
+            reference.column_key,
         )
         for reference in CALCULATED_DATA_REFERENCE.get(aggregation_type, [])
         if data.get(float, reference.column) is not None
@@ -115,7 +117,11 @@ class Group:
     @staticmethod
     def create(data: SeriesData) -> Group:
         well_identifier = data.get(str, "Well")
-        calculated_data_items = get_calculated_data(AGGREGATION_LOOKUP[well_identifier], data) if well_identifier in AGGREGATION_LOOKUP else []
+        calculated_data_items = (
+            get_calculated_data(AGGREGATION_LOOKUP[well_identifier], data)
+            if well_identifier in AGGREGATION_LOOKUP
+            else []
+        )
         calculated_data_ids = {
             calculated_data.name: calculated_data.identifier
             for calculated_data in calculated_data_items
@@ -188,10 +194,12 @@ class WellItem:
                     name=calc_data.name,
                     value=calc_data.value,
                     unit=calc_data.unit,
-                    data_sources=calc_data.get_data_sources([measurement_identifier], {}),
+                    data_sources=calc_data.get_data_sources(
+                        [measurement_identifier], {}
+                    ),
                 )
                 for calc_data in get_calculated_data(AggregationType.INDIVIDUAL, data)
-            ]
+            ],
         )
 
     @staticmethod
@@ -373,19 +381,19 @@ def create_calculated_data(
         for item in well.items:
             group_to_ids[item.group_key].append(item.measurement_identifier)
             group_to_ids[item.group_identifier].append(item.measurement_identifier)
-            calculated_data_items.extend(item.calculated_data)
+            calculated_data_items.extend(item.calculated_data or [])
 
     # When parsing a "Summary" file, some calculated columns are across all samples in a group, while others
     # are across a (group, target) pair. common_columns tells us which columns are across the group.
     # For these "common columns" extract them from (group, target) groups into (group,) only groups, so that
     # they are attributed correctly and not duplicated.
     group_id_to_group: dict[str, Group] = {}
-    summary_calculated_data: defaultdict[
-        str, dict[str, CalculatedDataItem]
-    ] = defaultdict(dict)
+    summary_calculated_data: defaultdict[str, dict[str, CalculatedItem]] = defaultdict(
+        dict
+    )
     for group in groups:
         group_id_to_group[group.group_identifier] = group
-        pruned: list[CalculatedDataItem] = []
+        pruned: list[CalculatedItem] = []
         for calculated_data in group.calculated_data:
             if calculated_data.column in common_columns:
                 existing_entry = summary_calculated_data.get(
@@ -412,22 +420,24 @@ def create_calculated_data(
             )
         )
 
-    calculated_data_items.extend([
-        CalculatedDataItem(
-            identifier=calculated_data.identifier,
-            name=calculated_data.name,
-            value=calculated_data.value,
-            unit=calculated_data.unit,
-            data_sources=[
-                DataSource(source.identifier, source.feature)
-                for source in calculated_data.get_data_sources(
-                    group_to_ids[group.key], group.calculated_data_ids
-                )
-            ],
-        )
-        for group in groups
-        for calculated_data in group.calculated_data
-    ])
+    calculated_data_items.extend(
+        [
+            CalculatedDataItem(
+                identifier=calculated_data.identifier,
+                name=calculated_data.name,
+                value=calculated_data.value,
+                unit=calculated_data.unit,
+                data_sources=[
+                    DataSource(source.identifier, source.feature)
+                    for source in calculated_data.get_data_sources(
+                        group_to_ids[group.key], group.calculated_data_ids
+                    )
+                ],
+            )
+            for group in groups
+            for calculated_data in group.calculated_data
+        ]
+    )
     return calculated_data_items
 
 
