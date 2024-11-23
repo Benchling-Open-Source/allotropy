@@ -3,6 +3,7 @@ from __future__ import annotations
 from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
+import re
 
 import pandas as pd
 
@@ -31,7 +32,7 @@ from allotropy.parsers.appbio_absolute_q.constants import (
     PRODUCT_MANUFACTURER,
     SOFTWARE_NAME,
 )
-from allotropy.parsers.constants import NEGATIVE_ZERO
+from allotropy.parsers.constants import NEGATIVE_ZERO, NOT_APPLICABLE
 from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
@@ -114,6 +115,10 @@ class Group:
 
     @staticmethod
     def create_rows(data: pd.DataFrame) -> list[Group]:
+        # No calculated data is expected for multichannel files or data cube files
+        # TODO: check for group instead?
+        if "Channels" in data or "Index" in data:
+            return []
         data = data[data["Sample"].isna()]
         return map_rows(data, Group.create)
 
@@ -143,17 +148,17 @@ class WellItem:
         return WellItem(
             name=data[str, "Sample"],
             measurement_identifier=random_uuid_str(),
-            well_identifier=data[str, "Well"],
+            well_identifier=WellItem.get_well_id(data),
             plate_identifier=data[str, "Plate"],
-            group_identifier=data[str, "Group"],
-            target_identifier=data[str, "Target"],
+            group_identifier=data.get(str, "Group", ""),
+            target_identifier=data.get(str, "Target", NOT_APPLICABLE),
             run_identifier=data[str, "Run"],
             instrument_identifier=data[str, "Instrument"],
             timestamp=data[str, "Date"],
             total_partition_count=round(data[float, "Total"]),
-            reporter_dye_setting=data[str, "Dye"],
-            concentration=data[float, "Conc. cp/uL"],
-            positive_partition_count=round(data[float, "Positives"]),
+            reporter_dye_setting=data[str, ("Dye", "Channels")],
+            concentration=data[float, ("Conc. cp/uL", "Copies per microliter")],
+            positive_partition_count=round(data[float, ("Positives", "Count")]),
         )
 
     @staticmethod
@@ -234,12 +239,20 @@ class WellItem:
 
         return well_items
 
-
-
     @staticmethod
     def get_dye_settings(columns: list[str]) -> set[str]:
         return {col for col in columns if len(col) in POSSIBLE_DYE_SETTING_LENGTHS and col == col.upper()}
 
+    @staticmethod
+    def get_well_id(data: SeriesData) -> str:
+        if well_id := data.get(str, "Well", ""):
+            return well_id
+
+        sample_name = data[str, "Sample"]
+        if match := re.match(r"Sample ([a-zA-Z0-9]+)", sample_name):
+            return match.groups()[0]
+        msg = f"Unable to get well identifier from sample {sample_name}"
+        raise AllotropeConversionError(msg)
 
 
 @dataclass
@@ -248,8 +261,16 @@ class Well:
 
     @staticmethod
     def create_wells(data: pd.DataFrame) -> list[Well]:
-        data = data.dropna(subset=["Sample"])
-        well_groups = [well_data for _, well_data in data.groupby("Well")]
+        if "Channels" in data:
+            subset_col = "Channels"
+            groupby_col = "Sample"
+        else:
+            subset_col = "Sample"
+            groupby_col = "Well"
+        data = data.dropna(subset=[subset_col])
+
+
+        well_groups = [well_data for _, well_data in data.groupby(groupby_col)]
         if "Index" in data:
             return [Well(WellItem.create_cube_well_items(well_data)) for well_data in well_groups]
         else:
@@ -284,6 +305,8 @@ def create_measurement_groups(wells: list[Well]) -> list[MeasurementGroup]:
 def create_calculated_data(
     wells: list[Well], groups: list[Group]
 ) -> list[CalculatedDataItem]:
+    if not groups:
+        return []
     # Map measurement ids to group keys
     group_to_ids = defaultdict(list)
     for well in wells:
