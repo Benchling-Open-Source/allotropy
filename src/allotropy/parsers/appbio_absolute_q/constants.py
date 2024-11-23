@@ -7,6 +7,7 @@ DEVICE_TYPE = "dPCR"
 PRODUCT_MANUFACTURER = "ThermoFisher Scientific"
 BRAND_NAME = "QuantStudio Absolute Q Digital PCR System"
 SOFTWARE_NAME = "QuantStudio Absolute Q Digital PCR Software"
+POSSIBLE_DYE_SETTING_LENGTHS = [3]
 
 
 class AggregationType(str, Enum):
