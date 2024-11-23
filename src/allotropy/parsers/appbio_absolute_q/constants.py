@@ -187,5 +187,19 @@ CALCULATED_DATA_REFERENCE: dict[AggregationType, list[CalculatedDataReference]] 
             source_feature="total partition count,positive partition count",
             unit="(unitless)",
         ),
+        CalculatedDataReference(
+            column="MeanQC",
+            name="MeanQC",
+            source=CalculatedDataSource.MEASUREMENT,
+            source_feature="QC Channel",
+            unit="(unitless)",
+        ),
+        CalculatedDataReference(
+            column="CV_QC",
+            name="CV_QC",
+            source=CalculatedDataSource.MEASUREMENT,
+            source_feature="QC Channel",
+            unit="(unitless)",
+        ),
     ],
 }

@@ -88,18 +88,12 @@ class AppbioAbsoluteQReader:
             raise AllotropeConversionError(msg)
 
         # The columns before the first and after the last dye setting section are common columns
-        base_df = pd.concat(
-            [
-                df.iloc[:, : dye_column_indices[0]],
-                df.iloc[
-                    :,
-                    (
-                        dye_column_indices[0]
-                        + dye_section_sizes[0] * len(dye_setting_columns)
-                    ) :,
-                ],
-            ]
-        )
+        before_df = df.iloc[:, : dye_column_indices[0]]
+        after_df = df.iloc[
+            :,
+            (dye_column_indices[0] + dye_section_sizes[0] * len(dye_setting_columns)) :,
+        ]
+        base_df = pd.concat([before_df, after_df], axis="columns")
         # The group column is left blank on a ffill basis.
         base_df.loc[:, "Group"] = base_df["Group"].ffill()
 

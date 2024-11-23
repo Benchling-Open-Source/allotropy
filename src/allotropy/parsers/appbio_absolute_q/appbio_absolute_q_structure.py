@@ -4,6 +4,7 @@ from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
 import re
+from typing import Any
 
 import pandas as pd
 
@@ -165,6 +166,7 @@ class WellItem:
     data_cubes: list[DataCube] | None = None
     errors: list[Error] | None = None
     calculated_data: list[CalculatedDataItem] | None = None
+    extra_data: dict[str, Any] | None = None
 
     @property
     def group_key(self) -> str:
@@ -201,6 +203,7 @@ class WellItem:
                 )
                 for calc_data in get_calculated_data(AggregationType.INDIVIDUAL, data)
             ],
+            extra_data=data.get_unread(),
         )
 
     @staticmethod
@@ -370,6 +373,7 @@ def create_measurement_groups(wells: list[Well]) -> list[MeasurementGroup]:
                     flourescence_intensity_threshold_setting=item.flourescence_intensity_threshold_setting,
                     data_cubes=item.data_cubes,
                     errors=item.errors,
+                    custom_info=item.extra_data,
                 )
                 for item in well.items
             ],
