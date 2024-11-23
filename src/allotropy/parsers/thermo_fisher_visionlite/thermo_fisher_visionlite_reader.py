@@ -28,7 +28,9 @@ class ThermoFisherVisionliteReader:
         # If the first line in the file does not contain one of the required columns for QUANT or FIXED
         # experiments, then we expect the experiment type to be SCAN or KINETIC, and the first line to be a
         # header with comma separated key value pairs.
-        if all(col_name not in first_line.lower() for col_name in expected_required_columns):
+        if all(
+            col_name not in first_line.lower() for col_name in expected_required_columns
+        ):
             self.header = SeriesData(
                 pd.Series(first_line.split(",")[:4], index=HEADER_COLS)
             )
