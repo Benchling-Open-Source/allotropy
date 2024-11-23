@@ -1,4 +1,4 @@
-from collections.abc import Callable
+from collections.abc import Callable, Sequence
 from dataclasses import dataclass
 from typing import TypeVar
 
@@ -63,11 +63,11 @@ class DataCube:
     structure_dimensions: list[DataCubeComponent]
     structure_measures: list[DataCubeComponent]
     dimensions: list[list[float]]
-    measures: list[list[float | None]]
+    measures: list[Sequence[float | None]]
 
 
 @dataclass(frozen=True)
-class ErrorDocument:
+class Error:
     error: str
     error_feature: str
 
@@ -111,7 +111,7 @@ class Measurement:
     calculated_data: list[CalculatedDataItem] | None = None
 
     # error documents
-    error_document: list[ErrorDocument] | None = None
+    errors: list[Error] | None = None
 
 
 @dataclass(frozen=True)
@@ -120,7 +120,7 @@ class MeasurementGroup:
     plate_well_count: float
     experimental_data_identifier: str | None = None
     # error documents
-    error_document: list[ErrorDocument] | None = None
+    errors: list[Error] | None = None
 
 
 @dataclass(frozen=True)
@@ -190,7 +190,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     value=measurement_group.plate_well_count
                 ),
                 error_aggregate_document=self._get_error_aggregate_document(
-                    measurement_group.error_document
+                    measurement_group.errors
                 ),
                 container_type=metadata.container_type,
                 measurement_document=[
@@ -219,7 +219,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement.data_cubes,
             ),
             error_aggregate_document=self._get_error_aggregate_document(
-                measurement.error_document
+                measurement.errors
             ),
             sample_document=SampleDocument(
                 sample_identifier=measurement.sample_identifier,
@@ -337,18 +337,13 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_error_aggregate_document(
-        self, error_documents: list[ErrorDocument] | None
+        self, errors: list[Error] | None
     ) -> ErrorAggregateDocument | None:
-        return (
-            ErrorAggregateDocument(
-                error_document=[
-                    ErrorDocumentItem(
-                        error=error.error,
-                        error_feature=error.error_feature,
-                    )
-                    for error in error_documents
-                ]
-            )
-            if error_documents
-            else None
+        if not errors:
+            return None
+        return ErrorAggregateDocument(
+            error_document=[
+                ErrorDocumentItem(error=error.error, error_feature=error.error_feature)
+                for error in errors
+            ]
         )

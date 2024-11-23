@@ -22,13 +22,13 @@ class AppbioAbsoluteQReader:
         if columns_to_rename:
             df = df.rename(columns=columns_to_rename)
 
-        required_keys = {"Sample", "Well"}
+        required_keys = {"Sample"}
         for key in required_keys:
             if key not in df:
                 possible_keys = key
                 if key in columns_to_rename:
                     possible_keys += f" or {columns_to_rename[key]}"
-                msg = "Input is missing required column '{possible_keys}'"
+                msg = f"Input is missing required column '{possible_keys}'"
                 raise AllotropeConversionError(msg)
 
         self.data = df.replace(np.nan, None)
