@@ -197,18 +197,17 @@ def _get_absorbance_measurements(
             AbsorbanceMeasurement(absorbance=data[float, ordinate_col])
         ]
     elif experiment_type == ExperimentType.FIXED:
-        base_absorbance_col = "Absorbance"
-        if not wavelength_cols:
-            absorbance_measurements = [
-                AbsorbanceMeasurement(absorbance=data[float, base_absorbance_col])
-            ]
-        else:
+        if wavelength_cols:
             absorbance_measurements = [
                 AbsorbanceMeasurement(
                     absorbance=data[float, col],
                     wavelength=wavelength,
                 )
                 for wavelength, col in wavelength_cols.items()
+            ]
+        else:
+            absorbance_measurements = [
+                AbsorbanceMeasurement(absorbance=data[float, "Absorbance"])
             ]
 
     return [
