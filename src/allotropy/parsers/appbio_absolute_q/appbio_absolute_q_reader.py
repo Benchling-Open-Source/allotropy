@@ -13,11 +13,22 @@ class AppbioAbsoluteQReader:
     def __init__(self, named_file_contents: NamedFileContents) -> None:
         df = read_csv(named_file_contents.contents)
 
+        columns_to_rename = {}
         if "Name" in df and "Sample" not in df:
-            df = df.rename(columns={"Name": "Sample"})
+            columns_to_rename["Name"] = "Sample"
+        if "Well ID" in df and "Well" not in df:
+            columns_to_rename["Well ID"] = "Well"
 
-        if "Sample" not in df:
-            msg = "Input is missing required column 'Sample' or 'Name'."
-            raise AllotropeConversionError(msg)
+        if columns_to_rename:
+            df = df.rename(columns=columns_to_rename)
+
+        required_keys = {"Sample", "Well"}
+        for key in required_keys:
+            if key not in df:
+                possible_keys = key
+                if key in columns_to_rename:
+                    possible_keys += f" or {columns_to_rename[key]}"
+                msg = "Input is missing required column '{possible_keys}'"
+                raise AllotropeConversionError(msg)
 
         self.data = df.replace(np.nan, None)

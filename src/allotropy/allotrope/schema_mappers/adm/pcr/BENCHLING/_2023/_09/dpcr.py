@@ -104,6 +104,7 @@ class Measurement:
 
     # Optional settings
     reporter_dye_setting: str | None = None
+    passive_reference_dye_setting: str | None = None
     flourescence_intensity_threshold_setting: float | None = None
 
     # Processed data
@@ -236,6 +237,7 @@ class Mapper(SchemaMapper[Data, Model]):
                         device_type=metadata.device_type,
                         device_identifier=metadata.device_identifier,
                         reporter_dye_setting=measurement.reporter_dye_setting,
+                        passive_reference_dye_setting=measurement.passive_reference_dye_setting,
                     )
                 ]
             ),
