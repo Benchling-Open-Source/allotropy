@@ -328,6 +328,7 @@ def create_measurement_groups(wells: list[Well]) -> list[MeasurementGroup]:
                     total_partition_count=item.total_partition_count,
                     concentration=item.concentration,
                     positive_partition_count=item.positive_partition_count,
+                    negative_partition_count=item.negative_partition_count,
                     reporter_dye_setting=item.reporter_dye_setting,
                     passive_reference_dye_setting=item.passive_reference_dye_setting,
                     flourescence_intensity_threshold_setting=item.flourescence_intensity_threshold_setting,
