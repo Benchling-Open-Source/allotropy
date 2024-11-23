@@ -107,9 +107,6 @@ class Measurement:
     passive_reference_dye_setting: str | None = None
     flourescence_intensity_threshold_setting: float | None = None
 
-    # Processed data
-    calculated_data: list[CalculatedDataItem] | None = None
-
     # error documents
     errors: list[Error] | None = None
 

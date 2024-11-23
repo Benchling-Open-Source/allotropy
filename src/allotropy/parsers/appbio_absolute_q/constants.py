@@ -35,7 +35,6 @@ class CalculatedDataSource(str, Enum):
 AGGREGATION_LOOKUP = {
     "Average": AggregationType.AVERAGE,
     "Pooled": AggregationType.POOLED,
-    None: AggregationType.INDIVIDUAL,
 }
 
 
@@ -89,6 +88,20 @@ CALCULATED_DATA_REFERENCE: dict[AggregationType, list[CalculatedDataReference]] 
             source_feature="Average Concentration,SD Concentration",
             unit="%",
         ),
+        CalculatedDataReference(
+            column="95%DeltaLCI",
+            name="Average 95%DeltaLCI",
+            source=CalculatedDataSource.MEASUREMENT,
+            source_feature="95%DeltaLCI",
+            unit="(unitless)",
+        ),
+        CalculatedDataReference(
+            column="95%DeltaUCI",
+            name="Average 95%DeltaUCI",
+            source=CalculatedDataSource.MEASUREMENT,
+            source_feature="95%DeltaUCI",
+            unit="(unitless)",
+        ),
     ],
     AggregationType.POOLED: [
         CalculatedDataReference(
@@ -111,6 +124,64 @@ CALCULATED_DATA_REFERENCE: dict[AggregationType, list[CalculatedDataReference]] 
             source=CalculatedDataSource.MEASUREMENT,
             source_feature="positive partition count",
             unit="#",
+        ),
+    ],
+    AggregationType.INDIVIDUAL: [
+        CalculatedDataReference(
+            column="95%DeltaLCI",
+            name="95%DeltaLCI",
+            source=CalculatedDataSource.MEASUREMENT,
+            source_feature="total partition count,positive partition count",
+            unit="(unitless)",
+        ),
+        CalculatedDataReference(
+            column="95%DeltaUCI",
+            name="95%DeltaUCI",
+            source=CalculatedDataSource.MEASUREMENT,
+            source_feature="total partition count,positive partition count",
+            unit="(unitless)",
+        ),
+        CalculatedDataReference(
+            column="Precision %",
+            name="Precision %",
+            source=CalculatedDataSource.MEASUREMENT,
+            source_feature="total partition count,positive partition count",
+            unit="(unitless)",
+        ),
+        CalculatedDataReference(
+            column="Lambda (cp/Rxn)",
+            name="Lambda (cp/Rxn)",
+            source=CalculatedDataSource.MEASUREMENT,
+            source_feature="total partition count,positive partition count",
+            unit="(unitless)",
+        ),
+        CalculatedDataReference(
+            column="Lambda_95%DeltaLCI",
+            name="Lambda_95%DeltaLCI",
+            source=CalculatedDataSource.MEASUREMENT,
+            source_feature="total partition count,positive partition count",
+            unit="(unitless)",
+        ),
+        CalculatedDataReference(
+            column="Lambda_95%DeltaUCI",
+            name="Lambda_95%DeltaUCI",
+            source=CalculatedDataSource.MEASUREMENT,
+            source_feature="total partition count,positive partition count",
+            unit="(unitless)",
+        ),
+        CalculatedDataReference(
+            column="Lambda_95%DeltaLCI",
+            name="Lambda_95%DeltaLCI",
+            source=CalculatedDataSource.MEASUREMENT,
+            source_feature="total partition count,positive partition count",
+            unit="(unitless)",
+        ),
+        CalculatedDataReference(
+            column="Lambda_95%DeltaUCI",
+            name="Lambda_95%DeltaUCI",
+            source=CalculatedDataSource.MEASUREMENT,
+            source_feature="total partition count,positive partition count",
+            unit="(unitless)",
         ),
     ],
 }

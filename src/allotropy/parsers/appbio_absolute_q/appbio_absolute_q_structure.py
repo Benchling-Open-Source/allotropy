@@ -24,6 +24,7 @@ from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.dpcr import 
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_absolute_q.constants import (
     AGGREGATION_LOOKUP,
+    AggregationType,
     BRAND_NAME,
     CALCULATED_DATA_REFERENCE,
     CalculatedDataSource,
@@ -63,9 +64,28 @@ class CalculatedItem:
             ]
         else:
             return [
-                DataSource(identifier, self.source_features[0])
+                DataSource(identifier, source_feature)
+                for source_feature in self.source_features
                 for identifier in measurement_ids
             ]
+
+
+def get_calculated_data(aggregation_type: AggregationType, data: SeriesData) -> list[CalculatedItem]:
+    # TODO: if aggregation type is Replicate(Average), check for required columns
+    # Raise if column(s) do not exist
+    return [
+        CalculatedItem(
+            random_uuid_str(),
+            reference.name,
+            data[float, reference.column],
+            reference.unit,
+            reference.source,
+            reference.source_features,
+            reference.column,
+        )
+        for reference in CALCULATED_DATA_REFERENCE.get(aggregation_type, [])
+        if data.get(float, reference.column) is not None
+    ]
 
 
 @dataclass
@@ -95,22 +115,7 @@ class Group:
     @staticmethod
     def create(data: SeriesData) -> Group:
         well_identifier = data.get(str, "Well")
-        aggregation_type = AGGREGATION_LOOKUP[well_identifier]
-
-        # TODO: if aggregation type is Replicate(Average), check for required columns
-        # Raise if column(s) do not exist
-        calculated_data_items = [
-            CalculatedItem(
-                random_uuid_str(),
-                reference.name,
-                data[float, reference.column],
-                reference.unit,
-                reference.source,
-                reference.source_features,
-                reference.column,
-            )
-            for reference in CALCULATED_DATA_REFERENCE.get(aggregation_type, [])
-        ]
+        calculated_data_items = get_calculated_data(AGGREGATION_LOOKUP[well_identifier], data) if well_identifier in AGGREGATION_LOOKUP else []
         calculated_data_ids = {
             calculated_data.name: calculated_data.identifier
             for calculated_data in calculated_data_items
@@ -152,6 +157,7 @@ class WellItem:
     flourescence_intensity_threshold_setting: float | None = None
     data_cubes: list[DataCube] | None = None
     errors: list[Error] | None = None
+    calculated_data: list[CalculatedDataItem] | None = None
 
     @property
     def group_key(self) -> str:
@@ -159,9 +165,10 @@ class WellItem:
 
     @staticmethod
     def create(data: SeriesData) -> WellItem:
+        measurement_identifier = random_uuid_str()
         return WellItem(
             name=data[str, "Sample"],
-            measurement_identifier=random_uuid_str(),
+            measurement_identifier=measurement_identifier,
             well_identifier=WellItem.get_well_id(data),
             plate_identifier=data.get(str, "Plate"),
             # Group column may be missing if there is no calculated data to group with.
@@ -175,6 +182,16 @@ class WellItem:
             concentration=data[float, CONCENTRATION_COLUMNS],
             positive_partition_count=round(data[float, ("Positives", "Count")]),
             flourescence_intensity_threshold_setting=data.get(float, "Threshold"),
+            calculated_data=[
+                CalculatedDataItem(
+                    identifier=calc_data.identifier,
+                    name=calc_data.name,
+                    value=calc_data.value,
+                    unit=calc_data.unit,
+                    data_sources=calc_data.get_data_sources([measurement_identifier], {}),
+                )
+                for calc_data in get_calculated_data(AggregationType.INDIVIDUAL, data)
+            ]
         )
 
     @staticmethod
@@ -349,12 +366,14 @@ def create_calculated_data(
 ) -> list[CalculatedDataItem]:
     if not groups:
         return []
-    # Map measurement ids to group keys
+    # Map measurement ids to group keys and get per-measurement calculated data items
     group_to_ids = defaultdict(list)
+    calculated_data_items: list[CalculatedDataItem] = []
     for well in wells:
         for item in well.items:
             group_to_ids[item.group_key].append(item.measurement_identifier)
             group_to_ids[item.group_identifier].append(item.measurement_identifier)
+            calculated_data_items.extend(item.calculated_data)
 
     # When parsing a "Summary" file, some calculated columns are across all samples in a group, while others
     # are across a (group, target) pair. common_columns tells us which columns are across the group.
@@ -393,7 +412,7 @@ def create_calculated_data(
             )
         )
 
-    return [
+    calculated_data_items.extend([
         CalculatedDataItem(
             identifier=calculated_data.identifier,
             name=calculated_data.name,
@@ -408,7 +427,8 @@ def create_calculated_data(
         )
         for group in groups
         for calculated_data in group.calculated_data
-    ]
+    ])
+    return calculated_data_items
 
 
 def create_metadata(device_identifier: str, file_path: str) -> Metadata:
