@@ -1,13 +1,13 @@
-import warnings
-
 import numpy as np
 import pandas as pd
-from pandas.errors import ParserWarning
 
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.appbio_absolute_q.constants import get_dye_settings
-from allotropy.parsers.utils.pandas import read_csv
+from allotropy.parsers.lines_reader import (
+    CsvReader,
+    EMPTY_STR_OR_CSV_LINE,
+)
 
 
 class AppbioAbsoluteQReader:
@@ -16,17 +16,8 @@ class AppbioAbsoluteQReader:
     common_columns: list[str]
 
     def __init__(self, named_file_contents: NamedFileContents) -> None:
-        with warnings.catch_warnings():
-            # The dataset does not have row labels, and is sometimes formatted with the wrong
-            # number of commas, this does not cause any problems.
-            warnings.filterwarnings(
-                "ignore",
-                category=ParserWarning,
-                message="Length of header or names does not match length of data",
-            )
-            df = read_csv(named_file_contents.contents, index_col=False)
-
-        df, self.common_columns = AppbioAbsoluteQReader.transform_if_summary_file(df)
+        csv_reader = CsvReader.create(named_file_contents)
+        df, self.common_columns = AppbioAbsoluteQReader.parse_dataframe(csv_reader)
 
         columns_to_rename = {}
         if "Name" in df and "Sample" not in df:
@@ -51,35 +42,62 @@ class AppbioAbsoluteQReader:
         self.data = df.replace(np.nan, None)
 
     @staticmethod
-    def transform_if_summary_file(df: pd.DataFrame) -> tuple[pd.DataFrame, list[str]]:
-        # If the first row is only contains dye settings indicating where each dye setting section is,
+    def parse_dataframe(csv_reader: CsvReader) -> tuple[pd.DataFrame, list[str]]:
+        first_line = csv_reader.get()
+        # If the first row only contains dye settings indicating where each dye setting section is,
         # this is a summary file.
-        columns = list(df.columns)
+        columns = first_line.split(",")
         dye_setting_columns = get_dye_settings(columns)
-        unnamed_columns = [col for col in columns if "unnamed" in col.lower()]
-        if len(dye_setting_columns) + len(unnamed_columns) != df.shape[1]:
-            return df, []
+        empty_columns = [col for col in columns if not col]
 
-        # Get the start indices of the dye setting sections.
-        dye_column_indices = [
-            i for i, col in enumerate(columns) if "unnamed" not in col.lower()
-        ]
-        dye_column_indices.append(df.shape[1])
+        # If not a summary file, parse the csv as is
+        if len(dye_setting_columns) + len(empty_columns) != len(columns):
+            return (
+                csv_reader.pop_csv_block_as_df(EMPTY_STR_OR_CSV_LINE, header="infer"),
+                [],
+            )
 
-        # Remove the first row and reset the columns
+        # Get rid of the dye section setting line and then read the rest of the csv
+        # Pandas tries to rename columns with the same name in the header, so read without header
+        # and then set the first row to columns and drop it.
+        csv_reader.pop()
+        df = csv_reader.pop_csv_block_as_df(EMPTY_STR_OR_CSV_LINE, header=None)
         df.columns = pd.Index(df.iloc[0].astype(str).tolist())
         df = df[1:]
 
-        # The columns before the first dye setting section are common columns
-        base_df = df.iloc[:, : dye_column_indices[0]]
+        # Get the start indices of the dye setting sections.
+        dye_column_indices = [i for i, col in enumerate(columns) if col]
+        dye_section_sizes = [
+            dye_column_indices[i + 1] - dye_column_indices[i]
+            for i in range(len(dye_column_indices) - 1)
+        ]
+        if not all(size == dye_section_sizes[0] for size in dye_section_sizes):
+            msg = f"Expected length of dye sections to all be the same size, got: {dye_section_sizes}"
+            raise AllotropeConversionError(msg)
+
+        # The columns before the first and after the last dye setting section are common columns
+        base_df = pd.concat(
+            [
+                df.iloc[:, : dye_column_indices[0]],
+                df.iloc[
+                    :,
+                    (
+                        dye_column_indices[0]
+                        + dye_section_sizes[0] * len(dye_setting_columns)
+                    ) :,
+                ],
+            ]
+        )
         # The group column is left blank on a ffill basis.
         base_df.loc[:, "Group"] = base_df["Group"].ffill()
 
         # For each dye setting, pull the columns for the section out and combine with the common columns
         # to create a dataset that looks like non-summary files, with one dye setting per row.
         dye_dfs: list[pd.DataFrame] = []
-        for i, dye_setting in enumerate(dye_setting_columns):
-            dye_df = df.iloc[:, dye_column_indices[i] : dye_column_indices[i + 1]]
+        for dye_setting, start_index in zip(
+            dye_setting_columns, dye_column_indices, strict=True
+        ):
+            dye_df = df.iloc[:, start_index : (start_index + dye_section_sizes[0])]
             dye_df.loc[:, ["Dye"]] = dye_setting
             dye_dfs.append(pd.concat([base_df, dye_df], axis="columns"))
 
