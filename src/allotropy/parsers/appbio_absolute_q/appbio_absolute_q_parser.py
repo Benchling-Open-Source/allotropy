@@ -27,9 +27,9 @@ class AppbioAbsoluteQParser(VendorParser[Data, Model]):
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
-        data = AppbioAbsoluteQReader(named_file_contents).data
-        wells = Well.create_wells(data)
-        groups = Group.create_rows(data)
+        reader = AppbioAbsoluteQReader(named_file_contents)
+        wells = Well.create_wells(reader.data)
+        groups = Group.create_rows(reader.data)
 
         return Data(
             create_metadata(
@@ -37,5 +37,7 @@ class AppbioAbsoluteQParser(VendorParser[Data, Model]):
                 named_file_contents.original_file_path,
             ),
             create_measurement_groups(wells),
-            calculated_data=create_calculated_data(wells, groups),
+            calculated_data=create_calculated_data(
+                wells, groups, reader.common_columns
+            ),
         )

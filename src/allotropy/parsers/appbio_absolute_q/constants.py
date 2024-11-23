@@ -1,4 +1,5 @@
 from enum import Enum
+from typing import Sequence
 
 from attr import dataclass
 
@@ -7,7 +8,17 @@ DEVICE_TYPE = "dPCR"
 PRODUCT_MANUFACTURER = "ThermoFisher Scientific"
 BRAND_NAME = "QuantStudio Absolute Q Digital PCR System"
 SOFTWARE_NAME = "QuantStudio Absolute Q Digital PCR Software"
+CONCENTRATION_COLUMNS = ("Conc. cp/uL", "Copies per microliter", "Conc.")
+
 POSSIBLE_DYE_SETTING_LENGTHS = [3]
+
+
+def get_dye_settings(columns: list[str]) -> list[str]:
+    return [
+        col
+        for col in columns
+        if len(col) in POSSIBLE_DYE_SETTING_LENGTHS and col == col.upper()
+    ]
 
 
 class AggregationType(str, Enum):
@@ -30,7 +41,7 @@ AGGREGATION_LOOKUP = {
 
 @dataclass(frozen=True)
 class CalculatedDataReference:
-    column: str
+    column: str | Sequence[str]
     name: str
     source: CalculatedDataSource
     source_feature: str
@@ -51,7 +62,7 @@ CALCULATED_DATA_REFERENCE: dict[AggregationType, list[CalculatedDataReference]] 
             unit="#",
         ),
         CalculatedDataReference(
-            column="Conc. cp/uL",
+            column=CONCENTRATION_COLUMNS,
             name="Average Concentration",
             source=CalculatedDataSource.MEASUREMENT,
             source_feature="number concentration",
