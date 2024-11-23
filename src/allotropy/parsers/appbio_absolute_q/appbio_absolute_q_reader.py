@@ -8,6 +8,7 @@ from allotropy.parsers.lines_reader import (
     CsvReader,
     EMPTY_STR_OR_CSV_LINE,
 )
+from allotropy.parsers.utils.values import assert_not_none
 
 
 class AppbioAbsoluteQReader:
@@ -44,6 +45,9 @@ class AppbioAbsoluteQReader:
     @staticmethod
     def parse_dataframe(csv_reader: CsvReader) -> tuple[pd.DataFrame, list[str]]:
         first_line = csv_reader.get()
+        if not first_line:
+            msg = "Can not parse empty file"
+            raise AllotropeConversionError(msg)
         # If the first row only contains dye settings indicating where each dye setting section is,
         # this is a summary file.
         columns = first_line.split(",")
@@ -53,7 +57,12 @@ class AppbioAbsoluteQReader:
         # If not a summary file, parse the csv as is
         if len(dye_setting_columns) + len(empty_columns) != len(columns):
             return (
-                csv_reader.pop_csv_block_as_df(EMPTY_STR_OR_CSV_LINE, header="infer"),
+                assert_not_none(
+                    csv_reader.pop_csv_block_as_df(
+                        EMPTY_STR_OR_CSV_LINE, header="infer"
+                    ),
+                    "Failed to parser dataframe from file.",
+                ),
                 [],
             )
 
@@ -61,7 +70,10 @@ class AppbioAbsoluteQReader:
         # Pandas tries to rename columns with the same name in the header, so read without header
         # and then set the first row to columns and drop it.
         csv_reader.pop()
-        df = csv_reader.pop_csv_block_as_df(EMPTY_STR_OR_CSV_LINE, header=None)
+        df = assert_not_none(
+            csv_reader.pop_csv_block_as_df(EMPTY_STR_OR_CSV_LINE, header=None),
+            "Failed to parser dataframe from file.",
+        )
         df.columns = pd.Index(df.iloc[0].astype(str).tolist())
         df = df[1:]
 
