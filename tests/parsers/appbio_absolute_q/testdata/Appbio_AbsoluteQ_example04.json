@@ -46,6 +46,10 @@
                                         "positive partition count": {
                                             "value": 0,
                                             "unit": "#"
+                                        },
+                                        "confidence interval  95  ": {
+                                            "value": 0.0,
+                                            "unit": "#"
                                         }
                                     }
                                 ]
@@ -64,7 +68,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_2",
+                            "measurement identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_1",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene A",
                             "sample document": {
@@ -95,6 +99,10 @@
                                         "positive partition count": {
                                             "value": 0,
                                             "unit": "#"
+                                        },
+                                        "confidence interval  95  ": {
+                                            "value": 0.0,
+                                            "unit": "#"
                                         }
                                     }
                                 ]
@@ -113,7 +121,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_4",
+                            "measurement identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_2",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene A",
                             "sample document": {
@@ -144,6 +152,10 @@
                                         "positive partition count": {
                                             "value": 343,
                                             "unit": "#"
+                                        },
+                                        "confidence interval  95  ": {
+                                            "value": 3.94,
+                                            "unit": "#"
                                         }
                                     }
                                 ]
@@ -162,7 +174,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_6",
+                            "measurement identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_3",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene A",
                             "sample document": {
@@ -193,6 +205,10 @@
                                         "positive partition count": {
                                             "value": 340,
                                             "unit": "#"
+                                        },
+                                        "confidence interval  95  ": {
+                                            "value": 3.91,
+                                            "unit": "#"
                                         }
                                     }
                                 ]
@@ -211,7 +227,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_8",
+                            "measurement identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_4",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene A",
                             "sample document": {
@@ -242,6 +258,10 @@
                                         "positive partition count": {
                                             "value": 34,
                                             "unit": "#"
+                                        },
+                                        "confidence interval  95  ": {
+                                            "value": 1.1,
+                                            "unit": "#"
                                         }
                                     }
                                 ]
@@ -260,7 +280,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_10",
+                            "measurement identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_5",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene A",
                             "sample document": {
@@ -291,6 +311,10 @@
                                         "positive partition count": {
                                             "value": 36,
                                             "unit": "#"
+                                        },
+                                        "confidence interval  95  ": {
+                                            "value": 1.14,
+                                            "unit": "#"
                                         }
                                     }
                                 ]
@@ -309,7 +333,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_12",
+                            "measurement identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_6",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene A",
                             "sample document": {
@@ -340,6 +364,10 @@
                                         "positive partition count": {
                                             "value": 1511,
                                             "unit": "#"
+                                        },
+                                        "confidence interval  95  ": {
+                                            "value": 8.74,
+                                            "unit": "#"
                                         }
                                     }
                                 ]
@@ -358,7 +386,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_14",
+                            "measurement identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_7",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene A",
                             "sample document": {
@@ -389,6 +417,10 @@
                                         "positive partition count": {
                                             "value": 1416,
                                             "unit": "#"
+                                        },
+                                        "confidence interval  95  ": {
+                                            "value": 8.44,
+                                            "unit": "#"
                                         }
                                     }
                                 ]
@@ -407,7 +439,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_16",
+                            "measurement identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_8",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene A",
                             "sample document": {
@@ -438,6 +470,10 @@
                                         "positive partition count": {
                                             "value": 80,
                                             "unit": "#"
+                                        },
+                                        "confidence interval  95  ": {
+                                            "value": 1.79,
+                                            "unit": "#"
                                         }
                                     }
                                 ]
@@ -456,7 +492,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_18",
+                            "measurement identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_9",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene A",
                             "sample document": {
@@ -487,6 +523,10 @@
                                         "positive partition count": {
                                             "value": 96,
                                             "unit": "#"
+                                        },
+                                        "confidence interval  95  ": {
+                                            "value": 1.98,
+                                            "unit": "#"
                                         }
                                     }
                                 ]
@@ -505,7 +545,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_20",
+                            "measurement identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_10",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene A",
                             "sample document": {
@@ -536,6 +576,10 @@
                                         "positive partition count": {
                                             "value": 4775,
                                             "unit": "#"
+                                        },
+                                        "confidence interval  95  ": {
+                                            "value": 17.27,
+                                            "unit": "#"
                                         }
                                     }
                                 ]
@@ -554,7 +598,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_22",
+                            "measurement identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_11",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene A",
                             "sample document": {
@@ -585,6 +629,10 @@
                                         "positive partition count": {
                                             "value": 4899,
                                             "unit": "#"
+                                        },
+                                        "confidence interval  95  ": {
+                                            "value": 17.57,
+                                            "unit": "#"
                                         }
                                     }
                                 ]
@@ -603,7 +651,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_24",
+                            "measurement identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_12",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene A",
                             "sample document": {
@@ -634,6 +682,10 @@
                                         "positive partition count": {
                                             "value": 165,
                                             "unit": "#"
+                                        },
+                                        "confidence interval  95  ": {
+                                            "value": 2.66,
+                                            "unit": "#"
                                         }
                                     }
                                 ]
@@ -652,7 +704,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_26",
+                            "measurement identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_13",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene A",
                             "sample document": {
@@ -683,6 +735,10 @@
                                         "positive partition count": {
                                             "value": 149,
                                             "unit": "#"
+                                        },
+                                        "confidence interval  95  ": {
+                                            "value": 2.53,
+                                            "unit": "#"
                                         }
                                     }
                                 ]
@@ -701,7 +757,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_28",
+                            "measurement identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_14",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene A",
                             "sample document": {
@@ -732,6 +788,10 @@
                                         "positive partition count": {
                                             "value": 13963,
                                             "unit": "#"
+                                        },
+                                        "confidence interval  95  ": {
+                                            "value": 46.33,
+                                            "unit": "#"
                                         }
                                     }
                                 ]
@@ -750,7 +810,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_30",
+                            "measurement identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_15",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene A",
                             "sample document": {
@@ -781,6 +841,10 @@
                                         "positive partition count": {
                                             "value": 10196,
                                             "unit": "#"
+                                        },
+                                        "confidence interval  95  ": {
+                                            "value": 31.38,
+                                            "unit": "#"
                                         }
                                     }
                                 ]
@@ -798,330 +862,6 @@
             "software name": "QuantStudio Absolute Q Digital PCR Software",
             "ASM converter name": "allotropy_appbio_absoluteq",
             "ASM converter version": "0.1.64"
-        },
-        "calculated data aggregate document": {
-            "calculated data document": [
-                {
-                    "calculated data identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_1",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_0",
-                                "data source feature": "total partition count"
-                            },
-                            {
-                                "data source identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_0",
-                                "data source feature": "positive partition count"
-                            }
-                        ]
-                    },
-                    "calculated data name": "95%CI",
-                    "calculated datum": {
-                        "value": 0.0,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_3",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_2",
-                                "data source feature": "total partition count"
-                            },
-                            {
-                                "data source identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_2",
-                                "data source feature": "positive partition count"
-                            }
-                        ]
-                    },
-                    "calculated data name": "95%CI",
-                    "calculated datum": {
-                        "value": 0.0,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_5",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_4",
-                                "data source feature": "total partition count"
-                            },
-                            {
-                                "data source identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_4",
-                                "data source feature": "positive partition count"
-                            }
-                        ]
-                    },
-                    "calculated data name": "95%CI",
-                    "calculated datum": {
-                        "value": 3.94,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_7",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_6",
-                                "data source feature": "total partition count"
-                            },
-                            {
-                                "data source identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_6",
-                                "data source feature": "positive partition count"
-                            }
-                        ]
-                    },
-                    "calculated data name": "95%CI",
-                    "calculated datum": {
-                        "value": 3.91,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_9",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_8",
-                                "data source feature": "total partition count"
-                            },
-                            {
-                                "data source identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_8",
-                                "data source feature": "positive partition count"
-                            }
-                        ]
-                    },
-                    "calculated data name": "95%CI",
-                    "calculated datum": {
-                        "value": 1.1,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_11",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_10",
-                                "data source feature": "total partition count"
-                            },
-                            {
-                                "data source identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_10",
-                                "data source feature": "positive partition count"
-                            }
-                        ]
-                    },
-                    "calculated data name": "95%CI",
-                    "calculated datum": {
-                        "value": 1.14,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_13",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_12",
-                                "data source feature": "total partition count"
-                            },
-                            {
-                                "data source identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_12",
-                                "data source feature": "positive partition count"
-                            }
-                        ]
-                    },
-                    "calculated data name": "95%CI",
-                    "calculated datum": {
-                        "value": 8.74,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_15",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_14",
-                                "data source feature": "total partition count"
-                            },
-                            {
-                                "data source identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_14",
-                                "data source feature": "positive partition count"
-                            }
-                        ]
-                    },
-                    "calculated data name": "95%CI",
-                    "calculated datum": {
-                        "value": 8.44,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_17",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_16",
-                                "data source feature": "total partition count"
-                            },
-                            {
-                                "data source identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_16",
-                                "data source feature": "positive partition count"
-                            }
-                        ]
-                    },
-                    "calculated data name": "95%CI",
-                    "calculated datum": {
-                        "value": 1.79,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_19",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_18",
-                                "data source feature": "total partition count"
-                            },
-                            {
-                                "data source identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_18",
-                                "data source feature": "positive partition count"
-                            }
-                        ]
-                    },
-                    "calculated data name": "95%CI",
-                    "calculated datum": {
-                        "value": 1.98,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_21",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_20",
-                                "data source feature": "total partition count"
-                            },
-                            {
-                                "data source identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_20",
-                                "data source feature": "positive partition count"
-                            }
-                        ]
-                    },
-                    "calculated data name": "95%CI",
-                    "calculated datum": {
-                        "value": 17.27,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_23",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_22",
-                                "data source feature": "total partition count"
-                            },
-                            {
-                                "data source identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_22",
-                                "data source feature": "positive partition count"
-                            }
-                        ]
-                    },
-                    "calculated data name": "95%CI",
-                    "calculated datum": {
-                        "value": 17.57,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_25",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_24",
-                                "data source feature": "total partition count"
-                            },
-                            {
-                                "data source identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_24",
-                                "data source feature": "positive partition count"
-                            }
-                        ]
-                    },
-                    "calculated data name": "95%CI",
-                    "calculated datum": {
-                        "value": 2.66,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_27",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_26",
-                                "data source feature": "total partition count"
-                            },
-                            {
-                                "data source identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_26",
-                                "data source feature": "positive partition count"
-                            }
-                        ]
-                    },
-                    "calculated data name": "95%CI",
-                    "calculated datum": {
-                        "value": 2.53,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_29",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_28",
-                                "data source feature": "total partition count"
-                            },
-                            {
-                                "data source identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_28",
-                                "data source feature": "positive partition count"
-                            }
-                        ]
-                    },
-                    "calculated data name": "95%CI",
-                    "calculated datum": {
-                        "value": 46.33,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_31",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_30",
-                                "data source feature": "total partition count"
-                            },
-                            {
-                                "data source identifier": "APPBIO_ABSOLUTE_Q_TEST_ID_30",
-                                "data source feature": "positive partition count"
-                            }
-                        ]
-                    },
-                    "calculated data name": "95%CI",
-                    "calculated datum": {
-                        "value": 31.38,
-                        "unit": "(unitless)"
-                    }
-                }
-            ]
         }
     }
 }

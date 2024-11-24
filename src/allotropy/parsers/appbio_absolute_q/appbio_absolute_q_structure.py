@@ -161,6 +161,7 @@ class WellItem:
     positive_partition_count: float
     plate_identifier: str | None = None
     negative_partition_count: float | None = None
+    confidence_interval__95__: float | None = None
     passive_reference_dye_setting: str | None = None
     flourescence_intensity_threshold_setting: float | None = None
     data_cubes: list[DataCube] | None = None
@@ -190,6 +191,7 @@ class WellItem:
             reporter_dye_setting=data[str, ("Dye", "Channels")],
             concentration=data[float, CONCENTRATION_COLUMNS],
             positive_partition_count=round(data[float, ("Positives", "Count")]),
+            confidence_interval__95__=data.get(float, "95%CI"),
             flourescence_intensity_threshold_setting=data.get(float, "Threshold"),
             calculated_data=[
                 CalculatedDataItem(
@@ -283,6 +285,7 @@ class WellItem:
                     concentration=concentration,
                     positive_partition_count=positive_partition_count,
                     negative_partition_count=negative_partition_count,
+                    confidence_interval__95__=data.get(float, "95%CI"),
                     data_cubes=[
                         DataCube(
                             label="reporter dye",
@@ -368,6 +371,7 @@ def create_measurement_groups(wells: list[Well]) -> list[MeasurementGroup]:
                     concentration=item.concentration,
                     positive_partition_count=item.positive_partition_count,
                     negative_partition_count=item.negative_partition_count,
+                    confidence_interval__95__=item.confidence_interval__95__,
                     reporter_dye_setting=item.reporter_dye_setting,
                     passive_reference_dye_setting=item.passive_reference_dye_setting,
                     flourescence_intensity_threshold_setting=item.flourescence_intensity_threshold_setting,
