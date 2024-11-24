@@ -10,6 +10,9 @@ from allotropy.parsers.lines_reader import (
 )
 from allotropy.parsers.utils.values import assert_not_none
 
+# we don't do chained assignment, disable to prevent spurious warning.
+pd.options.mode.chained_assignment = None
+
 
 class AppbioAbsoluteQReader:
     SUPPORTED_EXTENSIONS = "csv"
@@ -104,7 +107,7 @@ class AppbioAbsoluteQReader:
             dye_setting_columns, dye_column_indices, strict=True
         ):
             dye_df = df.iloc[:, start_index : (start_index + dye_section_sizes[0])]
-            dye_df.loc[:, ["Dye"]] = dye_setting
+            dye_df.loc[:, "Dye"] = dye_setting
             dye_dfs.append(pd.concat([base_df, dye_df], axis="columns"))
 
         return pd.concat(dye_dfs, axis="index"), list(base_df.columns)
