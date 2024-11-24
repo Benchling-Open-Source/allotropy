@@ -73,7 +73,7 @@ SPECIAL_KEYS = {
     "number_of_theoretical_plates_measured_at_13_4___of_peak_height": "number of theoretical plates measured at 13.4 % of peak height",
     "number_of_theoretical_plates_measured_at_4_4___of_peak_height": "number of theoretical plates measured at 4.4 % of peak height",
     "number_of_theoretical_plates_by_peak_width_at_half_height__JP14_": "number of theoretical plates by peak width at half height (JP14)",
-    "confidence_interval__95__": "confidence internal (95%)",
+    "confidence_interval__95__": "confidence interval (95%)",
     "co2_saturation": "CO2 saturation",
     "o2_saturation": "O2 saturation",
     "pco2": "pCO2",
