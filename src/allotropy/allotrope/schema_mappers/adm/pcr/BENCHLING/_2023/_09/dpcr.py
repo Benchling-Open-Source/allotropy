@@ -1,7 +1,8 @@
 from collections.abc import Callable, Sequence
 from dataclasses import dataclass
-from typing import TypeVar
+from typing import Any, TypeVar
 
+from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.dpcr import (
     CalculatedDataDocumentItem,
     ContainerType,
@@ -107,11 +108,11 @@ class Measurement:
     passive_reference_dye_setting: str | None = None
     flourescence_intensity_threshold_setting: float | None = None
 
-    # Processed data
-    calculated_data: list[CalculatedDataItem] | None = None
-
     # error documents
     errors: list[Error] | None = None
+
+    # custom
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -203,7 +204,7 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_measurement_document(
         self, measurement: Measurement, metadata: Metadata
     ) -> MeasurementDocumentItem:
-        return MeasurementDocumentItem(
+        measurement_doc = MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
             measurement_time=self.get_date_time(measurement.measurement_time),
             target_DNA_description=measurement.target_identifier,
@@ -267,6 +268,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 ]
             ),
         )
+        return add_custom_information_document(measurement_doc, measurement.custom_info)
 
     def _get_calculated_data_aggregate_document(
         self, calculated_data_items: list[CalculatedDataItem] | None

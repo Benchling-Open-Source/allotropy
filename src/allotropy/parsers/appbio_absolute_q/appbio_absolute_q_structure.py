@@ -4,6 +4,7 @@ from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
 import re
+from typing import Any
 
 import pandas as pd
 
@@ -24,16 +25,23 @@ from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.dpcr import 
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_absolute_q.constants import (
     AGGREGATION_LOOKUP,
+    AggregationType,
     BRAND_NAME,
     CALCULATED_DATA_REFERENCE,
     CalculatedDataSource,
+    CONCENTRATION_COLUMNS,
     DEVICE_TYPE,
+    get_dye_settings,
     PLATE_WELL_COUNT,
     POSSIBLE_DYE_SETTING_LENGTHS,
     PRODUCT_MANUFACTURER,
     SOFTWARE_NAME,
 )
-from allotropy.parsers.constants import NEGATIVE_ZERO, NOT_APPLICABLE
+from allotropy.parsers.constants import (
+    DEFAULT_EPOCH_TIMESTAMP,
+    NEGATIVE_ZERO,
+    NOT_APPLICABLE,
+)
 from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
@@ -46,6 +54,7 @@ class CalculatedItem:
     unit: str
     source: CalculatedDataSource
     source_features: list[str]
+    column: str
 
     def get_data_sources(
         self, measurement_ids: list[str], calculated_data_ids: dict[str, str]
@@ -57,9 +66,30 @@ class CalculatedItem:
             ]
         else:
             return [
-                DataSource(identifier, self.source_features[0])
+                DataSource(identifier, source_feature)
+                for source_feature in self.source_features
                 for identifier in measurement_ids
             ]
+
+
+def get_calculated_data(
+    aggregation_type: AggregationType, data: SeriesData
+) -> list[CalculatedItem]:
+    # TODO: if aggregation type is Replicate(Average), check for required columns
+    # Raise if column(s) do not exist
+    return [
+        CalculatedItem(
+            random_uuid_str(),
+            reference.name,
+            data[float, reference.column],
+            reference.unit,
+            reference.source,
+            reference.source_features,
+            reference.column_key,
+        )
+        for reference in CALCULATED_DATA_REFERENCE.get(aggregation_type, [])
+        if data.get(float, reference.column) is not None
+    ]
 
 
 @dataclass
@@ -76,6 +106,8 @@ class Group:
 
     @property
     def key(self) -> str:
+        if not self.target_identifier:
+            return self.group_identifier
         return f"{self.name}_{self.target_identifier}"
 
     def get_calculated_data_ids(self) -> dict[str, str]:
@@ -87,21 +119,11 @@ class Group:
     @staticmethod
     def create(data: SeriesData) -> Group:
         well_identifier = data.get(str, "Well")
-        aggregation_type = AGGREGATION_LOOKUP[well_identifier]
-
-        # TODO: if aggregation type is Replicate(Average), check for required columns
-        # Raise if column(s) do not exist
-        calculated_data_items = [
-            CalculatedItem(
-                random_uuid_str(),
-                reference.name,
-                data[float, reference.column],
-                reference.unit,
-                reference.source,
-                reference.source_features,
-            )
-            for reference in CALCULATED_DATA_REFERENCE.get(aggregation_type, [])
-        ]
+        calculated_data_items = (
+            get_calculated_data(AGGREGATION_LOOKUP[well_identifier], data)
+            if well_identifier in AGGREGATION_LOOKUP
+            else []
+        )
         calculated_data_ids = {
             calculated_data.name: calculated_data.identifier
             for calculated_data in calculated_data_items
@@ -128,7 +150,6 @@ class WellItem:
     name: str
     measurement_identifier: str
     well_identifier: str
-    plate_identifier: str
     group_identifier: str
     target_identifier: str
     run_identifier: str
@@ -138,11 +159,15 @@ class WellItem:
     reporter_dye_setting: str
     concentration: float
     positive_partition_count: float
+    plate_identifier: str | None = None
     negative_partition_count: float | None = None
+    confidence_interval__95__: float | None = None
     passive_reference_dye_setting: str | None = None
     flourescence_intensity_threshold_setting: float | None = None
     data_cubes: list[DataCube] | None = None
     errors: list[Error] | None = None
+    calculated_data: list[CalculatedDataItem] | None = None
+    extra_data: dict[str, Any] | None = None
 
     @property
     def group_key(self) -> str:
@@ -150,26 +175,42 @@ class WellItem:
 
     @staticmethod
     def create(data: SeriesData) -> WellItem:
+        measurement_identifier = random_uuid_str()
         return WellItem(
             name=data[str, "Sample"],
-            measurement_identifier=random_uuid_str(),
+            measurement_identifier=measurement_identifier,
             well_identifier=WellItem.get_well_id(data),
-            plate_identifier=data[str, "Plate"],
+            plate_identifier=data.get(str, "Plate"),
             # Group column may be missing if there is no calculated data to group with.
             group_identifier=data.get(str, "Group", ""),
             target_identifier=data.get(str, "Target", NOT_APPLICABLE),
             run_identifier=data[str, "Run"],
-            instrument_identifier=data[str, "Instrument"],
-            timestamp=data[str, "Date"],
+            instrument_identifier=data.get(str, "Instrument", NOT_APPLICABLE),
+            timestamp=data.get(str, "Date", DEFAULT_EPOCH_TIMESTAMP),
             total_partition_count=round(data[float, "Total"]),
             reporter_dye_setting=data[str, ("Dye", "Channels")],
-            concentration=data[float, ("Conc. cp/uL", "Copies per microliter")],
+            concentration=data[float, CONCENTRATION_COLUMNS],
             positive_partition_count=round(data[float, ("Positives", "Count")]),
+            confidence_interval__95__=data.get(float, "95%CI"),
+            flourescence_intensity_threshold_setting=data.get(float, "Threshold"),
+            calculated_data=[
+                CalculatedDataItem(
+                    identifier=calc_data.identifier,
+                    name=calc_data.name,
+                    value=calc_data.value,
+                    unit=calc_data.unit,
+                    data_sources=calc_data.get_data_sources(
+                        [measurement_identifier], {}
+                    ),
+                )
+                for calc_data in get_calculated_data(AggregationType.INDIVIDUAL, data)
+            ],
+            extra_data=data.get_unread(),
         )
 
     @staticmethod
     def create_cube_well_items(well_data: pd.DataFrame) -> list[WellItem]:
-        dye_settings = WellItem.get_dye_settings(list(well_data.columns))
+        dye_settings = get_dye_settings(list(well_data.columns))
 
         # Order rows by data cube index (this is probably always true, but to be safe).
         well_data = well_data.sort_values("Index", axis="index")
@@ -217,7 +258,7 @@ class WellItem:
             ) != total_partition_count:
                 msg = f"positive partition count ({positive_partition_count}) + negative partition count ({negative_partition_count}) != total partition count ({total_partition_count}). This probaby means the values in '{positives_column}' are not bools as expected."
 
-            concentration = data.get(float, ("Conc. cp/uL", "Copies per microliter"))
+            concentration = data.get(float, CONCENTRATION_COLUMNS)
             errors = []
             if concentration is None:
                 concentration = NEGATIVE_ZERO
@@ -228,13 +269,13 @@ class WellItem:
                     name=data[str, "Sample"],
                     measurement_identifier=random_uuid_str(),
                     well_identifier=data[str, "Well"],
-                    plate_identifier=data[str, "Plate"],
+                    plate_identifier=data.get(str, "Plate"),
                     # Group column may be missing if there is no calculated data to group with.
                     group_identifier=data.get(str, "Group", ""),
                     target_identifier=data[str, f"{dye_setting}_target"],
                     run_identifier=data[str, "Run"],
-                    instrument_identifier=data[str, "Instrument"],
-                    timestamp=data[str, "Date"],
+                    instrument_identifier=data.get(str, "Instrument", NOT_APPLICABLE),
+                    timestamp=data.get(str, "Date", DEFAULT_EPOCH_TIMESTAMP),
                     total_partition_count=total_partition_count,
                     reporter_dye_setting=dye_setting,
                     passive_reference_dye_setting=passive_dye_settings[0],
@@ -244,6 +285,7 @@ class WellItem:
                     concentration=concentration,
                     positive_partition_count=positive_partition_count,
                     negative_partition_count=negative_partition_count,
+                    confidence_interval__95__=data.get(float, "95%CI"),
                     data_cubes=[
                         DataCube(
                             label="reporter dye",
@@ -329,11 +371,13 @@ def create_measurement_groups(wells: list[Well]) -> list[MeasurementGroup]:
                     concentration=item.concentration,
                     positive_partition_count=item.positive_partition_count,
                     negative_partition_count=item.negative_partition_count,
+                    confidence_interval__95__=item.confidence_interval__95__,
                     reporter_dye_setting=item.reporter_dye_setting,
                     passive_reference_dye_setting=item.passive_reference_dye_setting,
                     flourescence_intensity_threshold_setting=item.flourescence_intensity_threshold_setting,
                     data_cubes=item.data_cubes,
                     errors=item.errors,
+                    custom_info=item.extra_data,
                 )
                 for item in well.items
             ],
@@ -343,32 +387,75 @@ def create_measurement_groups(wells: list[Well]) -> list[MeasurementGroup]:
 
 
 def create_calculated_data(
-    wells: list[Well], groups: list[Group]
+    wells: list[Well], groups: list[Group], common_columns: list[str]
 ) -> list[CalculatedDataItem]:
     if not groups:
         return []
-    # Map measurement ids to group keys
+    # Map measurement ids to group keys and get per-measurement calculated data items
     group_to_ids = defaultdict(list)
+    calculated_data_items: list[CalculatedDataItem] = []
     for well in wells:
         for item in well.items:
             group_to_ids[item.group_key].append(item.measurement_identifier)
+            group_to_ids[item.group_identifier].append(item.measurement_identifier)
+            calculated_data_items.extend(item.calculated_data or [])
 
-    return [
-        CalculatedDataItem(
-            identifier=calculated_data.identifier,
-            name=calculated_data.name,
-            value=calculated_data.value,
-            unit=calculated_data.unit,
-            data_sources=[
-                DataSource(source.identifier, source.feature)
-                for source in calculated_data.get_data_sources(
-                    group_to_ids[group.key], group.calculated_data_ids
-                )
-            ],
+    # When parsing a "Summary" file, some calculated columns are across all samples in a group, while others
+    # are across a (group, target) pair. common_columns tells us which columns are across the group.
+    # For these "common columns" extract them from (group, target) groups into (group,) only groups, so that
+    # they are attributed correctly and not duplicated.
+    group_id_to_group: dict[str, Group] = {}
+    summary_calculated_data: defaultdict[str, dict[str, CalculatedItem]] = defaultdict(
+        dict
+    )
+    for group in groups:
+        group_id_to_group[group.group_identifier] = group
+        pruned: list[CalculatedItem] = []
+        for calculated_data in group.calculated_data:
+            if calculated_data.column in common_columns:
+                existing_entry = summary_calculated_data.get(
+                    group.group_identifier, {}
+                ).get(calculated_data.column)
+                if existing_entry and existing_entry.value != calculated_data.value:
+                    msg = f"Mismatch in value within group for summary calculated data column: '{calculated_data.column}': '{existing_entry.value}' vs '{calculated_data.value}'"
+                    raise AllotropeConversionError(msg)
+                summary_calculated_data[group.group_identifier][
+                    calculated_data.column
+                ] = calculated_data
+            else:
+                pruned.append(calculated_data)
+        group.calculated_data = pruned
+
+    for group_id, calc_column_to_calc_data in summary_calculated_data.items():
+        groups.append(
+            Group(
+                well_identifier=group_id_to_group[group_id].well_identifier,
+                group_identifier=group_id,
+                target_identifier="",
+                calculated_data=list(calc_column_to_calc_data.values()),
+                calculated_data_ids=group_id_to_group[group_id].calculated_data_ids,
+            )
         )
-        for group in groups
-        for calculated_data in group.calculated_data
-    ]
+
+    calculated_data_items.extend(
+        [
+            CalculatedDataItem(
+                identifier=calculated_data.identifier,
+                name=calculated_data.name,
+                value=calculated_data.value,
+                unit=calculated_data.unit,
+                data_sources=[
+                    DataSource(source.identifier, source.feature)
+                    for source in calculated_data.get_data_sources(
+                        group_to_ids[group.key], group.calculated_data_ids
+                    )
+                ],
+            )
+            for group in groups
+            for calculated_data in group.calculated_data
+        ]
+    )
+    return calculated_data_items
 
 
 def create_metadata(device_identifier: str, file_path: str) -> Metadata:
