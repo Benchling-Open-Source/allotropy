@@ -132,6 +132,13 @@ CALCULATED_DATA_REFERENCE: dict[AggregationType, list[CalculatedDataReference]] 
     ],
     AggregationType.INDIVIDUAL: [
         CalculatedDataReference(
+            column="95%CI",
+            name="95%CI",
+            source=CalculatedDataSource.MEASUREMENT,
+            source_feature="total partition count,positive partition count",
+            unit="(unitless)",
+        ),
+        CalculatedDataReference(
             column="95%DeltaLCI",
             name="95%DeltaLCI",
             source=CalculatedDataSource.MEASUREMENT,
