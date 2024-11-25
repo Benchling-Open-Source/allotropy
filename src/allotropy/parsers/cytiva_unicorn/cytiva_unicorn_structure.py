@@ -58,6 +58,10 @@ def parse_data_cube_bynary(stream: BytesIO) -> tuple[float, ...]:
     )
 
 
+def min_to_sec(data: tuple[float, ...]) -> tuple[float, ...]:
+    return tuple(element * 60 for element in data)
+
+
 def create_data_cube(
     handler: UnicornFileHandler,
     curve_element: StrictElement,
@@ -74,13 +78,15 @@ def create_data_cube(
             DataCubeComponent(
                 type_=FieldComponentDatatype.float,
                 concept="retention time",
-                unit="min",
+                unit="s",
             ),
         ],
         structure_measures=[data_cuve_component],
         dimensions=[
-            parse_data_cube_bynary(
-                data_handler.get_file_from_pattern("CoordinateData.Volumes$")
+            min_to_sec(
+                parse_data_cube_bynary(
+                    data_handler.get_file_from_pattern("CoordinateData.Volumes$")
+                )
             )
         ],
         measures=[
