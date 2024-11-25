@@ -282,6 +282,8 @@ def create_calculated_data_groups(
             source.identifier for calc in calc_data for source in calc.data_sources
         ]
         if len(data_sources_identifiers) != len(set(data_sources_identifiers)):
+            ordered_sources = list(set(data_sources_identifiers))
+            ordered_sources.sort()
             value = calc_data[0].value
             new_calc_data_item = CalculatedDataItem(
                 identifier=random_uuid_str(),
@@ -290,7 +292,7 @@ def create_calculated_data_groups(
                         identifier=identifier,
                         feature=calc_data_mapping.data_source_feature,
                     )
-                    for identifier in set(data_sources_identifiers)
+                    for identifier in ordered_sources
                 ],
                 unit=UNITLESS,
                 name=calc_data_mapping.msd_column.value,

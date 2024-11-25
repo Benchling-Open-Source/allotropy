@@ -45,22 +45,22 @@
                             },
                             "measurement identifier": "MSD_WORKBENCH_TEST_ID_1",
                             "sample document": {
-                                "sample identifier": "S001_A01",
-                                "location identifier": "A01_2",
+                                "sample identifier": "S001_A02",
+                                "location identifier": "A02_1",
                                 "sample role type": "standard sample role",
                                 "well plate identifier": "2BO40AW287",
                                 "mass concentration": {
-                                    "value": 54.2,
+                                    "value": 331.0,
                                     "unit": "pg/mL"
                                 }
                             },
                             "luminescence": {
-                                "value": 3328,
+                                "value": 341,
                                 "unit": "RLU"
                             },
                             "custom information document": {
                                 "detection range": "Above Fit Curve Range",
-                                "assay identifier": "Spike (FL.1.5.1)"
+                                "assay identifier": "Spike (Wuhan)"
                             }
                         }
                     ],
@@ -86,22 +86,22 @@
                             },
                             "measurement identifier": "MSD_WORKBENCH_TEST_ID_2",
                             "sample document": {
-                                "sample identifier": "S001_A02",
-                                "location identifier": "A02_1",
+                                "sample identifier": "S001_A01",
+                                "location identifier": "A01_2",
                                 "sample role type": "standard sample role",
                                 "well plate identifier": "2BO40AW287",
                                 "mass concentration": {
-                                    "value": 331.0,
+                                    "value": 54.2,
                                     "unit": "pg/mL"
                                 }
                             },
                             "luminescence": {
-                                "value": 341,
+                                "value": 3328,
                                 "unit": "RLU"
                             },
                             "custom information document": {
                                 "detection range": "Above Fit Curve Range",
-                                "assay identifier": "Spike (Wuhan)"
+                                "assay identifier": "Spike (FL.1.5.1)"
                             }
                         },
                         {
@@ -175,7 +175,7 @@
                                 "data source feature": "luminescence"
                             },
                             {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_1",
+                                "data source identifier": "MSD_WORKBENCH_TEST_ID_2",
                                 "data source feature": "luminescence"
                             }
                         ]
@@ -211,7 +211,7 @@
                                 "data source feature": "luminescence"
                             },
                             {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_1",
+                                "data source identifier": "MSD_WORKBENCH_TEST_ID_2",
                                 "data source feature": "luminescence"
                             }
                         ]
@@ -231,7 +231,7 @@
                                 "data source feature": "luminescence"
                             },
                             {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_1",
+                                "data source identifier": "MSD_WORKBENCH_TEST_ID_2",
                                 "data source feature": "luminescence"
                             }
                         ]
@@ -279,7 +279,7 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_1",
+                                "data source identifier": "MSD_WORKBENCH_TEST_ID_2",
                                 "data source feature": "luminescence"
                             }
                         ]
@@ -295,7 +295,7 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_1",
+                                "data source identifier": "MSD_WORKBENCH_TEST_ID_2",
                                 "data source feature": "luminescence"
                             }
                         ]
@@ -311,7 +311,7 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_1",
+                                "data source identifier": "MSD_WORKBENCH_TEST_ID_2",
                                 "data source feature": "luminescence"
                             }
                         ]
@@ -327,7 +327,7 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_2",
+                                "data source identifier": "MSD_WORKBENCH_TEST_ID_1",
                                 "data source feature": "luminescence"
                             }
                         ]
@@ -343,7 +343,7 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_2",
+                                "data source identifier": "MSD_WORKBENCH_TEST_ID_1",
                                 "data source feature": "luminescence"
                             },
                             {
@@ -379,7 +379,7 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_2",
+                                "data source identifier": "MSD_WORKBENCH_TEST_ID_1",
                                 "data source feature": "luminescence"
                             },
                             {
@@ -399,7 +399,7 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_2",
+                                "data source identifier": "MSD_WORKBENCH_TEST_ID_1",
                                 "data source feature": "luminescence"
                             },
                             {
@@ -419,7 +419,7 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_2",
+                                "data source identifier": "MSD_WORKBENCH_TEST_ID_1",
                                 "data source feature": "luminescence"
                             }
                         ]
@@ -435,7 +435,7 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_2",
+                                "data source identifier": "MSD_WORKBENCH_TEST_ID_1",
                                 "data source feature": "luminescence"
                             }
                         ]
@@ -487,11 +487,11 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_16",
+                                "data source identifier": "MSD_WORKBENCH_TEST_ID_11",
                                 "data source feature": "Calc. Concentration"
                             },
                             {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_11",
+                                "data source identifier": "MSD_WORKBENCH_TEST_ID_16",
                                 "data source feature": "Calc. Concentration"
                             }
                         ]

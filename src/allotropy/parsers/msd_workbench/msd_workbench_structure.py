@@ -132,12 +132,7 @@ def create_measurement_groups(plate_data: PlateData) -> list[MeasurementGroup]:
     grouped_wells = defaultdict(list)
 
     for well in plate_data.well_data:
-        assay_id = (
-            well.measurement_custom_info.get("assay identifier")
-            if well.measurement_custom_info
-            else None
-        )
-        grouped_wells[assay_id].append(well)
+        grouped_wells[well.sample_identifier].append(well)
 
     well_data: list[list[WellData]] = list(grouped_wells.values())
 
