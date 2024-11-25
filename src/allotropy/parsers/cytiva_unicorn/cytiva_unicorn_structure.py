@@ -1,3 +1,7 @@
+from __future__ import annotations
+
+from dataclasses import dataclass
+
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
 )
@@ -76,55 +80,80 @@ def create_data_cube(
     )
 
 
-def get_chromatography_doc(handler: UnicornFileHandler) -> ChromatographyDoc:
-    column_type_data = handler.get_column_type_data()
-    return ChromatographyDoc(
-        chromatography_serial_num=column_type_data.find_text(
-            ["ColumnType", "Hardware", "ArticleNumber"]
-        ),
-        column_inner_diameter=try_float(
-            column_type_data.find_text(["ColumnType", "Hardware", "Diameter"]),
-            "column inner diameter",
-        ),
-        chromatography_chemistry_type=column_type_data.find_text(
-            ["ColumnType", "Media", "TechniqueName"]
-        ),
-        chromatography_particle_size=try_float(
-            column_type_data.find_text(
-                ["ColumnType", "Media", "AverageParticleDiameter"]
+@dataclass
+class StaticDocs:
+    chromatography_doc: ChromatographyDoc
+    injection_doc: InjectionDoc
+    sample_doc: SampleDoc
+
+    @classmethod
+    def create(
+        cls, handler: UnicornFileHandler, curve: StrictElement, results: StrictElement
+    ) -> StaticDocs:
+        return StaticDocs(
+            chromatography_doc=cls.get_chromatography_doc(handler),
+            injection_doc=cls.get_injection_doc(handler, curve, results),
+            sample_doc=cls.get_sample_doc(handler, results),
+        )
+
+    @classmethod
+    def get_chromatography_doc(cls, handler: UnicornFileHandler) -> ChromatographyDoc:
+        column_type_data = handler.get_column_type_data()
+        return ChromatographyDoc(
+            chromatography_serial_num=column_type_data.find_text(
+                ["ColumnType", "Hardware", "ArticleNumber"]
             ),
-            "chromatography particle size",
-        ),
-    )
+            column_inner_diameter=try_float(
+                column_type_data.find_text(["ColumnType", "Hardware", "Diameter"]),
+                "column inner diameter",
+            ),
+            chromatography_chemistry_type=column_type_data.find_text(
+                ["ColumnType", "Media", "TechniqueName"]
+            ),
+            chromatography_particle_size=try_float(
+                column_type_data.find_text(
+                    ["ColumnType", "Media", "AverageParticleDiameter"]
+                ),
+                "chromatography particle size",
+            ),
+        )
 
+    @classmethod
+    def get_injection_doc(
+        cls,
+        handler: UnicornFileHandler,
+        curve_element: StrictElement,
+        results: StrictElement,
+    ) -> InjectionDoc:
+        result = handler.filter_result_criteria(results, keyword="Sample volume")
+        return InjectionDoc(
+            injection_identifier=random_uuid_str(),
+            injection_time=curve_element.find_text(["MethodStartTime"]),
+            autosampler_injection_volume_setting=try_float(
+                result.find_text(["Keyword2"]),
+                "autosampler injection volume setting",
+            ),
+        )
 
-def get_injection_doc(
-    handler: UnicornFileHandler, curve_element: StrictElement, results: StrictElement
-) -> InjectionDoc:
-    result = handler.filter_result_criteria(results, keyword="Sample volume")
-    return InjectionDoc(
-        injection_identifier=random_uuid_str(),
-        injection_time=curve_element.find_text(["MethodStartTime"]),
-        autosampler_injection_volume_setting=try_float(
-            result.find_text(["Keyword2"]),
-            "autosampler injection volume setting",
-        ),
-    )
-
-
-def get_sample_doc(handler: UnicornFileHandler, results: StrictElement) -> SampleDoc:
-    result = handler.filter_result_criteria(results, keyword="Sample_ID")
-    return SampleDoc(
-        sample_identifier=result.find_text(["Keyword2"]),
-        batch_identifier=results.find_text(["BatchId"]),
-    )
+    @classmethod
+    def get_sample_doc(
+        cls, handler: UnicornFileHandler, results: StrictElement
+    ) -> SampleDoc:
+        result = handler.filter_result_criteria(results, keyword="Sample_ID")
+        return SampleDoc(
+            sample_identifier=result.find_text(["Keyword2"]),
+            batch_identifier=results.find_text(["BatchId"]),
+        )
 
 
 def create_measurement_groups(
     handler: UnicornFileHandler, results: StrictElement
 ) -> list[MeasurementGroup]:
     chrom_1 = handler.get_chrom_1()
-    elements = chrom_1.find("Curves").findall("Curve")
+    curves = chrom_1.find("Curves")
+    elements = curves.findall("Curve")
+
+    static_docs = StaticDocs.create(handler, curves.find("Curve"), results)
 
     uv_component = DataCubeComponent(
         type_=FieldComponentDatatype.float,
@@ -243,18 +272,14 @@ def create_measurement_groups(
     )
     temperature_profile_data_cube = handler.filter_curve(elements, r"^Cond temp$")
 
-    chromatography_doc = get_chromatography_doc(handler)
-    injection_doc = get_injection_doc(handler, uv1_curve, results)
-    sample_doc = get_sample_doc(handler, results)
-
     return [
         MeasurementGroup(
             measurements=[
                 Measurement(
                     measurement_identifier=random_uuid_str(),
-                    chromatography_column_doc=chromatography_doc,
-                    injection_doc=injection_doc,
-                    sample_doc=sample_doc,
+                    chromatography_column_doc=static_docs.chromatography_doc,
+                    injection_doc=static_docs.injection_doc,
+                    sample_doc=static_docs.sample_doc,
                     chromatogram_data_cube=create_data_cube(
                         handler, uv1_curve, uv_component
                     ),
@@ -266,9 +291,9 @@ def create_measurement_groups(
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
-                    chromatography_column_doc=chromatography_doc,
-                    injection_doc=injection_doc,
-                    sample_doc=sample_doc,
+                    chromatography_column_doc=static_docs.chromatography_doc,
+                    injection_doc=static_docs.injection_doc,
+                    sample_doc=static_docs.sample_doc,
                     chromatogram_data_cube=create_data_cube(
                         handler, uv2_curve, uv_component
                     ),
@@ -280,9 +305,9 @@ def create_measurement_groups(
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
-                    chromatography_column_doc=chromatography_doc,
-                    injection_doc=injection_doc,
-                    sample_doc=sample_doc,
+                    chromatography_column_doc=static_docs.chromatography_doc,
+                    injection_doc=static_docs.injection_doc,
+                    sample_doc=static_docs.sample_doc,
                     chromatogram_data_cube=create_data_cube(
                         handler, uv3_curve, uv_component
                     ),
@@ -294,9 +319,9 @@ def create_measurement_groups(
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
-                    chromatography_column_doc=chromatography_doc,
-                    injection_doc=injection_doc,
-                    sample_doc=sample_doc,
+                    chromatography_column_doc=static_docs.chromatography_doc,
+                    injection_doc=static_docs.injection_doc,
+                    sample_doc=static_docs.sample_doc,
                     chromatogram_data_cube=create_data_cube(
                         handler, cond_curve, cond_component
                     ),
@@ -313,9 +338,9 @@ def create_measurement_groups(
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
-                    chromatography_column_doc=chromatography_doc,
-                    injection_doc=injection_doc,
-                    sample_doc=sample_doc,
+                    chromatography_column_doc=static_docs.chromatography_doc,
+                    injection_doc=static_docs.injection_doc,
+                    sample_doc=static_docs.sample_doc,
                     chromatogram_data_cube=create_data_cube(
                         handler, ph_curve, ph_component
                     ),
@@ -327,9 +352,9 @@ def create_measurement_groups(
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
-                    chromatography_column_doc=chromatography_doc,
-                    injection_doc=injection_doc,
-                    sample_doc=sample_doc,
+                    chromatography_column_doc=static_docs.chromatography_doc,
+                    injection_doc=static_docs.injection_doc,
+                    sample_doc=static_docs.sample_doc,
                     device_control_docs=[
                         DeviceControlDoc(
                             device_type=DEVICE_TYPE,
@@ -341,9 +366,9 @@ def create_measurement_groups(
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
-                    chromatography_column_doc=chromatography_doc,
-                    injection_doc=injection_doc,
-                    sample_doc=sample_doc,
+                    chromatography_column_doc=static_docs.chromatography_doc,
+                    injection_doc=static_docs.injection_doc,
+                    sample_doc=static_docs.sample_doc,
                     processed_data_doc=ProcessedDataDoc(
                         derived_column_pressure_data_cube=create_data_cube(
                             handler, derived_pressure_curve, derived_pressure_component
@@ -377,9 +402,9 @@ def create_measurement_groups(
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
-                    chromatography_column_doc=chromatography_doc,
-                    injection_doc=injection_doc,
-                    sample_doc=sample_doc,
+                    chromatography_column_doc=static_docs.chromatography_doc,
+                    injection_doc=static_docs.injection_doc,
+                    sample_doc=static_docs.sample_doc,
                     device_control_docs=[
                         DeviceControlDoc(
                             device_type=DEVICE_TYPE,
@@ -415,9 +440,9 @@ def create_measurement_groups(
                 ),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
-                    chromatography_column_doc=chromatography_doc,
-                    injection_doc=injection_doc,
-                    sample_doc=sample_doc,
+                    chromatography_column_doc=static_docs.chromatography_doc,
+                    injection_doc=static_docs.injection_doc,
+                    sample_doc=static_docs.sample_doc,
                     device_control_docs=[
                         DeviceControlDoc(
                             device_type=DEVICE_TYPE,
