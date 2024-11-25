@@ -13,7 +13,12 @@ from allotropy.parsers.cytiva_unicorn.cytiva_unicorn_reader import (
     StrictElement,
     UnicornFileHandler,
 )
-from allotropy.parsers.cytiva_unicorn.structure.measurement import (
+from allotropy.parsers.cytiva_unicorn.structure.measurements.absorbance import (
+    AbsorbanceMeasurement1,
+    AbsorbanceMeasurement2,
+    AbsorbanceMeasurement3,
+)
+from allotropy.parsers.cytiva_unicorn.structure.measurements.generic import (
     UnicornMeasurement,
 )
 from allotropy.parsers.cytiva_unicorn.structure.static_docs import (
@@ -30,12 +35,6 @@ def create_measurement_groups(
     elements = curves.findall("Curve")
 
     static_docs = StaticDocs.create(handler, curves.find("Curve"), results)
-
-    uv_component = DataCubeComponent(
-        type_=FieldComponentDatatype.float,
-        concept="absorbance",
-        unit="mAU",
-    )
 
     cond_component = DataCubeComponent(
         type_=FieldComponentDatatype.float,
@@ -127,9 +126,6 @@ def create_measurement_groups(
         unit="degC",
     )
 
-    uv1_curve = handler.filter_curve(elements, r"^UV 1_\d+$")
-    uv2_curve = handler.filter_curve(elements, r"^UV 2_\d+$")
-    uv3_curve = handler.filter_curve(elements, r"^UV 3_\d+$")
     cond_curve = handler.filter_curve(elements, r"^Cond$")
     perc_cond_curve = handler.filter_curve(elements, r"^% Cond$")
     ph_curve = handler.filter_curve(elements, r"^pH$")
@@ -151,48 +147,9 @@ def create_measurement_groups(
     return [
         MeasurementGroup(
             measurements=[
-                Measurement(
-                    measurement_identifier=random_uuid_str(),
-                    chromatography_column_doc=static_docs.chromatography_doc,
-                    injection_doc=static_docs.injection_doc,
-                    sample_doc=static_docs.sample_doc,
-                    chromatogram_data_cube=UnicornMeasurement.create_data_cube(
-                        handler, uv1_curve, uv_component
-                    ),
-                    device_control_docs=[
-                        DeviceControlDoc(
-                            device_type=DEVICE_TYPE,
-                        )
-                    ],
-                ),
-                Measurement(
-                    measurement_identifier=random_uuid_str(),
-                    chromatography_column_doc=static_docs.chromatography_doc,
-                    injection_doc=static_docs.injection_doc,
-                    sample_doc=static_docs.sample_doc,
-                    chromatogram_data_cube=UnicornMeasurement.create_data_cube(
-                        handler, uv2_curve, uv_component
-                    ),
-                    device_control_docs=[
-                        DeviceControlDoc(
-                            device_type=DEVICE_TYPE,
-                        )
-                    ],
-                ),
-                Measurement(
-                    measurement_identifier=random_uuid_str(),
-                    chromatography_column_doc=static_docs.chromatography_doc,
-                    injection_doc=static_docs.injection_doc,
-                    sample_doc=static_docs.sample_doc,
-                    chromatogram_data_cube=UnicornMeasurement.create_data_cube(
-                        handler, uv3_curve, uv_component
-                    ),
-                    device_control_docs=[
-                        DeviceControlDoc(
-                            device_type=DEVICE_TYPE,
-                        )
-                    ],
-                ),
+                AbsorbanceMeasurement1.create(handler, elements, static_docs),
+                AbsorbanceMeasurement2.create(handler, elements, static_docs),
+                AbsorbanceMeasurement3.create(handler, elements, static_docs),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
                     chromatography_column_doc=static_docs.chromatography_doc,
