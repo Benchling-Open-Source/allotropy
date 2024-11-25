@@ -66,7 +66,9 @@ from allotropy.parsers.roche_cedex_hires.roche_cedex_hires_parser import (
 from allotropy.parsers.thermo_fisher_genesys30.thermo_fisher_genesys30_parser import (
     ThermoFisherGenesys30Parser,
 )
-from allotropy.parsers.thermo_fisher_genesys_on_board.thermo_fisher_genesys_on_board_parser import ThermoFisherGenesysOnBoardParser
+from allotropy.parsers.thermo_fisher_genesys_on_board.thermo_fisher_genesys_on_board_parser import (
+    ThermoFisherGenesysOnBoardParser,
+)
 from allotropy.parsers.thermo_fisher_nanodrop_8000.nanodrop_8000_parser import (
     Nanodrop8000Parser,
 )

@@ -174,7 +174,7 @@ def _get_calculated_data_item(
     )
 
 
-def _create_metadata(file_path: str, software_name) -> Metadata:
+def _create_metadata(file_path: str, software_name: str) -> Metadata:
     return Metadata(
         file_name=Path(file_path).name,
         unc_path=file_path,

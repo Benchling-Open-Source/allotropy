@@ -17,7 +17,6 @@ from allotropy.parsers.thermo_fisher_visionlite.thermo_fisher_visionlite_reader 
 from allotropy.parsers.thermo_fisher_visionlite.thermo_fisher_visionlite_structure import (
     VisionLiteData,
 )
-from allotropy.parsers.utils.pandas import map_rows
 from allotropy.parsers.vendor_parser import VendorParser
 
 
