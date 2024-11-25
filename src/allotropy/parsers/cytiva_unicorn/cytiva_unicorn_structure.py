@@ -1,5 +1,3 @@
-import re
-
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
 )
@@ -15,7 +13,6 @@ from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._202
     ProcessedDataDoc,
     SampleDoc,
 )
-from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.cytiva_unicorn.constants import DEVICE_TYPE
 from allotropy.parsers.cytiva_unicorn.cytiva_unicorn_reader import (
     StrictElement,
@@ -42,14 +39,6 @@ def create_metadata(handler: UnicornFileHandler, results: StrictElement) -> Meta
         firmware_version=instrument_config_data.find_text(["FirmwareVersion"]),
         analyst=handler.get_audit_trail_entry_user(),
     )
-
-
-def filter_curve(curve_elements: list[StrictElement], pattern: str) -> StrictElement:
-    for element in curve_elements:
-        if re.search(pattern, element.find_text(["Name"])):
-            return element
-    msg = f"Unable to find curve element with pattern {pattern}"
-    raise AllotropeConversionError(msg)
 
 
 def create_data_cube(
@@ -109,20 +98,10 @@ def get_chromatography_doc(handler: UnicornFileHandler) -> ChromatographyDoc:
     )
 
 
-def filter_result_criteria(results: StrictElement, keyword: str) -> StrictElement:
-    for result_criteria in results.find("ResultSearchCriterias").findall(
-        "ResultSearchCriteria"
-    ):
-        if result_criteria.find_text(["Keyword1"]) == keyword:
-            return result_criteria
-    msg = f"Unable to find result criteria with keyword 1 '{keyword}'"
-    raise AllotropeConversionError(msg)
-
-
 def get_injection_doc(
-    curve_element: StrictElement, results: StrictElement
+    handler: UnicornFileHandler, curve_element: StrictElement, results: StrictElement
 ) -> InjectionDoc:
-    result = filter_result_criteria(results, keyword="Sample volume")
+    result = handler.filter_result_criteria(results, keyword="Sample volume")
     return InjectionDoc(
         injection_identifier=random_uuid_str(),
         injection_time=curve_element.find_text(["MethodStartTime"]),
@@ -133,8 +112,8 @@ def get_injection_doc(
     )
 
 
-def get_sample_doc(results: StrictElement) -> SampleDoc:
-    result = filter_result_criteria(results, keyword="Sample_ID")
+def get_sample_doc(handler: UnicornFileHandler, results: StrictElement) -> SampleDoc:
+    result = handler.filter_result_criteria(results, keyword="Sample_ID")
     return SampleDoc(
         sample_identifier=result.find_text(["Keyword2"]),
         batch_identifier=results.find_text(["BatchId"]),
@@ -243,28 +222,30 @@ def create_measurement_groups(
         unit="degC",
     )
 
-    uv1_curve = filter_curve(elements, r"^UV 1_\d+$")
-    uv2_curve = filter_curve(elements, r"^UV 2_\d+$")
-    uv3_curve = filter_curve(elements, r"^UV 3_\d+$")
-    cond_curve = filter_curve(elements, r"^Cond$")
-    perc_cond_curve = filter_curve(elements, r"^% Cond$")
-    ph_curve = filter_curve(elements, r"^pH$")
-    conc_b_curve = filter_curve(elements, r"^Conc B$")
-    derived_pressure_curve = filter_curve(elements, r"^DeltaC pressure$")
-    pre_column_pressure_data_cube = filter_curve(elements, r"^PreC pressure$")
-    sample_pressure_data_cube = filter_curve(elements, r"^Sample pressure$")
-    system_pressure_data_cube = filter_curve(elements, r"^System pressure$")
-    post_column_pressure_data_cube = filter_curve(elements, r"^PostC pressure$")
-    sample_flow_cv_data_cube = filter_curve(elements, r"^Sample flow \(CV/h\)$")
-    system_flow_cv_data_cube = filter_curve(elements, r"^System flow \(CV/h\)$")
-    sample_flow_data_cube = filter_curve(elements, r"^Sample flow$")
-    system_flow_data_cube = filter_curve(elements, r"^System flow$")
-    sample_linear_flow_data_cube = filter_curve(elements, r"^Sample linear flow$")
-    temperature_profile_data_cube = filter_curve(elements, r"^Cond temp$")
+    uv1_curve = handler.filter_curve(elements, r"^UV 1_\d+$")
+    uv2_curve = handler.filter_curve(elements, r"^UV 2_\d+$")
+    uv3_curve = handler.filter_curve(elements, r"^UV 3_\d+$")
+    cond_curve = handler.filter_curve(elements, r"^Cond$")
+    perc_cond_curve = handler.filter_curve(elements, r"^% Cond$")
+    ph_curve = handler.filter_curve(elements, r"^pH$")
+    conc_b_curve = handler.filter_curve(elements, r"^Conc B$")
+    derived_pressure_curve = handler.filter_curve(elements, r"^DeltaC pressure$")
+    pre_column_pressure_data_cube = handler.filter_curve(elements, r"^PreC pressure$")
+    sample_pressure_data_cube = handler.filter_curve(elements, r"^Sample pressure$")
+    system_pressure_data_cube = handler.filter_curve(elements, r"^System pressure$")
+    post_column_pressure_data_cube = handler.filter_curve(elements, r"^PostC pressure$")
+    sample_flow_cv_data_cube = handler.filter_curve(elements, r"^Sample flow \(CV/h\)$")
+    system_flow_cv_data_cube = handler.filter_curve(elements, r"^System flow \(CV/h\)$")
+    sample_flow_data_cube = handler.filter_curve(elements, r"^Sample flow$")
+    system_flow_data_cube = handler.filter_curve(elements, r"^System flow$")
+    sample_linear_flow_data_cube = handler.filter_curve(
+        elements, r"^Sample linear flow$"
+    )
+    temperature_profile_data_cube = handler.filter_curve(elements, r"^Cond temp$")
 
     chromatography_doc = get_chromatography_doc(handler)
-    injection_doc = get_injection_doc(uv1_curve, results)
-    sample_doc = get_sample_doc(results)
+    injection_doc = get_injection_doc(handler, uv1_curve, results)
+    sample_doc = get_sample_doc(handler, results)
 
     return [
         MeasurementGroup(

@@ -8,6 +8,7 @@ from zipfile import Path, ZipFile
 # xml fromstring is vulnerable so defusedxml version is used instead
 from defusedxml.ElementTree import fromstring  # type: ignore[import-untyped]
 
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.utils.values import assert_not_none
 
 
@@ -133,3 +134,23 @@ class UnicornFileHandler(ZipHandler):
         raw_content = b_stream.read()
         element = fromstring(raw_content[24:-1])
         return StrictElement(element)
+
+    def filter_curve(
+        self, curve_elements: list[StrictElement], pattern: str
+    ) -> StrictElement:
+        for element in curve_elements:
+            if search(pattern, element.find_text(["Name"])):
+                return element
+        msg = f"Unable to find curve element with pattern {pattern}"
+        raise AllotropeConversionError(msg)
+
+    def filter_result_criteria(
+        self, results: StrictElement, keyword: str
+    ) -> StrictElement:
+        for result_criteria in results.find("ResultSearchCriterias").findall(
+            "ResultSearchCriteria"
+        ):
+            if result_criteria.find_text(["Keyword1"]) == keyword:
+                return result_criteria
+        msg = f"Unable to find result criteria with keyword 1 '{keyword}'"
+        raise AllotropeConversionError(msg)
