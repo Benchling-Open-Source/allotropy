@@ -1,6 +1,4 @@
-from io import BytesIO
 import re
-import struct
 
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
@@ -22,6 +20,10 @@ from allotropy.parsers.cytiva_unicorn.constants import DEVICE_TYPE
 from allotropy.parsers.cytiva_unicorn.cytiva_unicorn_reader import (
     StrictElement,
     UnicornFileHandler,
+)
+from allotropy.parsers.cytiva_unicorn.utils import (
+    min_to_sec,
+    parse_data_cube_bynary,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import try_float
@@ -48,18 +50,6 @@ def filter_curve(curve_elements: list[StrictElement], pattern: str) -> StrictEle
             return element
     msg = f"Unable to find curve element with pattern {pattern}"
     raise AllotropeConversionError(msg)
-
-
-def parse_data_cube_bynary(stream: BytesIO) -> tuple[float, ...]:
-    data = stream.read()
-    # assuming little endian float (4 bytes)
-    return tuple(
-        struct.unpack("<f", data[i : i + 4])[0] for i in range(47, len(data) - 48, 4)
-    )
-
-
-def min_to_sec(data: tuple[float, ...]) -> tuple[float, ...]:
-    return tuple(element * 60 for element in data)
 
 
 def create_data_cube(
