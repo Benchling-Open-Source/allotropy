@@ -110,20 +110,31 @@ def parse_header_row(df: pd.DataFrame) -> pd.DataFrame:
 def split_header_and_data(
     df: pd.DataFrame, should_split_on_row: Callable[[pd.Series[Any]], bool]
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
+    header, data = split_dataframe(df, should_split_on_row)
+    if data is None:
+        msg = f"Unable to split header and data from dataframe: {df}"
+        raise AllotropeConversionError(msg)
+
+    return header, data
+
+
+def split_dataframe(
+    df: pd.DataFrame,
+    should_split_on_row: Callable[[pd.Series[Any]], bool],
+) -> tuple[pd.DataFrame, pd.DataFrame | None]:
     for idx, row in df.iterrows():
         if should_split_on_row(row):
-            header_end = int(str(idx))
-            return df[:header_end], df[header_end + 1 :]
+            section_end = int(str(idx))
+            return df[:section_end], df[section_end + 1 :]
 
-    msg = f"Unable to split header and data from dataframe: {df}"
-    raise AllotropeConversionError(msg)
+    return df, None
 
 
 def _normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
     return df.rename(
-        columns=lambda col: unicodedata.normalize("NFKC", col)
-        if isinstance(col, str)
-        else col
+        columns=lambda col: (
+            unicodedata.normalize("NFKC", col) if isinstance(col, str) else col
+        )
     )
 
 
@@ -134,7 +145,8 @@ def read_csv(
 ) -> pd.DataFrame:
     """Wrap pd.read_csv() and raise AllotropeParsingError for failures.
 
-    pd.read_csv() can return a DataFrame or TextFileReader. The latter is intentionally not supported."""
+    pd.read_csv() can return a DataFrame or TextFileReader. The latter is intentionally not supported.
+    """
     try:
         df_or_reader = pd.read_csv(filepath_or_buffer, **kwargs)
     except Exception as e:
@@ -156,7 +168,8 @@ def read_excel(
 ) -> pd.DataFrame:
     """Wrap pd.read_excel() and raise AllotropeParsingError for failures.
 
-    pd.read_excel() can return a DataFrame or a dictionary of DataFrames. The latter is intentionally not supported."""
+    pd.read_excel() can return a DataFrame or a dictionary of DataFrames. The latter is intentionally not supported.
+    """
     try:
         df_or_dict = pd.read_excel(io, **kwargs)
     except Exception as e:

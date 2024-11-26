@@ -1,5 +1,8 @@
+from collections.abc import Callable, Sequence
 from dataclasses import dataclass
+from typing import Any, TypeVar
 
+from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.dpcr import (
     CalculatedDataDocumentItem,
     ContainerType,
@@ -12,11 +15,15 @@ from allotropy.allotrope.models.adm.pcr.benchling._2023._09.dpcr import (
     DeviceSystemDocument,
     DPCRAggregateDocument,
     DPCRDocumentItem,
+    ErrorAggregateDocument,
+    ErrorDocumentItem,
     MeasurementAggregateDocument,
     MeasurementDocumentItem,
     Model,
+    PassiveReferenceDyeDataCube,
     ProcessedDataAggregateDocument,
     ProcessedDataDocumentItem,
+    ReporterDyeDataCube,
     SampleDocument,
     TCalculatedDataAggregateDocument,
 )
@@ -26,10 +33,15 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
+    FieldComponentDatatype,
+    TDatacubeComponent,
+    TDatacubeData,
+    TDatacubeStructure,
     TQuantityValue,
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
+from allotropy.parsers.utils.iterables import get_first_not_none
 from allotropy.parsers.utils.values import quantity_or_none
 
 
@@ -37,6 +49,28 @@ from allotropy.parsers.utils.values import quantity_or_none
 class DataSource:
     identifier: str
     feature: str
+
+
+@dataclass
+class DataCubeComponent:
+    type_: FieldComponentDatatype
+    concept: str
+    unit: str
+
+
+@dataclass
+class DataCube:
+    label: str
+    structure_dimensions: list[DataCubeComponent]
+    structure_measures: list[DataCubeComponent]
+    dimensions: list[list[float]]
+    measures: list[Sequence[float | None]]
+
+
+@dataclass(frozen=True)
+class Error:
+    error: str
+    error_feature: str
 
 
 @dataclass(frozen=True)
@@ -62,6 +96,8 @@ class Measurement:
     positive_partition_count: float
     total_partition_count: float
     negative_partition_count: float | None = None
+    confidence_interval__95__: float | None = None
+    data_cubes: list[DataCube] | None = None
 
     # Optional metadata
     sample_role_type: str | None = None
@@ -69,10 +105,14 @@ class Measurement:
 
     # Optional settings
     reporter_dye_setting: str | None = None
+    passive_reference_dye_setting: str | None = None
     flourescence_intensity_threshold_setting: float | None = None
 
-    # Processed data
-    calculated_data: list[CalculatedDataItem] | None = None
+    # error documents
+    errors: list[Error] | None = None
+
+    # custom
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -80,6 +120,8 @@ class MeasurementGroup:
     measurements: list[Measurement]
     plate_well_count: float
     experimental_data_identifier: str | None = None
+    # error documents
+    errors: list[Error] | None = None
 
 
 @dataclass(frozen=True)
@@ -106,6 +148,9 @@ class Data:
     metadata: Metadata
     measurement_groups: list[MeasurementGroup]
     calculated_data: list[CalculatedDataItem] | None = None
+
+
+CubeClass = TypeVar("CubeClass")
 
 
 class Mapper(SchemaMapper[Data, Model]):
@@ -145,6 +190,9 @@ class Mapper(SchemaMapper[Data, Model]):
                 plate_well_count=TQuantityValueNumber(
                     value=measurement_group.plate_well_count
                 ),
+                error_aggregate_document=self._get_error_aggregate_document(
+                    measurement_group.errors
+                ),
                 container_type=metadata.container_type,
                 measurement_document=[
                     self._get_measurement_document(measurement, metadata)
@@ -156,12 +204,23 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_measurement_document(
         self, measurement: Measurement, metadata: Metadata
     ) -> MeasurementDocumentItem:
-        return MeasurementDocumentItem(
+        measurement_doc = MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
             measurement_time=self.get_date_time(measurement.measurement_time),
             target_DNA_description=measurement.target_identifier,
             total_partition_count=TQuantityValueNumber(
                 value=measurement.total_partition_count
+            ),
+            reporter_dye_data_cube=self._get_data_cube(
+                ReporterDyeDataCube, "reporter dye", measurement.data_cubes
+            ),
+            passive_reference_dye_data_cube=self._get_data_cube(
+                PassiveReferenceDyeDataCube,
+                "passive reference dye",
+                measurement.data_cubes,
+            ),
+            error_aggregate_document=self._get_error_aggregate_document(
+                measurement.errors
             ),
             sample_document=SampleDocument(
                 sample_identifier=measurement.sample_identifier,
@@ -179,6 +238,7 @@ class Mapper(SchemaMapper[Data, Model]):
                         device_type=metadata.device_type,
                         device_identifier=metadata.device_identifier,
                         reporter_dye_setting=measurement.reporter_dye_setting,
+                        passive_reference_dye_setting=measurement.passive_reference_dye_setting,
                     )
                 ]
             ),
@@ -194,6 +254,9 @@ class Mapper(SchemaMapper[Data, Model]):
                         negative_partition_count=quantity_or_none(
                             TQuantityValueNumber, measurement.negative_partition_count
                         ),
+                        confidence_interval__95__=quantity_or_none(
+                            TQuantityValueNumber, measurement.confidence_interval__95__
+                        ),
                         data_processing_document=DataProcessingDocument(
                             flourescence_intensity_threshold_setting=TQuantityValueUnitless(
                                 value=measurement.flourescence_intensity_threshold_setting
@@ -205,6 +268,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 ]
             ),
         )
+        return add_custom_information_document(measurement_doc, measurement.custom_info)
 
     def _get_calculated_data_aggregate_document(
         self, calculated_data_items: list[CalculatedDataItem] | None
@@ -232,5 +296,56 @@ class Mapper(SchemaMapper[Data, Model]):
                     ),
                 )
                 for calculated_data_item in calculated_data_items
+            ]
+        )
+
+    def _get_data_cube(
+        self,
+        cube_class: Callable[..., CubeClass],
+        label: str,
+        data_cubes: list[DataCube] | None,
+    ) -> CubeClass | None:
+        if not (
+            data_cube := get_first_not_none(
+                lambda cube: cube if cube.label == label else None,
+                data_cubes or [],
+            )
+        ):
+            return None
+
+        return cube_class(
+            label=data_cube.label,
+            cube_structure=TDatacubeStructure(
+                dimensions=[
+                    TDatacubeComponent(
+                        field_componentDatatype=component.type_,
+                        concept=component.concept,
+                        unit=component.unit,
+                    )
+                    for component in data_cube.structure_dimensions
+                ],
+                measures=[
+                    TDatacubeComponent(
+                        field_componentDatatype=component.type_,
+                        concept=component.concept,
+                        unit=component.unit,
+                    )
+                    for component in data_cube.structure_measures
+                ],
+            ),
+            data=TDatacubeData(
+                dimensions=data_cube.dimensions, measures=data_cube.measures  # type: ignore[arg-type]
+            ),
+        )
+
+    def _get_error_aggregate_document(
+        self, errors: list[Error] | None
+    ) -> ErrorAggregateDocument | None:
+        if not errors:
+            return None
+        return ErrorAggregateDocument(
+            error_document=[
+                ErrorDocumentItem(error=error.error, error_feature=error.error_feature)
+                for error in errors
             ]
         )
