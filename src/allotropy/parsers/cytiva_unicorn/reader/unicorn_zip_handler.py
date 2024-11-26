@@ -1,3 +1,7 @@
+from __future__ import annotations
+
+from io import BytesIO
+
 from allotropy.parsers.cytiva_unicorn.reader.strict_element import (
     StrictElement,
 )
@@ -7,6 +11,12 @@ from allotropy.parsers.cytiva_unicorn.reader.zip_handler import (
 
 
 class UnicornZipHandler(ZipHandler):
+    @classmethod
+    def create_from_path(cls, path: str) -> UnicornZipHandler:
+        with open(path, "rb") as f:
+            data = f.read()
+        return UnicornZipHandler(data=BytesIO(data))
+
     def get_system_data(self) -> StrictElement:
         system_data = self.get_content_from_pattern("SystemData.zip$")
         b_stream = system_data.get_file_from_pattern("^Xml$")

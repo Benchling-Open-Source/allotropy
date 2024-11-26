@@ -8,10 +8,8 @@ from allotropy.parsers.utils.values import assert_not_none
 
 
 class ZipHandler:
-    def __init__(self, path: str, inner_path: str = "", data: BytesIO | None = None):
-        self.path = path
-        self.inner_path = inner_path
-        self.zip_file = ZipFile(path if data is None else data)
+    def __init__(self, data: BytesIO):
+        self.zip_file = ZipFile(data)
         self.name_list = self.zip_file.namelist()
 
     def get_file_path_or_none(self, pattern: str) -> str | None:
@@ -23,14 +21,14 @@ class ZipHandler:
     def get_file_path(self, pattern: str) -> str:
         return assert_not_none(
             self.get_file_path_or_none(pattern),
-            msg=f"Unable to find file inside {self.path} that match pattern {pattern}",
+            msg=f"Unable to find file that match pattern {pattern}",
         )
 
     def __get_raw_content(self, inner_path: str) -> BytesIO:
         return BytesIO(self.zip_file.read(inner_path))
 
     def __get_content(self, inner_path: str) -> ZipHandler:
-        return ZipHandler(self.path, inner_path, self.__get_raw_content(inner_path))
+        return ZipHandler(self.__get_raw_content(inner_path))
 
     def get_file_from_pattern(self, pattern: str) -> BytesIO:
         return self.__get_raw_content(self.get_file_path(pattern))

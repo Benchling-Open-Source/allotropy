@@ -27,7 +27,8 @@ class CytivaUnicornParser(VendorParser[Data, Model]):
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
-        handler = UnicornZipHandler(named_file_contents.original_file_path)
+        path = named_file_contents.original_file_path
+        handler = UnicornZipHandler.create_from_path(path)
         results = handler.get_results()
         return Data(
             create_metadata(handler, results),
