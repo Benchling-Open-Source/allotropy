@@ -13,6 +13,9 @@ from allotropy.parsers.cytiva_unicorn.reader.strict_element import (
 from allotropy.parsers.cytiva_unicorn.reader.unicorn_zip_handler import (
     UnicornZipHandler,
 )
+from allotropy.parsers.cytiva_unicorn.structure.data_cube import (
+    create_data_cube,
+)
 from allotropy.parsers.cytiva_unicorn.structure.measurements.generic import (
     UnicornMeasurement,
 )
@@ -38,7 +41,7 @@ class FlowMeasurement(UnicornMeasurement):
             device_control_docs=[
                 DeviceControlDoc(
                     device_type=DEVICE_TYPE,
-                    sample_flow_data_cube=UnicornMeasurement.create_data_cube(
+                    sample_flow_data_cube=create_data_cube(
                         handler,
                         cls.filter_curve(elements, r"^Sample flow \(CV/h\)$"),
                         DataCubeComponent(
@@ -47,7 +50,7 @@ class FlowMeasurement(UnicornMeasurement):
                             unit="CV/h",
                         ),
                     ),
-                    system_flow_data_cube=UnicornMeasurement.create_data_cube(
+                    system_flow_data_cube=create_data_cube(
                         handler,
                         cls.filter_curve(elements, r"^System flow \(CV/h\)$"),
                         DataCubeComponent(
@@ -59,7 +62,7 @@ class FlowMeasurement(UnicornMeasurement):
                 ),
                 DeviceControlDoc(
                     device_type=DEVICE_TYPE,
-                    sample_flow_data_cube=UnicornMeasurement.create_data_cube(
+                    sample_flow_data_cube=create_data_cube(
                         handler,
                         cls.filter_curve(elements, r"^Sample flow$"),
                         DataCubeComponent(
@@ -68,7 +71,7 @@ class FlowMeasurement(UnicornMeasurement):
                             unit="mL/min",
                         ),
                     ),
-                    system_flow_data_cube=UnicornMeasurement.create_data_cube(
+                    system_flow_data_cube=create_data_cube(
                         handler,
                         cls.filter_curve(elements, r"^System flow$"),
                         DataCubeComponent(
@@ -80,7 +83,7 @@ class FlowMeasurement(UnicornMeasurement):
                 ),
                 DeviceControlDoc(
                     device_type=DEVICE_TYPE,
-                    sample_flow_data_cube=UnicornMeasurement.create_data_cube(
+                    sample_flow_data_cube=create_data_cube(
                         handler,
                         cls.filter_curve(elements, r"^Sample linear flow$"),
                         DataCubeComponent(

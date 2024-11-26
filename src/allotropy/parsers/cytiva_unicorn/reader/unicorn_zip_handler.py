@@ -11,6 +11,12 @@ from allotropy.parsers.cytiva_unicorn.reader.zip_handler import (
 
 
 class UnicornZipHandler(ZipHandler):
+    def get_zip(self, inner_path: str) -> UnicornZipHandler:
+        return UnicornZipHandler(self.get_file(inner_path))
+
+    def get_zip_from_pattern(self, pattern: str) -> UnicornZipHandler:
+        return self.get_zip(self.get_inner_path(pattern))
+
     @classmethod
     def create_from_path(cls, path: str) -> UnicornZipHandler:
         with open(path, "rb") as f:
