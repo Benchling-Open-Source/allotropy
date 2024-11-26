@@ -1,5 +1,3 @@
-from re import search
-
 from allotropy.parsers.cytiva_unicorn.reader.strict_element import (
     StrictElement,
 )
@@ -42,21 +40,3 @@ class UnicornZipHandler(ZipHandler):
         b_stream = column_type_data.get_file_from_pattern("^Xml$")
         raw_content = b_stream.read()
         return StrictElement.create_from_bytes(raw_content[24:-1])
-
-    def __get_audit_trail_entry(self, element: StrictElement) -> StrictElement | None:
-        audit_trail_entries = element.recursive_find(
-            ["AuditTrail", "AuditTrailEntries"]
-        )
-        for element in audit_trail_entries.findall("AuditTrailEntry"):
-            if element.find_text(["GroupName"]) == "EvaluationLoggingStarted":
-                return element
-        return None
-
-    def get_audit_trail_entry_user(self) -> str:
-        if audit_trail_entry := self.__get_audit_trail_entry(self.get_evaluation_log()):
-            if match := search(
-                r"User: (.+)\. ",
-                audit_trail_entry.find_text(["LogEntry"]),
-            ):
-                return match.group(1)
-        return "Default"
