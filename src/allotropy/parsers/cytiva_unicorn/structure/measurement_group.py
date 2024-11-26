@@ -18,6 +18,9 @@ from allotropy.parsers.cytiva_unicorn.structure.measurements.absorbance import (
     AbsorbanceMeasurement2,
     AbsorbanceMeasurement3,
 )
+from allotropy.parsers.cytiva_unicorn.structure.measurements.concentration import (
+    ConcentrationMeasurement,
+)
 from allotropy.parsers.cytiva_unicorn.structure.measurements.conductivity import (
     ConductivityMeasurement,
 )
@@ -41,12 +44,6 @@ def create_measurement_groups(
     elements = curves.findall("Curve")
 
     static_docs = StaticDocs.create(handler, curves.find("Curve"), results)
-
-    conc_b_component = DataCubeComponent(
-        type_=FieldComponentDatatype.float,
-        concept="solvent concentration",
-        unit="%",
-    )
 
     derived_pressure_component = DataCubeComponent(
         type_=FieldComponentDatatype.float,
@@ -114,7 +111,6 @@ def create_measurement_groups(
         unit="degC",
     )
 
-    conc_b_curve = handler.filter_curve(elements, r"^Conc B$")
     derived_pressure_curve = handler.filter_curve(elements, r"^DeltaC pressure$")
     pre_column_pressure_data_cube = handler.filter_curve(elements, r"^PreC pressure$")
     sample_pressure_data_cube = handler.filter_curve(elements, r"^Sample pressure$")
@@ -137,20 +133,7 @@ def create_measurement_groups(
                 AbsorbanceMeasurement3.create(handler, elements, static_docs),
                 ConductivityMeasurement.create(handler, elements, static_docs),
                 PhMeasurement.create(handler, elements, static_docs),
-                Measurement(
-                    measurement_identifier=random_uuid_str(),
-                    chromatography_column_doc=static_docs.chromatography_doc,
-                    injection_doc=static_docs.injection_doc,
-                    sample_doc=static_docs.sample_doc,
-                    device_control_docs=[
-                        DeviceControlDoc(
-                            device_type=DEVICE_TYPE,
-                            solvent_conc_data_cube=UnicornMeasurement.create_data_cube(
-                                handler, conc_b_curve, conc_b_component
-                            ),
-                        ),
-                    ],
-                ),
+                ConcentrationMeasurement.create(handler, elements, static_docs),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
                     chromatography_column_doc=static_docs.chromatography_doc,
