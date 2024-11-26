@@ -111,7 +111,8 @@ def _create_measurement(plate_data: SeriesData) -> Measurement:
             plate_data.get_unread(regex=filter_number_regex)
             if filter_number_regex
             else {}
-        ) | plate_data.get_unread(skip={"Machine ID", r".*\d{3}.*"}),
+        )
+        | plate_data.get_unread(skip={"Machine ID", r".*\d{3}.*"}),
     )
 
     if not (measurement.processed_data and measurement.processed_data.features):
