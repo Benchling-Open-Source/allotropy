@@ -88,7 +88,7 @@ class Header:
             return Header()
 
         return Header(
-            sample_name=header_data[str, "Sample Name"],
+            sample_name=header_data[str, ("Sample Name", "Well Position")],
             analyst=header_data[str, "Analyst"],
             measurement_time=header_data[str, "Measurement Time"],
         )
@@ -197,15 +197,18 @@ def _get_absorbance_measurements(
             AbsorbanceMeasurement(absorbance=data[float, ordinate_col])
         ]
     elif experiment_type == ExperimentType.FIXED:
-        if not wavelength_cols:
-            msg = "Only Fixed absorbance measurements are supported at this time."
-        absorbance_measurements = [
-            AbsorbanceMeasurement(
-                absorbance=data[float, col],
-                wavelength=wavelength,
-            )
-            for wavelength, col in wavelength_cols.items()
-        ]
+        if wavelength_cols:
+            absorbance_measurements = [
+                AbsorbanceMeasurement(
+                    absorbance=data[float, col],
+                    wavelength=wavelength,
+                )
+                for wavelength, col in wavelength_cols.items()
+            ]
+        else:
+            absorbance_measurements = [
+                AbsorbanceMeasurement(absorbance=data[float, "Absorbance"])
+            ]
 
     return [
         Measurement(

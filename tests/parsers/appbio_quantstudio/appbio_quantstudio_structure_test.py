@@ -168,7 +168,7 @@ def get_reader(
             ]
         )
 
-    return AppBioQuantStudioReader(
+    return AppBioQuantStudioReader.create(
         NamedFileContents(
             contents=BytesIO(raw_text.encode("utf-8")), original_file_path="test.txt"
         )

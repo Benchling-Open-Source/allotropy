@@ -15,4 +15,4 @@ HEADER_COLS = [
     "Analyst",
     "Measurement Time",
 ]
-SAMPLE_NAME_COLS = ("Sample Name", "Sample name", "sample name")
+SAMPLE_NAME_COLS = ("Sample Name", "Sample name", "sample name", "Well Position")
