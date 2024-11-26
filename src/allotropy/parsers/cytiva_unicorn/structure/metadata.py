@@ -4,8 +4,10 @@ from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._202
     Metadata,
 )
 from allotropy.parsers.cytiva_unicorn.cytiva_unicorn_reader import (
-    StrictElement,
     UnicornFileHandler,
+)
+from allotropy.parsers.cytiva_unicorn.reader.strict_element import (
+    StrictElement,
 )
 
 

@@ -8,8 +8,10 @@ from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._202
 )
 from allotropy.parsers.cytiva_unicorn.constants import DEVICE_TYPE
 from allotropy.parsers.cytiva_unicorn.cytiva_unicorn_reader import (
-    StrictElement,
     UnicornFileHandler,
+)
+from allotropy.parsers.cytiva_unicorn.reader.strict_element import (
+    StrictElement,
 )
 from allotropy.parsers.cytiva_unicorn.structure.measurements.generic import (
     UnicornMeasurement,

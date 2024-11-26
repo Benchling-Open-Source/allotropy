@@ -2,8 +2,10 @@ from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._202
     MeasurementGroup,
 )
 from allotropy.parsers.cytiva_unicorn.cytiva_unicorn_reader import (
-    StrictElement,
     UnicornFileHandler,
+)
+from allotropy.parsers.cytiva_unicorn.reader.strict_element import (
+    StrictElement,
 )
 from allotropy.parsers.cytiva_unicorn.structure.measurements.absorbance import (
     AbsorbanceMeasurement1,

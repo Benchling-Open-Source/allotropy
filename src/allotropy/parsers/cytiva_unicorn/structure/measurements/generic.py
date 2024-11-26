@@ -7,8 +7,10 @@ from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._202
     Measurement,
 )
 from allotropy.parsers.cytiva_unicorn.cytiva_unicorn_reader import (
-    StrictElement,
     UnicornFileHandler,
+)
+from allotropy.parsers.cytiva_unicorn.reader.strict_element import (
+    StrictElement,
 )
 from allotropy.parsers.cytiva_unicorn.utils import (
     min_to_sec,
