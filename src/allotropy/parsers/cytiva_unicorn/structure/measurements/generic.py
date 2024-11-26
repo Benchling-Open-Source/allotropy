@@ -42,7 +42,7 @@ class UnicornMeasurement(Measurement):
         data_name = curve_element.recursive_find(
             ["CurvePoints", "CurvePoint", "BinaryCurvePointsFileName"]
         ).get_text()
-        data_handler = handler.get_content_from_pattern(data_name)
+        data_handler = handler.get_zip_from_pattern(data_name)
 
         return DataCube(
             label=curve_element.find("Name").get_text(),
