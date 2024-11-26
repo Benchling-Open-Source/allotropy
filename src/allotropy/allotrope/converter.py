@@ -314,7 +314,8 @@ def structure_custom_information_document(val: dict[str, Any], name: str) -> Any
                 structure_custom_information_document(v, key)
                 if isinstance(v, dict)
                 else v
-                if isinstance(v, int | str)
+                value for v in value if isinstance(v, list)
+                else v
                 else value
                 for v in value
             ]
