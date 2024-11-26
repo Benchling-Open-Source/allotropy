@@ -1,11 +1,11 @@
 from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     MeasurementGroup,
 )
-from allotropy.parsers.cytiva_unicorn.cytiva_unicorn_reader import (
-    UnicornFileHandler,
-)
 from allotropy.parsers.cytiva_unicorn.reader.strict_element import (
     StrictElement,
+)
+from allotropy.parsers.cytiva_unicorn.reader.unicorn_zip_handler import (
+    UnicornZipHandler,
 )
 from allotropy.parsers.cytiva_unicorn.structure.measurements.absorbance import (
     AbsorbanceMeasurement1,
@@ -36,7 +36,7 @@ from allotropy.parsers.cytiva_unicorn.structure.static_docs import (
 
 
 def create_measurement_groups(
-    handler: UnicornFileHandler, results: StrictElement
+    handler: UnicornZipHandler, results: StrictElement
 ) -> list[MeasurementGroup]:
     chrom_1 = handler.get_chrom_1()
     curves = chrom_1.find("Curves")

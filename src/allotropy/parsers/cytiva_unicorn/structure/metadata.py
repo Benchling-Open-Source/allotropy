@@ -3,15 +3,15 @@ from __future__ import annotations
 from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     Metadata,
 )
-from allotropy.parsers.cytiva_unicorn.cytiva_unicorn_reader import (
-    UnicornFileHandler,
-)
 from allotropy.parsers.cytiva_unicorn.reader.strict_element import (
     StrictElement,
 )
+from allotropy.parsers.cytiva_unicorn.reader.unicorn_zip_handler import (
+    UnicornZipHandler,
+)
 
 
-def create_metadata(handler: UnicornFileHandler, results: StrictElement) -> Metadata:
+def create_metadata(handler: UnicornZipHandler, results: StrictElement) -> Metadata:
     system_data = handler.get_system_data()
     instrument_config_data = handler.get_instrument_config_data()
 

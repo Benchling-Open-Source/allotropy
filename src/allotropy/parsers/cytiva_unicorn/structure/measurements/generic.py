@@ -6,11 +6,11 @@ from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._202
     DataCubeComponent,
     Measurement,
 )
-from allotropy.parsers.cytiva_unicorn.cytiva_unicorn_reader import (
-    UnicornFileHandler,
-)
 from allotropy.parsers.cytiva_unicorn.reader.strict_element import (
     StrictElement,
+)
+from allotropy.parsers.cytiva_unicorn.reader.unicorn_zip_handler import (
+    UnicornZipHandler,
 )
 from allotropy.parsers.cytiva_unicorn.utils import (
     min_to_sec,
@@ -22,7 +22,7 @@ class UnicornMeasurement(Measurement):
     @classmethod
     def create_data_cube(
         cls,
-        handler: UnicornFileHandler,
+        handler: UnicornZipHandler,
         curve_element: StrictElement,
         data_cuve_component: DataCubeComponent,
     ) -> DataCube:

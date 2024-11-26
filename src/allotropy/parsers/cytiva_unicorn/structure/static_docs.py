@@ -7,11 +7,11 @@ from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._202
     InjectionDoc,
     SampleDoc,
 )
-from allotropy.parsers.cytiva_unicorn.cytiva_unicorn_reader import (
-    UnicornFileHandler,
-)
 from allotropy.parsers.cytiva_unicorn.reader.strict_element import (
     StrictElement,
+)
+from allotropy.parsers.cytiva_unicorn.reader.unicorn_zip_handler import (
+    UnicornZipHandler,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import try_float
@@ -25,7 +25,7 @@ class StaticDocs:
 
     @classmethod
     def create(
-        cls, handler: UnicornFileHandler, curve: StrictElement, results: StrictElement
+        cls, handler: UnicornZipHandler, curve: StrictElement, results: StrictElement
     ) -> StaticDocs:
         return StaticDocs(
             chromatography_doc=cls.get_chromatography_doc(handler),
@@ -34,7 +34,7 @@ class StaticDocs:
         )
 
     @classmethod
-    def get_chromatography_doc(cls, handler: UnicornFileHandler) -> ChromatographyDoc:
+    def get_chromatography_doc(cls, handler: UnicornZipHandler) -> ChromatographyDoc:
         column_type_data = handler.get_column_type_data()
         return ChromatographyDoc(
             chromatography_serial_num=column_type_data.find_text(
@@ -58,7 +58,7 @@ class StaticDocs:
     @classmethod
     def get_injection_doc(
         cls,
-        handler: UnicornFileHandler,
+        handler: UnicornZipHandler,
         curve_element: StrictElement,
         results: StrictElement,
     ) -> InjectionDoc:
@@ -74,7 +74,7 @@ class StaticDocs:
 
     @classmethod
     def get_sample_doc(
-        cls, handler: UnicornFileHandler, results: StrictElement
+        cls, handler: UnicornZipHandler, results: StrictElement
     ) -> SampleDoc:
         result = handler.filter_result_criteria(results, keyword="Sample_ID")
         return SampleDoc(
