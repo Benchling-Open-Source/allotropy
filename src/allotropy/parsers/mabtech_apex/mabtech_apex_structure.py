@@ -96,7 +96,7 @@ def _create_measurement(plate_data: SeriesData) -> Measurement:
             {
                 f"Max Sensor Value{filter_number_regex}",
                 f"Average Sensor Value{filter_number_regex}",
-                f"{filter_number_regex}Calibrated Exposure by Mabtech",
+                f"{filter_number_regex}Calibrated Exposure (b|B)y Mabtech",
                 f"{filter_number_regex}Preset AOI",
                 f"{filter_number_regex}Preset Emphasis",
                 f"{filter_number_regex}Preset Contrast",
