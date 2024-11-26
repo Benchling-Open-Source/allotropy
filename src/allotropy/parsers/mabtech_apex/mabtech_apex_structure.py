@@ -94,14 +94,29 @@ def _create_measurement(plate_data: SeriesData) -> Measurement:
         ),
         device_control_custom_info=plate_data.get_custom_keys(
             {
-                rf".*{filter_number_regex}.*[^Preset Size].*",
+                f".*{filter_number_regex}.*Max Sensor Value",
+                f".*{filter_number_regex}.*Calibrated Exposure By Mabtech",
+                f".*{filter_number_regex}.*Preset AOI",
+                f".*{filter_number_regex}.*Preset Emphasis",
+                f".*{filter_number_regex}.*Average Sensor Value",
+                f".*{filter_number_regex}.*Preset Contrast",
+                f".*{filter_number_regex}.*Preset Name",
+                f".*{filter_number_regex}.*Preset Brightness",
                 "Analyte Secreting Population",
             }
         ),
         # Machine ID is read in metadata. The second value filters any remaning columns with 3
         # digit numbers, which filters columns for other LED filters not part of this measurement.
-        custom_info=plate_data.get_unread(skip={"Machine ID", r".*\d{3}.*"}),
+        custom_info=plate_data.get_unread(skip={"Machine ID"}),
     )
+    """
+    custom_info=(
+        plate_data.get_unread(regex=filter_number_regex)
+        if filter_number_regex
+        else {}
+    )
+    | plate_data.get_unread(skip={"Machine ID", r".*\d{3}.*"}),
+    """
     if not (measurement.processed_data and measurement.processed_data.features):
         logging.warning(f"no image features identified for {well_plate}")
     return measurement

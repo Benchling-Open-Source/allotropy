@@ -263,12 +263,19 @@ class SeriesData:
     def mark_read(self, key_or_keys: str | set[str]) -> None:
         self.read_keys |= self._get_matching_keys(key_or_keys)
 
-    def get_unread(self, skip: set[str] | None = None) -> dict[str, float | str | None]:
+    def get_unread(
+        self, regex: str | None = None, skip: set[str] | None = None
+    ) -> dict[str, float | str | None]:
         skip = self._get_matching_keys(skip) if skip else set()
         # Mark explicitly skipped keys as "read". This not only covers the check below, but removes
         # them from the destructor warning.
         self.read_keys |= skip
-        return self.get_custom_keys(set(self.series.index.to_list()) - self.read_keys)
+        matching_keys = (
+            self._get_matching_keys(regex)
+            if regex
+            else set(self.series.index.to_list())
+        )
+        return self.get_custom_keys(matching_keys - self.read_keys)
 
     def has_key(self, key: str) -> bool:
         return key in self.series

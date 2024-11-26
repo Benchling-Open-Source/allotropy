@@ -261,6 +261,7 @@ def test_get_unread() -> None:
         "unread_float_as_str": 5.0,
         "unread_str": "hello!",
     }
+    assert data.get_unread() == {}
 
 
 def test_get_unread_regex() -> None:
@@ -275,11 +276,14 @@ def test_get_unread_regex() -> None:
                 "marked_read1": "marked",
                 "marked_read2": "marked",
                 "marked_read3": "marked",
+                "only this": "yup",
             }
         )
     )
 
     data.mark_read("marked.*")
+
+    assert data.get_unread(regex="only.*") == {"only this": "yup"}
 
     assert data.get_unread(skip={"skipped.*"}) == {
         "unread_float": 4.5,
