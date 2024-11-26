@@ -27,7 +27,7 @@ class UnicornMeasurement(Measurement):
         cls, curve_elements: list[StrictElement], pattern: str
     ) -> StrictElement:
         for element in curve_elements:
-            if search(pattern, element.find_text(["Name"])):
+            if search(pattern, element.find("Name").get_text()):
                 return element
         msg = f"Unable to find curve element with pattern {pattern}"
         raise AllotropeConversionError(msg)
@@ -39,13 +39,13 @@ class UnicornMeasurement(Measurement):
         curve_element: StrictElement,
         data_cuve_component: DataCubeComponent,
     ) -> DataCube:
-        data_name = curve_element.find_text(
+        data_name = curve_element.recursive_find(
             ["CurvePoints", "CurvePoint", "BinaryCurvePointsFileName"]
-        )
+        ).get_text()
         data_handler = handler.get_content_from_pattern(data_name)
 
         return DataCube(
-            label=curve_element.find_text(["Name"]),
+            label=curve_element.find("Name").get_text(),
             structure_dimensions=[
                 DataCubeComponent(
                     type_=FieldComponentDatatype.float,

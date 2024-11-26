@@ -15,7 +15,6 @@ from allotropy.parsers.cytiva_unicorn.reader.unicorn_zip_handler import (
     UnicornZipHandler,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import try_float
 
 
 @dataclass
@@ -41,7 +40,7 @@ class StaticDocs:
         for result_criteria in results.find("ResultSearchCriterias").findall(
             "ResultSearchCriteria"
         ):
-            if result_criteria.find_text(["Keyword1"]) == keyword:
+            if result_criteria.find("Keyword1").get_text() == keyword:
                 return result_criteria
         msg = f"Unable to find result criteria with keyword 1 '{keyword}'"
         raise AllotropeConversionError(msg)
@@ -50,22 +49,18 @@ class StaticDocs:
     def get_chromatography_doc(cls, handler: UnicornZipHandler) -> ChromatographyDoc:
         column_type_data = handler.get_column_type_data()
         return ChromatographyDoc(
-            chromatography_serial_num=column_type_data.find_text(
+            chromatography_serial_num=column_type_data.recursive_find(
                 ["ColumnType", "Hardware", "ArticleNumber"]
-            ),
-            column_inner_diameter=try_float(
-                column_type_data.find_text(["ColumnType", "Hardware", "Diameter"]),
-                "column inner diameter",
-            ),
-            chromatography_chemistry_type=column_type_data.find_text(
+            ).get_text(),
+            column_inner_diameter=column_type_data.recursive_find(
+                ["ColumnType", "Hardware", "Diameter"]
+            ).get_float("column inner diameter"),
+            chromatography_chemistry_type=column_type_data.recursive_find(
                 ["ColumnType", "Media", "TechniqueName"]
-            ),
-            chromatography_particle_size=try_float(
-                column_type_data.find_text(
-                    ["ColumnType", "Media", "AverageParticleDiameter"]
-                ),
-                "chromatography particle size",
-            ),
+            ).get_text(),
+            chromatography_particle_size=column_type_data.recursive_find(
+                ["ColumnType", "Media", "AverageParticleDiameter"]
+            ).get_float("chromatography particle size"),
         )
 
     @classmethod
@@ -77,10 +72,9 @@ class StaticDocs:
         result = cls.__filter_result_criteria(results, keyword="Sample volume")
         return InjectionDoc(
             injection_identifier=random_uuid_str(),
-            injection_time=curve_element.find_text(["MethodStartTime"]),
-            autosampler_injection_volume_setting=try_float(
-                result.find_text(["Keyword2"]),
-                "autosampler injection volume setting",
+            injection_time=curve_element.find("MethodStartTime").get_text(),
+            autosampler_injection_volume_setting=result.find("Keyword2").get_float(
+                "autosampler injection volume setting"
             ),
         )
 
@@ -88,6 +82,6 @@ class StaticDocs:
     def get_sample_doc(cls, results: StrictElement) -> SampleDoc:
         result = cls.__filter_result_criteria(results, keyword="Sample_ID")
         return SampleDoc(
-            sample_identifier=result.find_text(["Keyword2"]),
-            batch_identifier=results.find_text(["BatchId"]),
+            sample_identifier=result.find("Keyword2").get_text(),
+            batch_identifier=results.find("BatchId").get_text(),
         )

@@ -5,7 +5,7 @@ from xml.etree import ElementTree
 # xml fromstring is vulnerable so defusedxml version is used instead
 from defusedxml.ElementTree import fromstring  # type: ignore[import-untyped]
 
-from allotropy.parsers.utils.values import assert_not_none
+from allotropy.parsers.utils.values import assert_not_none, try_float
 
 
 class StrictElement:
@@ -24,23 +24,25 @@ class StrictElement:
             )
         )
 
-    def findall(self, name: str) -> list[StrictElement]:
-        return [StrictElement(element) for element in self.element.findall(name)]
-
-    def get(self, name: str) -> str:
-        return assert_not_none(
-            self.element.get(name),
-            msg=f"Unable to find {name} in xml file contents",
-        )
-
     def recursive_find(self, names: list[str]) -> StrictElement:
         if len(names) == 0:
             return self
         name, *sub_names = names
         return self.find(name).recursive_find(sub_names)
 
-    def find_attr(self, names: list[str], attr: str) -> str:
-        return self.recursive_find(names).get(attr)
+    def findall(self, name: str) -> list[StrictElement]:
+        return [StrictElement(element) for element in self.element.findall(name)]
 
-    def find_text(self, names: list[str]) -> str:
-        return str(self.recursive_find(names).element.text)
+    def get_attr(self, name: str) -> str:
+        return str(
+            assert_not_none(
+                self.element.get(name),
+                msg=f"Unable to find {name} in xml file contents",
+            )
+        )
+
+    def get_text(self) -> str:
+        return str(self.element.text)
+
+    def get_float(self, name: str) -> float:
+        return try_float(self.get_text(), name)
