@@ -26,7 +26,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 class MSDWorkbenchParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "MSD Discovery Workbench"
-    RELEASE_STATE = ReleaseState.WORKING_DRAFT
+    RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = MSDWorkbenchReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 

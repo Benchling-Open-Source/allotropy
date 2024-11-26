@@ -14,6 +14,7 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_rea
     MeasurementType,
     Metadata,
 )
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.constants import DEFAULT_EPOCH_TIMESTAMP, NOT_APPLICABLE
 from allotropy.parsers.msd_workbench.constants import (
     LUMINESCENCE,
@@ -52,6 +53,9 @@ class PlateData:
         data: pd.DataFrame,
     ) -> PlateData:
         first_row = str(data.iloc[0, 0])
+        if "Plate" not in first_row:
+            msg = "Plate ID not found in the first row of the data"
+            raise AllotropeConversionError(msg)
         well_plate_id = first_row.split("_")[-1].strip()
         data = data.iloc[1:].reset_index(drop=True)
         # Set the first row as the header
