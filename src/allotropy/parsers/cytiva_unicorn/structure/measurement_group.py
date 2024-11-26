@@ -6,7 +6,6 @@ from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._202
     DeviceControlDoc,
     Measurement,
     MeasurementGroup,
-    ProcessedDataDoc,
 )
 from allotropy.parsers.cytiva_unicorn.constants import DEVICE_TYPE
 from allotropy.parsers.cytiva_unicorn.cytiva_unicorn_reader import (
@@ -30,6 +29,9 @@ from allotropy.parsers.cytiva_unicorn.structure.measurements.generic import (
 from allotropy.parsers.cytiva_unicorn.structure.measurements.ph import (
     PhMeasurement,
 )
+from allotropy.parsers.cytiva_unicorn.structure.measurements.pressure import (
+    PressureMeasurement,
+)
 from allotropy.parsers.cytiva_unicorn.structure.static_docs import (
     StaticDocs,
 )
@@ -44,36 +46,6 @@ def create_measurement_groups(
     elements = curves.findall("Curve")
 
     static_docs = StaticDocs.create(handler, curves.find("Curve"), results)
-
-    derived_pressure_component = DataCubeComponent(
-        type_=FieldComponentDatatype.float,
-        concept="delta column pressure",
-        unit="MPa",
-    )
-
-    pre_column_pressure_component = DataCubeComponent(
-        type_=FieldComponentDatatype.float,
-        concept="pre-column pressure",
-        unit="MPa",
-    )
-
-    sample_pressure_component = DataCubeComponent(
-        type_=FieldComponentDatatype.float,
-        concept="sample pressure",
-        unit="MPa",
-    )
-
-    system_pressure_component = DataCubeComponent(
-        type_=FieldComponentDatatype.float,
-        concept="system pressure",
-        unit="MPa",
-    )
-
-    post_column_pressure_component = DataCubeComponent(
-        type_=FieldComponentDatatype.float,
-        concept="post-column pressure",
-        unit="MPa",
-    )
 
     sample_flow_cv_component = DataCubeComponent(
         type_=FieldComponentDatatype.float,
@@ -111,11 +83,6 @@ def create_measurement_groups(
         unit="degC",
     )
 
-    derived_pressure_curve = handler.filter_curve(elements, r"^DeltaC pressure$")
-    pre_column_pressure_data_cube = handler.filter_curve(elements, r"^PreC pressure$")
-    sample_pressure_data_cube = handler.filter_curve(elements, r"^Sample pressure$")
-    system_pressure_data_cube = handler.filter_curve(elements, r"^System pressure$")
-    post_column_pressure_data_cube = handler.filter_curve(elements, r"^PostC pressure$")
     sample_flow_cv_data_cube = handler.filter_curve(elements, r"^Sample flow \(CV/h\)$")
     system_flow_cv_data_cube = handler.filter_curve(elements, r"^System flow \(CV/h\)$")
     sample_flow_data_cube = handler.filter_curve(elements, r"^Sample flow$")
@@ -134,42 +101,7 @@ def create_measurement_groups(
                 ConductivityMeasurement.create(handler, elements, static_docs),
                 PhMeasurement.create(handler, elements, static_docs),
                 ConcentrationMeasurement.create(handler, elements, static_docs),
-                Measurement(
-                    measurement_identifier=random_uuid_str(),
-                    chromatography_column_doc=static_docs.chromatography_doc,
-                    injection_doc=static_docs.injection_doc,
-                    sample_doc=static_docs.sample_doc,
-                    processed_data_doc=ProcessedDataDoc(
-                        derived_column_pressure_data_cube=UnicornMeasurement.create_data_cube(
-                            handler, derived_pressure_curve, derived_pressure_component
-                        )
-                    ),
-                    device_control_docs=[
-                        DeviceControlDoc(
-                            device_type=DEVICE_TYPE,
-                            pre_column_pressure_data_cube=UnicornMeasurement.create_data_cube(
-                                handler,
-                                pre_column_pressure_data_cube,
-                                pre_column_pressure_component,
-                            ),
-                            sample_pressure_data_cube=UnicornMeasurement.create_data_cube(
-                                handler,
-                                sample_pressure_data_cube,
-                                sample_pressure_component,
-                            ),
-                            system_pressure_data_cube=UnicornMeasurement.create_data_cube(
-                                handler,
-                                system_pressure_data_cube,
-                                system_pressure_component,
-                            ),
-                            post_column_pressure_data_cube=UnicornMeasurement.create_data_cube(
-                                handler,
-                                post_column_pressure_data_cube,
-                                post_column_pressure_component,
-                            ),
-                        ),
-                    ],
-                ),
+                PressureMeasurement.create(handler, elements, static_docs),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
                     chromatography_column_doc=static_docs.chromatography_doc,
