@@ -18,6 +18,9 @@ from allotropy.parsers.cytiva_unicorn.structure.measurements.absorbance import (
     AbsorbanceMeasurement2,
     AbsorbanceMeasurement3,
 )
+from allotropy.parsers.cytiva_unicorn.structure.measurements.conductivity import (
+    ConductivityMeasurement,
+)
 from allotropy.parsers.cytiva_unicorn.structure.measurements.generic import (
     UnicornMeasurement,
 )
@@ -35,18 +38,6 @@ def create_measurement_groups(
     elements = curves.findall("Curve")
 
     static_docs = StaticDocs.create(handler, curves.find("Curve"), results)
-
-    cond_component = DataCubeComponent(
-        type_=FieldComponentDatatype.float,
-        concept="electric conductivity",
-        unit="S/m",
-    )
-
-    perc_cond_component = DataCubeComponent(
-        type_=FieldComponentDatatype.float,
-        concept="electric conductivity",
-        unit="%",
-    )
 
     ph_component = DataCubeComponent(
         type_=FieldComponentDatatype.float,
@@ -126,8 +117,6 @@ def create_measurement_groups(
         unit="degC",
     )
 
-    cond_curve = handler.filter_curve(elements, r"^Cond$")
-    perc_cond_curve = handler.filter_curve(elements, r"^% Cond$")
     ph_curve = handler.filter_curve(elements, r"^pH$")
     conc_b_curve = handler.filter_curve(elements, r"^Conc B$")
     derived_pressure_curve = handler.filter_curve(elements, r"^DeltaC pressure$")
@@ -150,25 +139,7 @@ def create_measurement_groups(
                 AbsorbanceMeasurement1.create(handler, elements, static_docs),
                 AbsorbanceMeasurement2.create(handler, elements, static_docs),
                 AbsorbanceMeasurement3.create(handler, elements, static_docs),
-                Measurement(
-                    measurement_identifier=random_uuid_str(),
-                    chromatography_column_doc=static_docs.chromatography_doc,
-                    injection_doc=static_docs.injection_doc,
-                    sample_doc=static_docs.sample_doc,
-                    chromatogram_data_cube=UnicornMeasurement.create_data_cube(
-                        handler, cond_curve, cond_component
-                    ),
-                    processed_data_doc=ProcessedDataDoc(
-                        chromatogram_data_cube=UnicornMeasurement.create_data_cube(
-                            handler, perc_cond_curve, perc_cond_component
-                        )
-                    ),
-                    device_control_docs=[
-                        DeviceControlDoc(
-                            device_type=DEVICE_TYPE,
-                        )
-                    ],
-                ),
+                ConductivityMeasurement.create(handler, elements, static_docs),
                 Measurement(
                     measurement_identifier=random_uuid_str(),
                     chromatography_column_doc=static_docs.chromatography_doc,

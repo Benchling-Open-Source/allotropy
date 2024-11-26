@@ -1,0 +1,62 @@
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    FieldComponentDatatype,
+)
+from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
+    DataCubeComponent,
+    DeviceControlDoc,
+    Measurement,
+    ProcessedDataDoc,
+)
+from allotropy.parsers.cytiva_unicorn.constants import DEVICE_TYPE
+from allotropy.parsers.cytiva_unicorn.cytiva_unicorn_reader import (
+    StrictElement,
+    UnicornFileHandler,
+)
+from allotropy.parsers.cytiva_unicorn.structure.measurements.generic import (
+    UnicornMeasurement,
+)
+from allotropy.parsers.cytiva_unicorn.structure.static_docs import (
+    StaticDocs,
+)
+from allotropy.parsers.utils.uuids import random_uuid_str
+
+
+class ConductivityMeasurement(UnicornMeasurement):
+    @classmethod
+    def create(
+        cls,
+        handler: UnicornFileHandler,
+        elements: list[StrictElement],
+        static_docs: StaticDocs,
+    ) -> Measurement:
+        return Measurement(
+            measurement_identifier=random_uuid_str(),
+            chromatography_column_doc=static_docs.chromatography_doc,
+            injection_doc=static_docs.injection_doc,
+            sample_doc=static_docs.sample_doc,
+            chromatogram_data_cube=UnicornMeasurement.create_data_cube(
+                handler,
+                handler.filter_curve(elements, r"^Cond$"),
+                DataCubeComponent(
+                    type_=FieldComponentDatatype.float,
+                    concept="electric conductivity",
+                    unit="S/m",
+                ),
+            ),
+            processed_data_doc=ProcessedDataDoc(
+                chromatogram_data_cube=UnicornMeasurement.create_data_cube(
+                    handler,
+                    handler.filter_curve(elements, r"^% Cond$"),
+                    DataCubeComponent(
+                        type_=FieldComponentDatatype.float,
+                        concept="electric conductivity",
+                        unit="%",
+                    ),
+                )
+            ),
+            device_control_docs=[
+                DeviceControlDoc(
+                    device_type=DEVICE_TYPE,
+                )
+            ],
+        )
