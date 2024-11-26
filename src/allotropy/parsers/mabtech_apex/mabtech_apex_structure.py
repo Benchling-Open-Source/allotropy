@@ -66,6 +66,9 @@ def _create_measurement(plate_data: SeriesData) -> Measurement:
         if (feature := _build_feature(feature_name, plate_data))
     ]
 
+    # Used to capture extra keys for matching LED filters only.
+    filter_numbers = re.findall(r"\d+", led_filter) if led_filter else []
+    filter_number_regex = f"({'|'.join(filter_numbers)})+" if filter_numbers else ""
     measurement = Measurement(
         type_=MeasurementType.OPTICAL_IMAGING,
         identifier=random_uuid_str(),
@@ -84,24 +87,17 @@ def _create_measurement(plate_data: SeriesData) -> Measurement:
             data_processing_document=plate_data.get_custom_keys(
                 {
                     "Masked",
-                    "Preset Size",
+                    rf".*{filter_number_regex}.*Preset Size.*",
                 }
             ),
         ),
         device_control_custom_info=plate_data.get_custom_keys(
             {
-                "Max Sensor Value",
-                "Calibrated Exposure By Mabtech",
-                "Preset AOI",
+                rf".*{filter_number_regex}.*[^Preset Size].*",
                 "Analyte Secreting Population",
-                "Preset Emphasis",
-                "Average Sensor Value",
-                "Preset Contrast",
-                "Preset Name",
-                "Preset Brightness",
             }
         ),
-        custom_info=plate_data.get_unread(skip={"Machine ID"}),
+        custom_info=plate_data.get_unread(skip={"Machine ID", r".*\d{3}.*"}),
     )
     if not (measurement.processed_data and measurement.processed_data.features):
         logging.warning(f"no image features identified for {well_plate}")

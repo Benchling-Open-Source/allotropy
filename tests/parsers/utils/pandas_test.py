@@ -215,6 +215,25 @@ def test_get_custom_keys() -> None:
     assert data.get_custom_keys("custom_float") == {"custom_float": 4.5}
 
 
+def test_get_custom_keys_with_regex() -> None:
+    data = SeriesData(
+        pd.Series(
+            {
+                "custom": 0,
+                "custom 1": 1,
+                "custom 1 not matched": 2,
+                "custom 123": 3,
+            }
+        )
+    )
+
+    assert data.get_custom_keys(r"custom( \d+)?$") == {
+        "custom": 0,
+        "custom 1": 1,
+        "custom 123": 3,
+    }
+
+
 def test_get_unread() -> None:
     data = SeriesData(
         pd.Series(
@@ -238,6 +257,31 @@ def test_get_unread() -> None:
     data.mark_read({"marked_read2", "marked_read3"})
 
     assert data.get_unread(skip={"skipped"}) == {
+        "unread_float": 4.5,
+        "unread_float_as_str": 5.0,
+        "unread_str": "hello!",
+    }
+
+
+def test_get_unread_regex() -> None:
+    data = SeriesData(
+        pd.Series(
+            {
+                "unread_float": 4.5,
+                "unread_float_as_str": "5",
+                "unread_str": "hello!",
+                "skipped1": "skip",
+                "skipped 2": "skip",
+                "marked_read1": "marked",
+                "marked_read2": "marked",
+                "marked_read3": "marked",
+            }
+        )
+    )
+
+    data.mark_read("marked.*")
+
+    assert data.get_unread(skip={"skipped.*"}) == {
         "unread_float": 4.5,
         "unread_float_as_str": 5.0,
         "unread_str": "hello!",

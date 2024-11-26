@@ -565,7 +565,13 @@ class Mapper(SchemaMapper[Data, Model]):
                             for image_feature in data.features
                         ]
                     ),
-                    data_processing_document=data.data_processing_document,
+                    data_processing_document={
+                        key: value
+                        for key, value in data.data_processing_document.items()
+                        if value is not None
+                    }
+                    if data.data_processing_document
+                    else None,
                 )
             ]
         )
