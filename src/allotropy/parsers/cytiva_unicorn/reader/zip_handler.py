@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from io import BytesIO
 from re import search
-from zipfile import Path, ZipFile
+from zipfile import ZipFile
 
 from allotropy.parsers.utils.values import assert_not_none
 
@@ -11,7 +11,6 @@ class ZipHandler:
     def __init__(self, path: str, inner_path: str = "", data: BytesIO | None = None):
         self.path = path
         self.inner_path = inner_path
-        self.zip_path = Path(path, inner_path)
         self.zip_file = ZipFile(path if data is None else data)
         self.name_list = self.zip_file.namelist()
 
