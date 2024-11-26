@@ -87,6 +87,7 @@ def _create_measurement(plate_data: SeriesData) -> Measurement:
             data_processing_document=plate_data.get_custom_keys(
                 {
                     "Masked",
+                    # Preset Size for LED filter belongs here.
                     rf".*{filter_number_regex}.*Preset Size.*",
                 }
             ),
@@ -97,6 +98,8 @@ def _create_measurement(plate_data: SeriesData) -> Measurement:
                 "Analyte Secreting Population",
             }
         ),
+        # Machine ID is read in metadata. The second value filters any remaning columns with 3
+        # digit numbers, which filters columns for other LED filters not part of this measurement.
         custom_info=plate_data.get_unread(skip={"Machine ID", r".*\d{3}.*"}),
     )
     if not (measurement.processed_data and measurement.processed_data.features):
