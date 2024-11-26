@@ -33,6 +33,17 @@ class UnicornZipHandler(ZipHandler):
         raw_content = b_stream.read()
         return StrictElement.create_from_bytes(raw_content)
 
+    def get_chrom_1(self) -> StrictElement:
+        b_stream = self.get_file_from_pattern("Chrom.1.Xml$")
+        raw_content = b_stream.read()
+        return StrictElement.create_from_bytes(raw_content)
+
+    def get_column_type_data(self) -> StrictElement:
+        column_type_data = self.get_content_from_pattern("ColumnTypeData.zip$")
+        b_stream = column_type_data.get_file_from_pattern("^Xml$")
+        raw_content = b_stream.read()
+        return StrictElement.create_from_bytes(raw_content[24:-1])
+
     def __get_audit_trail_entry(self, element: StrictElement) -> StrictElement | None:
         audit_trail_entries = element.recursive_find(
             ["AuditTrail", "AuditTrailEntries"]
@@ -50,17 +61,6 @@ class UnicornZipHandler(ZipHandler):
             ):
                 return match.group(1)
         return "Default"
-
-    def get_chrom_1(self) -> StrictElement:
-        b_stream = self.get_file_from_pattern("Chrom.1.Xml$")
-        raw_content = b_stream.read()
-        return StrictElement.create_from_bytes(raw_content)
-
-    def get_column_type_data(self) -> StrictElement:
-        column_type_data = self.get_content_from_pattern("ColumnTypeData.zip$")
-        b_stream = column_type_data.get_file_from_pattern("^Xml$")
-        raw_content = b_stream.read()
-        return StrictElement.create_from_bytes(raw_content[24:-1])
 
     def filter_curve(
         self, curve_elements: list[StrictElement], pattern: str
