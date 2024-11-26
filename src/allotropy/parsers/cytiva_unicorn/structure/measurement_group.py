@@ -1,149 +1,25 @@
-from __future__ import annotations
-
-from dataclasses import dataclass
-
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
 )
 from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
-    ChromatographyDoc,
-    DataCube,
     DataCubeComponent,
     DeviceControlDoc,
-    InjectionDoc,
     Measurement,
     MeasurementGroup,
-    Metadata,
     ProcessedDataDoc,
-    SampleDoc,
 )
 from allotropy.parsers.cytiva_unicorn.constants import DEVICE_TYPE
 from allotropy.parsers.cytiva_unicorn.cytiva_unicorn_reader import (
     StrictElement,
     UnicornFileHandler,
 )
-from allotropy.parsers.cytiva_unicorn.utils import (
-    min_to_sec,
-    parse_data_cube_bynary,
+from allotropy.parsers.cytiva_unicorn.structure.measurement import (
+    UnicornMeasurement,
+)
+from allotropy.parsers.cytiva_unicorn.structure.static_docs import (
+    StaticDocs,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import try_float
-
-
-def create_metadata(handler: UnicornFileHandler, results: StrictElement) -> Metadata:
-    system_data = handler.get_system_data()
-    instrument_config_data = handler.get_instrument_config_data()
-
-    return Metadata(
-        asset_management_id=system_data.find_attr(
-            ["System", "InstrumentConfiguration"], "Description"
-        ),
-        product_manufacturer="Cytiva Life Sciences",
-        device_id=results.find_text(["SystemName"]),
-        firmware_version=instrument_config_data.find_text(["FirmwareVersion"]),
-        analyst=handler.get_audit_trail_entry_user(),
-    )
-
-
-def create_data_cube(
-    handler: UnicornFileHandler,
-    curve_element: StrictElement,
-    data_cuve_component: DataCubeComponent,
-) -> DataCube:
-    data_name = curve_element.find_text(
-        ["CurvePoints", "CurvePoint", "BinaryCurvePointsFileName"]
-    )
-    data_handler = handler.get_content_from_pattern(data_name)
-
-    return DataCube(
-        label=curve_element.find_text(["Name"]),
-        structure_dimensions=[
-            DataCubeComponent(
-                type_=FieldComponentDatatype.float,
-                concept="retention time",
-                unit="s",
-            ),
-        ],
-        structure_measures=[data_cuve_component],
-        dimensions=[
-            min_to_sec(
-                parse_data_cube_bynary(
-                    data_handler.get_file_from_pattern("CoordinateData.Volumes$")
-                )
-            )
-        ],
-        measures=[
-            parse_data_cube_bynary(
-                data_handler.get_file_from_pattern("CoordinateData.Amplitudes$")
-            )
-        ],
-    )
-
-
-@dataclass
-class StaticDocs:
-    chromatography_doc: ChromatographyDoc
-    injection_doc: InjectionDoc
-    sample_doc: SampleDoc
-
-    @classmethod
-    def create(
-        cls, handler: UnicornFileHandler, curve: StrictElement, results: StrictElement
-    ) -> StaticDocs:
-        return StaticDocs(
-            chromatography_doc=cls.get_chromatography_doc(handler),
-            injection_doc=cls.get_injection_doc(handler, curve, results),
-            sample_doc=cls.get_sample_doc(handler, results),
-        )
-
-    @classmethod
-    def get_chromatography_doc(cls, handler: UnicornFileHandler) -> ChromatographyDoc:
-        column_type_data = handler.get_column_type_data()
-        return ChromatographyDoc(
-            chromatography_serial_num=column_type_data.find_text(
-                ["ColumnType", "Hardware", "ArticleNumber"]
-            ),
-            column_inner_diameter=try_float(
-                column_type_data.find_text(["ColumnType", "Hardware", "Diameter"]),
-                "column inner diameter",
-            ),
-            chromatography_chemistry_type=column_type_data.find_text(
-                ["ColumnType", "Media", "TechniqueName"]
-            ),
-            chromatography_particle_size=try_float(
-                column_type_data.find_text(
-                    ["ColumnType", "Media", "AverageParticleDiameter"]
-                ),
-                "chromatography particle size",
-            ),
-        )
-
-    @classmethod
-    def get_injection_doc(
-        cls,
-        handler: UnicornFileHandler,
-        curve_element: StrictElement,
-        results: StrictElement,
-    ) -> InjectionDoc:
-        result = handler.filter_result_criteria(results, keyword="Sample volume")
-        return InjectionDoc(
-            injection_identifier=random_uuid_str(),
-            injection_time=curve_element.find_text(["MethodStartTime"]),
-            autosampler_injection_volume_setting=try_float(
-                result.find_text(["Keyword2"]),
-                "autosampler injection volume setting",
-            ),
-        )
-
-    @classmethod
-    def get_sample_doc(
-        cls, handler: UnicornFileHandler, results: StrictElement
-    ) -> SampleDoc:
-        result = handler.filter_result_criteria(results, keyword="Sample_ID")
-        return SampleDoc(
-            sample_identifier=result.find_text(["Keyword2"]),
-            batch_identifier=results.find_text(["BatchId"]),
-        )
 
 
 def create_measurement_groups(
@@ -280,7 +156,7 @@ def create_measurement_groups(
                     chromatography_column_doc=static_docs.chromatography_doc,
                     injection_doc=static_docs.injection_doc,
                     sample_doc=static_docs.sample_doc,
-                    chromatogram_data_cube=create_data_cube(
+                    chromatogram_data_cube=UnicornMeasurement.create_data_cube(
                         handler, uv1_curve, uv_component
                     ),
                     device_control_docs=[
@@ -294,7 +170,7 @@ def create_measurement_groups(
                     chromatography_column_doc=static_docs.chromatography_doc,
                     injection_doc=static_docs.injection_doc,
                     sample_doc=static_docs.sample_doc,
-                    chromatogram_data_cube=create_data_cube(
+                    chromatogram_data_cube=UnicornMeasurement.create_data_cube(
                         handler, uv2_curve, uv_component
                     ),
                     device_control_docs=[
@@ -308,7 +184,7 @@ def create_measurement_groups(
                     chromatography_column_doc=static_docs.chromatography_doc,
                     injection_doc=static_docs.injection_doc,
                     sample_doc=static_docs.sample_doc,
-                    chromatogram_data_cube=create_data_cube(
+                    chromatogram_data_cube=UnicornMeasurement.create_data_cube(
                         handler, uv3_curve, uv_component
                     ),
                     device_control_docs=[
@@ -322,11 +198,11 @@ def create_measurement_groups(
                     chromatography_column_doc=static_docs.chromatography_doc,
                     injection_doc=static_docs.injection_doc,
                     sample_doc=static_docs.sample_doc,
-                    chromatogram_data_cube=create_data_cube(
+                    chromatogram_data_cube=UnicornMeasurement.create_data_cube(
                         handler, cond_curve, cond_component
                     ),
                     processed_data_doc=ProcessedDataDoc(
-                        chromatogram_data_cube=create_data_cube(
+                        chromatogram_data_cube=UnicornMeasurement.create_data_cube(
                             handler, perc_cond_curve, perc_cond_component
                         )
                     ),
@@ -341,7 +217,7 @@ def create_measurement_groups(
                     chromatography_column_doc=static_docs.chromatography_doc,
                     injection_doc=static_docs.injection_doc,
                     sample_doc=static_docs.sample_doc,
-                    chromatogram_data_cube=create_data_cube(
+                    chromatogram_data_cube=UnicornMeasurement.create_data_cube(
                         handler, ph_curve, ph_component
                     ),
                     device_control_docs=[
@@ -358,7 +234,7 @@ def create_measurement_groups(
                     device_control_docs=[
                         DeviceControlDoc(
                             device_type=DEVICE_TYPE,
-                            solvent_conc_data_cube=create_data_cube(
+                            solvent_conc_data_cube=UnicornMeasurement.create_data_cube(
                                 handler, conc_b_curve, conc_b_component
                             ),
                         ),
@@ -370,29 +246,29 @@ def create_measurement_groups(
                     injection_doc=static_docs.injection_doc,
                     sample_doc=static_docs.sample_doc,
                     processed_data_doc=ProcessedDataDoc(
-                        derived_column_pressure_data_cube=create_data_cube(
+                        derived_column_pressure_data_cube=UnicornMeasurement.create_data_cube(
                             handler, derived_pressure_curve, derived_pressure_component
                         )
                     ),
                     device_control_docs=[
                         DeviceControlDoc(
                             device_type=DEVICE_TYPE,
-                            pre_column_pressure_data_cube=create_data_cube(
+                            pre_column_pressure_data_cube=UnicornMeasurement.create_data_cube(
                                 handler,
                                 pre_column_pressure_data_cube,
                                 pre_column_pressure_component,
                             ),
-                            sample_pressure_data_cube=create_data_cube(
+                            sample_pressure_data_cube=UnicornMeasurement.create_data_cube(
                                 handler,
                                 sample_pressure_data_cube,
                                 sample_pressure_component,
                             ),
-                            system_pressure_data_cube=create_data_cube(
+                            system_pressure_data_cube=UnicornMeasurement.create_data_cube(
                                 handler,
                                 system_pressure_data_cube,
                                 system_pressure_component,
                             ),
-                            post_column_pressure_data_cube=create_data_cube(
+                            post_column_pressure_data_cube=UnicornMeasurement.create_data_cube(
                                 handler,
                                 post_column_pressure_data_cube,
                                 post_column_pressure_component,
@@ -408,12 +284,12 @@ def create_measurement_groups(
                     device_control_docs=[
                         DeviceControlDoc(
                             device_type=DEVICE_TYPE,
-                            sample_flow_data_cube=create_data_cube(
+                            sample_flow_data_cube=UnicornMeasurement.create_data_cube(
                                 handler,
                                 sample_flow_cv_data_cube,
                                 sample_flow_cv_component,
                             ),
-                            system_flow_data_cube=create_data_cube(
+                            system_flow_data_cube=UnicornMeasurement.create_data_cube(
                                 handler,
                                 system_flow_cv_data_cube,
                                 system_flow_cv_component,
@@ -421,16 +297,16 @@ def create_measurement_groups(
                         ),
                         DeviceControlDoc(
                             device_type=DEVICE_TYPE,
-                            sample_flow_data_cube=create_data_cube(
+                            sample_flow_data_cube=UnicornMeasurement.create_data_cube(
                                 handler, sample_flow_data_cube, sample_flow_component
                             ),
-                            system_flow_data_cube=create_data_cube(
+                            system_flow_data_cube=UnicornMeasurement.create_data_cube(
                                 handler, system_flow_data_cube, system_flow_component
                             ),
                         ),
                         DeviceControlDoc(
                             device_type=DEVICE_TYPE,
-                            sample_flow_data_cube=create_data_cube(
+                            sample_flow_data_cube=UnicornMeasurement.create_data_cube(
                                 handler,
                                 sample_linear_flow_data_cube,
                                 sample_linear_flow_component,
@@ -446,7 +322,7 @@ def create_measurement_groups(
                     device_control_docs=[
                         DeviceControlDoc(
                             device_type=DEVICE_TYPE,
-                            temperature_profile_data_cube=create_data_cube(
+                            temperature_profile_data_cube=UnicornMeasurement.create_data_cube(
                                 handler,
                                 temperature_profile_data_cube,
                                 temperature_profile_component,

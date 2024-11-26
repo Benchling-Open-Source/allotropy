@@ -8,8 +8,10 @@ from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._202
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.cytiva_unicorn.constants import DISPLAY_NAME
 from allotropy.parsers.cytiva_unicorn.cytiva_unicorn_reader import UnicornFileHandler
-from allotropy.parsers.cytiva_unicorn.cytiva_unicorn_structure import (
+from allotropy.parsers.cytiva_unicorn.structure.measurement_group import (
     create_measurement_groups,
+)
+from allotropy.parsers.cytiva_unicorn.structure.metadata import (
     create_metadata,
 )
 from allotropy.parsers.release_state import ReleaseState
