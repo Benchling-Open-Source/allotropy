@@ -1,6 +1,5 @@
 from re import search
 
-from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.cytiva_unicorn.reader.strict_element import (
     StrictElement,
 )
@@ -61,23 +60,3 @@ class UnicornZipHandler(ZipHandler):
             ):
                 return match.group(1)
         return "Default"
-
-    def filter_curve(
-        self, curve_elements: list[StrictElement], pattern: str
-    ) -> StrictElement:
-        for element in curve_elements:
-            if search(pattern, element.find_text(["Name"])):
-                return element
-        msg = f"Unable to find curve element with pattern {pattern}"
-        raise AllotropeConversionError(msg)
-
-    def filter_result_criteria(
-        self, results: StrictElement, keyword: str
-    ) -> StrictElement:
-        for result_criteria in results.find("ResultSearchCriterias").findall(
-            "ResultSearchCriteria"
-        ):
-            if result_criteria.find_text(["Keyword1"]) == keyword:
-                return result_criteria
-        msg = f"Unable to find result criteria with keyword 1 '{keyword}'"
-        raise AllotropeConversionError(msg)

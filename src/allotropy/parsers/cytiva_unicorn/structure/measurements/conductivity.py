@@ -38,7 +38,7 @@ class ConductivityMeasurement(UnicornMeasurement):
             sample_doc=static_docs.sample_doc,
             chromatogram_data_cube=UnicornMeasurement.create_data_cube(
                 handler,
-                handler.filter_curve(elements, r"^Cond$"),
+                cls.filter_curve(elements, r"^Cond$"),
                 DataCubeComponent(
                     type_=FieldComponentDatatype.float,
                     concept="electric conductivity",
@@ -48,7 +48,7 @@ class ConductivityMeasurement(UnicornMeasurement):
             processed_data_doc=ProcessedDataDoc(
                 chromatogram_data_cube=UnicornMeasurement.create_data_cube(
                     handler,
-                    handler.filter_curve(elements, r"^% Cond$"),
+                    cls.filter_curve(elements, r"^% Cond$"),
                     DataCubeComponent(
                         type_=FieldComponentDatatype.float,
                         concept="electric conductivity",

@@ -7,6 +7,7 @@ from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._202
     InjectionDoc,
     SampleDoc,
 )
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.cytiva_unicorn.reader.strict_element import (
     StrictElement,
 )
@@ -29,9 +30,21 @@ class StaticDocs:
     ) -> StaticDocs:
         return StaticDocs(
             chromatography_doc=cls.get_chromatography_doc(handler),
-            injection_doc=cls.get_injection_doc(handler, curve, results),
-            sample_doc=cls.get_sample_doc(handler, results),
+            injection_doc=cls.get_injection_doc(curve, results),
+            sample_doc=cls.get_sample_doc(results),
         )
+
+    @classmethod
+    def __filter_result_criteria(
+        cls, results: StrictElement, keyword: str
+    ) -> StrictElement:
+        for result_criteria in results.find("ResultSearchCriterias").findall(
+            "ResultSearchCriteria"
+        ):
+            if result_criteria.find_text(["Keyword1"]) == keyword:
+                return result_criteria
+        msg = f"Unable to find result criteria with keyword 1 '{keyword}'"
+        raise AllotropeConversionError(msg)
 
     @classmethod
     def get_chromatography_doc(cls, handler: UnicornZipHandler) -> ChromatographyDoc:
@@ -58,11 +71,10 @@ class StaticDocs:
     @classmethod
     def get_injection_doc(
         cls,
-        handler: UnicornZipHandler,
         curve_element: StrictElement,
         results: StrictElement,
     ) -> InjectionDoc:
-        result = handler.filter_result_criteria(results, keyword="Sample volume")
+        result = cls.__filter_result_criteria(results, keyword="Sample volume")
         return InjectionDoc(
             injection_identifier=random_uuid_str(),
             injection_time=curve_element.find_text(["MethodStartTime"]),
@@ -73,10 +85,8 @@ class StaticDocs:
         )
 
     @classmethod
-    def get_sample_doc(
-        cls, handler: UnicornZipHandler, results: StrictElement
-    ) -> SampleDoc:
-        result = handler.filter_result_criteria(results, keyword="Sample_ID")
+    def get_sample_doc(cls, results: StrictElement) -> SampleDoc:
+        result = cls.__filter_result_criteria(results, keyword="Sample_ID")
         return SampleDoc(
             sample_identifier=result.find_text(["Keyword2"]),
             batch_identifier=results.find_text(["BatchId"]),

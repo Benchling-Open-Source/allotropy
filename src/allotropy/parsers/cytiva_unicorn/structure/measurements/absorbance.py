@@ -52,7 +52,7 @@ class AbsorbanceMeasurement(UnicornMeasurement):
             sample_doc=stat_docs.sample_doc,
             chromatogram_data_cube=cls.create_data_cube(
                 handler,
-                handler.filter_curve(elements, cls.get_curve_regex()),
+                cls.filter_curve(elements, cls.get_curve_regex()),
                 cls.get_data_cube_component(),
             ),
             device_control_docs=[

@@ -40,7 +40,7 @@ class ConcentrationMeasurement(UnicornMeasurement):
                     device_type=DEVICE_TYPE,
                     solvent_conc_data_cube=UnicornMeasurement.create_data_cube(
                         handler,
-                        handler.filter_curve(elements, r"^Conc B$"),
+                        cls.filter_curve(elements, r"^Conc B$"),
                         DataCubeComponent(
                             type_=FieldComponentDatatype.float,
                             concept="solvent concentration",

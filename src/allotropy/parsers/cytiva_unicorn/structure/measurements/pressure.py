@@ -39,7 +39,7 @@ class PressureMeasurement(UnicornMeasurement):
             processed_data_doc=ProcessedDataDoc(
                 derived_column_pressure_data_cube=UnicornMeasurement.create_data_cube(
                     handler,
-                    handler.filter_curve(elements, r"^DeltaC pressure$"),
+                    cls.filter_curve(elements, r"^DeltaC pressure$"),
                     DataCubeComponent(
                         type_=FieldComponentDatatype.float,
                         concept="delta column pressure",
@@ -52,7 +52,7 @@ class PressureMeasurement(UnicornMeasurement):
                     device_type=DEVICE_TYPE,
                     pre_column_pressure_data_cube=UnicornMeasurement.create_data_cube(
                         handler,
-                        handler.filter_curve(elements, r"^PreC pressure$"),
+                        cls.filter_curve(elements, r"^PreC pressure$"),
                         DataCubeComponent(
                             type_=FieldComponentDatatype.float,
                             concept="pre-column pressure",
@@ -61,7 +61,7 @@ class PressureMeasurement(UnicornMeasurement):
                     ),
                     sample_pressure_data_cube=UnicornMeasurement.create_data_cube(
                         handler,
-                        handler.filter_curve(elements, r"^Sample pressure$"),
+                        cls.filter_curve(elements, r"^Sample pressure$"),
                         DataCubeComponent(
                             type_=FieldComponentDatatype.float,
                             concept="sample pressure",
@@ -70,7 +70,7 @@ class PressureMeasurement(UnicornMeasurement):
                     ),
                     system_pressure_data_cube=UnicornMeasurement.create_data_cube(
                         handler,
-                        handler.filter_curve(elements, r"^System pressure$"),
+                        cls.filter_curve(elements, r"^System pressure$"),
                         DataCubeComponent(
                             type_=FieldComponentDatatype.float,
                             concept="system pressure",
@@ -79,7 +79,7 @@ class PressureMeasurement(UnicornMeasurement):
                     ),
                     post_column_pressure_data_cube=UnicornMeasurement.create_data_cube(
                         handler,
-                        handler.filter_curve(elements, r"^PostC pressure$"),
+                        cls.filter_curve(elements, r"^PostC pressure$"),
                         DataCubeComponent(
                             type_=FieldComponentDatatype.float,
                             concept="post-column pressure",

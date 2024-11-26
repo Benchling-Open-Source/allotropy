@@ -37,7 +37,7 @@ class PhMeasurement(UnicornMeasurement):
             sample_doc=static_docs.sample_doc,
             chromatogram_data_cube=UnicornMeasurement.create_data_cube(
                 handler,
-                handler.filter_curve(elements, r"^pH$"),
+                cls.filter_curve(elements, r"^pH$"),
                 DataCubeComponent(
                     type_=FieldComponentDatatype.float,
                     concept="pH",

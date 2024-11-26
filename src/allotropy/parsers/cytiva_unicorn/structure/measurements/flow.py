@@ -40,7 +40,7 @@ class FlowMeasurement(UnicornMeasurement):
                     device_type=DEVICE_TYPE,
                     sample_flow_data_cube=UnicornMeasurement.create_data_cube(
                         handler,
-                        handler.filter_curve(elements, r"^Sample flow \(CV/h\)$"),
+                        cls.filter_curve(elements, r"^Sample flow \(CV/h\)$"),
                         DataCubeComponent(
                             type_=FieldComponentDatatype.float,
                             concept="sample flow",
@@ -49,7 +49,7 @@ class FlowMeasurement(UnicornMeasurement):
                     ),
                     system_flow_data_cube=UnicornMeasurement.create_data_cube(
                         handler,
-                        handler.filter_curve(elements, r"^System flow \(CV/h\)$"),
+                        cls.filter_curve(elements, r"^System flow \(CV/h\)$"),
                         DataCubeComponent(
                             type_=FieldComponentDatatype.float,
                             concept="system flow",
@@ -61,7 +61,7 @@ class FlowMeasurement(UnicornMeasurement):
                     device_type=DEVICE_TYPE,
                     sample_flow_data_cube=UnicornMeasurement.create_data_cube(
                         handler,
-                        handler.filter_curve(elements, r"^Sample flow$"),
+                        cls.filter_curve(elements, r"^Sample flow$"),
                         DataCubeComponent(
                             type_=FieldComponentDatatype.float,
                             concept="sample flow",
@@ -70,7 +70,7 @@ class FlowMeasurement(UnicornMeasurement):
                     ),
                     system_flow_data_cube=UnicornMeasurement.create_data_cube(
                         handler,
-                        handler.filter_curve(elements, r"^System flow$"),
+                        cls.filter_curve(elements, r"^System flow$"),
                         DataCubeComponent(
                             type_=FieldComponentDatatype.float,
                             concept="system flow",
@@ -82,7 +82,7 @@ class FlowMeasurement(UnicornMeasurement):
                     device_type=DEVICE_TYPE,
                     sample_flow_data_cube=UnicornMeasurement.create_data_cube(
                         handler,
-                        handler.filter_curve(elements, r"^Sample linear flow$"),
+                        cls.filter_curve(elements, r"^Sample linear flow$"),
                         DataCubeComponent(
                             type_=FieldComponentDatatype.float,
                             concept="sample flow",
