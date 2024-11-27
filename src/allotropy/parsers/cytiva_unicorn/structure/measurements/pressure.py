@@ -14,9 +14,6 @@ from allotropy.parsers.cytiva_unicorn.reader.strict_element import (
 from allotropy.parsers.cytiva_unicorn.reader.unicorn_zip_handler import (
     UnicornZipHandler,
 )
-from allotropy.parsers.cytiva_unicorn.structure.data_cube.creator import (
-    create_data_cube,
-)
 from allotropy.parsers.cytiva_unicorn.structure.measurements.generic import (
     UnicornMeasurement,
 )
@@ -40,7 +37,7 @@ class PressureMeasurement(UnicornMeasurement):
             injection_doc=static_docs.injection_doc,
             sample_doc=static_docs.sample_doc,
             processed_data_doc=ProcessedDataDoc(
-                derived_column_pressure_data_cube=create_data_cube(
+                derived_column_pressure_data_cube=cls.get_data_cube(
                     handler,
                     cls.filter_curve(elements, r"^DeltaC pressure$"),
                     DataCubeComponent(
@@ -53,7 +50,7 @@ class PressureMeasurement(UnicornMeasurement):
             device_control_docs=[
                 DeviceControlDoc(
                     device_type=DEVICE_TYPE,
-                    pre_column_pressure_data_cube=create_data_cube(
+                    pre_column_pressure_data_cube=cls.get_data_cube(
                         handler,
                         cls.filter_curve(elements, r"^PreC pressure$"),
                         DataCubeComponent(
@@ -62,7 +59,7 @@ class PressureMeasurement(UnicornMeasurement):
                             unit="MPa",
                         ),
                     ),
-                    sample_pressure_data_cube=create_data_cube(
+                    sample_pressure_data_cube=cls.get_data_cube(
                         handler,
                         cls.filter_curve(elements, r"^Sample pressure$"),
                         DataCubeComponent(
@@ -71,7 +68,7 @@ class PressureMeasurement(UnicornMeasurement):
                             unit="MPa",
                         ),
                     ),
-                    system_pressure_data_cube=create_data_cube(
+                    system_pressure_data_cube=cls.get_data_cube(
                         handler,
                         cls.filter_curve(elements, r"^System pressure$"),
                         DataCubeComponent(
@@ -80,7 +77,7 @@ class PressureMeasurement(UnicornMeasurement):
                             unit="MPa",
                         ),
                     ),
-                    post_column_pressure_data_cube=create_data_cube(
+                    post_column_pressure_data_cube=cls.get_data_cube(
                         handler,
                         cls.filter_curve(elements, r"^PostC pressure$"),
                         DataCubeComponent(

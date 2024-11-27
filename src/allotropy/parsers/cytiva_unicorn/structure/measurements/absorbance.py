@@ -15,9 +15,6 @@ from allotropy.parsers.cytiva_unicorn.reader.strict_element import (
 from allotropy.parsers.cytiva_unicorn.reader.unicorn_zip_handler import (
     UnicornZipHandler,
 )
-from allotropy.parsers.cytiva_unicorn.structure.data_cube.creator import (
-    create_data_cube,
-)
 from allotropy.parsers.cytiva_unicorn.structure.measurements.generic import (
     UnicornMeasurement,
 )
@@ -34,14 +31,6 @@ class AbsorbanceMeasurement(UnicornMeasurement):
         pass
 
     @classmethod
-    def get_data_cube_component(cls) -> DataCubeComponent:
-        return DataCubeComponent(
-            type_=FieldComponentDatatype.float,
-            concept="absorbance",
-            unit="mAU",
-        )
-
-    @classmethod
     def create(
         cls,
         handler: UnicornZipHandler,
@@ -53,10 +42,14 @@ class AbsorbanceMeasurement(UnicornMeasurement):
             chromatography_column_doc=stat_docs.chromatography_doc,
             injection_doc=stat_docs.injection_doc,
             sample_doc=stat_docs.sample_doc,
-            chromatogram_data_cube=create_data_cube(
+            chromatogram_data_cube=cls.get_data_cube(
                 handler,
                 cls.filter_curve(elements, cls.get_curve_regex()),
-                cls.get_data_cube_component(),
+                DataCubeComponent(
+                    type_=FieldComponentDatatype.float,
+                    concept="absorbance",
+                    unit="mAU",
+                ),
             ),
             device_control_docs=[
                 DeviceControlDoc(

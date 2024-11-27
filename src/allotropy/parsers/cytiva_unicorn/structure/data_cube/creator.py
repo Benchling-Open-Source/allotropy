@@ -5,9 +5,6 @@ from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._202
     DataCube,
     DataCubeComponent,
 )
-from allotropy.parsers.cytiva_unicorn.reader.strict_element import (
-    StrictElement,
-)
 from allotropy.parsers.cytiva_unicorn.reader.unicorn_zip_handler import (
     UnicornZipHandler,
 )
@@ -22,16 +19,12 @@ from allotropy.parsers.cytiva_unicorn.structure.data_cube.transformations import
 
 def create_data_cube(
     handler: UnicornZipHandler,
-    curve_element: StrictElement,
+    label: str,
     data_cube_component: DataCubeComponent,
-    transformation: Transformation | None = None,
+    transformation: Transformation | None,
 ) -> DataCube:
-    names = ["CurvePoints", "CurvePoint", "BinaryCurvePointsFileName"]
-    data_name = curve_element.recursive_find(names).get_text()
-    data_cube_zip_handler = handler.get_zip_from_pattern(data_name)
-
     return DataCube(
-        label=curve_element.find("Name").get_text(),
+        label=label,
         structure_dimensions=[
             DataCubeComponent(
                 type_=FieldComponentDatatype.float,
@@ -42,14 +35,14 @@ def create_data_cube(
         structure_measures=[data_cube_component],
         dimensions=[
             DataCubeReader(
-                handler=data_cube_zip_handler,
+                handler=handler,
                 name="Volumes",
                 transformation=Min2Sec(),
             ).get_data()
         ],
         measures=[
             DataCubeReader(
-                handler=data_cube_zip_handler,
+                handler=handler,
                 name="Amplitudes",
                 transformation=transformation,
             ).get_data()

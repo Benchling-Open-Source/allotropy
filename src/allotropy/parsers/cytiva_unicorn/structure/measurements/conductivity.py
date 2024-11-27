@@ -14,9 +14,6 @@ from allotropy.parsers.cytiva_unicorn.reader.strict_element import (
 from allotropy.parsers.cytiva_unicorn.reader.unicorn_zip_handler import (
     UnicornZipHandler,
 )
-from allotropy.parsers.cytiva_unicorn.structure.data_cube.creator import (
-    create_data_cube,
-)
 from allotropy.parsers.cytiva_unicorn.structure.measurements.generic import (
     UnicornMeasurement,
 )
@@ -39,7 +36,7 @@ class ConductivityMeasurement(UnicornMeasurement):
             chromatography_column_doc=static_docs.chromatography_doc,
             injection_doc=static_docs.injection_doc,
             sample_doc=static_docs.sample_doc,
-            chromatogram_data_cube=create_data_cube(
+            chromatogram_data_cube=cls.get_data_cube(
                 handler,
                 cls.filter_curve(elements, r"^Cond$"),
                 DataCubeComponent(
@@ -49,7 +46,7 @@ class ConductivityMeasurement(UnicornMeasurement):
                 ),
             ),
             processed_data_doc=ProcessedDataDoc(
-                chromatogram_data_cube=create_data_cube(
+                chromatogram_data_cube=cls.get_data_cube(
                     handler,
                     cls.filter_curve(elements, r"^% Cond$"),
                     DataCubeComponent(
