@@ -22,6 +22,7 @@ class MethodicalMindReader:
         self.plate_data = []
         while reader.current_line_exists():
             lines = list(reader.pop_until("Data"))
+            lines = [line for line in lines if "Digital_Signature" not in line]
             header_df = read_csv(
                 StringIO("\n".join(lines)),
                 sep=r":\t",
