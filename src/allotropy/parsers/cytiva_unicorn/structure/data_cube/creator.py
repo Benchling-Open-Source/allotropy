@@ -11,26 +11,25 @@ from allotropy.parsers.cytiva_unicorn.reader.strict_element import (
 from allotropy.parsers.cytiva_unicorn.reader.unicorn_zip_handler import (
     UnicornZipHandler,
 )
-from allotropy.parsers.cytiva_unicorn.structure.data_cube.parser import (
-    DataCubeParser,
+from allotropy.parsers.cytiva_unicorn.structure.data_cube.reader import (
+    DataCubeReader,
 )
-
-
-def get_data_cube_parser(
-    handler: UnicornZipHandler,
-    curve_element: StrictElement,
-) -> DataCubeParser:
-    names = ["CurvePoints", "CurvePoint", "BinaryCurvePointsFileName"]
-    data_name = curve_element.recursive_find(names).get_text()
-    return DataCubeParser(handler.get_zip_from_pattern(data_name))
+from allotropy.parsers.cytiva_unicorn.structure.data_cube.transformations import (
+    Min2Sec,
+    Transformation,
+)
 
 
 def create_data_cube(
     handler: UnicornZipHandler,
     curve_element: StrictElement,
-    data_cuve_component: DataCubeComponent,
+    data_cube_component: DataCubeComponent,
+    transformation: Transformation | None = None,
 ) -> DataCube:
-    parser = get_data_cube_parser(handler, curve_element)
+    names = ["CurvePoints", "CurvePoint", "BinaryCurvePointsFileName"]
+    data_name = curve_element.recursive_find(names).get_text()
+    data_cube_zip_handler = handler.get_zip_from_pattern(data_name)
+
     return DataCube(
         label=curve_element.find("Name").get_text(),
         structure_dimensions=[
@@ -40,7 +39,19 @@ def create_data_cube(
                 unit="s",
             ),
         ],
-        structure_measures=[data_cuve_component],
-        dimensions=[parser.get_dimensions()],
-        measures=[parser.get_measures()],
+        structure_measures=[data_cube_component],
+        dimensions=[
+            DataCubeReader(
+                handler=data_cube_zip_handler,
+                name="Volumes",
+                transformation=Min2Sec(),
+            ).get_data()
+        ],
+        measures=[
+            DataCubeReader(
+                handler=data_cube_zip_handler,
+                name="Amplitudes",
+                transformation=transformation,
+            ).get_data()
+        ],
     )
