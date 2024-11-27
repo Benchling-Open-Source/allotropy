@@ -112,16 +112,6 @@ calculated_data_mappings = [
 ]
 
 
-def _get_measurement_by_identifier(
-    measurements: list[Measurement], identifier: str
-) -> Measurement:
-    for measurement in measurements:
-        if measurement.identifier == identifier:
-            return measurement
-    msg = f"No measurement found for identifier: {identifier}"
-    raise AllotropeConversionError(msg)
-
-
 def _format_r_squared_name(name: str) -> str:
     return name.split(":")[-1].strip()
 
