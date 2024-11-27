@@ -144,7 +144,7 @@ def create_measurements(
                 location_identifier=intermediate_structured_data["sample_data"][i].get(
                     "rack"
                 ),
-                sample_role_type=constants.PLATEMAP_TO_SAMPLE_ROLE_TYPE.get(
+                sample_role_type=constants.SAMPLE_ROLE_TYPE.get(
                     intermediate_structured_data["sample_data"][i].get("role")
                 ),
                 concentration=try_float_or_none(
