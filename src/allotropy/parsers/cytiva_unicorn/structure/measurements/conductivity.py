@@ -14,6 +14,9 @@ from allotropy.parsers.cytiva_unicorn.reader.strict_element import (
 from allotropy.parsers.cytiva_unicorn.reader.unicorn_zip_handler import (
     UnicornZipHandler,
 )
+from allotropy.parsers.cytiva_unicorn.structure.data_cube.transformations import (
+    MScm2Sm,
+)
 from allotropy.parsers.cytiva_unicorn.structure.measurements.generic import (
     UnicornMeasurement,
 )
@@ -44,6 +47,7 @@ class ConductivityMeasurement(UnicornMeasurement):
                     concept="electric conductivity",
                     unit="S/m",
                 ),
+                transformation=MScm2Sm(),
             ),
             processed_data_doc=ProcessedDataDoc(
                 chromatogram_data_cube=cls.get_data_cube(
