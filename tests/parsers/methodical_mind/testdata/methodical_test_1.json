@@ -24,7 +24,20 @@
                                 "value": 12895,
                                 "unit": "RLU"
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2023-09-08T13:39:33-04:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                },
+                "analyst": "dmc"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -36,19 +49,19 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_1",
                             "sample document": {
-                                "sample identifier": "*22M0TALA85N*_A1_2",
-                                "location identifier": "A1_2",
+                                "sample identifier": "*22M0TALA85N*_A2_1",
+                                "location identifier": "A2_1",
                                 "well plate identifier": "*22M0TALA85N*"
                             },
                             "luminescence": {
-                                "value": 13346,
+                                "value": 10144,
                                 "unit": "RLU"
                             }
                         }
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -69,15 +82,28 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_2",
                             "sample document": {
-                                "sample identifier": "*22M0TALA85N*_A2_1",
-                                "location identifier": "A2_1",
+                                "sample identifier": "*22M0TALA85N*_A3_1",
+                                "location identifier": "A3_1",
                                 "well plate identifier": "*22M0TALA85N*"
                             },
                             "luminescence": {
-                                "value": 10144,
+                                "value": 7436,
                                 "unit": "RLU"
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2023-09-08T13:39:33-04:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                },
+                "analyst": "dmc"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -89,19 +115,19 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_3",
                             "sample document": {
-                                "sample identifier": "*22M0TALA85N*_A2_2",
-                                "location identifier": "A2_2",
+                                "sample identifier": "*22M0TALA85N*_A4_1",
+                                "location identifier": "A4_1",
                                 "well plate identifier": "*22M0TALA85N*"
                             },
                             "luminescence": {
-                                "value": 10408,
+                                "value": 4930,
                                 "unit": "RLU"
                             }
                         }
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -122,15 +148,28 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_4",
                             "sample document": {
-                                "sample identifier": "*22M0TALA85N*_A3_1",
-                                "location identifier": "A3_1",
+                                "sample identifier": "*22M0TALA85N*_A5_1",
+                                "location identifier": "A5_1",
                                 "well plate identifier": "*22M0TALA85N*"
                             },
                             "luminescence": {
-                                "value": 7436,
+                                "value": 3150,
                                 "unit": "RLU"
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2023-09-08T13:39:33-04:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                },
+                "analyst": "dmc"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -142,19 +181,19 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_5",
                             "sample document": {
-                                "sample identifier": "*22M0TALA85N*_A3_2",
-                                "location identifier": "A3_2",
+                                "sample identifier": "*22M0TALA85N*_A6_1",
+                                "location identifier": "A6_1",
                                 "well plate identifier": "*22M0TALA85N*"
                             },
                             "luminescence": {
-                                "value": 7433,
+                                "value": 1817,
                                 "unit": "RLU"
                             }
                         }
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -175,15 +214,28 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_6",
                             "sample document": {
-                                "sample identifier": "*22M0TALA85N*_A4_1",
-                                "location identifier": "A4_1",
+                                "sample identifier": "*22M0TALA85N*_A7_1",
+                                "location identifier": "A7_1",
                                 "well plate identifier": "*22M0TALA85N*"
                             },
                             "luminescence": {
-                                "value": 4930,
+                                "value": 972,
                                 "unit": "RLU"
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2023-09-08T13:39:33-04:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                },
+                "analyst": "dmc"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -195,19 +247,19 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_7",
                             "sample document": {
-                                "sample identifier": "*22M0TALA85N*_A4_2",
-                                "location identifier": "A4_2",
+                                "sample identifier": "*22M0TALA85N*_A8_1",
+                                "location identifier": "A8_1",
                                 "well plate identifier": "*22M0TALA85N*"
                             },
                             "luminescence": {
-                                "value": 4755,
+                                "value": 552,
                                 "unit": "RLU"
                             }
                         }
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -228,15 +280,28 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_8",
                             "sample document": {
-                                "sample identifier": "*22M0TALA85N*_A5_1",
-                                "location identifier": "A5_1",
+                                "sample identifier": "*22M0TALA85N*_A9_1",
+                                "location identifier": "A9_1",
                                 "well plate identifier": "*22M0TALA85N*"
                             },
                             "luminescence": {
-                                "value": 3150,
+                                "value": 324,
                                 "unit": "RLU"
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2023-09-08T13:39:33-04:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                },
+                "analyst": "dmc"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -248,19 +313,19 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_9",
                             "sample document": {
-                                "sample identifier": "*22M0TALA85N*_A5_2",
-                                "location identifier": "A5_2",
+                                "sample identifier": "*22M0TALA85N*_A10_1",
+                                "location identifier": "A10_1",
                                 "well plate identifier": "*22M0TALA85N*"
                             },
                             "luminescence": {
-                                "value": 2934,
+                                "value": 210,
                                 "unit": "RLU"
                             }
                         }
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -281,15 +346,28 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_10",
                             "sample document": {
-                                "sample identifier": "*22M0TALA85N*_A6_1",
-                                "location identifier": "A6_1",
+                                "sample identifier": "*22M0TALA85N*_A11_1",
+                                "location identifier": "A11_1",
                                 "well plate identifier": "*22M0TALA85N*"
                             },
                             "luminescence": {
-                                "value": 1817,
+                                "value": 149,
                                 "unit": "RLU"
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2023-09-08T13:39:33-04:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                },
+                "analyst": "dmc"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -301,19 +379,19 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_11",
                             "sample document": {
-                                "sample identifier": "*22M0TALA85N*_A6_2",
-                                "location identifier": "A6_2",
+                                "sample identifier": "*22M0TALA85N*_A12_1",
+                                "location identifier": "A12_1",
                                 "well plate identifier": "*22M0TALA85N*"
                             },
                             "luminescence": {
-                                "value": 1654,
+                                "value": 71,
                                 "unit": "RLU"
                             }
                         }
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -334,15 +412,28 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_12",
                             "sample document": {
-                                "sample identifier": "*22M0TALA85N*_A7_1",
-                                "location identifier": "A7_1",
+                                "sample identifier": "*22M0TALA85N*_B1_1",
+                                "location identifier": "B1_1",
                                 "well plate identifier": "*22M0TALA85N*"
                             },
                             "luminescence": {
-                                "value": 972,
+                                "value": 13346,
                                 "unit": "RLU"
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2023-09-08T13:39:33-04:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                },
+                "analyst": "dmc"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -354,19 +445,19 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_13",
                             "sample document": {
-                                "sample identifier": "*22M0TALA85N*_A7_2",
-                                "location identifier": "A7_2",
+                                "sample identifier": "*22M0TALA85N*_B2_1",
+                                "location identifier": "B2_1",
                                 "well plate identifier": "*22M0TALA85N*"
                             },
                             "luminescence": {
-                                "value": 890,
+                                "value": 10408,
                                 "unit": "RLU"
                             }
                         }
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -387,15 +478,28 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_14",
                             "sample document": {
-                                "sample identifier": "*22M0TALA85N*_A8_1",
-                                "location identifier": "A8_1",
+                                "sample identifier": "*22M0TALA85N*_B3_1",
+                                "location identifier": "B3_1",
                                 "well plate identifier": "*22M0TALA85N*"
                             },
                             "luminescence": {
-                                "value": 552,
+                                "value": 7433,
                                 "unit": "RLU"
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2023-09-08T13:39:33-04:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                },
+                "analyst": "dmc"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -407,19 +511,19 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_15",
                             "sample document": {
-                                "sample identifier": "*22M0TALA85N*_A8_2",
-                                "location identifier": "A8_2",
+                                "sample identifier": "*22M0TALA85N*_B4_1",
+                                "location identifier": "B4_1",
                                 "well plate identifier": "*22M0TALA85N*"
                             },
                             "luminescence": {
-                                "value": 497,
+                                "value": 4755,
                                 "unit": "RLU"
                             }
                         }
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -440,15 +544,28 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_16",
                             "sample document": {
-                                "sample identifier": "*22M0TALA85N*_A9_1",
-                                "location identifier": "A9_1",
+                                "sample identifier": "*22M0TALA85N*_B5_1",
+                                "location identifier": "B5_1",
                                 "well plate identifier": "*22M0TALA85N*"
                             },
                             "luminescence": {
-                                "value": 324,
+                                "value": 2934,
                                 "unit": "RLU"
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2023-09-08T13:39:33-04:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                },
+                "analyst": "dmc"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -460,19 +577,19 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_17",
                             "sample document": {
-                                "sample identifier": "*22M0TALA85N*_A9_2",
-                                "location identifier": "A9_2",
+                                "sample identifier": "*22M0TALA85N*_B6_1",
+                                "location identifier": "B6_1",
                                 "well plate identifier": "*22M0TALA85N*"
                             },
                             "luminescence": {
-                                "value": 286,
+                                "value": 1654,
                                 "unit": "RLU"
                             }
                         }
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -493,15 +610,28 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_18",
                             "sample document": {
-                                "sample identifier": "*22M0TALA85N*_A10_1",
-                                "location identifier": "A10_1",
+                                "sample identifier": "*22M0TALA85N*_B7_1",
+                                "location identifier": "B7_1",
                                 "well plate identifier": "*22M0TALA85N*"
                             },
                             "luminescence": {
-                                "value": 210,
+                                "value": 890,
                                 "unit": "RLU"
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2023-09-08T13:39:33-04:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                },
+                "analyst": "dmc"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -513,19 +643,19 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_19",
                             "sample document": {
-                                "sample identifier": "*22M0TALA85N*_A10_2",
-                                "location identifier": "A10_2",
+                                "sample identifier": "*22M0TALA85N*_B8_1",
+                                "location identifier": "B8_1",
                                 "well plate identifier": "*22M0TALA85N*"
                             },
                             "luminescence": {
-                                "value": 190,
+                                "value": 497,
                                 "unit": "RLU"
                             }
                         }
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -546,15 +676,28 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_20",
                             "sample document": {
-                                "sample identifier": "*22M0TALA85N*_A11_1",
-                                "location identifier": "A11_1",
+                                "sample identifier": "*22M0TALA85N*_B9_1",
+                                "location identifier": "B9_1",
                                 "well plate identifier": "*22M0TALA85N*"
                             },
                             "luminescence": {
-                                "value": 149,
+                                "value": 286,
                                 "unit": "RLU"
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2023-09-08T13:39:33-04:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                },
+                "analyst": "dmc"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -566,19 +709,19 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_21",
                             "sample document": {
-                                "sample identifier": "*22M0TALA85N*_A11_2",
-                                "location identifier": "A11_2",
+                                "sample identifier": "*22M0TALA85N*_B10_1",
+                                "location identifier": "B10_1",
                                 "well plate identifier": "*22M0TALA85N*"
                             },
                             "luminescence": {
-                                "value": 140,
+                                "value": 190,
                                 "unit": "RLU"
                             }
                         }
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -599,15 +742,28 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_22",
                             "sample document": {
-                                "sample identifier": "*22M0TALA85N*_A12_1",
-                                "location identifier": "A12_1",
+                                "sample identifier": "*22M0TALA85N*_B11_1",
+                                "location identifier": "B11_1",
                                 "well plate identifier": "*22M0TALA85N*"
                             },
                             "luminescence": {
-                                "value": 71,
+                                "value": 140,
                                 "unit": "RLU"
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2023-09-08T13:39:33-04:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                },
+                "analyst": "dmc"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -619,8 +775,8 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_23",
                             "sample document": {
-                                "sample identifier": "*22M0TALA85N*_A12_2",
-                                "location identifier": "A12_2",
+                                "sample identifier": "*22M0TALA85N*_B12_1",
+                                "location identifier": "B12_1",
                                 "well plate identifier": "*22M0TALA85N*"
                             },
                             "luminescence": {
@@ -631,7 +787,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -664,7 +820,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -697,7 +853,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -730,7 +886,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -763,7 +919,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -796,7 +952,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -829,7 +985,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -862,7 +1018,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -895,7 +1051,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -928,7 +1084,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -961,7 +1117,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -994,7 +1150,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -1027,7 +1183,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -1060,7 +1216,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -1093,7 +1249,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -1126,7 +1282,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -1159,7 +1315,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -1192,7 +1348,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -1225,7 +1381,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -1258,7 +1414,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -1291,7 +1447,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -1324,7 +1480,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -1357,7 +1513,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -1390,7 +1546,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -1423,7 +1579,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -1456,7 +1612,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -1489,7 +1645,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -1522,7 +1678,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -1555,7 +1711,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -1588,7 +1744,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -1621,7 +1777,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -1654,7 +1810,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -1687,7 +1843,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -1720,7 +1876,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -1753,7 +1909,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -1786,7 +1942,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -1819,7 +1975,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -1852,7 +2008,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -1885,7 +2041,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -1918,7 +2074,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -1951,7 +2107,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -1984,7 +2140,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -2017,7 +2173,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -2050,7 +2206,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -2083,7 +2239,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -2116,7 +2272,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -2149,7 +2305,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -2182,7 +2338,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -2215,7 +2371,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -2248,7 +2404,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -2281,7 +2437,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -2314,7 +2470,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -2347,7 +2503,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -2380,7 +2536,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -2413,7 +2569,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -2446,7 +2602,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -2479,7 +2635,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -2512,7 +2668,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -2545,7 +2701,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -2578,7 +2734,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -2611,7 +2767,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -2644,7 +2800,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -2677,7 +2833,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -2710,7 +2866,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -2743,7 +2899,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -2776,7 +2932,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -2809,7 +2965,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -2842,7 +2998,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -2875,7 +3031,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -2908,7 +3064,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -2941,7 +3097,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -2974,7 +3130,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -3007,7 +3163,7 @@
                     ],
                     "measurement time": "2023-09-08T13:39:33-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -3036,7 +3192,20 @@
                                 "value": 12233,
                                 "unit": "RLU"
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2023-09-08T13:40:49-04:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                },
+                "analyst": "yehs"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -3048,19 +3217,19 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_97",
                             "sample document": {
-                                "sample identifier": "*22M0TAQA86T*_A1_2",
-                                "location identifier": "A1_2",
+                                "sample identifier": "*22M0TAQA86T*_A2_1",
+                                "location identifier": "A2_1",
                                 "well plate identifier": "*22M0TAQA86T*"
                             },
                             "luminescence": {
-                                "value": 13040,
+                                "value": 9368,
                                 "unit": "RLU"
                             }
                         }
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -3081,15 +3250,28 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_98",
                             "sample document": {
-                                "sample identifier": "*22M0TAQA86T*_A2_1",
-                                "location identifier": "A2_1",
+                                "sample identifier": "*22M0TAQA86T*_A3_1",
+                                "location identifier": "A3_1",
                                 "well plate identifier": "*22M0TAQA86T*"
                             },
                             "luminescence": {
-                                "value": 9368,
+                                "value": 6927,
                                 "unit": "RLU"
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2023-09-08T13:40:49-04:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                },
+                "analyst": "yehs"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -3101,19 +3283,19 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_99",
                             "sample document": {
-                                "sample identifier": "*22M0TAQA86T*_A2_2",
-                                "location identifier": "A2_2",
+                                "sample identifier": "*22M0TAQA86T*_A4_1",
+                                "location identifier": "A4_1",
                                 "well plate identifier": "*22M0TAQA86T*"
                             },
                             "luminescence": {
-                                "value": 9913,
+                                "value": 4496,
                                 "unit": "RLU"
                             }
                         }
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -3134,15 +3316,28 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_100",
                             "sample document": {
-                                "sample identifier": "*22M0TAQA86T*_A3_1",
-                                "location identifier": "A3_1",
+                                "sample identifier": "*22M0TAQA86T*_A5_1",
+                                "location identifier": "A5_1",
                                 "well plate identifier": "*22M0TAQA86T*"
                             },
                             "luminescence": {
-                                "value": 6927,
+                                "value": 2856,
                                 "unit": "RLU"
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2023-09-08T13:40:49-04:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                },
+                "analyst": "yehs"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -3154,19 +3349,19 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_101",
                             "sample document": {
-                                "sample identifier": "*22M0TAQA86T*_A3_2",
-                                "location identifier": "A3_2",
+                                "sample identifier": "*22M0TAQA86T*_A6_1",
+                                "location identifier": "A6_1",
                                 "well plate identifier": "*22M0TAQA86T*"
                             },
                             "luminescence": {
-                                "value": 7009,
+                                "value": 1701,
                                 "unit": "RLU"
                             }
                         }
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -3187,15 +3382,28 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_102",
                             "sample document": {
-                                "sample identifier": "*22M0TAQA86T*_A4_1",
-                                "location identifier": "A4_1",
+                                "sample identifier": "*22M0TAQA86T*_A7_1",
+                                "location identifier": "A7_1",
                                 "well plate identifier": "*22M0TAQA86T*"
                             },
                             "luminescence": {
-                                "value": 4496,
+                                "value": 933,
                                 "unit": "RLU"
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2023-09-08T13:40:49-04:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                },
+                "analyst": "yehs"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -3207,19 +3415,19 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_103",
                             "sample document": {
-                                "sample identifier": "*22M0TAQA86T*_A4_2",
-                                "location identifier": "A4_2",
+                                "sample identifier": "*22M0TAQA86T*_A8_1",
+                                "location identifier": "A8_1",
                                 "well plate identifier": "*22M0TAQA86T*"
                             },
                             "luminescence": {
-                                "value": 4472,
+                                "value": 522,
                                 "unit": "RLU"
                             }
                         }
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -3240,15 +3448,28 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_104",
                             "sample document": {
-                                "sample identifier": "*22M0TAQA86T*_A5_1",
-                                "location identifier": "A5_1",
+                                "sample identifier": "*22M0TAQA86T*_A9_1",
+                                "location identifier": "A9_1",
                                 "well plate identifier": "*22M0TAQA86T*"
                             },
                             "luminescence": {
-                                "value": 2856,
+                                "value": 307,
                                 "unit": "RLU"
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2023-09-08T13:40:49-04:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                },
+                "analyst": "yehs"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -3260,19 +3481,19 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_105",
                             "sample document": {
-                                "sample identifier": "*22M0TAQA86T*_A5_2",
-                                "location identifier": "A5_2",
+                                "sample identifier": "*22M0TAQA86T*_A10_1",
+                                "location identifier": "A10_1",
                                 "well plate identifier": "*22M0TAQA86T*"
                             },
                             "luminescence": {
-                                "value": 2736,
+                                "value": 198,
                                 "unit": "RLU"
                             }
                         }
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -3293,15 +3514,28 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_106",
                             "sample document": {
-                                "sample identifier": "*22M0TAQA86T*_A6_1",
-                                "location identifier": "A6_1",
+                                "sample identifier": "*22M0TAQA86T*_A11_1",
+                                "location identifier": "A11_1",
                                 "well plate identifier": "*22M0TAQA86T*"
                             },
                             "luminescence": {
-                                "value": 1701,
+                                "value": 136,
                                 "unit": "RLU"
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2023-09-08T13:40:49-04:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                },
+                "analyst": "yehs"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -3313,19 +3547,19 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_107",
                             "sample document": {
-                                "sample identifier": "*22M0TAQA86T*_A6_2",
-                                "location identifier": "A6_2",
+                                "sample identifier": "*22M0TAQA86T*_A12_1",
+                                "location identifier": "A12_1",
                                 "well plate identifier": "*22M0TAQA86T*"
                             },
                             "luminescence": {
-                                "value": 1543,
+                                "value": 84,
                                 "unit": "RLU"
                             }
                         }
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -3346,15 +3580,28 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_108",
                             "sample document": {
-                                "sample identifier": "*22M0TAQA86T*_A7_1",
-                                "location identifier": "A7_1",
+                                "sample identifier": "*22M0TAQA86T*_B1_1",
+                                "location identifier": "B1_1",
                                 "well plate identifier": "*22M0TAQA86T*"
                             },
                             "luminescence": {
-                                "value": 933,
+                                "value": 13040,
                                 "unit": "RLU"
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2023-09-08T13:40:49-04:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                },
+                "analyst": "yehs"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -3366,19 +3613,19 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_109",
                             "sample document": {
-                                "sample identifier": "*22M0TAQA86T*_A7_2",
-                                "location identifier": "A7_2",
+                                "sample identifier": "*22M0TAQA86T*_B2_1",
+                                "location identifier": "B2_1",
                                 "well plate identifier": "*22M0TAQA86T*"
                             },
                             "luminescence": {
-                                "value": 898,
+                                "value": 9913,
                                 "unit": "RLU"
                             }
                         }
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -3399,15 +3646,28 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_110",
                             "sample document": {
-                                "sample identifier": "*22M0TAQA86T*_A8_1",
-                                "location identifier": "A8_1",
+                                "sample identifier": "*22M0TAQA86T*_B3_1",
+                                "location identifier": "B3_1",
                                 "well plate identifier": "*22M0TAQA86T*"
                             },
                             "luminescence": {
-                                "value": 522,
+                                "value": 7009,
                                 "unit": "RLU"
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2023-09-08T13:40:49-04:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                },
+                "analyst": "yehs"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -3419,19 +3679,19 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_111",
                             "sample document": {
-                                "sample identifier": "*22M0TAQA86T*_A8_2",
-                                "location identifier": "A8_2",
+                                "sample identifier": "*22M0TAQA86T*_B4_1",
+                                "location identifier": "B4_1",
                                 "well plate identifier": "*22M0TAQA86T*"
                             },
                             "luminescence": {
-                                "value": 469,
+                                "value": 4472,
                                 "unit": "RLU"
                             }
                         }
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -3452,15 +3712,28 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_112",
                             "sample document": {
-                                "sample identifier": "*22M0TAQA86T*_A9_1",
-                                "location identifier": "A9_1",
+                                "sample identifier": "*22M0TAQA86T*_B5_1",
+                                "location identifier": "B5_1",
                                 "well plate identifier": "*22M0TAQA86T*"
                             },
                             "luminescence": {
-                                "value": 307,
+                                "value": 2736,
                                 "unit": "RLU"
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2023-09-08T13:40:49-04:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                },
+                "analyst": "yehs"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -3472,19 +3745,19 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_113",
                             "sample document": {
-                                "sample identifier": "*22M0TAQA86T*_A9_2",
-                                "location identifier": "A9_2",
+                                "sample identifier": "*22M0TAQA86T*_B6_1",
+                                "location identifier": "B6_1",
                                 "well plate identifier": "*22M0TAQA86T*"
                             },
                             "luminescence": {
-                                "value": 281,
+                                "value": 1543,
                                 "unit": "RLU"
                             }
                         }
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -3505,15 +3778,28 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_114",
                             "sample document": {
-                                "sample identifier": "*22M0TAQA86T*_A10_1",
-                                "location identifier": "A10_1",
+                                "sample identifier": "*22M0TAQA86T*_B7_1",
+                                "location identifier": "B7_1",
                                 "well plate identifier": "*22M0TAQA86T*"
                             },
                             "luminescence": {
-                                "value": 198,
+                                "value": 898,
                                 "unit": "RLU"
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2023-09-08T13:40:49-04:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                },
+                "analyst": "yehs"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -3525,19 +3811,19 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_115",
                             "sample document": {
-                                "sample identifier": "*22M0TAQA86T*_A10_2",
-                                "location identifier": "A10_2",
+                                "sample identifier": "*22M0TAQA86T*_B8_1",
+                                "location identifier": "B8_1",
                                 "well plate identifier": "*22M0TAQA86T*"
                             },
                             "luminescence": {
-                                "value": 186,
+                                "value": 469,
                                 "unit": "RLU"
                             }
                         }
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -3558,15 +3844,28 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_116",
                             "sample document": {
-                                "sample identifier": "*22M0TAQA86T*_A11_1",
-                                "location identifier": "A11_1",
+                                "sample identifier": "*22M0TAQA86T*_B9_1",
+                                "location identifier": "B9_1",
                                 "well plate identifier": "*22M0TAQA86T*"
                             },
                             "luminescence": {
-                                "value": 136,
+                                "value": 281,
                                 "unit": "RLU"
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2023-09-08T13:40:49-04:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                },
+                "analyst": "yehs"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -3578,19 +3877,19 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_117",
                             "sample document": {
-                                "sample identifier": "*22M0TAQA86T*_A11_2",
-                                "location identifier": "A11_2",
+                                "sample identifier": "*22M0TAQA86T*_B10_1",
+                                "location identifier": "B10_1",
                                 "well plate identifier": "*22M0TAQA86T*"
                             },
                             "luminescence": {
-                                "value": 134,
+                                "value": 186,
                                 "unit": "RLU"
                             }
                         }
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -3611,15 +3910,28 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_118",
                             "sample document": {
-                                "sample identifier": "*22M0TAQA86T*_A12_1",
-                                "location identifier": "A12_1",
+                                "sample identifier": "*22M0TAQA86T*_B11_1",
+                                "location identifier": "B11_1",
                                 "well plate identifier": "*22M0TAQA86T*"
                             },
                             "luminescence": {
-                                "value": 84,
+                                "value": 134,
                                 "unit": "RLU"
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2023-09-08T13:40:49-04:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                },
+                "analyst": "yehs"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -3631,8 +3943,8 @@
                             },
                             "measurement identifier": "METHODICAL_MIND_TEST_ID_119",
                             "sample document": {
-                                "sample identifier": "*22M0TAQA86T*_A12_2",
-                                "location identifier": "A12_2",
+                                "sample identifier": "*22M0TAQA86T*_B12_1",
+                                "location identifier": "B12_1",
                                 "well plate identifier": "*22M0TAQA86T*"
                             },
                             "luminescence": {
@@ -3643,7 +3955,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -3676,7 +3988,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -3709,7 +4021,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -3742,7 +4054,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -3775,7 +4087,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -3808,7 +4120,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -3841,7 +4153,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -3874,7 +4186,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -3907,7 +4219,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -3940,7 +4252,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -3973,7 +4285,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -4006,7 +4318,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -4039,7 +4351,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -4072,7 +4384,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -4105,7 +4417,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -4138,7 +4450,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -4171,7 +4483,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -4204,7 +4516,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -4237,7 +4549,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -4270,7 +4582,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -4303,7 +4615,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -4336,7 +4648,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -4369,7 +4681,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -4402,7 +4714,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -4435,7 +4747,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -4468,7 +4780,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -4501,7 +4813,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -4534,7 +4846,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -4567,7 +4879,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -4600,7 +4912,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -4633,7 +4945,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -4666,7 +4978,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -4699,7 +5011,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -4732,7 +5044,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -4765,7 +5077,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -4798,7 +5110,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -4831,7 +5143,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -4864,7 +5176,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -4897,7 +5209,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -4930,7 +5242,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -4963,7 +5275,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -4996,7 +5308,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -5029,7 +5341,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -5062,7 +5374,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -5095,7 +5407,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -5128,7 +5440,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -5161,7 +5473,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -5194,7 +5506,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -5227,7 +5539,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -5260,7 +5572,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -5293,7 +5605,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -5326,7 +5638,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -5359,7 +5671,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -5392,7 +5704,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -5425,7 +5737,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -5458,7 +5770,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -5491,7 +5803,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -5524,7 +5836,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -5557,7 +5869,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -5590,7 +5902,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -5623,7 +5935,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -5656,7 +5968,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -5689,7 +6001,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -5722,7 +6034,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -5755,7 +6067,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -5788,7 +6100,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -5821,7 +6133,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -5854,7 +6166,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -5887,7 +6199,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -5920,7 +6232,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -5953,7 +6265,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -5986,7 +6298,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
@@ -6019,7 +6331,7 @@
                     ],
                     "measurement time": "2023-09-08T13:40:49-04:00",
                     "plate well count": {
-                        "value": 84,
+                        "value": 96,
                         "unit": "#"
                     },
                     "container type": "well plate"
