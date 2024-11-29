@@ -10,7 +10,7 @@ class TecanMagellanReader:
     metadata: list[str]
     data: pd.DataFrame
 
-    def __init__(self, named_file_contents: NamedFileContents) -> pd.DataFrame:
+    def __init__(self, named_file_contents: NamedFileContents) -> None:
         data = read_excel(named_file_contents.contents)
         self.data, metadata = split_dataframe(
             data,

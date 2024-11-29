@@ -1,14 +1,15 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from pathlib import Path
 import re
+
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
     Measurement,
     MeasurementGroup,
     MeasurementType,
     Metadata,
 )
-from pathlib import Path
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import LinesReader
@@ -90,14 +91,14 @@ class MagellanMetadata:
         settings_lines: list[list[str]] = []
         settings: dict[str, MeasurementSettings] = {}
         label_and_temps = []
-        TEMP_LINE_RE = r"Meas. temperature: (.+): ([\d\.]+) °C"
+        temp_line_re = r"Meas. temperature: (.+): ([\d\.]+) °C"
 
-        while not re.match(TEMP_LINE_RE, (first_line := assert_not_none(reader.get()))):
+        while not re.match(temp_line_re, (first_line := assert_not_none(reader.get()))):
             if match := re.match(r"Measurement \d.", first_line):
                 reader.pop()
             settings_lines.append(list(reader.pop_until_inclusive(r"Unit:.+")))
 
-        while match := re.match(TEMP_LINE_RE, assert_not_none(reader.pop())):
+        while match := re.match(temp_line_re, assert_not_none(reader.pop())):
             label_and_temps.append(match.groups())
 
         if len(label_and_temps) != len(settings_lines):

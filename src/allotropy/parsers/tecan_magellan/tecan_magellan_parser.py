@@ -12,9 +12,9 @@ from allotropy.parsers.tecan_magellan.tecan_magellan_reader import (
     TecanMagellanReader,
 )
 from allotropy.parsers.tecan_magellan.tecan_magellan_structure import (
-    MagellanMetadata,
     create_measurement_groups,
     create_metadata,
+    MagellanMetadata,
 )
 from allotropy.parsers.utils.pandas import map_rows
 from allotropy.parsers.vendor_parser import VendorParser
