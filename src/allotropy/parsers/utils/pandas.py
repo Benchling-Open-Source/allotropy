@@ -121,11 +121,13 @@ def split_header_and_data(
 def split_dataframe(
     df: pd.DataFrame,
     should_split_on_row: Callable[[pd.Series[Any]], bool],
+    include_split_row: bool = False,
 ) -> tuple[pd.DataFrame, pd.DataFrame | None]:
     for idx, row in df.iterrows():
         if should_split_on_row(row):
-            section_end = int(str(idx))
-            return df[:section_end], df[section_end + 1 :]
+            head_end = int(str(idx))
+            tail_start = head_end if include_split_row else head_end + 1
+            return df[:head_end], df[tail_start:]
 
     return df, None
 
@@ -290,8 +292,7 @@ class SeriesData:
         key: KeyOrKeys,
         default: Literal[None] = None,
         validate: ValidateRawMode | None = None,
-    ) -> T | None:
-        ...
+    ) -> T | None: ...
 
     # This overload tells typing that if default matches T, get will return T
     @overload
@@ -301,8 +302,7 @@ class SeriesData:
         key: KeyOrKeys,
         default: InvalidJsonFloat,
         validate: ValidateRawMode | None = None,
-    ) -> float | InvalidJsonFloat:
-        ...
+    ) -> float | InvalidJsonFloat: ...
 
     # This overload tells typing that if default matches T, get will return T
     @overload
@@ -312,8 +312,7 @@ class SeriesData:
         key: KeyOrKeys,
         default: T,
         validate: ValidateRawMode | None = None,
-    ) -> T:
-        ...
+    ) -> T: ...
 
     def get(
         self,

@@ -1,0 +1,99 @@
+{
+  "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2024/06/plate-reader.manifest",
+  "plate reader aggregate document": {
+    "plate reader document": [
+      {
+        "measurement aggregate document": {
+          "measurement time": "2021-07-08T15:01:21",
+          "plate well count": {
+            "value": 384.0,
+            "unit": "#"
+          },
+          "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\mth\\_Ali\\384_Cy535.mth",
+          "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan\\wsp\\08072021-006.wsp",
+          "container type": "well plate",
+          "analyst": "Unknown user",
+          "measurement document": [
+            {
+              "measurement identifier": "UUID",
+              "device control aggregate document": {
+                "device control document": [
+                  {
+                    "device type": "plate-reader",
+                    "detection type": "absorbance",
+                    "detector wavelength setting": {
+                      "value": 535.0,
+                      "unit": "nm"
+                    },
+                    "number of averages": {
+                      "value": 1.0,
+                      "unit": "#"
+                    }
+                  }
+                ]
+              },
+              "sample document": {
+                "sample identifier": "COS384ft_A1",
+                "well location identifier": "A1",
+                "well plate identifier": "COS384ft"
+              },
+              "absorbance": {
+                "value": 0.4002,
+                "unit": "mAU"
+              },
+              "compartment temperature": {
+                "value": 24.8,
+                "unit": "degC"
+              }
+            },
+            {
+              "measurement identifier": "UUID",
+              "device control aggregate document": {
+                "device control document": [
+                  {
+                    "device type": "plate-reader",
+                    "detection type": "absorbance",
+                    "detector wavelength setting": {
+                      "value": 700.0,
+                      "unit": "nm"
+                    },
+                    "number of averages": {
+                      "value": 1.0,
+                      "unit": "#"
+                    }
+                  }
+                ]
+              },
+              "sample document": {
+                "sample identifier": "COS384ft_A1",
+                "well location identifier": "A1",
+                "well plate identifier": "COS384ft"
+              },
+              "absorbance": {
+                "value": 0.3741,
+                "unit": "mAU"
+              },
+              "compartment temperature": {
+                "value": 25.1,
+                "unit": "degC"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "data system document": {
+    "file name": "Tecan_Magellan_example1.xlsx",
+    "UNC path": "Tecan_Magellan_example1.xlsx",
+    "software name": "Magellan",
+    "ASM converter name": "allotropy_tecan_magellan",
+    "ASM converter version": "0.1.65",
+    "ASM file identifier": "Tecan_Magellan_example1.json"
+  },
+  "device system document": {
+    "device identifier": "ULTRA",
+    "equipment serial number": "12901000069",
+    "product manufacturer": "Tecan"
+  }
+}
