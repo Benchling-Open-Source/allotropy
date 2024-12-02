@@ -102,7 +102,11 @@ class AbsorbanceMeasurement:
 
 class VisionLiteData(Data):
     @staticmethod
-    def create(reader: ThermoFisherVisionliteReader, file_path: str) -> Data:
+    def create(
+        reader: ThermoFisherVisionliteReader,
+        file_path: str,
+        software_name: str = SOFTWARE_NAME,
+    ) -> Data:
         experiment_type = _get_experiment_type(reader)
         header = Header.create(reader.header)
         data = reader.data
@@ -149,7 +153,7 @@ class VisionLiteData(Data):
                     )
 
         return Data(
-            metadata=_create_metadata(file_path),
+            metadata=_create_metadata(file_path, software_name),
             measurement_groups=measurement_groups,
             calculated_data=calculated_data,
         )
@@ -170,14 +174,14 @@ def _get_calculated_data_item(
     )
 
 
-def _create_metadata(file_path: str) -> Metadata:
+def _create_metadata(file_path: str, software_name: str) -> Metadata:
     return Metadata(
         file_name=Path(file_path).name,
         unc_path=file_path,
         device_identifier=NOT_APPLICABLE,
         device_type=DEVICE_TYPE,
         model_number=NOT_APPLICABLE,
-        software_name=SOFTWARE_NAME,
+        software_name=software_name,
         detection_type=DETECTION_TYPE,
         product_manufacturer=PRODUCT_MANUFACTURER,
     )
