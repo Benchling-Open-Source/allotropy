@@ -23,36 +23,53 @@ class UnicornZipHandler(ZipHandler):
             data = f.read()
         return UnicornZipHandler(data=BytesIO(data))
 
+    def filter_xml_metadata(self, stream: BytesIO) -> BytesIO:
+        data = stream.read()
+
+        start = 0
+        for idx, element in enumerate(data):
+            if 32 <= element <= 126:
+                start = idx
+                break
+
+        end = len(data)
+        for idx, element in enumerate(reversed(data)):
+            if 32 <= element <= 126:
+                end -= idx
+                break
+
+        return BytesIO(data[start:end])
+
     def get_system_data(self) -> StrictElement:
         system_data = self.get_zip_from_pattern("SystemData.zip$")
         b_stream = system_data.get_file_from_pattern("^Xml$")
-        raw_content = b_stream.read()
-        return StrictElement.create_from_bytes(raw_content[25:-1])
+        raw_content = self.filter_xml_metadata(b_stream).read()
+        return StrictElement.create_from_bytes(raw_content)
 
     def get_results(self) -> StrictElement:
         b_stream = self.get_file_from_pattern("Result.xml$")
-        raw_content = b_stream.read()
+        raw_content = self.filter_xml_metadata(b_stream).read()
         return StrictElement.create_from_bytes(raw_content)
 
     def get_instrument_config_data(self) -> StrictElement:
         instrument_regex = "InstrumentConfigurationData.zip$"
         instrument_config_data = self.get_zip_from_pattern(instrument_regex)
         b_stream = instrument_config_data.get_file_from_pattern("^Xml$")
-        raw_content = b_stream.read()
-        return StrictElement.create_from_bytes(raw_content[24:-1])
+        raw_content = self.filter_xml_metadata(b_stream).read()
+        return StrictElement.create_from_bytes(raw_content)
 
     def get_evaluation_log(self) -> StrictElement:
         b_stream = self.get_file_from_pattern("EvaluationLog.xml$")
-        raw_content = b_stream.read()
+        raw_content = self.filter_xml_metadata(b_stream).read()
         return StrictElement.create_from_bytes(raw_content)
 
     def get_chrom_1(self) -> StrictElement:
         b_stream = self.get_file_from_pattern("Chrom.1.Xml$")
-        raw_content = b_stream.read()
+        raw_content = self.filter_xml_metadata(b_stream).read()
         return StrictElement.create_from_bytes(raw_content)
 
     def get_column_type_data(self) -> StrictElement:
         column_type_data = self.get_zip_from_pattern("ColumnTypeData.zip$")
         b_stream = column_type_data.get_file_from_pattern("^Xml$")
-        raw_content = b_stream.read()
-        return StrictElement.create_from_bytes(raw_content[24:-1])
+        raw_content = self.filter_xml_metadata(b_stream).read()
+        return StrictElement.create_from_bytes(raw_content)
