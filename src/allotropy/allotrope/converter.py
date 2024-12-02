@@ -163,8 +163,16 @@ def _convert_dict_to_model_key(key: str) -> str:
     return key
 
 
-def _validate_structuring(val: dict[str, Any], model: Any) -> None:
+def _validate_structuring(val: Any, model: Any) -> None:
     """Validate that all keys in val are stored in model."""
+    if isinstance(val, list):
+        if not isinstance(model, list):
+            raise AssertionError()
+        for list_value, model_list_value in zip(val, model, strict=True):
+            _validate_structuring(list_value, model_list_value)
+    if not isinstance(val, dict):
+        return
+
     for key, value in val.items():
         model_key = _convert_dict_to_model_key(key)
         # If the key is unit, and this is a unit model, ensure the unit is correct.
@@ -182,11 +190,7 @@ def _validate_structuring(val: dict[str, Any], model: Any) -> None:
         if model_val is None:
             raise AssertionError()
 
-        if isinstance(value, dict):
-            _validate_structuring(value, model_val)
-        elif isinstance(value, list):
-            for list_value, model_list_value in zip(value, model_val, strict=True):
-                _validate_structuring(list_value, model_list_value)
+        _validate_structuring(value, model_val)
 
 
 def register_data_cube_hooks(converter: Converter) -> None:
