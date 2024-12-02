@@ -238,15 +238,44 @@ class SeriesData:
                     stacklevel=2,
                 )
 
-    def get_unread(self, skip: set[str] | None = None) -> dict[str, float | str | None]:
-        skip = skip or set()
+    def _get_custom_key(self, key: str) -> float | str | None:
+        if (float_value := self.get(float, key)) is not None:
+            return float_value
+        return self.get(str, key)
+
+    def _get_matching_keys(self, key_or_keys: str | set[str]) -> set[str]:
+        return {
+            matched
+            for regex_key in (
+                key_or_keys if isinstance(key_or_keys, set) else {key_or_keys}
+            )
+            for matched in [k for k in self.series.index if re.fullmatch(regex_key, k)]
+        }
+
+    def get_custom_keys(
+        self, key_or_keys: str | set[str]
+    ) -> dict[str, float | str | None]:
+        return {
+            key: self._get_custom_key(key)
+            for key in self._get_matching_keys(key_or_keys)
+        }
+
+    def mark_read(self, key_or_keys: str | set[str]) -> None:
+        self.read_keys |= self._get_matching_keys(key_or_keys)
+
+    def get_unread(
+        self, regex: str | None = None, skip: set[str] | None = None
+    ) -> dict[str, float | str | None]:
+        skip = self._get_matching_keys(skip) if skip else set()
         # Mark explicitly skipped keys as "read". This not only covers the check below, but removes
         # them from the destructor warning.
         self.read_keys |= skip
-        return {
-            key: self.get(float, key) or self.get(str, key)
-            for key in set(self.series.index.to_list()) - self.read_keys
-        }
+        matching_keys = (
+            self._get_matching_keys(regex)
+            if regex
+            else set(self.series.index.to_list())
+        )
+        return self.get_custom_keys(matching_keys - self.read_keys)
 
     def has_key(self, key: str) -> bool:
         return key in self.series
