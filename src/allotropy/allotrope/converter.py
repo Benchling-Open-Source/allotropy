@@ -294,7 +294,7 @@ def register_dataclass_union_hooks(converter: Converter) -> None:
             elif len(valid_models) > 1:
                 for model in valid_models:
                     try:
-                        _validate_structuring(val, model)  # type: ignore[arg-type]
+                        _validate_structuring(val, model)
                         return model
                     except AssertionError:
                         pass
