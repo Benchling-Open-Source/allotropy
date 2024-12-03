@@ -185,6 +185,10 @@ class InvertedLinesReader(LinesReader):
 
 
 class CsvReader(LinesReader):
+    @staticmethod
+    def create(named_file_contents: NamedFileContents) -> CsvReader:
+        return CsvReader(read_to_lines(named_file_contents))
+
     def pop_csv_block_as_lines(self, empty_pat: str = EMPTY_STR_PATTERN) -> list[str]:
         self.drop_empty(empty_pat)
         lines = list(self.pop_until_empty(empty_pat))

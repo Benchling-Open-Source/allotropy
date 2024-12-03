@@ -73,6 +73,7 @@ SPECIAL_KEYS = {
     "number_of_theoretical_plates_measured_at_13_4___of_peak_height": "number of theoretical plates measured at 13.4 % of peak height",
     "number_of_theoretical_plates_measured_at_4_4___of_peak_height": "number of theoretical plates measured at 4.4 % of peak height",
     "number_of_theoretical_plates_by_peak_width_at_half_height__JP14_": "number of theoretical plates by peak width at half height (JP14)",
+    "confidence_interval__95__": "confidence interval (95%)",
     "co2_saturation": "CO2 saturation",
     "o2_saturation": "O2 saturation",
     "pco2": "pCO2",
@@ -162,8 +163,16 @@ def _convert_dict_to_model_key(key: str) -> str:
     return key
 
 
-def _validate_structuring(val: dict[str, Any], model: Any) -> None:
+def _validate_structuring(val: Any, model: Any) -> None:
     """Validate that all keys in val are stored in model."""
+    if isinstance(val, list):
+        if not isinstance(model, list):
+            raise AssertionError()
+        for list_value, model_list_value in zip(val, model, strict=True):
+            _validate_structuring(list_value, model_list_value)
+    if not isinstance(val, dict):
+        return
+
     for key, value in val.items():
         model_key = _convert_dict_to_model_key(key)
         # If the key is unit, and this is a unit model, ensure the unit is correct.
@@ -181,11 +190,7 @@ def _validate_structuring(val: dict[str, Any], model: Any) -> None:
         if model_val is None:
             raise AssertionError()
 
-        if isinstance(value, dict):
-            _validate_structuring(value, model_val)
-        elif isinstance(value, list):
-            for list_value, model_list_value in zip(value, model_val, strict=True):
-                _validate_structuring(list_value, model_list_value)
+        _validate_structuring(value, model_val)
 
 
 def register_data_cube_hooks(converter: Converter) -> None:
@@ -289,7 +294,7 @@ def register_dataclass_union_hooks(converter: Converter) -> None:
             elif len(valid_models) > 1:
                 for model in valid_models:
                     try:
-                        _validate_structuring(val, model)  # type: ignore[arg-type]
+                        _validate_structuring(val, model)
                         return model
                     except AssertionError:
                         pass
