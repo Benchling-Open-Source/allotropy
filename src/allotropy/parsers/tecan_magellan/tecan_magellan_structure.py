@@ -166,7 +166,7 @@ def create_measurement_groups(
             measurement = NEGATIVE_ZERO
             errors = [
                 ErrorDocument(
-                    eror=data.get(str, measurement_label),
+                    error=data[str, measurement_label],
                     error_feature=settings.measurement_mode,
                 )
             ]
