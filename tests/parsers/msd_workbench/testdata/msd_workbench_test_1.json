@@ -17,8 +17,9 @@
                             "measurement identifier": "MSD_WORKBENCH_TEST_ID_0",
                             "sample document": {
                                 "sample identifier": "S001_A02",
-                                "location identifier": "A02_2",
+                                "location identifier": "A02",
                                 "sample role type": "standard sample role",
+                                "well location identifier": "2",
                                 "well plate identifier": "2BO40AW287",
                                 "mass concentration": {
                                     "value": 54.2,
@@ -43,11 +44,12 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "MSD_WORKBENCH_TEST_ID_1",
+                            "measurement identifier": "MSD_WORKBENCH_TEST_ID_2",
                             "sample document": {
                                 "sample identifier": "S001_A02",
-                                "location identifier": "A02_1",
+                                "location identifier": "A02",
                                 "sample role type": "standard sample role",
+                                "well location identifier": "1",
                                 "well plate identifier": "2BO40AW287",
                                 "mass concentration": {
                                     "value": 331.0,
@@ -84,11 +86,12 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "MSD_WORKBENCH_TEST_ID_2",
+                            "measurement identifier": "MSD_WORKBENCH_TEST_ID_1",
                             "sample document": {
                                 "sample identifier": "S001_A01",
-                                "location identifier": "A01_2",
+                                "location identifier": "A01",
                                 "sample role type": "standard sample role",
+                                "well location identifier": "2",
                                 "well plate identifier": "2BO40AW287",
                                 "mass concentration": {
                                     "value": 54.2,
@@ -116,8 +119,9 @@
                             "measurement identifier": "MSD_WORKBENCH_TEST_ID_3",
                             "sample document": {
                                 "sample identifier": "S001_A01",
-                                "location identifier": "A01_1",
+                                "location identifier": "A01",
                                 "sample role type": "standard sample role",
+                                "well location identifier": "1",
                                 "well plate identifier": "2BO40AW287",
                                 "mass concentration": {
                                     "value": 331.0,
@@ -175,7 +179,7 @@
                                 "data source feature": "luminescence"
                             },
                             {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_2",
+                                "data source identifier": "MSD_WORKBENCH_TEST_ID_1",
                                 "data source feature": "luminescence"
                             }
                         ]
@@ -211,7 +215,7 @@
                                 "data source feature": "luminescence"
                             },
                             {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_2",
+                                "data source identifier": "MSD_WORKBENCH_TEST_ID_1",
                                 "data source feature": "luminescence"
                             }
                         ]
@@ -231,7 +235,7 @@
                                 "data source feature": "luminescence"
                             },
                             {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_2",
+                                "data source identifier": "MSD_WORKBENCH_TEST_ID_1",
                                 "data source feature": "luminescence"
                             }
                         ]
@@ -249,6 +253,10 @@
                             {
                                 "data source identifier": "MSD_WORKBENCH_TEST_ID_0",
                                 "data source feature": "luminescence"
+                            },
+                            {
+                                "data source identifier": "MSD_WORKBENCH_TEST_ID_2",
+                                "data source feature": "luminescence"
                             }
                         ]
                     }
@@ -259,11 +267,15 @@
                         "value": 53.20256476,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MSD_WORKBENCH_TEST_ID_11",
+                    "calculated data identifier": "MSD_WORKBENCH_TEST_ID_10",
                     "data source aggregate document": {
                         "data source document": [
                             {
                                 "data source identifier": "MSD_WORKBENCH_TEST_ID_0",
+                                "data source feature": "luminescence"
+                            },
+                            {
+                                "data source identifier": "MSD_WORKBENCH_TEST_ID_2",
                                 "data source feature": "luminescence"
                             }
                         ]
@@ -275,11 +287,11 @@
                         "value": 3328.0,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MSD_WORKBENCH_TEST_ID_13",
+                    "calculated data identifier": "MSD_WORKBENCH_TEST_ID_11",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_2",
+                                "data source identifier": "MSD_WORKBENCH_TEST_ID_1",
                                 "data source feature": "luminescence"
                             }
                         ]
@@ -291,11 +303,15 @@
                         "value": 101.6496351,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MSD_WORKBENCH_TEST_ID_14",
+                    "calculated data identifier": "MSD_WORKBENCH_TEST_ID_12",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_2",
+                                "data source identifier": "MSD_WORKBENCH_TEST_ID_1",
+                                "data source feature": "luminescence"
+                            },
+                            {
+                                "data source identifier": "MSD_WORKBENCH_TEST_ID_3",
                                 "data source feature": "luminescence"
                             }
                         ]
@@ -307,39 +323,7 @@
                         "value": 55.0941022,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MSD_WORKBENCH_TEST_ID_16",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_2",
-                                "data source feature": "luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Adjusted Signal",
-                    "calculated result": {
-                        "value": 341.0,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "MSD_WORKBENCH_TEST_ID_18",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_1",
-                                "data source feature": "luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Mean",
-                    "calculated result": {
-                        "value": 328.0,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "MSD_WORKBENCH_TEST_ID_19",
+                    "calculated data identifier": "MSD_WORKBENCH_TEST_ID_13",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -349,150 +333,6 @@
                             {
                                 "data source identifier": "MSD_WORKBENCH_TEST_ID_3",
                                 "data source feature": "luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Adj. Sig. Mean",
-                    "calculated result": {
-                        "value": 328.0,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "MSD_WORKBENCH_TEST_ID_20",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_19",
-                                "data source feature": "Mean"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "RSquared",
-                    "calculated result": {
-                        "value": 0.9923430361,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "MSD_WORKBENCH_TEST_ID_21",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_1",
-                                "data source feature": "luminescence"
-                            },
-                            {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_3",
-                                "data source feature": "luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "CV",
-                    "calculated result": {
-                        "value": 5.605114729,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "MSD_WORKBENCH_TEST_ID_22",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_1",
-                                "data source feature": "luminescence"
-                            },
-                            {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_3",
-                                "data source feature": "luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "% Recovery",
-                    "calculated result": {
-                        "value": 150.5505864,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "MSD_WORKBENCH_TEST_ID_23",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_1",
-                                "data source feature": "luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Calc. Concentration",
-                    "calculated result": {
-                        "value": 498.3224409,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "MSD_WORKBENCH_TEST_ID_24",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_1",
-                                "data source feature": "luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Adjusted Signal",
-                    "calculated result": {
-                        "value": 315.0,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "MSD_WORKBENCH_TEST_ID_25",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_3",
-                                "data source feature": "luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "% Recovery Mean",
-                    "calculated result": {
-                        "value": 99.90467432,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "MSD_WORKBENCH_TEST_ID_26",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_14",
-                                "data source feature": "% Recovery"
-                            },
-                            {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_9",
-                                "data source feature": "% Recovery"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Calc. Conc. Mean",
-                    "calculated result": {
-                        "value": 54.14833348,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "MSD_WORKBENCH_TEST_ID_27",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_11",
-                                "data source feature": "Calc. Concentration"
-                            },
-                            {
-                                "data source identifier": "MSD_WORKBENCH_TEST_ID_16",
-                                "data source feature": "Calc. Concentration"
                             }
                         ]
                     }

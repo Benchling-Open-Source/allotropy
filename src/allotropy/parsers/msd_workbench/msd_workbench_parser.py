@@ -17,7 +17,6 @@ from allotropy.parsers.msd_workbench.msd_workbench_reader import (
 from allotropy.parsers.msd_workbench.msd_workbench_structure import (
     create_measurement_groups,
     create_metadata,
-    Header,
     PlateData,
 )
 from allotropy.parsers.release_state import ReleaseState
@@ -32,7 +31,7 @@ class MSDWorkbenchParser(VendorParser[Data, Model]):
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = MSDWorkbenchReader(named_file_contents)
-        plate_data = PlateData.create(reader.plate_data)
+        plate_data = PlateData.create(reader.plate_data, reader.well_plate_id)
         measurement_groups = create_measurement_groups(plate_data)
         measurements = [
             measurement
@@ -45,7 +44,7 @@ class MSDWorkbenchParser(VendorParser[Data, Model]):
 
         return Data(
             create_metadata(
-                Header.create(named_file_contents.original_file_path),
+                named_file_contents.original_file_path,
             ),
             measurement_groups,
             calculated_data_groups,

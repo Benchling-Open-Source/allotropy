@@ -137,6 +137,7 @@ class Measurement:
 
     # Optional metadata
     well_plate_identifier: str | None = None
+    well_location_identifier: str | None = None
     detection_type: str | None = None
     sample_role_type: SampleRoleType | None = None
     mass_concentration: float | None = None
@@ -512,6 +513,7 @@ class Mapper(SchemaMapper[Data, Model]):
             sample_identifier=measurement.sample_identifier,
             location_identifier=measurement.location_identifier,
             well_plate_identifier=measurement.well_plate_identifier,
+            well_location_identifier=measurement.well_location_identifier,
             sample_role_type=(
                 measurement.sample_role_type.value
                 if measurement.sample_role_type

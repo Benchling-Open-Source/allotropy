@@ -154,7 +154,7 @@ def _get_data_sources(
     row: SeriesData,
     calculated_data: list[CalculatedDataItem],
 ) -> list[DataSource]:
-    location_identifier = row[str, "Well"] + "_" + row[str, "Spot"]
+    location_identifier = row[str, "Well"]
     current_measurement = _get_measurement_by_location_identifier(
         measurements, location_identifier
     )
@@ -222,9 +222,6 @@ def _is_calc_data_created(
 def create_calculated_data_groups(
     data: pd.DataFrame, measurements: list[Measurement]
 ) -> list[CalculatedDataItem]:
-    data = data.iloc[1:].reset_index(drop=True)
-    data.columns = pd.Index(data.iloc[0])
-    data = data[1:].reset_index(drop=True)
     calculated_data: list[CalculatedDataItem] = []
     for _row_index, row in data.iterrows():
         row_series = SeriesData(row)

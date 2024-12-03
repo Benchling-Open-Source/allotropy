@@ -10,28 +10,27 @@ from allotropy.parsers.msd_workbench.msd_workbench_structure import (
 
 
 def test_create_calculated_data() -> None:
+    columns = [
+        "Sample",
+        "Assay",
+        "Well",
+        "Spot",
+        "Fit Statistic: RSquared",
+        "Detection Range",
+        "Dilution",
+        "Concentration",
+        "Signal",
+        "Adjusted Signal",
+        "Mean",
+        "Adj. Sig. Mean",
+        "CV",
+        "% Recovery",
+        "% Recovery Mean",
+        "Calc. Concentration",
+        "Calc. Conc. Mean",
+    ]
     data = pd.DataFrame(
         [
-            ["Plate_2BO40AW287", None],
-            [
-                "Sample",
-                "Assay",
-                "Well",
-                "Spot",
-                "Fit Statistic: RSquared",
-                "Detection Range",
-                "Dilution",
-                "Concentration",
-                "Signal",
-                "Adjusted Signal",
-                "Mean",
-                "Adj. Sig. Mean",
-                "CV",
-                "% Recovery",
-                "% Recovery Mean",
-                "Calc. Concentration",
-                "Calc. Conc. Mean",
-            ],
             [
                 "S001",
                 "Spike (FL.1.5.1)",
@@ -53,7 +52,8 @@ def test_create_calculated_data() -> None:
             ],
         ]
     )
-    plate_data = PlateData.create(data)
+    data.columns = pd.Index(columns)
+    plate_data = PlateData.create(data, "Plate_2BO40AW287")
     measurement_groups = create_measurement_groups(plate_data)
     measurements = [
         measurement

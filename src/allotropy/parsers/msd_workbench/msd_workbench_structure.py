@@ -3,42 +3,26 @@ from __future__ import annotations
 from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
 
 import pandas as pd
 
-from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
     Measurement,
     MeasurementGroup,
     MeasurementType,
     Metadata,
 )
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import AllotropyParserError
 from allotropy.parsers.constants import DEFAULT_EPOCH_TIMESTAMP, NOT_APPLICABLE
 from allotropy.parsers.msd_workbench.constants import (
-    LUMINESCENCE,
-    LUMINESCENCE_DETECTOR,
+    DETECTION_TYPE,
+    DEVICE_TYPE,
+    POSSIBLE_WELL_COUNTS,
     SAMPLE_ROLE_TYPE_MAPPING,
     SOFTWARE_NAME,
 )
-from allotropy.parsers.utils.pandas import SeriesData
+from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
-
-
-@dataclass(frozen=True)
-class Header:
-    file_name: str
-    name: str
-    model: str
-
-    @staticmethod
-    def create(file_name: str) -> Header:
-        return Header(
-            file_name=file_name,
-            model=NOT_APPLICABLE,
-            name=SOFTWARE_NAME,
-        )
 
 
 @dataclass(frozen=True)
@@ -46,123 +30,96 @@ class PlateData:
     measurement_time: str
     plate_well_count: int
     well_plate_id: str
-    well_data: list[WellData]
+    well_data: pd.DataFrame
 
     @staticmethod
     def create(
         data: pd.DataFrame,
+        well_plate_id: str,
     ) -> PlateData:
-        first_row = str(data.iloc[0, 0])
-        if "Plate" not in first_row:
-            msg = "Plate ID not found in the first row of the data"
-            raise AllotropeConversionError(msg)
-        well_plate_id = first_row.split("_")[-1].strip()
-        data = data.iloc[1:].reset_index(drop=True)
-        # Set the first row as the header
-        data.columns = pd.Index(data.iloc[0])
-        data = data[1:].reset_index(drop=True)
-        well_data = []
-        for _row_index, row in data.iterrows():
-            row_series = SeriesData(row)
-            well_data.append(
-                WellData.create(
-                    luminescence=row_series[int, "Signal"],
-                    location_id=row_series[str, "Well"] + "_" + row_series[str, "Spot"],
-                    sample_id=row_series[str, "Sample"] + "_" + row_series[str, "Well"],
-                    concentration=row_series[float, "Concentration"],
-                    measurement_custom_info={
-                        "detection range": row_series.get(str, "Detection Range"),
-                        "assay identifier": row_series.get(str, "Assay"),
-                    },
-                    dilution_factor=row_series.get(int, "Dilution Factor"),
-                )
-            )
-
-        well_column = data["Well"]
-        plate_well_count = len(well_column.unique())
+        plate_well_count = PlateData._get_plate_well_count(data)
+        if not plate_well_count:
+            msg = "Could not determine plate well count"
+            raise AllotropyParserError(msg)
 
         return PlateData(
             measurement_time=DEFAULT_EPOCH_TIMESTAMP,
             well_plate_id=well_plate_id,
             plate_well_count=plate_well_count,
-            well_data=well_data,
+            well_data=data,
         )
-
-
-@dataclass(frozen=True)
-class WellData:
-    luminescence: int
-    location_identifier: str
-    sample_identifier: str
-    sample_role_type: SampleRoleType | None
-    mass_concentration: float | None
-    dilution_factor: int | None = None
-    measurement_custom_info: dict[str, Any] | None = None
 
     @staticmethod
-    def create(
-        luminescence: int,
-        location_id: str,
-        sample_id: str,
-        concentration: float | None = None,
-        measurement_custom_info: dict[str, Any] | None = None,
-        dilution_factor: int | None = None,
-    ) -> WellData:
-        return WellData(
-            luminescence=luminescence,
-            location_identifier=location_id,
-            sample_identifier=sample_id,
-            sample_role_type=SAMPLE_ROLE_TYPE_MAPPING.get(sample_id[0].lower()),
-            mass_concentration=concentration,
-            measurement_custom_info=measurement_custom_info,
-            dilution_factor=dilution_factor,
-        )
+    def _get_plate_well_count(data: pd.DataFrame) -> int | None:
+        # Get well numbers via Well ID (1, 2, 3, ...) and well location (A1, B1, ...)
+        well_ids = [int(well[-1]) for well in data["Well"]]
+        well_location = data["Well"]
+        largest_column = sorted([str(loc[0]) for loc in well_location])[-1]
+        largest_row = sorted(int(loc[1:]) for loc in well_location)[-1]
+        well_number_by_position = (
+            ord(largest_column.upper()) - ord("A") + 1
+        ) * largest_row
+        largest_well_number = max(sorted(well_ids)[-1], well_number_by_position)
+
+        # Round up to the first possible well count GTE the count e.g:
+        # - If we have well id 94 but none greater than 96, it's a 96-well plate
+        for possible_count in POSSIBLE_WELL_COUNTS:
+            if largest_well_number > possible_count:
+                continue
+            return possible_count
+        return None
 
 
-def create_metadata(header: Header) -> Metadata:
-    asm_file_identifier = Path(header.file_name).with_suffix(".json")
+def create_metadata(file_name: str) -> Metadata:
+    asm_file_identifier = Path(file_name).with_suffix(".json")
     return Metadata(
-        file_name=header.file_name.rsplit("\\", 1)[-1],
-        unc_path=header.file_name,
-        software_name=header.name,
+        file_name=file_name.rsplit("\\", 1)[-1],
+        unc_path=file_name,
+        software_name=SOFTWARE_NAME,
         device_identifier=NOT_APPLICABLE,
-        model_number=header.model,
+        model_number=NOT_APPLICABLE,
         asm_file_identifier=asm_file_identifier.name,
         data_system_instance_id=NOT_APPLICABLE,
     )
 
 
 def create_measurement_groups(plate_data: PlateData) -> list[MeasurementGroup]:
-    grouped_wells = defaultdict(list)
+    def map_measurement(row: SeriesData) -> Measurement:
+        sample_id = f"{row[str, 'Sample']}_{row[str, 'Well']}"
+        return Measurement(
+            type_=MeasurementType.LUMINESCENCE,
+            identifier=random_uuid_str(),
+            luminescence=row[int, "Signal"],
+            sample_identifier=sample_id,
+            location_identifier=row[str, "Well"],
+            well_location_identifier=row[str, "Spot"],
+            well_plate_identifier=plate_data.well_plate_id,
+            device_type=DEVICE_TYPE,
+            detection_type=DETECTION_TYPE,
+            mass_concentration=row.get(float, "Concentration"),
+            sample_role_type=SAMPLE_ROLE_TYPE_MAPPING.get(
+                row[str, "Sample"][0].lower()
+            ),
+            measurement_custom_info={
+                "detection range": row.get(str, "Detection Range"),
+                "assay identifier": row.get(str, "Assay"),
+            },
+            sample_custom_info={
+                "dilution factor setting": row.get(int, "Dilution Factor"),
+            },
+        )
 
-    for well in plate_data.well_data:
-        grouped_wells[well.sample_identifier].append(well)
+    measurements = map_rows(plate_data.well_data, map_measurement)
 
-    well_data: list[list[WellData]] = list(grouped_wells.values())
+    grouped_measurements = defaultdict(list)
+    for measurement in measurements:
+        grouped_measurements[measurement.sample_identifier].append(measurement)
 
     return [
         MeasurementGroup(
             measurement_time=plate_data.measurement_time,
             plate_well_count=plate_data.plate_well_count,
-            measurements=[
-                Measurement(
-                    type_=MeasurementType.LUMINESCENCE,
-                    identifier=random_uuid_str(),
-                    luminescence=well.luminescence,
-                    sample_identifier=well.sample_identifier,
-                    location_identifier=well.location_identifier,
-                    well_plate_identifier=plate_data.well_plate_id,
-                    device_type=LUMINESCENCE_DETECTOR,
-                    detection_type=LUMINESCENCE,
-                    mass_concentration=well.mass_concentration,
-                    sample_role_type=well.sample_role_type,
-                    measurement_custom_info=well.measurement_custom_info,
-                    sample_custom_info={
-                        "dilution factor setting": well.dilution_factor,
-                    },
-                )
-                for well in well_group
-            ],
+            measurements=group,
         )
-        for well_group in well_data
+        for group in grouped_measurements.values()
     ]
