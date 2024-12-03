@@ -122,7 +122,9 @@ def _get_measurement_by_location_identifier(
     for measurement in measurements:
         if measurement.well_location_identifier == well_location_identifier:
             return measurement
-    msg = f"No measurement found for well location identifier: {well_location_identifier}"
+    msg = (
+        f"No measurement found for well location identifier: {well_location_identifier}"
+    )
     raise AllotropeConversionError(msg)
 
 
