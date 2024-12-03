@@ -33,6 +33,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
+    TDatacube,
     TDatacubeComponent,
     TDatacubeData,
     TDatacubeStructure,
@@ -223,14 +224,14 @@ class Mapper(SchemaMapper[Data, Model]):
         return ProcessedDataAggregateDocument(
             processed_data_document=[
                 ProcessedDataDocumentItem(
-                    # chromatogram_data_cube=(
-                    #     self.get_data_cube(
-                    #         processed_data_doc.chromatogram_data_cube,
-                    #         ChromatogramDataCube,
-                    #     )
-                    #     if processed_data_doc.chromatogram_data_cube
-                    #     else None
-                    # ),
+                    chromatogram_data_cube=(
+                        self.get_data_cube(
+                            processed_data_doc.chromatogram_data_cube,
+                            TDatacube,
+                        )
+                        if processed_data_doc.chromatogram_data_cube
+                        else None
+                    ),
                     derived_column_pressure_data_cube=(
                         self.get_data_cube(
                             processed_data_doc.derived_column_pressure_data_cube,

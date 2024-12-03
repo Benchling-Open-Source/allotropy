@@ -239,7 +239,43 @@
                             "measurement identifier": "CYTIVA_UNICORN_TEST_ID_4",
                             "processed data aggregate document": {
                                 "processed data document": [
-                                    {}
+                                    {
+                                        "chromatogram data cube": {
+                                            "label": "% Cond",
+                                            "cube-structure": {
+                                                "dimensions": [
+                                                    {
+                                                        "@componentDatatype": "float",
+                                                        "concept": "retention time",
+                                                        "unit": "s"
+                                                    }
+                                                ],
+                                                "measures": [
+                                                    {
+                                                        "@componentDatatype": "float",
+                                                        "concept": "electric conductivity",
+                                                        "unit": "%"
+                                                    }
+                                                ]
+                                            },
+                                            "data": {
+                                                "dimensions": [
+                                                    [
+                                                        32.54150390625,
+                                                        33.3306884765625,
+                                                        35.0408935546875
+                                                    ]
+                                                ],
+                                                "measures": [
+                                                    [
+                                                        31.154701232910156,
+                                                        31.13396453857422,
+                                                        30.91810417175293
+                                                    ]
+                                                ]
+                                            }
+                                        }
+                                    }
                                 ]
                             },
                             "injection document": {
