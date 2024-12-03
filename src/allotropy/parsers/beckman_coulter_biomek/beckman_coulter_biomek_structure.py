@@ -16,7 +16,9 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 
 
 def create_metadata(data: SeriesData, file_path: str) -> Metadata:
-    pod_head_serial_columns = [column for column in data.series.index if "head serial number" in column]
+    pod_head_serial_columns = [
+        column for column in data.series.index if "head serial number" in column
+    ]
     devices = [
         Device(
             identifier=pod_head_serial_column.split(" ")[0],
