@@ -1,5 +1,5 @@
 DISPLAY_NAME = "Tecan Magellan"
-DEVICE_TYPE = "plate-reader"
+DEVICE_TYPE = "plate reader"
 SOFTWARE_NAME = "Magellan"
 PRODUCT_MANUFACTURER = "Tecan"
 

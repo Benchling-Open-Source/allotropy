@@ -16,7 +16,6 @@ from allotropy.parsers.tecan_magellan.tecan_magellan_structure import (
     create_metadata,
     MagellanMetadata,
 )
-from allotropy.parsers.utils.pandas import map_rows
 from allotropy.parsers.vendor_parser import VendorParser
 
 
@@ -28,8 +27,9 @@ class TecanMagellanParser(VendorParser[Data, Model]):
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = TecanMagellanReader(named_file_contents)
-        metadata = MagellanMetadata.create(reader.metadata)
+        metadata = MagellanMetadata.create(reader.metadata_lines)
+
         return Data(
             create_metadata(metadata, named_file_contents.original_file_path),
-            map_rows(reader.data, create_measurement_groups),
+            create_measurement_groups(reader.data, metadata),
         )

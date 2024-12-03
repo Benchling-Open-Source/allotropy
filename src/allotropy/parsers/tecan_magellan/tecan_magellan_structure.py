@@ -5,7 +5,7 @@ from io import StringIO
 from pathlib import Path
 import re
 
-from pandas import read_csv
+import pandas as pd
 
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
     Measurement,
@@ -17,7 +17,7 @@ from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.tecan_magellan import constants
-from allotropy.parsers.utils.pandas import SeriesData, df_to_series_data
+from allotropy.parsers.utils.pandas import df_to_series_data, read_csv, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none, try_float
 
@@ -153,20 +153,48 @@ def create_metadata(data: MagellanMetadata, file_path: str) -> Metadata:
 
 
 def create_measurement_groups(
-    data: SeriesData, metadata: MagellanMetadata
-) -> MeasurementGroup:
-    # This function will be called for every row in the dataset, use it to create
-    # a corresponding measurement group.
+    data: pd.DataFrame, metadata: MagellanMetadata
+) -> list[MeasurementGroup]:
+    return [
+        group
+        for _, row in data.iterrows()
+        if (group := _create_measurement_group(row, metadata, len(data))) is not None
+    ]
+
+
+def _create_measurement_group(
+    series: pd.Series[str], metadata: MagellanMetadata, well_count: float
+) -> MeasurementGroup | None:
+    data = SeriesData(series)
+    measurements = []
+
+    for measurement_label, settings in metadata.measurements_settings.items():
+        if (measurement := data.get(float, measurement_label)) is None:
+            return None
+
+        location_identifier = data[str, "Well positions"]
+        well_plate_identifier = data.get(str, "Plate", settings.plate_identifier)
+        measurements.append(
+            Measurement(
+                type_=settings.measurement_type,
+                device_type=constants.DEVICE_TYPE,
+                identifier=random_uuid_str(),
+                sample_identifier=f"{well_plate_identifier}_{location_identifier}",
+                location_identifier=location_identifier,
+                well_plate_identifier=well_plate_identifier,
+                detection_type=settings.measurement_mode,
+                compartment_temperature=settings.temperature,
+                absorbance=measurement,
+                number_of_averages=settings.number_of_averages,
+                detector_wavelength_setting=settings.wavelength_setting,
+            )
+        )
+
     return MeasurementGroup(
-        analyst=data[str, "Analyst"],
+        measurements=measurements,
+        plate_well_count=well_count,
+        measurement_time=metadata.measurement_time,
+        analyst=metadata.analyst,
         analytical_method_identifier=metadata.analytical_method_identifier,
         experimental_data_identifier=metadata.experimental_data_identifier,
-        measurements=[
-            Measurement(
-                measurement_identifier=random_uuid_str(),
-                # Example of the kind of value that might be set from a measurement row
-                sample_identifier=data[str, "Sample ID"],
-                viability=data[float, "Viability"],
-            )
-        ],
     )
