@@ -117,12 +117,12 @@ def _format_r_squared_name(name: str) -> str:
 
 
 def _get_measurement_by_location_identifier(
-    measurements: list[Measurement], location_identifier: str
+    measurements: list[Measurement], well_location_identifier: str
 ) -> Measurement:
     for measurement in measurements:
-        if measurement.location_identifier == location_identifier:
+        if measurement.well_location_identifier == well_location_identifier:
             return measurement
-    msg = f"No measurement found for location identifier: {location_identifier}"
+    msg = f"No measurement found for well location identifier: {well_location_identifier}"
     raise AllotropeConversionError(msg)
 
 
@@ -154,9 +154,9 @@ def _get_data_sources(
     row: SeriesData,
     calculated_data: list[CalculatedDataItem],
 ) -> list[DataSource]:
-    location_identifier = row[str, "Well"]
+    well_location_identifier = row[str, "Well"]
     current_measurement = _get_measurement_by_location_identifier(
-        measurements, location_identifier
+        measurements, well_location_identifier
     )
     agg_properties = _get_measurement_aggregate_properties(
         current_measurement, calculated_data_mapping.aggregating_property

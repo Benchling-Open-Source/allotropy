@@ -67,8 +67,8 @@ def test_create_measurement_groups() -> None:
         assert len(group.measurements) == 1
         for measurement in group.measurements:
             assert measurement.luminescence in [93, 85]
-            assert measurement.location_identifier in ["A02", "A03"]
-            assert measurement.well_location_identifier in ["3", "4"]
+            assert measurement.location_identifier in ["3", "4"]
+            assert measurement.well_location_identifier in ["A02", "A03"]
             assert measurement.sample_identifier in ["S001_A02", "S002_A03"]
             assert measurement.mass_concentration in [20, 15]
             assert measurement.measurement_custom_info is not None
