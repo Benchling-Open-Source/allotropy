@@ -121,7 +121,8 @@ def split_header_and_data(
 def split_dataframe(
     df: pd.DataFrame,
     should_split_on_row: Callable[[pd.Series[Any]], bool],
-    include_split_row: bool = False,  # noqa: FBT001, FBT002
+    *,
+    include_split_row: bool = False,
 ) -> tuple[pd.DataFrame, pd.DataFrame | None]:
     for idx, row in df.iterrows():
         if should_split_on_row(row):
