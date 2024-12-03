@@ -25,16 +25,17 @@ class UnicornZipHandler(ZipHandler):
 
     def filter_xml_metadata(self, stream: BytesIO) -> BytesIO:
         data = stream.read()
+        lower_symbol, upper_symbol = 32, 126
 
         start = 0
         for idx, element in enumerate(data):
-            if 32 <= element <= 126:
+            if lower_symbol <= int(element) <= upper_symbol:
                 start = idx
                 break
 
         end = len(data)
         for idx, element in enumerate(reversed(data)):
-            if 32 <= element <= 126:
+            if lower_symbol <= int(element) <= upper_symbol:
                 end -= idx
                 break
 
