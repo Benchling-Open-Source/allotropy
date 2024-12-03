@@ -1,8 +1,11 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from io import StringIO
 from pathlib import Path
 import re
+
+from pandas import read_csv
 
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
     Measurement,
@@ -14,28 +17,48 @@ from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.tecan_magellan import constants
-from allotropy.parsers.utils.pandas import SeriesData
+from allotropy.parsers.utils.pandas import SeriesData, df_to_series_data
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none, try_float
 
 
+def get_measurement_type(measurement_mode: str) -> MeasurementType:
+    if measurement_mode.lower() == "absorbance":
+        return MeasurementType.ULTRAVIOLET_ABSORBANCE
+
+    msg = f"Only Absorbance measurements are supported as this time. Got {measurement_mode}."
+    raise AllotropeConversionError(msg)
+
+
+def parse_settings_lines(lines: list[str]) -> SeriesData:
+    csv_stream = StringIO("\n".join(lines))
+    raw_data = read_csv(
+        csv_stream, header=None, sep=":", skipinitialspace=True, index_col=0
+    )
+    return df_to_series_data(raw_data.T)
+
+
 @dataclass
 class MeasurementSettings:
-    measurement_mode: MeasurementType
+    measurement_mode: str
+    measurement_type: MeasurementType
     wavelength_setting: float
     number_of_averages: float
     plate_identifier: str
     temperature: float
 
     @staticmethod
-    def create(setting_lines: list[str], temperature: float) -> MeasurementSettings:
-        # TODO: parse setting lines
-        _ = setting_lines
+    def create(settings_lines: list[str], temperature: float) -> MeasurementSettings:
+        settings = parse_settings_lines(settings_lines)
+        raw_wavelength = settings[str, "Measurement wavelength"].split()[0]
+        measurement_mode = settings[str, "Measurement mode"]
+
         return MeasurementSettings(
-            measurement_mode=MeasurementType.ULTRAVIOLET_ABSORBANCE,
-            wavelength_setting=1,
-            number_of_averages=1,
-            plate_identifier="A123",
+            measurement_mode=measurement_mode,
+            measurement_type=get_measurement_type(measurement_mode),
+            wavelength_setting=try_float(raw_wavelength, "Wavelength setting"),
+            number_of_averages=settings[float, "Number of flashes"],
+            plate_identifier=settings[str, "Plate definition file"].split(".")[0],
             temperature=temperature,
         )
 
@@ -119,7 +142,7 @@ def create_metadata(data: MagellanMetadata, file_path: str) -> Metadata:
     return Metadata(
         unc_path=file_path,
         file_name=path.name,
-        asm_file_identifier=path.with_suffix("json").name,
+        asm_file_identifier=path.with_suffix(".json").name,
         device_identifier=data.device_identifier,
         model_number=NOT_APPLICABLE,
         data_system_instance_id=NOT_APPLICABLE,
