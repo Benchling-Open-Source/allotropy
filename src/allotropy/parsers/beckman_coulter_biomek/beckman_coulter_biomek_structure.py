@@ -17,22 +17,17 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 
 def create_metadata(data: SeriesData, file_path: str) -> Metadata:
     pod_head_serial_columns = [
-        column for column in data.series.index if "head serial number" in column
+        str(column) for column in data.series.index if "head serial number" in column
     ]
     devices = [
         Device(
             identifier=pod_head_serial_column.split(" ")[0],
             device_type=constants.PROBE_HEAD_DEVICE_TYPE,
-            serial_number=pod_serial_number,
+            serial_number=data[str, pod_head_serial_column],
             product_manufacturer=constants.PRODUCT_MANUFACTURER,
         )
         for pod_head_serial_column in pod_head_serial_columns
-        if (
-            pod_serial_number := data.get(
-                str, pod_head_serial_column, validate=SeriesData.NOT_NAN
-            )
-            not in (None, "None")
-        )
+        if data[str, pod_head_serial_column] != "None"
     ]
 
     path = Path(file_path)
