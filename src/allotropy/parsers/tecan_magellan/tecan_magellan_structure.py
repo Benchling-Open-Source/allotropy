@@ -5,16 +5,15 @@ from io import StringIO
 from pathlib import Path
 import re
 
-import pandas as pd
-
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
+    ErrorDocument,
     Measurement,
     MeasurementGroup,
     MeasurementType,
     Metadata,
 )
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.constants import NOT_APPLICABLE
+from allotropy.parsers.constants import NEGATIVE_ZERO, NOT_APPLICABLE
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.tecan_magellan import constants
 from allotropy.parsers.utils.pandas import df_to_series_data, read_csv, SeriesData
@@ -157,24 +156,20 @@ def create_metadata(data: MagellanMetadata, file_path: str) -> Metadata:
 
 
 def create_measurement_groups(
-    data: pd.DataFrame, metadata: MagellanMetadata
-) -> list[MeasurementGroup]:
-    return [
-        group
-        for _, row in data.iterrows()
-        if (group := _create_measurement_group(row, metadata, len(data))) is not None
-    ]
-
-
-def _create_measurement_group(
-    series: pd.Series[str], metadata: MagellanMetadata, well_count: float
-) -> MeasurementGroup | None:
-    data = SeriesData(series)
+    data: SeriesData, metadata: MagellanMetadata, well_count: float
+) -> MeasurementGroup:
     measurements = []
 
     for measurement_label, settings in metadata.measurements_settings.items():
+        errors = []
         if (measurement := data.get(float, measurement_label)) is None:
-            return None
+            measurement = NEGATIVE_ZERO
+            errors = [
+                ErrorDocument(
+                    eror=data.get(str, measurement_label),
+                    error_feature=settings.measurement_mode,
+                )
+            ]
 
         location_identifier = data[str, "Well positions"]
         well_plate_identifier = data.get(str, "Plate", settings.plate_identifier)
@@ -191,6 +186,7 @@ def _create_measurement_group(
                 absorbance=measurement,
                 number_of_averages=settings.number_of_averages,
                 detector_wavelength_setting=settings.wavelength_setting,
+                error_document=errors,
             )
         )
 
