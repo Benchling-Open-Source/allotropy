@@ -66,8 +66,8 @@ class MeasurementSettings:
 @dataclass(frozen=True)
 class MagellanMetadata:
     measurement_time: str
-    analytical_method_identifier: str
-    experimental_data_identifier: str
+    analytical_method_identifier: str | None
+    experimental_data_identifier: str | None
     analyst: str
     device_identifier: str
     equipment_serial_number: str
@@ -79,11 +79,9 @@ class MagellanMetadata:
         measurement_time = cls.parse_measurement_time(
             assert_not_none(reader.pop(), "Measurement Time")
         )
-        reader.pop()
-        analytical_method_identifier = assert_not_none(reader.pop())
-        reader.pop()
-        experimental_data_identifier = assert_not_none(reader.pop())
-        # skip wavelengths
+        analytical_method_identifier = cls._get_identifier_line(reader, r".*\.mth")
+        experimental_data_identifier = cls._get_identifier_line(reader, r".*\.wsp")
+        # skip wavelength lines
         reader.drop_until(r"^(?!\d+ ?nm).*$")
         analyst = assert_not_none(reader.pop(), "Analyst")
         device_identifier = assert_not_none(reader.pop(), "Device Identifier")
@@ -97,7 +95,7 @@ class MagellanMetadata:
             analyst=analyst,
             device_identifier=device_identifier,
             equipment_serial_number=equipment_serial_number,
-            measurements_settings=cls.get_measurements_settings(reader),
+            measurements_settings=cls._get_measurements_settings(reader),
         )
 
     @classmethod
@@ -108,7 +106,13 @@ class MagellanMetadata:
         raise AllotropeConversionError(msg)
 
     @classmethod
-    def get_measurements_settings(
+    def _get_identifier_line(cls, reader: LinesReader, match_pat: str) -> str | None:
+        if lines := list(reader.pop_while(match_pat)):
+            return lines[-1]
+        return None
+
+    @classmethod
+    def _get_measurements_settings(
         cls, reader: LinesReader
     ) -> dict[str, MeasurementSettings]:
         settings_lines: list[list[str]] = []
