@@ -173,13 +173,7 @@
                 {
                     "device type": "liquid handler probe head",
                     "device identifier": "Pod1",
-                    "equipment serial number": "B8758919L19",
-                    "product manufacturer": "Beckman Coulter"
-                },
-                {
-                    "device type": "liquid handler probe head",
-                    "device identifier": "Pod2",
-                    "equipment serial number": "None",
+                    "equipment serial number": true,
                     "product manufacturer": "Beckman Coulter"
                 }
             ],

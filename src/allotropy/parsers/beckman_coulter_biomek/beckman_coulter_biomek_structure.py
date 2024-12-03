@@ -27,7 +27,7 @@ def create_metadata(data: SeriesData, file_path: str) -> Metadata:
             product_manufacturer=constants.PRODUCT_MANUFACTURER,
         )
         for pod_head_serial_column in pod_head_serial_columns
-        if (pod_serial_number := data.get(str, pod_head_serial_column))
+        if (pod_serial_number := data.get(str, pod_head_serial_column, validate=SeriesData.NOT_NAN) not in (None, "None"))
     ]
 
     path = Path(file_path)
