@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -101,24 +102,34 @@ def create_metadata(header: Header, file_name: str) -> Metadata:
 
 
 def create_measurement_groups(plates: list[PlateData]) -> list[MeasurementGroup]:
-    return [
-        MeasurementGroup(
-            analyst=plate.analyst,
-            measurement_time=plate.measurement_time,
-            plate_well_count=plate.plate_well_count,
-            measurements=[
-                Measurement(
-                    type_=MeasurementType.LUMINESCENCE,
-                    identifier=random_uuid_str(),
-                    luminescence=well.luminescence,
-                    sample_identifier=well.sample_identifier,
-                    location_identifier=well.location_identifier,
-                    well_plate_identifier=plate.well_plate_id,
-                    device_type=constants.LUMINESCENCE_DETECTOR,
-                    detection_type=constants.LUMINESCENCE,
+    plates_data = []
+    for plate in plates:
+        grouped_wells = defaultdict(list)
+        for well in plate.well_data:
+            well_spot = well.location_identifier.split("_")[0]
+            grouped_wells[well_spot].append(well)
+        plates_data.extend(
+            [
+                MeasurementGroup(
+                    analyst=plate.analyst,
+                    measurement_time=plate.measurement_time,
+                    plate_well_count=plate.plate_well_count,
+                    measurements=[
+                        Measurement(
+                            type_=MeasurementType.LUMINESCENCE,
+                            identifier=random_uuid_str(),
+                            luminescence=well.luminescence,
+                            sample_identifier=well.sample_identifier,
+                            location_identifier=well.location_identifier,
+                            well_plate_identifier=plate.well_plate_id,
+                            device_type=constants.LUMINESCENCE_DETECTOR,
+                            detection_type=constants.LUMINESCENCE,
+                        )
+                        for well in well_group
+                    ],
                 )
-            ],
+                for well_group in grouped_wells.values()
+            ]
         )
-        for plate in plates
-        for well in plate.well_data
-    ]
+
+    return plates_data
