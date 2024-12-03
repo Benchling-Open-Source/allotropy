@@ -1,3 +1,4 @@
+from copy import deepcopy
 from pathlib import Path
 
 import pandas as pd
@@ -88,7 +89,7 @@ def create_measurement_groups(
             if probe in probe_to_aspiration:
                 msg = f"Got a second Aspirate step before a Transfer step for probe {probe}"
                 raise AssertionError(msg)
-            probe_to_aspiration[probe] = row_data
+            probe_to_aspiration[probe] = deepcopy(row_data)
         elif transfer_step == constants.TransferStep.DISPENSE.value:
             if probe not in probe_to_aspiration:
                 msg = f"Got a Transfer step before an Aspirate step for probe {probe}"
