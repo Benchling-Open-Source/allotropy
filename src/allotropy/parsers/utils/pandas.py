@@ -121,11 +121,14 @@ def split_header_and_data(
 def split_dataframe(
     df: pd.DataFrame,
     should_split_on_row: Callable[[pd.Series[Any]], bool],
+    *,
+    include_split_row: bool = False,
 ) -> tuple[pd.DataFrame, pd.DataFrame | None]:
     for idx, row in df.iterrows():
         if should_split_on_row(row):
-            section_end = int(str(idx))
-            return df[:section_end], df[section_end + 1 :]
+            head_end = int(str(idx))
+            tail_start = head_end if include_split_row else head_end + 1
+            return df[:head_end], df[tail_start:]
 
     return df, None
 
