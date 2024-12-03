@@ -21,6 +21,9 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_parser import (
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_parser import (
     AppBioQuantStudioDesignandanalysisParser,
 )
+from allotropy.parsers.beckman_coulter_biomek.beckman_coulter_biomek_parser import (
+    BeckmanCoulterBiomekParser,
+)
 from allotropy.parsers.beckman_pharmspec.beckman_pharmspec_parser import PharmSpecParser
 from allotropy.parsers.beckman_vi_cell_blu.vi_cell_blu_parser import ViCellBluParser
 from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_parser import ViCellXRParser
@@ -102,6 +105,7 @@ class Vendor(Enum):
     APPBIO_ABSOLUTE_Q = "APPBIO_ABSOLUTE_Q"
     APPBIO_QUANTSTUDIO = "APPBIO_QUANTSTUDIO"
     APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS = "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS"
+    BECKMAN_COULTER_BIOMEK = "BECKMAN_COULTER_BIOMEK"
     BMG_MARS = "BMG_MARS"
     BECKMAN_PHARMSPEC = "BECKMAN_PHARMSPEC"
     BECKMAN_VI_CELL_BLU = "BECKMAN_VI_CELL_BLU"
@@ -185,6 +189,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser[Any, Any]]] = {
     Vendor.APPBIO_ABSOLUTE_Q: AppbioAbsoluteQParser,
     Vendor.APPBIO_QUANTSTUDIO: AppBioQuantStudioParser,
     Vendor.APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS: AppBioQuantStudioDesignandanalysisParser,
+    Vendor.BECKMAN_COULTER_BIOMEK: BeckmanCoulterBiomekParser,
     Vendor.BECKMAN_PHARMSPEC: PharmSpecParser,
     Vendor.BECKMAN_VI_CELL_BLU: ViCellBluParser,
     Vendor.BECKMAN_VI_CELL_XR: ViCellXRParser,

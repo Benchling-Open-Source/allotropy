@@ -44,10 +44,16 @@ NON_UNIQUE_IDENTIFIERS = {
     "experimental data identifier",
     "group identifier",
     "location identifier",
+    "source location identifier",
+    "destination location identifier",
     "measurement method identifier",
     "sample identifier",
     "well location identifier",
+    "source well location identifier",
+    "destination well location identifier",
     "well plate identifier",
+    "source well plate identifier",
+    "destination well plate identifier",
     "well identifier",
 }
 
