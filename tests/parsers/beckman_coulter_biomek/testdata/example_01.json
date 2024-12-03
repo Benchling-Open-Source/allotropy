@@ -86,12 +86,12 @@
                                         "device type": "liquid handler",
                                         "custom information document": {
                                             "probe": "1",
-                                            "source pod": "Pod1",
-                                            "destination pod": "Pod1",
+                                            "source pod": "Pod2",
+                                            "destination pod": "Pod2",
                                             "source labware name": "Inducer",
                                             "destination labware name": "GRP2",
-                                            "source liquid handling technique": "Custom",
-                                            "destination liquid handling technique": "Custom"
+                                            "source liquid handling technique": "Custom1Source",
+                                            "destination liquid handling technique": "Custom1Dest"
                                         }
                                     }
                                 ]
@@ -123,12 +123,12 @@
                                         "device type": "liquid handler",
                                         "custom information document": {
                                             "probe": "2",
-                                            "source pod": "Pod1",
-                                            "destination pod": "Pod1",
+                                            "source pod": "Pod2",
+                                            "destination pod": "Pod2",
                                             "source labware name": "Inducer",
                                             "destination labware name": "GRP2",
-                                            "source liquid handling technique": "Custom",
-                                            "destination liquid handling technique": "Custom"
+                                            "source liquid handling technique": "Custom2Source",
+                                            "destination liquid handling technique": "Custom2Dest"
                                         }
                                     }
                                 ]
