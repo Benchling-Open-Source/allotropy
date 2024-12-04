@@ -68,7 +68,7 @@ def parse_settings(settings: list[str]) -> tuple[dict[str, str], list[str]]:
             splitted_datum = read_datum.split(": ")
             if len(splitted_datum) == 1:
                 non_kv_settings.append(splitted_datum[0])
-            elif len(splitted_datum) == 2:  # noqa: PLR2004
+            elif len(splitted_datum) == 2:
                 settings_dict[splitted_datum[0]] = splitted_datum[1]
 
     return settings_dict, non_kv_settings

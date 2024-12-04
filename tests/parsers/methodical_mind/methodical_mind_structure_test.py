@@ -56,9 +56,11 @@ def test_create_plate_well_data_multiple_values_per_well() -> None:
     assert result.plate_well_count == 10
     assert len(result.well_data) == 30
     assert result.well_data[0].luminescence == 8213
-    assert result.well_data[0].location_identifier == "A1_1"
+    assert result.well_data[0].location_identifier == "1"
+    assert result.well_data[0].well_location_identifier == "A1"
     assert result.well_data[-1].luminescence == 5024
-    assert result.well_data[-1].location_identifier == "B5_3"
+    assert result.well_data[-1].location_identifier == "3"
+    assert result.well_data[-1].well_location_identifier == "B5"
 
 
 def test_create_plate_well_data_single_value_per_well() -> None:
@@ -87,6 +89,8 @@ def test_create_plate_well_data_single_value_per_well() -> None:
     assert result.plate_well_count == 25
     assert len(result.well_data) == 25
     assert result.well_data[0].luminescence == 8213
-    assert result.well_data[0].location_identifier == "A1_1"
+    assert result.well_data[0].location_identifier == "1"
+    assert result.well_data[0].well_location_identifier == "A1"
     assert result.well_data[-1].luminescence == 5024
-    assert result.well_data[-1].location_identifier == "E5_1"
+    assert result.well_data[-1].location_identifier == "1"
+    assert result.well_data[-1].well_location_identifier == "E5"
