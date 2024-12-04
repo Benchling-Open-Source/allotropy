@@ -1,5 +1,5 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/light-obscuration/BENCHLING/2023/12/light-obscuration.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/liquid-handler/BENCHLING/2024/11/liquid-handler.manifest",
     "liquid handler aggregate document": {
         "liquid handler document": [
             {
@@ -12,8 +12,7 @@
                                         "device type": "liquid handler",
                                         "custom information document": {
                                             "probe": "1",
-                                            "source pod": "Pod1",
-                                            "destination pod": "Pod1",
+                                            "pod": "Pod1",
                                             "source labware name": "Inducer",
                                             "destination labware name": "GRP1",
                                             "source liquid handling technique": "Custom",
@@ -49,8 +48,7 @@
                                         "device type": "liquid handler",
                                         "custom information document": {
                                             "probe": "2",
-                                            "source pod": "Pod1",
-                                            "destination pod": "Pod1",
+                                            "pod": "Pod1",
                                             "source labware name": "Inducer",
                                             "destination labware name": "GRP1",
                                             "source liquid handling technique": "Custom",
@@ -86,8 +84,7 @@
                                         "device type": "liquid handler",
                                         "custom information document": {
                                             "probe": "1",
-                                            "source pod": "Pod2",
-                                            "destination pod": "Pod2",
+                                            "pod": "Pod2",
                                             "source labware name": "Inducer",
                                             "destination labware name": "GRP2",
                                             "source liquid handling technique": "Custom1Source",
@@ -123,8 +120,7 @@
                                         "device type": "liquid handler",
                                         "custom information document": {
                                             "probe": "2",
-                                            "source pod": "Pod2",
-                                            "destination pod": "Pod2",
+                                            "pod": "Pod2",
                                             "source labware name": "Inducer",
                                             "destination labware name": "GRP2",
                                             "source liquid handling technique": "Custom2Source",

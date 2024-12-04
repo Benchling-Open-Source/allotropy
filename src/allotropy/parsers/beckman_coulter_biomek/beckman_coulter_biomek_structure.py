@@ -61,8 +61,7 @@ def _create_measurement(
         transfer_volume=dispense_data[float, "Amount"],
         device_control_custom_info={
             "probe": dispense_data[str, "Probe"],
-            "source pod": aspiration_data.get(str, "Pod"),
-            "destination pod": dispense_data.get(str, "Pod"),
+            "pod": aspiration_data.get(str, "Pod"),
             "source labware name": aspiration_data.get(str, "Labware Name"),
             "destination labware name": dispense_data.get(str, "Labware Name"),
             "source liquid handling technique": aspiration_data.get(

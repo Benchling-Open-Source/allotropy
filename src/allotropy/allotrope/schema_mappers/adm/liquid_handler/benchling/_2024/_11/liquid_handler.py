@@ -78,7 +78,7 @@ class Data:
 
 
 class Mapper(SchemaMapper[Data, Model]):
-    MANIFEST = "http://purl.allotrope.org/manifests/light-obscuration/BENCHLING/2023/12/light-obscuration.manifest"
+    MANIFEST = "http://purl.allotrope.org/manifests/liquid-handler/BENCHLING/2024/11/liquid-handler.manifest"
 
     def map_model(self, data: Data) -> Model:
         return Model(
