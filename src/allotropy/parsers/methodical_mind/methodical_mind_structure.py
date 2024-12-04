@@ -17,6 +17,8 @@ from allotropy.parsers.methodical_mind import constants
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
+WELL_LABELS = ["A", "B", "C", "D", "E", "F", "G", "H"]
+
 
 @dataclass(frozen=True)
 class Header:
@@ -49,6 +51,9 @@ class PlateData:
         data: pd.DataFrame,
     ) -> PlateData:
         well_plate_id = header[str, "Barcode1"].strip("<>")
+        unique_well_labels = [
+            label for label in data.index.unique() if label in WELL_LABELS
+        ]
         well_data = [
             WellData.create(
                 luminescence=value,
@@ -56,16 +61,17 @@ class PlateData:
                 well_plate_id=well_plate_id,
             )
             # Get each unique row label, and then iterate over all rows with that label.
-            for row_name in data.index.unique()
+            for row_name in unique_well_labels
             for row_index, (_, row) in enumerate(data.loc[[row_name]].iterrows())
             for col_name, value in row.items()
+            if row_name in WELL_LABELS
         ]
         return PlateData(
             measurement_time=header[str, "Read Time"],
             analyst=header.get(str, "User"),
             well_plate_id=well_plate_id,
             # The well count is (# of unique row labels) * (# of columns)
-            plate_well_count=len(data.index.unique()) * data.shape[1],
+            plate_well_count=len(unique_well_labels) * data.shape[1],
             well_data=well_data,
         )
 
