@@ -56,6 +56,8 @@ def _is_valid_testcase(path: Path) -> bool:
         return False
     if path.suffix.lower() in (".pyc", ".py"):
         return False
+    if path.parts[-2] == "input":
+        return True
     if path.suffix.lower() == ".json":
         return False
     return all(keyword not in str(path).lower() for keyword in EXCLUDE_KEYWORDS)

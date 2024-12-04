@@ -1,2 +1,4 @@
-DISPLAY_NAME = "Benchling Empower"
-DEVICE_TYPE = "<some device type>"
+DISPLAY_NAME = "Benchling Waters Empower"
+DEVICE_TYPE = "liquid chromatography"
+SOFTWARE_NAME = "Waters Empower"
+PRODUCT_MANUFACTURER = "Waters Corporation"
