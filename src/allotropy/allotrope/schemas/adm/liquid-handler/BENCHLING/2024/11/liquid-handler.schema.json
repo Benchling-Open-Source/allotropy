@@ -84,14 +84,50 @@
                                               "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
                                               "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
                                             },
+                                            "source location identifier": {
+                                              "$asm.property-class": "TODO",
+                                              "$asm.pattern": "value datum",
+                                              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+                                            },
+                                            "destination location identifier": {
+                                              "$asm.property-class": "TODO",
+                                              "$asm.pattern": "value datum",
+                                              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+                                            },
                                             "well plate identifier": {
                                               "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002888",
                                               "$asm.pattern": "value datum",
                                               "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
                                               "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
                                             },
+                                            "source well plate identifier": {
+                                              "$asm.property-class": "TODO",
+                                              "$asm.pattern": "value datum",
+                                              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+                                            },
+                                            "destination well plate identifier": {
+                                              "$asm.property-class": "TODO",
+                                              "$asm.pattern": "value datum",
+                                              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+                                            },
                                             "well location identifier": {
                                               "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002240",
+                                              "$asm.pattern": "value datum",
+                                              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+                                            },
+                                            "source well location identifier": {
+                                              "$asm.property-class": "TODO",
+                                              "$asm.pattern": "value datum",
+                                              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+                                            },
+                                            "destination well location identifier": {
+                                              "$asm.property-class": "TODO",
                                               "$asm.pattern": "value datum",
                                               "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
                                               "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"

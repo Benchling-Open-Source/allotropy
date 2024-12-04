@@ -303,10 +303,10 @@ class SeriesData:
         Raises
         AllotropeConversionError: If the lookup or conversion to type fails.
         """
-        if len(type_and_key) == 2:  # noqa: PLR2004
+        if len(type_and_key) == 2:
             type_, key = type_and_key
             msg = None
-        elif len(type_and_key) == 3:  # noqa: PLR2004
+        elif len(type_and_key) == 3:
             type_, key, msg = type_and_key
         try:
             return assert_not_none(self.get(type_, key), str(key), msg=msg)
