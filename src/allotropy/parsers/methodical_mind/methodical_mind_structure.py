@@ -117,8 +117,7 @@ def create_measurement_groups(plates: list[PlateData]) -> list[MeasurementGroup]
     for plate in plates:
         grouped_wells = defaultdict(list)
         for well in plate.well_data:
-            well_spot = well.location_identifier.split("_")[0]
-            grouped_wells[well_spot].append(well)
+            grouped_wells[well.well_location_identifier].append(well)
         plates_data.extend(
             [
                 MeasurementGroup(
