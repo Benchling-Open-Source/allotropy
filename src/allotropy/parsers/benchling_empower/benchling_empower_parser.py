@@ -28,6 +28,10 @@ class BenchlingEmpowerParser(VendorParser[Data, Model]):
         reader = BenchlingEmpowerReader(named_file_contents)
 
         return Data(
-            create_metadata(reader.metadata_fields, reader.injections[0], named_file_contents.original_file_path),
-            create_measurement_groups(reader.injections)
+            create_metadata(
+                reader.metadata_fields,
+                reader.injections[0],
+                named_file_contents.original_file_path,
+            ),
+            create_measurement_groups(reader.injections),
         )

@@ -1,4 +1,3 @@
-from copy import deepcopy
 import os
 from pathlib import Path
 import re
@@ -50,7 +49,9 @@ class ParserTest:
         if warn_unread_keys:
             os.environ["WARN_UNUSED_KEYS"] = "1"
         if test_file_path.parts[-2] == "input":
-            expected_filepath = Path(*test_file_path.parts[:-3], "output", test_file_path.parts[-1]).with_suffix(".json")
+            expected_filepath = Path(
+                *test_file_path.parts[:-2], "output", test_file_path.parts[-1]
+            ).with_suffix(".json")
         else:
             expected_filepath = test_file_path.with_suffix(".json")
         allotrope_dict = from_file(

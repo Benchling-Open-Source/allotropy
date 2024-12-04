@@ -19,7 +19,9 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none, try_float, try_float_or_none
 
 
-def create_metadata(metadata: dict[str, Any], first_injection: dict[str, Any], file_path: str) -> Metadata:
+def create_metadata(
+    metadata: dict[str, Any], first_injection: dict[str, Any], file_path: str
+) -> Metadata:
     return Metadata(
         asset_management_identifier=metadata.get("SystemName", NOT_APPLICABLE),
         analyst=metadata.get("SampleSetAcquiredBy", NOT_APPLICABLE),
@@ -55,14 +57,14 @@ def _get_chromatogram(injection: dict[str, Any]) -> DataCube | None:
         label="absorbance",
         structure_dimensions=[
             DataCubeComponent(
-                type_=FieldComponentDatatype.float,
+                type_=FieldComponentDatatype.double,
                 concept="retention time",
                 unit="s",
             )
         ],
         structure_measures=[
             DataCubeComponent(
-                type_=FieldComponentDatatype.float,
+                type_=FieldComponentDatatype.double,
                 concept="absorbance",
                 unit="mAU",
             )
@@ -72,39 +74,48 @@ def _get_chromatogram(injection: dict[str, Any]) -> DataCube | None:
     )
 
 
+def _create_peak(peak: dict[str, Any]) -> Peak:
+    # Area and height are reported in μV, but are reported in ASM as mAU
+    # For Empower software, 1V == 1AU, so we just need to convert μ to m
+    if (area := try_float_or_none(peak.get("Area"))) is not None:
+        area /= 1000
+    if (height := try_float_or_none(peak.get("Height"))) is not None:
+        height /= 1000
+
+    return Peak(
+        start=try_float(peak.get("StartTime"), "StartTime"),
+        start_unit="s",
+        end=try_float(peak.get("EndTime"), "EndTime"),
+        end_unit="s",
+        area=area,
+        area_unit="mAU.s",
+        relative_area=try_float_or_none(peak.get("PctArea")),
+        width=try_float_or_none(peak.get("Width")),
+        relative_width=try_float_or_none(peak.get("PctWidth")),
+        height=height,
+        relative_height=try_float_or_none(peak.get("PctHeight")),
+        retention_time=try_float_or_none(peak.get("RetentionTime")),
+        written_name=peak.get("PeakLabel"),
+    )
+
+
 def _create_measurement(injection: dict[str, Any]) -> Measurement:
     peaks: list[dict[str, Any]] = injection.get("peaks")
     return Measurement(
         measurement_identifier=random_uuid_str(),
         sample_identifier=assert_not_none(injection.get("SampleName"), "SampleName"),
-        chromatography_serial_num=injection.get("ColumnSerialNumber"),
+        chromatography_serial_num=injection.get("ColumnSerialNumber") or NOT_APPLICABLE,
         autosampler_injection_volume_setting=injection["InjectionVolume"],
-        injection_identifier=injection["InjectionId"],
+        injection_identifier=str(injection["InjectionId"]),
         injection_time=injection["DateAcquired"],
-        peaks=[
-            Peak(
-                start=try_float(peak.get("StartTime"), "StartTime"),
-                start_unit="s",
-                end=try_float(peak.get("EndTime"), "EndTime"),
-                end_unit="s",
-                area=try_float_or_none(peak.get("Area")),
-                area_unit="mAU.s",
-                relative_area=try_float_or_none(peak.get("PctArea")),
-                width=try_float_or_none(peak.get("Width")),
-                relative_width=try_float_or_none(peak.get("PctWidth")),
-                height=try_float_or_none(peak.get("Height")),
-                height_unit="mAU",
-                relative_height=try_float_or_none(peak.get("PctHeight")),
-                retention_time=try_float_or_none(peak.get("RetentionTime")),
-                written_name=peak.get("PeakLabel")
-            )
-            for peak in peaks
-        ],
-        chromatogram_data_cube=_get_chromatogram(injection)
+        peaks=[_create_peak(peak) for peak in peaks],
+        chromatogram_data_cube=_get_chromatogram(injection),
     )
 
 
-def create_measurement_groups(injections: dict[str, dict[str, Any]]) -> MeasurementGroup:
+def create_measurement_groups(
+    injections: dict[str, dict[str, Any]]
+) -> MeasurementGroup:
     return [
         MeasurementGroup(
             measurements=[_create_measurement(injection) for injection in injections]

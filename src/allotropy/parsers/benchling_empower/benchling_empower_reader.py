@@ -18,7 +18,9 @@ class BenchlingEmpowerReader:
         self.metadata_fields = assert_not_none(values.get("fields"), "values/fields")
 
         # Each injection corresponds to a measurement document
-        injections: list[dict[str, Any]] = assert_not_none(values.get("injections"), "values/injections")
+        injections: list[dict[str, Any]] = assert_not_none(
+            values.get("injections"), "values/injections"
+        )
         for idx, injection in enumerate(injections):
             if "fields" not in injection:
                 msg = f"Missing 'fields' for injection at index {idx}"
@@ -34,12 +36,17 @@ class BenchlingEmpowerReader:
         # Channels contain fields and chromatograms
         channels: list[dict[str, Any]] = values.get("channels", [])
         for channel in channels:
-            fields: dict[str, Any] = assert_not_none(channel.get("fields"), "channels/fields")
+            fields: dict[str, Any] = assert_not_none(
+                channel.get("fields"), "channels/fields"
+            )
             if (inj_id := fields.get("InjectionId")) is None:
                 msg = f"Expected InjectionId in 'fields' for channel: {fields['ChannelId']}"
                 raise AssertionError(msg)
             for key, value in fields.items():
-                if key in id_to_injection[inj_id] and id_to_injection[inj_id][key] != value:
+                if (
+                    key in id_to_injection[inj_id]
+                    and id_to_injection[inj_id][key] != value
+                ):
                     msg = f"Mismatch between injection field and channel field for key: {key}"
                     raise AssertionError(msg)
                 id_to_injection[inj_id][key] = value
@@ -49,17 +56,26 @@ class BenchlingEmpowerReader:
         # Results contain peaks and calibration cureves
         results: list[dict[str, Any]] = values.get("results", [])
         for result in results:
-            fields: dict[str, Any] = assert_not_none(result.get("fields"), "results/fields")
+            fields: dict[str, Any] = assert_not_none(
+                result.get("fields"), "results/fields"
+            )
             if (inj_id := fields.get("InjectionId")) is None:
-                msg = f"Expected InjectionId in 'fields' for result: {fields['ResultId']}"
+                msg = (
+                    f"Expected InjectionId in 'fields' for result: {fields['ResultId']}"
+                )
                 raise AssertionError(msg)
             for key, value in fields.items():
-                if key in id_to_injection[inj_id] and id_to_injection[inj_id][key] != value:
+                if (
+                    key in id_to_injection[inj_id]
+                    and id_to_injection[inj_id][key] != value
+                ):
                     msg = f"Mismatch between injection field and result field for key: {key}"
                     raise AssertionError(msg)
                 id_to_injection[inj_id][key] = value
             if "peaks" in result:
-                id_to_injection[inj_id]["peaks"] = [peak["fields"] for peak in result["peaks"]]
+                id_to_injection[inj_id]["peaks"] = [
+                    peak["fields"] for peak in result["peaks"]
+                ]
             if "curves" in result:
                 id_to_injection[inj_id]["curves"] = result["curves"]
 
