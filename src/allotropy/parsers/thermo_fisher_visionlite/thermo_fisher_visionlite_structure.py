@@ -88,7 +88,7 @@ class Header:
             return Header()
 
         return Header(
-            sample_name=header_data[str, "Sample Name"],
+            sample_name=header_data[str, ("Sample Name", "Well Position")],
             analyst=header_data[str, "Analyst"],
             measurement_time=header_data[str, "Measurement Time"],
         )
@@ -102,7 +102,11 @@ class AbsorbanceMeasurement:
 
 class VisionLiteData(Data):
     @staticmethod
-    def create(reader: ThermoFisherVisionliteReader, file_path: str) -> Data:
+    def create(
+        reader: ThermoFisherVisionliteReader,
+        file_path: str,
+        software_name: str = SOFTWARE_NAME,
+    ) -> Data:
         experiment_type = _get_experiment_type(reader)
         header = Header.create(reader.header)
         data = reader.data
@@ -149,7 +153,7 @@ class VisionLiteData(Data):
                     )
 
         return Data(
-            metadata=_create_metadata(file_path),
+            metadata=_create_metadata(file_path, software_name),
             measurement_groups=measurement_groups,
             calculated_data=calculated_data,
         )
@@ -170,14 +174,14 @@ def _get_calculated_data_item(
     )
 
 
-def _create_metadata(file_path: str) -> Metadata:
+def _create_metadata(file_path: str, software_name: str) -> Metadata:
     return Metadata(
         file_name=Path(file_path).name,
         unc_path=file_path,
         device_identifier=NOT_APPLICABLE,
         device_type=DEVICE_TYPE,
         model_number=NOT_APPLICABLE,
-        software_name=SOFTWARE_NAME,
+        software_name=software_name,
         detection_type=DETECTION_TYPE,
         product_manufacturer=PRODUCT_MANUFACTURER,
     )
@@ -197,15 +201,18 @@ def _get_absorbance_measurements(
             AbsorbanceMeasurement(absorbance=data[float, ordinate_col])
         ]
     elif experiment_type == ExperimentType.FIXED:
-        if not wavelength_cols:
-            msg = "Only Fixed absorbance measurements are supported at this time."
-        absorbance_measurements = [
-            AbsorbanceMeasurement(
-                absorbance=data[float, col],
-                wavelength=wavelength,
-            )
-            for wavelength, col in wavelength_cols.items()
-        ]
+        if wavelength_cols:
+            absorbance_measurements = [
+                AbsorbanceMeasurement(
+                    absorbance=data[float, col],
+                    wavelength=wavelength,
+                )
+                for wavelength, col in wavelength_cols.items()
+            ]
+        else:
+            absorbance_measurements = [
+                AbsorbanceMeasurement(absorbance=data[float, "Absorbance"])
+            ]
 
     return [
         Measurement(
