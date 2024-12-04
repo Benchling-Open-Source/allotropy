@@ -57,8 +57,9 @@ class PlateData:
         well_data = [
             WellData.create(
                 luminescence=value,
-                location_id=f"{row_name}{col_name}_{row_index + 1}",
+                location_id=str(row_index + 1),
                 well_plate_id=well_plate_id,
+                well_location_id=f"{row_name}{col_name}",
             )
             # Get each unique row label, and then iterate over all rows with that label.
             for row_name in unique_well_labels
@@ -81,14 +82,18 @@ class WellData:
     luminescence: int
     location_identifier: str
     sample_identifier: str
+    well_location_identifier: str
 
     @staticmethod
-    def create(luminescence: int, location_id: str, well_plate_id: str) -> WellData:
-        sample_id = well_plate_id + "_" + location_id
+    def create(
+        luminescence: int, location_id: str, well_plate_id: str, well_location_id: str
+    ) -> WellData:
+        sample_id = well_plate_id + "_" + well_location_id
         return WellData(
             luminescence=luminescence,
             location_identifier=location_id,
             sample_identifier=sample_id,
+            well_location_identifier=well_location_id,
         )
 
 
@@ -127,6 +132,7 @@ def create_measurement_groups(plates: list[PlateData]) -> list[MeasurementGroup]
                             luminescence=well.luminescence,
                             sample_identifier=well.sample_identifier,
                             location_identifier=well.location_identifier,
+                            well_location_identifier=well.well_location_identifier,
                             well_plate_identifier=plate.well_plate_id,
                             device_type=constants.LUMINESCENCE_DETECTOR,
                             detection_type=constants.LUMINESCENCE,
