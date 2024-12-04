@@ -4,16 +4,19 @@ from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
 import re
-from typing import Any
 
 import pandas as pd
 
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
 )
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
+    CalculatedDataItem,
+    Data,
     DataCube,
     DataCubeComponent,
+    DataSource,
     Measurement,
     MeasurementGroup,
     MeasurementType,
@@ -27,15 +30,21 @@ from allotropy.parsers.thermo_fisher_visionlite.constants import (
     DETECTION_TYPE,
     DEVICE_TYPE,
     PRODUCT_MANUFACTURER,
+    SAMPLE_NAME_COLS,
     SOFTWARE_NAME,
     UNSUPPORTED_KINETIC_MEASUREMENTS_ERROR,
 )
 from allotropy.parsers.thermo_fisher_visionlite.thermo_fisher_visionlite_reader import (
     ThermoFisherVisionliteReader,
 )
+from allotropy.parsers.utils.iterables import get_first_not_none
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import try_float_or_none
+from allotropy.parsers.utils.values import (
+    assert_not_none,
+    try_float_or_none,
+    try_int_or_none,
+)
 
 
 class ExperimentType(Enum):
@@ -79,7 +88,7 @@ class Header:
             return Header()
 
         return Header(
-            sample_name=header_data[str, "Sample Name"],
+            sample_name=header_data[str, ("Sample Name", "Well Position")],
             analyst=header_data[str, "Analyst"],
             measurement_time=header_data[str, "Measurement Time"],
         )
@@ -91,65 +100,98 @@ class AbsorbanceMeasurement:
     wavelength: int | None = None
 
 
-def create_metadata(file_path: str) -> Metadata:
+class VisionLiteData(Data):
+    @staticmethod
+    def create(
+        reader: ThermoFisherVisionliteReader,
+        file_path: str,
+        software_name: str = SOFTWARE_NAME,
+    ) -> Data:
+        experiment_type = _get_experiment_type(reader)
+        header = Header.create(reader.header)
+        data = reader.data
+        measurement_groups = []
+        calculated_data = []
+
+        if experiment_type == ExperimentType.SCAN:
+            if header.sample_name is None:
+                msg = "Missing Sample Name."
+                raise AllotropeConversionError(msg)
+            measurement_groups = [
+                MeasurementGroup(
+                    analyst=header.analyst,
+                    measurement_time=header.measurement_time,
+                    experiment_type=experiment_type.value,
+                    measurements=[
+                        Measurement(
+                            type_=experiment_type.measurement_type,
+                            identifier=random_uuid_str(),
+                            sample_identifier=header.sample_name,
+                            data_cube=_get_data_cube(data),
+                        )
+                    ],
+                )
+            ]
+        else:
+            wavelength_cols = _get_wavelength_cols(list(data.columns))
+            for _, row in data.iterrows():
+                row_data = SeriesData(row)
+                measurements = _get_absorbance_measurements(
+                    row_data, experiment_type, wavelength_cols
+                )
+                measurement_groups.append(
+                    MeasurementGroup(
+                        analyst=header.analyst,
+                        measurement_time=header.measurement_time,
+                        experiment_type=experiment_type.value,
+                        measurements=measurements,
+                    )
+                )
+                if result := row_data.get(float, "Result"):
+                    calculated_data.append(
+                        _get_calculated_data_item(result, measurements)
+                    )
+
+        return Data(
+            metadata=_create_metadata(file_path, software_name),
+            measurement_groups=measurement_groups,
+            calculated_data=calculated_data,
+        )
+
+
+def _get_calculated_data_item(
+    result: float, measurements: list[Measurement]
+) -> CalculatedDataItem:
+    return CalculatedDataItem(
+        identifier=random_uuid_str(),
+        name="Result",
+        value=result,
+        unit=UNITLESS,
+        data_sources=[
+            DataSource(identifier=measurement.identifier, feature="Absorbance")
+            for measurement in measurements
+        ],
+    )
+
+
+def _create_metadata(file_path: str, software_name: str) -> Metadata:
     return Metadata(
         file_name=Path(file_path).name,
         unc_path=file_path,
         device_identifier=NOT_APPLICABLE,
         device_type=DEVICE_TYPE,
         model_number=NOT_APPLICABLE,
-        software_name=SOFTWARE_NAME,
+        software_name=software_name,
         detection_type=DETECTION_TYPE,
         product_manufacturer=PRODUCT_MANUFACTURER,
     )
 
 
-def create_measurement_groups(
-    reader: ThermoFisherVisionliteReader,
-) -> list[MeasurementGroup]:
-    experiment_type = _get_experiment_type(reader)
-    header = Header.create(reader.header)
-    return _get_measurement_groups(reader.data, header, experiment_type)
-
-
-def _get_measurement_groups(
-    data: pd.DataFrame, header: Header, experiment_type: ExperimentType
-) -> list[MeasurementGroup]:
-    if experiment_type == ExperimentType.SCAN:
-        if header.sample_name is None:
-            msg = "Missing Sample Name."
-            raise AllotropeConversionError(msg)
-        return [
-            MeasurementGroup(
-                analyst=header.analyst,
-                measurement_time=header.measurement_time,
-                experiment_type=experiment_type.value,
-                measurements=[
-                    Measurement(
-                        type_=experiment_type.measurement_type,
-                        identifier=random_uuid_str(),
-                        sample_identifier=header.sample_name,
-                        data_cube=_get_data_cube(data),
-                    )
-                ],
-            )
-        ]
-
-    return [
-        MeasurementGroup(
-            analyst=header.analyst,
-            measurement_time=header.measurement_time,
-            experiment_type=experiment_type.value,
-            measurements=_get_absorbance_measurements(row, experiment_type),
-        )
-        for _, row in data.iterrows()
-    ]
-
-
 def _get_absorbance_measurements(
-    row: pd.Series[Any], experiment_type: ExperimentType
+    data: SeriesData,
+    experiment_type: ExperimentType,
+    wavelength_cols: dict[int, str],
 ) -> list[Measurement]:
-    data = SeriesData(row)
     if experiment_type == ExperimentType.QUANT:
         ordinate_col = "Ordinate [A]"
         if not data.has_key(ordinate_col):
@@ -159,21 +201,24 @@ def _get_absorbance_measurements(
             AbsorbanceMeasurement(absorbance=data[float, ordinate_col])
         ]
     elif experiment_type == ExperimentType.FIXED:
-        if not (wavelengths := _get_wavelengths(list(data.series.index))):
-            msg = "Only Fixed absorbance measurements are supported at this time."
-        absorbance_measurements = [
-            AbsorbanceMeasurement(
-                absorbance=data[float, f"{wavelength} nm   [A]"],
-                wavelength=wavelength,
-            )
-            for wavelength in wavelengths
-        ]
+        if wavelength_cols:
+            absorbance_measurements = [
+                AbsorbanceMeasurement(
+                    absorbance=data[float, col],
+                    wavelength=wavelength,
+                )
+                for wavelength, col in wavelength_cols.items()
+            ]
+        else:
+            absorbance_measurements = [
+                AbsorbanceMeasurement(absorbance=data[float, "Absorbance"])
+            ]
 
     return [
         Measurement(
             type_=experiment_type.measurement_type,
             identifier=random_uuid_str(),
-            sample_identifier=data[str, "Sample Name"],
+            sample_identifier=data[str, SAMPLE_NAME_COLS],
             processed_data=(
                 _get_processed_data(data)
                 if experiment_type == ExperimentType.QUANT
@@ -213,12 +258,15 @@ def _get_concentration_unit(columns: list[str]) -> str:
     return ""
 
 
-def _get_wavelengths(columns: list[str]) -> list[int]:
-    wavelengths = []
+def _get_wavelength_cols(columns: list[str]) -> dict[int, str]:
+    wavelength_cols = {}
     for col in columns:
-        if match := re.match(r"(\d{1,}) nm   \[A\]", col):
-            wavelengths.append(int(match.groups()[0]))
-    return wavelengths
+        if match := re.match(r"(\d{1,}) nm   \[A\]|A(\d{1,})", col):
+            wavelength = assert_not_none(
+                get_first_not_none(try_int_or_none, match.groups())
+            )
+            wavelength_cols[wavelength] = col
+    return wavelength_cols
 
 
 def _get_data_cube(data: pd.DataFrame) -> DataCube:

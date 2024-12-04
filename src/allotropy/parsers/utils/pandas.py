@@ -110,20 +110,34 @@ def parse_header_row(df: pd.DataFrame) -> pd.DataFrame:
 def split_header_and_data(
     df: pd.DataFrame, should_split_on_row: Callable[[pd.Series[Any]], bool]
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
+    header, data = split_dataframe(df, should_split_on_row)
+    if data is None:
+        msg = f"Unable to split header and data from dataframe: {df}"
+        raise AllotropeConversionError(msg)
+
+    return header, data
+
+
+def split_dataframe(
+    df: pd.DataFrame,
+    should_split_on_row: Callable[[pd.Series[Any]], bool],
+    *,
+    include_split_row: bool = False,
+) -> tuple[pd.DataFrame, pd.DataFrame | None]:
     for idx, row in df.iterrows():
         if should_split_on_row(row):
-            header_end = int(str(idx))
-            return df[:header_end], df[header_end + 1 :]
+            head_end = int(str(idx))
+            tail_start = head_end if include_split_row else head_end + 1
+            return df[:head_end], df[tail_start:]
 
-    msg = f"Unable to split header and data from dataframe: {df}"
-    raise AllotropeConversionError(msg)
+    return df, None
 
 
 def _normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
     return df.rename(
-        columns=lambda col: unicodedata.normalize("NFKC", col)
-        if isinstance(col, str)
-        else col
+        columns=lambda col: (
+            unicodedata.normalize("NFKC", col) if isinstance(col, str) else col
+        )
     )
 
 
@@ -134,7 +148,8 @@ def read_csv(
 ) -> pd.DataFrame:
     """Wrap pd.read_csv() and raise AllotropeParsingError for failures.
 
-    pd.read_csv() can return a DataFrame or TextFileReader. The latter is intentionally not supported."""
+    pd.read_csv() can return a DataFrame or TextFileReader. The latter is intentionally not supported.
+    """
     try:
         df_or_reader = pd.read_csv(filepath_or_buffer, **kwargs)
     except Exception as e:
@@ -156,7 +171,8 @@ def read_excel(
 ) -> pd.DataFrame:
     """Wrap pd.read_excel() and raise AllotropeParsingError for failures.
 
-    pd.read_excel() can return a DataFrame or a dictionary of DataFrames. The latter is intentionally not supported."""
+    pd.read_excel() can return a DataFrame or a dictionary of DataFrames. The latter is intentionally not supported.
+    """
     try:
         df_or_dict = pd.read_excel(io, **kwargs)
     except Exception as e:
@@ -225,15 +241,44 @@ class SeriesData:
                     stacklevel=2,
                 )
 
-    def get_unread(self, skip: set[str] | None = None) -> dict[str, float | str | None]:
-        skip = skip or set()
+    def _get_custom_key(self, key: str) -> float | str | None:
+        if (float_value := self.get(float, key)) is not None:
+            return float_value
+        return self.get(str, key)
+
+    def _get_matching_keys(self, key_or_keys: str | set[str]) -> set[str]:
+        return {
+            matched
+            for regex_key in (
+                key_or_keys if isinstance(key_or_keys, set) else {key_or_keys}
+            )
+            for matched in [k for k in self.series.index if re.fullmatch(regex_key, k)]
+        }
+
+    def get_custom_keys(
+        self, key_or_keys: str | set[str]
+    ) -> dict[str, float | str | None]:
+        return {
+            key: self._get_custom_key(key)
+            for key in self._get_matching_keys(key_or_keys)
+        }
+
+    def mark_read(self, key_or_keys: str | set[str]) -> None:
+        self.read_keys |= self._get_matching_keys(key_or_keys)
+
+    def get_unread(
+        self, regex: str | None = None, skip: set[str] | None = None
+    ) -> dict[str, float | str | None]:
+        skip = self._get_matching_keys(skip) if skip else set()
         # Mark explicitly skipped keys as "read". This not only covers the check below, but removes
         # them from the destructor warning.
         self.read_keys |= skip
-        return {
-            key: self.get(float, key) or self.get(str, key)
-            for key in set(self.series.index.to_list()) - self.read_keys
-        }
+        matching_keys = (
+            self._get_matching_keys(regex)
+            if regex
+            else set(self.series.index.to_list())
+        )
+        return self.get_custom_keys(matching_keys - self.read_keys)
 
     def has_key(self, key: str) -> bool:
         return key in self.series

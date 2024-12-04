@@ -12,8 +12,7 @@ from allotropy.parsers.thermo_fisher_visionlite.thermo_fisher_visionlite_reader 
     ThermoFisherVisionliteReader,
 )
 from allotropy.parsers.thermo_fisher_visionlite.thermo_fisher_visionlite_structure import (
-    create_measurement_groups,
-    create_metadata,
+    VisionLiteData,
 )
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -25,8 +24,7 @@ class ThermoFisherVisionliteParser(VendorParser[Data, Model]):
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
-        reader = ThermoFisherVisionliteReader(named_file_contents)
-        return Data(
-            create_metadata(named_file_contents.original_file_path),
-            create_measurement_groups(reader),
+        return VisionLiteData.create(
+            ThermoFisherVisionliteReader(named_file_contents),
+            named_file_contents.original_file_path,
         )

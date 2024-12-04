@@ -5,6 +5,42 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.65] - 2024-11-23
+
+### Added
+
+- AppBio AbsoluteQ - add support for summary file format (#790)
+- AppBio AbsoluteQ - add support for fluorescence data cube format (#785)
+- Thermo Fisher Scientific VISIONlite - extend support for Genesys150 file  (#788)
+- AppBio AbsoluteQ  - support multichannel file type (#787)
+- AppBio QuantStudio RT-PCR - support xlsx format (#782)
+- Liquid-Handler - initial version of schema (#771)
+- Thermo Fisher Scientific VISIONlite - support new file format and calculated data (#774)
+
+### Fixed
+
+- Molecular Devices SoftMax Pro - forward-fill columns in group summaries correctly (#784)
+- Molecular Devices Softmax Pro - add check for expected rows in plate data table (#776)
+- Qiacuity DPCR - add encoding detection/artifacts and handle different column names for concentration (#775)
+
+## [0.1.64] - 2024-11-13
+
+### Added
+
+- AppBio QuantStudio RT-PCR - handle format where only Results section is provided (#770)
+- Beckman PharmSpec - update adapter to use Solution Analyzer schema REC/2024/09 (#749)
+- Agilent Gen5 - Support results not grouped in a single table  (#768)
+- Internal - add function to SeriesData to get unread keys (#766)
+- Unchained Labs Lunatic - add ability to parse spectrum measurements (#762)
+
+### Fixed
+
+- Thermo Fisher Scientific NanoDrop Eight - support headers ending with trailing whitespace (#772)
+
+### Changed
+
+- Binding Affinity Analyzer - sensor chip document hierarchy level change (#752)
+
 ## [0.1.63] - 2024-11-01
 
 ### Added
@@ -27,7 +63,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Novabio Flex2 - Update Adapter to use Solution Analyzer schema REC/2024/09 (#743)
 - Bio-Rad CFX Maestro - initial implementation (#744)
 - Internal - add the ability to handle lists of dataclasses in json structuring library (#716)
--  Molecular Devices SoftMax Pro - report non numeric values in error document #713 (#739)
+- Molecular Devices SoftMax Pro - report non numeric values in error document #713 (#739)
 
 ### Fixed
 

@@ -12,16 +12,17 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_data_creator import
     create_measurement_groups,
     create_metadata,
 )
+from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_reader import (
+    AppBioQuantStudioReader,
+)
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     create_amplification_data,
     create_multicomponent_data,
     Header,
     MeltCurveRawData,
-    RawData,
     Result,
     Well,
 )
-from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -29,17 +30,15 @@ from allotropy.parsers.vendor_parser import VendorParser
 class AppBioQuantStudioParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "AppBio QuantStudio RT-PCR"
     RELEASE_STATE = ReleaseState.RECOMMENDED
-    SUPPORTED_EXTENSIONS = "txt"
+    SUPPORTED_EXTENSIONS = AppBioQuantStudioReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
-        reader = LinesReader.create(named_file_contents)
+        reader = AppBioQuantStudioReader.create(named_file_contents)
 
         # Data sections must be read in order from the file.
-        header = Header.create(reader)
+        header = Header.create(reader.header)
         wells = Well.create(reader, header.experiment_type)
-        # Skip raw data section
-        RawData.create(reader)
         amp_data = create_amplification_data(reader)
         multi_data = create_multicomponent_data(reader)
         results_data, results_metadata = Result.create(reader, header.experiment_type)

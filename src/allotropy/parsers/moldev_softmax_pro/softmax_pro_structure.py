@@ -111,7 +111,7 @@ class GroupDataElementEntry:
 @dataclass(frozen=True)
 class GroupDataElement:
     sample: str
-    position: str
+    positions: list[str]
     plate: str
     entries: list[GroupDataElementEntry]
     errors: list[ErrorDocument]
@@ -121,8 +121,6 @@ class GroupDataElement:
 class GroupSampleData:
     identifier: str
     data_elements: list[GroupDataElement]
-    aggregated_entries: list[GroupDataElementEntry]
-    aggregated_errors: list[ErrorDocument]
 
     @classmethod
     def create(cls, data: pd.DataFrame) -> GroupSampleData:
@@ -139,51 +137,55 @@ class GroupSampleData:
             or top_row.get(str, column) in VALID_NAN_VALUES
         ]
 
-        normal_columns = []
-        aggregated_columns = []
-        for column in numeric_columns:
-            if data[column].iloc[1:].isnull().all():
-                aggregated_columns.append(column)
-            else:
-                normal_columns.append(column)
-
-        data_elements = []
+        data_elements: dict[str, list[GroupDataElement]] = {
+            column: [] for column in numeric_columns
+        }
         for row in row_data:
-            entries, errors = cls._get_entries_and_errors(row, normal_columns)
-            data_elements.append(
-                GroupDataElement(
-                    sample=identifier,
-                    position=row[str, ["Well", "Wells"]],
-                    plate=row[str, "WellPlateName"],
-                    entries=entries,
-                    errors=errors,
-                )
-            )
-
-        aggregated_entries, aggregated_errors = cls._get_entries_and_errors(
-            top_row, aggregated_columns
-        )
+            row_results = cls._get_entries_and_errors(row, numeric_columns)
+            position = row[str, ["Well", "Wells"]]
+            plate = row[str, "WellPlateName"]
+            for column in numeric_columns:
+                if (column_result := row_results.get(column)) is not None:
+                    data_elements[column].append(
+                        GroupDataElement(
+                            sample=identifier,
+                            positions=[position],
+                            plate=plate,
+                            entries=[
+                                GroupDataElementEntry(
+                                    column,
+                                    column_result
+                                    if isinstance(column_result, float)
+                                    else NEGATIVE_ZERO,
+                                )
+                            ],
+                            errors=[ErrorDocument(column_result, column)]
+                            if isinstance(column_result, str)
+                            else [],
+                        )
+                    )
+                else:
+                    data_elements[column][-1].positions.append(position)
 
         return GroupSampleData(
             identifier=identifier,
-            data_elements=data_elements,
-            aggregated_entries=aggregated_entries,
-            aggregated_errors=aggregated_errors,
+            data_elements=[
+                elem for elements in data_elements.values() for elem in elements
+            ],
         )
 
     @classmethod
     def _get_entries_and_errors(
         cls, data_row: SeriesData, column_names: list[str]
-    ) -> tuple[list[GroupDataElementEntry], list[ErrorDocument]]:
-        entries = []
-        errors = []
+    ) -> dict[str, float | str]:
+        result: dict[str, float | str] = {}
         for column in column_names:
             value = data_row.get(float, column)
             if value is not None:
-                entries.append(GroupDataElementEntry(column, value))
+                result[column] = value
             elif (error := data_row.get(str, column)) is not None:
-                errors.append(ErrorDocument(error, column))
-        return entries, errors
+                result[column] = error
+        return result
 
 
 @dataclass(frozen=True)
@@ -441,8 +443,11 @@ class PlateRawData:
     ) -> pd.DataFrame:
         lines = []
         # read number of rows in plate section
-        for _ in range(rows):
-            lines.append(reader.pop() or "")
+        for i in range(rows):
+            if not (line := reader.pop()):
+                msg = f"Expected {rows} rows in measurement table, got {i}."
+                raise AllotropeConversionError(msg)
+            lines.append(line)
         reader.drop_empty()
 
         # convert rows to df
@@ -763,8 +768,10 @@ class PlateBlock(ABC, Block):
             for col in range(1, cols + 1):
                 yield f"{num_to_chars(row)}{col}"
 
-    def iter_data_elements(self, position: str) -> Iterator[DataElement]:
-        yield from self.block_data.iter_data_elements(position)
+    def iter_data_elements(self, position: str | list[str]) -> Iterator[DataElement]:
+        position = [position] if isinstance(position, str) else position
+        for p in position:
+            yield from self.block_data.iter_data_elements(p)
 
     def iter_reduced_data(self) -> Iterator[ReducedDataElement]:
         if self.block_data.reduced_data:
@@ -1094,18 +1101,15 @@ class StructureData:
     def create(reader: CsvReader) -> StructureData:
         block_list = BlockList.create(reader)
 
-        # update sample_id if it was reported in the group blocks and include erros from calculated data
+        # update sample_id if it was reported in the group blocks and include errors from calculated data
         for group_block in block_list.group_blocks:
             for group_sample_data in group_block.group_data.sample_data:
                 for group_data_element in group_sample_data.data_elements:
                     plate_block = block_list.plate_blocks[group_data_element.plate]
                     for data_element in plate_block.iter_data_elements(
-                        group_data_element.position
+                        group_data_element.positions
                     ):
                         data_element.sample_id = group_data_element.sample
-                        data_element.error_document += (
-                            group_data_element.errors
-                            + group_sample_data.aggregated_errors
-                        )
+                        data_element.error_document += group_data_element.errors
 
         return StructureData(block_list)

@@ -74,7 +74,7 @@ def test_to_allotrope_invalid_plate_data() -> None:
 
 
 def test_to_allotrope_missing_results() -> None:
-    with pytest.raises(AllotropeConversionError):
+    with pytest.raises(AllotropeConversionError, match=NO_MEASUREMENTS_ERROR):
         from_file(f"{TESTDATA}/missing_results_error.txt", VENDOR_TYPE)
 
 
