@@ -9,7 +9,7 @@ class BenchlingEmpowerReader:
     SUPPORTED_EXTENSIONS = "json"
 
     metadata_fields: dict[str, Any]
-    injections: dict[str, dict[str, Any]]
+    injections: list[dict[str, Any]]
 
     def __init__(self, named_file_contents: NamedFileContents) -> None:
         contents: dict[str, Any] = json.load(named_file_contents.contents)
@@ -56,9 +56,7 @@ class BenchlingEmpowerReader:
         # Results contain peaks and calibration cureves
         results: list[dict[str, Any]] = values.get("results", [])
         for result in results:
-            fields: dict[str, Any] = assert_not_none(
-                result.get("fields"), "results/fields"
-            )
+            fields = assert_not_none(result.get("fields"), "results/fields")
             if (inj_id := fields.get("InjectionId")) is None:
                 msg = (
                     f"Expected InjectionId in 'fields' for result: {fields['ResultId']}"

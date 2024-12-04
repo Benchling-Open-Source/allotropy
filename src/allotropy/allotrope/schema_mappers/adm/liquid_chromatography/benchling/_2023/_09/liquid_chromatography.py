@@ -1,3 +1,4 @@
+from collections.abc import Sequence
 from dataclasses import dataclass
 from typing import Protocol, TypeVar
 
@@ -79,8 +80,8 @@ class DataCube:
     label: str
     structure_dimensions: list[DataCubeComponent]
     structure_measures: list[DataCubeComponent]
-    dimensions: list[tuple[float, ...]]
-    measures: list[tuple[float | None, ...]]
+    dimensions: list[list[float]]
+    measures: list[Sequence[float | None]]
 
 
 @dataclass(frozen=True)
@@ -104,6 +105,13 @@ class Peak:
 class Measurement:
     measurement_identifier: str
     sample_identifier: str
+
+    # Injection metadata
+    injection_identifier: str
+    injection_time: str
+    autosampler_injection_volume_setting: float
+
+    # Column metadata
     chromatography_serial_num: str | None = None
     column_inner_diameter: float | None = None
     chromatography_chemistry_type: str | None = None
@@ -125,10 +133,6 @@ class Measurement:
     system_flow_data_cube: DataCube | None = None
     temperature_profile_data_cube: DataCube | None = None
 
-    # Injection metadata
-    injection_identifier: str | None = None
-    injection_time: str | None = None
-    autosampler_injection_volume_setting: float | None = None
     peaks: list[Peak] | None = None
 
 
@@ -238,8 +242,8 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def get_peak_document(self, peak: Peak) -> PeakDocument:
         return PeakDocument(
-            peak_start=quantity_or_none_from_unit(peak.start_unit, peak.start),
-            peak_end=quantity_or_none_from_unit(peak.end_unit, peak.end),
+            peak_start=quantity_or_none_from_unit(peak.start_unit, peak.start),  # type: ignore[arg-type]
+            peak_end=quantity_or_none_from_unit(peak.end_unit, peak.end),  # type: ignore[arg-type]
             peak_area=quantity_or_none_from_unit(peak.area_unit, peak.area),
             peak_width=quantity_or_none(TQuantityValueSecondTime, peak.width),
             peak_height=quantity_or_none(TQuantityValueSecondTime, peak.height),

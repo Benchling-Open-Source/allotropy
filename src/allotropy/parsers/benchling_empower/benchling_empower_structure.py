@@ -100,7 +100,7 @@ def _create_peak(peak: dict[str, Any]) -> Peak:
 
 
 def _create_measurement(injection: dict[str, Any]) -> Measurement:
-    peaks: list[dict[str, Any]] = injection.get("peaks")
+    peaks: list[dict[str, Any]] = injection.get("peaks", [])
     return Measurement(
         measurement_identifier=random_uuid_str(),
         sample_identifier=assert_not_none(injection.get("SampleName"), "SampleName"),
@@ -114,8 +114,8 @@ def _create_measurement(injection: dict[str, Any]) -> Measurement:
 
 
 def create_measurement_groups(
-    injections: dict[str, dict[str, Any]]
-) -> MeasurementGroup:
+    injections: list[dict[str, Any]]
+) -> list[MeasurementGroup]:
     return [
         MeasurementGroup(
             measurements=[_create_measurement(injection) for injection in injections]
