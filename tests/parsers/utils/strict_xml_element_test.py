@@ -1,7 +1,7 @@
 from xml.etree.ElementTree import Element, tostring
 
 # xml fromstring is vulnerable so defusedxml version is used instead
-from defusedxml.ElementTree import fromstring  # type: ignore[import-untyped]
+from defusedxml.ElementTree import fromstring
 import pytest
 
 from allotropy.exceptions import AllotropeConversionError
@@ -27,7 +27,7 @@ def xml_element_bytes() -> bytes:
 
 @pytest.fixture
 def xml_element(xml_element_bytes: bytes) -> Element:
-    return fromstring(xml_element_bytes)  # type: ignore[no-any-return]
+    return fromstring(xml_element_bytes)
 
 
 @pytest.fixture

@@ -3,7 +3,7 @@ from __future__ import annotations
 from xml.etree import ElementTree
 
 # xml fromstring is vulnerable so defusedxml version is used instead
-from defusedxml.ElementTree import fromstring  # type: ignore[import-untyped]
+from defusedxml.ElementTree import fromstring
 
 from allotropy.parsers.utils.values import assert_not_none, try_float
 
