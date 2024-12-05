@@ -199,7 +199,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     self._get_measurement_document_item(measurement, metadata)
                     for measurement in group.measurements
                 ]
-            )
+            ),
         )
 
     def _get_measurement_document_item(
@@ -207,14 +207,18 @@ class Mapper(SchemaMapper[Data, Model]):
     ) -> MeasurementDocument:
         return MeasurementDocument(
             measurement_identifier=measurement.measurement_identifier,
-            chromatography_column_document=self._get_chromatography_column_document(measurement),
+            chromatography_column_document=self._get_chromatography_column_document(
+                measurement
+            ),
             sample_document=self._get_sample_document(measurement),
             injection_document=(
                 self._get_injection_document(measurement)
                 if measurement.injection_identifier
                 else None
             ),
-            processed_data_aggregate_document=self._get_processed_data_aggregate_document(measurement),
+            processed_data_aggregate_document=self._get_processed_data_aggregate_document(
+                measurement
+            ),
             device_control_aggregate_document=self._get_device_control_aggregate_document(
                 measurement, metadata
             ),
@@ -257,7 +261,10 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_data_cube(
-        self, data_cube_class: type[DataCubeType], label: str, data_cubes: list[DataCube] | None
+        self,
+        data_cube_class: type[DataCubeType],
+        label: str,
+        data_cubes: list[DataCube] | None,
     ) -> DataCubeType | None:
         if not (
             data_cube := get_first_not_none(
