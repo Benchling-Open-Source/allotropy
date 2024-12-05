@@ -1,9 +1,6 @@
 from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     MeasurementGroup,
 )
-from allotropy.parsers.cytiva_unicorn.reader.strict_xml_element import (
-    StrictXmlElement,
-)
 from allotropy.parsers.cytiva_unicorn.reader.unicorn_zip_handler import (
     UnicornZipHandler,
 )
@@ -32,6 +29,9 @@ from allotropy.parsers.cytiva_unicorn.structure.measurements.temperature import 
 )
 from allotropy.parsers.cytiva_unicorn.structure.static_docs import (
     StaticDocs,
+)
+from allotropy.parsers.utils.strict_xml_element import (
+    StrictXmlElement,
 )
 
 

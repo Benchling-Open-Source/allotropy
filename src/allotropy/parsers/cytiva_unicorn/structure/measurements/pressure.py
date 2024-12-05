@@ -8,9 +8,6 @@ from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._202
     ProcessedDataDoc,
 )
 from allotropy.parsers.cytiva_unicorn.constants import DEVICE_TYPE
-from allotropy.parsers.cytiva_unicorn.reader.strict_xml_element import (
-    StrictXmlElement,
-)
 from allotropy.parsers.cytiva_unicorn.reader.unicorn_zip_handler import (
     UnicornZipHandler,
 )
@@ -19,6 +16,9 @@ from allotropy.parsers.cytiva_unicorn.structure.measurements.generic import (
 )
 from allotropy.parsers.cytiva_unicorn.structure.static_docs import (
     StaticDocs,
+)
+from allotropy.parsers.utils.strict_xml_element import (
+    StrictXmlElement,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
 

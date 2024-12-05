@@ -6,9 +6,6 @@ from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._202
     Measurement,
 )
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.cytiva_unicorn.reader.strict_xml_element import (
-    StrictXmlElement,
-)
 from allotropy.parsers.cytiva_unicorn.reader.unicorn_zip_handler import (
     UnicornZipHandler,
 )
@@ -17,6 +14,9 @@ from allotropy.parsers.cytiva_unicorn.structure.data_cube.creator import (
 )
 from allotropy.parsers.cytiva_unicorn.structure.data_cube.transformations import (
     Transformation,
+)
+from allotropy.parsers.utils.strict_xml_element import (
+    StrictXmlElement,
 )
 
 

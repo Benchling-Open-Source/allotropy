@@ -8,11 +8,11 @@ from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._202
     SampleDoc,
 )
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.cytiva_unicorn.reader.strict_xml_element import (
-    StrictXmlElement,
-)
 from allotropy.parsers.cytiva_unicorn.reader.unicorn_zip_handler import (
     UnicornZipHandler,
+)
+from allotropy.parsers.utils.strict_xml_element import (
+    StrictXmlElement,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
 

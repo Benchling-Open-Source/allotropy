@@ -2,11 +2,11 @@ from __future__ import annotations
 
 from io import BytesIO
 
-from allotropy.parsers.cytiva_unicorn.reader.strict_xml_element import (
-    StrictXmlElement,
-)
 from allotropy.parsers.cytiva_unicorn.reader.zip_handler import (
     ZipHandler,
+)
+from allotropy.parsers.utils.strict_xml_element import (
+    StrictXmlElement,
 )
 
 
