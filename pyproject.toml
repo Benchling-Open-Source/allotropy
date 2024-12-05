@@ -255,6 +255,8 @@ ignore = [
   "C901", "PLR0911", "PLR0912", "PLR0913", "PLR0915",
   # Ignore line length, black does it better and actually fixes it.
   "E501",
+  # Ignore "magic value" check, because sometimes I need to check if a list has 1 or 2 values...
+  "PLR2004",
 ]
 
 [tool.ruff.isort]

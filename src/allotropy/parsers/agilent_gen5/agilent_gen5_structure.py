@@ -227,7 +227,7 @@ class DeviceControlData:
             line_data: list[str] = strp_line.split(",  ")
             for read_datum in line_data:
                 splitted_datum = read_datum.split(": ")
-                if len(splitted_datum) != 2:  # noqa: PLR2004
+                if len(splitted_datum) != 2:
                     continue
                 device_control_data.add(splitted_datum[0], splitted_datum[1])
 
@@ -236,7 +236,7 @@ class DeviceControlData:
     @classmethod
     def _get_step_label(cls, read_line: str, read_mode: str) -> str | None:
         split_line = read_line.strip().split("\t")
-        if len(split_line) != 2:  # noqa: PLR2004
+        if len(split_line) != 2:
             msg = (
                 f"Expected the Read data line {split_line} to contain exactly 2 values."
             )
@@ -501,7 +501,7 @@ def get_results_section(reader: AgilentGen5Reader) -> list[str] | None:
 
     def is_results(section: list[str]) -> bool:
         return (
-            len(section) > 2  # noqa: PLR2004
+            len(section) > 2
             and section[1].startswith("\t1")
             and section[2].startswith("A\t")
         )

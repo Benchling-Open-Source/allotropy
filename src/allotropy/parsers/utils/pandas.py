@@ -121,11 +121,14 @@ def split_header_and_data(
 def split_dataframe(
     df: pd.DataFrame,
     should_split_on_row: Callable[[pd.Series[Any]], bool],
+    *,
+    include_split_row: bool = False,
 ) -> tuple[pd.DataFrame, pd.DataFrame | None]:
     for idx, row in df.iterrows():
         if should_split_on_row(row):
-            section_end = int(str(idx))
-            return df[:section_end], df[section_end + 1 :]
+            head_end = int(str(idx))
+            tail_start = head_end if include_split_row else head_end + 1
+            return df[:head_end], df[tail_start:]
 
     return df, None
 
@@ -300,10 +303,10 @@ class SeriesData:
         Raises
         AllotropeConversionError: If the lookup or conversion to type fails.
         """
-        if len(type_and_key) == 2:  # noqa: PLR2004
+        if len(type_and_key) == 2:
             type_, key = type_and_key
             msg = None
-        elif len(type_and_key) == 3:  # noqa: PLR2004
+        elif len(type_and_key) == 3:
             type_, key, msg = type_and_key
         try:
             return assert_not_none(self.get(type_, key), str(key), msg=msg)
