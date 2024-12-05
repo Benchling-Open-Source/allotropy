@@ -20,7 +20,7 @@ class StrictXmlElement:
         return StrictXmlElement(
             assert_not_none(
                 self.element.find(name),
-                msg=f"Unable to find {name} in xml file contents",
+                msg=f"Unable to find '{name}' in xml file contents",
             )
         )
 
@@ -37,7 +37,7 @@ class StrictXmlElement:
         return str(
             assert_not_none(
                 self.element.get(name),
-                msg=f"Unable to find {name} in xml file contents",
+                msg=f"Unable to find '{name}' in xml file contents",
             )
         )
 

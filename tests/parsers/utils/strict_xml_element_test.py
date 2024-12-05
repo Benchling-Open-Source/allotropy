@@ -59,7 +59,7 @@ def test_find(xml_element: Element, strict_xml_element: StrictXmlElement) -> Non
     )
 
     with pytest.raises(
-        AllotropeConversionError, match="Unable to find missing in xml file contents"
+        AllotropeConversionError, match="Unable to find 'missing' in xml file contents"
     ):
         strict_xml_element.find("missing")
 
@@ -78,7 +78,7 @@ def test_recursive_find(
     )
 
     with pytest.raises(
-        AllotropeConversionError, match="Unable to find missing in xml file contents"
+        AllotropeConversionError, match="Unable to find 'missing' in xml file contents"
     ):
         strict_xml_element.recursive_find(["Child2", "missing"])
 
@@ -98,7 +98,7 @@ def test_get_attr(strict_xml_element: StrictXmlElement) -> None:
     assert strict_xml_element.get_attr("attr2") == "a"
 
     with pytest.raises(
-        AllotropeConversionError, match="Unable to find missing in xml file contents"
+        AllotropeConversionError, match="Unable to find 'missing' in xml file contents"
     ):
         strict_xml_element.get_attr("missing")
 
