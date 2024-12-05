@@ -23,7 +23,6 @@ from allotropy.parsers.cytiva_unicorn.structure.static_docs import (
 from allotropy.parsers.utils.strict_xml_element import (
     StrictXmlElement,
 )
-from allotropy.parsers.utils.uuids import random_uuid_str
 
 
 class ConductivityMeasurement(UnicornMeasurement):
@@ -34,11 +33,8 @@ class ConductivityMeasurement(UnicornMeasurement):
         elements: list[StrictXmlElement],
         static_docs: StaticDocs,
     ) -> Measurement:
-        return Measurement(
-            measurement_identifier=random_uuid_str(),
-            chromatography_column_doc=static_docs.chromatography_doc,
-            injection_doc=static_docs.injection_doc,
-            sample_doc=static_docs.sample_doc,
+        return cls.get_measurement(
+            static_docs=static_docs,
             chromatogram_data_cube=cls.get_data_cube(
                 handler,
                 cls.filter_curve(elements, r"^Cond$"),

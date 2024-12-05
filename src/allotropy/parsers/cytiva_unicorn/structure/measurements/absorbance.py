@@ -21,7 +21,6 @@ from allotropy.parsers.cytiva_unicorn.structure.static_docs import (
 from allotropy.parsers.utils.strict_xml_element import (
     StrictXmlElement,
 )
-from allotropy.parsers.utils.uuids import random_uuid_str
 
 
 class AbsorbanceMeasurement(UnicornMeasurement):
@@ -35,13 +34,10 @@ class AbsorbanceMeasurement(UnicornMeasurement):
         cls,
         handler: UnicornZipHandler,
         elements: list[StrictXmlElement],
-        stat_docs: StaticDocs,
+        static_docs: StaticDocs,
     ) -> Measurement:
-        return Measurement(
-            measurement_identifier=random_uuid_str(),
-            chromatography_column_doc=stat_docs.chromatography_doc,
-            injection_doc=stat_docs.injection_doc,
-            sample_doc=stat_docs.sample_doc,
+        return cls.get_measurement(
+            static_docs=static_docs,
             chromatogram_data_cube=cls.get_data_cube(
                 handler,
                 cls.filter_curve(elements, cls.get_curve_regex()),

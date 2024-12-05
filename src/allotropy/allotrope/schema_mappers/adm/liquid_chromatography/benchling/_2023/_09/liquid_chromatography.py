@@ -86,35 +86,27 @@ class DeviceControlDoc:
 
 
 @dataclass(frozen=True)
-class ChromatographyDoc:
+class Measurement:
+    measurement_identifier: str
+
+    # chromatography document
     chromatography_serial_num: str
     column_inner_diameter: float
     chromatography_chemistry_type: str
     chromatography_particle_size: float
 
+    # injection document
+    injection_identifier: str | None
+    injection_time: str | None
+    autosampler_injection_volume_setting: float | None
 
-@dataclass(frozen=True)
-class InjectionDoc:
-    injection_identifier: str
-    injection_time: str
-    autosampler_injection_volume_setting: float
-
-
-@dataclass(frozen=True)
-class SampleDoc:
+    # sample document
     sample_identifier: str
     batch_identifier: str
 
-
-@dataclass(frozen=True)
-class Measurement:
-    measurement_identifier: str
-    chromatography_column_doc: ChromatographyDoc
-    sample_doc: SampleDoc
     device_control_docs: list[DeviceControlDoc]
     chromatogram_data_cube: DataCube | None = None
     processed_data_doc: ProcessedDataDoc | None = None
-    injection_doc: InjectionDoc | None = None
 
 
 @dataclass(frozen=True)
@@ -190,31 +182,38 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def get_chromatography_col_doc(
-        self, chromatography_column_doc: ChromatographyDoc
+        self, measurement: Measurement
     ) -> ChromatographyColumnDocument:
         return ChromatographyColumnDocument(
-            chromatography_column_serial_number=chromatography_column_doc.chromatography_serial_num,
-            chromatography_column_chemistry_type=chromatography_column_doc.chromatography_chemistry_type,
+            chromatography_column_serial_number=measurement.chromatography_serial_num,
+            chromatography_column_chemistry_type=measurement.chromatography_chemistry_type,
             column_inner_diameter=TQuantityValueMillimeter(
-                value=chromatography_column_doc.column_inner_diameter,
+                value=measurement.column_inner_diameter,
             ),
             chromatography_column_particle_size=TQuantityValueMicrometer(
-                value=chromatography_column_doc.chromatography_particle_size,
+                value=measurement.chromatography_particle_size,
             ),
         )
 
-    def get_sample_doc(self, sample_doc: SampleDoc) -> SampleDocument:
+    def get_sample_doc(self, measurement: Measurement) -> SampleDocument:
         return SampleDocument(
-            sample_identifier=sample_doc.sample_identifier,
-            batch_identifier=sample_doc.batch_identifier,
+            sample_identifier=measurement.sample_identifier,
+            batch_identifier=measurement.batch_identifier,
         )
 
-    def get_injection_doc(self, injection_doc: InjectionDoc) -> InjectionDocument:
+    def get_injection_doc(self, measurement: Measurement) -> InjectionDocument | None:
+        if (
+            measurement.injection_identifier is None
+            or measurement.injection_time is None
+            or measurement.autosampler_injection_volume_setting is None
+        ):
+            return None
+
         return InjectionDocument(
-            injection_identifier=injection_doc.injection_identifier,
-            injection_time=self.get_date_time(injection_doc.injection_time),
+            injection_identifier=measurement.injection_identifier,
+            injection_time=self.get_date_time(measurement.injection_time),
             autosampler_injection_volume_setting__chromatography_=TQuantityValueCubicMillimeter(
-                value=injection_doc.autosampler_injection_volume_setting,
+                value=measurement.autosampler_injection_volume_setting,
             ),
         )
 
@@ -328,15 +327,9 @@ class Mapper(SchemaMapper[Data, Model]):
     def get_measurement_doc(self, measurement: Measurement) -> MeasurementDocument:
         return MeasurementDocument(
             measurement_identifier=measurement.measurement_identifier,
-            chromatography_column_document=self.get_chromatography_col_doc(
-                measurement.chromatography_column_doc
-            ),
-            sample_document=self.get_sample_doc(measurement.sample_doc),
-            injection_document=(
-                self.get_injection_doc(measurement.injection_doc)
-                if measurement.injection_doc
-                else None
-            ),
+            chromatography_column_document=self.get_chromatography_col_doc(measurement),
+            sample_document=self.get_sample_doc(measurement),
+            injection_document=self.get_injection_doc(measurement),
             processed_data_aggregate_document=(
                 self.get_processed_data_agg_doc(measurement.processed_data_doc)
                 if measurement.processed_data_doc
