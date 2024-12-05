@@ -9,16 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Methodical Mind - Correct location ID handling (#800)
 - Beckman Coulter Biomek - initial implementation (#799)
 - MSD Discovery Workbench - initial implementation (#786)
-- Tecan Magellan - Initial implementation (#798)
+- Tecan Magellan - initial implementation (#798)
 - Mabtech Apex - capture unread keys in custom information document (#764)
-- MSD Methodical Mind - Add multiple spots recorded for the same well within the same measurement agg document. (#794)
-- Thermo Fisher Scientific Genesys On-Board - Initial implementation (#792)
+- MSD Methodical Mind - add multiple spots recorded for the same well within the same measurement agg document. (#794)
+- Thermo Fisher Scientific Genesys On-Board - initial implementation (#792)
 
 ### Fixed
 
+- MSD Methodical Mind - correct location ID handling (#800)
 - Liquid Chromatography - nest all device control document definitions under aggregate document in schema (#801)
 - MSD Methodical Mind - handle case were there are empty identifiers, and handle digital signature at the top of the file (#795)
 
