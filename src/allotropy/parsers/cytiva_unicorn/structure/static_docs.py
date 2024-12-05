@@ -8,8 +8,8 @@ from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._202
     SampleDoc,
 )
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.cytiva_unicorn.reader.strict_element import (
-    StrictElement,
+from allotropy.parsers.cytiva_unicorn.reader.strict_xml_element import (
+    StrictXmlElement,
 )
 from allotropy.parsers.cytiva_unicorn.reader.unicorn_zip_handler import (
     UnicornZipHandler,
@@ -25,7 +25,10 @@ class StaticDocs:
 
     @classmethod
     def create(
-        cls, handler: UnicornZipHandler, curve: StrictElement, results: StrictElement
+        cls,
+        handler: UnicornZipHandler,
+        curve: StrictXmlElement,
+        results: StrictXmlElement,
     ) -> StaticDocs:
         return StaticDocs(
             chromatography_doc=cls.get_chromatography_doc(handler),
@@ -35,8 +38,8 @@ class StaticDocs:
 
     @classmethod
     def __filter_result_criteria(
-        cls, results: StrictElement, keyword: str
-    ) -> StrictElement:
+        cls, results: StrictXmlElement, keyword: str
+    ) -> StrictXmlElement:
         for result_criteria in results.find("ResultSearchCriterias").findall(
             "ResultSearchCriteria"
         ):
@@ -66,8 +69,8 @@ class StaticDocs:
     @classmethod
     def get_injection_doc(
         cls,
-        curve_element: StrictElement,
-        results: StrictElement,
+        curve_element: StrictXmlElement,
+        results: StrictXmlElement,
     ) -> InjectionDoc:
         result = cls.__filter_result_criteria(results, keyword="Sample volume")
         return InjectionDoc(
@@ -79,7 +82,7 @@ class StaticDocs:
         )
 
     @classmethod
-    def get_sample_doc(cls, results: StrictElement) -> SampleDoc:
+    def get_sample_doc(cls, results: StrictXmlElement) -> SampleDoc:
         result = cls.__filter_result_criteria(results, keyword="Sample_ID")
         return SampleDoc(
             sample_identifier=result.find("Keyword2").get_text(),

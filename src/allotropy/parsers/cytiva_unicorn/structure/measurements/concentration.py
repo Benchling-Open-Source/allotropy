@@ -7,8 +7,8 @@ from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._202
     Measurement,
 )
 from allotropy.parsers.cytiva_unicorn.constants import DEVICE_TYPE
-from allotropy.parsers.cytiva_unicorn.reader.strict_element import (
-    StrictElement,
+from allotropy.parsers.cytiva_unicorn.reader.strict_xml_element import (
+    StrictXmlElement,
 )
 from allotropy.parsers.cytiva_unicorn.reader.unicorn_zip_handler import (
     UnicornZipHandler,
@@ -27,7 +27,7 @@ class ConcentrationMeasurement(UnicornMeasurement):
     def create(
         cls,
         handler: UnicornZipHandler,
-        elements: list[StrictElement],
+        elements: list[StrictXmlElement],
         static_docs: StaticDocs,
     ) -> Measurement:
         return Measurement(

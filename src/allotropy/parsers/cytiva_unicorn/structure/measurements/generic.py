@@ -6,8 +6,8 @@ from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._202
     Measurement,
 )
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.cytiva_unicorn.reader.strict_element import (
-    StrictElement,
+from allotropy.parsers.cytiva_unicorn.reader.strict_xml_element import (
+    StrictXmlElement,
 )
 from allotropy.parsers.cytiva_unicorn.reader.unicorn_zip_handler import (
     UnicornZipHandler,
@@ -23,8 +23,8 @@ from allotropy.parsers.cytiva_unicorn.structure.data_cube.transformations import
 class UnicornMeasurement(Measurement):
     @classmethod
     def filter_curve(
-        cls, curve_elements: list[StrictElement], pattern: str
-    ) -> StrictElement:
+        cls, curve_elements: list[StrictXmlElement], pattern: str
+    ) -> StrictXmlElement:
         for element in curve_elements:
             if search(pattern, element.find("Name").get_text()):
                 return element
@@ -33,7 +33,7 @@ class UnicornMeasurement(Measurement):
 
     @classmethod
     def get_data_cube_handler(
-        cls, handler: UnicornZipHandler, curve_element: StrictElement
+        cls, handler: UnicornZipHandler, curve_element: StrictXmlElement
     ) -> UnicornZipHandler:
         names = ["CurvePoints", "CurvePoint", "BinaryCurvePointsFileName"]
         data_name = curve_element.recursive_find(names).get_text()
@@ -43,7 +43,7 @@ class UnicornMeasurement(Measurement):
     def get_data_cube(
         cls,
         handler: UnicornZipHandler,
-        curve: StrictElement,
+        curve: StrictXmlElement,
         data_cube_component: DataCubeComponent,
         transformation: Transformation | None = None,
     ) -> DataCube:

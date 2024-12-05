@@ -5,15 +5,15 @@ from re import search
 from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     Metadata,
 )
-from allotropy.parsers.cytiva_unicorn.reader.strict_element import (
-    StrictElement,
+from allotropy.parsers.cytiva_unicorn.reader.strict_xml_element import (
+    StrictXmlElement,
 )
 from allotropy.parsers.cytiva_unicorn.reader.unicorn_zip_handler import (
     UnicornZipHandler,
 )
 
 
-def get_audit_trail_entry(element: StrictElement) -> StrictElement | None:
+def get_audit_trail_entry(element: StrictXmlElement) -> StrictXmlElement | None:
     audit_trail_entries = element.recursive_find(["AuditTrail", "AuditTrailEntries"])
     for element in audit_trail_entries.findall("AuditTrailEntry"):
         if element.find("GroupName").get_text() == "EvaluationLoggingStarted":
@@ -32,7 +32,7 @@ def get_audit_trail_entry_user(handler: UnicornZipHandler) -> str:
     return "Default"
 
 
-def create_metadata(handler: UnicornZipHandler, results: StrictElement) -> Metadata:
+def create_metadata(handler: UnicornZipHandler, results: StrictXmlElement) -> Metadata:
     system_data = handler.get_system_data()
     instrument_config_data = handler.get_instrument_config_data()
 
