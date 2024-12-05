@@ -56,6 +56,7 @@ def _is_valid_testcase(path: Path) -> bool:
         return False
     if path.suffix.lower() in (".pyc", ".py"):
         return False
+    # Special case to be used when input files are json, test files are put in an input/ folder to indicate.
     if path.parts[-2] == "input":
         return True
     if path.suffix.lower() == ".json":

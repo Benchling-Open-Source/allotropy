@@ -48,6 +48,8 @@ class ParserTest:
     ) -> None:
         if warn_unread_keys:
             os.environ["WARN_UNUSED_KEYS"] = "1"
+        # Special case when input files are json, the are placed in an input/ folder and the results are put
+        # in a corresponding output/ folder.
         if test_file_path.parts[-2] == "input":
             expected_filepath = Path(
                 *test_file_path.parts[:-2], "output", test_file_path.parts[-1]

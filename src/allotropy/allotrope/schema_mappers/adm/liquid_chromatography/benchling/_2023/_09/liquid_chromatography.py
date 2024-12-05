@@ -46,6 +46,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
+from allotropy.parsers.utils.iterables import get_first_not_none
 from allotropy.parsers.utils.values import quantity_or_none, quantity_or_none_from_unit
 
 
@@ -165,17 +166,107 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def map_model(self, data: Data) -> Model:
         return Model(
+            liquid_chromatography_aggregate_document=LiquidChromatographyAggregateDocument(
+                liquid_chromatography_document=[
+                    self._get_technique_document(group, data.metadata)
+                    for group in data.measurement_groups
+                ],
+                device_system_document=DeviceSystemDocument(
+                    asset_management_identifier=data.metadata.asset_management_identifier,
+                    product_manufacturer=data.metadata.product_manufacturer,
+                    device_identifier=data.metadata.device_identifier,
+                    firmware_version=data.metadata.firmware_version,
+                ),
+                data_system_document=DataSystemDocument(
+                    file_name=data.metadata.file_name,
+                    UNC_path=data.metadata.unc_path,
+                    software_name=data.metadata.software_name,
+                    software_version=data.metadata.software_version,
+                    ASM_converter_name=self.converter_name,
+                    ASM_converter_version=ASM_CONVERTER_VERSION,
+                ),
+            ),
             field_asm_manifest=self.MANIFEST,
-            liquid_chromatography_aggregate_document=self.get_liquid_chromatography_agg_doc(
-                data
+        )
+
+    def _get_technique_document(
+        self, group: MeasurementGroup, metadata: Metadata
+    ) -> LiquidChromatographyDocumentItem:
+        return LiquidChromatographyDocumentItem(
+            analyst=metadata.analyst,
+            measurement_aggregate_document=MeasurementAggregateDocument(
+                measurement_document=[
+                    self._get_measurement_document_item(measurement, metadata)
+                    for measurement in group.measurements
+                ]
+            )
+        )
+
+    def _get_measurement_document_item(
+        self, measurement: Measurement, metadata: Metadata
+    ) -> MeasurementDocument:
+        return MeasurementDocument(
+            measurement_identifier=measurement.measurement_identifier,
+            chromatography_column_document=self._get_chromatography_column_document(measurement),
+            sample_document=self._get_sample_document(measurement),
+            injection_document=(
+                self._get_injection_document(measurement)
+                if measurement.injection_identifier
+                else None
+            ),
+            processed_data_aggregate_document=self._get_processed_data_aggregate_document(measurement),
+            device_control_aggregate_document=self._get_device_control_aggregate_document(
+                measurement, metadata
+            ),
+            chromatogram_data_cube=(
+                self._get_data_cube(
+                    measurement.chromatogram_data_cube,
+                    ChromatogramDataCube,
+                )
             ),
         )
 
-    def get_data_cube(
-        self, data_cube: DataCube | None, data_cube_class: type[DataCubeType]
+    def _get_chromatography_column_document(
+        self, measurement: Measurement
+    ) -> ChromatographyColumnDocument:
+        return ChromatographyColumnDocument(
+            chromatography_column_serial_number=measurement.chromatography_serial_num,
+            chromatography_column_chemistry_type=measurement.chromatography_chemistry_type,
+            column_inner_diameter=quantity_or_none(
+                TQuantityValueMillimeter,
+                measurement.column_inner_diameter,
+            ),
+            chromatography_column_particle_size=quantity_or_none(
+                TQuantityValueMicrometer, measurement.chromatography_particle_size
+            ),
+        )
+
+    def _get_injection_document(self, measurement: Measurement) -> InjectionDocument:
+        return InjectionDocument(
+            injection_identifier=measurement.injection_identifier,
+            injection_time=self.get_date_time(measurement.injection_time),
+            autosampler_injection_volume_setting__chromatography_=TQuantityValueCubicMillimeter(
+                value=measurement.autosampler_injection_volume_setting,
+            ),
+        )
+
+    def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
+        return SampleDocument(
+            sample_identifier=measurement.sample_identifier,
+            batch_identifier=measurement.batch_identifier,
+        )
+
+    def _get_data_cube(
+        self, data_cube_class: type[DataCubeType], label: str, data_cubes: list[DataCube] | None
     ) -> DataCubeType | None:
-        if data_cube is None:
+        if not (
+            data_cube := get_first_not_none(
+                lambda cube: cube if cube.label == label else None,
+                data_cubes or [],
+            )
+        ):
             return None
+
         return data_cube_class(
             label=data_cube.label,
             cube_structure=TDatacubeStructure(
@@ -202,45 +293,7 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
         )
 
-    def get_device_system_doc(self, data: Data) -> DeviceSystemDocument:
-        return DeviceSystemDocument(
-            asset_management_identifier=data.metadata.asset_management_identifier,
-            product_manufacturer=data.metadata.product_manufacturer,
-            device_identifier=data.metadata.device_identifier,
-            firmware_version=data.metadata.firmware_version,
-        )
-
-    def get_chromatography_col_doc(
-        self, measurement: Measurement
-    ) -> ChromatographyColumnDocument:
-        return ChromatographyColumnDocument(
-            chromatography_column_serial_number=measurement.chromatography_serial_num,
-            chromatography_column_chemistry_type=measurement.chromatography_chemistry_type,
-            column_inner_diameter=quantity_or_none(
-                TQuantityValueMillimeter,
-                measurement.column_inner_diameter,
-            ),
-            chromatography_column_particle_size=quantity_or_none(
-                TQuantityValueMicrometer, measurement.chromatography_particle_size
-            ),
-        )
-
-    def get_sample_doc(self, measurement: Measurement) -> SampleDocument:
-        return SampleDocument(
-            sample_identifier=measurement.sample_identifier,
-            batch_identifier=measurement.batch_identifier,
-        )
-
-    def get_injection_doc(self, measurement: Measurement) -> InjectionDocument:
-        return InjectionDocument(
-            injection_identifier=measurement.injection_identifier,
-            injection_time=self.get_date_time(measurement.injection_time),
-            autosampler_injection_volume_setting__chromatography_=TQuantityValueCubicMillimeter(
-                value=measurement.autosampler_injection_volume_setting,
-            ),
-        )
-
-    def get_peak_document(self, peak: Peak) -> PeakDocument:
+    def _get_peak_document(self, peak: Peak) -> PeakDocument:
         return PeakDocument(
             peak_start=quantity_or_none_from_unit(peak.start_unit, peak.start),  # type: ignore[arg-type]
             peak_end=quantity_or_none_from_unit(peak.end_unit, peak.end),  # type: ignore[arg-type]
@@ -267,17 +320,17 @@ class Mapper(SchemaMapper[Data, Model]):
         return ProcessedDataAggregateDocument(
             processed_data_document=[
                 ProcessedDataDocumentItem(
-                    chromatogram_data_cube=self.get_data_cube(
+                    chromatogram_data_cube=self._get_data_cube(
                         measurement.processed_data_chromatogram_data_cube,
                         TDatacube,
                     ),
-                    derived_column_pressure_data_cube=self.get_data_cube(
+                    derived_column_pressure_data_cube=self._get_data_cube(
                         measurement.derived_column_pressure_data_cube,
                         DerivedColumnPressureDataCube,
                     ),
                     peak_list=PeakList(
                         peak=[
-                            self.get_peak_document(peak) for peak in measurement.peaks
+                            self._get_peak_document(peak) for peak in measurement.peaks
                         ]
                     )
                     if measurement.peaks
@@ -286,7 +339,7 @@ class Mapper(SchemaMapper[Data, Model]):
             ]
         )
 
-    def get_device_control_aggregate_document(
+    def _get_device_control_aggregate_document(
         self,
         measurement: Measurement,
         metadata: Metadata,
@@ -295,107 +348,38 @@ class Mapper(SchemaMapper[Data, Model]):
             device_control_document=[
                 DeviceControlDocumentItem(
                     device_type=metadata.device_type,
-                    solvent_concentration_data_cube=self.get_data_cube(
+                    solvent_concentration_data_cube=self._get_data_cube(
                         measurement.solvent_conc_data_cube,
                         SolventConcentrationDataCube,
                     ),
-                    pre_column_pressure_data_cube=self.get_data_cube(
+                    pre_column_pressure_data_cube=self._get_data_cube(
                         measurement.pre_column_pressure_data_cube,
                         PreColumnPressureDataCube,
                     ),
-                    sample_pressure_data_cube=self.get_data_cube(
+                    sample_pressure_data_cube=self._get_data_cube(
                         measurement.sample_pressure_data_cube,
                         SamplePressureDataCube,
                     ),
-                    system_pressure_data_cube=self.get_data_cube(
+                    system_pressure_data_cube=self._get_data_cube(
                         measurement.system_pressure_data_cube,
                         SystemPressureDataCube,
                     ),
-                    post_column_pressure_data_cube=self.get_data_cube(
+                    post_column_pressure_data_cube=self._get_data_cube(
                         measurement.post_column_pressure_data_cube,
                         PostColumnPressureDataCube,
                     ),
-                    sample_flow_rate_data_cube=self.get_data_cube(
+                    sample_flow_rate_data_cube=self._get_data_cube(
                         measurement.sample_flow_data_cube,
                         SampleFlowRateDataCube,
                     ),
-                    system_flow_rate_data_cube=self.get_data_cube(
+                    system_flow_rate_data_cube=self._get_data_cube(
                         measurement.system_flow_data_cube,
                         SystemFlowRateDataCube,
                     ),
-                    temperature_profile_data_cube=self.get_data_cube(
+                    temperature_profile_data_cube=self._get_data_cube(
                         measurement.temperature_profile_data_cube,
                         TemperatureProfileDataCube,
                     ),
                 )
             ]
-        )
-
-    def get_measurement_doc(
-        self, measurement: Measurement, metadata: Metadata
-    ) -> MeasurementDocument:
-        return MeasurementDocument(
-            measurement_identifier=measurement.measurement_identifier,
-            chromatography_column_document=self.get_chromatography_col_doc(measurement),
-            sample_document=self.get_sample_doc(measurement),
-            injection_document=(
-                self.get_injection_doc(measurement)
-                if measurement.injection_identifier
-                else None
-            ),
-            processed_data_aggregate_document=self.get_processed_data_agg_doc(
-                measurement
-            ),
-            device_control_aggregate_document=self.get_device_control_aggregate_document(
-                measurement, metadata
-            ),
-            chromatogram_data_cube=(
-                self.get_data_cube(
-                    measurement.chromatogram_data_cube,
-                    ChromatogramDataCube,
-                )
-                if measurement.chromatogram_data_cube
-                else None
-            ),
-        )
-
-    def get_measurement_agg_doc(
-        self, measurement_group: MeasurementGroup, metadata: Metadata
-    ) -> MeasurementAggregateDocument:
-        return MeasurementAggregateDocument(
-            measurement_document=[
-                self.get_measurement_doc(measurement, metadata)
-                for measurement in measurement_group.measurements
-            ]
-        )
-
-    def get_liquid_chromatography_doc_item(
-        self, metadata: Metadata, measurement_group: MeasurementGroup
-    ) -> LiquidChromatographyDocumentItem:
-        return LiquidChromatographyDocumentItem(
-            analyst=metadata.analyst,
-            measurement_aggregate_document=self.get_measurement_agg_doc(
-                measurement_group, metadata
-            ),
-        )
-
-    def get_liquid_chromatography_agg_doc(
-        self, data: Data
-    ) -> LiquidChromatographyAggregateDocument:
-        return LiquidChromatographyAggregateDocument(
-            liquid_chromatography_document=[
-                self.get_liquid_chromatography_doc_item(
-                    data.metadata, measurement_group
-                )
-                for measurement_group in data.measurement_groups
-            ],
-            device_system_document=self.get_device_system_doc(data),
-            data_system_document=DataSystemDocument(
-                file_name=data.metadata.file_name,
-                UNC_path=data.metadata.unc_path,
-                software_name=data.metadata.software_name,
-                software_version=data.metadata.software_version,
-                ASM_converter_name=self.converter_name,
-                ASM_converter_version=ASM_CONVERTER_VERSION,
-            ),
         )
