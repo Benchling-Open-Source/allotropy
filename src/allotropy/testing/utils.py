@@ -43,6 +43,7 @@ NON_UNIQUE_IDENTIFIERS = {
     "device identifier",
     "experimental data identifier",
     "group identifier",
+    "injection identifier",
     "location identifier",
     "source location identifier",
     "destination location identifier",
