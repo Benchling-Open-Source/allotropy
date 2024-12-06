@@ -33,6 +33,7 @@ from allotropy.allotrope.models.adm.liquid_chromatography.benchling._2023._09.li
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueCubicMillimeter,
     TQuantityValueMicrometer,
+    TQuantityValueMilliAbsorbanceUnit,
     TQuantityValueMillimeter,
     TQuantityValuePercent,
     TQuantityValueSecondTime,
@@ -46,6 +47,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.utils.values import quantity_or_none, quantity_or_none_from_unit
 
 
@@ -53,7 +55,6 @@ from allotropy.parsers.utils.values import quantity_or_none, quantity_or_none_fr
 class Metadata:
     asset_management_identifier: str
     analyst: str
-    device_type: str | None = None
     detection_type: str | None = None
     model_number: str | None = None
     software_name: str | None = None
@@ -126,7 +127,9 @@ class Measurement:
 
     device_control_docs: list[DeviceControlDoc]
 
-    # Column metadata
+    # Optional metadata
+    sample_role_type: str | None = None
+    written_name: str | None = None
     chromatography_serial_num: str | None = None
     column_inner_diameter: float | None = None
     chromatography_chemistry_type: str | None = None
@@ -200,15 +203,19 @@ class Mapper(SchemaMapper[Data, Model]):
             analyst=metadata.analyst,
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_document=[
-                    self._get_measurement_document_item(measurement, metadata)
+                    self._get_measurement_document_item(measurement)
                     for measurement in group.measurements
                 ]
             ),
         )
 
     def _get_measurement_document_item(
-        self, measurement: Measurement, metadata: Metadata
+        self, measurement: Measurement
     ) -> MeasurementDocument:
+        if len(measurement.device_control_docs) < 1:
+            msg = "Expected at least one device control document in measurement."
+            raise AllotropeConversionError(msg)
+
         return MeasurementDocument(
             measurement_identifier=measurement.measurement_identifier,
             chromatography_column_document=self._get_chromatography_column_document(
@@ -224,7 +231,10 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement
             ),
             device_control_aggregate_document=DeviceControlAggregateDocument(
-                device_control_document=[self._get_device_control_document(device_control_doc) for device_control_doc in measurement.device_control_docs]
+                device_control_document=[
+                    self._get_device_control_document(device_control_doc)
+                    for device_control_doc in measurement.device_control_docs
+                ]
             ),
             chromatogram_data_cube=(
                 self._get_data_cube(
@@ -262,6 +272,8 @@ class Mapper(SchemaMapper[Data, Model]):
         return SampleDocument(
             sample_identifier=measurement.sample_identifier,
             batch_identifier=measurement.batch_identifier,
+            sample_role_type=measurement.sample_role_type,
+            written_name=measurement.written_name,
         )
 
     def _get_data_cube(
@@ -304,13 +316,19 @@ class Mapper(SchemaMapper[Data, Model]):
             peak_end=quantity_or_none_from_unit(peak.end_unit, peak.end),  # type: ignore[arg-type]
             peak_area=quantity_or_none_from_unit(peak.area_unit, peak.area),
             peak_width=quantity_or_none(TQuantityValueSecondTime, peak.width),
-            peak_height=quantity_or_none(TQuantityValueSecondTime, peak.height),
+            peak_height=quantity_or_none(
+                TQuantityValueMilliAbsorbanceUnit, peak.height
+            ),
             relative_peak_area=quantity_or_none(
                 TQuantityValuePercent, peak.relative_area
             ),
             relative_peak_height=quantity_or_none(
                 TQuantityValuePercent, peak.relative_height
             ),
+            retention_time=quantity_or_none(
+                TQuantityValueSecondTime, peak.retention_time
+            ),
+            written_name=peak.written_name,
         )
 
     def _get_processed_data_aggregate_document(
@@ -344,7 +362,9 @@ class Mapper(SchemaMapper[Data, Model]):
             ]
         )
 
-    def _get_device_control_document(self, device_control_doc: DeviceControlDoc) -> DeviceControlDocumentItem:
+    def _get_device_control_document(
+        self, device_control_doc: DeviceControlDoc
+    ) -> DeviceControlDocumentItem:
         return DeviceControlDocumentItem(
             device_type=device_control_doc.device_type,
             solvent_concentration_data_cube=self._get_data_cube(

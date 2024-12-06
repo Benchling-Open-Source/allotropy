@@ -33,7 +33,9 @@ def get_audit_trail_entry_user(handler: UnicornZipHandler) -> str:
     return "Default"
 
 
-def create_metadata(handler: UnicornZipHandler, results: StrictXmlElement, file_path: str) -> Metadata:
+def create_metadata(
+    handler: UnicornZipHandler, results: StrictXmlElement, file_path: str
+) -> Metadata:
     system_data = handler.get_system_data()
     instrument_config_data = handler.get_instrument_config_data()
 

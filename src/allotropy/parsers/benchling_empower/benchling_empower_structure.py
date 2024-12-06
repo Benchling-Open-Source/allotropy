@@ -1,12 +1,14 @@
 from pathlib import Path
 from typing import Any
 
+from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
 )
 from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     DataCube,
     DataCubeComponent,
+    DeviceControlDoc,
     Measurement,
     MeasurementGroup,
     Metadata,
@@ -25,7 +27,6 @@ def create_metadata(
     return Metadata(
         asset_management_identifier=metadata.get("SystemName", NOT_APPLICABLE),
         analyst=metadata.get("SampleSetAcquiredBy", NOT_APPLICABLE),
-        device_type=constants.DEVICE_TYPE,
         software_name=constants.SOFTWARE_NAME,
         software_version=first_injection.get("AcqSWVersion"),
         file_name=Path(file_path).name,
@@ -52,6 +53,10 @@ def _get_chromatogram(injection: dict[str, Any]) -> DataCube | None:
     elif detection_unit != "mAU":
         msg = f"Unexpected Chromatogram detection unit: {detection_unit}"
         raise AllotropeConversionError(msg)
+
+    # ASM expected chromatogram dimensions (x axis) to be in seconds, but Empower reports it in minutes,
+    # so convert here.
+    dimensions = [t * 60 for t in dimensions]
 
     return DataCube(
         label="absorbance",
@@ -81,35 +86,52 @@ def _create_peak(peak: dict[str, Any]) -> Peak:
         area /= 1000
     if (height := try_float_or_none(peak.get("Height"))) is not None:
         height /= 1000
+    # Times are reported in minutes by Empower - convert to seconds
+    if (retention_time := try_float_or_none(peak.get("RetentionTime"))) is not None:
+        retention_time /= 60
 
     return Peak(
-        start=try_float(peak.get("StartTime"), "StartTime"),
+        # Times are reported in minutes by Empower - convert to seconds
+        start=try_float(peak.get("StartTime"), "StartTime") * 60,
         start_unit="s",
-        end=try_float(peak.get("EndTime"), "EndTime"),
+        end=try_float(peak.get("EndTime"), "EndTime") * 60,
         end_unit="s",
+        retention_time=retention_time,
         area=area,
         area_unit="mAU.s",
         relative_area=try_float_or_none(peak.get("PctArea")),
         width=try_float_or_none(peak.get("Width")),
-        relative_width=try_float_or_none(peak.get("PctWidth")),
         height=height,
         relative_height=try_float_or_none(peak.get("PctHeight")),
-        retention_time=try_float_or_none(peak.get("RetentionTime")),
-        written_name=peak.get("PeakLabel"),
+        written_name=peak.get("Name"),
     )
 
 
 def _create_measurement(injection: dict[str, Any]) -> Measurement:
     peaks: list[dict[str, Any]] = injection.get("peaks", [])
+    sample_type = injection.get("SampleType").lower()
+    sample_role_types = [
+        srt.value for srt in SampleRoleType if sample_type in srt.value
+    ]
+    sample_role_type = (
+        sample_role_types[0]
+        if len(sample_role_types) > 0
+        else SampleRoleType.unknown_sample_role.value
+    )
+
     return Measurement(
         measurement_identifier=random_uuid_str(),
-        sample_identifier=assert_not_none(injection.get("SampleName"), "SampleName"),
+        sample_identifier=assert_not_none(injection.get("Label"), "Label"),
+        batch_identifier=injection.get("SampleSetID"),
+        sample_role_type=sample_role_type,
+        written_name=injection.get("SampleName"),
         chromatography_serial_num=injection.get("ColumnSerialNumber") or NOT_APPLICABLE,
         autosampler_injection_volume_setting=injection["InjectionVolume"],
         injection_identifier=str(injection["InjectionId"]),
         injection_time=injection["DateAcquired"],
         peaks=[_create_peak(peak) for peak in peaks],
         chromatogram_data_cube=_get_chromatogram(injection),
+        device_control_docs=[DeviceControlDoc(device_type=constants.DEVICE_TYPE)],
     )
 
 
