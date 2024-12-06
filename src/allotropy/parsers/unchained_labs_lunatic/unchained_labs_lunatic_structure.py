@@ -96,7 +96,7 @@ def _create_measurement(
         batch_identifier=well_plate_data.get(str, "Sample Group"),
         firmware_version=header.get(str, "Client version"),
         sample_custom_info={
-            "path length": path_length if path_length else None,
+            "path length": float(path_length) if path_length is not None else None,
         },
         device_control_custom_info={
             "path length mode": well_plate_data.get(str, "Path length mode"),
