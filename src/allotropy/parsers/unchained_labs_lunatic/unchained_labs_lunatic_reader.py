@@ -48,7 +48,7 @@ class UnchainedLabsLunaticReader:
 
         # Fix column names in excel sheets with newlines/other whitespace.
         data.columns = (
-            data.columns.str.replace("\n", " ").str.replace("\r", "").str.strip()
+            data.columns.astype(str).str.replace("\n", " ").str.replace("\r", "").str.strip()
         )
         # Rows with no Sample name are assumed to be skipped measurements, and are dropped from the results.
         data = data.dropna(subset=["Sample name"])
