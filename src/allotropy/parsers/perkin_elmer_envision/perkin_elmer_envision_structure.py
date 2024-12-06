@@ -381,7 +381,9 @@ class BasicAssayInfo:
             reader.pop_csv_block_as_df(index_col=0),
             "Basic assay information",
         ).T
-        data_frame.columns = data_frame.columns.astype(str).str.replace(":", "").str.strip()
+        data_frame.columns = (
+            data_frame.columns.astype(str).str.replace(":", "").str.strip()
+        )
         data = df_to_series_data(data_frame)
         return BasicAssayInfo(data.get(str, "Protocol ID"), data.get(str, "Assay ID"))
 
