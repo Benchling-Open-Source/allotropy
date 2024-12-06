@@ -109,15 +109,17 @@ def _create_peak(peak: dict[str, Any]) -> Peak:
 
 def _create_measurement(injection: dict[str, Any]) -> Measurement:
     peaks: list[dict[str, Any]] = injection.get("peaks", [])
-    sample_type = injection.get("SampleType").lower()
-    sample_role_types = [
-        srt.value for srt in SampleRoleType if sample_type in srt.value
-    ]
-    sample_role_type = (
-        sample_role_types[0]
-        if len(sample_role_types) > 0
-        else SampleRoleType.unknown_sample_role.value
-    )
+    sample_type = injection.get("SampleType")
+    sample_role_type = None
+    if sample_type:
+        sample_role_types = [
+            srt.value for srt in SampleRoleType if str(sample_type).lower() in srt.value
+        ]
+        sample_role_type = (
+            sample_role_types[0]
+            if len(sample_role_types) > 0
+            else SampleRoleType.unknown_sample_role.value
+        )
 
     return Measurement(
         measurement_identifier=random_uuid_str(),
