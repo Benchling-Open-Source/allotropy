@@ -5,15 +5,17 @@ from pathlib import Path
 import pandas as pd
 
 from allotropy.allotrope.models.shared.definitions.definitions import NaN
-from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
+from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
     CalculatedDataItem,
     DataSource,
     Measurement,
     MeasurementGroup,
     MeasurementType,
     Metadata,
+    ErrorDocument,
 )
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.constants import NOT_APPLICABLE, NEGATIVE_ZERO
 from allotropy.parsers.unchained_labs_lunatic.constants import (
     CALCULATED_DATA_LOOKUP,
     DETECTION_TYPE,
@@ -63,9 +65,19 @@ def _create_measurement(
         )
 
     measurement_identifier = random_uuid_str()
+    error_documents: list[ErrorDocument] = []
     calculated_data.extend(
-        _get_calculated_data(well_plate_data, wavelength_column, measurement_identifier)
+        _get_calculated_data(well_plate_data, wavelength_column, measurement_identifier, error_documents)
     )
+    absorbance = well_plate_data.get(float, wavelength_column)
+
+    if absorbance is None:
+        error_documents.append(
+            ErrorDocument(
+                error=NOT_APPLICABLE,
+                error_feature=DETECTION_TYPE.lower(),
+            )
+        )
     return Measurement(
         type_=MeasurementType.ULTRAVIOLET_ABSORBANCE,
         device_type=DEVICE_TYPE,
@@ -73,18 +85,23 @@ def _create_measurement(
         identifier=measurement_identifier,
         detector_wavelength_setting=float(wavelength),
         electronic_absorbance_reference_wavelength_setting=background_wavelength,
-        electronic_absorbance_reference_absorbance=background_absorbance,
-        absorbance=well_plate_data.get(float, wavelength_column, NaN),
+        measurement_custom_info={
+            "electronic_absorbance_reference_absorbance": background_absorbance
+        },
+        absorbance=absorbance if absorbance is not None else NEGATIVE_ZERO,
         sample_identifier=well_plate_data[str, "Sample name"],
         location_identifier=well_plate_data[str, "Plate Position"],
         well_plate_identifier=well_plate_data.get(str, "Plate ID"),
         batch_identifier=well_plate_data.get(str, "Sample Group"),
         firmware_version=header.get(str, "Client version"),
-        path_length=float(path_length) if path_length else None,
+        sample_custom_info={
+            "path length": path_length if path_length else None,
+        },
         device_control_custom_info={
             "path length mode": well_plate_data.get(str, "Path length mode"),
             "pump": well_plate_data.get(str, "Pump"),
         },
+        error_document=error_documents,
     )
 
 
@@ -92,11 +109,18 @@ def _get_calculated_data(
     well_plate_data: SeriesData,
     wavelength_column: str,
     measurement_identifier: str,
+    error_documents: list[ErrorDocument],
 ) -> list[CalculatedDataItem]:
     calculated_data = []
     for item in CALCULATED_DATA_LOOKUP.get(wavelength_column, []):
         value = well_plate_data.get(float, item["column"])
         if value is None:
+            error_documents.append(
+                ErrorDocument(
+                    error=NOT_APPLICABLE,
+                    error_feature=item["name"],
+                )
+            )
             continue
 
         calculated_data.append(
@@ -143,6 +167,7 @@ def _create_measurement_group(
 
 
 def create_metadata(header: SeriesData, file_path: str) -> Metadata:
+    asm_file_identifier = Path(file_path).with_suffix(".json")
     device_identifier = header.get(str, "Instrument ID") or header.get(
         str, "Instrument"
     )
@@ -156,6 +181,8 @@ def create_metadata(header: SeriesData, file_path: str) -> Metadata:
         software_version=header.get(str, "Software version"),
         file_name=Path(file_path).name,
         unc_path=file_path,
+        asm_file_identifier=asm_file_identifier.name,
+        data_system_instance_id=NOT_APPLICABLE,
     )
 
 
