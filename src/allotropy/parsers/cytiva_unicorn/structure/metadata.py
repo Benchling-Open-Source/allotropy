@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from pathlib import Path
 from re import search
 
 from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
@@ -32,7 +33,9 @@ def get_audit_trail_entry_user(handler: UnicornZipHandler) -> str:
     return "Default"
 
 
-def create_metadata(handler: UnicornZipHandler, results: StrictXmlElement) -> Metadata:
+def create_metadata(
+    handler: UnicornZipHandler, results: StrictXmlElement, file_path: str
+) -> Metadata:
     system_data = handler.get_system_data()
     instrument_config_data = handler.get_instrument_config_data()
 
@@ -41,9 +44,11 @@ def create_metadata(handler: UnicornZipHandler, results: StrictXmlElement) -> Me
     )
 
     return Metadata(
-        asset_management_id=instrument_config.get_attr("Description"),
+        asset_management_identifier=instrument_config.get_attr("Description"),
         product_manufacturer="Cytiva Life Sciences",
-        device_id=results.find("SystemName").get_text(),
+        device_identifier=results.find("SystemName").get_text(),
         firmware_version=instrument_config_data.find("FirmwareVersion").get_text(),
         analyst=get_audit_trail_entry_user(handler),
+        file_name=Path(file_path).name,
+        unc_path=file_path,
     )

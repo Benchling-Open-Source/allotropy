@@ -44,14 +44,16 @@ def try_int_or_none(value: str | None) -> int | None:
         return None
 
 
-def _try_float(value: str) -> float:
+def _try_float(value: str | float | None) -> float:
+    if isinstance(value, float):
+        return value
     # NOTE: this will convert a string with commas for thousands into a decimal, potentially introducing
     # an unexpected error, e.g. one thousand represented as 1,000 would get converted to 1.0
     # However, numbers are not usually represented like this in scientific output (we have no example of it)
-    return float(value.replace(",", "."))
+    return float(str(value).replace(",", "."))
 
 
-def try_float(value: str, value_name: str) -> float:
+def try_float(value: str | float | None, value_name: str) -> float:
     assert_not_none(value, value_name)
     try:
         return _try_float(value)
