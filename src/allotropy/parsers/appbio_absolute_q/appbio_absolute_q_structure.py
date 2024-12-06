@@ -14,14 +14,13 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.dpcr import (
     CalculatedDataItem,
-    DataCube,
-    DataCubeComponent,
     DataSource,
     Error,
     Measurement,
     MeasurementGroup,
     Metadata,
 )
+from allotropy.allotrope.schema_mappers.data_cube import DataCube, DataCubeComponent
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_absolute_q.constants import (
     AGGREGATION_LOOKUP,
@@ -164,7 +163,8 @@ class WellItem:
     confidence_interval__95__: float | None = None
     passive_reference_dye_setting: str | None = None
     flourescence_intensity_threshold_setting: float | None = None
-    data_cubes: list[DataCube] | None = None
+    reporter_dye_data_cube: DataCube | None = None
+    passive_reference_dye_data_cube: DataCube | None = None
     errors: list[Error] | None = None
     calculated_data: list[CalculatedDataItem] | None = None
     extra_data: dict[str, Any] | None = None
@@ -229,19 +229,6 @@ class WellItem:
             FieldComponentDatatype.integer, "cycle count", "#"
         )
         index_column = well_data["Index"].astype(float).tolist()
-        passive_reference_dye_cube = DataCube(
-            label="passive reference dye",
-            structure_dimensions=[cycle_count],
-            structure_measures=[
-                DataCubeComponent(
-                    FieldComponentDatatype.double,
-                    "passive reference dye fluorescence",
-                    "RFU",
-                )
-            ],
-            dimensions=[index_column],
-            measures=[well_data[passive_dye_settings[0]].astype(float).tolist()],
-        )
 
         data = SeriesData(well_data.iloc[0])
         well_items: list[WellItem] = []
@@ -286,22 +273,32 @@ class WellItem:
                     positive_partition_count=positive_partition_count,
                     negative_partition_count=negative_partition_count,
                     confidence_interval__95__=data.get(float, "95%CI"),
-                    data_cubes=[
-                        DataCube(
-                            label="reporter dye",
-                            structure_dimensions=[cycle_count],
-                            structure_measures=[
-                                DataCubeComponent(
-                                    FieldComponentDatatype.double,
-                                    "reporter dye fluorescence",
-                                    "RFU",
-                                )
-                            ],
-                            dimensions=[index_column],
-                            measures=[well_data[dye_setting].astype(float).tolist()],
-                        ),
-                        passive_reference_dye_cube,
-                    ],
+                    reporter_dye_data_cube=DataCube(
+                        label="reporter dye",
+                        structure_dimensions=[cycle_count],
+                        structure_measures=[
+                            DataCubeComponent(
+                                FieldComponentDatatype.double,
+                                "reporter dye fluorescence",
+                                "RFU",
+                            )
+                        ],
+                        dimensions=[index_column],
+                        measures=[well_data[dye_setting].astype(float).tolist()],
+                    ),
+                    passive_reference_dye_data_cube=DataCube(
+                        label="passive reference dye",
+                        structure_dimensions=[cycle_count],
+                        structure_measures=[
+                            DataCubeComponent(
+                                FieldComponentDatatype.double,
+                                "passive reference dye fluorescence",
+                                "RFU",
+                            )
+                        ],
+                        dimensions=[index_column],
+                        measures=[well_data[passive_dye_settings[0]].astype(float).tolist()],
+                    ),
                     errors=errors,
                 )
             )
@@ -375,7 +372,8 @@ def create_measurement_groups(wells: list[Well]) -> list[MeasurementGroup]:
                     reporter_dye_setting=item.reporter_dye_setting,
                     passive_reference_dye_setting=item.passive_reference_dye_setting,
                     flourescence_intensity_threshold_setting=item.flourescence_intensity_threshold_setting,
-                    data_cubes=item.data_cubes,
+                    reporter_dye_data_cube=item.reporter_dye_data_cube,
+                    passive_reference_dye_data_cube=item.passive_reference_dye_data_cube,
                     errors=item.errors,
                     custom_info=item.extra_data,
                 )
