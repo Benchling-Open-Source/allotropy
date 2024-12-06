@@ -7020,11 +7020,11 @@
             "unit"
           ]
         },
-        "keV/μm": {
+        "keV/µm": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "keV/μm",
+              "const": "keV/µm",
               "$asm.unit-iri": "http://qudt.org/vocab/unit#KiloElectronVoltPerMicrometer"
             }
           },
@@ -10956,11 +10956,11 @@
             "unit"
           ]
         },
-        "μG": {
+        "µG": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μG",
+              "const": "µG",
               "$asm.unit-iri": "http://qudt.org/vocab/unit#Microgravity"
             }
           },
@@ -10968,11 +10968,11 @@
             "unit"
           ]
         },
-        "μH": {
+        "µH": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μH",
+              "const": "µH",
               "$asm.unit-iri": "http://qudt.org/vocab/unit#MicroHenry"
             }
           },
@@ -10980,11 +10980,11 @@
             "unit"
           ]
         },
-        "μL/min": {
+        "µL/min": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μL/min",
+              "const": "µL/min",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MicroliterPerMinute"
             }
           },
@@ -10992,11 +10992,11 @@
             "unit"
           ]
         },
-        "μL/s": {
+        "µL/s": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μL/s",
+              "const": "µL/s",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MicroliterPerSecond"
             }
           },
@@ -11004,11 +11004,11 @@
             "unit"
           ]
         },
-        "μV": {
+        "µV": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μV",
+              "const": "µV",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Microvolt"
             }
           },
@@ -11016,11 +11016,11 @@
             "unit"
           ]
         },
-        "μW": {
+        "µW": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μW",
+              "const": "µW",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MicroWatt"
             }
           },
@@ -11028,11 +11028,11 @@
             "unit"
           ]
         },
-        "μW/g": {
+        "µW/g": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μW/g",
+              "const": "µW/g",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MicroWattPerGram"
             }
           },
@@ -11040,11 +11040,11 @@
             "unit"
           ]
         },
-        "μcal/°C": {
+        "µcal/°C": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μcal/°C",
+              "const": "µcal/°C",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MicroCaloriePerDegreeCelsius"
             }
           },
@@ -11052,11 +11052,11 @@
             "unit"
           ]
         },
-        "μin": {
+        "µin": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μin",
+              "const": "µin",
               "$asm.unit-iri": "http://qudt.org/vocab/unit#MicroInch"
             }
           },
@@ -11076,11 +11076,11 @@
             "unit"
           ]
         },
-        "μs": {
+        "µs": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μs",
+              "const": "µs",
               "$asm.unit-iri": "http://qudt.org/vocab/unit#MicroSecond"
             }
           },
@@ -11088,11 +11088,11 @@
             "unit"
           ]
         },
-        "μtorr": {
+        "µtorr": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μtorr",
+              "const": "µtorr",
               "$asm.unit-iri": "http://qudt.org/vocab/unit#MicroTorr"
             }
           },
