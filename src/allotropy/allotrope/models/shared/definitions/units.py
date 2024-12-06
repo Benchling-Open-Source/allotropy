@@ -86,12 +86,12 @@ class Microliter(HasUnit):
 
 @dataclass(frozen=True, kw_only=True)
 class MicroliterPerMinute(HasUnit):
-    unit: str = "μL/min"
+    unit: str = "µL/min"
 
 
 @dataclass(frozen=True, kw_only=True)
 class Micrometer(HasUnit):
-    unit: str = "μm"
+    unit: str = "µm"
 
 
 @dataclass(frozen=True, kw_only=True)

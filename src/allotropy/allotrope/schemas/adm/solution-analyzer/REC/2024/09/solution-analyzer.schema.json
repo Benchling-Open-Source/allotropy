@@ -11629,11 +11629,11 @@
             "unit"
           ]
         },
-        "μm": {
+        "µm": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μm",
+              "const": "µm",
               "$asm.unit-iri": "http://qudt.org/vocab/unit#Micrometer"
             }
           },
@@ -12246,7 +12246,7 @@
                                 "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
                               },
                               {
-                                "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/μm"
+                                "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/µm"
                               }
                             ]
                           },
@@ -12258,7 +12258,7 @@
                                 "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
                               },
                               {
-                                "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/μm"
+                                "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/µm"
                               }
                             ]
                           }
@@ -12320,7 +12320,7 @@
                             "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
                           },
                           {
-                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/μm"
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/µm"
                           }
                         ]
                       },
@@ -12332,7 +12332,7 @@
                             "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
                           },
                           {
-                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/μm"
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/µm"
                           }
                         ]
                       },
@@ -12344,7 +12344,7 @@
                             "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
                           },
                           {
-                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/μm"
+                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/µm"
                           }
                         ]
                       },
@@ -12715,7 +12715,7 @@
                                           "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
                                         },
                                         {
-                                          "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/μm"
+                                          "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/µm"
                                         }
                                       ]
                                     },
