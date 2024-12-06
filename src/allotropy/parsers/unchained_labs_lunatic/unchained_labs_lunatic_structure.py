@@ -4,18 +4,17 @@ from pathlib import Path
 
 import pandas as pd
 
-from allotropy.allotrope.models.shared.definitions.definitions import NaN
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
     CalculatedDataItem,
     DataSource,
+    ErrorDocument,
     Measurement,
     MeasurementGroup,
     MeasurementType,
     Metadata,
-    ErrorDocument,
 )
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.constants import NOT_APPLICABLE, NEGATIVE_ZERO
+from allotropy.parsers.constants import NEGATIVE_ZERO, NOT_APPLICABLE
 from allotropy.parsers.unchained_labs_lunatic.constants import (
     CALCULATED_DATA_LOOKUP,
     DETECTION_TYPE,
@@ -67,7 +66,9 @@ def _create_measurement(
     measurement_identifier = random_uuid_str()
     error_documents: list[ErrorDocument] = []
     calculated_data.extend(
-        _get_calculated_data(well_plate_data, wavelength_column, measurement_identifier, error_documents)
+        _get_calculated_data(
+            well_plate_data, wavelength_column, measurement_identifier, error_documents
+        )
     )
     absorbance = well_plate_data.get(float, wavelength_column)
 
