@@ -309,7 +309,7 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
             firmware_version=measurement.firmware_version,
         )
-        return MeasurementDocument(
+        measurement_doc = MeasurementDocument(
             measurement_identifier=measurement.identifier,
             sample_document=self._get_sample_document(measurement),
             device_control_aggregate_document=DeviceControlAggregateDocument(
@@ -331,6 +331,9 @@ class Mapper(SchemaMapper[Data, Model]):
             error_aggregate_document=self._get_error_aggregate_document(
                 measurement.error_document
             ),
+        )
+        return add_custom_information_document(
+            measurement_doc, measurement.measurement_custom_info
         )
 
     def _get_luminescence_measurement_document(
