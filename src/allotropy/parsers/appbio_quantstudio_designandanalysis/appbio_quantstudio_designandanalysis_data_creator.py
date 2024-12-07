@@ -10,14 +10,13 @@ from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import (
     CalculatedData,
     CalculatedDataItem,
-    DataCube,
-    DataCubeComponent,
     DataSource,
     Measurement,
     MeasurementGroup,
     Metadata,
     ProcessedData,
 )
+from allotropy.allotrope.schema_mappers.data_cube import DataCube, DataCubeComponent
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_data_creator import (
     _create_multicomponent_data_cubes,
@@ -87,6 +86,7 @@ def create_metadata(
 def _create_processed_data(
     result: Result, amplification_data: AmplificationData | None
 ) -> ProcessedData:
+    normalized_reporter_data_cube, baseline_corrected_reporter_data_cube = _create_processed_data_cubes(amplification_data)
     return ProcessedData(
         automatic_cycle_threshold_enabled_setting=result.automatic_cycle_threshold_enabled_setting,
         cycle_threshold_value_setting=result.cycle_threshold_value_setting,
@@ -98,13 +98,14 @@ def _create_processed_data(
         cycle_threshold_result=result.cycle_threshold_result,
         normalized_reporter_result=result.normalized_reporter_result,
         baseline_corrected_reporter_result=result.baseline_corrected_reporter_result,
-        data_cubes=_create_processed_data_cubes(amplification_data)
-        if amplification_data
-        else None,
+        normalized_reporter_data_cube=normalized_reporter_data_cube,
+        baseline_corrected_reporter_data_cube=baseline_corrected_reporter_data_cube,
     )
 
 
-def _create_melt_curve_data_cube(melt_curve_raw_data: MeltCurveData) -> DataCube:
+def _create_melt_curve_data_cube(melt_curve_raw_data: MeltCurveData | None) -> DataCube | None:
+    if not melt_curve_raw_data:
+        return None
     return DataCube(
         label="melting curve",
         structure_dimensions=[
@@ -123,18 +124,11 @@ def _create_melt_curve_data_cube(melt_curve_raw_data: MeltCurveData) -> DataCube
 
 
 def _create_measurement(well: Well, well_item: WellItem, header: Header) -> Measurement:
-    data_cubes: list[DataCube] = []
-    if well.multicomponent_data:
-        data_cubes.extend(
-            _create_multicomponent_data_cubes(
-                well.multicomponent_data,
-                well_item.reporter_dye_setting,
-                header.passive_reference_dye_setting,
-            )
-        )
-    if well_item.melt_curve_data:
-        data_cubes.append(_create_melt_curve_data_cube(well_item.melt_curve_data))
-
+    reporter_dye_data_cube, passive_reference_dye_data_cube = _create_multicomponent_data_cubes(
+        well.multicomponent_data,
+        well_item.reporter_dye_setting,
+        header.passive_reference_dye_setting,
+    )
     return Measurement(
         identifier=well_item.uuid,
         timestamp=header.measurement_time,
@@ -153,7 +147,9 @@ def _create_measurement(well: Well, well_item: WellItem, header: Header) -> Meas
         processed_data=_create_processed_data(
             well_item.result, well_item.amplification_data
         ),
-        data_cubes=data_cubes,
+        reporter_dye_data_cube=reporter_dye_data_cube,
+        passive_reference_dye_data_cube=passive_reference_dye_data_cube,
+        melting_curve_data_cube=_create_melt_curve_data_cube(well_item.melt_curve_data)
     )
 
 

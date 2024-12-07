@@ -45,6 +45,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TDatacubeStructure,
     TQuantityValue,
 )
+from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
@@ -92,25 +93,6 @@ class CalculatedDataItem:
     value: float
     unit: str
     data_sources: list[DataSource]
-
-
-@dataclass
-class DataCubeComponent:
-    type_: FieldComponentDatatype
-    concept: str
-    unit: str
-
-
-@dataclass
-class DataCube:
-    label: str
-    structure_dimensions: list[DataCubeComponent]
-    structure_measures: list[DataCubeComponent]
-    dimensions: list[list[float]]
-    measures: list[list[float | None]]
-
-
-CubeClass = TypeVar("CubeClass")
 
 
 @dataclass(frozen=True)
@@ -322,38 +304,9 @@ class Mapper(SchemaMapper[Data, Model]):
                     )
                 ]
             ),
-            absorption_spectrum_data_cube=self._get_data_cube(measurement),
+            absorption_spectrum_data_cube=get_data_cube(measurement.data_cube, TDatacube),
         )
         return add_custom_information_document(doc, measurement.custom_info)
-
-    def _get_data_cube(self, measurement: Measurement) -> TDatacube:
-        if not measurement.data_cube:
-            msg = "Unable to find UV Absorption Spectrum data"
-            raise AllotropeConversionError(msg)
-        return TDatacube(
-            label=measurement.data_cube.label,
-            cube_structure=TDatacubeStructure(
-                dimensions=[
-                    TDatacubeComponent(
-                        field_componentDatatype=component.type_,
-                        concept=component.concept,
-                        unit=component.unit,
-                    )
-                    for component in measurement.data_cube.structure_dimensions
-                ],
-                measures=[
-                    TDatacubeComponent(
-                        field_componentDatatype=component.type_,
-                        concept=component.concept,
-                        unit=component.unit,
-                    )
-                    for component in measurement.data_cube.structure_measures
-                ],
-            ),
-            data=TDatacubeData(
-                dimensions=measurement.data_cube.dimensions, measures=measurement.data_cube.measures  # type: ignore[arg-type]
-            ),
-        )
 
     def _get_fluorescence_measurement_document(
         self, measurement: Measurement, metadata: Metadata

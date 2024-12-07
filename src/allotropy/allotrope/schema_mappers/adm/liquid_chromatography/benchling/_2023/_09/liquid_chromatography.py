@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from typing import Protocol, TypeVar
 
 from allotropy.allotrope.models.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     ChromatogramDataCube,
@@ -31,12 +30,10 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMicrometer,
     TQuantityValueMillimeter,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    FieldComponentDatatype,
-    TDatacube,
-    TDatacubeComponent,
-    TDatacubeData,
-    TDatacubeStructure,
+from allotropy.allotrope.models.shared.definitions.definitions import TDatacube
+from allotropy.allotrope.schema_mappers.data_cube import (
+    DataCube,
+    get_data_cube,
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 
@@ -48,22 +45,6 @@ class Metadata:
     device_id: str
     firmware_version: str
     analyst: str
-
-
-@dataclass(frozen=True)
-class DataCubeComponent:
-    type_: FieldComponentDatatype
-    concept: str
-    unit: str
-
-
-@dataclass(frozen=True)
-class DataCube:
-    label: str
-    structure_dimensions: list[DataCubeComponent]
-    structure_measures: list[DataCubeComponent]
-    dimensions: list[tuple[float, ...]]
-    measures: list[tuple[float | None, ...]]
 
 
 @dataclass(frozen=True)
@@ -120,19 +101,6 @@ class Data:
     measurement_groups: list[MeasurementGroup]
 
 
-class DataCubeProtocol(Protocol):
-    def __init__(
-        self,
-        label: str,
-        cube_structure: TDatacubeStructure,
-        data: TDatacubeData,
-    ):
-        pass
-
-
-DataCubeType = TypeVar("DataCubeType", bound=DataCubeProtocol)
-
-
 class Mapper(SchemaMapper[Data, Model]):
     MANIFEST = "http://purl.allotrope.org/manifests/liquid-chromatography/BENCHLING/2023/09/liquid-chromatography.manifest"
 
@@ -141,37 +109,6 @@ class Mapper(SchemaMapper[Data, Model]):
             field_asm_manifest=self.MANIFEST,
             liquid_chromatography_aggregate_document=self.get_liquid_chromatography_agg_doc(
                 data
-            ),
-        )
-
-    def get_data_cube(
-        self, data_cube: DataCube | None, data_cube_class: type[DataCubeType]
-    ) -> DataCubeType | None:
-        if data_cube is None:
-            return None
-        return data_cube_class(
-            label=data_cube.label,
-            cube_structure=TDatacubeStructure(
-                dimensions=[
-                    TDatacubeComponent(
-                        field_componentDatatype=structure_dim.type_,
-                        concept=structure_dim.concept,
-                        unit=structure_dim.unit,
-                    )
-                    for structure_dim in data_cube.structure_dimensions
-                ],
-                measures=[
-                    TDatacubeComponent(
-                        field_componentDatatype=structure_dim.type_,
-                        concept=structure_dim.concept,
-                        unit=structure_dim.unit,
-                    )
-                    for structure_dim in data_cube.structure_measures
-                ],
-            ),
-            data=TDatacubeData(
-                dimensions=[list(dim) for dim in data_cube.dimensions],
-                measures=[list(dim) for dim in data_cube.measures],
             ),
         )
 
@@ -225,11 +162,11 @@ class Mapper(SchemaMapper[Data, Model]):
         return ProcessedDataAggregateDocument(
             processed_data_document=[
                 ProcessedDataDocumentItem(
-                    chromatogram_data_cube=self.get_data_cube(
+                    chromatogram_data_cube=get_data_cube(
                         processed_data_doc.chromatogram_data_cube,
                         TDatacube,
                     ),
-                    derived_column_pressure_data_cube=self.get_data_cube(
+                    derived_column_pressure_data_cube=get_data_cube(
                         processed_data_doc.derived_column_pressure_data_cube,
                         DerivedColumnPressureDataCube,
                     ),
@@ -242,35 +179,35 @@ class Mapper(SchemaMapper[Data, Model]):
     ) -> DeviceControlDocumentItem:
         return DeviceControlDocumentItem(
             device_type=device_control_doc.device_type,
-            solvent_concentration_data_cube=self.get_data_cube(
+            solvent_concentration_data_cube=get_data_cube(
                 device_control_doc.solvent_conc_data_cube,
                 SolventConcentrationDataCube,
             ),
-            pre_column_pressure_data_cube=self.get_data_cube(
+            pre_column_pressure_data_cube=get_data_cube(
                 device_control_doc.pre_column_pressure_data_cube,
                 PreColumnPressureDataCube,
             ),
-            sample_pressure_data_cube=self.get_data_cube(
+            sample_pressure_data_cube=get_data_cube(
                 device_control_doc.sample_pressure_data_cube,
                 SamplePressureDataCube,
             ),
-            system_pressure_data_cube=self.get_data_cube(
+            system_pressure_data_cube=get_data_cube(
                 device_control_doc.system_pressure_data_cube,
                 SystemPressureDataCube,
             ),
-            post_column_pressure_data_cube=self.get_data_cube(
+            post_column_pressure_data_cube=get_data_cube(
                 device_control_doc.post_column_pressure_data_cube,
                 PostColumnPressureDataCube,
             ),
-            sample_flow_rate_data_cube=self.get_data_cube(
+            sample_flow_rate_data_cube=get_data_cube(
                 device_control_doc.sample_flow_data_cube,
                 SampleFlowRateDataCube,
             ),
-            system_flow_rate_data_cube=self.get_data_cube(
+            system_flow_rate_data_cube=get_data_cube(
                 device_control_doc.system_flow_data_cube,
                 SystemFlowRateDataCube,
             ),
-            temperature_profile_data_cube=self.get_data_cube(
+            temperature_profile_data_cube=get_data_cube(
                 device_control_doc.temperature_profile_data_cube,
                 TemperatureProfileDataCube,
             ),
@@ -300,7 +237,7 @@ class Mapper(SchemaMapper[Data, Model]):
             device_control_aggregate_document=self.get_device_control_aggregate_document(
                 measurement.device_control_docs
             ),
-            chromatogram_data_cube=self.get_data_cube(
+            chromatogram_data_cube=get_data_cube(
                 measurement.chromatogram_data_cube,
                 ChromatogramDataCube,
             ),

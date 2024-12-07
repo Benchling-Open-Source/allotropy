@@ -14,8 +14,6 @@ from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
     CalculatedDataItem,
     Data,
-    DataCube,
-    DataCubeComponent,
     DataSource,
     Measurement,
     MeasurementGroup,
@@ -24,6 +22,7 @@ from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._1
     ProcessedData,
     ProcessedDataFeature,
 )
+from allotropy.allotrope.schema_mappers.data_cube import DataCube, DataCubeComponent
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.constants import DEFAULT_EPOCH_TIMESTAMP, NOT_APPLICABLE
 from allotropy.parsers.thermo_fisher_visionlite.constants import (

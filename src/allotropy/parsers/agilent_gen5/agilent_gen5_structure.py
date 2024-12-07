@@ -15,8 +15,6 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
     CalculatedDataItem,
-    DataCube,
-    DataCubeComponent,
     DataSource,
     ErrorDocument,
     Measurement,
@@ -25,6 +23,7 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_rea
     Metadata,
     ScanPositionSettingPlateReader,
 )
+from allotropy.allotrope.schema_mappers.data_cube import DataCube, DataCubeComponent
 from allotropy.exceptions import (
     AllotropeConversionError,
     AllotropyParserError,

@@ -35,12 +35,15 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueSecondTime,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
-    FieldComponentDatatype,
     TDatacube,
     TDatacubeComponent,
     TDatacubeData,
     TDatacubeStructure,
 )
+from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
+    DataCube,
+)
+from allotropy.allotrope.schema_mappers.data_cube import get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropyParserError
@@ -86,22 +89,6 @@ class MeasurementType(Enum):
     ULTRAVIOLET_ABSORBANCE_CUBE_DETECTOR = "ULTRAVIOLET_ABSORBANCE_CUBE_DETECTOR"
     FLUORESCENCE_CUBE_DETECTOR = "FLUORESCENCE_CUBE_DETECTOR"
     LUMINESCENCE_CUBE_DETECTOR = "LUMINESCENCE_CUBE_DETECTOR"
-
-
-@dataclass
-class DataCubeComponent:
-    type_: FieldComponentDatatype
-    concept: str
-    unit: str
-
-
-@dataclass
-class DataCube:
-    label: str
-    structure_dimensions: list[DataCubeComponent]
-    structure_measures: list[DataCubeComponent]
-    dimensions: list[list[float]]
-    measures: list[list[float | None]]
 
 
 @dataclass(frozen=True)
@@ -456,7 +443,7 @@ class Mapper(SchemaMapper[Data, Model]):
             msg = "Profile data cube is required for cube detector measurements"
             raise AllotropyParserError(msg)
 
-        profile_data_cube = self._get_data_cube(measurement.profile_data_cube)
+        profile_data_cube = get_data_cube(measurement.profile_data_cube, TDatacube)
 
         return MeasurementDocument(
             measurement_identifier=measurement.identifier,
@@ -572,32 +559,6 @@ class Mapper(SchemaMapper[Data, Model]):
                 )
                 for calculated_data_item in calculated_data_items
             ]
-        )
-
-    def _get_data_cube(self, data_cube: DataCube) -> TDatacube:
-        return TDatacube(
-            label=data_cube.label,
-            cube_structure=TDatacubeStructure(
-                dimensions=[
-                    TDatacubeComponent(
-                        field_componentDatatype=component.type_,
-                        concept=component.concept,
-                        unit=component.unit,
-                    )
-                    for component in data_cube.structure_dimensions
-                ],
-                measures=[
-                    TDatacubeComponent(
-                        field_componentDatatype=component.type_,
-                        concept=component.concept,
-                        unit=component.unit,
-                    )
-                    for component in data_cube.structure_measures
-                ],
-            ),
-            data=TDatacubeData(
-                dimensions=data_cube.dimensions, measures=data_cube.measures  # type: ignore[arg-type]
-            ),
         )
 
     def _get_error_aggregate_document(

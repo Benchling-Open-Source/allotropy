@@ -8,8 +8,6 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
     CalculatedDataItem,
-    DataCube,
-    DataCubeComponent,
     Measurement,
     MeasurementGroup,
     MeasurementType,
@@ -17,6 +15,7 @@ from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._1
     ProcessedData,
     ProcessedDataFeature,
 )
+from allotropy.allotrope.schema_mappers.data_cube import DataCube, DataCubeComponent
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.thermo_fisher_nanodrop_8000.nanodrop_8000_structure import (
     create_calculated_data,
