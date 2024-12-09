@@ -1,4 +1,3 @@
-from collections.abc import Callable
 from dataclasses import dataclass
 from typing import Any, TypeVar
 
@@ -34,33 +33,11 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    FieldComponentDatatype,
-    InvalidJsonFloat,
-    TDatacubeComponent,
-    TDatacubeData,
-    TDatacubeStructure,
-)
+from allotropy.allotrope.models.shared.definitions.definitions import InvalidJsonFloat
+from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
-from allotropy.parsers.utils.iterables import get_first_not_none
 from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
-
-
-@dataclass
-class DataCubeComponent:
-    type_: FieldComponentDatatype
-    concept: str
-    unit: str
-
-
-@dataclass
-class DataCube:
-    label: str
-    structure_dimensions: list[DataCubeComponent]
-    structure_measures: list[DataCubeComponent]
-    dimensions: list[list[float]]
-    measures: list[list[float | None]]
 
 
 @dataclass
@@ -100,11 +77,11 @@ class ProcessedData:
     cycle_threshold_result: float | None = None
     normalized_reporter_result: float | None = None
     baseline_corrected_reporter_result: float | None = None
+    normalized_reporter_data_cube: DataCube | None = None
+    baseline_corrected_reporter_data_cube: DataCube | None = None
 
     # Metadata
     comments: str | None = None
-
-    data_cubes: list[DataCube] | None = None
 
     custom_info: dict[str, Any] | None = None
 
@@ -134,7 +111,9 @@ class Measurement:
 
     # Processed data
     processed_data: ProcessedData | None = None
-    data_cubes: list[DataCube] | None = None
+    reporter_dye_data_cube: DataCube | None = None
+    passive_reference_dye_data_cube: DataCube | None = None
+    melting_curve_data_cube: DataCube | None = None
 
     # Custom metadata
     custom_info: dict[str, Any] | None = None
@@ -255,16 +234,14 @@ class Mapper(SchemaMapper[Data, Model]):
             processed_data_aggregate_document=assert_not_none(
                 self._get_processed_data_aggregate_document(measurement.processed_data)
             ),
-            reporter_dye_data_cube=self._get_data_cube(
-                ReporterDyeDataCube, "reporter dye", measurement.data_cubes
+            reporter_dye_data_cube=get_data_cube(
+                measurement.reporter_dye_data_cube, ReporterDyeDataCube
             ),
-            passive_reference_dye_data_cube=self._get_data_cube(
-                PassiveReferenceDyeDataCube,
-                "passive reference dye",
-                measurement.data_cubes,
+            passive_reference_dye_data_cube=get_data_cube(
+                measurement.passive_reference_dye_data_cube, PassiveReferenceDyeDataCube
             ),
-            melting_curve_data_cube=self._get_data_cube(
-                MeltingCurveDataCube, "melting curve", measurement.data_cubes
+            melting_curve_data_cube=get_data_cube(
+                measurement.melting_curve_data_cube, MeltingCurveDataCube
             ),
         )
         return add_custom_information_document(measurement_doc, measurement.custom_info)
@@ -318,15 +295,12 @@ class Mapper(SchemaMapper[Data, Model]):
                 data.baseline_corrected_reporter_result,
             ),
             genotyping_determination_result=data.genotyping_determination_result,
-            normalized_reporter_data_cube=self._get_data_cube(
-                NormalizedReporterDataCube,
-                "normalized reporter",
-                data.data_cubes,
+            normalized_reporter_data_cube=get_data_cube(
+                data.normalized_reporter_data_cube, NormalizedReporterDataCube
             ),
-            baseline_corrected_reporter_data_cube=self._get_data_cube(
+            baseline_corrected_reporter_data_cube=get_data_cube(
+                data.baseline_corrected_reporter_data_cube,
                 BaselineCorrectedReporterDataCube,
-                "baseline corrected reporter",
-                data.data_cubes,
             ),
         )
         return ProcessedDataAggregateDocument(
@@ -371,43 +345,4 @@ class Mapper(SchemaMapper[Data, Model]):
                 )
                 for calc_doc in data.calculated_data.items
             ],
-        )
-
-    def _get_data_cube(
-        self,
-        cube_class: Callable[..., CubeClass],
-        label: str,
-        data_cubes: list[DataCube] | None,
-    ) -> CubeClass | None:
-        if not (
-            data_cube := get_first_not_none(
-                lambda cube: cube if cube.label == label else None,
-                data_cubes or [],
-            )
-        ):
-            return None
-
-        return cube_class(
-            label=data_cube.label,
-            cube_structure=TDatacubeStructure(
-                dimensions=[
-                    TDatacubeComponent(
-                        field_componentDatatype=component.type_,
-                        concept=component.concept,
-                        unit=component.unit,
-                    )
-                    for component in data_cube.structure_dimensions
-                ],
-                measures=[
-                    TDatacubeComponent(
-                        field_componentDatatype=component.type_,
-                        concept=component.concept,
-                        unit=component.unit,
-                    )
-                    for component in data_cube.structure_measures
-                ],
-            ),
-            data=TDatacubeData(
-                dimensions=data_cube.dimensions, measures=data_cube.measures  # type: ignore[arg-type]
-            ),
         )
