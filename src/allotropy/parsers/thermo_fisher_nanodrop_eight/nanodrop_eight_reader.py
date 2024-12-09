@@ -25,7 +25,7 @@ class NanodropEightReader:
             header_data[key] = value.strip()
 
         header = pd.Series(header_data)
-        header.index = header.index.str.strip().str.lower()
+        header.index = header.index.astype(str).str.strip().str.lower()
         self.header = SeriesData(header)
 
         lines = reader.pop_csv_block_as_lines()
