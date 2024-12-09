@@ -117,10 +117,10 @@ def _format_r_squared_name(name: str) -> str:
 
 
 def _get_measurement_by_location_identifier(
-    measurements: list[Measurement], well_location_identifier: str
+    measurements: list[Measurement], well_location_identifier: str, spot_index: str
 ) -> Measurement:
     for measurement in measurements:
-        if measurement.well_location_identifier == well_location_identifier:
+        if measurement.well_location_identifier == well_location_identifier and measurement.location_identifier == spot_index:
             return measurement
     msg = (
         f"No measurement found for well location identifier: {well_location_identifier}"
@@ -157,8 +157,9 @@ def _get_data_sources(
     calculated_data: list[CalculatedDataItem],
 ) -> list[DataSource]:
     well_location_identifier = row[str, "Well"]
+    spot_index = row[str, "Spot"]
     current_measurement = _get_measurement_by_location_identifier(
-        measurements, well_location_identifier
+        measurements, well_location_identifier, spot_index
     )
     agg_properties = _get_measurement_aggregate_properties(
         current_measurement, calculated_data_mapping.aggregating_property
@@ -229,6 +230,8 @@ def create_calculated_data_groups(
         row_series = SeriesData(row)
         for calc_data_item in calculated_data_mappings:
             value = row_series.get(float, calc_data_item.msd_column.value)
+            if value == 341:
+                pass
             data_sources = _get_data_sources(
                 measurements, calc_data_item, row_series, calculated_data
             )
