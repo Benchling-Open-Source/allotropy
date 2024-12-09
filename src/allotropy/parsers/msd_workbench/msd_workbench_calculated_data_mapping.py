@@ -120,7 +120,10 @@ def _get_measurement_by_location_identifier(
     measurements: list[Measurement], well_location_identifier: str, spot_index: str
 ) -> Measurement:
     for measurement in measurements:
-        if measurement.well_location_identifier == well_location_identifier and measurement.location_identifier == spot_index:
+        if (
+            measurement.well_location_identifier == well_location_identifier
+            and measurement.location_identifier == spot_index
+        ):
             return measurement
     msg = (
         f"No measurement found for well location identifier: {well_location_identifier}"
