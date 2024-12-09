@@ -52,8 +52,13 @@ def _get_typed_dimension(
     type_: type[T], values: Sequence[float | str | bool]
 ) -> list[T] | None:
     # Allow ints or floats for float list.
-    full_type = type_ | int if type_ is float else type_
-    result: list[T] = [value for value in values if isinstance(value, full_type)]
+    result: list[T] = [
+        # Typing is not smart enough to tell that calling type_(value) results in a value of type: type_,
+        # which I just can't deal with.
+        type_(value)  # type: ignore[misc]
+        for value in values
+        if isinstance(value, type_) or type_ is float and isinstance(value, int)
+    ]
     return result if len(result) == len(values) else None
 
 
@@ -78,10 +83,15 @@ def _get_dimensions(
 def _get_typed_measure(
     type_: type[T], values: Sequence[float | str | bool | None]
 ) -> list[T | None] | None:
-    # Allow ints or floats for float list.
-    full_type = type_ | int if type_ is float else type_
     result: list[T | None] = [
-        value for value in values if (value is None or isinstance(value, full_type))
+        # Typing is not smart enough to tell that calling type_(value) results in a value of type: type_,
+        # which I just can't deal with.
+        None if value is None else type_(value)  # type: ignore[misc]
+        for value in values
+        if value is None
+        or isinstance(value, type_)
+        or type_ is float
+        and isinstance(value, int)
     ]
     return result if len(result) == len(values) else None
 
@@ -97,7 +107,8 @@ def _get_measures(
         str_list = _get_typed_measure(str, measure)
         bool_list = _get_typed_measure(bool, measure)
         # NOTE: given the input types, this should be impossible, however, typing does not believe us, so we
-        # add this check. This allows us to safely put "or []" at the end of result.append, confident that all
+        # add
+        # this check. This allows us to safely put "or []" at the end of result.append, confident that all
         # 3 lists are only falsy if the input is empty.
         if float_list is None and str_list is None and bool_list is None:
             msg = f"Unable to extract a TMeasureArray from datacube measure: {measure}"
