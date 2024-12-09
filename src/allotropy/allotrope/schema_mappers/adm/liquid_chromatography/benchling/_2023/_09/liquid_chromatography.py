@@ -67,6 +67,7 @@ class Metadata:
 
 @dataclass(frozen=True)
 class Peak:
+    identifier: str
     start: float
     start_unit: str
     end: float
@@ -245,6 +246,7 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def _get_peak_document(self, peak: Peak) -> PeakDocument:
         return PeakDocument(
+            identifier=peak.identifier,
             peak_start=quantity_or_none_from_unit(peak.start_unit, peak.start),  # type: ignore[arg-type]
             peak_end=quantity_or_none_from_unit(peak.end_unit, peak.end),  # type: ignore[arg-type]
             peak_area=quantity_or_none_from_unit(peak.area_unit, peak.area),

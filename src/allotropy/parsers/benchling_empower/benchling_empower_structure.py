@@ -90,6 +90,7 @@ def _create_peak(peak: dict[str, Any]) -> Peak:
         retention_time *= 60
 
     return Peak(
+        identifier=random_uuid_str(),
         # Times are reported in minutes by Empower - convert to seconds
         start=try_float(peak.get("StartTime"), "StartTime") * 60,
         start_unit="s",
