@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from enum import Enum
-from typing import Any, TypeVar
+from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
@@ -36,18 +36,15 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
-    FieldComponentDatatype,
     InvalidJsonFloat,
     JsonFloat,
     TDatacube,
-    TDatacubeComponent,
-    TDatacubeData,
-    TDatacubeStructure,
     TQuantityValue,
 )
+from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
-from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
+from allotropy.exceptions import AllotropyParserError
 from allotropy.parsers.utils.units import get_quantity_class
 from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
 
@@ -92,25 +89,6 @@ class CalculatedDataItem:
     value: float
     unit: str
     data_sources: list[DataSource]
-
-
-@dataclass
-class DataCubeComponent:
-    type_: FieldComponentDatatype
-    concept: str
-    unit: str
-
-
-@dataclass
-class DataCube:
-    label: str
-    structure_dimensions: list[DataCubeComponent]
-    structure_measures: list[DataCubeComponent]
-    dimensions: list[list[float]]
-    measures: list[list[float | None]]
-
-
-CubeClass = TypeVar("CubeClass")
 
 
 @dataclass(frozen=True)
@@ -322,38 +300,12 @@ class Mapper(SchemaMapper[Data, Model]):
                     )
                 ]
             ),
-            absorption_spectrum_data_cube=self._get_data_cube(measurement),
+            absorption_spectrum_data_cube=assert_not_none(
+                get_data_cube(measurement.data_cube, TDatacube),
+                msg="Parser must provide absorption spectrum data cube",
+            ),
         )
         return add_custom_information_document(doc, measurement.custom_info)
-
-    def _get_data_cube(self, measurement: Measurement) -> TDatacube:
-        if not measurement.data_cube:
-            msg = "Unable to find UV Absorption Spectrum data"
-            raise AllotropeConversionError(msg)
-        return TDatacube(
-            label=measurement.data_cube.label,
-            cube_structure=TDatacubeStructure(
-                dimensions=[
-                    TDatacubeComponent(
-                        field_componentDatatype=component.type_,
-                        concept=component.concept,
-                        unit=component.unit,
-                    )
-                    for component in measurement.data_cube.structure_dimensions
-                ],
-                measures=[
-                    TDatacubeComponent(
-                        field_componentDatatype=component.type_,
-                        concept=component.concept,
-                        unit=component.unit,
-                    )
-                    for component in measurement.data_cube.structure_measures
-                ],
-            ),
-            data=TDatacubeData(
-                dimensions=measurement.data_cube.dimensions, measures=measurement.data_cube.measures  # type: ignore[arg-type]
-            ),
-        )
 
     def _get_fluorescence_measurement_document(
         self, measurement: Measurement, metadata: Metadata
