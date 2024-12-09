@@ -4,7 +4,6 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     DeviceControlDoc,
     Measurement,
-    ProcessedDataDoc,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCubeComponent
 from allotropy.parsers.cytiva_unicorn.constants import DEVICE_TYPE
@@ -45,16 +44,14 @@ class ConductivityMeasurement(UnicornMeasurement):
                 ),
                 transformation=MScm2Sm(),
             ),
-            processed_data_doc=ProcessedDataDoc(
-                chromatogram_data_cube=cls.get_data_cube(
-                    handler,
-                    cls.filter_curve(elements, r"^% Cond$"),
-                    DataCubeComponent(
-                        type_=FieldComponentDatatype.float,
-                        concept="electric conductivity",
-                        unit="%",
-                    ),
-                )
+            processed_data_chromatogram_data_cube=cls.get_data_cube(
+                handler,
+                cls.filter_curve(elements, r"^% Cond$"),
+                DataCubeComponent(
+                    type_=FieldComponentDatatype.float,
+                    concept="electric conductivity",
+                    unit="%",
+                ),
             ),
             device_control_docs=[
                 DeviceControlDoc(

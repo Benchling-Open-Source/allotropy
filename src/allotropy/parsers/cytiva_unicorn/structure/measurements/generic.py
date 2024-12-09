@@ -3,7 +3,6 @@ from re import search
 from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     DeviceControlDoc,
     Measurement,
-    ProcessedDataDoc,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, DataCubeComponent
 from allotropy.exceptions import AllotropeConversionError
@@ -65,7 +64,8 @@ class UnicornMeasurement(Measurement):
         static_docs: StaticDocs,
         device_control_docs: list[DeviceControlDoc],
         chromatogram_data_cube: DataCube | None = None,
-        processed_data_doc: ProcessedDataDoc | None = None,
+        processed_data_chromatogram_data_cube: DataCube | None = None,
+        derived_column_pressure_data_cube: DataCube | None = None,
     ) -> Measurement:
         return Measurement(
             measurement_identifier=random_uuid_str(),
@@ -80,5 +80,6 @@ class UnicornMeasurement(Measurement):
             batch_identifier=static_docs.batch_identifier,
             chromatogram_data_cube=chromatogram_data_cube,
             device_control_docs=device_control_docs,
-            processed_data_doc=processed_data_doc,
+            processed_data_chromatogram_data_cube=processed_data_chromatogram_data_cube,
+            derived_column_pressure_data_cube=derived_column_pressure_data_cube,
         )
