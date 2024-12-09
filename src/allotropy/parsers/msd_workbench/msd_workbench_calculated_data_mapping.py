@@ -233,8 +233,6 @@ def create_calculated_data_groups(
         row_series = SeriesData(row)
         for calc_data_item in calculated_data_mappings:
             value = row_series.get(float, calc_data_item.msd_column.value)
-            if value == 341:
-                pass
             data_sources = _get_data_sources(
                 measurements, calc_data_item, row_series, calculated_data
             )
