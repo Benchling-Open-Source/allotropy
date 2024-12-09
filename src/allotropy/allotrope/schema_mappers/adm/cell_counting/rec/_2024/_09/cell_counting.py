@@ -220,7 +220,7 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_processed_data_aggregate_document(
         self, measurement: Measurement
     ) -> ProcessedDataAggregateDocument:
-        # TODO: average values and stddev should be calculated data
+        # TODO(ASM gaps): we believe average values and stddev should be added to the processed data document.
         # TODO(ASM gaps): we believe "total object count" and "aggregate rate" should be introduced to ASM.
         custom_document = {
             "average compactness": quantity_or_none(
