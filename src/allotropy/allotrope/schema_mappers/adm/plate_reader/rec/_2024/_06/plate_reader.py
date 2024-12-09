@@ -134,6 +134,8 @@ class Measurement:
     identifier: str
     sample_identifier: str
     location_identifier: str
+    firmware_version: str | None = None
+    batch_identifier: str | None = None
 
     # Optional metadata
     well_plate_identifier: str | None = None
@@ -161,6 +163,8 @@ class Measurement:
     number_of_averages: float | None = None
     measurement_custom_info: dict[str, Any] | None = None
     sample_custom_info: dict[str, Any] | None = None
+    device_control_custom_info: dict[str, Any] | None = None
+    electronic_absorbance_reference_wavelength_setting: float | None = None
 
     # Kinetic settings
     total_measurement_time_setting: float | None = None
@@ -283,27 +287,35 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_ultraviolet_absorbance_measurement_document(
         self, measurement: Measurement
     ) -> MeasurementDocument:
-        return MeasurementDocument(
+        device_control_document = DeviceControlDocumentItem(
+            electronic_absorbance_reference_wavelength_setting=quantity_or_none(
+                TQuantityValueNanometer,
+                measurement.electronic_absorbance_reference_wavelength_setting,
+            ),
+            device_type=measurement.device_type,
+            detection_type=measurement.detection_type,
+            detector_wavelength_setting=quantity_or_none(
+                TQuantityValueNanometer,
+                measurement.detector_wavelength_setting,
+            ),
+            number_of_averages=quantity_or_none(
+                TQuantityValueNumber, measurement.number_of_averages
+            ),
+            detector_carriage_speed_setting=measurement.detector_carriage_speed,
+            detector_gain_setting=measurement.detector_gain_setting,
+            detector_distance_setting__plate_reader_=quantity_or_none(
+                TQuantityValueMillimeter,
+                measurement.detector_distance_setting,
+            ),
+            firmware_version=measurement.firmware_version,
+        )
+        measurement_doc = MeasurementDocument(
             measurement_identifier=measurement.identifier,
             sample_document=self._get_sample_document(measurement),
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
-                    DeviceControlDocumentItem(
-                        device_type=measurement.device_type,
-                        detection_type=measurement.detection_type,
-                        detector_wavelength_setting=quantity_or_none(
-                            TQuantityValueNanometer,
-                            measurement.detector_wavelength_setting,
-                        ),
-                        number_of_averages=quantity_or_none(
-                            TQuantityValueNumber, measurement.number_of_averages
-                        ),
-                        detector_carriage_speed_setting=measurement.detector_carriage_speed,
-                        detector_gain_setting=measurement.detector_gain_setting,
-                        detector_distance_setting__plate_reader_=quantity_or_none(
-                            TQuantityValueMillimeter,
-                            measurement.detector_distance_setting,
-                        ),
+                    add_custom_information_document(
+                        device_control_document, measurement.device_control_custom_info
                     )
                 ]
             ),
@@ -319,6 +331,9 @@ class Mapper(SchemaMapper[Data, Model]):
             error_aggregate_document=self._get_error_aggregate_document(
                 measurement.error_document
             ),
+        )
+        return add_custom_information_document(
+            measurement_doc, measurement.measurement_custom_info
         )
 
     def _get_luminescence_measurement_document(
@@ -523,6 +538,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValuePicogramPerMilliliter,
                 measurement.mass_concentration,
             ),
+            batch_identifier=measurement.batch_identifier,
         )
         return add_custom_information_document(
             sample_doc, measurement.sample_custom_info
