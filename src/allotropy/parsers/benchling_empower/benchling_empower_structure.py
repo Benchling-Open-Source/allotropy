@@ -87,7 +87,7 @@ def _create_peak(peak: dict[str, Any]) -> Peak:
         height /= 1000
     # Times are reported in minutes by Empower - convert to seconds
     if (retention_time := try_float_or_none(peak.get("RetentionTime"))) is not None:
-        retention_time /= 60
+        retention_time *= 60
 
     return Peak(
         # Times are reported in minutes by Empower - convert to seconds
