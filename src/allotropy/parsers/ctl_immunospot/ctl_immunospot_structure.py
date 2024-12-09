@@ -5,6 +5,10 @@ import re
 
 import pandas as pd
 
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    FieldComponentDatatype,
+)
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
     ImageFeature,
     Measurement,
@@ -13,6 +17,7 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
     Metadata,
     ProcessedData,
 )
+from allotropy.allotrope.schema_mappers.data_cube import DataCube, DataCubeComponent
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.ctl_immunospot import constants
 from allotropy.parsers.utils.pandas import SeriesData
@@ -22,10 +27,62 @@ from allotropy.parsers.utils.values import (
 )
 
 
-def create_measurement_groups(
+def _create_measurement(
+    well_row: str,
+    well_col: str,
+    well_plate_identifier: str,
     plate_data: dict[str, pd.DataFrame],
-    plate_identifier: str | None,
+    histograms: dict[str, dict[str, tuple[list[float], list[float]]]]
+) -> Measurement:
+    location_identifier = f"{well_row}{well_col}"
+    return Measurement(
+        type_=MeasurementType.OPTICAL_IMAGING,
+        device_type=constants.DEVICE_TYPE,
+        identifier=random_uuid_str(),
+        well_plate_identifier=well_plate_identifier,
+        location_identifier=location_identifier,
+        sample_identifier=f"{well_plate_identifier}_{location_identifier}",
+        detection_type=constants.DETECTION_TYPE,
+        processed_data=ProcessedData(
+            identifier=random_uuid_str(),
+            features=[
+                ImageFeature(
+                    identifier=random_uuid_str(),
+                    feature=name,
+                    result=float(data[well_col][well_row]),
+                )
+                for name, data in plate_data.items()
+            ],
+        ),
+        custom_data_cubes=[
+            DataCube(
+                label="spot count histogram",
+                structure_dimensions=[
+                    DataCubeComponent(
+                        concept="spot size",
+                        type_=FieldComponentDatatype.double,
+                        unit=UNITLESS
+                    )
+                ],
+                structure_measures=[
+                    DataCubeComponent(
+                        concept="spot count",
+                        type_=FieldComponentDatatype.double,
+                        unit="Number"
+                    )
+                ],
+                dimensions=[histograms[location_identifier][0]],
+                measures=[histograms[location_identifier][1]],
+            )
+        ] if histograms and location_identifier in histograms else None,
+    )
+
+
+def create_measurement_groups(
     header: SeriesData,
+    plate_identifier: str | None,
+    plate_data: dict[str, pd.DataFrame],
+    histograms: dict[str, dict[str, tuple[list[float], list[float]]]]
 ) -> list[MeasurementGroup]:
     well_plate_identifier = (
         plate_identifier or PureWindowsPath(header[str, "File path"]).stem
@@ -38,28 +95,7 @@ def create_measurement_groups(
             plate_well_count=plate_well_count,
             measurement_time=header[str, ("Counted", "Review Date")],
             analyst=header[str, "Authenticated user"],
-            measurements=[
-                Measurement(
-                    type_=MeasurementType.OPTICAL_IMAGING,
-                    device_type=constants.DEVICE_TYPE,
-                    identifier=random_uuid_str(),
-                    well_plate_identifier=well_plate_identifier,
-                    location_identifier=f"{row}{col}",
-                    sample_identifier=f"{well_plate_identifier}_{row}{col}",
-                    detection_type=constants.DETECTION_TYPE,
-                    processed_data=ProcessedData(
-                        identifier=random_uuid_str(),
-                        features=[
-                            ImageFeature(
-                                identifier=random_uuid_str(),
-                                feature=name,
-                                result=float(data[col][row]),
-                            )
-                            for name, data in plate_data.items()
-                        ],
-                    ),
-                )
-            ],
+            measurements=[_create_measurement(row, col, well_plate_identifier, plate_data, histograms)]
         )
         for row in first_plate.index
         for col in first_plate.columns

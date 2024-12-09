@@ -1278,6 +1278,27 @@
           "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
           "$asm.pattern": "quantity datum",
           "$ref": "#/$custom/tQuantityValuePicogramPerMilliliter"
+        },
+        "custom data cube aggregate document": {
+          "type": "object",
+          "$asm.property-class": "TODO",
+          "$asm.pattern": "aggregate datum",
+          "properties": {
+            "custom data cube document": {
+              "$asm.array-mixed": false,
+              "$asm.array-ordered": true,
+              "$asm.pattern": "indexed datum",
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "properties": {
+                  "data cube": {
+                    "$ref": "#/$defs/tDatacube"
+                  }
+                }
+              }
+            }
+          }
         }
       }
     },

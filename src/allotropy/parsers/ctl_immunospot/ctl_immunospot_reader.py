@@ -16,7 +16,7 @@ class CtlImmunospotReader:
     header: SeriesData
     plate_identifier: str | None
     plate_data: dict[str, pd.DataFrame]
-    histograms: dict[str, list[tuple[list[float], list[float]]]]
+    histograms: dict[str, tuple[list[float], list[float]]]
 
     def __init__(self, named_file_contents: NamedFileContents) -> None:
         reader = CsvReader.create(named_file_contents)
@@ -114,7 +114,7 @@ class CtlImmunospotReader:
         reader.drop_empty()
 
         plates: dict[str, pd.DataFrame] = {}
-        histograms: dict[str, list[tuple[list[float], list[float]]]] = {}
+        histograms: dict[str, tuple[list[float], list[float]]] = {}
         while reader.current_line_exists():
             raw_name = assert_not_none(
                 reader.pop(),
@@ -122,11 +122,16 @@ class CtlImmunospotReader:
             )
             names = [n.strip() for n in raw_name.strip().split("\t\t") if n.strip()]
             if len(names) == 1 and "Histogram" in names[0]:
+                # We currently only handle one histogram, which does not have a label. Raise an error is we get
+                # a second one, as we will need to investigate the use case.
+                if histograms:
+                    msg = "Got unexpected second histogram in input file."
+                    raise AllotropeConversionError(msg)
                 dimensions, histograms = self._read_histogram_7_0_38(reader)
                 for well_location, data in histograms.items():
                     if well_location not in histograms:
                         histograms[well_location] = []
-                    histograms[well_location].append((dimensions, data))
+                    histograms[well_location] = (dimensions, data)
             else:
                 for name, plate in zip(
                     names, self._read_plate_data_7_0_38(reader), strict=True

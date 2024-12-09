@@ -15,7 +15,6 @@ from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import 
     ProcessedData,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, DataCubeComponent
-from allotropy.parsers.agilent_gen5_image.constants import POSSIBLE_WELL_COUNTS
 from allotropy.parsers.appbio_quantstudio import constants
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     AmplificationData,
@@ -27,6 +26,7 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     Well,
     WellItem,
 )
+from allotropy.parsers.constants import get_well_count_by_well_ids
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
 )
@@ -298,27 +298,15 @@ def _get_plate_well_count(header: Header, wells: list[Well]) -> int | None:
     if header.plate_well_count is not None:
         return header.plate_well_count
 
-    # Get well numbers via Well ID (1, 2, 3, ...) and well location (A1, B1, ...)
-    well_ids = [well_item.identifier for well in wells for well_item in well.items]
-    well_location = [
-        well_item.position
-        for well in wells
-        for well_item in well.items
-        if well_item.position
-    ]
-    largest_column = sorted([str(loc[0]) for loc in well_location])[-1]
-    largest_row = sorted(int(loc[1:]) for loc in well_location)[-1]
-    well_number_by_position = (ord(largest_column.upper()) - ord("A") + 1) * largest_row
-    largest_well_number = max(sorted(well_ids)[-1], well_number_by_position)
-
-    # Round up to the first possible well count GTE the count e.g:
-    # - If we have well id 94 but none greater than 96, it's a 96-well plate
-    for possible_count in POSSIBLE_WELL_COUNTS:
-        if largest_well_number > possible_count:
-            continue
-        return possible_count
-
-    return None
+    return get_well_count_by_well_ids(
+        well_identifiers=[well_item.identifier for well in wells for well_item in well.items],
+        well_locations=[
+            well_item.position
+            for well in wells
+            for well_item in well.items
+            if well_item.position
+        ]
+    )
 
 
 def create_measurement_groups(

@@ -13,11 +13,14 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_rea
     Metadata,
 )
 from allotropy.exceptions import AllotropyParserError
-from allotropy.parsers.constants import DEFAULT_EPOCH_TIMESTAMP, NOT_APPLICABLE
+from allotropy.parsers.constants import (
+    DEFAULT_EPOCH_TIMESTAMP,
+    get_well_count_by_well_ids,
+    NOT_APPLICABLE,
+)
 from allotropy.parsers.msd_workbench.constants import (
     DETECTION_TYPE,
     DEVICE_TYPE,
-    POSSIBLE_WELL_COUNTS,
     SAMPLE_ROLE_TYPE_MAPPING,
     SOFTWARE_NAME,
 )
@@ -51,23 +54,10 @@ class PlateData:
 
     @staticmethod
     def _get_plate_well_count(data: pd.DataFrame) -> int | None:
-        # Get well numbers via Well ID (1, 2, 3, ...) and well location (A1, B1, ...)
-        well_ids = [int(well[-1]) for well in data["Well"]]
-        well_location = data["Well"]
-        largest_column = sorted([str(loc[0]) for loc in well_location])[-1]
-        largest_row = sorted(int(loc[1:]) for loc in well_location)[-1]
-        well_number_by_position = (
-            ord(largest_column.upper()) - ord("A") + 1
-        ) * largest_row
-        largest_well_number = max(sorted(well_ids)[-1], well_number_by_position)
-
-        # Round up to the first possible well count GTE the count e.g:
-        # - If we have well id 94 but none greater than 96, it's a 96-well plate
-        for possible_count in POSSIBLE_WELL_COUNTS:
-            if largest_well_number > possible_count:
-                continue
-            return possible_count
-        return None
+        return get_well_count_by_well_ids(
+            well_identifiers=[int(well[-1]) for well in data["Well"]],
+            well_locations=data["Well"],
+        )
 
 
 def create_metadata(file_name: str) -> Metadata:

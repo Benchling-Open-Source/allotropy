@@ -26,6 +26,6 @@ class CtlImmunospotParser(VendorParser[Data, Model]):
         return Data(
             create_metadata(reader.header),
             create_measurement_groups(
-                reader.plate_data, reader.plate_identifier, reader.header
+                reader.header, reader.plate_identifier, reader.plate_data, reader.histograms,
             ),
         )
