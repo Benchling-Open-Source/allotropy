@@ -13,13 +13,12 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
 )
 from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
-    DataCube,
-    DataCubeComponent,
     Measurement,
     MeasurementGroup,
     MeasurementType,
     Metadata,
 )
+from allotropy.allotrope.schema_mappers.data_cube import DataCube, DataCubeComponent
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.thermo_fisher_genesys30 import constants
@@ -73,7 +72,7 @@ def create_measurement_groups(
                             )
                         ],
                         dimensions=[data["wavelength(nm)"].tolist()],
-                        measures=[data["ABS"].tolist()],
+                        measures=[data["ABS"].astype(float).tolist()],
                     ),
                     device_control_custom_info={
                         "operating minimum": {
