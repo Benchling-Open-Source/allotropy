@@ -6,14 +6,13 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
 )
 from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
-    DataCube,
-    DataCubeComponent,
     DeviceControlDoc,
     Measurement,
     MeasurementGroup,
     Metadata,
     Peak,
 )
+from allotropy.allotrope.schema_mappers.data_cube import DataCube, DataCubeComponent
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.benchling_empower import constants
 from allotropy.parsers.constants import NOT_APPLICABLE

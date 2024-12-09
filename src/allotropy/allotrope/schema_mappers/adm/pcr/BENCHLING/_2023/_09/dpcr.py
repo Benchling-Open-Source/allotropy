@@ -1,4 +1,3 @@
-from collections.abc import Callable, Sequence
 from dataclasses import dataclass
 from typing import Any, TypeVar
 
@@ -32,16 +31,10 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumberPerMicroliter,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    FieldComponentDatatype,
-    TDatacubeComponent,
-    TDatacubeData,
-    TDatacubeStructure,
-    TQuantityValue,
-)
+from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
+from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
-from allotropy.parsers.utils.iterables import get_first_not_none
 from allotropy.parsers.utils.values import quantity_or_none
 
 
@@ -49,22 +42,6 @@ from allotropy.parsers.utils.values import quantity_or_none
 class DataSource:
     identifier: str
     feature: str
-
-
-@dataclass
-class DataCubeComponent:
-    type_: FieldComponentDatatype
-    concept: str
-    unit: str
-
-
-@dataclass
-class DataCube:
-    label: str
-    structure_dimensions: list[DataCubeComponent]
-    structure_measures: list[DataCubeComponent]
-    dimensions: list[list[float]]
-    measures: list[Sequence[float | None]]
 
 
 @dataclass(frozen=True)
@@ -97,7 +74,8 @@ class Measurement:
     total_partition_count: float
     negative_partition_count: float | None = None
     confidence_interval__95__: float | None = None
-    data_cubes: list[DataCube] | None = None
+    reporter_dye_data_cube: DataCube | None = None
+    passive_reference_dye_data_cube: DataCube | None = None
 
     # Optional metadata
     sample_role_type: str | None = None
@@ -211,13 +189,11 @@ class Mapper(SchemaMapper[Data, Model]):
             total_partition_count=TQuantityValueNumber(
                 value=measurement.total_partition_count
             ),
-            reporter_dye_data_cube=self._get_data_cube(
-                ReporterDyeDataCube, "reporter dye", measurement.data_cubes
+            reporter_dye_data_cube=get_data_cube(
+                measurement.reporter_dye_data_cube, ReporterDyeDataCube
             ),
-            passive_reference_dye_data_cube=self._get_data_cube(
-                PassiveReferenceDyeDataCube,
-                "passive reference dye",
-                measurement.data_cubes,
+            passive_reference_dye_data_cube=get_data_cube(
+                measurement.passive_reference_dye_data_cube, PassiveReferenceDyeDataCube
             ),
             error_aggregate_document=self._get_error_aggregate_document(
                 measurement.errors
@@ -297,45 +273,6 @@ class Mapper(SchemaMapper[Data, Model]):
                 )
                 for calculated_data_item in calculated_data_items
             ]
-        )
-
-    def _get_data_cube(
-        self,
-        cube_class: Callable[..., CubeClass],
-        label: str,
-        data_cubes: list[DataCube] | None,
-    ) -> CubeClass | None:
-        if not (
-            data_cube := get_first_not_none(
-                lambda cube: cube if cube.label == label else None,
-                data_cubes or [],
-            )
-        ):
-            return None
-
-        return cube_class(
-            label=data_cube.label,
-            cube_structure=TDatacubeStructure(
-                dimensions=[
-                    TDatacubeComponent(
-                        field_componentDatatype=component.type_,
-                        concept=component.concept,
-                        unit=component.unit,
-                    )
-                    for component in data_cube.structure_dimensions
-                ],
-                measures=[
-                    TDatacubeComponent(
-                        field_componentDatatype=component.type_,
-                        concept=component.concept,
-                        unit=component.unit,
-                    )
-                    for component in data_cube.structure_measures
-                ],
-            ),
-            data=TDatacubeData(
-                dimensions=data_cube.dimensions, measures=data_cube.measures  # type: ignore[arg-type]
-            ),
         )
 
     def _get_error_aggregate_document(
