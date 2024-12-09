@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from enum import Enum
-from typing import Any, TypeVar
+from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
@@ -36,19 +36,15 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
-    FieldComponentDatatype,
     InvalidJsonFloat,
     JsonFloat,
     TDatacube,
-    TDatacubeComponent,
-    TDatacubeData,
-    TDatacubeStructure,
     TQuantityValue,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
-from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
+from allotropy.exceptions import AllotropyParserError
 from allotropy.parsers.utils.units import get_quantity_class
 from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
 
@@ -304,7 +300,10 @@ class Mapper(SchemaMapper[Data, Model]):
                     )
                 ]
             ),
-            absorption_spectrum_data_cube=get_data_cube(measurement.data_cube, TDatacube),
+            absorption_spectrum_data_cube=assert_not_none(
+                get_data_cube(measurement.data_cube, TDatacube),
+                msg="Parser must provide absorption spectrum data cube",
+            ),
         )
         return add_custom_information_document(doc, measurement.custom_info)
 

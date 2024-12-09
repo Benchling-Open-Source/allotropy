@@ -72,7 +72,10 @@ def _create_processed_data_cubes(
 def _create_processed_data(
     amplification_data: AmplificationData | None, result: Result
 ) -> ProcessedData:
-    normalized_reporter_data_cube, baseline_corrected_reporter_data_cube = _create_processed_data_cubes(amplification_data)
+    (
+        normalized_reporter_data_cube,
+        baseline_corrected_reporter_data_cube,
+    ) = _create_processed_data_cubes(amplification_data)
     return ProcessedData(
         automatic_cycle_threshold_enabled_setting=result.automatic_cycle_threshold_enabled_setting,
         cycle_threshold_value_setting=result.cycle_threshold_value_setting,
@@ -127,14 +130,14 @@ def _create_multicomponent_data_cubes(
                 )
             ],
             dimensions=[multicomponent_data.cycle],
-            measures=[
-                multicomponent_data.get_column(passive_reference_dye_setting)
-            ],
+            measures=[multicomponent_data.get_column(passive_reference_dye_setting)],
         )
     return reporter_dye_data_cube, passive_reference_dye_data_cube
 
 
-def _create_melt_curve_data_cube(melt_curve_raw_data: MeltCurveRawData | None) -> DataCube | None:
+def _create_melt_curve_data_cube(
+    melt_curve_raw_data: MeltCurveRawData | None,
+) -> DataCube | None:
     if not melt_curve_raw_data:
         return None
     return DataCube(
@@ -171,7 +174,10 @@ def _create_measurement(
     # TODO: temp workaround for cal doc result
     well_item._result = result
 
-    reporter_dye_data_cube, passive_reference_dye_data_cube = _create_multicomponent_data_cubes(
+    (
+        reporter_dye_data_cube,
+        passive_reference_dye_data_cube,
+    ) = _create_multicomponent_data_cubes(
         multicomponent_data,
         well_item.reporter_dye_setting,
         header.passive_reference_dye_setting,
@@ -196,7 +202,7 @@ def _create_measurement(
         sample_custom_info=well_item.extra_data,
         reporter_dye_data_cube=reporter_dye_data_cube,
         passive_reference_dye_data_cube=passive_reference_dye_data_cube,
-        melting_curve_data_cube=_create_melt_curve_data_cube(melt_curve_raw_data)
+        melting_curve_data_cube=_create_melt_curve_data_cube(melt_curve_raw_data),
     )
 
 

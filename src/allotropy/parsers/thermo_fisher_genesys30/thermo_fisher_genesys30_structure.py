@@ -72,7 +72,7 @@ def create_measurement_groups(
                             )
                         ],
                         dimensions=[data["wavelength(nm)"].tolist()],
-                        measures=[data["ABS"].tolist()],
+                        measures=[data["ABS"].astype(float).tolist()],
                     ),
                     device_control_custom_info={
                         "operating minimum": {

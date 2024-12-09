@@ -34,16 +34,8 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueRelativeLightUnit,
     TQuantityValueSecondTime,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    TDatacube,
-    TDatacubeComponent,
-    TDatacubeData,
-    TDatacubeStructure,
-)
-from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
-    DataCube,
-)
-from allotropy.allotrope.schema_mappers.data_cube import get_data_cube
+from allotropy.allotrope.models.shared.definitions.definitions import TDatacube
+from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropyParserError

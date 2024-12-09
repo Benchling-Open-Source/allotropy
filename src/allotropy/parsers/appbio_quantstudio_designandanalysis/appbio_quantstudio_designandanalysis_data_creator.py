@@ -86,7 +86,10 @@ def create_metadata(
 def _create_processed_data(
     result: Result, amplification_data: AmplificationData | None
 ) -> ProcessedData:
-    normalized_reporter_data_cube, baseline_corrected_reporter_data_cube = _create_processed_data_cubes(amplification_data)
+    (
+        normalized_reporter_data_cube,
+        baseline_corrected_reporter_data_cube,
+    ) = _create_processed_data_cubes(amplification_data)
     return ProcessedData(
         automatic_cycle_threshold_enabled_setting=result.automatic_cycle_threshold_enabled_setting,
         cycle_threshold_value_setting=result.cycle_threshold_value_setting,
@@ -103,7 +106,9 @@ def _create_processed_data(
     )
 
 
-def _create_melt_curve_data_cube(melt_curve_raw_data: MeltCurveData | None) -> DataCube | None:
+def _create_melt_curve_data_cube(
+    melt_curve_raw_data: MeltCurveData | None,
+) -> DataCube | None:
     if not melt_curve_raw_data:
         return None
     return DataCube(
@@ -124,7 +129,10 @@ def _create_melt_curve_data_cube(melt_curve_raw_data: MeltCurveData | None) -> D
 
 
 def _create_measurement(well: Well, well_item: WellItem, header: Header) -> Measurement:
-    reporter_dye_data_cube, passive_reference_dye_data_cube = _create_multicomponent_data_cubes(
+    (
+        reporter_dye_data_cube,
+        passive_reference_dye_data_cube,
+    ) = _create_multicomponent_data_cubes(
         well.multicomponent_data,
         well_item.reporter_dye_setting,
         header.passive_reference_dye_setting,
@@ -149,7 +157,7 @@ def _create_measurement(well: Well, well_item: WellItem, header: Header) -> Meas
         ),
         reporter_dye_data_cube=reporter_dye_data_cube,
         passive_reference_dye_data_cube=passive_reference_dye_data_cube,
-        melting_curve_data_cube=_create_melt_curve_data_cube(well_item.melt_curve_data)
+        melting_curve_data_cube=_create_melt_curve_data_cube(well_item.melt_curve_data),
     )
 
 

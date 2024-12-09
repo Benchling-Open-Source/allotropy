@@ -297,7 +297,9 @@ class WellItem:
                             )
                         ],
                         dimensions=[index_column],
-                        measures=[well_data[passive_dye_settings[0]].astype(float).tolist()],
+                        measures=[
+                            well_data[passive_dye_settings[0]].astype(float).tolist()
+                        ],
                     ),
                     errors=errors,
                 )

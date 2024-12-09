@@ -234,9 +234,15 @@ class Mapper(SchemaMapper[Data, Model]):
             processed_data_aggregate_document=assert_not_none(
                 self._get_processed_data_aggregate_document(measurement.processed_data)
             ),
-            reporter_dye_data_cube=get_data_cube(measurement.reporter_dye_data_cube, ReporterDyeDataCube),
-            passive_reference_dye_data_cube=get_data_cube(measurement.passive_reference_dye_data_cube, PassiveReferenceDyeDataCube),
-            melting_curve_data_cube=get_data_cube(measurement.melting_curve_data_cube, MeltingCurveDataCube),
+            reporter_dye_data_cube=get_data_cube(
+                measurement.reporter_dye_data_cube, ReporterDyeDataCube
+            ),
+            passive_reference_dye_data_cube=get_data_cube(
+                measurement.passive_reference_dye_data_cube, PassiveReferenceDyeDataCube
+            ),
+            melting_curve_data_cube=get_data_cube(
+                measurement.melting_curve_data_cube, MeltingCurveDataCube
+            ),
         )
         return add_custom_information_document(measurement_doc, measurement.custom_info)
 
@@ -289,8 +295,13 @@ class Mapper(SchemaMapper[Data, Model]):
                 data.baseline_corrected_reporter_result,
             ),
             genotyping_determination_result=data.genotyping_determination_result,
-            normalized_reporter_data_cube=get_data_cube(data.normalized_reporter_data_cube, NormalizedReporterDataCube),
-            baseline_corrected_reporter_data_cube=get_data_cube(data.baseline_corrected_reporter_data_cube, BaselineCorrectedReporterDataCube),
+            normalized_reporter_data_cube=get_data_cube(
+                data.normalized_reporter_data_cube, NormalizedReporterDataCube
+            ),
+            baseline_corrected_reporter_data_cube=get_data_cube(
+                data.baseline_corrected_reporter_data_cube,
+                BaselineCorrectedReporterDataCube,
+            ),
         )
         return ProcessedDataAggregateDocument(
             processed_data_document=[

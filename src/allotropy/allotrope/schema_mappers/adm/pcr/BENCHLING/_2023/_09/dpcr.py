@@ -1,4 +1,3 @@
-from collections.abc import Callable, Sequence
 from dataclasses import dataclass
 from typing import Any, TypeVar
 
@@ -190,8 +189,12 @@ class Mapper(SchemaMapper[Data, Model]):
             total_partition_count=TQuantityValueNumber(
                 value=measurement.total_partition_count
             ),
-            reporter_dye_data_cube=get_data_cube(measurement.reporter_dye_data_cube, ReporterDyeDataCube),
-            passive_reference_dye_data_cube=get_data_cube(measurement.passive_reference_dye_data_cube, PassiveReferenceDyeDataCube),
+            reporter_dye_data_cube=get_data_cube(
+                measurement.reporter_dye_data_cube, ReporterDyeDataCube
+            ),
+            passive_reference_dye_data_cube=get_data_cube(
+                measurement.passive_reference_dye_data_cube, PassiveReferenceDyeDataCube
+            ),
             error_aggregate_document=self._get_error_aggregate_document(
                 measurement.errors
             ),
