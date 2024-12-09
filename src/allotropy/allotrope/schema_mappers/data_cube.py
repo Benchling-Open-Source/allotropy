@@ -48,6 +48,10 @@ DataCubeType = TypeVar("DataCubeType", bound=DataCubeProtocol)
 T = TypeVar("T", bound=float | str | bool)
 
 
+def _is_type(type_: type[T], value: float | str | int) -> bool:
+    return isinstance(value, type_) or type_ is float and isinstance(value, int)
+
+
 def _get_typed_dimension(
     type_: type[T], values: Sequence[float | str | bool]
 ) -> list[T] | None:
@@ -57,7 +61,7 @@ def _get_typed_dimension(
         # which I just can't deal with.
         type_(value)  # type: ignore[misc]
         for value in values
-        if isinstance(value, type_) or type_ is float and isinstance(value, int)
+        if _is_type(type_, value)
     ]
     return result if len(result) == len(values) else None
 
@@ -88,10 +92,7 @@ def _get_typed_measure(
         # which I just can't deal with.
         None if value is None else type_(value)  # type: ignore[misc]
         for value in values
-        if value is None
-        or isinstance(value, type_)
-        or type_ is float
-        and isinstance(value, int)
+        if value is None or _is_type(type_, value)
     ]
     return result if len(result) == len(values) else None
 
