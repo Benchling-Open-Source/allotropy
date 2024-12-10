@@ -25,8 +25,7 @@ def create_metadata(data: SeriesData, file_path: str) -> Metadata:
     path = Path(file_path)
     return Metadata(
         asm_file_identifier=path.with_suffix(".json").name,
-        data_system_instance_id=NOT_APPLICABLE,
-        device_identifier=data.get(str, "PC"),
+        data_system_instance_id=data.get(str, "PC", NOT_APPLICABLE),
         file_name=Path(file_path).name,
         unc_path=file_path,
         model_number=data.get(str, "Instrument type", DEFAULT_MODEL_NUMBER),

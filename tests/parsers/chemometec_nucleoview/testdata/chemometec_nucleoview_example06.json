@@ -55,7 +55,7 @@
         ],
         "data system document": {
             "ASM file identifier": "chemometec_nucleoview_example06.json",
-            "data system instance identifier": "N/A",
+            "data system instance identifier": "ABC0-NBBS-FQ01",
             "file name": "chemometec_nucleoview_example06.csv",
             "UNC path": "tests/parsers/chemometec_nucleoview/testdata/chemometec_nucleoview_example06.csv",
             "ASM converter name": "allotropy_chemometec_nucleoview",
@@ -64,7 +64,6 @@
             "software version": "1.4.0.0"
         },
         "device system document": {
-            "device identifier": "ABC0-NBBS-FQ01",
             "equipment serial number": "s/n 9000201099909999",
             "model number": "NucleoView NC-200"
         }
