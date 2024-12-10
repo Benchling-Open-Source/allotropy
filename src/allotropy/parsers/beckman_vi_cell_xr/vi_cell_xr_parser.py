@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-from allotropy.allotrope.models.adm.cell_counting.benchling._2023._11.cell_counting import (
+from allotropy.allotrope.models.adm.cell_counting.rec._2024._09.cell_counting import (
     Model,
 )
-from allotropy.allotrope.schema_mappers.adm.cell_counting.benchling._2023._11.cell_counting import (
+from allotropy.allotrope.schema_mappers.adm.cell_counting.rec._2024._09.cell_counting import (
     Data,
     Mapper,
 )

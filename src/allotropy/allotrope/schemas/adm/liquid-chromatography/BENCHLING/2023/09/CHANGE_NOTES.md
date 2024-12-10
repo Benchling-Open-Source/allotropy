@@ -2,6 +2,13 @@ Base schema: http://purl.allotrope.org/json-schemas/adm/liquid-chromatography/RE
 
 Changes:
 
+* Added fluorescence-cube-detector measurementDocumentItems to liquid-chromatography measurement schemas
+  * Reasoning: Extend support for fluorescence chromatogram data within liquid-chromatography schema
+  * Proposal: Added fluorescence-cube-detector measurementDocumentItems to liquid-chromatography measurement schemas
+* Changed "elapsed time" dimension to "retention time" in chromatogram data cube of fluorescence-cube-detector measurementDocumentItems
+  * Reasoning: Chromatogram data cube reports dimension in retention time
+  * Proposal: Change dimension from "elapsed time" to "retention time"
+
 * Added pH-cube-detector measurementDocumentItems to liquid-chromatography measurement schemas
   * Reasoning: Extend support for pH chromatogram data within liquid-chromatography schema
   * Proposal: Added pH-cube-detector measurementDocumentItems to liquid-chromatography measurement schemas REC/2024/12

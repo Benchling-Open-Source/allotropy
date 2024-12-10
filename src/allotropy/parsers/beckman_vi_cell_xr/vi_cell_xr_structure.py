@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from allotropy.allotrope.schema_mappers.adm.cell_counting.benchling._2023._11.cell_counting import (
+from allotropy.allotrope.schema_mappers.adm.cell_counting.rec._2024._09.cell_counting import (
     Measurement,
     MeasurementGroup,
     Metadata,
@@ -15,6 +15,7 @@ from allotropy.parsers.beckman_vi_cell_xr.constants import (
     SOFTWARE_NAME,
 )
 from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_reader import ViCellData
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
@@ -51,13 +52,17 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
 
 
 def create_metadata(reader_data: ViCellData, file_path: str) -> Metadata:
+    path = Path(file_path)
     return Metadata(
         device_type=DEVICE_TYPE,
         detection_type=DETECTION_TYPE,
         model_number=MODEL_NUMBER,
+        asm_file_identifier=path.with_suffix(".json").name,
+        data_system_instance_id=NOT_APPLICABLE,
+        device_identifier=NOT_APPLICABLE,
         equipment_serial_number=reader_data.serial_number,
         software_name=SOFTWARE_NAME,
         software_version=reader_data.version.value,
-        file_name=Path(file_path).name,
+        file_name=path.name,
         unc_path=file_path,
     )
