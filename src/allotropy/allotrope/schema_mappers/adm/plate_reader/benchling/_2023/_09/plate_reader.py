@@ -9,6 +9,8 @@ from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reade
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
     ContainerType,
+    CustomDataCubeAggregateDocument,
+    CustomDataCubeDocumentItem,
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
     DataSystemDocument,
@@ -54,8 +56,10 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 from allotropy.allotrope.models.shared.definitions.definitions import (
     InvalidJsonFloat,
     JsonFloat,
+    TDatacube,
     TQuantityValue,
 )
+from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropyParserError
@@ -171,6 +175,7 @@ class Measurement:
     path_length: float | None = None
     device_control_custom_info: dict[str, Any] | None = None
 
+    custom_data_cubes: list[DataCube] | None = None
     custom_info: dict[str, Any] | None = None
 
 
@@ -359,6 +364,20 @@ class Mapper(SchemaMapper[Data, Model]):
             processed_data_aggregate_document=self._get_processed_data_aggregate_document(
                 measurement.processed_data
             ),
+            custom_data_cube_aggregate_document=CustomDataCubeAggregateDocument(
+                custom_data_cube_document=[
+                    CustomDataCubeDocumentItem(
+                        data_cube=assert_not_none(
+                            get_data_cube(data_cube, TDatacube),
+                            f"Unable to create data cube with label: {data_cube.label}",
+                        )
+                    )
+                    for data_cube in measurement.custom_data_cubes
+                    if data_cube
+                ]
+            )
+            if measurement.custom_data_cubes
+            else None,
         )
 
     def _get_ultraviolet_absorbance_measurement_document(
