@@ -1,0 +1,26 @@
+{
+    "datasets": [
+        {
+            "name": "dataset",
+            "columns": [
+                {
+                    "name": "Well",
+                    "path": "plate reader aggregate document/plate reader document/measurement aggregate document/measurement document/sample document/location identifier"
+                },
+                {
+                    "name": "Wavelength",
+                    "path": "plate reader aggregate document/plate reader document/measurement aggregate document/measurement document/device control aggregate document/device control document/detector wavelength setting/value"
+                },
+                {
+                    "name": "Absorbance ($unit$)",
+                    "path": "plate reader aggregate document/plate reader document/measurement aggregate document/measurement document/absorbance/value"
+                },
+                {
+                    "name": "unit",
+                    "path": "plate reader aggregate document/plate reader document/measurement aggregate document/measurement document/absorbance/unit",
+                    "include": false
+                }
+            ]
+        }
+    ]
+}
