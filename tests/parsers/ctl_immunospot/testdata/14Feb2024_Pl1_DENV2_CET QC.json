@@ -76,8 +76,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -179,7 +179,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -263,8 +264,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -366,7 +367,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -450,8 +452,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -553,7 +555,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -637,8 +640,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -740,7 +743,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -824,8 +828,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -927,7 +931,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -1011,8 +1016,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -1114,7 +1119,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -1198,8 +1204,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -1301,7 +1307,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -1385,8 +1392,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -1488,7 +1495,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -1572,8 +1580,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -1675,7 +1683,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -1759,8 +1768,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -1862,7 +1871,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -1946,8 +1956,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -2049,7 +2059,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -2133,8 +2144,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -2236,7 +2247,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -2320,8 +2332,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -2423,7 +2435,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -2507,8 +2520,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -2610,7 +2623,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -2694,8 +2708,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -2797,7 +2811,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -2881,8 +2896,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -2984,7 +2999,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -3068,8 +3084,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -3171,7 +3187,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -3255,8 +3272,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -3358,7 +3375,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -3442,8 +3460,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -3545,7 +3563,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -3629,8 +3648,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -3732,7 +3751,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -3816,8 +3836,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -3919,7 +3939,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -4003,8 +4024,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -4106,7 +4127,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -4190,8 +4212,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -4293,7 +4315,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -4377,8 +4400,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -4480,7 +4503,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -4564,8 +4588,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -4667,7 +4691,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -4751,8 +4776,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -4854,7 +4879,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -4938,8 +4964,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -5041,7 +5067,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -5125,8 +5152,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -5228,7 +5255,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -5312,8 +5340,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -5415,7 +5443,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -5499,8 +5528,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -5602,7 +5631,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -5686,8 +5716,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -5789,7 +5819,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -5873,8 +5904,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -5976,7 +6007,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -6060,8 +6092,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -6163,7 +6195,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -6247,8 +6280,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -6350,7 +6383,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -6434,8 +6468,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -6537,7 +6571,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -6621,8 +6656,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -6724,7 +6759,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -6808,8 +6844,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -6911,7 +6947,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -6995,8 +7032,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -7098,7 +7135,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -7182,8 +7220,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -7285,7 +7323,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -7369,8 +7408,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -7472,7 +7511,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -7556,8 +7596,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -7659,7 +7699,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -7743,8 +7784,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -7846,7 +7887,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -7930,8 +7972,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -8033,7 +8075,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -8117,8 +8160,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -8220,7 +8263,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -8304,8 +8348,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -8407,7 +8451,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -8491,8 +8536,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -8594,7 +8639,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -8678,8 +8724,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -8781,7 +8827,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -8865,8 +8912,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -8968,7 +9015,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -9052,8 +9100,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -9155,7 +9203,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -9239,8 +9288,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -9342,7 +9391,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -9426,8 +9476,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -9529,7 +9579,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -9613,8 +9664,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -9716,7 +9767,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -9800,8 +9852,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -9903,7 +9955,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -9987,8 +10040,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -10090,7 +10143,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -10174,8 +10228,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -10277,7 +10331,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -10361,8 +10416,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -10464,7 +10519,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -10548,8 +10604,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -10651,7 +10707,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -10735,8 +10792,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -10838,7 +10895,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -10922,8 +10980,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -11025,7 +11083,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -11109,8 +11168,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -11212,7 +11271,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -11296,8 +11356,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -11399,7 +11459,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -11483,8 +11544,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -11586,7 +11647,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -11670,8 +11732,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -11773,7 +11835,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -11857,8 +11920,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -11960,7 +12023,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -12044,8 +12108,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -12147,7 +12211,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -12231,8 +12296,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -12334,7 +12399,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -12418,8 +12484,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -12521,7 +12587,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -12605,8 +12672,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -12708,7 +12775,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -12792,8 +12860,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -12895,7 +12963,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -12979,8 +13048,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -13082,7 +13151,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -13166,8 +13236,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -13269,7 +13339,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -13353,8 +13424,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -13456,7 +13527,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -13540,8 +13612,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -13643,7 +13715,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -13727,8 +13800,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -13830,7 +13903,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -13914,8 +13988,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -14017,7 +14091,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -14101,8 +14176,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -14204,7 +14279,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -14288,8 +14364,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -14391,7 +14467,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -14475,8 +14552,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -14578,7 +14655,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -14662,8 +14740,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -14765,7 +14843,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -14849,8 +14928,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -14952,7 +15031,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -15036,8 +15116,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -15139,7 +15219,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -15223,8 +15304,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -15326,7 +15407,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -15410,8 +15492,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -15513,7 +15595,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -15597,8 +15680,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -15700,7 +15783,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -15784,8 +15868,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -15887,7 +15971,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -15971,8 +16056,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -16074,7 +16159,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -16158,8 +16244,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -16261,7 +16347,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -16345,8 +16432,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -16448,7 +16535,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -16532,8 +16620,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -16635,7 +16723,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -16719,8 +16808,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -16822,7 +16911,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -16906,8 +16996,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -17009,7 +17099,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -17093,8 +17184,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -17196,7 +17287,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -17280,8 +17372,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -17383,7 +17475,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -17467,8 +17560,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -17570,7 +17663,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -17654,8 +17748,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -17757,7 +17851,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
@@ -17841,8 +17936,8 @@
                                     }
                                 ]
                             },
-                            "custom data cube aggregate document": {
-                                "custom data cube document": [
+                            "custom information aggregate document": {
+                                "custom information document": [
                                     {
                                         "data cube": {
                                             "label": "spot count histogram",
@@ -17944,7 +18039,8 @@
                                                     ]
                                                 ]
                                             }
-                                        }
+                                        },
+                                        "datum label": "spot count histogram"
                                     }
                                 ]
                             }
