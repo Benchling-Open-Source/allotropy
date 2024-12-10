@@ -21,7 +21,7 @@ def round_to_nearest_well_count(well_count: int) -> int | None:
 def get_well_count_by_well_ids(
     well_identifiers: list[int] | None = None, well_locations: list[str] | None = None
 ) -> int | None:
-    if not well_identifiers or well_locations:
+    if not well_identifiers and not well_locations:
         msg = "Must provide either well_identifiers or well_locations when determining plate size."
         raise AllotropeConversionError(msg)
     # Get well numbers via Well ID (1, 2, 3, ...) and well location (A1, B1, ...)
