@@ -360,7 +360,7 @@ class Mapper(SchemaMapper[Data, Model]):
                         data_cube=assert_not_none(
                             get_data_cube(data_cube, TDatacube),
                             f"Unable to create data cube with label: {data_cube.label}",
-                        )
+                        ),
                     )
                     for data_cube in measurement.custom_data_cubes
                     if data_cube
