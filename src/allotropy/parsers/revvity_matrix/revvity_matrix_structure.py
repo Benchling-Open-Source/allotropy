@@ -19,7 +19,6 @@ def create_metadata(file_path: str) -> Metadata:
         asm_file_identifier=path.with_suffix(".json").name,
         data_system_instance_id=NOT_APPLICABLE,
         device_identifier=NOT_APPLICABLE,
-        model_number=NOT_APPLICABLE,
         file_name=path.name,
         unc_path=file_path,
         device_type=constants.DEVICE_TYPE,

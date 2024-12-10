@@ -101,7 +101,7 @@ class Metadata:
     asm_file_identifier: str
     data_system_instance_id: str
     device_type: str
-    model_number: str
+    model_number: str | None = None
     device_identifier: str | None = None
     detection_type: str | None = None
     software_name: str | None = None
