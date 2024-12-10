@@ -310,7 +310,6 @@ def register_dataclass_union_hooks(converter: Converter) -> None:
 
 
 def structure_custom_information_document(val: dict[str, Any], name: str) -> Any:
-    assert False
     structured_dict = {}
     for key, value in val.items():
         structured_value = value
@@ -348,7 +347,6 @@ def _unstructure_value(value: Any) -> Any:
 
 
 def unstructure_custom_information_document(model: Any) -> dict[str, Any]:
-    assert False
     should_omit = _create_should_omit_function(model)
 
     def dict_factory(kv_pairs: Sequence[tuple[str, Any]]) -> dict[str, Any]:
@@ -376,8 +374,9 @@ def register_dataclass_hooks(converter: Converter) -> None:
             if val is None:
                 return None
             structured = structure_fn(val, _)
+            # NOTE: this handles custom implementation of custom info document, not the ASM version that came
+            # later. The ASM version will always be a list, so we can differentiate using that.
             if isinstance(val, dict) and "custom information document" in val and not isinstance(val["custom information document"], list):
-                assert False
                 structured.custom_information_document = (
                     structure_custom_information_document(
                         val["custom information document"],
@@ -421,7 +420,6 @@ def register_unstructure_hooks(converter: Converter) -> None:
             # NOTE: this handles custom implementation of custom info document, not the ASM version that came
             # later. The ASM version will always be a list, so we can differentiate using that.
             if hasattr(obj, "custom_information_document") and not isinstance(obj.custom_information_document, list):
-                assert False
                 dataclass_dict[
                     "custom information document"
                 ] = unstructure_custom_information_document(obj.custom_information_document)
