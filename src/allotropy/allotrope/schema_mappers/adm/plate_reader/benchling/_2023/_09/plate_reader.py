@@ -10,6 +10,7 @@ from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reade
     CalculatedDataDocumentItem,
     ContainerType,
     CustomDataCubeAggregateDocument,
+    CustomDataCubeDocumentItem,
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
     DataSystemDocument,
@@ -364,8 +365,19 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement.processed_data
             ),
             custom_data_cube_aggregate_document=CustomDataCubeAggregateDocument(
-                custom_data_cube_document=[get_data_cube(data_cube, TDatacube) for data_cube in measurement.custom_data_cubes]
-            ) if measurement.custom_data_cubes else None
+                custom_data_cube_document=[
+                    CustomDataCubeDocumentItem(
+                        data_cube=assert_not_none(
+                            get_data_cube(data_cube, TDatacube),
+                            f"Unable to create data cube with label: {data_cube.label}",
+                        )
+                    )
+                    for data_cube in measurement.custom_data_cubes
+                    if data_cube
+                ]
+            )
+            if measurement.custom_data_cubes
+            else None,
         )
 
     def _get_ultraviolet_absorbance_measurement_document(

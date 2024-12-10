@@ -56,7 +56,7 @@ class PlateData:
     def _get_plate_well_count(data: pd.DataFrame) -> int | None:
         return get_well_count_by_well_ids(
             well_identifiers=[int(well[-1]) for well in data["Well"]],
-            well_locations=data["Well"],
+            well_locations=data["Well"].astype(str).tolist(),
         )
 
 

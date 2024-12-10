@@ -51,7 +51,7 @@ class CtlImmunospotReader:
         self, reader: CsvReader
     ) -> tuple[
         dict[str, pd.DataFrame],
-        dict[str, list[tuple[list[float], list[float]]]],
+        dict[str, tuple[list[float], list[float]]],
         str | None,
     ]:
         reader.drop_until_inclusive("Unprocessed Data$")
@@ -81,7 +81,7 @@ class CtlImmunospotReader:
                 name = "Spot Count"
 
             # Read in the plate data, detect end by checking for plate letter label.
-            columns = reader.pop()
+            columns = assert_not_none(reader.pop(), "Unable to get column header line")
             reader.pop()
             lines = [columns]
             expected_char = "A"
@@ -102,13 +102,13 @@ class CtlImmunospotReader:
             reader.drop_empty()
 
         # TODO: check all plates are the same size
-        return plates, None, plate_identifier
+        return plates, {}, plate_identifier
 
     def _parse_7_0_38(
         self, reader: CsvReader
     ) -> tuple[
         dict[str, pd.DataFrame],
-        dict[str, list[tuple[list[float], list[float]]]],
+        dict[str, tuple[list[float], list[float]]],
         str | None,
     ]:
         reader.drop_empty()
@@ -127,10 +127,11 @@ class CtlImmunospotReader:
                 if histograms:
                     msg = "Got unexpected second histogram in input file."
                     raise AllotropeConversionError(msg)
-                dimensions, histograms = self._read_histogram_7_0_38(reader)
-                for well_location, data in histograms.items():
-                    if well_location not in histograms:
-                        histograms[well_location] = []
+                dimensions, histogram_data = self._read_histogram_7_0_38(reader)
+                for well_location, data in histogram_data.items():
+                    if well_location in histograms:
+                        msg = f"Got multiple histogram entries for well location: {well_location}"
+                        raise AllotropeConversionError(msg)
                     histograms[well_location] = (dimensions, data)
             else:
                 for name, plate in zip(
@@ -147,11 +148,14 @@ class CtlImmunospotReader:
     def _read_histogram_7_0_38(
         self, reader: CsvReader
     ) -> tuple[list[float], dict[str, list[float]]]:
-        dims = [float(dim) for dim in reader.pop().strip().split("\t")]
+        dimensions_line = assert_not_none(
+            reader.pop(), "Unable to read histogram dimensions line"
+        )
+        dims = [float(dim) for dim in dimensions_line.strip().split("\t")]
         reader.pop()
         reader.pop()
         histograms: dict[str, list[float]] = {}
-        while line := reader.pop():
+        while (line := reader.pop()) is not None:
             if line.startswith("\t"):
                 break
             values = line.strip().split("\t")
@@ -161,9 +165,10 @@ class CtlImmunospotReader:
     def _read_plate_data_7_0_38(self, reader: CsvReader) -> list[pd.DataFrame]:
         # Read in the plate data, detect end by checking for plate letter label.
         reader.pop()
+        columns_line = assert_not_none(reader.pop(), "Unable to get column header line")
         columns = [
             line_split.strip()
-            for line_split in reader.pop().strip().split("\t\t")
+            for line_split in columns_line.strip().split("\t\t")
             if line_split.strip()
         ]
         reader.pop()
@@ -210,7 +215,7 @@ class CtlImmunospotReader:
 
         lines = [fix_line(line) for raw_line in lines for line in raw_line.split(";")]
         reader.drop_empty(EMPTY_STR_OR_CSV_LINE)
-        if reader.get() and ":" in reader.get():
+        if ":" in (reader.get() or ""):
             lines.extend(list(reader.pop_until_empty(EMPTY_STR_OR_CSV_LINE)))
 
         df = read_csv(

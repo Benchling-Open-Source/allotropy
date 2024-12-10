@@ -18,7 +18,7 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
     ProcessedData,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, DataCubeComponent
-from allotropy.parsers.constants import NOT_APPLICABLE
+from allotropy.parsers.constants import NOT_APPLICABLE, round_to_nearest_well_count
 from allotropy.parsers.ctl_immunospot import constants
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
@@ -32,7 +32,7 @@ def _create_measurement(
     well_col: str,
     well_plate_identifier: str,
     plate_data: dict[str, pd.DataFrame],
-    histograms: dict[str, dict[str, tuple[list[float], list[float]]]]
+    histograms: dict[str, tuple[list[float], list[float]]],
 ) -> Measurement:
     location_identifier = f"{well_row}{well_col}"
     return Measurement(
@@ -61,20 +61,22 @@ def _create_measurement(
                     DataCubeComponent(
                         concept="spot size",
                         type_=FieldComponentDatatype.double,
-                        unit=UNITLESS
+                        unit=UNITLESS,
                     )
                 ],
                 structure_measures=[
                     DataCubeComponent(
                         concept="spot count",
                         type_=FieldComponentDatatype.double,
-                        unit="Number"
+                        unit="Number",
                     )
                 ],
                 dimensions=[histograms[location_identifier][0]],
                 measures=[histograms[location_identifier][1]],
             )
-        ] if histograms and location_identifier in histograms else None,
+        ]
+        if histograms and location_identifier in histograms
+        else None,
     )
 
 
@@ -82,20 +84,26 @@ def create_measurement_groups(
     header: SeriesData,
     plate_identifier: str | None,
     plate_data: dict[str, pd.DataFrame],
-    histograms: dict[str, dict[str, tuple[list[float], list[float]]]]
+    histograms: dict[str, tuple[list[float], list[float]]],
 ) -> list[MeasurementGroup]:
     well_plate_identifier = (
         plate_identifier or PureWindowsPath(header[str, "File path"]).stem
     )
     first_plate: pd.DataFrame = next(iter(plate_data.values()))
-    # TODO: get well size
-    plate_well_count = first_plate.size
+    plate_well_count = assert_not_none(
+        round_to_nearest_well_count(first_plate.size),
+        f"Unable to determine valid plate count from dataframe of size: {first_plate.size}",
+    )
     return [
         MeasurementGroup(
             plate_well_count=plate_well_count,
             measurement_time=header[str, ("Counted", "Review Date")],
             analyst=header[str, "Authenticated user"],
-            measurements=[_create_measurement(row, col, well_plate_identifier, plate_data, histograms)]
+            measurements=[
+                _create_measurement(
+                    row, col, well_plate_identifier, plate_data, histograms
+                )
+            ],
         )
         for row in first_plate.index
         for col in first_plate.columns

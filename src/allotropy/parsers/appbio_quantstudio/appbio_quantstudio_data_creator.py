@@ -299,13 +299,15 @@ def _get_plate_well_count(header: Header, wells: list[Well]) -> int | None:
         return header.plate_well_count
 
     return get_well_count_by_well_ids(
-        well_identifiers=[well_item.identifier for well in wells for well_item in well.items],
+        well_identifiers=[
+            well_item.identifier for well in wells for well_item in well.items
+        ],
         well_locations=[
             well_item.position
             for well in wells
             for well_item in well.items
             if well_item.position
-        ]
+        ],
     )
 
 
