@@ -1,13 +1,11 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/BENCHLING/2023/11/cell-counting.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2024/09/cell-counting.manifest",
     "cell counting aggregate document": {
         "cell counting document": [
             {
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2023-09-29T05:21:32+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -16,12 +14,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB001"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
+                            "measurement time": "2023-09-29T05:21:32+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 20.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 97.0,
                                             "unit": "%"
@@ -30,20 +34,13 @@
                                             "value": 87.4,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 20.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
                                         "total cell density (cell counter)": {
                                             "value": 90.2,
                                             "unit": "10^6 cells/mL"
                                         },
                                         "average total cell diameter": {
                                             "value": 17.3,
-                                            "unit": "μm"
+                                            "unit": "µm"
                                         },
                                         "total cell count": {
                                             "value": 4263,
@@ -59,6 +56,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB001"
                             }
                         }
                     ]
@@ -66,17 +66,20 @@
                 "analyst": "Vi-Cell XR"
             }
         ],
-        "device system document": {
-            "model number": "Vi-Cell XR",
-            "equipment serial number": "AW123456789"
-        },
         "data system document": {
+            "ASM file identifier": "Beckman_Vi-Cell-XR_example07_instrumentOutput.json",
+            "data system instance identifier": "N/A",
             "file name": "Beckman_Vi-Cell-XR_example07_instrumentOutput.txt",
             "UNC path": "tests/parsers/beckman_vi_cell_xr/testdata/v2.06/Beckman_Vi-Cell-XR_example07_instrumentOutput.txt",
-            "software name": "Vi-Cell XR",
-            "software version": "2.06",
             "ASM converter name": "allotropy_beckman_vi_cell_xr",
-            "ASM converter version": "0.1.61"
+            "ASM converter version": "0.1.65",
+            "software name": "Vi-Cell XR",
+            "software version": "2.06"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "equipment serial number": "AW123456789",
+            "model number": "Vi-Cell XR"
         }
     }
 }

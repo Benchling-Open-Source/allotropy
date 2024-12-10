@@ -22,6 +22,7 @@ class MethodicalMindReader:
         self.plate_data = []
         while reader.current_line_exists():
             lines = list(reader.pop_until("Data"))
+            lines = [line for line in lines if "Digital_Signature" not in line]
             header_df = read_csv(
                 StringIO("\n".join(lines)),
                 sep=r":\t",
@@ -42,9 +43,11 @@ class MethodicalMindReader:
                 "Luminescence data table",
             ).dropna(axis="columns", how="all")
             # There may be multiple rows per well row for additional measurements, and the extra rows are
-            # not labelled. ffill the row label so that each row has the correspondign row label.
+            # not labelled. ffill the row label so that each row has the corresponding row label.
             data.index = pd.Index(data.index.to_series().ffill())
+
             data.index = data.index.astype(str).str.strip()
+            data.index = pd.Index(data.index.to_series().replace("", pd.NA).ffill())
             data.columns = data.columns.astype(str).str.strip()
             self.plate_data.append(data)
 

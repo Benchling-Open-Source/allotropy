@@ -13,7 +13,7 @@
                                         "flow cell identifier": "Flowcell 1",
                                         "flow rate": {
                                             "value": 10,
-                                            "unit": "μL/min"
+                                            "unit": "µL/min"
                                         },
                                         "contact time": {
                                             "value": 420,
@@ -72,7 +72,7 @@
                                         "flow cell identifier": "Flowcell 2",
                                         "flow rate": {
                                             "value": 5,
-                                            "unit": "μL/min"
+                                            "unit": "µL/min"
                                         },
                                         "contact time": {
                                             "value": 600,
@@ -131,7 +131,7 @@
                                         "flow cell identifier": "Flowcell 3",
                                         "flow rate": {
                                             "value": 5,
-                                            "unit": "μL/min"
+                                            "unit": "µL/min"
                                         },
                                         "contact time": {
                                             "value": 600,
@@ -190,7 +190,7 @@
                                         "flow cell identifier": "Flowcell 4",
                                         "flow rate": {
                                             "value": 5,
-                                            "unit": "μL/min"
+                                            "unit": "µL/min"
                                         },
                                         "contact time": {
                                             "value": 600,
@@ -1407,7 +1407,7 @@
             "file name": "Fig.5a_HD_immobilization Her2-Her3.blr",
             "UNC path": "tests\\parsers\\cytiva_biacore_t200_control\\testdata\\Fig.5a_HD_immobilization Her2-Her3.blr",
             "ASM converter name": "allotropy_cytiva_biacore_t200_control",
-            "ASM converter version": "0.1.63",
+            "ASM converter version": "0.1.66",
             "software name": "Biacore T200 Control Software",
             "software version": "2.0.1"
         },

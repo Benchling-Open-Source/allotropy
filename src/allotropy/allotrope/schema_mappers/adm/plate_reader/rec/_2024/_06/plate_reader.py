@@ -1,6 +1,8 @@
 from dataclasses import dataclass
 from enum import Enum
+from typing import Any
 
+from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.plate_reader.rec._2024._06.plate_reader import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
@@ -27,17 +29,13 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMillimeter,
     TQuantityValueNanometer,
     TQuantityValueNumber,
+    TQuantityValuePicogramPerMilliliter,
     TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueRelativeLightUnit,
     TQuantityValueSecondTime,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    FieldComponentDatatype,
-    TDatacube,
-    TDatacubeComponent,
-    TDatacubeData,
-    TDatacubeStructure,
-)
+from allotropy.allotrope.models.shared.definitions.definitions import TDatacube
+from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropyParserError
@@ -85,22 +83,6 @@ class MeasurementType(Enum):
     LUMINESCENCE_CUBE_DETECTOR = "LUMINESCENCE_CUBE_DETECTOR"
 
 
-@dataclass
-class DataCubeComponent:
-    type_: FieldComponentDatatype
-    concept: str
-    unit: str
-
-
-@dataclass
-class DataCube:
-    label: str
-    structure_dimensions: list[DataCubeComponent]
-    structure_measures: list[DataCubeComponent]
-    dimensions: list[list[float]]
-    measures: list[list[float | None]]
-
-
 @dataclass(frozen=True)
 class DataSource:
     identifier: str
@@ -131,11 +113,15 @@ class Measurement:
     identifier: str
     sample_identifier: str
     location_identifier: str
+    firmware_version: str | None = None
+    batch_identifier: str | None = None
 
     # Optional metadata
     well_plate_identifier: str | None = None
+    well_location_identifier: str | None = None
     detection_type: str | None = None
     sample_role_type: SampleRoleType | None = None
+    mass_concentration: float | None = None
 
     # Measurements
     absorbance: float | None = None
@@ -154,6 +140,10 @@ class Measurement:
     detector_carriage_speed: str | None = None
     compartment_temperature: float | None = None
     number_of_averages: float | None = None
+    measurement_custom_info: dict[str, Any] | None = None
+    sample_custom_info: dict[str, Any] | None = None
+    device_control_custom_info: dict[str, Any] | None = None
+    electronic_absorbance_reference_wavelength_setting: float | None = None
 
     # Kinetic settings
     total_measurement_time_setting: float | None = None
@@ -276,27 +266,35 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_ultraviolet_absorbance_measurement_document(
         self, measurement: Measurement
     ) -> MeasurementDocument:
-        return MeasurementDocument(
+        device_control_document = DeviceControlDocumentItem(
+            electronic_absorbance_reference_wavelength_setting=quantity_or_none(
+                TQuantityValueNanometer,
+                measurement.electronic_absorbance_reference_wavelength_setting,
+            ),
+            device_type=measurement.device_type,
+            detection_type=measurement.detection_type,
+            detector_wavelength_setting=quantity_or_none(
+                TQuantityValueNanometer,
+                measurement.detector_wavelength_setting,
+            ),
+            number_of_averages=quantity_or_none(
+                TQuantityValueNumber, measurement.number_of_averages
+            ),
+            detector_carriage_speed_setting=measurement.detector_carriage_speed,
+            detector_gain_setting=measurement.detector_gain_setting,
+            detector_distance_setting__plate_reader_=quantity_or_none(
+                TQuantityValueMillimeter,
+                measurement.detector_distance_setting,
+            ),
+            firmware_version=measurement.firmware_version,
+        )
+        measurement_doc = MeasurementDocument(
             measurement_identifier=measurement.identifier,
             sample_document=self._get_sample_document(measurement),
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
-                    DeviceControlDocumentItem(
-                        device_type=measurement.device_type,
-                        detection_type=measurement.detection_type,
-                        detector_wavelength_setting=quantity_or_none(
-                            TQuantityValueNanometer,
-                            measurement.detector_wavelength_setting,
-                        ),
-                        number_of_averages=quantity_or_none(
-                            TQuantityValueNumber, measurement.number_of_averages
-                        ),
-                        detector_carriage_speed_setting=measurement.detector_carriage_speed,
-                        detector_gain_setting=measurement.detector_gain_setting,
-                        detector_distance_setting__plate_reader_=quantity_or_none(
-                            TQuantityValueMillimeter,
-                            measurement.detector_distance_setting,
-                        ),
+                    add_custom_information_document(
+                        device_control_document, measurement.device_control_custom_info
                     )
                 ]
             ),
@@ -313,11 +311,14 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement.error_document
             ),
         )
+        return add_custom_information_document(
+            measurement_doc, measurement.measurement_custom_info
+        )
 
     def _get_luminescence_measurement_document(
         self, measurement: Measurement
     ) -> MeasurementDocument:
-        return MeasurementDocument(
+        doc = MeasurementDocument(
             measurement_identifier=measurement.identifier,
             sample_document=self._get_sample_document(measurement),
             device_control_aggregate_document=DeviceControlAggregateDocument(
@@ -363,6 +364,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement.error_document
             ),
         )
+        return add_custom_information_document(doc, measurement.measurement_custom_info)
 
     def _get_fluorescence_measurement_document(
         self, measurement: Measurement
@@ -433,7 +435,7 @@ class Mapper(SchemaMapper[Data, Model]):
             msg = "Profile data cube is required for cube detector measurements"
             raise AllotropyParserError(msg)
 
-        profile_data_cube = self._get_data_cube(measurement.profile_data_cube)
+        profile_data_cube = get_data_cube(measurement.profile_data_cube, TDatacube)
 
         return MeasurementDocument(
             measurement_identifier=measurement.identifier,
@@ -501,15 +503,24 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
-        return SampleDocument(
+        sample_doc = SampleDocument(
             sample_identifier=measurement.sample_identifier,
             location_identifier=measurement.location_identifier,
             well_plate_identifier=measurement.well_plate_identifier,
+            well_location_identifier=measurement.well_location_identifier,
             sample_role_type=(
                 measurement.sample_role_type.value
                 if measurement.sample_role_type
                 else None
             ),
+            mass_concentration=quantity_or_none(
+                TQuantityValuePicogramPerMilliliter,
+                measurement.mass_concentration,
+            ),
+            batch_identifier=measurement.batch_identifier,
+        )
+        return add_custom_information_document(
+            sample_doc, measurement.sample_custom_info
         )
 
     def _get_calculated_data_aggregate_document(
@@ -540,32 +551,6 @@ class Mapper(SchemaMapper[Data, Model]):
                 )
                 for calculated_data_item in calculated_data_items
             ]
-        )
-
-    def _get_data_cube(self, data_cube: DataCube) -> TDatacube:
-        return TDatacube(
-            label=data_cube.label,
-            cube_structure=TDatacubeStructure(
-                dimensions=[
-                    TDatacubeComponent(
-                        field_componentDatatype=component.type_,
-                        concept=component.concept,
-                        unit=component.unit,
-                    )
-                    for component in data_cube.structure_dimensions
-                ],
-                measures=[
-                    TDatacubeComponent(
-                        field_componentDatatype=component.type_,
-                        concept=component.concept,
-                        unit=component.unit,
-                    )
-                    for component in data_cube.structure_measures
-                ],
-            ),
-            data=TDatacubeData(
-                dimensions=data_cube.dimensions, measures=data_cube.measures  # type: ignore[arg-type]
-            ),
         )
 
     def _get_error_aggregate_document(

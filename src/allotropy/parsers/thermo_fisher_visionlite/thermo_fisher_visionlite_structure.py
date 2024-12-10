@@ -14,8 +14,6 @@ from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
     CalculatedDataItem,
     Data,
-    DataCube,
-    DataCubeComponent,
     DataSource,
     Measurement,
     MeasurementGroup,
@@ -24,6 +22,7 @@ from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._1
     ProcessedData,
     ProcessedDataFeature,
 )
+from allotropy.allotrope.schema_mappers.data_cube import DataCube, DataCubeComponent
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.constants import DEFAULT_EPOCH_TIMESTAMP, NOT_APPLICABLE
 from allotropy.parsers.thermo_fisher_visionlite.constants import (
@@ -102,7 +101,11 @@ class AbsorbanceMeasurement:
 
 class VisionLiteData(Data):
     @staticmethod
-    def create(reader: ThermoFisherVisionliteReader, file_path: str) -> Data:
+    def create(
+        reader: ThermoFisherVisionliteReader,
+        file_path: str,
+        software_name: str = SOFTWARE_NAME,
+    ) -> Data:
         experiment_type = _get_experiment_type(reader)
         header = Header.create(reader.header)
         data = reader.data
@@ -149,7 +152,7 @@ class VisionLiteData(Data):
                     )
 
         return Data(
-            metadata=_create_metadata(file_path),
+            metadata=_create_metadata(file_path, software_name),
             measurement_groups=measurement_groups,
             calculated_data=calculated_data,
         )
@@ -170,14 +173,14 @@ def _get_calculated_data_item(
     )
 
 
-def _create_metadata(file_path: str) -> Metadata:
+def _create_metadata(file_path: str, software_name: str) -> Metadata:
     return Metadata(
         file_name=Path(file_path).name,
         unc_path=file_path,
         device_identifier=NOT_APPLICABLE,
         device_type=DEVICE_TYPE,
         model_number=NOT_APPLICABLE,
-        software_name=SOFTWARE_NAME,
+        software_name=software_name,
         detection_type=DETECTION_TYPE,
         product_manufacturer=PRODUCT_MANUFACTURER,
     )

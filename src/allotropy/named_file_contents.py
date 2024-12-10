@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from functools import cached_property
+from io import BytesIO
 from pathlib import PureWindowsPath
 
 from allotropy.types import IOType
@@ -27,3 +28,11 @@ class NamedFileContents:
     @cached_property
     def extension(self) -> str:
         return PureWindowsPath(self.original_file_path).suffix[1:]
+
+    def get_bytes_stream(self, encoding: str = "utf-8") -> BytesIO:
+        raw_content = self.contents.read()
+        return BytesIO(
+            raw_content.encode(encoding)
+            if isinstance(raw_content, str)
+            else raw_content
+        )

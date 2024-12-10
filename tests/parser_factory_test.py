@@ -30,4 +30,4 @@ def test_table_contents() -> None:
     with open(table_path) as f:
         assert (
             get_table_contents() == f.read()
-        ), "Supported instruments table out-of-date. Hint: run 'hatch run scripts:update-instrument-table"
+        ), "Supported instruments table out-of-date. Hint: run 'hatch run scripts:update-instrument-table'"

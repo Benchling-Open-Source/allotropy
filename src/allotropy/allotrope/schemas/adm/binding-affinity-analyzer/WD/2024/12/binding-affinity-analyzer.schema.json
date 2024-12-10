@@ -11686,11 +11686,11 @@
                         "unit"
                     ]
                 },
-                "μL/min": {
+                "µL/min": {
                     "properties": {
                         "unit": {
                             "type": "string",
-                            "const": "μL/min",
+                            "const": "µL/min",
                             "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MicroliterPerMinute"
                         }
                     },
@@ -12132,7 +12132,7 @@
                                                                 "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
                                                             },
                                                             {
-                                                                "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/μL~1min"
+                                                                "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/µL~1min"
                                                             }
                                                         ]
                                                     },

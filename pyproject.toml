@@ -56,6 +56,8 @@ dependencies = [
   "python-calamine >= 0.2.3",
   "xlrd >= 2.0.0",
   "rfc3339-validator >= 0.1.4",
+  "defusedxml >= 0.7.1",
+  "types-defusedxml >= 0.7.0.20240218",
 ]
 
 [project.urls]
@@ -260,6 +262,8 @@ ignore = [
   "C901", "PLR0911", "PLR0912", "PLR0913", "PLR0915",
   # Ignore line length, black does it better and actually fixes it.
   "E501",
+  # Ignore "magic value" check, because sometimes I need to check if a list has 1 or 2 values...
+  "PLR2004",
 ]
 
 [tool.ruff.isort]
