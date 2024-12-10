@@ -1,5 +1,5 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/BENCHLING/2023/11/cell-counting.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2024/09/cell-counting.manifest",
     "cell counting aggregate document": {
         "cell counting document": [
             {
@@ -36,17 +36,9 @@
                                                 "unit": "(unitless)"
                                             }
                                         },
-                                        "total cell density (cell counter)": {
-                                            "value": "NaN",
-                                            "unit": "10^6 cells/mL"
-                                        },
                                         "dead cell density (cell counter)": {
                                             "value": 1.14,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": "NaN",
-                                            "unit": "µm"
                                         }
                                     }
                                 ]
@@ -57,17 +49,20 @@
                 "analyst": "DrScientist"
             }
         ],
-        "device system document": {
-            "model number": "NucleoView NC-200",
-            "equipment serial number": "s/n 9000201099909999"
-        },
         "data system document": {
+            "ASM file identifier": "chemometec_nucleoview_example04.json",
+            "data system instance identifier": "N/A",
             "file name": "chemometec_nucleoview_example04.csv",
             "UNC path": "tests/parsers/chemometec_nucleoview/testdata/chemometec_nucleoview_example04.csv",
-            "software name": "NucleoView",
-            "software version": "1.4.2.0",
             "ASM converter name": "allotropy_chemometec_nucleoview",
-            "ASM converter version": "0.1.61"
+            "ASM converter version": "0.1.66",
+            "software name": "NucleoView",
+            "software version": "1.4.2.0"
+        },
+        "device system document": {
+            "device identifier": "DESKTOP-A678B9H",
+            "equipment serial number": "s/n 9000201099909999",
+            "model number": "NucleoView NC-200"
         }
     }
 }

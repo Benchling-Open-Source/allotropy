@@ -4,10 +4,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    NaN,
-)
-from allotropy.allotrope.schema_mappers.adm.cell_counting.benchling._2023._11.cell_counting import (
+from allotropy.allotrope.schema_mappers.adm.cell_counting.rec._2024._09.cell_counting import (
     Measurement,
     MeasurementGroup,
     Metadata,
@@ -19,13 +16,17 @@ from allotropy.parsers.chemometec_nucleoview.constants import (
     NUCLEOCOUNTER_DEVICE_TYPE,
     NUCLEOCOUNTER_SOFTWARE_NAME,
 )
-from allotropy.parsers.constants import DEFAULT_EPOCH_TIMESTAMP
+from allotropy.parsers.constants import DEFAULT_EPOCH_TIMESTAMP, NOT_APPLICABLE
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
 def create_metadata(data: SeriesData, file_path: str) -> Metadata:
+    path = Path(file_path)
     return Metadata(
+        asm_file_identifier=path.with_suffix(".json").name,
+        data_system_instance_id=NOT_APPLICABLE,
+        device_identifier=data.get(str, "PC"),
         file_name=Path(file_path).name,
         unc_path=file_path,
         model_number=data.get(str, "Instrument type", DEFAULT_MODEL_NUMBER),
@@ -45,6 +46,9 @@ def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
             f"{timestamp}{'+' if offset[0] not in {'+', '-'} else ''}{offset}"
         ).isoformat()
 
+    def _converted_value_or_none(key: str) -> float | None:
+        return value / 1e6 if (value := data.get(float, key)) is not None else None
+
     return MeasurementGroup(
         analyst=data.get(str, "Operator", DEFAULT_ANALYST),
         measurements=[
@@ -55,11 +59,11 @@ def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
                 cell_density_dilution_factor=data.get(float, "Multiplication factor"),
                 viability=data[float, "Viability (%)"],
                 # Cell counts are measured in cells/mL, but reported in millions of cells/mL
-                viable_cell_density=data.get(float, "Live (cells/ml)", NaN) / 1e6,
-                dead_cell_density=data.get(float, "Dead (cells/ml)", NaN) / 1e6,
-                total_cell_density=data.get(float, "Total (cells/ml)", NaN) / 1e6,
+                viable_cell_density=data[float, "Live (cells/ml)"] / 1e6,
+                dead_cell_density=_converted_value_or_none("Dead (cells/ml)"),
+                total_cell_density=_converted_value_or_none("Total (cells/ml)"),
                 average_total_cell_diameter=data.get(
-                    float, "Estimated cell diameter (um)", NaN
+                    float, "Estimated cell diameter (um)"
                 ),
             )
         ],

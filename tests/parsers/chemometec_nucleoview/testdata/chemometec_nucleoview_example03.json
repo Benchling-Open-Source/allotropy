@@ -1,5 +1,5 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/BENCHLING/2023/11/cell-counting.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2024/09/cell-counting.manifest",
     "cell counting aggregate document": {
         "cell counting document": [
             {
@@ -57,15 +57,17 @@
                 "analyst": "DrScientist"
             }
         ],
-        "device system document": {
-            "model number": "NucleoCounter NC-200"
-        },
         "data system document": {
+            "ASM file identifier": "chemometec_nucleoview_example03.json",
+            "data system instance identifier": "N/A",
             "file name": "chemometec_nucleoview_example03.csv",
             "UNC path": "tests/parsers/chemometec_nucleoview/testdata/chemometec_nucleoview_example03.csv",
-            "software name": "NucleoView",
             "ASM converter name": "allotropy_chemometec_nucleoview",
-            "ASM converter version": "0.1.61"
+            "ASM converter version": "0.1.66",
+            "software name": "NucleoView"
+        },
+        "device system document": {
+            "model number": "NucleoCounter NC-200"
         }
     }
 }
