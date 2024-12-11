@@ -31,17 +31,21 @@ def create_data_cube(
         ],
         structure_measures=[data_cube_component],
         dimensions=[
-            DataCubeReader(
-                handler=handler,
-                name="Volumes",
-                transformation=Min2Sec(),
-            ).get_data()
+            list(
+                DataCubeReader(
+                    handler=handler,
+                    name="Volumes",
+                    transformation=Min2Sec(),
+                ).get_data()
+            )
         ],
         measures=[
-            DataCubeReader(
-                handler=handler,
-                name="Amplitudes",
-                transformation=transformation,
-            ).get_data()
+            list(
+                DataCubeReader(
+                    handler=handler,
+                    name="Amplitudes",
+                    transformation=transformation,
+                ).get_data()
+            )
         ],
     )

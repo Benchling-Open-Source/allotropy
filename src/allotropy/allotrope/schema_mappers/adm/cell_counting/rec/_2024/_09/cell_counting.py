@@ -26,7 +26,6 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValuePercent,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.parsers.utils.values import quantity_or_none
@@ -47,7 +46,7 @@ class Measurement:
 
     # Measurements
     viability: float
-    viable_cell_density: JsonFloat
+    viable_cell_density: float
 
     # Optional metadata
     batch_identifier: str | None = None
@@ -66,11 +65,11 @@ class Measurement:
     # Optional measurements
     viable_cell_count: float | None = None
     total_cell_count: float | None = None
-    total_cell_density: JsonFloat | None = None
+    total_cell_density: float | None = None
     dead_cell_count: float | None = None
-    dead_cell_density: JsonFloat | None = None
+    dead_cell_density: float | None = None
 
-    average_total_cell_diameter: JsonFloat | None = None
+    average_total_cell_diameter: float | None = None
     average_live_cell_diameter: float | None = None
     average_dead_cell_diameter: float | None = None
     average_total_cell_circularity: float | None = None
@@ -88,7 +87,7 @@ class Measurement:
 
     # customer information document fields
     debris_index: float | None = None
-    cell_aggregation_percentage: JsonFloat | None = None
+    cell_aggregation_percentage: float | None = None
 
 
 @dataclass(frozen=True)
@@ -102,8 +101,8 @@ class Metadata:
     asm_file_identifier: str
     data_system_instance_id: str
     device_type: str
-    device_identifier: str
-    model_number: str
+    model_number: str | None = None
+    device_identifier: str | None = None
     detection_type: str | None = None
     software_name: str | None = None
     file_name: str | None = None
