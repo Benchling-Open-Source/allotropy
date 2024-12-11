@@ -68,6 +68,18 @@
                                                         "$asm.property-class": "TODO",
                                                         "$asm.pattern": "quantity datum",
                                                         "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+                                                      },
+                                                      "injection volume setting": {
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001577",
+                                                        "$asm.pattern": "quantity datum",
+                                                        "allOf": [
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
+                                                          },
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/μL"
+                                                          }
+                                                        ]
                                                       }
                                                     }
                                                   }

@@ -8,6 +8,8 @@ from allotropy.allotrope.models.adm.liquid_handler.benchling._2024._11.liquid_ha
     DeviceControlDocumentItem,
     DeviceDocumentItem,
     DeviceSystemDocument,
+    ErrorAggregateDocument,
+    ErrorDocumentItem,
     LiquidHandlerAggregateDocument,
     LiquidHandlerDocumentItem,
     MeasurementAggregateDocument,
@@ -21,6 +23,12 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.parsers.utils.values import quantity_or_none
+
+
+@dataclass(frozen=True)
+class Error:
+    error: str
+    feature: str | None = None
 
 
 @dataclass(frozen=True)
@@ -47,6 +55,9 @@ class Measurement:
     # Measurements
     aspiration_volume: float | None = None
     transfer_volume: float | None = None
+
+    # Errors
+    errors: list[Error] | None = None
 
     device_control_custom_info: dict[str, Any] | None = None
 
@@ -150,6 +161,9 @@ class Mapper(SchemaMapper[Data, Model]):
                     )
                 ]
             ),
+            error_aggregate_document=self._get_error_aggregate_document(
+                measurement.errors
+            ),
         )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
@@ -161,4 +175,17 @@ class Mapper(SchemaMapper[Data, Model]):
             destination_well_location_identifier=measurement.destination_well,
             destination_well_plate_identifier=measurement.destination_plate,
             destination_location_identifier=measurement.destination_location,
+        )
+
+    def _get_error_aggregate_document(
+        self, errors: list[Error] | None
+    ) -> ErrorAggregateDocument | None:
+        if not errors:
+            return None
+
+        return ErrorAggregateDocument(
+            error_document=[
+                ErrorDocumentItem(error=error.error, error_feature=error.feature)
+                for error in errors
+            ]
         )
