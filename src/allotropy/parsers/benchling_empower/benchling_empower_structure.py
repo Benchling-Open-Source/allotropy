@@ -108,7 +108,7 @@ def _create_peak(peak: dict[str, Any]) -> Peak:
     )
 
 
-def _create_measurement(injection: dict[str, Any]) -> Measurement:
+def _create_measurements(injection: dict[str, Any]) -> list[Measurement]:
     peaks: list[dict[str, Any]] = injection.get("peaks", [])
     sample_type = injection.get("SampleType")
     sample_role_type = None
@@ -122,20 +122,25 @@ def _create_measurement(injection: dict[str, Any]) -> Measurement:
             else SampleRoleType.unknown_sample_role.value
         )
 
-    return Measurement(
-        measurement_identifier=random_uuid_str(),
-        sample_identifier=assert_not_none(injection.get("Label"), "Label"),
-        batch_identifier=injection.get("SampleSetID"),
-        sample_role_type=sample_role_type,
-        written_name=injection.get("SampleName"),
-        chromatography_serial_num=injection.get("ColumnSerialNumber") or NOT_APPLICABLE,
-        autosampler_injection_volume_setting=injection["InjectionVolume"],
-        injection_identifier=str(injection["InjectionId"]),
-        injection_time=injection["DateAcquired"],
-        peaks=[_create_peak(peak) for peak in peaks],
-        chromatogram_data_cube=_get_chromatogram(injection),
-        device_control_docs=[DeviceControlDoc(device_type=constants.DEVICE_TYPE)],
-    )
+    # NOTE: we return a single measurement because we are only have the absorbance data cube measurement at
+    # this time, but if there were other measurements to include, we would create multiple measurements here.
+    return [
+        Measurement(
+            measurement_identifier=random_uuid_str(),
+            sample_identifier=assert_not_none(injection.get("Label"), "Label"),
+            batch_identifier=injection.get("SampleSetID"),
+            sample_role_type=sample_role_type,
+            written_name=injection.get("SampleName"),
+            chromatography_serial_num=injection.get("ColumnSerialNumber")
+            or NOT_APPLICABLE,
+            autosampler_injection_volume_setting=injection["InjectionVolume"],
+            injection_identifier=str(injection["InjectionId"]),
+            injection_time=injection["DateAcquired"],
+            peaks=[_create_peak(peak) for peak in peaks],
+            chromatogram_data_cube=_get_chromatogram(injection),
+            device_control_docs=[DeviceControlDoc(device_type=constants.DEVICE_TYPE)],
+        )
+    ]
 
 
 def create_measurement_groups(
@@ -149,7 +154,9 @@ def create_measurement_groups(
     return [
         MeasurementGroup(
             measurements=[
-                _create_measurement(injection) for injection in sample_injections
+                measurement
+                for injection in sample_injections
+                for measurement in _create_measurements(injection)
             ]
         )
         for sample_injections in sample_to_injection.values()
