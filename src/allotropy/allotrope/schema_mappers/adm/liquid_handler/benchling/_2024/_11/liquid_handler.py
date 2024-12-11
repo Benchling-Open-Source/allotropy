@@ -45,6 +45,8 @@ class Measurement:
     identifier: str
     measurement_time: str
     sample_identifier: str
+
+    # Optional metadata
     source_plate: str | None = None
     source_well: str | None = None
     source_location: str | None = None
@@ -55,6 +57,9 @@ class Measurement:
     # Measurements
     aspiration_volume: float | None = None
     transfer_volume: float | None = None
+
+    # Optional settings
+    injection_volume_setting: float | None = None
 
     # Errors
     errors: list[Error] | None = None
@@ -156,7 +161,13 @@ class Mapper(SchemaMapper[Data, Model]):
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
                     add_custom_information_document(
-                        DeviceControlDocumentItem(device_type=metadata.device_type),
+                        DeviceControlDocumentItem(
+                            device_type=metadata.device_type,
+                            injection_volume_setting=quantity_or_none(
+                                TQuantityValueMicroliter,
+                                measurement.injection_volume_setting,
+                            ),
+                        ),
                         measurement.device_control_custom_info,
                     )
                 ]
