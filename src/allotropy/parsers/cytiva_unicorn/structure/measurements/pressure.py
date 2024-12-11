@@ -4,7 +4,6 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     DeviceControlDoc,
     Measurement,
-    ProcessedDataDoc,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCubeComponent
 from allotropy.parsers.cytiva_unicorn.constants import DEVICE_TYPE
@@ -32,16 +31,14 @@ class PressureMeasurement(UnicornMeasurement):
     ) -> Measurement:
         return cls.get_measurement(
             static_docs=static_docs,
-            processed_data_doc=ProcessedDataDoc(
-                derived_column_pressure_data_cube=cls.get_data_cube(
-                    handler,
-                    cls.filter_curve(elements, r"^DeltaC pressure$"),
-                    DataCubeComponent(
-                        type_=FieldComponentDatatype.float,
-                        concept="delta column pressure",
-                        unit="MPa",
-                    ),
-                )
+            derived_column_pressure_data_cube=cls.get_data_cube(
+                handler,
+                cls.filter_curve(elements, r"^DeltaC pressure$"),
+                DataCubeComponent(
+                    type_=FieldComponentDatatype.float,
+                    concept="delta column pressure",
+                    unit="MPa",
+                ),
             ),
             device_control_docs=[
                 DeviceControlDoc(
