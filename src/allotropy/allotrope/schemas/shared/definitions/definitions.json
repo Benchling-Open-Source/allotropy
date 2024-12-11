@@ -681,15 +681,5 @@
                 "default": 1
             }
         }
-    },
-    "orderedItem": {
-        "description": "A schema for an array item, that is ordered in a not-natural way. This means that it MUST have an explicit @index property stating the position. The index value is a strict positive 32bit signed integer (excluding 0).",
-        "properties": {
-            "@index": {
-            "type": "integer",
-            "minimum": 1,
-            "maximum": 2147483647
-            }
-        }
     }
 }
