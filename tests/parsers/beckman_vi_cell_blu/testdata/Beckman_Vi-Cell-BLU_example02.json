@@ -1,5 +1,5 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/BENCHLING/2023/11/cell-counting.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2024/09/cell-counting.manifest",
     "cell counting aggregate document": {
         "cell counting document": [
             {
@@ -398,15 +398,18 @@
                 "analyst": "Vi-CELL"
             }
         ],
-        "device system document": {
-            "model number": "Vi-Cell BLU"
-        },
         "data system document": {
+            "ASM file identifier": "Beckman_Vi-Cell-BLU_example02.json",
+            "data system instance identifier": "N/A",
             "file name": "Beckman_Vi-Cell-BLU_example02.csv",
             "UNC path": "tests/parsers/beckman_vi_cell_blu/testdata/Beckman_Vi-Cell-BLU_example02.csv",
-            "software name": "Vi-Cell BLU",
             "ASM converter name": "allotropy_beckman_vi_cell_blu",
-            "ASM converter version": "0.1.61"
+            "ASM converter version": "0.1.66",
+            "software name": "Vi-Cell BLU"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "Vi-Cell BLU"
         }
     }
 }
