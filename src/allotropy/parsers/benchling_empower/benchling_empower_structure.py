@@ -1,3 +1,4 @@
+from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
@@ -140,8 +141,16 @@ def _create_measurement(injection: dict[str, Any]) -> Measurement:
 def create_measurement_groups(
     injections: list[dict[str, Any]]
 ) -> list[MeasurementGroup]:
+    sample_to_injection: defaultdict[str, list[dict[str, Any]]] = defaultdict(list)
+    for injection in injections:
+        sample_to_injection[assert_not_none(injection.get("Label"), "Label")].append(
+            injection
+        )
     return [
         MeasurementGroup(
-            measurements=[_create_measurement(injection) for injection in injections]
+            measurements=[
+                _create_measurement(injection) for injection in sample_injections
+            ]
         )
+        for sample_injections in sample_to_injection.values()
     ]
