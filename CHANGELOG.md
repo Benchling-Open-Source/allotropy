@@ -5,6 +5,27 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.67] - 2024-12-11
+
+### Added
+
+- Liquid Handler - add injection volume setting, and add error documents to schema mapper (#814)
+- Benchling Waters Empower Adapter - initial implementation (#779)
+- Cell Counting - migrate adapters to the cell-counting/REC/2024/09 schema (#813)
+- Beckman Vi-Cell XR - update to use cell-counting/REC/2024/09 schema (#807)
+- Unchained Labs Lunatic - update adapter to map to Plate Reader REC/2024/06 schema (#806)
+- Cytiva Unicorn - initial implementation (#796)
+
+### Fixed
+
+- Meso Scale Discovery Workbench - Fix missing calculated data for some measurements (#812)
+- PerkinElmer Envision, Thermo Fisher Scientific NanoDrop Eight/8000, Unchained Labs Lunatic - fix a couple cases where we don't cast to str before accessing (#808)
+- Global - update schemas to align the use of `μ` characters with allotrope (#805)
+
+### Changed
+
+- Liquid Chromatography - Added fluorescence-cube-detector measurementDocumentItems to liquid-chromatography measurement schemas (#811)
+
 ## [0.1.66] - 2024-12-05
 
 ### Added
