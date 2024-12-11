@@ -30,6 +30,6 @@ class CytivaUnicornParser(VendorParser[Data, Model]):
         handler = UnicornZipHandler(named_file_contents.get_bytes_stream())
         results = handler.get_results()
         return Data(
-            create_metadata(handler, results),
+            create_metadata(handler, results, named_file_contents.original_file_path),
             create_measurement_groups(handler, results),
         )

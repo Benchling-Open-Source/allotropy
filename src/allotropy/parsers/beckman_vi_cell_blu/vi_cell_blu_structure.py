@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from allotropy.allotrope.schema_mappers.adm.cell_counting.benchling._2023._11.cell_counting import (
+from allotropy.allotrope.schema_mappers.adm.cell_counting.rec._2024._09.cell_counting import (
     Measurement,
     MeasurementGroup,
     Metadata,
@@ -14,6 +14,7 @@ from allotropy.parsers.beckman_vi_cell_blu.constants import (
     DEVICE_TYPE,
     VICELL_BLU_SOFTWARE_NAME,
 )
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
@@ -58,7 +59,11 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
 
 
 def create_metadata(file_path: str) -> Metadata:
+    path = Path(file_path)
     return Metadata(
+        asm_file_identifier=path.with_suffix(".json").name,
+        data_system_instance_id=NOT_APPLICABLE,
+        device_identifier=NOT_APPLICABLE,
         device_type=DEVICE_TYPE,
         detection_type=DETECTION_TYPE,
         model_number=DEFAULT_MODEL_NUMBER,

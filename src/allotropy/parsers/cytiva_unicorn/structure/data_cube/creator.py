@@ -1,10 +1,7 @@
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
 )
-from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
-    DataCube,
-    DataCubeComponent,
-)
+from allotropy.allotrope.schema_mappers.data_cube import DataCube, DataCubeComponent
 from allotropy.parsers.cytiva_unicorn.reader.unicorn_zip_handler import (
     UnicornZipHandler,
 )
@@ -34,17 +31,21 @@ def create_data_cube(
         ],
         structure_measures=[data_cube_component],
         dimensions=[
-            DataCubeReader(
-                handler=handler,
-                name="Volumes",
-                transformation=Min2Sec(),
-            ).get_data()
+            list(
+                DataCubeReader(
+                    handler=handler,
+                    name="Volumes",
+                    transformation=Min2Sec(),
+                ).get_data()
+            )
         ],
         measures=[
-            DataCubeReader(
-                handler=handler,
-                name="Amplitudes",
-                transformation=transformation,
-            ).get_data()
+            list(
+                DataCubeReader(
+                    handler=handler,
+                    name="Amplitudes",
+                    transformation=transformation,
+                ).get_data()
+            )
         ],
     )

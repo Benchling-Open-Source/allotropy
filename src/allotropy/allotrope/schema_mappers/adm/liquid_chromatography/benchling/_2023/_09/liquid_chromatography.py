@@ -1,9 +1,9 @@
 from dataclasses import dataclass
-from typing import Protocol, TypeVar
 
 from allotropy.allotrope.models.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     ChromatogramDataCube,
     ChromatographyColumnDocument,
+    DataSystemDocument,
     DerivedColumnPressureDataCube,
     DeviceControlAggregateDocument,
     DeviceControlDocumentItem,
@@ -14,6 +14,8 @@ from allotropy.allotrope.models.adm.liquid_chromatography.benchling._2023._09.li
     MeasurementAggregateDocument,
     MeasurementDocument,
     Model,
+    Peak as PeakDocument,
+    PeakList,
     PostColumnPressureDataCube,
     PreColumnPressureDataCube,
     ProcessedDataAggregateDocument,
@@ -29,47 +31,56 @@ from allotropy.allotrope.models.adm.liquid_chromatography.benchling._2023._09.li
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueCubicMillimeter,
     TQuantityValueMicrometer,
+    TQuantityValueMilliAbsorbanceUnit,
     TQuantityValueMillimeter,
+    TQuantityValuePercent,
+    TQuantityValueSecondTime,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    FieldComponentDatatype,
-    TDatacube,
-    TDatacubeComponent,
-    TDatacubeData,
-    TDatacubeStructure,
+from allotropy.allotrope.models.shared.definitions.definitions import TDatacube
+from allotropy.allotrope.schema_mappers.data_cube import (
+    DataCube,
+    get_data_cube,
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
+from allotropy.constants import ASM_CONVERTER_VERSION
+from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.utils.values import quantity_or_none, quantity_or_none_from_unit
 
 
 @dataclass(frozen=True)
 class Metadata:
-    asset_management_id: str
-    product_manufacturer: str
-    device_id: str
-    firmware_version: str
+    asset_management_identifier: str
     analyst: str
+    detection_type: str | None = None
+    model_number: str | None = None
+    software_name: str | None = None
+    file_name: str | None = None
+    unc_path: str | None = None
+    equipment_serial_number: str | None = None
+    software_version: str | None = None
+    product_manufacturer: str | None = None
+    brand_name: str | None = None
+    device_identifier: str | None = None
+    firmware_version: str | None = None
+    description: str | None = None
 
 
 @dataclass(frozen=True)
-class DataCubeComponent:
-    type_: FieldComponentDatatype
-    concept: str
-    unit: str
-
-
-@dataclass(frozen=True)
-class DataCube:
-    label: str
-    structure_dimensions: list[DataCubeComponent]
-    structure_measures: list[DataCubeComponent]
-    dimensions: list[tuple[float, ...]]
-    measures: list[tuple[float | None, ...]]
-
-
-@dataclass(frozen=True)
-class ProcessedDataDoc:
-    chromatogram_data_cube: DataCube | None = None
-    derived_column_pressure_data_cube: DataCube | None = None
+class Peak:
+    identifier: str
+    start: float
+    start_unit: str
+    end: float
+    end_unit: str
+    area: float | None = None
+    area_unit: str | None = None
+    relative_area: float | None = None
+    width: float | None = None
+    relative_width: float | None = None
+    height: float | None = None
+    relative_height: float | None = None
+    retention_time: float | None = None
+    written_name: str | None = None
 
 
 @dataclass(frozen=True)
@@ -88,25 +99,30 @@ class DeviceControlDoc:
 @dataclass(frozen=True)
 class Measurement:
     measurement_identifier: str
-
-    # chromatography document
-    chromatography_serial_num: str
-    column_inner_diameter: float
-    chromatography_chemistry_type: str
-    chromatography_particle_size: float
-
-    # injection document
-    injection_identifier: str | None
-    injection_time: str | None
-    autosampler_injection_volume_setting: float | None
-
-    # sample document
     sample_identifier: str
-    batch_identifier: str
+
+    # Injection metadata
+    injection_identifier: str
+    injection_time: str
+    autosampler_injection_volume_setting: float
 
     device_control_docs: list[DeviceControlDoc]
+
+    # Optional metadata
+    sample_role_type: str | None = None
+    written_name: str | None = None
+    chromatography_serial_num: str | None = None
+    column_inner_diameter: float | None = None
+    chromatography_chemistry_type: str | None = None
+    chromatography_particle_size: float | None = None
+    batch_identifier: str | None = None
+
+    # Measurement data cubes
     chromatogram_data_cube: DataCube | None = None
-    processed_data_doc: ProcessedDataDoc | None = None
+    processed_data_chromatogram_data_cube: DataCube | None = None
+    derived_column_pressure_data_cube: DataCube | None = None
+
+    peaks: list[Peak] | None = None
 
 
 @dataclass(frozen=True)
@@ -120,97 +136,98 @@ class Data:
     measurement_groups: list[MeasurementGroup]
 
 
-class DataCubeProtocol(Protocol):
-    def __init__(
-        self,
-        label: str,
-        cube_structure: TDatacubeStructure,
-        data: TDatacubeData,
-    ):
-        pass
-
-
-DataCubeType = TypeVar("DataCubeType", bound=DataCubeProtocol)
-
-
 class Mapper(SchemaMapper[Data, Model]):
     MANIFEST = "http://purl.allotrope.org/manifests/liquid-chromatography/BENCHLING/2023/09/liquid-chromatography.manifest"
 
     def map_model(self, data: Data) -> Model:
         return Model(
+            liquid_chromatography_aggregate_document=LiquidChromatographyAggregateDocument(
+                liquid_chromatography_document=[
+                    self._get_technique_document(group, data.metadata)
+                    for group in data.measurement_groups
+                ],
+                device_system_document=DeviceSystemDocument(
+                    asset_management_identifier=data.metadata.asset_management_identifier,
+                    product_manufacturer=data.metadata.product_manufacturer,
+                    device_identifier=data.metadata.device_identifier,
+                    firmware_version=data.metadata.firmware_version,
+                ),
+                data_system_document=DataSystemDocument(
+                    file_name=data.metadata.file_name,
+                    UNC_path=data.metadata.unc_path,
+                    software_name=data.metadata.software_name,
+                    software_version=data.metadata.software_version,
+                    ASM_converter_name=self.converter_name,
+                    ASM_converter_version=ASM_CONVERTER_VERSION,
+                ),
+            ),
             field_asm_manifest=self.MANIFEST,
-            liquid_chromatography_aggregate_document=self.get_liquid_chromatography_agg_doc(
-                data
+        )
+
+    def _get_technique_document(
+        self, group: MeasurementGroup, metadata: Metadata
+    ) -> LiquidChromatographyDocumentItem:
+        return LiquidChromatographyDocumentItem(
+            analyst=metadata.analyst,
+            measurement_aggregate_document=MeasurementAggregateDocument(
+                measurement_document=[
+                    self._get_measurement_document_item(measurement)
+                    for measurement in group.measurements
+                ]
             ),
         )
 
-    def get_data_cube(
-        self, data_cube: DataCube | None, data_cube_class: type[DataCubeType]
-    ) -> DataCubeType | None:
-        if data_cube is None:
-            return None
-        return data_cube_class(
-            label=data_cube.label,
-            cube_structure=TDatacubeStructure(
-                dimensions=[
-                    TDatacubeComponent(
-                        field_componentDatatype=structure_dim.type_,
-                        concept=structure_dim.concept,
-                        unit=structure_dim.unit,
-                    )
-                    for structure_dim in data_cube.structure_dimensions
-                ],
-                measures=[
-                    TDatacubeComponent(
-                        field_componentDatatype=structure_dim.type_,
-                        concept=structure_dim.concept,
-                        unit=structure_dim.unit,
-                    )
-                    for structure_dim in data_cube.structure_measures
-                ],
+    def _get_measurement_document_item(
+        self, measurement: Measurement
+    ) -> MeasurementDocument:
+        if len(measurement.device_control_docs) < 1:
+            msg = "Expected at least one device control document in measurement."
+            raise AllotropeConversionError(msg)
+
+        return MeasurementDocument(
+            measurement_identifier=measurement.measurement_identifier,
+            chromatography_column_document=self._get_chromatography_column_document(
+                measurement
             ),
-            data=TDatacubeData(
-                dimensions=[list(dim) for dim in data_cube.dimensions],
-                measures=[list(dim) for dim in data_cube.measures],
+            sample_document=self._get_sample_document(measurement),
+            injection_document=(
+                self._get_injection_document(measurement)
+                if measurement.injection_identifier
+                else None
+            ),
+            processed_data_aggregate_document=self._get_processed_data_aggregate_document(
+                measurement
+            ),
+            device_control_aggregate_document=DeviceControlAggregateDocument(
+                device_control_document=[
+                    self._get_device_control_document(device_control_doc)
+                    for device_control_doc in measurement.device_control_docs
+                ]
+            ),
+            chromatogram_data_cube=(
+                get_data_cube(
+                    measurement.chromatogram_data_cube,
+                    ChromatogramDataCube,
+                )
             ),
         )
 
-    def get_device_system_doc(self, data: Data) -> DeviceSystemDocument:
-        return DeviceSystemDocument(
-            asset_management_identifier=data.metadata.asset_management_id,
-            product_manufacturer=data.metadata.product_manufacturer,
-            device_identifier=data.metadata.device_id,
-            firmware_version=data.metadata.firmware_version,
-        )
-
-    def get_chromatography_col_doc(
+    def _get_chromatography_column_document(
         self, measurement: Measurement
     ) -> ChromatographyColumnDocument:
         return ChromatographyColumnDocument(
             chromatography_column_serial_number=measurement.chromatography_serial_num,
             chromatography_column_chemistry_type=measurement.chromatography_chemistry_type,
-            column_inner_diameter=TQuantityValueMillimeter(
-                value=measurement.column_inner_diameter,
+            column_inner_diameter=quantity_or_none(
+                TQuantityValueMillimeter,
+                measurement.column_inner_diameter,
             ),
-            chromatography_column_particle_size=TQuantityValueMicrometer(
-                value=measurement.chromatography_particle_size,
+            chromatography_column_particle_size=quantity_or_none(
+                TQuantityValueMicrometer, measurement.chromatography_particle_size
             ),
         )
 
-    def get_sample_doc(self, measurement: Measurement) -> SampleDocument:
-        return SampleDocument(
-            sample_identifier=measurement.sample_identifier,
-            batch_identifier=measurement.batch_identifier,
-        )
-
-    def get_injection_doc(self, measurement: Measurement) -> InjectionDocument | None:
-        if (
-            measurement.injection_identifier is None
-            or measurement.injection_time is None
-            or measurement.autosampler_injection_volume_setting is None
-        ):
-            return None
-
+    def _get_injection_document(self, measurement: Measurement) -> InjectionDocument:
         return InjectionDocument(
             injection_identifier=measurement.injection_identifier,
             injection_time=self.get_date_time(measurement.injection_time),
@@ -219,122 +236,102 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
         )
 
-    def get_processed_data_agg_doc(
-        self, processed_data_doc: ProcessedDataDoc
-    ) -> ProcessedDataAggregateDocument:
+    def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
+        return SampleDocument(
+            sample_identifier=measurement.sample_identifier,
+            batch_identifier=measurement.batch_identifier,
+            sample_role_type=measurement.sample_role_type,
+            written_name=measurement.written_name,
+        )
+
+    def _get_peak_document(self, peak: Peak) -> PeakDocument:
+        return PeakDocument(
+            identifier=peak.identifier,
+            peak_start=quantity_or_none_from_unit(peak.start_unit, peak.start),  # type: ignore[arg-type]
+            peak_end=quantity_or_none_from_unit(peak.end_unit, peak.end),  # type: ignore[arg-type]
+            peak_area=quantity_or_none_from_unit(peak.area_unit, peak.area),
+            peak_width=quantity_or_none(TQuantityValueSecondTime, peak.width),
+            peak_height=quantity_or_none(
+                TQuantityValueMilliAbsorbanceUnit, peak.height
+            ),
+            relative_peak_area=quantity_or_none(
+                TQuantityValuePercent, peak.relative_area
+            ),
+            relative_peak_height=quantity_or_none(
+                TQuantityValuePercent, peak.relative_height
+            ),
+            retention_time=quantity_or_none(
+                TQuantityValueSecondTime, peak.retention_time
+            ),
+            written_name=peak.written_name,
+        )
+
+    def _get_processed_data_aggregate_document(
+        self, measurement: Measurement
+    ) -> ProcessedDataAggregateDocument | None:
+        if not (
+            measurement.processed_data_chromatogram_data_cube
+            or measurement.derived_column_pressure_data_cube
+            or measurement.peaks
+        ):
+            return None
         return ProcessedDataAggregateDocument(
             processed_data_document=[
                 ProcessedDataDocumentItem(
-                    chromatogram_data_cube=self.get_data_cube(
-                        processed_data_doc.chromatogram_data_cube,
+                    chromatogram_data_cube=get_data_cube(
+                        measurement.processed_data_chromatogram_data_cube,
                         TDatacube,
                     ),
-                    derived_column_pressure_data_cube=self.get_data_cube(
-                        processed_data_doc.derived_column_pressure_data_cube,
+                    derived_column_pressure_data_cube=get_data_cube(
+                        measurement.derived_column_pressure_data_cube,
                         DerivedColumnPressureDataCube,
                     ),
+                    peak_list=PeakList(
+                        peak=[
+                            self._get_peak_document(peak) for peak in measurement.peaks
+                        ]
+                    )
+                    if measurement.peaks
+                    else None,
                 )
             ]
         )
 
-    def get_device_control_doc_item(
+    def _get_device_control_document(
         self, device_control_doc: DeviceControlDoc
     ) -> DeviceControlDocumentItem:
         return DeviceControlDocumentItem(
             device_type=device_control_doc.device_type,
-            solvent_concentration_data_cube=self.get_data_cube(
+            solvent_concentration_data_cube=get_data_cube(
                 device_control_doc.solvent_conc_data_cube,
                 SolventConcentrationDataCube,
             ),
-            pre_column_pressure_data_cube=self.get_data_cube(
+            pre_column_pressure_data_cube=get_data_cube(
                 device_control_doc.pre_column_pressure_data_cube,
                 PreColumnPressureDataCube,
             ),
-            sample_pressure_data_cube=self.get_data_cube(
+            sample_pressure_data_cube=get_data_cube(
                 device_control_doc.sample_pressure_data_cube,
                 SamplePressureDataCube,
             ),
-            system_pressure_data_cube=self.get_data_cube(
+            system_pressure_data_cube=get_data_cube(
                 device_control_doc.system_pressure_data_cube,
                 SystemPressureDataCube,
             ),
-            post_column_pressure_data_cube=self.get_data_cube(
+            post_column_pressure_data_cube=get_data_cube(
                 device_control_doc.post_column_pressure_data_cube,
                 PostColumnPressureDataCube,
             ),
-            sample_flow_rate_data_cube=self.get_data_cube(
+            sample_flow_rate_data_cube=get_data_cube(
                 device_control_doc.sample_flow_data_cube,
                 SampleFlowRateDataCube,
             ),
-            system_flow_rate_data_cube=self.get_data_cube(
+            system_flow_rate_data_cube=get_data_cube(
                 device_control_doc.system_flow_data_cube,
                 SystemFlowRateDataCube,
             ),
-            temperature_profile_data_cube=self.get_data_cube(
+            temperature_profile_data_cube=get_data_cube(
                 device_control_doc.temperature_profile_data_cube,
                 TemperatureProfileDataCube,
             ),
-        )
-
-    def get_device_control_aggregate_document(
-        self, device_control_docs: list[DeviceControlDoc]
-    ) -> DeviceControlAggregateDocument:
-        return DeviceControlAggregateDocument(
-            device_control_document=[
-                self.get_device_control_doc_item(device_control_doc)
-                for device_control_doc in device_control_docs
-            ]
-        )
-
-    def get_measurement_doc(self, measurement: Measurement) -> MeasurementDocument:
-        return MeasurementDocument(
-            measurement_identifier=measurement.measurement_identifier,
-            chromatography_column_document=self.get_chromatography_col_doc(measurement),
-            sample_document=self.get_sample_doc(measurement),
-            injection_document=self.get_injection_doc(measurement),
-            processed_data_aggregate_document=(
-                self.get_processed_data_agg_doc(measurement.processed_data_doc)
-                if measurement.processed_data_doc
-                else None
-            ),
-            device_control_aggregate_document=self.get_device_control_aggregate_document(
-                measurement.device_control_docs
-            ),
-            chromatogram_data_cube=self.get_data_cube(
-                measurement.chromatogram_data_cube,
-                ChromatogramDataCube,
-            ),
-        )
-
-    def get_measurement_agg_doc(
-        self, measurement_group: MeasurementGroup
-    ) -> MeasurementAggregateDocument:
-        return MeasurementAggregateDocument(
-            measurement_document=[
-                self.get_measurement_doc(measurement)
-                for measurement in measurement_group.measurements
-            ]
-        )
-
-    def get_liquid_chromatography_doc_item(
-        self, metadata: Metadata, measurement_group: MeasurementGroup
-    ) -> LiquidChromatographyDocumentItem:
-        return LiquidChromatographyDocumentItem(
-            analyst=metadata.analyst,
-            measurement_aggregate_document=self.get_measurement_agg_doc(
-                measurement_group
-            ),
-        )
-
-    def get_liquid_chromatography_agg_doc(
-        self, data: Data
-    ) -> LiquidChromatographyAggregateDocument:
-        return LiquidChromatographyAggregateDocument(
-            liquid_chromatography_document=[
-                self.get_liquid_chromatography_doc_item(
-                    data.metadata, measurement_group
-                )
-                for measurement_group in data.measurement_groups
-            ],
-            device_system_document=self.get_device_system_doc(data),
         )
