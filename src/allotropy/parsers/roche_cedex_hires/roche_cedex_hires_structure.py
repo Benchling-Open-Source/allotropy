@@ -3,19 +3,23 @@ from __future__ import annotations
 from decimal import Decimal
 from pathlib import Path
 
-from allotropy.allotrope.schema_mappers.adm.cell_counting.benchling._2023._11.cell_counting import (
+from allotropy.allotrope.schema_mappers.adm.cell_counting.rec._2024._09.cell_counting import (
     Measurement,
     MeasurementGroup,
     Metadata,
 )
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.roche_cedex_hires import constants
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
 def create_metadata(data: SeriesData, file_path: str) -> Metadata:
+    path = Path(file_path)
     return Metadata(
-        file_name=Path(file_path).name,
+        asm_file_identifier=path.with_suffix(".json").name,
+        data_system_instance_id=NOT_APPLICABLE,
+        file_name=path.name,
         unc_path=file_path,
         device_type=constants.DEVICE_TYPE,
         detection_type=constants.DETECTION_TYPE,
@@ -54,9 +58,9 @@ def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
                 viable_cell_count=data.get(float, "Viable Cell Count"),
                 viable_cell_density=viable_cell_density,
                 total_cell_count=data.get(float, "Total Cell Count"),
-                total_cell_density=total_cell_density
-                if total_cell_density_val
-                else None,
+                total_cell_density=(
+                    total_cell_density if total_cell_density_val else None
+                ),
                 dead_cell_count=data.get(float, "Dead Cell Count"),
                 dead_cell_density=dead_cell_density if dead_cell_density_val else None,
                 cell_type_processing_method=data.get(str, "Cell type name"),

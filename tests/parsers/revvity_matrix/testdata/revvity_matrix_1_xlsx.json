@@ -1,5 +1,5 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/BENCHLING/2023/11/cell-counting.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2024/09/cell-counting.manifest",
     "cell counting aggregate document": {
         "cell counting document": [
             {
@@ -1357,12 +1357,16 @@
                 }
             }
         ],
-        "device system document": {},
         "data system document": {
+            "ASM file identifier": "revvity_matrix_1_xlsx.json",
+            "data system instance identifier": "N/A",
             "file name": "revvity_matrix_1_xlsx.xlsx",
             "UNC path": "tests/parsers/revvity_matrix/testdata/revvity_matrix_1_xlsx.xlsx",
             "ASM converter name": "allotropy_revvity_matrix",
-            "ASM converter version": "0.1.61"
+            "ASM converter version": "0.1.66"
+        },
+        "device system document": {
+            "device identifier": "N/A"
         }
     }
 }
