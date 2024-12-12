@@ -61,6 +61,8 @@ def df_to_series(df: pd.DataFrame, index: int | None = None) -> pd.Series[Any]:
         msg = "Unable to convert DataFrame to series: data has more than 1 row and no index was provided."
         raise AllotropeConversionError(msg)
     index = index or 0
+    if index == -1:
+        index = n_rows - 1
     if index >= n_rows:
         msg = f"Index {index} is greater than the number of rows in dataframe {n_rows}."
         raise AllotropeConversionError(msg)
