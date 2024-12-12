@@ -9,13 +9,12 @@ User Name,LabAutomation
 
 [DETAILS]
 Date Time Point,Source Plate Name,Source Plate Barcode,Source Plate Type,Source Well,Destination Plate Name,Destination Plate Barcode,Destination Plate Type,Destination Well,Transfer Volume,Actual Volume,Sample ID,Sample Name,Survey Fluid Volume,Current Fluid Volume,Fluid Composition,Fluid Units,Fluid Type,Transfer Status
-2024-12-09 13:41:30.154,Source[1],,384PP_AQ_BP,A1,Destination[1],,Eppendorf_PCR_384,A1,100,100,,,52.337,52.237,100,,AQ,
-2024-12-09 13:41:31.102,Source[1],,384PP_AQ_BP,A1,Destination[1],,Eppendorf_PCR_384,B1,100,100,,,52.337,52.137,100,,AQ,
-2024-12-09 13:41:34.616,Source[1],,384PP_AQ_BP,A2,Destination[1],,Eppendorf_PCR_384,A2,100,100,,,52.626,52.526,100,,AQ,
-2024-12-09 13:41:34.780,Source[1],,384PP_AQ_BP,A2,Destination[1],,Eppendorf_PCR_384,B2,100,100,,,52.626,52.426,100,,AQ,
+2024-12-09 13:41:30.154,Source[1],SRC123456,384PP_AQ_BP,A1,Destination[1],DST314159,Eppendorf_PCR_384,A1,100,100,,,52.337,52.237,100,,AQ,
+2024-12-09 13:41:31.102,Source[1],SRC123456,384PP_AQ_BP,A1,Destination[1],DST314159,Eppendorf_PCR_384,B1,100,100,,,52.337,52.137,100,,AQ,
+2024-12-09 13:41:34.616,Source[1],SRC123456,384PP_AQ_BP,A2,Destination[1],DST314159,Eppendorf_PCR_384,A2,100,100,,,52.626,52.526,100,,AQ,
+2024-12-09 13:41:34.780,Source[1],SRC123456,384PP_AQ_BP,A2,Destination[1],DST314159,Eppendorf_PCR_384,B2,100,100,,,52.626,52.426,100,,AQ,
 
 Instrument Name,E5XX-19119
 Instrument Model,Echo 525
 Instrument Serial Number,E5XX-19119
 Instrument Software Version,2.6.3
-

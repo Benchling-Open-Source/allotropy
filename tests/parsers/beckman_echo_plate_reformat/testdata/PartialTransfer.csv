@@ -9,16 +9,15 @@ User Name,LabAutomation
 
 [EXCEPTIONS]
 Date Time Point,Source Plate Name,Source Plate Barcode,Source Plate Type,Source Well,Destination Plate Name,Destination Plate Barcode,Destination Plate Type,Destination Well,Transfer Volume,Actual Volume,Sample ID,Sample Name,Survey Fluid Volume,Current Fluid Volume,Fluid Composition,Fluid Units,Fluid Type,Transfer Status
-2024-12-09 13:34:27.411,Source[1],,384PP_AQ_BP,A2,Destination[1],,Eppendorf_PCR_384,A2,100,0,,,0,0,0,,AQ,MM0202007: Problem calc. well fluid volume fc: 0 ft: 0
-2024-12-09 13:34:27.411,Source[1],,384PP_AQ_BP,A2,Destination[1],,Eppendorf_PCR_384,B2,100,0,,,0,0,0,,AQ,MM0202007: Problem calc. well fluid volume fc: 0 ft: 0
+2024-12-09 13:34:27.411,Source[1],SRC000001,384PP_AQ_BP,A2,Destination[1],DST000001,Eppendorf_PCR_384,A2,100,0,,,0,0,0,,AQ,MM0202007: Problem calc. well fluid volume fc: 0 ft: 0
+2024-12-09 13:34:27.411,Source[1],SRC000001,384PP_AQ_BP,A2,Destination[1],DST000001,Eppendorf_PCR_384,B2,100,0,,,0,0,0,,AQ,MM0202007: Problem calc. well fluid volume fc: 0 ft: 0
 
 [DETAILS]
 Date Time Point,Source Plate Name,Source Plate Barcode,Source Plate Type,Source Well,Destination Plate Name,Destination Plate Barcode,Destination Plate Type,Destination Well,Transfer Volume,Actual Volume,Sample ID,Sample Name,Survey Fluid Volume,Current Fluid Volume,Fluid Composition,Fluid Units,Fluid Type,Transfer Status
-2024-12-09 13:34:23.000,Source[1],,384PP_AQ_BP,A1,Destination[1],,Eppendorf_PCR_384,A1,100,100,,,53.678,53.578,100,,AQ,
-2024-12-09 13:34:23.946,Source[1],,384PP_AQ_BP,A1,Destination[1],,Eppendorf_PCR_384,B1,100,100,,,53.678,53.478,100,,AQ,
+2024-12-09 13:34:23.000,Source[1],SRC000001,384PP_AQ_BP,A1,Destination[1],DST000001,Eppendorf_PCR_384,A1,100,100,,,53.678,53.578,100,,AQ,
+2024-12-09 13:34:23.946,Source[1],SRC000001,384PP_AQ_BP,A1,Destination[1],DST000001,Eppendorf_PCR_384,B1,100,100,,,53.678,53.478,100,,AQ,
 
 Instrument Name,E5XX-19119
 Instrument Model,Echo 525
 Instrument Serial Number,E5XX-19119
 Instrument Software Version,2.6.3
-
