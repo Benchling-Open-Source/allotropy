@@ -374,7 +374,13 @@ def register_dataclass_hooks(converter: Converter) -> None:
             if val is None:
                 return None
             structured = structure_fn(val, _)
-            if isinstance(val, dict) and "custom information document" in val:
+            # NOTE: this handles custom implementation of custom info document, not the ASM version that came
+            # later. The ASM version will always be a list, so we can differentiate using that.
+            if (
+                isinstance(val, dict)
+                and "custom information document" in val
+                and not isinstance(val["custom information document"], list)
+            ):
                 structured.custom_information_document = (
                     structure_custom_information_document(
                         val["custom information document"],
@@ -415,7 +421,11 @@ def register_unstructure_hooks(converter: Converter) -> None:
                 for k, v in make_unstructure_fn(type(obj))(obj).items()
                 if not should_omit(k, v)
             }
-            if hasattr(obj, "custom_information_document"):
+            # NOTE: this handles custom implementation of custom info document, not the ASM version that came
+            # later. The ASM version will always be a list, so we can differentiate using that.
+            if hasattr(obj, "custom_information_document") and not isinstance(
+                obj.custom_information_document, list
+            ):
                 dataclass_dict[
                     "custom information document"
                 ] = unstructure_custom_information_document(
