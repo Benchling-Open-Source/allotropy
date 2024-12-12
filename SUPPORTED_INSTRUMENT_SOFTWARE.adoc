@@ -15,16 +15,16 @@ The parsers follow maturation levels of: Recommended, Candidate Release, Working
 [cols="4*^.^"]
 |===
 |Instrument Category|Instrument Software|Release Status|Exported ASM Schema
-.6+|Cell Counting|Beckman Vi-Cell BLU|Recommended|BENCHLING/2023/11
+.6+|Cell Counting|Beckman Vi-Cell BLU|Recommended|REC/2024/09
 |Beckman Vi-Cell XR|Recommended|REC/2024/09
-|ChemoMetec NC View|Recommended|BENCHLING/2023/11
-|ChemoMetec Nucleoview|Recommended|BENCHLING/2023/11
-|Revvity Matrix|Recommended|BENCHLING/2023/11
-|Roche Cedex HiRes|Recommended|BENCHLING/2023/11
+|ChemoMetec NC View|Recommended|REC/2024/09
+|ChemoMetec Nucleoview|Recommended|REC/2024/09
+|Revvity Matrix|Recommended|REC/2024/09
+|Roche Cedex HiRes|Recommended|REC/2024/09
 .1+|Electrophoresis|Agilent TapeStation Analysis|Recommended|BENCHLING/2024/09
-.1+|Liquid Chromatography|Cytiva Unicorn|Working Draft|BENCHLING/2023/09
-.2+|Liquid Handler|Beckman Coulter Biomek|Working Draft|BENCHLING/2024/11
-|Beckman Echo Plate Reformat|Working Draft|BENCHLING/2024/11
+.2+|Liquid Chromatography|Benchling Waters Empower Adapter|Recommended|BENCHLING/2023/09
+|Cytiva Unicorn|Recommended|BENCHLING/2023/09
+.1+|Liquid Handler|Beckman Coulter Biomek|Recommended|BENCHLING/2024/11
 .2+|Multi Analyte Profiling|Bio-Rad Bio-Plex Manager|Recommended|BENCHLING/2024/01
 |Luminex xPONENT|Recommended|BENCHLING/2024/01
 .13+|Plate Reader|Agilent Gen5|Recommended|REC/2024/06
@@ -44,7 +44,7 @@ The parsers follow maturation levels of: Recommended, Candidate Release, Working
 |NovaBio Flex2|Recommended|REC/2024/09
 |Roche Cedex BioHT|Recommended|REC/2024/09
 .8+|Spectrophotometry|Thermo Fisher Scientific Genesys30|Recommended|BENCHLING/2023/12
-|Thermo Fisher Scientific Genesys On-Board|Candidate Release|BENCHLING/2023/12
+|Thermo Fisher Scientific Genesys On-Board|Recommended|BENCHLING/2023/12
 |Thermo Fisher Scientific NanoDrop 8000|Recommended|BENCHLING/2023/12
 |Thermo Fisher Scientific NanoDrop Eight|Recommended|BENCHLING/2023/12
 |Thermo Fisher Scientific Nanodrop One|Recommended|BENCHLING/2023/12

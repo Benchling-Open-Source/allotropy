@@ -22,7 +22,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 class ThermoFisherGenesysOnBoardParser(VendorParser[Data, Model]):
     DISPLAY_NAME = DISPLAY_NAME
-    RELEASE_STATE = ReleaseState.CANDIDATE_RELEASE
+    RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = ThermoFisherVisionliteReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 
