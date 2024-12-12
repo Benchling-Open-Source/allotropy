@@ -53,17 +53,3 @@ def test_invalid_measurement_table_dimensions() -> None:
         match="Expected 4 rows in measurement table, got 3.",
     ):
         from_file(f"{TESTDATA}/errors/missing_measurement_table_row.txt", VENDOR_TYPE)
-
-
-@pytest.mark.parametrize(
-    "test_file",
-    [
-        f"{TESTDATA}/errors/lum_spectrum_columns.txt",
-    ],
-)
-def test_unrecognized_read_type(test_file: str) -> None:
-    with pytest.raises(
-        AllotropeConversionError,
-        match="Only Endpoint or Kinetic measurements can be processed at this time.",
-    ):
-        from_file(test_file, VENDOR_TYPE)
