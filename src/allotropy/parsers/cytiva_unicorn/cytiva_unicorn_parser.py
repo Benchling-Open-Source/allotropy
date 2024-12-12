@@ -22,7 +22,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 class CytivaUnicornParser(VendorParser[Data, Model]):
     DISPLAY_NAME = DISPLAY_NAME
-    RELEASE_STATE = ReleaseState.WORKING_DRAFT
+    RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "zip"
     SCHEMA_MAPPER = Mapper
 
