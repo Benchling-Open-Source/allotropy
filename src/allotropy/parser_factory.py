@@ -24,7 +24,9 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_d
 from allotropy.parsers.beckman_coulter_biomek.beckman_coulter_biomek_parser import (
     BeckmanCoulterBiomekParser,
 )
-from allotropy.parsers.beckman_echo_plate_reformat.beckman_echo_plate_reformat_parser import BeckmanEchoPlateReformatParser
+from allotropy.parsers.beckman_echo_plate_reformat.beckman_echo_plate_reformat_parser import (
+    BeckmanEchoPlateReformatParser,
+)
 from allotropy.parsers.beckman_pharmspec.beckman_pharmspec_parser import PharmSpecParser
 from allotropy.parsers.beckman_vi_cell_blu.vi_cell_blu_parser import ViCellBluParser
 from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_parser import ViCellXRParser

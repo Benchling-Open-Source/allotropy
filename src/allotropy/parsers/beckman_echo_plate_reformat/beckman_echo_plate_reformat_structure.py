@@ -1,36 +1,91 @@
+from pathlib import Path
+
+import pandas as pd
+
 from allotropy.allotrope.schema_mappers.adm.liquid_handler.benchling._2024._11.liquid_handler import (
+    Error,
     Measurement,
     MeasurementGroup,
     Metadata,
 )
-from pathlib import Path
-from allotropy.parsers.roche_cedex_hires import constants
-from allotropy.parsers.utils.pandas import SeriesData
+from allotropy.parsers.beckman_echo_plate_reformat import constants
+from allotropy.parsers.constants import NOT_APPLICABLE
+from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
-def create_metadata(data: SeriesData, file_path: str) -> Metadata:
+def create_metadata(header_footer_data: SeriesData, file_path: str) -> Metadata:
+    path = Path(file_path)
     return Metadata(
-        file_name=Path(file_path).name,
-        unc_path=file_path,
-        # Example of the kind of value that might be set with a constant.
+        file_name=path.name,
+        asm_file_identifier=path.with_suffix(".json").name,
+        unc_path=str(path),
+        data_system_instance_identifier=NOT_APPLICABLE,
         device_type=constants.DEVICE_TYPE,
-        # Example of the kind of value that might be set from the header data.
-        description=data[str, "System description"],
+        product_manufacturer=constants.PRODUCT_MANUFACTURER,
+        software_version=header_footer_data[str, "Instrument Software Version"],
+        # description=header_footer_data[str, "Instrument Model"],
+        # identifier=header_footer_data[str, "Run ID"],
+        equipment_serial_number=header_footer_data[str, "Instrument Serial Number"],
+        software_name=header_footer_data[str, "Application Name"],
     )
 
 
-def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
+def create_measurement_groups(
+    data: pd.DataFrame, header: SeriesData
+) -> list[MeasurementGroup]:
     # This function will be called for every row in the dataset, use it to create
     # a corresponding measurement group.
-    return MeasurementGroup(
-        analyst=data[str, "Analyst"],
-        measurements=[
+    measurements: list[Measurement] = []
+
+    def map_to_measurements(row_data: SeriesData) -> None:
+        def file_nl_to_ul(value: float) -> float:
+            return value * constants.PLATE_REFORMAT_REPORT_VOLUME_CONVERSION_TO_UL
+
+        measurements.append(
             Measurement(
-                measurement_identifier=random_uuid_str(),
-                # Example of the kind of value that might be set from a measurement row
-                sample_identifier=data[str, "Sample ID"],
-                viability=data[float, "Viability"],
+                identifier=random_uuid_str(),
+                measurement_time=row_data[str, "Date Time Point"],
+                sample_identifier=row_data.get(str, "Sample ID", NOT_APPLICABLE),
+                source_plate=row_data[str, "Source Plate Barcode"],
+                source_well=row_data[str, "Source Well"],
+                source_location=row_data[str, "Source Plate Name"],
+                destination_plate=row_data[str, "Destination Plate Barcode"],
+                destination_well=row_data[str, "Destination Well"],
+                destination_location=row_data[str, "Destination Plate Name"],
+                aspiration_volume=file_nl_to_ul(row_data.get(float, "Actual Volume")),
+                transfer_volume=file_nl_to_ul(row_data.get(float, "Actual Volume")),
+                device_control_custom_info={
+                    "sample name": row_data.get(str, "Sample Name"),
+                    "survey fluid volume": file_nl_to_ul(row_data.get(float, "Survey Fluid Volume")),
+                    "current fluid volume": file_nl_to_ul(row_data.get(float, "Current Fluid Volume")),
+                    "intended transfer volume": file_nl_to_ul(row_data.get(float, "Transfer Volume")),
+                    "source labware name": row_data.get(str, "Source Plate Type"),
+                    "destination labware name": row_data.get(
+                        str, "Destination Plate Type"
+                    ),
+                    "fluid composition": row_data.get(str, "Fluid Composition"),
+                    "fluid units": row_data.get(str, "Fluid Units"),
+                    "fluid type": row_data.get(str, "Fluid Type"),
+                    "transfer status": row_data.get(str, "Transfer Status", NOT_APPLICABLE),
+                },
+                errors=[
+                    Error(
+                        error=row_data[str, "Transfer Status"],
+                        error_feature=row_data[str, "Transfer Status"].split(": ")[0],
+                    )
+                ]
+                if row_data.get(str, "Transfer Status")
+                else [],
             )
-        ],
-    )
+        )
+
+    map_rows(data, map_to_measurements)
+
+    return [
+        MeasurementGroup(
+            analyst=header[str, "User Name"],
+            analytical_method_identifier=header.get(str, "Protocol Name"),
+            measurements=measurements,
+        )
+    ]

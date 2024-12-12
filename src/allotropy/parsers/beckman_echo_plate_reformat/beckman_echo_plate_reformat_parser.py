@@ -6,8 +6,6 @@ from allotropy.allotrope.schema_mappers.adm.liquid_handler.benchling._2024._11.l
     Mapper,
 )
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.beckman_echo_plate_reformat.constants import DISPLAY_NAME
 from allotropy.parsers.beckman_echo_plate_reformat.beckman_echo_plate_reformat_reader import (
     BeckmanEchoPlateReformatReader,
 )
@@ -15,8 +13,12 @@ from allotropy.parsers.beckman_echo_plate_reformat.beckman_echo_plate_reformat_s
     create_measurement_groups,
     create_metadata,
 )
+from allotropy.parsers.beckman_echo_plate_reformat.constants import DISPLAY_NAME
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.pandas import map_rows
 from allotropy.parsers.vendor_parser import VendorParser
+
+import pandas as pd
 
 
 class BeckmanEchoPlateReformatParser(VendorParser[Data, Model]):
@@ -26,8 +28,8 @@ class BeckmanEchoPlateReformatParser(VendorParser[Data, Model]):
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
-        reader = BeckmanEchoPlateReformatReader.read(named_file_contents)
+        reader = BeckmanEchoPlateReformatReader(named_file_contents)
         return Data(
             create_metadata(reader.header, named_file_contents.original_file_path),
-            map_rows(reader.data, create_measurement_groups)
+            create_measurement_groups(pd.concat(reader.sections.values(), ignore_index=True), reader.header),
         )
