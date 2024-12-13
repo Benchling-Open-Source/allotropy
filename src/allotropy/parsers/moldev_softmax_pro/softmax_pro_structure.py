@@ -391,9 +391,33 @@ class PlateWavelengthData:
 
 
 @dataclass(frozen=True)
-class PlateRawData:
+class RawData:
     wavelength_data: list[PlateWavelengthData]
 
+    @staticmethod
+    def get_measurement_section(
+        reader: CsvReader, columns: pd.Series[str], rows: int
+    ) -> pd.DataFrame:
+        lines = []
+        # read number of rows in plate section
+        for i in range(rows):
+            if not (line := reader.pop()):
+                msg = f"Expected {rows} rows in measurement table, got {i}."
+                raise AllotropeConversionError(msg)
+            lines.append(line)
+        reader.drop_empty()
+
+        # convert rows to df
+        data = assert_not_none(
+            reader.lines_as_df(lines=lines, sep="\t"),
+            msg="unable to find data from plate block.",
+        )
+        set_columns(data, columns)
+        return data
+
+
+@dataclass(frozen=True)
+class PlateRawData(RawData):
     @staticmethod
     def create(reader: CsvReader, header: PlateHeader) -> PlateRawData:
 
@@ -408,7 +432,7 @@ class PlateRawData:
             msg="unable to determine plate dimensions",
         )
         rows = dimensions[1]
-        data = PlateData.get_measurement_section(reader, columns, rows)
+        data = RawData.get_measurement_section(reader, columns, rows)
 
         # get temperature and elapsed time (kinetic) from the first column of the first row with value
         first_row_idx = int(pd.to_numeric(data.first_valid_index()))
@@ -428,7 +452,7 @@ class PlateRawData:
 
         if elapsed_time is not None and header.kinetic_points > 1:
             for _ in range(header.kinetic_points - 1):
-                data = PlateData.get_measurement_section(reader, columns, rows)
+                data = RawData.get_measurement_section(reader, columns, rows)
 
                 elapsed_time = time_to_seconds(str(data.iloc[0, 0]))
                 plate_raw_data._update_kinetic_data(
@@ -471,8 +495,7 @@ class PlateRawData:
 
 
 @dataclass(frozen=True)
-class SpectrumRawPlateData:
-    wavelength_data: list[PlateWavelengthData]
+class SpectrumRawPlateData(RawData):
     maximum_wavelength_signal: dict[str, float]
 
     @staticmethod
@@ -490,7 +513,7 @@ class SpectrumRawPlateData:
         wavelength_data: list[PlateWavelengthData] = []
 
         for wavelength in header.wavelengths:
-            data = PlateData.get_measurement_section(reader, columns, rows)
+            data = RawData.get_measurement_section(reader, columns, rows)
             first_row_idx = int(pd.to_numeric(data.first_valid_index()))
             temperature = try_non_nan_float_or_none(str(data.iloc[first_row_idx, 1]))
             wavelength_data.append(
@@ -504,7 +527,7 @@ class SpectrumRawPlateData:
             )
         reader.pop()
         reader.drop_empty()
-        max_wavelength_signal_data = PlateData.get_measurement_section(
+        max_wavelength_signal_data = RawData.get_measurement_section(
             reader, columns, rows
         ).iloc[:, 2:]
         signal_data = {
@@ -581,28 +604,6 @@ class PlateData:
     def iter_data_elements(self, position: str) -> Iterator[DataElement]:
         for wavelength_data in self.raw_data.wavelength_data:
             yield wavelength_data.data_elements[position]
-
-    @staticmethod
-    def get_measurement_section(
-        reader: CsvReader, columns: pd.Series[str], rows: int
-    ) -> pd.DataFrame:
-        lines = []
-        # read number of rows in plate section
-        for i in range(rows):
-            if not (line := reader.pop()):
-                msg = f"Expected {rows} rows in measurement table, got {i}."
-                raise AllotropeConversionError(msg)
-            lines.append(line)
-        reader.drop_empty()
-
-        # convert rows to df
-        data = assert_not_none(
-            reader.lines_as_df(lines=lines, sep="\t"),
-            msg="unable to find data from plate block.",
-        )
-        set_columns(data, columns)
-
-        return data
 
 
 @dataclass(frozen=True)
@@ -792,7 +793,7 @@ class PlateBlock(ABC, Block):
             ReadType.KINETIC.value,
             ReadType.SPECTRUM.value,
         ):
-            msg = f"Only Endpoint or Kinetic measurements can be processed at this time, got: {read_type}"
+            msg = f"Only Endpoint, Spectrum or Kinetic measurements can be processed at this time, got: {read_type}"
             raise AllotropeConversionError(msg)
 
     @classmethod
@@ -895,6 +896,9 @@ class FluorescencePlateBlock(PlateBlock):
         cls.check_export_version(export_version)
         cls.check_read_type(read_type)
         cls.check_data_type(data_type)
+        if read_type == ReadType.SPECTRUM.value:
+            msg = "Spectrum read type is not supported for fluorescence plates."
+            raise AllotropeConversionError(msg)
 
         num_wavelengths = cls.get_num_wavelengths(num_wavelengths_raw)
         wavelengths = cls.get_wavelengths(wavelengths_str)
@@ -1010,6 +1014,9 @@ class LuminescencePlateBlock(PlateBlock):
         cls.check_export_version(export_version)
         cls.check_read_type(read_type)
         cls.check_data_type(data_type)
+        if read_type == ReadType.SPECTRUM.value:
+            msg = "Spectrum read type is not supported for luminescence plates."
+            raise AllotropeConversionError(msg)
 
         num_wavelengths = cls.get_num_wavelengths(num_wavelengths_raw)
         wavelengths = cls.get_wavelengths(wavelengths_str)
