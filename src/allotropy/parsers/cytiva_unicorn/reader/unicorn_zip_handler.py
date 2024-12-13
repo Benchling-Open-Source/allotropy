@@ -42,7 +42,7 @@ class UnicornZipHandler(ZipHandler):
         return BytesIO(data[start:end])
 
     def get_system_data(self) -> StrictXmlElement:
-        system_data = self.get_zip_from_pattern("SystemData.zip$")
+        system_data = self.get_zip_from_pattern("SystemData(.zip)?$")
         b_stream = system_data.get_file_from_pattern("^Xml$")
         raw_content = self.filter_xml_metadata(b_stream).read()
         return StrictXmlElement.create_from_bytes(raw_content)
@@ -53,7 +53,7 @@ class UnicornZipHandler(ZipHandler):
         return StrictXmlElement.create_from_bytes(raw_content)
 
     def get_instrument_config_data(self) -> StrictXmlElement:
-        instrument_regex = "InstrumentConfigurationData.zip$"
+        instrument_regex = "InstrumentConfigurationData(.zip)?$"
         instrument_config_data = self.get_zip_from_pattern(instrument_regex)
         b_stream = instrument_config_data.get_file_from_pattern("^Xml$")
         raw_content = self.filter_xml_metadata(b_stream).read()
@@ -70,7 +70,7 @@ class UnicornZipHandler(ZipHandler):
         return StrictXmlElement.create_from_bytes(raw_content)
 
     def get_column_type_data(self) -> StrictXmlElement:
-        column_type_data = self.get_zip_from_pattern("ColumnTypeData.zip$")
+        column_type_data = self.get_zip_from_pattern("ColumnTypeData(.zip)?$")
         b_stream = column_type_data.get_file_from_pattern("^Xml$")
         raw_content = self.filter_xml_metadata(b_stream).read()
         return StrictXmlElement.create_from_bytes(raw_content)
