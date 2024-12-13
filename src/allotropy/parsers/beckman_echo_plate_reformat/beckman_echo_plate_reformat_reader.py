@@ -7,9 +7,7 @@ import pandas as pd
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.lines_reader import (
-    InvertedLinesReader,
     LinesReader,
-    SectionLinesReader,
 )
 from allotropy.parsers.utils.pandas import (
     df_to_series_data,

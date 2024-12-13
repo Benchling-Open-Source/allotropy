@@ -55,11 +55,20 @@ def create_measurement_groups(
                 destination_location=row_data[str, "Destination Plate Name"],
                 aspiration_volume=file_nl_to_ul(row_data.get(float, "Actual Volume")),
                 transfer_volume=file_nl_to_ul(row_data.get(float, "Actual Volume")),
+                injection_volume_setting=file_nl_to_ul(
+                    row_data.get(float, "Transfer Volume")
+                ),
                 device_control_custom_info={
                     "sample name": row_data.get(str, "Sample Name"),
-                    "survey fluid volume": file_nl_to_ul(row_data.get(float, "Survey Fluid Volume")),
-                    "current fluid volume": file_nl_to_ul(row_data.get(float, "Current Fluid Volume")),
-                    "intended transfer volume": file_nl_to_ul(row_data.get(float, "Transfer Volume")),
+                    "survey fluid volume": file_nl_to_ul(
+                        row_data.get(float, "Survey Fluid Volume")
+                    ),
+                    "current fluid volume": file_nl_to_ul(
+                        row_data.get(float, "Current Fluid Volume")
+                    ),
+                    "intended transfer volume": file_nl_to_ul(
+                        row_data.get(float, "Transfer Volume")
+                    ),
                     "source labware name": row_data.get(str, "Source Plate Type"),
                     "destination labware name": row_data.get(
                         str, "Destination Plate Type"
@@ -67,12 +76,14 @@ def create_measurement_groups(
                     "fluid composition": row_data.get(str, "Fluid Composition"),
                     "fluid units": row_data.get(str, "Fluid Units"),
                     "fluid type": row_data.get(str, "Fluid Type"),
-                    "transfer status": row_data.get(str, "Transfer Status", NOT_APPLICABLE),
+                    "transfer status": row_data.get(
+                        str, "Transfer Status", NOT_APPLICABLE
+                    ),
                 },
                 errors=[
                     Error(
                         error=row_data[str, "Transfer Status"],
-                        error_feature=row_data[str, "Transfer Status"].split(": ")[0],
+                        feature=row_data[str, "Transfer Status"].split(": ")[0],
                     )
                 ]
                 if row_data.get(str, "Transfer Status")

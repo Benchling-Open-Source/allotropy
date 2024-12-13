@@ -1,3 +1,5 @@
+import pandas as pd
+
 from allotropy.allotrope.models.adm.liquid_handler.benchling._2024._11.liquid_handler import (
     Model,
 )
@@ -15,10 +17,7 @@ from allotropy.parsers.beckman_echo_plate_reformat.beckman_echo_plate_reformat_s
 )
 from allotropy.parsers.beckman_echo_plate_reformat.constants import DISPLAY_NAME
 from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.utils.pandas import map_rows
 from allotropy.parsers.vendor_parser import VendorParser
-
-import pandas as pd
 
 
 class BeckmanEchoPlateReformatParser(VendorParser[Data, Model]):
@@ -31,5 +30,7 @@ class BeckmanEchoPlateReformatParser(VendorParser[Data, Model]):
         reader = BeckmanEchoPlateReformatReader(named_file_contents)
         return Data(
             create_metadata(reader.header, named_file_contents.original_file_path),
-            create_measurement_groups(pd.concat(reader.sections.values(), ignore_index=True), reader.header),
+            create_measurement_groups(
+                pd.concat(reader.sections.values(), ignore_index=True), reader.header
+            ),
         )
