@@ -14,15 +14,15 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 
 @dataclass
 class StaticDocs:
-    chromatography_serial_num: str
-    column_inner_diameter: float
-    chromatography_chemistry_type: str
-    chromatography_particle_size: float
+    chromatography_serial_num: str | None
+    column_inner_diameter: float | None
+    chromatography_chemistry_type: str | None
+    chromatography_particle_size: float | None
     injection_identifier: str
     injection_time: str
     autosampler_injection_volume_setting: float
     sample_identifier: str
-    batch_identifier: str
+    batch_identifier: str | None
 
     @classmethod
     def create(
@@ -35,26 +35,48 @@ class StaticDocs:
         inj_result = cls.__filter_result_criteria(results, keyword="Sample volume")
         sample_result = cls.__filter_result_criteria(results, keyword="Sample_ID")
 
+        article_number = column_type_data.recursive_find_or_none(
+            ["ColumnType", "Hardware", "ArticleNumber"]
+        )
+
+        diameter = column_type_data.recursive_find_or_none(
+            ["ColumnType", "Hardware", "Diameter"]
+        )
+
+        technique_name = column_type_data.recursive_find_or_none(
+            ["ColumnType", "Media", "TechniqueName"]
+        )
+
+        avg_particle_diameter = column_type_data.recursive_find_or_none(
+            ["ColumnType", "Media", "AverageParticleDiameter"]
+        )
+
+        batch_id = results.find_or_none("BatchId")
+
         return StaticDocs(
-            chromatography_serial_num=column_type_data.recursive_find(
-                ["ColumnType", "Hardware", "ArticleNumber"]
-            ).get_text(),
-            column_inner_diameter=column_type_data.recursive_find(
-                ["ColumnType", "Hardware", "Diameter"]
-            ).get_float("column inner diameter"),
-            chromatography_chemistry_type=column_type_data.recursive_find(
-                ["ColumnType", "Media", "TechniqueName"]
-            ).get_text(),
-            chromatography_particle_size=column_type_data.recursive_find(
-                ["ColumnType", "Media", "AverageParticleDiameter"]
-            ).get_float("chromatography particle size"),
+            chromatography_serial_num=(
+                article_number.get_text() if article_number is not None else None
+            ),
+            column_inner_diameter=(
+                diameter.get_float("column inner diameter")
+                if diameter is not None
+                else None
+            ),
+            chromatography_chemistry_type=(
+                technique_name.get_text() if technique_name is not None else None
+            ),
+            chromatography_particle_size=(
+                avg_particle_diameter.get_float("chromatography particle size")
+                if avg_particle_diameter is not None
+                else None
+            ),
             injection_identifier=random_uuid_str(),
             injection_time=curve.find("MethodStartTime").get_text(),
             autosampler_injection_volume_setting=inj_result.find("Keyword2").get_float(
                 "autosampler injection volume setting"
             ),
             sample_identifier=sample_result.find("Keyword2").get_text(),
-            batch_identifier=results.find("BatchId").get_text(),
+            batch_identifier=(batch_id.get_text() if batch_id is not None else None),
         )
 
     @classmethod
