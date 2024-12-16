@@ -21,6 +21,7 @@ from allotropy.parsers.cytiva_unicorn.structure.static_docs import (
 from allotropy.parsers.utils.strict_xml_element import (
     StrictXmlElement,
 )
+from allotropy.parsers.utils.values import assert_not_none
 
 
 class AbsorbanceMeasurement(UnicornMeasurement):
@@ -38,14 +39,17 @@ class AbsorbanceMeasurement(UnicornMeasurement):
     ) -> Measurement:
         return cls.get_measurement(
             static_docs=static_docs,
-            chromatogram_data_cube=cls.get_data_cube(
-                handler,
-                cls.filter_curve(elements, cls.get_curve_regex()),
-                DataCubeComponent(
-                    type_=FieldComponentDatatype.float,
-                    concept="absorbance",
-                    unit="mAU",
+            chromatogram_data_cube=assert_not_none(
+                cls.get_data_cube_or_none(
+                    handler,
+                    cls.filter_curve_or_none(elements, cls.get_curve_regex()),
+                    DataCubeComponent(
+                        type_=FieldComponentDatatype.float,
+                        concept="absorbance",
+                        unit="mAU",
+                    ),
                 ),
+                msg="Unable to find information to create absorbance data cubes.",
             ),
             device_control_docs=[
                 DeviceControlDoc(

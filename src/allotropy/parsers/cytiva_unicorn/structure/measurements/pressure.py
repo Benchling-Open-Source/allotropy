@@ -31,9 +31,9 @@ class PressureMeasurement(UnicornMeasurement):
     ) -> Measurement:
         return cls.get_measurement(
             static_docs=static_docs,
-            derived_column_pressure_data_cube=cls.get_data_cube(
+            derived_column_pressure_data_cube=cls.get_data_cube_or_none(
                 handler,
-                cls.filter_curve(elements, r"^DeltaC pressure$"),
+                cls.filter_curve_or_none(elements, r"^DeltaC pressure$"),
                 DataCubeComponent(
                     type_=FieldComponentDatatype.float,
                     concept="delta column pressure",
@@ -43,36 +43,36 @@ class PressureMeasurement(UnicornMeasurement):
             device_control_docs=[
                 DeviceControlDoc(
                     device_type=DEVICE_TYPE,
-                    pre_column_pressure_data_cube=cls.get_data_cube(
+                    pre_column_pressure_data_cube=cls.get_data_cube_or_none(
                         handler,
-                        cls.filter_curve(elements, r"^PreC pressure$"),
+                        cls.filter_curve_or_none(elements, r"^PreC pressure$"),
                         DataCubeComponent(
                             type_=FieldComponentDatatype.float,
                             concept="pre-column pressure",
                             unit="MPa",
                         ),
                     ),
-                    sample_pressure_data_cube=cls.get_data_cube(
+                    sample_pressure_data_cube=cls.get_data_cube_or_none(
                         handler,
-                        cls.filter_curve(elements, r"^Sample pressure$"),
+                        cls.filter_curve_or_none(elements, r"^Sample pressure$"),
                         DataCubeComponent(
                             type_=FieldComponentDatatype.float,
                             concept="sample pressure",
                             unit="MPa",
                         ),
                     ),
-                    system_pressure_data_cube=cls.get_data_cube(
+                    system_pressure_data_cube=cls.get_data_cube_or_none(
                         handler,
-                        cls.filter_curve(elements, r"^System pressure$"),
+                        cls.filter_curve_or_none(elements, r"^System pressure$"),
                         DataCubeComponent(
                             type_=FieldComponentDatatype.float,
                             concept="system pressure",
                             unit="MPa",
                         ),
                     ),
-                    post_column_pressure_data_cube=cls.get_data_cube(
+                    post_column_pressure_data_cube=cls.get_data_cube_or_none(
                         handler,
-                        cls.filter_curve(elements, r"^PostC pressure$"),
+                        cls.filter_curve_or_none(elements, r"^PostC pressure$"),
                         DataCubeComponent(
                             type_=FieldComponentDatatype.float,
                             concept="post-column pressure",

@@ -34,9 +34,9 @@ class ConductivityMeasurement(UnicornMeasurement):
     ) -> Measurement:
         return cls.get_measurement(
             static_docs=static_docs,
-            chromatogram_data_cube=cls.get_data_cube(
+            chromatogram_data_cube=cls.get_data_cube_or_none(
                 handler,
-                cls.filter_curve(elements, r"^Cond$"),
+                cls.filter_curve_or_none(elements, r"^Cond$"),
                 DataCubeComponent(
                     type_=FieldComponentDatatype.float,
                     concept="electric conductivity",
@@ -44,9 +44,9 @@ class ConductivityMeasurement(UnicornMeasurement):
                 ),
                 transformation=MScm2Sm(),
             ),
-            processed_data_chromatogram_data_cube=cls.get_data_cube(
+            processed_data_chromatogram_data_cube=cls.get_data_cube_or_none(
                 handler,
-                cls.filter_curve(elements, r"^% Cond$"),
+                cls.filter_curve_or_none(elements, r"^% Cond$"),
                 DataCubeComponent(
                     type_=FieldComponentDatatype.float,
                     concept="electric conductivity",
