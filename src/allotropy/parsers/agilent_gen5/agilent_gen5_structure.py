@@ -55,8 +55,11 @@ from allotropy.parsers.agilent_gen5.constants import (
     UNSUPPORTED_READ_TYPE_ERROR,
     WAVELENGTHS_KEY,
 )
-from allotropy.parsers.agilent_gen5_image.constants import POSSIBLE_WELL_COUNTS
-from allotropy.parsers.constants import NEGATIVE_ZERO, NOT_APPLICABLE
+from allotropy.parsers.constants import (
+    NEGATIVE_ZERO,
+    NOT_APPLICABLE,
+    POSSIBLE_WELL_COUNTS,
+)
 from allotropy.parsers.lines_reader import SectionLinesReader
 from allotropy.parsers.utils.pandas import read_csv, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str

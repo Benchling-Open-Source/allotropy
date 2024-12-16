@@ -48,7 +48,14 @@ class ParserTest:
     ) -> None:
         if warn_unread_keys:
             os.environ["WARN_UNUSED_KEYS"] = "1"
-        expected_filepath = test_file_path.with_suffix(".json")
+        # Special case when input files are json, the are placed in an input/ folder and the results are put
+        # in a corresponding output/ folder.
+        if test_file_path.parts[-2] == "input":
+            expected_filepath = Path(
+                *test_file_path.parts[:-2], "output", test_file_path.parts[-1]
+            ).with_suffix(".json")
+        else:
+            expected_filepath = test_file_path.with_suffix(".json")
         allotrope_dict = from_file(
             str(test_file_path), self.VENDOR, encoding=CHARDET_ENCODING
         )

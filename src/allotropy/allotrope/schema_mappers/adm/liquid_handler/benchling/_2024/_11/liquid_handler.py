@@ -8,6 +8,8 @@ from allotropy.allotrope.models.adm.liquid_handler.benchling._2024._11.liquid_ha
     DeviceControlDocumentItem,
     DeviceDocumentItem,
     DeviceSystemDocument,
+    ErrorAggregateDocument,
+    ErrorDocumentItem,
     LiquidHandlerAggregateDocument,
     LiquidHandlerDocumentItem,
     MeasurementAggregateDocument,
@@ -24,6 +26,12 @@ from allotropy.parsers.utils.values import quantity_or_none
 
 
 @dataclass(frozen=True)
+class Error:
+    error: str
+    feature: str | None = None
+
+
+@dataclass(frozen=True)
 class Device:
     identifier: str
     serial_number: str
@@ -37,6 +45,8 @@ class Measurement:
     identifier: str
     measurement_time: str
     sample_identifier: str
+
+    # Optional metadata
     source_plate: str | None = None
     source_well: str | None = None
     source_location: str | None = None
@@ -47,6 +57,12 @@ class Measurement:
     # Measurements
     aspiration_volume: float | None = None
     transfer_volume: float | None = None
+
+    # Optional settings
+    injection_volume_setting: float | None = None
+
+    # Errors
+    errors: list[Error] | None = None
 
     device_control_custom_info: dict[str, Any] | None = None
 
@@ -145,10 +161,19 @@ class Mapper(SchemaMapper[Data, Model]):
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
                     add_custom_information_document(
-                        DeviceControlDocumentItem(device_type=metadata.device_type),
+                        DeviceControlDocumentItem(
+                            device_type=metadata.device_type,
+                            injection_volume_setting=quantity_or_none(
+                                TQuantityValueMicroliter,
+                                measurement.injection_volume_setting,
+                            ),
+                        ),
                         measurement.device_control_custom_info,
                     )
                 ]
+            ),
+            error_aggregate_document=self._get_error_aggregate_document(
+                measurement.errors
             ),
         )
 
@@ -161,4 +186,17 @@ class Mapper(SchemaMapper[Data, Model]):
             destination_well_location_identifier=measurement.destination_well,
             destination_well_plate_identifier=measurement.destination_plate,
             destination_location_identifier=measurement.destination_location,
+        )
+
+    def _get_error_aggregate_document(
+        self, errors: list[Error] | None
+    ) -> ErrorAggregateDocument | None:
+        if not errors:
+            return None
+
+        return ErrorAggregateDocument(
+            error_document=[
+                ErrorDocumentItem(error=error.error, error_feature=error.feature)
+                for error in errors
+            ]
         )

@@ -4,10 +4,8 @@ from pathlib import Path
 
 import pandas as pd
 
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    NaN,
-)
-from allotropy.allotrope.schema_mappers.adm.cell_counting.benchling._2023._11.cell_counting import (
+from allotropy.allotrope.schema_mappers.adm.cell_counting.rec._2024._09.cell_counting import (
+    Error,
     Measurement,
     MeasurementGroup,
     Metadata,
@@ -19,13 +17,20 @@ from allotropy.parsers.chemometec_nucleoview.constants import (
     NUCLEOCOUNTER_DEVICE_TYPE,
     NUCLEOCOUNTER_SOFTWARE_NAME,
 )
-from allotropy.parsers.constants import DEFAULT_EPOCH_TIMESTAMP
+from allotropy.parsers.constants import (
+    DEFAULT_EPOCH_TIMESTAMP,
+    NEGATIVE_ZERO,
+    NOT_APPLICABLE,
+)
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
 def create_metadata(data: SeriesData, file_path: str) -> Metadata:
+    path = Path(file_path)
     return Metadata(
+        asm_file_identifier=path.with_suffix(".json").name,
+        data_system_instance_id=data.get(str, "PC", NOT_APPLICABLE),
         file_name=Path(file_path).name,
         unc_path=file_path,
         model_number=data.get(str, "Instrument type", DEFAULT_MODEL_NUMBER),
@@ -39,12 +44,24 @@ def create_metadata(data: SeriesData, file_path: str) -> Metadata:
 
 def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
     timestamp = data.get(str, "Date time")
+    errors = []
     if timestamp:
         offset = data.get(str, "Time zone offset", "0")
         timestamp = pd.to_datetime(
             f"{timestamp}{'+' if offset[0] not in {'+', '-'} else ''}{offset}"
         ).isoformat()
 
+    def _converted_value_or_none(key: str) -> float | None:
+        return value / 1e6 if (value := data.get(float, key)) is not None else None
+
+    viable_cell_density = data.get(float, "Live (cells/ml)")
+    if viable_cell_density is None:
+        errors.append(
+            Error(
+                error=NOT_APPLICABLE,
+                feature="viable cell density",
+            )
+        )
     return MeasurementGroup(
         analyst=data.get(str, "Operator", DEFAULT_ANALYST),
         measurements=[
@@ -55,12 +72,15 @@ def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
                 cell_density_dilution_factor=data.get(float, "Multiplication factor"),
                 viability=data[float, "Viability (%)"],
                 # Cell counts are measured in cells/mL, but reported in millions of cells/mL
-                viable_cell_density=data.get(float, "Live (cells/ml)", NaN) / 1e6,
-                dead_cell_density=data.get(float, "Dead (cells/ml)", NaN) / 1e6,
-                total_cell_density=data.get(float, "Total (cells/ml)", NaN) / 1e6,
+                viable_cell_density=(viable_cell_density / 1e6)
+                if viable_cell_density
+                else NEGATIVE_ZERO,
+                dead_cell_density=_converted_value_or_none("Dead (cells/ml)"),
+                total_cell_density=_converted_value_or_none("Total (cells/ml)"),
                 average_total_cell_diameter=data.get(
-                    float, "Estimated cell diameter (um)", NaN
+                    float, "Estimated cell diameter (um)"
                 ),
+                errors=errors,
             )
         ],
     )
