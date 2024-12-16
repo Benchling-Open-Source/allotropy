@@ -39,8 +39,12 @@ def create_measurement_groups(
     measurements: list[Measurement] = []
 
     def map_to_measurements(row_data: SeriesData) -> None:
-        def file_nl_to_ul(value: float) -> float:
-            return value * constants.PLATE_REFORMAT_REPORT_VOLUME_CONVERSION_TO_UL
+        def file_nl_to_ul(value: float | None) -> float:
+            return (
+                (value * constants.PLATE_REFORMAT_REPORT_VOLUME_CONVERSION_TO_UL)
+                if value
+                else None
+            )
 
         measurements.append(
             Measurement(
