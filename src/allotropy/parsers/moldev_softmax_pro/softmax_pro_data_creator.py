@@ -24,6 +24,7 @@ from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
     GroupBlock,
     GroupSampleData,
     PlateBlock,
+    SpectrumRawPlateData,
     StructureData,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
@@ -135,10 +136,17 @@ def _create_measurement_group(
     if not (measurements := _create_measurements(plate_block, position)):
         return None
 
+    maximum_wavelength_signal = None
+    if isinstance(plate_block.block_data.raw_data, SpectrumRawPlateData):
+        maximum_wavelength_signal = (
+            plate_block.block_data.raw_data.maximum_wavelength_signal[position]
+        )
+
     return MeasurementGroup(
         measurements=measurements,
         plate_well_count=plate_block.header.num_wells,
         measurement_time=DEFAULT_EPOCH_TIMESTAMP,
+        maximum_wavelength_signal=maximum_wavelength_signal,
     )
 
 

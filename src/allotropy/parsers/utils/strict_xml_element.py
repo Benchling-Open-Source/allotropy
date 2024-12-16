@@ -16,13 +16,23 @@ class StrictXmlElement:
     def __init__(self, element: ElementTree.Element):
         self.element = element
 
+    def find_or_none(self, name: str) -> StrictXmlElement | None:
+        element = self.element.find(name)
+        return StrictXmlElement(element) if element is not None else None
+
     def find(self, name: str) -> StrictXmlElement:
-        return StrictXmlElement(
-            assert_not_none(
-                self.element.find(name),
-                msg=f"Unable to find '{name}' in xml file contents",
-            )
+        return assert_not_none(
+            self.find_or_none(name),
+            msg=f"Unable to find '{name}' in xml file contents",
         )
+
+    def recursive_find_or_none(self, names: list[str]) -> StrictXmlElement | None:
+        if len(names) == 0:
+            return self
+        name, *sub_names = names
+        if element := self.find_or_none(name):
+            return element.recursive_find_or_none(sub_names)
+        return None
 
     def recursive_find(self, names: list[str]) -> StrictXmlElement:
         if len(names) == 0:
