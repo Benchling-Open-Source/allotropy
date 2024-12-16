@@ -897,7 +897,9 @@ class FluorescencePlateBlock(PlateBlock):
         cls.check_read_type(read_type)
         cls.check_data_type(data_type)
         if read_type == ReadType.SPECTRUM.value:
-            msg = "Spectrum read type is not currently supported for fluorescence plates."
+            msg = (
+                "Spectrum read type is not currently supported for fluorescence plates."
+            )
             raise AllotropeConversionError(msg)
 
         num_wavelengths = cls.get_num_wavelengths(num_wavelengths_raw)
@@ -1015,7 +1017,9 @@ class LuminescencePlateBlock(PlateBlock):
         cls.check_read_type(read_type)
         cls.check_data_type(data_type)
         if read_type == ReadType.SPECTRUM.value:
-            msg = "Spectrum read type is not currently supported for luminescence plates."
+            msg = (
+                "Spectrum read type is not currently supported for luminescence plates."
+            )
             raise AllotropeConversionError(msg)
 
         num_wavelengths = cls.get_num_wavelengths(num_wavelengths_raw)
