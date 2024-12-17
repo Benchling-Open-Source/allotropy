@@ -63,8 +63,6 @@ class CalculatedDataItem:
 @dataclass
 class CalculatedData:
     items: list[CalculatedDataItem]
-    reference_dna_description: str | None = None
-    reference_sample_description: str | None = None
 
 
 @dataclass
