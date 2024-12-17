@@ -3,6 +3,7 @@ from typing import Any, TypeVar
 
 from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.pcr.rec._2024._09.qpcr import (
+    CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
     DataProcessingDocument,
     DataSourceAggregateDocument,
@@ -11,19 +12,27 @@ from allotropy.allotrope.models.adm.pcr.rec._2024._09.qpcr import (
     DeviceControlAggregateDocument,
     DeviceControlDocumentItem,
     DeviceSystemDocument,
+    ErrorAggregateDocument,
+    ErrorDocumentItem,
     MeasurementAggregateDocument,
     MeasurementDocumentItem,
     Model,
     ProcessedDataAggregateDocument,
     ProcessedDataDocumentItem,
-    SampleDocument, QpcrAggregateDocument, QpcrDocumentItem, CalculatedDataAggregateDocument, TQuantityValueModel,
-    ErrorDocumentItem, ErrorAggregateDocument,
+    QpcrAggregateDocument,
+    QpcrDocumentItem,
+    SampleDocument,
+    TQuantityValueModel,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
+    TQuantityValueMicroliter,
     TQuantityValueNumber,
-    TQuantityValueUnitless, TQuantityValueMicroliter,
+    TQuantityValueUnitless,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import InvalidJsonFloat, TDatacube
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    InvalidJsonFloat,
+    TDatacube,
+)
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
@@ -35,10 +44,12 @@ class DataSource:
     identifier: str
     feature: str
 
+
 @dataclass
 class Error:
     error: str
     feature: str
+
 
 @dataclass
 class CalculatedDataItem:
@@ -60,6 +71,7 @@ class CalculatedData:
 class ProcessedData:
     # Settings
     cycle_threshold_value_setting: float
+    cycle_threshold_result: float
     automatic_cycle_threshold_enabled_setting: bool | None = None
     automatic_baseline_determination_enabled_setting: bool | None = None
     baseline_determination_start_cycle_setting: int | None = None
@@ -68,7 +80,6 @@ class ProcessedData:
 
     # Results
     genotyping_determination_result: str | None = None
-    cycle_threshold_result: float | None = None
     normalized_reporter_result: float | None = None
     baseline_corrected_reporter_result: float | None = None
     normalized_reporter_data_cube: DataCube | None = None
@@ -87,6 +98,7 @@ class Measurement:
     timestamp: str
     sample_identifier: str
     target_identifier: str
+    location_identifier: str
     group_identifier: str | None = None
 
     # Settings
@@ -96,7 +108,6 @@ class Measurement:
     sample_role_type: str | None = None
     well_location_identifier: str | None = None
     well_plate_identifier: str | None = None
-    location_identifier: str | None = None
 
     # Optional settings
     total_cycle_number_setting: float | None = None
@@ -123,27 +134,27 @@ class Measurement:
 class MeasurementGroup:
     measurements: list[Measurement]
     plate_well_count: int | InvalidJsonFloat
+    experimental_data_identifier: str
     analyst: str | None = None
-    experimental_data_identifier: str | None = None
 
 
 @dataclass
 class Metadata:
     device_identifier: str
     asm_file_identifier: str
+    data_system_instance_identifier: str
     device_type: str
     device_serial_number: str
     model_number: str
     file_name: str
     measurement_method_identifier: str
+    experiment_type: str
+    container_type: str
+    well_volume: float
     unc_path: str | None = None
-    experiment_type: str | None = None
-    container_type: str | None = None
-    data_system_instance_identifier: str | None = None
     software_name: str | None = None
     software_version: str | None = None
     product_manufacturer: str | None = None
-    well_volume: float | None = None
 
 
 @dataclass
@@ -157,10 +168,11 @@ CubeClass = TypeVar("CubeClass")
 
 
 class Mapper(SchemaMapper[Data, Model]):
-    MANIFEST = "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest"
+    MANIFEST = "http://purl.allotrope.org/manifests/pcr/REC/2024/09/qpcr.manifest"
 
     def map_model(self, data: Data) -> Model:
         return Model(
+            field_asm_manifest=self.MANIFEST,
             qpcr_aggregate_document=QpcrAggregateDocument(
                 device_system_document=DeviceSystemDocument(
                     device_identifier=data.metadata.device_identifier,
@@ -185,7 +197,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
                     data
                 ),
-            )
+            ),
         )
 
     def _get_technique_document(
@@ -197,7 +209,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 experimental_data_identifier=measurement_group.experimental_data_identifier,
                 experiment_type=metadata.experiment_type,
                 container_type=metadata.container_type,
-                well_volume=quantity_or_none(TQuantityValueMicroliter, metadata.well_volume),
+                well_volume=TQuantityValueMicroliter(value=metadata.well_volume),
                 plate_well_count=TQuantityValueNumber(
                     value=measurement_group.plate_well_count
                 ),
@@ -224,7 +236,8 @@ class Mapper(SchemaMapper[Data, Model]):
                         device_type=metadata.device_type,
                         measurement_method_identifier=metadata.measurement_method_identifier,
                         total_cycle_number_setting=quantity_or_none(
-                            TQuantityValueNumber, measurement.total_cycle_number_setting
+                            TQuantityValueUnitless,
+                            measurement.total_cycle_number_setting,
                         ),
                         qPCR_detection_chemistry=measurement.pcr_detection_chemistry,
                         reporter_dye_setting=measurement.reporter_dye_setting,
