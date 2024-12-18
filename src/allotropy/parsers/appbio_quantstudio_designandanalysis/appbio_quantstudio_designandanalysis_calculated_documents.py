@@ -1,6 +1,9 @@
 from collections.abc import Iterator
 from functools import cache
 
+from allotropy.calcdocs.appbio_quantstudio_designandanalysis.extractor import (
+    AppbioQuantstudioDAExtractor,
+)
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_calculated_documents import (
     yield_documents,
 )
@@ -686,12 +689,14 @@ def build_efficiency(
 
 
 def iter_standard_curve_calc_docs(
+    well_items: list[WellItem],
     view_st_data: ViewData[WellItem],
     view_tr_data: ViewData[WellItem],
 ) -> Iterator[CalculatedDocument]:
     # Quantity, Quantity Mean, Quantity SD, Ct Mean, Ct SD, Y-Intercept,
     # R(superscript 2), Slope, Efficiency, Amp score, Cq confidence
     calc_docs: list[CalculatedDocument | None] = []
+
     for sample, target in view_st_data.iter_keys():
         for well_item in view_st_data.get_leaf_item(sample, target):
             calc_docs.append(build_quantity(view_tr_data, target, well_item))
@@ -710,6 +715,25 @@ def iter_standard_curve_calc_docs(
         calc_docs.append(build_r_squared(view_tr_data, target))
         calc_docs.append(build_slope(view_tr_data, target))
         calc_docs.append(build_efficiency(view_tr_data, target))
+
+    AppbioQuantstudioDAExtractor.get_elements(well_items)
+
+    {
+        "cq confidence": {
+            "value": "cq conf",
+            "type": "calcdoc",
+            "sources": {
+                "cycle threshold result": {
+                    "type": "measurement",
+                },
+            }
+        }
+    }
+
+    # for well_item in well_items:
+        # build quantity
+        # build amp score
+        # build cq conf
 
     yield from yield_documents(calc_docs)
 
