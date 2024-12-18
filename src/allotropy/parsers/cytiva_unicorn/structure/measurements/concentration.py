@@ -3,9 +3,8 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     DeviceControlDoc,
-    Measurement,
 )
-from allotropy.allotrope.schema_mappers.data_cube import DataCubeComponent
+from allotropy.allotrope.schema_mappers.data_cube import DataCube, DataCubeComponent
 from allotropy.parsers.cytiva_unicorn.constants import DEVICE_TYPE
 from allotropy.parsers.cytiva_unicorn.reader.unicorn_zip_handler import (
     UnicornZipHandler,
@@ -23,13 +22,13 @@ from allotropy.parsers.utils.strict_xml_element import (
 
 class ConcentrationMeasurement(UnicornMeasurement):
     @classmethod
-    def create(
+    def create_or_none(
         cls,
         handler: UnicornZipHandler,
         elements: list[StrictXmlElement],
         static_docs: StaticDocs,
-    ) -> Measurement:
-        return cls.get_measurement(
+    ) -> UnicornMeasurement | None:
+        measurement = cls.get_measurement(
             static_docs=static_docs,
             device_control_docs=[
                 DeviceControlDoc(
@@ -46,3 +45,8 @@ class ConcentrationMeasurement(UnicornMeasurement):
                 ),
             ],
         )
+        return measurement if cls.is_valid(cls.get_data_cubes(measurement)) else None
+
+    @classmethod
+    def get_data_cubes(cls, measurement: UnicornMeasurement) -> list[DataCube | None]:
+        return [measurement.device_control_docs[0].solvent_conc_data_cube]

@@ -5,7 +5,6 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     DeviceControlDoc,
-    Measurement,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCubeComponent
 from allotropy.parsers.cytiva_unicorn.constants import DEVICE_TYPE
@@ -31,12 +30,12 @@ class AbsorbanceMeasurement(UnicornMeasurement):
         pass
 
     @classmethod
-    def create(
+    def create_or_none(
         cls,
         handler: UnicornZipHandler,
         elements: list[StrictXmlElement],
         static_docs: StaticDocs,
-    ) -> Measurement:
+    ) -> UnicornMeasurement:
         return cls.get_measurement(
             static_docs=static_docs,
             chromatogram_data_cube=assert_not_none(

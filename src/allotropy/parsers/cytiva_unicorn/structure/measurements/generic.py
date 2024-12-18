@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from re import search
 
 from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
@@ -70,8 +72,8 @@ class UnicornMeasurement(Measurement):
         chromatogram_data_cube: DataCube | None = None,
         processed_data_chromatogram_data_cube: DataCube | None = None,
         derived_column_pressure_data_cube: DataCube | None = None,
-    ) -> Measurement:
-        return Measurement(
+    ) -> UnicornMeasurement:
+        return UnicornMeasurement(
             measurement_identifier=random_uuid_str(),
             chromatography_serial_num=static_docs.chromatography_serial_num,
             column_inner_diameter=static_docs.column_inner_diameter,
@@ -87,3 +89,7 @@ class UnicornMeasurement(Measurement):
             processed_data_chromatogram_data_cube=processed_data_chromatogram_data_cube,
             derived_column_pressure_data_cube=derived_column_pressure_data_cube,
         )
+
+    @classmethod
+    def is_valid(cls, data_cubes: list[DataCube | None]) -> bool:
+        return any(data_cube is not None for data_cube in data_cubes)
