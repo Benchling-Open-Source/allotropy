@@ -1,9 +1,19 @@
 from collections.abc import Iterator
 from functools import cache
 
+from allotropy.calcdocs.appbio_quantstudio_designandanalysis.constructor import (
+    AppbioQuantstudioDAConstructor,
+)
 from allotropy.calcdocs.appbio_quantstudio_designandanalysis.extractor import (
     AppbioQuantstudioDAExtractor,
 )
+from allotropy.calcdocs.appbio_quantstudio_designandanalysis.views import (
+    SampleView,
+    TargetView,
+    TargetRoleView,
+    UuidView,
+)
+from allotropy.calcdocs.config import CalculatedDataConfig, MeasurementConfig
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_calculated_documents import (
     yield_documents,
 )
@@ -14,6 +24,7 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.st
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
     DataSource,
+    Referenceable,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
 
@@ -688,6 +699,15 @@ def build_efficiency(
     )
 
 
+def calc_doc_simp(calc_doc: CalculatedDocument) -> CalculatedDocument:
+    for source in calc_doc.data_sources:
+        if isinstance(source.reference, WellItem):
+            source.reference = Referenceable(source.reference.uuid)
+        elif isinstance(source.reference, CalculatedDataConfig):
+            calc_doc_simp(source.reference)
+    return calc_doc
+
+
 def iter_standard_curve_calc_docs(
     well_items: list[WellItem],
     view_st_data: ViewData[WellItem],
@@ -700,40 +720,92 @@ def iter_standard_curve_calc_docs(
     for sample, target in view_st_data.iter_keys():
         for well_item in view_st_data.get_leaf_item(sample, target):
             calc_docs.append(build_quantity(view_tr_data, target, well_item))
-            calc_docs.append(build_amp_score(well_item))
-            calc_docs.append(build_cq_conf(well_item))
+    #         calc_docs.append(build_amp_score(well_item))
+    #         calc_docs.append(build_cq_conf(well_item))
 
-        calc_docs.append(
-            build_quantity_mean(view_st_data, view_tr_data, sample, target)
-        )
-        calc_docs.append(build_quantity_sd(view_st_data, view_tr_data, sample, target))
-        calc_docs.append(build_ct_mean(view_st_data, sample, target))
-        calc_docs.append(build_ct_sd(view_st_data, sample, target))
+    #     calc_docs.append(
+    #         build_quantity_mean(view_st_data, view_tr_data, sample, target)
+    #     )
+    #     calc_docs.append(build_quantity_sd(view_st_data, view_tr_data, sample, target))
+    #     calc_docs.append(build_ct_mean(view_st_data, sample, target))
+    #     calc_docs.append(build_ct_sd(view_st_data, sample, target))
 
-    for target in view_tr_data.data:
-        calc_docs.append(build_y_intercept(view_tr_data, target))
-        calc_docs.append(build_r_squared(view_tr_data, target))
-        calc_docs.append(build_slope(view_tr_data, target))
-        calc_docs.append(build_efficiency(view_tr_data, target))
+    # for target in view_tr_data.data:
+    #     calc_docs.append(build_y_intercept(view_tr_data, target))
+    #     calc_docs.append(build_r_squared(view_tr_data, target))
+    #     calc_docs.append(build_slope(view_tr_data, target))
+    #     calc_docs.append(build_efficiency(view_tr_data, target))
 
-    AppbioQuantstudioDAExtractor.get_elements(well_items)
+    calc_docs = [calc_doc_simp(calc_doc) for calc_doc in calc_docs if calc_doc]
 
-    {
-        "cq confidence": {
-            "value": "cq conf",
-            "type": "calcdoc",
-            "sources": {
-                "cycle threshold result": {
-                    "type": "measurement",
-                },
-            }
-        }
-    }
+    random_uuid_str(next_id=383)
 
-    # for well_item in well_items:
-        # build quantity
-        # build amp score
-        # build cq conf
+    elements = AppbioQuantstudioDAExtractor.get_elements(well_items)
+
+    sid_tdna_uuid_view_data = SampleView(sub_view=TargetView(sub_view=UuidView())).apply(elements)
+    tdna_view_data = TargetRoleView().apply(elements)
+
+    configs = [
+        CalculatedDataConfig(
+            name="quantity",
+            value="quantity",
+            view_data=sid_tdna_uuid_view_data,
+            source_configs=[
+                MeasurementConfig(
+                    name="cycle threshold result",
+                    value="cycle_threshold_result",
+                ),
+                CalculatedDataConfig(
+                    name="Y-intercept",
+                    value="y-intercep",
+                    view_data=tdna_view_data,
+                    source_configs=[
+                        MeasurementConfig(
+                            name="cycle threshold result",
+                            value="cycle_threshold_result",
+                        ),
+                    ]
+                ),
+                CalculatedDataConfig(
+                    name="Slope",
+                    value="slope",
+                    view_data=tdna_view_data,
+                    source_configs=[
+                        MeasurementConfig(
+                            name="cycle threshold result",
+                            value="cycle_threshold_result",
+                        ),
+                    ]
+                ),
+            ]
+        ),
+        CalculatedDataConfig(
+            name="cq confidence",
+            value="cq_conf",
+            view_data=sid_tdna_uuid_view_data,
+            source_configs=[
+                MeasurementConfig(
+                    name="cycle threshold result",
+                    value="cycle_threshold_result",
+                )
+            ]
+        ),
+        CalculatedDataConfig(
+            name="amplification score",
+            value="amp_score",
+            view_data=sid_tdna_uuid_view_data,
+            source_configs=[
+                MeasurementConfig(
+                    name="cycle threshold result",
+                    value="cycle_threshold_result",
+                )
+            ],
+        ),
+    ]
+
+    AppbioQuantstudioDAConstructor().construct(configs)
+
+    random_uuid_str(next_id=1164)
 
     yield from yield_documents(calc_docs)
 

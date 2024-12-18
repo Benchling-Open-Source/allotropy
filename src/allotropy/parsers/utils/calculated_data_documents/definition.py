@@ -9,7 +9,7 @@ class Referenceable:
     uuid: str
 
 
-@dataclass(frozen=True)
+@dataclass
 class DataSource:
     feature: str
     reference: CalculatedDocument | Referenceable
