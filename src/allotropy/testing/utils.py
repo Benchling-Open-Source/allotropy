@@ -165,7 +165,10 @@ class TestIdGenerator:
         self.prefix = f"{prefix}_" if prefix else ""
         self.next_id = 0
 
-    def generate_id(self) -> str:
+    def generate_id(self, next_id: int | None) -> str:
+        if next_id is not None:
+            self.next_id = next_id
+
         current_id = f"{self.prefix}TEST_ID_{self.next_id}"
         self.next_id += 1
         return current_id
