@@ -30,7 +30,6 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
-    InvalidJsonFloat,
     TDatacube,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
@@ -68,8 +67,8 @@ class CalculatedData:
 @dataclass
 class ProcessedData:
     # Settings
-    cycle_threshold_value_setting: float
-    cycle_threshold_result: float
+    cycle_threshold_value_setting: float | None = None
+    cycle_threshold_result: float | None = None
     automatic_cycle_threshold_enabled_setting: bool | None = None
     automatic_baseline_determination_enabled_setting: bool | None = None
     baseline_determination_start_cycle_setting: int | None = None
@@ -131,7 +130,7 @@ class Measurement:
 @dataclass
 class MeasurementGroup:
     measurements: list[Measurement]
-    plate_well_count: int | InvalidJsonFloat
+    plate_well_count: int | None
     experimental_data_identifier: str
     analyst: str | None = None
 
@@ -208,8 +207,8 @@ class Mapper(SchemaMapper[Data, Model]):
                 experiment_type=metadata.experiment_type,
                 container_type=metadata.container_type,
                 well_volume=TQuantityValueMicroliter(value=metadata.well_volume),
-                plate_well_count=TQuantityValueNumber(
-                    value=measurement_group.plate_well_count
+                plate_well_count=quantity_or_none(
+                    TQuantityValueNumber, measurement_group.plate_well_count
                 ),
                 measurement_document=[
                     self._get_measurement_document_item(measurement, metadata)
@@ -284,8 +283,8 @@ class Mapper(SchemaMapper[Data, Model]):
         doc = ProcessedDataDocumentItem(
             data_processing_document=DataProcessingDocument(
                 automatic_cycle_threshold_enabled_setting=data.automatic_cycle_threshold_enabled_setting,
-                cycle_threshold_value_setting__qPCR_=TQuantityValueUnitless(
-                    value=data.cycle_threshold_value_setting,
+                cycle_threshold_value_setting__qPCR_=quantity_or_none(
+                    TQuantityValueUnitless, data.cycle_threshold_value_setting
                 ),
                 automatic_baseline_determination_enabled_setting=data.automatic_baseline_determination_enabled_setting,
                 genotyping_qPCR_method_setting__qPCR_=quantity_or_none(
@@ -301,8 +300,8 @@ class Mapper(SchemaMapper[Data, Model]):
                     data.baseline_determination_end_cycle_setting,
                 ),
             ),
-            cycle_threshold_result__qPCR_=TQuantityValueUnitless(
-                value=data.cycle_threshold_result,
+            cycle_threshold_result__qPCR_=quantity_or_none(
+                TQuantityValueUnitless, data.cycle_threshold_result
             ),
             normalized_reporter_result=quantity_or_none(
                 TQuantityValueUnitless, data.normalized_reporter_result
