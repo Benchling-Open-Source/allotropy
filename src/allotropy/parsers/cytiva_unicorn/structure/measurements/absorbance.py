@@ -5,7 +5,6 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     DeviceControlDoc,
-    Measurement,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCubeComponent
 from allotropy.parsers.cytiva_unicorn.constants import DEVICE_TYPE
@@ -21,6 +20,7 @@ from allotropy.parsers.cytiva_unicorn.structure.static_docs import (
 from allotropy.parsers.utils.strict_xml_element import (
     StrictXmlElement,
 )
+from allotropy.parsers.utils.values import assert_not_none
 
 
 class AbsorbanceMeasurement(UnicornMeasurement):
@@ -30,22 +30,25 @@ class AbsorbanceMeasurement(UnicornMeasurement):
         pass
 
     @classmethod
-    def create(
+    def create_or_none(
         cls,
         handler: UnicornZipHandler,
         elements: list[StrictXmlElement],
         static_docs: StaticDocs,
-    ) -> Measurement:
+    ) -> UnicornMeasurement:
         return cls.get_measurement(
             static_docs=static_docs,
-            chromatogram_data_cube=cls.get_data_cube(
-                handler,
-                cls.filter_curve(elements, cls.get_curve_regex()),
-                DataCubeComponent(
-                    type_=FieldComponentDatatype.float,
-                    concept="absorbance",
-                    unit="mAU",
+            chromatogram_data_cube=assert_not_none(
+                cls.get_data_cube_or_none(
+                    handler,
+                    cls.filter_curve_or_none(elements, cls.get_curve_regex()),
+                    DataCubeComponent(
+                        type_=FieldComponentDatatype.float,
+                        concept="absorbance",
+                        unit="mAU",
+                    ),
                 ),
+                msg="Unable to find information to create absorbance data cubes.",
             ),
             device_control_docs=[
                 DeviceControlDoc(

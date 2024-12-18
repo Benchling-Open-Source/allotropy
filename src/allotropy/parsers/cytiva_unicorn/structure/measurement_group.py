@@ -43,19 +43,20 @@ def create_measurement_groups(
     elements = curves.findall("Curve")
 
     static_docs = StaticDocs.create(handler, curves.find("Curve"), results)
+    measurements = [
+        AbsorbanceMeasurement1.create_or_none(handler, elements, static_docs),
+        AbsorbanceMeasurement2.create_or_none(handler, elements, static_docs),
+        AbsorbanceMeasurement3.create_or_none(handler, elements, static_docs),
+        ConductivityMeasurement.create_or_none(handler, elements, static_docs),
+        PhMeasurement.create_or_none(handler, elements, static_docs),
+        ConcentrationMeasurement.create_or_none(handler, elements, static_docs),
+        PressureMeasurement.create_or_none(handler, elements, static_docs),
+        FlowMeasurement.create_or_none(handler, elements, static_docs),
+        TemperatureMeasurement.create_or_none(handler, elements, static_docs),
+    ]
 
     return [
         MeasurementGroup(
-            measurements=[
-                AbsorbanceMeasurement1.create(handler, elements, static_docs),
-                AbsorbanceMeasurement2.create(handler, elements, static_docs),
-                AbsorbanceMeasurement3.create(handler, elements, static_docs),
-                ConductivityMeasurement.create(handler, elements, static_docs),
-                PhMeasurement.create(handler, elements, static_docs),
-                ConcentrationMeasurement.create(handler, elements, static_docs),
-                PressureMeasurement.create(handler, elements, static_docs),
-                FlowMeasurement.create(handler, elements, static_docs),
-                TemperatureMeasurement.create(handler, elements, static_docs),
-            ]
+            measurements=[measurement for measurement in measurements if measurement],
         )
     ]
