@@ -65,7 +65,17 @@ def _is_valid_testcase(path: Path) -> bool:
 
 
 def get_test_cases(testdata_dir: Path) -> list[Path]:
-    return [path for path in testdata_dir.rglob("*") if _is_valid_testcase(path)]
+    test_cases = []
+    for path in testdata_dir.glob("*"):
+        if path.is_dir() and path.suffix.lower() in (".rslt", ".d"):
+            test_cases.append(path)
+        elif path.is_file() and _is_valid_testcase(path):
+            test_cases.append(path)
+        elif path.is_dir():
+            for subpath in path.rglob("*"):
+                if subpath.is_file() and _is_valid_testcase(subpath):
+                    test_cases.append(subpath)
+    return test_cases
 
 
 def pytest_generate_tests(metafunc: pytest.Metafunc) -> None:

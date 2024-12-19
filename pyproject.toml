@@ -117,9 +117,11 @@ dependencies = [
   "datamodel-code-generator == 0.25.2",
   # Without jsonschema-spec and pydantic, pydantic spews a bunch of errors when parsing schemas
   "jsonschema-specifications == 2023.7.1",
+  "rainbow-api>=1.0.10",
   "pydantic == 1.10.17",
   "ruff == 0.0.289",
   "semantic-version",
+  "xmltodict>=0.13.0",
 ]
 
 [tool.hatch.envs.default.scripts]
