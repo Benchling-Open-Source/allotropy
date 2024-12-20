@@ -315,7 +315,12 @@ def structure_custom_information_document(val: dict[str, Any], name: str) -> Any
         structured_value = value
         if isinstance(value, list):
             structured_value = [
-                structure_custom_information_document(v, key) for v in value
+                structure_custom_information_document(v, key)
+                if isinstance(v, dict)
+                else value
+                if isinstance(v, list)
+                else v
+                for v in value
             ]
         elif isinstance(value, dict):
             structured_value = structure_custom_information_document(value, key)
