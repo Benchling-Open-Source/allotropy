@@ -36,6 +36,7 @@ def _replace_asm_converter_version(allotrope_dict: DictType) -> DictType:
 # Currently, only "measurement identifier" and "calculated data document" identifier should be unique.
 # However, it is better to have positive exceptions, so we don't accidentally miss a newly added unique identifier.
 NON_UNIQUE_IDENTIFIERS = {
+    "acquisition method identifier",
     "analytical method identifier",
     "assay bead identifier",
     "batch identifier",
@@ -167,7 +168,7 @@ def from_file(
 def _write_actual_to_expected(
     allotrope_dict: DictType, expected_file: Path | str
 ) -> None:
-    with tempfile.NamedTemporaryFile(mode="w+", encoding="UTF-8") as tmp:
+    with tempfile.NamedTemporaryFile(mode="w+", encoding="UTF-8", delete=False) as tmp:
         json.dump(allotrope_dict, tmp, indent=4, ensure_ascii=False)
         tmp.write("\n")
         tmp.seek(0)

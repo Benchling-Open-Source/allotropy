@@ -65,7 +65,15 @@ def _is_valid_testcase(path: Path) -> bool:
 
 
 def get_test_cases(testdata_dir: Path) -> list[Path]:
-    return [path for path in testdata_dir.rglob("*") if _is_valid_testcase(path)]
+    test_folders = [
+        path
+        for path in testdata_dir.glob("*")
+        if path.is_dir() and path.suffix in [".rslt"]
+    ]
+    if test_folders:
+        return test_folders
+    else:
+        return [path for path in testdata_dir.rglob("*") if _is_valid_testcase(path)]
 
 
 def pytest_generate_tests(metafunc: pytest.Metafunc) -> None:
