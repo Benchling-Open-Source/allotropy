@@ -33,7 +33,7 @@ def create_data_cube(
         label=label,
         structure_dimensions=[
             DataCubeComponent(
-                type_=FieldComponentDatatype.float,
+                type_=FieldComponentDatatype.double,
                 concept="retention time",
                 unit="s",
             ),
@@ -49,21 +49,23 @@ def create_metadata(
 ) -> Metadata:
     return Metadata(
         asset_management_identifier=NOT_APPLICABLE,
-        analyst=intermediate_structured_data["Metadata"]["Instrument"]["CreatedByUser"],
+        analyst=intermediate_structured_data["Metadata"]["Instrument"].get(
+            "CreatedByUser"
+        ),
         detection_type=intermediate_structured_data["Metadata"]["Instrument"].get(
-            "Technique", None
+            "Technique"
         ),
-        model_number=intermediate_structured_data["Metadata"]["Instrument"].get(
-            "Name", None
-        ),
+        model_number=intermediate_structured_data["Metadata"]["Instrument"].get("Name"),
         software_name=intermediate_structured_data["Metadata"]["Instrument"][
             "AcquisitionApplication"
-        ]["AgilentApp"].get("Name", None),
+        ]
+        .get("AgilentApp", {})
+        .get("Name"),
         file_name=os.path.basename(named_file_contents.original_file_path),
         unc_path=named_file_contents.original_file_path,
         software_version=intermediate_structured_data["Metadata"]["Instrument"][
             "AcquisitionApplication"
-        ]["AgilentApp"].get("Version", None),
+        ]["AgilentApp"].get("Version"),
         product_manufacturer=constants.PRODUCT_MANUFACTURER,
         brand_name=(
             intermediate_structured_data["Metadata"]["Instrument"]["Name"]
@@ -71,16 +73,16 @@ def create_metadata(
         if intermediate_structured_data["Metadata"]["Instrument"]["Name"]
         else None,
         device_identifier=intermediate_structured_data["Metadata"]["Instrument"].get(
-            "@id", None
+            "@id"
         ),
         device_document=[
             DeviceDocument(
-                device_type=module.get("Type", None),
-                device_identifier=module.get("@id", None),
-                product_manufacturer=module.get("Manufacturer", None),
-                model_number=module.get("PartNo", None),
-                equipment_serial_number=module.get("SerialNo", None),
-                firmware_version=module.get("FirmwareRevision", None),
+                device_type=module.get("Type"),
+                device_identifier=module.get("@id"),
+                product_manufacturer=module.get("Manufacturer"),
+                model_number=module.get("PartNo"),
+                equipment_serial_number=module.get("SerialNo"),
+                firmware_version=module.get("FirmwareRevision"),
                 device_custom_info={"device name": module["Name"]}
                 if module["Name"]
                 else None,
@@ -97,33 +99,37 @@ def create_peak(peak_structure: list[dict[str, Any]]) -> list[Peak]:
     return [
         Peak(
             identifier=peak["@id"],
-            start=float(peak["BeginTime"]["@val"]) * 60,
-            end=float(peak["EndTime"]["@val"]) * 60,
+            start=float(peak["BeginTime"]["@val"]) * 60
+            if "Area" in peak and peak["BeginTime"].get("@val")
+            else None,
+            end=float(peak["EndTime"]["@val"]) * 60
+            if "Area" in peak and peak["EndTime"].get("@val")
+            else None,
             start_unit="s",
             end_unit="s",
             area=float(peak["Area"]["@val"]) / 60
             if "Area" in peak and peak["Area"].get("@val")
             else None,
             area_unit="RFU.s"
-            if peak["Area"]["@unit"] == "LU.s"
+            if "LU" in peak["Area"]["@unit"]
             else "mAU.s"
             if "Area" in peak and peak["Area"].get("@unit")
             else None,
-            height=try_float_or_none(peak["Height"]["@val"])
-            if "Height" in peak and peak["Area"].get("@val")
+            height=try_float_or_none(peak.get("Height", {}).get("@val"))
+            if try_float_or_none(peak.get("Height", {}).get("@val")) is not None
             else None,
             height_unit="RFU"
-            if peak["Height"]["@unit"] == "LU"
+            if "LU" in peak["Height"]["@unit"]
             else "mAU"
             if "Height" in peak and peak["Height"].get("@unit")
             else None,
-            written_name=peak["Peak Metadata"].get("CompoundName", None),
+            written_name=peak["Peak Metadata"].get("CompoundName"),
             retention_time=float(peak["RetentionTime"]["@val"]) * 60
             if peak.get("RetentionTime")
             and peak["RetentionTime"].get("@val") is not None
             else None,
             chromatographic_peak_resolution=try_float_or_none(
-                peak.get("Resolution_USP", {}).get("@val", None)
+                peak.get("Resolution_USP", {}).get("@val")
             ),
             peak_width_at_half_height=float(peak.get("Width_50Perc", {}).get("@val"))
             * 60
@@ -169,39 +175,39 @@ def create_measurements(
             measurement_identifier=random_uuid_str(),
             processed_data_identifier=random_uuid_str(),
             measurement_time=intermediate_structured_data["Metadata"]["Instrument"].get(
-                "CreationDate", None
+                "CreationDate"
             ),
             sample_identifier=intermediate_structured_data["Result Data"][i][
                 "Sample Data"
-            ].get("SampleName", None),
+            ].get("SampleName"),
             sample_role_type=constants.SAMPLE_ROLE_TYPE.get(
                 intermediate_structured_data["Result Data"][i]["Sample Data"][
                     "SampleSetup"
-                ]["DAParam"].get("Type", None)
+                ]["DAParam"].get("Type")
             ),
             sample_custom_info={
                 "location identifier": intermediate_structured_data["Result Data"][i][
                     "Sample Data"
-                ].get("Location", None),
+                ].get("Location"),
                 "replicate": intermediate_structured_data["Result Data"][i][
                     "Sample Data"
-                ].get("Replicate", None),
+                ].get("Replicate"),
                 "sample amount": {
                     "value": try_float_or_none(
                         intermediate_structured_data["Result Data"][i]["Sample Data"][
                             "SampleSetup"
                         ]["DAParam"]
                         .get("SampleAmount", {})
-                        .get("@val", None)
+                        .get("@val")
                     ),
                     "unit": intermediate_structured_data["Result Data"][i][
                         "Sample Data"
-                    ]["SampleSetup"]["DAParam"]["SampleAmount"]["@val"]
+                    ]["SampleSetup"]["DAParam"]["SampleAmount"]["@unit"]
                     or "(unitless)",
                 },
                 "barcode": intermediate_structured_data["Result Data"][i][
                     "Sample Data"
-                ].get("Barcode", None),
+                ].get("Barcode"),
             },
             injection_identifier=(
                 intermediate_structured_data["Result Data"][i]["Sample Data"][
@@ -245,10 +251,10 @@ def create_measurements(
                     "Sample Data"
                 ]["SampleSetup"]["AcqParam"]["InjectorPosition"],
             },
-            chromatography_serial_num=column_comp_dict.get("SerialNo", None)
+            chromatography_serial_num=column_comp_dict.get("SerialNo")
             if column_comp_dict
             else None,
-            chromatography_part_num=column_comp_dict.get("PartNo", None)
+            chromatography_part_num=column_comp_dict.get("PartNo")
             if column_comp_dict
             else None,
             column_inner_diameter=try_float_or_none(
@@ -282,18 +288,20 @@ def create_measurements(
                 "Column"
             ]
             else None,
-            column_product_manufacturer=column_comp_dict.get("Manufacturer", None)
+            column_product_manufacturer=column_comp_dict.get("Manufacturer")
             if column_comp_dict
             else None,
             column_custom_info={
                 "maximum temperature": {
-                    "value": intermediate_structured_data["Metadata"][
-                        "SeparationMedium"
-                    ][0]["Type"]["Column"]["MaxTemp"]["@val"],
+                    "value": try_float_or_none(
+                        intermediate_structured_data["Metadata"]["SeparationMedium"][0][
+                            "Type"
+                        ]["Column"]["MaxTemp"]["@val"]
+                    ),
                     "unit": "degC"
                     if intermediate_structured_data["Metadata"]["SeparationMedium"][0][
                         "Type"
-                    ]["Column"]["MaxTemp"]["@val"]
+                    ]["Column"]["MaxTemp"]["@unit"]
                     == "°C"
                     else (
                         intermediate_structured_data["Metadata"]["SeparationMedium"][0][
@@ -308,9 +316,11 @@ def create_measurements(
                 ]["Column"]
                 else None,
                 "maximum pressure": {
-                    "value": intermediate_structured_data["Metadata"][
-                        "SeparationMedium"
-                    ][0]["Type"]["Column"]["MaxPressure"]["@val"],
+                    "value": try_float_or_none(
+                        intermediate_structured_data["Metadata"]["SeparationMedium"][0][
+                            "Type"
+                        ]["Column"]["MaxPressure"]["@val"]
+                    ),
                     "unit": intermediate_structured_data["Metadata"][
                         "SeparationMedium"
                     ][0]["Type"]["Column"]["MaxPressure"]["@unit"]
@@ -327,12 +337,36 @@ def create_measurements(
             },
             device_control_docs=[
                 DeviceControlDoc(
-                    device_type=module.get("Type", None),
-                    device_identifier=module.get("@id", None),
-                    product_manufacturer=module.get("Manufacturer", None),
-                    model_number=module.get("PartNo", None),
-                    equipment_serial_number=module.get("SerialNo", None),
-                    firmware_version=module.get("FirmwareRevision", None),
+                    device_type="pump",
+                    system_pressure_data_cube=create_data_cube(
+                        label="pump pressure",
+                        measures_value=intermediate_structured_data["Result Data"][i][
+                            "Pressure"
+                        ],
+                        dimension_value=intermediate_structured_data["Result Data"][i][
+                            "Time"
+                        ],
+                        data_cube_component=DataCubeComponent(
+                            type_=FieldComponentDatatype.double,
+                            concept="pump pressure",
+                            unit="MPa",
+                        ),
+                    ),
+                )
+            ]
+            if "Pressure"
+            in intermediate_structured_data["Result Data"][i]["Metadata"]["signal"]
+            else [
+                DeviceControlDoc(
+                    device_type=module.get("Name"),
+                    detection_type="Fluorescence"
+                    if module.get("Name") == "FLD"
+                    else "Absorbance",
+                    device_identifier=module.get("@id"),
+                    product_manufacturer=module.get("Manufacturer"),
+                    model_number=module.get("PartNo"),
+                    equipment_serial_number=module.get("SerialNo"),
+                    firmware_version=module.get("FirmwareRevision"),
                     excitation_wavelength_setting=try_float_or_none(
                         intermediate_structured_data["Result Data"][i]["Metadata"][
                             "signal"
@@ -353,7 +387,7 @@ def create_measurements(
                         .split(",")[2]
                         .split()[0]
                     )
-                    if module["Name"] == "DAD"
+                    if "DAD" in module["Name"]
                     and "DAD"
                     in intermediate_structured_data["Result Data"][i]["Metadata"][
                         "signal"
@@ -366,7 +400,7 @@ def create_measurements(
                         .split("Sig=")[1]
                         .split(",")[0]
                     )
-                    if module["Name"] == "DAD"
+                    if "DAD" in module["Name"]
                     and "DAD"
                     in intermediate_structured_data["Result Data"][i]["Metadata"][
                         "signal"
@@ -383,28 +417,9 @@ def create_measurements(
                             ),
                             "unit": "nm",
                         }
-                        if module["Name"] == "FLD"
-                        and "FLD"
-                        in intermediate_structured_data["Result Data"][i]["Metadata"][
-                            "signal"
-                        ]
-                        else None
-                    },
-                    system_pressure_data_cube=create_data_cube(
-                        label="pump pressure",
-                        measures_value=intermediate_structured_data["Result Data"][i][
-                            "Pressure"
-                        ],
-                        dimension_value=intermediate_structured_data["Result Data"][i][
-                            "Time"
-                        ],
-                        data_cube_component=DataCubeComponent(
-                            type_=FieldComponentDatatype.double,
-                            concept="pump pressure",
-                            unit="MPa",
-                        ),
-                    )
-                    if "Pressure"
+                    }
+                    if module["Name"] == "FLD"
+                    and "FLD"
                     in intermediate_structured_data["Result Data"][i]["Metadata"][
                         "signal"
                     ]
@@ -413,7 +428,20 @@ def create_measurements(
                 for module in intermediate_structured_data["Metadata"]["Instrument"][
                     "Module"
                 ]
-                if module["Type"] == "Detector"
+                if (
+                    "DAD" in module["Name"]
+                    and "DAD"
+                    in intermediate_structured_data["Result Data"][i]["Metadata"][
+                        "signal"
+                    ]
+                )
+                or (
+                    "FLD" in module["Name"]
+                    and "FLD"
+                    in intermediate_structured_data["Result Data"][i]["Metadata"][
+                        "signal"
+                    ]
+                )
             ],
             peaks=create_peak(intermediate_structured_data["Result Data"][i]["Peak"])
             if "Peak" in intermediate_structured_data["Result Data"][i]
@@ -432,7 +460,7 @@ def create_measurements(
                         "signal"
                     ]
                     else "fluorescence",
-                    unit="MPa"
+                    unit="mAU"
                     if "DAD"
                     in intermediate_structured_data["Result Data"][i]["Metadata"][
                         "signal"
@@ -456,6 +484,6 @@ def create_measurement_groups(
         measurement_aggregate_custom_info={
             "analytical method identifier": intermediate_structured_data["Result Data"][
                 0
-            ]["Sample Data"].get("AnalysisMethod", None)
+            ]["Sample Data"].get("AnalysisMethod")
         },
     )

@@ -80,5 +80,6 @@ def allotrope_model_from_file(
                 encoding=encoding,
             )
     except FileNotFoundError as e:
+
         msg = f"File not found: {filepath}."
         raise AllotropeConversionError(msg) from e

@@ -1,4 +1,4 @@
-""" decodes the .rslt folder file converted it to intermediate json"""
+""" Decodes the .rslt folder file converted it to intermediate json"""
 import os
 from pathlib import Path
 import tempfile
@@ -9,7 +9,7 @@ import rainbow.agilent.chemstation as rb  # type: ignore
 import xmltodict
 
 
-def merge_peak_with_name(
+def merge_peak_with_signal_name(
     peak_data: list[dict[str, Any]],
     signal_data: list[dict[str, Any]],
 ) -> list[dict[str, Any]]:
@@ -34,15 +34,6 @@ def merge_peak_with_name(
     return peak_data
 
 
-def parse_xml_to_dict(file_content: str) -> dict[str, Any]:
-    """
-    parses the xml file content to dictionary
-    :param file_content: xml content
-    :return:
-    """
-    return xmltodict.parse(file_content)
-
-
 def decode_data_cubes(datacube_path: str) -> dict[str, Any]:
     """
     decodes the detection data to datacubes
@@ -65,7 +56,83 @@ def decode_data_cubes(datacube_path: str) -> dict[str, Any]:
     return datacubes
 
 
-def temp_unzip(
+def extract_rx_file(
+    temporary_input_path: str,
+    zip_file_path: str,
+    injection_metadata_data: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    peak_details = []
+    with tempfile.TemporaryDirectory(dir=temporary_input_path) as temporary_directory:
+        with zipfile.ZipFile(zip_file_path, "r") as zip_ref:
+            zip_ref.extractall(temporary_directory)
+            processed_file_path = next(
+                iter(Path(temporary_directory).rglob("*InjectionACAML"))
+            )
+            with open(processed_file_path, encoding="utf-8-sig") as processed_file:
+                peaks = xmltodict.parse(processed_file.read())
+                for peak in peaks["ACAML"]["Doc"]["Content"]["Injections"]["Result"][
+                    "SignalResult"
+                ]:
+                    peak_data = {}
+                    if "Peak" in peak:
+                        peak_data["Peak"] = peak["Peak"]
+                        peak_data["Signal_ID"] = peak["Signal_ID"]["@id"]
+                        peak_details.append(peak_data)
+
+                peak_metadata_dict = {}
+                if isinstance(
+                    peaks["ACAML"]["Doc"]["Content"]["Injections"]["Result"][
+                        "InjectionCompound"
+                    ],
+                    list,
+                ):
+                    for item in peaks["ACAML"]["Doc"]["Content"]["Injections"][
+                        "Result"
+                    ]["InjectionCompound"]:
+                        peak_id = item.get("@id")
+                        if peak_id:
+                            identification = item.get("Identification", None)
+                            identification_id = (
+                                identification.get("Qualified", {})
+                                .get("Peaks", {})
+                                .get("Peak_ID", {})
+                                .get("@id")
+                            )
+                            if identification_id:
+                                peak_metadata_dict[identification_id] = item
+                else:
+                    peak_id = (
+                        peaks["ACAML"]["Doc"]["Content"]["Injections"]["Result"][
+                            "InjectionCompound"
+                        ]["Identification"]
+                        .get("Qualified", {})
+                        .get("Peaks", {})
+                        .get("Peak_ID", {})
+                        .get("@id")
+                    )
+                    if peak_id:
+                        peak_metadata_dict[peak_id] = peaks["ACAML"]["Doc"]["Content"][
+                            "Injections"
+                        ]["Result"]["InjectionCompound"]
+
+                if isinstance(peak_details, list):
+                    for peak_dict in peak_details:
+                        if isinstance(peak_dict.get("Peak"), dict):
+                            peak_id = peak_dict["Peak"]["@id"]
+                            if peak_id in peak_metadata_dict:
+                                peak_dict["Peak"]["Peak Metadata"] = peak_metadata_dict[
+                                    peak_id
+                                ]
+                        elif isinstance(peak_dict.get("Peak"), list):
+                            for peak in peak_dict["Peak"]:
+                                peak_id = peak["@id"]
+                                if peak_id in peak_metadata_dict:
+                                    peak["Peak Metadata"] = peak_metadata_dict[peak_id]
+
+    return merge_peak_with_signal_name(peak_details, injection_metadata_data)
+
+
+def extract_dx_file(
     temporary_input_path: str, zip_file_path: str, injection_metadata_data: Any
 ) -> Any:
     """
@@ -77,140 +144,87 @@ def temp_unzip(
     """
 
     sample_data = {}
-    peak_details = []
     chromatogram_data = []
     with tempfile.TemporaryDirectory(dir=temporary_input_path) as temporary_directory:
         with zipfile.ZipFile(zip_file_path, "r") as zip_ref:
             zip_ref.extractall(temporary_directory)
-        for root, _dirs, files in os.walk(temporary_directory):
-            if "SampleListPart" in files:
-                sequence_sample_data = {}
-                sample_file_path = os.path.join(root, "SampleListPart")
-                with open(sample_file_path) as sample_file:
-                    sequence_sample_data["AnalysisMethod"] = parse_xml_to_dict(
-                        sample_file.read()
-                    )["SequenceTable"]["anyType"][0]["AnalysisMethod"]
-                    return sequence_sample_data
-            elif "dx" in str(zip_file_path):
-                for file in files:
-                    temporary_injection_filepath = os.path.join(str(root), file)
-                    if file.endswith(".acmd"):
-                        with open(
-                            temporary_injection_filepath, encoding="utf-8-sig"
-                        ) as injection_file_data:
-                            acmd_data = injection_file_data.read()
-                            injection_data = parse_xml_to_dict(acmd_data)
-                            injection_data["ACMD"]["InjectionInfo"].pop("Signals")
-                            for sample_setup in injection_metadata_data["SampleSetup"]:
-                                if (
-                                    sample_setup["IdentParam"]["Name"]
-                                    in injection_data["ACMD"]["InjectionInfo"][
-                                        "SampleName"
-                                    ]
-                                ):
-                                    sample_data["SampleSetup"] = sample_setup
-                            for sample_measurement in injection_metadata_data[
-                                "SampleMeasurement"
-                            ]:
-                                if (
-                                    sample_measurement["IdentParam"]["Name"]
-                                    in injection_data["ACMD"]["InjectionInfo"][
-                                        "SampleName"
-                                    ]
-                                ):
-                                    sample_data[
-                                        "SampleMeasurement"
-                                    ] = sample_measurement
-
-                            sample_data["sequence_data"] = injection_metadata_data[
-                                "sequence_data"
-                            ]
-                            sample_data.update(injection_data["ACMD"]["InjectionInfo"])
-
-                            sample_data.update(injection_metadata_data["sequence_data"])
-                for file in files:
-                    file_path = os.path.join(str(root), file)
-                    if file.endswith(".CH"):
-                        chromatogram = {}
-                        chromatogram.update(decode_data_cubes(file_path))
-                        chromatogram_data.append(decode_data_cubes(file_path))
-                    elif injection_metadata_data["pump_pressure_filename"] in file:
-                        chromatogram_data.append(decode_data_cubes(file_path))
-            elif "InjectionACAML" in files:
-                processed_file_path = os.path.join(root, "InjectionACAML")
-                with open(processed_file_path, encoding="utf-8-sig") as processed_file:
-                    peaks = parse_xml_to_dict(processed_file.read())
-                    for peak in peaks["ACAML"]["Doc"]["Content"]["Injections"][
-                        "Result"
-                    ]["SignalResult"]:
-                        peak_data = {}
-                        if "Peak" in peak:
-                            peak_data["Peak"] = peak["Peak"]
-                            peak_data["Signal_ID"] = peak["Signal_ID"]["@id"]
-                            peak_details.append(peak_data)
-
-                    peak_metadata_dict = {}
-                    if isinstance(
-                        peaks["ACAML"]["Doc"]["Content"]["Injections"]["Result"][
-                            "InjectionCompound"
-                        ],
-                        list,
-                    ):
-                        for item in peaks["ACAML"]["Doc"]["Content"]["Injections"][
-                            "Result"
-                        ]["InjectionCompound"]:
-                            peak_id = item.get("@id")
-                            if peak_id:
-                                identification = item.get("Identification", None)
-                                identification_id = (
-                                    identification.get("Qualified", {})
-                                    .get("Peaks", {})
-                                    .get("Peak_ID", {})
-                                    .get("@id")
-                                )
-                                if identification_id:
-                                    peak_metadata_dict[identification_id] = item
-                    else:
-                        peak_id = (
-                            peaks["ACAML"]["Doc"]["Content"]["Injections"]["Result"][
-                                "InjectionCompound"
-                            ]["Identification"]
-                            .get("Qualified", {})
-                            .get("Peaks", {})
-                            .get("Peak_ID", {})
-                            .get("@id")
-                        )
-                        if peak_id:
-                            peak_metadata_dict[peak_id] = peaks["ACAML"]["Doc"][
-                                "Content"
-                            ]["Injections"]["Result"]["InjectionCompound"]
-
-                    if isinstance(peak_details, list):
-                        for peak_dict in peak_details:
-                            if isinstance(peak_dict.get("Peak", {}), dict):
-                                peak_id = peak_dict["Peak"]["@id"]
-                                if peak_id in peak_metadata_dict:
-                                    peak_dict["Peak"][
-                                        "Peak Metadata"
-                                    ] = peak_metadata_dict[peak_id]
-                            elif isinstance(peak_dict.get("Peak", []), list):
-                                for peak in peak_dict["Peak"]:
-                                    peak_id = peak["@id"]
-                                    if peak_id in peak_metadata_dict:
-                                        peak["Peak Metadata"] = peak_metadata_dict[
-                                            peak_id
+            for root, _dirs, files in os.walk(temporary_directory):
+                if "dx" in str(zip_file_path):
+                    for file in files:
+                        temporary_injection_filepath = os.path.join(str(root), file)
+                        if file.endswith(".acmd"):
+                            with open(
+                                temporary_injection_filepath, encoding="utf-8-sig"
+                            ) as injection_file_data:
+                                acmd_data = injection_file_data.read()
+                                injection_data = xmltodict.parse(acmd_data)
+                                injection_data["ACMD"]["InjectionInfo"].pop("Signals")
+                                for sample_setup in injection_metadata_data[
+                                    "SampleSetup"
+                                ]:
+                                    if (
+                                        sample_setup["IdentParam"]["Name"]
+                                        in injection_data["ACMD"]["InjectionInfo"][
+                                            "SampleName"
                                         ]
+                                    ):
+                                        sample_data["SampleSetup"] = sample_setup
+                                for sample_measurement in injection_metadata_data[
+                                    "SampleMeasurement"
+                                ]:
+                                    if (
+                                        sample_measurement["IdentParam"]["Name"]
+                                        in injection_data["ACMD"]["InjectionInfo"][
+                                            "SampleName"
+                                        ]
+                                    ):
+                                        sample_data[
+                                            "SampleMeasurement"
+                                        ] = sample_measurement
 
-                return merge_peak_with_name(peak_details, injection_metadata_data)
+                                sample_data["sequence_data"] = injection_metadata_data[
+                                    "sequence_data"
+                                ]
+                                sample_data.update(
+                                    injection_data["ACMD"]["InjectionInfo"]
+                                )
+
+                                sample_data.update(
+                                    injection_metadata_data["sequence_data"]
+                                )
+                    for file in files:
+                        file_path = os.path.join(str(root), file)
+                        if file.endswith(".CH"):
+                            chromatogram = {}
+                            chromatogram.update(decode_data_cubes(file_path))
+                            chromatogram_data.append(decode_data_cubes(file_path))
+                        elif injection_metadata_data["pump_pressure_filename"] in file:
+                            chromatogram_data.append(decode_data_cubes(file_path))
+
         for each_chromatogram in chromatogram_data:
             each_chromatogram["Sample Data"] = sample_data
             each_chromatogram["file_name"] = os.path.basename(zip_file_path)
         return chromatogram_data
 
 
+def extract_sqx_file(temporary_input_path: str, zip_file_path: str) -> dict[str, Any]:
+    with tempfile.TemporaryDirectory(dir=temporary_input_path) as temporary_directory:
+        with zipfile.ZipFile(zip_file_path, "r") as zip_ref:
+            zip_ref.extractall(temporary_directory)
+            sequence_sample_data = {}
+            sample_file_path = list(Path(temporary_directory).rglob("*SampleListPart"))[
+                1
+            ]
+            with open(sample_file_path) as sample_file:
+                sequence_sample_data["AnalysisMethod"] = xmltodict.parse(
+                    sample_file.read()
+                )["SequenceTable"]["anyType"][0]["AnalysisMethod"]
+                return sequence_sample_data
+
+
 def decode_acaml_data(
     acaml_content: dict[str, Any]
-) -> tuple[dict[str, dict[str, Any]], dict[Any, Any], dict[str, Any]]:
+) -> tuple[dict[Any, Any], dict[Any, Any], dict[Any, Any]]:
     """
     structures the acaml file data
     :param acaml_content: decoded acaml data
@@ -245,16 +259,13 @@ def decode_acaml_data(
                 0
             ]
             signal_data[signals["@id"]] = signals["Name"]
-            if signals["Name"] == "PMP1A":
+            if "Pressure" in signals["Description"]:
                 pump_pressure_file[
                     signals["BinaryData"]["DataItem"]["Name"].split(".")[0]
                 ] = signals["TraceID"]
         signal_details["Signal details"].append(signal_data)
     metadata_data["Instrument"] = instrument_data
     metadata_data["SeparationMedium"] = content_data["Resources"]["SeparationMedium"]
-    metadata_data["SampleContainerInfo"] = content_data["Resources"][
-        "SampleContainerInfo"
-    ]
     metadata_data["SampleSetup"] = content_data["Samples"]["Setup"]
     metadata_data["SampleMeasurement"] = content_data["Samples"]["MeasData"]
 
@@ -267,61 +278,56 @@ def decode_data(input_path: str) -> dict[str, Any]:
     :param input_path: input folder path
     :return: structured intermediate json
     """
-    list_files = os.listdir(input_path)
+    os.listdir(input_path)
     intermediate_json: dict[str, Any] = {}
     injection_data = {}
     total_injection_chromatogram_details: list[dict[str, Any]] = []
     total_peak_details = []
-    for metadata_files in list_files:
-        if ".acaml" in metadata_files:
-            acaml_path = os.path.join(input_path, metadata_files)
-            with open(acaml_path, encoding="utf-8-sig") as acaml_file_data:
-                acaml_file_content = acaml_file_data.read()
-                decoded_acaml_content = parse_xml_to_dict(acaml_file_content)
-            (
-                intermediate_metadata,
-                pump_pressure_file,
-                injection_signal_details,
-            ) = decode_acaml_data(decoded_acaml_content)
-            injection_data["total_pressure_files"] = pump_pressure_file
-            injection_data["SampleSetup"] = intermediate_metadata["SampleSetup"]
-            injection_data["SampleMeasurement"] = intermediate_metadata[
-                "SampleMeasurement"
-            ]
-            injection_data["signal_details"] = injection_signal_details
-            intermediate_metadata.pop("SampleSetup")
-            intermediate_metadata.pop("SampleMeasurement")
-            intermediate_json["Metadata"] = intermediate_metadata
-    for sequence_file in list_files:
-        if ".sqx" in sequence_file:
-            sequence_file_path = os.path.join(input_path, sequence_file)
-            sequence_data = temp_unzip(
-                os.path.dirname(input_path), sequence_file_path, None
+
+    acaml_path = next(iter(Path(input_path).rglob("*acaml")))
+    with open(acaml_path, encoding="utf-8-sig") as acaml_file_data:
+        acaml_file_content = acaml_file_data.read()
+        decoded_acaml_content = xmltodict.parse(acaml_file_content)
+    (
+        intermediate_metadata,
+        pump_pressure_file,
+        injection_signal_details,
+    ) = decode_acaml_data(decoded_acaml_content)
+    injection_data["total_pressure_files"] = pump_pressure_file
+    injection_data["SampleSetup"] = intermediate_metadata["SampleSetup"]
+    injection_data["SampleMeasurement"] = intermediate_metadata["SampleMeasurement"]
+    injection_data["signal_details"] = injection_signal_details
+    intermediate_metadata.pop("SampleSetup")
+    intermediate_metadata.pop("SampleMeasurement")
+    intermediate_json["Metadata"] = intermediate_metadata
+
+    sequence_file_path = next(iter(Path(input_path).rglob("*.sqx")))
+    sequence_data = extract_sqx_file(
+        str(os.path.dirname(input_path)), str(sequence_file_path)
+    )
+    injection_data["sequence_data"] = sequence_data
+    dx_files = list(Path(input_path).rglob("*.dx"))
+    for dx_file in dx_files:
+        injection_file_name = str(os.path.basename(dx_file))
+        for key, values in injection_data["total_pressure_files"].items():
+            if key in injection_file_name:
+                injection_data["pump_pressure_filename"] = values
+        total_injection_chromatogram_details.extend(
+            extract_dx_file(
+                str(os.path.dirname(input_path)), str(dx_file), injection_data
             )
-            injection_data["sequence_data"] = sequence_data
-    for injection_file in list_files:
-        if ".dx" in injection_file:
-            injection_data_path = os.path.join(input_path, injection_file)
-            injection_file_name = str(os.path.basename(injection_data_path))
-            for key, values in injection_data["total_pressure_files"].items():
-                if key in injection_file_name:
-                    injection_data["pump_pressure_filename"] = values
-            total_injection_chromatogram_details.extend(
-                temp_unzip(
-                    os.path.dirname(input_path), injection_data_path, injection_data
-                )
-            )
-        if ".rx" in injection_file:
-            peak_data = {}
-            processed_injection_path = os.path.join(input_path, injection_file)
-            peak_details = temp_unzip(
-                os.path.dirname(input_path),
-                processed_injection_path,
-                injection_data["signal_details"]["Signal details"],
-            )
-            peak_data["file_name"] = os.path.basename(processed_injection_path)
-            peak_data["peak_details"] = peak_details
-            total_peak_details.append(peak_data)
+        )
+    rx_files = list(Path(input_path).rglob("*.rx"))
+    for rx_file in rx_files:
+        processed_peak_data: dict[Any, Any] = {}
+        peak_details = extract_rx_file(
+            str(os.path.dirname(input_path)),
+            str(rx_file),
+            injection_data["signal_details"]["Signal details"],
+        )
+        processed_peak_data["file_name"] = os.path.basename(rx_file)
+        processed_peak_data["peak_details"] = peak_details
+        total_peak_details.append(processed_peak_data)
     for injection_details in total_injection_chromatogram_details:
         for peaks_data in total_peak_details:
             if (

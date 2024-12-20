@@ -35,7 +35,6 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueCentimeter,
     TQuantityValueCubicMillimeter,
     TQuantityValueMicrometer,
-    TQuantityValueMilliAbsorbanceUnit,
     TQuantityValueMillimeter,
     TQuantityValueNanometer,
     TQuantityValuePercent,
@@ -86,11 +85,11 @@ class Metadata:
 @dataclass(frozen=True)
 class Peak:
     identifier: str
-    start: float
     start_unit: str
-    end: float
     end_unit: str
     area: float | None = None
+    end: float | None = None
+    start: float | None = None
     area_unit: str | None = None
     relative_area: float | None = None
     width: float | None = None
@@ -101,7 +100,6 @@ class Peak:
     retention_time: float | None = None
     chromatographic_peak_resolution: float | None = None
     peak_width_at_half_height: float | None = None
-    asymmetry_factor_measured_at_10___heigh: float | None = None
     peak_width_at_5___of_height: float | None = None
     peak_width_at_10___of_height: float | None = None
     peak_width_at_baseline: float | None = None
@@ -197,6 +195,8 @@ class Mapper(SchemaMapper[Data, Model]):
                     product_manufacturer=data.metadata.product_manufacturer,
                     device_identifier=data.metadata.device_identifier,
                     firmware_version=data.metadata.firmware_version,
+                    brand_name=data.metadata.brand_name,
+                    model_number=data.metadata.model_number,
                     device_document=(
                         [
                             add_custom_information_document(
@@ -335,9 +335,7 @@ class Mapper(SchemaMapper[Data, Model]):
             peak_end=quantity_or_none_from_unit(peak.end_unit, peak.end),  # type: ignore[arg-type]
             peak_area=quantity_or_none_from_unit(peak.area_unit, peak.area),
             peak_width=quantity_or_none(TQuantityValueSecondTime, peak.width),
-            peak_height=quantity_or_none(
-                TQuantityValueMilliAbsorbanceUnit, peak.height
-            ),
+            peak_height=quantity_or_none_from_unit(peak.height_unit, peak.height),
             relative_peak_area=quantity_or_none(
                 TQuantityValuePercent, peak.relative_area
             ),

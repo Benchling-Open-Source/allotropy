@@ -103,6 +103,7 @@ def _create_peak(peak: dict[str, Any]) -> Peak:
         relative_area=try_float_or_none(peak.get("PctArea")),
         width=try_float_or_none(peak.get("Width")),
         height=height,
+        height_unit="mAU",
         relative_height=try_float_or_none(peak.get("PctHeight")),
         written_name=peak.get("Name"),
     )

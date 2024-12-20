@@ -168,7 +168,7 @@ def from_file(
 def _write_actual_to_expected(
     allotrope_dict: DictType, expected_file: Path | str
 ) -> None:
-    with tempfile.NamedTemporaryFile(mode="w+", encoding="UTF-8") as tmp:
+    with tempfile.NamedTemporaryFile(mode="w+", encoding="UTF-8", delete=False) as tmp:
         json.dump(allotrope_dict, tmp, indent=4, ensure_ascii=False)
         tmp.write("\n")
         tmp.seek(0)
