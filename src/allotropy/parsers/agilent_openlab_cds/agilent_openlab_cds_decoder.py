@@ -155,33 +155,29 @@ def extract_dx_file(
     with tempfile.TemporaryDirectory(dir=temporary_input_path) as temporary_directory:
         with zipfile.ZipFile(zip_file_path, "r") as zip_ref:
             zip_ref.extractall(temporary_directory)
+            acmd_filepath = next(iter(Path(temporary_directory).glob("*.acmd")))
+            with open(acmd_filepath, encoding="utf-8-sig") as injection_file_data:
+                acmd_data = injection_file_data.read()
+                injection_data = xmltodict.parse(acmd_data)
+                injection_data["ACMD"]["InjectionInfo"].pop("Signals")
+                for sample_setup in injection_metadata_data["SampleSetup"]:
+                    if (
+                        sample_setup["IdentParam"]["Name"]
+                        in injection_data["ACMD"]["InjectionInfo"]["SampleName"]
+                    ):
+                        sample_data["SampleSetup"] = sample_setup
+                for sample_measurement in injection_metadata_data["SampleMeasurement"]:
+                    if (
+                        sample_measurement["IdentParam"]["Name"]
+                        in injection_data["ACMD"]["InjectionInfo"]["SampleName"]
+                    ):
+                        sample_data["SampleMeasurement"] = sample_measurement
+
+                sample_data["sequence_data"] = injection_metadata_data["sequence_data"]
+                sample_data.update(injection_data["ACMD"]["InjectionInfo"])
+
+                sample_data.update(injection_metadata_data["sequence_data"])
             for root, _dirs, files in os.walk(temporary_directory):
-                acmd_filepath = next(iter(Path(temporary_directory).glob("*.acmd")))
-                with open(acmd_filepath, encoding="utf-8-sig") as injection_file_data:
-                    acmd_data = injection_file_data.read()
-                    injection_data = xmltodict.parse(acmd_data)
-                    injection_data["ACMD"]["InjectionInfo"].pop("Signals")
-                    for sample_setup in injection_metadata_data["SampleSetup"]:
-                        if (
-                            sample_setup["IdentParam"]["Name"]
-                            in injection_data["ACMD"]["InjectionInfo"]["SampleName"]
-                        ):
-                            sample_data["SampleSetup"] = sample_setup
-                    for sample_measurement in injection_metadata_data[
-                        "SampleMeasurement"
-                    ]:
-                        if (
-                            sample_measurement["IdentParam"]["Name"]
-                            in injection_data["ACMD"]["InjectionInfo"]["SampleName"]
-                        ):
-                            sample_data["SampleMeasurement"] = sample_measurement
-
-                    sample_data["sequence_data"] = injection_metadata_data[
-                        "sequence_data"
-                    ]
-                    sample_data.update(injection_data["ACMD"]["InjectionInfo"])
-
-                    sample_data.update(injection_metadata_data["sequence_data"])
                 for file in files:
                     file_path = os.path.join(str(root), file)
                     if file.endswith(".CH"):
@@ -312,7 +308,7 @@ def decode_data(input_path: str) -> dict[str, Any]:
         )
     rx_files = list(Path(input_path).glob("*.rx"))
     for rx_file in rx_files:
-        processed_peak_data: dict[Any, Any] = {}
+        processed_peak_data: dict[str, Any] = {}
         peak_details = extract_rx_file(
             str(os.path.dirname(input_path)),
             str(rx_file),

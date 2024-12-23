@@ -224,7 +224,9 @@ def create_measurements(
                 (
                     intermediate_structured_data["Result Data"][i]["Sample Data"][
                         "SampleMeasurement"
-                    ]["InjectionMeasData_ID"]["@id"]
+                    ]
+                    .get("InjectionMeasData_ID", {})
+                    .get("@id")
                 )
                 if isinstance(
                     intermediate_structured_data["Result Data"][i]["Sample Data"][
@@ -242,21 +244,21 @@ def create_measurements(
                             ]["Replicate"]
                         )
                         - 1
-                    ][
+                    ].get(
                         "@id"
-                    ]
+                    )
                 )
             ),
             injection_time=assert_not_none(
-                intermediate_structured_data["Result Data"][i]["Sample Data"][
+                intermediate_structured_data["Result Data"][i]["Sample Data"].get(
                     "RunDateTime"
-                ]
+                )
             ),
             autosampler_injection_volume_setting=assert_not_none(
                 float(
-                    intermediate_structured_data["Result Data"][i]["Sample Data"][
+                    intermediate_structured_data["Result Data"][i]["Sample Data"].get(
                         "InjectionVolume"
-                    ]
+                    )
                 )
             ),
             injection_custom_info={
@@ -268,7 +270,9 @@ def create_measurements(
                 ][i]["Sample Data"].get("AcquisitionMethod"),
                 "injector position": intermediate_structured_data["Result Data"][i][
                     "Sample Data"
-                ]["SampleSetup"].get("AcqParam", {})("InjectorPosition"),
+                ]["SampleSetup"]
+                .get("AcqParam", {})
+                .get("InjectorPosition"),
             },
             chromatography_serial_num=column_comp_dict.get("SerialNo")
             if column_comp_dict
