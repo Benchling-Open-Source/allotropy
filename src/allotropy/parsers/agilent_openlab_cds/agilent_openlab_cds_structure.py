@@ -1,4 +1,4 @@
-""" maps the intermediate json to liquid chromatograhy mapper fields"""
+"""Maps the intermediate json to liquid chromatograhy mapper fields"""
 import os
 from typing import Any
 
@@ -19,6 +19,7 @@ from allotropy.parsers.agilent_openlab_cds import constants
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
+    assert_not_none,
     try_float_or_none,
 )
 
@@ -219,47 +220,55 @@ def create_measurements(
                     "Sample Data"
                 ].get("Barcode"),
             },
-            injection_identifier=(
-                intermediate_structured_data["Result Data"][i]["Sample Data"][
-                    "SampleMeasurement"
-                ]["InjectionMeasData_ID"]["@id"]
+            injection_identifier=assert_not_none(
+                (
+                    intermediate_structured_data["Result Data"][i]["Sample Data"][
+                        "SampleMeasurement"
+                    ]["InjectionMeasData_ID"]["@id"]
+                )
                 if isinstance(
                     intermediate_structured_data["Result Data"][i]["Sample Data"][
                         "SampleMeasurement"
                     ]["InjectionMeasData_ID"],
                     dict,
                 )
-                else intermediate_structured_data["Result Data"][i]["Sample Data"][
-                    "SampleMeasurement"
-                ]["InjectionMeasData_ID"][
-                    int(
-                        intermediate_structured_data["Result Data"][i]["Sample Data"][
-                            "Replicate"
-                        ]
-                    )
-                    - 1
-                ][
-                    "@id"
+                else assert_not_none(
+                    intermediate_structured_data["Result Data"][i]["Sample Data"][
+                        "SampleMeasurement"
+                    ]["InjectionMeasData_ID"][
+                        int(
+                            intermediate_structured_data["Result Data"][i][
+                                "Sample Data"
+                            ]["Replicate"]
+                        )
+                        - 1
+                    ][
+                        "@id"
+                    ]
+                )
+            ),
+            injection_time=assert_not_none(
+                intermediate_structured_data["Result Data"][i]["Sample Data"][
+                    "RunDateTime"
                 ]
             ),
-            injection_time=intermediate_structured_data["Result Data"][i][
-                "Sample Data"
-            ]["RunDateTime"],
-            autosampler_injection_volume_setting=float(
-                intermediate_structured_data["Result Data"][i]["Sample Data"][
-                    "InjectionVolume"
-                ]
+            autosampler_injection_volume_setting=assert_not_none(
+                float(
+                    intermediate_structured_data["Result Data"][i]["Sample Data"][
+                        "InjectionVolume"
+                    ]
+                )
             ),
             injection_custom_info={
                 "injection source": intermediate_structured_data["Result Data"][i][
                     "Sample Data"
-                ]["InjectionSource"],
+                ].get("InjectionSource"),
                 "acquisition method identifier": intermediate_structured_data[
                     "Result Data"
-                ][i]["Sample Data"]["AcquisitionMethod"],
+                ][i]["Sample Data"].get("AcquisitionMethod"),
                 "injector position": intermediate_structured_data["Result Data"][i][
                     "Sample Data"
-                ]["SampleSetup"]["AcqParam"]["InjectorPosition"],
+                ]["SampleSetup"].get("AcqParam", {})("InjectorPosition"),
             },
             chromatography_serial_num=column_comp_dict.get("SerialNo")
             if column_comp_dict

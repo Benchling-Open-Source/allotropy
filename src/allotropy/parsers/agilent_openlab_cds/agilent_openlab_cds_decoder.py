@@ -156,55 +156,38 @@ def extract_dx_file(
         with zipfile.ZipFile(zip_file_path, "r") as zip_ref:
             zip_ref.extractall(temporary_directory)
             for root, _dirs, files in os.walk(temporary_directory):
-                if "dx" in str(zip_file_path):
-                    for file in files:
-                        temporary_injection_filepath = os.path.join(str(root), file)
-                        if file.endswith(".acmd"):
-                            with open(
-                                temporary_injection_filepath, encoding="utf-8-sig"
-                            ) as injection_file_data:
-                                acmd_data = injection_file_data.read()
-                                injection_data = xmltodict.parse(acmd_data)
-                                injection_data["ACMD"]["InjectionInfo"].pop("Signals")
-                                for sample_setup in injection_metadata_data[
-                                    "SampleSetup"
-                                ]:
-                                    if (
-                                        sample_setup["IdentParam"]["Name"]
-                                        in injection_data["ACMD"]["InjectionInfo"][
-                                            "SampleName"
-                                        ]
-                                    ):
-                                        sample_data["SampleSetup"] = sample_setup
-                                for sample_measurement in injection_metadata_data[
-                                    "SampleMeasurement"
-                                ]:
-                                    if (
-                                        sample_measurement["IdentParam"]["Name"]
-                                        in injection_data["ACMD"]["InjectionInfo"][
-                                            "SampleName"
-                                        ]
-                                    ):
-                                        sample_data[
-                                            "SampleMeasurement"
-                                        ] = sample_measurement
+                acmd_filepath = next(iter(Path(temporary_directory).glob("*.acmd")))
+                with open(acmd_filepath, encoding="utf-8-sig") as injection_file_data:
+                    acmd_data = injection_file_data.read()
+                    injection_data = xmltodict.parse(acmd_data)
+                    injection_data["ACMD"]["InjectionInfo"].pop("Signals")
+                    for sample_setup in injection_metadata_data["SampleSetup"]:
+                        if (
+                            sample_setup["IdentParam"]["Name"]
+                            in injection_data["ACMD"]["InjectionInfo"]["SampleName"]
+                        ):
+                            sample_data["SampleSetup"] = sample_setup
+                    for sample_measurement in injection_metadata_data[
+                        "SampleMeasurement"
+                    ]:
+                        if (
+                            sample_measurement["IdentParam"]["Name"]
+                            in injection_data["ACMD"]["InjectionInfo"]["SampleName"]
+                        ):
+                            sample_data["SampleMeasurement"] = sample_measurement
 
-                                sample_data["sequence_data"] = injection_metadata_data[
-                                    "sequence_data"
-                                ]
-                                sample_data.update(
-                                    injection_data["ACMD"]["InjectionInfo"]
-                                )
+                    sample_data["sequence_data"] = injection_metadata_data[
+                        "sequence_data"
+                    ]
+                    sample_data.update(injection_data["ACMD"]["InjectionInfo"])
 
-                                sample_data.update(
-                                    injection_metadata_data["sequence_data"]
-                                )
-                    for file in files:
-                        file_path = os.path.join(str(root), file)
-                        if file.endswith(".CH"):
-                            chromatogram_data.append(decode_data_cubes(file_path))
-                        elif injection_metadata_data["pump_pressure_filename"] in file:
-                            chromatogram_data.append(decode_data_cubes(file_path))
+                    sample_data.update(injection_metadata_data["sequence_data"])
+                for file in files:
+                    file_path = os.path.join(str(root), file)
+                    if file.endswith(".CH"):
+                        chromatogram_data.append(decode_data_cubes(file_path))
+                    elif injection_metadata_data["pump_pressure_filename"] in file:
+                        chromatogram_data.append(decode_data_cubes(file_path))
 
         for each_chromatogram in chromatogram_data:
             each_chromatogram["Sample Data"] = sample_data
@@ -235,7 +218,7 @@ def extract_sqx_file(temporary_input_path: str, zip_file_path: str) -> dict[str,
 
 def decode_acaml_data(
     acaml_content: dict[str, Any]
-) -> tuple[dict[Any, Any], dict[Any, Any], dict[Any, Any]]:
+) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
     """
     structures the acaml file data
     :param acaml_content: decoded acaml data
@@ -289,7 +272,6 @@ def decode_data(input_path: str) -> dict[str, Any]:
     :param input_path: input folder path
     :return: structured intermediate json
     """
-    os.listdir(input_path)
     intermediate_json: dict[str, Any] = {}
     injection_data: dict[str, Any] = {}
     total_injection_chromatogram_details: list[dict[str, Any]] = []
