@@ -10,6 +10,8 @@ from allotropy.testing.utils import get_testdata_dir
 
 # ParserTest will ignore any files with "error",  "exclude", or "invalid" in their path.
 EXCLUDE_KEYWORDS = {"error", "exclude", "invalid"}
+# Only the folders included in this will be treated as folders for parsing
+parse_folder = [".rslt"]
 
 
 def pytest_addoption(parser: Parser) -> None:
@@ -68,7 +70,7 @@ def get_test_cases(testdata_dir: Path) -> list[Path]:
     test_folders = [
         path
         for path in testdata_dir.glob("*")
-        if path.is_dir() and path.suffix in [".rslt"]
+        if path.is_dir() and path.suffix in parse_folder
     ]
     if test_folders:
         return test_folders

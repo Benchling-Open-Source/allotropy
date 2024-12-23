@@ -65,7 +65,9 @@ def create_metadata(
         unc_path=named_file_contents.original_file_path,
         software_version=intermediate_structured_data["Metadata"]["Instrument"][
             "AcquisitionApplication"
-        ]["AgilentApp"].get("Version"),
+        ]
+        .get("AgilentApp", {})
+        .get("Version"),
         product_manufacturer=constants.PRODUCT_MANUFACTURER,
         brand_name=(
             intermediate_structured_data["Metadata"]["Instrument"]["Name"]
@@ -183,7 +185,9 @@ def create_measurements(
             sample_role_type=constants.SAMPLE_ROLE_TYPE.get(
                 intermediate_structured_data["Result Data"][i]["Sample Data"][
                     "SampleSetup"
-                ]["DAParam"].get("Type")
+                ]
+                .get("DAParam", {})
+                .get("Type")
             ),
             sample_custom_info={
                 "location identifier": intermediate_structured_data["Result Data"][i][
@@ -196,7 +200,8 @@ def create_measurements(
                     "value": try_float_or_none(
                         intermediate_structured_data["Result Data"][i]["Sample Data"][
                             "SampleSetup"
-                        ]["DAParam"]
+                        ]
+                        .get("DAParam", {})
                         .get("SampleAmount", {})
                         .get("@val")
                     ),
@@ -204,7 +209,12 @@ def create_measurements(
                         "Sample Data"
                     ]["SampleSetup"]["DAParam"]["SampleAmount"]["@unit"]
                     or "(unitless)",
-                },
+                }
+                if "SampleAmount"
+                in intermediate_structured_data["Result Data"][i]["Sample Data"][
+                    "SampleSetup"
+                ]["DAParam"]
+                else None,
                 "barcode": intermediate_structured_data["Result Data"][i][
                     "Sample Data"
                 ].get("Barcode"),
@@ -260,23 +270,17 @@ def create_measurements(
             column_inner_diameter=try_float_or_none(
                 intermediate_structured_data["Metadata"]["SeparationMedium"][0]["Type"][
                     "Column"
-                ]["Diameter"]["@val"]
-            )
-            if "Diameter"
-            in intermediate_structured_data["Metadata"]["SeparationMedium"][0]["Type"][
-                "Column"
-            ]
-            else None,
+                ]
+                .get("Diameter", {})
+                .get("@val")
+            ),
             chromatography_particle_size=try_float_or_none(
                 intermediate_structured_data["Metadata"]["SeparationMedium"][0]["Type"][
                     "Column"
-                ]["ParticleSize"]["@val"]
-            )
-            if "ParticleSize"
-            in intermediate_structured_data["Metadata"]["SeparationMedium"][0]["Type"][
-                "Column"
-            ]
-            else None,
+                ]
+                .get("ParticleSize", {})
+                .get("@val")
+            ),
             chromatography_length=float(
                 intermediate_structured_data["Metadata"]["SeparationMedium"][0]["Type"][
                     "Column"

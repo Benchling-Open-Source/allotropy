@@ -59,9 +59,16 @@ def decode_data_cubes(datacube_path: str) -> dict[str, Any]:
 def extract_rx_file(
     temporary_input_path: str,
     zip_file_path: str,
-    injection_metadata_data: list[dict[str, Any]],
+    injection_signal: list[dict[str, Any]],
 ) -> list[dict[str, Any]]:
-    peak_details = []
+    """
+    Extracts the peak and its associated metadata from the rx file for each injection.
+    :param temporary_input_path: rx file to be extracted
+    :param zip_file_path: temporary unzip path
+    :param injection_signal: each injection signal data
+    :return: peak details along with its metadata
+    """
+    peak_details: list[dict[str, Any]] = []
     with tempfile.TemporaryDirectory(dir=temporary_input_path) as temporary_directory:
         with zipfile.ZipFile(zip_file_path, "r") as zip_ref:
             zip_ref.extractall(temporary_directory)
@@ -129,22 +136,22 @@ def extract_rx_file(
                                 if peak_id in peak_metadata_dict:
                                     peak["Peak Metadata"] = peak_metadata_dict[peak_id]
 
-    return merge_peak_with_signal_name(peak_details, injection_metadata_data)
+    return merge_peak_with_signal_name(peak_details, injection_signal)
 
 
 def extract_dx_file(
     temporary_input_path: str, zip_file_path: str, injection_metadata_data: Any
 ) -> Any:
     """
-    temporarily unzips the files and decodes the data and structures it
-    :param temporary_input_path: path for temporary unzip the file
-    :param zip_file_path: compressed file path
+    temporarily unzips the dx file and decodes the data and structures it
+    :param temporary_input_path: temporary path to unzip file
+    :param zip_file_path: compressed dx zip path
     :param injection_metadata_data: metadata of injection
-    :return: decoded file data
+    :return: chromatogram data, pump pressure data and its metadata for each injection
     """
 
-    sample_data = {}
-    chromatogram_data = []
+    sample_data: dict[str, Any] = {}
+    chromatogram_data: list[dict[str, Any]] = []
     with tempfile.TemporaryDirectory(dir=temporary_input_path) as temporary_directory:
         with zipfile.ZipFile(zip_file_path, "r") as zip_ref:
             zip_ref.extractall(temporary_directory)
@@ -195,8 +202,6 @@ def extract_dx_file(
                     for file in files:
                         file_path = os.path.join(str(root), file)
                         if file.endswith(".CH"):
-                            chromatogram = {}
-                            chromatogram.update(decode_data_cubes(file_path))
                             chromatogram_data.append(decode_data_cubes(file_path))
                         elif injection_metadata_data["pump_pressure_filename"] in file:
                             chromatogram_data.append(decode_data_cubes(file_path))
@@ -208,6 +213,12 @@ def extract_dx_file(
 
 
 def extract_sqx_file(temporary_input_path: str, zip_file_path: str) -> dict[str, Any]:
+    """
+    unzips the sqx file and retrieves analysis method path
+    :param temporary_input_path: temporary unzip file path
+    :param zip_file_path: sqx file path
+    :return: structured analysis method data
+    """
     with tempfile.TemporaryDirectory(dir=temporary_input_path) as temporary_directory:
         with zipfile.ZipFile(zip_file_path, "r") as zip_ref:
             zip_ref.extractall(temporary_directory)
@@ -230,9 +241,9 @@ def decode_acaml_data(
     :param acaml_content: decoded acaml data
     :return: structured acaml content
     """
-    metadata_data = {}
-    instrument_data = {}
-    pump_pressure_file = {}
+    metadata_data: dict[str, Any] = {}
+    instrument_data: dict[str, Any] = {}
+    pump_pressure_file: dict[str, Any] = {}
     signal_details: dict[str, Any] = {"Signal details": []}
 
     content_data = acaml_content["ACAML"]["Doc"]["Content"]
@@ -280,11 +291,11 @@ def decode_data(input_path: str) -> dict[str, Any]:
     """
     os.listdir(input_path)
     intermediate_json: dict[str, Any] = {}
-    injection_data = {}
+    injection_data: dict[str, Any] = {}
     total_injection_chromatogram_details: list[dict[str, Any]] = []
-    total_peak_details = []
+    total_peak_details: list[dict[str, Any]] = []
 
-    acaml_path = next(iter(Path(input_path).rglob("*acaml")))
+    acaml_path = next(iter(Path(input_path).glob("*acaml")))
     with open(acaml_path, encoding="utf-8-sig") as acaml_file_data:
         acaml_file_content = acaml_file_data.read()
         decoded_acaml_content = xmltodict.parse(acaml_file_content)
@@ -301,12 +312,12 @@ def decode_data(input_path: str) -> dict[str, Any]:
     intermediate_metadata.pop("SampleMeasurement")
     intermediate_json["Metadata"] = intermediate_metadata
 
-    sequence_file_path = next(iter(Path(input_path).rglob("*.sqx")))
+    sequence_file_path = next(iter(Path(input_path).glob("*.sqx")))
     sequence_data = extract_sqx_file(
         str(os.path.dirname(input_path)), str(sequence_file_path)
     )
     injection_data["sequence_data"] = sequence_data
-    dx_files = list(Path(input_path).rglob("*.dx"))
+    dx_files = list(Path(input_path).glob("*.dx"))
     for dx_file in dx_files:
         injection_file_name = str(os.path.basename(dx_file))
         for key, values in injection_data["total_pressure_files"].items():
@@ -317,7 +328,7 @@ def decode_data(input_path: str) -> dict[str, Any]:
                 str(os.path.dirname(input_path)), str(dx_file), injection_data
             )
         )
-    rx_files = list(Path(input_path).rglob("*.rx"))
+    rx_files = list(Path(input_path).glob("*.rx"))
     for rx_file in rx_files:
         processed_peak_data: dict[Any, Any] = {}
         peak_details = extract_rx_file(
