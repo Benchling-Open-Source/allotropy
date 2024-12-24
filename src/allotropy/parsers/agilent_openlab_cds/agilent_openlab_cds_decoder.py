@@ -180,9 +180,10 @@ def extract_dx_file(
             for root, _dirs, files in os.walk(temporary_directory):
                 for file in files:
                     file_path = os.path.join(str(root), file)
-                    if file.endswith(".CH"):
-                        chromatogram_data.append(decode_data_cubes(file_path))
-                    elif injection_metadata_data["pump_pressure_filename"] in file:
+                    if (
+                        file.endswith(".CH")
+                        or injection_metadata_data["pump_pressure_filename"] in file
+                    ):
                         chromatogram_data.append(decode_data_cubes(file_path))
 
         for each_chromatogram in chromatogram_data:
