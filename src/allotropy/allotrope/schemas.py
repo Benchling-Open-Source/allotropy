@@ -11,12 +11,17 @@ from allotropy.constants import DEFAULT_ENCODING
 
 
 def get_shared_definitions() -> dict[str, Any]:
-    with open(Path(SHARED_SCHEMAS_DEFINITIONS_PATH, "definitions.json")) as f:
+    with open(
+        Path(SHARED_SCHEMAS_DEFINITIONS_PATH, "definitions.json"),
+        encoding=DEFAULT_ENCODING,
+    ) as f:
         return json.load(f)  # type: ignore[no-any-return]
 
 
 def get_shared_unit_definitions() -> dict[str, Any]:
-    with open(Path(SHARED_SCHEMAS_DEFINITIONS_PATH, "units.json")) as f:
+    with open(
+        Path(SHARED_SCHEMAS_DEFINITIONS_PATH, "units.json"), encoding=DEFAULT_ENCODING
+    ) as f:
         return json.load(f)  # type: ignore[no-any-return]
 
 
@@ -38,7 +43,7 @@ def add_definitions(schema: dict[str, Any]) -> dict[str, Any]:
 
 
 def get_schema(schema_path: Path) -> dict[str, Any]:
-    with open(get_full_schema_path(schema_path)) as f:
+    with open(get_full_schema_path(schema_path), encoding=DEFAULT_ENCODING) as f:
         return add_definitions(json.load(f))
 
 
