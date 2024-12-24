@@ -141,7 +141,7 @@ def extract_rx_file(
 
 def extract_dx_file(
     temporary_input_path: str, zip_file_path: str, injection_metadata_data: Any
-) -> Any:
+) -> list[dict[str, Any]]:
     """
     temporarily unzips the dx file and decodes the data and structures it
     :param temporary_input_path: temporary path to unzip file

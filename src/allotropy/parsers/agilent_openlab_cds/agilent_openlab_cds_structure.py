@@ -63,6 +63,7 @@ def create_metadata(
         .get("AgilentApp", {})
         .get("Name"),
         file_name=os.path.basename(named_file_contents.original_file_path),
+        data_system_instance_identifier=NOT_APPLICABLE,
         unc_path=named_file_contents.original_file_path,
         software_version=intermediate_structured_data["Metadata"]["Instrument"][
             "AcquisitionApplication"
@@ -80,7 +81,7 @@ def create_metadata(
         ),
         device_document=[
             DeviceDocument(
-                device_type=module.get("Type"),
+                device_type=assert_not_none(module.get("Type")),
                 device_identifier=module.get("@id"),
                 product_manufacturer=module.get("Manufacturer"),
                 model_number=module.get("PartNo"),
@@ -110,9 +111,7 @@ def create_peak(peak_structure: list[dict[str, Any]]) -> list[Peak]:
             else None,
             start_unit="s",
             end_unit="s",
-            area=float(peak["Area"]["@val"]) / 60
-            if "Area" in peak and peak["Area"].get("@val")
-            else None,
+            area=try_float_or_none(peak["Area"]["@val"]),
             area_unit="RFU.s"
             if "LU" in peak["Area"]["@unit"]
             else "mAU.s"
@@ -234,7 +233,7 @@ def create_measurements(
                     ]["InjectionMeasData_ID"],
                     dict,
                 )
-                else assert_not_none(
+                else (
                     intermediate_structured_data["Result Data"][i]["Sample Data"][
                         "SampleMeasurement"
                     ]["InjectionMeasData_ID"][
@@ -375,7 +374,7 @@ def create_measurements(
             in intermediate_structured_data["Result Data"][i]["Metadata"]["signal"]
             else [
                 DeviceControlDoc(
-                    device_type=module.get("Name"),
+                    device_type=assert_not_none(module.get("Name")),
                     detection_type="Fluorescence"
                     if module.get("Name") == "FLD"
                     else "Absorbance",

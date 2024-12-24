@@ -55,11 +55,11 @@ from allotropy.parsers.utils.values import quantity_or_none, quantity_or_none_fr
 @dataclass(frozen=True)
 class DeviceDocument:
     device_type: str
-    device_identifier: str
-    product_manufacturer: str
-    model_number: str
-    equipment_serial_number: str
-    firmware_version: str
+    device_identifier: str | None = None
+    product_manufacturer: str | None = None
+    model_number: str | None = None
+    equipment_serial_number: str | None = None
+    firmware_version: str | None = None
     device_custom_info: dict[str, Any] | None = None
 
 
@@ -71,6 +71,7 @@ class Metadata:
     model_number: str | None = None
     software_name: str | None = None
     file_name: str | None = None
+    data_system_instance_identifier: str | None = None
     unc_path: str | None = None
     equipment_serial_number: str | None = None
     software_version: str | None = None
@@ -218,6 +219,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 ),
                 data_system_document=DataSystemDocument(
                     file_name=data.metadata.file_name,
+                    data_system_instance_identifier=data.metadata.data_system_instance_identifier,
                     UNC_path=data.metadata.unc_path,
                     software_name=data.metadata.software_name,
                     software_version=data.metadata.software_version,
