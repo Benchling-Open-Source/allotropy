@@ -27,11 +27,10 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     Well,
     WellItem,
 )
-from allotropy.parsers.constants import NEGATIVE_ZERO, get_well_count_by_well_ids
+from allotropy.parsers.constants import get_well_count_by_well_ids, NEGATIVE_ZERO
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
 )
-from allotropy.parsers.utils.values import try_int_or_nan
 
 
 def _create_processed_data_cubes(
@@ -291,10 +290,10 @@ def _create_measurement_group(
     group = MeasurementGroup(
         analyst=header.analyst,
         experimental_data_identifier=header.experimental_data_identifier,
-        plate_well_count=try_int_or_nan(plate_well_count),
+        plate_well_count=plate_well_count,
         well_volume=header.well_volume,
         error_document=(
-            [Error(error=NaN, feature="well volume")]
+            [Error(error=NaN.value, feature="well volume")]
             if header.well_volume == NEGATIVE_ZERO
             else []
         ),

@@ -56,7 +56,7 @@ def test_header_builder() -> None:
     assert Header.create(reader.header) == Header(
         measurement_time="2010-10-01 01:44:54 AM EDT",
         plate_well_count=96,
-        experiment_type=ExperimentType.genotyping_qPCR_experiment,
+        experiment_type=ExperimentType.genotyping_qpcr_experiment,
         device_identifier=device_identifier,
         model_number=model_number,
         device_serial_number=device_serial_number,
@@ -120,7 +120,7 @@ def test_results_builder() -> None:
             "Allele1 Ct": ["Undetermined"],
         }
     )
-    result = Result.create_results(data, ExperimentType.genotyping_qPCR_experiment)[1][
+    result = Result.create_results(data, ExperimentType.genotyping_qpcr_experiment)[1][
         "CYP19_2-Allele1"
     ]
     assert isinstance(result, Result)
@@ -142,9 +142,8 @@ def get_reader(
     passive_reference_dye_setting: str | None = "ROX",
     barcode: str | None = "NA",
     analyst: str | None = "NA",
-    experimental_data_identifier: None | (
-        str
-    ) = "QuantStudio 96-Well Presence-Absence Example",
+    experimental_data_identifier: None
+    | (str) = "QuantStudio 96-Well Presence-Absence Example",
 ) -> AppBioQuantStudioReader:
     if raw_text is None:
         header_dict = {

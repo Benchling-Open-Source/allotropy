@@ -7,13 +7,13 @@ from allotropy.allotrope.schema_mappers.adm.pcr.rec._2024._09.qpcr import (
 
 
 class ExperimentType(str, Enum):
-    genotyping_qPCR_experiment = "genotyping qPCR experiment"
-    relative_standard_curve_qPCR_experiment = "relative standard curve qPCR experiment"
-    melt_curve_qPCR_experiment = "melt curve qPCR experiment"
-    comparative_CT_qPCR_experiment = "comparative CT qPCR experiment"
-    standard_curve_qPCR_experiment = "standard curve qPCR experiment"
-    qPCR_experiment = "qPCR experiment"
-    presence_absence_qPCR_experiment = "presence/absence qPCR experiment"
+    genotyping_qpcr_experiment = "genotyping qPCR experiment"
+    relative_standard_curve_qpcr_experiment = "relative standard curve qPCR experiment"
+    melt_curve_qpcr_experiment = "melt curve qPCR experiment"
+    comparative_ct_qpcr_experiment = "comparative CT qPCR experiment"
+    standard_curve_qpcr_experiment = "standard curve qPCR experiment"
+    qpcr_experiment = "qPCR experiment"
+    presence_absence_qpcr_experiment = "presence/absence qPCR experiment"
     primary_analysis_experiment = "primary analysis experiment"
 
 
