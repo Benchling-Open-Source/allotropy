@@ -1,4 +1,3 @@
-from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_data_creator import (
     _get_plate_well_count,
 )
@@ -7,6 +6,7 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     Well,
     WellItem,
 )
+from allotropy.parsers.appbio_quantstudio.constants import ExperimentType
 
 
 def test__get_plate_well_count_from_header() -> None:
@@ -23,6 +23,7 @@ def test__get_plate_well_count_from_header() -> None:
         barcode=None,
         analyst=None,
         experimental_data_identifier=None,
+        well_volume=0,
     )
 
     # If set in header, use that
@@ -43,6 +44,7 @@ def test__get_plate_well_count_from_wells() -> None:
         barcode=None,
         analyst=None,
         experimental_data_identifier=None,
+        well_volume=0,
     )
 
     # With max(identifier) == 1, max(position) == A1, well_plate_count == 1

@@ -6,7 +6,6 @@ from pathlib import Path
 import pandas as pd
 import pytest
 
-from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_reader import (
@@ -16,6 +15,7 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     Header,
     Result,
 )
+from allotropy.parsers.appbio_quantstudio.constants import ExperimentType
 from allotropy.parsers.lines_reader import read_to_lines
 from allotropy.types import IOType
 
@@ -66,6 +66,7 @@ def test_header_builder() -> None:
         barcode=None,
         analyst=None,
         experimental_data_identifier=experimental_data_identifier,
+        well_volume=0,
     )
 
 
@@ -141,8 +142,9 @@ def get_reader(
     passive_reference_dye_setting: str | None = "ROX",
     barcode: str | None = "NA",
     analyst: str | None = "NA",
-    experimental_data_identifier: None
-    | (str) = "QuantStudio 96-Well Presence-Absence Example",
+    experimental_data_identifier: None | (
+        str
+    ) = "QuantStudio 96-Well Presence-Absence Example",
 ) -> AppBioQuantStudioReader:
     if raw_text is None:
         header_dict = {

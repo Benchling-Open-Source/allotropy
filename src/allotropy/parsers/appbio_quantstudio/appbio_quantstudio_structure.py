@@ -7,12 +7,15 @@ from typing import Any, TypeVar
 
 import pandas as pd
 
-from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_reader import (
     AppBioQuantStudioReader,
 )
-from allotropy.parsers.constants import NOT_APPLICABLE
+from allotropy.parsers.appbio_quantstudio.constants import (
+    ExperimentType,
+    SAMPLE_ROLE_TYPES_MAP,
+)
+from allotropy.parsers.constants import NEGATIVE_ZERO, NOT_APPLICABLE
 from allotropy.parsers.utils.calculated_data_documents.definition import Referenceable
 from allotropy.parsers.utils.pandas import df_to_series_data, map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
@@ -26,6 +29,20 @@ def map_wells(map_func: Callable[..., T], data: pd.DataFrame) -> dict[int, T]:
         try_int(str(well_id), "well id"): map_func(well_data)
         for well_id, well_data in data.groupby("Well")
     }
+
+
+def get_well_volume(block_type: str) -> float:
+    # if the block type includes the well volume in mL, convert to microliters
+    if well_search := re.search(r"([0-9]+\.[0-9]+)-?mL", block_type):
+        return float(well_search.groups()[0]) * 1000
+    elif "384-Well Block" in block_type:
+        return 40
+    elif "Taqman Array Card" in block_type:
+        return 1.5
+    # Since well volume is required, if it cannot be implied from block type
+    # a negative zero will be returned, indicating an error.
+    # TODO(slopez): Should we raise instead?
+    return NEGATIVE_ZERO
 
 
 @dataclass(frozen=True)
@@ -42,6 +59,7 @@ class Header:
     barcode: str | None
     analyst: str | None
     experimental_data_identifier: str | None
+    well_volume: float
 
     @staticmethod
     def create(data: SeriesData) -> Header:
@@ -81,6 +99,7 @@ class Header:
             barcode=data.get(str, "Experiment Barcode"),
             analyst=data.get(str, "Experiment User Name"),
             experimental_data_identifier=data.get(str, "Experiment Name"),
+            well_volume=get_well_volume(block_type) if block_type else NEGATIVE_ZERO,
         )
 
 
@@ -91,6 +110,7 @@ class WellItem(Referenceable):
     sample_identifier: str
     reporter_dye_setting: str | None = None
     position: str | None = None
+    location_identifier: str | None = None
     well_location_identifier: str | None = None
     quencher_dye_setting: str | None = None
     sample_role_type: str | None = None
@@ -130,10 +150,11 @@ class WellItem(Referenceable):
                 sample_identifier=data.get(str, "Sample Name", NOT_APPLICABLE),
                 reporter_dye_setting=data.get(str, "Allele1 Reporter"),
                 position=data.get(str, "Well Position", NOT_APPLICABLE),
+                location_identifier=data[str, "Well"],
                 well_location_identifier=data.get(str, "Well Position"),
                 quencher_dye_setting=data.get(str, "Quencher"),
                 group_identifier=data.get(str, "Biogroup Name"),
-                sample_role_type=data.get(str, "Task"),
+                sample_role_type=SAMPLE_ROLE_TYPES_MAP.get(data.get(str, "Task")),
                 extra_data={
                     "well identifier": identifier,
                     "sample color": data.get(str, "Sample Color"),
@@ -148,10 +169,11 @@ class WellItem(Referenceable):
                 sample_identifier=data.get(str, "Sample Name", NOT_APPLICABLE),
                 reporter_dye_setting=data.get(str, "Allele2 Reporter"),
                 position=data.get(str, "Well Position", NOT_APPLICABLE),
+                location_identifier=data[str, "Well"],
                 well_location_identifier=data.get(str, "Well Position"),
                 quencher_dye_setting=data.get(str, "Quencher"),
                 group_identifier=data.get(str, "Biogroup Name"),
-                sample_role_type=data.get(str, "Task"),
+                sample_role_type=SAMPLE_ROLE_TYPES_MAP.get(data.get(str, "Task")),
                 extra_data={
                     "well identifier": identifier,
                     "sample color": data.get(str, "Sample Color"),
@@ -175,10 +197,11 @@ class WellItem(Referenceable):
             sample_identifier=data.get(str, "Sample Name", NOT_APPLICABLE),
             reporter_dye_setting=data.get(str, "Reporter"),
             position=data.get(str, "Well Position", NOT_APPLICABLE),
+            location_identifier=data[str, "Well"],
             well_location_identifier=data.get(str, "Well Position"),
             quencher_dye_setting=data.get(str, "Quencher"),
             group_identifier=data.get(str, "Biogroup Name"),
-            sample_role_type=data.get(str, "Task"),
+            sample_role_type=SAMPLE_ROLE_TYPES_MAP.get(data.get(str, "Task")),
             extra_data={
                 "well identifier": identifier,
                 "sample color": data.get(str, "Sample Color"),

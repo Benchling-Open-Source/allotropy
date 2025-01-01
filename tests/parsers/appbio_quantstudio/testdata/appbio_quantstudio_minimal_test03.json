@@ -1,32 +1,11 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest",
-    "qPCR aggregate document": {
-        "device system document": {
-            "device identifier": "Sponge_Bob_32",
-            "model number": "QuantStudio(TM) 7 Flex System",
-            "device serial number": "123456789"
-        },
-        "qPCR document": [
+    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/REC/2024/09/qpcr.manifest",
+    "qpcr aggregate document": {
+        "qpcr document": [
             {
                 "measurement aggregate document": {
-                    "plate well count": {
-                        "value": 96,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
-                            "measurement time": "2010-09-16T07:35:29-04:00",
-                            "target DNA description": "CYP19_2-Allele 1",
-                            "sample document": {
-                                "sample identifier": "NTC",
-                                "sample role type": "NTC",
-                                "well location identifier": "A1",
-                                "custom information document": {
-                                    "well identifier": 1,
-                                    "sample color": "RGB(238,238,0)"
-                                }
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -34,23 +13,35 @@
                                         "measurement method identifier": "Ct",
                                         "total cycle number setting": {
                                             "value": 2.0,
-                                            "unit": "#"
+                                            "unit": "(unitless)"
                                         },
-                                        "PCR detection chemistry": "TAQMAN",
+                                        "qPCR detection chemistry": "TAQMAN",
                                         "reporter dye setting": "VIC",
                                         "passive reference dye setting": "ROX"
                                     }
                                 ]
                             },
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
+                            "measurement time": "2010-09-16T07:35:29-04:00",
+                            "sample document": {
+                                "sample identifier": "NTC",
+                                "location identifier": "1",
+                                "sample role type": "control sample role",
+                                "well location identifier": "A1",
+                                "custom information document": {
+                                    "well identifier": 1,
+                                    "sample color": "RGB(238,238,0)"
+                                }
+                            },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
                                         "data processing document": {
-                                            "cycle threshold value setting": {
+                                            "automatic cycle threshold enabled setting": true,
+                                            "cycle threshold value setting  qPCR ": {
                                                 "value": 0.219,
                                                 "unit": "(unitless)"
                                             },
-                                            "automatic cycle threshold enabled setting": true,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
                                                 "value": 3,
@@ -61,16 +52,12 @@
                                                 "unit": "#"
                                             }
                                         },
-                                        "cycle threshold result": {
-                                            "value": null,
-                                            "unit": "(unitless)"
-                                        },
                                         "normalized reporter data cube": {
                                             "label": "normalized reporter",
                                             "cube-structure": {
                                                 "dimensions": [
                                                     {
-                                                        "@componentDatatype": "integer",
+                                                        "@componentDatatype": "double",
                                                         "concept": "cycle count",
                                                         "unit": "#"
                                                     }
@@ -78,7 +65,7 @@
                                                 "measures": [
                                                     {
                                                         "@componentDatatype": "double",
-                                                        "concept": "normalized report result",
+                                                        "concept": "normalized reporter result",
                                                         "unit": "(unitless)"
                                                     }
                                                 ]
@@ -86,8 +73,8 @@
                                             "data": {
                                                 "dimensions": [
                                                     [
-                                                        1,
-                                                        2
+                                                        1.0,
+                                                        2.0
                                                     ]
                                                 ],
                                                 "measures": [
@@ -107,7 +94,7 @@
                                             "cube-structure": {
                                                 "dimensions": [
                                                     {
-                                                        "@componentDatatype": "integer",
+                                                        "@componentDatatype": "double",
                                                         "concept": "cycle count",
                                                         "unit": "#"
                                                     }
@@ -123,8 +110,8 @@
                                             "data": {
                                                 "dimensions": [
                                                     [
-                                                        1,
-                                                        2
+                                                        1.0,
+                                                        2.0
                                                     ]
                                                 ],
                                                 "measures": [
@@ -135,27 +122,16 @@
                                                 ]
                                             }
                                         },
-                                        "genotyping determination result": "Negative Control (NC)",
+                                        "genotyping qPCR result": "Negative Control (NC)",
                                         "custom information document": {
                                             "omit": false
                                         }
                                     }
                                 ]
-                            }
+                            },
+                            "target DNA description": "CYP19_2-Allele 1"
                         },
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
-                            "measurement time": "2010-09-16T07:35:29-04:00",
-                            "target DNA description": "CYP19_2-Allele 2",
-                            "sample document": {
-                                "sample identifier": "NTC",
-                                "sample role type": "NTC",
-                                "well location identifier": "A1",
-                                "custom information document": {
-                                    "well identifier": 1,
-                                    "sample color": "RGB(238,238,0)"
-                                }
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -163,23 +139,35 @@
                                         "measurement method identifier": "Ct",
                                         "total cycle number setting": {
                                             "value": 2.0,
-                                            "unit": "#"
+                                            "unit": "(unitless)"
                                         },
-                                        "PCR detection chemistry": "TAQMAN",
+                                        "qPCR detection chemistry": "TAQMAN",
                                         "reporter dye setting": "FAM",
                                         "passive reference dye setting": "ROX"
                                     }
                                 ]
                             },
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
+                            "measurement time": "2010-09-16T07:35:29-04:00",
+                            "sample document": {
+                                "sample identifier": "NTC",
+                                "location identifier": "1",
+                                "sample role type": "control sample role",
+                                "well location identifier": "A1",
+                                "custom information document": {
+                                    "well identifier": 1,
+                                    "sample color": "RGB(238,238,0)"
+                                }
+                            },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
                                         "data processing document": {
-                                            "cycle threshold value setting": {
+                                            "automatic cycle threshold enabled setting": true,
+                                            "cycle threshold value setting  qPCR ": {
                                                 "value": 0.132,
                                                 "unit": "(unitless)"
                                             },
-                                            "automatic cycle threshold enabled setting": true,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
                                                 "value": 3,
@@ -190,16 +178,12 @@
                                                 "unit": "#"
                                             }
                                         },
-                                        "cycle threshold result": {
-                                            "value": null,
-                                            "unit": "(unitless)"
-                                        },
                                         "normalized reporter data cube": {
                                             "label": "normalized reporter",
                                             "cube-structure": {
                                                 "dimensions": [
                                                     {
-                                                        "@componentDatatype": "integer",
+                                                        "@componentDatatype": "double",
                                                         "concept": "cycle count",
                                                         "unit": "#"
                                                     }
@@ -207,7 +191,7 @@
                                                 "measures": [
                                                     {
                                                         "@componentDatatype": "double",
-                                                        "concept": "normalized report result",
+                                                        "concept": "normalized reporter result",
                                                         "unit": "(unitless)"
                                                     }
                                                 ]
@@ -215,8 +199,8 @@
                                             "data": {
                                                 "dimensions": [
                                                     [
-                                                        1,
-                                                        2
+                                                        1.0,
+                                                        2.0
                                                     ]
                                                 ],
                                                 "measures": [
@@ -236,7 +220,7 @@
                                             "cube-structure": {
                                                 "dimensions": [
                                                     {
-                                                        "@componentDatatype": "integer",
+                                                        "@componentDatatype": "double",
                                                         "concept": "cycle count",
                                                         "unit": "#"
                                                     }
@@ -252,8 +236,8 @@
                                             "data": {
                                                 "dimensions": [
                                                     [
-                                                        1,
-                                                        2
+                                                        1.0,
+                                                        2.0
                                                     ]
                                                 ],
                                                 "measures": [
@@ -264,29 +248,44 @@
                                                 ]
                                             }
                                         },
-                                        "genotyping determination result": "Negative Control (NC)",
+                                        "genotyping qPCR result": "Negative Control (NC)",
                                         "custom information document": {
                                             "omit": false
                                         }
                                     }
                                 ]
-                            }
+                            },
+                            "target DNA description": "CYP19_2-Allele 2"
                         }
                     ],
                     "experimental data identifier": "QuantStudio 96-Well SNP Genotyping Example",
                     "experiment type": "genotyping qPCR experiment",
-                    "container type": "qPCR reaction block"
+                    "container type": "PCR reaction block",
+                    "well volume": {
+                        "value": 200.0,
+                        "unit": "μL"
+                    },
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    }
                 }
             }
         ],
         "data system document": {
+            "ASM file identifier": "appbio_quantstudio_minimal_test03.json",
             "data system instance identifier": "localhost",
             "file name": "appbio_quantstudio_minimal_test03.txt",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_minimal_test03.txt",
-            "software name": "Thermo QuantStudio",
-            "software version": "1.0",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.61"
+            "ASM converter version": "0.1.68",
+            "software name": "Thermo QuantStudio",
+            "software version": "1.0"
+        },
+        "device system document": {
+            "device identifier": "Sponge_Bob_32",
+            "equipment serial number": "123456789",
+            "model number": "QuantStudio(TM) 7 Flex System"
         }
     }
 }
