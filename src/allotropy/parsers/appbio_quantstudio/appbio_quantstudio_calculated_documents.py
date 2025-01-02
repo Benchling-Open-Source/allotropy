@@ -1,7 +1,6 @@
 from collections.abc import Iterator
 from functools import cache
 
-from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     WellItem,
 )
@@ -10,6 +9,7 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_views import (
     TargetRoleView,
     TargetView,
 )
+from allotropy.parsers.appbio_quantstudio.constants import ExperimentType
 from allotropy.parsers.appbio_quantstudio.views import ViewData
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
@@ -722,24 +722,24 @@ def iter_calculated_data_documents(
     view_tr = TargetRoleView()
     view_tr_data = view_tr.apply(well_items)
 
-    if experiment_type == ExperimentType.relative_standard_curve_qPCR_experiment:
+    if experiment_type == ExperimentType.relative_standard_curve_qpcr_experiment:
         yield from iter_relative_standard_curve_calc_docs(
             view_st_data,
             view_tr_data,
         )
-    elif experiment_type == ExperimentType.comparative_CT_qPCR_experiment:
+    elif experiment_type == ExperimentType.comparative_ct_qpcr_experiment:
         yield from iter_comparative_ct_calc_docs(
             view_st_data,
             view_tr_data,
             assert_not_none(r_sample),
             assert_not_none(r_target),
         )
-    elif experiment_type == ExperimentType.standard_curve_qPCR_experiment:
+    elif experiment_type == ExperimentType.standard_curve_qpcr_experiment:
         yield from iter_standard_curve_calc_docs(
             view_st_data,
             view_tr_data,
         )
-    elif experiment_type == ExperimentType.presence_absence_qPCR_experiment:
+    elif experiment_type == ExperimentType.presence_absence_qpcr_experiment:
         yield from iter_presence_absence_calc_docs(
             view_st_data,
         )
