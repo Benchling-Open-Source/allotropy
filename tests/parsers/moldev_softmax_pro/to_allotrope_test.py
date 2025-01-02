@@ -64,6 +64,6 @@ def test_invalid_measurement_table_dimensions() -> None:
 def test_unrecognized_read_type(test_file: str) -> None:
     with pytest.raises(
         AllotropeConversionError,
-        match="Only Endpoint or Kinetic measurements can be processed at this time.",
+        match="Spectrum read type is not currently supported for luminescence plates.",
     ):
         from_file(test_file, VENDOR_TYPE)
