@@ -40,7 +40,7 @@
                                     {
                                         "data processing document": {
                                             "automatic cycle threshold enabled setting": true,
-                                            "cycle threshold value setting  qPCR ": {
+                                            "cycle threshold value setting (qPCR)": {
                                                 "value": 0.074,
                                                 "unit": "(unitless)"
                                             },
@@ -54,7 +54,7 @@
                                                 "unit": "#"
                                             }
                                         },
-                                        "cycle threshold result  qPCR ": {
+                                        "cycle threshold result (qPCR)": {
                                             "value": 27.102,
                                             "unit": "(unitless)"
                                         },
@@ -163,7 +163,7 @@
                                     {
                                         "data processing document": {
                                             "automatic cycle threshold enabled setting": true,
-                                            "cycle threshold value setting  qPCR ": {
+                                            "cycle threshold value setting (qPCR)": {
                                                 "value": 0.074,
                                                 "unit": "(unitless)"
                                             },
@@ -177,7 +177,7 @@
                                                 "unit": "#"
                                             }
                                         },
-                                        "cycle threshold result  qPCR ": {
+                                        "cycle threshold result (qPCR)": {
                                             "value": 27.102,
                                             "unit": "(unitless)"
                                         },
@@ -303,7 +303,7 @@
                                     {
                                         "data processing document": {
                                             "automatic cycle threshold enabled setting": true,
-                                            "cycle threshold value setting  qPCR ": {
+                                            "cycle threshold value setting (qPCR)": {
                                                 "value": 0.074,
                                                 "unit": "(unitless)"
                                             },
@@ -317,7 +317,7 @@
                                                 "unit": "#"
                                             }
                                         },
-                                        "cycle threshold result  qPCR ": {
+                                        "cycle threshold result (qPCR)": {
                                             "value": 27.132,
                                             "unit": "(unitless)"
                                         },
@@ -426,7 +426,7 @@
                                     {
                                         "data processing document": {
                                             "automatic cycle threshold enabled setting": true,
-                                            "cycle threshold value setting  qPCR ": {
+                                            "cycle threshold value setting (qPCR)": {
                                                 "value": 0.074,
                                                 "unit": "(unitless)"
                                             },
@@ -440,7 +440,7 @@
                                                 "unit": "#"
                                             }
                                         },
-                                        "cycle threshold result  qPCR ": {
+                                        "cycle threshold result (qPCR)": {
                                             "value": 27.132,
                                             "unit": "(unitless)"
                                         },
@@ -1083,7 +1083,7 @@
             "file name": "appbio_quantstudio_multiple_cal_doc_wells.txt",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_multiple_cal_doc_wells.txt",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.68",
+            "ASM converter version": "0.1.69",
             "software name": "Thermo QuantStudio",
             "software version": "1.0"
         },

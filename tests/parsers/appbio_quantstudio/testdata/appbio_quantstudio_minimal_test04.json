@@ -40,7 +40,7 @@
                                     {
                                         "data processing document": {
                                             "automatic cycle threshold enabled setting": true,
-                                            "cycle threshold value setting  qPCR ": {
+                                            "cycle threshold value setting (qPCR)": {
                                                 "value": 0.133,
                                                 "unit": "(unitless)"
                                             },
@@ -54,7 +54,7 @@
                                                 "unit": "#"
                                             }
                                         },
-                                        "cycle threshold result  qPCR ": {
+                                        "cycle threshold result (qPCR)": {
                                             "value": 30.155,
                                             "unit": "(unitless)"
                                         },
@@ -180,7 +180,7 @@
                                     {
                                         "data processing document": {
                                             "automatic cycle threshold enabled setting": true,
-                                            "cycle threshold value setting  qPCR ": {
+                                            "cycle threshold value setting (qPCR)": {
                                                 "value": 0.133,
                                                 "unit": "(unitless)"
                                             },
@@ -194,7 +194,7 @@
                                                 "unit": "#"
                                             }
                                         },
-                                        "cycle threshold result  qPCR ": {
+                                        "cycle threshold result (qPCR)": {
                                             "value": 30.2,
                                             "unit": "(unitless)"
                                         },
@@ -613,7 +613,7 @@
             "file name": "appbio_quantstudio_minimal_test04.txt",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_minimal_test04.txt",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.68",
+            "ASM converter version": "0.1.69",
             "software name": "Thermo QuantStudio",
             "software version": "1.0"
         },
