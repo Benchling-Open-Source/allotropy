@@ -128,7 +128,7 @@ class DeviceControlAggregateDocument:
 
 @dataclass(kw_only=True)
 class DataProcessingDocument:
-    flourescence_intensity_threshold_setting: TQuantityValueUnitless | None = None
+    fluorescence_intensity_threshold_setting: TQuantityValueUnitless | None = None
     reference_DNA_description: TStringValue | None = None
     reference_DNA_copy_number_setting: TQuantityValueNumber | None = None
 
