@@ -19,6 +19,7 @@ from allotropy.parsers.beckman_pharmspec.beckman_pharmspec_structure import (
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.vendor_parser import VendorParser
 
+
 class PharmSpecParser(VendorParser[Data, Model]):
     DISPLAY_NAME = "Beckman Coulter PharmSpec"
     RELEASE_STATE = ReleaseState.RECOMMENDED
