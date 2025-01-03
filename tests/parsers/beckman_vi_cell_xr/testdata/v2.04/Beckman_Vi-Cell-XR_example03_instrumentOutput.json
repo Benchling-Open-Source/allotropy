@@ -6,8 +6,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-18T09:08:24+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -16,12 +14,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB001"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
+                            "measurement time": "2022-10-18T09:08:24+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 98.3447494506836,
                                             "unit": "%"
@@ -29,13 +33,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 1.8099467588424683,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 1.840408427810669,
@@ -59,6 +56,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB001"
                             }
                         }
                     ]
@@ -69,8 +69,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-24T09:13:22+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_1",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -79,12 +77,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB002"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_1",
+                            "measurement time": "2022-10-24T09:13:22+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 64.61505889892578,
                                             "unit": "%"
@@ -92,13 +96,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 3.2090853286743166,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 4.966411931610107,
@@ -122,6 +119,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB002"
                             }
                         }
                     ]
@@ -132,8 +132,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-24T09:13:33+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_2",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -142,12 +140,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB003"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_2",
+                            "measurement time": "2022-10-24T09:13:33+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 64.38326263427734,
                                             "unit": "%"
@@ -155,13 +159,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 3.0704320503234865,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 4.76893602142334,
@@ -185,6 +182,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB003"
                             }
                         }
                     ]
@@ -195,8 +195,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-24T09:13:35+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_3",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -205,12 +203,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB004"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_3",
+                            "measurement time": "2022-10-24T09:13:35+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 58.92611312866211,
                                             "unit": "%"
@@ -218,13 +222,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 2.697538478469849,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 4.5777619911193845,
@@ -248,6 +245,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB004"
                             }
                         }
                     ]
@@ -258,8 +258,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-24T09:13:36+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_4",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -268,12 +266,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB005"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_4",
+                            "measurement time": "2022-10-24T09:13:36+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 58.220359802246094,
                                             "unit": "%"
@@ -281,13 +285,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 2.481155021286011,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 4.2615903450012205,
@@ -311,6 +308,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB005"
                             }
                         }
                     ]
@@ -321,8 +321,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-24T09:13:39+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_5",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -331,12 +329,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB006"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_5",
+                            "measurement time": "2022-10-24T09:13:39+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 13.460131645202637,
                                             "unit": "%"
@@ -344,13 +348,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 0.5799231959342956,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 4.307808263397217,
@@ -374,6 +371,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB006"
                             }
                         }
                     ]
@@ -384,8 +384,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-24T09:13:50+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_6",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -394,12 +392,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB007"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_6",
+                            "measurement time": "2022-10-24T09:13:50+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 67.99022674560547,
                                             "unit": "%"
@@ -407,13 +411,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 3.507400138473511,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 5.1586359573364255,
@@ -437,6 +434,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB007"
                             }
                         }
                     ]
@@ -447,8 +447,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-24T09:14:08+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_7",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -457,12 +455,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB008"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_7",
+                            "measurement time": "2022-10-24T09:14:08+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 63.86997604370117,
                                             "unit": "%"
@@ -470,13 +474,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 3.0546759201049807,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 4.7825912071228025,
@@ -500,6 +497,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB008"
                             }
                         }
                     ]
@@ -510,8 +510,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-24T09:14:15+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_8",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -520,12 +518,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB009"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_8",
+                            "measurement time": "2022-10-24T09:14:15+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 38.16455841064453,
                                             "unit": "%"
@@ -533,13 +537,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 1.2668876482009888,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 3.3193777633666994,
@@ -563,6 +560,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB009"
                             }
                         }
                     ]
@@ -573,8 +573,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-24T09:14:26+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_9",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -583,12 +581,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB010"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_9",
+                            "measurement time": "2022-10-24T09:14:26+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 37.19407272338867,
                                             "unit": "%"
@@ -596,13 +600,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 1.133486254310608,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 3.0473230911254885,
@@ -626,6 +623,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB010"
                             }
                         }
                     ]
@@ -636,8 +636,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-24T09:14:31+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_10",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -646,12 +644,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB011"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_10",
+                            "measurement time": "2022-10-24T09:14:31+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 47.181209564208984,
                                             "unit": "%"
@@ -659,13 +663,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 1.4769685102462768,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 3.1303049160003664,
@@ -689,6 +686,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB011"
                             }
                         }
                     ]
@@ -699,8 +699,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-24T09:19:46+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_11",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -709,12 +707,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB012"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_11",
+                            "measurement time": "2022-10-24T09:19:46+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 38.74592208862305,
                                             "unit": "%"
@@ -722,13 +726,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 1.1229822469711304,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 2.8981655670166018,
@@ -752,6 +749,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB012"
                             }
                         }
                     ]
@@ -762,8 +762,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-26T09:38:11+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_12",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -772,12 +770,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB013"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_12",
+                            "measurement time": "2022-10-26T09:38:11+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 67.66622924804688,
                                             "unit": "%"
@@ -785,13 +789,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 0.5452598763465881,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 0.8057601285934448,
@@ -815,6 +812,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB013"
                             }
                         }
                     ]
@@ -825,8 +825,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-26T09:38:24+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_13",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -835,12 +833,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB014"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_13",
+                            "measurement time": "2022-10-26T09:38:24+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 75.23900604248047,
                                             "unit": "%"
@@ -848,13 +852,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 0.8267682028770447,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 1.0988229347229004,
@@ -878,6 +875,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB014"
                             }
                         }
                     ]
@@ -888,8 +888,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-26T09:38:26+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_14",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -898,12 +896,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB015"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_14",
+                            "measurement time": "2022-10-26T09:38:26+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 67.22164154052734,
                                             "unit": "%"
@@ -911,13 +915,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 0.6786612106323242,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 1.0095386339187622,
@@ -941,6 +938,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB015"
                             }
                         }
                     ]
@@ -951,8 +951,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-26T09:38:27+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_15",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -961,12 +959,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB016"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_15",
+                            "measurement time": "2022-10-26T09:38:27+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 66.37069702148438,
                                             "unit": "%"
@@ -974,13 +978,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 0.6282418204307556,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 0.9465143514633179,
@@ -1004,6 +1001,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB016"
                             }
                         }
                     ]
@@ -1014,8 +1014,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-26T09:38:30+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_16",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1024,12 +1022,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB017"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_16",
+                            "measurement time": "2022-10-26T09:38:30+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 5.071770191192627,
                                             "unit": "%"
@@ -1037,13 +1041,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 0.05568143112421036,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 1.0977725816726684,
@@ -1067,6 +1064,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB017"
                             }
                         }
                     ]
@@ -1077,8 +1077,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-26T09:43:26+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_17",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1087,12 +1085,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB018"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_17",
+                            "measurement time": "2022-10-26T09:43:26+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 77.85843658447266,
                                             "unit": "%"
@@ -1100,13 +1104,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 0.901346964931488,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 1.1576455665588379,
@@ -1130,6 +1127,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB018"
                             }
                         }
                     ]
@@ -1140,8 +1140,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-26T09:43:44+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_18",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1150,12 +1148,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB019"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_18",
+                            "measurement time": "2022-10-26T09:43:44+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 80.93385314941406,
                                             "unit": "%"
@@ -1163,13 +1167,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 1.0925205780029297,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 1.3498695922851562,
@@ -1193,6 +1190,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB019"
                             }
                         }
                     ]
@@ -1203,8 +1203,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-26T09:43:51+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_19",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1213,12 +1211,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB020"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_19",
+                            "measurement time": "2022-10-26T09:43:51+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 42.83687973022461,
                                             "unit": "%"
@@ -1226,13 +1230,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 0.6345442367553711,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 1.4811701608657837,
@@ -1256,6 +1253,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB020"
                             }
                         }
                     ]
@@ -1266,8 +1266,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-26T09:44:02+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_20",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1276,12 +1274,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB021"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_20",
+                            "measurement time": "2022-10-26T09:44:02+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 41.257537841796875,
                                             "unit": "%"
@@ -1289,13 +1293,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 0.5032436681747436,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 1.2196194959640503,
@@ -1319,6 +1316,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB021"
                             }
                         }
                     ]
@@ -1329,8 +1329,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-26T09:44:13+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_21",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1339,12 +1337,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB022"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_21",
+                            "measurement time": "2022-10-26T09:44:13+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 49.56051254272461,
                                             "unit": "%"
@@ -1352,13 +1356,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 0.7700463963508606,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 1.5536480976104736,
@@ -1382,6 +1379,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB022"
                             }
                         }
                     ]
@@ -1392,8 +1392,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-26T09:44:21+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_22",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1402,12 +1400,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB023"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_22",
+                            "measurement time": "2022-10-26T09:44:21+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 46.159934997558594,
                                             "unit": "%"
@@ -1415,13 +1419,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 0.6124857498168945,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 1.3267607522964477,
@@ -1445,6 +1442,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB023"
                             }
                         }
                     ]
@@ -1455,8 +1455,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-28T09:13:28+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_23",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1465,12 +1463,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB024"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_23",
+                            "measurement time": "2022-10-28T09:13:28+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 87.68955993652344,
                                             "unit": "%"
@@ -1478,13 +1482,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 2.0651949478149416,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 2.3551064563751223,
@@ -1508,6 +1505,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB024"
                             }
                         }
                     ]
@@ -1518,8 +1518,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-28T09:13:44+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_24",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1528,12 +1526,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB025"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_24",
+                            "measurement time": "2022-10-28T09:13:44+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 91.39030456542969,
                                             "unit": "%"
@@ -1541,13 +1545,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 3.0105589462280276,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 3.2941680980682375,
@@ -1571,6 +1568,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB025"
                             }
                         }
                     ]
@@ -1581,8 +1581,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-28T09:13:46+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_25",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1591,12 +1589,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB026"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_25",
+                            "measurement time": "2022-10-28T09:13:46+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 88.42863464355469,
                                             "unit": "%"
@@ -1604,13 +1608,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 2.0630942417144778,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 2.3330479694366457,
@@ -1634,6 +1631,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB026"
                             }
                         }
                     ]
@@ -1644,8 +1644,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-28T09:13:47+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_26",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1654,12 +1652,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB027"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_26",
+                            "measurement time": "2022-10-28T09:13:47+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 88.24928283691406,
                                             "unit": "%"
@@ -1667,13 +1671,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 1.9486000371932983,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 2.2080498767852785,
@@ -1697,6 +1694,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB027"
                             }
                         }
                     ]
@@ -1707,8 +1707,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-28T09:13:52+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_27",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1717,12 +1715,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB028"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_27",
+                            "measurement time": "2022-10-28T09:13:52+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 3.7827351093292236,
                                             "unit": "%"
@@ -1730,13 +1734,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 0.04097576943993569,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 1.083066923713684,
@@ -1760,6 +1757,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB028"
                             }
                         }
                     ]
@@ -1770,8 +1770,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-28T09:18:07+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_28",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1780,12 +1778,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB029"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_28",
+                            "measurement time": "2022-10-28T09:18:07+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 94.82421875,
                                             "unit": "%"
@@ -1793,13 +1797,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 4.079870565032959,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 4.302556378936767,
@@ -1823,6 +1820,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB029"
                             }
                         }
                     ]
@@ -1833,8 +1833,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-28T09:18:21+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_29",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1843,12 +1841,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB030"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_29",
+                            "measurement time": "2022-10-28T09:18:21+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 94.93643951416016,
                                             "unit": "%"
@@ -1856,13 +1860,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 4.628181798553467,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 4.8750265670776365,
@@ -1886,6 +1883,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB030"
                             }
                         }
                     ]
@@ -1896,8 +1896,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-28T09:18:23+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_30",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1906,12 +1904,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB031"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_30",
+                            "measurement time": "2022-10-28T09:18:23+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 65.83000946044922,
                                             "unit": "%"
@@ -1919,13 +1923,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 1.212266666984558,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 1.8414587808609009,
@@ -1949,6 +1946,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB031"
                             }
                         }
                     ]
@@ -1959,8 +1959,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-28T09:18:24+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_31",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1969,12 +1967,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB032"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_31",
+                            "measurement time": "2022-10-28T09:18:24+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 64.04243469238281,
                                             "unit": "%"
@@ -1982,13 +1986,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 1.204913838005066,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 1.8813742233276367,
@@ -2012,6 +2009,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB032"
                             }
                         }
                     ]
@@ -2022,8 +2022,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-28T09:18:27+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_32",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2032,12 +2030,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB033"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_32",
+                            "measurement time": "2022-10-28T09:18:27+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 72.11621856689453,
                                             "unit": "%"
@@ -2045,13 +2049,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 1.746922476387024,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 2.4223323894500735,
@@ -2075,6 +2072,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB033"
                             }
                         }
                     ]
@@ -2085,8 +2085,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2022-10-28T09:18:29+00:00",
-                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_33",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2095,12 +2093,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "CLB034"
-                            },
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_33",
+                            "measurement time": "2022-10-28T09:18:29+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 59.470306396484375,
                                             "unit": "%"
@@ -2108,13 +2112,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 0.7784496379852295,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 1.3089037967681885,
@@ -2138,6 +2135,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB034"
                             }
                         }
                     ]
@@ -2145,19 +2145,19 @@
                 "analyst": "Vi-Cell XR"
             }
         ],
-        "device system document": {
-            "device identifier": "N/A",
-            "model number": "Vi-Cell XR"
-        },
         "data system document": {
             "ASM file identifier": "Beckman_Vi-Cell-XR_example03_instrumentOutput.json",
             "data system instance identifier": "N/A",
             "file name": "Beckman_Vi-Cell-XR_example03_instrumentOutput.xls",
             "UNC path": "tests/parsers/beckman_vi_cell_xr/testdata/v2.04/Beckman_Vi-Cell-XR_example03_instrumentOutput.xls",
+            "ASM converter name": "allotropy_beckman_coulter_vi_cell_xr",
+            "ASM converter version": "0.1.69",
             "software name": "Vi-Cell XR",
-            "software version": "2.04",
-            "ASM converter name": "allotropy_beckman_vi_cell_xr",
-            "ASM converter version": "0.1.65"
+            "software version": "2.04"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "Vi-Cell XR"
         }
     }
 }
