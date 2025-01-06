@@ -7,6 +7,6 @@ SURFACE_PLASMON_RESONANCE = "surface plasmon resonance"
 DEVICE_TYPE = "binding affinity analyzer"
 
 SAMPLE_ROLE_TYPE = {
-    "blank role": SampleRoleType.blank_role,
-    "sample role": SampleRoleType.sample_role,
+    "blank role": SampleRoleType.blank_role.value,
+    "sample role": SampleRoleType.sample_role.value,
 }
