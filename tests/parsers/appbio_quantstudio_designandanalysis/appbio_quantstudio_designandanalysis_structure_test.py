@@ -34,7 +34,7 @@ def test_header_builder() -> None:
 
     header_contents = get_raw_header_contents(
         measurement_time=measurement_time,
-        plate_well_count="96 plates",
+        plate_well_count="96 Well 0.2-mL Block",
         device_identifier=device_identifier,
         model_number=model_number,
         device_serial_number=device_serial_number,
@@ -65,6 +65,7 @@ def test_header_builder() -> None:
         software_version="2.7.0",
         block_serial_number="1",
         heated_cover_serial_number="2",
+        well_volume=200,
     )
 
 

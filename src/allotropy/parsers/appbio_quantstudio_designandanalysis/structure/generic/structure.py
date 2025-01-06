@@ -6,7 +6,7 @@ import re
 
 import pandas as pd
 
-from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
+from allotropy.allotrope.schema_mappers.adm.pcr.rec._2024._09.qpcr import SampleRoleType
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     AmplificationData,
@@ -15,7 +15,10 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
     DesignQuantstudioReader,
 )
-from allotropy.parsers.constants import NOT_APPLICABLE
+from allotropy.parsers.appbio_quantstudio_designandanalysis.constants import (
+    ExperimentType,
+)
+from allotropy.parsers.constants import NEGATIVE_ZERO, NOT_APPLICABLE
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
     Referenceable,
@@ -33,16 +36,33 @@ from allotropy.parsers.utils.values import (
 )
 
 SAMPLE_ROLE_TYPES_MAP = {
-    "NTC": "negative control sample role",
-    "STANDARD": "standard sample role",
-    "UNKNOWN": "unknown sample role",
-    "POSITIVE CONTROL": "positive control sample role",
-    "IPC": "reference DNA control sample role",
-    "BLOCKED_IPC": "DNA amplification control sample role",
-    "POSITIVE_1/1": "homozygous control sample role",
-    "POSITIVE_2/2": "homozygous control sample role",
-    "POSITIVE_1/2": "heterozygous control sample role",
+    "NTC": SampleRoleType.control_sample_role,
+    "STANDARD": SampleRoleType.standard_sample_role,
+    "UNKNOWN": SampleRoleType.unknown_sample_role,
+    "POSITIVE_CONTROL": SampleRoleType.control_sample_role,
+    "IPC": SampleRoleType.control_sample_role,
+    "BLOCKED_IPC": SampleRoleType.control_sample_role,
+    "BLOCKEDIPC": SampleRoleType.control_sample_role,
+    "PC_ALLELE_1": SampleRoleType.control_sample_role,
+    "PC_ALLELE_2": SampleRoleType.control_sample_role,
+    "PC_ALLELE_BOTH": SampleRoleType.control_sample_role,
+    "POSITIVE_11": SampleRoleType.control_sample_role,
+    "POSITIVE_22": SampleRoleType.control_sample_role,
+    "POSITIVE_12": SampleRoleType.control_sample_role,
+    "Accuracy Control": SampleRoleType.control_sample_role,
 }
+
+
+def get_well_volume(block_type: str) -> float:
+    # if the block type includes the well volume in mL, convert to microliters
+    if well_search := re.search(r"([0-9]+\.[0-9]+)-?mL", block_type):
+        return float(well_search.groups()[0]) * 1000
+    elif "384-Well Block" in block_type:
+        return 40
+    # Since well volume is required, if it cannot be implied from block type
+    # a negative zero will be returned, indicating an error.
+    # TODO(slopez): Should we raise instead?
+    return NEGATIVE_ZERO
 
 
 @dataclass(frozen=True)
@@ -53,11 +73,12 @@ class Header:
     model_number: str
     device_serial_number: str
     measurement_method_identifier: str
+    well_volume: float
     pcr_detection_chemistry: str | None
     passive_reference_dye_setting: str | None
     barcode: str | None
     analyst: str | None
-    experimental_data_identifier: str | None
+    experimental_data_identifier: str
     pcr_stage_number: int | None
     software_name: str | None
     software_version: str | None
@@ -80,6 +101,7 @@ class Header:
         stage_number_raw = header.get(str, "PCR Stage/Step Number", "")
         stage_number = re.match(r"Stage (\d+)", stage_number_raw)
         pcr_stage_number = None if stage_number is None else int(stage_number.group(1))
+        block_type = header[str, "Block Type"]
 
         return Header(
             measurement_time=header[
@@ -90,10 +112,7 @@ class Header:
             plate_well_count=assert_not_none(
                 try_int(
                     assert_not_none(
-                        re.match(
-                            "(96)|(384)",
-                            header[str, "Block Type"],
-                        ),
+                        re.match("(96)|(384)", block_type),
                         msg="Unable to find plate well count",
                     ).group(),
                     "plate well count",
@@ -110,12 +129,16 @@ class Header:
             passive_reference_dye_setting=header.get(str, "Passive Reference"),
             barcode=header.get(str, "Barcode"),
             analyst=header.get(str, "Operator"),
-            experimental_data_identifier=header.get(str, "Experiment Name"),
+            # TODO(slopez): ask if there's a better default for experimenttal data identifier
+            experimental_data_identifier=header.get(
+                str, "Experiment Name", NOT_APPLICABLE
+            ),
             block_serial_number=header.get(str, "Block Serial Number"),
             heated_cover_serial_number=header.get(str, "Heated Cover Serial Number"),
             pcr_stage_number=pcr_stage_number,
             software_name=software_name,
             software_version=software_version,
+            well_volume=get_well_volume(block_type),
         )
 
 
@@ -124,10 +147,11 @@ class WellItem(Referenceable):
     identifier: int
     target_dna_description: str
     sample_identifier: str
+    location_identifier: str
     reporter_dye_setting: str | None
     well_location_identifier: str | None
     quencher_dye_setting: str | None
-    sample_role_type: str | None
+    sample_role_type: SampleRoleType | None
     amplification_data: AmplificationData | None
     result: Result
     melt_curve_data: MeltCurveData | None = None
@@ -187,6 +211,7 @@ class WellItem(Referenceable):
             sample_identifier=data.get(str, "Sample", well_position),
             reporter_dye_setting=data.get(str, "Reporter"),
             well_location_identifier=well_position,
+            location_identifier=str(identifier),
             quencher_dye_setting=data.get(str, "Quencher"),
             sample_role_type=SAMPLE_ROLE_TYPES_MAP.get(
                 data.get(str, "Task", "__INVALID_KEY__")
