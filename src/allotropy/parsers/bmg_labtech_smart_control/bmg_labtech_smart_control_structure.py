@@ -62,9 +62,7 @@ def create_measurement_groups(
             if headers.get(str, "Top optic used") is None
             else filter_position_map.get("Top")
         )
-        mass_concentration = row.get(
-            float, "Standard Concentrations [ng/mL]"
-        )
+        mass_concentration = row.get(float, "Standard Concentrations [ng/mL]")
         if mass_concentration is not None:
             # since this is ng/mL, we need to convert to pg/mL by multiplying by 1000
             mass_concentration *= 1000
