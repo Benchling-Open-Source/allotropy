@@ -62,6 +62,13 @@ def create_measurement_groups(
             if headers.get(str, "Top optic used") is None
             else filter_position_map.get("Top")
         )
+        mass_concentration = row.get(
+            float, "Standard Concentrations [ng/mL]"
+        )
+        if mass_concentration is not None:
+            # since this is ng/mL, we need to convert to pg/mL by multiplying by 1000
+            mass_concentration *= 1000
+
         return MeasurementGroup(
             analyst=headers.get(str, "User"),
             measurement_time=_get_measurement_time(
@@ -83,9 +90,7 @@ def create_measurement_groups(
                     ),
                     location_identifier=row[str, "Well"],
                     well_plate_identifier=headers.get(str, "ID3"),
-                    mass_concentration=row.get(
-                        float, "Standard Concentrations [ng/mL]"
-                    ),
+                    mass_concentration=mass_concentration,
                     device_type=DEVICE_TYPE,
                     detection_type=headers[str, "Measurement type:"].split()[0].lower(),
                     detector_distance_setting=headers.get(float, "Focal height  [mm]:"),
@@ -188,11 +193,11 @@ def create_calculated_data_documents(
         value=corrected_value,
         data_sources=[
             DataSource(
-                identifier=average_calc_document.identifier,
+                identifier=measurement_groups[0].measurements[0].identifier,
                 feature="fluorescence",
             ),
             DataSource(
-                identifier=measurement_groups[0].measurements[0].identifier,
+                identifier=average_calc_document.identifier,
                 feature="Average of all blanks used",
             ),
         ],
