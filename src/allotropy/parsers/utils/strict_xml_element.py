@@ -11,7 +11,7 @@ from allotropy.parsers.utils.values import assert_not_none, try_float
 class StrictXmlElement:
     @classmethod
     def create_from_bytes(cls, data: bytes) -> StrictXmlElement:
-        data = data.lstrip(b'E')
+        data = data.lstrip(b"E")
         return StrictXmlElement(fromstring(data))
 
     def __init__(self, element: ElementTree.Element):
