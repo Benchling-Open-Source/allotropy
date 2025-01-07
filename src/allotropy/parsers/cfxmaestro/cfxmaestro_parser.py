@@ -1,10 +1,5 @@
-from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import (
-    Model,
-)
-from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import (
-    Data,
-    Mapper,
-)
+from allotropy.allotrope.models.adm.pcr.rec._2024._09.qpcr import Model
+from allotropy.allotrope.schema_mappers.adm.pcr.rec._2024._09.qpcr import Data, Mapper
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.cfxmaestro.cfxmaestro_reader import (
     CFXMaestroReader,
