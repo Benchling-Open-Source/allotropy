@@ -58,8 +58,12 @@ def get_well_volume(block_type: str) -> float:
     # if the block type includes the well volume in mL, convert to microliters
     if well_search := re.search(r"([0-9]+\.[0-9]+)-?mL", block_type):
         return float(well_search.groups()[0]) * 1000
+    # The 384-well block and Taqman Array Card have specified well volumes from the
+    # manufacturer (Thermo Fisher) which are 40uL and 1.5uL, respectively.
     elif "384-Well Block" in block_type:
         return 40
+    elif "Taqman Array Card" in block_type:
+        return 1.5
     # Since well volume is required, if it cannot be implied from block type
     # a negative zero will be returned, indicating an error.
     return NEGATIVE_ZERO
