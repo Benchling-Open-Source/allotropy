@@ -1,5 +1,4 @@
 from collections.abc import Iterator
-from functools import cache
 
 from allotropy.calcdocs.appbio_quantstudio_designandanalysis.config import (
     CalculatedDataConfigWithOptional,
@@ -33,7 +32,7 @@ from allotropy.parsers.utils.calculated_data_documents.definition import (
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
-@cache
+# @cache
 def build_amp_score(well_item: WellItem) -> CalculatedDocument | None:
     if (amp_score := well_item.result.amp_score) is None:
         return None
@@ -51,7 +50,7 @@ def build_amp_score(well_item: WellItem) -> CalculatedDocument | None:
     )
 
 
-@cache
+# @cache
 def build_cq_conf(well_item: WellItem) -> CalculatedDocument | None:
     if (cq_conf := well_item.result.cq_conf) is None:
         return None
@@ -69,7 +68,7 @@ def build_cq_conf(well_item: WellItem) -> CalculatedDocument | None:
     )
 
 
-@cache
+# @cache
 def build_quantity(
     view_tr_data: ViewData[WellItem] | None,
     target: str,
@@ -103,7 +102,7 @@ def build_quantity(
     )
 
 
-@cache
+# @cache
 def build_quantity_mean(
     view_st_data: ViewData[WellItem],
     view_tr_data: ViewData[WellItem],
@@ -135,7 +134,7 @@ def build_quantity_mean(
     )
 
 
-@cache
+# @cache
 def build_quantity_sd(
     view_st_data: ViewData[WellItem],
     view_tr_data: ViewData[WellItem],
@@ -167,7 +166,7 @@ def build_quantity_sd(
     )
 
 
-@cache
+# @cache
 def build_ct_mean(
     view_data: ViewData[WellItem], sample: str, target: str
 ) -> CalculatedDocument | None:
@@ -186,7 +185,7 @@ def build_ct_mean(
     )
 
 
-@cache
+# @cache
 def build_ct_sd(
     view_data: ViewData[WellItem], sample: str, target: str
 ) -> CalculatedDocument | None:
@@ -205,7 +204,7 @@ def build_ct_sd(
     )
 
 
-@cache
+# @cache
 def build_ct_se(
     view_data: ViewData[WellItem], sample: str, target: str
 ) -> CalculatedDocument | None:
@@ -224,7 +223,7 @@ def build_ct_se(
     )
 
 
-@cache
+# @cache
 def build_eq_ct_mean(
     view_data: ViewData[WellItem], sample: str, target: str
 ) -> CalculatedDocument | None:
@@ -244,7 +243,7 @@ def build_eq_ct_mean(
     )
 
 
-@cache
+# @cache
 def build_adj_eq_ct_mean(
     view_data: ViewData[WellItem], sample: str, target: str
 ) -> CalculatedDocument | None:
@@ -266,7 +265,7 @@ def build_adj_eq_ct_mean(
     )
 
 
-@cache
+# @cache
 def build_delta_ct_mean(
     view_data: ViewData[WellItem],
     sample: str,
@@ -322,7 +321,7 @@ def build_delta_ct_mean(
     )
 
 
-@cache
+# @cache
 def build_delta_ct_sd(
     view_data: ViewData[WellItem], sample: str, target: str, r_target: str | None
 ) -> CalculatedDocument | None:
@@ -351,7 +350,7 @@ def build_delta_ct_sd(
     )
 
 
-@cache
+# @cache
 def build_delta_ct_se(
     view_data: ViewData[WellItem], sample: str, target: str, r_target: str | None
 ) -> CalculatedDocument | None:
@@ -379,7 +378,7 @@ def build_delta_ct_se(
     )
 
 
-@cache
+# @cache
 def build_delta_delta_ct(
     view_data: ViewData[WellItem],
     sample: str,
@@ -416,7 +415,7 @@ def build_delta_delta_ct(
     )
 
 
-@cache
+# @cache
 def build_rq(
     view_data: ViewData[WellItem],
     sample: str,
@@ -447,7 +446,7 @@ def build_rq(
     )
 
 
-@cache
+# @cache
 def build_rq_min(
     view_data: ViewData[WellItem],
     sample: str,
@@ -476,13 +475,13 @@ def build_rq_min(
     )
 
 
-@cache
+# @cache
 def build_rq_max(
     view_data: ViewData[WellItem],
     sample: str,
     target: str,
     r_sample: str,
-    r_target: str,
+    r_target: str | None,
 ) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (rq_max := well_items[0].result.rq_max) is None:
@@ -505,7 +504,7 @@ def build_rq_max(
     )
 
 
-@cache
+# @cache
 def build_relative_rq(
     view_st_data: ViewData[WellItem],
     view_tr_data: ViewData[WellItem],
@@ -533,7 +532,7 @@ def build_relative_rq(
     )
 
 
-@cache
+# @cache
 def build_relative_rq_min(
     view_st_data: ViewData[WellItem],
     view_tr_data: ViewData[WellItem],
@@ -561,7 +560,7 @@ def build_relative_rq_min(
     )
 
 
-@cache
+# @cache
 def build_relative_rq_max(
     view_st_data: ViewData[WellItem],
     view_tr_data: ViewData[WellItem],
@@ -589,7 +588,7 @@ def build_relative_rq_max(
     )
 
 
-@cache
+# @cache
 def build_rn_mean(
     view_data: ViewData[WellItem], sample: str, target: str
 ) -> CalculatedDocument | None:
@@ -608,7 +607,7 @@ def build_rn_mean(
     )
 
 
-@cache
+# @cache
 def build_rn_sd(
     view_data: ViewData[WellItem], sample: str, target: str
 ) -> CalculatedDocument | None:
@@ -627,7 +626,7 @@ def build_rn_sd(
     )
 
 
-@cache
+# @cache
 def build_y_intercept(
     view_data: ViewData[WellItem], target: str
 ) -> CalculatedDocument | None:
@@ -646,7 +645,7 @@ def build_y_intercept(
     )
 
 
-@cache
+# @cache
 def build_r_squared(
     view_data: ViewData[WellItem], target: str
 ) -> CalculatedDocument | None:
@@ -665,7 +664,7 @@ def build_r_squared(
     )
 
 
-@cache
+# @cache
 def build_slope(
     view_data: ViewData[WellItem], target: str
 ) -> CalculatedDocument | None:
@@ -684,7 +683,7 @@ def build_slope(
     )
 
 
-@cache
+# @cache
 def build_efficiency(
     view_data: ViewData[WellItem], target: str
 ) -> CalculatedDocument | None:
