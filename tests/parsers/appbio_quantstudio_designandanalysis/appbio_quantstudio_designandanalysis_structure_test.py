@@ -256,9 +256,8 @@ def get_raw_header_contents(
     passive_reference_dye_setting: str | None = "ROX",
     barcode: str | None = None,
     analyst: str | None = None,
-    experimental_data_identifier: None | (
-        str
-    ) = "QuantStudio 96-Well Presence-Absence Example",
+    experimental_data_identifier: None
+    | (str) = "QuantStudio 96-Well Presence-Absence Example",
     pcr_stage_number: str | None = "Stage 2 Step 2",
     software_name_and_version: str | None = "Design & Analysis Software v2.7.0",
     block_serial_number: str | None = "1",
