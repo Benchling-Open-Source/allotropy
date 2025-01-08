@@ -49,7 +49,6 @@ def create_measurement_group(
         plate_well_count=plate_well_count,
         well_volume=NEGATIVE_ZERO,
         error_document=[Error(error=NaN.value, feature="well volume")],
-        # TODO(slopez): Is N/A the right value here?
         experimental_data_identifier=NOT_APPLICABLE,
         measurements=[
             Measurement(
@@ -79,12 +78,13 @@ def create_measurement_group(
                     cycle_threshold_result=data.get(
                         float, "Cq", validate=SeriesData.NOT_NAN
                     ),
-                    # TODO: confirm the exported column name for cycle number
+                    # TODO: cycle number is required, but we do not have any examples of the value being
+                    # provided, if we get one, and the column does not match, update here.
                     cycle_threshold_value_setting=data.get(
                         float, "Cycle Number", NEGATIVE_ZERO
                     ),
                 ),
-                # TODO(slopez): since the processed data doc does not include an error document,
+                # Since the processed data doc does not include an error document,
                 # we added the cycle threshold value setting error at measurement level
                 error_document=[
                     Error(
