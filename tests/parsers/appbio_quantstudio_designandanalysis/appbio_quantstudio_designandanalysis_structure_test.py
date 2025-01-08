@@ -30,7 +30,7 @@ def test_header_builder() -> None:
     measurement_method_identifier = "measurement ID"
     pcr_detection_chemistry = "detection1"
     passive_reference_dye_setting = "blue"
-    experimental_data_identifier = "data Identifier"
+    experimental_data_identifier = "path/to/data_identifier.eds"
 
     header_contents = get_raw_header_contents(
         measurement_time=measurement_time,
@@ -59,7 +59,7 @@ def test_header_builder() -> None:
         passive_reference_dye_setting=passive_reference_dye_setting,
         barcode=None,
         analyst=None,
-        experimental_data_identifier=experimental_data_identifier,
+        experimental_data_identifier="data_identifier.eds",
         pcr_stage_number=2,
         software_name="Design & Analysis Software",
         software_version="2.7.0",
@@ -256,8 +256,9 @@ def get_raw_header_contents(
     passive_reference_dye_setting: str | None = "ROX",
     barcode: str | None = None,
     analyst: str | None = None,
-    experimental_data_identifier: None
-    | (str) = "QuantStudio 96-Well Presence-Absence Example",
+    experimental_data_identifier: None | (
+        str
+    ) = "QuantStudio 96-Well Presence-Absence Example",
     pcr_stage_number: str | None = "Stage 2 Step 2",
     software_name_and_version: str | None = "Design & Analysis Software v2.7.0",
     block_serial_number: str | None = "1",
@@ -276,7 +277,7 @@ def get_raw_header_contents(
                 "Passive Reference": passive_reference_dye_setting,
                 "Barcode": barcode,
                 "Operator": analyst,
-                "Experiment Name": experimental_data_identifier,
+                "File Name": experimental_data_identifier,
                 "PCR Stage/Step Number": pcr_stage_number,
                 "Software Name and Version": software_name_and_version,
                 "Block Serial Number": block_serial_number,
