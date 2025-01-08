@@ -144,7 +144,7 @@ def test_bmg_labtech_smart_control_reader(mock_read_excel: MagicMock) -> None:
     assert measurement.detector_distance_setting == 5.9
     assert measurement.detector_bandwidth_setting == 30
     assert calculated_data is not None
-    assert len(calculated_data) == 2
+    assert len(calculated_data) == 7
     assert calculated_data[0].name == "Average of all blanks used"
     assert calculated_data[0].value == 344429
     assert calculated_data[0].unit == "RFU"

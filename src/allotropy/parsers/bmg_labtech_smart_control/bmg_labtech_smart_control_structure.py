@@ -160,8 +160,17 @@ def create_calculated_data_documents(
         for group in measurement_groups
         if group.measurements[0].sample_role_type == SampleRoleType.blank_role
     ]
+
     if not blank_measurements:
         return []
+
+    non_blank_measurements = [
+        measurement
+        for group in measurement_groups
+        for measurement in group.measurements
+        if measurement.sample_role_type != SampleRoleType.blank_role
+    ]
+
     blank_average = sum(
         [
             measurement.fluorescence
@@ -182,23 +191,27 @@ def create_calculated_data_documents(
         ],
         unit="RFU",
     )
-    corrected_value = SeriesData(data.iloc[0])[
-        float, "Blank corrected based on Raw Data (480-14/520-30)"
-    ]
-    blank_corrected_calc_document = CalculatedDataItem(
-        identifier=random_uuid_str(),
-        name="Blank corrected based on Raw Data (480-14/520-30)",
-        value=corrected_value,
-        data_sources=[
-            DataSource(
-                identifier=measurement_groups[0].measurements[0].identifier,
-                feature="fluorescence",
-            ),
-            DataSource(
-                identifier=average_calc_document.identifier,
-                feature="Average of all blanks used",
-            ),
-        ],
-        unit="RFU",
-    )
-    return [average_calc_document, blank_corrected_calc_document]
+    blank_corrected_calc_documents: list[CalculatedDataItem] = []
+    for idx, measurement in enumerate(non_blank_measurements):
+        corrected_value = SeriesData(data.iloc[idx])[
+            float, "Blank corrected based on Raw Data (480-14/520-30)"
+        ]
+        blank_corrected_calc_documents.append(
+            CalculatedDataItem(
+                identifier=random_uuid_str(),
+                name="Blank corrected based on Raw Data (480-14/520-30)",
+                value=corrected_value,
+                data_sources=[
+                    DataSource(
+                        identifier=measurement.identifier,
+                        feature="fluorescence",
+                    ),
+                    DataSource(
+                        identifier=average_calc_document.identifier,
+                        feature="Average of all blanks used",
+                    ),
+                ],
+                unit="RFU",
+            )
+        )
+    return [average_calc_document, *blank_corrected_calc_documents]
