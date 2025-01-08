@@ -42,7 +42,6 @@ def get_well_volume(block_type: str) -> float:
         return 1.5
     # Since well volume is required, if it cannot be implied from block type
     # a negative zero will be returned, indicating an error.
-    # TODO(slopez): Should we raise instead?
     return NEGATIVE_ZERO
 
 

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections.abc import Iterator
 from dataclasses import dataclass
+from pathlib import PureWindowsPath
 import re
 
 import pandas as pd
@@ -61,7 +62,6 @@ def get_well_volume(block_type: str) -> float:
         return 40
     # Since well volume is required, if it cannot be implied from block type
     # a negative zero will be returned, indicating an error.
-    # TODO(slopez): Should we raise instead?
     return NEGATIVE_ZERO
 
 
@@ -129,10 +129,7 @@ class Header:
             passive_reference_dye_setting=header.get(str, "Passive Reference"),
             barcode=header.get(str, "Barcode"),
             analyst=header.get(str, "Operator"),
-            # TODO(slopez): ask if there's a better default for experimenttal data identifier
-            experimental_data_identifier=header.get(
-                str, "Experiment Name", NOT_APPLICABLE
-            ),
+            experimental_data_identifier=PureWindowsPath(header[str, "File Name"]).name,
             block_serial_number=header.get(str, "Block Serial Number"),
             heated_cover_serial_number=header.get(str, "Heated Cover Serial Number"),
             pcr_stage_number=pcr_stage_number,

@@ -7,7 +7,6 @@ from allotropy.allotrope.schema_mappers.adm.pcr.rec._2024._09.qpcr import Contai
 # is now just a string field without enum validation. We are keeping this because quantstudio
 # adapters have logic around the enum class, but we don't include it in the mapper because is
 # not used for validation.
-# TODO: Should we get rid if this enum?
 class ExperimentType(str, Enum):
     genotyping_qpcr_experiment = "genotyping qPCR experiment"
     relative_standard_curve_qpcr_experiment = "relative standard curve qPCR experiment"
