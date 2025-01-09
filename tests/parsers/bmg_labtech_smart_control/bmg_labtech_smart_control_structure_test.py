@@ -111,6 +111,44 @@ def _load_data() -> dict[str, pd.DataFrame]:
                 ],
             ]
         ),
+        SheetNames.MICROPLATE_END_POINT.value: pd.DataFrame(
+            [
+                [
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    "Used correction value(s):",
+                ],
+                [
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    "Blank    28888.33333",
+                ],
+            ]
+        ),
     }
 
 
@@ -123,10 +161,10 @@ def test_bmg_labtech_smart_control_reader(mock_read_excel: MagicMock) -> None:
         NamedFileContents(contents=StringIO(""), original_file_path="tmp.txt")
     )
     measurement_groups = create_measurement_groups(reader.header, reader.data)
-    calculated_data = create_calculated_data_documents(measurement_groups, reader.data)
+    calculated_data = create_calculated_data_documents(measurement_groups, reader)
     assert len(measurement_groups) == 8
     assert measurement_groups[0].analyst == "user"
-    assert measurement_groups[0].measurement_time == "2024-11-06 11:14:00"
+    assert measurement_groups[0].measurement_time == "11/6/2024 11:14:00 AM"
     assert (
         measurement_groups[0].experimental_data_identifier
         == "RiboGreen NB-user-5097655-0067"
@@ -146,7 +184,7 @@ def test_bmg_labtech_smart_control_reader(mock_read_excel: MagicMock) -> None:
     assert calculated_data is not None
     assert len(calculated_data) == 7
     assert calculated_data[0].name == "Average of all blanks used"
-    assert calculated_data[0].value == 344429
+    assert calculated_data[0].value == 28888.33333
     assert calculated_data[0].unit == "RFU"
     assert len(calculated_data[0].data_sources) == 2
     assert (

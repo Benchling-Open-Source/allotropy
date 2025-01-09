@@ -4,13 +4,14 @@ import numpy as np
 import pandas as pd
 from pandas import Index
 
+from allotropy.exceptions import AllotropeParsingError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.utils.pandas import (
     read_multisheet_excel,
     SeriesData,
     split_dataframe,
 )
-from allotropy.parsers.utils.values import assert_not_none
+from allotropy.parsers.utils.values import assert_not_none, try_float
 
 
 class SheetNames(Enum):
@@ -23,6 +24,7 @@ class BmgLabtechSmartControlReader:
     SUPPORTED_EXTENSIONS = "xlsx"
     header: SeriesData
     data: pd.DataFrame
+    average_of_blank_used: float
 
     def __init__(self, named_file_contents: NamedFileContents):
         raw_contents = read_multisheet_excel(
@@ -33,8 +35,15 @@ class BmgLabtechSmartControlReader:
         contents = {
             name.lower(): df.replace(np.nan, None) for name, df in raw_contents.items()
         }
+        for sheet_name in SheetNames:
+            if sheet_name.value not in contents:
+                msg = f"Sheet '{sheet_name.value}' not found"
+                raise AllotropeParsingError(msg)
         self.header = self._get_headers(contents[SheetNames.PROTOCOL_INFORMATION.value])
         self.data = self._get_data(contents[SheetNames.TABLE_END_POINT.value])
+        self.average_of_blank_used = self._get_average_of_blank_used(
+            contents[SheetNames.MICROPLATE_END_POINT.value]
+        )
 
     def _get_headers(self, data: pd.DataFrame) -> SeriesData:
         headers_df, settings_df = split_dataframe(
@@ -74,3 +83,17 @@ class BmgLabtechSmartControlReader:
         )
         measurement_data = measurement_data[1:]
         return measurement_data
+
+    def _get_average_of_blank_used(self, data: pd.DataFrame) -> float:
+        _, average_of_blank_used_df = split_dataframe(
+            data,
+            lambda row: row.astype(str).iloc[14].strip().startswith("Blank"),
+            include_split_row=True,
+        )
+        if average_of_blank_used_df is not None:
+            average_of_blank_used = average_of_blank_used_df.iloc[0][14]
+            return try_float(
+                average_of_blank_used.strip().split(" ")[-1], "Average of blank used"
+            )
+        msg = "Average of blank used not found"
+        raise AllotropeParsingError(msg)

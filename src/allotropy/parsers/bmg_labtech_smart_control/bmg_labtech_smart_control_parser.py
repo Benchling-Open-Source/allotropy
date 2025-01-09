@@ -31,5 +31,5 @@ class BmgLabtechSmartControlParser(VendorParser[Data, Model]):
         return Data(
             create_metadata(named_file_contents.original_file_path),
             measurement_groups,
-            create_calculated_data_documents(measurement_groups, reader.data),
+            create_calculated_data_documents(measurement_groups, reader),
         )

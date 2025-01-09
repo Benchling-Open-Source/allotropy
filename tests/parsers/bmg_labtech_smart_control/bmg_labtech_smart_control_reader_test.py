@@ -106,6 +106,44 @@ def _load_data() -> dict[str, pd.DataFrame]:
                 ],
             ]
         ),
+        SheetNames.MICROPLATE_END_POINT.value: pd.DataFrame(
+            [
+                [
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    "Used correction value(s):",
+                ],
+                [
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    None,
+                    "Blank    28888.33333",
+                ],
+            ]
+        ),
     }
 
 

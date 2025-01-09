@@ -1,4 +1,3 @@
-from datetime import datetime
 from pathlib import Path
 
 import pandas as pd
@@ -16,6 +15,9 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_rea
     MeasurementType,
     Metadata,
     ScanPositionSettingPlateReader,
+)
+from allotropy.parsers.bmg_labtech_smart_control.bmg_labtech_smart_control_reader import (
+    BmgLabtechSmartControlReader,
 )
 from allotropy.parsers.bmg_labtech_smart_control.constants import (
     DEVICE_TYPE,
@@ -69,9 +71,7 @@ def create_measurement_groups(
 
         return MeasurementGroup(
             analyst=headers.get(str, "User"),
-            measurement_time=_get_measurement_time(
-                headers[str, "Date"], headers[str, "Time"]
-            ),
+            measurement_time=f"{headers[str, 'Date']} {headers[str, 'Time']}",
             experimental_data_identifier=headers.get(str, "ID1"),
             experiment_type=headers.get(str, "Test Name"),
             plate_well_count=try_float(
@@ -80,7 +80,7 @@ def create_measurement_groups(
             measurements=[
                 Measurement(
                     identifier=random_uuid_str(),
-                    compartment_temperature=_get_target_temperature(row),
+                    compartment_temperature=row.get(float, TARGET_TEMPERATURE),
                     fluorescence=fluorescence,
                     sample_identifier=sample_identifier,
                     sample_role_type=SAMPLE_ROLE_TYPE_MAPPING.get(
@@ -139,21 +139,8 @@ def create_measurement_groups(
     return map_rows(data, map_measurement_group)
 
 
-def _get_measurement_time(date: str, time: str) -> str:
-    datetime_str = f"{date} {time}"
-    datetime_obj = datetime.strptime(datetime_str, "%m/%d/%Y %I:%M:%S %p").astimezone()
-    formatted_datetime = datetime_obj.strftime("%Y-%m-%d %H:%M:%S")
-    return formatted_datetime
-
-
-def _get_target_temperature(row: SeriesData) -> float | None:
-    if row.get(str, TARGET_TEMPERATURE) != "set off":
-        return row.get(float, TARGET_TEMPERATURE)
-    return None
-
-
 def create_calculated_data_documents(
-    measurement_groups: list[MeasurementGroup], data: pd.DataFrame
+    measurement_groups: list[MeasurementGroup], reader: BmgLabtechSmartControlReader
 ) -> list[CalculatedDataItem] | None:
     blank_measurements = [
         group.measurements[0]
@@ -171,13 +158,7 @@ def create_calculated_data_documents(
         if measurement.sample_role_type != SampleRoleType.blank_role
     ]
 
-    blank_average = sum(
-        [
-            measurement.fluorescence
-            for measurement in blank_measurements
-            if measurement.fluorescence is not None
-        ]
-    ) / len(blank_measurements)
+    blank_average = reader.average_of_blank_used
     average_calc_document = CalculatedDataItem(
         identifier=random_uuid_str(),
         name="Average of all blanks used",
@@ -193,7 +174,7 @@ def create_calculated_data_documents(
     )
     blank_corrected_calc_documents: list[CalculatedDataItem] = []
     for idx, measurement in enumerate(non_blank_measurements):
-        corrected_value = SeriesData(data.iloc[idx])[
+        corrected_value = SeriesData(reader.data.iloc[idx])[
             float, "Blank corrected based on Raw Data (480-14/520-30)"
         ]
         blank_corrected_calc_documents.append(
