@@ -1,3 +1,4 @@
+import logging
 from pathlib import Path
 
 import pandas as pd
@@ -151,6 +152,11 @@ def create_calculated_data_documents(
     if not blank_measurements:
         return []
 
+    if not reader.average_of_blank_used:
+        logging.warning(
+            "Microplate endpoint sheet does not contain average of blanks used value but blank measurements are present."
+        )
+        return []
     non_blank_measurements = [
         measurement
         for group in measurement_groups

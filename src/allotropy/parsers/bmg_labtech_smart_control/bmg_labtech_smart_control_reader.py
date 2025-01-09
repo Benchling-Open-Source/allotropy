@@ -11,7 +11,7 @@ from allotropy.parsers.utils.pandas import (
     SeriesData,
     split_dataframe,
 )
-from allotropy.parsers.utils.values import assert_not_none, try_float
+from allotropy.parsers.utils.values import assert_not_none, try_float_or_none
 
 
 class SheetNames(Enum):
@@ -24,7 +24,7 @@ class BmgLabtechSmartControlReader:
     SUPPORTED_EXTENSIONS = "xlsx"
     header: SeriesData
     data: pd.DataFrame
-    average_of_blank_used: float
+    average_of_blank_used: float | None
 
     def __init__(self, named_file_contents: NamedFileContents):
         raw_contents = read_multisheet_excel(
@@ -84,7 +84,7 @@ class BmgLabtechSmartControlReader:
         measurement_data = measurement_data[1:]
         return measurement_data
 
-    def _get_average_of_blank_used(self, data: pd.DataFrame) -> float:
+    def _get_average_of_blank_used(self, data: pd.DataFrame) -> float | None:
         _, average_of_blank_used_df = split_dataframe(
             data,
             lambda row: row.astype(str).iloc[14].strip().startswith("Blank"),
@@ -92,8 +92,5 @@ class BmgLabtechSmartControlReader:
         )
         if average_of_blank_used_df is not None:
             average_of_blank_used = average_of_blank_used_df.iloc[0][14]
-            return try_float(
-                average_of_blank_used.strip().split(" ")[-1], "Average of blank used"
-            )
-        msg = "Average of blank used not found"
-        raise AllotropeParsingError(msg)
+            return try_float_or_none(average_of_blank_used.strip().split(" ")[-1])
+        return None
