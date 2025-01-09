@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from io import BytesIO
 
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.cytiva_unicorn.reader.zip_handler import (
     ZipHandler,
 )
@@ -25,19 +26,21 @@ class UnicornZipHandler(ZipHandler):
 
     def filter_xml_metadata(self, stream: BytesIO) -> BytesIO:
         data = stream.read()
-        lower_symbol, upper_symbol = 32, 126
-
-        start = 0
+        start = -1
         for idx, element in enumerate(data):
-            if lower_symbol <= int(element) <= upper_symbol:
+            if int(element) == 60:  # 60 == '<' ASCII char
                 start = idx
                 break
 
-        end = len(data)
+        end = -1
         for idx, element in enumerate(reversed(data)):
-            if lower_symbol <= int(element) <= upper_symbol:
-                end -= idx
+            if int(element) == 62:  # 62 == '>' ASCII char
+                end = len(data) - idx
                 break
+
+        if start == -1 or end == -1:
+            msg = "Unable to extract XML from {path} file."
+            raise AllotropeConversionError(msg)
 
         return BytesIO(data[start:end])
 

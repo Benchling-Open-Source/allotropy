@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.constants import NEGATIVE_ZERO, NOT_APPLICABLE
 from allotropy.parsers.cytiva_unicorn.reader.unicorn_zip_handler import (
     UnicornZipHandler,
 )
@@ -32,8 +33,21 @@ class StaticDocs:
         results: StrictXmlElement,
     ) -> StaticDocs:
         column_type_data = handler.get_column_type_data()
-        inj_result = cls.__filter_result_criteria(results, keyword="Sample volume")
-        sample_result = cls.__filter_result_criteria(results, keyword="Sample_ID")
+        autosampler_injection_volume_setting = NEGATIVE_ZERO
+        try:
+            inj_result = cls.__filter_result_criteria(results, keyword="Sample volume")
+            autosampler_injection_volume_setting = inj_result.find(
+                "Keyword2"
+            ).get_float("autosampler injection volume setting")
+        except Exception:
+            pass
+
+        sample_identifier = NOT_APPLICABLE
+        try:
+            sample_result = cls.__filter_result_criteria(results, keyword="Sample_ID")
+            sample_identifier = sample_result.find("Keyword2").get_text()
+        except Exception:
+            pass
 
         article_number = column_type_data.recursive_find_or_none(
             ["ColumnType", "Hardware", "ArticleNumber"]
@@ -72,10 +86,8 @@ class StaticDocs:
             ),
             injection_identifier=random_uuid_str(),
             injection_time=curve.find("MethodStartTime").get_text(),
-            autosampler_injection_volume_setting=inj_result.find("Keyword2").get_float(
-                "autosampler injection volume setting"
-            ),
-            sample_identifier=sample_result.find("Keyword2").get_text(),
+            autosampler_injection_volume_setting=autosampler_injection_volume_setting,
+            sample_identifier=sample_identifier,
             batch_identifier=(batch_id.get_text() if batch_id is not None else None),
         )
 
