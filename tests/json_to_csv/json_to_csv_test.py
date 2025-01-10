@@ -3,7 +3,11 @@ import pandas as pd
 import pytest
 
 from allotropy.json_to_csv.json_to_csv import _rename_column, map_dataset
-from allotropy.json_to_csv.mapper_config import DatasetConfig, MapperConfig
+from allotropy.json_to_csv.mapper_config import (
+    DatasetConfig,
+    MapperConfig,
+    PivotTransformConfig,
+)
 
 
 def test_map_dataset_simple_default_config() -> None:
@@ -37,7 +41,7 @@ def test_map_dataset_simple_default_config() -> None:
 
 def test_map_dataset_simple_with_column_configs() -> None:
     dataset_config = DatasetConfig(
-        {
+        config_json={
             "name": "Dataset",
             "columns": [
                 {
@@ -54,7 +58,8 @@ def test_map_dataset_simple_with_column_configs() -> None:
                     "path": "list_value/list_key",
                 },
             ],
-        }
+        },
+        path_to_transform={}
     )
 
     data = {
@@ -113,7 +118,7 @@ def test_map_dataset_nested() -> None:
     assert expected.equals(actual)
 
     dataset_config = DatasetConfig(
-        {
+        config_json={
             "name": "Dataset",
             "columns": [
                 {
@@ -121,7 +126,8 @@ def test_map_dataset_nested() -> None:
                     "path": "list1/nested/nested_key",
                 }
             ],
-        }
+        },
+        path_to_transform={},
     )
     actual = map_dataset(data, dataset_config)
     expected = pd.DataFrame(
@@ -176,7 +182,7 @@ def test_map_dataset_list_with_inconsistent_keys() -> None:
 
 def test_map_dataset_fails_with_missing_required_column() -> None:
     dataset_config = DatasetConfig(
-        {
+        config_json={
             "name": "Dataset",
             "columns": [
                 {"name": "Required", "path": "key1", "required": True},
@@ -185,10 +191,61 @@ def test_map_dataset_fails_with_missing_required_column() -> None:
                     "path": "key2",
                 },
             ],
-        }
+        },
+        path_to_transform={}
     )
 
     map_dataset({"key1": "value1"}, dataset_config)
 
     with pytest.raises(ValueError, match="required"):
         map_dataset({"key2": "value1"}, dataset_config)
+
+
+def test_map_dataset_with_pivot_transform() -> None:
+    data = {
+        "main_key": "main_value",
+        "list1": [
+            {
+                "label": "list_label1",
+                "value": "list_value1",
+            },
+            {
+                "label": "list_label2",
+                "value": "list_value2",
+            },
+        ]
+    }
+
+    dataset_config = DatasetConfig(
+        config_json={
+            "name": "Dataset",
+            "columns": [
+                {
+                    "name": "Main",
+                    "path": "main_key",
+                },
+                {
+                    "name": "label",
+                    "path": "list1/label",
+                },
+                {
+                    "name": "$label$",
+                    "path": "list1/value",
+                }
+            ],
+        },
+        path_to_transform={
+            "list1": PivotTransformConfig({"type": "PIVOT", "path": "list1"})
+        },
+    )
+
+    actual = map_dataset(data, dataset_config)
+    expected = pd.DataFrame(
+        {
+            "Main": ["main_key"],
+            "list_label1": ["list_value1"],
+            "list_label2": ["list_value2"],
+        }
+    )
+    print(actual)
+    assert expected.equals(actual)

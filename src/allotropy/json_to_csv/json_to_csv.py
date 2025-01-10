@@ -24,23 +24,30 @@ def _map_dataset(
     df = pd.DataFrame(single_values)
 
     for key, value in data.items():
+        sub_path = Path(current_path, key)
+        sub_df: pd.DataFrame = pd.DataFrame()
         if isinstance(value, dict):
-            sub_df = _map_dataset(value, config, Path(current_path, key))
-            df = (
-                df
-                if sub_df.empty
-                else (sub_df if df.empty else df.merge(sub_df, how="cross"))
-            )
+            sub_df = _map_dataset(value, config, sub_path)
         elif isinstance(value, list):
             sub_df = pd.concat(
-                [_map_dataset(item, config, Path(current_path, key)) for item in value],
+                [_map_dataset(item, config, sub_path) for item in value],
                 ignore_index=True,
             )
-            df = (
-                df
-                if sub_df.empty
-                else (sub_df if df.empty else df.merge(sub_df, how="cross"))
-            )
+
+        if str(sub_path) in config.path_to_transform:
+            print(sub_path)
+            print(sub_df)
+            for column in config.columns:
+                if column.has_labels:
+                    sub_df = _rename_column(sub_df, column.name)
+            print(sub_df)
+            assert False
+
+        df = (
+            df
+            if sub_df.empty
+            else (sub_df if df.empty else df.merge(sub_df, how="cross"))
+        )
 
     return df
 
