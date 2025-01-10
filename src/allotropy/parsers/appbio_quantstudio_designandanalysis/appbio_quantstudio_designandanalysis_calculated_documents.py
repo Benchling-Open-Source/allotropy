@@ -1,6 +1,20 @@
 from collections.abc import Iterator
 from functools import cache
 
+from allotropy.calcdocs.appbio_quantstudio_designandanalysis.extractor import (
+    AppbioQuantstudioDAExtractor,
+)
+from allotropy.calcdocs.appbio_quantstudio_designandanalysis.views import (
+    SampleView,
+    TargetRoleView,
+    TargetView,
+    UuidView,
+)
+from allotropy.calcdocs.config import (
+    CalcDocsConfig,
+    CalculatedDataConfig,
+    MeasurementConfig,
+)
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_calculated_documents import (
     yield_documents,
 )
@@ -11,6 +25,7 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.st
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
     DataSource,
+    Referenceable,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
 
@@ -71,11 +86,11 @@ def build_quantity(
     if view_tr_data:
         if y_intercept_ref := build_y_intercept(view_tr_data, target):
             data_sources.append(
-                DataSource(feature="Y-intercept", reference=y_intercept_ref)
+                DataSource(feature="y intercept", reference=y_intercept_ref)
             )
 
         if slope_ref := build_slope(view_tr_data, target):
-            data_sources.append(DataSource(feature="Slope", reference=slope_ref))
+            data_sources.append(DataSource(feature="slope", reference=slope_ref))
 
     return CalculatedDocument(
         uuid=random_uuid_str(),
@@ -685,31 +700,187 @@ def build_efficiency(
     )
 
 
+def calc_doc_simp(calc_doc: CalculatedDocument) -> CalculatedDocument:
+    for source in calc_doc.data_sources:
+        if isinstance(source.reference, WellItem):
+            source.reference = Referenceable(source.reference.uuid)
+        elif isinstance(source.reference, CalculatedDocument):
+            calc_doc_simp(source.reference)
+    return calc_doc
+
+
 def iter_standard_curve_calc_docs(
+    well_items: list[WellItem],
     view_st_data: ViewData[WellItem],
     view_tr_data: ViewData[WellItem],
 ) -> Iterator[CalculatedDocument]:
     # Quantity, Quantity Mean, Quantity SD, Ct Mean, Ct SD, Y-Intercept,
     # R(superscript 2), Slope, Efficiency, Amp score, Cq confidence
     calc_docs: list[CalculatedDocument | None] = []
+
     for sample, target in view_st_data.iter_keys():
-        for well_item in view_st_data.get_leaf_item(sample, target):
-            calc_docs.append(build_quantity(view_tr_data, target, well_item))
-            calc_docs.append(build_amp_score(well_item))
-            calc_docs.append(build_cq_conf(well_item))
+        #     for well_item in view_st_data.get_leaf_item(sample, target):
+        #         calc_docs.append(build_quantity(view_tr_data, target, well_item))
+        #         calc_docs.append(build_amp_score(well_item))
+        #         calc_docs.append(build_cq_conf(well_item))
 
         calc_docs.append(
             build_quantity_mean(view_st_data, view_tr_data, sample, target)
         )
-        calc_docs.append(build_quantity_sd(view_st_data, view_tr_data, sample, target))
-        calc_docs.append(build_ct_mean(view_st_data, sample, target))
-        calc_docs.append(build_ct_sd(view_st_data, sample, target))
+    #     calc_docs.append(build_quantity_sd(view_st_data, view_tr_data, sample, target))
+    #     calc_docs.append(build_ct_mean(view_st_data, sample, target))
+    #     calc_docs.append(build_ct_sd(view_st_data, sample, target))
 
-    for target in view_tr_data.data:
-        calc_docs.append(build_y_intercept(view_tr_data, target))
-        calc_docs.append(build_r_squared(view_tr_data, target))
-        calc_docs.append(build_slope(view_tr_data, target))
-        calc_docs.append(build_efficiency(view_tr_data, target))
+    # for target in view_tr_data.data:
+    #     calc_docs.append(build_y_intercept(view_tr_data, target))
+    #     calc_docs.append(build_r_squared(view_tr_data, target))
+    #     calc_docs.append(build_slope(view_tr_data, target))
+    #     calc_docs.append(build_efficiency(view_tr_data, target))
+
+    calc_docs = [calc_doc_simp(calc_doc) for calc_doc in calc_docs if calc_doc]
+
+    # random_uuid_str(next_id=383)
+    random_uuid_str(next_id=95)
+
+    elements = AppbioQuantstudioDAExtractor.get_elements(well_items)
+
+    sid_tdna_view_data = SampleView(sub_view=TargetView()).apply(elements)
+    sid_tdna_uuid_view_data = SampleView(
+        sub_view=TargetView(sub_view=UuidView())
+    ).apply(elements)
+    tdna_view_data = TargetRoleView().apply(elements)
+
+    y_intercept_config = CalculatedDataConfig(
+        name="y intercept",
+        value="y_intercept",
+        view_data=tdna_view_data,
+        source_configs=[
+            MeasurementConfig(
+                name="cycle threshold result",
+                value="cycle_threshold_result",
+            ),
+        ],
+    )
+
+    slope_config = CalculatedDataConfig(
+        name="slope",
+        value="slope",
+        view_data=tdna_view_data,
+        source_configs=[
+            MeasurementConfig(
+                name="cycle threshold result",
+                value="cycle_threshold_result",
+            ),
+        ],
+    )
+
+    quantity_config = CalculatedDataConfig(
+        name="quantity",
+        value="quantity",
+        view_data=sid_tdna_uuid_view_data,
+        source_configs=[
+            MeasurementConfig(
+                name="cycle threshold result",
+                value="cycle_threshold_result",
+            ),
+            y_intercept_config,
+            slope_config,
+        ],
+    )
+
+    configs = CalcDocsConfig(
+        [
+            # quantity_config,
+            # CalculatedDataConfig(
+            #     name="amplification score",
+            #     value="amp_score",
+            #     view_data=sid_tdna_uuid_view_data,
+            #     source_configs=[
+            #         MeasurementConfig(
+            #             name="cycle threshold result",
+            #             value="cycle_threshold_result",
+            #         )
+            #     ],
+            # ),
+            # CalculatedDataConfig(
+            #     name="cq confidence",
+            #     value="cq_confidence",
+            #     view_data=sid_tdna_uuid_view_data,
+            #     source_configs=[
+            #         MeasurementConfig(
+            #             name="cycle threshold result",
+            #             value="cycle_threshold_result",
+            #         )
+            #     ],
+            # ),
+            CalculatedDataConfig(
+                name="quantity mean",
+                value="quantity_mean",
+                view_data=sid_tdna_view_data,
+                source_configs=[
+                    quantity_config,
+                ],
+            ),
+            # CalculatedDataConfig(
+            #     name="quantity sd",
+            #     value="quantity_sd",
+            #     view_data=sid_tdna_view_data,
+            #     source_configs=[
+            #         quantity_config,
+            #     ],
+            # ),
+            # CalculatedDataConfig(
+            #     name="ct mean",
+            #     value="ct_mean",
+            #     view_data=sid_tdna_view_data,
+            #     source_configs=[
+            #         MeasurementConfig(
+            #             name="cycle threshold result",
+            #             value="cycle_threshold_result",
+            #         )
+            #     ],
+            # ),
+            # CalculatedDataConfig(
+            #     name="ct sd",
+            #     value="ct_sd",
+            #     view_data=sid_tdna_view_data,
+            #     source_configs=[
+            #         MeasurementConfig(
+            #             name="cycle threshold result",
+            #             value="cycle_threshold_result",
+            #         )
+            #     ],
+            # ),
+            # y_intercept_config,
+            # CalculatedDataConfig(
+            #     name="r^2",
+            #     value="r_squared",
+            #     view_data=tdna_view_data,
+            #     source_configs=[
+            #         MeasurementConfig(
+            #             name="cycle threshold result",
+            #             value="cycle_threshold_result",
+            #         )
+            #     ],
+            # ),
+            # slope_config,
+            # CalculatedDataConfig(
+            #     name="efficiency",
+            #     value="efficiency",
+            #     view_data=tdna_view_data,
+            #     source_configs=[
+            #         MeasurementConfig(
+            #             name="cycle threshold result",
+            #             value="cycle_threshold_result",
+            #         )
+            #     ],
+            # ),
+        ]
+    )
+
+    a = configs.construct()  # noqa: F841
+
+    random_uuid_str(next_id=1164)
 
     yield from yield_documents(calc_docs)
 

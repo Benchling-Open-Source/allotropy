@@ -44,6 +44,7 @@ class StandardCurveCreator(Creator):
             experiment_type=ExperimentType.standard_curve_qpcr_experiment,
             calculated_documents=list(
                 iter_standard_curve_calc_docs(
+                    well_items=well_items,
                     view_st_data=SampleView(sub_view=TargetView()).apply(well_items),
                     view_tr_data=TargetRoleView().apply(well_items),
                 )
