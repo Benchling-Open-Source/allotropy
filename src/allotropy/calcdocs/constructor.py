@@ -52,22 +52,27 @@ class Constructor:
         if value is None:
             return None
 
+        data_sources = [
+            data_source
+            for source_config in config.source_configs
+            for data_source in (
+                self.iter_calc_doc_data_sources(
+                    source_config,
+                    source_config.view_data.filter_keys(keys),
+                )
+                if isinstance(source_config, CalculatedDataConfig)
+                else self.iter_measurement_data_sources(source_config, elements)
+            )
+        ]
+
+        if not data_sources:
+            return None
+
         return CalculatedDocument(
             uuid=random_uuid_str(),
             name=config.name,
             value=value,
-            data_sources=[
-                data_source
-                for source_config in config.source_configs
-                for data_source in (
-                    self.iter_calc_doc_data_sources(
-                        source_config,
-                        source_config.view_data.filter_keys(keys),
-                    )
-                    if isinstance(source_config, CalculatedDataConfig)
-                    else self.iter_measurement_data_sources(source_config, elements)
-                )
-            ],
+            data_sources=data_sources,
         )
 
     def apply_calc_data_config(
