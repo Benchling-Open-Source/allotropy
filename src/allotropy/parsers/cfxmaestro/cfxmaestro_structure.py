@@ -80,17 +80,22 @@ def create_measurement_group(
                     ),
                     # TODO: cycle number is required, but we do not have any examples of the value being
                     # provided, if we get one, and the column does not match, update here.
-                    cycle_threshold_value_setting=data.get(
-                        float, "Cycle Number", NEGATIVE_ZERO
+                    cycle_threshold_value_setting=(
+                        cycle_number := data.get(float, "Cycle Number", NEGATIVE_ZERO)
                     ),
                 ),
                 # Since the processed data doc does not include an error document,
                 # we added the cycle threshold value setting error at measurement level
-                error_document=[
-                    Error(
-                        error=NaN.value, feature="cycle threshold value setting (qPCR)"
-                    )
-                ],
+                error_document=(
+                    [
+                        Error(
+                            error=NaN.value,
+                            feature="cycle threshold value setting (qPCR)",
+                        )
+                    ]
+                    if cycle_number == NEGATIVE_ZERO
+                    else None
+                ),
             )
             for data in well_data
             if data.get(str, "Sample", validate=SeriesData.NOT_NAN)
