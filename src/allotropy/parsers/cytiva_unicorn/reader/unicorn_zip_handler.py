@@ -39,7 +39,7 @@ class UnicornZipHandler(ZipHandler):
                 break
 
         if start == -1 or end == -1:
-            msg = "Unable to extract XML from {path} file."
+            msg = "Unable to extract XML from file."
             raise AllotropeConversionError(msg)
 
         return BytesIO(data[start:end])
