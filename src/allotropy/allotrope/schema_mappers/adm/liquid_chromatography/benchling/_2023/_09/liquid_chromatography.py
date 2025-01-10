@@ -66,7 +66,7 @@ class DeviceDocument:
 @dataclass(frozen=True)
 class Metadata:
     asset_management_identifier: str
-    analyst: str
+    analyst: str | None = None
     detection_type: str | None = None
     model_number: str | None = None
     software_name: str | None = None
@@ -86,8 +86,10 @@ class Metadata:
 @dataclass(frozen=True)
 class Peak:
     identifier: str
-    start_unit: str
-    end_unit: str
+    start: float | None = None
+    start_unit: str | None = None
+    end: float | None = None
+    end_unit: str | None = None
     area: float | None = None
     end: float | None = None
     start: float | None = None

@@ -63,6 +63,8 @@ def _is_valid_testcase(path: Path) -> bool:
         return True
     if path.suffix.lower() == ".json":
         return False
+    if path.suffix.lower() == ".parquet":
+        return False
     return all(keyword not in str(path).lower() for keyword in EXCLUDE_KEYWORDS)
 
 

@@ -52,6 +52,9 @@ SPECIAL_KEYS = {
     "total_cell_diameter_distribution__cell_counter_": "total cell diameter distribution (cell counter)",
     "viable_cell_count__cell_counter_": "viable cell count (cell counter)",
     "total_cell_count__cell_counter_": "total cell count (cell counter)",
+    "cycle_threshold_value_setting__qPCR_": "cycle threshold value setting (qPCR)",
+    "genotyping_qPCR_method_setting__qPCR_": "genotyping qPCR method setting (qPCR)",
+    "cycle_threshold_result__qPCR_": "cycle threshold result (qPCR)",
     "autosampler_injection_volume_setting__chromatography_": "autosampler injection volume setting (chromatography)",
     "capacity_factor__chromatography_": "capacity factor (chromatography)",
     "peak_selectivity__chromatography_": "peak selectivity (chromatography)",
@@ -315,7 +318,12 @@ def structure_custom_information_document(val: dict[str, Any], name: str) -> Any
         structured_value = value
         if isinstance(value, list):
             structured_value = [
-                structure_custom_information_document(v, key) for v in value
+                structure_custom_information_document(v, key)
+                if isinstance(v, dict)
+                else value
+                if isinstance(v, list)
+                else v
+                for v in value
             ]
         elif isinstance(value, dict):
             structured_value = structure_custom_information_document(value, key)
