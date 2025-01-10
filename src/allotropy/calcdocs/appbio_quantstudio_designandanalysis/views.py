@@ -5,6 +5,9 @@ from allotropy.calcdocs.view import View
 
 
 class SampleView(View):
+    def __init__(self, sub_view: View | None = None):
+        super().__init__(name="sample_id", sub_view=sub_view)
+
     def sort_elements(self, elements: list[Element]) -> dict[str, list[Element]]:
         items = defaultdict(list)
         for element in elements:
@@ -14,6 +17,9 @@ class SampleView(View):
 
 
 class TargetView(View):
+    def __init__(self, sub_view: View | None = None):
+        super().__init__(name="target_dna", sub_view=sub_view)
+
     def sort_elements(self, elements: list[Element]) -> dict[str, list[Element]]:
         items = defaultdict(list)
         for element in elements:
@@ -23,6 +29,9 @@ class TargetView(View):
 
 
 class UuidView(View):
+    def __init__(self, sub_view: View | None = None):
+        super().__init__(name="uuid", sub_view=sub_view)
+
     def sort_elements(self, elements: list[Element]) -> dict[str, list[Element]]:
         items = defaultdict(list)
         for element in elements:
@@ -32,6 +41,9 @@ class UuidView(View):
 
 
 class TargetRoleView(View):
+    def __init__(self, sub_view: View | None = None):
+        super().__init__(name="target_dna", sub_view=sub_view)
+
     def sort_elements(self, elements: list[Element]) -> dict[str, list[Element]]:
         items = defaultdict(list)
         for element in elements:
