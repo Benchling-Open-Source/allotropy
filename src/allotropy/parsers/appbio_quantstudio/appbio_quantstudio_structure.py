@@ -7,16 +7,12 @@ from typing import Any, TypeVar
 
 import pandas as pd
 
-from allotropy.allotrope.schema_mappers.adm.pcr.rec._2024._09.qpcr import SampleRoleType
+from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_reader import (
     AppBioQuantStudioReader,
 )
-from allotropy.parsers.appbio_quantstudio.constants import (
-    ExperimentType,
-    SAMPLE_ROLE_TYPES_MAP,
-)
-from allotropy.parsers.constants import NEGATIVE_ZERO, NOT_APPLICABLE
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.utils.calculated_data_documents.definition import Referenceable
 from allotropy.parsers.utils.pandas import df_to_series_data, map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
@@ -32,20 +28,6 @@ def map_wells(map_func: Callable[..., T], data: pd.DataFrame) -> dict[int, T]:
     }
 
 
-def get_well_volume(block_type: str) -> float:
-    # if the block type includes the well volume in mL, convert to microliters
-    if well_search := re.search(r"([0-9]+\.[0-9]+)-?mL", block_type):
-        return float(well_search.groups()[0]) * 1000
-    elif "384-Well Block" in block_type:
-        return 40
-    elif "Taqman Array Card" in block_type:
-        return 1.5
-    # Since well volume is required, if it cannot be implied from block type
-    # a negative zero will be returned, indicating an error.
-    # TODO(slopez): Should we raise instead?
-    return NEGATIVE_ZERO
-
-
 @dataclass(frozen=True)
 class Header:
     measurement_time: str
@@ -59,18 +41,17 @@ class Header:
     passive_reference_dye_setting: str | None
     barcode: str | None
     analyst: str | None
-    experimental_data_identifier: str
-    well_volume: float
+    experimental_data_identifier: str | None
 
     @staticmethod
     def create(data: SeriesData) -> Header:
         experiments_type_options = {
-            "Standard Curve": ExperimentType.standard_curve_qpcr_experiment,
-            "Relative Standard Curve": ExperimentType.relative_standard_curve_qpcr_experiment,
-            "Comparative Cт (ΔΔCт)": ExperimentType.comparative_ct_qpcr_experiment,
-            "Melt Curve": ExperimentType.melt_curve_qpcr_experiment,
-            "Genotyping": ExperimentType.genotyping_qpcr_experiment,
-            "Presence/Absence": ExperimentType.presence_absence_qpcr_experiment,
+            "Standard Curve": ExperimentType.standard_curve_qPCR_experiment,
+            "Relative Standard Curve": ExperimentType.relative_standard_curve_qPCR_experiment,
+            "Comparative Cт (ΔΔCт)": ExperimentType.comparative_CT_qPCR_experiment,
+            "Melt Curve": ExperimentType.melt_curve_qPCR_experiment,
+            "Genotyping": ExperimentType.genotyping_qPCR_experiment,
+            "Presence/Absence": ExperimentType.presence_absence_qPCR_experiment,
         }
 
         plate_well_count = None
@@ -99,8 +80,7 @@ class Header:
             passive_reference_dye_setting=data.get(str, "Passive Reference"),
             barcode=data.get(str, "Experiment Barcode"),
             analyst=data.get(str, "Experiment User Name"),
-            experimental_data_identifier=data[str, "Experiment Name"],
-            well_volume=get_well_volume(block_type) if block_type else NEGATIVE_ZERO,
+            experimental_data_identifier=data.get(str, "Experiment Name"),
         )
 
 
@@ -109,12 +89,11 @@ class WellItem(Referenceable):
     identifier: int
     target_dna_description: str
     sample_identifier: str
-    location_identifier: str
     reporter_dye_setting: str | None = None
     position: str | None = None
     well_location_identifier: str | None = None
     quencher_dye_setting: str | None = None
-    sample_role_type: SampleRoleType | None = None
+    sample_role_type: str | None = None
     group_identifier: str | None = None
     extra_data: dict[str, Any] | None = None
     _result: Result | None = None
@@ -151,11 +130,10 @@ class WellItem(Referenceable):
                 sample_identifier=data.get(str, "Sample Name", NOT_APPLICABLE),
                 reporter_dye_setting=data.get(str, "Allele1 Reporter"),
                 position=data.get(str, "Well Position", NOT_APPLICABLE),
-                location_identifier=data[str, "Well"],
                 well_location_identifier=data.get(str, "Well Position"),
                 quencher_dye_setting=data.get(str, "Quencher"),
                 group_identifier=data.get(str, "Biogroup Name"),
-                sample_role_type=SAMPLE_ROLE_TYPES_MAP.get(data.get(str, "Task", "")),
+                sample_role_type=data.get(str, "Task"),
                 extra_data={
                     "well identifier": identifier,
                     "sample color": data.get(str, "Sample Color"),
@@ -170,11 +148,10 @@ class WellItem(Referenceable):
                 sample_identifier=data.get(str, "Sample Name", NOT_APPLICABLE),
                 reporter_dye_setting=data.get(str, "Allele2 Reporter"),
                 position=data.get(str, "Well Position", NOT_APPLICABLE),
-                location_identifier=data[str, "Well"],
                 well_location_identifier=data.get(str, "Well Position"),
                 quencher_dye_setting=data.get(str, "Quencher"),
                 group_identifier=data.get(str, "Biogroup Name"),
-                sample_role_type=SAMPLE_ROLE_TYPES_MAP.get(data.get(str, "Task", "")),
+                sample_role_type=data.get(str, "Task"),
                 extra_data={
                     "well identifier": identifier,
                     "sample color": data.get(str, "Sample Color"),
@@ -198,11 +175,10 @@ class WellItem(Referenceable):
             sample_identifier=data.get(str, "Sample Name", NOT_APPLICABLE),
             reporter_dye_setting=data.get(str, "Reporter"),
             position=data.get(str, "Well Position", NOT_APPLICABLE),
-            location_identifier=data[str, "Well"],
             well_location_identifier=data.get(str, "Well Position"),
             quencher_dye_setting=data.get(str, "Quencher"),
             group_identifier=data.get(str, "Biogroup Name"),
-            sample_role_type=SAMPLE_ROLE_TYPES_MAP.get(data.get(str, "Task", "")),
+            sample_role_type=data.get(str, "Task"),
             extra_data={
                 "well identifier": identifier,
                 "sample color": data.get(str, "Sample Color"),
@@ -244,7 +220,7 @@ class Well:
             msg = "Expected 'Sample Setup' or 'Results' section"
             raise AllotropeConversionError(msg)
 
-        if experiment_type == ExperimentType.genotyping_qpcr_experiment:
+        if experiment_type == ExperimentType.genotyping_qPCR_experiment:
             return map_rows(data, Well.create_genotyping)
         else:
             return list(
@@ -321,8 +297,8 @@ class ResultMetadata:
     @staticmethod
     def create(data: SeriesData, experiment_type: ExperimentType) -> ResultMetadata:
         if experiment_type not in [
-            ExperimentType.comparative_ct_qpcr_experiment,
-            ExperimentType.relative_standard_curve_qpcr_experiment,
+            ExperimentType.comparative_CT_qPCR_experiment,
+            ExperimentType.relative_standard_curve_qPCR_experiment,
         ]:
             return ResultMetadata(None, None)
         return ResultMetadata(
@@ -389,7 +365,7 @@ class Result:
         data: pd.DataFrame, experiment_type: ExperimentType
     ) -> dict[int, dict[str, Result]]:
         target_key = "Target Name"
-        if experiment_type == ExperimentType.genotyping_qpcr_experiment:
+        if experiment_type == ExperimentType.genotyping_qPCR_experiment:
             target_key = "SNP Assay Name"
 
         def make_results(well_data: pd.DataFrame) -> dict[str, Result]:
@@ -411,7 +387,7 @@ class Result:
     ) -> dict[str, Result]:
         ct_col = Result.get_ct_col(list(data.series.index.astype(str)))
         ct_prefix = ct_col.capitalize()
-        if experiment_type == ExperimentType.genotyping_qpcr_experiment:
+        if experiment_type == ExperimentType.genotyping_qPCR_experiment:
             allele_prefixes = []
             for column in data.series.index:
                 if match := re.match(rf"(^\w+) {ct_prefix}$", column):
