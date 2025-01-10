@@ -50,7 +50,7 @@ from allotropy.parsers.utils.values import quantity_or_none, quantity_or_none_fr
 @dataclass(frozen=True)
 class Metadata:
     asset_management_identifier: str
-    analyst: str
+    analyst: str | None = None
     detection_type: str | None = None
     model_number: str | None = None
     software_name: str | None = None
@@ -68,10 +68,10 @@ class Metadata:
 @dataclass(frozen=True)
 class Peak:
     identifier: str
-    start: float
-    start_unit: str
-    end: float
-    end_unit: str
+    start: float | None = None
+    start_unit: str | None = None
+    end: float | None = None
+    end_unit: str | None = None
     area: float | None = None
     area_unit: str | None = None
     relative_area: float | None = None

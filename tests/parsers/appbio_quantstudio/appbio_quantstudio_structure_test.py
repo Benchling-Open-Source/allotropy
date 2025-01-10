@@ -6,6 +6,7 @@ from pathlib import Path
 import pandas as pd
 import pytest
 
+from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_reader import (
@@ -15,7 +16,6 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     Header,
     Result,
 )
-from allotropy.parsers.appbio_quantstudio.constants import ExperimentType
 from allotropy.parsers.lines_reader import read_to_lines
 from allotropy.types import IOType
 
@@ -56,7 +56,7 @@ def test_header_builder() -> None:
     assert Header.create(reader.header) == Header(
         measurement_time="2010-10-01 01:44:54 AM EDT",
         plate_well_count=96,
-        experiment_type=ExperimentType.genotyping_qpcr_experiment,
+        experiment_type=ExperimentType.genotyping_qPCR_experiment,
         device_identifier=device_identifier,
         model_number=model_number,
         device_serial_number=device_serial_number,
@@ -66,7 +66,6 @@ def test_header_builder() -> None:
         barcode=None,
         analyst=None,
         experimental_data_identifier=experimental_data_identifier,
-        well_volume=0,
     )
 
 
@@ -120,7 +119,7 @@ def test_results_builder() -> None:
             "Allele1 Ct": ["Undetermined"],
         }
     )
-    result = Result.create_results(data, ExperimentType.genotyping_qpcr_experiment)[1][
+    result = Result.create_results(data, ExperimentType.genotyping_qPCR_experiment)[1][
         "CYP19_2-Allele1"
     ]
     assert isinstance(result, Result)
