@@ -1,3 +1,5 @@
+from functools import partial
+
 from allotropy.allotrope.models.adm.plate_reader.rec._2024._06.plate_reader import (
     Model,
 )
@@ -11,11 +13,12 @@ from allotropy.parsers.bmg_labtech_smart_control.bmg_labtech_smart_control_reade
 )
 from allotropy.parsers.bmg_labtech_smart_control.bmg_labtech_smart_control_structure import (
     create_calculated_data_documents,
-    create_measurement_groups,
     create_metadata,
+    map_measurement_group,
 )
 from allotropy.parsers.bmg_labtech_smart_control.constants import DISPLAY_NAME
 from allotropy.parsers.release_state import ReleaseState
+from allotropy.parsers.utils.pandas import map_rows
 from allotropy.parsers.vendor_parser import VendorParser
 
 
@@ -27,7 +30,9 @@ class BmgLabtechSmartControlParser(VendorParser[Data, Model]):
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = BmgLabtechSmartControlReader(named_file_contents)
-        measurement_groups = create_measurement_groups(reader.header, reader.data)
+        measurement_groups = map_rows(
+            reader.data, partial(map_measurement_group, headers=reader.header)
+        )
         return Data(
             create_metadata(named_file_contents.original_file_path),
             measurement_groups,

@@ -1,3 +1,4 @@
+from functools import partial
 from io import StringIO
 from unittest.mock import MagicMock, patch
 
@@ -11,8 +12,9 @@ from allotropy.parsers.bmg_labtech_smart_control.bmg_labtech_smart_control_reade
 )
 from allotropy.parsers.bmg_labtech_smart_control.bmg_labtech_smart_control_structure import (
     create_calculated_data_documents,
-    create_measurement_groups,
+    map_measurement_group,
 )
+from allotropy.parsers.utils.pandas import map_rows
 
 
 def _load_data() -> dict[str, pd.DataFrame]:
@@ -160,7 +162,9 @@ def test_bmg_labtech_smart_control_reader(mock_read_excel: MagicMock) -> None:
     reader = BmgLabtechSmartControlReader(
         NamedFileContents(contents=StringIO(""), original_file_path="tmp.txt")
     )
-    measurement_groups = create_measurement_groups(reader.header, reader.data)
+    measurement_groups = map_rows(
+        reader.data, partial(map_measurement_group, headers=reader.header)
+    )
     calculated_data = create_calculated_data_documents(measurement_groups, reader)
     assert len(measurement_groups) == 8
     assert measurement_groups[0].analyst == "user"
