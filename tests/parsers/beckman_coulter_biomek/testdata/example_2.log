@@ -1,0 +1,2162 @@
+
+C:\Users\Public\Documents\Biomek5\Logs\Errors06-08-2023 13.44.55.log
+﻿Method = V181_Stamp_V1
+Logged in user = teliosid4c
+Started 06/08/2023 13:44:55
+Unit serial number = B8758522D008
+Pod1 head serial number = B8759122B004
+Pod Last validated 07/27/2022 08:12:53
+Pod2 head serial number = None
+Pod Last validated 07/27/2022 08:12:56
+
+06/08/2023 13:48:37,Run ended.
+
+C:\Users\Public\Documents\Biomek5\Logs\Details06-08-2023 13.44.55.log
+﻿Method = V181_Stamp_V1
+Logged in user = teliosid4c
+Started 06/08/2023 13:44:55
+Unit serial number = B8758522D008
+Pod1 head serial number = B8759122B004
+Pod Last validated 07/27/2022 08:12:53
+Pod2 head serial number = None
+Pod Last validated 07/27/2022 08:12:56
+
+06/08/2023 13:44:55,Action completed:
+Resource Reservation
+06/08/2023 13:44:56,Action completed:
+Pod1
+  Absolute Move
+  D : 0
+  Speed=100%
+  
+06/08/2023 13:44:56,Action completed:
+Set AU1
+06/08/2023 13:44:56,Action completed:
+Set AU2
+06/08/2023 13:44:56,Action completed:
+Set Property
+06/08/2023 13:44:57,Action completed:
+Update Pod1 tip data to unload tips to 
+06/08/2023 13:44:57,Action completed:
+Set Property
+06/08/2023 13:44:57,Action completed:
+Check tip state
+06/08/2023 13:44:57,Action completed:
+Add deck position inner1
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position inner2
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position outer1
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position outer2
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add Data Set Liquid.
+06/08/2023 13:44:57,Action completed:
+DataSet SetAll
+06/08/2023 13:44:57,Action completed:
+DataSet Copy On Transfer
+06/08/2023 13:44:57,Action completed:
+Add Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position P1
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position P10
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position P11
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position P12
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position P13
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position P14
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position P15
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position P16
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position P17
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position P2
+06/08/2023 13:44:57,Action completed:
+Add Data Set Liquid.
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+DataSet SetAll
+06/08/2023 13:44:57,Action completed:
+DataSet Copy On Transfer
+06/08/2023 13:44:57,Action completed:
+Add Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position P3
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position P4
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add Data Set Liquid.
+06/08/2023 13:44:57,Action completed:
+DataSet SetAll
+06/08/2023 13:44:57,Action completed:
+DataSet Copy On Transfer
+06/08/2023 13:44:57,Action completed:
+Add Labware
+06/08/2023 13:44:57,Action completed:
+Add Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position P5
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position P6
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position P7
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position P8
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position P9
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position Peltier1
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position Peltier2
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position Pos1
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position Pos2
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position TL1
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position TL2
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position TL3
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position TL4
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position TL5
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position TL6
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position TL7
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position TR1
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position TR2
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Add deck position W1
+06/08/2023 13:44:57,Action completed:
+Remove All Labware
+06/08/2023 13:44:57,Action completed:
+Set Property
+06/08/2023 13:44:57,Action completed:
+Add deck position inner1
+06/08/2023 13:44:57,Action completed:
+Add deck position inner2
+06/08/2023 13:44:57,Action completed:
+Add deck position outer1
+06/08/2023 13:44:57,Action completed:
+Add deck position outer2
+06/08/2023 13:44:57,Action completed:
+Add deck position P1
+06/08/2023 13:44:57,Action completed:
+Add deck position P10
+06/08/2023 13:44:57,Action completed:
+Add deck position P11
+06/08/2023 13:44:57,Action completed:
+Add deck position P12
+06/08/2023 13:44:57,Action completed:
+Add deck position P13
+06/08/2023 13:44:57,Action completed:
+Add deck position P14
+06/08/2023 13:44:57,Action completed:
+Add deck position P15
+06/08/2023 13:44:57,Action completed:
+Add deck position P16
+06/08/2023 13:44:57,Action completed:
+Add deck position P17
+06/08/2023 13:44:57,Action completed:
+Add deck position P2
+06/08/2023 13:44:57,Action completed:
+Add deck position P3
+06/08/2023 13:44:57,Action completed:
+Add deck position P4
+06/08/2023 13:44:57,Action completed:
+Add deck position P5
+06/08/2023 13:44:57,Action completed:
+Add deck position P6
+06/08/2023 13:44:57,Action completed:
+Add deck position P7
+06/08/2023 13:44:57,Action completed:
+Add deck position P8
+06/08/2023 13:44:57,Action completed:
+Add deck position P9
+06/08/2023 13:44:57,Action completed:
+Add deck position Peltier1
+06/08/2023 13:44:57,Action completed:
+Add deck position Peltier2
+06/08/2023 13:44:57,Action completed:
+Add deck position Pos1
+06/08/2023 13:44:57,Action completed:
+Add deck position Pos2
+06/08/2023 13:44:57,Action completed:
+Add deck position TL1
+06/08/2023 13:44:57,Action completed:
+Add deck position TL2
+06/08/2023 13:44:57,Action completed:
+Add deck position TL3
+06/08/2023 13:44:57,Action completed:
+Add deck position TL4
+06/08/2023 13:44:57,Action completed:
+Add deck position TL5
+06/08/2023 13:44:57,Action completed:
+Add deck position TL6
+06/08/2023 13:44:57,Action completed:
+Add deck position TL7
+06/08/2023 13:44:57,Action completed:
+Add deck position TR1
+06/08/2023 13:44:57,Action completed:
+Add deck position TR2
+06/08/2023 13:44:57,Action completed:
+Add deck position W1
+06/08/2023 13:44:57,Action completed:
+Set Property
+06/08/2023 13:44:57,Action completed:
+Resource Reservation
+06/08/2023 13:45:00,Action completed:
+Command for Conveyor2
+06/08/2023 13:45:00,Action completed:
+Resource Reservation
+06/08/2023 13:45:00,Action completed:
+Remove All Labware
+06/08/2023 13:45:00,Action completed:
+Add Labware
+06/08/2023 13:45:00,Action completed:
+Resource Reservation
+06/08/2023 13:45:00,Action completed:
+Pod2: Assert that the labware is not gripped
+06/08/2023 13:45:00,Action completed:
+Set grip force to 0
+06/08/2023 13:45:00,Action completed:
+Pod2
+  Span8, Absolute Move
+  GR : 90
+  Speed=100%
+  
+06/08/2023 13:45:01,Action completed:
+Pod2
+  Span8, Absolute Move
+  X : 127.52
+  GY : 55.463
+  GR : 180
+  Speed=100%
+  
+06/08/2023 13:45:02,Action completed:
+Pod2
+  Span8, Absolute Move
+  GY : 61.307
+  Speed=100%
+  
+06/08/2023 13:45:03,Action completed:
+Pod2
+  Span8, Absolute Move
+  GG : 9.6931
+  Speed=100%
+  
+06/08/2023 13:45:03,Action completed:
+Reserve Pod2 and inner2
+06/08/2023 13:45:04,Action completed:
+Pod2
+  Span8, Absolute Move
+  GZ : 23.117
+  Speed=100%
+  
+06/08/2023 13:45:05,Action completed:
+Pod2: Assert that the labware is gripped
+06/08/2023 13:45:05,Action completed:
+Pod2
+  Span8, Absolute Move
+  GZ : 31.085
+  Speed=100%
+  
+06/08/2023 13:45:05,Action completed:
+Reserve Pod2 and inner2
+06/08/2023 13:45:05,Action completed:
+Pod2: Assert that the labware is gripped
+06/08/2023 13:45:06,Action completed:
+Pod2
+  Span8, Absolute Move
+  GZ : 31.321
+  Speed=100%
+  
+06/08/2023 13:45:07,Action completed:
+Pod2
+  Span8, Absolute Move
+  X : 87.021
+  GY : 46.613
+  Speed=100%
+  
+06/08/2023 13:45:07,Action completed:
+PositivePositioner3: Open Clamp
+06/08/2023 13:45:07,Action completed:
+PositivePositioner3: Verify labware is not present
+06/08/2023 13:45:07,Action completed:
+Pod2
+  Span8, Absolute Move
+  GZ : 31.085
+  Speed=100%
+  
+06/08/2023 13:45:07,Action completed:
+Reserve Pod2 and Pos2
+06/08/2023 13:45:07,Action completed:
+Pod2: Assert that the labware is gripped
+06/08/2023 13:45:08,Action completed:
+Pod2
+  Span8, Absolute Move
+  GZ : 23.249
+  Speed=100%
+  
+06/08/2023 13:45:08,Action completed:
+Pod2: Assert that the labware is gripped
+06/08/2023 13:45:08,Action completed:
+Set grip force to 0
+06/08/2023 13:45:08,Action completed:
+Pod2
+  Span8, Absolute Move
+  GG : 9.6931
+  Speed=100%
+  
+06/08/2023 13:45:08,Action completed:
+Pod2: Assert that the labware is not gripped
+06/08/2023 13:45:09,Action completed:
+Pod2
+  Span8, Absolute Move
+  GZ : 25.653
+  Speed=100%
+  
+06/08/2023 13:45:09,Action completed:
+Reserve Pod2 and Pos2
+06/08/2023 13:45:09,Action completed:
+Pod2
+  Span8, Absolute Move
+  GG : 7.889
+  Speed=100%
+  
+06/08/2023 13:45:10,Action completed:
+Pod2
+  Span8, Absolute Move
+  GZ : 31.085
+  Speed=100%
+  
+06/08/2023 13:45:10,Action completed:
+PositivePositioner3: Close Clamp Force: 830
+06/08/2023 13:45:11,Action completed:
+Pod1: Assert that the labware is not gripped
+06/08/2023 13:45:11,Action completed:
+Set grip force to 0
+06/08/2023 13:45:11,Action completed:
+Pod2
+  Span8, Absolute Move
+  X : 118.77
+  Speed=100%
+  
+06/08/2023 13:45:11,Action completed:
+Pod1
+  Absolute Move
+  GR : 90
+  Speed=100%
+  
+06/08/2023 13:45:12,Action completed:
+Pod1
+  Absolute Move
+  X : 71.558
+  GY : 50.988
+  GR : 180
+  Speed=100%
+  
+06/08/2023 13:45:13,Action completed:
+Pod1
+  Absolute Move
+  GG : 9.401
+  Speed=100%
+  
+06/08/2023 13:45:13,Action completed:
+Reserve Pod1 and P4
+06/08/2023 13:45:14,Action completed:
+Pod1
+  Absolute Move
+  GZ : 24.416
+  Speed=100%
+  
+06/08/2023 13:45:15,Action completed:
+Pod1: Assert that the labware is gripped
+06/08/2023 13:45:15,Action completed:
+Pod1
+  Absolute Move
+  GZ : 25.948
+  Speed=100%
+  
+06/08/2023 13:45:15,Action completed:
+Reserve Pod1 and P4
+06/08/2023 13:45:15,Action completed:
+Pod1: Assert that the labware is gripped
+06/08/2023 13:45:16,Action completed:
+Pod1
+  Absolute Move
+  GZ : 28.77
+  Speed=100%
+  
+06/08/2023 13:45:17,Action completed:
+Pod1
+  Absolute Move
+  GY : 40.574
+  Speed=100%
+  
+06/08/2023 13:45:17,Action completed:
+Pod1
+  Absolute Move
+  GZ : 25.948
+  Speed=100%
+  
+06/08/2023 13:45:17,Action completed:
+Reserve Pod1 and P3
+06/08/2023 13:45:17,Action completed:
+Pod1: Assert that the labware is gripped
+06/08/2023 13:45:17,Action completed:
+Pod1
+  Absolute Move
+  GZ : 23.616
+  Speed=100%
+  
+06/08/2023 13:45:17,Action completed:
+Pod1: Assert that the labware is gripped
+06/08/2023 13:45:17,Action completed:
+Set grip force to 0
+06/08/2023 13:45:18,Action completed:
+Pod1
+  Absolute Move
+  GG : 9.401
+  Speed=100%
+  
+06/08/2023 13:45:18,Action completed:
+Pod1: Assert that the labware is not gripped
+06/08/2023 13:45:18,Action completed:
+Pod1
+  Absolute Move
+  GZ : 25.748
+  Speed=100%
+  
+06/08/2023 13:45:18,Action completed:
+Reserve Pod1 and P3
+06/08/2023 13:45:19,Action completed:
+Pod1
+  Absolute Move
+  GG : 7.889
+  Speed=100%
+  
+06/08/2023 13:45:19,Action completed:
+Pod1
+  Absolute Move
+  GZ : 35.788
+  Speed=100%
+  
+06/08/2023 13:45:21,Action completed:
+Pod1
+  Absolute Move
+  X : 29.394
+  Y : 47.982
+  Speed=100%
+  
+06/08/2023 13:45:23,Action completed:
+Pod1
+  Absolute Move
+  Z : 21.526
+  Speed=100%
+  
+06/08/2023 13:45:23,Action completed:
+Update Pod1 tip data to load tips from TL6
+06/08/2023 13:45:31,Action completed:
+Load tips on Pod1
+  Speed: 10 %
+  Force: 2500 N
+  Settling Time: 2 s
+  Tip Box Push Off: 0.292 cm
+  X Range Padding: 70.5978 cm
+06/08/2023 13:45:32,Action completed:
+Pod1
+  Absolute Move
+  Z : 26.712
+  Speed=100%
+  
+06/08/2023 13:45:32,Action completed:
+Pod1
+  Absolute Move
+  Z : 28.101
+  Speed=100%
+  
+06/08/2023 13:45:33,Action completed:
+Pod1
+  Absolute Move
+  X : 60.535
+  Y : 43.665
+  Speed=100%
+  
+06/08/2023 13:45:34,Action completed:
+PositivePositioner3: Close Clamp Force: 830
+06/08/2023 13:45:34,Action completed:
+Pod1
+  Absolute Move
+  Z : 26.712
+  Speed=100%
+  
+06/08/2023 13:45:35,Action completed:
+Pod1
+  Absolute Move
+  Z : 22.066
+  Speed=100%
+  
+06/08/2023 13:45:36,Action completed:
+Pod1
+  Absolute Move
+  D : 25
+  Speed=13.2%
+  
+06/08/2023 13:45:38,Action completed:
+Pod1
+  Absolute Move
+  Z : 20.924
+  Speed=5%
+  
+06/08/2023 13:45:41,Action completed:
+Pod1
+  Absolute Move
+  X : 60.838
+  Y : 43.665
+  Z : 20.919
+  D : 175
+  Speed=13.2%
+  
+06/08/2023 13:45:44,Action completed:
+Pod1
+  Absolute Move
+  X : 60.535
+  Y : 43.665
+  Z : 22.066
+  Speed=5%
+  
+06/08/2023 13:45:45,Action completed:
+Pod1
+  Absolute Move
+  Z : 22.715
+  Speed=100%
+  
+06/08/2023 13:45:45,Action completed:
+Pod1
+  Absolute Move
+  Z : 25.537
+  Speed=100%
+  
+06/08/2023 13:45:46,Action completed:
+PositivePositioner3: Close Clamp Force: 830
+06/08/2023 13:45:46,Action completed:
+Pod1
+  Absolute Move
+  X : 43.969
+  Y : 27.14
+  Speed=100%
+  
+06/08/2023 13:45:47,Action completed:
+Pod1
+  Absolute Move
+  Z : 24.887
+  Speed=100%
+  
+06/08/2023 13:45:51,Action completed:
+Pod1
+  Absolute Move
+  Z : 23.265
+  Speed=5%
+  
+06/08/2023 13:45:51,Action completed:
+DataSet Set Liquid
+06/08/2023 13:45:54,Action completed:
+Pod1
+  Absolute Move
+  D : 0
+  Speed=13.2%
+  
+06/08/2023 13:45:59,Action completed:
+Pod1
+  Absolute Move
+  Z : 21.25
+  Speed=5%
+  
+06/08/2023 13:46:07,Action completed:
+Pod1
+  Absolute Move
+  Z : 24.887
+  Speed=5%
+  
+06/08/2023 13:46:07,Action completed:
+Pod1
+  Absolute Move
+  Z : 25.537
+  Speed=100%
+  
+06/08/2023 13:46:08,Action completed:
+Pod1
+  Absolute Move
+  Z : 24.887
+  Speed=100%
+  
+06/08/2023 13:46:13,Action completed:
+Pod1
+  Absolute Move
+  Z : 20.885
+  Speed=10%
+  
+06/08/2023 13:46:17,Action completed:
+Pod1
+  Absolute Move
+  Z : 24.887
+  Speed=10%
+  
+06/08/2023 13:46:18,Action completed:
+Pod1
+  Absolute Move
+  Z : 25.537
+  Speed=100%
+  
+06/08/2023 13:46:18,Action completed:
+Pod1
+  Absolute Move
+  Z : 26.712
+  Speed=100%
+  
+06/08/2023 13:46:19,Action completed:
+Pod1
+  Absolute Move
+  Y : 47.967
+  Speed=100%
+  
+06/08/2023 13:46:20,Action completed:
+Pod1
+  Absolute Move
+  Z : 25.537
+  Speed=100%
+  
+06/08/2023 13:46:20,Action completed:
+Pod1
+  Absolute Move
+  Z : 21.903
+  Speed=100%
+  
+06/08/2023 13:46:21,Action completed:
+Pod1
+  Absolute Move
+  D : 10
+  Speed=26.3%
+  
+06/08/2023 13:46:21,Action completed:
+Item Pause
+06/08/2023 13:46:22,Action completed:
+Pod1
+  Absolute Move
+  Z : 20.976
+  Speed=10%
+  
+06/08/2023 13:46:23,Action completed:
+Pod1
+  Absolute Move
+  Z : 20.834
+  D : 60
+  Speed=26.3%
+  
+06/08/2023 13:46:23,Action completed:
+Item Pause
+06/08/2023 13:46:24,Action completed:
+Pod1
+  Absolute Move
+  Z : 21.903
+  Speed=10%
+  
+06/08/2023 13:46:25,Action completed:
+Pod1
+  Absolute Move
+  Z : 22.553
+  Speed=100%
+  
+06/08/2023 13:46:26,Action completed:
+Pod1
+  Absolute Move
+  Z : 26.712
+  Speed=100%
+  
+06/08/2023 13:46:27,Action completed:
+Pod1
+  Absolute Move
+  X : 60.535
+  Y : 43.665
+  Speed=100%
+  
+06/08/2023 13:46:27,Action completed:
+PositivePositioner3: Close Clamp Force: 830
+06/08/2023 13:46:27,Action completed:
+Pod1
+  Absolute Move
+  Z : 22.715
+  Speed=100%
+  
+06/08/2023 13:46:28,Action completed:
+Pod1
+  Absolute Move
+  Z : 22.066
+  Speed=100%
+  
+06/08/2023 13:46:29,Action completed:
+Pod1
+  Absolute Move
+  Z : 21.099
+  Speed=10%
+  
+06/08/2023 13:46:32,Action completed:
+Pod1
+  Absolute Move
+  Z : 21.135
+  D : 10
+  Speed=5.3%
+  
+06/08/2023 13:46:32,Action completed:
+DataSet Set Liquid
+06/08/2023 13:46:32,Action completed:
+DataSet Set Liquid
+06/08/2023 13:46:33,Action completed:
+Pod1
+  Absolute Move
+  D : 0
+  Speed=5.3%
+  
+06/08/2023 13:46:33,Action completed:
+Pod1
+  Absolute Move
+  Z : 21.866
+  Speed=100%
+  
+06/08/2023 13:46:33,Action completed:
+Pod1
+  Absolute Move
+  X : 60.535
+  Y : 43.064
+  Speed=100%
+  
+06/08/2023 13:46:34,Action completed:
+Pod1
+  Absolute Move
+  X : 60.535
+  Y : 43.665
+  Speed=100%
+  
+06/08/2023 13:46:34,Action completed:
+Pod1
+  Absolute Move
+  Z : 22.066
+  Speed=10%
+  
+06/08/2023 13:46:35,Action completed:
+Pod1
+  Absolute Move
+  Z : 22.715
+  Speed=100%
+  
+06/08/2023 13:46:36,Action completed:
+Pod1
+  Absolute Move
+  Z : 28.101
+  Speed=100%
+  
+06/08/2023 13:46:36,Action completed:
+PositivePositioner3: Close Clamp Force: 830
+06/08/2023 13:46:37,Action completed:
+Pod1
+  Absolute Move
+  X : 29.394
+  Y : 47.982
+  Speed=100%
+  
+06/08/2023 13:46:37,Action completed:
+Pod2: Assert that the labware is not gripped
+06/08/2023 13:46:37,Action completed:
+Set grip force to 0
+06/08/2023 13:46:37,Action completed:
+Pod1
+  Absolute Move
+  Z : 26.712
+  Speed=100%
+  
+06/08/2023 13:46:38,Action completed:
+Pod2
+  Span8, Absolute Move
+  X : 87.021
+  Speed=100%
+  
+06/08/2023 13:46:38,Action completed:
+Pod1
+  Absolute Move
+  Z : 20.865
+  Speed=100%
+  
+06/08/2023 13:46:39,Action completed:
+PositivePositioner3: Close Clamp Force: 830
+06/08/2023 13:46:39,Action completed:
+PositivePositioner3: Open Clamp
+06/08/2023 13:46:39,Action completed:
+Pod2
+  Span8, Absolute Move
+  GG : 9.6931
+  Speed=100%
+  
+06/08/2023 13:46:39,Action completed:
+Reserve Pod2 and Pos2
+06/08/2023 13:46:39,Action completed:
+Pod1
+  Absolute Move
+  Z : 21.909
+  D : -82.664
+  Speed=100%
+  
+06/08/2023 13:46:39,Action completed:
+Pod1
+  Absolute Move
+  D : 0
+  Speed=100%
+  
+06/08/2023 13:46:39,Action completed:
+Pod2
+  Span8, Absolute Move
+  GZ : 23.249
+  Speed=100%
+  
+06/08/2023 13:46:40,Action completed:
+Pod2: Assert that the labware is gripped
+06/08/2023 13:46:40,Action completed:
+Pod1
+  Absolute Move
+  D : -82.664
+  Speed=100%
+  
+06/08/2023 13:46:40,Action completed:
+Pod2
+  Span8, Absolute Move
+  GZ : 25.231
+  Speed=100%
+  
+06/08/2023 13:46:40,Action completed:
+Reserve Pod2 and Pos2
+06/08/2023 13:46:40,Action completed:
+PositivePositioner3: Verify labware is not present
+06/08/2023 13:46:40,Action completed:
+Pod2: Assert that the labware is gripped
+06/08/2023 13:46:40,Action completed:
+Pod1
+  Absolute Move
+  D : 0
+  Speed=100%
+  
+06/08/2023 13:46:40,Action completed:
+Update Pod1 tip data to unload tips to TL6
+06/08/2023 13:46:41,Action completed:
+Pod1
+  Absolute Move
+  Z : 22.547
+  Speed=100%
+  
+06/08/2023 13:46:41,Action completed:
+Pod2
+  Span8, Absolute Move
+  GZ : 31.321
+  Speed=100%
+  
+06/08/2023 13:46:42,Action completed:
+Pod2
+  Span8, Absolute Move
+  X : 127.52
+  GY : 61.307
+  Speed=100%
+  
+06/08/2023 13:46:42,Action completed:
+Pod1: Assert that the labware is not gripped
+06/08/2023 13:46:42,Action completed:
+Set grip force to 0
+06/08/2023 13:46:42,Action completed:
+Pod2
+  Span8, Absolute Move
+  GZ : 31.085
+  Speed=100%
+  
+06/08/2023 13:46:42,Action completed:
+Reserve Pod2 and inner2
+06/08/2023 13:46:42,Action completed:
+Pod2: Assert that the labware is gripped
+06/08/2023 13:46:43,Action completed:
+Pod2
+  Span8, Absolute Move
+  GZ : 23.117
+  Speed=100%
+  
+06/08/2023 13:46:43,Action completed:
+Pod2: Assert that the labware is gripped
+06/08/2023 13:46:43,Action completed:
+Set grip force to 0
+06/08/2023 13:46:43,Action completed:
+Pod1
+  Absolute Move
+  X : 48.698
+  Y : 59.593
+  GY : 40.676
+  Speed=100%
+  
+06/08/2023 13:46:43,Action completed:
+Pod2
+  Span8, Absolute Move
+  GG : 9.6931
+  Speed=100%
+  
+06/08/2023 13:46:43,Action completed:
+Pod2: Assert that the labware is not gripped
+06/08/2023 13:46:43,Action completed:
+Pod2
+  Span8, Absolute Move
+  GZ : 23.117
+  Speed=100%
+  
+06/08/2023 13:46:44,Action completed:
+Pod2
+  Span8, Absolute Move
+  GZ : 31.085
+  Speed=100%
+  
+06/08/2023 13:46:44,Action completed:
+Reserve Pod2 and inner2
+06/08/2023 13:46:44,Action completed:
+Resource Reservation
+06/08/2023 13:46:44,Action completed:
+Pod1
+  Absolute Move
+  GR : 0
+  Speed=100%
+  
+06/08/2023 13:46:45,Action completed:
+Pod2
+  Span8, Absolute Move
+  GG : 7.889
+  Speed=100%
+  
+06/08/2023 13:46:45,Action completed:
+Pod1
+  Absolute Move
+  GG : 9.401
+  Speed=100%
+  
+06/08/2023 13:46:45,Action completed:
+Reserve Pod1 and P3
+06/08/2023 13:46:46,Action completed:
+Pod1
+  Absolute Move
+  GZ : 23.616
+  Speed=100%
+  
+06/08/2023 13:46:46,Action completed:
+Pod1: Assert that the labware is gripped
+06/08/2023 13:46:47,Action completed:
+Pod1
+  Absolute Move
+  GZ : 25.609
+  Speed=100%
+  
+06/08/2023 13:46:47,Action completed:
+Reserve Pod1 and P3
+06/08/2023 13:46:47,Action completed:
+Pod1: Assert that the labware is gripped
+06/08/2023 13:46:47,Action completed:
+Command for Conveyor2
+06/08/2023 13:46:47,Action completed:
+Resource Reservation
+06/08/2023 13:46:47,Action completed:
+Remove All Labware
+06/08/2023 13:46:47,Action completed:
+Add Labware
+06/08/2023 13:46:47,Action completed:
+Resource Reservation
+06/08/2023 13:46:47,Action completed:
+Pod1
+  Absolute Move
+  GZ : 35.988
+  Speed=100%
+  
+06/08/2023 13:46:49,Action completed:
+Pod1
+  Absolute Move
+  GY : 51.09
+  Speed=100%
+  
+06/08/2023 13:46:49,Action completed:
+Pod1
+  Absolute Move
+  GZ : 29.945
+  Speed=100%
+  
+06/08/2023 13:46:49,Action completed:
+Reserve Pod1 and P4
+06/08/2023 13:46:49,Action completed:
+Pod1: Assert that the labware is gripped
+06/08/2023 13:46:50,Action completed:
+Pod1
+  Absolute Move
+  GZ : 24.416
+  Speed=100%
+  
+06/08/2023 13:46:50,Action completed:
+Pod1: Assert that the labware is gripped
+06/08/2023 13:46:50,Action completed:
+Set grip force to 0
+06/08/2023 13:46:50,Action completed:
+Pod1
+  Absolute Move
+  GG : 9.401
+  Speed=100%
+  
+06/08/2023 13:46:50,Action completed:
+Pod1: Assert that the labware is not gripped
+06/08/2023 13:46:50,Action completed:
+Pod1
+  Absolute Move
+  GZ : 24.416
+  Speed=100%
+  
+06/08/2023 13:46:51,Action completed:
+Pod1
+  Absolute Move
+  GZ : 29.745
+  Speed=100%
+  
+06/08/2023 13:46:51,Action completed:
+Reserve Pod1 and P4
+06/08/2023 13:46:51,Action completed:
+Pod1
+  Absolute Move
+  GG : 7.889
+  Speed=100%
+  
+06/08/2023 13:46:51,Action completed:
+Set Property
+06/08/2023 13:47:45,Action completed:
+Run Program C:\Telios\Exe\BiomekMethCmdLineIntrfc.exe AU2 in dir:
+06/08/2023 13:47:45,Action completed:
+Set AU2
+06/08/2023 13:47:45,Action completed:
+Set AU2
+06/08/2023 13:47:45,Action completed:
+Pod1: Assert that the labware is not gripped
+06/08/2023 13:47:45,Action completed:
+Set grip force to 0
+06/08/2023 13:47:47,Action completed:
+Pod1
+  Absolute Move
+  Z : 31.063
+  GZ : 31.134
+  Speed=100%
+  
+06/08/2023 13:47:48,Action completed:
+Pod1
+  Absolute Move
+  X : 34.118
+  GY : 51.105
+  Speed=100%
+  
+06/08/2023 13:47:48,Action completed:
+Pod1
+  Absolute Move
+  GZ : 29.745
+  Speed=100%
+  
+06/08/2023 13:47:49,Action completed:
+Pod1
+  Absolute Move
+  Y : 14.596
+  Speed=100%
+  
+06/08/2023 13:47:50,Action completed:
+Pod1
+  Absolute Move
+  GG : 9.686
+  Speed=100%
+  
+06/08/2023 13:47:50,Action completed:
+Reserve Pod1 and TL6
+06/08/2023 13:47:50,Action completed:
+Pod1
+  Absolute Move
+  GZ : 26.905
+  Speed=100%
+  
+06/08/2023 13:47:51,Action completed:
+Pod1: Assert that the labware is gripped
+06/08/2023 13:47:51,Action completed:
+Pod1
+  Absolute Move
+  GZ : 28.909
+  Speed=100%
+  
+06/08/2023 13:47:51,Action completed:
+Reserve Pod1 and TL6
+06/08/2023 13:47:51,Action completed:
+Pod1: Assert that the labware is gripped
+06/08/2023 13:47:52,Action completed:
+Pod1
+  Absolute Move
+  GZ : 37.949
+  Speed=100%
+  
+06/08/2023 13:47:53,Action completed:
+Pod1
+  Absolute Move
+  X : 20.566
+  GY : 40.807
+  Speed=100%
+  
+06/08/2023 13:47:53,Action completed:
+Pod1
+  Absolute Move
+  GZ : 34.634
+  Speed=100%
+  
+06/08/2023 13:47:53,Action completed:
+Reserve Pod1 and inner1
+06/08/2023 13:47:53,Action completed:
+Pod1: Assert that the labware is gripped
+06/08/2023 13:47:54,Action completed:
+Pod1
+  Absolute Move
+  GZ : 26.884
+  Speed=100%
+  
+06/08/2023 13:47:54,Action completed:
+Pod1: Assert that the labware is gripped
+06/08/2023 13:47:54,Action completed:
+Set grip force to 0
+06/08/2023 13:47:55,Action completed:
+Pod1
+  Absolute Move
+  GG : 9.686
+  Speed=100%
+  
+06/08/2023 13:47:55,Action completed:
+Pod1: Assert that the labware is not gripped
+06/08/2023 13:47:55,Action completed:
+Pod1
+  Absolute Move
+  GZ : 31.134
+  Speed=100%
+  
+06/08/2023 13:47:55,Action completed:
+Reserve Pod1 and inner1
+06/08/2023 13:47:55,Action completed:
+Resource Reservation
+06/08/2023 13:47:56,Action completed:
+Pod1
+  Absolute Move
+  GG : 7.889
+  Speed=100%
+  
+06/08/2023 13:47:58,Action completed:
+Command for Conveyor3
+06/08/2023 13:47:58,Action completed:
+Resource Reservation
+06/08/2023 13:47:58,Action completed:
+Remove All Labware
+06/08/2023 13:47:58,Action completed:
+Add Labware
+06/08/2023 13:47:58,Action completed:
+Resource Reservation
+06/08/2023 13:48:09,Action completed:
+Command for CytomatMPH
+06/08/2023 13:48:09,Action completed:
+Resource Reservation
+06/08/2023 13:48:09,Action completed:
+Remove All Labware
+06/08/2023 13:48:09,Action completed:
+Set Property
+06/08/2023 13:48:12,Action completed:
+Run Program C:\Telios\Exe\BiomekMethCmdLineIntrfc.exe AU1 in dir:
+06/08/2023 13:48:12,Action completed:
+Set AU1
+06/08/2023 13:48:12,Action completed:
+Set AU1
+06/08/2023 13:48:12,Action completed:
+Pod1: Assert that the labware is not gripped
+06/08/2023 13:48:12,Action completed:
+Set grip force to 0
+06/08/2023 13:48:12,Action completed:
+Pod2
+  Span8, Absolute Move
+  Z1 : 39.221
+  Z2 : 39.214
+  Z3 : 39.206
+  Z4 : 39.209
+  Z5 : 39.217
+  Z6 : 39.221
+  Z7 : 39.174
+  Z8 : 39.199
+  Speed=100%
+  
+06/08/2023 13:48:13,Action completed:
+Pod1
+  Absolute Move
+  GZ : 35.788
+  Speed=100%
+  
+06/08/2023 13:48:13,Action completed:
+Pod2
+  Span8, Absolute Move
+  GZ : 37.831
+  Speed=100%
+  
+06/08/2023 13:48:14,Action completed:
+Pod1
+  Absolute Move
+  X : 48.698
+  GY : 51.09
+  Speed=100%
+  
+06/08/2023 13:48:14,Action completed:
+Pod2
+  Span8, Absolute Move
+  X : 135.05
+  Y : 37.568
+  GY : 48
+  S : 6.3
+  Speed=100%
+  
+06/08/2023 13:48:15,Action completed:
+Pod1
+  Absolute Move
+  GZ : 31.134
+  Speed=100%
+  
+06/08/2023 13:48:15,Action completed:
+Pod1
+  Absolute Move
+  GG : 9.706
+  Speed=100%
+  
+06/08/2023 13:48:15,Action completed:
+Reserve Pod1 and P4
+06/08/2023 13:48:15,Action completed:
+Pod2
+  Span8, Absolute Move
+  GR : 90
+  Speed=100%
+  
+06/08/2023 13:48:15,Action completed:
+Pod2
+  Span8, Absolute Move
+  Z1 : 39.121
+  Z2 : 39.114
+  Z3 : 39.106
+  Z4 : 39.109
+  Z5 : 39.117
+  Z6 : 39.121
+  Z7 : 39.074
+  Z8 : 39.099
+  Speed=100%
+  
+06/08/2023 13:48:16,Action completed:
+Pod1
+  Absolute Move
+  GZ : 23.186
+  Speed=100%
+  
+06/08/2023 13:48:16,Action completed:
+Pod1: Assert that the labware is gripped
+06/08/2023 13:48:17,Action completed:
+Pod1
+  Absolute Move
+  GZ : 25.409
+  Speed=100%
+  
+06/08/2023 13:48:17,Action completed:
+Reserve Pod1 and P4
+06/08/2023 13:48:17,Action completed:
+Pod1: Assert that the labware is gripped
+06/08/2023 13:48:18,Action completed:
+Pod1
+  Absolute Move
+  GZ : 36.649
+  Speed=100%
+  
+06/08/2023 13:48:19,Action completed:
+Pod1
+  Absolute Move
+  X : 20.566
+  GY : 40.807
+  Speed=100%
+  
+06/08/2023 13:48:19,Action completed:
+Pod1
+  Absolute Move
+  GZ : 31.134
+  Speed=100%
+  
+06/08/2023 13:48:19,Action completed:
+Reserve Pod1 and inner1
+06/08/2023 13:48:19,Action completed:
+Pod1: Assert that the labware is gripped
+06/08/2023 13:48:20,Action completed:
+Pod1
+  Absolute Move
+  GZ : 23.154
+  Speed=100%
+  
+06/08/2023 13:48:20,Action completed:
+Pod1: Assert that the labware is gripped
+06/08/2023 13:48:20,Action completed:
+Set grip force to 0
+06/08/2023 13:48:21,Action completed:
+Pod1
+  Absolute Move
+  GG : 9.706
+  Speed=100%
+  
+06/08/2023 13:48:21,Action completed:
+Pod1: Assert that the labware is not gripped
+06/08/2023 13:48:21,Action completed:
+Pod1
+  Absolute Move
+  GZ : 23.154
+  Speed=100%
+  
+06/08/2023 13:48:21,Action completed:
+Pod1
+  Absolute Move
+  GZ : 31.134
+  Speed=100%
+  
+06/08/2023 13:48:21,Action completed:
+Reserve Pod1 and inner1
+06/08/2023 13:48:21,Action completed:
+Resource Reservation
+06/08/2023 13:48:22,Action completed:
+Pod1
+  Absolute Move
+  GG : 7.889
+  Speed=100%
+  
+06/08/2023 13:48:23,Action completed:
+Pod1
+  Absolute Move
+  Z : 39.863
+  Speed=100%
+  
+06/08/2023 13:48:24,Action completed:
+Command for Conveyor3
+06/08/2023 13:48:24,Action completed:
+Resource Reservation
+06/08/2023 13:48:24,Action completed:
+Remove All Labware
+06/08/2023 13:48:24,Action completed:
+Add Labware
+06/08/2023 13:48:24,Action completed:
+Add Labware
+06/08/2023 13:48:24,Action completed:
+Resource Reservation
+06/08/2023 13:48:24,Action completed:
+Pod1
+  Absolute Move
+  GZ : 37.849
+  Speed=100%
+  
+06/08/2023 13:48:25,Action completed:
+Pod1
+  Absolute Move
+  X : 24.52
+  Y : 29
+  GY : 48
+  GR : 90
+  Speed=100%
+  
+06/08/2023 13:48:25,Action completed:
+Pod1
+  Absolute Move
+  Z : 39.763
+  Speed=100%
+  
+06/08/2023 13:48:37,Action completed:
+Command for CytomatMPH
+06/08/2023 13:48:37,Action completed:
+Resource Reservation
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Resource Reservation
+06/08/2023 13:48:37,Action completed:
+Resource Reservation
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Remove All Labware
+06/08/2023 13:48:37,Action completed:
+Set Property
+06/08/2023 13:48:37,Action completed:
+Set Property
+06/08/2023 13:48:37,Action completed:
+Set Property
+06/08/2023 13:48:37,Action completed:
+Clear globals
+06/08/2023 13:48:37,Action completed:
+PositivePositioner4: Open Clamp
+06/08/2023 13:48:37,Action completed:
+PositivePositioner3: Open Clamp
+
+C:\Users\Public\Documents\Biomek5\Logs\UnifiedTransfer06-08-2023 13.44.55.log
+﻿Method = V181_Stamp_V1
+Logged in user = teliosid4c
+Started 06/08/2023 13:44:55
+Unit serial number = B8758522D008
+Pod1 head serial number = B8759122B004
+Pod Last validated 07/27/2022 08:12:53
+Pod2 head serial number = None
+Pod Last validated 07/27/2022 08:12:56
+
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,1,,Pos2,CellBind Plate,,1,,1,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,2,,Pos2,CellBind Plate,,2,,2,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,3,,Pos2,CellBind Plate,,3,,3,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,4,,Pos2,CellBind Plate,,4,,4,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,5,,Pos2,CellBind Plate,,5,,5,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,6,,Pos2,CellBind Plate,,6,,6,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,7,,Pos2,CellBind Plate,,7,,7,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,8,,Pos2,CellBind Plate,,8,,8,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,9,,Pos2,CellBind Plate,,9,,9,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,10,,Pos2,CellBind Plate,,10,,10,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,11,,Pos2,CellBind Plate,,11,,11,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,12,,Pos2,CellBind Plate,,12,,12,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,13,,Pos2,CellBind Plate,,13,,13,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,14,,Pos2,CellBind Plate,,14,,14,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,15,,Pos2,CellBind Plate,,15,,15,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,16,,Pos2,CellBind Plate,,16,,16,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,17,,Pos2,CellBind Plate,,17,,17,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,18,,Pos2,CellBind Plate,,18,,18,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,19,,Pos2,CellBind Plate,,19,,19,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,20,,Pos2,CellBind Plate,,20,,20,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,21,,Pos2,CellBind Plate,,21,,21,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,22,,Pos2,CellBind Plate,,22,,22,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,23,,Pos2,CellBind Plate,,23,,23,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,24,,Pos2,CellBind Plate,,24,,24,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,25,,Pos2,CellBind Plate,,25,,25,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,26,,Pos2,CellBind Plate,,26,,26,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,27,,Pos2,CellBind Plate,,27,,27,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,28,,Pos2,CellBind Plate,,28,,28,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,29,,Pos2,CellBind Plate,,29,,29,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,30,,Pos2,CellBind Plate,,30,,30,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,31,,Pos2,CellBind Plate,,31,,31,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,32,,Pos2,CellBind Plate,,32,,32,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,33,,Pos2,CellBind Plate,,33,,33,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,34,,Pos2,CellBind Plate,,34,,34,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,35,,Pos2,CellBind Plate,,35,,35,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,36,,Pos2,CellBind Plate,,36,,36,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,37,,Pos2,CellBind Plate,,37,,37,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,38,,Pos2,CellBind Plate,,38,,38,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,39,,Pos2,CellBind Plate,,39,,39,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,40,,Pos2,CellBind Plate,,40,,40,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,41,,Pos2,CellBind Plate,,41,,41,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,42,,Pos2,CellBind Plate,,42,,42,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,43,,Pos2,CellBind Plate,,43,,43,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,44,,Pos2,CellBind Plate,,44,,44,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,45,,Pos2,CellBind Plate,,45,,45,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,46,,Pos2,CellBind Plate,,46,,46,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,47,,Pos2,CellBind Plate,,47,,47,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,48,,Pos2,CellBind Plate,,48,,48,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,49,,Pos2,CellBind Plate,,49,,49,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,50,,Pos2,CellBind Plate,,50,,50,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,51,,Pos2,CellBind Plate,,51,,51,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,52,,Pos2,CellBind Plate,,52,,52,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,53,,Pos2,CellBind Plate,,53,,53,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,54,,Pos2,CellBind Plate,,54,,54,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,55,,Pos2,CellBind Plate,,55,,55,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,56,,Pos2,CellBind Plate,,56,,56,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,57,,Pos2,CellBind Plate,,57,,57,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,58,,Pos2,CellBind Plate,,58,,58,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,59,,Pos2,CellBind Plate,,59,,59,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,60,,Pos2,CellBind Plate,,60,,60,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,61,,Pos2,CellBind Plate,,61,,61,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,62,,Pos2,CellBind Plate,,62,,62,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,63,,Pos2,CellBind Plate,,63,,63,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,64,,Pos2,CellBind Plate,,64,,64,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,65,,Pos2,CellBind Plate,,65,,65,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,66,,Pos2,CellBind Plate,,66,,66,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,67,,Pos2,CellBind Plate,,67,,67,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,68,,Pos2,CellBind Plate,,68,,68,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,69,,Pos2,CellBind Plate,,69,,69,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,70,,Pos2,CellBind Plate,,70,,70,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,71,,Pos2,CellBind Plate,,71,,71,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,72,,Pos2,CellBind Plate,,72,,72,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,73,,Pos2,CellBind Plate,,73,,73,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,74,,Pos2,CellBind Plate,,74,,74,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,75,,Pos2,CellBind Plate,,75,,75,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,76,,Pos2,CellBind Plate,,76,,76,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,77,,Pos2,CellBind Plate,,77,,77,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,78,,Pos2,CellBind Plate,,78,,78,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,79,,Pos2,CellBind Plate,,79,,79,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,80,,Pos2,CellBind Plate,,80,,80,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,81,,Pos2,CellBind Plate,,81,,81,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,82,,Pos2,CellBind Plate,,82,,82,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,83,,Pos2,CellBind Plate,,83,,83,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,84,,Pos2,CellBind Plate,,84,,84,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,85,,Pos2,CellBind Plate,,85,,85,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,86,,Pos2,CellBind Plate,,86,,86,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,87,,Pos2,CellBind Plate,,87,,87,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,88,,Pos2,CellBind Plate,,88,,88,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,89,,Pos2,CellBind Plate,,89,,89,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,90,,Pos2,CellBind Plate,,90,,90,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,91,,Pos2,CellBind Plate,,91,,91,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,92,,Pos2,CellBind Plate,,92,,92,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,93,,Pos2,CellBind Plate,,93,,93,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,94,,Pos2,CellBind Plate,,94,,94,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,95,,Pos2,CellBind Plate,,95,,95,50
+06/08/2023 13:46:35,Pod1,P4,Sample Plate,,96,,Pos2,CellBind Plate,,96,,96,50
+
+C:\Users\Public\Documents\Biomek5\Logs\UnifiedPipetting06-08-2023 13.44.55.log
+﻿Method = V181_Stamp_V1
+Logged in user = teliosid4c
+Started 06/08/2023 13:44:55
+Unit serial number = B8758522D008
+Pod1 head serial number = B8759122B004
+Pod Last validated 07/27/2022 08:12:53
+Pod2 head serial number = None
+Pod Last validated 07/27/2022 08:12:56
+
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,1,,1,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,2,,2,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,3,,3,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,4,,4,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,5,,5,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,6,,6,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,7,,7,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,8,,8,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,9,,9,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,10,,10,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,11,,11,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,12,,12,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,13,,13,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,14,,14,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,15,,15,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,16,,16,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,17,,17,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,18,,18,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,19,,19,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,20,,20,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,21,,21,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,22,,22,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,23,,23,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,24,,24,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,25,,25,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,26,,26,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,27,,27,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,28,,28,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,29,,29,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,30,,30,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,31,,31,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,32,,32,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,33,,33,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,34,,34,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,35,,35,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,36,,36,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,37,,37,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,38,,38,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,39,,39,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,40,,40,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,41,,41,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,42,,42,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,43,,43,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,44,,44,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,45,,45,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,46,,46,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,47,,47,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,48,,48,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,49,,49,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,50,,50,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,51,,51,150,Custom
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,52,,52,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,53,,53,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,54,,54,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,55,,55,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,56,,56,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,57,,57,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,58,,58,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,59,,59,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,60,,60,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,61,,61,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,62,,62,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,63,,63,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,64,,64,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,65,,65,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,66,,66,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,67,,67,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,68,,68,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,69,,69,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,70,,70,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,71,,71,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,72,,72,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,73,,73,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,74,,74,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,75,,75,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,76,,76,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,77,,77,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,78,,78,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,79,,79,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,80,,80,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,81,,81,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,82,,82,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,83,,83,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,84,,84,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,85,,85,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,86,,86,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,87,,87,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,88,,88,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,89,,89,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,90,,90,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,91,,91,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,92,,92,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,93,,93,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,94,,94,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,95,,95,150,Custom
+06/08/2023 13:45:45,Pod1,Aspirate,Pos2,CellBind Plate,,96,,96,150,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,1,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,2,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,3,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,4,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,5,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,6,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,7,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,8,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,9,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,10,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,11,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,12,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,13,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,14,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,15,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,16,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,17,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,18,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,19,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,20,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,21,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,22,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,23,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,24,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,25,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,26,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,27,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,28,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,29,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,30,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,31,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,32,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,33,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,34,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,35,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,36,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,37,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,38,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,39,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,40,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,41,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,42,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,43,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,44,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,45,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,46,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,47,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,48,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,49,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,50,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,51,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,52,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,53,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,54,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,55,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,56,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,57,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,58,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,59,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,60,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,61,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,62,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,63,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,64,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,65,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,66,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,67,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,68,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,69,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,70,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,71,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,72,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,73,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,74,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,75,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,76,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,77,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,78,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,79,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,80,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,81,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,82,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,83,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,84,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,85,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,86,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,87,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,88,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,89,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,90,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,91,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,92,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,93,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,94,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,95,175,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,,96,175,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,1,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,2,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,3,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,4,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,5,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,6,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,7,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,8,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,9,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,10,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,11,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,12,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,13,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,14,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,15,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,16,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,17,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,18,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,19,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,20,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,21,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,22,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,23,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,24,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,25,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,26,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,27,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,28,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,29,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,30,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,31,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,32,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,33,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,34,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,35,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,36,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,37,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,38,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,39,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,40,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,41,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,42,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,43,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,44,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,45,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,46,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,47,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,48,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,49,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,50,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,51,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,52,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,53,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,54,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,55,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,56,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,57,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,58,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,59,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,60,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,61,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,62,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,63,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,64,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,65,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,66,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,67,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,68,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,69,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,70,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,71,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,72,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,73,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,74,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,75,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,76,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,77,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,78,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,79,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,80,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,81,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,82,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,83,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,84,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,85,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,86,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,87,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,88,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,89,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,90,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,91,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,92,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,93,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,94,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,95,0,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,,96,0,Custom
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,1,,1,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,2,,2,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,3,,3,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,4,,4,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,5,,5,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,6,,6,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,7,,7,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,8,,8,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,9,,9,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,10,,10,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,11,,11,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,12,,12,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,13,,13,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,14,,14,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,15,,15,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,16,,16,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,17,,17,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,18,,18,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,19,,19,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,20,,20,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,21,,21,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,22,,22,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,23,,23,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,24,,24,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,25,,25,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,26,,26,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,27,,27,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,28,,28,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,29,,29,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,30,,30,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,31,,31,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,32,,32,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,33,,33,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,34,,34,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,35,,35,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,36,,36,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,37,,37,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,38,,38,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,39,,39,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,40,,40,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,41,,41,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,42,,42,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,43,,43,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,44,,44,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,45,,45,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,46,,46,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,47,,47,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,48,,48,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,49,,49,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,50,,50,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,51,,51,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,52,,52,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,53,,53,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,54,,54,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,55,,55,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,56,,56,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,57,,57,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,58,,58,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,59,,59,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,60,,60,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,61,,61,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,62,,62,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,63,,63,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,64,,64,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,65,,65,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,66,,66,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,67,,67,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,68,,68,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,69,,69,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,70,,70,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,71,,71,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,72,,72,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,73,,73,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,74,,74,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,75,,75,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,76,,76,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,77,,77,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,78,,78,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,79,,79,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,80,,80,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,81,,81,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,82,,82,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,83,,83,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,84,,84,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,85,,85,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,86,,86,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,87,,87,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,88,,88,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,89,,89,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,90,,90,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,91,,91,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,92,,92,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,93,,93,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,94,,94,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,95,,95,50,MC
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,96,,96,50,MC
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,1,,1,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,2,,2,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,3,,3,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,4,,4,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,5,,5,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,6,,6,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,7,,7,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,8,,8,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,9,,9,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,10,,10,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,11,,11,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,12,,12,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,13,,13,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,14,,14,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,15,,15,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,16,,16,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,17,,17,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,18,,18,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,19,,19,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,20,,20,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,21,,21,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,22,,22,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,23,,23,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,24,,24,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,25,,25,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,26,,26,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,27,,27,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,28,,28,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,29,,29,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,30,,30,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,31,,31,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,32,,32,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,33,,33,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,34,,34,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,35,,35,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,36,,36,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,37,,37,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,38,,38,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,39,,39,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,40,,40,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,41,,41,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,42,,42,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,43,,43,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,44,,44,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,45,,45,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,46,,46,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,47,,47,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,48,,48,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,49,,49,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,50,,50,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,51,,51,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,52,,52,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,53,,53,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,54,,54,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,55,,55,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,56,,56,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,57,,57,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,58,,58,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,59,,59,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,60,,60,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,61,,61,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,62,,62,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,63,,63,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,64,,64,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,65,,65,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,66,,66,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,67,,67,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,68,,68,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,69,,69,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,70,,70,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,71,,71,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,72,,72,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,73,,73,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,74,,74,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,75,,75,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,76,,76,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,77,,77,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,78,,78,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,79,,79,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,80,,80,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,81,,81,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,82,,82,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,83,,83,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,84,,84,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,85,,85,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,86,,86,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,87,,87,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,88,,88,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,89,,89,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,90,,90,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,91,,91,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,92,,92,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,93,,93,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,94,,94,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,95,,95,50,Custom
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,96,,96,50,Custom
+
+C:\Users\Public\Documents\Biomek5\Logs\Pipetting06-08-2023 13.44.55.log
+﻿Method = V181_Stamp_V1
+Logged in user = teliosid4c
+Started 06/08/2023 13:44:55
+Unit serial number = B8758522D008
+Pod1 head serial number = B8759122B004
+Pod Last validated 07/27/2022 08:12:53
+Pod2 head serial number = None
+Pod Last validated 07/27/2022 08:12:56
+
+06/08/2023 13:44:56,Resource Pause: the whole system
+06/08/2023 13:44:57,End Resource Pause: the whole system
+06/08/2023 13:45:44,Pod1,Aspirate,Pos2,CellBind Plate,,1,150,Custom
+06/08/2023 13:46:07,Pod1,Dispense,P2,,,1,175,Custom
+06/08/2023 13:46:17,Pod1,Aspirate,P2,,,1,0,Custom
+06/08/2023 13:46:24,Pod1,Aspirate,P4,Sample Plate,,1,50,MC
+06/08/2023 13:46:34,Pod1,Dispense,Pos2,CellBind Plate,,1,50,Custom
