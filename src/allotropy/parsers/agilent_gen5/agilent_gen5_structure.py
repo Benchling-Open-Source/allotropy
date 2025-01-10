@@ -15,8 +15,6 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
     CalculatedDataItem,
-    DataCube,
-    DataCubeComponent,
     DataSource,
     ErrorDocument,
     Measurement,
@@ -25,10 +23,12 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_rea
     Metadata,
     ScanPositionSettingPlateReader,
 )
+from allotropy.allotrope.schema_mappers.data_cube import DataCube, DataCubeComponent
 from allotropy.exceptions import (
     AllotropeConversionError,
     AllotropyParserError,
 )
+from allotropy.parsers.agilent_gen5.agilent_gen5_reader import AgilentGen5Reader
 from allotropy.parsers.agilent_gen5.constants import (
     ALPHALISA_FLUORESCENCE_FOUND,
     DATA_SOURCE_FEATURE_VALUES,
@@ -55,8 +55,11 @@ from allotropy.parsers.agilent_gen5.constants import (
     UNSUPPORTED_READ_TYPE_ERROR,
     WAVELENGTHS_KEY,
 )
-from allotropy.parsers.agilent_gen5_image.constants import POSSIBLE_WELL_COUNTS
-from allotropy.parsers.constants import NEGATIVE_ZERO, NOT_APPLICABLE
+from allotropy.parsers.constants import (
+    NEGATIVE_ZERO,
+    NOT_APPLICABLE,
+    POSSIBLE_WELL_COUNTS,
+)
 from allotropy.parsers.lines_reader import SectionLinesReader
 from allotropy.parsers.utils.pandas import read_csv, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
@@ -226,7 +229,7 @@ class DeviceControlData:
             line_data: list[str] = strp_line.split(",  ")
             for read_datum in line_data:
                 splitted_datum = read_datum.split(": ")
-                if len(splitted_datum) != 2:  # noqa: PLR2004
+                if len(splitted_datum) != 2:
                     continue
                 device_control_data.add(splitted_datum[0], splitted_datum[1])
 
@@ -235,7 +238,7 @@ class DeviceControlData:
     @classmethod
     def _get_step_label(cls, read_line: str, read_mode: str) -> str | None:
         split_line = read_line.strip().split("\t")
-        if len(split_line) != 2:  # noqa: PLR2004
+        if len(split_line) != 2:
             msg = (
                 f"Expected the Read data line {split_line} to contain exactly 2 values."
             )
@@ -478,6 +481,55 @@ class ReadData:
         return filter_data
 
 
+def _validate_result_sections(result_sections: list[list[str]]) -> None:
+    """Validates whether all the result sections dimensions are consistent."""
+    first_section = result_sections[0]
+
+    for section in result_sections[1:]:
+        if not first_section[0] == section[0] and len(first_section) == len(section):
+            msg = "All result tables should have the same dimensions."
+            raise AllotropeConversionError(msg)
+
+
+def get_results_section(reader: AgilentGen5Reader) -> list[str] | None:
+    """Returns a valid Results Matrix from the reader sections if found.
+
+    Checks for Results in the reader sections, if not found, creates the results matrix with all
+    sections that are correctly formatted as a results table (excluding the Layout section). If
+    no tables with results are found, returns None
+    """
+    if "Results" in reader.sections:
+        return reader.sections["Results"]
+
+    def is_results(section: list[str]) -> bool:
+        return (
+            len(section) > 2
+            and section[1].startswith("\t1")
+            and section[2].startswith("A\t")
+        )
+
+    result_sections = []
+    for name, section in reader.sections.items():
+        if name == "Layout":
+            continue
+        if is_results(section):
+            result_sections.append(section[1:])
+
+    if result_sections:
+        _validate_result_sections(result_sections)
+        return [
+            "Results",
+            result_sections[0][0],
+            *[
+                section[i + 1]
+                for i in range(len(result_sections[0]) - 1)
+                for section in result_sections
+            ],
+        ]
+
+    return None
+
+
 def get_identifiers(layout_lines: list[str] | None) -> dict[str, str]:
     if not layout_lines:
         return {}
@@ -589,9 +641,9 @@ def create_results(
                     ErrorDocument(
                         error=value,
                         # TODO Add support for multiple read modes
-                        error_feature=read_data[0].read_mode.lower()
-                        if is_measurement
-                        else label,
+                        error_feature=(
+                            read_data[0].read_mode.lower() if is_measurement else label
+                        ),
                     )
                 )
             if is_measurement:
@@ -850,64 +902,72 @@ def _create_measurement(
         well_plate_identifier=header_data.well_plate_identifier,
         detection_type=read_data.read_mode.value,
         detector_wavelength_setting=detector_wavelength_setting,
-        detector_bandwidth_setting=filter_data.detector_bandwidth_setting
-        if filter_data
-        else None,
-        excitation_wavelength_setting=filter_data.excitation_wavelength_setting
-        if filter_data
-        else None,
-        excitation_bandwidth_setting=filter_data.excitation_bandwidth_setting
-        if filter_data
-        else None,
-        wavelength_filter_cutoff_setting=filter_data.wavelength_filter_cutoff_setting
-        if filter_data
-        else None,
+        detector_bandwidth_setting=(
+            filter_data.detector_bandwidth_setting if filter_data else None
+        ),
+        excitation_wavelength_setting=(
+            filter_data.excitation_wavelength_setting if filter_data else None
+        ),
+        excitation_bandwidth_setting=(
+            filter_data.excitation_bandwidth_setting if filter_data else None
+        ),
+        wavelength_filter_cutoff_setting=(
+            filter_data.wavelength_filter_cutoff_setting if filter_data else None
+        ),
         detector_distance_setting=read_data.detector_distance,
-        scan_position_setting=filter_data.scan_position_setting
-        if filter_data
-        else None,
+        scan_position_setting=(
+            filter_data.scan_position_setting if filter_data else None
+        ),
         detector_gain_setting=filter_data.gain if filter_data else None,
         number_of_averages=read_data.number_of_averages,
         detector_carriage_speed=read_data.detector_carriage_speed,
-        absorbance=measurement.value
-        if measurement_type == MeasurementType.ULTRAVIOLET_ABSORBANCE
-        and not kinetic_data
-        else None,
-        fluorescence=measurement.value
-        if measurement_type == MeasurementType.FLUORESCENCE and not kinetic_data
-        else None,
-        luminescence=measurement.value
-        if measurement_type == MeasurementType.LUMINESCENCE and not kinetic_data
-        else None,
+        absorbance=(
+            measurement.value
+            if measurement_type == MeasurementType.ULTRAVIOLET_ABSORBANCE
+            and not kinetic_data
+            else None
+        ),
+        fluorescence=(
+            measurement.value
+            if measurement_type == MeasurementType.FLUORESCENCE and not kinetic_data
+            else None
+        ),
+        luminescence=(
+            measurement.value
+            if measurement_type == MeasurementType.LUMINESCENCE and not kinetic_data
+            else None
+        ),
         compartment_temperature=actual_temperature,
-        total_measurement_time_setting=_convert_time_to_seconds(kinetic_data.run_time)
-        if kinetic_data
-        else None,
-        read_interval_setting=_convert_time_to_seconds(kinetic_data.interval)
-        if kinetic_data
-        else None,
+        total_measurement_time_setting=(
+            _convert_time_to_seconds(kinetic_data.run_time) if kinetic_data else None
+        ),
+        read_interval_setting=(
+            _convert_time_to_seconds(kinetic_data.interval) if kinetic_data else None
+        ),
         number_of_scans_setting=kinetic_data.reads if kinetic_data else None,
-        profile_data_cube=DataCube(
-            label=str(detector_wavelength_setting),
-            structure_dimensions=[
-                DataCubeComponent(
-                    concept=ELAPSED_TIME,
-                    type_=FieldComponentDatatype.double,
-                    unit=SECONDS,
-                )
-            ],
-            structure_measures=[
-                DataCubeComponent(
-                    concept=read_data.read_mode.lower(),
-                    type_=FieldComponentDatatype.double,
-                    unit=READ_MODE_UNITS.get(read_data.read_mode, UNITLESS),
-                )
-            ],
-            dimensions=[kinetic_elapsed_time],
-            measures=[kinetic_measurements],
-        )
-        if kinetic_elapsed_time and kinetic_measurements
-        else None,
+        profile_data_cube=(
+            DataCube(
+                label=str(detector_wavelength_setting),
+                structure_dimensions=[
+                    DataCubeComponent(
+                        concept=ELAPSED_TIME,
+                        type_=FieldComponentDatatype.double,
+                        unit=SECONDS,
+                    )
+                ],
+                structure_measures=[
+                    DataCubeComponent(
+                        concept=read_data.read_mode.lower(),
+                        type_=FieldComponentDatatype.double,
+                        unit=READ_MODE_UNITS.get(read_data.read_mode, UNITLESS),
+                    )
+                ],
+                dimensions=[kinetic_elapsed_time],
+                measures=[kinetic_measurements],
+            )
+            if kinetic_elapsed_time and kinetic_measurements
+            else None
+        ),
         error_document=error_documents,
     )
 

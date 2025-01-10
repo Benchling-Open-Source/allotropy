@@ -111,7 +111,7 @@ class GroupDataElementEntry:
 @dataclass(frozen=True)
 class GroupDataElement:
     sample: str
-    position: str
+    positions: list[str]
     plate: str
     entries: list[GroupDataElementEntry]
     errors: list[ErrorDocument]
@@ -121,8 +121,6 @@ class GroupDataElement:
 class GroupSampleData:
     identifier: str
     data_elements: list[GroupDataElement]
-    aggregated_entries: list[GroupDataElementEntry]
-    aggregated_errors: list[ErrorDocument]
 
     @classmethod
     def create(cls, data: pd.DataFrame) -> GroupSampleData:
@@ -139,51 +137,55 @@ class GroupSampleData:
             or top_row.get(str, column) in VALID_NAN_VALUES
         ]
 
-        normal_columns = []
-        aggregated_columns = []
-        for column in numeric_columns:
-            if data[column].iloc[1:].isnull().all():
-                aggregated_columns.append(column)
-            else:
-                normal_columns.append(column)
-
-        data_elements = []
+        data_elements: dict[str, list[GroupDataElement]] = {
+            column: [] for column in numeric_columns
+        }
         for row in row_data:
-            entries, errors = cls._get_entries_and_errors(row, normal_columns)
-            data_elements.append(
-                GroupDataElement(
-                    sample=identifier,
-                    position=row[str, ["Well", "Wells"]],
-                    plate=row[str, "WellPlateName"],
-                    entries=entries,
-                    errors=errors,
-                )
-            )
-
-        aggregated_entries, aggregated_errors = cls._get_entries_and_errors(
-            top_row, aggregated_columns
-        )
+            row_results = cls._get_entries_and_errors(row, numeric_columns)
+            position = row[str, ["Well", "Wells"]]
+            plate = row[str, "WellPlateName"]
+            for column in numeric_columns:
+                if (column_result := row_results.get(column)) is not None:
+                    data_elements[column].append(
+                        GroupDataElement(
+                            sample=identifier,
+                            positions=[position],
+                            plate=plate,
+                            entries=[
+                                GroupDataElementEntry(
+                                    column,
+                                    column_result
+                                    if isinstance(column_result, float)
+                                    else NEGATIVE_ZERO,
+                                )
+                            ],
+                            errors=[ErrorDocument(column_result, column)]
+                            if isinstance(column_result, str)
+                            else [],
+                        )
+                    )
+                else:
+                    data_elements[column][-1].positions.append(position)
 
         return GroupSampleData(
             identifier=identifier,
-            data_elements=data_elements,
-            aggregated_entries=aggregated_entries,
-            aggregated_errors=aggregated_errors,
+            data_elements=[
+                elem for elements in data_elements.values() for elem in elements
+            ],
         )
 
     @classmethod
     def _get_entries_and_errors(
         cls, data_row: SeriesData, column_names: list[str]
-    ) -> tuple[list[GroupDataElementEntry], list[ErrorDocument]]:
-        entries = []
-        errors = []
+    ) -> dict[str, float | str]:
+        result: dict[str, float | str] = {}
         for column in column_names:
             value = data_row.get(float, column)
             if value is not None:
-                entries.append(GroupDataElementEntry(column, value))
+                result[column] = value
             elif (error := data_row.get(str, column)) is not None:
-                errors.append(ErrorDocument(error, column))
-        return entries, errors
+                result[column] = error
+        return result
 
 
 @dataclass(frozen=True)
@@ -389,9 +391,33 @@ class PlateWavelengthData:
 
 
 @dataclass(frozen=True)
-class PlateRawData:
+class RawData:
     wavelength_data: list[PlateWavelengthData]
 
+    @staticmethod
+    def get_measurement_section(
+        reader: CsvReader, columns: pd.Series[str], rows: int
+    ) -> pd.DataFrame:
+        lines = []
+        # read number of rows in plate section
+        for i in range(rows):
+            if not (line := reader.pop()):
+                msg = f"Expected {rows} rows in measurement table, got {i}."
+                raise AllotropeConversionError(msg)
+            lines.append(line)
+        reader.drop_empty()
+
+        # convert rows to df
+        data = assert_not_none(
+            reader.lines_as_df(lines=lines, sep="\t"),
+            msg="unable to find data from plate block.",
+        )
+        set_columns(data, columns)
+        return data
+
+
+@dataclass(frozen=True)
+class PlateRawData(RawData):
     @staticmethod
     def create(reader: CsvReader, header: PlateHeader) -> PlateRawData:
 
@@ -406,7 +432,7 @@ class PlateRawData:
             msg="unable to determine plate dimensions",
         )
         rows = dimensions[1]
-        data = PlateRawData._get_measurement_section(reader, columns, rows)
+        data = RawData.get_measurement_section(reader, columns, rows)
 
         # get temperature and elapsed time (kinetic) from the first column of the first row with value
         first_row_idx = int(pd.to_numeric(data.first_valid_index()))
@@ -426,7 +452,7 @@ class PlateRawData:
 
         if elapsed_time is not None and header.kinetic_points > 1:
             for _ in range(header.kinetic_points - 1):
-                data = PlateRawData._get_measurement_section(reader, columns, rows)
+                data = RawData.get_measurement_section(reader, columns, rows)
 
                 elapsed_time = time_to_seconds(str(data.iloc[0, 0]))
                 plate_raw_data._update_kinetic_data(
@@ -434,25 +460,6 @@ class PlateRawData:
                 )
 
         return plate_raw_data
-
-    @staticmethod
-    def _get_measurement_section(
-        reader: CsvReader, columns: pd.Series[str], rows: int
-    ) -> pd.DataFrame:
-        lines = []
-        # read number of rows in plate section
-        for _ in range(rows):
-            lines.append(reader.pop() or "")
-        reader.drop_empty()
-
-        # convert rows to df
-        data = assert_not_none(
-            reader.lines_as_df(lines=lines, sep="\t"),
-            msg="unable to find data from plate block.",
-        )
-        set_columns(data, columns)
-
-        return data
 
     @staticmethod
     def _get_wavelength_data(
@@ -488,11 +495,66 @@ class PlateRawData:
 
 
 @dataclass(frozen=True)
+class SpectrumRawPlateData(RawData):
+    maximum_wavelength_signal: dict[str, float]
+
+    @staticmethod
+    def create(reader: CsvReader, header: PlateHeader) -> SpectrumRawPlateData:
+
+        columns = assert_not_none(
+            reader.pop_as_series(sep="\t"),
+            msg="unable to find data columns for plate block raw data.",
+        )
+        dimensions = assert_not_none(
+            NUM_WELLS_TO_PLATE_DIMENSIONS.get(header.num_wells),
+            msg="unable to determine plate dimensions",
+        )
+        rows = dimensions[1]
+        wavelength_data: list[PlateWavelengthData] = []
+
+        for wavelength in header.wavelengths:
+            data = RawData.get_measurement_section(reader, columns, rows)
+            first_row_idx = int(pd.to_numeric(data.first_valid_index()))
+            temperature = try_non_nan_float_or_none(str(data.iloc[first_row_idx, 1]))
+            wavelength_data.append(
+                PlateWavelengthData.create(
+                    header=header,
+                    temperature=temperature,
+                    elapsed_time=None,
+                    wavelength=wavelength,
+                    df_data=data.iloc[:, 2:],
+                )
+            )
+        reader.pop()
+        reader.drop_empty()
+        max_wavelength_signal_data = RawData.get_measurement_section(
+            reader, columns, rows
+        ).iloc[:, 2:]
+        signal_data = {
+            f"{num_to_chars(row_idx)}{col}": try_float(
+                str(raw_value), "wavelength signal"
+            )
+            for row_idx, *row_data in max_wavelength_signal_data.itertuples()
+            for col, raw_value in zip(
+                max_wavelength_signal_data.columns, row_data, strict=True
+            )
+        }
+
+        return SpectrumRawPlateData(
+            wavelength_data=wavelength_data,
+            maximum_wavelength_signal=signal_data,
+        )
+
+
+@dataclass(frozen=True)
 class PlateReducedData:
     data: list[ReducedDataElement]
 
     @staticmethod
     def create(reader: CsvReader, header: PlateHeader) -> PlateReducedData:
+        if header.read_type == ReadType.SPECTRUM.value:
+            return PlateReducedData(data=[])
+
         raw_data = assert_not_none(
             reader.pop_csv_block_as_df(sep="\t", header=0),
             msg="Unable to find reduced data for plate block.",
@@ -517,7 +579,7 @@ class PlateReducedData:
 
 @dataclass(frozen=True)
 class PlateData:
-    raw_data: PlateRawData
+    raw_data: PlateRawData | SpectrumRawPlateData
     reduced_data: PlateReducedData | None
 
     @staticmethod
@@ -525,8 +587,13 @@ class PlateData:
         reader: CsvReader,
         header: PlateHeader,
     ) -> PlateData:
+        raw_data: PlateRawData | SpectrumRawPlateData = (
+            SpectrumRawPlateData.create(reader, header)
+            if header.read_type == ReadType.SPECTRUM.value
+            else PlateRawData.create(reader, header)
+        )
         return PlateData(
-            raw_data=PlateRawData.create(reader, header),
+            raw_data=raw_data,
             reduced_data=(
                 PlateReducedData.create(reader, header)
                 if reader.current_line_exists()
@@ -721,8 +788,12 @@ class PlateBlock(ABC, Block):
 
     @classmethod
     def check_read_type(cls, read_type: str) -> None:
-        if read_type not in (ReadType.ENDPOINT.value, ReadType.KINETIC.value):
-            msg = f"Only Endpoint or Kinetic measurements can be processed at this time, got: {read_type}"
+        if read_type not in (
+            ReadType.ENDPOINT.value,
+            ReadType.KINETIC.value,
+            ReadType.SPECTRUM.value,
+        ):
+            msg = f"Only Endpoint, Spectrum or Kinetic measurements can be processed at this time, got: {read_type}"
             raise AllotropeConversionError(msg)
 
     @classmethod
@@ -749,12 +820,23 @@ class PlateBlock(ABC, Block):
 
     @classmethod
     def get_wavelengths(cls, wavelengths_str: str | None) -> list[float]:
+        if wavelengths_str is None:
+            return []
         return [
             try_float(wavelength, "wavelength")
-            for wavelength in assert_not_none(
-                wavelengths_str,
-                msg="Unable to find wavelengths list.",
-            ).split()
+            for wavelength in wavelengths_str.split()
+        ]
+
+    @classmethod
+    def get_wavelengths_from_start_end_step(
+        cls, start: str, end: str, step: str
+    ) -> list[float]:
+        start_f = try_float(start, "start wavelength")
+        end_f = try_float(end, "end wavelength")
+        step_f = try_float(step, "wavelength step")
+
+        return [
+            start_f + step_f * i for i in range(int((end_f - start_f) / step_f) + 1)
         ]
 
     def iter_wells(self) -> Iterator[str]:
@@ -763,8 +845,10 @@ class PlateBlock(ABC, Block):
             for col in range(1, cols + 1):
                 yield f"{num_to_chars(row)}{col}"
 
-    def iter_data_elements(self, position: str) -> Iterator[DataElement]:
-        yield from self.block_data.iter_data_elements(position)
+    def iter_data_elements(self, position: str | list[str]) -> Iterator[DataElement]:
+        position = [position] if isinstance(position, str) else position
+        for p in position:
+            yield from self.block_data.iter_data_elements(p)
 
     def iter_reduced_data(self) -> Iterator[ReducedDataElement]:
         if self.block_data.reduced_data:
@@ -812,6 +896,11 @@ class FluorescencePlateBlock(PlateBlock):
         cls.check_export_version(export_version)
         cls.check_read_type(read_type)
         cls.check_data_type(data_type)
+        if read_type == ReadType.SPECTRUM.value:
+            msg = (
+                "Spectrum read type is not currently supported for fluorescence plates."
+            )
+            raise AllotropeConversionError(msg)
 
         num_wavelengths = cls.get_num_wavelengths(num_wavelengths_raw)
         wavelengths = cls.get_wavelengths(wavelengths_str)
@@ -927,6 +1016,11 @@ class LuminescencePlateBlock(PlateBlock):
         cls.check_export_version(export_version)
         cls.check_read_type(read_type)
         cls.check_data_type(data_type)
+        if read_type == ReadType.SPECTRUM.value:
+            msg = (
+                "Spectrum read type is not currently supported for luminescence plates."
+            )
+            raise AllotropeConversionError(msg)
 
         num_wavelengths = cls.get_num_wavelengths(num_wavelengths_raw)
         wavelengths = cls.get_wavelengths(wavelengths_str)
@@ -976,9 +1070,9 @@ class AbsorbancePlateBlock(PlateBlock):
             kinetic_points_raw,
             read_time,  # read_time_or_scan_pattern
             read_interval,  # read_interval_or_scan_density
-            _,  # start_wavelength
-            _,  # end_wavelength
-            _,  # wavelength_step
+            start_wavelength,  # start_wavelength
+            end_wavelength,  # end_wavelength
+            wavelength_step,  # wavelength_step
             num_wavelengths_raw,
             wavelengths_str,
             _,  # first_column
@@ -993,7 +1087,14 @@ class AbsorbancePlateBlock(PlateBlock):
         cls.check_data_type(data_type)
 
         num_wavelengths = cls.get_num_wavelengths(num_wavelengths_raw)
+        if read_type == ReadType.SPECTRUM.value:
+            num_wavelengths = try_int(kinetic_points_raw, "kinetic_points")
+
         wavelengths = cls.get_wavelengths(wavelengths_str)
+        if read_type == ReadType.SPECTRUM.value:
+            wavelengths = cls.get_wavelengths_from_start_end_step(
+                start_wavelength, end_wavelength, wavelength_step
+            )
         cls.check_num_wavelengths(wavelengths, num_wavelengths)
 
         num_wells = try_int(num_wells_raw, "num_wells")
@@ -1094,18 +1195,15 @@ class StructureData:
     def create(reader: CsvReader) -> StructureData:
         block_list = BlockList.create(reader)
 
-        # update sample_id if it was reported in the group blocks and include erros from calculated data
+        # update sample_id if it was reported in the group blocks and include errors from calculated data
         for group_block in block_list.group_blocks:
             for group_sample_data in group_block.group_data.sample_data:
                 for group_data_element in group_sample_data.data_elements:
                     plate_block = block_list.plate_blocks[group_data_element.plate]
                     for data_element in plate_block.iter_data_elements(
-                        group_data_element.position
+                        group_data_element.positions
                     ):
                         data_element.sample_id = group_data_element.sample
-                        data_element.error_document += (
-                            group_data_element.errors
-                            + group_sample_data.aggregated_errors
-                        )
+                        data_element.error_document += group_data_element.errors
 
         return StructureData(block_list)

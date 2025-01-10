@@ -52,6 +52,9 @@ SPECIAL_KEYS = {
     "total_cell_diameter_distribution__cell_counter_": "total cell diameter distribution (cell counter)",
     "viable_cell_count__cell_counter_": "viable cell count (cell counter)",
     "total_cell_count__cell_counter_": "total cell count (cell counter)",
+    "cycle_threshold_value_setting__qPCR_": "cycle threshold value setting (qPCR)",
+    "genotyping_qPCR_method_setting__qPCR_": "genotyping qPCR method setting (qPCR)",
+    "cycle_threshold_result__qPCR_": "cycle threshold result (qPCR)",
     "autosampler_injection_volume_setting__chromatography_": "autosampler injection volume setting (chromatography)",
     "capacity_factor__chromatography_": "capacity factor (chromatography)",
     "peak_selectivity__chromatography_": "peak selectivity (chromatography)",
@@ -73,6 +76,7 @@ SPECIAL_KEYS = {
     "number_of_theoretical_plates_measured_at_13_4___of_peak_height": "number of theoretical plates measured at 13.4 % of peak height",
     "number_of_theoretical_plates_measured_at_4_4___of_peak_height": "number of theoretical plates measured at 4.4 % of peak height",
     "number_of_theoretical_plates_by_peak_width_at_half_height__JP14_": "number of theoretical plates by peak width at half height (JP14)",
+    "confidence_interval__95__": "confidence interval (95%)",
     "co2_saturation": "CO2 saturation",
     "o2_saturation": "O2 saturation",
     "pco2": "pCO2",
@@ -84,12 +88,15 @@ SPECIAL_KEYS_INVERSE: dict[str, str] = dict(
 
 
 DICT_KEY_TO_MODEL_KEY_REPLACEMENTS = {
+    ".": "_POINT_",
     "-": "_DASH_",
     "°": "_DEG_",
     "/": "_SLASH_",
     "\\": "_BSLASH_",
     "(": "_OPAREN_",
     ")": "_CPAREN_",
+    "%": "_PERCENT_",
+    ":": "_COLON_",
     # NOTE: this MUST be at the end, or it will break other key replacements.
     " ": "_",
 }
@@ -159,8 +166,16 @@ def _convert_dict_to_model_key(key: str) -> str:
     return key
 
 
-def _validate_structuring(val: dict[str, Any], model: Any) -> None:
+def _validate_structuring(val: Any, model: Any) -> None:
     """Validate that all keys in val are stored in model."""
+    if isinstance(val, list):
+        if not isinstance(model, list):
+            raise AssertionError()
+        for list_value, model_list_value in zip(val, model, strict=True):
+            _validate_structuring(list_value, model_list_value)
+    if not isinstance(val, dict):
+        return
+
     for key, value in val.items():
         model_key = _convert_dict_to_model_key(key)
         # If the key is unit, and this is a unit model, ensure the unit is correct.
@@ -178,11 +193,7 @@ def _validate_structuring(val: dict[str, Any], model: Any) -> None:
         if model_val is None:
             raise AssertionError()
 
-        if isinstance(value, dict):
-            _validate_structuring(value, model_val)
-        elif isinstance(value, list):
-            for list_value, model_list_value in zip(value, model_val, strict=True):
-                _validate_structuring(list_value, model_list_value)
+        _validate_structuring(value, model_val)
 
 
 def register_data_cube_hooks(converter: Converter) -> None:
@@ -286,7 +297,7 @@ def register_dataclass_union_hooks(converter: Converter) -> None:
             elif len(valid_models) > 1:
                 for model in valid_models:
                     try:
-                        _validate_structuring(val, model)  # type: ignore[arg-type]
+                        _validate_structuring(val, model)
                         return model
                     except AssertionError:
                         pass
@@ -307,7 +318,12 @@ def structure_custom_information_document(val: dict[str, Any], name: str) -> Any
         structured_value = value
         if isinstance(value, list):
             structured_value = [
-                structure_custom_information_document(v, key) for v in value
+                structure_custom_information_document(v, key)
+                if isinstance(v, dict)
+                else value
+                if isinstance(v, list)
+                else v
+                for v in value
             ]
         elif isinstance(value, dict):
             structured_value = structure_custom_information_document(value, key)
@@ -366,7 +382,13 @@ def register_dataclass_hooks(converter: Converter) -> None:
             if val is None:
                 return None
             structured = structure_fn(val, _)
-            if isinstance(val, dict) and "custom information document" in val:
+            # NOTE: this handles custom implementation of custom info document, not the ASM version that came
+            # later. The ASM version will always be a list, so we can differentiate using that.
+            if (
+                isinstance(val, dict)
+                and "custom information document" in val
+                and not isinstance(val["custom information document"], list)
+            ):
                 structured.custom_information_document = (
                     structure_custom_information_document(
                         val["custom information document"],
@@ -407,7 +429,11 @@ def register_unstructure_hooks(converter: Converter) -> None:
                 for k, v in make_unstructure_fn(type(obj))(obj).items()
                 if not should_omit(k, v)
             }
-            if hasattr(obj, "custom_information_document"):
+            # NOTE: this handles custom implementation of custom info document, not the ASM version that came
+            # later. The ASM version will always be a list, so we can differentiate using that.
+            if hasattr(obj, "custom_information_document") and not isinstance(
+                obj.custom_information_document, list
+            ):
                 dataclass_dict[
                     "custom information document"
                 ] = unstructure_custom_information_document(

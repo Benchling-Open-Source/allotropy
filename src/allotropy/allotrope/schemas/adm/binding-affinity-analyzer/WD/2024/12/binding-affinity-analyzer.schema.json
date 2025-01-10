@@ -108,7 +108,7 @@
                                                                                                     "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
                                                                                                 },
                                                                                                 {
-                                                                                                    "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/Nanomolar"
+                                                                                                    "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/nM"
                                                                                                 }
                                                                                             ]
                                                                                         }
@@ -223,34 +223,6 @@
                                                                                                     }
                                                                                                 }
                                                                                             }
-                                                                                        }
-                                                                                    }
-                                                                                },
-                                                                                "sensor chip document": {
-                                                                                    "$asm.property-class": "TODO",
-                                                                                    "$asm.pattern": "aggregate datum",
-                                                                                    "type": "object",
-                                                                                    "required": [
-                                                                                        "sensor chip identifier"
-                                                                                    ],
-                                                                                    "properties": {
-                                                                                        "sensor chip identifier": {
-                                                                                            "$asm.pattern": "value datum",
-                                                                                            "$asm.property-class": "TODO",
-                                                                                            "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                                                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
-                                                                                        },
-                                                                                        "sensor chip type": {
-                                                                                            "$asm.pattern": "value datum",
-                                                                                            "$asm.property-class": "TODO",
-                                                                                            "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                                                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
-                                                                                        },
-                                                                                        "product manufacturer": {
-                                                                                            "$asm.pattern": "value datum",
-                                                                                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001258",
-                                                                                            "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                                                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
                                                                                         }
                                                                                     }
                                                                                 }
@@ -12160,7 +12132,7 @@
                                                                 "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
                                                             },
                                                             {
-                                                                "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/MicroliterPerMinute"
+                                                                "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/µL~1min"
                                                             }
                                                         ]
                                                     },
@@ -12201,386 +12173,50 @@
                                     "minItems": 1
                                 }
                             }
-                        }
-                    }
-                }
-            }
-        },
-        "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/cube.schema": {
-            "$id": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/cube.schema",
-            "$defs": {
-              "tDatacube": {
-                "type": "object",
-                "properties": {
-                  "label": {
-                    "type": "string"
-                  },
-                  "cube-structure": {
-                    "$ref": "#/$defs/tDatacubeStructure"
-                  },
-                  "data": {
-                    "$ref": "#/$defs/tDatacubeData"
-                  }
-                }
-              },
-              "tDatacubeData": {
-                "allOf": [
-                  {
-                    "$ref": "#/$defs/tDimensionData"
-                  },
-                  {
-                    "$ref": "#/$defs/tMeasureData"
-                  }
-                ]
-              },
-              "tDimensionData": {
-                "properties": {
-                  "dimensions": {
-                    "type": "array",
-                    "items": {
-                      "oneOf": [
-                        {
-                          "$ref": "#/$defs/tDimensionArray"
                         },
-                        {
-                          "$ref": "#/$defs/tFunction"
+                        "sensor chip document": {
+                            "$asm.property-class": "TODO",
+                            "$asm.pattern": "aggregate datum",
+                            "type": "object",
+                            "required": [
+                                "sensor chip identifier"
+                            ],
+                            "properties": {
+                                "sensor chip identifier": {
+                                    "$asm.pattern": "value datum",
+                                    "$asm.property-class": "TODO",
+                                    "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+                                },
+                                "sensor chip type": {
+                                    "$asm.pattern": "value datum",
+                                    "$asm.property-class": "TODO",
+                                    "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+                                },
+                                "product manufacturer": {
+                                    "$asm.pattern": "value datum",
+                                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001258",
+                                    "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+                                },
+                                "lot number":{
+                                    "$asm.pattern": "value datum",
+                                    "$asm.property-class": "http://purl.obolibrary.org/obo/IAO_0000132",
+                                    "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+                                },
+                                "custom information aggregate document": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/hierarchy.schema#/$defs/customInformationAggregateDocument"
+                                        }
+                                    ]
+                                }
+                            }
                         }
-                      ]
                     }
-                  }
-                },
-                "required": [
-                  "dimensions"
-                ]
-              },
-              "tMeasureData": {
-                "oneOf": [
-                  {
-                    "properties": {
-                      "measures": {
-                        "type": "array",
-                        "items": {
-                          "$ref": "#/$defs/tMeasureArray"
-                        }
-                      }
-                    },
-                    "required": [
-                      "measures"
-                    ]
-                  },
-                  {
-                    "properties": {
-                      "points": {
-                        "type": "array",
-                        "items": {
-                          "$ref": "#/$defs/tTupleData"
-                        }
-                      }
-                    },
-                    "required": [
-                      "points"
-                    ]
-                  }
-                ]
-              },
-              "tTupleData": {
-                "$comment": "heterogenous array of data used in point arrays",
-                "type": "array",
-                "items": {
-                  "oneOf": [
-                    {
-                      "type": "number"
-                    },
-                    {
-                      "type": "boolean"
-                    },
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "type": "null"
-                    }
-                  ]
                 }
-              },
-              "tDimensionArray": {
-                "$comment": "homogenous array of data used in explicit dimension arrays",
-                "oneOf": [
-                  {
-                    "$ref": "#/$defs/tNumberArray"
-                  },
-                  {
-                    "$ref": "#/$defs/tBooleanArray"
-                  },
-                  {
-                    "$ref": "#/$defs/tStringArray"
-                  }
-                ]
-              },
-              "tMeasureArray": {
-                "$comment": "homogenous array of data used in explicit measure arrays, may contain null values",
-                "oneOf": [
-                  {
-                    "$ref": "#/$defs/tNumberOrNullArray"
-                  },
-                  {
-                    "$ref": "#/$defs/tBooleanOrNullArray"
-                  },
-                  {
-                    "$ref": "#/$defs/tStringOrNullArray"
-                  }
-                ]
-              },
-              "tNumberArray": {
-                "$comment": "homogenous array of numbers",
-                "type": "array",
-                "items": {
-                  "type": "number"
-                }
-              },
-              "tNumberOrNullArray": {
-                "$comment": "homogenous array of numbers, may contain null values",
-                "type": "array",
-                "items": {
-                  "anyOf": [
-                    {
-                      "type": "number"
-                    },
-                    {
-                      "type": "null"
-                    }
-                  ]
-                }
-              },
-              "tBooleanArray": {
-                "$comment": "homogenous array of booleans",
-                "type": "array",
-                "items": {
-                  "type": "boolean"
-                }
-              },
-              "tBooleanOrNullArray": {
-                "$comment": "homogenous array of booleans, may contain null values",
-                "type": "array",
-                "items": {
-                  "anyOf": [
-                    {
-                      "type": "boolean"
-                    },
-                    {
-                      "type": "null"
-                    }
-                  ]
-                }
-              },
-              "tStringArray": {
-                "$comment": "homogenous array of strings",
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "tStringOrNullArray": {
-                "$comment": "homogenous array of strings, may contain null values",
-                "type": "array",
-                "items": {
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "type": "null"
-                    }
-                  ]
-                }
-              },
-              "tFunction": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "enum": [
-                      "linear",
-                      "logarithmic"
-                    ],
-                    "default": "linear"
-                  },
-                  "start": {
-                    "type": "number",
-                    "default": 1
-                  },
-                  "length": {
-                    "type": "number"
-                  },
-                  "incr": {
-                    "type": "number",
-                    "default": 1
-                  }
-                }
-              },
-              "tDatacubeStructure": {
-                "type": "object",
-                "properties": {
-                  "dimensions": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/$defs/tDatacubeComponent"
-                    },
-                    "uniqueItems": true
-                  },
-                  "measures": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/$defs/tDatacubeComponent"
-                    },
-                    "uniqueItems": true,
-                    "minItems": 1
-                  }
-                },
-                "required": [
-                  "dimensions",
-                  "measures"
-                ]
-              },
-              "tDatacubeComponent": {
-                "type": "object",
-                "properties": {
-                  "@componentDatatype": {
-                    "description": "Subset of XSD datatypes supported in simple models",
-                    "default": "double",
-                    "enum": [
-                      "double",
-                      "float",
-                      "decimal",
-                      "integer",
-                      "byte",
-                      "int",
-                      "short",
-                      "long",
-                      "string",
-                      "boolean",
-                      "dateTime"
-                    ]
-                  },
-                  "concept": {
-                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tClass"
-                  },
-                  "unit": {
-                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tUnit"
-                  },
-                  "scale": {
-                    "enum": [
-                      "nominal",
-                      "ordinal",
-                      "cardinal",
-                      "interval",
-                      "range"
-                    ]
-                  },
-                  "$asm.fill-value": {
-                    "type": [
-                      "string",
-                      "number",
-                      "integer",
-                      "boolean"
-                    ]
-                  }
-                },
-                "required": [
-                  "@componentDatatype",
-                  "concept"
-                ],
-                "allOf": [
-                  {
-                    "$ref": "#/$defs/cFillValueIEEE"
-                  },
-                  {
-                    "$ref": "#/$defs/cFillValueDecimal"
-                  },
-                  {
-                    "$ref": "#/$defs/cFillValueBoolean"
-                  },
-                  {
-                    "$ref": "#/$defs/cFillValueString"
-                  }
-                ]
-              },
-              "cFillValueBoolean": {
-                "$comment": "constraint on fill values if component data type is boolean",
-                "if": {
-                  "properties": {
-                    "@componentDatatype": {
-                      "const": "boolean"
-                    }
-                  }
-                },
-                "then": {
-                  "$asm.fill-value": {
-                    "type": "boolean",
-                    "default": false
-                  }
-                }
-              },
-              "cFillValueIEEE": {
-                "$comment": "constraint on fill values if component data type is any numeric type",
-                "if": {
-                  "properties": {
-                    "@componentDatatype": {
-                      "pattern": "double|float"
-                    }
-                  }
-                },
-                "then": {
-                  "$asm.fill-value": {
-                    "oneOf": [
-                      {
-                        "type": "number"
-                      },
-                      {
-                        "const": "NaN"
-                      },
-                      {
-                        "const": "+Infinity"
-                      },
-                      {
-                        "const": "-Infinity"
-                      }
-                    ],
-                    "default": 0
-                  }
-                }
-              },
-              "cFillValueDecimal": {
-                "$comment": "constraint on fill values if component data type is any numeric type",
-                "if": {
-                  "properties": {
-                    "@componentDatatype": {
-                      "pattern": "integer|decimal|long|int|short|byte"
-                    }
-                  }
-                },
-                "then": {
-                  "$asm.fill-value": {
-                    "type": "number",
-                    "default": 0
-                  }
-                }
-              },
-              "cFillValueString": {
-                "$comment": "constraint on fill values if component data type is string",
-                "if": {
-                  "properties": {
-                    "@componentDatatype": {
-                      "pattern": "string|dateTime|date"
-                    }
-                  }
-                },
-                "then": {
-                  "$asm.fill-value": {
-                    "type": "string",
-                    "default": ""
-                  }
-                }
-              }
             }
         }
     }

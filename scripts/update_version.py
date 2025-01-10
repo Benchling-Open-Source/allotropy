@@ -29,7 +29,7 @@ def _get_changes() -> dict[str, list[str]]:
     changes = defaultdict(list)
     for line in p.stdout.split("\n"):
         parts = line.split(" ")
-        if len(parts) < 3 or not parts[1].endswith(":"):  # noqa: PLR2004
+        if len(parts) < 3 or not parts[1].endswith(":"):
             continue
         prefix = parts[1].strip(":").lower()
         if prefix == "release":
@@ -90,7 +90,7 @@ def _make_pr(version: str, body: str) -> None:
         check=True,
     )
     print("Pushing commit...")
-    subprocess.run(["git", "push", "-u", "origin", "release-v0.1.63"], check=True)
+    subprocess.run(["git", "push", "-u", "origin", f"release-v{version}"], check=True)
 
     print("Tagging branch...")
     subprocess.run(

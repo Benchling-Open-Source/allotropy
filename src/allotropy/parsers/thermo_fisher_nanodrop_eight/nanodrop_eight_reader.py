@@ -19,13 +19,13 @@ class NanodropEightReader:
         header_data = {}
         # Header lines are expected to have a single 'key: value' pair, while table will have multiple
         # tab-separated column headers. So, detect header lines as:
-        #   <anything but a tab>:<any number of tabs><anything but a tab>
-        for line in reader.pop_while(match_pat=r"^[^\t]*:[\t]*[^\t]*$"):
+        #   <anything but a tab>:<any number of tabs><anything but a tab><any whitespace>
+        for line in reader.pop_while(match_pat=r"^[^\t]+:[\t]*[^\t]+[\s]*$"):
             key, value = line.split(":")
             header_data[key] = value.strip()
 
         header = pd.Series(header_data)
-        header.index = header.index.str.strip().str.lower()
+        header.index = header.index.astype(str).str.strip().str.lower()
         self.header = SeriesData(header)
 
         lines = reader.pop_csv_block_as_lines()

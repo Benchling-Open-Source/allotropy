@@ -338,20 +338,36 @@
                         "$asm.array-mixed": false,
                         "$asm.pattern": "indexed datum",
                         "items": {
-                          "anyOf": [
+                          "allOf": [
                             {
-                              "$ref": "#/$defs/opticalImagingMeasurementDocumentItems"
+                              "anyOf": [
+                                {
+                                  "$ref": "#/$defs/opticalImagingMeasurementDocumentItems"
+                                },
+                                {
+                                  "$ref": "#/$defs/ultravioletAbsorbancePointDetectionMeasurementDocumentItems"
+                                },
+                                {
+                                  "$ref": "#/$defs/fluorescencePointDetectionMeasurementDocumentItems"
+                                },
+                                {
+                                  "$ref": "#/$defs/luminescencePointDetectionMeasurementDocumentItems"
+                                }
+                              ]
                             },
                             {
-                              "$ref": "#/$defs/ultravioletAbsorbancePointDetectionMeasurementDocumentItems"
-                            },
-                            {
-                              "$ref": "#/$defs/fluorescencePointDetectionMeasurementDocumentItems"
-                            },
-                            {
-                              "$ref": "#/$defs/luminescencePointDetectionMeasurementDocumentItems"
+                              "properties": {
+                                "custom information aggregate document": {
+                                  "allOf": [
+                                    {
+                                      "$ref": "#/$defs/customInformationAggregateDocument"
+                                    }
+                                  ]
+                                }
+                              }
                             }
                           ]
+
                         },
                         "minItems": 1
                       },
@@ -611,6 +627,113 @@
           "minItems": 1
         }
       }
+    },
+    "customInformationAggregateDocument": {
+      "$asm.pattern": "aggregate datum",
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002764",
+      "properties": {
+        "custom information document": {
+          "$asm.array-mixed": false,
+          "$asm.array-ordered": true,
+          "$asm.pattern": "indexed datum",
+          "items": {
+            "allOf": [
+              {
+                "$asm.pattern": "aggregate datum",
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002764",
+                "properties": {
+                  "datum label": {
+                    "$asm.pattern": "value datum",
+                    "$asm.property-class": "http://purl.obolibrary.org/obo/IAO_0000009",
+                    "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                    "$ref": "#/$defs/tStringValue"
+                  }
+                },
+                "required": [
+                  "datum label"
+                ],
+                "type": "object"
+              },
+              {
+                "oneOf": [
+                  {
+                    "properties": {
+                      "scalar double datum": {
+                        "$asm.pattern": "value datum",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001104",
+                        "$asm.type": "http://www.w3.org/2001/XMLSchema#double",
+                        "$ref": "#/$defs/tDoubleValue"
+                      },
+                      "unit": {
+                        "$ref": "#/$defs/tUnit"
+                      }
+                    },
+                    "required": [
+                      "scalar double datum"
+                    ]
+                  },
+                  {
+                    "properties": {
+                      "scalar string datum": {
+                        "$asm.pattern": "value datum",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001511",
+                        "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                        "$ref": "#/$defs/tStringValue"
+                      }
+                    },
+                    "required": [
+                      "scalar string datum"
+                    ]
+                  },
+                  {
+                    "properties": {
+                      "scalar timestamp datum": {
+                        "$asm.pattern": "value datum",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001512",
+                        "$asm.type": "http://www.w3.org/2001/XMLSchema#dateTime",
+                        "$ref": "#/$defs/tDateTimeValue"
+                      }
+                    },
+                    "required": [
+                      "scalar timestamp datum"
+                    ]
+                  },
+                  {
+                    "properties": {
+                      "scalar boolean datum": {
+                        "$asm.pattern": "value datum",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001510",
+                        "$asm.type": "http://www.w3.org/2001/XMLSchema#boolean",
+                        "$ref": "#/$defs/tBooleanValue"
+                      }
+                    },
+                    "required": [
+                      "scalar boolean datum"
+                    ]
+                  },
+                  {
+                    "properties": {
+                      "data cube": {
+                        "$asm.pattern": "datacube",
+                        "$asm.property-class": "http://purl.org/linked-data/cube#DataSet",
+                        "$ref": "#/$defs/tDatacube"
+                      }
+                    },
+                    "required": [
+                      "data cube"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "custom information document"
+      ],
+      "type": "object"
     },
     "dataSourceAggregateDocument": {
       "type": "object",

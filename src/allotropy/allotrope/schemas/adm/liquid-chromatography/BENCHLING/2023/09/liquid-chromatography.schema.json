@@ -108,7 +108,7 @@
                                                   "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
                                                 },
                                                 {
-                                                  "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/μm"
+                                                  "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/µm"
                                                 }
                                               ]
                                             },
@@ -886,7 +886,11 @@
                                                                   "const": "s"
                                                                 },
                                                                 "@componentDatatype": {
-                                                                  "const": "double"
+                                                                  "default": "double",
+                                                                  "enum": [
+                                                                    "double",
+                                                                    "float"
+                                                                  ]
                                                                 }
                                                               }
                                                             },
@@ -899,7 +903,11 @@
                                                                   "const": "mL"
                                                                 },
                                                                 "@componentDatatype": {
-                                                                  "const": "double"
+                                                                  "default": "double",
+                                                                  "enum": [
+                                                                    "double",
+                                                                    "float"
+                                                                  ]
                                                                 }
                                                               }
                                                             }
@@ -915,7 +923,11 @@
                                                           {
                                                             "properties": {
                                                               "@componentDatatype": {
-                                                                "const": "double"
+                                                                "default": "double",
+                                                                "enum": [
+                                                                  "double",
+                                                                  "float"
+                                                                ]
                                                               }
                                                             }
                                                           }
@@ -945,7 +957,7 @@
                                           "$ref": "http://purl.allotrope.org/json-schemas/adm/conductivity/REC/2023/09/conductivity-cube-detection.schema#/$defs/measurementDocumentItems"
                                         },
                                         {
-                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/ph/BENCHLING/2024/11/ph-cube-detector.schema#/$defs/measurementDocumentItems"
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/chromatography/BENCHLING/2024/11/ph-cube-detector.schema#/$defs/measurementDocumentItems"
                                         },
                                         {
                                           "$ref": "http://purl.allotrope.org/json-schemas/adm/mass-spectrometry/REC/2023/09/mass-chromatogram-cube-detection.schema#/$defs/measurementDocumentItems"
@@ -958,6 +970,21 @@
                                         },
                                         {
                                           "$ref": "http://purl.allotrope.org/json-schemas/adm/chromatography/REC/2023/09/chromatography-detectors.schema#/$defs/picoamperes"
+                                        },
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/chromatography/BENCHLING/2024/11/flow-rate-cube-detector.schema#/$defs/measurementDocumentItems"
+                                        },
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/chromatography/BENCHLING/2024/11/temperature-cube-detector.schema#/$defs/measurementDocumentItems"
+                                        },
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/chromatography/BENCHLING/2024/11/solvent-cube-detector.schema#/$defs/measurementDocumentItems"
+                                        },
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/chromatography/BENCHLING/2024/11/pressure-cube-detector.schema#/$defs/measurementDocumentItems"
+                                        },
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/fluorescence/BENCHLING/2024/11/fluorescence-cube-detector.schema#/$defs/measurementDocumentItems"
                                         }
                                       ]
                                     }
@@ -999,6 +1026,55 @@
       "$defs": {
         "techniqueAggregateDocument": {
           "properties": {
+            "data system document": {
+              "type": "object",
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002771",
+              "$asm.pattern": "aggregate datum",
+              "properties": {
+                "ASM converter name": {
+                  "$asm.pattern": "value datum",
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002748",
+                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                  "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
+                },
+                "ASM converter version": {
+                  "$asm.pattern": "value datum",
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002749",
+                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                  "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
+                },
+                "data system instance identifier": {
+                  "$asm.pattern": "value datum",
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002772",
+                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                  "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
+                },
+                "file name": {
+                  "$asm.pattern": "value datum",
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001926",
+                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                  "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
+                },
+                "software name": {
+                  "$asm.pattern": "value datum",
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002802",
+                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                  "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
+                },
+                "software version": {
+                  "$asm.pattern": "value datum",
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001700",
+                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                  "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
+                },
+                "UNC path": {
+                  "$asm.pattern": "value datum",
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001906",
+                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                  "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
+                }
+              }
+            },
             "device system document": {
               "type": "object",
               "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002526",
@@ -7681,11 +7757,11 @@
             "unit"
           ]
         },
-        "keV/μm": {
+        "keV/µm": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "keV/μm",
+              "const": "keV/µm",
               "$asm.unit-iri": "http://qudt.org/vocab/unit#KiloElectronVoltPerMicrometer"
             }
           },
@@ -11605,11 +11681,11 @@
             "unit"
           ]
         },
-        "μG": {
+        "µG": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μG",
+              "const": "µG",
               "$asm.unit-iri": "http://qudt.org/vocab/unit#Microgravity"
             }
           },
@@ -11617,11 +11693,11 @@
             "unit"
           ]
         },
-        "μH": {
+        "µH": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μH",
+              "const": "µH",
               "$asm.unit-iri": "http://qudt.org/vocab/unit#MicroHenry"
             }
           },
@@ -11629,11 +11705,11 @@
             "unit"
           ]
         },
-        "μL/min": {
+        "µL/min": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μL/min",
+              "const": "µL/min",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MicroliterPerMinute"
             }
           },
@@ -11641,11 +11717,11 @@
             "unit"
           ]
         },
-        "μL/s": {
+        "µL/s": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μL/s",
+              "const": "µL/s",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MicroliterPerSecond"
             }
           },
@@ -11653,11 +11729,11 @@
             "unit"
           ]
         },
-        "μV": {
+        "µV": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μV",
+              "const": "µV",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Microvolt"
             }
           },
@@ -11665,11 +11741,11 @@
             "unit"
           ]
         },
-        "μW": {
+        "µW": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μW",
+              "const": "µW",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MicroWatt"
             }
           },
@@ -11677,11 +11753,11 @@
             "unit"
           ]
         },
-        "μW/g": {
+        "µW/g": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μW/g",
+              "const": "µW/g",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MicroWattPerGram"
             }
           },
@@ -11689,11 +11765,11 @@
             "unit"
           ]
         },
-        "μcal/°C": {
+        "µcal/°C": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μcal/°C",
+              "const": "µcal/°C",
               "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MicroCaloriePerDegreeCelsius"
             }
           },
@@ -11701,11 +11777,11 @@
             "unit"
           ]
         },
-        "μin": {
+        "µin": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μin",
+              "const": "µin",
               "$asm.unit-iri": "http://qudt.org/vocab/unit#MicroInch"
             }
           },
@@ -11713,11 +11789,11 @@
             "unit"
           ]
         },
-        "μm": {
+        "µm": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μm",
+              "const": "µm",
               "$asm.unit-iri": "http://qudt.org/vocab/unit#Micrometer"
             }
           },
@@ -11725,11 +11801,11 @@
             "unit"
           ]
         },
-        "μs": {
+        "µs": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μs",
+              "const": "µs",
               "$asm.unit-iri": "http://qudt.org/vocab/unit#MicroSecond"
             }
           },
@@ -11737,11 +11813,11 @@
             "unit"
           ]
         },
-        "μtorr": {
+        "µtorr": {
           "properties": {
             "unit": {
               "type": "string",
-              "const": "μtorr",
+              "const": "µtorr",
               "$asm.unit-iri": "http://qudt.org/vocab/unit#MicroTorr"
             }
           },
@@ -12001,6 +12077,18 @@
             "unit"
           ]
         },
+        "CV/h": {
+          "properties": {
+            "unit": {
+              "type": "string",
+              "const": "CV/h",
+              "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#ColumnVolumePerHour"
+            }
+          },
+          "required": [
+            "unit"
+          ]
+        },
         "μr": {
           "properties": {
             "unit": {
@@ -12209,65 +12297,74 @@
                 }
               ]
             },
-            "processed data document": {
+            "processed data aggregate document": {
               "type": "object",
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002658",
+              "$asm.pattern": "aggregate datum",
               "properties": {
-                "peak list": {
-                  "type": "object",
-                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000432",
-                  "$asm.pattern": "aggregate datum",
-                  "properties": {
-                    "peak": {
-                      "type": "array",
-                      "$asm.array-ordered": true,
-                      "$asm.array-mixed": false,
-                      "$asm.pattern": "indexed datum",
-                      "items": {
-                        "allOf": [
-                          {
-                            "type": "object",
-                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000413",
-                            "$asm.pattern": "aggregate datum",
-                            "properties": {
-                              "peak height": {
-                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000948",
-                                "$asm.pattern": "quantity datum",
-                                "allOf": [
-                                  {
-                                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
-                                  },
-                                  {
-                                    "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/mAU"
+                "processed data document": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "peak list": {
+                        "type": "object",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000432",
+                        "$asm.pattern": "aggregate datum",
+                        "properties": {
+                          "peak": {
+                            "type": "array",
+                            "$asm.array-ordered": true,
+                            "$asm.array-mixed": false,
+                            "$asm.pattern": "indexed datum",
+                            "items": {
+                              "allOf": [
+                                {
+                                  "type": "object",
+                                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000413",
+                                  "$asm.pattern": "aggregate datum",
+                                  "properties": {
+                                    "peak height": {
+                                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000948",
+                                      "$asm.pattern": "quantity datum",
+                                      "allOf": [
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                        },
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/mAU"
+                                        }
+                                      ]
+                                    },
+                                    "peak area": {
+                                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001073",
+                                      "$asm.pattern": "quantity datum",
+                                      "allOf": [
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                        },
+                                        {
+                                          "oneOf": [
+                                            {
+                                              "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/mAU.s"
+                                            },
+                                            {
+                                              "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/mAU.mL"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
                                   }
-                                ]
-                              },
-                              "peak area": {
-                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001073",
-                                "$asm.pattern": "quantity datum",
-                                "allOf": [
-                                  {
-                                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
-                                  },
-                                  {
-                                    "oneOf": [
-                                      {
-                                        "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/mAU.s"
-                                      },
-                                      {
-                                        "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/mAU.mL"
-                                      }
-                                    ]
-                                  }
-                                ]
-                              }
-                            }
-                          },
-                          {
-                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/orderedItem"
+                                },
+                                {
+                                  "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/orderedItem"
+                                }
+                              ]
+                            },
+                            "minItems": 0
                           }
-                        ]
-                      },
-                      "minItems": 0
+                        }
+                      }
                     }
                   }
                 }
@@ -12277,8 +12374,8 @@
         }
       }
     },
-    "http://purl.allotrope.org/json-schemas/adm/ph/BENCHLING/2024/11/ph-cube-detector.schema": {
-      "$id": "http://purl.allotrope.org/json-schemas/adm/ph/BENCHLING/2024/11/ph-cube-detector.schema",
+    "http://purl.allotrope.org/json-schemas/adm/chromatography/BENCHLING/2024/11/ph-cube-detector.schema": {
+      "$id": "http://purl.allotrope.org/json-schemas/adm/chromatography/BENCHLING/2024/11/ph-cube-detector.schema",
       "$defs": {
         "measurementDocumentItems": {
           "type": "object",
@@ -12361,6 +12458,906 @@
                   ]
                 }
               ]
+            }
+          }
+        }
+      }
+    },
+    "http://purl.allotrope.org/json-schemas/adm/chromatography/BENCHLING/2024/11/temperature-cube-detector.schema": {
+      "$id": "http://purl.allotrope.org/json-schemas/adm/chromatography/BENCHLING/2024/11/temperature-cube-detector.schema",
+      "$defs": {
+        "measurementDocumentItems": {
+          "type": "object",
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002375",
+          "$asm.pattern": "aggregate datum",
+          "properties": {
+            "device control aggregate document": {
+              "type": "object",
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002722",
+              "$asm.pattern": "aggregate datum",
+              "properties": {
+                "device control document": {
+                  "type": "array",
+                  "$asm.array-ordered": true,
+                  "$asm.array-mixed": false,
+                  "$asm.pattern": "indexed datum",
+                  "items": {
+                    "allOf": [
+                      {
+                        "type": "object",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002723",
+                        "$asm.pattern": "aggregate datum",
+                        "properties": {
+                          "temperature profile data cube": {
+                            "$asm.property-class": "TODO",
+                            "$asm.pattern": "datacube",
+                            "allOf": [
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/cube.schema#/$defs/tDatacube"
+                              },
+                              {
+                                "properties": {
+                                  "cube-structure": {
+                                    "properties": {
+                                      "dimensions": {
+                                        "minItems": 1,
+                                        "maxItems": 1,
+                                        "prefixItems": [
+                                          {
+                                            "oneOf": [
+                                              {
+                                                "properties": {
+                                                  "concept": {
+                                                    "const": "retention time"
+                                                  },
+                                                  "unit": {
+                                                    "const": "s"
+                                                  },
+                                                  "@componentDatatype": {
+                                                    "const": "double"
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "properties": {
+                                                  "concept": {
+                                                    "const": "retention volume"
+                                                  },
+                                                  "unit": {
+                                                    "const": "mL"
+                                                  },
+                                                  "@componentDatatype": {
+                                                    "const": "double"
+                                                  }
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      "measures": {
+                                        "minItems": 1,
+                                        "maxItems": 1,
+                                        "contains": {
+                                          "oneOf": [
+                                            {
+                                              "properties": {
+                                                "concept": {
+                                                  "const": "temperature"
+                                                },
+                                                "unit": {
+                                                  "const": "degC"
+                                                },
+                                                "@componentDatatype": {
+                                                  "const": "double"
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "required": [
+                                  "temperature profile data cube"
+                                ]
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "http://purl.allotrope.org/json-schemas/adm/chromatography/BENCHLING/2024/11/solvent-cube-detector.schema": {
+      "$id": "http://purl.allotrope.org/json-schemas/adm/chromatography/BENCHLING/2024/11/solvent-cube-detector.schema",
+      "$defs": {
+        "measurementDocumentItems": {
+          "type": "object",
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002375",
+          "$asm.pattern": "aggregate datum",
+          "properties": {
+            "device control aggregate document": {
+              "type": "object",
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002722",
+              "$asm.pattern": "aggregate datum",
+              "properties": {
+                "device control document": {
+                  "type": "array",
+                  "$asm.array-ordered": true,
+                  "$asm.array-mixed": false,
+                  "$asm.pattern": "indexed datum",
+                  "items": {
+                    "allOf": [
+                      {
+                        "type": "object",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002723",
+                        "$asm.pattern": "aggregate datum",
+                        "properties": {
+                          "solvent concentration data cube": {
+                            "$asm.property-class": "TODO",
+                            "$asm.pattern": "datacube",
+                            "allOf": [
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/cube.schema#/$defs/tDatacube"
+                              },
+                              {
+                                "properties": {
+                                  "cube-structure": {
+                                    "properties": {
+                                      "dimensions": {
+                                        "minItems": 1,
+                                        "maxItems": 1,
+                                        "prefixItems": [
+                                          {
+                                            "oneOf": [
+                                              {
+                                                "properties": {
+                                                  "concept": {
+                                                    "const": "retention time"
+                                                  },
+                                                  "unit": {
+                                                    "const": "s"
+                                                  },
+                                                  "@componentDatatype": {
+                                                    "const": "double"
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "properties": {
+                                                  "concept": {
+                                                    "const": "retention volume"
+                                                  },
+                                                  "unit": {
+                                                    "const": "mL"
+                                                  },
+                                                  "@componentDatatype": {
+                                                    "const": "double"
+                                                  }
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      "measures": {
+                                        "minItems": 1,
+                                        "maxItems": 1,
+                                        "contains": {
+                                          "oneOf": [
+                                            {
+                                              "properties": {
+                                                "concept": {
+                                                  "const": "solvent concentration"
+                                                },
+                                                "unit": {
+                                                  "const": "%"
+                                                },
+                                                "@componentDatatype": {
+                                                  "const": "double"
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "required": [
+                                  "solvent concentration data cube"
+                                ]
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "http://purl.allotrope.org/json-schemas/adm/chromatography/BENCHLING/2024/11/pressure-cube-detector.schema": {
+      "$id": "http://purl.allotrope.org/json-schemas/adm/chromatography/BENCHLING/2024/11/pressure-cube-detector.schema",
+      "$defs": {
+        "measurementDocumentItems": {
+          "type": "object",
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002375",
+          "$asm.pattern": "aggregate datum",
+          "properties": {
+             "device control aggregate document": {
+              "type": "object",
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002722",
+              "$asm.pattern": "aggregate datum",
+              "properties": {
+                "device control document": {
+                  "type": "array",
+                  "$asm.array-ordered": true,
+                  "$asm.array-mixed": false,
+                  "$asm.pattern": "indexed datum",
+                  "items": {
+                    "allOf": [
+                      {
+                        "type": "object",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002723",
+                        "$asm.pattern": "aggregate datum",
+                        "properties": {
+                          "pre-column pressure data cube": {
+                            "$asm.property-class": "TODO",
+                            "$asm.pattern": "datacube",
+                            "allOf": [
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/cube.schema#/$defs/tDatacube"
+                              },
+                              {
+                                "properties": {
+                                  "cube-structure": {
+                                    "properties": {
+                                      "dimensions": {
+                                        "minItems": 1,
+                                        "maxItems": 1,
+                                        "prefixItems": [
+                                          {
+                                            "oneOf": [
+                                              {
+                                                "properties": {
+                                                  "concept": {
+                                                    "const": "retention time"
+                                                  },
+                                                  "unit": {
+                                                    "const": "s"
+                                                  },
+                                                  "@componentDatatype": {
+                                                    "const": "double"
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "properties": {
+                                                  "concept": {
+                                                    "const": "retention volume"
+                                                  },
+                                                  "unit": {
+                                                    "const": "mL"
+                                                  },
+                                                  "@componentDatatype": {
+                                                    "const": "double"
+                                                  }
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      "measures": {
+                                        "minItems": 1,
+                                        "maxItems": 1,
+                                        "contains": {
+                                          "oneOf": [
+                                            {
+                                              "properties": {
+                                                "concept": {
+                                                  "const": "pre-column pressure"
+                                                },
+                                                "unit": {
+                                                  "const": "MPa"
+                                                },
+                                                "@componentDatatype": {
+                                                  "const": "double"
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "required": [
+                                  "column pressure data cube"
+                                ]
+                              }
+                            ]
+                          },
+                          "post-column pressure data cube": {
+                            "$asm.property-class": "TODO",
+                            "$asm.pattern": "datacube",
+                            "allOf": [
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/cube.schema#/$defs/tDatacube"
+                              },
+                              {
+                                "properties": {
+                                  "cube-structure": {
+                                    "properties": {
+                                      "dimensions": {
+                                        "minItems": 1,
+                                        "maxItems": 1,
+                                        "prefixItems": [
+                                          {
+                                            "oneOf": [
+                                              {
+                                                "properties": {
+                                                  "concept": {
+                                                    "const": "retention time"
+                                                  },
+                                                  "unit": {
+                                                    "const": "s"
+                                                  },
+                                                  "@componentDatatype": {
+                                                    "const": "double"
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "properties": {
+                                                  "concept": {
+                                                    "const": "retention volume"
+                                                  },
+                                                  "unit": {
+                                                    "const": "mL"
+                                                  },
+                                                  "@componentDatatype": {
+                                                    "const": "double"
+                                                  }
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      "measures": {
+                                        "minItems": 1,
+                                        "maxItems": 1,
+                                        "contains": {
+                                          "oneOf": [
+                                            {
+                                              "properties": {
+                                                "concept": {
+                                                  "const": "post-column pressure"
+                                                },
+                                                "unit": {
+                                                  "const": "MPa"
+                                                },
+                                                "@componentDatatype": {
+                                                  "const": "double"
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "required": [
+                                  "column pressure data cube"
+                                ]
+                              }
+                            ]
+                          },
+                          "sample pressure data cube": {
+                            "$asm.property-class": "TODO",
+                            "$asm.pattern": "datacube",
+                            "allOf": [
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/cube.schema#/$defs/tDatacube"
+                              },
+                              {
+                                "properties": {
+                                  "cube-structure": {
+                                    "properties": {
+                                      "dimensions": {
+                                        "minItems": 1,
+                                        "maxItems": 1,
+                                        "prefixItems": [
+                                          {
+                                            "oneOf": [
+                                              {
+                                                "properties": {
+                                                  "concept": {
+                                                    "const": "retention time"
+                                                  },
+                                                  "unit": {
+                                                    "const": "s"
+                                                  },
+                                                  "@componentDatatype": {
+                                                    "const": "double"
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "properties": {
+                                                  "concept": {
+                                                    "const": "retention volume"
+                                                  },
+                                                  "unit": {
+                                                    "const": "mL"
+                                                  },
+                                                  "@componentDatatype": {
+                                                    "const": "double"
+                                                  }
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      "measures": {
+                                        "minItems": 1,
+                                        "maxItems": 1,
+                                        "contains": {
+                                          "oneOf": [
+                                            {
+                                              "properties": {
+                                                "concept": {
+                                                  "const": "sample pressure"
+                                                },
+                                                "unit": {
+                                                  "const": "MPa"
+                                                },
+                                                "@componentDatatype": {
+                                                  "const": "double"
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "required": [
+                                  "sample pressure data cube"
+                                ]
+                              }
+                            ]
+                          },
+                          "system pressure data cube": {
+                            "$asm.property-class": "TODO",
+                            "$asm.pattern": "datacube",
+                            "allOf": [
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/cube.schema#/$defs/tDatacube"
+                              },
+                              {
+                                "properties": {
+                                  "cube-structure": {
+                                    "properties": {
+                                      "dimensions": {
+                                        "minItems": 1,
+                                        "maxItems": 1,
+                                        "prefixItems": [
+                                          {
+                                            "oneOf": [
+                                              {
+                                                "properties": {
+                                                  "concept": {
+                                                    "const": "retention time"
+                                                  },
+                                                  "unit": {
+                                                    "const": "s"
+                                                  },
+                                                  "@componentDatatype": {
+                                                    "const": "double"
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "properties": {
+                                                  "concept": {
+                                                    "const": "retention volume"
+                                                  },
+                                                  "unit": {
+                                                    "const": "mL"
+                                                  },
+                                                  "@componentDatatype": {
+                                                    "const": "double"
+                                                  }
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      "measures": {
+                                        "minItems": 1,
+                                        "maxItems": 1,
+                                        "contains": {
+                                          "oneOf": [
+                                            {
+                                              "properties": {
+                                                "concept": {
+                                                  "const": "column pressure"
+                                                },
+                                                "unit": {
+                                                  "const": "MPa"
+                                                },
+                                                "@componentDatatype": {
+                                                  "const": "double"
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "required": [
+                                  "system pressure data cube"
+                                ]
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "processed data aggregate document": {
+              "type": "object",
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002658",
+              "$asm.pattern": "aggregate datum",
+              "properties": {
+                "processed data document": {
+                  "type": "array",
+                  "$asm.array-ordered": true,
+                  "$asm.array-mixed": false,
+                  "$asm.pattern": "indexed datum",
+                  "items": {
+                    "allOf": [
+                      {
+                        "type": "object",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002659",
+                        "$asm.pattern": "aggregate datum",
+                        "properties": {
+                          "derived column pressure data cube": {
+                            "$asm.property-class": "TODO",
+                            "$asm.pattern": "datacube",
+                            "allOf": [
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/cube.schema#/$defs/tDatacube"
+                              },
+                              {
+                                "properties": {
+                                  "cube-structure": {
+                                    "properties": {
+                                      "dimensions": {
+                                        "minItems": 1,
+                                        "maxItems": 1,
+                                        "prefixItems": [
+                                          {
+                                            "oneOf": [
+                                              {
+                                                "properties": {
+                                                  "concept": {
+                                                    "const": "retention time"
+                                                  },
+                                                  "unit": {
+                                                    "const": "s"
+                                                  },
+                                                  "@componentDatatype": {
+                                                    "const": "double"
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "properties": {
+                                                  "concept": {
+                                                    "const": "retention volume"
+                                                  },
+                                                  "unit": {
+                                                    "const": "mL"
+                                                  },
+                                                  "@componentDatatype": {
+                                                    "const": "double"
+                                                  }
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      "measures": {
+                                        "minItems": 1,
+                                        "maxItems": 1,
+                                        "contains": {
+                                          "oneOf": [
+                                            {
+                                              "properties": {
+                                                "concept": {
+                                                  "const": "delta column pressure"
+                                                },
+                                                "unit": {
+                                                  "const": "MPa"
+                                                },
+                                                "@componentDatatype": {
+                                                  "const": "double"
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "required": [
+                                  "derived column pressure data cube"
+                                ]
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "http://purl.allotrope.org/json-schemas/adm/chromatography/BENCHLING/2024/11/flow-rate-cube-detector.schema": {
+      "$id": "http://purl.allotrope.org/json-schemas/adm/chromatography/BENCHLING/2024/11/flow-rate-cube-detector.schema",
+      "$defs": {
+        "measurementDocumentItems": {
+          "type": "object",
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002375",
+          "$asm.pattern": "aggregate datum",
+          "properties": {
+            "device control aggregate document": {
+              "type": "object",
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002722",
+              "$asm.pattern": "aggregate datum",
+              "properties": {
+                "device control document": {
+                  "type": "array",
+                  "$asm.array-ordered": true,
+                  "$asm.array-mixed": false,
+                  "$asm.pattern": "indexed datum",
+                  "items": {
+                    "allOf": [
+                      {
+                        "type": "object",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002723",
+                        "$asm.pattern": "aggregate datum",
+                        "properties": {
+                          "system flow rate data cube": {
+                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002708",
+                            "$asm.pattern": "datacube",
+                            "allOf": [
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/cube.schema#/$defs/tDatacube"
+                              },
+                              {
+                                "properties": {
+                                  "cube-structure": {
+                                    "properties": {
+                                      "dimensions": {
+                                        "minItems": 1,
+                                        "maxItems": 1,
+                                        "prefixItems": [
+                                          {
+                                            "oneOf": [
+                                              {
+                                                "properties": {
+                                                  "concept": {
+                                                    "const": "retention time"
+                                                  },
+                                                  "unit": {
+                                                    "const": "s"
+                                                  },
+                                                  "@componentDatatype": {
+                                                    "const": "double"
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "properties": {
+                                                  "concept": {
+                                                    "const": "retention volume"
+                                                  },
+                                                  "unit": {
+                                                    "const": "mL"
+                                                  },
+                                                  "@componentDatatype": {
+                                                    "const": "double"
+                                                  }
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      "measures": {
+                                        "minItems": 1,
+                                        "maxItems": 1,
+                                        "contains": {
+                                          "oneOf": [
+                                            {
+                                              "properties": {
+                                                "concept": {
+                                                  "const": "system flow"
+                                                },
+                                                "unit": {
+                                                  "const": "CV/h"
+                                                },
+                                                "@componentDatatype": {
+                                                  "const": "double"
+                                                }
+                                              }
+                                            },
+                                            {
+                                              "properties": {
+                                                "concept": {
+                                                  "const": "system flow"
+                                                },
+                                                "unit": {
+                                                  "const": "mL/min"
+                                                },
+                                                "@componentDatatype": {
+                                                  "const": "double"
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "required": [
+                                  "system flow rate data cube"
+                                ]
+                              }
+                            ]
+                          },
+                          "sample flow rate data cube": {
+                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002707",
+                            "$asm.pattern": "datacube",
+                            "allOf": [
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/cube.schema#/$defs/tDatacube"
+                              },
+                              {
+                                "properties": {
+                                  "cube-structure": {
+                                    "properties": {
+                                      "dimensions": {
+                                        "minItems": 1,
+                                        "maxItems": 1,
+                                        "prefixItems": [
+                                          {
+                                            "oneOf": [
+                                              {
+                                                "properties": {
+                                                  "concept": {
+                                                    "const": "retention time"
+                                                  },
+                                                  "unit": {
+                                                    "const": "s"
+                                                  },
+                                                  "@componentDatatype": {
+                                                    "const": "double"
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "properties": {
+                                                  "concept": {
+                                                    "const": "retention volume"
+                                                  },
+                                                  "unit": {
+                                                    "const": "mL"
+                                                  },
+                                                  "@componentDatatype": {
+                                                    "const": "double"
+                                                  }
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      "measures": {
+                                        "minItems": 1,
+                                        "maxItems": 1,
+                                        "contains": {
+                                          "oneOf": [
+                                            {
+                                              "properties": {
+                                                "concept": {
+                                                  "const": "sample flow"
+                                                },
+                                                "unit": {
+                                                  "const": "CV/h"
+                                                },
+                                                "@componentDatatype": {
+                                                  "const": "double"
+                                                }
+                                              }
+                                            },
+                                            {
+                                              "properties": {
+                                                "concept": {
+                                                  "const": "sample flow"
+                                                },
+                                                "unit": {
+                                                  "const": "mL/min"
+                                                },
+                                                "@componentDatatype": {
+                                                  "const": "double"
+                                                }
+                                              }
+                                            },
+                                            {
+                                              "properties": {
+                                                "concept": {
+                                                  "const": "sample flow"
+                                                },
+                                                "unit": {
+                                                  "const": "cm/s"
+                                                },
+                                                "@componentDatatype": {
+                                                  "const": "double"
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "required": [
+                                  "sample flow rate data cube"
+                                ]
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
             }
           }
         }
@@ -12544,65 +13541,74 @@
                 }
               ]
             },
-            "processed data document": {
+            "processed data aggregate document": {
               "type": "object",
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002658",
+              "$asm.pattern": "aggregate datum",
               "properties": {
-                "peak list": {
-                  "type": "object",
-                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000432",
-                  "$asm.pattern": "aggregate datum",
-                  "properties": {
-                    "peak": {
-                      "type": "array",
-                      "$asm.array-ordered": true,
-                      "$asm.array-mixed": false,
-                      "$asm.pattern": "indexed datum",
-                      "items": {
-                        "allOf": [
-                          {
-                            "type": "object",
-                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000413",
-                            "$asm.pattern": "aggregate datum",
-                            "properties": {
-                              "peak height": {
-                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000948",
-                                "$asm.pattern": "quantity datum",
-                                "allOf": [
-                                  {
-                                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
-                                  },
-                                  {
-                                    "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/mAU"
+                "processed data document": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "peak list": {
+                        "type": "object",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000432",
+                        "$asm.pattern": "aggregate datum",
+                        "properties": {
+                          "peak": {
+                            "type": "array",
+                            "$asm.array-ordered": true,
+                            "$asm.array-mixed": false,
+                            "$asm.pattern": "indexed datum",
+                            "items": {
+                              "allOf": [
+                                {
+                                  "type": "object",
+                                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000413",
+                                  "$asm.pattern": "aggregate datum",
+                                  "properties": {
+                                    "peak height": {
+                                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000948",
+                                      "$asm.pattern": "quantity datum",
+                                      "allOf": [
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                        },
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/mAU"
+                                        }
+                                      ]
+                                    },
+                                    "peak area": {
+                                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001073",
+                                      "$asm.pattern": "quantity datum",
+                                      "allOf": [
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                        },
+                                        {
+                                          "oneOf": [
+                                            {
+                                              "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/mAU.s"
+                                            },
+                                            {
+                                              "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/mAU.mL"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
                                   }
-                                ]
-                              },
-                              "peak area": {
-                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001073",
-                                "$asm.pattern": "quantity datum",
-                                "allOf": [
-                                  {
-                                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
-                                  },
-                                  {
-                                    "oneOf": [
-                                      {
-                                        "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/mAU.s"
-                                      },
-                                      {
-                                        "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/mAU.mL"
-                                      }
-                                    ]
-                                  }
-                                ]
-                              }
-                            }
-                          },
-                          {
-                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/orderedItem"
+                                },
+                                {
+                                  "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/orderedItem"
+                                }
+                              ]
+                            },
+                            "minItems": 0
                           }
-                        ]
-                      },
-                      "minItems": 0
+                        }
+                      }
                     }
                   }
                 }
@@ -12746,52 +13752,209 @@
                 }
               ]
             },
-            "processed data document": {
+            "processed data aggregate document": {
               "type": "object",
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002658",
+              "$asm.pattern": "aggregate datum",
               "properties": {
-                "peak list": {
-                  "type": "object",
-                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000432",
-                  "$asm.pattern": "aggregate datum",
-                  "properties": {
-                    "peak": {
-                      "type": "array",
-                      "$asm.array-ordered": true,
-                      "$asm.array-mixed": false,
-                      "$asm.pattern": "indexed datum",
-                      "items": {
+                "processed data document": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "peak list": {
+                        "type": "object",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000432",
+                        "$asm.pattern": "aggregate datum",
+                        "properties": {
+                          "peak": {
+                            "type": "array",
+                            "$asm.array-ordered": true,
+                            "$asm.array-mixed": false,
+                            "$asm.pattern": "indexed datum",
+                            "items": {
+                              "allOf": [
+                                {
+                                  "type": "object",
+                                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000413",
+                                  "$asm.pattern": "aggregate datum",
+                                  "properties": {
+                                    "chromatogram data cube": {
+                                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002550",
+                                      "$asm.pattern": "datacube",
+                                      "allOf": [
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/cube.schema#/$defs/tDatacube"
+                                        },
+                                        {
+                                          "properties": {
+                                            "cube-structure": {
+                                              "properties": {
+                                                "dimensions": {
+                                                  "minItems": 1,
+                                                  "maxItems": 1,
+                                                  "prefixItems": [
+                                                    {
+                                                      "oneOf": [
+                                                        {
+                                                          "properties": {
+                                                            "concept": {
+                                                              "const": "retention time"
+                                                            },
+                                                            "unit": {
+                                                              "const": "s"
+                                                            },
+                                                            "@componentDatatype": {
+                                                              "const": "double"
+                                                            }
+                                                          }
+                                                        },
+                                                        {
+                                                          "properties": {
+                                                            "concept": {
+                                                              "const": "retention volume"
+                                                            },
+                                                            "unit": {
+                                                              "const": "mL"
+                                                            },
+                                                            "@componentDatatype": {
+                                                              "const": "double"
+                                                            }
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                },
+                                                "measures": {
+                                                  "minItems": 1,
+                                                  "maxItems": 1,
+                                                  "contains": {
+                                                    "oneOf": [
+                                                      {
+                                                        "properties": {
+                                                          "concept": {
+                                                            "const": "electric conductivity"
+                                                          },
+                                                          "unit": {
+                                                            "const": "%"
+                                                          },
+                                                          "@componentDatatype": {
+                                                            "const": "double"
+                                                          }
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    "peak height": {
+                                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000948",
+                                      "$asm.pattern": "quantity datum",
+                                      "allOf": [
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                        }
+                                      ]
+                                    },
+                                    "peak area": {
+                                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001073",
+                                      "$asm.pattern": "quantity datum",
+                                      "allOf": [
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                },
+                                {
+                                  "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/orderedItem"
+                                }
+                              ]
+                            },
+                            "minItems": 0
+                          }
+                        }
+                      },
+                      "chromatogram data cube": {
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002550",
+                        "$asm.pattern": "datacube",
                         "allOf": [
                           {
-                            "type": "object",
-                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000413",
-                            "$asm.pattern": "aggregate datum",
-                            "properties": {
-                              "peak height": {
-                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000948",
-                                "$asm.pattern": "quantity datum",
-                                "allOf": [
-                                  {
-                                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
-                                  }
-                                ]
-                              },
-                              "peak area": {
-                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001073",
-                                "$asm.pattern": "quantity datum",
-                                "allOf": [
-                                  {
-                                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
-                                  }
-                                ]
-                              }
-                            }
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/cube.schema#/$defs/tDatacube"
                           },
                           {
-                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/orderedItem"
+                            "properties": {
+                              "cube-structure": {
+                                "properties": {
+                                  "dimensions": {
+                                    "minItems": 1,
+                                    "maxItems": 1,
+                                    "prefixItems": [
+                                      {
+                                        "oneOf": [
+                                          {
+                                            "properties": {
+                                              "concept": {
+                                                "const": "retention time"
+                                              },
+                                              "unit": {
+                                                "const": "s"
+                                              },
+                                              "@componentDatatype": {
+                                                "const": "double"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "properties": {
+                                              "concept": {
+                                                "const": "retention volume"
+                                              },
+                                              "unit": {
+                                                "const": "mL"
+                                              },
+                                              "@componentDatatype": {
+                                                "const": "double"
+                                              }
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  "measures": {
+                                    "minItems": 1,
+                                    "maxItems": 1,
+                                    "contains": {
+                                      "oneOf": [
+                                        {
+                                          "properties": {
+                                            "concept": {
+                                              "const": "% conductivity"
+                                            },
+                                            "unit": {
+                                              "const": "%"
+                                            },
+                                            "@componentDatatype": {
+                                              "const": "double"
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              }
+                            }
                           }
                         ]
-                      },
-                      "minItems": 0
+                      }
                     }
                   }
                 }
@@ -13594,6 +14757,445 @@
               }
             }
           }
+        }
+      }
+    },
+    "http://purl.allotrope.org/json-schemas/adm/fluorescence/BENCHLING/2024/11/fluorescence-cube-detector.schema":{
+      "$id": "http://purl.allotrope.org/json-schemas/adm/fluorescence/BENCHLING/2024/11/fluorescence-cube-detector.schema",
+      "$defs": {
+        "measurementDocumentItems": {
+          "type": "object",
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002375",
+          "$asm.pattern": "aggregate datum",
+          "properties": {
+            "device control aggregate document": {
+              "properties": {
+                "device control document": {
+                  "items": {
+                    "allOf": [
+                      {
+                        "properties": {
+                          "detector wavelength setting": {
+                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002456",
+                            "$asm.pattern": "quantity datum",
+                            "allOf": [
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                              },
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/nm"
+                              }
+                            ]
+                          },
+                          "detector bandwidth setting": {
+                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002477",
+                            "$asm.pattern": "quantity datum",
+                            "allOf": [
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                              },
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/nm"
+                              }
+                            ]
+                          },
+                          "excitation wavelength setting": {
+                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002479",
+                            "$asm.pattern": "quantity datum",
+                            "allOf": [
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                              },
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/nm"
+                              }
+                            ]
+                          },
+                          "excitation bandwidth setting": {
+                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002549",
+                            "$asm.pattern": "quantity datum",
+                            "allOf": [
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                              },
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/nm"
+                              }
+                            ]
+                          },
+                          "total measurement time setting": {
+                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#0002455",
+                            "$asm.pattern": "quantity datum",
+                            "allOf": [
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                              },
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/s"
+                              }
+                            ]
+                          },
+                          "read interval setting": {
+                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#0002454",
+                            "$asm.pattern": "quantity datum",
+                            "allOf": [
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                              },
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/s"
+                              }
+                            ]
+                          },
+                          "number of scans setting": {
+                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#0003051",
+                            "$asm.pattern": "quantity datum",
+                            "allOf": [
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                              },
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/%23"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      {
+                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/orderedItem"
+                      }
+                    ]
+                  },
+                  "minItems": 1
+                }
+              }
+            },
+            "processed data aggregate document": {
+              "type": "object",
+              "processed data document": {
+                "type": "array",
+                "properties": {
+                  "peak list": {
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000432",
+                    "$asm.pattern": "aggregate datum",
+                    "type": "object",
+                    "properties": {
+                      "peak": {
+                        "$asm.array-ordered": true,
+                        "$asm.array-mixed": false,
+                        "$asm.pattern": "indexed datum",
+                        "type": "array",
+                        "items": {
+                          "allOf": [
+                            {
+                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000413",
+                              "$asm.pattern": "aggregate datum",
+                              "type": "object",
+                              "properties": {
+                                "peak height": {
+                                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000948",
+                                  "$asm.pattern": "quantity datum",
+                                  "allOf": [
+                                    {
+                                      "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                    },
+                                    {
+                                      "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/RFU"
+                                    }
+                                  ]
+                                },
+                                "peak area": {
+                                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001073",
+                                  "$asm.pattern": "quantity datum",
+                                  "allOf": [
+                                    {
+                                      "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                    },
+                                    {
+                                      "oneOf": [
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/RFU.s"
+                                        },
+                                        {
+                                          "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/RFU.mL"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            {
+                              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/orderedItem"
+                            }
+                          ]
+                        },
+                        "minItems": 0
+                      }
+                    }
+                  },
+                  "derived electropherogram data cube": {
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0003020",
+                    "$asm.pattern": "datacube",
+                    "type": "object",
+                    "allOf": [
+                      {
+                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/cube.schema#/$defs/tDatacube"
+                      },
+                      {
+                        "properties": {
+                          "cube-structure": {
+                            "properties": {
+                              "measures": {
+                                "minItems": 1,
+                                "maxItems": 1,
+                                "contains": {
+                                  "oneOf": [
+                                    {
+                                      "properties": {
+                                        "concept": {
+                                          "const": "fluorescence"
+                                        },
+                                        "unit": {
+                                          "const": "RFU"
+                                        },
+                                        "@componentDatatype": {
+                                          "const": "double"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "oneOf": [
+            {
+              "properties": {
+                "electropherogram data cube": {
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0003018",
+                  "$asm.pattern": "datacube",
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/cube.schema#/$defs/tDatacube"
+                    },
+                    {
+                      "properties": {
+                        "cube-structure": {
+                          "properties": {
+                            "dimensions": {
+                              "minItems": 1,
+                              "maxItems": 1,
+                              "prefixItems": [
+                                {
+                                  "oneOf": [
+                                    {
+                                      "properties": {
+                                        "concept": {
+                                          "const": "elapsed time"
+                                        },
+                                        "unit": {
+                                          "const": "s"
+                                        },
+                                        "@componentDatatype": {
+                                          "const": "double"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            "measures": {
+                              "minItems": 1,
+                              "maxItems": 1,
+                              "contains": {
+                                "oneOf": [
+                                  {
+                                    "properties": {
+                                      "concept": {
+                                        "const": "fluorescence"
+                                      },
+                                      "unit": {
+                                        "const": "RFU"
+                                      },
+                                      "@componentDatatype": {
+                                        "const": "double"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "properties": {
+                "fluorescence emission profile data cube": {
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002965",
+                  "$asm.pattern": "datacube",
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/cube.schema#/$defs/tDatacube"
+                    },
+                    {
+                      "properties": {
+                        "cube-structure": {
+                          "properties": {
+                            "dimensions": {
+                              "minItems": 1,
+                              "maxItems": 1,
+                              "prefixItems": [
+                                {
+                                  "oneOf": [
+                                    {
+                                      "properties": {
+                                        "concept": {
+                                          "const": "elapsed time"
+                                        },
+                                        "unit": {
+                                          "const": "s"
+                                        },
+                                        "@componentDatatype": {
+                                          "const": "double"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            "measures": {
+                              "minItems": 1,
+                              "maxItems": 1,
+                              "contains": {
+                                "oneOf": [
+                                  {
+                                    "properties": {
+                                      "concept": {
+                                        "const": "fluorescence"
+                                      },
+                                      "unit": {
+                                        "const": "RFU"
+                                      },
+                                      "@componentDatatype": {
+                                        "const": "double"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "fluorescence emission profile data cube"
+              ]
+            },
+            {
+              "properties": {
+                "chromatogram data cube": {
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002550",
+                  "$asm.pattern": "datacube",
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/cube.schema#/$defs/tDatacube"
+                    },
+                    {
+                      "properties": {
+                        "cube-structure": {
+                          "properties": {
+                            "dimensions": {
+                              "minItems": 1,
+                              "maxItems": 1,
+                              "prefixItems": [
+                                {
+                                  "oneOf": [
+                                    {
+                                      "properties": {
+                                        "concept": {
+                                          "const": "retention time"
+                                        },
+                                        "unit": {
+                                          "const": "s"
+                                        },
+                                        "@componentDatatype": {
+                                          "const": "double"
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "properties": {
+                                        "concept": {
+                                          "const": "retention volume"
+                                        },
+                                        "unit": {
+                                          "const": "mL"
+                                        },
+                                        "@componentDatatype": {
+                                          "const": "double"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            "measures": {
+                              "minItems": 1,
+                              "maxItems": 1,
+                              "contains": {
+                                "oneOf": [
+                                  {
+                                    "properties": {
+                                      "concept": {
+                                        "const": "fluorescence"
+                                      },
+                                      "unit": {
+                                        "const": "RFU"
+                                      },
+                                      "@componentDatatype": {
+                                        "const": "double"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "chromatogram data cube"
+              ]
+            }
+          ]
         }
       }
     },

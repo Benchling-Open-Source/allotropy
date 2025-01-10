@@ -1,33 +1,24 @@
-# header
-# sample setup
-# raw data
-# amplification data
-# multicomponent data
-# results
-# melt curve raw data
-
 from __future__ import annotations
 
 from collections.abc import Callable
 from dataclasses import dataclass
-from io import StringIO
 import re
 from typing import Any, TypeVar
 
-import numpy as np
 import pandas as pd
 
-from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
+from allotropy.allotrope.schema_mappers.adm.pcr.rec._2024._09.qpcr import SampleRoleType
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.constants import NOT_APPLICABLE
-from allotropy.parsers.lines_reader import LinesReader
-from allotropy.parsers.utils.calculated_data_documents.definition import Referenceable
-from allotropy.parsers.utils.pandas import (
-    df_to_series_data,
-    map_rows,
-    read_csv,
-    SeriesData,
+from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_reader import (
+    AppBioQuantStudioReader,
 )
+from allotropy.parsers.appbio_quantstudio.constants import (
+    ExperimentType,
+    SAMPLE_ROLE_TYPES_MAP,
+)
+from allotropy.parsers.constants import NEGATIVE_ZERO, NOT_APPLICABLE
+from allotropy.parsers.utils.calculated_data_documents.definition import Referenceable
+from allotropy.parsers.utils.pandas import df_to_series_data, map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none, try_int
 
@@ -39,6 +30,20 @@ def map_wells(map_func: Callable[..., T], data: pd.DataFrame) -> dict[int, T]:
         try_int(str(well_id), "well id"): map_func(well_data)
         for well_id, well_data in data.groupby("Well")
     }
+
+
+def get_well_volume(block_type: str) -> float:
+    # if the block type includes the well volume in mL, convert to microliters
+    if well_search := re.search(r"([0-9]+\.[0-9]+)-?mL", block_type):
+        return float(well_search.groups()[0]) * 1000
+    elif "384-Well Block" in block_type:
+        return 40
+    elif "Taqman Array Card" in block_type:
+        return 1.5
+    # Since well volume is required, if it cannot be implied from block type
+    # a negative zero will be returned, indicating an error.
+    # TODO(slopez): Should we raise instead?
+    return NEGATIVE_ZERO
 
 
 @dataclass(frozen=True)
@@ -54,43 +59,33 @@ class Header:
     passive_reference_dye_setting: str | None
     barcode: str | None
     analyst: str | None
-    experimental_data_identifier: str | None
+    experimental_data_identifier: str
+    well_volume: float
 
     @staticmethod
-    def create(reader: LinesReader) -> Header:
-        lines = [line.strip() for line in reader.pop_until(r"^\[.+\]") if line.strip()]
-        if not lines:
-            msg = "Cannot parse data from empty header."
-            raise AllotropeConversionError(msg)
-
-        csv_stream = StringIO("\n".join(lines))
-        raw_data = read_csv(
-            csv_stream, header=None, sep="=", skipinitialspace=True, index_col=0
-        )
-        raw_data.index = raw_data.index.str.replace("*", "")
-        data = df_to_series_data(raw_data.T.replace(np.nan, None))
-
+    def create(data: SeriesData) -> Header:
         experiments_type_options = {
-            "Standard Curve": ExperimentType.standard_curve_qPCR_experiment,
-            "Relative Standard Curve": ExperimentType.relative_standard_curve_qPCR_experiment,
-            "Comparative Cт (ΔΔCт)": ExperimentType.comparative_CT_qPCR_experiment,
-            "Melt Curve": ExperimentType.melt_curve_qPCR_experiment,
-            "Genotyping": ExperimentType.genotyping_qPCR_experiment,
-            "Presence/Absence": ExperimentType.presence_absence_qPCR_experiment,
+            "Standard Curve": ExperimentType.standard_curve_qpcr_experiment,
+            "Relative Standard Curve": ExperimentType.relative_standard_curve_qpcr_experiment,
+            "Comparative Cт (ΔΔCт)": ExperimentType.comparative_ct_qpcr_experiment,
+            "Melt Curve": ExperimentType.melt_curve_qpcr_experiment,
+            "Genotyping": ExperimentType.genotyping_qpcr_experiment,
+            "Presence/Absence": ExperimentType.presence_absence_qpcr_experiment,
         }
 
-        plate_well_count_search = re.search("(96)|(384)", data[str, "Block Type"])
+        plate_well_count = None
+        block_type = data.get(str, "Block Type")
+        if block_type:
+            plate_well_count_search = re.search("(96)|(384)", block_type)
+            if plate_well_count_search:
+                plate_well_count = int(plate_well_count_search.group())
 
         return Header(
             measurement_time=data[str, "Experiment Run End Time"],
-            plate_well_count=(
-                None
-                if plate_well_count_search is None
-                else int(plate_well_count_search.group())
-            ),
+            plate_well_count=plate_well_count,
             experiment_type=assert_not_none(
                 experiments_type_options.get(
-                    data[str, "Experiment Type"],
+                    data[str, "Experiment Type"].strip(),
                 ),
                 msg="Unable to find valid experiment type",
             ),
@@ -104,7 +99,8 @@ class Header:
             passive_reference_dye_setting=data.get(str, "Passive Reference"),
             barcode=data.get(str, "Experiment Barcode"),
             analyst=data.get(str, "Experiment User Name"),
-            experimental_data_identifier=data.get(str, "Experiment Name"),
+            experimental_data_identifier=data[str, "Experiment Name"],
+            well_volume=get_well_volume(block_type) if block_type else NEGATIVE_ZERO,
         )
 
 
@@ -113,11 +109,12 @@ class WellItem(Referenceable):
     identifier: int
     target_dna_description: str
     sample_identifier: str
+    location_identifier: str
     reporter_dye_setting: str | None = None
     position: str | None = None
     well_location_identifier: str | None = None
     quencher_dye_setting: str | None = None
-    sample_role_type: str | None = None
+    sample_role_type: SampleRoleType | None = None
     group_identifier: str | None = None
     extra_data: dict[str, Any] | None = None
     _result: Result | None = None
@@ -154,10 +151,11 @@ class WellItem(Referenceable):
                 sample_identifier=data.get(str, "Sample Name", NOT_APPLICABLE),
                 reporter_dye_setting=data.get(str, "Allele1 Reporter"),
                 position=data.get(str, "Well Position", NOT_APPLICABLE),
+                location_identifier=data[str, "Well"],
                 well_location_identifier=data.get(str, "Well Position"),
                 quencher_dye_setting=data.get(str, "Quencher"),
                 group_identifier=data.get(str, "Biogroup Name"),
-                sample_role_type=data.get(str, "Task"),
+                sample_role_type=SAMPLE_ROLE_TYPES_MAP.get(data.get(str, "Task", "")),
                 extra_data={
                     "well identifier": identifier,
                     "sample color": data.get(str, "Sample Color"),
@@ -172,10 +170,11 @@ class WellItem(Referenceable):
                 sample_identifier=data.get(str, "Sample Name", NOT_APPLICABLE),
                 reporter_dye_setting=data.get(str, "Allele2 Reporter"),
                 position=data.get(str, "Well Position", NOT_APPLICABLE),
+                location_identifier=data[str, "Well"],
                 well_location_identifier=data.get(str, "Well Position"),
                 quencher_dye_setting=data.get(str, "Quencher"),
                 group_identifier=data.get(str, "Biogroup Name"),
-                sample_role_type=data.get(str, "Task"),
+                sample_role_type=SAMPLE_ROLE_TYPES_MAP.get(data.get(str, "Task", "")),
                 extra_data={
                     "well identifier": identifier,
                     "sample color": data.get(str, "Sample Color"),
@@ -199,10 +198,11 @@ class WellItem(Referenceable):
             sample_identifier=data.get(str, "Sample Name", NOT_APPLICABLE),
             reporter_dye_setting=data.get(str, "Reporter"),
             position=data.get(str, "Well Position", NOT_APPLICABLE),
+            location_identifier=data[str, "Well"],
             well_location_identifier=data.get(str, "Well Position"),
             quencher_dye_setting=data.get(str, "Quencher"),
             group_identifier=data.get(str, "Biogroup Name"),
-            sample_role_type=data.get(str, "Task"),
+            sample_role_type=SAMPLE_ROLE_TYPES_MAP.get(data.get(str, "Task", "")),
             extra_data={
                 "well identifier": identifier,
                 "sample color": data.get(str, "Sample Color"),
@@ -235,18 +235,16 @@ class Well:
         )
 
     @staticmethod
-    def create(reader: LinesReader, experiment_type: ExperimentType) -> list[Well]:
-        assert_not_none(
-            reader.drop_until(r"^\[Sample Setup\]"),
-            msg="Unable to find 'Sample Setup' section in file.",
-        )
+    def create(
+        reader: AppBioQuantStudioReader, experiment_type: ExperimentType
+    ) -> list[Well]:
+        if (
+            data := reader.sections.get("Sample Setup", reader.sections.get("Results"))
+        ) is None:
+            msg = "Expected 'Sample Setup' or 'Results' section"
+            raise AllotropeConversionError(msg)
 
-        reader.pop()  # remove title
-        lines = list(reader.pop_until(r"^\[.+\]"))
-        csv_stream = StringIO("\n".join(lines))
-        data = read_csv(csv_stream, sep="\t").replace(np.nan, None)
-
-        if experiment_type == ExperimentType.genotyping_qPCR_experiment:
+        if experiment_type == ExperimentType.genotyping_qpcr_experiment:
             return map_rows(data, Well.create_genotyping)
         else:
             return list(
@@ -254,18 +252,6 @@ class Well:
                     Well.create_generic, data[data["Target Name"].notnull()]
                 ).values()
             )
-
-
-@dataclass(frozen=True)
-class RawData:
-    lines: list[str]
-
-    @staticmethod
-    def create(reader: LinesReader) -> RawData | None:
-        if reader.match(r"^\[Raw Data\]"):
-            reader.pop()  # remove title
-            return RawData(lines=list(reader.pop_until(r"^\[.+\]")))
-        return None
 
 
 @dataclass(frozen=True)
@@ -277,17 +263,10 @@ class AmplificationData:
 
 
 def create_amplification_data(
-    reader: LinesReader,
+    reader: AppBioQuantStudioReader,
 ) -> dict[int, dict[str, AmplificationData]]:
-    assert_not_none(
-        reader.drop_until(r"^\[Amplification Data\]"),
-        msg="Unable to find 'Amplification Data' section in file.",
-    )
-
-    reader.pop()  # remove title
-    lines = list(reader.pop_until(r"^\[.+\]"))
-    csv_stream = StringIO("\n".join(lines))
-    data = read_csv(csv_stream, sep="\t", thousands=r",")
+    if (data := reader.sections.get("Amplification Data")) is None:
+        return {}
 
     def make_data(well_data: pd.DataFrame) -> dict[str, AmplificationData]:
         return {
@@ -315,13 +294,11 @@ class MulticomponentData:
         )
 
 
-def create_multicomponent_data(reader: LinesReader) -> dict[int, MulticomponentData]:
-    if not reader.match(r"^\[Multicomponent Data\]"):
+def create_multicomponent_data(
+    reader: AppBioQuantStudioReader,
+) -> dict[int, MulticomponentData]:
+    if (data := reader.sections.get("Multicomponent Data")) is None:
         return {}
-    reader.pop()  # remove title
-    lines = list(reader.pop_until(r"^\[.+\]"))
-    csv_stream = StringIO("\n".join(lines))
-    data = read_csv(csv_stream, sep="\t", thousands=r",")
 
     def make_data(well_data: pd.Series[Any]) -> MulticomponentData:
         return MulticomponentData(
@@ -344,8 +321,8 @@ class ResultMetadata:
     @staticmethod
     def create(data: SeriesData, experiment_type: ExperimentType) -> ResultMetadata:
         if experiment_type not in [
-            ExperimentType.comparative_CT_qPCR_experiment,
-            ExperimentType.relative_standard_curve_qPCR_experiment,
+            ExperimentType.comparative_ct_qpcr_experiment,
+            ExperimentType.relative_standard_curve_qpcr_experiment,
         ]:
             return ResultMetadata(None, None)
         return ResultMetadata(
@@ -394,46 +371,25 @@ class Result:
 
     @staticmethod
     def create(
-        reader: LinesReader, experiment_type: ExperimentType
+        reader: AppBioQuantStudioReader, experiment_type: ExperimentType
     ) -> tuple[dict[int, dict[str, Result]], ResultMetadata]:
-        assert_not_none(
-            reader.drop_until(r"^\[Results\]"),
-            msg="Unable to find 'Results' section in file.",
-        )
+        if (data := reader.sections.get("Results")) is None:
+            msg = "Expected 'Results' section in file"
+            raise AllotropeConversionError(msg)
 
-        reader.pop()  # remove title
-        data_lines = list(reader.pop_until_empty())
-        csv_stream = StringIO("\n".join(data_lines))
-        data = read_csv(csv_stream, sep="\t", thousands=r",").replace(np.nan, None)
         result = Result.create_results(data, experiment_type)
+        metadata = SeriesData(pd.Series())
+        if (raw_metadata := reader.sections.get("Results Metadata")) is not None:
+            metadata = df_to_series_data(raw_metadata)
 
-        reader.drop_empty()
-
-        if reader.match(r"\[.+\]"):
-            return result, ResultMetadata.create(
-                SeriesData(pd.Series()), experiment_type
-            )
-
-        metadata_lines = list(reader.pop_until_empty())
-        csv_stream = StringIO("\n".join(metadata_lines))
-        raw_data = read_csv(
-            csv_stream, header=None, sep="=", names=["index", "values"]
-        ).astype(str)
-        metadata = pd.Series(raw_data["values"].values, index=raw_data["index"])
-        metadata.index = metadata.index.str.strip()
-
-        reader.drop_empty()
-
-        return result, ResultMetadata.create(
-            SeriesData(metadata.str.strip()), experiment_type
-        )
+        return result, ResultMetadata.create(metadata, experiment_type)
 
     @staticmethod
     def create_results(
         data: pd.DataFrame, experiment_type: ExperimentType
     ) -> dict[int, dict[str, Result]]:
         target_key = "Target Name"
-        if experiment_type == ExperimentType.genotyping_qPCR_experiment:
+        if experiment_type == ExperimentType.genotyping_qpcr_experiment:
             target_key = "SNP Assay Name"
 
         def make_results(well_data: pd.DataFrame) -> dict[str, Result]:
@@ -453,10 +409,12 @@ class Result:
     def create_result(
         data: SeriesData, experiment_type: ExperimentType, target_id: str
     ) -> dict[str, Result]:
-        if experiment_type == ExperimentType.genotyping_qPCR_experiment:
+        ct_col = Result.get_ct_col(list(data.series.index.astype(str)))
+        ct_prefix = ct_col.capitalize()
+        if experiment_type == ExperimentType.genotyping_qpcr_experiment:
             allele_prefixes = []
             for column in data.series.index:
-                if match := re.match("(^\\w+) Ct$", column):
+                if match := re.match(rf"(^\w+) {ct_prefix}$", column):
                     allele_prefixes.append(f"{match.groups()[0]} ")
         else:
             allele_prefixes = [""]
@@ -466,14 +424,12 @@ class Result:
                 " ", ""
             ): Result(
                 cycle_threshold_value_setting=data[
-                    float, f"{allele_prefix}Ct Threshold"
+                    float, f"{allele_prefix}{ct_prefix} Threshold"
                 ],
                 # TODO(nstender): really seems like this should be NaN if invalid value. Keeping to preserve tests.
-                cycle_threshold_result=data.get(
-                    float, [f"{allele_prefix}Ct", f"{allele_prefix}CT"]
-                ),
+                cycle_threshold_result=data.get(float, f"{allele_prefix}{ct_col}"),
                 automatic_cycle_threshold_enabled_setting=data.get(
-                    bool, f"{allele_prefix}Automatic Ct Threshold"
+                    bool, f"{allele_prefix}Automatic {ct_prefix} Threshold"
                 ),
                 automatic_baseline=data.get(bool, f"{allele_prefix}Automatic Baseline"),
                 baseline_start=data.get(int, f"{allele_prefix}Baseline Start"),
@@ -489,11 +445,11 @@ class Result:
                 quantity=data.get(float, "Quantity"),
                 quantity_mean=data.get(float, "Quantity Mean"),
                 quantity_sd=data.get(float, "Quantity SD"),
-                ct_mean=data.get(float, "Ct Mean"),
-                ct_sd=data.get(float, "Ct SD"),
-                delta_ct_mean=data.get(float, "Delta Ct Mean"),
-                delta_ct_se=data.get(float, "Delta Ct SE"),
-                delta_delta_ct=data.get(float, "Delta Delta Ct"),
+                ct_mean=data.get(float, f"{ct_prefix} Mean"),
+                ct_sd=data.get(float, f"{ct_prefix} SD"),
+                delta_ct_mean=data.get(float, f"Delta {ct_prefix} Mean"),
+                delta_ct_se=data.get(float, f"Delta {ct_prefix} SE"),
+                delta_delta_ct=data.get(float, f"Delta Delta {ct_prefix}"),
                 rq=data.get(float, "RQ"),
                 rq_min=data.get(float, "RQ Min"),
                 rq_max=data.get(float, "RQ Max"),
@@ -518,6 +474,25 @@ class Result:
             for allele_prefix in allele_prefixes
         }
 
+    @staticmethod
+    def get_ct_col(columns: list[str]) -> str:
+        """Looks for any column matching the pattern of the cycle threshhold.
+
+        The pattern for the threshold column is `[allele prefix]<quantification_method>`
+        where `allele prefix` is optional and `quantification_method` can be any of
+        Ct, Crt or Cq with different capitalizations.
+
+        This identifier is used as a prefix to all the cycle threshold related
+        columns (always capitalized)
+        """
+        r = re.compile(r".*(C[tT]|C(?:rt|RT)|C[qQ])$")
+        for column in columns:
+            if match := r.match(column):
+                return match.groups()[0]
+
+        msg = "Unable to identify ct prefix"
+        raise AllotropeConversionError(msg)
+
 
 @dataclass(frozen=True)
 class MeltCurveRawData:
@@ -526,13 +501,9 @@ class MeltCurveRawData:
     derivative: list[float | None]
 
     @staticmethod
-    def create(reader: LinesReader) -> dict[int, MeltCurveRawData]:
-        if not reader.match(r"^\[Melt Curve Raw Data\]"):
+    def create(reader: AppBioQuantStudioReader) -> dict[int, MeltCurveRawData]:
+        if (data := reader.sections.get("Melt Curve Raw Data")) is None:
             return {}
-        reader.pop()  # remove title
-        lines = list(reader.pop_until_empty())
-        csv_stream = StringIO("\n".join(lines))
-        data = read_csv(csv_stream, sep="\t", thousands=r",")
 
         def make_data(well_data: pd.Series[Any]) -> MeltCurveRawData:
             return MeltCurveRawData(

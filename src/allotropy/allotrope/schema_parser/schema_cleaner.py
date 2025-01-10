@@ -153,7 +153,7 @@ class SchemaCleaner:
 
     def _is_quantity_value(self, values: list[dict[str, Any]]) -> bool:
         # Check if this schema is a special case of allOf: [tQuantityValue, unit] and if so replace.
-        if len(values) != 2:  # noqa: PLR2004
+        if len(values) != 2:
             return False
         quantity_value_found = False
         unit_found = False

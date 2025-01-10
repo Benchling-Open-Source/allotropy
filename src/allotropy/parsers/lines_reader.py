@@ -185,6 +185,10 @@ class InvertedLinesReader(LinesReader):
 
 
 class CsvReader(LinesReader):
+    @staticmethod
+    def create(named_file_contents: NamedFileContents) -> CsvReader:
+        return CsvReader(read_to_lines(named_file_contents))
+
     def pop_csv_block_as_lines(self, empty_pat: str = EMPTY_STR_PATTERN) -> list[str]:
         self.drop_empty(empty_pat)
         lines = list(self.pop_until_empty(empty_pat))
@@ -200,7 +204,6 @@ class CsvReader(LinesReader):
         if lines := self.pop_csv_block_as_lines(empty_pat):
             return read_csv(
                 StringIO("\n".join(lines)),
-                dtype=None,
                 # Prevent pandas from rounding decimal values, at the cost of some speed.
                 float_precision="round_trip",
                 header=header,

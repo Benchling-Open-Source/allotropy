@@ -9,14 +9,13 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
     CalculatedDataItem,
-    DataCube,
-    DataCubeComponent,
     DataSource,
     Measurement,
     MeasurementGroup,
     MeasurementType,
     Metadata,
 )
+from allotropy.allotrope.schema_mappers.data_cube import DataCube, DataCubeComponent
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.constants import DEFAULT_EPOCH_TIMESTAMP, NOT_APPLICABLE
 from allotropy.parsers.moldev_softmax_pro.constants import DEVICE_TYPE
@@ -25,6 +24,7 @@ from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
     GroupBlock,
     GroupSampleData,
     PlateBlock,
+    SpectrumRawPlateData,
     StructureData,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
@@ -136,10 +136,17 @@ def _create_measurement_group(
     if not (measurements := _create_measurements(plate_block, position)):
         return None
 
+    maximum_wavelength_signal = None
+    if isinstance(plate_block.block_data.raw_data, SpectrumRawPlateData):
+        maximum_wavelength_signal = (
+            plate_block.block_data.raw_data.maximum_wavelength_signal[position]
+        )
+
     return MeasurementGroup(
         measurements=measurements,
         plate_well_count=plate_block.header.num_wells,
         measurement_time=DEFAULT_EPOCH_TIMESTAMP,
+        maximum_wavelength_signal=maximum_wavelength_signal,
     )
 
 
@@ -204,30 +211,6 @@ def _get_reduced_calc_docs(data: StructureData) -> list[CalculatedDataItem]:
     ]
 
 
-def _get_group_agg_calc_docs(
-    data: StructureData,
-    group_block: GroupBlock,
-    group_sample_data: GroupSampleData,
-) -> list[CalculatedDataItem]:
-    return [
-        _build_calc_doc(
-            name=aggregated_entry.name,
-            value=aggregated_entry.value,
-            data_sources=list(
-                chain.from_iterable(
-                    _get_calc_docs_data_sources(
-                        data.block_list.plate_blocks[group_data_element.plate],
-                        group_data_element.position,
-                    )
-                    for group_data_element in group_sample_data.data_elements
-                )
-            ),
-            description=group_block.group_columns.data.get(aggregated_entry.name),
-        )
-        for aggregated_entry in group_sample_data.aggregated_entries
-    ]
-
-
 def _get_group_simple_calc_docs(
     data: StructureData,
     group_block: GroupBlock,
@@ -235,9 +218,14 @@ def _get_group_simple_calc_docs(
 ) -> list[CalculatedDataItem]:
     calculated_documents = []
     for group_data_element in group_sample_data.data_elements:
-        data_sources = _get_calc_docs_data_sources(
-            data.block_list.plate_blocks[group_data_element.plate],
-            group_data_element.position,
+        data_sources = list(
+            chain.from_iterable(
+                _get_calc_docs_data_sources(
+                    data.block_list.plate_blocks[group_data_element.plate],
+                    position,
+                )
+                for position in group_data_element.positions
+            )
         )
         for entry in group_data_element.entries:
             calculated_documents.append(
@@ -255,9 +243,6 @@ def _get_group_calc_docs(data: StructureData) -> list[CalculatedDataItem]:
     calculated_documents = []
     for group_block in data.block_list.group_blocks:
         for group_sample_data in group_block.group_data.sample_data:
-            calculated_documents += _get_group_agg_calc_docs(
-                data, group_block, group_sample_data
-            )
             calculated_documents += _get_group_simple_calc_docs(
                 data, group_block, group_sample_data
             )

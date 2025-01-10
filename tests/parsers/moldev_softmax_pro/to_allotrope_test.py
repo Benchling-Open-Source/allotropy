@@ -47,6 +47,14 @@ def test_missing_kinetic_measurement() -> None:
         from_file(f"{TESTDATA}/errors/missing_kinetic_measurement.txt", VENDOR_TYPE)
 
 
+def test_invalid_measurement_table_dimensions() -> None:
+    with pytest.raises(
+        AllotropeConversionError,
+        match="Expected 4 rows in measurement table, got 3.",
+    ):
+        from_file(f"{TESTDATA}/errors/missing_measurement_table_row.txt", VENDOR_TYPE)
+
+
 @pytest.mark.parametrize(
     "test_file",
     [
@@ -56,6 +64,6 @@ def test_missing_kinetic_measurement() -> None:
 def test_unrecognized_read_type(test_file: str) -> None:
     with pytest.raises(
         AllotropeConversionError,
-        match="Only Endpoint or Kinetic measurements can be processed at this time.",
+        match="Spectrum read type is not currently supported for luminescence plates.",
     ):
         from_file(test_file, VENDOR_TYPE)

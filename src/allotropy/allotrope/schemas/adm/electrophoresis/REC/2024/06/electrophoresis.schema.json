@@ -1115,7 +1115,10 @@
                           "unit": {
                             "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/06/core.schema#/$defs/tUnit"
                           }
-                        }
+                        },
+                        "required": [
+                          "scalar double datum"
+                        ]
                       },
                       {
                         "properties": {
@@ -1125,7 +1128,10 @@
                             "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
                             "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/06/core.schema#/$defs/tStringValue"
                           }
-                        }
+                        },
+                        "required": [
+                          "scalar string datum"
+                        ]
                       },
                       {
                         "properties": {
@@ -1135,7 +1141,10 @@
                             "$asm.type": "http://www.w3.org/2001/XMLSchema#dateTime",
                             "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/06/core.schema#/$defs/tDateTimeValue"
                           }
-                        }
+                        },
+                        "required": [
+                          "scalar timestamp datum"
+                        ]
                       },
                       {
                         "properties": {
@@ -1145,7 +1154,10 @@
                             "$asm.type": "http://www.w3.org/2001/XMLSchema#boolean",
                             "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/06/core.schema#/$defs/tBooleanValue"
                           }
-                        }
+                        },
+                        "required": [
+                          "scalar boolean datum"
+                        ]
                       }
                     ]
                   },

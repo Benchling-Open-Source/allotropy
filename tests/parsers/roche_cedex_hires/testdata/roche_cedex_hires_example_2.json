@@ -1,5 +1,5 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/BENCHLING/2023/11/cell-counting.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2024/09/cell-counting.manifest",
     "cell counting aggregate document": {
         "cell counting document": [
             {
@@ -56,7 +56,7 @@
                                         },
                                         "average live cell diameter (cell counter)": {
                                             "value": 13.46355247,
-                                            "unit": "μm"
+                                            "unit": "µm"
                                         },
                                         "total cell count": {
                                             "value": 4504.0,
@@ -81,7 +81,7 @@
                                             },
                                             "average perimeter": {
                                                 "value": 52.36649704,
-                                                "unit": "μm"
+                                                "unit": "µm"
                                             },
                                             "average segment area": {
                                                 "value": 475.6500549,
@@ -162,7 +162,7 @@
                                         },
                                         "average live cell diameter (cell counter)": {
                                             "value": 13.38542843,
-                                            "unit": "μm"
+                                            "unit": "µm"
                                         },
                                         "total cell count": {
                                             "value": 4199.0,
@@ -187,7 +187,7 @@
                                             },
                                             "average perimeter": {
                                                 "value": 52.06482315,
-                                                "unit": "μm"
+                                                "unit": "µm"
                                             },
                                             "average segment area": {
                                                 "value": 471.4387817,
@@ -268,7 +268,7 @@
                                         },
                                         "average live cell diameter (cell counter)": {
                                             "value": 13.02670956,
-                                            "unit": "μm"
+                                            "unit": "µm"
                                         },
                                         "total cell count": {
                                             "value": 5573.0,
@@ -293,7 +293,7 @@
                                             },
                                             "average perimeter": {
                                                 "value": 50.64849091,
-                                                "unit": "μm"
+                                                "unit": "µm"
                                             },
                                             "average segment area": {
                                                 "value": 448.8540344,
@@ -374,7 +374,7 @@
                                         },
                                         "average live cell diameter (cell counter)": {
                                             "value": 13.00195885,
-                                            "unit": "μm"
+                                            "unit": "µm"
                                         },
                                         "total cell count": {
                                             "value": 6253.0,
@@ -399,7 +399,7 @@
                                             },
                                             "average perimeter": {
                                                 "value": 50.55105972,
-                                                "unit": "μm"
+                                                "unit": "µm"
                                             },
                                             "average segment area": {
                                                 "value": 447.7957458,
@@ -480,7 +480,7 @@
                                         },
                                         "average live cell diameter (cell counter)": {
                                             "value": 13.37015438,
-                                            "unit": "μm"
+                                            "unit": "µm"
                                         },
                                         "total cell count": {
                                             "value": 4018.0,
@@ -505,7 +505,7 @@
                                             },
                                             "average perimeter": {
                                                 "value": 51.99099731,
-                                                "unit": "μm"
+                                                "unit": "µm"
                                             },
                                             "average segment area": {
                                                 "value": 469.8835144,
@@ -586,7 +586,7 @@
                                         },
                                         "average live cell diameter (cell counter)": {
                                             "value": 13.27664661,
-                                            "unit": "μm"
+                                            "unit": "µm"
                                         },
                                         "total cell count": {
                                             "value": 3994.0,
@@ -611,7 +611,7 @@
                                             },
                                             "average perimeter": {
                                                 "value": 51.6265564,
-                                                "unit": "μm"
+                                                "unit": "µm"
                                             },
                                             "average segment area": {
                                                 "value": 464.9411621,
@@ -692,7 +692,7 @@
                                         },
                                         "average live cell diameter (cell counter)": {
                                             "value": 12.85493851,
-                                            "unit": "μm"
+                                            "unit": "µm"
                                         },
                                         "total cell count": {
                                             "value": 6556.0,
@@ -717,7 +717,7 @@
                                             },
                                             "average perimeter": {
                                                 "value": 49.97198868,
-                                                "unit": "μm"
+                                                "unit": "µm"
                                             },
                                             "average segment area": {
                                                 "value": 438.7392883,
@@ -798,7 +798,7 @@
                                         },
                                         "average live cell diameter (cell counter)": {
                                             "value": 12.74926472,
-                                            "unit": "μm"
+                                            "unit": "µm"
                                         },
                                         "total cell count": {
                                             "value": 6206.0,
@@ -823,7 +823,7 @@
                                             },
                                             "average perimeter": {
                                                 "value": 49.55705261,
-                                                "unit": "μm"
+                                                "unit": "µm"
                                             },
                                             "average segment area": {
                                                 "value": 432.0295105,
@@ -851,20 +851,22 @@
                 "analyst": "SuperUser"
             }
         ],
-        "device system document": {
-            "asset management identifier": "G037DE019",
-            "description": "my system",
-            "brand name": "Cedex",
-            "product manufacturer": "Roche",
-            "device identifier": "3714019",
-            "model number": "Cedex HiRes"
-        },
         "data system document": {
+            "ASM file identifier": "roche_cedex_hires_example_2.json",
+            "data system instance identifier": "N/A",
             "file name": "roche_cedex_hires_example_2.xlsx",
             "UNC path": "tests/parsers/roche_cedex_hires/testdata/roche_cedex_hires_example_2.xlsx",
-            "software name": "Cedex software",
             "ASM converter name": "allotropy_roche_cedex_hires",
-            "ASM converter version": "0.1.61"
+            "ASM converter version": "0.1.66",
+            "software name": "Cedex software"
+        },
+        "device system document": {
+            "asset management identifier": "G037DE019",
+            "brand name": "Cedex",
+            "description": "my system",
+            "device identifier": "3714019",
+            "model number": "Cedex HiRes",
+            "product manufacturer": "Roche"
         }
     }
 }

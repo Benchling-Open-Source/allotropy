@@ -1,21 +1,25 @@
 from decimal import Decimal
 from pathlib import Path
 
-from allotropy.allotrope.schema_mappers.adm.cell_counting.benchling._2023._11.cell_counting import (
+from allotropy.allotrope.schema_mappers.adm.cell_counting.rec._2024._09.cell_counting import (
     Error,
     Measurement,
     MeasurementGroup,
     Metadata,
 )
-from allotropy.parsers.constants import DEFAULT_EPOCH_TIMESTAMP
+from allotropy.parsers.constants import DEFAULT_EPOCH_TIMESTAMP, NOT_APPLICABLE
 from allotropy.parsers.revvity_matrix import constants
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
 def create_metadata(file_path: str) -> Metadata:
+    path = Path(file_path)
     return Metadata(
-        file_name=Path(file_path).name,
+        asm_file_identifier=path.with_suffix(".json").name,
+        data_system_instance_id=NOT_APPLICABLE,
+        device_identifier=NOT_APPLICABLE,
+        file_name=path.name,
         unc_path=file_path,
         device_type=constants.DEVICE_TYPE,
     )

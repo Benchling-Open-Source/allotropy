@@ -191,3 +191,102 @@ def test_index_multikey() -> None:
         match=re.escape("Expected non-null value for ['Bad Plate', 'Missing Plate']."),
     ):
         data[int, ["Bad Plate", "Missing Plate"]]
+
+
+def test_get_custom_keys() -> None:
+    data = SeriesData(
+        pd.Series(
+            {
+                "custom_float": 4.5,
+                "custom_float_as_str": "5",
+                "custom_str": "hello!",
+                "unread": "skip",
+            }
+        )
+    )
+
+    assert data.get_custom_keys(
+        {"custom_float", "custom_float_as_str", "custom_str"}
+    ) == {
+        "custom_float": 4.5,
+        "custom_float_as_str": 5.0,
+        "custom_str": "hello!",
+    }
+    assert data.get_custom_keys("custom_float") == {"custom_float": 4.5}
+
+
+def test_get_custom_keys_with_regex() -> None:
+    data = SeriesData(
+        pd.Series(
+            {
+                "custom": 0,
+                "custom 1": 1,
+                "custom 1 not matched": 2,
+                "custom 123": 3,
+            }
+        )
+    )
+
+    assert data.get_custom_keys(r"custom( \d+)?$") == {
+        "custom": 0,
+        "custom 1": 1,
+        "custom 123": 3,
+    }
+
+
+def test_get_unread() -> None:
+    data = SeriesData(
+        pd.Series(
+            {
+                "read1": "4",
+                "read2": "8",
+                "unread_float": 4.5,
+                "unread_float_as_str": "5",
+                "unread_str": "hello!",
+                "skipped": "skip",
+                "marked_read1": "marked",
+                "marked_read2": "marked",
+                "marked_read3": "marked",
+            }
+        )
+    )
+
+    data.get(int, "read1")
+    data[int, "read2"]
+    data.mark_read("marked_read1")
+    data.mark_read({"marked_read2", "marked_read3"})
+
+    assert data.get_unread(skip={"skipped"}) == {
+        "unread_float": 4.5,
+        "unread_float_as_str": 5.0,
+        "unread_str": "hello!",
+    }
+    assert data.get_unread() == {}
+
+
+def test_get_unread_regex() -> None:
+    data = SeriesData(
+        pd.Series(
+            {
+                "unread_float": 4.5,
+                "unread_float_as_str": "5",
+                "unread_str": "hello!",
+                "skipped1": "skip",
+                "skipped 2": "skip",
+                "marked_read1": "marked",
+                "marked_read2": "marked",
+                "marked_read3": "marked",
+                "only this": "yup",
+            }
+        )
+    )
+
+    data.mark_read("marked.*")
+
+    assert data.get_unread(regex="only.*") == {"only this": "yup"}
+
+    assert data.get_unread(skip={"skipped.*"}) == {
+        "unread_float": 4.5,
+        "unread_float_as_str": 5.0,
+        "unread_str": "hello!",
+    }

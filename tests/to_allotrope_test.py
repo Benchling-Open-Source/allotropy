@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 import re
 
@@ -42,8 +43,19 @@ class ParserTest:
     VENDOR: Vendor
 
     # test_file_path is automatically populated with all files in testdata folder next to the test file.
-    def test_positive_cases(self, test_file_path: Path, *, overwrite: bool) -> None:
-        expected_filepath = test_file_path.with_suffix(".json")
+    def test_positive_cases(
+        self, test_file_path: Path, *, overwrite: bool, warn_unread_keys: bool
+    ) -> None:
+        if warn_unread_keys:
+            os.environ["WARN_UNUSED_KEYS"] = "1"
+        # Special case when input files are json, the are placed in an input/ folder and the results are put
+        # in a corresponding output/ folder.
+        if test_file_path.parts[-2] == "input":
+            expected_filepath = Path(
+                *test_file_path.parts[:-2], "output", test_file_path.parts[-1]
+            ).with_suffix(".json")
+        else:
+            expected_filepath = test_file_path.with_suffix(".json")
         allotrope_dict = from_file(
             str(test_file_path), self.VENDOR, encoding=CHARDET_ENCODING
         )

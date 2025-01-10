@@ -21,9 +21,15 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_parser import (
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_parser import (
     AppBioQuantStudioDesignandanalysisParser,
 )
+from allotropy.parsers.beckman_coulter_biomek.beckman_coulter_biomek_parser import (
+    BeckmanCoulterBiomekParser,
+)
 from allotropy.parsers.beckman_pharmspec.beckman_pharmspec_parser import PharmSpecParser
 from allotropy.parsers.beckman_vi_cell_blu.vi_cell_blu_parser import ViCellBluParser
 from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_parser import ViCellXRParser
+from allotropy.parsers.benchling_empower.benchling_empower_parser import (
+    BenchlingEmpowerParser,
+)
 from allotropy.parsers.biorad_bioplex_manager.biorad_bioplex_manager_parser import (
     BioradBioplexParser,
 )
@@ -36,6 +42,10 @@ from allotropy.parsers.chemometec_nucleoview.nucleoview_parser import (
     ChemometecNucleoviewParser,
 )
 from allotropy.parsers.ctl_immunospot.ctl_immunospot_parser import CtlImmunospotParser
+from allotropy.parsers.cytiva_biacore_t200_control.cytiva_biacore_t200_control_parser import (
+    CytivaBiacoreT200ControlParser,
+)
+from allotropy.parsers.cytiva_unicorn.cytiva_unicorn_parser import CytivaUnicornParser
 from allotropy.parsers.example_weyland_yutani.example_weyland_yutani_parser import (
     ExampleWeylandYutaniParser,
 )
@@ -47,6 +57,7 @@ from allotropy.parsers.methodical_mind.methodical_mind_parser import (
     MethodicalMindParser,
 )
 from allotropy.parsers.moldev_softmax_pro.softmax_pro_parser import SoftmaxproParser
+from allotropy.parsers.msd_workbench.msd_workbench_parser import MSDWorkbenchParser
 from allotropy.parsers.novabio_flex2.novabio_flex2_parser import NovaBioFlexParser
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import (
     PerkinElmerEnvisionParser,
@@ -63,8 +74,12 @@ from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_parser import (
 from allotropy.parsers.roche_cedex_hires.roche_cedex_hires_parser import (
     RocheCedexHiResParser,
 )
+from allotropy.parsers.tecan_magellan.tecan_magellan_parser import TecanMagellanParser
 from allotropy.parsers.thermo_fisher_genesys30.thermo_fisher_genesys30_parser import (
     ThermoFisherGenesys30Parser,
+)
+from allotropy.parsers.thermo_fisher_genesys_on_board.thermo_fisher_genesys_on_board_parser import (
+    ThermoFisherGenesysOnBoardParser,
 )
 from allotropy.parsers.thermo_fisher_nanodrop_8000.nanodrop_8000_parser import (
     Nanodrop8000Parser,
@@ -99,6 +114,8 @@ class Vendor(Enum):
     APPBIO_ABSOLUTE_Q = "APPBIO_ABSOLUTE_Q"
     APPBIO_QUANTSTUDIO = "APPBIO_QUANTSTUDIO"
     APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS = "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS"
+    BENCHLING_EMPOWER = "BENCHLING_EMPOWER"
+    BECKMAN_COULTER_BIOMEK = "BECKMAN_COULTER_BIOMEK"
     BMG_MARS = "BMG_MARS"
     BECKMAN_PHARMSPEC = "BECKMAN_PHARMSPEC"
     BECKMAN_VI_CELL_BLU = "BECKMAN_VI_CELL_BLU"
@@ -108,11 +125,14 @@ class Vendor(Enum):
     CHEMOMETEC_NC_VIEW = "CHEMOMETEC_NC_VIEW"
     CHEMOMETEC_NUCLEOVIEW = "CHEMOMETEC_NUCLEOVIEW"
     CTL_IMMUNOSPOT = "CTL_IMMUNOSPOT"
+    CYTIVA_BIACORE_T200_CONTROL = "CYTIVA_BIACORE_T200_CONTROL"
+    CYTIVA_UNICORN = "CYTIVA_UNICORN"
     EXAMPLE_WEYLAND_YUTANI = "EXAMPLE_WEYLAND_YUTANI"
     LUMINEX_XPONENT = "LUMINEX_XPONENT"
     MABTECH_APEX = "MABTECH_APEX"
     METHODICAL_MIND = "METHODICAL_MIND"
     MOLDEV_SOFTMAX_PRO = "MOLDEV_SOFTMAX_PRO"
+    MSD_WORKBENCH = "MSD_WORKBENCH"
     REVVITY_MATRIX = "REVVITY_MATRIX"
     NOVABIO_FLEX2 = "NOVABIO_FLEX2"
     PERKIN_ELMER_ENVISION = "PERKIN_ELMER_ENVISION"
@@ -120,7 +140,9 @@ class Vendor(Enum):
     REVVITY_KALEIDO = "REVVITY_KALEIDO"
     ROCHE_CEDEX_BIOHT = "ROCHE_CEDEX_BIOHT"
     ROCHE_CEDEX_HIRES = "ROCHE_CEDEX_HIRES"
+    TECAN_MAGELLAN = "TECAN_MAGELLAN"
     THERMO_FISHER_GENESYS30 = "THERMO_FISHER_GENESYS30"
+    THERMO_FISHER_GENESYS_ON_BOARD = "THERMO_FISHER_GENESYS_ON_BOARD"
     THERMO_FISHER_NANODROP_8000 = "THERMO_FISHER_NANODROP_8000"
     THERMO_FISHER_NANODROP_EIGHT = "THERMO_FISHER_NANODROP_EIGHT"
     THERMO_FISHER_NANODROP_ONE = "THERMO_FISHER_NANODROP_ONE"
@@ -181,20 +203,25 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser[Any, Any]]] = {
     Vendor.APPBIO_ABSOLUTE_Q: AppbioAbsoluteQParser,
     Vendor.APPBIO_QUANTSTUDIO: AppBioQuantStudioParser,
     Vendor.APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS: AppBioQuantStudioDesignandanalysisParser,
+    Vendor.BECKMAN_COULTER_BIOMEK: BeckmanCoulterBiomekParser,
     Vendor.BECKMAN_PHARMSPEC: PharmSpecParser,
     Vendor.BECKMAN_VI_CELL_BLU: ViCellBluParser,
     Vendor.BECKMAN_VI_CELL_XR: ViCellXRParser,
+    Vendor.BENCHLING_EMPOWER: BenchlingEmpowerParser,
     Vendor.BIORAD_BIOPLEX: BioradBioplexParser,
     Vendor.BMG_MARS: BmgMarsParser,
     Vendor.CFXMAESTRO: CfxmaestroParser,
     Vendor.CHEMOMETEC_NC_VIEW: ChemometecNcViewParser,
     Vendor.CHEMOMETEC_NUCLEOVIEW: ChemometecNucleoviewParser,
     Vendor.CTL_IMMUNOSPOT: CtlImmunospotParser,
+    Vendor.CYTIVA_BIACORE_T200_CONTROL: CytivaBiacoreT200ControlParser,
+    Vendor.CYTIVA_UNICORN: CytivaUnicornParser,
     Vendor.EXAMPLE_WEYLAND_YUTANI: ExampleWeylandYutaniParser,
     Vendor.LUMINEX_XPONENT: LuminexXponentParser,
     Vendor.MABTECH_APEX: MabtechApexParser,
     Vendor.METHODICAL_MIND: MethodicalMindParser,
     Vendor.MOLDEV_SOFTMAX_PRO: SoftmaxproParser,
+    Vendor.MSD_WORKBENCH: MSDWorkbenchParser,
     Vendor.REVVITY_MATRIX: RevvityMatrixParser,
     Vendor.NOVABIO_FLEX2: NovaBioFlexParser,
     Vendor.PERKIN_ELMER_ENVISION: PerkinElmerEnvisionParser,
@@ -202,7 +229,9 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser[Any, Any]]] = {
     Vendor.REVVITY_KALEIDO: KaleidoParser,
     Vendor.ROCHE_CEDEX_BIOHT: RocheCedexBiohtParser,
     Vendor.ROCHE_CEDEX_HIRES: RocheCedexHiResParser,
+    Vendor.TECAN_MAGELLAN: TecanMagellanParser,
     Vendor.THERMO_FISHER_GENESYS30: ThermoFisherGenesys30Parser,
+    Vendor.THERMO_FISHER_GENESYS_ON_BOARD: ThermoFisherGenesysOnBoardParser,
     Vendor.THERMO_FISHER_NANODROP_8000: Nanodrop8000Parser,
     Vendor.THERMO_FISHER_NANODROP_EIGHT: NanodropEightParser,
     Vendor.THERMO_FISHER_NANODROP_ONE: ThermoFisherNanodropOneParser,

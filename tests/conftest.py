@@ -30,11 +30,21 @@ def pytest_addoption(parser: Parser) -> None:
         default="",
         help="Comma separated list of patterns to filter file paths from to_allotropy_test. If set, only tests matching one of the patterns will be included.",
     )
+    parser.addoption(
+        "--warn_unread_keys",
+        action="store_true",
+        help="If set, show warning if any keys in a SeriesData are unread.",
+    )
 
 
 @pytest.fixture
 def overwrite(request: FixtureRequest) -> Any:
     return request.config.getoption("--overwrite")
+
+
+@pytest.fixture
+def warn_unread_keys(request: FixtureRequest) -> Any:
+    return request.config.getoption("--warn_unread_keys")
 
 
 def _is_valid_testcase(path: Path) -> bool:
@@ -46,7 +56,12 @@ def _is_valid_testcase(path: Path) -> bool:
         return False
     if path.suffix.lower() in (".pyc", ".py"):
         return False
+    # Special case to be used when input files are json, test files are put in an input/ folder to indicate.
+    if path.parts[-2] == "input":
+        return True
     if path.suffix.lower() == ".json":
+        return False
+    if path.suffix.lower() == ".parquet":
         return False
     return all(keyword not in str(path).lower() for keyword in EXCLUDE_KEYWORDS)
 

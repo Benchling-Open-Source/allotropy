@@ -8,7 +8,6 @@ dynamic = ["version"]
 description = 'Converts to ASM (Allotrope Simple Model) from various file formats.'
 readme = "README.md"
 requires-python = ">=3.10"
-license = "MIT"
 keywords = ["allotropy", "allotrope", "asm", "benchling", "converters"]
 authors = [
   { name = "Benchling Open Source", email = "opensource@benchling.com" },
@@ -36,6 +35,7 @@ authors = [
   { name = "Alex Reis", email = "alex@manifold.bio" },
 ]
 classifiers = [
+  "License :: OSI Approved :: MIT License",
   "Development Status :: 4 - Beta",
   "Programming Language :: Python",
   "Programming Language :: Python :: 3.10",
@@ -56,6 +56,8 @@ dependencies = [
   "python-calamine >= 0.2.3",
   "xlrd >= 2.0.0",
   "rfc3339-validator >= 0.1.4",
+  "defusedxml >= 0.7.1",
+  "types-defusedxml >= 0.7.0.20240218",
 ]
 
 [project.urls]
@@ -113,11 +115,15 @@ dependencies = [
   # black pinned for compatability with datamodel-code-generator
   "black == 22.3.0",
   "datamodel-code-generator == 0.25.2",
+  "fastparquet >= 2024.5.0",
   # Without jsonschema-spec and pydantic, pydantic spews a bunch of errors when parsing schemas
   "jsonschema-specifications == 2023.7.1",
+  "olefile >= 0.47",
+  "pyarrow >= 17.0.0",
   "pydantic == 1.10.17",
   "ruff == 0.0.289",
   "semantic-version",
+  "xmltodict >= 0.13.0",
 ]
 
 [tool.hatch.envs.default.scripts]
@@ -149,7 +155,7 @@ platforms = ["windows"]
 generate-schemas = "python scripts\\generate_schemas.py {args:}"
 download-schema = "python scripts\\download_schema.py {args:}"
 create-parser = "python scripts\\create_parser.py {args:}"
-update-instrument-table = "scripts\\update_supported_instruments_table.py {args:}"
+update-instrument-table = "python scripts\\update_supported_instruments_table.py {args:}"
 update-version = "python scripts\\update_version.py {args:}"
 
 [tool.hatch.envs.viz.scripts]
@@ -162,6 +168,7 @@ extra-dependencies = [
   "more-itertools >= 10.1.0",
   "mypy == 1.8.0",
   "pandas-stubs == 2.1.4.231227",
+  "types-olefile",
   # For pytest types
   "pytest >= 7.4.0",
   # For check graph generation
@@ -198,6 +205,7 @@ extra-dependencies = [
   "more-itertools >= 10.1.0",
   "pytest >= 7.4.0",
   "pytest-xdist >= 3.6.1",
+  "types-olefile"
 ]
 
 [tool.hatch.envs.test.scripts]
@@ -254,6 +262,8 @@ ignore = [
   "C901", "PLR0911", "PLR0912", "PLR0913", "PLR0915",
   # Ignore line length, black does it better and actually fixes it.
   "E501",
+  # Ignore "magic value" check, because sometimes I need to check if a list has 1 or 2 values...
+  "PLR2004",
 ]
 
 [tool.ruff.isort]
