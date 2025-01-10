@@ -4,7 +4,6 @@ from pathlib import Path
 
 import pandas as pd
 
-from allotropy.allotrope.models.shared.definitions.definitions import NaN
 from allotropy.allotrope.schema_mappers.adm.pcr.rec._2024._09.qpcr import (
     Error,
     Measurement,
@@ -48,7 +47,9 @@ def create_measurement_group(
     return MeasurementGroup(
         plate_well_count=plate_well_count,
         well_volume=NEGATIVE_ZERO,
-        error_document=[Error(error=NaN.value, feature="well volume")],
+        error_document=[
+            Error(error="Value not provided in instrument file", feature="well volume")
+        ],
         experimental_data_identifier=NOT_APPLICABLE,
         measurements=[
             Measurement(
@@ -89,7 +90,7 @@ def create_measurement_group(
                 error_document=(
                     [
                         Error(
-                            error=NaN.value,
+                            error="Value not provided in instrument file",
                             feature="cycle threshold value setting (qPCR)",
                         )
                     ]
