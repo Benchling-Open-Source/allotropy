@@ -5,6 +5,6 @@ from allotropy.allotrope.models.shared.components.plate_reader import SampleRole
 DISPLAY_NAME = "Agilent OpenLab CDS"
 PRODUCT_MANUFACTURER = "Agilent"
 SAMPLE_ROLE_TYPE = {
-    "blank role": SampleRoleType.blank_role,
-    "sample role": SampleRoleType.sample_role,
+    "Blank": SampleRoleType.blank_role.value,
+    "Sample": SampleRoleType.sample_role.value,
 }

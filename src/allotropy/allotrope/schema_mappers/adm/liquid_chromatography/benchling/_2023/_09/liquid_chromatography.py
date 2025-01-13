@@ -91,8 +91,6 @@ class Peak:
     end: float | None = None
     end_unit: str | None = None
     area: float | None = None
-    end: float | None = None
-    start: float | None = None
     area_unit: str | None = None
     relative_area: float | None = None
     width: float | None = None

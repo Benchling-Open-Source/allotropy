@@ -396,19 +396,6 @@ def create_measurements(
                         "signal"
                     ]
                     else None,
-                    detector_bandwidth_setting=try_float_or_none(
-                        intermediate_structured_data["Result Data"][i]["Metadata"][
-                            "signal"
-                        ]
-                        .split(",")[2]
-                        .split()[0]
-                    )
-                    if "DAD" in module["Name"]
-                    and "DAD"
-                    in intermediate_structured_data["Result Data"][i]["Metadata"][
-                        "signal"
-                    ]
-                    else None,
                     detector_wavelength_setting=try_float_or_none(
                         intermediate_structured_data["Result Data"][i]["Metadata"][
                             "signal"
@@ -421,19 +408,13 @@ def create_measurements(
                     in intermediate_structured_data["Result Data"][i]["Metadata"][
                         "signal"
                     ]
-                    else None,
-                    device_control_custom_info={
-                        "emission wavelength setting": {
-                            "value": try_float_or_none(
-                                intermediate_structured_data["Result Data"][i][
-                                    "Metadata"
-                                ]["signal"]
-                                .split("Em=")[1]
-                                .strip()
-                            ),
-                            "unit": "nm",
-                        }
-                    }
+                    else try_float_or_none(
+                        intermediate_structured_data["Result Data"][i]["Metadata"][
+                            "signal"
+                        ]
+                        .split("Em=")[1]
+                        .strip()
+                    )
                     if module["Name"] == "FLD"
                     and "FLD"
                     in intermediate_structured_data["Result Data"][i]["Metadata"][
