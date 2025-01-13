@@ -109,7 +109,7 @@ class ErrorDocument:
 
 
 @dataclass(frozen=True)
-class ProcessingDataDocument:
+class ProcessedDataDocument:
     identifier: str | None = None
     concentration_factor: float | None = None
 
@@ -166,7 +166,7 @@ class Measurement:
     error_document: list[ErrorDocument] | None = None
 
     # processing data
-    processed_data_document: ProcessingDataDocument | None = None
+    processed_data_document: ProcessedDataDocument | None = None
 
 
 @dataclass(frozen=True)

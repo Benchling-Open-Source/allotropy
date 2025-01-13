@@ -12,7 +12,7 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_rea
     MeasurementGroup,
     MeasurementType,
     Metadata,
-    ProcessingDataDocument,
+    ProcessedDataDocument,
 )
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.constants import NEGATIVE_ZERO, NOT_APPLICABLE
@@ -108,7 +108,7 @@ def _create_measurement(
             "pump": well_plate_data.get(str, "Pump"),
         },
         error_document=error_documents,
-        processed_data_document=ProcessingDataDocument(
+        processed_data_document=ProcessedDataDocument(
             identifier=random_uuid_str(), concentration_factor=concentration_factor
         )
         if concentration_factor is not None
