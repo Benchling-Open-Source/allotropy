@@ -5,6 +5,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     DeviceControlDoc,
+    Peak,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCubeComponent
 from allotropy.parsers.cytiva_unicorn.constants import DEVICE_TYPE
@@ -28,6 +29,10 @@ class AbsorbanceMeasurement(UnicornMeasurement):
     @abstractmethod
     def get_curve_regex(cls) -> str:
         pass
+
+    @classmethod
+    def get_peaks(cls) -> list[Peak]:
+        return []
 
     @classmethod
     def create_or_none(
@@ -55,6 +60,7 @@ class AbsorbanceMeasurement(UnicornMeasurement):
                     device_type=DEVICE_TYPE,
                 )
             ],
+            peaks=cls.get_peaks(),
         )
 
 
@@ -62,6 +68,10 @@ class AbsorbanceMeasurement1(AbsorbanceMeasurement):
     @classmethod
     def get_curve_regex(cls) -> str:
         return r"^UV 1_\d+$"
+
+    @classmethod
+    def get_peaks(cls) -> list[Peak]:
+        return []
 
 
 class AbsorbanceMeasurement2(AbsorbanceMeasurement):

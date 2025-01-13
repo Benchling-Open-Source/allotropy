@@ -5,6 +5,7 @@ from re import search
 from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     DeviceControlDoc,
     Measurement,
+    Peak,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, DataCubeComponent
 from allotropy.parsers.cytiva_unicorn.reader.unicorn_zip_handler import (
@@ -72,6 +73,7 @@ class UnicornMeasurement(Measurement):
         chromatogram_data_cube: DataCube | None = None,
         processed_data_chromatogram_data_cube: DataCube | None = None,
         derived_column_pressure_data_cube: DataCube | None = None,
+        peaks: list[Peak] | None = None,
     ) -> UnicornMeasurement:
         return UnicornMeasurement(
             measurement_identifier=random_uuid_str(),
@@ -94,6 +96,7 @@ class UnicornMeasurement(Measurement):
                 "sample_volume_2": static_docs.sample_volume_2,
                 "sample_volume_3": static_docs.sample_volume_3,
             },
+            peaks=peaks,
         )
 
     @classmethod
