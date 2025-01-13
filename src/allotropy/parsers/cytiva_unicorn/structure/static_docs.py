@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.constants import NEGATIVE_ZERO, NOT_APPLICABLE
 from allotropy.parsers.cytiva_unicorn.reader.unicorn_zip_handler import (
     UnicornZipHandler,
 )
@@ -21,7 +22,11 @@ class StaticDocs:
     injection_identifier: str
     injection_time: str
     autosampler_injection_volume_setting: float
+    sample_volume_2: float | None
+    sample_volume_3: float | None
     sample_identifier: str
+    sample_identifier_2: str | None
+    sample_identifier_3: str | None
     batch_identifier: str | None
 
     @classmethod
@@ -32,8 +37,52 @@ class StaticDocs:
         results: StrictXmlElement,
     ) -> StaticDocs:
         column_type_data = handler.get_column_type_data()
-        inj_result = cls.__filter_result_criteria(results, keyword="Sample volume")
-        sample_result = cls.__filter_result_criteria(results, keyword="Sample_ID")
+        autosampler_injection_volume_setting = NEGATIVE_ZERO
+        try:
+            inj_result = cls.__filter_result_criteria(results, keyword="Sample volume")
+            autosampler_injection_volume_setting = inj_result.find(
+                "Keyword2"
+            ).get_float("Sample volume")
+        except AllotropeConversionError:
+            pass
+
+        sample_volume_2 = None
+        try:
+            inj_result = cls.__filter_result_criteria(
+                results, keyword="Sample volume_2"
+            )
+            sample_volume_2 = inj_result.find("Keyword2").get_float("sample_volume_2")
+        except AllotropeConversionError:
+            pass
+        sample_volume_3 = None
+        try:
+            inj_result = cls.__filter_result_criteria(
+                results, keyword="Sample volume_3"
+            )
+            sample_volume_3 = inj_result.find("Keyword2").get_float("Sample volume_3")
+        except AllotropeConversionError:
+            pass
+
+        sample_identifier = NOT_APPLICABLE
+        try:
+            sample_result = cls.__filter_result_criteria(results, keyword="Sample_ID")
+            sample_identifier = sample_result.find("Keyword2").get_text()
+        except AllotropeConversionError:
+            pass
+
+        sample_identifier_2 = None
+        try:
+            sample_result = cls.__filter_result_criteria(results, keyword="Sample_ID_2")
+            sample_identifier = sample_result.find("Keyword2").get_text()
+        except AllotropeConversionError:
+            pass
+
+        sample_identifier_3 = None
+        try:
+            sample_result = cls.__filter_result_criteria(results, keyword="Sample_ID_3")
+            sample_identifier = sample_result.find("Keyword2").get_text()
+        except AllotropeConversionError:
+            pass
 
         article_number = column_type_data.recursive_find_or_none(
             ["ColumnType", "Hardware", "ArticleNumber"]
@@ -72,10 +121,12 @@ class StaticDocs:
             ),
             injection_identifier=random_uuid_str(),
             injection_time=curve.find("MethodStartTime").get_text(),
-            autosampler_injection_volume_setting=inj_result.find("Keyword2").get_float(
-                "autosampler injection volume setting"
-            ),
-            sample_identifier=sample_result.find("Keyword2").get_text(),
+            autosampler_injection_volume_setting=autosampler_injection_volume_setting,
+            sample_volume_2=sample_volume_2,
+            sample_volume_3=sample_volume_3,
+            sample_identifier=sample_identifier,
+            sample_identifier_2=sample_identifier_2,
+            sample_identifier_3=sample_identifier_3,
             batch_identifier=(batch_id.get_text() if batch_id is not None else None),
         )
 
