@@ -16,8 +16,8 @@ The parsers follow maturation levels of: Recommended, Candidate Release, Working
 |===
 |Instrument Category|Instrument Software|Release Status|Exported ASM Schema
 .1+|Binding Affinity Analyzer|Cytiva Biacore T200 Control|Working Draft|WD/2024/12
-.6+|Cell Counting|Beckman Vi-Cell BLU|Recommended|REC/2024/09
-|Beckman Vi-Cell XR|Recommended|REC/2024/09
+.6+|Cell Counting|Beckman Coulter Vi-Cell BLU|Recommended|REC/2024/09
+|Beckman Coulter Vi-Cell XR|Recommended|REC/2024/09
 |ChemoMetec NC View|Recommended|REC/2024/09
 |ChemoMetec Nucleoview|Recommended|REC/2024/09
 |Revvity Matrix|Recommended|REC/2024/09
@@ -41,7 +41,7 @@ The parsers follow maturation levels of: Recommended, Candidate Release, Working
 |Tecan Magellan|Recommended|REC/2024/06
 |Thermo Fisher Scientific SkanIt|Recommended|BENCHLING/2023/09
 |Unchained Labs Lunatic|Recommended|REC/2024/06
-.3+|Solution Analyzer|Beckman PharmSpec|Recommended|REC/2024/09
+.3+|Solution Analyzer|Beckman Coulter PharmSpec|Recommended|REC/2024/09
 |NovaBio Flex2|Recommended|REC/2024/09
 |Roche Cedex BioHT|Recommended|REC/2024/09
 .8+|Spectrophotometry|Thermo Fisher Scientific Genesys30|Recommended|BENCHLING/2023/12
