@@ -633,7 +633,14 @@
                                                                           "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
                                                                         },
                                                                         {
-                                                                          "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/s"
+                                                                          "oneOf": [
+                                                                            {
+                                                                              "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/s"
+                                                                            },
+                                                                            {
+                                                                              "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/mL"
+                                                                            }
+                                                                          ]
                                                                         }
                                                                       ]
                                                                     }

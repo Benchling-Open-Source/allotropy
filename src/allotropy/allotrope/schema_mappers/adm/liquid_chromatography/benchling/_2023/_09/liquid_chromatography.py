@@ -34,7 +34,6 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueCubicMillimeter,
     TQuantityValueMicrometer,
     TQuantityValueMilliAbsorbanceUnit,
-    TQuantityValueMilliliter,
     TQuantityValueMillimeter,
     TQuantityValuePercent,
     TQuantityValueSecondTime,
@@ -89,6 +88,7 @@ class Peak:
     chromatographic_resolution: float | None = None
     chromatographic_asymmetry: float | None = None
     width_at_half_height: float | None = None
+    width_at_half_height_unit: str | None = None
     custom_info: dict[str, Any] | None = None
 
 
@@ -286,8 +286,8 @@ class Mapper(SchemaMapper[Data, Model]):
                 chromatographic_peak_asymmetry_factor=quantity_or_none(
                     TQuantityValueUnitless, peak.chromatographic_asymmetry
                 ),
-                peak_width_at_half_height=quantity_or_none(
-                    TQuantityValueMilliliter, peak.width_at_half_height
+                peak_width_at_half_height=quantity_or_none_from_unit(  # type: ignore[arg-type]
+                    peak.width_at_half_height_unit, peak.width_at_half_height
                 ),
             ),
             peak.custom_info,

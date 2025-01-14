@@ -20,6 +20,7 @@ from allotropy.parsers.cytiva_unicorn.constants import (
     PEAK_AREA_UNIT,
     PEAK_END_UNIT,
     PEAK_START_UNIT,
+    PEAK_WIDTH_AT_HALF_HEIGHT,
 )
 from allotropy.parsers.cytiva_unicorn.reader.unicorn_zip_handler import (
     UnicornZipHandler,
@@ -173,6 +174,7 @@ class AbsorbanceMeasurement1(AbsorbanceMeasurement):
                 start_unit=PEAK_START_UNIT,
                 chromatographic_resolution=peak.get_sub_float_or_none("Resolution"),
                 width_at_half_height=peak.get_sub_float_or_none("WidthAtHalfHeight"),
+                width_at_half_height_unit=PEAK_WIDTH_AT_HALF_HEIGHT,
                 width=peak.get_sub_float_or_none("Width"),
                 chromatographic_asymmetry=peak.get_sub_float_or_none("Asymmetry"),
                 custom_info=cls.get_peaks_custom_info(peak),
