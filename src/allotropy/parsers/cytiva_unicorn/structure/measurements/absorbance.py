@@ -96,6 +96,19 @@ class AbsorbanceMeasurement1(AbsorbanceMeasurement):
                 width_at_half_height=peak.get_sub_float_or_none("WidthAtHalfHeight"),
                 width=peak.get_sub_float_or_none("Width"),
                 chromatographic_asymmetry=peak.get_sub_float_or_none("Asymmetry"),
+                custom_info={
+                    "max peak retention": peak.get_sub_float_or_none("MaxPeakRetention"),
+                    "percent of total area": peak.get_sub_float_or_none("PercentOfTotalArea"),
+                    "start peak end point height": peak.get_sub_float_or_none("StartPeakEndpointHeight"),
+                    "end peak end point height": peak.get_sub_float_or_none("EndPeakEndpointHeight"),
+                    "sigma": peak.get_sub_float_or_none("Sigma"),
+                    "assymetry peak start": peak.get_sub_float_or_none("AssymetryPeakStart"),
+                    "assymetry peak end": peak.get_sub_float_or_none("AssymetryPeakEnd"),
+                    "start conductivity height": peak.get_sub_float_or_none("StartConductivityHeight"),
+                    "max conductivity height": peak.get_sub_float_or_none("MaxConductivityHeight"),
+                    "end conductivity height": peak.get_sub_float_or_none("EndConductivityHeight"),
+                    "average conductivity": peak.get_sub_float_or_none("AverageConductivity"),
+                }
             )
             for idx, peak in enumerate(peaks.findall("Peak") if peaks else [])
         ]

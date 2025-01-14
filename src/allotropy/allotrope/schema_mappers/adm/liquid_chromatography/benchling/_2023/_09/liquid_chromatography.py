@@ -89,6 +89,7 @@ class Peak:
     chromatographic_resolution: float | None = None
     chromatographic_asymmetry: float | None = None
     width_at_half_height: float | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -258,35 +259,38 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_peak_document(self, peak: Peak) -> PeakDocument:
-        return PeakDocument(
-            identifier=peak.identifier,
-            peak_index=peak.index,
-            peak_start=quantity_or_none_from_unit(peak.start_unit, peak.start),  # type: ignore[arg-type]
-            peak_end=quantity_or_none_from_unit(peak.end_unit, peak.end),  # type: ignore[arg-type]
-            peak_area=quantity_or_none_from_unit(peak.area_unit, peak.area),
-            peak_width=quantity_or_none(TQuantityValueSecondTime, peak.width),
-            peak_height=quantity_or_none(
-                TQuantityValueMilliAbsorbanceUnit, peak.height
+        return add_custom_information_document(
+            PeakDocument(
+                identifier=peak.identifier,
+                peak_index=peak.index,
+                peak_start=quantity_or_none_from_unit(peak.start_unit, peak.start),  # type: ignore[arg-type]
+                peak_end=quantity_or_none_from_unit(peak.end_unit, peak.end),  # type: ignore[arg-type]
+                peak_area=quantity_or_none_from_unit(peak.area_unit, peak.area),
+                peak_width=quantity_or_none(TQuantityValueSecondTime, peak.width),
+                peak_height=quantity_or_none(
+                    TQuantityValueMilliAbsorbanceUnit, peak.height
+                ),
+                relative_peak_area=quantity_or_none(
+                    TQuantityValuePercent, peak.relative_area
+                ),
+                relative_peak_height=quantity_or_none(
+                    TQuantityValuePercent, peak.relative_height
+                ),
+                retention_time=quantity_or_none(
+                    TQuantityValueSecondTime, peak.retention_time
+                ),
+                written_name=peak.written_name,
+                chromatographic_peak_resolution=quantity_or_none(
+                    TQuantityValueUnitless, peak.chromatographic_resolution
+                ),
+                chromatographic_peak_asymmetry_factor=quantity_or_none(
+                    TQuantityValueUnitless, peak.chromatographic_asymmetry
+                ),
+                peak_width_at_half_height=quantity_or_none(
+                    TQuantityValueMilliliter, peak.width_at_half_height
+                ),
             ),
-            relative_peak_area=quantity_or_none(
-                TQuantityValuePercent, peak.relative_area
-            ),
-            relative_peak_height=quantity_or_none(
-                TQuantityValuePercent, peak.relative_height
-            ),
-            retention_time=quantity_or_none(
-                TQuantityValueSecondTime, peak.retention_time
-            ),
-            written_name=peak.written_name,
-            chromatographic_peak_resolution=quantity_or_none(
-                TQuantityValueUnitless, peak.chromatographic_resolution
-            ),
-            chromatographic_peak_asymmetry_factor=quantity_or_none(
-                TQuantityValueUnitless, peak.chromatographic_asymmetry
-            ),
-            peak_width_at_half_height=quantity_or_none(
-                TQuantityValueMilliliter, peak.width_at_half_height
-            ),
+            peak.custom_info,
         )
 
     def _get_processed_data_aggregate_document(
