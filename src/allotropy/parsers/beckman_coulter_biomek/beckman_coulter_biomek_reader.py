@@ -7,7 +7,7 @@ from allotropy.parsers.utils.values import assert_not_none
 
 
 class BeckmanCoulterBiomekReader:
-    SUPPORTED_EXTENSIONS = "csv, log"
+    SUPPORTED_EXTENSIONS = "csv,log"
     header: SeriesData
     data: pd.DataFrame
 
