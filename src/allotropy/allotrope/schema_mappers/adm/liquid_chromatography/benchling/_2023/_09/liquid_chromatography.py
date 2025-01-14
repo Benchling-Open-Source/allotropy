@@ -1,5 +1,7 @@
 from dataclasses import dataclass
+from typing import Any
 
+from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     ChromatogramDataCube,
     ChromatographyColumnDocument,
@@ -124,6 +126,8 @@ class Measurement:
 
     peaks: list[Peak] | None = None
 
+    sample_custom_info: dict[str, Any] | None = None
+
 
 @dataclass(frozen=True)
 class MeasurementGroup:
@@ -237,11 +241,14 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
-        return SampleDocument(
-            sample_identifier=measurement.sample_identifier,
-            batch_identifier=measurement.batch_identifier,
-            sample_role_type=measurement.sample_role_type,
-            written_name=measurement.written_name,
+        return add_custom_information_document(
+            SampleDocument(
+                sample_identifier=measurement.sample_identifier,
+                batch_identifier=measurement.batch_identifier,
+                sample_role_type=measurement.sample_role_type,
+                written_name=measurement.written_name,
+            ),
+            measurement.sample_custom_info,
         )
 
     def _get_peak_document(self, peak: Peak) -> PeakDocument:

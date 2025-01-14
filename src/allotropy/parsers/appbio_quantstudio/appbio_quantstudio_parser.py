@@ -1,5 +1,8 @@
-from allotropy.allotrope.models.adm.pcr.rec._2024._09.qpcr import Model
-from allotropy.allotrope.schema_mappers.adm.pcr.rec._2024._09.qpcr import Data, Mapper
+from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import Model
+from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import (
+    Data,
+    Mapper,
+)
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_calculated_documents import (
     iter_calculated_data_documents,
@@ -53,5 +56,7 @@ class AppBioQuantStudioParser(VendorParser[Data, Model]):
             measurement_groups=create_measurement_groups(
                 header, wells, amp_data, multi_data, results_data, melt_data
             ),
-            calculated_data=create_calculated_data(calculated_data_documents),
+            calculated_data=create_calculated_data(
+                calculated_data_documents, results_metadata
+            ),
         )
