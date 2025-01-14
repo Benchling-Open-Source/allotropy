@@ -88,6 +88,12 @@ class UnicornMeasurement(Measurement):
             device_control_docs=device_control_docs,
             processed_data_chromatogram_data_cube=processed_data_chromatogram_data_cube,
             derived_column_pressure_data_cube=derived_column_pressure_data_cube,
+            sample_custom_info={
+                "sample_identifier_2": static_docs.sample_identifier_2,
+                "sample_identifier_3": static_docs.sample_identifier_3,
+                "sample_volume_2": static_docs.sample_volume_2,
+                "sample_volume_3": static_docs.sample_volume_3,
+            },
         )
 
     @classmethod
