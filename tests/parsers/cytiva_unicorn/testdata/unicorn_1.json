@@ -29,7 +29,50 @@
                                     "unit": "µm"
                                 }
                             },
-                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_1",
+                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_2",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "peak list": {
+                                            "peak": [
+                                                {
+                                                    "peak end": {
+                                                        "value": 6.0,
+                                                        "unit": "mL"
+                                                    },
+                                                    "identifier": "CYTIVA_UNICORN_TEST_ID_1",
+                                                    "written name": "None",
+                                                    "peak height": {
+                                                        "value": 1000.0,
+                                                        "unit": "mAU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 100.0,
+                                                        "unit": "mAU.mL"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 100.0,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak start": {
+                                                        "value": 10.0,
+                                                        "unit": "mL"
+                                                    },
+                                                    "peak index": "Peak 0",
+                                                    "peak width at half height": {
+                                                        "value": 300.0,
+                                                        "unit": "mL"
+                                                    },
+                                                    "peak width": {
+                                                        "value": 10.0,
+                                                        "unit": "s"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            },
                             "injection document": {
                                 "autosampler injection volume setting (chromatography)": {
                                     "value": 360.0,
@@ -98,7 +141,7 @@
                                     "unit": "µm"
                                 }
                             },
-                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_2",
+                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_3",
                             "injection document": {
                                 "autosampler injection volume setting (chromatography)": {
                                     "value": 360.0,
@@ -167,7 +210,7 @@
                                     "unit": "µm"
                                 }
                             },
-                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_3",
+                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_4",
                             "injection document": {
                                 "autosampler injection volume setting (chromatography)": {
                                     "value": 360.0,
@@ -236,7 +279,7 @@
                                     "unit": "µm"
                                 }
                             },
-                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_4",
+                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_5",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -346,7 +389,7 @@
                                     "unit": "µm"
                                 }
                             },
-                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_5",
+                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_6",
                             "injection document": {
                                 "autosampler injection volume setting (chromatography)": {
                                     "value": 360.0,
@@ -450,7 +493,7 @@
                                     "unit": "µm"
                                 }
                             },
-                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_6",
+                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_7",
                             "injection document": {
                                 "autosampler injection volume setting (chromatography)": {
                                     "value": 360.0,
@@ -624,7 +667,7 @@
                                     "unit": "µm"
                                 }
                             },
-                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_7",
+                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_8",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -880,7 +923,7 @@
                                     "unit": "µm"
                                 }
                             },
-                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_8",
+                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_9",
                             "injection document": {
                                 "autosampler injection volume setting (chromatography)": {
                                     "value": 360.0,
@@ -949,7 +992,7 @@
                                     "unit": "µm"
                                 }
                             },
-                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_9",
+                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_10",
                             "injection document": {
                                 "autosampler injection volume setting (chromatography)": {
                                     "value": 360.0,
@@ -966,7 +1009,7 @@
         ],
         "data system document": {
             "ASM converter name": "allotropy_cytiva_unicorn",
-            "ASM converter version": "0.1.66",
+            "ASM converter version": "0.1.69",
             "file name": "unicorn_1.zip",
             "UNC path": "tests/parsers/cytiva_unicorn/testdata/unicorn_1.zip"
         },

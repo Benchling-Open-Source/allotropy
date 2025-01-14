@@ -1,2 +1,6 @@
 DISPLAY_NAME = "Cytiva Unicorn"
 DEVICE_TYPE = "HPLC"
+
+PEAK_AREA_UNIT = "mAU.mL"
+PEAK_END_UNIT = "mL"
+PEAK_START_UNIT = "mL"

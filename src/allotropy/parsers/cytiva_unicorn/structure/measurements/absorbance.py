@@ -8,7 +8,12 @@ from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._202
     Peak,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCubeComponent
-from allotropy.parsers.cytiva_unicorn.constants import DEVICE_TYPE
+from allotropy.parsers.cytiva_unicorn.constants import (
+    DEVICE_TYPE,
+    PEAK_AREA_UNIT,
+    PEAK_END_UNIT,
+    PEAK_START_UNIT,
+)
 from allotropy.parsers.cytiva_unicorn.reader.unicorn_zip_handler import (
     UnicornZipHandler,
 )
@@ -21,6 +26,7 @@ from allotropy.parsers.cytiva_unicorn.structure.static_docs import (
 from allotropy.parsers.utils.strict_xml_element import (
     StrictXmlElement,
 )
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none
 
 
@@ -31,7 +37,7 @@ class AbsorbanceMeasurement(UnicornMeasurement):
         pass
 
     @classmethod
-    def get_peaks(cls) -> list[Peak]:
+    def get_peaks(cls, _: UnicornZipHandler) -> list[Peak]:
         return []
 
     @classmethod
@@ -60,7 +66,7 @@ class AbsorbanceMeasurement(UnicornMeasurement):
                     device_type=DEVICE_TYPE,
                 )
             ],
-            peaks=cls.get_peaks(),
+            peaks=cls.get_peaks(handler),
         )
 
 
@@ -70,8 +76,29 @@ class AbsorbanceMeasurement1(AbsorbanceMeasurement):
         return r"^UV 1_\d+$"
 
     @classmethod
-    def get_peaks(cls) -> list[Peak]:
-        return []
+    def get_peaks(cls, handler: UnicornZipHandler) -> list[Peak]:
+        chrom_1 = handler.get_chrom_1()
+        peaks = chrom_1.recursive_find_or_none(["PeakTables", "PeakTable", "Peaks"])
+        return [
+            Peak(
+                identifier=random_uuid_str(),
+                index=f"Peak {idx}",
+                end=peak.get_sub_float_or_none("EndPeakRetention"),
+                end_unit=PEAK_END_UNIT,
+                height=peak.get_sub_float_or_none("Height"),
+                written_name=peak.get_sub_text_or_none("Name"),
+                area=peak.get_sub_float_or_none("Area"),
+                area_unit=PEAK_AREA_UNIT,
+                relative_area=peak.get_sub_float_or_none("PercentOfTotalPeakArea"),
+                start=peak.get_sub_float_or_none("StartPeakRetention"),
+                start_unit=PEAK_START_UNIT,
+                chromatographic_resolution=peak.get_sub_float_or_none("Resolution"),
+                width_at_half_height=peak.get_sub_float_or_none("WidthAtHalfHeight"),
+                width=peak.get_sub_float_or_none("Width"),
+                chromatographic_asymmetry=peak.get_sub_float_or_none("Asymmetry"),
+            )
+            for idx, peak in enumerate(peaks.findall("Peak") if peaks else [])
+        ]
 
 
 class AbsorbanceMeasurement2(AbsorbanceMeasurement):
