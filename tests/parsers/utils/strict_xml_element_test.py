@@ -111,5 +111,5 @@ def test_get_float(strict_xml_element: StrictXmlElement) -> None:
     strict_element = strict_xml_element.recursive_find(["Child2", "SubChild"])
     assert strict_element.get_float("sub child value") == 123.0
 
-    with pytest.raises(AllotropeConversionError, match="Invalid float string: 'abc'"):
+    with pytest.raises(AllotropeConversionError, match="Expected non-null value for child1 value"):
         assert strict_xml_element.find("Child1").get_float("child1 value")
