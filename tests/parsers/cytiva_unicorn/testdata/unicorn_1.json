@@ -68,11 +68,26 @@
                                                         "unit": "s"
                                                     },
                                                     "custom information document": {
-                                                        "end peak end point height": 3.0,
-                                                        "assymetry peak start": 83.69151,
-                                                        "assymetry peak end": 390.2936,
-                                                        "max conductivity height": 30.69347,
-                                                        "average conductivity": 31.56021
+                                                        "end peak end point height": {
+                                                            "value": 3.0,
+                                                            "unit": "mAU"
+                                                        },
+                                                        "assymetry peak start": {
+                                                            "value": 83.69151,
+                                                            "unit": "(unitless)"
+                                                        },
+                                                        "assymetry peak end": {
+                                                            "value": 390.2936,
+                                                            "unit": "(unitless)"
+                                                        },
+                                                        "max conductivity height": {
+                                                            "value": 306.9347,
+                                                            "unit": "S/m"
+                                                        },
+                                                        "average conductivity": {
+                                                            "value": 315.6021,
+                                                            "unit": "S/m"
+                                                        }
                                                     }
                                                 }
                                             ]

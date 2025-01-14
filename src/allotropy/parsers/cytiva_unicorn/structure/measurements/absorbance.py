@@ -1,7 +1,14 @@
 from abc import abstractmethod
 
+from allotropy.allotrope.models.shared.definitions.custom import (
+    TQuantityValueMilliAbsorbanceUnit,
+    TQuantityValueMilliliter,
+    TQuantityValuePercent,
+    TQuantityValueUnitless,
+)
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
+    TQuantityValue,
 )
 from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     DeviceControlDoc,
@@ -27,7 +34,7 @@ from allotropy.parsers.utils.strict_xml_element import (
     StrictXmlElement,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import assert_not_none
+from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
 
 
 class AbsorbanceMeasurement(UnicornMeasurement):
@@ -76,6 +83,78 @@ class AbsorbanceMeasurement1(AbsorbanceMeasurement):
         return r"^UV 1_\d+$"
 
     @classmethod
+    def get_peaks_custom_info(
+        cls, peak: StrictXmlElement
+    ) -> dict[str, TQuantityValue | None]:
+        start_conduct_height = peak.get_sub_float_or_none("StartConductivityHeight")
+        max_conductivity_height = peak.get_sub_float_or_none("MaxConductivityHeight")
+        end_conductivity_height = peak.get_sub_float_or_none("EndConductivityHeight")
+        average_conductivity = peak.get_sub_float_or_none("AverageConductivity")
+
+        return {
+            "max peak retention": quantity_or_none(
+                TQuantityValueMilliliter,
+                peak.get_sub_float_or_none("MaxPeakRetention"),
+            ),
+            "percent of total area": quantity_or_none(
+                TQuantityValuePercent,
+                peak.get_sub_float_or_none("PercentOfTotalArea"),
+            ),
+            "start peak end point height": quantity_or_none(
+                TQuantityValueMilliAbsorbanceUnit,
+                peak.get_sub_float_or_none("StartPeakEndpointHeight"),
+            ),
+            "end peak end point height": quantity_or_none(
+                TQuantityValueMilliAbsorbanceUnit,
+                peak.get_sub_float_or_none("EndPeakEndpointHeight"),
+            ),
+            "sigma": quantity_or_none(
+                TQuantityValueUnitless,
+                peak.get_sub_float_or_none("Sigma"),
+            ),
+            "assymetry peak start": quantity_or_none(
+                TQuantityValueUnitless,
+                peak.get_sub_float_or_none("AssymetryPeakStart"),
+            ),
+            "assymetry peak end": quantity_or_none(
+                TQuantityValueUnitless,
+                peak.get_sub_float_or_none("AssymetryPeakEnd"),
+            ),
+            "start conductivity height": (
+                TQuantityValue(
+                    value=start_conduct_height * 10,
+                    unit="S/m",
+                )
+                if start_conduct_height
+                else None
+            ),
+            "max conductivity height": (
+                TQuantityValue(
+                    value=max_conductivity_height * 10,
+                    unit="S/m",
+                )
+                if max_conductivity_height
+                else None
+            ),
+            "end conductivity height": (
+                TQuantityValue(
+                    value=end_conductivity_height * 10,
+                    unit="S/m",
+                )
+                if end_conductivity_height
+                else None
+            ),
+            "average conductivity": (
+                TQuantityValue(
+                    value=average_conductivity * 10,
+                    unit="S/m",
+                )
+                if average_conductivity
+                else None
+            ),
+        }
+
+    @classmethod
     def get_peaks(cls, handler: UnicornZipHandler) -> list[Peak]:
         chrom_1 = handler.get_chrom_1()
         peaks = chrom_1.recursive_find_or_none(["PeakTables", "PeakTable", "Peaks"])
@@ -96,19 +175,7 @@ class AbsorbanceMeasurement1(AbsorbanceMeasurement):
                 width_at_half_height=peak.get_sub_float_or_none("WidthAtHalfHeight"),
                 width=peak.get_sub_float_or_none("Width"),
                 chromatographic_asymmetry=peak.get_sub_float_or_none("Asymmetry"),
-                custom_info={
-                    "max peak retention": peak.get_sub_float_or_none("MaxPeakRetention"),
-                    "percent of total area": peak.get_sub_float_or_none("PercentOfTotalArea"),
-                    "start peak end point height": peak.get_sub_float_or_none("StartPeakEndpointHeight"),
-                    "end peak end point height": peak.get_sub_float_or_none("EndPeakEndpointHeight"),
-                    "sigma": peak.get_sub_float_or_none("Sigma"),
-                    "assymetry peak start": peak.get_sub_float_or_none("AssymetryPeakStart"),
-                    "assymetry peak end": peak.get_sub_float_or_none("AssymetryPeakEnd"),
-                    "start conductivity height": peak.get_sub_float_or_none("StartConductivityHeight"),
-                    "max conductivity height": peak.get_sub_float_or_none("MaxConductivityHeight"),
-                    "end conductivity height": peak.get_sub_float_or_none("EndConductivityHeight"),
-                    "average conductivity": peak.get_sub_float_or_none("AverageConductivity"),
-                }
+                custom_info=cls.get_peaks_custom_info(peak),
             )
             for idx, peak in enumerate(peaks.findall("Peak") if peaks else [])
         ]
