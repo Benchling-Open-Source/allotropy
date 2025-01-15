@@ -52,6 +52,15 @@ def test_create_from_bytes(xml_element_bytes: bytes, xml_element: Element) -> No
     )
 
 
+def test_find_or_none(xml_element: Element, strict_xml_element: StrictXmlElement) -> None:
+    assert compare_strict_xml_elements(
+        strict_xml_element.find_or_none("Child1"),
+        StrictXmlElement(assert_not_none(xml_element.find("Child1"))),
+    )
+
+    assert strict_xml_element.find_or_none("missing") is None
+
+
 def test_find(xml_element: Element, strict_xml_element: StrictXmlElement) -> None:
     assert compare_strict_xml_elements(
         strict_xml_element.find("Child1"),
@@ -64,10 +73,24 @@ def test_find(xml_element: Element, strict_xml_element: StrictXmlElement) -> Non
         strict_xml_element.find("missing")
 
 
+def test_recursive_find_or_none(
+    xml_element: Element, strict_xml_element: StrictXmlElement
+) -> None:
+    assert compare_strict_xml_elements(
+        strict_xml_element.recursive_find_or_none(["Child2", "SubChild"]),
+        StrictXmlElement(
+            assert_not_none(
+                assert_not_none(xml_element.find("Child2")).find("SubChild")
+            )
+        ),
+    )
+
+    assert strict_xml_element.recursive_find_or_none(["Child2", "missing"]) is None
+
+
 def test_recursive_find(
     xml_element: Element, strict_xml_element: StrictXmlElement
 ) -> None:
-
     assert compare_strict_xml_elements(
         strict_xml_element.recursive_find(["Child2", "SubChild"]),
         StrictXmlElement(
@@ -107,9 +130,29 @@ def test_get_text(strict_xml_element: StrictXmlElement) -> None:
     assert strict_xml_element.find("Child1").get_text() == "abc"
 
 
+def test_get_float_or_none(strict_xml_element: StrictXmlElement) -> None:
+    strict_element = strict_xml_element.recursive_find(["Child2", "SubChild"])
+    assert strict_element.get_float_or_none() == 123.0
+
+    assert strict_xml_element.find("Child1").get_float_or_none() is None
+
+
 def test_get_float(strict_xml_element: StrictXmlElement) -> None:
     strict_element = strict_xml_element.recursive_find(["Child2", "SubChild"])
     assert strict_element.get_float("sub child value") == 123.0
 
     with pytest.raises(AllotropeConversionError, match="Expected non-null value for child1 value"):
         assert strict_xml_element.find("Child1").get_float("child1 value")
+
+
+def test_get_sub_float_or_none(strict_xml_element: StrictXmlElement) -> None:
+    strict_element = strict_xml_element.find("Child2")
+    assert strict_element.get_sub_float_or_none("SubChild") == 123.0
+
+    assert strict_element.get_sub_float_or_none("missing") is None
+
+
+def test_get_sub_float_or_none(strict_xml_element: StrictXmlElement) -> None:
+    assert strict_xml_element.get_sub_text_or_none("Child1") == "abc"
+
+    assert strict_xml_element.get_sub_text_or_none("missing") is None
