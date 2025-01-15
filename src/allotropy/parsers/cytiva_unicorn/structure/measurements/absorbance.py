@@ -179,7 +179,7 @@ class AbsorbanceMeasurement1(AbsorbanceMeasurement):
                 chromatographic_asymmetry=peak.get_sub_float_or_none("Asymmetry"),
                 custom_info=cls.get_peaks_custom_info(peak),
             )
-            for idx, peak in enumerate(peaks.findall("Peak") if peaks else [])
+            for idx, peak in enumerate(peaks.findall("Peak") if peaks else [], start=1)
         ]
 
 
