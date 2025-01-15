@@ -52,9 +52,14 @@ def test_create_from_bytes(xml_element_bytes: bytes, xml_element: Element) -> No
     )
 
 
-def test_find_or_none(xml_element: Element, strict_xml_element: StrictXmlElement) -> None:
+def test_find_or_none(
+    xml_element: Element, strict_xml_element: StrictXmlElement
+) -> None:
+    child1 = strict_xml_element.find_or_none("Child1")
+
+    assert child1 is not None
     assert compare_strict_xml_elements(
-        strict_xml_element.find_or_none("Child1"),
+        child1,
         StrictXmlElement(assert_not_none(xml_element.find("Child1"))),
     )
 
@@ -76,8 +81,11 @@ def test_find(xml_element: Element, strict_xml_element: StrictXmlElement) -> Non
 def test_recursive_find_or_none(
     xml_element: Element, strict_xml_element: StrictXmlElement
 ) -> None:
+    sub_child = strict_xml_element.recursive_find_or_none(["Child2", "SubChild"])
+
+    assert sub_child is not None
     assert compare_strict_xml_elements(
-        strict_xml_element.recursive_find_or_none(["Child2", "SubChild"]),
+        sub_child,
         StrictXmlElement(
             assert_not_none(
                 assert_not_none(xml_element.find("Child2")).find("SubChild")
@@ -141,7 +149,9 @@ def test_get_float(strict_xml_element: StrictXmlElement) -> None:
     strict_element = strict_xml_element.recursive_find(["Child2", "SubChild"])
     assert strict_element.get_float("sub child value") == 123.0
 
-    with pytest.raises(AllotropeConversionError, match="Expected non-null value for child1 value"):
+    with pytest.raises(
+        AllotropeConversionError, match="Expected non-null value for child1 value"
+    ):
         assert strict_xml_element.find("Child1").get_float("child1 value")
 
 
@@ -152,7 +162,7 @@ def test_get_sub_float_or_none(strict_xml_element: StrictXmlElement) -> None:
     assert strict_element.get_sub_float_or_none("missing") is None
 
 
-def test_get_sub_float_or_none(strict_xml_element: StrictXmlElement) -> None:
+def test_get_sub_text_or_none(strict_xml_element: StrictXmlElement) -> None:
     assert strict_xml_element.get_sub_text_or_none("Child1") == "abc"
 
     assert strict_xml_element.get_sub_text_or_none("missing") is None
