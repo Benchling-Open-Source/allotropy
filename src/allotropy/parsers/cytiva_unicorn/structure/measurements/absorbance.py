@@ -4,6 +4,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMilliAbsorbanceUnit,
     TQuantityValueMilliliter,
     TQuantityValuePercent,
+    TQuantityValueSeimensPerMeter,
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
@@ -122,34 +123,22 @@ class AbsorbanceMeasurement1(AbsorbanceMeasurement):
                 peak.get_sub_float_or_none("AssymetryPeakEnd"),
             ),
             "start conductivity height": (
-                TQuantityValue(
-                    value=start_conduct_height * 10,
-                    unit="S/m",
-                )
+                TQuantityValueSeimensPerMeter(value=start_conduct_height * 10)
                 if start_conduct_height
                 else None
             ),
             "max conductivity height": (
-                TQuantityValue(
-                    value=max_conductivity_height * 10,
-                    unit="S/m",
-                )
+                TQuantityValueSeimensPerMeter(value=max_conductivity_height * 10)
                 if max_conductivity_height
                 else None
             ),
             "end conductivity height": (
-                TQuantityValue(
-                    value=end_conductivity_height * 10,
-                    unit="S/m",
-                )
+                TQuantityValueSeimensPerMeter(value=end_conductivity_height * 10)
                 if end_conductivity_height
                 else None
             ),
             "average conductivity": (
-                TQuantityValue(
-                    value=average_conductivity * 10,
-                    unit="S/m",
-                )
+                TQuantityValueSeimensPerMeter(value=average_conductivity * 10)
                 if average_conductivity
                 else None
             ),
