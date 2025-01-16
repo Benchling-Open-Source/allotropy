@@ -165,7 +165,7 @@ class AbsorbanceMeasurement1(AbsorbanceMeasurement):
                 width_at_half_height=peak.get_sub_float_or_none("WidthAtHalfHeight"),
                 width_at_half_height_unit=PEAK_WIDTH_AT_HALF_HEIGHT,
                 width=peak.get_sub_float_or_none("Width"),
-                chromatographic_asymmetry=peak.get_sub_float_or_none("Asymmetry"),
+                chromatographic_asymmetry=peak.get_sub_float_or_none("Assymetry"),
                 custom_info=cls.get_peaks_custom_info(peak),
             )
             for idx, peak in enumerate(peaks.findall("Peak") if peaks else [], start=1)
