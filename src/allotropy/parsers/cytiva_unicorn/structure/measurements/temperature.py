@@ -33,6 +33,7 @@ class TemperatureMeasurement(UnicornMeasurement):
             device_control_docs=[
                 DeviceControlDoc(
                     device_type=DEVICE_TYPE,
+                    start_time=static_docs.start_time,
                     temperature_profile_data_cube=cls.get_data_cube_or_none(
                         handler,
                         cls.filter_curve_or_none(elements, r"^Cond temp$"),

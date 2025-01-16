@@ -28,6 +28,7 @@ class StaticDocs:
     sample_identifier_2: str | None
     sample_identifier_3: str | None
     batch_identifier: str | None
+    start_time: str | None
 
     @classmethod
     def create(
@@ -140,6 +141,7 @@ class StaticDocs:
             batch_identifier=(
                 batch_id.get_text_or_none() if batch_id is not None else None
             ),
+            start_time=curve.get_sub_text_or_none("MethodStartTime"),
         )
 
     @classmethod
