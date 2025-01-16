@@ -115,11 +115,11 @@ class AbsorbanceMeasurement1(AbsorbanceMeasurement):
                 TQuantityValueUnitless,
                 peak.get_sub_float_or_none("Sigma"),
             ),
-            "assymetry peak start": quantity_or_none(
+            "asymmetry peak start": quantity_or_none(
                 TQuantityValueUnitless,
                 peak.get_sub_float_or_none("AssymetryPeakStart"),
             ),
-            "assymetry peak end": quantity_or_none(
+            "asymmetry  peak end": quantity_or_none(
                 TQuantityValueUnitless,
                 peak.get_sub_float_or_none("AssymetryPeakEnd"),
             ),
