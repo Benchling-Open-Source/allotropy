@@ -107,5 +107,6 @@ def _set_nan_to_string(data: dict[str, Any]) -> dict[str, Any]:
         for key, value in data.items()
     }
 
+
 def _get_unread_data(data: SeriesData):
     return data.get_unread() | data.get_custom_keys({r"Starting Quantity \(SQ\)"})
