@@ -99,7 +99,7 @@ def create_measurement_group(
                     if cycle_number == NEGATIVE_ZERO
                     else None
                 ),
-                custom_info=additional_data,
+                custom_info=_set_nan_to_string(additional_data),
             )
             for data in well_data
             if data.get(str, "Sample", validate=SeriesData.NOT_NAN)
