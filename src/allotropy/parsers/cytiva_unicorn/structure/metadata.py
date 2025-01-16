@@ -19,7 +19,7 @@ def get_audit_trail_entry(element: StrictXmlElement) -> StrictXmlElement | None:
     if audit_trail_entries := element.recursive_find_or_none(subelement_names):
         for element in audit_trail_entries.findall("AuditTrailEntry"):
             if group_name := element.find_or_none("GroupName"):
-                if group_name.get_text() == "EvaluationLoggingStarted":
+                if group_name.get_text_or_none() == "EvaluationLoggingStarted":
                     return element
     return None
 
@@ -28,8 +28,9 @@ def get_audit_trail_entry_user(handler: UnicornZipHandler) -> str:
     evaluation_log = handler.get_evaluation_log()
     if audit_trail_entry := get_audit_trail_entry(evaluation_log):
         if log_entry := audit_trail_entry.find("LogEntry"):
-            if match := search(r"User: (.+)\. ", log_entry.get_text()):
-                return match.group(1)
+            if log_entry_str := log_entry.get_text_or_none():
+                if match := search(r"User: (.+)\. ", log_entry_str):
+                    return match.group(1)
     return "Default"
 
 
@@ -49,8 +50,10 @@ def create_metadata(
     return Metadata(
         asset_management_identifier=instrument_config.get_attr("Description"),
         product_manufacturer="Cytiva Life Sciences",
-        device_identifier=system_name.get_text() if system_name else None,
-        firmware_version=firmware_version.get_text() if firmware_version else None,
+        device_identifier=system_name.get_text_or_none() if system_name else None,
+        firmware_version=(
+            firmware_version.get_text_or_none() if firmware_version else None
+        ),
         analyst=get_audit_trail_entry_user(handler),
         file_name=Path(file_path).name,
         unc_path=file_path,

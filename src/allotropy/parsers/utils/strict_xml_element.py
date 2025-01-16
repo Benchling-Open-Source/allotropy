@@ -51,11 +51,17 @@ class StrictXmlElement:
             )
         )
 
-    def get_text(self) -> str:
-        return str(self.element.text)
+    def get_text_or_none(self) -> str | None:
+        return self.element.text
+
+    def get_text(self, name: str) -> str:
+        return assert_not_none(
+            self.get_text_or_none(),
+            msg=f"Unable to find valid string from xml tag '{name}'",
+        )
 
     def get_float_or_none(self) -> float | None:
-        return try_float_or_none(self.get_text())
+        return try_float_or_none(self.get_text_or_none())
 
     def get_float(self, name: str) -> float:
         return assert_not_none(self.get_float_or_none(), name)
@@ -67,5 +73,5 @@ class StrictXmlElement:
 
     def get_sub_text_or_none(self, name: str) -> str | None:
         if element := self.find_or_none(name):
-            return element.get_text()
+            return element.get_text_or_none()
         return None

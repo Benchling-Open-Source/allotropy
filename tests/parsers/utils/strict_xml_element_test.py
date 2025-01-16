@@ -17,6 +17,7 @@ def xml_element_bytes() -> bytes:
         <Child2>
             <SubChild attribute="abc">123</SubChild>
         </Child2>
+        <Child3></Child3>
         <List>
             <Element>1</Element>
             <Element>2</Element>
@@ -134,8 +135,19 @@ def test_get_attr(strict_xml_element: StrictXmlElement) -> None:
         strict_xml_element.get_attr("missing")
 
 
+def test_get_text_or_none(strict_xml_element: StrictXmlElement) -> None:
+    assert strict_xml_element.find("Child1").get_text_or_none() == "abc"
+    assert strict_xml_element.find("Child3").get_text_or_none() is None
+
+
 def test_get_text(strict_xml_element: StrictXmlElement) -> None:
-    assert strict_xml_element.find("Child1").get_text() == "abc"
+    assert strict_xml_element.find("Child1").get_text("Child1") == "abc"
+
+    with pytest.raises(
+        AllotropeConversionError,
+        match="Unable to find valid string from xml tag 'Child3'",
+    ):
+        assert strict_xml_element.find("Child3").get_text("Child3")
 
 
 def test_get_float_or_none(strict_xml_element: StrictXmlElement) -> None:

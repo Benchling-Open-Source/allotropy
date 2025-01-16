@@ -32,8 +32,10 @@ class UnicornMeasurement(Measurement):
         cls, curve_elements: list[StrictXmlElement], pattern: str
     ) -> StrictXmlElement | None:
         for element in curve_elements:
-            if search(pattern, element.find("Name").get_text()):
-                return element
+            name_element = element.find("Name")
+            if name := name_element.get_text_or_none():
+                if search(pattern, name):
+                    return element
         return None
 
     @classmethod
@@ -42,7 +44,8 @@ class UnicornMeasurement(Measurement):
     ) -> UnicornZipHandler | None:
         names = ["CurvePoints", "CurvePoint", "BinaryCurvePointsFileName"]
         if data_name := curve_element.recursive_find_or_none(names):
-            return handler.get_zip_from_pattern(data_name.get_text())
+            if name := data_name.get_text_or_none():
+                return handler.get_zip_from_pattern(name)
         return None
 
     @classmethod
@@ -57,12 +60,14 @@ class UnicornMeasurement(Measurement):
             return None
 
         if data_cube_handler := cls.get_data_cube_handler_or_none(handler, curve):
-            return create_data_cube(
-                data_cube_handler,
-                curve.find("Name").get_text(),
-                data_cube_component,
-                transformation,
-            )
+            name_element = curve.find("Name")
+            if name := name_element.get_text_or_none():
+                return create_data_cube(
+                    data_cube_handler,
+                    name,
+                    data_cube_component,
+                    transformation,
+                )
         return None
 
     @classmethod
