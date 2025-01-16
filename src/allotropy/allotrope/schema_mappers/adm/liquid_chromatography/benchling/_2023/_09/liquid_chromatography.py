@@ -80,6 +80,7 @@ class Peak:
     area_unit: str | None = None
     relative_area: float | None = None
     width: float | None = None
+    width_unit: str | None = None
     relative_width: float | None = None
     height: float | None = None
     relative_height: float | None = None
@@ -266,7 +267,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 peak_start=quantity_or_none_from_unit(peak.start_unit, peak.start),  # type: ignore[arg-type]
                 peak_end=quantity_or_none_from_unit(peak.end_unit, peak.end),  # type: ignore[arg-type]
                 peak_area=quantity_or_none_from_unit(peak.area_unit, peak.area),
-                peak_width=quantity_or_none(TQuantityValueSecondTime, peak.width),
+                peak_width=quantity_or_none_from_unit(peak.width_unit, peak.width),
                 peak_height=quantity_or_none(
                     TQuantityValueMilliAbsorbanceUnit, peak.height
                 ),
