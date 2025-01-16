@@ -45,7 +45,8 @@ def create_measurement_group(
 ) -> MeasurementGroup:
     measurements = []
     for data in well_data:
-        additional_data = _set_nan_to_string(data.get_unread())
+        additional_data = data.get_unread()
+        additional_data |= data.get_custom_keys({r"Starting Quantity \(SQ\)"})
         if data.get(str, "Sample", validate=SeriesData.NOT_NAN) or data.get(
             float, "Cq", validate=SeriesData.NOT_NAN
         ):
@@ -74,7 +75,7 @@ def create_measurement_group(
                         float, "Cycle Number", NEGATIVE_ZERO
                     ),
                 ),
-                custom_info=additional_data,
+                custom_info=_set_nan_to_string(additional_data),
             )
             measurements.append(measurement)
 
@@ -90,6 +91,7 @@ def create_measurement_groups(df: pd.DataFrame) -> list[MeasurementGroup]:
     def map_to_dict(data: SeriesData) -> None:
         well_to_rows[data[str, "Well"]].append(deepcopy(data))
         data.get_unread()
+        data.get_custom_keys({r"Starting Quantity \(SQ\)"})
 
     map_rows(df, map_to_dict)
 
