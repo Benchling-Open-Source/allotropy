@@ -1,6 +1,7 @@
 from collections import defaultdict
 from copy import deepcopy
 from pathlib import Path
+from typing import Any
 
 import pandas as pd
 
@@ -19,6 +20,7 @@ from allotropy.parsers.constants import (
 )
 from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.values import try_float_or_nan
 
 
 def create_metadata(file_path: str) -> Metadata:
@@ -97,6 +99,7 @@ def create_measurement_group(
                     if cycle_number == NEGATIVE_ZERO
                     else None
                 ),
+                custom_info=additional_data,
             )
             for data in well_data
             if data.get(str, "Sample", validate=SeriesData.NOT_NAN)
@@ -110,6 +113,7 @@ def create_measurement_groups(df: pd.DataFrame) -> list[MeasurementGroup]:
 
     def map_to_dict(data: SeriesData) -> None:
         well_to_rows[data[str, "Well"]].append(deepcopy(data))
+        data.get_unread()
 
     map_rows(df, map_to_dict)
 
@@ -118,3 +122,10 @@ def create_measurement_groups(df: pd.DataFrame) -> list[MeasurementGroup]:
         for well_id in well_to_rows
     ]
     return [group for group in groups if group.measurements]
+
+
+def _set_nan_to_string(data: dict[str, Any]) -> dict[str, Any]:
+    return {
+        key: try_float_or_nan(value) if isinstance(value, float) else value
+        for key, value in data.items()
+    }

@@ -249,13 +249,24 @@ class SeriesData:
         return self.get(str, key)
 
     def _get_matching_keys(self, key_or_keys: str | set[str]) -> set[str]:
-        return {
-            matched
-            for regex_key in (
-                key_or_keys if isinstance(key_or_keys, set) else {key_or_keys}
-            )
-            for matched in [k for k in self.series.index if re.fullmatch(regex_key, k)]
-        }
+        # Step 1: Determine the set of regex keys
+        if isinstance(key_or_keys, set):
+            regex_keys = key_or_keys
+        else:
+            regex_keys = {key_or_keys}
+
+        # Step 2: Initialize the result set
+        result = set()
+
+        # Step 3: Iterate through regex keys
+        for regex_key in regex_keys:
+            # Step 4: Find matches in the series index
+            for k in self.series.index:
+                if re.fullmatch(re.escape(regex_key), k):
+                    result.add(k)
+
+        # Step 5: Return the result
+        return result
 
     def get_custom_keys(
         self, key_or_keys: str | set[str]
