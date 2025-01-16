@@ -84,7 +84,7 @@ class Measurement:
     # Optional settings
     reporter_dye_setting: str | None = None
     passive_reference_dye_setting: str | None = None
-    flourescence_intensity_threshold_setting: float | None = None
+    fluorescence_intensity_threshold_setting: float | None = None
 
     # error documents
     errors: list[Error] | None = None
@@ -234,11 +234,11 @@ class Mapper(SchemaMapper[Data, Model]):
                             TQuantityValueNumber, measurement.confidence_interval__95__
                         ),
                         data_processing_document=DataProcessingDocument(
-                            flourescence_intensity_threshold_setting=TQuantityValueUnitless(
-                                value=measurement.flourescence_intensity_threshold_setting
+                            fluorescence_intensity_threshold_setting=TQuantityValueUnitless(
+                                value=measurement.fluorescence_intensity_threshold_setting
                             )
                         )
-                        if measurement.flourescence_intensity_threshold_setting
+                        if measurement.fluorescence_intensity_threshold_setting
                         else None,
                     )
                 ]
