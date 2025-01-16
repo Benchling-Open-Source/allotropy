@@ -96,6 +96,7 @@ class Peak:
 @dataclass(frozen=True)
 class DeviceControlDoc:
     device_type: str
+    start_time: str | None = None
     solvent_conc_data_cube: DataCube | None = None
     pre_column_pressure_data_cube: DataCube | None = None
     sample_pressure_data_cube: DataCube | None = None
@@ -330,6 +331,11 @@ class Mapper(SchemaMapper[Data, Model]):
     ) -> DeviceControlDocumentItem:
         return DeviceControlDocumentItem(
             device_type=device_control_doc.device_type,
+            start_time_setting=(
+                self.get_date_time(device_control_doc.start_time)
+                if device_control_doc.start_time is not None
+                else None
+            ),
             solvent_concentration_data_cube=get_data_cube(
                 device_control_doc.solvent_conc_data_cube,
                 SolventConcentrationDataCube,
