@@ -124,22 +124,22 @@ class AbsorbanceMeasurement1(AbsorbanceMeasurement):
                 peak.get_sub_float_or_none("AssymetryPeakEnd"),
             ),
             "start conductivity height": (
-                TQuantityValueSeimensPerMeter(value=start_conduct_height * 10)
+                TQuantityValueSeimensPerMeter(value=start_conduct_height / 10)
                 if start_conduct_height
                 else None
             ),
             "max conductivity height": (
-                TQuantityValueSeimensPerMeter(value=max_conductivity_height * 10)
+                TQuantityValueSeimensPerMeter(value=max_conductivity_height / 10)
                 if max_conductivity_height
                 else None
             ),
             "end conductivity height": (
-                TQuantityValueSeimensPerMeter(value=end_conductivity_height * 10)
+                TQuantityValueSeimensPerMeter(value=end_conductivity_height / 10)
                 if end_conductivity_height
                 else None
             ),
             "average conductivity": (
-                TQuantityValueSeimensPerMeter(value=average_conductivity * 10)
+                TQuantityValueSeimensPerMeter(value=average_conductivity / 10)
                 if average_conductivity
                 else None
             ),
