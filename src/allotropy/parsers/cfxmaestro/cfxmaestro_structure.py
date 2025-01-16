@@ -1,6 +1,7 @@
 from collections import defaultdict
 from copy import deepcopy
 from pathlib import Path
+from typing import Any
 
 import pandas as pd
 
@@ -19,6 +20,7 @@ from allotropy.parsers.constants import (
 )
 from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.values import try_float_or_nan
 
 
 def create_metadata(file_path: str) -> Metadata:
@@ -41,11 +43,13 @@ def create_measurement_group(
     well_data: list[SeriesData],
     plate_well_count: int,
 ) -> MeasurementGroup:
-    return MeasurementGroup(
-        plate_well_count=plate_well_count,
-        measurements=[
-            Measurement(
-                # Measurement metadata
+    measurements = []
+    for data in well_data:
+        additional_data = _set_nan_to_string(data.get_unread())
+        if data.get(str, "Sample", validate=SeriesData.NOT_NAN) or data.get(
+            float, "Cq", validate=SeriesData.NOT_NAN
+        ):
+            measurement = Measurement(
                 identifier=random_uuid_str(),
                 sample_identifier=data.get(
                     str, "Sample", NOT_APPLICABLE, SeriesData.NOT_NAN
@@ -57,12 +61,9 @@ def create_measurement_group(
                     str, "Biological Set Name", NOT_APPLICABLE, SeriesData.NOT_NAN
                 ),
                 timestamp=DEFAULT_EPOCH_TIMESTAMP,
-                # Optional measurement metadata
                 sample_role_type=data.get(str, "Content"),
                 well_location_identifier=data[str, "Well"],
-                # Optional settings
                 reporter_dye_setting=data[str, "Fluor"],
-                # Processed data
                 processed_data=ProcessedData(
                     # TODO: add add error document (or omit?) if Cq is NaN.
                     cycle_threshold_result=data.get(
@@ -73,11 +74,13 @@ def create_measurement_group(
                         float, "Cycle Number", NEGATIVE_ZERO
                     ),
                 ),
+                custom_info=additional_data,
             )
-            for data in well_data
-            if data.get(str, "Sample", validate=SeriesData.NOT_NAN)
-            or data.get(float, "Cq", validate=SeriesData.NOT_NAN)
-        ],
+            measurements.append(measurement)
+
+    return MeasurementGroup(
+        plate_well_count=plate_well_count,
+        measurements=measurements,
     )
 
 
@@ -86,6 +89,7 @@ def create_measurement_groups(df: pd.DataFrame) -> list[MeasurementGroup]:
 
     def map_to_dict(data: SeriesData) -> None:
         well_to_rows[data[str, "Well"]].append(deepcopy(data))
+        data.get_unread()
 
     map_rows(df, map_to_dict)
 
@@ -94,3 +98,10 @@ def create_measurement_groups(df: pd.DataFrame) -> list[MeasurementGroup]:
         for well_id in well_to_rows
     ]
     return [group for group in groups if group.measurements]
+
+
+def _set_nan_to_string(data: dict[str, Any]) -> dict[str, Any]:
+    return {
+        key: try_float_or_nan(value) if isinstance(value, float) else value
+        for key, value in data.items()
+    }
