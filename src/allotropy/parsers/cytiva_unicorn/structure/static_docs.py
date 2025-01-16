@@ -115,7 +115,7 @@ class StaticDocs:
                 else None
             ),
             column_inner_diameter=(
-                diameter.get_float("column inner diameter")
+                diameter.get_float("column inner diameter") * 10
                 if diameter is not None
                 else None
             ),

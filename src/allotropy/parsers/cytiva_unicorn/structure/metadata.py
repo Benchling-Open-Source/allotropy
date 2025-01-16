@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from pathlib import Path
-from re import search
 
 from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     Metadata,
@@ -14,24 +13,15 @@ from allotropy.parsers.utils.strict_xml_element import (
 )
 
 
-def get_audit_trail_entry(element: StrictXmlElement) -> StrictXmlElement | None:
-    subelement_names = ["AuditTrail", "AuditTrailEntries"]
-    if audit_trail_entries := element.recursive_find_or_none(subelement_names):
-        for element in audit_trail_entries.findall("AuditTrailEntry"):
-            if group_name := element.find_or_none("GroupName"):
-                if group_name.get_text_or_none() == "EvaluationLoggingStarted":
-                    return element
-    return None
-
-
-def get_audit_trail_entry_user(handler: UnicornZipHandler) -> str:
+def get_audit_trail_entry_user(handler: UnicornZipHandler) -> str | None:
     evaluation_log = handler.get_evaluation_log()
-    if audit_trail_entry := get_audit_trail_entry(evaluation_log):
-        if log_entry := audit_trail_entry.find("LogEntry"):
-            if log_entry_str := log_entry.get_text_or_none():
-                if match := search(r"User: (.+)\. ", log_entry_str):
-                    return match.group(1)
-    return "Default"
+    subelement_names = ["AuditTrail", "AuditTrailEntries"]
+    if audit_trail_entries := evaluation_log.recursive_find_or_none(subelement_names):
+        for element in audit_trail_entries.findall("AuditTrailEntry"):
+            if operator := element.find_or_none("Operator"):
+                if (name := operator.get_text_or_none()) != "System":
+                    return name
+    return None
 
 
 def create_metadata(
