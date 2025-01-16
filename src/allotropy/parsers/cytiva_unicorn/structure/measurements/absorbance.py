@@ -21,8 +21,8 @@ from allotropy.parsers.cytiva_unicorn.constants import (
     PEAK_AREA_UNIT,
     PEAK_END_UNIT,
     PEAK_START_UNIT,
-    PEAK_WIDTH_UNIT,
     PEAK_WIDTH_AT_HALF_HEIGHT_UNIT,
+    PEAK_WIDTH_UNIT,
 )
 from allotropy.parsers.cytiva_unicorn.reader.unicorn_zip_handler import (
     UnicornZipHandler,
