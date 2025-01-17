@@ -82,6 +82,7 @@ class Metadata:
     unc_path: str
     device_type: str
     software_name: str | None = None
+    software_version: str | None = None
     equipment_serial_number: str | None = None
     product_manufacturer: str | None = None
     devices: list[Device] | None = None
@@ -126,6 +127,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     software_name=data.metadata.software_name,
                     ASM_converter_name=self.converter_name,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
+                    software_version=data.metadata.software_version,
                 ),
             ),
             field_asm_manifest=self.MANIFEST,
