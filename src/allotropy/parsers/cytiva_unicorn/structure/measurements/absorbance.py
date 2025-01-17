@@ -74,6 +74,7 @@ class AbsorbanceMeasurement(UnicornMeasurement):
             device_control_docs=[
                 DeviceControlDoc(
                     device_type=DEVICE_TYPE,
+                    start_time=static_docs.start_time,
                 )
             ],
             peaks=cls.get_peaks(handler),
