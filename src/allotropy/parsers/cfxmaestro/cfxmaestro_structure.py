@@ -45,11 +45,26 @@ def create_measurement_group(
 ) -> MeasurementGroup:
     measurements = []
     for data in well_data:
-        sample_doc_custom_data = data.get_custom_keys(set(constants.SAMPLE_DOCUMENT_CUSTOM_KEYS))
-        device_doc_custom_data = data.get_custom_keys(set(constants.DEVICE_CONTROL_DOCUMENT_CUSTOM_KEYS))
-        processed_data_doc_custom_data = data.get_custom_keys(set(constants.PROCESSED_DATA_DOCUMENT_CUSTOM_KEYS))
+        sample_doc_custom_data = data.get_custom_keys(
+            set(constants.SAMPLE_DOCUMENT_CUSTOM_KEYS)
+        )
+        device_doc_custom_data = data.get_custom_keys(
+            set(constants.DEVICE_CONTROL_DOCUMENT_CUSTOM_KEYS)
+        )
+        processed_data_doc_custom_data = data.get_custom_keys(
+            set(constants.PROCESSED_DATA_DOCUMENT_CUSTOM_KEYS)
+        )
         # these fields are not need or are already in the asm
-        data.mark_read({"Target", "Biological Set Name", "Content", "Fluor", "Cq Mean", "Unnamed: 0"})
+        data.mark_read(
+            {
+                "Target",
+                "Biological Set Name",
+                "Content",
+                "Fluor",
+                "Cq Mean",
+                "Unnamed: 0",
+            }
+        )
         if data.get(str, "Sample", validate=SeriesData.NOT_NAN) or data.get(
             float, "Cq", validate=SeriesData.NOT_NAN
         ):
