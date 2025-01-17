@@ -45,7 +45,10 @@ def create_measurement_group(
 ) -> MeasurementGroup:
     measurements = []
     for data in well_data:
-        additional_data = _get_unread_data(data)
+        sample_doc_custom_data = data.get_custom_keys(set(constants.SAMPLE_DOCUMENT_CUSTOM_KEYS))
+        device_doc_custom_data = data.get_custom_keys(set(constants.DEVICE_CONTROL_DOCUMENT_CUSTOM_KEYS))
+        processed_data_doc_custom_data = data.get_custom_keys(set(constants.PROCESSED_DATA_DOCUMENT_CUSTOM_KEYS))
+        data.mark_read({"Target", "Biological Set Name", "Content", "Fluor", "Cq Mean", "Unnamed: 0"})
         if data.get(str, "Sample", validate=SeriesData.NOT_NAN) or data.get(
             float, "Cq", validate=SeriesData.NOT_NAN
         ):
@@ -73,8 +76,10 @@ def create_measurement_group(
                     cycle_threshold_value_setting=data.get(
                         float, "Cycle Number", NEGATIVE_ZERO
                     ),
+                    custom_info=_set_nan_to_string(processed_data_doc_custom_data),
                 ),
-                custom_info=_set_nan_to_string(additional_data),
+                sample_custom_info=_set_nan_to_string(sample_doc_custom_data),
+                device_control_custom_info=_set_nan_to_string(device_doc_custom_data),
             )
             measurements.append(measurement)
 
