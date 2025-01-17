@@ -20,7 +20,7 @@
                             "chromatography column document": {
                                 "chromatography column serial number": "100-1000-100",
                                 "column inner diameter": {
-                                    "value": 100.0,
+                                    "value": 1000.0,
                                     "unit": "mm"
                                 },
                                 "chromatography column chemistry type": "AnionExchange",
@@ -89,7 +89,7 @@
                             "chromatography column document": {
                                 "chromatography column serial number": "100-1000-100",
                                 "column inner diameter": {
-                                    "value": 100.0,
+                                    "value": 1000.0,
                                     "unit": "mm"
                                 },
                                 "chromatography column chemistry type": "AnionExchange",
@@ -158,7 +158,7 @@
                             "chromatography column document": {
                                 "chromatography column serial number": "100-1000-100",
                                 "column inner diameter": {
-                                    "value": 100.0,
+                                    "value": 1000.0,
                                     "unit": "mm"
                                 },
                                 "chromatography column chemistry type": "AnionExchange",
@@ -227,7 +227,7 @@
                             "chromatography column document": {
                                 "chromatography column serial number": "100-1000-100",
                                 "column inner diameter": {
-                                    "value": 100.0,
+                                    "value": 1000.0,
                                     "unit": "mm"
                                 },
                                 "chromatography column chemistry type": "AnionExchange",
@@ -337,7 +337,7 @@
                             "chromatography column document": {
                                 "chromatography column serial number": "100-1000-100",
                                 "column inner diameter": {
-                                    "value": 100.0,
+                                    "value": 1000.0,
                                     "unit": "mm"
                                 },
                                 "chromatography column chemistry type": "AnionExchange",
@@ -441,7 +441,7 @@
                             "chromatography column document": {
                                 "chromatography column serial number": "100-1000-100",
                                 "column inner diameter": {
-                                    "value": 100.0,
+                                    "value": 1000.0,
                                     "unit": "mm"
                                 },
                                 "chromatography column chemistry type": "AnionExchange",
@@ -615,7 +615,7 @@
                             "chromatography column document": {
                                 "chromatography column serial number": "100-1000-100",
                                 "column inner diameter": {
-                                    "value": 100.0,
+                                    "value": 1000.0,
                                     "unit": "mm"
                                 },
                                 "chromatography column chemistry type": "AnionExchange",
@@ -871,7 +871,7 @@
                             "chromatography column document": {
                                 "chromatography column serial number": "100-1000-100",
                                 "column inner diameter": {
-                                    "value": 100.0,
+                                    "value": 1000.0,
                                     "unit": "mm"
                                 },
                                 "chromatography column chemistry type": "AnionExchange",
@@ -940,7 +940,7 @@
                             "chromatography column document": {
                                 "chromatography column serial number": "100-1000-100",
                                 "column inner diameter": {
-                                    "value": 100.0,
+                                    "value": 1000.0,
                                     "unit": "mm"
                                 },
                                 "chromatography column chemistry type": "AnionExchange",
@@ -961,12 +961,12 @@
                         }
                     ]
                 },
-                "analyst": "System"
+                "analyst": "Default"
             }
         ],
         "data system document": {
             "ASM converter name": "allotropy_cytiva_unicorn",
-            "ASM converter version": "0.1.66",
+            "ASM converter version": "0.1.69",
             "file name": "unicorn_1.zip",
             "UNC path": "tests/parsers/cytiva_unicorn/testdata/unicorn_1.zip"
         },

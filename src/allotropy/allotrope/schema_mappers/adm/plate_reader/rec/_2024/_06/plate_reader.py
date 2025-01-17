@@ -19,6 +19,8 @@ from allotropy.allotrope.models.adm.plate_reader.rec._2024._06.plate_reader impo
     Model,
     PlateReaderAggregateDocument,
     PlateReaderDocumentItem,
+    ProcessedDataAggregateDocument,
+    ProcessedDataDocumentItem,
     SampleDocument,
     TQuantityValueModel,
 )
@@ -27,6 +29,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueDegreeCelsius,
     TQuantityValueMilliAbsorbanceUnit,
     TQuantityValueMillimeter,
+    TQuantityValueNanogramPerMicroliter,
     TQuantityValueNanometer,
     TQuantityValueNumber,
     TQuantityValuePicogramPerMilliliter,
@@ -106,6 +109,12 @@ class ErrorDocument:
 
 
 @dataclass(frozen=True)
+class ProcessedDataDocument:
+    identifier: str | None = None
+    concentration_factor: float | None = None
+
+
+@dataclass(frozen=True)
 class Measurement:
     # Measurement metadata
     type_: MeasurementType
@@ -155,6 +164,9 @@ class Measurement:
 
     # error documents
     error_document: list[ErrorDocument] | None = None
+
+    # processing data
+    processed_data_document: ProcessedDataDocument | None = None
 
 
 @dataclass(frozen=True)
@@ -317,6 +329,21 @@ class Mapper(SchemaMapper[Data, Model]):
             error_aggregate_document=self._get_error_aggregate_document(
                 measurement.error_document
             ),
+            processed_data_aggregate_document=ProcessedDataAggregateDocument(
+                processed_data_document=[
+                    ProcessedDataDocumentItem(
+                        processed_data_identifier=measurement.processed_data_document.identifier,
+                        data_processing_document={
+                            "concentration factor": quantity_or_none(
+                                TQuantityValueNanogramPerMicroliter,
+                                measurement.processed_data_document.concentration_factor,
+                            )
+                        },
+                    )
+                ]
+            )
+            if measurement.processed_data_document
+            else None,
         )
         return add_custom_information_document(
             measurement_doc, measurement.measurement_custom_info
