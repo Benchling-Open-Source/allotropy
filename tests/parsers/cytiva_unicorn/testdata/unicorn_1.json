@@ -9,7 +9,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC"
+                                        "device type": "HPLC",
+                                        "start time setting": "2024-01-02T11:00:00+00:00"
                                     }
                                 ]
                             },
@@ -428,7 +429,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC"
+                                        "device type": "HPLC",
+                                        "start time setting": "2024-01-02T11:00:00+00:00"
                                     }
                                 ]
                             },
@@ -497,7 +499,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC"
+                                        "device type": "HPLC",
+                                        "start time setting": "2024-01-02T11:00:00+00:00"
                                     }
                                 ]
                             },
@@ -566,7 +569,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC"
+                                        "device type": "HPLC",
+                                        "start time setting": "2024-01-02T11:00:00+00:00"
                                     }
                                 ]
                             },
@@ -676,7 +680,8 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC"
+                                        "device type": "HPLC",
+                                        "start time setting": "2024-01-02T11:00:00+00:00"
                                     }
                                 ]
                             },
@@ -746,6 +751,7 @@
                                 "device control document": [
                                     {
                                         "device type": "HPLC",
+                                        "start time setting": "2024-01-02T11:00:00+00:00",
                                         "solvent concentration data cube": {
                                             "label": "Conc B",
                                             "cube-structure": {
@@ -815,6 +821,7 @@
                                 "device control document": [
                                     {
                                         "device type": "HPLC",
+                                        "start time setting": "2024-01-02T11:00:00+00:00",
                                         "pre column pressure data cube": {
                                             "label": "PreC pressure",
                                             "cube-structure": {
@@ -1030,6 +1037,7 @@
                                 "device control document": [
                                     {
                                         "device type": "HPLC",
+                                        "start time setting": "2024-01-02T11:00:00+00:00",
                                         "system flow rate data cube": {
                                             "label": "System flow (CV/h)",
                                             "cube-structure": {
@@ -1103,6 +1111,7 @@
                                     },
                                     {
                                         "device type": "HPLC",
+                                        "start time setting": "2024-01-02T11:00:00+00:00",
                                         "system flow rate data cube": {
                                             "label": "System flow",
                                             "cube-structure": {
@@ -1176,6 +1185,7 @@
                                     },
                                     {
                                         "device type": "HPLC",
+                                        "start time setting": "2024-01-02T11:00:00+00:00",
                                         "sample flow rate data cube": {
                                             "label": "Sample linear flow",
                                             "cube-structure": {
@@ -1245,6 +1255,7 @@
                                 "device control document": [
                                     {
                                         "device type": "HPLC",
+                                        "start time setting": "2024-01-02T11:00:00+00:00",
                                         "temperature profile data cube": {
                                             "label": "Cond temp",
                                             "cube-structure": {
