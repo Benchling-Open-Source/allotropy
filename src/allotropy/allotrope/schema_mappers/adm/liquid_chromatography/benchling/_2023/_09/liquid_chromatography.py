@@ -1,8 +1,6 @@
 from dataclasses import dataclass
 from typing import Any
-from typing import Any
 
-from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     ChromatogramDataCube,
@@ -169,8 +167,6 @@ class Measurement:
     derived_column_pressure_data_cube: DataCube | None = None
 
     peaks: list[Peak] | None = None
-
-    sample_custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)

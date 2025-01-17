@@ -396,6 +396,19 @@ def create_measurements(
                         "signal"
                     ]
                     else None,
+                    detector_bandwidth_setting=try_float_or_none(
+                        intermediate_structured_data["Result Data"][i]["Metadata"][
+                            "signal"
+                        ]
+                        .split(",")[2]
+                        .split()[0]
+                    )
+                    if module["Name"] == "DAD"
+                    and "DAD"
+                    in intermediate_structured_data["Result Data"][i]["Metadata"][
+                        "signal"
+                    ]
+                    else None,
                     detector_wavelength_setting=try_float_or_none(
                         intermediate_structured_data["Result Data"][i]["Metadata"][
                             "signal"
