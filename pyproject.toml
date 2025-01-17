@@ -44,6 +44,7 @@ classifiers = [
 dependencies = [
   "cattrs == 23.1.2",
   "chardet >= 5.2.0",
+  "defusedxml >= 0.7.1",
   # NOTE: jsonschema 4.18.0 introduces a serious performance regression, seemingly due to use of new
   # referencing library.
   # Filed issue: https://github.com/python-jsonschema/referencing/issues/178
@@ -51,13 +52,14 @@ dependencies = [
   # while unblocking package upgrades.
   "jsonschema >= 4.3.3, < 4.18.0",
   "numpy >= 1.25.0",
+  "olefile >= 0.47",
   "openpyxl >= 3.1.0",
   "pandas >= 2.2.0",
   "python-calamine >= 0.2.3",
-  "xlrd >= 2.0.0",
   "rfc3339-validator >= 0.1.4",
-  "defusedxml >= 0.7.1",
   "types-defusedxml >= 0.7.0.20240218",
+  "xlrd >= 2.0.0",
+  "xmltodict >= 0.13.0",
 ]
 
 [project.urls]
@@ -115,11 +117,15 @@ dependencies = [
   # black pinned for compatability with datamodel-code-generator
   "black == 22.3.0",
   "datamodel-code-generator == 0.25.2",
+  "fastparquet >= 2024.5.0",
   # Without jsonschema-spec and pydantic, pydantic spews a bunch of errors when parsing schemas
   "jsonschema-specifications == 2023.7.1",
+  "olefile >= 0.47",
+  "pyarrow >= 17.0.0",
   "pydantic == 1.10.17",
   "ruff == 0.0.289",
   "semantic-version",
+  "xmltodict >= 0.13.0",
 ]
 
 [tool.hatch.envs.default.scripts]
@@ -151,7 +157,7 @@ platforms = ["windows"]
 generate-schemas = "python scripts\\generate_schemas.py {args:}"
 download-schema = "python scripts\\download_schema.py {args:}"
 create-parser = "python scripts\\create_parser.py {args:}"
-update-instrument-table = "scripts\\update_supported_instruments_table.py {args:}"
+update-instrument-table = "python scripts\\update_supported_instruments_table.py {args:}"
 update-version = "python scripts\\update_version.py {args:}"
 
 [tool.hatch.envs.viz.scripts]
@@ -164,6 +170,7 @@ extra-dependencies = [
   "more-itertools >= 10.1.0",
   "mypy == 1.8.0",
   "pandas-stubs == 2.1.4.231227",
+  "types-olefile",
   # For pytest types
   "pytest >= 7.4.0",
   # For check graph generation
@@ -200,6 +207,7 @@ extra-dependencies = [
   "more-itertools >= 10.1.0",
   "pytest >= 7.4.0",
   "pytest-xdist >= 3.6.1",
+  "types-olefile"
 ]
 
 [tool.hatch.envs.test.scripts]

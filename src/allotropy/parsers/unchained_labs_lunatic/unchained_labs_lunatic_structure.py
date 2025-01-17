@@ -12,6 +12,7 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_rea
     MeasurementGroup,
     MeasurementType,
     Metadata,
+    ProcessedDataDocument,
 )
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.constants import NEGATIVE_ZERO, NOT_APPLICABLE
@@ -34,7 +35,9 @@ from allotropy.parsers.utils.pandas import (
     SeriesData,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import assert_not_none
+from allotropy.parsers.utils.values import (
+    assert_not_none,
+)
 
 
 def _create_measurement(
@@ -79,6 +82,8 @@ def _create_measurement(
                 error_feature=DETECTION_TYPE.lower(),
             )
         )
+
+    concentration_factor = well_plate_data.get(float, "Concentration factor (ng/ul)")
     return Measurement(
         type_=MeasurementType.ULTRAVIOLET_ABSORBANCE,
         device_type=DEVICE_TYPE,
@@ -103,6 +108,11 @@ def _create_measurement(
             "pump": well_plate_data.get(str, "Pump"),
         },
         error_document=error_documents,
+        processed_data_document=ProcessedDataDocument(
+            identifier=random_uuid_str(), concentration_factor=concentration_factor
+        )
+        if concentration_factor is not None
+        else None,
     )
 
 

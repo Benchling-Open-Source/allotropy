@@ -295,6 +295,11 @@ class SecondTime(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class SeimensPerMeter(HasUnit):
+    unit: str = "S/m"
+
+
+@dataclass(frozen=True, kw_only=True)
 class SquareCentimetersPerGram(HasUnit):
     unit: str = "cm^2/g"
 

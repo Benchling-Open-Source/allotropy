@@ -40,7 +40,13 @@ Changes:
 * Added CV/h (Column Volume per Hour) to REC/2023/09 units schema
   * Reasoning: Added for handling of sample flow rate data cube and system flow rate data cube support
   * Proposal: CV/h (Column Volume per Hour) to REC/2023/09 units schema.
-  
+
 * Added "processed data aggregate document" to uv-absorbance-cube-detection, uv-absorbance-spectrum-detection, conductivity-cube-detection measurementDocumentItems definition
   * Reasoning: "processed data aggregate document" was excluded from REC/2023/09 schema in uv-absorbance-cube-detection, uv-absorbance-spectrum-detection, conductivity-cube-detection measurementDocumentItems definition, should be included as parent document to "processed data document"
   * Proposal: Add "processed data aggregate document" to uv-absorbance-cube-detection, uv-absorbance-spectrum-detection, conductivity-cube-detection measurementDocumentItems
+* Added "Peak Index" and "Start Time Setting"
+ * Reasoning: Peak Index will label the peaks sequentially as they are read from the output document in future versions
+ * Proposal: Added "Peak Index" and "Start Time Setting" to better organize peaks and establish when a method was started.
+* Removed "Is Required" from "Autosampler Injection Volume Setting" and from "Injection Time"
+ * Reasoning: These two fields relate to a peice of hardware, Autosampler, that is not always used for LC runs
+ * Proposal: Make "Autosampler Injection Volume Setting" and from "Injection Time" optional fields
