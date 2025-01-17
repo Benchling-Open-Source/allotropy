@@ -5,6 +5,37 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.71] - 2025-01-14
+
+### Added
+
+- Internal: add missing package dependencies
+
+## [0.1.70] - 2025-01-14
+
+### Added
+
+- Beckman coulter biomek - add support for .log files (#840)
+- Unchained Labs Lunatic - Added concentration factor as data processing field in asm (#844)
+- Cytiva Unicorn - Update inner column diameter and analyst fields (#842)
+- Cytiva Unicorn - handle missing sample id and injection volume (#841)
+- Beckman Coulter Adapters - Standardize display name (#834)
+- MSD Workbench - add .txt file support (#835)
+- Revert - "feat:  AppBio QuantStudio RT-PCR - Use qpcr rec/2024/09 schema mapper" (#839)
+- Cytiva Unicorn - improve handling of optional values  (#829)
+- Cytiva Biacore T200 Control - initial implementation (#765)
+-  AppBio QuantStudio RT-PCR - Use qpcr rec/2024/09 schema mapper (#833)
+
+## [0.1.69] - 2024-12-16
+
+### Added
+
+- Molecular Devices SoftMax Pro - add support for spectrum data (#819)
+- ChemoMetec NucleoView - Incorporate error document when viable cell density is missing (#822)
+- Cytiva Unicorn - allow optional values (#823)
+- Plate Reader - add custom data cube to BENCHLING/2023/09 schema (#815)
+- CTL ImmunoSpot - support v7.0.38 software version export format (#809)
+
 ## [0.1.68] - 2024-12-12
 
 ### Added

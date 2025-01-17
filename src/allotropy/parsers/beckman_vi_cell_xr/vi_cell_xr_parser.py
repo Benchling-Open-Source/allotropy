@@ -19,7 +19,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 
 class ViCellXRParser(VendorParser[Data, Model]):
-    DISPLAY_NAME = "Beckman Vi-Cell XR"
+    DISPLAY_NAME = "Beckman Coulter Vi-Cell XR"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "txt,xls,xlsx"
     SCHEMA_MAPPER = Mapper
