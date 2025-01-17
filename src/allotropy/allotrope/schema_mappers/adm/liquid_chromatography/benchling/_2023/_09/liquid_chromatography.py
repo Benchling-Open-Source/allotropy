@@ -37,6 +37,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMillimeter,
     TQuantityValuePercent,
     TQuantityValueSecondTime,
+    TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TDatacube
 from allotropy.allotrope.schema_mappers.data_cube import (
@@ -70,6 +71,7 @@ class Metadata:
 @dataclass(frozen=True)
 class Peak:
     identifier: str
+    index: str | None = None
     start: float | None = None
     start_unit: str | None = None
     end: float | None = None
@@ -78,11 +80,17 @@ class Peak:
     area_unit: str | None = None
     relative_area: float | None = None
     width: float | None = None
+    width_unit: str | None = None
     relative_width: float | None = None
     height: float | None = None
     relative_height: float | None = None
     retention_time: float | None = None
     written_name: str | None = None
+    chromatographic_resolution: float | None = None
+    chromatographic_asymmetry: float | None = None
+    width_at_half_height: float | None = None
+    width_at_half_height_unit: str | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -252,25 +260,38 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_peak_document(self, peak: Peak) -> PeakDocument:
-        return PeakDocument(
-            identifier=peak.identifier,
-            peak_start=quantity_or_none_from_unit(peak.start_unit, peak.start),  # type: ignore[arg-type]
-            peak_end=quantity_or_none_from_unit(peak.end_unit, peak.end),  # type: ignore[arg-type]
-            peak_area=quantity_or_none_from_unit(peak.area_unit, peak.area),
-            peak_width=quantity_or_none(TQuantityValueSecondTime, peak.width),
-            peak_height=quantity_or_none(
-                TQuantityValueMilliAbsorbanceUnit, peak.height
+        return add_custom_information_document(
+            PeakDocument(
+                identifier=peak.identifier,
+                peak_index=peak.index,
+                peak_start=quantity_or_none_from_unit(peak.start_unit, peak.start),  # type: ignore[arg-type]
+                peak_end=quantity_or_none_from_unit(peak.end_unit, peak.end),  # type: ignore[arg-type]
+                peak_area=quantity_or_none_from_unit(peak.area_unit, peak.area),
+                peak_width=quantity_or_none_from_unit(peak.width_unit, peak.width),  # type: ignore[arg-type]
+                peak_height=quantity_or_none(
+                    TQuantityValueMilliAbsorbanceUnit, peak.height
+                ),
+                relative_peak_area=quantity_or_none(
+                    TQuantityValuePercent, peak.relative_area
+                ),
+                relative_peak_height=quantity_or_none(
+                    TQuantityValuePercent, peak.relative_height
+                ),
+                retention_time=quantity_or_none(
+                    TQuantityValueSecondTime, peak.retention_time
+                ),
+                written_name=peak.written_name,
+                chromatographic_peak_resolution=quantity_or_none(
+                    TQuantityValueUnitless, peak.chromatographic_resolution
+                ),
+                chromatographic_peak_asymmetry_factor=quantity_or_none(
+                    TQuantityValueUnitless, peak.chromatographic_asymmetry
+                ),
+                peak_width_at_half_height=quantity_or_none_from_unit(  # type: ignore[arg-type]
+                    peak.width_at_half_height_unit, peak.width_at_half_height
+                ),
             ),
-            relative_peak_area=quantity_or_none(
-                TQuantityValuePercent, peak.relative_area
-            ),
-            relative_peak_height=quantity_or_none(
-                TQuantityValuePercent, peak.relative_height
-            ),
-            retention_time=quantity_or_none(
-                TQuantityValueSecondTime, peak.retention_time
-            ),
-            written_name=peak.written_name,
+            peak.custom_info,
         )
 
     def _get_processed_data_aggregate_document(
