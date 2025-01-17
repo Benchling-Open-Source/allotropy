@@ -1,6 +1,6 @@
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 
-DISPLAY_NAME = "BMG SMART Control"
+DISPLAY_NAME = "BMG Labtech SMART Control"
 PRODUCT_MANUFACTURER = "BMG LABTECH"
 SOFTWARE_NAME = "SMART Control"
 DEVICE_TYPE = "fluorescence detector"
