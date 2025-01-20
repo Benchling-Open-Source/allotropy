@@ -28,6 +28,7 @@ class StaticDocs:
     sample_identifier_2: str | None
     sample_identifier_3: str | None
     batch_identifier: str | None
+    start_time: str | None
 
     @classmethod
     def create(
@@ -66,21 +67,27 @@ class StaticDocs:
         sample_identifier = NOT_APPLICABLE
         try:
             sample_result = cls.__filter_result_criteria(results, keyword="Sample_ID")
-            sample_identifier = sample_result.find("Keyword2").get_text()
+            sample_identifier = sample_result.find("Keyword2").get_text(
+                "Sample_ID keyword2"
+            )
         except AllotropeConversionError:
             pass
 
         sample_identifier_2 = None
         try:
             sample_result = cls.__filter_result_criteria(results, keyword="Sample_ID_2")
-            sample_identifier = sample_result.find("Keyword2").get_text()
+            sample_identifier = sample_result.find("Keyword2").get_text(
+                "Sample_ID_2 keyword2"
+            )
         except AllotropeConversionError:
             pass
 
         sample_identifier_3 = None
         try:
             sample_result = cls.__filter_result_criteria(results, keyword="Sample_ID_3")
-            sample_identifier = sample_result.find("Keyword2").get_text()
+            sample_identifier = sample_result.find("Keyword2").get_text(
+                "Sample_ID_3 keyword2"
+            )
         except AllotropeConversionError:
             pass
 
@@ -104,7 +111,9 @@ class StaticDocs:
 
         return StaticDocs(
             chromatography_serial_num=(
-                article_number.get_text() if article_number is not None else None
+                article_number.get_text_or_none()
+                if article_number is not None
+                else None
             ),
             column_inner_diameter=(
                 diameter.get_float("column inner diameter") * 10
@@ -112,7 +121,9 @@ class StaticDocs:
                 else None
             ),
             chromatography_chemistry_type=(
-                technique_name.get_text() if technique_name is not None else None
+                technique_name.get_text_or_none()
+                if technique_name is not None
+                else None
             ),
             chromatography_particle_size=(
                 avg_particle_diameter.get_float("chromatography particle size")
@@ -120,14 +131,17 @@ class StaticDocs:
                 else None
             ),
             injection_identifier=random_uuid_str(),
-            injection_time=curve.find("MethodStartTime").get_text(),
+            injection_time=curve.find("MethodStartTime").get_text("MethodStartTime"),
             autosampler_injection_volume_setting=autosampler_injection_volume_setting,
             sample_volume_2=sample_volume_2,
             sample_volume_3=sample_volume_3,
             sample_identifier=sample_identifier,
             sample_identifier_2=sample_identifier_2,
             sample_identifier_3=sample_identifier_3,
-            batch_identifier=(batch_id.get_text() if batch_id is not None else None),
+            batch_identifier=(
+                batch_id.get_text_or_none() if batch_id is not None else None
+            ),
+            start_time=curve.get_sub_text_or_none("MethodStartTime"),
         )
 
     @classmethod
@@ -137,7 +151,7 @@ class StaticDocs:
         for result_criteria in results.find("ResultSearchCriterias").findall(
             "ResultSearchCriteria"
         ):
-            if result_criteria.find("Keyword1").get_text() == keyword:
+            if result_criteria.find("Keyword1").get_text_or_none() == keyword:
                 return result_criteria
         msg = f"Unable to find result criteria with keyword 1 '{keyword}'"
         raise AllotropeConversionError(msg)

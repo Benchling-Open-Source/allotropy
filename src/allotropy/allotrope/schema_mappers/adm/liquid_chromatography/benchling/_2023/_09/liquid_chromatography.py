@@ -40,6 +40,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValuePercent,
     TQuantityValueSecondTime,
     TQuantityValueUnitless,
+    TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TDatacube
 from allotropy.allotrope.schema_mappers.data_cube import (
@@ -86,6 +87,7 @@ class Metadata:
 @dataclass(frozen=True)
 class Peak:
     identifier: str
+    index: str | None = None
     start: float | None = None
     start_unit: str | None = None
     end: float | None = None
@@ -94,6 +96,7 @@ class Peak:
     area_unit: str | None = None
     relative_area: float | None = None
     width: float | None = None
+    width_unit: str | None = None
     relative_width: float | None = None
     height: float | None = None
     height_unit: str | None = None
@@ -107,11 +110,17 @@ class Peak:
     asymmetry_factor_measured_at_10___height: float | None = None
     number_of_theoretical_plates__chromatography_: float | None = None
     written_name: str | None = None
+    chromatographic_resolution: float | None = None
+    chromatographic_asymmetry: float | None = None
+    width_at_half_height: float | None = None
+    width_at_half_height_unit: str | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
 class DeviceControlDoc:
     device_type: str
+    start_time: str | None = None
     detection_type: str | None = None
     device_identifier: str | None = None
     product_manufacturer: str | None = None
@@ -331,8 +340,10 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_peak_document(self, peak: Peak) -> PeakDocument:
-        return PeakDocument(
+        return add_custom_information_document(
+            PeakDocument(
             identifier=peak.identifier,
+            peak_index=peak.index,
             peak_start=quantity_or_none_from_unit(peak.start_unit, peak.start),  # type: ignore[arg-type]
             peak_end=quantity_or_none_from_unit(peak.end_unit, peak.end),  # type: ignore[arg-type]
             peak_area=quantity_or_none_from_unit(peak.area_unit, peak.area),
@@ -350,6 +361,9 @@ class Mapper(SchemaMapper[Data, Model]):
             chromatographic_peak_resolution=quantity_or_none(
                 TQuantityValueUnitless, peak.chromatographic_peak_resolution
             ),
+            chromatographic_peak_asymmetry_factor=quantity_or_none(
+                    TQuantityValueUnitless, peak.chromatographic_asymmetry
+                ),
             peak_width_at_half_height=quantity_or_none(
                 TQuantityValueSecondTime, peak.peak_width_at_half_height
             ),
@@ -370,6 +384,8 @@ class Mapper(SchemaMapper[Data, Model]):
                 peak.number_of_theoretical_plates__chromatography_,
             ),
             written_name=peak.written_name,
+        ),
+        peak.custom_info,
         )
 
     def _get_processed_data_aggregate_document(
@@ -410,6 +426,11 @@ class Mapper(SchemaMapper[Data, Model]):
         return add_custom_information_document(
             DeviceControlDocumentItem(
                 device_type=device_control_doc.device_type,
+            start_time_setting=(
+                self.get_date_time(device_control_doc.start_time)
+                if device_control_doc.start_time is not None
+                else None
+            ),
                 device_identifier=device_control_doc.device_identifier,
                 detection_type=device_control_doc.detection_type,
                 product_manufacturer=device_control_doc.product_manufacturer,
