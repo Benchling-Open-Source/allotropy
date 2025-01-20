@@ -101,8 +101,6 @@ class Peak:
     height_unit: str | None = None
     relative_height: float | None = None
     retention_time: float | None = None
-    chromatographic_peak_resolution: float | None = None
-    peak_width_at_half_height: float | None = None
     peak_width_at_5___of_height: float | None = None
     peak_width_at_10___of_height: float | None = None
     peak_width_at_baseline: float | None = None
@@ -346,7 +344,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 peak_start=quantity_or_none_from_unit(peak.start_unit, peak.start),  # type: ignore[arg-type]
                 peak_end=quantity_or_none_from_unit(peak.end_unit, peak.end),  # type: ignore[arg-type]
                 peak_area=quantity_or_none_from_unit(peak.area_unit, peak.area),
-                peak_width=quantity_or_none(TQuantityValueSecondTime, peak.width),
+                peak_width=quantity_or_none_from_unit(peak.width_unit, peak.width),  # type: ignore[arg-type]
                 peak_height=quantity_or_none_from_unit(peak.height_unit, peak.height),
                 relative_peak_area=quantity_or_none(
                     TQuantityValuePercent, peak.relative_area
@@ -358,13 +356,13 @@ class Mapper(SchemaMapper[Data, Model]):
                     TQuantityValueSecondTime, peak.retention_time
                 ),
                 chromatographic_peak_resolution=quantity_or_none(
-                    TQuantityValueUnitless, peak.chromatographic_peak_resolution
+                    TQuantityValueUnitless, peak.chromatographic_resolution
                 ),
                 chromatographic_peak_asymmetry_factor=quantity_or_none(
                     TQuantityValueUnitless, peak.chromatographic_asymmetry
                 ),
-                peak_width_at_half_height=quantity_or_none(
-                    TQuantityValueSecondTime, peak.peak_width_at_half_height
+                peak_width_at_half_height=quantity_or_none_from_unit(  # type: ignore[arg-type]
+                    peak.width_at_half_height_unit, peak.width_at_half_height
                 ),
                 asymmetry_factor_measured_at_10___height=quantity_or_none(
                     TQuantityValueUnitless,

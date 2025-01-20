@@ -338,6 +338,7 @@ def decode_data(input_path: str) -> dict[str, Any]:
                                 peak_detail["Peak"] = [peak_detail["Peak"]]
                                 injection_details.update(peak_detail)
 
+    total_injection_chromatogram_details.sort(key=lambda x: x["file_name"])
     intermediate_json["Result Data"] = total_injection_chromatogram_details
     intermediate_json["Sample Count"] = {
         "count": len(total_injection_chromatogram_details)

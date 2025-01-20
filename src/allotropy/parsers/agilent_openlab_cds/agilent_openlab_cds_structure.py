@@ -130,16 +130,16 @@ def create_peak(peak_structure: list[dict[str, Any]]) -> list[Peak]:
             if peak.get("RetentionTime")
             and peak["RetentionTime"].get("@val") is not None
             else None,
-            chromatographic_peak_resolution=try_float_or_none(
+            chromatographic_resolution=try_float_or_none(
                 peak.get("Resolution_USP", {}).get("@val")
             ),
-            peak_width_at_half_height=float(peak.get("Width_50Perc", {}).get("@val"))
-            * 60
+            width_at_half_height=float(peak.get("Width_50Perc", {}).get("@val")) * 60
             if peak.get("Width_50Perc") and peak["Width_50Perc"].get("@val") is not None
             else None,
             asymmetry_factor_measured_at_10___height=try_float_or_none(
                 peak.get("Width_50Perc", {}).get("@val")
             ),
+            width_at_half_height_unit="s",
             peak_width_at_5___of_height=float(peak.get("Width_5Perc", {}).get("@val"))
             * 60
             if peak.get("Width_5Perc") and peak["Width_5Perc"].get("@val") is not None
