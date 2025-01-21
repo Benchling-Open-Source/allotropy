@@ -29,7 +29,7 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
     std_1_rfu = data.get(float, "Std 1 RFU", validate=SeriesData.NOT_NAN)
     std_2_rfu = data.get(float, "Std 2 RFU", validate=SeriesData.NOT_NAN)
     std_3_rfu = data.get(float, "Std 3 RFU", validate=SeriesData.NOT_NAN)
-    group = MeasurementGroup(
+    return MeasurementGroup(
         measurement_time=data[str, "Test Date"],
         experiment_type=data.get(str, "Assay Name"),
         measurements=[
@@ -81,13 +81,10 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
                     if std_3_rfu is not None
                     else None,
                 },
+                custom_info=data.get_unread(),
             )
         ],
     )
-    unread_data = data.get_unread()
-    for measurement in group.measurements:
-        measurement.custom_info = unread_data
-    return group
 
 
 def create_metadata(file_path: str) -> Metadata:
