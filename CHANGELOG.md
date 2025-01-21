@@ -5,6 +5,14 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.72] - 2025-01-21
+
+### Added
+
+- BMG Labtech SMART Control - initial implementation (#831)
+- Cytiva Unicorn - add start time to device control doc (#851)
+-  Cytiva Unicorn - add peaks (#849)
+
 ## [0.1.71] - 2025-01-14
 
 ### Added
