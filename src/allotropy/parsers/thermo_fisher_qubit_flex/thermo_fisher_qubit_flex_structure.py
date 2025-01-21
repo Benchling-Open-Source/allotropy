@@ -25,7 +25,7 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 
 
 def create_measurement_group(data: SeriesData) -> MeasurementGroup:
-    group = MeasurementGroup(
+    return MeasurementGroup(
         measurement_time=data[str, "Test Date"],
         experiment_type=data.get(str, "Assay Name"),
         measurements=[
@@ -92,11 +92,10 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
                         "unit": "ng/µL",
                     },
                 },
+                custom_info=data.get_unread(skip={"Software Version"}),
             )
         ],
     )
-    group.measurements[0].custom_info = data.get_unread(skip={"Software Version"})
-    return group
 
 
 def create_data(df: pd.DataFrame, file_path: str) -> Data:

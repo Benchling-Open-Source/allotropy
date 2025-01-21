@@ -91,7 +91,7 @@ class CalculatedDataItem:
     data_sources: list[DataSource]
 
 
-@dataclass
+@dataclass(frozen=True)
 class Measurement:
     type_: MeasurementType
     # Measurement metadata
