@@ -25,7 +25,7 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 
 
 def create_measurement_group(data: SeriesData) -> MeasurementGroup:
-    return MeasurementGroup(
+    group = MeasurementGroup(
         measurement_time=data[str, "Test Date"],
         experiment_type=data.get(str, "Assay Name"),
         measurements=[
@@ -50,10 +50,6 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
                 original_sample_concentration_unit=data.get(
                     str, "Original sample conc. units"
                 ),
-                custom_info={
-                    "reagent lot number": data.get(int, "Reagent Lot#"),
-                    "calibrated tubes": data.get(int, "Calibrated Tubes"),
-                },
                 sample_custom_info={
                     "last read standards": data.get(str, "Test Date"),
                     "selected samples": data.get(int, "Selected Samples"),
@@ -99,10 +95,15 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
             )
         ],
     )
+    group.measurements[0].custom_info = data.get_unread(skip={"Software Version"})
+    return group
 
 
 def create_data(df: pd.DataFrame, file_path: str) -> Data:
     header = df_to_series_data(df.head(1))
+    software_version = header.get(str, "Software Version")
+    header.get_custom_keys("Sample Volume \\(uL\\)")
+    header.get_unread()
     return Data(
         metadata=Metadata(
             file_name=Path(file_path).name,
@@ -110,7 +111,7 @@ def create_data(df: pd.DataFrame, file_path: str) -> Data:
             device_identifier=NOT_APPLICABLE,
             model_number=constants.MODEL_NUMBER,
             software_name=constants.SOFTWARE_NAME,
-            software_version=header.get(str, "Software Version"),
+            software_version=software_version,
             product_manufacturer=constants.PRODUCT_MANUFACTURER,
             brand_name=constants.BRAND_NAME,
             device_type=constants.DEVICE_TYPE,

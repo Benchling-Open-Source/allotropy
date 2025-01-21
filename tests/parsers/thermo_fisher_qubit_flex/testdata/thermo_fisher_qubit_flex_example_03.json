@@ -64,6 +64,9 @@
                             "fluorescence": {
                                 "value": 134.0,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "Last Read Standards": "2023-06-10 10:28:14"
                             }
                         }
                     ],
@@ -133,6 +136,9 @@
                             "fluorescence": {
                                 "value": 98.5,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "Last Read Standards": "2023-06-10 10:28:14"
                             }
                         }
                     ],
@@ -202,6 +208,9 @@
                             "fluorescence": {
                                 "value": 105.0,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "Last Read Standards": "2023-06-10 10:28:14"
                             }
                         }
                     ],
@@ -271,6 +280,9 @@
                             "fluorescence": {
                                 "value": 38.5,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "Last Read Standards": "2023-06-10 10:28:14"
                             }
                         }
                     ],
@@ -340,6 +352,9 @@
                             "fluorescence": {
                                 "value": 1950.0,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "Last Read Standards": "2023-06-10 10:28:14"
                             }
                         }
                     ],
@@ -409,6 +424,9 @@
                             "fluorescence": {
                                 "value": 128.0,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "Last Read Standards": "2023-06-10 10:28:14"
                             }
                         }
                     ],
@@ -478,6 +496,9 @@
                             "fluorescence": {
                                 "value": 123.0,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "Last Read Standards": "2023-06-10 10:28:14"
                             }
                         }
                     ],
@@ -547,6 +568,9 @@
                             "fluorescence": {
                                 "value": 54.2,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "Last Read Standards": "2023-06-10 10:28:14"
                             }
                         }
                     ],
@@ -616,6 +640,9 @@
                             "fluorescence": {
                                 "value": 1880.0,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "Last Read Standards": "2023-06-10 10:28:14"
                             }
                         }
                     ],
@@ -685,6 +712,9 @@
                             "fluorescence": {
                                 "value": 1360.0,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "Last Read Standards": "2023-06-10 10:28:14"
                             }
                         }
                     ],
@@ -754,6 +784,9 @@
                             "fluorescence": {
                                 "value": 625.0,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "Last Read Standards": "2023-06-10 10:28:14"
                             }
                         }
                     ],
@@ -773,7 +806,7 @@
             "UNC path": "tests/parsers/thermo_fisher_qubit_flex/testdata/thermo_fisher_qubit_flex_example_03.xlsx",
             "software name": "Qubit Flex software",
             "ASM converter name": "allotropy_thermo_fisher_scientific_qubit_flex",
-            "ASM converter version": "0.1.62"
+            "ASM converter version": "0.1.71"
         }
     }
 }
