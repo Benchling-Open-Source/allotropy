@@ -46,12 +46,14 @@ def decode_data_cubes(datacube_path: str) -> dict[str, Any]:
             "Time": [time * 60 for time in raw_data.xlabels],
             "Intensity": [float(sublist[0]) for sublist in raw_data.data],
             "Metadata": raw_data.metadata,
+            "Chromatogram filename": os.path.basename(datacube_path),
         }
     else:
         datacubes = {
             "Time": [time * 60 for time in raw_data.xlabels],
             "Pressure": [float(sublist[0]) / 10 for sublist in raw_data.data],
             "Metadata": raw_data.metadata,
+            "Chromatogram filename": os.path.basename(datacube_path),
         }
     return datacubes
 
@@ -338,7 +340,7 @@ def decode_data(input_path: str) -> dict[str, Any]:
                                 peak_detail["Peak"] = [peak_detail["Peak"]]
                                 injection_details.update(peak_detail)
 
-    total_injection_chromatogram_details.sort(key=lambda x: x["Sample Data"]["SampleName"])
+    total_injection_chromatogram_details.sort(key=lambda x: x["Chromatogram filename"])
     intermediate_json["Result Data"] = total_injection_chromatogram_details
     intermediate_json["Sample Count"] = {
         "count": len(total_injection_chromatogram_details)
