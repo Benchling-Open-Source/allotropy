@@ -21,7 +21,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 
 class PharmSpecParser(VendorParser[Data, Model]):
-    DISPLAY_NAME = "Beckman PharmSpec"
+    DISPLAY_NAME = "Beckman Coulter PharmSpec"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = BeckmanPharmspecReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper

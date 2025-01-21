@@ -19,7 +19,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 
 class ViCellBluParser(VendorParser[Data, Model]):
-    DISPLAY_NAME = "Beckman Vi-Cell BLU"
+    DISPLAY_NAME = "Beckman Coulter Vi-Cell BLU"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = ViCellBluReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper

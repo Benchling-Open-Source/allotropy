@@ -166,11 +166,7 @@
                                           "type": "object",
                                           "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002529",
                                           "$asm.pattern": "aggregate datum",
-                                          "required": [
-                                            "autosampler injection volume setting (chromatography)",
-                                            "injection identifier",
-                                            "injection time"
-                                          ],
+
                                           "properties": {
                                             "autosampler injection volume setting (chromatography)": {
                                               "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001267",
@@ -361,7 +357,14 @@
                                                                       "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/(unitless)"
                                                                     }
                                                                   ]
+                                                                },
+                                                                "peak index": {
+                                                                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001168",
+                                                                  "$asm.pattern": "value datum",
+                                                                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                                                  "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
                                                                 }
+
                                                               },
                                                               "anyOf": [
                                                                 {
@@ -630,7 +633,14 @@
                                                                           "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
                                                                         },
                                                                         {
-                                                                          "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/s"
+                                                                          "oneOf": [
+                                                                            {
+                                                                              "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/s"
+                                                                            },
+                                                                            {
+                                                                              "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/mL"
+                                                                            }
+                                                                          ]
                                                                         }
                                                                       ]
                                                                     }
@@ -710,7 +720,14 @@
                                                                           "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
                                                                         },
                                                                         {
-                                                                          "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/s"
+                                                                          "oneOf": [
+                                                                            {
+                                                                              "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/s"
+                                                                            },
+                                                                            {
+                                                                              "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/mL"
+                                                                            }
+                                                                          ]
                                                                         }
                                                                       ]
                                                                     }
@@ -1316,8 +1333,14 @@
                                       "$asm.pattern": "value datum",
                                       "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
                                       "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
+                                    },
+                                    "start time setting": {
+                                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002562",
+                                      "$asm.pattern": "value datum",
+                                      "$asm.type": "http://www.w3.org/2001/XMLSchema#dateTimeStamp",
+                                      "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tDateTimeStampValue"
                                     }
-                                  },
+                                    },
                                   "required": [
                                     "device type"
                                   ]
