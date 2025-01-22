@@ -1,6 +1,5 @@
 from typing import ClassVar
 
-from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_calculated_documents import (
     iter_standard_curve_calc_docs,
 )
@@ -11,6 +10,9 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_d
     SampleView,
     TargetRoleView,
     TargetView,
+)
+from allotropy.parsers.appbio_quantstudio_designandanalysis.constants import (
+    ExperimentType,
 )
 from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.creator import (
     Creator,
@@ -39,7 +41,7 @@ class StandardCurveCreator(Creator):
         return Data(
             header,
             wells,
-            experiment_type=ExperimentType.standard_curve_qPCR_experiment,
+            experiment_type=ExperimentType.standard_curve_qpcr_experiment,
             calculated_documents=list(
                 iter_standard_curve_calc_docs(
                     view_st_data=SampleView(sub_view=TargetView()).apply(well_items),
