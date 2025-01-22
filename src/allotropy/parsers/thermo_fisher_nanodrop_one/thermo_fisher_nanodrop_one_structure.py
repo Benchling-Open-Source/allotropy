@@ -215,7 +215,10 @@ class RowElements:
             calculated_data += create_calculated_data(
                 row, clean_data.metadata, measurement_group
             )
-
+            unread_data = row.get_unread()
+            for measurement_group in measurement_groups:
+                for measurement in measurement_group.measurements:
+                    measurement.custom_info = unread_data
         return RowElements(tuple(measurement_groups), calculated_data)
 
 
