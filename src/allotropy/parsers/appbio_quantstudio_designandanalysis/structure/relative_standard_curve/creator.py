@@ -48,6 +48,7 @@ class RelativeStandardCurveCreator(Creator):
             experiment_type=ExperimentType.relative_standard_curve_qpcr_experiment,
             calculated_documents=list(
                 iter_relative_standard_curve_calc_docs(
+                    well_items=well_items,
                     view_st_data=SampleView(sub_view=TargetView()).apply(well_items),
                     view_tr_data=TargetRoleView().apply(well_items),
                     r_sample=r_sample,
