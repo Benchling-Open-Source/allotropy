@@ -45,6 +45,9 @@ def create_measurement_group(
 ) -> MeasurementGroup:
     measurements = []
     for data in well_data:
+        if not (data.get(str, "Sample", validate=SeriesData.NOT_NAN) or data.get(float, "Cq", validate=SeriesData.NOT_NAN)):
+            _get_unread_data(data)
+            continue
         sample_doc_custom_data = data.get_custom_keys(
             set(constants.SAMPLE_DOCUMENT_CUSTOM_KEYS)
         )
@@ -54,13 +57,9 @@ def create_measurement_group(
         processed_data_doc_custom_data = data.get_custom_keys(
             set(constants.PROCESSED_DATA_DOCUMENT_CUSTOM_KEYS)
         )
-        # these fields are not need or are already in the asm
+        # these fields are not need in the asm
         data.mark_read(
             {
-                "Target",
-                "Biological Set Name",
-                "Content",
-                "Fluor",
                 "Cq Mean",
                 "Unnamed: 0",
             }
@@ -96,6 +95,7 @@ def create_measurement_group(
                 ),
                 sample_custom_info=_set_nan_to_string(sample_doc_custom_data),
                 device_control_custom_info=_set_nan_to_string(device_doc_custom_data),
+                custom_info=data.get_unread(),
             )
             measurements.append(measurement)
 
@@ -110,7 +110,7 @@ def create_measurement_groups(df: pd.DataFrame) -> list[MeasurementGroup]:
 
     def map_to_dict(data: SeriesData) -> None:
         well_to_rows[data[str, "Well"]].append(deepcopy(data))
-        # read data from original series data
+        # Mark data from original SeriesData as read to silence the unread keys warning (the copy will actually be read later)
         _get_unread_data(data)
 
     map_rows(df, map_to_dict)
