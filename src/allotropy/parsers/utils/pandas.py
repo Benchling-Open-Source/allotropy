@@ -254,7 +254,11 @@ class SeriesData:
             for regex_key in (
                 key_or_keys if isinstance(key_or_keys, set) else {key_or_keys}
             )
-            for matched in [k for k in self.series.index if re.fullmatch(regex_key, k)]
+            for matched in [
+                k
+                for k in self.series.index
+                if k == regex_key or re.fullmatch(regex_key, k)
+            ]
         }
 
     def get_custom_keys(
