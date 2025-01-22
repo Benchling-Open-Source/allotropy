@@ -67,10 +67,8 @@ def create_measurement_group(
                 "Unnamed: 0",
             }
         )
-        if data.get(str, "Sample", validate=SeriesData.NOT_NAN) or data.get(
-            float, "Cq", validate=SeriesData.NOT_NAN
-        ):
-            measurement = Measurement(
+        measurements.append(
+            Measurement(
                 identifier=random_uuid_str(),
                 sample_identifier=data.get(
                     str, "Sample", NOT_APPLICABLE, SeriesData.NOT_NAN
@@ -100,7 +98,7 @@ def create_measurement_group(
                 device_control_custom_info=_set_nan_to_string(device_doc_custom_data),
                 custom_info=data.get_unread(),
             )
-            measurements.append(measurement)
+        )
 
     return MeasurementGroup(
         plate_well_count=plate_well_count,

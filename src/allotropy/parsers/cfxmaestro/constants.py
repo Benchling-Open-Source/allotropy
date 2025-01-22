@@ -8,7 +8,7 @@ SOFTWARE_NAME = "CFX Maestro"
 CONTAINER_TYPE = ContainerType.well_plate
 
 SAMPLE_DOCUMENT_CUSTOM_KEYS = {
-    "Starting Quantity \\(SQ\\)",
+    "Starting Quantity (SQ)",
     "Log Starting Quantity",
     "SQ Std. Dev",
     "SQ Mean",
