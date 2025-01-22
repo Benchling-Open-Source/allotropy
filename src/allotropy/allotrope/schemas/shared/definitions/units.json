@@ -683,6 +683,18 @@
       "unit"
     ]
   },
+  "SeimensPerMeter": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "S/m",
+        "$asm.unit-iri": "http://qudt.org/vocab/unit#SeimensPerMeter"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
   "SquareCentimetersPerGram": {
     "properties": {
       "unit": {
