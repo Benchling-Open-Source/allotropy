@@ -51,7 +51,7 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
                     str, "Original sample conc. units"
                 ),
                 sample_custom_info={
-                    "last read standards": data.get(str, "Test Date"),
+                    "Last Read Standards": data.get(str, "Test Date"),
                     "selected samples": data.get(int, "Selected Samples"),
                     "qubit tube concentration": {
                         "value": data.get(float, "Qubit Tube Conc.", NaN),
@@ -100,8 +100,8 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
 
 def create_data(df: pd.DataFrame, file_path: str) -> Data:
     header = df_to_series_data(df.head(1))
+    # We read header info from a row in the table, so we don't need to read all keys from this SeriesData
     software_version = header.get(str, "Software Version")
-    header.get_custom_keys("Sample Volume \\(uL\\)")
     header.get_unread()
     return Data(
         metadata=Metadata(
