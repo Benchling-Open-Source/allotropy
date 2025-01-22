@@ -30,11 +30,11 @@ def test_header_builder() -> None:
     measurement_method_identifier = "measurement ID"
     pcr_detection_chemistry = "detection1"
     passive_reference_dye_setting = "blue"
-    experimental_data_identifier = "data Identifier"
+    experimental_data_identifier = "path/to/data_identifier.eds"
 
     header_contents = get_raw_header_contents(
         measurement_time=measurement_time,
-        plate_well_count="96 plates",
+        plate_well_count="96 Well 0.2-mL Block",
         device_identifier=device_identifier,
         model_number=model_number,
         device_serial_number=device_serial_number,
@@ -59,12 +59,13 @@ def test_header_builder() -> None:
         passive_reference_dye_setting=passive_reference_dye_setting,
         barcode=None,
         analyst=None,
-        experimental_data_identifier=experimental_data_identifier,
+        experimental_data_identifier="data_identifier.eds",
         pcr_stage_number=2,
         software_name="Design & Analysis Software",
         software_version="2.7.0",
         block_serial_number="1",
         heated_cover_serial_number="2",
+        well_volume=200,
     )
 
 
@@ -275,7 +276,7 @@ def get_raw_header_contents(
                 "Passive Reference": passive_reference_dye_setting,
                 "Barcode": barcode,
                 "Operator": analyst,
-                "Experiment Name": experimental_data_identifier,
+                "File Name": experimental_data_identifier,
                 "PCR Stage/Step Number": pcr_stage_number,
                 "Software Name and Version": software_name_and_version,
                 "Block Serial Number": block_serial_number,

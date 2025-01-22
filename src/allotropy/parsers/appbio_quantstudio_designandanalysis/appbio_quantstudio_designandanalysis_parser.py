@@ -1,5 +1,5 @@
-from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import Model
-from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import (
+from allotropy.allotrope.models.adm.pcr.rec._2024._09.qpcr import Model
+from allotropy.allotrope.schema_mappers.adm.pcr.rec._2024._09.qpcr import (
     Data,
     Mapper,
 )

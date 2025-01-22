@@ -1,16 +1,15 @@
 from pathlib import Path
 
-from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import (
-    ExperimentType,
-)
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
+    NaN,
 )
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
-from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import (
+from allotropy.allotrope.schema_mappers.adm.pcr.rec._2024._09.qpcr import (
     CalculatedData,
     CalculatedDataItem,
     DataSource,
+    Error,
     Measurement,
     MeasurementGroup,
     Metadata,
@@ -61,13 +60,16 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.simple_pri
 from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.standard_curve.creator import (
     StandardCurveCreator,
 )
+from allotropy.parsers.constants import NEGATIVE_ZERO
 
 
 def create_metadata(
-    header: Header, file_path: str, experiment_type: ExperimentType
+    header: Header, file_path: str, experiment_type: constants.ExperimentType
 ) -> Metadata:
+    path = Path(file_path)
     return Metadata(
-        file_name=Path(file_path).name,
+        file_name=path.name,
+        asm_file_identifier=path.with_suffix(".json").name,
         unc_path=file_path,
         product_manufacturer=constants.PRODUCT_MANUFACTURER,
         device_identifier=header.device_identifier,
@@ -78,7 +80,7 @@ def create_metadata(
         software_version=header.software_version,
         container_type=constants.CONTAINER_TYPE,
         device_type=constants.DEVICE_TYPE,
-        experiment_type=experiment_type,
+        experiment_type=experiment_type.value,
         measurement_method_identifier=header.measurement_method_identifier,
     )
 
@@ -144,10 +146,13 @@ def _create_measurement(well: Well, well_item: WellItem, header: Header) -> Meas
         sample_identifier=well_item.sample_identifier,
         sample_role_type=well_item.sample_role_type,
         well_location_identifier=well_item.well_location_identifier,
+        location_identifier=well_item.location_identifier,
         well_plate_identifier=header.barcode,
-        total_cycle_number_setting=well_item.amplification_data.total_cycle_number_setting
-        if well_item.amplification_data
-        else None,
+        total_cycle_number_setting=(
+            well_item.amplification_data.total_cycle_number_setting
+            if well_item.amplification_data
+            else None
+        ),
         pcr_detection_chemistry=header.pcr_detection_chemistry,
         reporter_dye_setting=well_item.reporter_dye_setting,
         quencher_dye_setting=well_item.quencher_dye_setting,
@@ -169,6 +174,12 @@ def create_measurement_groups(
             analyst=header.analyst,
             experimental_data_identifier=header.experimental_data_identifier,
             plate_well_count=header.plate_well_count,
+            well_volume=header.well_volume,
+            error_document=(
+                [Error(error=NaN.value, feature="well volume")]
+                if header.well_volume == NEGATIVE_ZERO
+                else []
+            ),
             measurements=[
                 _create_measurement(well, well_item, header)
                 for well_item in well.items.values()
@@ -180,8 +191,6 @@ def create_measurement_groups(
 
 def create_calculated_data(data: Data) -> CalculatedData:
     return CalculatedData(
-        reference_dna_description=data.reference_target,
-        reference_sample_description=data.reference_sample,
         items=[
             CalculatedDataItem(
                 identifier=calc_doc.uuid,
