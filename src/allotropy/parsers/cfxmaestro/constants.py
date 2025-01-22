@@ -21,7 +21,7 @@ CONTAINER_TYPE = ContainerType.well_plate
 EXPERIMENT_TYPE = "comparative CT qPCR experiment"
 
 SAMPLE_DOCUMENT_CUSTOM_KEYS = {
-    "Starting Quantity \\(SQ\\)",
+    "Starting Quantity (SQ)",
     "Log Starting Quantity",
     "SQ Std. Dev",
     "SQ Mean",
