@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from pathlib import Path
-from re import search
 
 from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     Metadata,
@@ -14,23 +13,15 @@ from allotropy.parsers.utils.strict_xml_element import (
 )
 
 
-def get_audit_trail_entry(element: StrictXmlElement) -> StrictXmlElement | None:
-    audit_trail_entries = element.recursive_find(["AuditTrail", "AuditTrailEntries"])
-    for element in audit_trail_entries.findall("AuditTrailEntry"):
-        if element.find("GroupName").get_text() == "EvaluationLoggingStarted":
-            return element
-    return None
-
-
-def get_audit_trail_entry_user(handler: UnicornZipHandler) -> str:
+def get_audit_trail_entry_user(handler: UnicornZipHandler) -> str | None:
     evaluation_log = handler.get_evaluation_log()
-    if audit_trail_entry := get_audit_trail_entry(evaluation_log):
-        if match := search(
-            r"User: (.+)\. ",
-            audit_trail_entry.find("LogEntry").get_text(),
-        ):
-            return match.group(1)
-    return "Default"
+    subelement_names = ["AuditTrail", "AuditTrailEntries"]
+    if audit_trail_entries := evaluation_log.recursive_find_or_none(subelement_names):
+        for element in audit_trail_entries.findall("AuditTrailEntry"):
+            if operator := element.find_or_none("Operator"):
+                if (name := operator.get_text_or_none()) != "System":
+                    return name
+    return None
 
 
 def create_metadata(
@@ -43,11 +34,16 @@ def create_metadata(
         ["System", "InstrumentConfiguration"]
     )
 
+    system_name = results.find_or_none("SystemName")
+    firmware_version = instrument_config_data.find_or_none("FirmwareVersion")
+
     return Metadata(
         asset_management_identifier=instrument_config.get_attr("Description"),
         product_manufacturer="Cytiva Life Sciences",
-        device_identifier=results.find("SystemName").get_text(),
-        firmware_version=instrument_config_data.find("FirmwareVersion").get_text(),
+        device_identifier=system_name.get_text_or_none() if system_name else None,
+        firmware_version=(
+            firmware_version.get_text_or_none() if firmware_version else None
+        ),
         analyst=get_audit_trail_entry_user(handler),
         file_name=Path(file_path).name,
         unc_path=file_path,

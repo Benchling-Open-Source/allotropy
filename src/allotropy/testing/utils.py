@@ -4,13 +4,15 @@ from collections import defaultdict
 from collections.abc import Iterator, Mapping
 from contextlib import contextmanager
 import json
-from pathlib import Path
+from pathlib import Path, PurePosixPath, PureWindowsPath
 import shutil
 import tempfile
 from typing import Any
 from unittest import mock
 
 from deepdiff import DeepDiff
+from deepdiff.model import DiffLevel
+from deepdiff.operator import BaseOperator
 import numpy as np
 
 from allotropy.allotrope.converter import structure
@@ -42,13 +44,17 @@ NON_UNIQUE_IDENTIFIERS = {
     "data source identifier",
     "device identifier",
     "experimental data identifier",
+    "flow cell identifier",
     "group identifier",
+    "ifc identifier",
+    "ligand identifier",
     "injection identifier",
     "location identifier",
     "source location identifier",
     "destination location identifier",
     "measurement method identifier",
     "sample identifier",
+    "sensor chip identifier",
     "well location identifier",
     "source well location identifier",
     "destination well location identifier",
@@ -57,7 +63,30 @@ NON_UNIQUE_IDENTIFIERS = {
     "destination well plate identifier",
     "well identifier",
     "assay identifier",
+    "container identifier",
 }
+
+
+PATH_KEYS = {
+    "POSIX path",
+    "UNC path",
+}
+
+
+class PathComparison(BaseOperator):  # type: ignore[misc]
+    # give_up_diffing stops diffing if returning True, here we use it to do a "real" comparison on path-like
+    # leaf values. Because we only return True if we deem the paths equal, it's not really "giving up".
+    def give_up_diffing(
+        self, level: DiffLevel, diff_instance: DeepDiff  # noqa: ARG002
+    ) -> bool:
+        paths = [
+            PureWindowsPath(raw_path) if "\\" in raw_path else PurePosixPath(raw_path)
+            for raw_path in (level.t1, level.t2)
+        ]
+        return set(paths[0].parts) == set(paths[1].parts)
+
+
+DEEPDIFF_PATH_COMPARATOR = PathComparison([f"{path_key}']$" for path_key in PATH_KEYS])
 
 
 def _get_all_identifiers(asm: DictType) -> dict[str, list[str]]:
@@ -121,6 +150,7 @@ def _assert_allotrope_dicts_equal(
         actual,
         ignore_type_in_groups=[(float, np.float64)],
         ignore_nan_inequality=True,
+        custom_operators=[DEEPDIFF_PATH_COMPARATOR],
     )
     if ddiff:
         msg = f"allotropy output != expected: \n{ddiff.pretty()}"
@@ -167,7 +197,7 @@ def from_file(
 def _write_actual_to_expected(
     allotrope_dict: DictType, expected_file: Path | str
 ) -> None:
-    with tempfile.NamedTemporaryFile(mode="w+", encoding="UTF-8") as tmp:
+    with tempfile.NamedTemporaryFile(mode="w+", encoding="UTF-8", delete=False) as tmp:
         json.dump(allotrope_dict, tmp, indent=4, ensure_ascii=False)
         tmp.write("\n")
         tmp.seek(0)
