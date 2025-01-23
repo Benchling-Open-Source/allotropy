@@ -39,12 +39,12 @@ class PivotTransformConfig(TransformConfig):
     type_: TransformType
     dataset: str
     path: str
-    value_key: str
-    label_key: str
+    value_path: str
+    label_path: str
 
     @staticmethod
     def create(config_json: dict[str, Any]) -> PivotTransformConfig:
-        for key in ("dataset", "path", "value_key", "label_key"):
+        for key in ("dataset", "path", "value_path", "label_path"):
             if key not in config_json:
                 msg = f"Must specify '{key}' in pivot transform config"
                 raise ValueError(msg)
@@ -52,17 +52,9 @@ class PivotTransformConfig(TransformConfig):
             type_=TransformType.JOIN,
             dataset=config_json["dataset"],
             path=config_json["path"],
-            value_key=config_json["value_key"],
-            label_key=config_json["label_key"],
+            value_path=config_json["value_path"],
+            label_path=config_json["label_path"],
         )
-
-    @property
-    def value_path(self) -> str:
-        return str(Path(self.path, self.value_key))
-
-    @property
-    def label_path(self) -> str:
-        return str(Path(self.path, self.label_key))
 
 
 @dataclass

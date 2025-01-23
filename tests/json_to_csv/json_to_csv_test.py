@@ -247,7 +247,7 @@ def test_map_dataset_with_pivot_transform() -> None:
             ],
         },
         path_to_transform={
-            "list1": [PivotTransformConfig.create({"type": "PIVOT", "dataset": "Dataset", "path": "list1", "value_key": "value", "label_key": "label"})]
+            "list1": [PivotTransformConfig.create({"type": "PIVOT", "dataset": "Dataset", "path": "list1", "value_path": "list1/value", "label_path": "list1/label"})]
         },
     )
 

@@ -80,21 +80,23 @@ def _map_dataset(
                     msg = f"Invalid target for pivot transform: '{sub_path}', target must be a list."
                     raise ValueError(msg)
 
-                # TODO: Move to validation for transform confg
-                if transform.value_path in config.path_to_config:
-                    if f"${transform.label_key}$" not in config.path_to_config[transform.value_path].name:
-                        msg = f"Invalid column config for pivot transform value_key - must have column_key label in name, got '{config.path_to_config[transform.value_path].name}'"
-                        raise ValueError(msg)
-                else:
+                # TODO: Move to validation for transform config
+                if transform.value_path not in config.path_to_config:
                     msg = f"Missing column config for pivot transform value_key: {transform.value_path}"
                     raise ValueError(msg)
 
                 if transform.label_path in config.path_to_config:
-                    if config.path_to_config[transform.label_path].include:
-                        msg = f"Invalid column config for pivot transform column_key '{transform.label_path}' - column key must not be included in final result."
-                        raise ValueError(msg)
-                else:
                     msg = f"Missing column config for pivot transform label_key: {transform.label_path}"
+                    raise ValueError(msg)
+
+                value_config = config.path_to_config[transform.value_path]
+                label_config = config.path_to_config[transform.label_path]
+                if f"${label_config.name}$" not in value_config.name:
+                    msg = f"Invalid value column config for pivot transform - must have label column label ('${label_config.name}$') in value column name, got '{value_config.name}'."
+                    raise ValueError(msg)
+
+                if label_config.include:
+                    msg = f"Invalid label column config for pivot transform - label column ('{transform.label_path}') must not be included in final result."
                     raise ValueError(msg)
 
         if isinstance(value, dict):
