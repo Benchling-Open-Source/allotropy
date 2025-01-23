@@ -51,7 +51,7 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
                     str, "Original sample conc. units"
                 ),
                 sample_custom_info={
-                    "Last Read Standards": data.get(str, "Test Date"),
+                    "last read standards": data.get(str, "Last Read Standards"),
                     "selected samples": data.get(int, "Selected Samples"),
                     "qubit tube concentration": {
                         "value": data.get(float, "Qubit Tube Conc.", NaN),
