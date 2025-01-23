@@ -52,9 +52,9 @@ class TargetView(ViewWithReference):
     def sort_elements(self, elements: list[Element]) -> dict[str, list[Element]]:
         items = defaultdict(list)
         for element in elements:
-            if target_dna_description := element.get_str("target_dna_description"):
-                if self.blacklist is None or target_dna_description not in self.blacklist:
-                    items[str(target_dna_description)].append(element)
+            if target_dna := element.get_str("target_dna_description"):
+                if self.blacklist is None or target_dna not in self.blacklist:
+                    items[str(target_dna)].append(element)
         return dict(items)
 
 
