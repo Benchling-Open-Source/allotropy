@@ -27,7 +27,7 @@ def test_map_dataset_simple_default_config() -> None:
         ],
     }
 
-    actual = map_dataset(data, MapperConfig().datasets["dataset"])
+    actual = map_dataset(data, MapperConfig.create().datasets["dataset"])
     expected = pd.DataFrame(
         {
             "key1": ["value1", "value1"],
@@ -40,7 +40,7 @@ def test_map_dataset_simple_default_config() -> None:
 
 
 def test_map_dataset_simple_with_column_configs() -> None:
-    dataset_config = DatasetConfig(
+    dataset_config = DatasetConfig.create(
         config_json={
             "name": "Dataset",
             "columns": [
@@ -103,7 +103,7 @@ def test_map_dataset_nested() -> None:
         ]
     }
 
-    actual = map_dataset(data, MapperConfig().datasets["dataset"])
+    actual = map_dataset(data, MapperConfig.create().datasets["dataset"])
     expected = pd.DataFrame(
         {
             "list1.list_key": [
@@ -117,7 +117,7 @@ def test_map_dataset_nested() -> None:
     )
     assert expected.equals(actual)
 
-    dataset_config = DatasetConfig(
+    dataset_config = DatasetConfig.create(
         config_json={
             "name": "Dataset",
             "columns": [
@@ -147,7 +147,7 @@ def test__rename_columns_multiple_values() -> None:
         }
     )
 
-    actual = _rename_column(df, "Name $key1$ $key2$")
+    actual, new_column_names = _rename_column(df, "Name $key1$ $key2$")
     expected = pd.DataFrame(
         {
             "key1": ["A", "A", "A", "B"],
@@ -170,7 +170,7 @@ def test_map_dataset_list_with_inconsistent_keys() -> None:
         ]
     }
 
-    actual = map_dataset(data, MapperConfig().datasets["dataset"])
+    actual = map_dataset(data, MapperConfig.create().datasets["dataset"])
     expected = pd.DataFrame(
         {
             "list_value.key1": ["v1.1", "v2.1"],
@@ -181,7 +181,7 @@ def test_map_dataset_list_with_inconsistent_keys() -> None:
 
 
 def test_map_dataset_fails_with_missing_required_column() -> None:
-    dataset_config = DatasetConfig(
+    dataset_config = DatasetConfig.create(
         config_json={
             "name": "Dataset",
             "columns": [
@@ -206,17 +206,24 @@ def test_map_dataset_with_pivot_transform() -> None:
         "main_key": "main_value",
         "list1": [
             {
-                "label": "list_label1",
+                "label": "Label1",
                 "value": "list_value1",
+                "id": "id1",
             },
             {
-                "label": "list_label2",
+                "label": "Label2",
                 "value": "list_value2",
+                "id": "id1",
+            },
+            {
+                "label": "Label1",
+                "value": "list_value3",
+                "id": "id2",
             },
         ]
     }
 
-    dataset_config = DatasetConfig(
+    dataset_config = DatasetConfig.create(
         config_json={
             "name": "Dataset",
             "columns": [
@@ -225,27 +232,36 @@ def test_map_dataset_with_pivot_transform() -> None:
                     "path": "main_key",
                 },
                 {
-                    "name": "label",
-                    "path": "list1/label",
-                },
-                {
                     "name": "$label$",
                     "path": "list1/value",
-                }
+                },
+                {
+                    "name": "label",
+                    "path": "list1/label",
+                    "include": False
+                },
+                {
+                    "name": "ID",
+                    "path": "list1/id",
+                },
             ],
         },
         path_to_transform={
-            "list1": PivotTransformConfig({"type": "PIVOT", "path": "list1"})
+            "list1": [PivotTransformConfig.create({"type": "PIVOT", "dataset": "Dataset", "path": "list1", "value_key": "value", "label_key": "label"})]
         },
     )
 
     actual = map_dataset(data, dataset_config)
     expected = pd.DataFrame(
         {
-            "Main": ["main_key"],
-            "list_label1": ["list_value1"],
-            "list_label2": ["list_value2"],
+            "Main": ["main_value", "main_value"],
+            "Label1": ["list_value1", "list_value3"],
+            "Label2": ["list_value2", np.nan],
+            "ID": ["id1", "id2"]
         }
     )
-    print(actual)
     assert expected.equals(actual)
+
+
+# More complicated examples - nested lists under list (data source example), two pivot keys on one list
+# Test failure due to non-unqiue

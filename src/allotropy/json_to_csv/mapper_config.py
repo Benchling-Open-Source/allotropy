@@ -29,40 +29,63 @@ class TransformConfig:
             raise ValueError(msg) from err
 
         if type_ == TransformType.PIVOT:
-            return PivotTransformConfig(config_json)
+            return PivotTransformConfig.create(config_json)
         else:
-            return JoinTransformConfig(config_json)
+            return JoinTransformConfig.create(config_json)
 
 
 @dataclass
 class PivotTransformConfig(TransformConfig):
     type_: TransformType
+    dataset: str
     path: str
+    value_key: str
+    label_key: str
 
-    def __init__(self, config_json: dict[str, Any]) -> None:
-        self.type_ = TransformType.JOIN
-        if "path" not in config_json:
-            msg = "Must specify 'path' in pivot transform config"
-            raise ValueError(msg)
-        self.path = config_json["path"]
+    @staticmethod
+    def create(config_json: dict[str, Any]) -> PivotTransformConfig:
+        for key in ("dataset", "path", "value_key", "label_key"):
+            if key not in config_json:
+                msg = f"Must specify '{key}' in pivot transform config"
+                raise ValueError(msg)
+        return PivotTransformConfig(
+            type_=TransformType.JOIN,
+            dataset=config_json["dataset"],
+            path=config_json["path"],
+            value_key=config_json["value_key"],
+            label_key=config_json["label_key"],
+        )
+
+    @property
+    def value_path(self) -> str:
+        return str(Path(self.path, self.value_key))
+
+    @property
+    def label_path(self) -> str:
+        return str(Path(self.path, self.label_key))
 
 
 @dataclass
 class JoinTransformConfig(TransformConfig):
     type_: TransformType
-    other: str
-    join_key: str
-    other_join_key: str
+    dataset_1: str
+    dataset_2: str
+    join_key_1: str
+    join_key_2: str
 
-    def __init__(self, config_json: dict[str, Any]) -> None:
-        self.type = TransformType.JOIN
-        for key in ("other", "join_key", "other_join_key"):
+    @staticmethod
+    def create(config_json: dict[str, Any]) -> JoinTransformConfig:
+        for key in ("dataset_1", "dataset_2", "join_key_1", "join_key_2"):
             if key not in config_json:
                 msg = f"Must specify '{key}' in join transform config"
                 raise ValueError(msg)
-        self.other = config_json["other"]
-        self.join_key = config_json["join_key"]
-        self.other_join_key = config_json["other_join_key"]
+        return JoinTransformConfig(
+            type_=TransformType.JOIN,
+            dataset_1=config_json["dataset_1"],
+            dataset_2=config_json["dataset_2"],
+            join_key_1=config_json["join_key_1"],
+            join_key_2=config_json["join_key_2"],
+        )
 
 
 @dataclass
@@ -72,14 +95,18 @@ class ColumnConfig:
     include: bool
     required: bool
 
-    def __init__(self, config_json: dict[str, Any]) -> None:
+    @staticmethod
+    def create(config_json: dict[str, Any]) -> ColumnConfig:
         if "path" not in config_json:
             msg = "Must specify 'path' in dataset config"
             raise ValueError(msg)
-        self.path = config_json["path"]
-        self.name = config_json.get("name", self.path.replace("/", "."))
-        self.include = config_json.get("include", True)
-        self.required = config_json.get("required", False)
+        path = str(config_json["path"])
+        return ColumnConfig(
+            path=path,
+            name=config_json.get("name", path.replace("/", ".")),
+            include=config_json.get("include", True),
+            required=config_json.get("required", False),
+        )
 
     @property
     def has_labels(self) -> bool:
@@ -92,27 +119,42 @@ class DatasetConfig:
     is_metadata: bool
     include: bool
     columns: list[ColumnConfig]
+    path_to_transform: dict[str, list[TransformConfig]]
     path_to_config: dict[str, ColumnConfig]
-    path_to_transform: dict[str, TransformConfig]
+    column_names: list[str]
 
-    def __init__(self, config_json: dict[str, Any], path_to_transform: dict[str, list[TransformConfig]]) -> None:
+    def __init__(
+        self,
+        name: str,
+        is_metadata: bool,  # noqa: FBT001
+        include: bool,  # noqa: FBT001
+        columns: list[ColumnConfig],
+        path_to_transform: dict[str, list[TransformConfig]],
+    ) -> None:
+        self.name = name
+        self.is_metadata = is_metadata
+        self.include = include
+        self.columns = columns
+        self.path_to_transform = path_to_transform
+        self.path_to_config = {
+            column_config.path: column_config for column_config in self.columns
+        }
+        self.column_names = [column_config.name for column_config in self.columns]
+        self._validate()
+
+    @staticmethod
+    def create(config_json: dict[str, Any], path_to_transform: dict[str | None, list[TransformConfig]]) -> DatasetConfig:
         if "name" not in config_json:
             msg = "Must specify 'name' in dataset config"
             raise ValueError(msg)
-        self.name = config_json["name"]
-        self.is_metadata = config_json.get("is_metadata", False)
-        self.include = config_json.get("include", True)
         if "columns" not in config_json or not isinstance(config_json["columns"], list):
             msg = "Must specify list 'columns' in dataset config"
             raise ValueError(msg)
-        self.columns = [ColumnConfig(cj) for cj in config_json["columns"]]
-        self.path_to_transform = path_to_transform
 
         # For columns without name specified, use name of leaf element, if unique
-        leaf_column_names = [Path(column.path).name for column in self.columns]
-        for column, column_config in zip(
-            self.columns, config_json["columns"], strict=True
-        ):
+        columns = [ColumnConfig.create(cj) for cj in config_json["columns"]]
+        leaf_column_names = [Path(column.path).name for column in columns]
+        for column, column_config in zip(columns, config_json["columns"], strict=True):
             if "name" in column_config:
                 continue
             leaf_column_name = Path(column.path).name
@@ -120,11 +162,13 @@ class DatasetConfig:
                 if leaf_column_names.count(leaf_column_name) == 1:
                     column.name = leaf_column_name.title()
 
-        self._validate()
-
-        self.path_to_config = {
-            column_config.path: column_config for column_config in self.columns
-        }
+        return DatasetConfig(
+            name=config_json["name"],
+            is_metadata=config_json.get("is_metadata", False),
+            include=config_json.get("include", True),
+            columns=columns,
+            path_to_transform=path_to_transform,
+        )
 
     def _validate(self) -> None:
         # Assert all column names are different
@@ -141,10 +185,31 @@ class DatasetConfig:
             msg = f"Error parsing dataset config, all columns must have unique paths, duplicate paths: {duplicate_paths}"
             raise ValueError(msg)
 
+        for transform_path, transforms in self.path_to_transform.items():
+            for transform in transforms:
+                if isinstance(transform, PivotTransformConfig):
+                    found = False
+                    for path in self.path_to_config:
+                        if transform_path in path:
+                            found = True
+                            break
+                    if not found:
+                        msg = f"Invalid PIVOT transform path: {transform_path} for dataset {self.name}, path not found in column configs."
+                        raise ValueError(msg)
+
+    def add_column(self, column_config: ColumnConfig) -> None:
+        self.columns.append(column_config)
+        self.path_to_config[column_config.path] = column_config
+        self.column_names.append(column_config.name)
+
+    def replace_column_names(self, column_name: str, new_column_names: list[str]) -> None:
+        replace_index = self.column_names.index(column_name)
+        self.column_names = self.column_names[:replace_index] + new_column_names + self.column_names[replace_index + 1:]
+
     def get_column_config(self, path: str) -> ColumnConfig | None:
         # If not columns are specified, include everything with default config
         if not self.path_to_config:
-            return ColumnConfig({"path": path})
+            return ColumnConfig.create({"path": path})
         return self.path_to_config.get(path, None)
 
 
@@ -153,7 +218,8 @@ class MapperConfig:
     datasets: dict[str, DatasetConfig]
     transforms: list[TransformConfig]
 
-    def __init__(self, config_json: dict[str, Any] | None = None) -> None:
+    @staticmethod
+    def create(config_json: dict[str, list[dict[str, Any]]] | None = None) -> MapperConfig:
         # If dataset config is not provided, create a "default config" with no columns specified. This will
         # cause all values in the json to be included.
         config_json = config_json or {"datasets": [{"name": "dataset", "columns": []}]}
@@ -161,14 +227,33 @@ class MapperConfig:
             msg = "Must specify 'datasets' in mapper config"
             raise ValueError(msg)
 
-        self.transforms = [TransformConfig.create(transform_config_json) for transform_config_json in config_json.get("transformations", [])]
-        _path_to_transform: defaultdict[str, list[TransformConfig]] = defaultdict(list)
-        for transform in self.transforms:
-            _path_to_transform[getattr(transform, "path", None)] = transform
-        path_to_transform = dict(_path_to_transform)
-        path_to_transform.pop(None, None)  # discard transforms that do not have a path
+        _transforms = [TransformConfig.create(transform_config_json) for transform_config_json in config_json.get("transformations", [])]
+        mapper_transforms: list[TransformConfig] = []
+        dataset_transforms: defaultdict[str, defaultdict[str, list[TransformConfig]]] = defaultdict(lambda: defaultdict(list))
+        for transform in _transforms:
+            if isinstance(transform, PivotTransformConfig):
+                dataset_transforms[transform.dataset][transform.path].append(transform)
+            elif isinstance(transform, JoinTransformConfig):
+                mapper_transforms.append(transform)
+            else:  # NOTE: should not be possible.
+                msg = f"Invalid transform: {transform}"
+                raise ValueError(msg)
 
-        self.datasets = {}
+        datasets = {}
         for dataset_config_json in config_json["datasets"]:
-            dataset_config = DatasetConfig(dataset_config_json, path_to_transform)
-            self.datasets[dataset_config.name] = dataset_config
+            dataset_config = DatasetConfig.create(dataset_config_json, dict(dataset_transforms.get(dataset_config_json.get("name", None), {})))
+            datasets[dataset_config.name] = dataset_config
+
+        for transform in mapper_transforms:
+            if isinstance(transform, JoinTransformConfig):
+                if transform.dataset_1 not in datasets:
+                    msg = f"Invalid dataset_1 in JOIN transform: {transform.dataset_1}"
+                    raise ValueError(msg)
+                if transform.dataset_2 not in datasets:
+                    msg = f"Invalid dataset_2 in JOIN transform: {transform.dataset_1}"
+                    raise ValueError(msg)
+
+        return MapperConfig(
+            datasets=datasets,
+            transforms=mapper_transforms,
+        )
