@@ -28,7 +28,7 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 
 def create_metadata(data: SeriesData, file_path: str) -> Metadata:
     path = Path(file_path)
-    return Metadata(
+    metadata = Metadata(
         asm_file_identifier=path.with_suffix(".json").name,
         data_system_instance_id=data.get(str, "PC", NOT_APPLICABLE),
         file_name=Path(file_path).name,
@@ -40,6 +40,9 @@ def create_metadata(data: SeriesData, file_path: str) -> Metadata:
         device_type=NUCLEOCOUNTER_DEVICE_TYPE,
         detection_type=NUCLEOCOUNTER_DETECTION_TYPE,
     )
+    # We read header info from a row in the table, so we don't need to read all keys from this SeriesData
+    data.get_unread()
+    return metadata
 
 
 def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
@@ -81,6 +84,7 @@ def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
                     float, "Estimated cell diameter (um)"
                 ),
                 errors=errors,
+                custom_info_doc=data.get_unread(),
             )
         ],
     )

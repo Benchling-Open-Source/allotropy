@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.cell_counting.rec._2024._09.cell_counting import (
@@ -88,6 +89,7 @@ class Measurement:
     # customer information document fields
     debris_index: float | None = None
     cell_aggregation_percentage: float | None = None
+    custom_info_doc: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -250,6 +252,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueUnitless, measurement.debris_index
             ),
         }
+        custom_document.update(measurement.custom_info_doc or {})
         data_processing_document = DataProcessingDocument(
             cell_type_processing_method=measurement.cell_type_processing_method,
             minimum_cell_diameter_setting=quantity_or_none(
