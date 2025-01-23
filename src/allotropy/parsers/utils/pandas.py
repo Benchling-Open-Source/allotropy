@@ -243,6 +243,18 @@ class SeriesData:
                     stacklevel=2,
                 )
 
+    def _sanitize_dict_keys(self, data: dict[str, float | str | None]) -> dict[str, float | str | None]:
+        # Converts the keys of a dictionary into valid Python identifiers.
+        def make_valid_identifier(field_name: str) -> str:
+            # Add an underscore if the field name starts with a digit
+            if field_name[0].isdigit():
+                field_name = f"_{field_name}"
+
+            return field_name
+
+        # Create a new dictionary with sanitized keys
+        return {make_valid_identifier(key): value for key, value in data.items()}
+
     def _get_custom_key(self, key: str) -> float | str | None:
         if (float_value := self.get(float, key)) is not None:
             return float_value
@@ -265,7 +277,7 @@ class SeriesData:
         self, key_or_keys: str | set[str]
     ) -> dict[str, float | str | None]:
         return {
-            key: self._get_custom_key(key)
+            key.lstrip(): self._get_custom_key(key)
             for key in self._get_matching_keys(key_or_keys)
         }
 
@@ -284,7 +296,7 @@ class SeriesData:
             if regex
             else set(self.series.index.to_list())
         )
-        return self.get_custom_keys(matching_keys - self.read_keys)
+        return self._sanitize_dict_keys(self.get_custom_keys(matching_keys - self.read_keys))
 
     def has_key(self, key: str) -> bool:
         return key in self.series
