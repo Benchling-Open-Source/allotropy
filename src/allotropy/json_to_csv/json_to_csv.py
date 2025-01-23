@@ -12,43 +12,35 @@ from allotropy.json_to_csv.mapper_config import (
 )
 
 
-def _apply_pivot(df: pd.DataFrame, transform_config: PivotTransformConfig, config: DatasetConfig):
-    print("\n PIVOT \n")
-    print(df)
-    print("\n")
+def _apply_pivot(
+    df: pd.DataFrame, transform_config: PivotTransformConfig, config: DatasetConfig
+) -> pd.DataFrame:
     # Get the set of non-pivoted columns
     value_column_name = config.path_to_config[transform_config.value_path].name
     label_column_name = config.path_to_config[transform_config.label_path].name
-    print(value_column_name)
-    print("\n")
-    other_columns = set(df.columns) - {value_column_name, label_column_name}
-    print(other_columns)
-    print("\n")
-    # Rename columns
+    other_columns = [
+        column
+        for column in df.columns
+        if column not in {value_column_name, label_column_name}
+    ]
+
+    # Rename pivot value column and drop the label column
     df, new_column_names = _rename_column(df, value_column_name)
     config.replace_column_names(value_column_name, new_column_names)
-    print("RENAMED")
-    print(df)
-    print("\n")
-
-    # Drop columns that should not be included
     df = df.drop(columns=label_column_name)
-    print("DROPPED")
-    print(df)
-    print("\n")
 
-    # Group by non-pivot columns, and try to compress each into a single row.
+    # Group by non-pivot columns, and compress each into a single row.
     rows: list[list[Any]] = []
-    for group_values, sub_df in df.groupby(list(other_columns)):
+    for group_values, sub_df in df.groupby(list(other_columns), dropna=False):
         rows.append([])
         for column in sub_df:
-            value = set(sub_df[column].unique()) - {np.nan}
+            value = {value for value in sub_df[column].unique() if not pd.isna(value)}
             if len(value) > 1:
-                msg = f"Multiple non-unique values for column {column} in pivot operation for group: {group_values}."
+                msg = f"Multiple unique values for column '{column}' in pivot operation for group: {group_values}: {value}."
                 raise ValueError(msg)
             rows[-1].append(next(iter(value)) if value else np.nan)
 
-    return pd.DataFrame(rows, columns=sub_df.columns)
+    return pd.DataFrame(rows, columns=df.columns)
 
 
 def _map_dataset(
@@ -66,65 +58,40 @@ def _map_dataset(
 
     df = pd.DataFrame(single_values)
 
-    print(df)
-
     for key, value in data.items():
-        # TODO: subpath seems wrong name
-        sub_path = Path(current_path, key)
-        sub_df: pd.DataFrame = pd.DataFrame()
-
-        transforms = config.path_to_transform.get(str(sub_path), [])
-        for transform in transforms:
-            if isinstance(transform, PivotTransformConfig):
-                if not isinstance(value, list):
-                    msg = f"Invalid target for pivot transform: '{sub_path}', target must be a list."
-                    raise ValueError(msg)
-
-                # TODO: Move to validation for transform config
-                if transform.value_path not in config.path_to_config:
-                    msg = f"Missing column config for pivot transform value_key: {transform.value_path}"
-                    raise ValueError(msg)
-
-                if transform.label_path in config.path_to_config:
-                    msg = f"Missing column config for pivot transform label_key: {transform.label_path}"
-                    raise ValueError(msg)
-
-                value_config = config.path_to_config[transform.value_path]
-                label_config = config.path_to_config[transform.label_path]
-                if f"${label_config.name}$" not in value_config.name:
-                    msg = f"Invalid value column config for pivot transform - must have label column label ('${label_config.name}$') in value column name, got '{value_config.name}'."
-                    raise ValueError(msg)
-
-                if label_config.include:
-                    msg = f"Invalid label column config for pivot transform - label column ('{transform.label_path}') must not be included in final result."
-                    raise ValueError(msg)
+        path = Path(current_path, key)
+        path_df: pd.DataFrame = pd.DataFrame()
 
         if isinstance(value, dict):
-            sub_df = _map_dataset(value, config, sub_path)
+            path_df = _map_dataset(value, config, path)
         elif isinstance(value, list):
-            sub_df = pd.concat(
-                [_map_dataset(item, config, sub_path) for item in value],
+            path_df = pd.concat(
+                [_map_dataset(item, config, path) for item in value],
                 ignore_index=True,
             )
 
-        for transform in transforms:
+        for transform in config.path_to_transform.get(str(path), []):
             if isinstance(transform, PivotTransformConfig):
-                print("BEFORE")
-                print(sub_df)
-                sub_df = _apply_pivot(sub_df, transform, config)
-                print("AFTER")
-                print(sub_df)
+                if not isinstance(value, list):
+                    msg = f"Invalid target for pivot transform: '{path}', target must be a list."
+                    raise ValueError(msg)
+                path_df = _apply_pivot(path_df, transform, config)
+            else:  # should not be possible
+                msg = f"Invalid transform type in dataset config: {transform.type_}"
+                raise ValueError(msg)
 
         df = (
             df
-            if sub_df.empty
-            else (sub_df if df.empty else df.merge(sub_df, how="cross"))
+            if path_df.empty
+            else (path_df if df.empty else df.merge(path_df, how="cross"))
         )
 
     return df
 
 
-def _rename_column(df: pd.DataFrame, column_name: str) -> tuple[pd.DataFrame, list[str]]:
+def _rename_column(
+    df: pd.DataFrame, column_name: str
+) -> tuple[pd.DataFrame, list[str]]:
     if column_name not in df:
         return df, []
 
@@ -176,7 +143,11 @@ def map_dataset(data: dict[str, Any], config: DatasetConfig) -> pd.DataFrame:
             df, _ = _rename_column(df, column.name)
 
     # Drop columns that should not be included
-    columns_to_drop = [column.name for column in config.columns if not column.include and column.name in df]
+    columns_to_drop = [
+        column.name
+        for column in config.columns
+        if not column.include and column.name in df
+    ]
     df = df.drop(columns=columns_to_drop)
 
     # Turn metadata into json blob

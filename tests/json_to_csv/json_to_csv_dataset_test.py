@@ -28,13 +28,22 @@ def _assert_dicts_equal(expected: dict[str, Any], actual: dict[str, Any]) -> Non
     [
         (
             "tests/json_to_csv/testdata/plate_reader.json",
-            "tests/json_to_csv/testdata/plate_reader_config.json",
-            {"dataset": "tests/json_to_csv/testdata/plate_reader.csv"},
+            "tests/json_to_csv/testdata/plate_reader_well_absorbance_config.json",
+            {
+                "dataset": "tests/json_to_csv/testdata/plate_reader_well_absorbance_config.csv"
+            },
         ),
         (
             "tests/json_to_csv/testdata/plate_reader.json",
             None,
             {"dataset": "tests/json_to_csv/testdata/plate_reader_no_config.csv"},
+        ),
+        (
+            "tests/json_to_csv/testdata/plate_reader.json",
+            "tests/json_to_csv/testdata/plate_reader_extract_calculated_data_config.json",
+            {
+                "dataset": "tests/json_to_csv/testdata/plate_reader_extract_calculated_data.csv"
+            },
         ),
     ],
 )
@@ -48,10 +57,10 @@ def test_json_to_csv_dataset(
     with open(input_file) as infile:
         input_json = json.load(infile)
 
-    config = MapperConfig()
+    config = MapperConfig.create()
     if config_file:
         with open(config_file) as infile:
-            config = MapperConfig(json.load(infile))
+            config = MapperConfig.create(json.load(infile))
 
     results = json_to_csv(input_json, config)
 

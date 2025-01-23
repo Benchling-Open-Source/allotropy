@@ -177,9 +177,11 @@ def test_create_mapper_config_with_transforms() -> None:
                 "include": True,
                 "columns": [
                     {
+                        "name": "$Label$",
                         "path": "path/to/key1",
                         "required": False,
                     },
+                    {"path": "path/to/label", "required": False, "include": False},
                 ],
             },
             {
@@ -199,6 +201,8 @@ def test_create_mapper_config_with_transforms() -> None:
                 "type": "PIVOT",
                 "dataset": "Dataset1",
                 "path": "path/to",
+                "value_path": "path/to/key1",
+                "label_path": "path/to/label",
             },
             {
                 "type": "JOIN",
@@ -206,9 +210,8 @@ def test_create_mapper_config_with_transforms() -> None:
                 "dataset_2": "Dataset2",
                 "join_key_1": "col1",
                 "join_key_2": "col2",
-            }
-
-        ]
+            },
+        ],
     }
     mapper_config = MapperConfig.create(config_json)
     assert mapper_config.datasets["Dataset1"].path_to_transform == {
@@ -216,7 +219,9 @@ def test_create_mapper_config_with_transforms() -> None:
             PivotTransformConfig(
                 type_=TransformType.PIVOT,
                 dataset="Dataset1",
-                path="path/to"
+                path="path/to",
+                value_path="path/to/key1",
+                label_path="path/to/label",
             )
         ]
     }
@@ -255,8 +260,7 @@ def test_create_mapper_config_fails_with_invalid_join_transform() -> None:
                 "join_key_1": "col1",
                 "join_key_2": "col2",
             }
-
-        ]
+        ],
     }
     with pytest.raises(ValueError, match="Invalid dataset_2"):
         MapperConfig.create(config_json)
@@ -281,9 +285,13 @@ def test_create_mapper_config_fails_with_invalid_pivot_transform() -> None:
             {
                 "type": "PIVOT",
                 "dataset": "Dataset1",
-                "path": "missing/path",
+                "path": "path/to",
+                "value_path": "path/to/key1",
+                "label_path": "path/to/label",
             },
-        ]
+        ],
     }
-    with pytest.raises(ValueError, match="Invalid PIVOT transform path"):
+    with pytest.raises(
+        ValueError, match="Missing column config for pivot transform label_key"
+    ):
         MapperConfig.create(config_json)
