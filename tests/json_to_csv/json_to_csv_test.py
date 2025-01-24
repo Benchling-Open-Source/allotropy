@@ -60,7 +60,7 @@ def test_map_dataset_simple_with_column_configs() -> None:
                 },
             ],
         },
-        path_to_transform={},
+        transforms=[],
     )
 
     data = {
@@ -128,7 +128,7 @@ def test_map_dataset_nested() -> None:
                 }
             ],
         },
-        path_to_transform={},
+        transforms=[],
     )
     actual = map_dataset(data, dataset_config)
     expected = pd.DataFrame(
@@ -193,7 +193,7 @@ def test_map_dataset_fails_with_missing_required_column() -> None:
                 },
             ],
         },
-        path_to_transform={},
+        transforms=[],
     )
 
     map_dataset({"key1": "value1"}, dataset_config)
@@ -245,20 +245,18 @@ def test_map_dataset_with_pivot_transform() -> None:
             },
         ],
     }
-    path_to_transform: dict[str, list[TransformConfig]] = {
-        "list1": [
-            PivotTransformConfig.create(
-                {
-                    "type": "PIVOT",
-                    "dataset": "Dataset",
-                    "path": "list1",
-                    "value_path": "list1/value",
-                    "label_path": "list1/label",
-                }
-            )
-        ]
-    }
-    dataset_config = DatasetConfig.create(config_json, path_to_transform)
+    transforms: list[TransformConfig] = [
+        PivotTransformConfig.create(
+            {
+                "type": "PIVOT",
+                "dataset": "Dataset",
+                "path": "list1",
+                "value_path": "list1/value",
+                "label_path": "list1/label",
+            }
+        )
+    ]
+    dataset_config = DatasetConfig.create(config_json, transforms)
 
     # The first and third list entries are combined into a single row because they share the same ID column.
     actual = map_dataset(data, dataset_config)
@@ -274,7 +272,7 @@ def test_map_dataset_with_pivot_transform() -> None:
 
     # Adding column OTHER to config changes the pivot result, because now ID/OTHER are both used to determine uniqueness.
     config_json["columns"].append({"name": "OTHER", "path": "list1/other"})  # type: ignore
-    dataset_config = DatasetConfig.create(config_json, path_to_transform)
+    dataset_config = DatasetConfig.create(config_json, transforms)
     actual = map_dataset(data, dataset_config)
     expected = pd.DataFrame(
         {
@@ -341,19 +339,17 @@ def test_map_dataset_with_pivot_transform_with_multiple_rows_per_pivot_column() 
                 },
             ],
         },
-        path_to_transform={
-            "calc_data": [
-                PivotTransformConfig.create(
-                    {
-                        "type": "PIVOT",
-                        "dataset": "Dataset",
-                        "path": "calc_data",
-                        "value_path": "calc_data/result/value",
-                        "label_path": "calc_data/name",
-                    }
-                )
-            ]
-        },
+        transforms=[
+            PivotTransformConfig.create(
+                {
+                    "type": "PIVOT",
+                    "dataset": "Dataset",
+                    "path": "calc_data",
+                    "value_path": "calc_data/result/value",
+                    "label_path": "calc_data/name",
+                }
+            )
+        ],
     )
 
     actual = map_dataset(data, dataset_config)
@@ -421,28 +417,26 @@ def test_map_dataset_with_multiple_pivot_transform_on_one_list() -> None:
                 },
             ],
         },
-        path_to_transform={
-            "list1": [
-                PivotTransformConfig.create(
-                    {
-                        "type": "PIVOT",
-                        "dataset": "Dataset",
-                        "path": "list1",
-                        "value_path": "list1/value_1",
-                        "label_path": "list1/label_1",
-                    }
-                ),
-                PivotTransformConfig.create(
-                    {
-                        "type": "PIVOT",
-                        "dataset": "Dataset",
-                        "path": "list1",
-                        "value_path": "list1/sub_body/sub_value",
-                        "label_path": "list1/sub_body/sub_label",
-                    }
-                ),
-            ]
-        },
+        transforms=[
+            PivotTransformConfig.create(
+                {
+                    "type": "PIVOT",
+                    "dataset": "Dataset",
+                    "path": "list1",
+                    "value_path": "list1/value_1",
+                    "label_path": "list1/label_1",
+                }
+            ),
+            PivotTransformConfig.create(
+                {
+                    "type": "PIVOT",
+                    "dataset": "Dataset",
+                    "path": "list1",
+                    "value_path": "list1/sub_body/sub_value",
+                    "label_path": "list1/sub_body/sub_label",
+                }
+            ),
+        ],
     )
 
     actual = map_dataset(data, dataset_config)
@@ -499,19 +493,17 @@ def test_map_dataset_with_pivot_transform_fails_on_non_unique_value() -> None:
                 },
             ],
         },
-        path_to_transform={
-            "list1": [
-                PivotTransformConfig.create(
-                    {
-                        "type": "PIVOT",
-                        "dataset": "Dataset",
-                        "path": "list1",
-                        "value_path": "list1/value",
-                        "label_path": "list1/label",
-                    }
-                )
-            ]
-        },
+        transforms=[
+            PivotTransformConfig.create(
+                {
+                    "type": "PIVOT",
+                    "dataset": "Dataset",
+                    "path": "list1",
+                    "value_path": "list1/value",
+                    "label_path": "list1/label",
+                }
+            )
+        ],
     )
 
     with pytest.raises(ValueError, match="Multiple unique"):

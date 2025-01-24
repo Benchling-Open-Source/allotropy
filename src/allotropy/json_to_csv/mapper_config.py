@@ -33,7 +33,7 @@ class TransformConfig:
         else:
             return JoinTransformConfig.create(config_json)
 
-    def validate(self, _: DatasetConfig) -> None:
+    def validate(self, _: Any) -> None:
         pass
 
 
@@ -65,7 +65,11 @@ class PivotTransformConfig(TransformConfig):
             label_path=config_json["label_path"],
         )
 
-    def validate(self, config: DatasetConfig) -> None:
+    def validate(self, config: Any) -> None:
+        if not isinstance(config, DatasetConfig):
+            msg = f"Must provide DatasetConfig to PivotTransformConfig.validate, got '{type(config)}'"
+            raise ValueError(msg)
+
         if self.value_path not in config.path_to_config:
             msg = f"Missing column config for pivot transform value_key: {self.value_path}"
             raise ValueError(msg)
@@ -106,6 +110,18 @@ class JoinTransformConfig(TransformConfig):
             join_key_1=config_json["join_key_1"],
             join_key_2=config_json["join_key_2"],
         )
+
+    def validate(self, datasets: Any) -> None:
+        if not isinstance(datasets, dict):
+            msg = f"Must provide dictionary of DatasetConfigs to PivotTransformConfig.validate, got '{datasets}'"
+            raise ValueError(msg)
+
+        if self.dataset_1 not in datasets:
+            msg = f"Invalid dataset_1 in JOIN transform: {self.dataset_1}"
+            raise ValueError(msg)
+        if self.dataset_2 not in datasets:
+            msg = f"Invalid dataset_2 in JOIN transform: {self.dataset_1}"
+            raise ValueError(msg)
 
 
 @dataclass
@@ -165,7 +181,7 @@ class DatasetConfig:
     @staticmethod
     def create(
         config_json: dict[str, Any],
-        path_to_transform: dict[str, list[TransformConfig]],
+        transforms: list[TransformConfig],
     ) -> DatasetConfig:
         if "name" not in config_json:
             msg = "Must specify 'name' in dataset config"
@@ -185,12 +201,20 @@ class DatasetConfig:
                 if leaf_column_names.count(leaf_column_name) == 1:
                     column.name = leaf_column_name.title()
 
+        path_to_transform: defaultdict[str, list[TransformConfig]] = defaultdict(list)
+        for transform in transforms:
+            path = getattr(transform, "path", None)
+            if path is None:
+                msg = "Invalid dataset transform, missing 'path' value."
+                raise ValueError(msg)
+            path_to_transform[path].append(transform)
+
         return DatasetConfig(
             name=config_json["name"],
             is_metadata=config_json.get("is_metadata", False),
             include=config_json.get("include", True),
             columns=columns,
-            path_to_transform=path_to_transform,
+            path_to_transform=dict(path_to_transform),
         )
 
     def _validate(self) -> None:
@@ -248,39 +272,35 @@ class MapperConfig:
             msg = "Must specify 'datasets' in mapper config"
             raise ValueError(msg)
 
-        _transforms = [
+        # Parse transforms, split into transforms specific to one dataset and those that apply over multiple datasets.
+        mapper_transforms: list[TransformConfig] = []
+        dataset_transforms: defaultdict[str, list[TransformConfig]] = defaultdict(list)
+        for transform in [
             TransformConfig.create(transform_config_json)
             for transform_config_json in config_json.get("transformations", [])
-        ]
-        mapper_transforms: list[TransformConfig] = []
-        dataset_transforms: defaultdict[
-            str, defaultdict[str, list[TransformConfig]]
-        ] = defaultdict(lambda: defaultdict(list))
-        for transform in _transforms:
+        ]:
             if isinstance(transform, PivotTransformConfig):
-                dataset_transforms[transform.dataset][transform.path].append(transform)
+                dataset_transforms[transform.dataset].append(transform)
             elif isinstance(transform, JoinTransformConfig):
                 mapper_transforms.append(transform)
             else:  # NOTE: should not be possible.
                 msg = f"Invalid transform: {transform}"
                 raise ValueError(msg)
 
-        datasets = {}
+        # Parse dataset configs.
+        datasets: dict[str, DatasetConfig] = {}
         for dataset_config_json in config_json["datasets"]:
+            if not isinstance(dataset_config_json, dict):
+                msg = f"Invalid dataset config, expected dictionary, got: {dataset_config_json}."
+                raise ValueError(msg)
             dataset_config = DatasetConfig.create(
                 dataset_config_json,
-                dict(dataset_transforms.get(dataset_config_json.get("name", None), {})),
+                dataset_transforms.get(dataset_config_json.get("name", None), []),
             )
             datasets[dataset_config.name] = dataset_config
 
         for transform in mapper_transforms:
-            if isinstance(transform, JoinTransformConfig):
-                if transform.dataset_1 not in datasets:
-                    msg = f"Invalid dataset_1 in JOIN transform: {transform.dataset_1}"
-                    raise ValueError(msg)
-                if transform.dataset_2 not in datasets:
-                    msg = f"Invalid dataset_2 in JOIN transform: {transform.dataset_1}"
-                    raise ValueError(msg)
+            transform.validate(datasets)
 
         return MapperConfig(
             datasets=datasets,

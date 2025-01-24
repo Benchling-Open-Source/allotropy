@@ -54,7 +54,7 @@ def test_create_dataset_config() -> None:
             }
         ],
     }
-    dataset_config = DatasetConfig.create(config_json, {})
+    dataset_config = DatasetConfig.create(config_json, [])
     assert not dataset_config.is_metadata
     assert dataset_config.include
     assert len(dataset_config.columns) == 1
@@ -65,7 +65,7 @@ def test_create_dataset_config() -> None:
 
 def test_create_empty_dataset_config() -> None:
     config_json = {"name": "dataset", "columns": []}
-    dataset_config = DatasetConfig.create(config_json, {})
+    dataset_config = DatasetConfig.create(config_json, [])
     assert dataset_config.name == "dataset"
     assert not dataset_config.is_metadata
     assert dataset_config.include
@@ -96,7 +96,7 @@ def test_create_dataset_config_use_path_name_if_unique() -> None:
             },
         ],
     }
-    dataset_config = DatasetConfig.create(config_json, {})
+    dataset_config = DatasetConfig.create(config_json, [])
     assert dataset_config.columns[0].name == "Key1"
     assert dataset_config.columns[1].name == "path.to.key2"
     assert dataset_config.columns[2].name == "path.to.another.key2"
@@ -117,7 +117,7 @@ def test_create_dataset_config_fails_for_non_unique_name() -> None:
         ],
     }
     with pytest.raises(ValueError, match="unique names"):
-        DatasetConfig.create(config_json, {})
+        DatasetConfig.create(config_json, [])
 
 
 def test_create_dataset_config_fails_for_non_unique_path() -> None:
@@ -135,7 +135,7 @@ def test_create_dataset_config_fails_for_non_unique_path() -> None:
         ],
     }
     with pytest.raises(ValueError, match="unique paths"):
-        DatasetConfig.create(config_json, {})
+        DatasetConfig.create(config_json, [])
 
 
 def test_create_mapper_config_with_defaults() -> None:
