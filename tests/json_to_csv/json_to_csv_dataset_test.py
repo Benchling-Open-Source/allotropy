@@ -45,6 +45,13 @@ def _assert_dicts_equal(expected: dict[str, Any], actual: dict[str, Any]) -> Non
                 "dataset": "tests/json_to_csv/testdata/plate_reader_extract_calculated_data.csv"
             },
         ),
+        (
+            "tests/json_to_csv/testdata/plate_reader.json",
+            "tests/json_to_csv/testdata/plate_reader_measurement_joined_on_calc_data.json",
+            {
+                "measurements": "tests/json_to_csv/testdata/plate_reader_measurement_joined_on_calc_data.csv"
+            },
+        ),
     ],
 )
 def test_json_to_csv_dataset(

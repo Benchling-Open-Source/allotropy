@@ -7,9 +7,36 @@ import pandas as pd
 
 from allotropy.json_to_csv.mapper_config import (
     DatasetConfig,
+    JoinTransformConfig,
     MapperConfig,
     PivotTransformConfig,
 )
+
+
+def _apply_join(datasets: dict[str, pd.DataFrame], transform_config: JoinTransformConfig) -> dict[str, pd.DataFrame]:
+    if transform_config.dataset_1 not in datasets:
+        msg = f"Invalid join transform, missing dataset_1: {transform_config.dataset_1}."
+        raise ValueError(msg)
+    if transform_config.join_key_1 not in datasets[transform_config.dataset_1]:
+        msg = f"Invalid join transform, dataset_1 ({transform_config.dataset_1}) is missing column for join_key_1: {transform_config.join_key_1}."
+        raise ValueError(msg)
+    if transform_config.dataset_2 not in datasets:
+        msg = f"Invalid join transform, missing dataset_2: {transform_config.dataset_2}."
+        raise ValueError(msg)
+    if transform_config.join_key_2 not in datasets[transform_config.dataset_2]:
+        msg = f"Invalid join transform, dataset_2 ({transform_config.dataset_2}) is missing column for join_key_2: {transform_config.join_key_2}."
+        raise ValueError(msg)
+
+    # Copy the dataframe to join, and rename the join key column so that it matches the first dataset.
+    to_join = datasets[transform_config.dataset_2].copy(deep=True).rename(columns={transform_config.join_key_2: transform_config.join_key_1})
+
+    # Join with left outer join
+    join = datasets[transform_config.dataset_1].merge(to_join, on=transform_config.join_key_1, how="left", indicator=True)
+    join = join[join["_merge"] != "right_only"].drop(columns=["_merge"])
+
+    # Replace the original dataset.
+    datasets[transform_config.dataset_1] = join
+    return datasets
 
 
 def _apply_pivot(
@@ -158,7 +185,13 @@ def map_dataset(data: dict[str, Any], config: DatasetConfig) -> pd.DataFrame:
 def json_to_csv(
     data: dict[str, Any], config: MapperConfig
 ) -> dict[str, pd.DataFrame | dict[str, Any]]:
-    return {
+    datasets = {
         name: map_dataset(data, dataset_config)
         for name, dataset_config in config.datasets.items()
     }
+
+    for transform in config.transforms:
+        if isinstance(transform, JoinTransformConfig):
+            _apply_join(datasets, transform)
+
+    return {name: dataset for name, dataset in datasets.items() if config.datasets[name].include}

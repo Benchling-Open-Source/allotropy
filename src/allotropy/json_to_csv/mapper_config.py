@@ -277,7 +277,7 @@ class MapperConfig:
         dataset_transforms: defaultdict[str, list[TransformConfig]] = defaultdict(list)
         for transform in [
             TransformConfig.create(transform_config_json)
-            for transform_config_json in config_json.get("transformations", [])
+            for transform_config_json in config_json.get("transforms", [])
         ]:
             if isinstance(transform, PivotTransformConfig):
                 dataset_transforms[transform.dataset].append(transform)

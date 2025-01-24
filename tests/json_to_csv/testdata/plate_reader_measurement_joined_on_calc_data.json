@@ -1,0 +1,65 @@
+{
+    "datasets": [
+        {
+            "name": "measurements",
+            "columns": [
+                {
+                    "name": "Well",
+                    "path": "plate reader aggregate document/plate reader document/measurement aggregate document/measurement document/sample document/location identifier"
+                },
+                {
+                    "name": "Wavelength",
+                    "path": "plate reader aggregate document/plate reader document/measurement aggregate document/measurement document/device control aggregate document/device control document/detector wavelength setting/value"
+                },
+                {
+                    "name": "Absorbance ($unit$)",
+                    "path": "plate reader aggregate document/plate reader document/measurement aggregate document/measurement document/absorbance/value"
+                },
+                {
+                    "name": "unit",
+                    "path": "plate reader aggregate document/plate reader document/measurement aggregate document/measurement document/absorbance/unit",
+                    "include": false
+                },
+                {
+                    "name": "Measurement ID",
+                    "path": "plate reader aggregate document/plate reader document/measurement aggregate document/measurement document/measurement identifier"
+                }
+            ]
+        },
+        {
+            "name": "calc_data",
+            "include": false,
+            "columns": [
+                {
+                    "name": "$calc_data_label$",
+                    "path": "plate reader aggregate document/calculated data aggregate document/calculated data document/calculated result/value"
+                },
+                {
+                    "name": "calc_data_label",
+                    "path": "plate reader aggregate document/calculated data aggregate document/calculated data document/calculated data name",
+                    "include": false
+                },
+                {
+                    "name": "Data Source",
+                    "path": "plate reader aggregate document/calculated data aggregate document/calculated data document/data source aggregate document/data source document/data source identifier"
+                }
+            ]
+        }
+    ],
+    "transforms": [
+        {
+            "type": "PIVOT",
+            "dataset": "dataset",
+            "path": "plate reader aggregate document/calculated data aggregate document/calculated data document",
+            "value_path": "plate reader aggregate document/calculated data aggregate document/calculated data document/calculated result/value",
+            "label_path": "plate reader aggregate document/calculated data aggregate document/calculated data document/calculated data name"
+        },
+        {
+            "type": "JOIN",
+            "dataset_1": "measurements",
+            "dataset_2": "calc_data",
+            "join_key_1": "Measurement ID",
+            "join_key_2": "Data Source"
+        }
+    ]
+}

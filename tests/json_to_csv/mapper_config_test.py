@@ -196,7 +196,7 @@ def test_create_mapper_config_with_transforms() -> None:
                 ],
             },
         ],
-        "transformations": [
+        "transforms": [
             {
                 "type": "PIVOT",
                 "dataset": "Dataset1",
@@ -252,7 +252,7 @@ def test_create_mapper_config_fails_with_invalid_join_transform() -> None:
                 ],
             },
         ],
-        "transformations": [
+        "transforms": [
             {
                 "type": "JOIN",
                 "dataset_1": "Dataset1",
@@ -281,7 +281,7 @@ def test_create_mapper_config_fails_with_invalid_pivot_transform() -> None:
                 ],
             },
         ],
-        "transformations": [
+        "transforms": [
             {
                 "type": "PIVOT",
                 "dataset": "Dataset1",

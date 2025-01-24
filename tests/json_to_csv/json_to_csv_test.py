@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from allotropy.json_to_csv.json_to_csv import _rename_column, map_dataset
+from allotropy.json_to_csv.json_to_csv import _rename_column, json_to_csv, map_dataset
 from allotropy.json_to_csv.mapper_config import (
     DatasetConfig,
     MapperConfig,
@@ -508,3 +508,80 @@ def test_map_dataset_with_pivot_transform_fails_on_non_unique_value() -> None:
 
     with pytest.raises(ValueError, match="Multiple unique"):
         map_dataset(data, dataset_config)
+
+
+def test_map_dataset_with_join_transform() -> None:
+    data = {
+        "list1": [
+            {
+                "id": 1,
+                "value": "V1.1"
+            },
+            {
+                "id": 2,
+                "value": "V2.1"
+            },
+        ],
+        "list2": [
+            {
+                "id": 1,
+                "value": "V2.1"
+            },
+            {
+                "id": 2,
+                "value": "V2.2"
+            },
+        ]
+    }
+
+    mapper_config = MapperConfig.create({
+        "datasets": [
+            {
+                "name": "Dataset1",
+                "columns": [
+                    {
+                        "name": "ID",
+                        "path": "list1/id",
+                    },
+                    {
+                        "name": "Value1",
+                        "path": "list1/value",
+                    },
+                ],
+            },
+            {
+                "name": "Dataset2",
+                "include": False,
+                "columns": [
+                    {
+                        "name": "id2",
+                        "path": "list2/id",
+                    },
+                    {
+                        "name": "Value2",
+                        "path": "list2/value",
+                    },
+                ],
+            },
+        ],
+        "transforms": [
+            {
+                "type": "JOIN",
+                "dataset_1": "Dataset1",
+                "dataset_2": "Dataset2",
+                "join_key_1": "ID",
+                "join_key_2": "id2",
+            }
+        ],
+    })
+
+    result = json_to_csv(data, mapper_config)
+    assert set(result.keys()) == {"Dataset1"}
+    expected = pd.DataFrame(
+        {
+            "ID": [1, 2],
+            "Value1": ["V1.1", "V2.1"],
+            "Value2": ["V2.1", "V2.2"],
+        }
+    )
+    assert expected.equals(result["Dataset1"])
