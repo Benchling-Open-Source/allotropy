@@ -27,8 +27,9 @@ class Constructor:
                 )
 
     def iter_calc_doc_data_sources(
-        self, config: CalculatedDataConfig, keys: dict[str, str]
+        self, config: CalculatedDataConfig, parent_keys: dict[str, str]
     ) -> Iterator[DataSource]:
+        keys = config.view_data.filter_keys(parent_keys)
         item = config.view_data.get_item(keys)
         empty: dict[str, str] = {}
         sub_keys_iterator = item.iter_keys() if isinstance(item, ViewData) else [empty]
@@ -56,10 +57,7 @@ class Constructor:
             data_source
             for source_config in config.source_configs
             for data_source in (
-                self.iter_calc_doc_data_sources(
-                    source_config,
-                    source_config.view_data.filter_keys(keys),
-                )
+                self.iter_calc_doc_data_sources(source_config, keys)
                 if isinstance(source_config, CalculatedDataConfig)
                 else self.iter_measurement_data_sources(source_config, elements)
             )
