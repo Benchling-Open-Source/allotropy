@@ -15,16 +15,18 @@ def head_tail_dict(
 
 
 class ViewData:
-    def __init__(self, name: str, data: dict[str, ViewData | list[Element]]):
+    def __init__(
+        self,
+        view: View,
+        name: str,
+        data: dict[str, ViewData | list[Element]],
+    ):
+        self.view = view
         self.name = name
         self.data = data
 
-    def iter_names(self) -> Iterator[str]:
-        yield self.name
-        for item in self.data.values():
-            if isinstance(item, ViewData):
-                yield from item.iter_names()
-            break
+    def filter_keys(self, keys: dict[str, str]) -> dict[str, str]:
+        return self.view.filter_keys(keys)
 
     def iter_keys(self) -> Iterator[dict[str, str]]:
         for key, item in self.data.items():
@@ -37,13 +39,6 @@ class ViewData:
                     }
             else:
                 yield full_key
-
-    def filter_keys(self, keys: dict[str, str]) -> dict[str, str]:
-        return {
-            name: key_value
-            for name in self.iter_names()
-            if (key_value := keys.get(name)) is not None
-        }
 
     def get_item(self, keys: dict[str, str]) -> ViewData | list[Element]:
         if not keys:
@@ -77,8 +72,16 @@ class View(ABC):
     def sort_elements(self, _: list[Element]) -> dict[str, list[Element]]:
         pass
 
+    def filter_keys(self, keys: dict[str, str]) -> dict[str, str]:
+        filtered_keys = self.sub_view.filter_keys(keys) if self.sub_view else {}
+        key_value = keys.get(self.name)
+        if key_value is not None:
+            filtered_keys[self.name] = key_value
+        return filtered_keys
+
     def apply(self, elements: list[Element]) -> ViewData:
         return ViewData(
+            view=self,
             name=self.name,
             data={
                 id_: self.sub_view.apply(element) if self.sub_view else element
