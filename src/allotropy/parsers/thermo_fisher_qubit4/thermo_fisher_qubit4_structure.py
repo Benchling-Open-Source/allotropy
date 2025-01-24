@@ -81,6 +81,7 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
                     if std_3_rfu is not None
                     else None,
                 },
+                custom_info=data.get_unread(),
             )
         ],
     )

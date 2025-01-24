@@ -1,8 +1,10 @@
 from typing import ClassVar
 
-from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
     DesignQuantstudioReader,
+)
+from allotropy.parsers.appbio_quantstudio_designandanalysis.constants import (
+    ExperimentType,
 )
 from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.creator import (
     Creator,
@@ -29,7 +31,7 @@ class GenotypingCreator(Creator):
         return Data(
             header,
             wells,
-            experiment_type=ExperimentType.genotyping_qPCR_experiment,
+            experiment_type=ExperimentType.genotyping_qpcr_experiment,
             calculated_documents=[],
             reference_target=None,
             reference_sample=None,

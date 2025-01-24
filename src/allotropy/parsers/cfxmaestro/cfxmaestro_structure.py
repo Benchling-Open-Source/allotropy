@@ -4,8 +4,8 @@ from pathlib import Path
 
 import pandas as pd
 
-from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
-from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import (
+from allotropy.allotrope.schema_mappers.adm.pcr.rec._2024._09.qpcr import (
+    Error,
     Measurement,
     MeasurementGroup,
     Metadata,
@@ -22,16 +22,19 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 
 
 def create_metadata(file_path: str) -> Metadata:
+    path = Path(file_path)
     return Metadata(
-        device_type=constants.DEVICE_TYPE,
-        device_serial_number=NOT_APPLICABLE,
-        file_name=Path(file_path).name,
+        file_name=path.name,
+        asm_file_identifier=path.with_suffix(".json").name,
         unc_path=file_path,
-        experiment_type=ExperimentType.comparative_CT_qPCR_experiment,
+        experiment_type=constants.EXPERIMENT_TYPE,
         container_type=constants.CONTAINER_TYPE,
         software_name=constants.SOFTWARE_NAME,
         product_manufacturer=constants.PRODUCT_MANUFACTURER,
+        device_type=constants.DEVICE_TYPE,
+        device_serial_number=NOT_APPLICABLE,
         device_identifier=NOT_APPLICABLE,
+        data_system_instance_identifier=NOT_APPLICABLE,
         model_number=NOT_APPLICABLE,
         measurement_method_identifier=NOT_APPLICABLE,
     )
@@ -43,6 +46,11 @@ def create_measurement_group(
 ) -> MeasurementGroup:
     return MeasurementGroup(
         plate_well_count=plate_well_count,
+        well_volume=NEGATIVE_ZERO,
+        error_document=[
+            Error(error="Value not provided in instrument file", feature="well volume")
+        ],
+        experimental_data_identifier=NOT_APPLICABLE,
         measurements=[
             Measurement(
                 # Measurement metadata
@@ -58,7 +66,10 @@ def create_measurement_group(
                 ),
                 timestamp=DEFAULT_EPOCH_TIMESTAMP,
                 # Optional measurement metadata
-                sample_role_type=data.get(str, "Content"),
+                sample_role_type=constants.SAMPLE_ROLE_TYPES_MAP.get(
+                    data.get(str, "Content", "__INVALID_KEY__")
+                ),
+                location_identifier=data[str, "Well"],
                 well_location_identifier=data[str, "Well"],
                 # Optional settings
                 reporter_dye_setting=data[str, "Fluor"],
@@ -68,10 +79,23 @@ def create_measurement_group(
                     cycle_threshold_result=data.get(
                         float, "Cq", validate=SeriesData.NOT_NAN
                     ),
-                    # TODO: confirm the exported column name for cycle number
-                    cycle_threshold_value_setting=data.get(
-                        float, "Cycle Number", NEGATIVE_ZERO
+                    # TODO: cycle number is required, but we do not have any examples of the value being
+                    # provided, if we get one, and the column does not match, update here.
+                    cycle_threshold_value_setting=(
+                        cycle_number := data.get(float, "Cycle Number", NEGATIVE_ZERO)
                     ),
+                ),
+                # Since the processed data doc does not include an error document,
+                # we added the cycle threshold value setting error at measurement level
+                error_document=(
+                    [
+                        Error(
+                            error="Value not provided in instrument file",
+                            feature="cycle threshold value setting (qPCR)",
+                        )
+                    ]
+                    if cycle_number == NEGATIVE_ZERO
+                    else None
                 ),
             )
             for data in well_data

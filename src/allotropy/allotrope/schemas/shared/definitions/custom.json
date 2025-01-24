@@ -1139,6 +1139,26 @@
       }
     ]
   },
+  "tQuantityValueSeimensPerMeter": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/SeimensPerMeter"
+      }
+    ]
+  },
+  "tNullableQuantityValueSeimensPerMeter": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/SeimensPerMeter"
+      }
+    ]
+  },
   "tQuantityValueSquareCentimetersPerGram": {
     "allOf": [
       {

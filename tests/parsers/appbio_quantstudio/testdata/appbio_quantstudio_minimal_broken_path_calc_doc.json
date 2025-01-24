@@ -1,33 +1,11 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest",
-    "qPCR aggregate document": {
-        "device system document": {
-            "device identifier": "278880034",
-            "model number": "QuantStudio(TM) 7 Flex System",
-            "device serial number": "278880034"
-        },
-        "qPCR document": [
+    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/REC/2024/09/qpcr.manifest",
+    "qpcr aggregate document": {
+        "qpcr document": [
             {
                 "measurement aggregate document": {
-                    "plate well count": {
-                        "value": 96,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
-                            "measurement time": "2010-10-20T02:23:34-04:00",
-                            "target DNA description": "RNaseP",
-                            "sample document": {
-                                "sample identifier": "800",
-                                "sample role type": "UNKNOWN",
-                                "well location identifier": "D1",
-                                "custom information document": {
-                                    "well identifier": 37,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(176,23,31)"
-                                }
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -35,24 +13,37 @@
                                         "measurement method identifier": "Ct",
                                         "total cycle number setting": {
                                             "value": 1.0,
-                                            "unit": "#"
+                                            "unit": "(unitless)"
                                         },
-                                        "PCR detection chemistry": "TAQMAN",
-                                        "reporter dye setting": "FAM",
+                                        "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
+                                        "reporter dye setting": "FAM",
                                         "passive reference dye setting": "ROX"
                                     }
                                 ]
+                            },
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
+                            "measurement time": "2010-10-20T02:23:34-04:00",
+                            "sample document": {
+                                "sample identifier": "800",
+                                "location identifier": "37",
+                                "sample role type": "unknown sample role",
+                                "well location identifier": "D1",
+                                "custom information document": {
+                                    "well identifier": 37,
+                                    "sample color": "RGB(176,23,31)",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
                                         "data processing document": {
-                                            "cycle threshold value setting": {
+                                            "automatic cycle threshold enabled setting": true,
+                                            "cycle threshold value setting (qPCR)": {
                                                 "value": 0.133,
                                                 "unit": "(unitless)"
                                             },
-                                            "automatic cycle threshold enabled setting": true,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
                                                 "value": 3,
@@ -63,7 +54,7 @@
                                                 "unit": "#"
                                             }
                                         },
-                                        "cycle threshold result": {
+                                        "cycle threshold result (qPCR)": {
                                             "value": 30.155,
                                             "unit": "(unitless)"
                                         },
@@ -72,7 +63,7 @@
                                             "cube-structure": {
                                                 "dimensions": [
                                                     {
-                                                        "@componentDatatype": "integer",
+                                                        "@componentDatatype": "double",
                                                         "concept": "cycle count",
                                                         "unit": "#"
                                                     }
@@ -80,7 +71,7 @@
                                                 "measures": [
                                                     {
                                                         "@componentDatatype": "double",
-                                                        "concept": "normalized report result",
+                                                        "concept": "normalized reporter result",
                                                         "unit": "(unitless)"
                                                     }
                                                 ]
@@ -88,7 +79,7 @@
                                             "data": {
                                                 "dimensions": [
                                                     [
-                                                        1
+                                                        1.0
                                                     ]
                                                 ],
                                                 "measures": [
@@ -103,7 +94,7 @@
                                             "cube-structure": {
                                                 "dimensions": [
                                                     {
-                                                        "@componentDatatype": "integer",
+                                                        "@componentDatatype": "double",
                                                         "concept": "cycle count",
                                                         "unit": "#"
                                                     }
@@ -119,7 +110,7 @@
                                             "data": {
                                                 "dimensions": [
                                                     [
-                                                        1
+                                                        1.0
                                                     ]
                                                 ],
                                                 "measures": [
@@ -134,27 +125,32 @@
                                         }
                                     }
                                 ]
-                            }
+                            },
+                            "target DNA description": "RNaseP"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example",
                     "experiment type": "relative standard curve qPCR experiment",
-                    "container type": "qPCR reaction block"
+                    "container type": "PCR reaction block",
+                    "well volume": {
+                        "value": 200.0,
+                        "unit": "μL"
+                    },
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    }
                 }
             }
         ],
-        "data system document": {
-            "data system instance identifier": "localhost",
-            "file name": "appbio_quantstudio_minimal_broken_path_calc_doc.txt",
-            "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_minimal_broken_path_calc_doc.txt",
-            "software name": "Thermo QuantStudio",
-            "software version": "1.0",
-            "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.61"
-        },
         "calculated data aggregate document": {
             "calculated data document": [
                 {
+                    "calculated data name": "amplification score",
+                    "calculated result": {
+                        "value": 1.242,
+                        "unit": "(unitless)"
+                    },
                     "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
                     "data source aggregate document": {
                         "data source document": [
@@ -163,18 +159,14 @@
                                 "data source feature": "cycle threshold result"
                             }
                         ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "RNaseP",
-                        "reference sample description": "800"
-                    },
-                    "calculated data name": "amplification score",
-                    "calculated datum": {
-                        "value": 1.242,
-                        "unit": "(unitless)"
                     }
                 },
                 {
+                    "calculated data name": "cq confidence",
+                    "calculated result": {
+                        "value": 0.967,
+                        "unit": "(unitless)"
+                    },
                     "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_2",
                     "data source aggregate document": {
                         "data source document": [
@@ -183,18 +175,14 @@
                                 "data source feature": "cycle threshold result"
                             }
                         ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "RNaseP",
-                        "reference sample description": "800"
-                    },
-                    "calculated data name": "cq confidence",
-                    "calculated datum": {
-                        "value": 0.967,
-                        "unit": "(unitless)"
                     }
                 },
                 {
+                    "calculated data name": "ct mean",
+                    "calculated result": {
+                        "value": 30.115,
+                        "unit": "(unitless)"
+                    },
                     "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_3",
                     "data source aggregate document": {
                         "data source document": [
@@ -203,18 +191,14 @@
                                 "data source feature": "cycle threshold result"
                             }
                         ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "RNaseP",
-                        "reference sample description": "800"
-                    },
-                    "calculated data name": "ct mean",
-                    "calculated datum": {
-                        "value": 30.115,
-                        "unit": "(unitless)"
                     }
                 },
                 {
+                    "calculated data name": "ct sd",
+                    "calculated result": {
+                        "value": 0.051,
+                        "unit": "(unitless)"
+                    },
                     "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_4",
                     "data source aggregate document": {
                         "data source document": [
@@ -223,18 +207,24 @@
                                 "data source feature": "cycle threshold result"
                             }
                         ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "RNaseP",
-                        "reference sample description": "800"
-                    },
-                    "calculated data name": "ct sd",
-                    "calculated datum": {
-                        "value": 0.051,
-                        "unit": "(unitless)"
                     }
                 }
             ]
+        },
+        "data system document": {
+            "ASM file identifier": "appbio_quantstudio_minimal_broken_path_calc_doc.json",
+            "data system instance identifier": "localhost",
+            "file name": "appbio_quantstudio_minimal_broken_path_calc_doc.txt",
+            "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_minimal_broken_path_calc_doc.txt",
+            "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
+            "ASM converter version": "0.1.69",
+            "software name": "Thermo QuantStudio",
+            "software version": "1.0"
+        },
+        "device system document": {
+            "device identifier": "278880034",
+            "equipment serial number": "278880034",
+            "model number": "QuantStudio(TM) 7 Flex System"
         }
     }
 }
