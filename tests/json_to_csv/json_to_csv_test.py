@@ -580,25 +580,27 @@ def test_map_dataset_with_join_transform() -> None:
 
 
 def test_map_dataset_metadata_to_json() -> None:
-    mapper_config = MapperConfig.create({
-        "datasets": [
-            {
-                "name": "metadata",
-                "is_metadata": True,
-                "columns": [
-                    {
-                        "name": "First ($second$)",
-                        "path": "key1",
-                    },
-                    {"name": "second", "path": "key2", "include": False},
-                    {
-                        "name": "Dict Key",
-                        "path": "dict_value/dict_key",
-                    },
-                ],
-            },
-        ],
-    })
+    mapper_config = MapperConfig.create(
+        {
+            "datasets": [
+                {
+                    "name": "metadata",
+                    "is_metadata": True,
+                    "columns": [
+                        {
+                            "name": "First ($second$)",
+                            "path": "key1",
+                        },
+                        {"name": "second", "path": "key2", "include": False},
+                        {
+                            "name": "Dict Key",
+                            "path": "dict_value/dict_key",
+                        },
+                    ],
+                },
+            ],
+        }
+    )
 
     data = {
         "key1": "value1",
