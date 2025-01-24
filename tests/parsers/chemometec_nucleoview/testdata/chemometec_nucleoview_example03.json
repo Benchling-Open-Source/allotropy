@@ -6,8 +6,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "1970-01-01T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NUCLEOVIEW_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -16,12 +14,17 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "cellsABCD"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NUCLEOVIEW_TEST_ID_0",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 95.5,
                                             "unit": "%"
@@ -29,12 +32,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 1.6,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 1.67,
@@ -47,9 +44,18 @@
                                         "average total cell diameter": {
                                             "value": 10.2,
                                             "unit": "µm"
+                                        },
+                                        "custom information document": {
+                                            "(%) of cells in aggregates with five or more cells": 1.0,
+                                            "Cell diameter standard deviation (um)": 6.0,
+                                            "Sample Volume (ul)": 200.0,
+                                            "Dilution Volume (ul)": 0.0
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "cellsABCD"
                             }
                         }
                     ]
@@ -63,7 +69,7 @@
             "file name": "chemometec_nucleoview_example03.csv",
             "UNC path": "tests/parsers/chemometec_nucleoview/testdata/chemometec_nucleoview_example03.csv",
             "ASM converter name": "allotropy_chemometec_nucleoview",
-            "ASM converter version": "0.1.66",
+            "ASM converter version": "0.1.72",
             "software name": "NucleoView"
         },
         "device system document": {

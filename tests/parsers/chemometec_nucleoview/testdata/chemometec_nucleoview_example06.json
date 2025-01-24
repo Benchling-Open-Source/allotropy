@@ -6,8 +6,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2023-11-20T11:03:00-07:00",
-                            "measurement identifier": "CHEMOMETEC_NUCLEOVIEW_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -16,12 +14,17 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "cellsABCD"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NUCLEOVIEW_TEST_ID_0",
+                            "measurement time": "2023-11-20T11:03:00-07:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 92.8,
                                             "unit": "%"
@@ -30,12 +33,6 @@
                                             "value": 1.58,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
                                         "total cell density (cell counter)": {
                                             "value": 1.7,
                                             "unit": "10^6 cells/mL"
@@ -43,9 +40,33 @@
                                         "dead cell density (cell counter)": {
                                             "value": 0.122,
                                             "unit": "10^6 cells/mL"
+                                        },
+                                        "custom information document": {
+                                            "Protocol adaptation filename": "287764ADc8824786b882bfc202a12044.cmsu",
+                                            "Login ID": "admin",
+                                            "Dilution Volume (ul)": 0.0,
+                                            "Instrument s/n": "s/n 9000201099909999",
+                                            " 21 CFR Part 11": "disabled",
+                                            "Sample Volume (ul)": 200.0,
+                                            "Event log format": "Plain text",
+                                            "Protocol adaptation purpose": "Cell Count and Viability with AO and DAPI",
+                                            "Protocol adaptation title": "example cell counting",
+                                            "cm filename": "20231120-0039-c-cellsABCD.cm",
+                                            "Protocol template filename": "Viability and Cell Count Assay - NC-200.cmsx",
+                                            "Protocol template title": "Viability and Cell Count Assay",
+                                            "Instrument type": "NucleoView NC-200",
+                                            "Application SW version": "1.4.0.0",
+                                            "csv file version": 2.0,
+                                            "Cell diameter standard deviation (um)": 7.7,
+                                            "PC": "ABC0-NBBS-FQ01",
+                                            "(%) of cells in aggregates with five or more cells": 5.0,
+                                            "Protocol template purpose": "Cell Count and Viability with AO and DAPI"
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "cellsABCD"
                             }
                         }
                     ]
@@ -59,7 +80,7 @@
             "file name": "chemometec_nucleoview_example06.csv",
             "UNC path": "tests/parsers/chemometec_nucleoview/testdata/chemometec_nucleoview_example06.csv",
             "ASM converter name": "allotropy_chemometec_nucleoview",
-            "ASM converter version": "0.1.66",
+            "ASM converter version": "0.1.72",
             "software name": "NucleoView",
             "software version": "1.4.0.0"
         },
