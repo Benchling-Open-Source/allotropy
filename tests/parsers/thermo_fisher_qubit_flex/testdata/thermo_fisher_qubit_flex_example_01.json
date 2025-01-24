@@ -42,7 +42,7 @@
                                 "sample identifier": "S1",
                                 "batch identifier": "131222-164034",
                                 "custom information document": {
-                                    "last read standards": "2022-12-13T16:41:09+00:00",
+                                    "last read standards": "2022-12-13T16:40:57+00:00",
                                     "selected samples": 6,
                                     "qubit tube concentration": {
                                         "value": 2.64,
@@ -67,7 +67,7 @@
                                 "unit": "RFU"
                             },
                             "custom information document": {
-                                "calibrated tubes": 6
+                                "Calibrated Tubes": 6.0
                             }
                         }
                     ],
@@ -115,7 +115,7 @@
                                 "sample identifier": "S2",
                                 "batch identifier": "131222-164034",
                                 "custom information document": {
-                                    "last read standards": "2022-12-13T16:41:09+00:00",
+                                    "last read standards": "2022-12-13T16:40:57+00:00",
                                     "selected samples": 6,
                                     "qubit tube concentration": {
                                         "value": 3.05,
@@ -140,7 +140,7 @@
                                 "unit": "RFU"
                             },
                             "custom information document": {
-                                "calibrated tubes": 6
+                                "Calibrated Tubes": 6.0
                             }
                         }
                     ],
@@ -188,7 +188,7 @@
                                 "sample identifier": "S3",
                                 "batch identifier": "131222-164034",
                                 "custom information document": {
-                                    "last read standards": "2022-12-13T16:41:09+00:00",
+                                    "last read standards": "2022-12-13T16:40:57+00:00",
                                     "selected samples": 6,
                                     "qubit tube concentration": {
                                         "value": 2.67,
@@ -213,7 +213,7 @@
                                 "unit": "RFU"
                             },
                             "custom information document": {
-                                "calibrated tubes": 6
+                                "Calibrated Tubes": 6.0
                             }
                         }
                     ],
@@ -261,7 +261,7 @@
                                 "sample identifier": "S4",
                                 "batch identifier": "131222-164034",
                                 "custom information document": {
-                                    "last read standards": "2022-12-13T16:41:09+00:00",
+                                    "last read standards": "2022-12-13T16:40:57+00:00",
                                     "selected samples": 6,
                                     "qubit tube concentration": {
                                         "value": 1.86,
@@ -286,7 +286,7 @@
                                 "unit": "RFU"
                             },
                             "custom information document": {
-                                "calibrated tubes": 6
+                                "Calibrated Tubes": 6.0
                             }
                         }
                     ],
@@ -334,7 +334,7 @@
                                 "sample identifier": "S5",
                                 "batch identifier": "131222-164034",
                                 "custom information document": {
-                                    "last read standards": "2022-12-13T16:41:09+00:00",
+                                    "last read standards": "2022-12-13T16:40:57+00:00",
                                     "selected samples": 6,
                                     "qubit tube concentration": {
                                         "value": 2.73,
@@ -359,7 +359,7 @@
                                 "unit": "RFU"
                             },
                             "custom information document": {
-                                "calibrated tubes": 6
+                                "Calibrated Tubes": 6.0
                             }
                         }
                     ],
@@ -407,7 +407,7 @@
                                 "sample identifier": "S6",
                                 "batch identifier": "131222-164034",
                                 "custom information document": {
-                                    "last read standards": "2022-12-13T16:41:09+00:00",
+                                    "last read standards": "2022-12-13T16:40:57+00:00",
                                     "selected samples": 6,
                                     "qubit tube concentration": {
                                         "value": 2.43,
@@ -432,7 +432,7 @@
                                 "unit": "RFU"
                             },
                             "custom information document": {
-                                "calibrated tubes": 6
+                                "Calibrated Tubes": 6.0
                             }
                         }
                     ],
@@ -453,7 +453,7 @@
             "software name": "Qubit Flex software",
             "software version": "1.5.0",
             "ASM converter name": "allotropy_thermo_fisher_scientific_qubit_flex",
-            "ASM converter version": "0.1.62"
+            "ASM converter version": "0.1.71"
         }
     }
 }
