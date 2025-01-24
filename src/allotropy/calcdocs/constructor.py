@@ -30,8 +30,11 @@ class Constructor:
         self, config: CalculatedDataConfig, keys: dict[str, str]
     ) -> Iterator[DataSource]:
         item = config.view_data.get_item(keys)
-        for sub_keys in item.iter_keys() if isinstance(item, ViewData) else [{}]:
-            if calc_doc := self.get_calc_doc(config, {**keys, **sub_keys}):  # type: ignore[dict-item]
+        empty: dict[str, str] = {}
+        sub_keys_iterator = item.iter_keys() if isinstance(item, ViewData) else [empty]
+
+        for sub_keys in sub_keys_iterator:
+            if calc_doc := self.get_calc_doc(config, {**keys, **sub_keys}):
                 yield DataSource(
                     feature=config.name,
                     reference=calc_doc,
