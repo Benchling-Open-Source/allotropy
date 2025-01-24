@@ -513,70 +513,62 @@ def test_map_dataset_with_pivot_transform_fails_on_non_unique_value() -> None:
 def test_map_dataset_with_join_transform() -> None:
     data = {
         "list1": [
-            {
-                "id": 1,
-                "value": "V1.1"
-            },
-            {
-                "id": 2,
-                "value": "V2.1"
-            },
+            {"id": 1, "value": "V1.1"},
+            {"id": 2, "value": "V2.1"},
         ],
         "list2": [
-            {
-                "id": 1,
-                "value": "V2.1"
-            },
-            {
-                "id": 2,
-                "value": "V2.2"
-            },
-        ]
+            {"id": 1, "value": "V2.1"},
+            {"id": 2, "value": "V2.2"},
+        ],
     }
 
-    mapper_config = MapperConfig.create({
-        "datasets": [
-            {
-                "name": "Dataset1",
-                "columns": [
-                    {
-                        "name": "ID",
-                        "path": "list1/id",
-                    },
-                    {
-                        "name": "Value1",
-                        "path": "list1/value",
-                    },
-                ],
-            },
-            {
-                "name": "Dataset2",
-                "include": False,
-                "columns": [
-                    {
-                        "name": "id2",
-                        "path": "list2/id",
-                    },
-                    {
-                        "name": "Value2",
-                        "path": "list2/value",
-                    },
-                ],
-            },
-        ],
-        "transforms": [
-            {
-                "type": "JOIN",
-                "dataset_1": "Dataset1",
-                "dataset_2": "Dataset2",
-                "join_key_1": "ID",
-                "join_key_2": "id2",
-            }
-        ],
-    })
+    mapper_config = MapperConfig.create(
+        {
+            "datasets": [
+                {
+                    "name": "Dataset1",
+                    "columns": [
+                        {
+                            "name": "ID",
+                            "path": "list1/id",
+                        },
+                        {
+                            "name": "Value1",
+                            "path": "list1/value",
+                        },
+                    ],
+                },
+                {
+                    "name": "Dataset2",
+                    "include": False,
+                    "columns": [
+                        {
+                            "name": "id2",
+                            "path": "list2/id",
+                        },
+                        {
+                            "name": "Value2",
+                            "path": "list2/value",
+                        },
+                    ],
+                },
+            ],
+            "transforms": [
+                {
+                    "type": "JOIN",
+                    "dataset_1": "Dataset1",
+                    "dataset_2": "Dataset2",
+                    "join_key_1": "ID",
+                    "join_key_2": "id2",
+                }
+            ],
+        }
+    )
 
     result = json_to_csv(data, mapper_config)
     assert set(result.keys()) == {"Dataset1"}
+    actual = result["Dataset1"]
+    assert isinstance(actual, pd.DataFrame)
     expected = pd.DataFrame(
         {
             "ID": [1, 2],
@@ -584,4 +576,44 @@ def test_map_dataset_with_join_transform() -> None:
             "Value2": ["V2.1", "V2.2"],
         }
     )
-    assert expected.equals(result["Dataset1"])
+    assert expected.equals(actual)
+
+
+def test_map_dataset_metadata_to_json() -> None:
+    mapper_config = MapperConfig.create({
+        "datasets": [
+            {
+                "name": "metadata",
+                "is_metadata": True,
+                "columns": [
+                    {
+                        "name": "First ($second$)",
+                        "path": "key1",
+                    },
+                    {"name": "second", "path": "key2", "include": False},
+                    {
+                        "name": "Dict Key",
+                        "path": "dict_value/dict_key",
+                    },
+                ],
+            },
+        ],
+    })
+
+    data = {
+        "key1": "value1",
+        "key2": "value2",
+        "dict_value": {
+            "dict_key": "dict_value",
+        },
+    }
+
+    result = json_to_csv(data, mapper_config)
+    assert set(result.keys()) == {"metadata"}
+    actual = result["metadata"]
+    assert isinstance(actual, dict)
+    expected = {
+        "First (value2)": "value1",
+        "Dict Key": "dict_value",
+    }
+    assert expected == actual

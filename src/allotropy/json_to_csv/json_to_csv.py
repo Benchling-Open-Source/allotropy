@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 import re
 from typing import Any
@@ -13,25 +14,37 @@ from allotropy.json_to_csv.mapper_config import (
 )
 
 
-def _apply_join(datasets: dict[str, pd.DataFrame], transform_config: JoinTransformConfig) -> dict[str, pd.DataFrame]:
+def _apply_join(
+    datasets: dict[str, pd.DataFrame], transform_config: JoinTransformConfig
+) -> dict[str, pd.DataFrame]:
     if transform_config.dataset_1 not in datasets:
-        msg = f"Invalid join transform, missing dataset_1: {transform_config.dataset_1}."
+        msg = (
+            f"Invalid join transform, missing dataset_1: {transform_config.dataset_1}."
+        )
         raise ValueError(msg)
     if transform_config.join_key_1 not in datasets[transform_config.dataset_1]:
         msg = f"Invalid join transform, dataset_1 ({transform_config.dataset_1}) is missing column for join_key_1: {transform_config.join_key_1}."
         raise ValueError(msg)
     if transform_config.dataset_2 not in datasets:
-        msg = f"Invalid join transform, missing dataset_2: {transform_config.dataset_2}."
+        msg = (
+            f"Invalid join transform, missing dataset_2: {transform_config.dataset_2}."
+        )
         raise ValueError(msg)
     if transform_config.join_key_2 not in datasets[transform_config.dataset_2]:
         msg = f"Invalid join transform, dataset_2 ({transform_config.dataset_2}) is missing column for join_key_2: {transform_config.join_key_2}."
         raise ValueError(msg)
 
     # Copy the dataframe to join, and rename the join key column so that it matches the first dataset.
-    to_join = datasets[transform_config.dataset_2].copy(deep=True).rename(columns={transform_config.join_key_2: transform_config.join_key_1})
+    to_join = (
+        datasets[transform_config.dataset_2]
+        .copy(deep=True)
+        .rename(columns={transform_config.join_key_2: transform_config.join_key_1})
+    )
 
     # Join with left outer join
-    join = datasets[transform_config.dataset_1].merge(to_join, on=transform_config.join_key_1, how="left", indicator=True)
+    join = datasets[transform_config.dataset_1].merge(
+        to_join, on=transform_config.join_key_1, how="left", indicator=True
+    )
     join = join[join["_merge"] != "right_only"].drop(columns=["_merge"])
 
     # Replace the original dataset.
@@ -74,6 +87,7 @@ def _map_dataset(
     data: dict[str, Any], config: DatasetConfig, current_path: Path | None = None
 ) -> pd.DataFrame:
     current_path = current_path or Path()
+    # Map simple values from the current level
     single_values = {}
     for key, value in data.items():
         path = Path(current_path, key)
@@ -82,9 +96,9 @@ def _map_dataset(
             continue
         if not isinstance(value, dict | list):
             single_values[column_config.name] = [value]
-
     df = pd.DataFrame(single_values)
 
+    # Map nested dictionaries and lists, combining them with the base dataset.
     for key, value in data.items():
         path = Path(current_path, key)
         path_df: pd.DataFrame = pd.DataFrame()
@@ -136,9 +150,11 @@ def _rename_column(
         label_tuple = tuple(row.loc[labels])
         new_column_values[label_tuple][int(str(index))] = row.loc[column_name]
 
+    # Drop the old column
     insert_index = df.columns.get_loc(column_name)
     df = df.drop(columns=[column_name])
 
+    # Inject the new columns
     new_column_names: list[str] = []
     for unique_tuple in unique_values:
         new_column_name = column_name
@@ -164,7 +180,7 @@ def map_dataset(data: dict[str, Any], config: DatasetConfig) -> pd.DataFrame:
     if config.columns:
         df = df[[column for column in config.column_names if column in df]]
 
-    # Sub column names
+    # Rename columns with substitution labels
     for column in config.columns:
         if column.has_labels:
             df, _ = _rename_column(df, column.name)
@@ -177,9 +193,30 @@ def map_dataset(data: dict[str, Any], config: DatasetConfig) -> pd.DataFrame:
     ]
     df = df.drop(columns=columns_to_drop)
 
-    # Turn metadata into json blob
-
     return df
+
+
+def _convert_to_json_blob(df: pd.DataFrame, config: DatasetConfig) -> dict[str, Any]:
+    try:
+        blob = json.loads(df.to_json())
+    except ValueError as e:
+        msg = f"Unable to convert dataset {config.name} to json blob with error: {e}"
+        raise ValueError(msg) from e
+
+    if not isinstance(blob, dict):
+        msg = f"Invalid candidate for dataset to metadata json conversion for dataset {config.name} result is not a dictionary: {blob}"
+        raise ValueError(msg)
+
+    cleaned: dict[str, Any] = {}
+    for key, value in blob.items():
+        if not isinstance(value, dict):
+            msg = f"Invalid object: {value} at key {key} when converting dataframe to json."
+            raise ValueError(msg)
+        if len(value) != 1:
+            msg = f"Invalid candidate for dataset to metadata json conversion for key {key}: {value}. Must have a single value per key."
+            raise ValueError(msg)
+        cleaned[key] = value[next(iter(value))]
+    return cleaned
 
 
 def json_to_csv(
@@ -190,8 +227,21 @@ def json_to_csv(
         for name, dataset_config in config.datasets.items()
     }
 
+    # Apply transforms across multiple datasets (e.g. joins)
     for transform in config.transforms:
         if isinstance(transform, JoinTransformConfig):
             _apply_join(datasets, transform)
 
-    return {name: dataset for name, dataset in datasets.items() if config.datasets[name].include}
+    # Remove datasets that should not be included.
+    datasets = {
+        name: dataset
+        for name, dataset in datasets.items()
+        if config.datasets[name].include
+    }
+
+    datasets = {
+        name: _convert_to_json_blob(dataset, config.datasets[name]) if config.datasets[name].is_metadata else dataset
+        for name, dataset in datasets.items()
+    }
+
+    return datasets
