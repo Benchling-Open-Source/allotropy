@@ -1,5 +1,11 @@
 from collections.abc import Iterator
 
+from allotropy.calcdocs.appbio_quantstudio_designandanalysis.config import (
+    CalculatedDataConfigWithOptional,
+)
+from allotropy.calcdocs.appbio_quantstudio_designandanalysis.constructor import (
+    ConstructorWithOptional,
+)
 from allotropy.calcdocs.appbio_quantstudio_designandanalysis.extractor import (
     AppbioQuantstudioDAExtractor,
 )
@@ -1231,10 +1237,11 @@ def iter_relative_standard_curve_calc_docs(
                                     value="delta_ct_mean",
                                     view_data=sid_tdna_view_data,
                                     source_configs=[
-                                        CalculatedDataConfig(
+                                        CalculatedDataConfigWithOptional(
                                             name="adjusted equivalent ct mean",
                                             value="adj_eq_ct_mean",
                                             view_data=sid_tdna_view_data,
+                                            optional=True,
                                             source_configs=[
                                                 CalculatedDataConfig(
                                                     name="equivalent ct mean",
@@ -1348,7 +1355,7 @@ def iter_relative_standard_curve_calc_docs(
         ),
     ]
 
-    a = Constructor().construct(configs)  # noqa: F841
+    a = ConstructorWithOptional().construct(configs)  # noqa: F841
 
     # random_uuid_str(next_id=306)
 
