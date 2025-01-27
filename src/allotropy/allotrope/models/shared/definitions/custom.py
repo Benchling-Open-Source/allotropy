@@ -63,6 +63,7 @@ from allotropy.allotrope.models.shared.definitions.units import (
     RelativeLightUnitTimesMilliliter,
     RelativeLightUnitTimesSecond,
     SecondTime,
+    SeimensPerMeter,
     SquareCentimetersPerGram,
     SquareCentimetersPerMole,
     TODO,
@@ -710,6 +711,16 @@ class TQuantityValueSecondTime(SecondTime, TQuantityValue):
 
 @dataclass(frozen=True, kw_only=True)
 class TNullableQuantityValueSecondTime(SecondTime, TNullableQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueSeimensPerMeter(SeimensPerMeter, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValueSeimensPerMeter(SeimensPerMeter, TNullableQuantityValue):
     pass
 
 

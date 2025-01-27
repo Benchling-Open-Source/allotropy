@@ -33,6 +33,9 @@ from allotropy.parsers.benchling_empower.benchling_empower_parser import (
 from allotropy.parsers.biorad_bioplex_manager.biorad_bioplex_manager_parser import (
     BioradBioplexParser,
 )
+from allotropy.parsers.bmg_labtech_smart_control.bmg_labtech_smart_control_parser import (
+    BmgLabtechSmartControlParser,
+)
 from allotropy.parsers.bmg_mars.bmg_mars_parser import BmgMarsParser
 from allotropy.parsers.cfxmaestro.cfxmaestro_parser import CfxmaestroParser
 from allotropy.parsers.chemometec_nc_view.chemometec_nc_view_parser import (
@@ -116,6 +119,7 @@ class Vendor(Enum):
     APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS = "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS"
     BENCHLING_EMPOWER = "BENCHLING_EMPOWER"
     BECKMAN_COULTER_BIOMEK = "BECKMAN_COULTER_BIOMEK"
+    BMG_LABTECH_SMART_CONTROL = "BMG_LABTECH_SMART_CONTROL"
     BMG_MARS = "BMG_MARS"
     BECKMAN_PHARMSPEC = "BECKMAN_PHARMSPEC"
     BECKMAN_VI_CELL_BLU = "BECKMAN_VI_CELL_BLU"
@@ -209,6 +213,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser[Any, Any]]] = {
     Vendor.BECKMAN_VI_CELL_XR: ViCellXRParser,
     Vendor.BENCHLING_EMPOWER: BenchlingEmpowerParser,
     Vendor.BIORAD_BIOPLEX: BioradBioplexParser,
+    Vendor.BMG_LABTECH_SMART_CONTROL: BmgLabtechSmartControlParser,
     Vendor.BMG_MARS: BmgMarsParser,
     Vendor.CFXMAESTRO: CfxmaestroParser,
     Vendor.CHEMOMETEC_NC_VIEW: ChemometecNcViewParser,
