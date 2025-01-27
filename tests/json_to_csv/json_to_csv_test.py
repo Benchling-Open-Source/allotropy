@@ -148,7 +148,9 @@ def test__rename_columns_multiple_values() -> None:
         }
     )
 
-    actual, new_column_names = _rename_column(df, "Name $key1$ $key2$")
+    actual, new_column_names = _rename_column(
+        df, "Name $key1$ $key2$", ["key1", "key2"]
+    )
     expected = pd.DataFrame(
         {
             "key1": ["A", "A", "A", "B"],

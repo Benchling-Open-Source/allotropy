@@ -35,11 +35,11 @@ def test_create_column_config_override_defaults() -> None:
     assert column_config.required
 
 
-def test_has_labels() -> None:
-    assert not ColumnConfig.create({"path": "key"}).has_labels
+def test_labels() -> None:
+    assert not ColumnConfig.create({"path": "key"}).labels
     assert ColumnConfig.create(
         {"name": "Name with $label1$ and $label2$", "path": "key"}
-    ).has_labels
+    ).labels == ["label1", "label2"]
 
 
 def test_create_dataset_config() -> None:

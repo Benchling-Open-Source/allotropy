@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from collections import defaultdict
+from collections.abc import Sequence
 from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
@@ -13,15 +14,22 @@ class TransformType(Enum):
     JOIN = "JOIN"
 
 
+def _assert_required_keys(
+    config_json: dict[str, Any], required_keys: Sequence[str], config_name: str
+) -> None:
+    for key in required_keys:
+        if key not in config_json:
+            msg = f"Must specify '{key}' in {config_name} config"
+            raise ValueError(msg)
+
+
 @dataclass
 class TransformConfig:
     type_: TransformType
 
     @staticmethod
     def create(config_json: dict[str, Any]) -> TransformConfig:
-        if "type" not in config_json:
-            msg = "Must specify 'type' in transform config"
-            raise ValueError(msg)
+        _assert_required_keys(config_json, ("type",), "transform")
         try:
             type_ = TransformType(config_json["type"])
         except ValueError as err:
@@ -47,15 +55,18 @@ class PivotTransformConfig(TransformConfig):
 
     @staticmethod
     def create(config_json: dict[str, Any]) -> PivotTransformConfig:
-        for key in ("dataset", "path", "value_path", "label_path"):
-            if key not in config_json:
-                msg = f"Must specify '{key}' in pivot transform config"
-                raise ValueError(msg)
+        _assert_required_keys(
+            config_json,
+            ("dataset", "path", "value_path", "label_path"),
+            "pivot transform",
+        )
 
         if config_json["path"] not in config_json["value_path"]:
             msg = f"Invalid pivot transform - path ({config_json['path']}) must be a subpath of value_path ({config_json['value_path']})."
+            raise ValueError(msg)
         if config_json["path"] not in config_json["label_path"]:
             msg = f"Invalid pivot transform - path ({config_json['path']}) must be a subpath of label_path ({config_json['label_path']})."
+            raise ValueError(msg)
 
         return PivotTransformConfig(
             type_=TransformType.PIVOT,
@@ -99,10 +110,11 @@ class JoinTransformConfig(TransformConfig):
 
     @staticmethod
     def create(config_json: dict[str, Any]) -> JoinTransformConfig:
-        for key in ("dataset_1", "dataset_2", "join_key_1", "join_key_2"):
-            if key not in config_json:
-                msg = f"Must specify '{key}' in join transform config"
-                raise ValueError(msg)
+        _assert_required_keys(
+            config_json,
+            ("dataset_1", "dataset_2", "join_key_1", "join_key_2"),
+            "join transform",
+        )
         return JoinTransformConfig(
             type_=TransformType.JOIN,
             dataset_1=config_json["dataset_1"],
@@ -133,9 +145,7 @@ class ColumnConfig:
 
     @staticmethod
     def create(config_json: dict[str, Any]) -> ColumnConfig:
-        if "path" not in config_json:
-            msg = "Must specify 'path' in dataset config"
-            raise ValueError(msg)
+        _assert_required_keys(config_json, ("path",), "column")
         path = str(config_json["path"])
         return ColumnConfig(
             path=path,
@@ -145,8 +155,10 @@ class ColumnConfig:
         )
 
     @property
-    def has_labels(self) -> bool:
-        return bool(re.findall(r"\$([^\$]*)\$", self.name))
+    def labels(self) -> list[str]:
+        # Labels in a column name are denoted by surrounding $ symbols, e.g. column name "Absorbance $wavelength$"
+        # means the column name should have the value of the "wavelength" column substituted in to the column name.
+        return re.findall(r"\$([^\$]*)\$", self.name)
 
 
 @dataclass
@@ -183,10 +195,8 @@ class DatasetConfig:
         config_json: dict[str, Any],
         transforms: list[TransformConfig],
     ) -> DatasetConfig:
-        if "name" not in config_json:
-            msg = "Must specify 'name' in dataset config"
-            raise ValueError(msg)
-        if "columns" not in config_json or not isinstance(config_json["columns"], list):
+        _assert_required_keys(config_json, ("name", "columns"), "dataset")
+        if not isinstance(config_json["columns"], list):
             msg = "Must specify list 'columns' in dataset config"
             raise ValueError(msg)
 
@@ -268,9 +278,7 @@ class MapperConfig:
         # If dataset config is not provided, create a "default config" with no columns specified. This will
         # cause all values in the json to be included.
         config_json = config_json or {"datasets": [{"name": "dataset", "columns": []}]}
-        if "datasets" not in config_json:
-            msg = "Must specify 'datasets' in mapper config"
-            raise ValueError(msg)
+        _assert_required_keys(config_json, ("datasets",), "mapper")
 
         # Parse transforms, split into transforms specific to one dataset and those that apply over multiple datasets.
         mapper_transforms: list[TransformConfig] = []

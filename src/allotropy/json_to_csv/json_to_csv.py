@@ -1,6 +1,5 @@
 import json
 from pathlib import Path
-import re
 from typing import Any
 
 import numpy as np
@@ -56,18 +55,20 @@ def _apply_pivot(
     df: pd.DataFrame, transform_config: PivotTransformConfig, config: DatasetConfig
 ) -> pd.DataFrame:
     # Get the set of non-pivoted columns
-    value_column_name = config.path_to_config[transform_config.value_path].name
-    label_column_name = config.path_to_config[transform_config.label_path].name
+    value_column_config = config.path_to_config[transform_config.value_path]
+    label_column_config = config.path_to_config[transform_config.label_path]
     other_columns = [
         column
         for column in df.columns
-        if column not in {value_column_name, label_column_name}
+        if column not in {value_column_config.name, label_column_config.name}
     ]
 
     # Rename pivot value column and drop the label column
-    df, new_column_names = _rename_column(df, value_column_name)
-    config.replace_column_names(value_column_name, new_column_names)
-    df = df.drop(columns=label_column_name)
+    df, new_column_names = _rename_column(
+        df, value_column_config.name, value_column_config.labels
+    )
+    config.replace_column_names(value_column_config.name, new_column_names)
+    df = df.drop(columns=label_column_config.name)
 
     # Group by non-pivot columns, and compress each into a single row.
     rows: list[list[Any]] = []
@@ -84,9 +85,8 @@ def _apply_pivot(
 
 
 def _map_dataset(
-    data: dict[str, Any], config: DatasetConfig, current_path: Path | None = None
+    data: dict[str, Any], config: DatasetConfig, current_path: Path
 ) -> pd.DataFrame:
-    current_path = current_path or Path()
     # Map simple values from the current level
     single_values = {}
     for key, value in data.items():
@@ -131,13 +131,12 @@ def _map_dataset(
 
 
 def _rename_column(
-    df: pd.DataFrame, column_name: str
+    df: pd.DataFrame, column_name: str, labels: list[str]
 ) -> tuple[pd.DataFrame, list[str]]:
     if column_name not in df:
         return df, []
 
-    # Get column names to be used for rename.
-    labels = re.findall(r"\$([^\$]*)\$", column_name)
+    # Get columns to be used for labels.
     label_values = df.loc[:, labels]
 
     # Get unique combinations of column names.
@@ -168,7 +167,8 @@ def _rename_column(
 
 
 def map_dataset(data: dict[str, Any], config: DatasetConfig) -> pd.DataFrame:
-    df = _map_dataset(data, config)
+    # NOTE: empty Path is passed as start case to private recursive function.
+    df = _map_dataset(data, config, current_path=Path())
 
     # Check that required columns are populated.
     required_columns = {column.name for column in config.columns if column.required}
@@ -182,8 +182,8 @@ def map_dataset(data: dict[str, Any], config: DatasetConfig) -> pd.DataFrame:
 
     # Rename columns with substitution labels
     for column in config.columns:
-        if column.has_labels:
-            df, _ = _rename_column(df, column.name)
+        if column.labels:
+            df, _ = _rename_column(df, column.name, column.labels)
 
     # Drop columns that should not be included
     columns_to_drop = [
