@@ -929,9 +929,9 @@ def iter_relative_standard_curve_calc_docs(
     sid_ref_tdna_view_data = SampleView(
         reference=r_sample, sub_view=TargetView()
     ).apply(elements)
-    sid_tdna_ref_view_data = SampleView(sub_view=TargetView(reference=r_target)).apply(
-        elements
-    )
+    sid_tdna_ref_view_data = SampleView(
+        sub_view=TargetView(is_reference=True, reference=r_target)
+    ).apply(elements)
     sid_tdna_blacklist_view_data = SampleView(
         sub_view=TargetView(blacklist=[r_target] if r_target is not None else None)
     ).apply(elements)
