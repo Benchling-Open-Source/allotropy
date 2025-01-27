@@ -12,12 +12,7 @@ from allotropy.json_to_csv.mapper_config import MapperConfig
 
 
 def _assert_dicts_equal(expected: dict[str, Any], actual: dict[str, Any]) -> None:
-    ddiff = DeepDiff(
-        expected,
-        actual,
-        # ignore_type_in_groups=[(float, np.float64)],
-        # ignore_nan_inequality=True,
-    )
+    ddiff = DeepDiff(expected, actual)
     if ddiff:
         msg = f"actual != expected: \n{ddiff.pretty()}"
         raise AssertionError(msg)
