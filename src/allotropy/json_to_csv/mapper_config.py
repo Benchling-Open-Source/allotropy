@@ -263,7 +263,7 @@ class DatasetConfig:
         )
 
     def get_column_config(self, path: str) -> ColumnConfig | None:
-        # If not columns are specified, include everything with default config
+        # If no columns are specified, include everything with default config
         if not self.path_to_config:
             return ColumnConfig.create({"path": path})
         return self.path_to_config.get(path, None)
