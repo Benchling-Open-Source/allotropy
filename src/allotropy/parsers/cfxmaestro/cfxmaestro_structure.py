@@ -46,14 +46,31 @@ def create_measurement_group(
     well_data: list[SeriesData],
     plate_well_count: int,
 ) -> MeasurementGroup:
-    return MeasurementGroup(
-        plate_well_count=plate_well_count,
-        well_volume=NEGATIVE_ZERO,
-        error_document=[
-            Error(error="Value not provided in instrument file", feature="well volume")
-        ],
-        experimental_data_identifier=NOT_APPLICABLE,
-        measurements=[
+    measurements = []
+    for data in well_data:
+        if not (
+            data.get(str, "Sample", validate=SeriesData.NOT_NAN)
+            or data.get(float, "Cq", validate=SeriesData.NOT_NAN)
+        ):
+            data.get_unread()
+            continue
+        sample_doc_custom_data = data.get_custom_keys(
+            set(constants.SAMPLE_DOCUMENT_CUSTOM_KEYS)
+        )
+        device_doc_custom_data = data.get_custom_keys(
+            set(constants.DEVICE_CONTROL_DOCUMENT_CUSTOM_KEYS)
+        )
+        processed_data_doc_custom_data = data.get_custom_keys(
+            set(constants.PROCESSED_DATA_DOCUMENT_CUSTOM_KEYS)
+        )
+        # these fields are not need in the asm
+        data.mark_read(
+            {
+                "Cq Mean",
+                "Unnamed: 0",
+            }
+        )
+        measurements.append(
             Measurement(
                 # Measurement metadata
                 identifier=random_uuid_str(),
@@ -86,6 +103,7 @@ def create_measurement_group(
                     cycle_threshold_value_setting=(
                         cycle_number := data.get(float, "Cycle Number", NEGATIVE_ZERO)
                     ),
+                    custom_info=_set_nan_to_string(processed_data_doc_custom_data),
                 ),
                 # Since the processed data doc does not include an error document,
                 # we added the cycle threshold value setting error at measurement level
@@ -99,12 +117,20 @@ def create_measurement_group(
                     if cycle_number == NEGATIVE_ZERO
                     else None
                 ),
-                custom_info=_set_nan_to_string(additional_data),
+                sample_custom_info=_set_nan_to_string(sample_doc_custom_data),
+                device_control_custom_info=_set_nan_to_string(device_doc_custom_data),
+                custom_info=data.get_unread(),
             )
-            for data in well_data
-            if data.get(str, "Sample", validate=SeriesData.NOT_NAN)
-            or data.get(float, "Cq", validate=SeriesData.NOT_NAN)
+        )
+
+    return MeasurementGroup(
+        plate_well_count=plate_well_count,
+        well_volume=NEGATIVE_ZERO,
+        error_document=[
+            Error(error="Value not provided in instrument file", feature="well volume")
         ],
+        experimental_data_identifier=NOT_APPLICABLE,
+        measurements=measurements,
     )
 
 
@@ -129,7 +155,3 @@ def _set_nan_to_string(data: dict[str, Any]) -> dict[str, Any]:
         key: try_float_or_nan(value) if isinstance(value, float) else value
         for key, value in data.items()
     }
-
-
-def _get_unread_data(data: SeriesData) -> dict[str, Any]:
-    return data.get_unread() | data.get_custom_keys({r"Starting Quantity \(SQ\)"})
