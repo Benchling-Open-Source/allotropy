@@ -6,6 +6,7 @@ import numpy as np
 import pandas as pd
 
 from allotropy.json_to_csv.mapper_config import (
+    ColumnConfig,
     DatasetConfig,
     JoinTransformConfig,
     MapperConfig,
@@ -64,9 +65,7 @@ def _apply_pivot(
     ]
 
     # Rename pivot value column and drop the label column
-    df, new_column_names = _rename_column(
-        df, value_column_config.name, value_column_config.labels
-    )
+    df, new_column_names = _rename_column(df, value_column_config)
     config.replace_column_names(value_column_config.name, new_column_names)
     df = df.drop(columns=label_column_config.name)
 
@@ -131,13 +130,13 @@ def _map_dataset(
 
 
 def _rename_column(
-    df: pd.DataFrame, column_name: str, labels: list[str]
+    df: pd.DataFrame, column_config: ColumnConfig
 ) -> tuple[pd.DataFrame, list[str]]:
-    if column_name not in df:
+    if column_config.name not in df:
         return df, []
 
     # Get columns to be used for labels.
-    label_values = df.loc[:, labels]
+    label_values = df.loc[:, column_config.labels]
 
     # Get unique combinations of column names.
     unique_values = [tuple(t) for _, t in label_values.drop_duplicates().iterrows()]
@@ -146,18 +145,18 @@ def _rename_column(
     }
     # Map the unique labels to the corresponding column value.
     for index, row in df.iterrows():
-        label_tuple = tuple(row.loc[labels])
-        new_column_values[label_tuple][int(str(index))] = row.loc[column_name]
+        label_tuple = tuple(row.loc[column_config.labels])
+        new_column_values[label_tuple][int(str(index))] = row.loc[column_config.name]
 
     # Drop the old column
-    insert_index = df.columns.get_loc(column_name)
-    df = df.drop(columns=[column_name])
+    insert_index = df.columns.get_loc(column_config.name)
+    df = df.drop(columns=[column_config.name])
 
     # Inject the new columns
     new_column_names: list[str] = []
     for unique_tuple in unique_values:
-        new_column_name = column_name
-        for label, value in zip(labels, unique_tuple, strict=True):
+        new_column_name = column_config.name
+        for label, value in zip(column_config.labels, unique_tuple, strict=True):
             new_column_name = new_column_name.replace(f"${label}$", value)
         new_column_names.append(new_column_name)
         df.insert(insert_index, new_column_name, new_column_values[unique_tuple])
@@ -181,9 +180,9 @@ def map_dataset(data: dict[str, Any], config: DatasetConfig) -> pd.DataFrame:
         df = df[[column for column in config.column_names if column in df]]
 
     # Rename columns with substitution labels
-    for column in config.columns:
-        if column.labels:
-            df, _ = _rename_column(df, column.name, column.labels)
+    for column_config in config.columns:
+        if column_config.labels:
+            df, _ = _rename_column(df, column_config)
 
     # Drop columns that should not be included
     columns_to_drop = [

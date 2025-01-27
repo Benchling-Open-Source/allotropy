@@ -4,6 +4,7 @@ from collections import defaultdict
 from collections.abc import Sequence
 from dataclasses import dataclass
 from enum import Enum
+from functools import cached_property
 from pathlib import Path
 import re
 from typing import Any
@@ -154,7 +155,7 @@ class ColumnConfig:
             required=config_json.get("required", False),
         )
 
-    @property
+    @cached_property
     def labels(self) -> list[str]:
         # Labels in a column name are denoted by surrounding $ symbols, e.g. column name "Absorbance $wavelength$"
         # means the column name should have the value of the "wavelength" column substituted in to the column name.

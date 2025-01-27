@@ -4,6 +4,7 @@ import pytest
 
 from allotropy.json_to_csv.json_to_csv import _rename_column, json_to_csv, map_dataset
 from allotropy.json_to_csv.mapper_config import (
+    ColumnConfig,
     DatasetConfig,
     MapperConfig,
     PivotTransformConfig,
@@ -149,7 +150,13 @@ def test__rename_columns_multiple_values() -> None:
     )
 
     actual, new_column_names = _rename_column(
-        df, "Name $key1$ $key2$", ["key1", "key2"]
+        df,
+        ColumnConfig(
+            name="Name $key1$ $key2$",
+            path="",
+            include=True,
+            required=False,
+        ),
     )
     expected = pd.DataFrame(
         {
@@ -161,6 +168,7 @@ def test__rename_columns_multiple_values() -> None:
         }
     )
     assert actual.equals(expected)
+    assert new_column_names == ["Name A A", "Name A B", "Name B B"]
 
 
 def test_map_dataset_list_with_inconsistent_keys() -> None:
