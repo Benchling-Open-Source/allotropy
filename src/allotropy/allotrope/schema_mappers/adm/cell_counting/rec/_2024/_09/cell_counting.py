@@ -3,15 +3,21 @@ from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.cell_counting.rec._2024._09.cell_counting import (
+    CalculatedDataAggregateDocument,
+    CalculatedDataDocumentItem,
     CellCountingAggregateDocument,
     CellCountingDocumentItem,
     DataProcessingDocument,
+    DataSourceAggregateDocument,
+    DataSourceDocumentItem,
     DataSystemDocument,
     DeviceControlAggregateDocument,
     DeviceControlDocumentItem,
     DeviceSystemDocument,
     ErrorAggregateDocument,
     ErrorDocumentItem,
+    ImageAggregateDocument,
+    ImageDocumentItem,
     MeasurementAggregateDocument,
     MeasurementDocument,
     Model,
@@ -27,8 +33,13 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValuePercent,
     TQuantityValueUnitless,
 )
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    JsonFloat,
+    TQuantityValue,
+)
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
+from allotropy.parsers.utils.calculated_data_documents.definition import DataSource
 from allotropy.parsers.utils.values import quantity_or_none
 
 
@@ -62,6 +73,7 @@ class Measurement:
     maximum_cell_diameter_setting: float | None = None
     cell_density_dilution_factor: float | None = None
     sample_volume_setting: float | None = None
+    dilution_volume: float | None = None
 
     # Optional measurements
     viable_cell_count: float | None = None
@@ -83,6 +95,9 @@ class Measurement:
     total_object_count: float | None = None
     standard_deviation: float | None = None
     aggregate_rate: float | None = None
+    experimental_data_identifier: str | None = None
+    percentage_of_cells_with_five_or_more: float | None = None
+    cell_diameter_standard_deviation: float | None = None
 
     errors: list[Error] | None = None
 
@@ -90,11 +105,13 @@ class Measurement:
     debris_index: float | None = None
     cell_aggregation_percentage: float | None = None
     custom_info_doc: dict[str, Any] | None = None
+    custom_data_system_info_doc: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
 class MeasurementGroup:
     measurements: list[Measurement]
+    custom_info_doc: dict[str, Any] | None = None
     analyst: str | None = None
 
 
@@ -115,12 +132,25 @@ class Metadata:
     brand_name: str | None = None
     asset_management_identifier: str | None = None
     description: str | None = None
+    csv_file_version: str | None = None
+    _21_cfr_part_11: str | None = None
+
+
+@dataclass(frozen=True)
+class CalculatedDataItem:
+    identifier: str
+    name: str
+    value: JsonFloat
+    unit: str
+    data_sources: list[DataSource]
+    description: str | None = None
 
 
 @dataclass
 class Data:
     metadata: Metadata
     measurement_groups: list[MeasurementGroup]
+    calculated_data: list[CalculatedDataItem] | None = None
 
 
 def has_value(model: object) -> bool:
@@ -131,6 +161,10 @@ class Mapper(SchemaMapper[Data, Model]):
     MANIFEST = "http://purl.allotrope.org/manifests/cell-counting/REC/2024/09/cell-counting.manifest"
 
     def map_model(self, data: Data) -> Model:
+        custom_doc = {
+            "csv file version": data.metadata.csv_file_version,
+            " 21 CFR Part 11": data.metadata._21_cfr_part_11,
+        }
         return Model(
             field_asm_manifest=self.MANIFEST,
             cell_counting_aggregate_document=CellCountingAggregateDocument(
@@ -143,60 +177,88 @@ class Mapper(SchemaMapper[Data, Model]):
                     description=data.metadata.description,
                     equipment_serial_number=data.metadata.equipment_serial_number,
                 ),
-                data_system_document=DataSystemDocument(
-                    data_system_instance_identifier=data.metadata.data_system_instance_id,
-                    file_name=data.metadata.file_name,
-                    UNC_path=data.metadata.unc_path,
-                    software_name=data.metadata.software_name,
-                    software_version=data.metadata.software_version,
-                    ASM_converter_name=self.converter_name,
-                    ASM_converter_version=ASM_CONVERTER_VERSION,
-                    ASM_file_identifier=data.metadata.asm_file_identifier,
+                data_system_document=add_custom_information_document(
+                    DataSystemDocument(
+                        data_system_instance_identifier=data.metadata.data_system_instance_id,
+                        file_name=data.metadata.file_name,
+                        UNC_path=data.metadata.unc_path,
+                        software_name=data.metadata.software_name,
+                        software_version=data.metadata.software_version,
+                        ASM_converter_name=self.converter_name,
+                        ASM_converter_version=ASM_CONVERTER_VERSION,
+                        ASM_file_identifier=data.metadata.asm_file_identifier,
+                    ),
+                    custom_doc,
                 ),
                 cell_counting_document=[
-                    self._get_technique_document(measurement_group, data.metadata)
+                    self._get_technique_document(
+                        measurement_group, data.metadata, data.calculated_data
+                    )
                     for measurement_group in data.measurement_groups
                 ],
             ),
         )
 
     def _get_technique_document(
-        self, measurement_group: MeasurementGroup, metadata: Metadata
+        self,
+        measurement_group: MeasurementGroup,
+        metadata: Metadata,
+        calculated_data: list[CalculatedDataItem] | None = None,
     ) -> CellCountingDocumentItem:
         return CellCountingDocumentItem(
             analyst=measurement_group.analyst,
-            measurement_aggregate_document=MeasurementAggregateDocument(
-                measurement_document=[
-                    self._get_measurement_document(measurement, metadata)
-                    for measurement in measurement_group.measurements
-                ]
+            measurement_aggregate_document=add_custom_information_document(
+                MeasurementAggregateDocument(
+                    measurement_document=[
+                        self._get_measurement_document(measurement, metadata)
+                        for measurement in measurement_group.measurements
+                    ],
+                    calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
+                        calculated_data
+                    ),
+                ),
+                measurement_group.custom_info_doc or {},
             ),
         )
 
     def _get_measurement_document(
         self, measurement: Measurement, metadata: Metadata
     ) -> MeasurementDocument:
-        return MeasurementDocument(
-            measurement_time=self.get_date_time(measurement.timestamp),
-            measurement_identifier=measurement.measurement_identifier,
-            sample_document=self._get_sample_document(measurement),
-            device_control_aggregate_document=DeviceControlAggregateDocument(
-                device_control_document=[
-                    DeviceControlDocumentItem(
-                        device_type=metadata.device_type,
-                        detection_type=metadata.detection_type,
-                        sample_volume_setting=quantity_or_none(
-                            TQuantityValueMicroliter, measurement.sample_volume_setting
-                        ),
-                    )
-                ]
+        custom_info = measurement.custom_info_doc or {}
+        return add_custom_information_document(
+            MeasurementDocument(
+                measurement_time=self.get_date_time(measurement.timestamp),
+                measurement_identifier=measurement.measurement_identifier,
+                sample_document=self._get_sample_document(measurement),
+                device_control_aggregate_document=DeviceControlAggregateDocument(
+                    device_control_document=[
+                        DeviceControlDocumentItem(
+                            device_type=metadata.device_type,
+                            detection_type=metadata.detection_type,
+                            sample_volume_setting=quantity_or_none(
+                                TQuantityValueMicroliter,
+                                measurement.sample_volume_setting,
+                            ),
+                        )
+                    ]
+                ),
+                processed_data_aggregate_document=self._get_processed_data_aggregate_document(
+                    measurement
+                ),
+                error_aggregate_document=self._get_error_aggregate_document(
+                    measurement.errors
+                ),
+                image_aggregate_document=ImageAggregateDocument(
+                    image_document=[
+                        ImageDocumentItem(
+                            experimental_data_identifier=measurement.experimental_data_identifier
+                        )
+                    ],
+                )
+                if measurement.experimental_data_identifier
+                else None,
             ),
-            processed_data_aggregate_document=self._get_processed_data_aggregate_document(
-                measurement
-            ),
-            error_aggregate_document=self._get_error_aggregate_document(
-                measurement.errors
-            ),
+            custom_info,
         )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
@@ -207,6 +269,9 @@ class Mapper(SchemaMapper[Data, Model]):
                 self.get_date_time(measurement.sample_draw_time)
                 if measurement.sample_draw_time
                 else None
+            ),
+            "Dilution Volume (ul)": quantity_or_none(
+                TQuantityValueMicroliter, measurement.dilution_volume
             ),
         }
         return add_custom_information_document(
@@ -252,7 +317,6 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueUnitless, measurement.debris_index
             ),
         }
-        custom_document.update(measurement.custom_info_doc or {})
         data_processing_document = DataProcessingDocument(
             cell_type_processing_method=measurement.cell_type_processing_method,
             minimum_cell_diameter_setting=quantity_or_none(
@@ -335,5 +399,34 @@ class Mapper(SchemaMapper[Data, Model]):
             error_document=[
                 ErrorDocumentItem(error=error.error, error_feature=error.feature)
                 for error in errors
+            ]
+        )
+
+    def _get_calculated_data_aggregate_document(
+        self, calculated_data_items: list[CalculatedDataItem] | None
+    ) -> CalculatedDataAggregateDocument | None:
+        if not calculated_data_items:
+            return None
+
+        return CalculatedDataAggregateDocument(
+            calculated_data_document=[
+                CalculatedDataDocumentItem(
+                    calculated_data_identifier=calculated_data_item.identifier,
+                    calculated_data_name=calculated_data_item.name,
+                    calculated_result=TQuantityValue(  # type:ignore[arg-type]
+                        value=calculated_data_item.value,
+                        unit=calculated_data_item.unit,
+                    ),
+                    data_source_aggregate_document=DataSourceAggregateDocument(
+                        data_source_document=[
+                            DataSourceDocumentItem(
+                                data_source_identifier=item.reference.uuid,
+                                data_source_feature=item.feature,
+                            )
+                            for item in calculated_data_item.data_sources
+                        ]
+                    ),
+                )
+                for calculated_data_item in calculated_data_items
             ]
         )

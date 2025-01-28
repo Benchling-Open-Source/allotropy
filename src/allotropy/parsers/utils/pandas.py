@@ -254,7 +254,6 @@ class SeriesData:
 
             return field_name
 
-        # Create a new dictionary with sanitized keys
         return {make_valid_identifier(key): value for key, value in data.items()}
 
     def _get_custom_key(self, key: str) -> float | str | None:

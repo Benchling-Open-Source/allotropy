@@ -4,7 +4,12 @@ from pathlib import Path
 
 import pandas as pd
 
+from allotropy.allotrope.models.shared.definitions.units import (
+    Microliter,
+    Percent,
+)
 from allotropy.allotrope.schema_mappers.adm.cell_counting.rec._2024._09.cell_counting import (
+    CalculatedDataItem,
     Error,
     Measurement,
     MeasurementGroup,
@@ -13,6 +18,7 @@ from allotropy.allotrope.schema_mappers.adm.cell_counting.rec._2024._09.cell_cou
 from allotropy.parsers.chemometec_nucleoview.constants import (
     DEFAULT_ANALYST,
     DEFAULT_MODEL_NUMBER,
+    MEASUREMENT_AGG_DOCUMENT_CUSTOM_FIELDS,
     NUCLEOCOUNTER_DETECTION_TYPE,
     NUCLEOCOUNTER_DEVICE_TYPE,
     NUCLEOCOUNTER_SOFTWARE_NAME,
@@ -21,6 +27,10 @@ from allotropy.parsers.constants import (
     DEFAULT_EPOCH_TIMESTAMP,
     NEGATIVE_ZERO,
     NOT_APPLICABLE,
+)
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    DataSource,
+    Referenceable,
 )
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
@@ -39,6 +49,8 @@ def create_metadata(data: SeriesData, file_path: str) -> Metadata:
         software_version=data.get(str, "Application SW version"),
         device_type=NUCLEOCOUNTER_DEVICE_TYPE,
         detection_type=NUCLEOCOUNTER_DETECTION_TYPE,
+        csv_file_version=data.get(str, "csv file version"),
+        _21_cfr_part_11=data.get(str, "21 CFR Part 11"),
     )
     # We read header info from a row in the table, so we don't need to read all keys from this SeriesData
     data.get_unread()
@@ -65,8 +77,21 @@ def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
                 feature="viable cell density",
             )
         )
+    # These fields we read from the first row as metadata, so we don't need to read them here
+    data.mark_read(
+        {
+            "PC",
+            "Instrument type",
+            "Instrument s/n",
+            "Application SW version",
+            "21 CFR Part 11",
+            "csv file version",
+        }
+    )
+
     return MeasurementGroup(
         analyst=data.get(str, "Operator", DEFAULT_ANALYST),
+        custom_info_doc=data.get_custom_keys(MEASUREMENT_AGG_DOCUMENT_CUSTOM_FIELDS),
         measurements=[
             Measurement(
                 measurement_identifier=random_uuid_str(),
@@ -84,7 +109,64 @@ def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
                     float, "Estimated cell diameter (um)"
                 ),
                 errors=errors,
-                custom_info_doc=data.get_unread(),
+                sample_volume_setting=data.get(float, "Sample Volume (ul)"),
+                experimental_data_identifier=data.get(str, "cm filename"),
+                dilution_volume=data.get(float, "Dilution Volume (ul)"),
+                percentage_of_cells_with_five_or_more=data.get(
+                    float, "(%) of cells in aggregates with five or more cells"
+                ),
+                cell_diameter_standard_deviation=data.get(
+                    float, "Cell diameter standard deviation (um)"
+                ),
+                custom_info_doc=None,
             )
         ],
     )
+
+
+def get_calculated_data(
+    groups: list[MeasurementGroup],
+) -> list[CalculatedDataItem] | None:
+    result = []
+    for group in groups:
+        cell_diameter_standard_deviation = group.measurements[
+            0
+        ].cell_diameter_standard_deviation
+        if cell_diameter_standard_deviation:
+            result.append(
+                CalculatedDataItem(
+                    identifier=random_uuid_str(),
+                    name="Cell diameter standard deviation (um)",
+                    value=cell_diameter_standard_deviation,
+                    data_sources=[
+                        DataSource(
+                            feature="Average Total Cell Diameter",
+                            reference=Referenceable(
+                                uuid=group.measurements[0].measurement_identifier
+                            ),
+                        )
+                    ],
+                    unit=Microliter.unit,
+                )
+            )
+        percentage_of_cells_with_five_or_more = group.measurements[
+            0
+        ].percentage_of_cells_with_five_or_more
+        if percentage_of_cells_with_five_or_more:
+            result.append(
+                CalculatedDataItem(
+                    identifier=random_uuid_str(),
+                    name="Percentage of cells with five or more",
+                    value=percentage_of_cells_with_five_or_more,
+                    data_sources=[
+                        DataSource(
+                            feature="Cell count",
+                            reference=Referenceable(
+                                uuid=group.measurements[0].measurement_identifier
+                            ),
+                        )
+                    ],
+                    unit=Percent.unit,
+                )
+            )
+    return result
