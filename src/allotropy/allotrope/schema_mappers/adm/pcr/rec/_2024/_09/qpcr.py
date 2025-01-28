@@ -352,7 +352,7 @@ class Mapper(SchemaMapper[Data, Model]):
                         data.baseline_determination_end_cycle_setting,
                     ),
                 ),
-                data.data_processing_custom_info
+                data.data_processing_custom_info,
             ),
             cycle_threshold_result__qPCR_=quantity_or_none(
                 TQuantityValueUnitless, data.cycle_threshold_result

@@ -71,7 +71,9 @@ def _create_processed_data_cubes(
 
 
 def _create_processed_data(
-    amplification_data: AmplificationData | None, result: Result, result_metadata: ResultMetadata,
+    amplification_data: AmplificationData | None,
+    result: Result,
+    result_metadata: ResultMetadata,
 ) -> ProcessedData:
     (
         normalized_reporter_data_cube,
@@ -207,7 +209,9 @@ def _create_measurement(
         reporter_dye_setting=well_item.reporter_dye_setting,
         quencher_dye_setting=well_item.quencher_dye_setting,
         passive_reference_dye_setting=header.passive_reference_dye_setting,
-        processed_data=_create_processed_data(amplification_data, result, result_metadata),
+        processed_data=_create_processed_data(
+            amplification_data, result, result_metadata
+        ),
         sample_custom_info=well_item.extra_data,
         reporter_dye_data_cube=reporter_dye_data_cube,
         passive_reference_dye_data_cube=passive_reference_dye_data_cube,

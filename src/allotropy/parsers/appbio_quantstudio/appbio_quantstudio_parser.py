@@ -51,7 +51,13 @@ class AppBioQuantStudioParser(VendorParser[Data, Model]):
         return Data(
             metadata=create_metadata(header, named_file_contents.original_file_path),
             measurement_groups=create_measurement_groups(
-                header, wells, amp_data, multi_data, results_data, melt_data, result_metadata,
+                header,
+                wells,
+                amp_data,
+                multi_data,
+                results_data,
+                melt_data,
+                result_metadata,
             ),
             calculated_data=create_calculated_data(calculated_data_documents),
         )
