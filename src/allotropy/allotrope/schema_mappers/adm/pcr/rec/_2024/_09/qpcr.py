@@ -123,6 +123,7 @@ class ProcessedData:
     # Metadata
     comments: str | None = None
 
+    data_processing_custom_info: dict[str, Any] | None = None
     custom_info: dict[str, Any] | None = None
 
 
@@ -331,24 +332,27 @@ class Mapper(SchemaMapper[Data, Model]):
         if not data:
             return None
         doc = ProcessedDataDocumentItem(
-            data_processing_document=DataProcessingDocument(
-                automatic_cycle_threshold_enabled_setting=data.automatic_cycle_threshold_enabled_setting,
-                cycle_threshold_value_setting__qPCR_=quantity_or_none(
-                    TQuantityValueUnitless, data.cycle_threshold_value_setting
+            data_processing_document=add_custom_information_document(
+                DataProcessingDocument(
+                    automatic_cycle_threshold_enabled_setting=data.automatic_cycle_threshold_enabled_setting,
+                    cycle_threshold_value_setting__qPCR_=quantity_or_none(
+                        TQuantityValueUnitless, data.cycle_threshold_value_setting
+                    ),
+                    automatic_baseline_determination_enabled_setting=data.automatic_baseline_determination_enabled_setting,
+                    genotyping_qPCR_method_setting__qPCR_=quantity_or_none(
+                        TQuantityValueUnitless,
+                        data.genotyping_determination_method_setting,
+                    ),
+                    baseline_determination_start_cycle_setting=quantity_or_none(
+                        TQuantityValueNumber,
+                        data.baseline_determination_start_cycle_setting,
+                    ),
+                    baseline_determination_end_cycle_setting=quantity_or_none(
+                        TQuantityValueNumber,
+                        data.baseline_determination_end_cycle_setting,
+                    ),
                 ),
-                automatic_baseline_determination_enabled_setting=data.automatic_baseline_determination_enabled_setting,
-                genotyping_qPCR_method_setting__qPCR_=quantity_or_none(
-                    TQuantityValueUnitless,
-                    data.genotyping_determination_method_setting,
-                ),
-                baseline_determination_start_cycle_setting=quantity_or_none(
-                    TQuantityValueNumber,
-                    data.baseline_determination_start_cycle_setting,
-                ),
-                baseline_determination_end_cycle_setting=quantity_or_none(
-                    TQuantityValueNumber,
-                    data.baseline_determination_end_cycle_setting,
-                ),
+                data.data_processing_custom_info
             ),
             cycle_threshold_result__qPCR_=quantity_or_none(
                 TQuantityValueUnitless, data.cycle_threshold_result

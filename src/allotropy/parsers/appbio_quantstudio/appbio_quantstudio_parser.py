@@ -38,20 +38,20 @@ class AppBioQuantStudioParser(VendorParser[Data, Model]):
         wells = Well.create(reader, header.experiment_type)
         amp_data = create_amplification_data(reader)
         multi_data = create_multicomponent_data(reader)
-        results_data, results_metadata = Result.create(reader, header.experiment_type)
+        results_data, result_metadata = Result.create(reader, header.experiment_type)
         melt_data = MeltCurveRawData.create(reader)
 
         calculated_data_documents = iter_calculated_data_documents(
             [well_item for well in wells for well_item in well.items],
             header.experiment_type,
-            results_metadata.reference_sample_description,
-            results_metadata.reference_dna_description,
+            result_metadata.reference_sample_description,
+            result_metadata.reference_dna_description,
         )
 
         return Data(
             metadata=create_metadata(header, named_file_contents.original_file_path),
             measurement_groups=create_measurement_groups(
-                header, wells, amp_data, multi_data, results_data, melt_data
+                header, wells, amp_data, multi_data, results_data, melt_data, result_metadata,
             ),
             calculated_data=create_calculated_data(calculated_data_documents),
         )
