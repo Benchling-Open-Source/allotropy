@@ -118,7 +118,7 @@ def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
                 cell_diameter_standard_deviation=data.get(
                     float, "Cell diameter standard deviation (um)"
                 ),
-                custom_info_doc=None,
+                custom_info_doc=data.get_unread(),
             )
         ],
     )
