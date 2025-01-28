@@ -5,6 +5,20 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.73] - 2025-01-28
+
+### Added
+
+- Internal - add initial json-to-csv library (#767)
+- Thermo Fisher Qubit Flex - Add unread data to asm (#855)
+- Internal - implement special views for Quantstudio design analysis in calcdoc (#858)
+- Internal - implement calculated data documents library (#838)
+- Bio-Rad CFX Maestro - Use qpcr rec/2024/09 schema mapper (#837)
+- AppBio QuantStudio Design & Analysis - Use qpcr rec/2024/09 schema mapper (#836)
+- Thermo fisher Nanodrop One - Add unread data to customer information document (#852)
+- AppBio QuantStudio RT-PCR - Use qpcr rec/2024/09 schema mapper (#856)
+- Thermo Fisher Qubit4 - Add unread data to asm. (#854)
+
 ## [0.1.72] - 2025-01-21
 
 ### Added
