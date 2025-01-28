@@ -10,6 +10,7 @@ from allotropy.parsers.chemometec_nucleoview.nucleoview_reader import Nucleoview
 from allotropy.parsers.chemometec_nucleoview.nucleoview_structure import (
     create_measurement_groups,
     create_metadata,
+    get_calculated_data,
 )
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.pandas import df_to_series_data, map_rows
@@ -24,9 +25,11 @@ class ChemometecNucleoviewParser(VendorParser[Data, Model]):
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         df = NucleoviewReader.read(named_file_contents.contents)
+        measurement_groups = map_rows(df, create_measurement_groups)
         return Data(
             create_metadata(
                 df_to_series_data(df.head(1)), named_file_contents.original_file_path
             ),
-            map_rows(df, create_measurement_groups),
+            measurement_groups,
+            get_calculated_data(measurement_groups),
         )
