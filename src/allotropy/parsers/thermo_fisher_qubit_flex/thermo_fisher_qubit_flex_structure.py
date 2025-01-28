@@ -50,12 +50,8 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
                 original_sample_concentration_unit=data.get(
                     str, "Original sample conc. units"
                 ),
-                custom_info={
-                    "reagent lot number": data.get(int, "Reagent Lot#"),
-                    "calibrated tubes": data.get(int, "Calibrated Tubes"),
-                },
                 sample_custom_info={
-                    "last read standards": data.get(str, "Test Date"),
+                    "last read standards": data.get(str, "Last Read Standards"),
                     "selected samples": data.get(int, "Selected Samples"),
                     "qubit tube concentration": {
                         "value": data.get(float, "Qubit Tube Conc.", NaN),
@@ -96,6 +92,7 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
                         "unit": "ng/µL",
                     },
                 },
+                custom_info=data.get_unread(skip={"Software Version"}),
             )
         ],
     )
@@ -103,6 +100,9 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
 
 def create_data(df: pd.DataFrame, file_path: str) -> Data:
     header = df_to_series_data(df.head(1))
+    # We read header info from a row in the table, so we don't need to read all keys from this SeriesData
+    software_version = header.get(str, "Software Version")
+    header.get_unread()
     return Data(
         metadata=Metadata(
             file_name=Path(file_path).name,
@@ -110,7 +110,7 @@ def create_data(df: pd.DataFrame, file_path: str) -> Data:
             device_identifier=NOT_APPLICABLE,
             model_number=constants.MODEL_NUMBER,
             software_name=constants.SOFTWARE_NAME,
-            software_version=header.get(str, "Software Version"),
+            software_version=software_version,
             product_manufacturer=constants.PRODUCT_MANUFACTURER,
             brand_name=constants.BRAND_NAME,
             device_type=constants.DEVICE_TYPE,

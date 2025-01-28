@@ -1,8 +1,10 @@
 from typing import ClassVar
 
-from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
     DesignQuantstudioReader,
+)
+from allotropy.parsers.appbio_quantstudio_designandanalysis.constants import (
+    ExperimentType,
 )
 from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.creator import (
     Creator,
@@ -31,7 +33,7 @@ class MeltCurveCreator(Creator):
         return Data(
             header,
             wells,
-            experiment_type=ExperimentType.melt_curve_qPCR_experiment,
+            experiment_type=ExperimentType.melt_curve_qpcr_experiment,
             calculated_documents=[],
             reference_target=None,
             reference_sample=None,

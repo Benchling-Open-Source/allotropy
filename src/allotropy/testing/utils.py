@@ -64,6 +64,7 @@ NON_UNIQUE_IDENTIFIERS = {
     "destination well plate identifier",
     "well identifier",
     "assay identifier",
+    "container identifier",
 }
 
 
