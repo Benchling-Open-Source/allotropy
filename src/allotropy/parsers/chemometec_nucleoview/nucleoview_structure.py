@@ -5,7 +5,7 @@ from pathlib import Path
 import pandas as pd
 
 from allotropy.allotrope.models.shared.definitions.units import (
-    Microliter,
+    Micrometer,
     Percent,
 )
 from allotropy.allotrope.schema_mappers.adm.cell_counting.rec._2024._09.cell_counting import (
@@ -146,7 +146,7 @@ def get_calculated_data(
                             ),
                         )
                     ],
-                    unit=Microliter.unit,
+                    unit=Micrometer.unit,
                 )
             )
         percentage_of_cells_with_five_or_more = group.measurements[
