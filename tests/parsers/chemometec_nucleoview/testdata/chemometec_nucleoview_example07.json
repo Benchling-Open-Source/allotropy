@@ -10,7 +10,11 @@
                                 "device control document": [
                                     {
                                         "device type": "dark field imager (cell counter)",
-                                        "detection type": "dark field"
+                                        "detection type": "dark field",
+                                        "sample volume setting": {
+                                            "value": 200.0,
+                                            "unit": "μL"
+                                        }
                                     }
                                 ]
                             },
@@ -40,33 +44,18 @@
                                         "dead cell density (cell counter)": {
                                             "value": 0.122,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "custom information document": {
-                                            "Instrument type": "NucleoView NC-200",
-                                            "(%) of cells in aggregates with five or more cells": 5.0,
-                                            "Dilution Volume (ul)": 0.0,
-                                            "Protocol template purpose": "Cell Count and Viability with AO and DAPI",
-                                            "Protocol adaptation title": "example cell counting",
-                                            "Instrument s/n": "s/n 9000201099909999",
-                                            "Protocol template title": "Viability and Cell Count Assay",
-                                            "Application SW version": "1.4.0.0",
-                                            " 21 CFR Part 11": "disabled",
-                                            "Event log format": "Plain text",
-                                            "csv file version": 2.0,
-                                            "Protocol adaptation purpose": "Cell Count and Viability with AO and DAPI",
-                                            "PC": "ABC0-NBBS-FQ01",
-                                            "Login ID": "admin",
-                                            "Protocol adaptation filename": "287764ADc8824786b882bfc202a12044.cmsu",
-                                            "Cell diameter standard deviation (um)": 7.7,
-                                            "cm filename": "20231120-0039-c-cellsABCD.cm",
-                                            "Sample Volume (ul)": 200.0,
-                                            "Protocol template filename": "Viability and Cell Count Assay - NC-200.cmsx"
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "cellsABCD"
+                                "sample identifier": "cellsABCD",
+                                "custom information document": {
+                                    "Dilution Volume (ul)": {
+                                        "value": 0.0,
+                                        "unit": "μL"
+                                    }
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -75,9 +64,62 @@
                                         "error feature": "viable cell density"
                                     }
                                 ]
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "experimental data identifier": "20231120-0039-c-cellsABCD.cm"
+                                    }
+                                ]
                             }
                         }
-                    ]
+                    ],
+                    "calculated data aggregate document": {
+                        "calculated data document": [
+                            {
+                                "calculated data name": "Cell diameter standard deviation (um)",
+                                "calculated result": {
+                                    "value": 7.7,
+                                    "unit": "μL"
+                                },
+                                "calculated data identifier": "CHEMOMETEC_NUCLEOVIEW_TEST_ID_1",
+                                "data source aggregate document": {
+                                    "data source document": [
+                                        {
+                                            "data source identifier": "CHEMOMETEC_NUCLEOVIEW_TEST_ID_0",
+                                            "data source feature": "Average Total Cell Diameter"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "calculated data name": "Percentage of cells with five or more",
+                                "calculated result": {
+                                    "value": 5.0,
+                                    "unit": "%"
+                                },
+                                "calculated data identifier": "CHEMOMETEC_NUCLEOVIEW_TEST_ID_2",
+                                "data source aggregate document": {
+                                    "data source document": [
+                                        {
+                                            "data source identifier": "CHEMOMETEC_NUCLEOVIEW_TEST_ID_0",
+                                            "data source feature": "Cell count"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "custom information document": {
+                        "Protocol template purpose": "Cell Count and Viability with AO and DAPI",
+                        "Protocol template title": "Viability and Cell Count Assay",
+                        "Protocol adaptation purpose": "Cell Count and Viability with AO and DAPI",
+                        "Protocol adaptation title": "example cell counting",
+                        "Event log format": "Plain text",
+                        "Login ID": "admin",
+                        "Protocol adaptation filename": "287764ADc8824786b882bfc202a12044.cmsu",
+                        "Protocol template filename": "Viability and Cell Count Assay - NC-200.cmsx"
+                    }
                 },
                 "analyst": "DrScientist"
             }
@@ -90,7 +132,11 @@
             "ASM converter name": "allotropy_chemometec_nucleoview",
             "ASM converter version": "0.1.72",
             "software name": "NucleoView",
-            "software version": "1.4.0.0"
+            "software version": "1.4.0.0",
+            "custom information document": {
+                "csv file version": "2",
+                " 21 CFR Part 11": "disabled"
+            }
         },
         "device system document": {
             "equipment serial number": "s/n 9000201099909999",
