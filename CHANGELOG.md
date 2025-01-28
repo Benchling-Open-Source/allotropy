@@ -11,8 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Internal - add initial json-to-csv library (#767)
 - Thermo Fisher Qubit Flex - Add unread data to asm (#855)
-- implement special views for Quantstudio design analysis in calcdoc (#858)
-- Calculated data documents library (#838)
+- Internal - implement special views for Quantstudio design analysis in calcdoc (#858)
+- Internal - implement calculated data documents library (#838)
 - Bio-Rad CFX Maestro - Use qpcr rec/2024/09 schema mapper (#837)
 - AppBio QuantStudio Design & Analysis - Use qpcr rec/2024/09 schema mapper (#836)
 - Thermo fisher Nanodrop One - Add unread data to customer information document (#852)
