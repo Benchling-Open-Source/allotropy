@@ -44,14 +44,17 @@ class TargetView(ViewWithReference):
         self,
         sub_view: View | None = None,
         reference: str | None = None,
+        blacklist: list[str] | None = None,
     ):
         super().__init__(name="target_dna", sub_view=sub_view, reference=reference)
+        self.blacklist = blacklist
 
     def sort_elements(self, elements: list[Element]) -> dict[str, list[Element]]:
         items = defaultdict(list)
         for element in elements:
             if target_dna := element.get_str("target_dna_description"):
-                items[str(target_dna)].append(element)
+                if self.blacklist is None or target_dna not in self.blacklist:
+                    items[str(target_dna)].append(element)
         return dict(items)
 
 
