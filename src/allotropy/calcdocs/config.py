@@ -4,6 +4,9 @@ from collections.abc import Iterator
 from dataclasses import dataclass
 from itertools import chain
 
+from cachetools import cached
+from cachetools.keys import hashkey
+
 from allotropy.calcdocs.extractor import Element
 from allotropy.calcdocs.view import Keys, ViewData
 from allotropy.parsers.utils.calculated_data_documents.definition import (
@@ -44,6 +47,7 @@ class CalculatedDataConfig:
                     value=None,  # should be calc_doc.value
                 )
 
+    @cached(cache={}, key=lambda self, keys: hashkey(self.name, self.value, keys))
     def get_calc_doc(
         self,
         keys: Keys,
