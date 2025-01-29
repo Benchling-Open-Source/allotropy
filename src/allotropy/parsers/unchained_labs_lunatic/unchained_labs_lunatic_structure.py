@@ -59,11 +59,11 @@ def _create_measurement(
         wavelength = wavelength_match.groups()[0]
         path_length = None
 
-    background_wavelength = well_plate_data.get(float, "Background Wvl. (nm)")
+    background_wavelength = well_plate_data.get(float, "background wvl. (nm)")
     background_absorbance = None
     if background_wavelength is not None:
         background_absorbance = well_plate_data.get(
-            float, f"Background (A{int(background_wavelength)})"
+            float, f"background (a{int(background_wavelength)})"
         )
 
     measurement_identifier = random_uuid_str()
@@ -95,17 +95,17 @@ def _create_measurement(
             "electronic_absorbance_reference_absorbance": background_absorbance
         },
         absorbance=absorbance if absorbance is not None else NEGATIVE_ZERO,
-        sample_identifier=well_plate_data[str, "Sample name"],
-        location_identifier=well_plate_data[str, "Plate Position"],
-        well_plate_identifier=well_plate_data.get(str, "Plate ID"),
-        batch_identifier=well_plate_data.get(str, "Sample Group"),
-        firmware_version=header.get(str, "Client version"),
+        sample_identifier=well_plate_data[str, "sample name"],
+        location_identifier=well_plate_data[str, "plate position"],
+        well_plate_identifier=well_plate_data.get(str, "plate id"),
+        batch_identifier=well_plate_data.get(str, "sample group"),
+        firmware_version=header.get(str, "client version"),
         sample_custom_info={
             "path length": float(path_length) if path_length is not None else None,
         },
         device_control_custom_info={
-            "path length mode": well_plate_data.get(str, "Path length mode"),
-            "pump": well_plate_data.get(str, "Pump"),
+            "path length mode": well_plate_data.get(str, "path length mode"),
+            "pump": well_plate_data.get(str, "pump"),
         },
         error_document=error_documents,
         processed_data_document=ProcessedDataDocument(
@@ -157,18 +157,19 @@ def _create_measurement_group(
     calculated_data: list[CalculatedDataItem],
     header: SeriesData,
 ) -> MeasurementGroup:
-    timestamp = header.get(str, "Date")
+    print(header.series)
+    timestamp = header.get(str, "date")
     # Support timestamp from metadata section, but overide with columns in data if specified.
-    date = data.get(str, "Date")
-    time = data.get(str, "Time")
+    date = data.get(str, "date")
+    time = data.get(str, "time")
     if date and time:
         timestamp = f"{date} {time}"
 
     return MeasurementGroup(
         measurement_time=assert_not_none(timestamp, msg=NO_DATE_OR_TIME_ERROR_MSG),
-        analyst=header.get(str, "Test performed by"),
-        analytical_method_identifier=data.get(str, "Application"),
-        experimental_data_identifier=header.get(str, "Experiment name"),
+        analyst=header.get(str, "test performed by"),
+        analytical_method_identifier=data.get(str, "application"),
+        experimental_data_identifier=header.get(str, "experiment name"),
         plate_well_count=96,
         measurements=[
             _create_measurement(data, header, wavelength_column, calculated_data)
@@ -179,8 +180,8 @@ def _create_measurement_group(
 
 def create_metadata(header: SeriesData, file_path: str) -> Metadata:
     asm_file_identifier = Path(file_path).with_suffix(".json")
-    device_identifier = header.get(str, "Instrument ID") or header.get(
-        str, "Instrument"
+    device_identifier = header.get(str, "instrument id") or header.get(
+        str, "instrument"
     )
     return Metadata(
         model_number=MODEL_NUMBER,
@@ -189,7 +190,7 @@ def create_metadata(header: SeriesData, file_path: str) -> Metadata:
             device_identifier, msg=NO_DEVICE_IDENTIFIER_ERROR_MSG
         ),
         software_name=SOFTWARE_NAME,
-        software_version=header.get(str, "Software version"),
+        software_version=header.get(str, "software version"),
         file_name=Path(file_path).name,
         unc_path=file_path,
         asm_file_identifier=asm_file_identifier.name,
