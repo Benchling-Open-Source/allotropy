@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from collections.abc import Iterator
+from collections.abc import Callable, Iterator
 from dataclasses import dataclass
 from itertools import chain
 
@@ -12,6 +12,24 @@ from allotropy.parsers.utils.calculated_data_documents.definition import (
     Referenceable,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
+
+OptCalcDoc = CalculatedDocument | None
+
+
+def cache(
+    fun: Callable[[CalculatedDataConfig, Keys], OptCalcDoc]
+) -> Callable[[CalculatedDataConfig, Keys], OptCalcDoc]:
+    cache: dict[str, OptCalcDoc] = {}
+
+    def inner(config: CalculatedDataConfig, keys: Keys) -> OptCalcDoc:
+        key = f"{config.value} {keys}"
+        if key in cache:
+            return cache[key]
+        result = fun(config, keys)
+        cache[key] = result
+        return result
+
+    return inner
 
 
 @dataclass(frozen=True)
@@ -44,6 +62,7 @@ class CalculatedDataConfig:
                     value=None,  # should be calc_doc.value
                 )
 
+    @cache
     def get_calc_doc(
         self,
         keys: Keys,
