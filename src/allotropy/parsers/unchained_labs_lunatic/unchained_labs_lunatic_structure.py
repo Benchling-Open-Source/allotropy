@@ -83,7 +83,7 @@ def _create_measurement(
             )
         )
 
-    concentration_factor = well_plate_data.get(float, "Concentration factor (ng/ul)")
+    concentration_factor = well_plate_data.get(float, "concentration factor (ng/ul)")
     return Measurement(
         type_=MeasurementType.ULTRAVIOLET_ABSORBANCE,
         device_type=DEVICE_TYPE,
