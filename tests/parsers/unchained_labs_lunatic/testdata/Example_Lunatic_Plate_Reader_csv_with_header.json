@@ -29,6 +29,18 @@
                             "absorbance": {
                                 "value": 3.65,
                                 "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "Concentration"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "Background (A260)"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -44,6 +56,58 @@
                 "analyst": "ImmuneMed"
             }
         ],
+        "calculated data aggregate document": {
+            "calculated data document": [
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 182.6,
+                        "unit": "ng/µL"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_1",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_0",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "A260/A230",
+                    "calculated result": {
+                        "value": 2.55,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_2",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_0",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 1.94,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_3",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_0",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
         "data system document": {
             "ASM file identifier": "Example_Lunatic_Plate_Reader_csv_with_header.json",
             "data system instance identifier": "N/A",

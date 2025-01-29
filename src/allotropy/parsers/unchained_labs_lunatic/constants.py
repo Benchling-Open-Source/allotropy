@@ -9,7 +9,7 @@ PRODUCT_MANUFACTURER = "Unchained Labs"
 SOFTWARE_NAME = "Lunatic and Stunner Analysis"
 
 # Wavelength columns will be "A<3-digit number>" with an optional pathlength specification, e.g. 'A260' or 'A260 (10mm)'
-WAVELENGTH_COLUMNS_RE = re.compile(r"^a(\d{3})(?:\s\((\d+)?mm\))?$")
+WAVELENGTH_COLUMNS_RE = re.compile(r"(?i)^A(\d{3})(?:\s\((\d+)?mm\))?$")
 NO_WAVELENGTH_COLUMN_ERROR_MSG = (
     "The file is required to include an absorbance measurement column (e.g. A280)"
 )
@@ -23,53 +23,53 @@ NO_MEASUREMENT_IN_PLATE_ERROR_MSG = (
 )
 
 CALCULATED_DATA_LOOKUP = {
-    "A260": [
+    "a260": [
         {
-            "column": "A260 Concentration (ng/ul)",
+            "column": "a260 concentration (ng/ul)",
             "name": "Concentration",
             "feature": "absorbance",
             "unit": "ng/µL",
         },
         {
-            "column": "Concentration (ng/ul)",
+            "column": "concentration (ng/ul)",
             "name": "Concentration",
             "feature": "absorbance",
             "unit": "ng/µL",
         },
         {
-            "column": "Background (A260)",
+            "column": "background (a260)",
             "name": "Background (A260)",
             "feature": "absorbance",
             "unit": "mAU",
         },
         {
-            "column": "A260/A230",
+            "column": "a260/a230",
             "name": "A260/A230",
             "feature": "absorbance",
             "unit": UNITLESS,
         },
         {
-            "column": "A260/A280",
+            "column": "a260/a280",
             "name": "A260/A280",
             "feature": "absorbance",
             "unit": UNITLESS,
         },
     ],
-    "A280": [
+    "a280": [
         {
-            "column": "Concentration (mg/ml)",
+            "column": "concentration (mg/ml)",
             "name": "Concentration",
             "feature": "absorbance",
             "unit": "mg/mL",
         },
         {
-            "column": "Background (A280)",
+            "column": "background (a280)",
             "name": "Background (A280)",
             "feature": "absorbance",
             "unit": "mAU",
         },
         {
-            "column": "A260/A280",
+            "column": "a260/a280",
             "name": "A260/A280",
             "feature": "absorbance",
             "unit": UNITLESS,

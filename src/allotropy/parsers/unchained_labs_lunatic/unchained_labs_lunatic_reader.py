@@ -30,7 +30,7 @@ class UnchainedLabsLunaticReader:
         table_header_index = None
         for idx, row in data.iterrows():
             if row.str.lower().str.contains("sample name").any():
-                table_header_index = idx
+                table_header_index = int(str(idx))
                 break
         if table_header_index is None:
             msg = "Unable to find a table header row with 'Sample name'."

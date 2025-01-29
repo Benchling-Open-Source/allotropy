@@ -157,7 +157,6 @@ def _create_measurement_group(
     calculated_data: list[CalculatedDataItem],
     header: SeriesData,
 ) -> MeasurementGroup:
-    print(header.series)
     timestamp = header.get(str, "date")
     # Support timestamp from metadata section, but overide with columns in data if specified.
     date = data.get(str, "date")
