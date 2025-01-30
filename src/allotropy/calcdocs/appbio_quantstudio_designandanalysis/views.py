@@ -3,7 +3,7 @@ from __future__ import annotations
 from collections import defaultdict
 
 from allotropy.calcdocs.extractor import Element
-from allotropy.calcdocs.view import View
+from allotropy.calcdocs.view import Keys, View
 
 
 class ViewWithReference(View):
@@ -16,10 +16,10 @@ class ViewWithReference(View):
         super().__init__(name, sub_view)
         self.reference = reference
 
-    def filter_keys(self, keys: dict[str, str]) -> dict[str, str]:
+    def filter_keys(self, keys: Keys) -> Keys:
         filtered_keys = super().filter_keys(keys)
-        if self.reference is not None and self.name in filtered_keys:
-            filtered_keys[self.name] = self.reference
+        if self.reference is not None and filtered_keys.get_or_none(self.name):
+            return filtered_keys.overwrite(self.name, self.reference)
         return filtered_keys
 
 
