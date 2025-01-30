@@ -122,12 +122,10 @@ dependencies = [
   "jsonschema-specifications == 2023.7.1",
   "olefile >= 0.47",
   "pyarrow >= 17.0.0",
-  "rainbow-api>=1.0.10",
   "pydantic == 1.10.17",
   "ruff == 0.0.289",
   "semantic-version",
   "xmltodict >= 0.13.0",
-  "xmltodict>=0.13.0",
 ]
 
 [tool.hatch.envs.default.scripts]
@@ -159,7 +157,7 @@ platforms = ["windows"]
 generate-schemas = "python scripts\\generate_schemas.py {args:}"
 download-schema = "python scripts\\download_schema.py {args:}"
 create-parser = "python scripts\\create_parser.py {args:}"
-update-instrument-table = "python python scripts\\update_supported_instruments_table.py {args:}"
+update-instrument-table = "python scripts\\update_supported_instruments_table.py {args:}"
 update-version = "python scripts\\update_version.py {args:}"
 
 [tool.hatch.envs.viz.scripts]
