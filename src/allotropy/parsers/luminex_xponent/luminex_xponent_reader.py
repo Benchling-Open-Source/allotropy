@@ -68,9 +68,7 @@ class LuminexXponentReader:
             min_bead_count_setting = fields[3].strip()
             if not min_bead_count_setting:
                 msg = "Minimum bead count setting in Samples info is empty."
-                raise AllotropeParsingError(
-                    msg
-                )
+                raise AllotropeParsingError(msg)
         except IndexError as e:
             msg = f"Unable to find minimum bead count setting in Samples info: {samples_info}."
             raise AllotropeConversionError(msg) from e
