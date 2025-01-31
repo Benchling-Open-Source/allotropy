@@ -27,7 +27,7 @@ class CalculatedDataConfig:
     name: str
     value: str
     view_data: ViewData
-    source_configs: list[CalculatedDataConfig | MeasurementConfig]
+    source_configs: tuple[CalculatedDataConfig | MeasurementConfig, ...]
 
     def iter_data_sources(
         self, parent_keys: Keys, _: list[Element]
