@@ -1,8 +1,6 @@
 from __future__ import annotations
 
-import math
 from dataclasses import dataclass
-from idlelib.iomenu import errors
 from pathlib import Path
 import re
 
@@ -14,10 +12,10 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._01.multi_analyte_profiling import (
     Analyte,
     Calibration,
-    Error as MapperError,
+    Error,
     Measurement as MapperMeasurement,
     MeasurementGroup,
-    Metadata, Error,
+    Metadata,
 )
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.constants import NEGATIVE_ZERO
@@ -30,7 +28,7 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
     try_float,
-    try_float_or_nan, try_float_or_negative_zero,
+    try_float_or_negative_zero,
 )
 
 
@@ -165,16 +163,18 @@ class Measurement:
         metadata_keys = ["Sample", "Total Events"]
 
         well_location, location_id = cls._get_location_details(location)
-        dilution_factor_setting = try_float_or_negative_zero(SeriesData(dilution_factor_data.loc[location])[
-            float, "Dilution Factor"
-        ])
-        errors: list[Error] | None = []
-        errors_data = cls._get_errors(errors_data, well_location) or []
-        for error in errors_data:
+        dilution_factor_setting = try_float_or_negative_zero(
+            SeriesData(dilution_factor_data.loc[location])[float, "Dilution Factor"]
+        )
+        errors: list[Error] = []
+        data_errors = cls._get_errors(errors_data, well_location) or []
+        for error in data_errors:
             errors.append(Error(error=error))
 
         if dilution_factor_setting == NEGATIVE_ZERO:
-            errors.append(Error(error="Not reported in file", feature="dilution factor setting"))
+            errors.append(
+                Error(error="Not reported in file", feature="dilution factor setting")
+            )
 
         return Measurement(
             identifier=random_uuid_str(),

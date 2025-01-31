@@ -9,7 +9,8 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._01.multi_analyte_profiling import (
     Analyte,
-    Calibration, Error,
+    Calibration,
+    Error,
 )
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
@@ -189,7 +190,10 @@ def test_create_measurement_list() -> None:
                         statistic_datum_role=TStatisticDatumRole.median_role,
                     ),
                 ],
-                errors=[Error(error="Warning msg. (0x4FF010AB)"), Error(error="Another Warning.")],
+                errors=[
+                    Error(error="Warning msg. (0x4FF010AB)"),
+                    Error(error="Another Warning."),
+                ],
             )
         ]
     )
