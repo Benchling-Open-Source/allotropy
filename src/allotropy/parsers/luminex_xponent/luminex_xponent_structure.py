@@ -37,7 +37,7 @@ class Header:
     equipment_serial_number: str | None
     analytical_method_identifier: str | None
     method_version: str | None
-    experimental_data_identifier: str
+    experimental_data_identifier: str | None
     sample_volume_setting: float | None
     plate_well_count: float
     measurement_time: str
@@ -48,7 +48,7 @@ class Header:
 
     @classmethod
     def create(
-        cls, header_data: pd.DataFrame, minimum_assay_bead_count_setting: float
+        cls, header_data: pd.DataFrame, minimum_assay_bead_count_setting: float | None
     ) -> Header:
         info_row = SeriesData(header_data.iloc[0])
         raw_datetime = info_row[str, "BatchStartTime"]
@@ -63,7 +63,9 @@ class Header:
             experimental_data_identifier=info_row.get(str, "Batch"),
             sample_volume_setting=try_float(
                 sample_volume.split()[0], "sample volume setting"
-            ) if sample_volume else None,
+            )
+            if sample_volume
+            else None,
             plate_well_count=cls._get_plate_well_count(header_data),
             measurement_time=raw_datetime,
             detector_gain_setting=info_row.get(str, "ProtocolReporterGain"),
@@ -74,7 +76,9 @@ class Header:
 
     @classmethod
     def _get_model_number(cls, header_data: pd.DataFrame) -> str | None:
-        program_data = cls._try_col_from_header(header_data, "Program")
+        if "Program" not in header_data:
+            return None
+        program_data = header_data["Program"]
 
         try:
             model_number = program_data.iloc[2]
@@ -88,7 +92,10 @@ class Header:
 
     @classmethod
     def _get_plate_well_count(cls, header_data: pd.DataFrame) -> float:
-        protocol_plate_data = cls._try_col_from_header(header_data, "ProtocolPlate")
+        if "ProtocolPlate" not in header_data:
+            msg = "Unable to find required value 'ProtocolPlate' data in header block."
+            raise AllotropeConversionError(msg)
+        protocol_plate_data = header_data["ProtocolPlate"]
 
         try:
             plate_well_count = protocol_plate_data.iloc[3]
@@ -97,16 +104,6 @@ class Header:
             raise AllotropeConversionError(msg) from e
 
         return try_float(str(plate_well_count), "plate well count")
-
-    @classmethod
-    def _try_col_from_header(
-        cls, header_data: pd.DataFrame, key: str
-    ) -> pd.Series[str]:
-        if key not in header_data:
-            msg = f"Unable to find {key} data in header block."
-            raise AllotropeConversionError(msg)
-
-        return header_data[key]
 
 
 def create_calibration(calibration_data: SeriesData) -> Calibration:
@@ -148,7 +145,7 @@ class Measurement:
         count_data: pd.DataFrame,
         bead_ids_data: SeriesData,
         dilution_factor_data: pd.DataFrame,
-        errors_data: pd.DataFrame | None
+        errors_data: pd.DataFrame | None,
     ) -> Measurement:
         location = str(median_data.series.name)
         if location not in dilution_factor_data.index:
@@ -185,7 +182,7 @@ class Measurement:
                     key for key in median_data.series.index if key not in metadata_keys
                 ]
             ],
-            errors=cls._get_errors(errors_data, well_location)
+            errors=cls._get_errors(errors_data, well_location),
         )
 
     @classmethod
@@ -236,7 +233,9 @@ class MeasurementList:
                 count_data=results_data["Count"],
                 bead_ids_data=bead_ids_data,
                 dilution_factor_data=results_data["Dilution Factor"],
-                errors_data=results_data["Warnings/Errors"] if "Warnings/Errors" in results_data else None,
+                errors_data=results_data["Warnings/Errors"]
+                if "Warnings/Errors" in results_data
+                else None,
             )
 
         return MeasurementList(map_rows(results_data["Median"], create_measurement))

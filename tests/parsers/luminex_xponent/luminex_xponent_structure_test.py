@@ -94,17 +94,8 @@ def test_create_header() -> None:
 @pytest.mark.parametrize(
     "required_col",
     [
-        "Program",
-        "Build",
-        "SN",
-        "Batch",
-        "ComputerName",
-        "ProtocolName",
-        "ProtocolVersion",
-        "SampleVolume",
         "BatchStartTime",
         "ProtocolPlate",
-        "ProtocolReporterGain",
     ],
 )
 def test_create_heder_without_required_col(required_col: str) -> None:
@@ -126,8 +117,10 @@ def test_create_heder_without_required_col(required_col: str) -> None:
     ).T
 
     error_msg = f"Expected non-null value for {required_col}."
-    if required_col in ("Program", "ProtocolPlate"):
-        error_msg = f"Unable to find {required_col} data in header block."
+    if required_col == "ProtocolPlate":
+        error_msg = (
+            "Unable to find required value 'ProtocolPlate' data in header block."
+        )
 
     with pytest.raises(AllotropeConversionError, match=error_msg):
         Header.create(
@@ -207,14 +200,14 @@ def test_create_measurement_list() -> None:
 
 @pytest.mark.parametrize(
     "table_name",
-    constants.EXPECTED_SECTIONS,
+    constants.REQUIRED_SECTIONS,
 )
 def test_create_measurement_list_without_required_table_then_raise(
     table_name: str,
 ) -> None:
     results_data = {
         section: pd.DataFrame()
-        for section in constants.EXPECTED_SECTIONS
+        for section in constants.REQUIRED_SECTIONS
         if section != table_name
     }
 
