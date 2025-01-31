@@ -16,7 +16,6 @@ from allotropy.allotrope.schema_mappers.adm.electrophoresis.benchling._2024._09.
 )
 from allotropy.exceptions import (
     AllotropeConversionError,
-    get_key_or_error,
     msg_for_error_on_unrecognized_value,
 )
 from allotropy.parsers.agilent_tapestation_analysis.constants import (
@@ -27,6 +26,7 @@ from allotropy.parsers.agilent_tapestation_analysis.constants import (
     NON_CALCULATED_DATA_TAGS_REGION,
     NON_CALCULATED_DATA_TAGS_SAMPLE,
     PRODUCT_MANUFACTURER,
+    SCREEN_TAPE_MISMATCH_ERROR,
     SOFTWARE_NAME,
     UNIT_CLASS_LOOKUP,
 )
@@ -243,10 +243,15 @@ def create_measurement_groups(
     calculated_data: list[CalculatedDataItem] = []
     for sample_element in get_element_from_xml(root_element, "Samples").iter("Sample"):
         screen_tape_id = get_val_from_xml(sample_element, "ScreenTapeID")
+        try:
+            screen_tape = screen_tapes[screen_tape_id]
+        except KeyError as e:
+            msg = SCREEN_TAPE_MISMATCH_ERROR.format(
+                screen_tape_id, list(screen_tapes.keys())
+            )
+            raise AllotropeConversionError(msg) from e
         measurement, measurement_calculated_data = _create_measurement(
-            sample_element,
-            get_key_or_error("ScreenTape ID", screen_tape_id, screen_tapes),
-            _get_unit_class(root_element),
+            sample_element, screen_tape, _get_unit_class(root_element)
         )
         measurement_groups.append(MeasurementGroup(measurements=[measurement]))
         calculated_data.extend(measurement_calculated_data)

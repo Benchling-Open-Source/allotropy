@@ -4,6 +4,11 @@ DEVICE_TYPE = "electrophoresis device"
 PRODUCT_MANUFACTURER = "Agilent"
 SOFTWARE_NAME = "TapeStation Analysis Software"
 
+SCREEN_TAPE_MISMATCH_ERROR = (
+    "Mismatch error: Connector expected Sample ScreenTapeIDs to be present in the ScreenTape metadata block, "
+    "got Sample ScreenTapeID '{}', expecting one of {} from metadata block."
+)
+
 UNIT_CLASS_LOOKUP: dict[str, str] = {
     "nt": "#",
     "bp": "#",

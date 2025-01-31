@@ -23,6 +23,7 @@ from allotropy.parsers.agilent_tapestation_analysis.constants import (
     DETECTION_TYPE,
     DEVICE_TYPE,
     PRODUCT_MANUFACTURER,
+    SCREEN_TAPE_MISMATCH_ERROR,
     SOFTWARE_NAME,
 )
 from allotropy.parsers.utils.values import assert_not_none
@@ -98,7 +99,8 @@ def testcreate_measurement_groups_without_matching_screen_tape() -> None:
         </Samples>
     </File>
     """
-    expected = f"Unrecognized ScreenTape ID: '{sample_id}'. Expecting one of ['{screen_tape_id}']."
+
+    expected = SCREEN_TAPE_MISMATCH_ERROR.format(sample_id, [screen_tape_id])
     with pytest.raises(AllotropeConversionError, match=re.escape(expected)):
         create_measurement_groups(ET.fromstring(xml_str))  # noqa: S314
 
