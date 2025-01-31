@@ -11,8 +11,18 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.st
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
     DataSource,
+    Referenceable,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
+
+
+def calc_doc_simp(calc_doc: CalculatedDocument) -> CalculatedDocument:
+    for source in calc_doc.data_sources:
+        if isinstance(source.reference, WellItem):
+            source.reference = Referenceable(source.reference.uuid)
+        elif isinstance(source.reference, CalculatedDocument):
+            calc_doc_simp(source.reference)
+    return calc_doc
 
 
 @cache
