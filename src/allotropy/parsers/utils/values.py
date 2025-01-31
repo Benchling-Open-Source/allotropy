@@ -11,6 +11,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TQuantityValue,
 )
 from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
+from allotropy.parsers.constants import NEGATIVE_ZERO
 from allotropy.parsers.utils.units import get_quantity_class
 
 PrimitiveValue = str | int | float
@@ -100,6 +101,9 @@ def try_float_or_nan(value: str | float | None) -> JsonFloat:
     float_value = try_non_nan_float_or_none(value)
     return InvalidJsonFloat.NaN if float_value is None else float_value
 
+def try_float_or_negative_zero(value: str | float | None) -> float:
+    float_value = try_non_nan_float_or_none(value)
+    return NEGATIVE_ZERO if float_value is None else float_value
 
 def natural_sort_key(key: str) -> list[str]:
     """Returns a sort key that treats numeric substrings as parsed integers for comparison."""
