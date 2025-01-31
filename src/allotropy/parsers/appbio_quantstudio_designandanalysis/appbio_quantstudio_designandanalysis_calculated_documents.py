@@ -164,6 +164,7 @@ def build_ct_mean(
         data_sources=[
             DataSource(feature="cycle threshold result", reference=well_item)
             for well_item in well_items
+            if well_item.result.cycle_threshold_result is not None
         ],
     )
 
@@ -183,6 +184,7 @@ def build_ct_sd(
         data_sources=[
             DataSource(feature="cycle threshold result", reference=well_item)
             for well_item in well_items
+            if well_item.result.cycle_threshold_result is not None
         ],
     )
 
@@ -202,6 +204,7 @@ def build_ct_se(
         data_sources=[
             DataSource(feature="cycle threshold result", reference=well_item)
             for well_item in well_items
+            if well_item.result.cycle_threshold_result is not None
         ],
     )
 
