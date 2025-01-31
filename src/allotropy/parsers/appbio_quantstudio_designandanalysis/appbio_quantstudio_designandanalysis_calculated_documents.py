@@ -695,20 +695,39 @@ def iter_standard_curve_calc_docs(
     for sample, target in view_st_data.iter_keys():
         for well_item in view_st_data.get_leaf_item(sample, target):
             calc_docs.append(build_quantity(view_tr_data, target, well_item))
+
+    for sample, target in view_st_data.iter_keys():
+        for well_item in view_st_data.get_leaf_item(sample, target):
             calc_docs.append(build_amp_score(well_item))
+
+    for sample, target in view_st_data.iter_keys():
+        for well_item in view_st_data.get_leaf_item(sample, target):
             calc_docs.append(build_cq_conf(well_item))
 
+    for sample, target in view_st_data.iter_keys():
         calc_docs.append(
             build_quantity_mean(view_st_data, view_tr_data, sample, target)
         )
+
+    for sample, target in view_st_data.iter_keys():
         calc_docs.append(build_quantity_sd(view_st_data, view_tr_data, sample, target))
+
+    for sample, target in view_st_data.iter_keys():
         calc_docs.append(build_ct_mean(view_st_data, sample, target))
+
+    for sample, target in view_st_data.iter_keys():
         calc_docs.append(build_ct_sd(view_st_data, sample, target))
 
     for target in view_tr_data.data:
         calc_docs.append(build_y_intercept(view_tr_data, target))
+
+    for target in view_tr_data.data:
         calc_docs.append(build_r_squared(view_tr_data, target))
+
+    for target in view_tr_data.data:
         calc_docs.append(build_slope(view_tr_data, target))
+
+    for target in view_tr_data.data:
         calc_docs.append(build_efficiency(view_tr_data, target))
 
     yield from yield_documents(calc_docs)
