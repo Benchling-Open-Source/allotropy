@@ -66,8 +66,9 @@ class LuminexXponentReader:
         try:
             fields = samples_info.replace('"', "").split(",")
             min_bead_count_setting = fields[3].strip()
+            # If the min bead count is left empty, the default value is 100, according to software manual.
             if not min_bead_count_setting:
-                return None
+                return 100
         except IndexError as e:
             msg = f"Unable to find minimum bead count setting in Samples info: {samples_info}."
             raise AllotropeConversionError(msg) from e
