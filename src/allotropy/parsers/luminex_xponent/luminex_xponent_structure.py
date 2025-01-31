@@ -23,13 +23,9 @@ from allotropy.parsers.luminex_xponent import constants
 from allotropy.parsers.luminex_xponent.luminex_xponent_reader import (
     LuminexXponentReader,
 )
-from allotropy.parsers.utils.pandas import map_rows, SeriesData
+from allotropy.parsers.utils.pandas import map_rows, SeriesData, ValidateRaw
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import (
-    assert_not_none,
-    try_float,
-    try_float_or_negative_zero,
-)
+from allotropy.parsers.utils.values import assert_not_none, try_float
 
 
 @dataclass(frozen=True)
@@ -163,8 +159,8 @@ class Measurement:
         metadata_keys = ["Sample", "Total Events"]
 
         well_location, location_id = cls._get_location_details(location)
-        dilution_factor_setting = try_float_or_negative_zero(
-            SeriesData(dilution_factor_data.loc[location])[float, "Dilution Factor"]
+        dilution_factor_setting = SeriesData(dilution_factor_data.loc[location]).get(
+            float, "Dilution Factor", NEGATIVE_ZERO, validate=SeriesData.NOT_NAN
         )
         errors: list[Error] = []
         data_errors = cls._get_errors(errors_data, well_location) or []

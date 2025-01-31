@@ -102,11 +102,6 @@ def try_float_or_nan(value: str | float | None) -> JsonFloat:
     return InvalidJsonFloat.NaN if float_value is None else float_value
 
 
-def try_float_or_negative_zero(value: str | float | None) -> float:
-    float_value = try_non_nan_float_or_none(value)
-    return NEGATIVE_ZERO if float_value is None else float_value
-
-
 def natural_sort_key(key: str) -> list[str]:
     """Returns a sort key that treats numeric substrings as parsed integers for comparison."""
     tokens = [token for token in re.split(r"(\d+)", key) if token]
