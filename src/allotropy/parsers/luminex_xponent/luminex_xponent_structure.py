@@ -23,7 +23,7 @@ from allotropy.parsers.luminex_xponent import constants
 from allotropy.parsers.luminex_xponent.luminex_xponent_reader import (
     LuminexXponentReader,
 )
-from allotropy.parsers.utils.pandas import map_rows, SeriesData, ValidateRaw
+from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none, try_float
 

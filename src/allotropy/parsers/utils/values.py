@@ -11,7 +11,6 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TQuantityValue,
 )
 from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
-from allotropy.parsers.constants import NEGATIVE_ZERO
 from allotropy.parsers.utils.units import get_quantity_class
 
 PrimitiveValue = str | int | float
