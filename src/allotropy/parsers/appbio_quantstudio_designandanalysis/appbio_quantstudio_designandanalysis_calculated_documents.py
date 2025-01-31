@@ -71,11 +71,11 @@ def build_quantity(
     if view_tr_data:
         if y_intercept_ref := build_y_intercept(view_tr_data, target):
             data_sources.append(
-                DataSource(feature="Y-intercept", reference=y_intercept_ref)
+                DataSource(feature="y intercept", reference=y_intercept_ref)
             )
 
         if slope_ref := build_slope(view_tr_data, target):
-            data_sources.append(DataSource(feature="Slope", reference=slope_ref))
+            data_sources.append(DataSource(feature="slope", reference=slope_ref))
 
     return CalculatedDocument(
         uuid=random_uuid_str(),
