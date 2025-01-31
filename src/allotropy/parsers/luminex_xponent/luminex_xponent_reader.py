@@ -64,7 +64,11 @@ class LuminexXponentReader:
         reader.drop_until(match_pat='^"?Samples"?,')
         samples_info = assert_not_none(reader.pop(), msg="Unable to find Samples info.")
         try:
-            min_bead_count_setting = samples_info.replace('"', "").split(",")[3]
+            fields = samples_info.replace('"', "").split(",")
+            min_bead_count_setting = fields[3].strip()
+            if not min_bead_count_setting:
+                msg = "Minimum bead count setting in Samples info is empty."
+                raise AllotropeParsingError(msg)
         except IndexError as e:
             msg = f"Unable to find minimum bead count setting in Samples info: {samples_info}."
             raise AllotropeConversionError(msg) from e
