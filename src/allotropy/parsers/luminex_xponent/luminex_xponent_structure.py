@@ -32,49 +32,53 @@ from allotropy.parsers.utils.values import (
 
 @dataclass(frozen=True)
 class Header:
-    model_number: str
-    software_version: str
-    equipment_serial_number: str
-    analytical_method_identifier: str
-    method_version: str
-    experimental_data_identifier: str
-    sample_volume_setting: float
+    model_number: str | None
+    software_version: str | None
+    equipment_serial_number: str | None
+    analytical_method_identifier: str | None
+    method_version: str | None
+    experimental_data_identifier: str | None
+    sample_volume_setting: float | None
     plate_well_count: float
     measurement_time: str
-    detector_gain_setting: str
-    data_system_instance_identifier: str
-    minimum_assay_bead_count_setting: float
-    analyst: str | None = None
+    detector_gain_setting: str | None
+    data_system_instance_identifier: str | None
+    minimum_assay_bead_count_setting: float | None
+    analyst: str | None
 
     @classmethod
     def create(
-        cls, header_data: pd.DataFrame, minimum_assay_bead_count_setting: float
+        cls, header_data: pd.DataFrame, minimum_assay_bead_count_setting: float | None
     ) -> Header:
         info_row = SeriesData(header_data.iloc[0])
         raw_datetime = info_row[str, "BatchStartTime"]
-        sample_volume = info_row[str, "SampleVolume"]
+        sample_volume = info_row.get(str, "SampleVolume")
 
         return Header(
             model_number=cls._get_model_number(header_data),
-            software_version=info_row[str, "Build"],
-            equipment_serial_number=info_row[str, "SN"],
-            analytical_method_identifier=info_row[str, "ProtocolName"],
-            method_version=info_row[str, "ProtocolVersion"],
-            experimental_data_identifier=info_row[str, "Batch"],
+            software_version=info_row.get(str, "Build"),
+            equipment_serial_number=info_row.get(str, "SN"),
+            analytical_method_identifier=info_row.get(str, "ProtocolName"),
+            method_version=info_row.get(str, "ProtocolVersion"),
+            experimental_data_identifier=info_row.get(str, "Batch"),
             sample_volume_setting=try_float(
                 sample_volume.split()[0], "sample volume setting"
-            ),
+            )
+            if sample_volume
+            else None,
             plate_well_count=cls._get_plate_well_count(header_data),
             measurement_time=raw_datetime,
-            detector_gain_setting=info_row[str, "ProtocolReporterGain"],
-            data_system_instance_identifier=info_row[str, "ComputerName"],
+            detector_gain_setting=info_row.get(str, "ProtocolReporterGain"),
+            data_system_instance_identifier=info_row.get(str, "ComputerName"),
             minimum_assay_bead_count_setting=minimum_assay_bead_count_setting,
             analyst=info_row.get(str, "Operator"),
         )
 
     @classmethod
-    def _get_model_number(cls, header_data: pd.DataFrame) -> str:
-        program_data = cls._try_col_from_header(header_data, "Program")
+    def _get_model_number(cls, header_data: pd.DataFrame) -> str | None:
+        if "Program" not in header_data:
+            return None
+        program_data = header_data["Program"]
 
         try:
             model_number = program_data.iloc[2]
@@ -84,11 +88,14 @@ class Header:
             )
             raise AllotropeConversionError(msg) from e
 
-        return str(model_number)
+        return str(model_number) if model_number else None
 
     @classmethod
     def _get_plate_well_count(cls, header_data: pd.DataFrame) -> float:
-        protocol_plate_data = cls._try_col_from_header(header_data, "ProtocolPlate")
+        if "ProtocolPlate" not in header_data:
+            msg = "Unable to find required value 'ProtocolPlate' data in header block."
+            raise AllotropeConversionError(msg)
+        protocol_plate_data = header_data["ProtocolPlate"]
 
         try:
             plate_well_count = protocol_plate_data.iloc[3]
@@ -97,16 +104,6 @@ class Header:
             raise AllotropeConversionError(msg) from e
 
         return try_float(str(plate_well_count), "plate well count")
-
-    @classmethod
-    def _try_col_from_header(
-        cls, header_data: pd.DataFrame, key: str
-    ) -> pd.Series[str]:
-        if key not in header_data:
-            msg = f"Unable to find {key} data in header block."
-            raise AllotropeConversionError(msg)
-
-        return header_data[key]
 
 
 def create_calibration(calibration_data: SeriesData) -> Calibration:
@@ -148,7 +145,7 @@ class Measurement:
         count_data: pd.DataFrame,
         bead_ids_data: SeriesData,
         dilution_factor_data: pd.DataFrame,
-        errors_data: pd.DataFrame,
+        errors_data: pd.DataFrame | None,
     ) -> Measurement:
         location = str(median_data.series.name)
         if location not in dilution_factor_data.index:
@@ -200,9 +197,9 @@ class Measurement:
 
     @classmethod
     def _get_errors(
-        cls, errors_data: pd.DataFrame, well_location: str
+        cls, errors_data: pd.DataFrame | None, well_location: str
     ) -> list[str] | None:
-        if well_location not in errors_data.index:
+        if errors_data is None or well_location not in errors_data.index:
             return None
         return map_rows(
             errors_data.loc[[well_location]], lambda data: data[str, "Message"]
@@ -217,7 +214,7 @@ class MeasurementList:
     def create(cls, results_data: dict[str, pd.DataFrame]) -> MeasurementList:
         if missing_sections := [
             section
-            for section in constants.EXPECTED_SECTIONS
+            for section in constants.REQUIRED_SECTIONS
             if section not in results_data
         ]:
             msg = f"Unable to parse input file, missing expected sections: {missing_sections}."
@@ -236,7 +233,9 @@ class MeasurementList:
                 count_data=results_data["Count"],
                 bead_ids_data=bead_ids_data,
                 dilution_factor_data=results_data["Dilution Factor"],
-                errors_data=results_data["Warnings/Errors"],
+                errors_data=results_data["Warnings/Errors"]
+                if "Warnings/Errors" in results_data
+                else None,
             )
 
         return MeasurementList(map_rows(results_data["Median"], create_measurement))
