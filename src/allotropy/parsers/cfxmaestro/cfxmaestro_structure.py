@@ -1,6 +1,7 @@
 from collections import defaultdict
 from copy import deepcopy
 from pathlib import Path
+from typing import Any
 
 import pandas as pd
 
@@ -19,6 +20,7 @@ from allotropy.parsers.constants import (
 )
 from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.values import try_float_or_nan
 
 
 def create_metadata(file_path: str) -> Metadata:
@@ -44,14 +46,31 @@ def create_measurement_group(
     well_data: list[SeriesData],
     plate_well_count: int,
 ) -> MeasurementGroup:
-    return MeasurementGroup(
-        plate_well_count=plate_well_count,
-        well_volume=NEGATIVE_ZERO,
-        error_document=[
-            Error(error="Value not provided in instrument file", feature="well volume")
-        ],
-        experimental_data_identifier=NOT_APPLICABLE,
-        measurements=[
+    measurements = []
+    for data in well_data:
+        if not (
+            data.get(str, "Sample", validate=SeriesData.NOT_NAN)
+            or data.get(float, "Cq", validate=SeriesData.NOT_NAN)
+        ):
+            data.get_unread()
+            continue
+        sample_doc_custom_data = data.get_custom_keys(
+            set(constants.SAMPLE_DOCUMENT_CUSTOM_KEYS)
+        )
+        device_doc_custom_data = data.get_custom_keys(
+            set(constants.DEVICE_CONTROL_DOCUMENT_CUSTOM_KEYS)
+        )
+        processed_data_doc_custom_data = data.get_custom_keys(
+            set(constants.PROCESSED_DATA_DOCUMENT_CUSTOM_KEYS)
+        )
+        # these fields are not need in the asm
+        data.mark_read(
+            {
+                "Cq Mean",
+                "Unnamed: 0",
+            }
+        )
+        measurements.append(
             Measurement(
                 # Measurement metadata
                 identifier=random_uuid_str(),
@@ -84,6 +103,7 @@ def create_measurement_group(
                     cycle_threshold_value_setting=(
                         cycle_number := data.get(float, "Cycle Number", NEGATIVE_ZERO)
                     ),
+                    custom_info=_set_nan_to_string(processed_data_doc_custom_data),
                 ),
                 # Since the processed data doc does not include an error document,
                 # we added the cycle threshold value setting error at measurement level
@@ -97,11 +117,20 @@ def create_measurement_group(
                     if cycle_number == NEGATIVE_ZERO
                     else None
                 ),
+                sample_custom_info=_set_nan_to_string(sample_doc_custom_data),
+                device_control_custom_info=_set_nan_to_string(device_doc_custom_data),
+                custom_info=data.get_unread(),
             )
-            for data in well_data
-            if data.get(str, "Sample", validate=SeriesData.NOT_NAN)
-            or data.get(float, "Cq", validate=SeriesData.NOT_NAN)
+        )
+
+    return MeasurementGroup(
+        plate_well_count=plate_well_count,
+        well_volume=NEGATIVE_ZERO,
+        error_document=[
+            Error(error="Value not provided in instrument file", feature="well volume")
         ],
+        experimental_data_identifier=NOT_APPLICABLE,
+        measurements=measurements,
     )
 
 
@@ -110,6 +139,7 @@ def create_measurement_groups(df: pd.DataFrame) -> list[MeasurementGroup]:
 
     def map_to_dict(data: SeriesData) -> None:
         well_to_rows[data[str, "Well"]].append(deepcopy(data))
+        data.get_unread()
 
     map_rows(df, map_to_dict)
 
@@ -118,3 +148,10 @@ def create_measurement_groups(df: pd.DataFrame) -> list[MeasurementGroup]:
         for well_id in well_to_rows
     ]
     return [group for group in groups if group.measurements]
+
+
+def _set_nan_to_string(data: dict[str, Any]) -> dict[str, Any]:
+    return {
+        key: try_float_or_nan(value) if isinstance(value, float) else value
+        for key, value in data.items()
+    }
