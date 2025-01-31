@@ -151,6 +151,15 @@ def _create_measurement(
             feature="sample",
         )
     )
+    if rna_element := sample_element.find("RNA"):
+        calculated_data.extend(
+            _get_calculated_data(
+                element=rna_element,
+                excluded_tags=[],
+                source_id=measurement_id,
+                feature="sample",
+            )
+        )
     peaks: list[ProcessedDataFeature] = []
     for peak_element in get_element_from_xml(sample_element, "Peaks").iter("Peak"):
         peaks.append(_create_peak(peak_element, unit))
