@@ -1,6 +1,20 @@
 from collections.abc import Iterator
 from functools import cache
 
+from allotropy.calcdocs.appbio_quantstudio_designandanalysis.extractor import (
+    AppbioQuantstudioDAExtractor,
+)
+from allotropy.calcdocs.appbio_quantstudio_designandanalysis.views import (
+    SampleView,
+    TargetRoleView,
+    TargetView,
+    UuidView,
+)
+from allotropy.calcdocs.config import (
+    CalcDocsConfig,
+    CalculatedDataConfig,
+    MeasurementConfig,
+)
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_calculated_documents import (
     yield_documents,
 )
@@ -689,51 +703,226 @@ def build_efficiency(
 
 
 def iter_standard_curve_calc_docs(
-    view_st_data: ViewData[WellItem],
-    view_tr_data: ViewData[WellItem],
+    well_items: list[WellItem],
 ) -> Iterator[CalculatedDocument]:
     # Quantity, Quantity Mean, Quantity SD, Ct Mean, Ct SD, Y-Intercept,
     # R(superscript 2), Slope, Efficiency, Amp score, Cq confidence
-    calc_docs: list[CalculatedDocument | None] = []
-    for sample, target in view_st_data.iter_keys():
-        for well_item in view_st_data.get_leaf_item(sample, target):
-            calc_docs.append(build_quantity(view_tr_data, target, well_item))
+    elements = AppbioQuantstudioDAExtractor.get_elements(well_items)
 
-    for sample, target in view_st_data.iter_keys():
-        for well_item in view_st_data.get_leaf_item(sample, target):
-            calc_docs.append(build_amp_score(well_item))
+    sid_tdna_view_data = SampleView(sub_view=TargetView()).apply(elements)
+    sid_tdna_uuid_view_data = SampleView(
+        sub_view=TargetView(sub_view=UuidView())
+    ).apply(elements)
+    tdna_view_data = TargetRoleView().apply(elements)
 
-    for sample, target in view_st_data.iter_keys():
-        for well_item in view_st_data.get_leaf_item(sample, target):
-            calc_docs.append(build_cq_conf(well_item))
+    configs = CalcDocsConfig(
+        [
+            CalculatedDataConfig(
+                name="quantity",
+                value="quantity",
+                view_data=sid_tdna_uuid_view_data,
+                source_configs=(
+                    MeasurementConfig(
+                        name="cycle threshold result",
+                        value="cycle_threshold_result",
+                    ),
+                    CalculatedDataConfig(
+                        name="y intercept",
+                        value="y_intercept",
+                        view_data=tdna_view_data,
+                        source_configs=(
+                            MeasurementConfig(
+                                name="cycle threshold result",
+                                value="cycle_threshold_result",
+                            ),
+                        ),
+                    ),
+                    CalculatedDataConfig(
+                        name="slope",
+                        value="slope",
+                        view_data=tdna_view_data,
+                        source_configs=(
+                            MeasurementConfig(
+                                name="cycle threshold result",
+                                value="cycle_threshold_result",
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            CalculatedDataConfig(
+                name="amplification score",
+                value="amp_score",
+                view_data=sid_tdna_uuid_view_data,
+                source_configs=(
+                    MeasurementConfig(
+                        name="cycle threshold result",
+                        value="cycle_threshold_result",
+                    ),
+                ),
+            ),
+            CalculatedDataConfig(
+                name="cq confidence",
+                value="cq_conf",
+                view_data=sid_tdna_uuid_view_data,
+                source_configs=(
+                    MeasurementConfig(
+                        name="cycle threshold result",
+                        value="cycle_threshold_result",
+                    ),
+                ),
+            ),
+            CalculatedDataConfig(
+                name="quantity mean",
+                value="quantity_mean",
+                view_data=sid_tdna_view_data,
+                source_configs=(
+                    CalculatedDataConfig(
+                        name="quantity",
+                        value="quantity",
+                        view_data=sid_tdna_uuid_view_data,
+                        source_configs=(
+                            MeasurementConfig(
+                                name="cycle threshold result",
+                                value="cycle_threshold_result",
+                            ),
+                            CalculatedDataConfig(
+                                name="y intercept",
+                                value="y_intercept",
+                                view_data=tdna_view_data,
+                                source_configs=(
+                                    MeasurementConfig(
+                                        name="cycle threshold result",
+                                        value="cycle_threshold_result",
+                                    ),
+                                ),
+                            ),
+                            CalculatedDataConfig(
+                                name="slope",
+                                value="slope",
+                                view_data=tdna_view_data,
+                                source_configs=(
+                                    MeasurementConfig(
+                                        name="cycle threshold result",
+                                        value="cycle_threshold_result",
+                                    ),
+                                ),
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            CalculatedDataConfig(
+                name="quantity sd",
+                value="quantity_sd",
+                view_data=sid_tdna_view_data,
+                source_configs=(
+                    CalculatedDataConfig(
+                        name="quantity",
+                        value="quantity",
+                        view_data=sid_tdna_uuid_view_data,
+                        source_configs=(
+                            MeasurementConfig(
+                                name="cycle threshold result",
+                                value="cycle_threshold_result",
+                            ),
+                            CalculatedDataConfig(
+                                name="y intercept",
+                                value="y_intercept",
+                                view_data=tdna_view_data,
+                                source_configs=(
+                                    MeasurementConfig(
+                                        name="cycle threshold result",
+                                        value="cycle_threshold_result",
+                                    ),
+                                ),
+                            ),
+                            CalculatedDataConfig(
+                                name="slope",
+                                value="slope",
+                                view_data=tdna_view_data,
+                                source_configs=(
+                                    MeasurementConfig(
+                                        name="cycle threshold result",
+                                        value="cycle_threshold_result",
+                                    ),
+                                ),
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            CalculatedDataConfig(
+                name="ct mean",
+                value="ct_mean",
+                view_data=sid_tdna_view_data,
+                source_configs=(
+                    MeasurementConfig(
+                        name="cycle threshold result",
+                        value="cycle_threshold_result",
+                    ),
+                ),
+            ),
+            CalculatedDataConfig(
+                name="ct sd",
+                value="ct_sd",
+                view_data=sid_tdna_view_data,
+                source_configs=(
+                    MeasurementConfig(
+                        name="cycle threshold result",
+                        value="cycle_threshold_result",
+                    ),
+                ),
+            ),
+            CalculatedDataConfig(
+                name="y intercept",
+                value="y_intercept",
+                view_data=tdna_view_data,
+                source_configs=(
+                    MeasurementConfig(
+                        name="cycle threshold result",
+                        value="cycle_threshold_result",
+                    ),
+                ),
+            ),
+            CalculatedDataConfig(
+                name="r^2",
+                value="r_squared",
+                view_data=tdna_view_data,
+                source_configs=(
+                    MeasurementConfig(
+                        name="cycle threshold result",
+                        value="cycle_threshold_result",
+                    ),
+                ),
+            ),
+            CalculatedDataConfig(
+                name="slope",
+                value="slope",
+                view_data=tdna_view_data,
+                source_configs=(
+                    MeasurementConfig(
+                        name="cycle threshold result",
+                        value="cycle_threshold_result",
+                    ),
+                ),
+            ),
+            CalculatedDataConfig(
+                name="efficiency",
+                value="efficiency",
+                view_data=tdna_view_data,
+                source_configs=(
+                    MeasurementConfig(
+                        name="cycle threshold result",
+                        value="cycle_threshold_result",
+                    ),
+                ),
+            ),
+        ]
+    )
 
-    for sample, target in view_st_data.iter_keys():
-        calc_docs.append(
-            build_quantity_mean(view_st_data, view_tr_data, sample, target)
-        )
-
-    for sample, target in view_st_data.iter_keys():
-        calc_docs.append(build_quantity_sd(view_st_data, view_tr_data, sample, target))
-
-    for sample, target in view_st_data.iter_keys():
-        calc_docs.append(build_ct_mean(view_st_data, sample, target))
-
-    for sample, target in view_st_data.iter_keys():
-        calc_docs.append(build_ct_sd(view_st_data, sample, target))
-
-    for target in view_tr_data.data:
-        calc_docs.append(build_y_intercept(view_tr_data, target))
-
-    for target in view_tr_data.data:
-        calc_docs.append(build_r_squared(view_tr_data, target))
-
-    for target in view_tr_data.data:
-        calc_docs.append(build_slope(view_tr_data, target))
-
-    for target in view_tr_data.data:
-        calc_docs.append(build_efficiency(view_tr_data, target))
-
-    yield from yield_documents(calc_docs)
+    for calc_doc in configs.construct():
+        yield from calc_doc.iter_struct()
 
 
 def iter_relative_standard_curve_calc_docs(

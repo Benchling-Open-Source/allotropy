@@ -6,11 +6,6 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_d
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
     DesignQuantstudioReader,
 )
-from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_views import (
-    SampleView,
-    TargetRoleView,
-    TargetView,
-)
 from allotropy.parsers.appbio_quantstudio_designandanalysis.constants import (
     ExperimentType,
 )
@@ -43,10 +38,7 @@ class StandardCurveCreator(Creator):
             wells,
             experiment_type=ExperimentType.standard_curve_qpcr_experiment,
             calculated_documents=list(
-                iter_standard_curve_calc_docs(
-                    view_st_data=SampleView(sub_view=TargetView()).apply(well_items),
-                    view_tr_data=TargetRoleView().apply(well_items),
-                )
+                iter_standard_curve_calc_docs(well_items=well_items)
             ),
             reference_target=None,
             reference_sample=None,
