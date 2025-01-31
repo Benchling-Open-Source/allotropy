@@ -12,22 +12,20 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._01.multi_analyte_profiling import (
     Analyte,
     Calibration,
-    Error as MapperError,
+    Error,
     Measurement as MapperMeasurement,
     MeasurementGroup,
     Metadata,
 )
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.constants import NEGATIVE_ZERO
 from allotropy.parsers.luminex_xponent import constants
 from allotropy.parsers.luminex_xponent.luminex_xponent_reader import (
     LuminexXponentReader,
 )
 from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import (
-    assert_not_none,
-    try_float,
-)
+from allotropy.parsers.utils.values import assert_not_none, try_float
 
 
 @dataclass(frozen=True)
@@ -52,7 +50,7 @@ class Header:
     ) -> Header:
         info_row = SeriesData(header_data.iloc[0])
         raw_datetime = info_row[str, "BatchStartTime"]
-        sample_volume = info_row.get(str, "SampleVolume")
+        sample_volume = info_row.get(str, ["SampleVolume", "MaxSampleUptakeVolume"])
 
         return Header(
             model_number=cls._get_model_number(header_data),
@@ -68,7 +66,9 @@ class Header:
             else None,
             plate_well_count=cls._get_plate_well_count(header_data),
             measurement_time=raw_datetime,
-            detector_gain_setting=info_row.get(str, "ProtocolReporterGain"),
+            detector_gain_setting=info_row.get(
+                str, ["ProtocolReporterGain", "ProtocolOperatingMode"]
+            ),
             data_system_instance_identifier=info_row.get(str, "ComputerName"),
             minimum_assay_bead_count_setting=minimum_assay_bead_count_setting,
             analyst=info_row.get(str, "Operator"),
@@ -136,7 +136,7 @@ class Measurement:
     dilution_factor_setting: float
     assay_bead_count: float
     analytes: list[Analyte]
-    errors: list[str] | None = None
+    errors: list[Error] | None = None
 
     @classmethod
     def create(
@@ -159,13 +159,24 @@ class Measurement:
         metadata_keys = ["Sample", "Total Events"]
 
         well_location, location_id = cls._get_location_details(location)
+        dilution_factor_setting = SeriesData(dilution_factor_data.loc[location]).get(
+            float, "Dilution Factor", NEGATIVE_ZERO, validate=SeriesData.NOT_NAN
+        )
+        errors: list[Error] = []
+        data_errors = cls._get_errors(errors_data, well_location) or []
+        for error in data_errors:
+            errors.append(Error(error=error))
+
+        if dilution_factor_setting == NEGATIVE_ZERO:
+            errors.append(
+                Error(error="Not reported in file", feature="dilution factor setting")
+            )
+
         return Measurement(
             identifier=random_uuid_str(),
             sample_identifier=median_data[str, "Sample"],
             location_identifier=location_id,
-            dilution_factor_setting=SeriesData(dilution_factor_data.loc[location])[
-                float, "Dilution Factor"
-            ],
+            dilution_factor_setting=dilution_factor_setting,
             assay_bead_count=median_data[float, "Total Events"],
             analytes=[
                 Analyte(
@@ -182,7 +193,7 @@ class Measurement:
                     key for key in median_data.series.index if key not in metadata_keys
                 ]
             ],
-            errors=cls._get_errors(errors_data, well_location),
+            errors=errors,
         )
 
     @classmethod
@@ -297,9 +308,7 @@ def create_measurement_groups(
                     detector_gain_setting=header.detector_gain_setting,
                     assay_bead_count=measurement.assay_bead_count,
                     analytes=measurement.analytes,
-                    errors=[
-                        MapperError(error=error) for error in (measurement.errors or [])
-                    ],
+                    errors=measurement.errors if measurement.errors else None,
                 )
             ],
         )
