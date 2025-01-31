@@ -10,7 +10,7 @@ from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
 from allotropy.parsers.luminex_xponent import constants
 from allotropy.parsers.utils.pandas import read_csv
-from allotropy.parsers.utils.values import assert_not_none, try_float
+from allotropy.parsers.utils.values import assert_not_none, try_float_or_none
 
 
 class LuminexXponentReader:
@@ -18,7 +18,7 @@ class LuminexXponentReader:
 
     header_data: pd.DataFrame
     calibration_data: pd.DataFrame
-    minimum_assay_bead_count_setting: float
+    minimum_assay_bead_count_setting: float | None
     results_data: dict[str, pd.DataFrame]
 
     def __init__(self, named_file_contents: NamedFileContents) -> None:
@@ -60,20 +60,20 @@ class LuminexXponentReader:
         )
 
     @classmethod
-    def _get_minimum_assay_bead_count_setting(cls, reader: CsvReader) -> float:
+    def _get_minimum_assay_bead_count_setting(cls, reader: CsvReader) -> float | None:
         reader.drop_until(match_pat='^"?Samples"?,')
         samples_info = assert_not_none(reader.pop(), msg="Unable to find Samples info.")
         try:
             fields = samples_info.replace('"', "").split(",")
             min_bead_count_setting = fields[3].strip()
+            # If the min bead count is left empty, the default value is 100, according to software manual.
             if not min_bead_count_setting:
-                msg = "Minimum bead count setting in Samples info is empty."
-                raise AllotropeParsingError(msg)
+                return 100
         except IndexError as e:
             msg = f"Unable to find minimum bead count setting in Samples info: {samples_info}."
             raise AllotropeConversionError(msg) from e
 
-        return try_float(min_bead_count_setting, "minimum bead count setting")
+        return try_float_or_none(min_bead_count_setting)
 
     @staticmethod
     def _get_results(reader: CsvReader) -> dict[str, pd.DataFrame]:

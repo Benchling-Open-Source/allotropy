@@ -8,4 +8,4 @@ TABLE_HEADER_PATTERN = '^"?DataType:"?,"?([^,"]*)"?'
 MINIMUM_CALIBRATION_LINE_COLS = 2
 EXPECTED_CALIBRATION_RESULT_LEN = 2
 EXPECTED_HEADER_COLUMNS = 7
-EXPECTED_SECTIONS = ["Median", "Count", "Units", "Dilution Factor", "Warnings/Errors"]
+REQUIRED_SECTIONS = ["Median", "Count", "Units", "Dilution Factor"]
