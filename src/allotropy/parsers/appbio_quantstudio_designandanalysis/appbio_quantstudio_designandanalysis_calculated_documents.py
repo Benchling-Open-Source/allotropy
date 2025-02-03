@@ -1484,29 +1484,78 @@ def iter_relative_standard_curve_calc_docs(
 
 
 def iter_presence_absence_calc_docs(
-    view_data: ViewData[WellItem],
+    well_items: list[WellItem],
 ) -> Iterator[CalculatedDocument]:
     # Rn Mean, Rn SD, Amp score, Cq confidence
-    calc_docs: list[CalculatedDocument | None] = []
-    for sample, target in view_data.iter_keys():
-        for well_item in view_data.get_leaf_item(sample, target):
-            calc_docs.append(build_quantity(None, target, well_item))
+    elements = AppbioQuantstudioDAExtractor.get_elements(well_items)
 
-    for sample, target in view_data.iter_keys():
-        for well_item in view_data.get_leaf_item(sample, target):
-            calc_docs.append(build_amp_score(well_item))
+    sid_tdna_view_data = SampleView(sub_view=TargetView()).apply(elements)
+    sid_tdna_uuid_view_data = SampleView(
+        sub_view=TargetView(sub_view=UuidView())
+    ).apply(elements)
 
-    for sample, target in view_data.iter_keys():
-        for well_item in view_data.get_leaf_item(sample, target):
-            calc_docs.append(build_cq_conf(well_item))
+    configs = CalcDocsConfig(
+        [
+            CalculatedDataConfig(
+                name="quantity",
+                value="quantity",
+                view_data=sid_tdna_uuid_view_data,
+                source_configs=(
+                    MeasurementConfig(
+                        name="cycle threshold result",
+                        value="cycle_threshold_result",
+                    ),
+                ),
+            ),
+            CalculatedDataConfig(
+                name="amplification score",
+                value="amp_score",
+                view_data=sid_tdna_uuid_view_data,
+                source_configs=(
+                    MeasurementConfig(
+                        name="cycle threshold result",
+                        value="cycle_threshold_result",
+                    ),
+                ),
+            ),
+            CalculatedDataConfig(
+                name="cq confidence",
+                value="cq_conf",
+                view_data=sid_tdna_uuid_view_data,
+                source_configs=(
+                    MeasurementConfig(
+                        name="cycle threshold result",
+                        value="cycle_threshold_result",
+                    ),
+                ),
+            ),
+            CalculatedDataConfig(
+                name="rn mean",
+                value="rn_mean",
+                view_data=sid_tdna_view_data,
+                source_configs=(
+                    MeasurementConfig(
+                        name="normalized reporter result",
+                        value="normalized_reporter_result",
+                    ),
+                ),
+            ),
+            CalculatedDataConfig(
+                name="rn sd",
+                value="rn_sd",
+                view_data=sid_tdna_view_data,
+                source_configs=(
+                    MeasurementConfig(
+                        name="normalized reporter result",
+                        value="normalized_reporter_result",
+                    ),
+                ),
+            ),
+        ]
+    )
 
-    for sample, target in view_data.iter_keys():
-        calc_docs.append(build_rn_mean(view_data, sample, target))
-
-    for sample, target in view_data.iter_keys():
-        calc_docs.append(build_rn_sd(view_data, sample, target))
-
-    yield from yield_documents(calc_docs)
+    for calc_doc in configs.construct():
+        yield from calc_doc.iter_struct()
 
 
 def iter_primary_analysis_calc_docs(
