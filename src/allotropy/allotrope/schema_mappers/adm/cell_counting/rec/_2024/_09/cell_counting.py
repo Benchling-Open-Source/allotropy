@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.cell_counting.rec._2024._09.cell_counting import (
@@ -88,6 +89,7 @@ class Measurement:
     # customer information document fields
     debris_index: float | None = None
     cell_aggregation_percentage: float | None = None
+    custom_info_doc: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -174,7 +176,8 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_measurement_document(
         self, measurement: Measurement, metadata: Metadata
     ) -> MeasurementDocument:
-        return MeasurementDocument(
+        custom_info_doc = measurement.custom_info_doc or {}
+        measurement_doc = MeasurementDocument(
             measurement_time=self.get_date_time(measurement.timestamp),
             measurement_identifier=measurement.measurement_identifier,
             sample_document=self._get_sample_document(measurement),
@@ -196,6 +199,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement.errors
             ),
         )
+        return add_custom_information_document(measurement_doc, custom_info_doc)
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
         # TODO(ASM gaps): we believe these values should be introduced to ASM.

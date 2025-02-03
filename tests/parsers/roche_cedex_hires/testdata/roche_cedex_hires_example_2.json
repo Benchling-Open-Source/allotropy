@@ -6,8 +6,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2019-06-18T07:46:47+00:00",
-                            "measurement identifier": "ROCHE_CEDEX_HIRES_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -20,17 +18,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "0618_F01",
-                                "batch identifier": "TechDev_CD_N-1",
-                                "custom information document": {
-                                    "group identifier": "Original",
-                                    "sample draw time": "2019-06-17T08:34:01+00:00"
-                                }
-                            },
+                            "measurement identifier": "ROCHE_CEDEX_HIRES_TEST_ID_0",
+                            "measurement time": "2019-06-18T07:46:47+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "Std. Size",
+                                            "cell density dilution factor": {
+                                                "value": 0.5,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 95.29307556,
                                             "unit": "%"
@@ -38,13 +37,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 4.5295425,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "Std. Size",
-                                            "cell density dilution factor": {
-                                                "value": 0.5,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 4.753276,
@@ -102,6 +94,23 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "0618_F01",
+                                "batch identifier": "TechDev_CD_N-1",
+                                "custom information document": {
+                                    "group identifier": "Original",
+                                    "sample draw time": "2019-06-17T08:34:01+00:00"
+                                }
+                            },
+                            "custom information document": {
+                                "Default system": 1.0,
+                                "System description (processed)": "my system",
+                                "Comment": "NaN",
+                                "Workarea name": "standard",
+                                "Default system (processed)": 1.0,
+                                "System name (processed)": "G037DE019",
+                                "Cedex ID (processed)": 3714019.0
                             }
                         }
                     ]
@@ -112,8 +121,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2019-06-18T07:51:27+00:00",
-                            "measurement identifier": "ROCHE_CEDEX_HIRES_TEST_ID_1",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -126,17 +133,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "0618_F02",
-                                "batch identifier": "TechDev_CD_N-1",
-                                "custom information document": {
-                                    "group identifier": "Original",
-                                    "sample draw time": "2019-06-17T08:34:01+00:00"
-                                }
-                            },
+                            "measurement identifier": "ROCHE_CEDEX_HIRES_TEST_ID_1",
+                            "measurement time": "2019-06-18T07:51:27+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "Std. Size",
+                                            "cell density dilution factor": {
+                                                "value": 0.5,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 95.52274323,
                                             "unit": "%"
@@ -144,13 +152,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 4.2329905,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "Std. Size",
-                                            "cell density dilution factor": {
-                                                "value": 0.5,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 4.4313955,
@@ -208,6 +209,23 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "0618_F02",
+                                "batch identifier": "TechDev_CD_N-1",
+                                "custom information document": {
+                                    "group identifier": "Original",
+                                    "sample draw time": "2019-06-17T08:34:01+00:00"
+                                }
+                            },
+                            "custom information document": {
+                                "Default system": 1.0,
+                                "System description (processed)": "my system",
+                                "Comment": "NaN",
+                                "Workarea name": "standard",
+                                "Default system (processed)": 1.0,
+                                "System name (processed)": "G037DE019",
+                                "Cedex ID (processed)": 3714019.0
                             }
                         }
                     ]
@@ -218,8 +236,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2019-06-18T07:56:14+00:00",
-                            "measurement identifier": "ROCHE_CEDEX_HIRES_TEST_ID_2",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -232,17 +248,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "0618_F03",
-                                "batch identifier": "TechDev_CD_N-1",
-                                "custom information document": {
-                                    "group identifier": "Original",
-                                    "sample draw time": "2019-06-17T08:34:01+00:00"
-                                }
-                            },
+                            "measurement identifier": "ROCHE_CEDEX_HIRES_TEST_ID_2",
+                            "measurement time": "2019-06-18T07:56:14+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "Std. Size",
+                                            "cell density dilution factor": {
+                                                "value": 0.5,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 95.76529694,
                                             "unit": "%"
@@ -250,13 +267,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 5.6323785,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "Std. Size",
-                                            "cell density dilution factor": {
-                                                "value": 0.5,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 5.88144,
@@ -314,6 +324,23 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "0618_F03",
+                                "batch identifier": "TechDev_CD_N-1",
+                                "custom information document": {
+                                    "group identifier": "Original",
+                                    "sample draw time": "2019-06-17T08:34:01+00:00"
+                                }
+                            },
+                            "custom information document": {
+                                "Default system": 1.0,
+                                "System description (processed)": "my system",
+                                "Comment": "NaN",
+                                "Workarea name": "standard",
+                                "Default system (processed)": 1.0,
+                                "System name (processed)": "G037DE019",
+                                "Cedex ID (processed)": 3714019.0
                             }
                         }
                     ]
@@ -324,8 +351,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2019-06-18T08:01:06+00:00",
-                            "measurement identifier": "ROCHE_CEDEX_HIRES_TEST_ID_3",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -338,17 +363,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "0618_F04",
-                                "batch identifier": "TechDev_CD_N-1",
-                                "custom information document": {
-                                    "group identifier": "Original",
-                                    "sample draw time": "2019-06-17T08:34:01+00:00"
-                                }
-                            },
+                            "measurement identifier": "ROCHE_CEDEX_HIRES_TEST_ID_3",
+                            "measurement time": "2019-06-18T08:01:06+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "Std. Size",
+                                            "cell density dilution factor": {
+                                                "value": 0.5,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 95.6820755,
                                             "unit": "%"
@@ -356,13 +382,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 6.314132,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "Std. Size",
-                                            "cell density dilution factor": {
-                                                "value": 0.5,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 6.599075,
@@ -420,6 +439,23 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "0618_F04",
+                                "batch identifier": "TechDev_CD_N-1",
+                                "custom information document": {
+                                    "group identifier": "Original",
+                                    "sample draw time": "2019-06-17T08:34:01+00:00"
+                                }
+                            },
+                            "custom information document": {
+                                "Default system": 1.0,
+                                "System description (processed)": "my system",
+                                "Comment": "NaN",
+                                "Workarea name": "standard",
+                                "Default system (processed)": 1.0,
+                                "System name (processed)": "G037DE019",
+                                "Cedex ID (processed)": 3714019.0
                             }
                         }
                     ]
@@ -430,8 +466,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2019-06-18T08:05:45+00:00",
-                            "measurement identifier": "ROCHE_CEDEX_HIRES_TEST_ID_4",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -444,17 +478,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "0618_F05",
-                                "batch identifier": "TechDev_CD_N-1",
-                                "custom information document": {
-                                    "group identifier": "Original",
-                                    "sample draw time": "2019-06-17T08:34:01+00:00"
-                                }
-                            },
+                            "measurement identifier": "ROCHE_CEDEX_HIRES_TEST_ID_4",
+                            "measurement time": "2019-06-18T08:05:45+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "Std. Size",
+                                            "cell density dilution factor": {
+                                                "value": 0.5,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 94.00199127,
                                             "unit": "%"
@@ -462,13 +497,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 3.98603975,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "Std. Size",
-                                            "cell density dilution factor": {
-                                                "value": 0.5,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 4.240378,
@@ -526,6 +554,23 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "0618_F05",
+                                "batch identifier": "TechDev_CD_N-1",
+                                "custom information document": {
+                                    "group identifier": "Original",
+                                    "sample draw time": "2019-06-17T08:34:01+00:00"
+                                }
+                            },
+                            "custom information document": {
+                                "Default system": 1.0,
+                                "System description (processed)": "my system",
+                                "Comment": "NaN",
+                                "Workarea name": "standard",
+                                "Default system (processed)": 1.0,
+                                "System name (processed)": "G037DE019",
+                                "Cedex ID (processed)": 3714019.0
                             }
                         }
                     ]
@@ -536,8 +581,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2019-06-18T08:10:24+00:00",
-                            "measurement identifier": "ROCHE_CEDEX_HIRES_TEST_ID_5",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -550,17 +593,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "0618_F06",
-                                "batch identifier": "TechDev_CD_N-1",
-                                "custom information document": {
-                                    "group identifier": "Original",
-                                    "sample draw time": "2019-06-17T08:34:01+00:00"
-                                }
-                            },
+                            "measurement identifier": "ROCHE_CEDEX_HIRES_TEST_ID_5",
+                            "measurement time": "2019-06-18T08:10:24+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "Std. Size",
+                                            "cell density dilution factor": {
+                                                "value": 0.5,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 94.46669769,
                                             "unit": "%"
@@ -568,13 +612,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 3.98181825,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "Std. Size",
-                                            "cell density dilution factor": {
-                                                "value": 0.5,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 4.2150495,
@@ -632,6 +669,23 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "0618_F06",
+                                "batch identifier": "TechDev_CD_N-1",
+                                "custom information document": {
+                                    "group identifier": "Original",
+                                    "sample draw time": "2019-06-17T08:34:01+00:00"
+                                }
+                            },
+                            "custom information document": {
+                                "Default system": 1.0,
+                                "System description (processed)": "my system",
+                                "Comment": "NaN",
+                                "Workarea name": "standard",
+                                "Default system (processed)": 1.0,
+                                "System name (processed)": "G037DE019",
+                                "Cedex ID (processed)": 3714019.0
                             }
                         }
                     ]
@@ -642,8 +696,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2019-06-18T08:15:15+00:00",
-                            "measurement identifier": "ROCHE_CEDEX_HIRES_TEST_ID_6",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -656,17 +708,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "0618_F07",
-                                "batch identifier": "TechDev_CD_N-1",
-                                "custom information document": {
-                                    "group identifier": "Original",
-                                    "sample draw time": "2019-06-17T08:34:01+00:00"
-                                }
-                            },
+                            "measurement identifier": "ROCHE_CEDEX_HIRES_TEST_ID_6",
+                            "measurement time": "2019-06-18T08:15:15+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "Std. Size",
+                                            "cell density dilution factor": {
+                                                "value": 0.5,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 95.83587646,
                                             "unit": "%"
@@ -674,13 +727,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 6.6307355,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "Std. Size",
-                                            "cell density dilution factor": {
-                                                "value": 0.5,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 6.9188445,
@@ -738,6 +784,23 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "0618_F07",
+                                "batch identifier": "TechDev_CD_N-1",
+                                "custom information document": {
+                                    "group identifier": "Original",
+                                    "sample draw time": "2019-06-17T08:34:01+00:00"
+                                }
+                            },
+                            "custom information document": {
+                                "Default system": 1.0,
+                                "System description (processed)": "my system",
+                                "Comment": "NaN",
+                                "Workarea name": "standard",
+                                "Default system (processed)": 1.0,
+                                "System name (processed)": "G037DE019",
+                                "Cedex ID (processed)": 3714019.0
                             }
                         }
                     ]
@@ -748,8 +811,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2019-06-18T08:20:05+00:00",
-                            "measurement identifier": "ROCHE_CEDEX_HIRES_TEST_ID_7",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -762,17 +823,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "0618_F08",
-                                "batch identifier": "TechDev_CD_N-1",
-                                "custom information document": {
-                                    "group identifier": "Original",
-                                    "sample draw time": "2019-06-17T08:34:01+00:00"
-                                }
-                            },
+                            "measurement identifier": "ROCHE_CEDEX_HIRES_TEST_ID_7",
+                            "measurement time": "2019-06-18T08:20:05+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell type processing method": "Std. Size",
+                                            "cell density dilution factor": {
+                                                "value": 0.5,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
                                         "viability (cell counter)": {
                                             "value": 95.60102844,
                                             "unit": "%"
@@ -780,13 +842,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 6.2613645,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "Std. Size",
-                                            "cell density dilution factor": {
-                                                "value": 0.5,
-                                                "unit": "(unitless)"
-                                            }
                                         },
                                         "total cell density (cell counter)": {
                                             "value": 6.549474,
@@ -844,6 +899,23 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "0618_F08",
+                                "batch identifier": "TechDev_CD_N-1",
+                                "custom information document": {
+                                    "group identifier": "Original",
+                                    "sample draw time": "2019-06-17T08:34:01+00:00"
+                                }
+                            },
+                            "custom information document": {
+                                "Default system": 1.0,
+                                "System description (processed)": "my system",
+                                "Comment": "NaN",
+                                "Workarea name": "standard",
+                                "Default system (processed)": 1.0,
+                                "System name (processed)": "G037DE019",
+                                "Cedex ID (processed)": 3714019.0
                             }
                         }
                     ]
@@ -857,7 +929,7 @@
             "file name": "roche_cedex_hires_example_2.xlsx",
             "UNC path": "tests/parsers/roche_cedex_hires/testdata/roche_cedex_hires_example_2.xlsx",
             "ASM converter name": "allotropy_roche_cedex_hires",
-            "ASM converter version": "0.1.66",
+            "ASM converter version": "0.1.74",
             "software name": "Cedex software"
         },
         "device system document": {
