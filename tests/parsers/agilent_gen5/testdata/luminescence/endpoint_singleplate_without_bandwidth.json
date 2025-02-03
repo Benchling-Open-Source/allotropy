@@ -34,6 +34,9 @@
                             "luminescence": {
                                 "value": 210530.0,
                                 "unit": "RLU"
+                            },
+                            "custom information document": {
+                                "Reading Type": "Simulation"
                             }
                         }
                     ],
@@ -79,6 +82,9 @@
                             "luminescence": {
                                 "value": 213380.0,
                                 "unit": "RLU"
+                            },
+                            "custom information document": {
+                                "Reading Type": "Simulation"
                             }
                         }
                     ],
@@ -124,6 +130,9 @@
                             "luminescence": {
                                 "value": 216200.0,
                                 "unit": "RLU"
+                            },
+                            "custom information document": {
+                                "Reading Type": "Simulation"
                             }
                         }
                     ],
@@ -169,6 +178,9 @@
                             "luminescence": {
                                 "value": 219000.0,
                                 "unit": "RLU"
+                            },
+                            "custom information document": {
+                                "Reading Type": "Simulation"
                             }
                         }
                     ],
@@ -214,6 +226,9 @@
                             "luminescence": {
                                 "value": 221780.0,
                                 "unit": "RLU"
+                            },
+                            "custom information document": {
+                                "Reading Type": "Simulation"
                             }
                         }
                     ],
@@ -259,6 +274,9 @@
                             "luminescence": {
                                 "value": 224520.0,
                                 "unit": "RLU"
+                            },
+                            "custom information document": {
+                                "Reading Type": "Simulation"
                             }
                         }
                     ],
@@ -304,6 +322,9 @@
                             "luminescence": {
                                 "value": 212240.0,
                                 "unit": "RLU"
+                            },
+                            "custom information document": {
+                                "Reading Type": "Simulation"
                             }
                         }
                     ],
@@ -349,6 +370,9 @@
                             "luminescence": {
                                 "value": 215080.0,
                                 "unit": "RLU"
+                            },
+                            "custom information document": {
+                                "Reading Type": "Simulation"
                             }
                         }
                     ],
@@ -394,6 +418,9 @@
                             "luminescence": {
                                 "value": 217890.0,
                                 "unit": "RLU"
+                            },
+                            "custom information document": {
+                                "Reading Type": "Simulation"
                             }
                         }
                     ],
@@ -439,6 +466,9 @@
                             "luminescence": {
                                 "value": 220670.0,
                                 "unit": "RLU"
+                            },
+                            "custom information document": {
+                                "Reading Type": "Simulation"
                             }
                         }
                     ],
@@ -484,6 +514,9 @@
                             "luminescence": {
                                 "value": 223430.0,
                                 "unit": "RLU"
+                            },
+                            "custom information document": {
+                                "Reading Type": "Simulation"
                             }
                         }
                     ],
@@ -529,6 +562,9 @@
                             "luminescence": {
                                 "value": 226150.0,
                                 "unit": "RLU"
+                            },
+                            "custom information document": {
+                                "Reading Type": "Simulation"
                             }
                         }
                     ],
@@ -549,7 +585,7 @@
             "file name": "endpoint_singleplate_without_bandwidth.txt",
             "UNC path": "tests/parsers/agilent_gen5/testdata/luminescence/endpoint_singleplate_without_bandwidth.txt",
             "ASM converter name": "allotropy_agilent_gen5",
-            "ASM converter version": "0.1.61",
+            "ASM converter version": "0.1.74",
             "software name": "Gen5",
             "software version": "3.12.08"
         },

@@ -82,6 +82,7 @@ class HeaderData:
     plate_well_count: float
     file_name: str
     unc_path: str
+    additional_data: dict[str, str] = None
 
     @classmethod
     def create(cls, data: SeriesData, file_path: str) -> HeaderData:
@@ -100,6 +101,7 @@ class HeaderData:
             model_number=data.get(str, "Reader Type:"),
             equipment_serial_number=data.get(str, "Reader Serial Number:"),
             plate_well_count=plate_well_count,
+            additional_data=data.get_unread()
         )
 
     @staticmethod
@@ -969,6 +971,7 @@ def _create_measurement(
             else None
         ),
         error_document=error_documents,
+        measurement_custom_info=header_data.additional_data,
     )
 
 
