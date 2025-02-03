@@ -1491,10 +1491,19 @@ def iter_presence_absence_calc_docs(
     for sample, target in view_data.iter_keys():
         for well_item in view_data.get_leaf_item(sample, target):
             calc_docs.append(build_quantity(None, target, well_item))
+
+    for sample, target in view_data.iter_keys():
+        for well_item in view_data.get_leaf_item(sample, target):
             calc_docs.append(build_amp_score(well_item))
+
+    for sample, target in view_data.iter_keys():
+        for well_item in view_data.get_leaf_item(sample, target):
             calc_docs.append(build_cq_conf(well_item))
 
+    for sample, target in view_data.iter_keys():
         calc_docs.append(build_rn_mean(view_data, sample, target))
+
+    for sample, target in view_data.iter_keys():
         calc_docs.append(build_rn_sd(view_data, sample, target))
 
     yield from yield_documents(calc_docs)
