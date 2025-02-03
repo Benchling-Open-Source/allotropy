@@ -341,209 +341,25 @@ def iter_standard_curve_calc_docs(
     ).apply(elements)
     tdna_view_data = TargetRoleView().apply(elements)
 
+    quantity_conf = quantity(
+        sid_tdna_uuid_view_data,
+        y_intercept(tdna_view_data),
+        slope(tdna_view_data),
+    )
+
     configs = CalcDocsConfig(
         [
-            CalculatedDataConfig(
-                name="quantity",
-                value="quantity",
-                view_data=sid_tdna_uuid_view_data,
-                source_configs=(
-                    MeasurementConfig(
-                        name="cycle threshold result",
-                        value="cycle_threshold_result",
-                    ),
-                    CalculatedDataConfig(
-                        name="y intercept",
-                        value="y_intercept",
-                        view_data=tdna_view_data,
-                        source_configs=(
-                            MeasurementConfig(
-                                name="cycle threshold result",
-                                value="cycle_threshold_result",
-                            ),
-                        ),
-                    ),
-                    CalculatedDataConfig(
-                        name="slope",
-                        value="slope",
-                        view_data=tdna_view_data,
-                        source_configs=(
-                            MeasurementConfig(
-                                name="cycle threshold result",
-                                value="cycle_threshold_result",
-                            ),
-                        ),
-                    ),
-                ),
-            ),
-            CalculatedDataConfig(
-                name="amplification score",
-                value="amp_score",
-                view_data=sid_tdna_uuid_view_data,
-                source_configs=(
-                    MeasurementConfig(
-                        name="cycle threshold result",
-                        value="cycle_threshold_result",
-                    ),
-                ),
-            ),
-            CalculatedDataConfig(
-                name="cq confidence",
-                value="cq_conf",
-                view_data=sid_tdna_uuid_view_data,
-                source_configs=(
-                    MeasurementConfig(
-                        name="cycle threshold result",
-                        value="cycle_threshold_result",
-                    ),
-                ),
-            ),
-            CalculatedDataConfig(
-                name="quantity mean",
-                value="quantity_mean",
-                view_data=sid_tdna_view_data,
-                source_configs=(
-                    CalculatedDataConfig(
-                        name="quantity",
-                        value="quantity",
-                        view_data=sid_tdna_uuid_view_data,
-                        source_configs=(
-                            MeasurementConfig(
-                                name="cycle threshold result",
-                                value="cycle_threshold_result",
-                            ),
-                            CalculatedDataConfig(
-                                name="y intercept",
-                                value="y_intercept",
-                                view_data=tdna_view_data,
-                                source_configs=(
-                                    MeasurementConfig(
-                                        name="cycle threshold result",
-                                        value="cycle_threshold_result",
-                                    ),
-                                ),
-                            ),
-                            CalculatedDataConfig(
-                                name="slope",
-                                value="slope",
-                                view_data=tdna_view_data,
-                                source_configs=(
-                                    MeasurementConfig(
-                                        name="cycle threshold result",
-                                        value="cycle_threshold_result",
-                                    ),
-                                ),
-                            ),
-                        ),
-                    ),
-                ),
-            ),
-            CalculatedDataConfig(
-                name="quantity sd",
-                value="quantity_sd",
-                view_data=sid_tdna_view_data,
-                source_configs=(
-                    CalculatedDataConfig(
-                        name="quantity",
-                        value="quantity",
-                        view_data=sid_tdna_uuid_view_data,
-                        source_configs=(
-                            MeasurementConfig(
-                                name="cycle threshold result",
-                                value="cycle_threshold_result",
-                            ),
-                            CalculatedDataConfig(
-                                name="y intercept",
-                                value="y_intercept",
-                                view_data=tdna_view_data,
-                                source_configs=(
-                                    MeasurementConfig(
-                                        name="cycle threshold result",
-                                        value="cycle_threshold_result",
-                                    ),
-                                ),
-                            ),
-                            CalculatedDataConfig(
-                                name="slope",
-                                value="slope",
-                                view_data=tdna_view_data,
-                                source_configs=(
-                                    MeasurementConfig(
-                                        name="cycle threshold result",
-                                        value="cycle_threshold_result",
-                                    ),
-                                ),
-                            ),
-                        ),
-                    ),
-                ),
-            ),
-            CalculatedDataConfig(
-                name="ct mean",
-                value="ct_mean",
-                view_data=sid_tdna_view_data,
-                source_configs=(
-                    MeasurementConfig(
-                        name="cycle threshold result",
-                        value="cycle_threshold_result",
-                    ),
-                ),
-            ),
-            CalculatedDataConfig(
-                name="ct sd",
-                value="ct_sd",
-                view_data=sid_tdna_view_data,
-                source_configs=(
-                    MeasurementConfig(
-                        name="cycle threshold result",
-                        value="cycle_threshold_result",
-                    ),
-                ),
-            ),
-            CalculatedDataConfig(
-                name="y intercept",
-                value="y_intercept",
-                view_data=tdna_view_data,
-                source_configs=(
-                    MeasurementConfig(
-                        name="cycle threshold result",
-                        value="cycle_threshold_result",
-                    ),
-                ),
-            ),
-            CalculatedDataConfig(
-                name="r^2",
-                value="r_squared",
-                view_data=tdna_view_data,
-                source_configs=(
-                    MeasurementConfig(
-                        name="cycle threshold result",
-                        value="cycle_threshold_result",
-                    ),
-                ),
-            ),
-            CalculatedDataConfig(
-                name="slope",
-                value="slope",
-                view_data=tdna_view_data,
-                source_configs=(
-                    MeasurementConfig(
-                        name="cycle threshold result",
-                        value="cycle_threshold_result",
-                    ),
-                ),
-            ),
-            CalculatedDataConfig(
-                name="efficiency",
-                value="efficiency",
-                view_data=tdna_view_data,
-                source_configs=(
-                    MeasurementConfig(
-                        name="cycle threshold result",
-                        value="cycle_threshold_result",
-                    ),
-                ),
-            ),
+            quantity_conf,
+            amplification_score(sid_tdna_uuid_view_data),
+            cq_confidence(sid_tdna_uuid_view_data),
+            quantity_mean(sid_tdna_view_data, quantity_conf),
+            quantity_sd(sid_tdna_view_data, quantity_conf),
+            ct_mean(sid_tdna_view_data),
+            ct_sd(sid_tdna_view_data),
+            y_intercept(tdna_view_data),
+            r_squared(tdna_view_data),
+            slope(tdna_view_data),
+            efficiency(tdna_view_data),
         ]
     )
 
@@ -576,523 +392,123 @@ def iter_relative_standard_curve_calc_docs(
     ).apply(elements)
     tdna_view_data = TargetRoleView().apply(elements)
 
+    quantity_conf = quantity(
+        sid_tdna_uuid_view_data,
+        y_intercept(tdna_view_data),
+        slope(tdna_view_data),
+    )
+
     configs = CalcDocsConfig(
         [
-            CalculatedDataConfig(
-                name="quantity",
-                value="quantity",
-                view_data=sid_tdna_uuid_view_data,
-                source_configs=(
-                    MeasurementConfig(
-                        name="cycle threshold result",
-                        value="cycle_threshold_result",
-                    ),
-                    CalculatedDataConfig(
-                        name="y intercept",
-                        value="y_intercept",
-                        view_data=tdna_view_data,
-                        source_configs=(
-                            MeasurementConfig(
-                                name="cycle threshold result",
-                                value="cycle_threshold_result",
+            quantity_conf,
+            amplification_score(sid_tdna_uuid_view_data),
+            cq_confidence(sid_tdna_uuid_view_data),
+            ct_mean(sid_tdna_view_data),
+            ct_sd(sid_tdna_view_data),
+            delta_ct_sd(
+                sid_tdna_view_data,
+                ct_sd(sid_tdna_view_data),
+                ct_sd(sid_tdna_ref_view_data),
+            ),
+            delta_ct_se(
+                sid_tdna_view_data,
+                ct_se(sid_tdna_view_data),
+                ct_se(sid_tdna_ref_view_data),
+            ),
+            relative_rq_min(
+                sid_tdna_view_data,
+                relative_rq(
+                    sid_tdna_view_data,
+                    quantity_mean(sid_tdna_view_data, quantity_conf),
+                ),
+            ),
+            relative_rq_max(
+                sid_tdna_view_data,
+                relative_rq(
+                    sid_tdna_view_data,
+                    quantity_mean(sid_tdna_view_data, quantity_conf),
+                ),
+            ),
+            rq_min(
+                sid_tdna_blacklist_view_data,
+                rq(
+                    sid_tdna_view_data,
+                    delta_delta_ct(
+                        sid_tdna_view_data,
+                        delta_ct(
+                            sid_tdna_view_data,
+                            adj_eq_ct_mean(
+                                sid_tdna_view_data,
+                                eq_ct_mean(
+                                    sid_tdna_view_data,
+                                    ct_mean(sid_tdna_view_data),
+                                ),
+                            ),
+                            adj_eq_ct_mean(
+                                sid_tdna_ref_view_data,
+                                eq_ct_mean(
+                                    sid_tdna_view_data,
+                                    ct_mean(sid_tdna_view_data),
+                                ),
                             ),
                         ),
-                    ),
-                    CalculatedDataConfig(
-                        name="slope",
-                        value="slope",
-                        view_data=tdna_view_data,
-                        source_configs=(
-                            MeasurementConfig(
-                                name="cycle threshold result",
-                                value="cycle_threshold_result",
+                        delta_ct(
+                            sid_ref_tdna_view_data,
+                            adj_eq_ct_mean(
+                                sid_tdna_view_data,
+                                eq_ct_mean(
+                                    sid_tdna_view_data,
+                                    ct_mean(sid_tdna_view_data),
+                                ),
                             ),
-                        ),
-                    ),
-                ),
-            ),
-            CalculatedDataConfig(
-                name="amplification score",
-                value="amp_score",
-                view_data=sid_tdna_uuid_view_data,
-                source_configs=(
-                    MeasurementConfig(
-                        name="cycle threshold result",
-                        value="cycle_threshold_result",
-                    ),
-                ),
-            ),
-            CalculatedDataConfig(
-                name="cq confidence",
-                value="cq_conf",
-                view_data=sid_tdna_uuid_view_data,
-                source_configs=(
-                    MeasurementConfig(
-                        name="cycle threshold result",
-                        value="cycle_threshold_result",
-                    ),
-                ),
-            ),
-            CalculatedDataConfig(
-                name="ct mean",
-                value="ct_mean",
-                view_data=sid_tdna_view_data,
-                source_configs=(
-                    MeasurementConfig(
-                        name="cycle threshold result",
-                        value="cycle_threshold_result",
-                    ),
-                ),
-            ),
-            CalculatedDataConfig(
-                name="ct sd",
-                value="ct_sd",
-                view_data=sid_tdna_view_data,
-                source_configs=(
-                    MeasurementConfig(
-                        name="cycle threshold result",
-                        value="cycle_threshold_result",
-                    ),
-                ),
-            ),
-            CalculatedDataConfig(
-                name="delta equivalent ct sd",
-                value="delta_ct_sd",
-                view_data=sid_tdna_view_data,
-                source_configs=(
-                    CalculatedDataConfig(
-                        name="ct sd",
-                        value="ct_sd",
-                        view_data=sid_tdna_view_data,
-                        source_configs=(
-                            MeasurementConfig(
-                                name="cycle threshold result",
-                                value="cycle_threshold_result",
-                            ),
-                        ),
-                    ),
-                    CalculatedDataConfig(
-                        name="ct sd",
-                        value="ct_sd",
-                        view_data=sid_tdna_ref_view_data,
-                        source_configs=(
-                            MeasurementConfig(
-                                name="cycle threshold result",
-                                value="cycle_threshold_result",
-                            ),
-                        ),
-                    ),
-                ),
-            ),
-            CalculatedDataConfig(
-                name="delta equivalent ct se",
-                value="delta_ct_se",
-                view_data=sid_tdna_view_data,
-                source_configs=(
-                    CalculatedDataConfig(
-                        name="ct se",
-                        value="ct_se",
-                        view_data=sid_tdna_view_data,
-                        source_configs=(
-                            MeasurementConfig(
-                                name="cycle threshold result",
-                                value="cycle_threshold_result",
-                            ),
-                        ),
-                    ),
-                    CalculatedDataConfig(
-                        name="ct se",
-                        value="ct_se",
-                        view_data=sid_tdna_ref_view_data,
-                        source_configs=(
-                            MeasurementConfig(
-                                name="cycle threshold result",
-                                value="cycle_threshold_result",
-                            ),
-                        ),
-                    ),
-                ),
-            ),
-            CalculatedDataConfig(
-                name="relative rq min",
-                value="rq_min",
-                view_data=sid_tdna_view_data,
-                source_configs=(
-                    CalculatedDataConfig(
-                        name="relative rq",
-                        value="rq",
-                        view_data=sid_tdna_view_data,
-                        source_configs=(
-                            CalculatedDataConfig(
-                                name="quantity mean",
-                                value="quantity_mean",
-                                view_data=sid_tdna_view_data,
-                                source_configs=(
-                                    CalculatedDataConfig(
-                                        name="quantity",
-                                        value="quantity",
-                                        view_data=sid_tdna_uuid_view_data,
-                                        source_configs=(
-                                            MeasurementConfig(
-                                                name="cycle threshold result",
-                                                value="cycle_threshold_result",
-                                            ),
-                                            CalculatedDataConfig(
-                                                name="y intercept",
-                                                value="y_intercept",
-                                                view_data=tdna_view_data,
-                                                source_configs=(
-                                                    MeasurementConfig(
-                                                        name="cycle threshold result",
-                                                        value="cycle_threshold_result",
-                                                    ),
-                                                ),
-                                            ),
-                                            CalculatedDataConfig(
-                                                name="slope",
-                                                value="slope",
-                                                view_data=tdna_view_data,
-                                                source_configs=(
-                                                    MeasurementConfig(
-                                                        name="cycle threshold result",
-                                                        value="cycle_threshold_result",
-                                                    ),
-                                                ),
-                                            ),
-                                        ),
-                                    ),
+                            adj_eq_ct_mean(
+                                sid_tdna_ref_view_data,
+                                eq_ct_mean(
+                                    sid_tdna_view_data,
+                                    ct_mean(sid_tdna_view_data),
                                 ),
                             ),
                         ),
                     ),
                 ),
             ),
-            CalculatedDataConfig(
-                name="relative rq max",
-                value="rq_max",
-                view_data=sid_tdna_view_data,
-                source_configs=(
-                    CalculatedDataConfig(
-                        name="relative rq",
-                        value="rq",
-                        view_data=sid_tdna_view_data,
-                        source_configs=(
-                            CalculatedDataConfig(
-                                name="quantity mean",
-                                value="quantity_mean",
-                                view_data=sid_tdna_view_data,
-                                source_configs=(
-                                    CalculatedDataConfig(
-                                        name="quantity",
-                                        value="quantity",
-                                        view_data=sid_tdna_uuid_view_data,
-                                        source_configs=(
-                                            MeasurementConfig(
-                                                name="cycle threshold result",
-                                                value="cycle_threshold_result",
-                                            ),
-                                            CalculatedDataConfig(
-                                                name="y intercept",
-                                                value="y_intercept",
-                                                view_data=tdna_view_data,
-                                                source_configs=(
-                                                    MeasurementConfig(
-                                                        name="cycle threshold result",
-                                                        value="cycle_threshold_result",
-                                                    ),
-                                                ),
-                                            ),
-                                            CalculatedDataConfig(
-                                                name="slope",
-                                                value="slope",
-                                                view_data=tdna_view_data,
-                                                source_configs=(
-                                                    MeasurementConfig(
-                                                        name="cycle threshold result",
-                                                        value="cycle_threshold_result",
-                                                    ),
-                                                ),
-                                            ),
-                                        ),
-                                    ),
+            rq_max(
+                sid_tdna_blacklist_view_data,
+                rq(
+                    sid_tdna_view_data,
+                    delta_delta_ct(
+                        sid_tdna_view_data,
+                        delta_ct(
+                            sid_tdna_view_data,
+                            adj_eq_ct_mean(
+                                sid_tdna_view_data,
+                                eq_ct_mean(
+                                    sid_tdna_view_data,
+                                    ct_mean(sid_tdna_view_data),
+                                ),
+                            ),
+                            adj_eq_ct_mean(
+                                sid_tdna_ref_view_data,
+                                eq_ct_mean(
+                                    sid_tdna_view_data,
+                                    ct_mean(sid_tdna_view_data),
                                 ),
                             ),
                         ),
-                    ),
-                ),
-            ),
-            CalculatedDataConfig(
-                name="rq min",
-                value="rq_min",
-                view_data=sid_tdna_blacklist_view_data,
-                source_configs=(
-                    CalculatedDataConfig(
-                        name="rq",
-                        value="rq",
-                        view_data=sid_tdna_view_data,
-                        source_configs=(
-                            CalculatedDataConfig(
-                                name="delta delta equivalent ct",
-                                value="delta_delta_ct",
-                                view_data=sid_tdna_view_data,
-                                source_configs=(
-                                    CalculatedDataConfig(
-                                        name="delta equivalent ct mean",
-                                        value="delta_ct_mean",
-                                        view_data=sid_tdna_view_data,
-                                        source_configs=(
-                                            CalculatedDataConfigWithOptional(
-                                                name="adjusted equivalent ct mean",
-                                                value="adj_eq_ct_mean",
-                                                view_data=sid_tdna_view_data,
-                                                optional=True,
-                                                source_configs=(
-                                                    CalculatedDataConfig(
-                                                        name="equivalent ct mean",
-                                                        value="eq_ct_mean",
-                                                        view_data=sid_tdna_view_data,
-                                                        source_configs=(
-                                                            CalculatedDataConfig(
-                                                                name="ct mean",
-                                                                value="ct_mean",
-                                                                view_data=sid_tdna_view_data,
-                                                                source_configs=(
-                                                                    MeasurementConfig(
-                                                                        name="cycle threshold result",
-                                                                        value="cycle_threshold_result",
-                                                                    ),
-                                                                ),
-                                                            ),
-                                                        ),
-                                                    ),
-                                                ),
-                                            ),
-                                            CalculatedDataConfigWithOptional(
-                                                name="adjusted equivalent ct mean",
-                                                value="adj_eq_ct_mean",
-                                                view_data=sid_tdna_ref_view_data,
-                                                optional=True,
-                                                source_configs=(
-                                                    CalculatedDataConfig(
-                                                        name="equivalent ct mean",
-                                                        value="eq_ct_mean",
-                                                        view_data=sid_tdna_view_data,
-                                                        source_configs=(
-                                                            CalculatedDataConfig(
-                                                                name="ct mean",
-                                                                value="ct_mean",
-                                                                view_data=sid_tdna_view_data,
-                                                                source_configs=(
-                                                                    MeasurementConfig(
-                                                                        name="cycle threshold result",
-                                                                        value="cycle_threshold_result",
-                                                                    ),
-                                                                ),
-                                                            ),
-                                                        ),
-                                                    ),
-                                                ),
-                                            ),
-                                        ),
-                                    ),
-                                    CalculatedDataConfig(
-                                        name="delta equivalent ct mean",
-                                        value="delta_ct_mean",
-                                        view_data=sid_ref_tdna_view_data,
-                                        source_configs=(
-                                            CalculatedDataConfigWithOptional(
-                                                name="adjusted equivalent ct mean",
-                                                value="adj_eq_ct_mean",
-                                                view_data=sid_tdna_view_data,
-                                                optional=True,
-                                                source_configs=(
-                                                    CalculatedDataConfig(
-                                                        name="equivalent ct mean",
-                                                        value="eq_ct_mean",
-                                                        view_data=sid_tdna_view_data,
-                                                        source_configs=(
-                                                            CalculatedDataConfig(
-                                                                name="ct mean",
-                                                                value="ct_mean",
-                                                                view_data=sid_tdna_view_data,
-                                                                source_configs=(
-                                                                    MeasurementConfig(
-                                                                        name="cycle threshold result",
-                                                                        value="cycle_threshold_result",
-                                                                    ),
-                                                                ),
-                                                            ),
-                                                        ),
-                                                    ),
-                                                ),
-                                            ),
-                                            CalculatedDataConfigWithOptional(
-                                                name="adjusted equivalent ct mean",
-                                                value="adj_eq_ct_mean",
-                                                view_data=sid_tdna_ref_view_data,
-                                                optional=True,
-                                                source_configs=(
-                                                    CalculatedDataConfig(
-                                                        name="equivalent ct mean",
-                                                        value="eq_ct_mean",
-                                                        view_data=sid_tdna_view_data,
-                                                        source_configs=(
-                                                            CalculatedDataConfig(
-                                                                name="ct mean",
-                                                                value="ct_mean",
-                                                                view_data=sid_tdna_view_data,
-                                                                source_configs=(
-                                                                    MeasurementConfig(
-                                                                        name="cycle threshold result",
-                                                                        value="cycle_threshold_result",
-                                                                    ),
-                                                                ),
-                                                            ),
-                                                        ),
-                                                    ),
-                                                ),
-                                            ),
-                                        ),
-                                    ),
+                        delta_ct(
+                            sid_ref_tdna_view_data,
+                            adj_eq_ct_mean(
+                                sid_tdna_view_data,
+                                eq_ct_mean(
+                                    sid_tdna_view_data,
+                                    ct_mean(sid_tdna_view_data),
                                 ),
                             ),
-                        ),
-                    ),
-                ),
-            ),
-            CalculatedDataConfig(
-                name="rq max",
-                value="rq_max",
-                view_data=sid_tdna_blacklist_view_data,
-                source_configs=(
-                    CalculatedDataConfig(
-                        name="rq",
-                        value="rq",
-                        view_data=sid_tdna_view_data,
-                        source_configs=(
-                            CalculatedDataConfig(
-                                name="delta delta equivalent ct",
-                                value="delta_delta_ct",
-                                view_data=sid_tdna_view_data,
-                                source_configs=(
-                                    CalculatedDataConfig(
-                                        name="delta equivalent ct mean",
-                                        value="delta_ct_mean",
-                                        view_data=sid_tdna_view_data,
-                                        source_configs=(
-                                            CalculatedDataConfigWithOptional(
-                                                name="adjusted equivalent ct mean",
-                                                value="adj_eq_ct_mean",
-                                                view_data=sid_tdna_view_data,
-                                                optional=True,
-                                                source_configs=(
-                                                    CalculatedDataConfig(
-                                                        name="equivalent ct mean",
-                                                        value="eq_ct_mean",
-                                                        view_data=sid_tdna_view_data,
-                                                        source_configs=(
-                                                            CalculatedDataConfig(
-                                                                name="ct mean",
-                                                                value="ct_mean",
-                                                                view_data=sid_tdna_view_data,
-                                                                source_configs=(
-                                                                    MeasurementConfig(
-                                                                        name="cycle threshold result",
-                                                                        value="cycle_threshold_result",
-                                                                    ),
-                                                                ),
-                                                            ),
-                                                        ),
-                                                    ),
-                                                ),
-                                            ),
-                                            CalculatedDataConfigWithOptional(
-                                                name="adjusted equivalent ct mean",
-                                                value="adj_eq_ct_mean",
-                                                view_data=sid_tdna_ref_view_data,
-                                                optional=True,
-                                                source_configs=(
-                                                    CalculatedDataConfig(
-                                                        name="equivalent ct mean",
-                                                        value="eq_ct_mean",
-                                                        view_data=sid_tdna_view_data,
-                                                        source_configs=(
-                                                            CalculatedDataConfig(
-                                                                name="ct mean",
-                                                                value="ct_mean",
-                                                                view_data=sid_tdna_view_data,
-                                                                source_configs=(
-                                                                    MeasurementConfig(
-                                                                        name="cycle threshold result",
-                                                                        value="cycle_threshold_result",
-                                                                    ),
-                                                                ),
-                                                            ),
-                                                        ),
-                                                    ),
-                                                ),
-                                            ),
-                                        ),
-                                    ),
-                                    CalculatedDataConfig(
-                                        name="delta equivalent ct mean",
-                                        value="delta_ct_mean",
-                                        view_data=sid_ref_tdna_view_data,
-                                        source_configs=(
-                                            CalculatedDataConfigWithOptional(
-                                                name="adjusted equivalent ct mean",
-                                                value="adj_eq_ct_mean",
-                                                view_data=sid_tdna_view_data,
-                                                optional=True,
-                                                source_configs=(
-                                                    CalculatedDataConfig(
-                                                        name="equivalent ct mean",
-                                                        value="eq_ct_mean",
-                                                        view_data=sid_tdna_view_data,
-                                                        source_configs=(
-                                                            CalculatedDataConfig(
-                                                                name="ct mean",
-                                                                value="ct_mean",
-                                                                view_data=sid_tdna_view_data,
-                                                                source_configs=(
-                                                                    MeasurementConfig(
-                                                                        name="cycle threshold result",
-                                                                        value="cycle_threshold_result",
-                                                                    ),
-                                                                ),
-                                                            ),
-                                                        ),
-                                                    ),
-                                                ),
-                                            ),
-                                            CalculatedDataConfigWithOptional(
-                                                name="adjusted equivalent ct mean",
-                                                value="adj_eq_ct_mean",
-                                                view_data=sid_tdna_ref_view_data,
-                                                optional=True,
-                                                source_configs=(
-                                                    CalculatedDataConfig(
-                                                        name="equivalent ct mean",
-                                                        value="eq_ct_mean",
-                                                        view_data=sid_tdna_view_data,
-                                                        source_configs=(
-                                                            CalculatedDataConfig(
-                                                                name="ct mean",
-                                                                value="ct_mean",
-                                                                view_data=sid_tdna_view_data,
-                                                                source_configs=(
-                                                                    MeasurementConfig(
-                                                                        name="cycle threshold result",
-                                                                        value="cycle_threshold_result",
-                                                                    ),
-                                                                ),
-                                                            ),
-                                                        ),
-                                                    ),
-                                                ),
-                                            ),
-                                        ),
-                                    ),
+                            adj_eq_ct_mean(
+                                sid_tdna_ref_view_data,
+                                eq_ct_mean(
+                                    sid_tdna_view_data,
+                                    ct_mean(sid_tdna_view_data),
                                 ),
                             ),
                         ),
@@ -1119,61 +535,11 @@ def iter_presence_absence_calc_docs(
 
     configs = CalcDocsConfig(
         [
-            CalculatedDataConfig(
-                name="quantity",
-                value="quantity",
-                view_data=sid_tdna_uuid_view_data,
-                source_configs=(
-                    MeasurementConfig(
-                        name="cycle threshold result",
-                        value="cycle_threshold_result",
-                    ),
-                ),
-            ),
-            CalculatedDataConfig(
-                name="amplification score",
-                value="amp_score",
-                view_data=sid_tdna_uuid_view_data,
-                source_configs=(
-                    MeasurementConfig(
-                        name="cycle threshold result",
-                        value="cycle_threshold_result",
-                    ),
-                ),
-            ),
-            CalculatedDataConfig(
-                name="cq confidence",
-                value="cq_conf",
-                view_data=sid_tdna_uuid_view_data,
-                source_configs=(
-                    MeasurementConfig(
-                        name="cycle threshold result",
-                        value="cycle_threshold_result",
-                    ),
-                ),
-            ),
-            CalculatedDataConfig(
-                name="rn mean",
-                value="rn_mean",
-                view_data=sid_tdna_view_data,
-                source_configs=(
-                    MeasurementConfig(
-                        name="normalized reporter result",
-                        value="normalized_reporter_result",
-                    ),
-                ),
-            ),
-            CalculatedDataConfig(
-                name="rn sd",
-                value="rn_sd",
-                view_data=sid_tdna_view_data,
-                source_configs=(
-                    MeasurementConfig(
-                        name="normalized reporter result",
-                        value="normalized_reporter_result",
-                    ),
-                ),
-            ),
+            quantity(sid_tdna_uuid_view_data),
+            amplification_score(sid_tdna_uuid_view_data),
+            cq_confidence(sid_tdna_uuid_view_data),
+            rn_mean(sid_tdna_view_data),
+            rn_sd(sid_tdna_view_data),
         ]
     )
 
@@ -1191,39 +557,9 @@ def iter_primary_analysis_calc_docs(
 
     configs = CalcDocsConfig(
         [
-            CalculatedDataConfig(
-                name="ct mean",
-                value="ct_mean",
-                view_data=sid_tdna_view_data,
-                source_configs=(
-                    MeasurementConfig(
-                        name="cycle threshold result",
-                        value="cycle_threshold_result",
-                    ),
-                ),
-            ),
-            CalculatedDataConfig(
-                name="ct sd",
-                value="ct_sd",
-                view_data=sid_tdna_view_data,
-                source_configs=(
-                    MeasurementConfig(
-                        name="cycle threshold result",
-                        value="cycle_threshold_result",
-                    ),
-                ),
-            ),
-            CalculatedDataConfig(
-                name="ct se",
-                value="ct_se",
-                view_data=sid_tdna_view_data,
-                source_configs=(
-                    MeasurementConfig(
-                        name="cycle threshold result",
-                        value="cycle_threshold_result",
-                    ),
-                ),
-            ),
+            ct_mean(sid_tdna_view_data),
+            ct_sd(sid_tdna_view_data),
+            ct_se(sid_tdna_view_data),
         ]
     )
 
