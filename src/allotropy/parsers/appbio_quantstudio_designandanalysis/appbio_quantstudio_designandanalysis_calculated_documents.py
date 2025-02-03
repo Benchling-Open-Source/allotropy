@@ -18,9 +18,6 @@ from allotropy.calcdocs.config import (
     CalculatedDataConfig,
     MeasurementConfig,
 )
-from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_calculated_documents import (
-    yield_documents,
-)
 from allotropy.parsers.appbio_quantstudio.views import ViewData
 from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.structure import (
     WellItem,
@@ -1559,18 +1556,50 @@ def iter_presence_absence_calc_docs(
 
 
 def iter_primary_analysis_calc_docs(
-    view_st_data: ViewData[WellItem],
+    well_items: list[WellItem],
 ) -> Iterator[CalculatedDocument]:
     # Ct Mean, Ct SD, Ct SE
-    calc_docs: list[CalculatedDocument | None] = []
+    elements = AppbioQuantstudioDAExtractor.get_elements(well_items)
 
-    for sample, target in view_st_data.iter_keys():
-        calc_docs.append(build_ct_mean(view_st_data, sample, target))
+    sid_tdna_view_data = SampleView(sub_view=TargetView()).apply(elements)
 
-    for sample, target in view_st_data.iter_keys():
-        calc_docs.append(build_ct_sd(view_st_data, sample, target))
+    configs = CalcDocsConfig(
+        [
+            CalculatedDataConfig(
+                name="ct mean",
+                value="ct_mean",
+                view_data=sid_tdna_view_data,
+                source_configs=(
+                    MeasurementConfig(
+                        name="cycle threshold result",
+                        value="cycle_threshold_result",
+                    ),
+                ),
+            ),
+            CalculatedDataConfig(
+                name="ct sd",
+                value="ct_sd",
+                view_data=sid_tdna_view_data,
+                source_configs=(
+                    MeasurementConfig(
+                        name="cycle threshold result",
+                        value="cycle_threshold_result",
+                    ),
+                ),
+            ),
+            CalculatedDataConfig(
+                name="ct se",
+                value="ct_se",
+                view_data=sid_tdna_view_data,
+                source_configs=(
+                    MeasurementConfig(
+                        name="cycle threshold result",
+                        value="cycle_threshold_result",
+                    ),
+                ),
+            ),
+        ]
+    )
 
-    for sample, target in view_st_data.iter_keys():
-        calc_docs.append(build_ct_se(view_st_data, sample, target))
-
-    yield from yield_documents(calc_docs)
+    for calc_doc in configs.construct():
+        yield from calc_doc.iter_struct()
