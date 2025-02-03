@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from decimal import Decimal
 from pathlib import Path
+from typing import Any
 
 from allotropy.allotrope.schema_mappers.adm.cell_counting.rec._2024._09.cell_counting import (
     Measurement,
@@ -12,11 +13,12 @@ from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.roche_cedex_hires import constants
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.values import try_float_or_nan
 
 
 def create_metadata(data: SeriesData, file_path: str) -> Metadata:
     path = Path(file_path)
-    return Metadata(
+    metadata = Metadata(
         asm_file_identifier=path.with_suffix(".json").name,
         data_system_instance_id=NOT_APPLICABLE,
         file_name=path.name,
@@ -31,6 +33,9 @@ def create_metadata(data: SeriesData, file_path: str) -> Metadata:
         device_identifier=data[str, "Cedex ID"],
         brand_name=constants.BRAND_NAME,
     )
+    # We read the metadata from first row in data, so we do not need the extra info here
+    data.get_unread()
+    return metadata
 
 
 def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
@@ -75,6 +80,19 @@ def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
                 standard_deviation=data.get(float, "Std Dev."),
                 aggregate_rate=data.get(float, "Aggregate Rate"),
                 sample_draw_time=data.get(str, "Sample draw Time"),
+                # These fields are being read from the header metadata, so we can ignore them
+                custom_info_doc=_set_nan_to_negative_zero(
+                    data.get_unread(
+                        skip={"System name", "System description", "Cedex ID"}
+                    )
+                ),
             )
         ],
     )
+
+
+def _set_nan_to_negative_zero(data: dict[str, Any]) -> dict[str, Any]:
+    return {
+        key: try_float_or_nan(value) if isinstance(value, float) else value
+        for key, value in data.items()
+    }
