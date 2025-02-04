@@ -96,6 +96,8 @@ class Measurement:
 class MeasurementGroup:
     measurements: list[Measurement]
     analyst: str | None = None
+    # customer information document
+    custom_info_doc: dict[str, Any] | None = None
 
 
 @dataclass
@@ -115,6 +117,7 @@ class Metadata:
     brand_name: str | None = None
     asset_management_identifier: str | None = None
     description: str | None = None
+    device_system_custom_info_doc: dict[str, Any] | None = None
 
 
 @dataclass
@@ -134,14 +137,17 @@ class Mapper(SchemaMapper[Data, Model]):
         return Model(
             field_asm_manifest=self.MANIFEST,
             cell_counting_aggregate_document=CellCountingAggregateDocument(
-                device_system_document=DeviceSystemDocument(
-                    model_number=data.metadata.model_number,
-                    product_manufacturer=data.metadata.product_manufacturer,
-                    brand_name=data.metadata.brand_name,
-                    asset_management_identifier=data.metadata.asset_management_identifier,
-                    device_identifier=data.metadata.device_identifier,
-                    description=data.metadata.description,
-                    equipment_serial_number=data.metadata.equipment_serial_number,
+                device_system_document=add_custom_information_document(
+                    DeviceSystemDocument(
+                        model_number=data.metadata.model_number,
+                        product_manufacturer=data.metadata.product_manufacturer,
+                        brand_name=data.metadata.brand_name,
+                        asset_management_identifier=data.metadata.asset_management_identifier,
+                        device_identifier=data.metadata.device_identifier,
+                        description=data.metadata.description,
+                        equipment_serial_number=data.metadata.equipment_serial_number,
+                    ),
+                    data.metadata.device_system_custom_info_doc,
                 ),
                 data_system_document=DataSystemDocument(
                     data_system_instance_identifier=data.metadata.data_system_instance_id,
@@ -165,11 +171,14 @@ class Mapper(SchemaMapper[Data, Model]):
     ) -> CellCountingDocumentItem:
         return CellCountingDocumentItem(
             analyst=measurement_group.analyst,
-            measurement_aggregate_document=MeasurementAggregateDocument(
-                measurement_document=[
-                    self._get_measurement_document(measurement, metadata)
-                    for measurement in measurement_group.measurements
-                ]
+            measurement_aggregate_document=add_custom_information_document(
+                MeasurementAggregateDocument(
+                    measurement_document=[
+                        self._get_measurement_document(measurement, metadata)
+                        for measurement in measurement_group.measurements
+                    ]
+                ),
+                measurement_group.custom_info_doc or {},
             ),
         )
 
