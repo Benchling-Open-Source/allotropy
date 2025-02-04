@@ -331,8 +331,9 @@ def rq_max(
 def iter_standard_curve_calc_docs(
     well_items: list[WellItem],
 ) -> Iterator[CalculatedDocument]:
-    # Quantity, Quantity Mean, Quantity SD, Ct Mean, Ct SD, Y-Intercept,
-    # R(superscript 2), Slope, Efficiency, Amp score, Cq confidence
+    # Y-intercept, Slope, Quantity, Amp score, Cq confidence,
+    # Quantity Mean, Quantity SD, Ct Mean, Ct SD
+    # R^2, Efficiency
     elements = AppbioQuantstudioDAExtractor.get_elements(well_items)
 
     sid_tdna_view_data = SampleView(sub_view=TargetView()).apply(elements)
@@ -372,9 +373,12 @@ def iter_relative_standard_curve_calc_docs(
     r_sample: str,
     r_target: str | None,
 ) -> Iterator[CalculatedDocument]:
-    # Quantity, Quantity Mean, Quantity SD, Ct Mean, Ct SD, RQ, RQ min,
-    # RQ max, Y-Intercept, R(superscript 2), Slope, Efficiency,
-    # Amp score, Cq confidence
+    # Y-Intercept, Slope, Quantity, Amp score, Cq confidence,
+    # Ct Mean, Ct SD, Ct SE,
+    # Delta Ct SD, Delta Ct SE,
+    # Relative RQ min, Relative RQ max, Relative RQ, Quantity Mean,
+    # RQ min, RQ max, RQ, Delta Delta Ct, Delta Ct,
+    # Adjusted equivalent Ct mean, equivalent Ct mean
     elements = AppbioQuantstudioDAExtractor.get_elements(well_items)
 
     sid_tdna_view_data = SampleView(sub_view=TargetView()).apply(elements)
@@ -525,7 +529,7 @@ def iter_relative_standard_curve_calc_docs(
 def iter_presence_absence_calc_docs(
     well_items: list[WellItem],
 ) -> Iterator[CalculatedDocument]:
-    # Rn Mean, Rn SD, Amp score, Cq confidence
+    # Quantity, Amp score, Cq confidence, Rn Mean, Rn SD
     elements = AppbioQuantstudioDAExtractor.get_elements(well_items)
 
     sid_tdna_view_data = SampleView(sub_view=TargetView()).apply(elements)
