@@ -3,6 +3,7 @@ from __future__ import annotations
 from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Any
 
 import pandas as pd
 
@@ -44,6 +45,7 @@ class PlateData:
     analyst: str | None
     well_plate_id: str
     well_data: list[WellData]
+    additional_data: dict[str, Any]
 
     @staticmethod
     def create(
@@ -67,14 +69,16 @@ class PlateData:
             for col_name, value in row.items()
             if row_name in WELL_LABELS
         ]
-        return PlateData(
+        plate_data = PlateData(
             measurement_time=header[str, "Read Time"],
             analyst=header.get(str, "User"),
             well_plate_id=well_plate_id,
             # The well count is (# of unique row labels) * (# of columns)
             plate_well_count=len(unique_well_labels) * data.shape[1],
             well_data=well_data,
+            additional_data=header.get_unread(),
         )
+        return plate_data
 
 
 @dataclass(frozen=True)
@@ -135,6 +139,7 @@ def create_measurement_groups(plates: list[PlateData]) -> list[MeasurementGroup]
                             well_plate_identifier=plate.well_plate_id,
                             device_type=constants.LUMINESCENCE_DETECTOR,
                             detection_type=constants.LUMINESCENCE,
+                            measurement_custom_info=plate.additional_data,
                         )
                         for well in well_group
                     ],
