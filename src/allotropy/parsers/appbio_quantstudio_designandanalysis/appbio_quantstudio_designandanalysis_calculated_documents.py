@@ -1,6 +1,9 @@
 from collections.abc import Iterator
 from functools import cache
 
+from allotropy.calcdocs.appbio_quantstudio_designandanalysis.config import (
+    CalculatedDataConfigWithOptional,
+)
 from allotropy.calcdocs.appbio_quantstudio_designandanalysis.extractor import (
     AppbioQuantstudioDAExtractor,
 )
@@ -15,10 +18,11 @@ from allotropy.calcdocs.config import (
     CalculatedDataConfig,
     MeasurementConfig,
 )
+from allotropy.calcdocs.view import ViewData
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_calculated_documents import (
     yield_documents,
 )
-from allotropy.parsers.appbio_quantstudio.views import ViewData
+from allotropy.parsers.appbio_quantstudio.views import ViewData as OldViewData
 from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.structure import (
     WellItem,
 )
@@ -67,7 +71,7 @@ def build_cq_conf(well_item: WellItem) -> CalculatedDocument | None:
 
 @cache
 def build_quantity(
-    view_tr_data: ViewData[WellItem] | None,
+    view_tr_data: OldViewData[WellItem] | None,
     target: str,
     well_item: WellItem,
 ) -> CalculatedDocument | None:
@@ -101,8 +105,8 @@ def build_quantity(
 
 @cache
 def build_quantity_mean(
-    view_st_data: ViewData[WellItem],
-    view_tr_data: ViewData[WellItem],
+    view_st_data: OldViewData[WellItem],
+    view_tr_data: OldViewData[WellItem],
     sample: str,
     target: str,
 ) -> CalculatedDocument | None:
@@ -133,8 +137,8 @@ def build_quantity_mean(
 
 @cache
 def build_quantity_sd(
-    view_st_data: ViewData[WellItem],
-    view_tr_data: ViewData[WellItem],
+    view_st_data: OldViewData[WellItem],
+    view_tr_data: OldViewData[WellItem],
     sample: str,
     target: str,
 ) -> CalculatedDocument | None:
@@ -165,7 +169,7 @@ def build_quantity_sd(
 
 @cache
 def build_ct_mean(
-    view_data: ViewData[WellItem], sample: str, target: str
+    view_data: OldViewData[WellItem], sample: str, target: str
 ) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (ct_mean := well_items[0].result.ct_mean) is None:
@@ -185,7 +189,7 @@ def build_ct_mean(
 
 @cache
 def build_ct_sd(
-    view_data: ViewData[WellItem], sample: str, target: str
+    view_data: OldViewData[WellItem], sample: str, target: str
 ) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (ct_sd := well_items[0].result.ct_sd) is None:
@@ -205,7 +209,7 @@ def build_ct_sd(
 
 @cache
 def build_ct_se(
-    view_data: ViewData[WellItem], sample: str, target: str
+    view_data: OldViewData[WellItem], sample: str, target: str
 ) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (ct_se := well_items[0].result.ct_se) is None:
@@ -225,7 +229,7 @@ def build_ct_se(
 
 @cache
 def build_eq_ct_mean(
-    view_data: ViewData[WellItem], sample: str, target: str
+    view_data: OldViewData[WellItem], sample: str, target: str
 ) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (eq_ct_mean := well_items[0].result.eq_ct_mean) is None:
@@ -245,7 +249,7 @@ def build_eq_ct_mean(
 
 @cache
 def build_adj_eq_ct_mean(
-    view_data: ViewData[WellItem], sample: str, target: str
+    view_data: OldViewData[WellItem], sample: str, target: str
 ) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (adj_eq_ct_mean := well_items[0].result.adj_eq_ct_mean) is None:
@@ -267,7 +271,7 @@ def build_adj_eq_ct_mean(
 
 @cache
 def build_delta_ct_mean(
-    view_data: ViewData[WellItem],
+    view_data: OldViewData[WellItem],
     sample: str,
     target: str,
     r_target: str | None,
@@ -323,7 +327,7 @@ def build_delta_ct_mean(
 
 @cache
 def build_delta_ct_sd(
-    view_data: ViewData[WellItem], sample: str, target: str, r_target: str | None
+    view_data: OldViewData[WellItem], sample: str, target: str, r_target: str | None
 ) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (delta_ct_sd := well_items[0].result.delta_ct_sd) is None:
@@ -352,7 +356,7 @@ def build_delta_ct_sd(
 
 @cache
 def build_delta_ct_se(
-    view_data: ViewData[WellItem], sample: str, target: str, r_target: str | None
+    view_data: OldViewData[WellItem], sample: str, target: str, r_target: str | None
 ) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (delta_ct_se := well_items[0].result.delta_ct_se) is None:
@@ -380,7 +384,7 @@ def build_delta_ct_se(
 
 @cache
 def build_delta_delta_ct(
-    view_data: ViewData[WellItem],
+    view_data: OldViewData[WellItem],
     sample: str,
     target: str,
     r_sample: str,
@@ -417,7 +421,7 @@ def build_delta_delta_ct(
 
 @cache
 def build_rq(
-    view_data: ViewData[WellItem],
+    view_data: OldViewData[WellItem],
     sample: str,
     target: str,
     r_sample: str,
@@ -448,7 +452,7 @@ def build_rq(
 
 @cache
 def build_rq_min(
-    view_data: ViewData[WellItem],
+    view_data: OldViewData[WellItem],
     sample: str,
     target: str,
     r_sample: str,
@@ -477,7 +481,7 @@ def build_rq_min(
 
 @cache
 def build_rq_max(
-    view_data: ViewData[WellItem],
+    view_data: OldViewData[WellItem],
     sample: str,
     target: str,
     r_sample: str,
@@ -506,8 +510,8 @@ def build_rq_max(
 
 @cache
 def build_relative_rq(
-    view_st_data: ViewData[WellItem],
-    view_tr_data: ViewData[WellItem],
+    view_st_data: OldViewData[WellItem],
+    view_tr_data: OldViewData[WellItem],
     sample: str,
     target: str,
 ) -> CalculatedDocument | None:
@@ -534,8 +538,8 @@ def build_relative_rq(
 
 @cache
 def build_relative_rq_min(
-    view_st_data: ViewData[WellItem],
-    view_tr_data: ViewData[WellItem],
+    view_st_data: OldViewData[WellItem],
+    view_tr_data: OldViewData[WellItem],
     sample: str,
     target: str,
 ) -> CalculatedDocument | None:
@@ -562,8 +566,8 @@ def build_relative_rq_min(
 
 @cache
 def build_relative_rq_max(
-    view_st_data: ViewData[WellItem],
-    view_tr_data: ViewData[WellItem],
+    view_st_data: OldViewData[WellItem],
+    view_tr_data: OldViewData[WellItem],
     sample: str,
     target: str,
 ) -> CalculatedDocument | None:
@@ -590,7 +594,7 @@ def build_relative_rq_max(
 
 @cache
 def build_rn_mean(
-    view_data: ViewData[WellItem], sample: str, target: str
+    view_data: OldViewData[WellItem], sample: str, target: str
 ) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (rn_mean := well_items[0].result.rn_mean) is None:
@@ -609,7 +613,7 @@ def build_rn_mean(
 
 @cache
 def build_rn_sd(
-    view_data: ViewData[WellItem], sample: str, target: str
+    view_data: OldViewData[WellItem], sample: str, target: str
 ) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (rn_sd := well_items[0].result.rn_sd) is None:
@@ -628,7 +632,7 @@ def build_rn_sd(
 
 @cache
 def build_y_intercept(
-    view_data: ViewData[WellItem], target: str
+    view_data: OldViewData[WellItem], target: str
 ) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(target)
     if (y_intercept := well_items[0].result.y_intercept) is None:
@@ -647,7 +651,7 @@ def build_y_intercept(
 
 @cache
 def build_r_squared(
-    view_data: ViewData[WellItem], target: str
+    view_data: OldViewData[WellItem], target: str
 ) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(target)
     if (r_squared := well_items[0].result.r_squared) is None:
@@ -666,7 +670,7 @@ def build_r_squared(
 
 @cache
 def build_slope(
-    view_data: ViewData[WellItem], target: str
+    view_data: OldViewData[WellItem], target: str
 ) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(target)
     if (slope := well_items[0].result.slope) is None:
@@ -685,7 +689,7 @@ def build_slope(
 
 @cache
 def build_efficiency(
-    view_data: ViewData[WellItem], target: str
+    view_data: OldViewData[WellItem], target: str
 ) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(target)
     if (efficiency := well_items[0].result.efficiency) is None:
@@ -699,6 +703,308 @@ def build_efficiency(
             DataSource(feature="cycle threshold result", reference=well_item)
             for well_item in well_items
         ],
+    )
+
+
+def ctr() -> MeasurementConfig:
+    return MeasurementConfig(
+        name="cycle threshold result",
+        value="cycle_threshold_result",
+    )
+
+
+def norm_reporter_result() -> MeasurementConfig:
+    return MeasurementConfig(
+        name="normalized reporter result",
+        value="normalized_reporter_result",
+    )
+
+
+def amplification_score(view_data: ViewData) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="amplification score",
+        value="amp_score",
+        view_data=view_data,
+        source_configs=(ctr(),),
+    )
+
+
+def cq_confidence(view_data: ViewData) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="cq confidence",
+        value="cq_conf",
+        view_data=view_data,
+        source_configs=(ctr(),),
+    )
+
+
+def y_intercept(view_data: ViewData) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="y intercept",
+        value="y_intercept",
+        view_data=view_data,
+        source_configs=(ctr(),),
+    )
+
+
+def slope(view_data: ViewData) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="slope",
+        value="slope",
+        view_data=view_data,
+        source_configs=(ctr(),),
+    )
+
+
+def ct_mean(view_data: ViewData) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="ct mean",
+        value="ct_mean",
+        view_data=view_data,
+        source_configs=(ctr(),),
+    )
+
+
+def ct_sd(view_data: ViewData) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="ct sd",
+        value="ct_sd",
+        view_data=view_data,
+        source_configs=(ctr(),),
+    )
+
+
+def ct_se(view_data: ViewData) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="ct se",
+        value="ct_se",
+        view_data=view_data,
+        source_configs=(ctr(),),
+    )
+
+
+def r_squared(view_data: ViewData) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="r^2",
+        value="r_squared",
+        view_data=view_data,
+        source_configs=(ctr(),),
+    )
+
+
+def efficiency(view_data: ViewData) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="efficiency",
+        value="efficiency",
+        view_data=view_data,
+        source_configs=(ctr(),),
+    )
+
+
+def rn_mean(view_data: ViewData) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="rn mean",
+        value="rn_mean",
+        view_data=view_data,
+        source_configs=(norm_reporter_result(),),
+    )
+
+
+def rn_sd(view_data: ViewData) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="rn sd",
+        value="rn_sd",
+        view_data=view_data,
+        source_configs=(norm_reporter_result(),),
+    )
+
+
+def quantity(
+    view_data: ViewData,
+    y_intercept_conf: CalculatedDataConfig | None = None,
+    slope_conf: CalculatedDataConfig | None = None,
+) -> CalculatedDataConfig:
+    ctr_conf = ctr()
+    return CalculatedDataConfig(
+        name="quantity",
+        value="quantity",
+        view_data=view_data,
+        source_configs=tuple(
+            config for config in [ctr_conf, y_intercept_conf, slope_conf] if config
+        ),
+    )
+
+
+def quantity_mean(
+    view_data: ViewData,
+    quantity_conf: CalculatedDataConfig,
+) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="quantity mean",
+        value="quantity_mean",
+        view_data=view_data,
+        source_configs=(quantity_conf,),
+    )
+
+
+def quantity_sd(
+    view_data: ViewData,
+    quantity_conf: CalculatedDataConfig,
+) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="quantity sd",
+        value="quantity_sd",
+        view_data=view_data,
+        source_configs=(quantity_conf,),
+    )
+
+
+def delta_ct_sd(
+    view_data: ViewData,
+    ct_sd_conf: CalculatedDataConfig,
+    ref_ct_sd_conf: CalculatedDataConfig,
+) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="delta equivalent ct sd",
+        value="delta_ct_sd",
+        view_data=view_data,
+        source_configs=(ct_sd_conf, ref_ct_sd_conf),
+    )
+
+
+def delta_ct_se(
+    view_data: ViewData,
+    ct_sd_conf: CalculatedDataConfig,
+    ref_ct_sd_conf: CalculatedDataConfig,
+) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="delta equivalent ct se",
+        value="delta_ct_se",
+        view_data=view_data,
+        source_configs=(ct_sd_conf, ref_ct_sd_conf),
+    )
+
+
+def relative_rq(
+    view_data: ViewData,
+    quantity_mean_conf: CalculatedDataConfig,
+) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="relative rq",
+        value="rq",
+        view_data=view_data,
+        source_configs=(quantity_mean_conf,),
+    )
+
+
+def relative_rq_min(
+    view_data: ViewData,
+    rq_conf: CalculatedDataConfig,
+) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="relative rq min",
+        value="rq_min",
+        view_data=view_data,
+        source_configs=(rq_conf,),
+    )
+
+
+def relative_rq_max(
+    view_data: ViewData,
+    rq_conf: CalculatedDataConfig,
+) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="relative rq max",
+        value="rq_max",
+        view_data=view_data,
+        source_configs=(rq_conf,),
+    )
+
+
+def eq_ct_mean(
+    view_data: ViewData,
+    ct_mean_conf: CalculatedDataConfig,
+) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="equivalent ct mean",
+        value="eq_ct_mean",
+        view_data=view_data,
+        source_configs=(ct_mean_conf,),
+    )
+
+
+def adj_eq_ct_mean(
+    view_data: ViewData,
+    eq_ct_mean_conf: CalculatedDataConfig,
+) -> CalculatedDataConfig:
+    return CalculatedDataConfigWithOptional(
+        name="adjusted equivalent ct mean",
+        value="adj_eq_ct_mean",
+        view_data=view_data,
+        optional=True,
+        source_configs=(eq_ct_mean_conf,),
+    )
+
+
+def delta_ct(
+    view_data: ViewData,
+    adj_eq_ct_mean_conf: CalculatedDataConfig,
+    ref_adj_eq_ct_mean_conf: CalculatedDataConfig,
+) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="delta equivalent ct mean",
+        value="delta_ct_mean",
+        view_data=view_data,
+        source_configs=(adj_eq_ct_mean_conf, ref_adj_eq_ct_mean_conf),
+    )
+
+
+def delta_delta_ct(
+    view_data: ViewData,
+    delta_ct_conf: CalculatedDataConfig,
+    ref_delta_ct_conf: CalculatedDataConfig,
+) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="delta delta equivalent ct",
+        value="delta_delta_ct",
+        view_data=view_data,
+        source_configs=(delta_ct_conf, ref_delta_ct_conf),
+    )
+
+
+def rq(
+    view_data: ViewData,
+    delta_delta_ct_conf: CalculatedDataConfig,
+) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="rq",
+        value="rq",
+        view_data=view_data,
+        source_configs=(delta_delta_ct_conf,),
+    )
+
+
+def rq_min(
+    view_data: ViewData,
+    rq_conf: CalculatedDataConfig,
+) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="rq min",
+        value="rq_min",
+        view_data=view_data,
+        source_configs=(rq_conf,),
+    )
+
+
+def rq_max(
+    view_data: ViewData,
+    rq_conf: CalculatedDataConfig,
+) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="rq max",
+        value="rq_max",
+        view_data=view_data,
+        source_configs=(rq_conf,),
     )
 
 
@@ -926,8 +1232,8 @@ def iter_standard_curve_calc_docs(
 
 
 def iter_relative_standard_curve_calc_docs(
-    view_st_data: ViewData[WellItem],
-    view_tr_data: ViewData[WellItem],
+    view_st_data: OldViewData[WellItem],
+    view_tr_data: OldViewData[WellItem],
     r_sample: str,
     r_target: str | None,
 ) -> Iterator[CalculatedDocument]:
@@ -985,7 +1291,7 @@ def iter_relative_standard_curve_calc_docs(
 
 
 def iter_presence_absence_calc_docs(
-    view_data: ViewData[WellItem],
+    view_data: OldViewData[WellItem],
 ) -> Iterator[CalculatedDocument]:
     # Rn Mean, Rn SD, Amp score, Cq confidence
     calc_docs: list[CalculatedDocument | None] = []
@@ -1002,7 +1308,7 @@ def iter_presence_absence_calc_docs(
 
 
 def iter_primary_analysis_calc_docs(
-    view_st_data: ViewData[WellItem],
+    view_st_data: OldViewData[WellItem],
 ) -> Iterator[CalculatedDocument]:
     # Ct Mean, Ct SD, Ct SE
     calc_docs: list[CalculatedDocument | None] = []
