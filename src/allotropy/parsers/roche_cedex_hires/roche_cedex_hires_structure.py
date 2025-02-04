@@ -32,6 +32,13 @@ def create_metadata(data: SeriesData, file_path: str) -> Metadata:
         description=data[str, "System description"],
         device_identifier=data[str, "Cedex ID"],
         brand_name=constants.BRAND_NAME,
+        device_system_custom_info_doc=data.get_custom_keys(
+            {
+                "Default system",
+                "Default system (processed)",
+                "System description (processed)",
+            }
+        ),
     )
     # We read the metadata from first row in data, so we do not need the extra info here
     data.get_unread()
@@ -52,6 +59,9 @@ def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
 
     return MeasurementGroup(
         analyst=data.get(str, "Username"),
+        custom_info_doc=_set_nan_to_string(
+            data.get_custom_keys({"Workarea name", "Comment"}),
+        ),
         measurements=[
             Measurement(
                 measurement_identifier=random_uuid_str(),
@@ -80,10 +90,19 @@ def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
                 standard_deviation=data.get(float, "Std Dev."),
                 aggregate_rate=data.get(float, "Aggregate Rate"),
                 sample_draw_time=data.get(str, "Sample draw Time"),
-                # These fields are being read from the header metadata, so we can ignore them
-                custom_info_doc=_set_nan_to_negative_zero(
+                custom_info_doc=_set_nan_to_string(
                     data.get_unread(
-                        skip={"System name", "System description", "Cedex ID"}
+                        # These fields are being read from the header metadata, so we can ignore them
+                        skip={
+                            "System name",
+                            "System description",
+                            "Cedex ID",
+                            "Cedex ID (processed)",
+                            "System name (processed)",
+                            "Default system",
+                            "Default system (processed)",
+                            "System description (processed)",
+                        }
                     )
                 ),
             )
@@ -91,7 +110,7 @@ def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
     )
 
 
-def _set_nan_to_negative_zero(data: dict[str, Any]) -> dict[str, Any]:
+def _set_nan_to_string(data: dict[str, Any]) -> dict[str, Any]:
     return {
         key: try_float_or_nan(value) if isinstance(value, float) else value
         for key, value in data.items()
