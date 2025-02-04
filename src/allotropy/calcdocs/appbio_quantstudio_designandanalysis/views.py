@@ -10,7 +10,7 @@ class ViewWithReference(View):
     def __init__(
         self,
         name: str,
-        sub_view: ViewWithReference | None,
+        sub_view: View | None,
         reference: str | None = None,
     ):
         super().__init__(name, sub_view)
@@ -26,7 +26,7 @@ class ViewWithReference(View):
 class SampleView(ViewWithReference):
     def __init__(
         self,
-        sub_view: ViewWithReference | None = None,
+        sub_view: View | None = None,
         reference: str | None = None,
     ):
         super().__init__(name="sample_id", sub_view=sub_view, reference=reference)
@@ -42,7 +42,7 @@ class SampleView(ViewWithReference):
 class TargetView(ViewWithReference):
     def __init__(
         self,
-        sub_view: ViewWithReference | None = None,
+        sub_view: View | None = None,
         reference: str | None = None,
         blacklist: list[str] | None = None,
     ):
@@ -58,7 +58,7 @@ class TargetView(ViewWithReference):
         return dict(items)
 
 
-class UuidView(ViewWithReference):
+class UuidView(View):
     def __init__(self, sub_view: ViewWithReference | None = None):
         super().__init__(name="uuid", sub_view=sub_view)
 
@@ -70,7 +70,7 @@ class UuidView(ViewWithReference):
         return dict(items)
 
 
-class TargetRoleView(ViewWithReference):
+class TargetRoleView(View):
     def __init__(self, sub_view: ViewWithReference | None = None):
         super().__init__(name="target_dna", sub_view=sub_view)
 
