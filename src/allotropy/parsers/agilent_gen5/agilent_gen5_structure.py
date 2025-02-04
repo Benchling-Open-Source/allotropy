@@ -971,6 +971,8 @@ def _create_measurement(
             else None
         ),
         error_document=error_documents,
+        device_control_custom_info={"Reading Type": header_data.additional_data.pop("Reading Type", None)},
+        sample_custom_info={"Plate Number": header_data.additional_data.pop("Plate Number", None)},
         measurement_custom_info=header_data.additional_data,
     )
 

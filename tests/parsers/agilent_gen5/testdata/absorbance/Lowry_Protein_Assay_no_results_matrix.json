@@ -15,6 +15,9 @@
                                         "detector wavelength setting": {
                                             "value": 660.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "File"
                                         }
                                     }
                                 ]
@@ -36,9 +39,6 @@
                                         "error feature": "Conc"
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -78,9 +78,6 @@
                             "absorbance": {
                                 "value": 0.069,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -120,9 +117,6 @@
                             "absorbance": {
                                 "value": 0.114,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -162,9 +156,6 @@
                             "absorbance": {
                                 "value": 0.225,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -204,9 +195,6 @@
                             "absorbance": {
                                 "value": 0.36,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -246,9 +234,6 @@
                             "absorbance": {
                                 "value": 0.632,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -288,9 +273,6 @@
                             "absorbance": {
                                 "value": 0.056,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -330,9 +312,6 @@
                             "absorbance": {
                                 "value": 0.114,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -372,9 +351,6 @@
                             "absorbance": {
                                 "value": 0.234,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -414,9 +390,6 @@
                             "absorbance": {
                                 "value": 0.559,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -456,9 +429,6 @@
                             "absorbance": {
                                 "value": 0.574,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -498,9 +468,6 @@
                             "absorbance": {
                                 "value": 0.601,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -548,9 +515,6 @@
                                         "error feature": "Conc"
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -590,9 +554,6 @@
                             "absorbance": {
                                 "value": 0.072,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -632,9 +593,6 @@
                             "absorbance": {
                                 "value": 0.118,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -674,9 +632,6 @@
                             "absorbance": {
                                 "value": 0.198,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -716,9 +671,6 @@
                             "absorbance": {
                                 "value": 0.364,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -758,9 +710,6 @@
                             "absorbance": {
                                 "value": 0.635,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -800,9 +749,6 @@
                             "absorbance": {
                                 "value": 0.058,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -842,9 +788,6 @@
                             "absorbance": {
                                 "value": 0.116,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -884,9 +827,6 @@
                             "absorbance": {
                                 "value": 0.236,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -926,9 +866,6 @@
                             "absorbance": {
                                 "value": 0.547,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -968,9 +905,6 @@
                             "absorbance": {
                                 "value": 0.588,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -1010,9 +944,6 @@
                             "absorbance": {
                                 "value": 0.623,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -1052,9 +983,6 @@
                             "absorbance": {
                                 "value": 0.075,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -1094,9 +1022,6 @@
                             "absorbance": {
                                 "value": 0.119,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -1136,9 +1061,6 @@
                             "absorbance": {
                                 "value": 0.269,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -1178,9 +1100,6 @@
                             "absorbance": {
                                 "value": 0.225,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -1220,9 +1139,6 @@
                             "absorbance": {
                                 "value": 0.356,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -1262,9 +1178,6 @@
                             "absorbance": {
                                 "value": 0.225,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -1304,9 +1217,6 @@
                             "absorbance": {
                                 "value": 0.456,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -1346,9 +1256,6 @@
                             "absorbance": {
                                 "value": 0.569,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -1388,9 +1295,6 @@
                             "absorbance": {
                                 "value": 0.114,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -1430,9 +1334,6 @@
                             "absorbance": {
                                 "value": 0.065,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -1472,9 +1373,6 @@
                             "absorbance": {
                                 "value": 0.125,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -1514,9 +1412,6 @@
                             "absorbance": {
                                 "value": 0.099,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -1556,9 +1451,6 @@
                             "absorbance": {
                                 "value": 0.078,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -1598,9 +1490,6 @@
                             "absorbance": {
                                 "value": 0.125,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -1640,9 +1529,6 @@
                             "absorbance": {
                                 "value": 0.259,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -1682,9 +1568,6 @@
                             "absorbance": {
                                 "value": 0.236,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -1724,9 +1607,6 @@
                             "absorbance": {
                                 "value": 0.355,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -1766,9 +1646,6 @@
                             "absorbance": {
                                 "value": 0.265,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -1808,9 +1685,6 @@
                             "absorbance": {
                                 "value": 0.458,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -1850,9 +1724,6 @@
                             "absorbance": {
                                 "value": 0.578,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -1892,9 +1763,6 @@
                             "absorbance": {
                                 "value": 0.125,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -1934,9 +1802,6 @@
                             "absorbance": {
                                 "value": 0.066,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -1976,9 +1841,6 @@
                             "absorbance": {
                                 "value": 0.123,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -2018,9 +1880,6 @@
                             "absorbance": {
                                 "value": 0.095,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -2060,9 +1919,6 @@
                             "absorbance": {
                                 "value": 0.254,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -2102,9 +1958,6 @@
                             "absorbance": {
                                 "value": 0.569,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -2144,9 +1997,6 @@
                             "absorbance": {
                                 "value": 0.449,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -2186,9 +2036,6 @@
                             "absorbance": {
                                 "value": 0.568,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -2228,9 +2075,6 @@
                             "absorbance": {
                                 "value": 0.552,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -2270,9 +2114,6 @@
                             "absorbance": {
                                 "value": 0.335,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -2312,9 +2153,6 @@
                             "absorbance": {
                                 "value": 0.255,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -2354,9 +2192,6 @@
                             "absorbance": {
                                 "value": 0.455,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -2396,9 +2231,6 @@
                             "absorbance": {
                                 "value": 0.224,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -2438,9 +2270,6 @@
                             "absorbance": {
                                 "value": 0.075,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -2480,9 +2309,6 @@
                             "absorbance": {
                                 "value": 0.088,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -2522,9 +2348,6 @@
                             "absorbance": {
                                 "value": 0.365,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -2564,9 +2387,6 @@
                             "absorbance": {
                                 "value": 0.259,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -2606,9 +2426,6 @@
                             "absorbance": {
                                 "value": 0.578,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -2648,9 +2465,6 @@
                             "absorbance": {
                                 "value": 0.458,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -2690,9 +2504,6 @@
                             "absorbance": {
                                 "value": 0.559,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -2732,9 +2543,6 @@
                             "absorbance": {
                                 "value": 0.549,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -2774,9 +2582,6 @@
                             "absorbance": {
                                 "value": 0.339,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -2816,9 +2621,6 @@
                             "absorbance": {
                                 "value": 0.236,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -2858,9 +2660,6 @@
                             "absorbance": {
                                 "value": 0.425,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -2900,9 +2699,6 @@
                             "absorbance": {
                                 "value": 0.226,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -2942,9 +2738,6 @@
                             "absorbance": {
                                 "value": 0.077,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -2984,9 +2777,6 @@
                             "absorbance": {
                                 "value": 0.086,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -3026,9 +2816,6 @@
                             "absorbance": {
                                 "value": 0.361,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -3068,9 +2855,6 @@
                             "absorbance": {
                                 "value": 0.335,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -3110,9 +2894,6 @@
                             "absorbance": {
                                 "value": 0.541,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -3152,9 +2933,6 @@
                             "absorbance": {
                                 "value": 0.365,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -3194,9 +2972,6 @@
                             "absorbance": {
                                 "value": 0.446,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -3236,9 +3011,6 @@
                             "absorbance": {
                                 "value": 0.095,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -3278,9 +3050,6 @@
                             "absorbance": {
                                 "value": 0.445,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -3320,9 +3089,6 @@
                             "absorbance": {
                                 "value": 0.369,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -3362,9 +3128,6 @@
                             "absorbance": {
                                 "value": 0.364,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -3404,9 +3167,6 @@
                             "absorbance": {
                                 "value": 0.345,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -3446,9 +3206,6 @@
                             "absorbance": {
                                 "value": 0.102,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -3488,9 +3245,6 @@
                             "absorbance": {
                                 "value": 0.245,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -3530,9 +3284,6 @@
                             "absorbance": {
                                 "value": 0.555,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -3572,9 +3323,6 @@
                             "absorbance": {
                                 "value": 0.365,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -3614,9 +3362,6 @@
                             "absorbance": {
                                 "value": 0.539,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -3668,9 +3413,6 @@
                                         "error feature": "Conc"
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -3710,9 +3452,6 @@
                             "absorbance": {
                                 "value": 0.459,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -3752,9 +3491,6 @@
                             "absorbance": {
                                 "value": 0.098,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -3794,9 +3530,6 @@
                             "absorbance": {
                                 "value": 0.465,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -3836,9 +3569,6 @@
                             "absorbance": {
                                 "value": 0.378,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -3878,9 +3608,6 @@
                             "absorbance": {
                                 "value": 0.378,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -3920,9 +3647,6 @@
                             "absorbance": {
                                 "value": 0.355,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -3962,9 +3686,6 @@
                             "absorbance": {
                                 "value": 0.105,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -4004,9 +3725,6 @@
                             "absorbance": {
                                 "value": 0.255,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
@@ -4046,9 +3764,6 @@
                             "absorbance": {
                                 "value": 0.526,
                                 "unit": "mAU"
-                            },
-                            "custom information document": {
-                                "Reading Type": "File"
                             }
                         }
                     ],
