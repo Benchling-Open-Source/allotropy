@@ -43,7 +43,7 @@ class CalculatedDataConfig:
                 yield DataSource(
                     feature=calc_doc.name,
                     reference=calc_doc,
-                    value=None,  # should be calc_doc.value
+                    value=calc_doc.value,
                 )
 
     @cached(cache={}, key=lambda self, keys: hashkey(self.name, self.value, keys))
@@ -90,10 +90,9 @@ class MeasurementConfig:
         self, _: Keys, elements: list[Element]
     ) -> Iterator[DataSource]:
         for element in elements:
-            if element.get_or_none(self.value) is not None:
+            if (value := element.get_float_or_none(self.value)) is not None:
                 yield DataSource(
                     feature=self.name,
-                    # reference sould be just element
                     reference=element,
-                    value=None,  # should be value
+                    value=value,
                 )
