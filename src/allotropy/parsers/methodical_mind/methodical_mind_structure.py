@@ -71,7 +71,7 @@ class PlateData:
             for col_name, value in row.items()
             if row_name in WELL_LABELS
         ]
-        plate_data = PlateData(
+        return PlateData(
             measurement_time=header[str, "Read Time"],
             analyst=header.get(str, "User"),
             well_plate_id=well_plate_id,
@@ -93,7 +93,6 @@ class PlateData:
                 }
             ),
         )
-        return plate_data
 
 
 @dataclass(frozen=True)
