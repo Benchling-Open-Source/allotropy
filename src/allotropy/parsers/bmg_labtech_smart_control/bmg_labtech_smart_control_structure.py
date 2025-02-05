@@ -48,7 +48,7 @@ def create_metadata(file_path: str) -> Metadata:
 def map_measurement_group(row: SeriesData, headers: SeriesData) -> MeasurementGroup:
     fluorescence = row[
         float,
-        f"Raw Data ({headers[str, 'Excitation:']}/{headers[str, 'Emission:']})",
+        f"Raw Data ({headers[str, 'Excitation']}/{headers[str, 'Emission']})",
     ]
     sample_identifier = row[str, "Content"]
     filter_position_map = {
@@ -65,13 +65,13 @@ def map_measurement_group(row: SeriesData, headers: SeriesData) -> MeasurementGr
         # since this is ng/mL, we need to convert to pg/mL by multiplying by 1000
         mass_concentration *= 1000
 
-    return MeasurementGroup(
+    group = MeasurementGroup(
         analyst=headers.get(str, "User"),
         measurement_time=f"{headers[str, 'Date']} {headers[str, 'Time']}",
         experimental_data_identifier=headers.get(str, "ID1"),
         experiment_type=headers.get(str, "Test Name"),
         plate_well_count=try_float(
-            headers[str, "Microplate name:"].split()[-1], "plate well count"
+            headers[str, "Microplate name"].split()[-1], "plate well count"
         ),
         measurements=[
             Measurement(
@@ -86,49 +86,53 @@ def map_measurement_group(row: SeriesData, headers: SeriesData) -> MeasurementGr
                 well_plate_identifier=headers.get(str, "ID3"),
                 mass_concentration=mass_concentration,
                 device_type=DEVICE_TYPE,
-                detection_type=headers[str, "Measurement type:"].split()[0].lower(),
-                detector_distance_setting=headers.get(float, "Focal height  [mm]:"),
-                number_of_averages=headers.get(float, "No. of flashes per well:"),
-                detector_gain_setting=headers.get(str, "Gain obtained by:"),
+                detection_type=headers[str, "Measurement type"].split()[0].lower(),
+                detector_distance_setting=headers.get(float, "Focal height  [mm]"),
+                number_of_averages=headers.get(float, "No. of flashes per well"),
+                detector_gain_setting=headers.get(str, "Gain obtained by"),
                 scan_position_setting=scan_position_setting,
                 type_=MeasurementType.FLUORESCENCE,
                 sample_custom_info={
                     "dilution factor setting": quantity_or_none(
                         TQuantityValueUnitless, row.get(float, "Dilutions")
                     ),
-                    "container identifier": headers.get(str, "Microplate name:"),
+                    "container identifier": headers.get(str, "Microplate name"),
                 },
                 device_control_custom_info={
                     "settling time setting": quantity_or_none(
                         TQuantityValueSecondTime,
-                        headers.get(float, "Settling time [s]:"),
+                        headers.get(float, "Settling time [s]"),
                     ),
-                    "reading direction setting": headers.get(str, "Reading direction:"),
-                    "dichroic filter setting": headers.get(str, "Dichroic filter:"),
-                    "optic preset name": headers.get(str, "Presetname:"),
-                    "spoon type": headers.get(str, "Spoon type:"),
+                    "reading direction setting": headers.get(str, "Reading direction"),
+                    "dichroic filter setting": headers.get(str, "Dichroic filter"),
+                    "optic preset name": headers.get(str, "Presetname"),
+                    "spoon type": headers.get(str, "Spoon type"),
                     "well used for focus adjustment": headers.get(
-                        str, "Well used for focus adjustment:"
+                        str, "Well used for focus adjustment"
                     ),
                     "focal height obtained by": headers.get(
-                        str, "Focal height obtained by:"
+                        str, "Focal height obtained by"
                     ),
                 },
                 detector_wavelength_setting=try_float(
-                    headers[str, "Emission:"].split("-")[0], "emission"
+                    headers[str, "Emission"].split("-")[0], "emission"
                 ),
                 detector_bandwidth_setting=try_float(
-                    headers[str, "Emission:"].split("-")[1], "emission"
+                    headers[str, "Emission"].split("-")[1], "emission"
                 ),
                 excitation_bandwidth_setting=try_float(
-                    headers[str, "Excitation:"].split("-")[1], "excitation"
+                    headers[str, "Excitation"].split("-")[1], "excitation"
                 ),
                 excitation_wavelength_setting=try_float(
-                    headers[str, "Excitation:"].split("-")[0], "excitation"
+                    headers[str, "Excitation"].split("-")[0], "excitation"
                 ),
+                measurement_custom_info=headers.get_unread(),
             )
         ],
     )
+    # We read this value later when creating the calculated data items
+    row.mark_read({"Blank corrected based on Raw Data (480-14/520-30)"})
+    return group
 
 
 def create_calculated_data_documents(
@@ -171,14 +175,14 @@ def create_calculated_data_documents(
     )
     blank_corrected_calc_documents: list[CalculatedDataItem] = []
     for idx, measurement in enumerate(non_blank_measurements):
-        corrected_value = SeriesData(reader.data.iloc[idx])[
-            float, "Blank corrected based on Raw Data (480-14/520-30)"
-        ]
+        corrected_value_sd = SeriesData(reader.data.iloc[idx])
         blank_corrected_calc_documents.append(
             CalculatedDataItem(
                 identifier=random_uuid_str(),
                 name="Blank corrected based on Raw Data (480-14/520-30)",
-                value=corrected_value,
+                value=corrected_value_sd[
+                    float, "Blank corrected based on Raw Data (480-14/520-30)"
+                ],
                 data_sources=[
                     DataSource(
                         identifier=measurement.identifier,
@@ -192,4 +196,6 @@ def create_calculated_data_documents(
                 unit="RFU",
             )
         )
+        # We do not need the rest of the info in this series data for creating the calculated data item
+        corrected_value_sd.get_unread()
     return [average_calc_document, *blank_corrected_calc_documents]
