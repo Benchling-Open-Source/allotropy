@@ -32,7 +32,7 @@ class CalculatedDataConfigWithOptional(CalculatedDataConfig):
                 yield DataSource(
                     feature=calc_doc.name,
                     reference=calc_doc,
-                    value=None,  # should be calc_doc.value
+                    value=calc_doc.value,
                 )
             elif self.optional:
                 for sub_config in self.source_configs:
