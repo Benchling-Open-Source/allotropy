@@ -9,7 +9,6 @@ from allotropy.calcdocs.view import Keys, ViewData
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
     DataSource,
-    Referenceable,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
 
@@ -113,6 +112,6 @@ class MeasurementConfig:
                 yield DataSource(
                     feature=self.name,
                     # reference sould be just element
-                    reference=Referenceable(element.get_str("uuid")),
+                    reference=element,
                     value=None,  # should be value
                 )
