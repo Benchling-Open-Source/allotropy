@@ -1119,6 +1119,26 @@
       }
     ]
   },
+  "tQuantityValueResponseUnits": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/ResponseUnits"
+      }
+    ]
+  },
+  "tNullableQuantityValueResponseUnits": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/ResponseUnits"
+      }
+    ]
+  },
   "tQuantityValueSecondTime": {
     "allOf": [
       {

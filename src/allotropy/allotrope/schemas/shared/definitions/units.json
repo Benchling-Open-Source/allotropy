@@ -671,6 +671,18 @@
       "unit"
     ]
   },
+  "ResponseUnits": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "RU",
+        "$asm.unit-iri": "http://qudt.org/vocab/unit#ResponseUnits"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
   "SecondTime": {
     "properties": {
       "unit": {
