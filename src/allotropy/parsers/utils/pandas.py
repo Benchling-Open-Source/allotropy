@@ -279,10 +279,12 @@ class SeriesData:
     def get_custom_keys(
         self, key_or_keys: str | set[str]
     ) -> dict[str, float | str | None]:
-        return {
-            key: self._get_custom_key(key)
-            for key in self._get_matching_keys(key_or_keys)
-        }
+        return self._sanitize_dict_keys(
+            {
+                key: self._get_custom_key(key)
+                for key in self._get_matching_keys(key_or_keys)
+            }
+        )
 
     def mark_read(self, key_or_keys: str | set[str]) -> None:
         self.read_keys |= self._get_matching_keys(key_or_keys)
@@ -299,9 +301,7 @@ class SeriesData:
             if regex
             else set(self.series.index.to_list())
         )
-        return self._sanitize_dict_keys(
-            self.get_custom_keys(matching_keys - self.read_keys)
-        )
+        return self.get_custom_keys(matching_keys - self.read_keys)
 
     def has_key(self, key: str) -> bool:
         return key in self.series
