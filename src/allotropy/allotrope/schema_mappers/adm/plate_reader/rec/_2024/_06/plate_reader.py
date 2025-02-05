@@ -179,6 +179,7 @@ class MeasurementGroup:
     experimental_data_identifier: str | None = None
     experiment_type: str | None = None
     maximum_wavelength_signal: float | None = None
+    custom_info_doc: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -238,7 +239,7 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_technique_document(
         self, measurement_group: MeasurementGroup
     ) -> PlateReaderDocumentItem:
-        group_doc = PlateReaderDocumentItem(
+        plate_reader_doc = PlateReaderDocumentItem(
             analyst=measurement_group.analyst,
             measurement_aggregate_document=MeasurementAggregateDocument(
                 analytical_method_identifier=measurement_group.analytical_method_identifier,
@@ -260,7 +261,8 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueNanometer, measurement_group.maximum_wavelength_signal
             )
         }
-        return add_custom_information_document(group_doc, custom_info_doc)
+        custom_info_doc.update(measurement_group.custom_info_doc or {})
+        return add_custom_information_document(plate_reader_doc, custom_info_doc)
 
     def _get_measurement_document(
         self, measurement: Measurement
@@ -403,7 +405,7 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_fluorescence_measurement_document(
         self, measurement: Measurement
     ) -> MeasurementDocument:
-        return MeasurementDocument(
+        measurement_doc = MeasurementDocument(
             measurement_identifier=measurement.identifier,
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
@@ -460,6 +462,9 @@ class Mapper(SchemaMapper[Data, Model]):
             error_aggregate_document=self._get_error_aggregate_document(
                 measurement.error_document
             ),
+        )
+        return add_custom_information_document(
+            measurement_doc, measurement.measurement_custom_info
         )
 
     def _get_profile_data_cube_measurement_document(

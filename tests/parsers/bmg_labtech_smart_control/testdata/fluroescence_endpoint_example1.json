@@ -61,6 +61,15 @@
                             "fluorescence": {
                                 "value": 4180171.0,
                                 "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "ID2": "11/6/2024,12:40:58 PM",
+                                "Target temperature C": "set off",
+                                "Injection needle holder type": "-",
+                                "Test ID": 9.0,
+                                "Path": "C:\\Program Files (x86)\\BMG\\SMART Control\\user\\Data",
+                                "Target concentration O2": "set off",
+                                "Target concentration CO2": "set off"
                             }
                         }
                     ],
@@ -6748,7 +6757,7 @@
             "file name": "fluroescence_endpoint_example1.xlsx",
             "UNC path": "tests/parsers/bmg_labtech_smart_control/testdata/fluroescence_endpoint_example1.xlsx",
             "ASM converter name": "allotropy_bmg_labtech_smart_control",
-            "ASM converter version": "0.1.69",
+            "ASM converter version": "0.1.74",
             "software name": "SMART Control"
         },
         "device system document": {
