@@ -45,7 +45,9 @@ class PlateData:
     analyst: str | None
     well_plate_id: str
     well_data: list[WellData]
-    additional_data: dict[str, Any]
+    measurement_custom_info: dict[str, Any]
+    sample_custom_info: dict[str, Any]
+    device_custom_info: dict[str, Any]
 
     @staticmethod
     def create(
@@ -76,7 +78,20 @@ class PlateData:
             # The well count is (# of unique row labels) * (# of columns)
             plate_well_count=len(unique_well_labels) * data.shape[1],
             well_data=well_data,
-            additional_data=header.get_unread(),
+            sample_custom_info=header.get_custom_keys(
+                {"Barcode2", "Barcode3", "Plate #", "Stack ID"}
+            ),
+            device_custom_info=header.get_custom_keys(
+                {"Orient", "Spots Per Well", "Det Param"}
+            ),
+            measurement_custom_info=header.get_unread(
+                # fields already mapped
+                skip={
+                    "Type",
+                    "Wells Per Col",
+                    "Wells Per Row",
+                }
+            ),
         )
         return plate_data
 
@@ -139,7 +154,9 @@ def create_measurement_groups(plates: list[PlateData]) -> list[MeasurementGroup]
                             well_plate_identifier=plate.well_plate_id,
                             device_type=constants.LUMINESCENCE_DETECTOR,
                             detection_type=constants.LUMINESCENCE,
-                            measurement_custom_info=plate.additional_data,
+                            measurement_custom_info=plate.measurement_custom_info,
+                            sample_custom_info=plate.sample_custom_info,
+                            device_control_custom_info=plate.device_custom_info,
                         )
                         for well in well_group
                     ],

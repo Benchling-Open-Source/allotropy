@@ -363,32 +363,35 @@ class Mapper(SchemaMapper[Data, Model]):
             sample_document=self._get_sample_document(measurement),
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
-                    DeviceControlDocumentItem(
-                        device_type=measurement.device_type,
-                        detection_type=measurement.detection_type,
-                        detector_wavelength_setting=quantity_or_none(
-                            TQuantityValueNanometer,
-                            measurement.detector_wavelength_setting,
+                    add_custom_information_document(
+                        DeviceControlDocumentItem(
+                            device_type=measurement.device_type,
+                            detection_type=measurement.detection_type,
+                            detector_wavelength_setting=quantity_or_none(
+                                TQuantityValueNanometer,
+                                measurement.detector_wavelength_setting,
+                            ),
+                            detector_bandwidth_setting=quantity_or_none(
+                                TQuantityValueNanometer,
+                                measurement.detector_bandwidth_setting,
+                            ),
+                            detector_distance_setting__plate_reader_=quantity_or_none(
+                                TQuantityValueMillimeter,
+                                measurement.detector_distance_setting,
+                            ),
+                            scan_position_setting__plate_reader_=(
+                                measurement.scan_position_setting.value
+                                if measurement.scan_position_setting
+                                else None
+                            ),
+                            number_of_averages=quantity_or_none(
+                                TQuantityValueNumber, measurement.number_of_averages
+                            ),
+                            detector_gain_setting=measurement.detector_gain_setting,
+                            detector_carriage_speed_setting=measurement.detector_carriage_speed,
                         ),
-                        detector_bandwidth_setting=quantity_or_none(
-                            TQuantityValueNanometer,
-                            measurement.detector_bandwidth_setting,
-                        ),
-                        detector_distance_setting__plate_reader_=quantity_or_none(
-                            TQuantityValueMillimeter,
-                            measurement.detector_distance_setting,
-                        ),
-                        scan_position_setting__plate_reader_=(
-                            measurement.scan_position_setting.value
-                            if measurement.scan_position_setting
-                            else None
-                        ),
-                        number_of_averages=quantity_or_none(
-                            TQuantityValueNumber, measurement.number_of_averages
-                        ),
-                        detector_gain_setting=measurement.detector_gain_setting,
-                        detector_carriage_speed_setting=measurement.detector_carriage_speed,
-                    )
+                        measurement.device_control_custom_info,
+                    ),
                 ]
             ),
             luminescence=TQuantityValueRelativeLightUnit(
