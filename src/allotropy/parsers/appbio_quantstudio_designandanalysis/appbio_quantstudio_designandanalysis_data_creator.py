@@ -21,9 +21,6 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_data_creator import
     _create_multicomponent_data_cubes,
     _create_processed_data_cubes,
 )
-from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
-    AmplificationData,
-)
 from allotropy.parsers.appbio_quantstudio_designandanalysis import constants
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
     DesignQuantstudioReader,
@@ -35,7 +32,6 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.st
     Data,
     Header,
     MeltCurveData,
-    Result,
     Well,
     WellItem,
 )
@@ -85,13 +81,12 @@ def create_metadata(
     )
 
 
-def _create_processed_data(
-    result: Result, amplification_data: AmplificationData | None
-) -> ProcessedData:
+def _create_processed_data(well_item: WellItem, data: Data) -> ProcessedData:
     (
         normalized_reporter_data_cube,
         baseline_corrected_reporter_data_cube,
-    ) = _create_processed_data_cubes(amplification_data)
+    ) = _create_processed_data_cubes(well_item.amplification_data)
+    result = well_item.result
     return ProcessedData(
         automatic_cycle_threshold_enabled_setting=result.automatic_cycle_threshold_enabled_setting,
         cycle_threshold_value_setting=result.cycle_threshold_value_setting,
@@ -105,6 +100,10 @@ def _create_processed_data(
         baseline_corrected_reporter_result=result.baseline_corrected_reporter_result,
         normalized_reporter_data_cube=normalized_reporter_data_cube,
         baseline_corrected_reporter_data_cube=baseline_corrected_reporter_data_cube,
+        data_processing_custom_info={
+            "reference dna description": data.reference_target,
+            "reference sample description": data.reference_sample,
+        },
     )
 
 
@@ -130,7 +129,8 @@ def _create_melt_curve_data_cube(
     )
 
 
-def _create_measurement(well: Well, well_item: WellItem, header: Header) -> Measurement:
+def _create_measurement(well: Well, well_item: WellItem, data: Data) -> Measurement:
+    header = data.header
     (
         reporter_dye_data_cube,
         passive_reference_dye_data_cube,
@@ -157,18 +157,15 @@ def _create_measurement(well: Well, well_item: WellItem, header: Header) -> Meas
         reporter_dye_setting=well_item.reporter_dye_setting,
         quencher_dye_setting=well_item.quencher_dye_setting,
         passive_reference_dye_setting=header.passive_reference_dye_setting,
-        processed_data=_create_processed_data(
-            well_item.result, well_item.amplification_data
-        ),
+        processed_data=_create_processed_data(well_item, data),
         reporter_dye_data_cube=reporter_dye_data_cube,
         passive_reference_dye_data_cube=passive_reference_dye_data_cube,
         melting_curve_data_cube=_create_melt_curve_data_cube(well_item.melt_curve_data),
     )
 
 
-def create_measurement_groups(
-    wells: list[Well], header: Header
-) -> list[MeasurementGroup]:
+def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
+    header = data.header
     return [
         MeasurementGroup(
             analyst=header.analyst,
@@ -181,11 +178,11 @@ def create_measurement_groups(
                 else []
             ),
             measurements=[
-                _create_measurement(well, well_item, header)
+                _create_measurement(well, well_item, data)
                 for well_item in well.items.values()
             ],
         )
-        for well in wells
+        for well in data.wells.wells
     ]
 
 
