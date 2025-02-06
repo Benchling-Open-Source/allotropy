@@ -31,7 +31,7 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import quantity_or_none, try_float
 
 
-def create_metadata(file_path: str) -> Metadata:
+def create_metadata(file_path: str, header: SeriesData) -> Metadata:
     path = Path(file_path)
     return Metadata(
         asm_file_identifier=path.with_suffix(".json").name,
@@ -42,6 +42,7 @@ def create_metadata(file_path: str) -> Metadata:
         file_name=path.name,
         unc_path=file_path,
         software_name=SOFTWARE_NAME,
+        custom_info_doc=header.get_custom_keys({"Path"}),
     )
 
 
@@ -73,10 +74,11 @@ def map_measurement_group(row: SeriesData, headers: SeriesData) -> MeasurementGr
         plate_well_count=try_float(
             headers[str, "Microplate name"].split()[-1], "plate well count"
         ),
+        custom_info_doc=headers.get_custom_keys({"Test ID"}),
         measurements=[
             Measurement(
                 identifier=random_uuid_str(),
-                compartment_temperature=row.get(float, TARGET_TEMPERATURE),
+                compartment_temperature=headers.get(float, TARGET_TEMPERATURE),
                 fluorescence=fluorescence,
                 sample_identifier=sample_identifier,
                 sample_role_type=SAMPLE_ROLE_TYPE_MAPPING.get(
@@ -113,6 +115,13 @@ def map_measurement_group(row: SeriesData, headers: SeriesData) -> MeasurementGr
                     "focal height obtained by": headers.get(
                         str, "Focal height obtained by"
                     ),
+                    **headers.get_custom_keys(
+                        {
+                            "Target concentration O2 [%]",
+                            "Target concentration CO2 [%]",
+                            "Injection needle holder type",
+                        }
+                    ),
                 },
                 detector_wavelength_setting=try_float(
                     headers[str, "Emission"].split("-")[0], "emission"
@@ -126,7 +135,13 @@ def map_measurement_group(row: SeriesData, headers: SeriesData) -> MeasurementGr
                 excitation_wavelength_setting=try_float(
                     headers[str, "Excitation"].split("-")[0], "excitation"
                 ),
-                measurement_custom_info=headers.get_unread(),
+                measurement_custom_info=headers.get_unread(
+                    # fields already mapped
+                    skip={
+                        "ID2",
+                        "Path",
+                    }
+                ),
             )
         ],
     )
