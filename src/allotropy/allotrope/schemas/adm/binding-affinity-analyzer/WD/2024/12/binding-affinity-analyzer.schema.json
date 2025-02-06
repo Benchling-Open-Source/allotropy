@@ -70,8 +70,7 @@
                                                                     "allOf": [
                                                                         {
                                                                             "required": [
-                                                                                "measurement identifier",
-                                                                                "POSIX path"
+                                                                                "measurement identifier"
                                                                             ],
                                                                             "properties": {
                                                                                 "POSIX path": {
@@ -4936,6 +4935,30 @@
                             "type": "string",
                             "const": "RLU.s",
                             "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#RelativeLightUnitTimesSecond"
+                        }
+                    },
+                    "required": [
+                        "unit"
+                    ]
+                },
+                "RU": {
+                    "properties": {
+                        "unit": {
+                            "type": "string",
+                            "const": "RU",
+                            "$asm.unit-iri": "http://qudt.org/vocab/unit#ResponseUnits"
+                        }
+                    },
+                    "required": [
+                        "unit"
+                    ]
+                },
+                "RU/s": {
+                    "properties": {
+                        "unit": {
+                            "type": "string",
+                            "const": "RU/s",
+                            "$asm.unit-iri": "http://qudt.org/vocab/unit#ResponseUnitsPerSecond"
                         }
                     },
                     "required": [
@@ -12174,6 +12197,90 @@
                                 }
                             }
                         },
+                        "sensorgram aggregate document": {
+                            "properties": {
+                                "sensorgram document": {
+                                    "items": {
+                                        "properties": {
+                                            "sensorgram data cube": {
+                                                "$asm.property-class": "TODO",
+                                                "$asm.pattern": "datacube",
+                                                "type": "object",
+                                                "allOf": [
+                                                    {
+                                                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/cube.schema#/$defs/tDatacube"
+                                                    },
+                                                    {
+                                                        "properties": {
+                                                            "cube-structure": {
+                                                                "properties": {
+                                                                    "dimensions": {
+                                                                        "minItems": 1,
+                                                                        "maxItems": 1,
+                                                                        "prefixItems": [
+                                                                            {
+                                                                                "oneOf": [
+                                                                                    {
+                                                                                        "properties": {
+                                                                                            "concept": {
+                                                                                                "const": "elapsed time"
+                                                                                            },
+                                                                                            "unit": {
+                                                                                                "const": "s"
+                                                                                            },
+                                                                                            "@componentDatatype": {
+                                                                                                "const": "double"
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                ]
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    "measures": {
+                                                                        "minItems": 1,
+                                                                        "maxItems": 1,
+                                                                        "contains": {
+                                                                            "oneOf": [
+                                                                                {
+                                                                                    "properties": {
+                                                                                        "concept": {
+                                                                                            "const": "response units"
+                                                                                        },
+                                                                                        "unit": {
+                                                                                            "const": "RU"
+                                                                                        },
+                                                                                        "@componentDatatype": {
+                                                                                            "const": "double"
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            "cycle identifier": {
+                                                "$asm.pattern": "value datum",
+                                                "$asm.property-class": "TODO",
+                                                "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+                                            },
+                                            "flow cell identifier": {
+                                                "$asm.pattern": "value datum",
+                                                "$asm.property-class": "TODO",
+                                                "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
                         "sensor chip document": {
                             "$asm.property-class": "TODO",
                             "$asm.pattern": "aggregate datum",
@@ -12212,6 +12319,93 @@
                                             "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/hierarchy.schema#/$defs/customInformationAggregateDocument"
                                         }
                                     ]
+                                }
+                            }
+                        },
+                        "processed data aggregate document": {
+                            "properties": {
+                                "processed data document": {
+                                    "items": {
+                                        "properties": {
+                                            "report point aggregate document": {
+                                                "properties": {
+                                                    "report point document": {
+                                                        "items": {
+                                                            "properties": {
+                                                                "absolute response": {
+                                                                    "$asm.property-class": "TODO",
+                                                                    "$asm.pattern": "quantity datum",
+                                                                    "allOf": [
+                                                                        {
+                                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
+                                                                        },
+                                                                        {
+                                                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/RU"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "report point identifier": {
+                                                                    "$asm.pattern": "value datum",
+                                                                    "$asm.property-class": "TODO",
+                                                                    "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                                                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+                                                                },
+                                                                "identifier role": {
+                                                                    "$asm.pattern": "value datum",
+                                                                    "$asm.property-class": "http://purl.allotrope.org/ontologies/role#AFRL_0000007",
+                                                                    "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                                                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+                                                                },
+                                                                "data source aggregate document": {
+                                                                    "allOf": [
+                                                                        {
+                                                                            "$ref": "#/$defs/dataSourceAggregateDocument"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "relative response": {
+                                                                    "$asm.property-class": "TODO",
+                                                                    "$asm.pattern": "quantity datum",
+                                                                    "allOf": [
+                                                                        {
+                                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
+                                                                        },
+                                                                        {
+                                                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/RU"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "flow cell identifier": {
+                                                                    "$asm.pattern": "value datum",
+                                                                    "$asm.property-class": "TODO",
+                                                                    "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                                                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+                                                                },
+                                                                "time setting": {
+                                                                    "$asm.pattern": "quantity datum",
+                                                                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002288",
+                                                                    "allOf": [
+                                                                        {
+                                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
+                                                                        },
+                                                                        {
+                                                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/s"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "cycle identifier": {
+                                                                    "$asm.pattern": "value datum",
+                                                                    "$asm.property-class": "TODO",
+                                                                    "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                                                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }

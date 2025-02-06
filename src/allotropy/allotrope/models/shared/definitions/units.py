@@ -290,6 +290,11 @@ class RelativeLightUnitTimesSecond(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class ResponseUnits(HasUnit):
+    unit: str = "RU"
+
+
+@dataclass(frozen=True, kw_only=True)
 class SecondTime(HasUnit):
     unit: str = "s"
 
