@@ -1,11 +1,8 @@
 from __future__ import annotations
 
 from collections.abc import Iterator
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from itertools import chain
-
-from cachetools import cached
-from cachetools.keys import hashkey
 
 from allotropy.calcdocs.extractor import Element
 from allotropy.calcdocs.view import Keys, ViewData
@@ -17,9 +14,20 @@ from allotropy.parsers.utils.calculated_data_documents.definition import (
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
-@dataclass(frozen=True)
+@dataclass
 class CalcDocsConfig:
-    configs: list[CalculatedDataConfig]
+    configs: tuple[CalculatedDataConfig, ...] = field(default_factory=tuple)
+    cache: dict[str, CalculatedDocument | None] = field(
+        init=False, default_factory=dict
+    )
+
+    @classmethod
+    def create_with_cache(
+        cls, config_list: tuple[CalculatedDataConfig, ...]
+    ) -> CalcDocsConfig:
+        configs = CalcDocsConfig()
+        configs.configs = tuple(config.add_cache(configs) for config in config_list)
+        return configs
 
     def construct(self) -> list[CalculatedDocument]:
         return list(chain(*[config.construct() for config in self.configs]))
@@ -31,6 +39,22 @@ class CalculatedDataConfig:
     value: str
     view_data: ViewData
     source_configs: tuple[CalculatedDataConfig | MeasurementConfig, ...]
+
+    def add_cache(self, calc_docs_config: CalcDocsConfig) -> CalculatedDataConfig:
+        return CalculatedDataConfigWithCache(
+            name=self.name,
+            value=self.value,
+            view_data=self.view_data,
+            source_configs=tuple(
+                (
+                    source_config.add_cache(calc_docs_config)
+                    if isinstance(source_config, CalculatedDataConfig)
+                    else source_config
+                )
+                for source_config in self.source_configs
+            ),
+            calc_docs_config=calc_docs_config,
+        )
 
     def iter_data_sources(
         self, parent_keys: Keys, _: list[Element]
@@ -47,7 +71,6 @@ class CalculatedDataConfig:
                     value=None,  # should be calc_doc.value
                 )
 
-    @cached(cache={}, key=lambda self, keys: hashkey(self.name, self.value, keys))
     def get_calc_doc(
         self,
         keys: Keys,
@@ -80,6 +103,22 @@ class CalculatedDataConfig:
             for keys in self.view_data.iter_keys()
             if (calc_doc := self.get_calc_doc(keys))
         ]
+
+
+@dataclass(frozen=True)
+class CalculatedDataConfigWithCache(CalculatedDataConfig):
+    calc_docs_config: CalcDocsConfig
+
+    def get_calc_doc(
+        self,
+        keys: Keys,
+    ) -> CalculatedDocument | None:
+        key = f"{self.name} {self.value} {keys}"
+        if result := self.calc_docs_config.cache.get(key):
+            return result
+        result = super().get_calc_doc(keys)
+        self.calc_docs_config.cache[key] = result
+        return result
 
 
 @dataclass(frozen=True)

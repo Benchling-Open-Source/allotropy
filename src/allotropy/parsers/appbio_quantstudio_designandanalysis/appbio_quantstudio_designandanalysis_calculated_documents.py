@@ -1327,8 +1327,8 @@ def iter_relative_standard_curve_calc_docs(
         slope(tdna_view_data),
     )
 
-    configs = CalcDocsConfig(
-        [
+    configs = CalcDocsConfig.create_with_cache(
+        (
             quantity_conf,
             amplification_score(sid_tdna_uuid_view_data),
             cq_confidence(sid_tdna_uuid_view_data),
@@ -1444,7 +1444,7 @@ def iter_relative_standard_curve_calc_docs(
                     ),
                 ),
             ),
-        ]
+        )
     )
 
     a = configs.construct()  # noqa: F841
