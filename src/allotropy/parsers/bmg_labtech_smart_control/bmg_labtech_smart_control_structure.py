@@ -74,7 +74,7 @@ def map_measurement_group(row: SeriesData, headers: SeriesData) -> MeasurementGr
         plate_well_count=try_float(
             headers[str, "Microplate name"].split()[-1], "plate well count"
         ),
-        custom_info_doc=headers.get_custom_keys({"Test ID"}),
+        custom_info=headers.get_custom_keys({"Test ID"}),
         measurements=[
             Measurement(
                 identifier=random_uuid_str(),

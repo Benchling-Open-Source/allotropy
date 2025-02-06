@@ -266,7 +266,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueNanometer, measurement_group.maximum_wavelength_signal
             )
         }
-        custom_info_doc.update(measurement_group.custom_info_doc or {})
+        custom_info_doc.update(measurement_group.custom_info or {})
         return add_custom_information_document(plate_reader_doc, custom_info_doc)
 
     def _get_measurement_document(
