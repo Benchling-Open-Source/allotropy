@@ -307,9 +307,7 @@ class SeriesData:
             if regex
             else set(self.series.index.to_list())
         )
-        return self._sanitize_dict_keys(
-            self.get_custom_keys(matching_keys - self.read_keys)
-        )
+        return self.get_custom_keys(matching_keys - self.read_keys)
 
     def has_key(self, key: str) -> bool:
         return key in self.series
