@@ -36,6 +36,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -61,15 +76,6 @@
                             "fluorescence": {
                                 "value": 8168026.0,
                                 "unit": "RFU"
-                            },
-                            "custom information document": {
-                                "Target temperature C": "set off",
-                                "Target concentration O2": "set off",
-                                "ID2": "11/12/2024,1:06:28 PM",
-                                "Path": "C:\\Program Files (x86)\\BMG\\SMART Control\\user\\Data",
-                                "Target concentration CO2": "set off",
-                                "Test ID": 11.0,
-                                "Injection needle holder type": "-"
                             }
                         }
                     ],
@@ -82,7 +88,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -118,6 +127,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -155,7 +179,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -191,6 +218,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -228,7 +270,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -264,6 +309,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -297,7 +357,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -333,6 +396,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -366,7 +444,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -402,6 +483,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -435,7 +531,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -471,6 +570,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -504,7 +618,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -540,6 +657,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -573,7 +705,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -609,6 +744,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -642,7 +792,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -678,6 +831,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -711,7 +879,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -747,6 +918,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -780,7 +966,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -816,6 +1005,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -849,7 +1053,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -885,6 +1092,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -922,7 +1144,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -958,6 +1183,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -995,7 +1235,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1031,6 +1274,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -1068,7 +1326,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1104,6 +1365,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -1137,7 +1413,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1173,6 +1452,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -1206,7 +1500,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1242,6 +1539,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -1275,7 +1587,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1311,6 +1626,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -1344,7 +1674,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1380,6 +1713,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -1413,7 +1761,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1449,6 +1800,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -1482,7 +1848,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1518,6 +1887,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -1551,7 +1935,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1587,6 +1974,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -1620,7 +2022,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1656,6 +2061,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -1689,7 +2109,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1725,6 +2148,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -1762,7 +2200,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1798,6 +2239,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -1835,7 +2291,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1871,6 +2330,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -1908,7 +2382,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1944,6 +2421,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -1977,7 +2469,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2013,6 +2508,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -2046,7 +2556,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2082,6 +2595,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -2115,7 +2643,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2151,6 +2682,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -2184,7 +2730,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2220,6 +2769,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -2253,7 +2817,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2289,6 +2856,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -2322,7 +2904,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2358,6 +2943,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -2391,7 +2991,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2427,6 +3030,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -2460,7 +3078,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2496,6 +3117,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -2529,7 +3165,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2565,6 +3204,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -2602,7 +3256,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2638,6 +3295,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -2675,7 +3347,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2711,6 +3386,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -2748,7 +3438,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2784,6 +3477,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -2817,7 +3525,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2853,6 +3564,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -2886,7 +3612,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2922,6 +3651,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -2955,7 +3699,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2991,6 +3738,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -3024,7 +3786,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3060,6 +3825,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -3093,7 +3873,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3129,6 +3912,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -3162,7 +3960,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3198,6 +3999,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -3231,7 +4047,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3267,6 +4086,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -3300,7 +4134,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3336,6 +4173,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -3369,7 +4221,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3405,6 +4260,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -3442,7 +4312,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3478,6 +4351,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -3515,7 +4403,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3551,6 +4442,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -3588,7 +4494,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3624,6 +4533,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -3657,7 +4581,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3693,6 +4620,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -3726,7 +4668,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3762,6 +4707,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -3795,7 +4755,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3831,6 +4794,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -3864,7 +4842,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3900,6 +4881,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -3933,7 +4929,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3969,6 +4968,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -4002,7 +5016,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4038,6 +5055,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -4071,7 +5103,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4107,6 +5142,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -4140,7 +5190,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4176,6 +5229,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -4209,7 +5277,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4245,6 +5316,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -4282,7 +5368,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4318,6 +5407,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -4355,7 +5459,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4391,6 +5498,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -4428,7 +5550,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4464,6 +5589,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -4497,7 +5637,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4533,6 +5676,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -4566,7 +5724,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4602,6 +5763,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -4635,7 +5811,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4671,6 +5850,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -4704,7 +5898,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4740,6 +5937,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -4773,7 +5985,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4809,6 +6024,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -4842,7 +6072,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4878,6 +6111,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -4911,7 +6159,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4947,6 +6198,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -4980,7 +6246,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5016,6 +6285,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -5049,7 +6333,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5085,6 +6372,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -5122,7 +6424,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5158,6 +6463,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -5195,7 +6515,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5231,6 +6554,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -5268,7 +6606,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5304,6 +6645,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -5337,7 +6693,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5373,6 +6732,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -5406,7 +6780,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5442,6 +6819,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -5475,7 +6867,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5511,6 +6906,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -5544,7 +6954,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5580,6 +6993,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -5613,7 +7041,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5649,6 +7080,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -5682,7 +7128,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5718,6 +7167,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -5751,7 +7215,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5787,6 +7254,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -5820,7 +7302,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5856,6 +7341,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -5889,7 +7389,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5925,6 +7428,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -5962,7 +7480,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5998,6 +7519,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -6035,7 +7571,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6071,6 +7610,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -6108,7 +7662,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6144,6 +7701,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -6177,7 +7749,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6213,6 +7788,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -6246,7 +7836,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6282,6 +7875,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -6315,7 +7923,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6351,6 +7962,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -6384,7 +8010,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6420,6 +8049,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -6453,7 +8097,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6489,6 +8136,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -6522,7 +8184,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6558,6 +8223,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -6591,7 +8271,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6627,6 +8310,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -6660,7 +8358,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6696,6 +8397,21 @@
                                         "excitation wavelength setting": {
                                             "value": 480.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "settling time setting": {
+                                                "value": 0.2,
+                                                "unit": "s"
+                                            },
+                                            "reading direction setting": "bidirectional, horizontal left to right, top to bottom",
+                                            "dichroic filter setting": "auto 496",
+                                            "optic preset name": "Fluorescein (FITC) *",
+                                            "spoon type": "automatic",
+                                            "well used for focus adjustment": "D8",
+                                            "focal height obtained by": "previous focal height (obtained using auto focus)",
+                                            "Injection needle holder type": "-",
+                                            "Target concentration CO2": "set off",
+                                            "Target concentration O2": "set off"
                                         }
                                     }
                                 ]
@@ -6729,7 +8445,10 @@
                     "experiment type": "96 PicoGreen, Quant-iT",
                     "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             }
         ],
         "calculated data aggregate document": {
@@ -8627,7 +10346,10 @@
             "UNC path": "tests/parsers/bmg_labtech_smart_control/testdata/fluorescence_endpoint_example2.xlsx",
             "ASM converter name": "allotropy_bmg_labtech_smart_control",
             "ASM converter version": "0.1.74",
-            "software name": "SMART Control"
+            "software name": "SMART Control",
+            "custom information document": {
+                "Path": "C:\\Program Files (x86)\\BMG\\SMART Control\\user\\Data"
+            }
         },
         "device system document": {
             "device identifier": "N/A",
