@@ -348,8 +348,8 @@ def iter_standard_curve_calc_docs(
         slope(tdna_view_data),
     )
 
-    configs = CalcDocsConfig(
-        [
+    configs = CalcDocsConfig.create_with_cache(
+        (
             quantity_conf,
             amplification_score(sid_tdna_uuid_view_data),
             cq_confidence(sid_tdna_uuid_view_data),
@@ -361,7 +361,7 @@ def iter_standard_curve_calc_docs(
             r_squared(tdna_view_data),
             slope(tdna_view_data),
             efficiency(tdna_view_data),
-        ]
+        )
     )
 
     for calc_doc in configs.construct():
@@ -402,8 +402,8 @@ def iter_relative_standard_curve_calc_docs(
         slope(tdna_view_data),
     )
 
-    configs = CalcDocsConfig(
-        [
+    configs = CalcDocsConfig.create_with_cache(
+        (
             quantity_conf,
             amplification_score(sid_tdna_uuid_view_data),
             cq_confidence(sid_tdna_uuid_view_data),
@@ -519,7 +519,7 @@ def iter_relative_standard_curve_calc_docs(
                     ),
                 ),
             ),
-        ]
+        )
     )
 
     for calc_doc in configs.construct():
@@ -537,14 +537,14 @@ def iter_presence_absence_calc_docs(
         sub_view=TargetView(sub_view=UuidView())
     ).apply(elements)
 
-    configs = CalcDocsConfig(
-        [
+    configs = CalcDocsConfig.create_with_cache(
+        (
             quantity(sid_tdna_uuid_view_data),
             amplification_score(sid_tdna_uuid_view_data),
             cq_confidence(sid_tdna_uuid_view_data),
             rn_mean(sid_tdna_view_data),
             rn_sd(sid_tdna_view_data),
-        ]
+        )
     )
 
     for calc_doc in configs.construct():
@@ -559,12 +559,12 @@ def iter_primary_analysis_calc_docs(
 
     sid_tdna_view_data = SampleView(sub_view=TargetView()).apply(elements)
 
-    configs = CalcDocsConfig(
-        [
+    configs = CalcDocsConfig.create_with_cache(
+        (
             ct_mean(sid_tdna_view_data),
             ct_sd(sid_tdna_view_data),
             ct_se(sid_tdna_view_data),
-        ]
+        )
     )
 
     for calc_doc in configs.construct():
