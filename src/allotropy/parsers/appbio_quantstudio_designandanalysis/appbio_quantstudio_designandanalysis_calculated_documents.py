@@ -1244,6 +1244,7 @@ def iter_standard_curve_calc_docs(
 
 
 def iter_relative_standard_curve_calc_docs(
+    well_items: list[WellItem],
     view_st_data: OldViewData[WellItem],
     view_tr_data: OldViewData[WellItem],
     r_sample: str,
@@ -1299,6 +1300,157 @@ def iter_relative_standard_curve_calc_docs(
                 build_rq_max(view_st_data, sample, target, r_sample, r_target)
             )
 
+    random_uuid_str(next_id=155)
+
+    calc_docs = [simplify_calc_doc(calc_doc) for calc_doc in calc_docs if calc_doc]
+
+    elements = AppbioQuantstudioDAExtractor.get_elements(well_items)
+
+    sid_tdna_view_data = SampleView(sub_view=TargetView()).apply(elements)
+    sid_ref_tdna_view_data = SampleView(
+        reference=r_sample, sub_view=TargetView()
+    ).apply(elements)
+    sid_tdna_ref_view_data = SampleView(
+        sub_view=TargetView(is_reference=True, reference=r_target)
+    ).apply(elements)
+    sid_tdna_blacklist_view_data = SampleView(
+        sub_view=TargetView(blacklist=[r_target] if r_target is not None else None)
+    ).apply(elements)
+    sid_tdna_uuid_view_data = SampleView(
+        sub_view=TargetView(sub_view=UuidView())
+    ).apply(elements)
+    tdna_view_data = TargetRoleView().apply(elements)
+
+    quantity_conf = quantity(
+        sid_tdna_uuid_view_data,
+        y_intercept(tdna_view_data),
+        slope(tdna_view_data),
+    )
+
+    configs = CalcDocsConfig(
+        [
+            quantity_conf,
+            amplification_score(sid_tdna_uuid_view_data),
+            cq_confidence(sid_tdna_uuid_view_data),
+            ct_mean(sid_tdna_view_data),
+            ct_sd(sid_tdna_view_data),
+            delta_ct_sd(
+                sid_tdna_view_data,
+                ct_sd(sid_tdna_view_data),
+                ct_sd(sid_tdna_ref_view_data),
+            ),
+            delta_ct_se(
+                sid_tdna_view_data,
+                ct_se(sid_tdna_view_data),
+                ct_se(sid_tdna_ref_view_data),
+            ),
+            relative_rq_min(
+                sid_tdna_view_data,
+                relative_rq(
+                    sid_tdna_view_data,
+                    quantity_mean(sid_tdna_view_data, quantity_conf),
+                ),
+            ),
+            relative_rq_max(
+                sid_tdna_view_data,
+                relative_rq(
+                    sid_tdna_view_data,
+                    quantity_mean(sid_tdna_view_data, quantity_conf),
+                ),
+            ),
+            rq_min(
+                sid_tdna_blacklist_view_data,
+                rq(
+                    sid_tdna_view_data,
+                    delta_delta_ct(
+                        sid_tdna_view_data,
+                        delta_ct(
+                            sid_tdna_view_data,
+                            adj_eq_ct_mean(
+                                sid_tdna_view_data,
+                                eq_ct_mean(
+                                    sid_tdna_view_data,
+                                    ct_mean(sid_tdna_view_data),
+                                ),
+                            ),
+                            adj_eq_ct_mean(
+                                sid_tdna_ref_view_data,
+                                eq_ct_mean(
+                                    sid_tdna_view_data,
+                                    ct_mean(sid_tdna_view_data),
+                                ),
+                            ),
+                        ),
+                        delta_ct(
+                            sid_ref_tdna_view_data,
+                            adj_eq_ct_mean(
+                                sid_tdna_view_data,
+                                eq_ct_mean(
+                                    sid_tdna_view_data,
+                                    ct_mean(sid_tdna_view_data),
+                                ),
+                            ),
+                            adj_eq_ct_mean(
+                                sid_tdna_ref_view_data,
+                                eq_ct_mean(
+                                    sid_tdna_view_data,
+                                    ct_mean(sid_tdna_view_data),
+                                ),
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            rq_max(
+                sid_tdna_blacklist_view_data,
+                rq(
+                    sid_tdna_view_data,
+                    delta_delta_ct(
+                        sid_tdna_view_data,
+                        delta_ct(
+                            sid_tdna_view_data,
+                            adj_eq_ct_mean(
+                                sid_tdna_view_data,
+                                eq_ct_mean(
+                                    sid_tdna_view_data,
+                                    ct_mean(sid_tdna_view_data),
+                                ),
+                            ),
+                            adj_eq_ct_mean(
+                                sid_tdna_ref_view_data,
+                                eq_ct_mean(
+                                    sid_tdna_view_data,
+                                    ct_mean(sid_tdna_view_data),
+                                ),
+                            ),
+                        ),
+                        delta_ct(
+                            sid_ref_tdna_view_data,
+                            adj_eq_ct_mean(
+                                sid_tdna_view_data,
+                                eq_ct_mean(
+                                    sid_tdna_view_data,
+                                    ct_mean(sid_tdna_view_data),
+                                ),
+                            ),
+                            adj_eq_ct_mean(
+                                sid_tdna_ref_view_data,
+                                eq_ct_mean(
+                                    sid_tdna_view_data,
+                                    ct_mean(sid_tdna_view_data),
+                                ),
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+        ]
+    )
+
+    a = configs.construct()  # noqa: F841
+
+    # for calc_doc in configs.construct():
+    #     yield from calc_doc.iter_struct()
     yield from yield_documents(calc_docs)
 
 
