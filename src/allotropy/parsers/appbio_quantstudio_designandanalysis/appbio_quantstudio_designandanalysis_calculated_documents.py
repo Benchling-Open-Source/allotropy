@@ -29,8 +29,20 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.st
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
     DataSource,
+    Referenceable,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
+
+
+def simplify_calc_doc(calc_doc: CalculatedDocument) -> CalculatedDocument:
+    #calc_docs = [simplify_calc_doc(calc_doc) for calc_doc in calc_docs if calc_doc]
+
+    for data_source in calc_doc.data_sources:
+        if isinstance(data_source.reference, CalculatedDocument):
+            simplify_calc_doc(data_source.reference)
+        else:
+            data_source.reference = Referenceable(data_source.reference.uuid)
+    return calc_doc
 
 
 @cache
