@@ -194,7 +194,6 @@ class Metadata:
     equipment_serial_number: str | None = None
     product_manufacturer: str | None = None
     file_name: str | None = None
-    # custom info
     custom_info_doc: dict[str, Any] | None = None
 
 
