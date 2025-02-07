@@ -104,8 +104,7 @@ class Measurement:
     # customer information document fields
     debris_index: float | None = None
     cell_aggregation_percentage: float | None = None
-    custom_info_doc: dict[str, Any] | None = None
-    custom_data_system_info_doc: dict[str, Any] | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -132,8 +131,7 @@ class Metadata:
     brand_name: str | None = None
     asset_management_identifier: str | None = None
     description: str | None = None
-    csv_file_version: str | None = None
-    _21_cfr_part_11: str | None = None
+    custom_data_system_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -161,10 +159,6 @@ class Mapper(SchemaMapper[Data, Model]):
     MANIFEST = "http://purl.allotrope.org/manifests/cell-counting/REC/2024/09/cell-counting.manifest"
 
     def map_model(self, data: Data) -> Model:
-        custom_doc = {
-            "csv file version": data.metadata.csv_file_version,
-            " 21 CFR Part 11": data.metadata._21_cfr_part_11,
-        }
         return Model(
             field_asm_manifest=self.MANIFEST,
             cell_counting_aggregate_document=CellCountingAggregateDocument(
@@ -188,7 +182,7 @@ class Mapper(SchemaMapper[Data, Model]):
                         ASM_converter_version=ASM_CONVERTER_VERSION,
                         ASM_file_identifier=data.metadata.asm_file_identifier,
                     ),
-                    custom_doc,
+                    data.metadata.custom_data_system_info or {},
                 ),
                 cell_counting_document=[
                     self._get_technique_document(
@@ -224,7 +218,7 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_measurement_document(
         self, measurement: Measurement, metadata: Metadata
     ) -> MeasurementDocument:
-        custom_info = measurement.custom_info_doc or {}
+        custom_info = measurement.custom_info or {}
         return add_custom_information_document(
             MeasurementDocument(
                 measurement_time=self.get_date_time(measurement.timestamp),
@@ -270,7 +264,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 if measurement.sample_draw_time
                 else None
             ),
-            "Dilution Volume (ul)": quantity_or_none(
+            "dilution volume": quantity_or_none(
                 TQuantityValueMicroliter, measurement.dilution_volume
             ),
         }

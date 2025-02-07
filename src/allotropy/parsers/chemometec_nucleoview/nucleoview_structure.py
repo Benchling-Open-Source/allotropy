@@ -49,15 +49,21 @@ def create_metadata(data: SeriesData, file_path: str) -> Metadata:
         software_version=data.get(str, "Application SW version"),
         device_type=NUCLEOCOUNTER_DEVICE_TYPE,
         detection_type=NUCLEOCOUNTER_DETECTION_TYPE,
-        csv_file_version=data.get(str, "csv file version"),
-        _21_cfr_part_11=data.get(str, "21 CFR Part 11"),
+        custom_data_system_info=data.get_custom_keys(
+            {
+                "csv file version",
+                "21 CFR Part 11",
+            }
+        ),
     )
     # We read header info from a row in the table, so we don't need to read all keys from this SeriesData
     data.get_unread()
     return metadata
 
 
-def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
+def create_measurement_groups(
+    data: SeriesData,
+) -> (MeasurementGroup, list[CalculatedDataItem]):
     timestamp = data.get(str, "Date time")
     errors = []
     if timestamp:
@@ -89,7 +95,7 @@ def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
         }
     )
 
-    return MeasurementGroup(
+    measurement_group = MeasurementGroup(
         analyst=data.get(str, "Operator", DEFAULT_ANALYST),
         custom_info_doc=data.get_custom_keys(MEASUREMENT_AGG_DOCUMENT_CUSTOM_FIELDS),
         measurements=[
@@ -118,13 +124,14 @@ def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
                 cell_diameter_standard_deviation=data.get(
                     float, "Cell diameter standard deviation (um)"
                 ),
-                custom_info_doc=data.get_unread(),
+                custom_info=data.get_unread(),
             )
         ],
     )
+    return measurement_group, _get_calculated_data([measurement_group])
 
 
-def get_calculated_data(
+def _get_calculated_data(
     groups: list[MeasurementGroup],
 ) -> list[CalculatedDataItem] | None:
     result = []
