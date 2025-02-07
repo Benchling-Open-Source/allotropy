@@ -1408,6 +1408,18 @@
                             "$asm.pattern": "value datum",
                             "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
                             "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
+                          },
+                          "flow rate": {
+                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001881",
+                            "$asm.pattern": "quantity datum",
+                            "allOf": [
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                              },
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/mL~1min"
+                              }
+                            ]
                           }
                         },
                         "required": [
