@@ -30,6 +30,7 @@ class StaticDocs:
     batch_identifier: str | None
     start_time: str | None
     column_volume: float | None
+    flow_rate: float | None
 
     @classmethod
     def create(
@@ -90,6 +91,15 @@ class StaticDocs:
             sample_identifier = sample_result.find("Keyword2").get_text(
                 "Sample_ID_3 keyword2"
             )
+        except AllotropeConversionError:
+            pass
+
+        flow_rate = None
+        try:
+            flow_rate_result = cls.__filter_result_criteria(
+                results, keyword="Flow rate"
+            )
+            flow_rate = flow_rate_result.find("Keyword2").get_float("Flow rate")
         except AllotropeConversionError:
             pass
 
@@ -154,6 +164,7 @@ class StaticDocs:
             column_volume=(
                 column_volume.get_float_or_none() if column_volume is not None else None
             ),
+            flow_rate=flow_rate,
         )
 
     @classmethod
