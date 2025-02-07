@@ -5,6 +5,24 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.75] - 2025-02-07
+
+### Added
+
+- Bio-Rad CFX Maestro - update release state to recommended (#879)
+- AppBio QuantStudio Design & Analysis - add back reference fields as custom data processing info (#878)
+- improve calcdoc library implementation (#874)
+- Agilent Gen5 - Add unread data to ASM (#870)
+- Bio-Rad CFX Maestro - Add unread data to ASM (#850)
+- Luminex xPONENT - add descriptive error for Minimum bead count setting (#865)
+
+### Fixed
+
+- Luminex xPONENT - map settings from different source, add error document for Nan values (#868)
+- Agilent TapeStation Analysis - add missing calculated data from RNA tag (#866)
+- Luminex xPONENT - do not throw an error if an optional value is missing in the input file (#867)
+- Unchained Labs Lunatic - handle different cases for column headers (#863)
+
 ## [0.1.74] - 2025-01-28
 
 ### Added
