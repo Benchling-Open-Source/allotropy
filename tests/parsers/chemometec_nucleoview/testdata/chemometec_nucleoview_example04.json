@@ -47,7 +47,7 @@
                             "sample document": {
                                 "sample identifier": "cellsABCD",
                                 "custom information document": {
-                                    "Dilution Volume (ul)": {
+                                    "dilution volume": {
                                         "value": 0.0,
                                         "unit": "μL"
                                     }
@@ -99,14 +99,14 @@
                         ]
                     },
                     "custom information document": {
-                        "Event log format": "Plain text",
+                        "Protocol template title": "Viability and Cell Count Assay",
+                        "Protocol adaptation title": "example cell counting",
                         "Protocol template purpose": "Cell Count and Viability with AO and DAPI",
                         "Protocol adaptation filename": "94A29BE3f39d48cd8eb5cb9472add350.cmsu",
-                        "Protocol template title": "Viability and Cell Count Assay",
+                        "Event log format": "Plain text",
+                        "Protocol adaptation purpose": "Cell Count and Viability with AO and DAPI",
                         "Protocol template filename": "Viability and Cell Count Assay - NC-200.cmsx",
-                        "Login ID": "admin",
-                        "Protocol adaptation title": "example cell counting",
-                        "Protocol adaptation purpose": "Cell Count and Viability with AO and DAPI"
+                        "Login ID": "admin"
                     }
                 },
                 "analyst": "DrScientist"
@@ -122,7 +122,7 @@
             "software name": "NucleoView",
             "software version": "1.4.2.0",
             "custom information document": {
-                "csv file version": "2",
+                "csv file version": 2.0,
                 " 21 CFR Part 11": "disabled"
             }
         },
