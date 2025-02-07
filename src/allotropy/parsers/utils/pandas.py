@@ -285,7 +285,7 @@ class SeriesData:
 
             # Replace invalid characters
             field_name = field_name.replace("#", "Number")
-            field_name = re.sub(r"[^\w\s]", "_", field_name)
+            field_name = re.sub(r"[^\w\s.]", "_", field_name)
             field_name = field_name.strip("_")
             return field_name
 
