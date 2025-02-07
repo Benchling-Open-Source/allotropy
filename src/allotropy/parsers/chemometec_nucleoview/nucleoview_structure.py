@@ -63,7 +63,7 @@ def create_metadata(data: SeriesData, file_path: str) -> Metadata:
 
 def create_measurement_groups(
     data: SeriesData,
-) -> (MeasurementGroup, list[CalculatedDataItem]):
+) -> tuple[MeasurementGroup, list[CalculatedDataItem] | None]:
     timestamp = data.get(str, "Date time")
     errors = []
     if timestamp:
