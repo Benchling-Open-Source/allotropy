@@ -311,6 +311,18 @@
       "unit"
     ]
   },
+  "MilliliterPerMinute": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "mL/min",
+        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MilliliterPerMinute"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
   "Millimeter": {
     "properties": {
       "unit": {
