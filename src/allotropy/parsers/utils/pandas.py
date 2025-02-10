@@ -262,12 +262,16 @@ class SeriesData:
         }
 
     def get_custom_keys(
-        self, key_or_keys: str | set[str], validate: ValidateRawMode | None = None
+        self, key_or_keys: str | set[str]
     ) -> dict[str, float | str | None]:
         return {
             key: value
             for key in self._get_matching_keys(key_or_keys)
-            if (value := self._validate_raw(self._get_custom_key(key), validate))
+            if (
+                value := self._validate_raw(
+                    self._get_custom_key(key), SeriesData.NOT_NAN
+                )
+            )
             is not None
         }
 

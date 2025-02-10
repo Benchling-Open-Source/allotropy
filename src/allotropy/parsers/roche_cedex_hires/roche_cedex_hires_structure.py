@@ -57,9 +57,7 @@ def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
 
     return MeasurementGroup(
         analyst=data.get(str, "Username"),
-        custom_info=data.get_custom_keys(
-            {"Workarea name", "Comment"}, SeriesData.NOT_NAN
-        ),
+        custom_info=data.get_custom_keys({"Workarea name", "Comment"}),
         measurements=[
             Measurement(
                 measurement_identifier=random_uuid_str(),
