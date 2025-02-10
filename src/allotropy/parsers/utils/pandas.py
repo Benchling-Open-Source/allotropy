@@ -262,11 +262,13 @@ class SeriesData:
         }
 
     def get_custom_keys(
-        self, key_or_keys: str | set[str]
+        self, key_or_keys: str | set[str], validate: ValidateRaw | None = None
     ) -> dict[str, float | str | None]:
         return {
-            key: self._get_custom_key(key)
+            key: value
             for key in self._get_matching_keys(key_or_keys)
+            if (value := self._validate_raw(self._get_custom_key(key), validate))
+            is not None
         }
 
     def mark_read(self, key_or_keys: str | set[str]) -> None:

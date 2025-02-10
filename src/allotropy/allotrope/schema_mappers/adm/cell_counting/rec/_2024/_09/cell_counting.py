@@ -96,8 +96,7 @@ class Measurement:
 class MeasurementGroup:
     measurements: list[Measurement]
     analyst: str | None = None
-    # customer information document
-    custom_info_doc: dict[str, Any] | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass
@@ -117,7 +116,7 @@ class Metadata:
     brand_name: str | None = None
     asset_management_identifier: str | None = None
     description: str | None = None
-    device_system_custom_info_doc: dict[str, Any] | None = None
+    device_system_custom_info: dict[str, Any] | None = None
 
 
 @dataclass
@@ -147,7 +146,7 @@ class Mapper(SchemaMapper[Data, Model]):
                         description=data.metadata.description,
                         equipment_serial_number=data.metadata.equipment_serial_number,
                     ),
-                    data.metadata.device_system_custom_info_doc,
+                    data.metadata.device_system_custom_info or {},
                 ),
                 data_system_document=DataSystemDocument(
                     data_system_instance_identifier=data.metadata.data_system_instance_id,
@@ -178,7 +177,7 @@ class Mapper(SchemaMapper[Data, Model]):
                         for measurement in measurement_group.measurements
                     ]
                 ),
-                measurement_group.custom_info_doc or {},
+                measurement_group.custom_info or {},
             ),
         )
 
