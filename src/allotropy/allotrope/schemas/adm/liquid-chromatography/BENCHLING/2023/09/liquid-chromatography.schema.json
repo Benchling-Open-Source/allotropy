@@ -118,7 +118,7 @@
                                               "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
                                               "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
                                             },
-                                            "column volume": {
+                                            "void volume": {
                                               "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002812",
                                               "$asm.pattern": "quantity datum",
                                               "allOf": [

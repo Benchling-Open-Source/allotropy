@@ -29,7 +29,7 @@ class StaticDocs:
     sample_identifier_3: str | None
     batch_identifier: str | None
     start_time: str | None
-    column_volume: float | None
+    void_volume: float | None
     flow_rate: float | None
 
     @classmethod
@@ -121,10 +121,10 @@ class StaticDocs:
 
         batch_id = results.find_or_none("BatchId")
 
-        column_volume = None
+        void_volume = None
         if analysis_settings:
             if chromatogram_analysis_settings := analysis_settings.parse_text_or_none():
-                column_volume = chromatogram_analysis_settings.recursive_find_or_none(
+                void_volume = chromatogram_analysis_settings.recursive_find_or_none(
                     ["IntegrationSettings", "ColumnProperties", "ColumnVolume"]
                 )
 
@@ -161,8 +161,8 @@ class StaticDocs:
                 batch_id.get_text_or_none() if batch_id is not None else None
             ),
             start_time=curve.get_sub_text_or_none("MethodStartTime"),
-            column_volume=(
-                column_volume.get_float_or_none() if column_volume is not None else None
+            void_volume=(
+                void_volume.get_float_or_none() if void_volume is not None else None
             ),
             flow_rate=flow_rate,
         )

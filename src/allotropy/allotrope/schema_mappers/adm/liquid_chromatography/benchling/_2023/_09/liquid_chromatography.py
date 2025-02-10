@@ -128,7 +128,7 @@ class Measurement:
     column_inner_diameter: float | None = None
     chromatography_chemistry_type: str | None = None
     chromatography_particle_size: float | None = None
-    column_volume: float | None = None
+    void_volume: float | None = None
     batch_identifier: str | None = None
     flow_rate: float | None = None
 
@@ -242,8 +242,8 @@ class Mapper(SchemaMapper[Data, Model]):
             chromatography_column_particle_size=quantity_or_none(
                 TQuantityValueMicrometer, measurement.chromatography_particle_size
             ),
-            column_volume=quantity_or_none(
-                TQuantityValueMilliliter, measurement.column_volume
+            void_volume=quantity_or_none(
+                TQuantityValueMilliliter, measurement.void_volume
             ),
         )
 

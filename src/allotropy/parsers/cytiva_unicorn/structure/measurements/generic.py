@@ -86,7 +86,7 @@ class UnicornMeasurement(Measurement):
             column_inner_diameter=static_docs.column_inner_diameter,
             chromatography_chemistry_type=static_docs.chromatography_chemistry_type,
             chromatography_particle_size=static_docs.chromatography_particle_size,
-            column_volume=static_docs.column_volume,
+            void_volume=static_docs.void_volume,
             injection_identifier=static_docs.injection_identifier,
             injection_time=static_docs.injection_time,
             autosampler_injection_volume_setting=static_docs.autosampler_injection_volume_setting,
