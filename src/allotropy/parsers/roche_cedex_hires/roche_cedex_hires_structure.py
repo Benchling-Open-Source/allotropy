@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from decimal import Decimal
 from pathlib import Path
-from typing import Any
 
 from allotropy.allotrope.schema_mappers.adm.cell_counting.rec._2024._09.cell_counting import (
     Measurement,
@@ -13,7 +12,6 @@ from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.roche_cedex_hires import constants
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import try_float_or_nan
 
 
 def create_metadata(data: SeriesData, file_path: str) -> Metadata:

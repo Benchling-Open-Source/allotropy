@@ -262,7 +262,7 @@ class SeriesData:
         }
 
     def get_custom_keys(
-        self, key_or_keys: str | set[str], validate: ValidateRaw | None = None
+        self, key_or_keys: str | set[str], validate: ValidateRawMode | None = None
     ) -> dict[str, float | str | None]:
         return {
             key: value
