@@ -15,7 +15,10 @@
                                             "value": 8.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "150"
+                                        "detector gain setting": "150",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -2829,7 +2832,7 @@
             "file name": "alphalisa_test_2.txt",
             "UNC path": "tests/parsers/agilent_gen5/testdata/fluorescence/alphalisa_test_2.txt",
             "ASM converter name": "allotropy_agilent_gen5",
-            "ASM converter version": "0.1.61",
+            "ASM converter version": "0.1.74",
             "software name": "Gen5",
             "software version": "3.12.08"
         },
