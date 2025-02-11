@@ -197,7 +197,7 @@ class ThermoSkanItMeasurementGroups:
             if not name_df.empty:
                 sample_name = name_df.loc[well_letter, well_column]
             else:
-                sample_name = f"{well_plate_identifier}_{well_column}{well_letter}"
+                sample_name = f"{well_plate_identifier}_{well_letter}{well_column}"
             well = DataWell.create(
                 well_location=well_letter + str(well_column),
                 value=stacked.loc[well_letter, well_column],
