@@ -9,10 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- add void volume and flow rate to Cytiva Unicorn adapter (#880)
+- Cytiva Unicorn - add void volume and flow rate to (#880)
 - Bio-Rad CFX Maestro - update release state to recommended (#879)
 - AppBio QuantStudio Design & Analysis - add back reference fields as custom data processing info (#878)
-- improve calcdoc library implementation (#874)
+- Internal - improve calcdoc library implementation (#874)
 - Agilent Gen5 - Add unread data to ASM (#870)
 - Bio-Rad CFX Maestro - Add unread data to ASM (#850)
 - Luminex xPONENT - add descriptive error for Minimum bead count setting (#865)
