@@ -19,6 +19,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -27,7 +30,10 @@
                             "sample document": {
                                 "sample identifier": "BNCH2345883 A1",
                                 "location identifier": "A1",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "absorbance": {
                                 "value": 2.1,
@@ -4241,7 +4247,7 @@
             "file name": "240411_172731_BNCH2345883_abs450_96well_non_numeric_values.txt",
             "UNC path": "tests/parsers/agilent_gen5/testdata/absorbance/240411_172731_BNCH2345883_abs450_96well_non_numeric_values.txt",
             "ASM converter name": "allotropy_agilent_gen5",
-            "ASM converter version": "0.1.61",
+            "ASM converter version": "0.1.74",
             "software name": "Gen5",
             "software version": "3.12.08"
         },
