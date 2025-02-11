@@ -34,6 +34,8 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueCubicMillimeter,
     TQuantityValueMicrometer,
     TQuantityValueMilliAbsorbanceUnit,
+    TQuantityValueMilliliter,
+    TQuantityValueMilliliterPerMinute,
     TQuantityValueMillimeter,
     TQuantityValuePercent,
     TQuantityValueSecondTime,
@@ -126,7 +128,9 @@ class Measurement:
     column_inner_diameter: float | None = None
     chromatography_chemistry_type: str | None = None
     chromatography_particle_size: float | None = None
+    void_volume: float | None = None
     batch_identifier: str | None = None
+    flow_rate: float | None = None
 
     # Measurement data cubes
     chromatogram_data_cube: DataCube | None = None
@@ -238,6 +242,9 @@ class Mapper(SchemaMapper[Data, Model]):
             chromatography_column_particle_size=quantity_or_none(
                 TQuantityValueMicrometer, measurement.chromatography_particle_size
             ),
+            void_volume=quantity_or_none(
+                TQuantityValueMilliliter, measurement.void_volume
+            ),
         )
 
     def _get_injection_document(self, measurement: Measurement) -> InjectionDocument:
@@ -256,6 +263,9 @@ class Mapper(SchemaMapper[Data, Model]):
                 batch_identifier=measurement.batch_identifier,
                 sample_role_type=measurement.sample_role_type,
                 written_name=measurement.written_name,
+                flow_rate=quantity_or_none(
+                    TQuantityValueMilliliterPerMinute, measurement.flow_rate
+                ),
             ),
             measurement.sample_custom_info,
         )

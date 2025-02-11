@@ -51,6 +51,20 @@ class StrictXmlElement:
             )
         )
 
+    def parse_text_or_none(self) -> StrictXmlElement | None:
+        if (text := self.get_text_or_none()) is None:
+            return None
+        try:
+            return StrictXmlElement(fromstring(text))
+        except ElementTree.ParseError:
+            return None
+
+    def parse_text(self, name: str) -> StrictXmlElement:
+        return assert_not_none(
+            self.parse_text_or_none(),
+            msg=f"Unable to parse text from xml tag '{name}' as valid xml content",
+        )
+
     def get_text_or_none(self) -> str | None:
         return self.element.text
 

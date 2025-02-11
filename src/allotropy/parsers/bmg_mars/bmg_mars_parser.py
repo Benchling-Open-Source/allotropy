@@ -19,7 +19,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 
 class BmgMarsParser(VendorParser[Data, Model]):
-    DISPLAY_NAME = "BMG MARS"
+    DISPLAY_NAME = "BMG Labtech MARS"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "csv"
     SCHEMA_MAPPER = Mapper
