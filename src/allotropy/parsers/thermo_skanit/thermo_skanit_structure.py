@@ -188,6 +188,10 @@ class ThermoSkanItMeasurementGroups:
             msg = "Execution time not found"
             raise AllotropyParserError(msg)
 
+        if not session_name:
+            experiment = sheet_df.iloc[0][0]
+            session_name = experiment.replace(".skax", "") if experiment else None
+
         meas_groups = []
         # Stack the DataFrame, creating a MultiIndex
         stacked = data_df.stack()
