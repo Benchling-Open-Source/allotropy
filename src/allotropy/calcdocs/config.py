@@ -9,7 +9,6 @@ from allotropy.calcdocs.view import Keys, ViewData
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
     DataSource,
-    Referenceable,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
 
@@ -45,7 +44,7 @@ class CalculatedDataConfig:
                 yield DataSource(
                     feature=calc_doc.name,
                     reference=calc_doc,
-                    value=None,  # should be calc_doc.value
+                    value=calc_doc.value,
                 )
 
     def _get_calc_doc_inner(
@@ -109,10 +108,9 @@ class MeasurementConfig:
         __: dict[str, CalculatedDocument | None],
     ) -> Iterator[DataSource]:
         for element in elements:
-            if element.get_or_none(self.value) is not None:
+            if (value := element.get_float_or_none(self.value)) is not None:
                 yield DataSource(
                     feature=self.name,
-                    # reference sould be just element
-                    reference=Referenceable(element.get_str("uuid")),
-                    value=None,  # should be value
+                    reference=element,
+                    value=value,
                 )
