@@ -275,8 +275,8 @@ class ThermoSkanItMeasurementGroups:
         for _, row in absorbance_sheet_df.iterrows():
             if pd.notna(row.iloc[0]) and "Wavelength" in row.iloc[0]:
                 match = re.search(r"Wavelength:\s*(\d{1,3})\s*nm", row.iloc[0])
-                if match and float(match.group(1)) != 0:
-                    wavelength = float(match.group(1))
+                if match and (val := float(match.group(1))) != 0:
+                    wavelength = val
             if pd.notna(row.iloc[0]) and "Plate" in row.iloc[0]:
                 match = re.search(r"Plate\s*(\d)", row.iloc[0])
                 if match:
