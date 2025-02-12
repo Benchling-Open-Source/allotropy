@@ -127,7 +127,7 @@ class DataWell(Measurement):
         detector_wavelength: float | None,
         well_plate_identifier: str | None,
     ) -> Measurement:
-        measurement_type_str = MEASUREMENT_TYPES[type_].lower()
+        measurement_type_str = MEASUREMENT_TYPES[type_]
         return Measurement(
             type_=type_,
             identifier=random_uuid_str(),
@@ -136,10 +136,18 @@ class DataWell(Measurement):
             sample_role_type=DataWell.get_sample_role(sample_name),
             detector_wavelength_setting=detector_wavelength,
             device_type=DEVICE_TYPE,
+            detection_type=measurement_type_str,
             well_plate_identifier=well_plate_identifier,
-            absorbance=value if measurement_type_str == "absorbance" else None,
-            fluorescence=value if measurement_type_str == "fluorescence" else None,
-            luminescence=value if measurement_type_str == "luminescence" else None,
+            absorbance=value
+            if measurement_type_str
+            == MEASUREMENT_TYPES[MeasurementType.ULTRAVIOLET_ABSORBANCE]
+            else None,
+            fluorescence=value
+            if measurement_type_str == MEASUREMENT_TYPES[MeasurementType.FLUORESCENCE]
+            else None,
+            luminescence=value
+            if measurement_type_str == MEASUREMENT_TYPES[MeasurementType.LUMINESCENCE]
+            else None,
         )
 
     @staticmethod
@@ -267,7 +275,7 @@ class ThermoSkanItMeasurementGroups:
         for _, row in absorbance_sheet_df.iterrows():
             if pd.notna(row.iloc[0]) and "Wavelength" in row.iloc[0]:
                 match = re.search(r"Wavelength:\s*(\d{1,3})\s*nm", row.iloc[0])
-                if match:
+                if match and float(match.group(1)) != 0:
                     wavelength = float(match.group(1))
             if pd.notna(row.iloc[0]) and "Plate" in row.iloc[0]:
                 match = re.search(r"Plate\s*(\d)", row.iloc[0])
