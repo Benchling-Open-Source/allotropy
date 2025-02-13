@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from importlib.metadata import metadata
 from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
@@ -70,6 +71,10 @@ class Metadata:
     device_identifier: str | None = None
     firmware_version: str | None = None
     description: str | None = None
+    detector_model_number: str | None = None
+    pump_model_number: str | None = None
+    sampler_model_number: str | None = None
+    lc_agg_custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -170,25 +175,30 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def map_model(self, data: Data) -> Model:
         return Model(
-            liquid_chromatography_aggregate_document=LiquidChromatographyAggregateDocument(
-                liquid_chromatography_document=[
-                    self._get_technique_document(group, data.metadata)
-                    for group in data.measurement_groups
-                ],
-                device_system_document=DeviceSystemDocument(
-                    asset_management_identifier=data.metadata.asset_management_identifier,
-                    product_manufacturer=data.metadata.product_manufacturer,
-                    device_identifier=data.metadata.device_identifier,
-                    firmware_version=data.metadata.firmware_version,
+            liquid_chromatography_aggregate_document=add_custom_information_document(
+                LiquidChromatographyAggregateDocument(
+                    liquid_chromatography_document=[
+                        self._get_technique_document(group, data.metadata)
+                        for group in data.measurement_groups
+                    ],
+                    device_system_document=DeviceSystemDocument(
+                        asset_management_identifier=data.metadata.asset_management_identifier,
+                        product_manufacturer=data.metadata.product_manufacturer,
+                        device_identifier=data.metadata.device_identifier,
+                        firmware_version=data.metadata.firmware_version,
+                        pump_model_number=data.metadata.pump_model_number,
+                        detector_model_number=data.metadata.detector_model_number,
+                    ),
+                    data_system_document=DataSystemDocument(
+                        file_name=data.metadata.file_name,
+                        UNC_path=data.metadata.unc_path,
+                        software_name=data.metadata.software_name,
+                        software_version=data.metadata.software_version,
+                        ASM_converter_name=self.converter_name,
+                        ASM_converter_version=ASM_CONVERTER_VERSION,
+                    ),
                 ),
-                data_system_document=DataSystemDocument(
-                    file_name=data.metadata.file_name,
-                    UNC_path=data.metadata.unc_path,
-                    software_name=data.metadata.software_name,
-                    software_version=data.metadata.software_version,
-                    ASM_converter_name=self.converter_name,
-                    ASM_converter_version=ASM_CONVERTER_VERSION,
-                ),
+                data.metadata.lc_agg_custom_info,
             ),
             field_asm_manifest=self.MANIFEST,
         )
