@@ -3173,14 +3173,11 @@
         ],
         "device system document": {
             "device identifier": "N/A",
-            "model number": "N/A",
-            "equipment serial number": "N/A"
+            "model number": "N/A"
         },
         "data system document": {
             "file name": "luciferase_assay_example.xlsx",
             "UNC path": "tests/parsers/thermo_skanit/testdata/luciferase_assay_example.xlsx",
-            "software name": "N/A",
-            "software version": "N/A",
             "ASM converter name": "allotropy_thermo_fisher_scientific_skanit",
             "ASM converter version": "0.1.74"
         }

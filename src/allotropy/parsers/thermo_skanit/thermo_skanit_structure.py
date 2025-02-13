@@ -34,12 +34,6 @@ SHEET_TABS = [
     "General information",
 ]
 
-INSTRUMENT_KEYS = [
-    "device_identifier",
-    "model_number",
-    "equipment_serial_number",
-]
-
 GENERAL_INFO_KEYS = [
     "software_name",
     "software_version",
@@ -63,23 +57,25 @@ class ThermoSkanItMetadata:
             unc_path=file_path,
             device_identifier=instrument_info_data["device_identifier"],
             model_number=instrument_info_data["model_number"],
-            equipment_serial_number=instrument_info_data["equipment_serial_number"],
+            equipment_serial_number=instrument_info_data.get("equipment_serial_number"),
             software_name=general_info_data["software_name"],
             software_version=general_info_data["software_version"],
         )
 
     @staticmethod
-    def _get_general_info_data(general_info_df: pd.DataFrame | None) -> dict[str, str]:
+    def _get_general_info_data(
+        general_info_df: pd.DataFrame | None,
+    ) -> dict[str, str | None]:
         if general_info_df is None:
-            return dict.fromkeys(GENERAL_INFO_KEYS, NOT_APPLICABLE)
+            return dict.fromkeys(GENERAL_INFO_KEYS, None)
 
         general_info_data = df_to_series_data(parse_header_row(general_info_df.T))
         software_info = general_info_data.get(str, "Report generated with SW version")
         if not software_info:
             return dict.fromkeys(GENERAL_INFO_KEYS, NOT_APPLICABLE)
-        software_name, software_version = software_info.split(",", 1)
-        match = re.search(r"\d+(?:\.\d+)*", software_version)
-        software_version = match.group() if match else NOT_APPLICABLE
+        software_name, software_version_txt = software_info.split(",", 1)
+        match = re.search(r"\d+(?:\.\d+)*", software_version_txt)
+        software_version = match.group() if match else None
         return {
             "software_name": software_name,
             "software_version": software_version,
@@ -90,7 +86,10 @@ class ThermoSkanItMetadata:
         instrument_info_df: pd.DataFrame | None,
     ) -> dict[str, str]:
         if instrument_info_df is None:
-            return dict.fromkeys(INSTRUMENT_KEYS, NOT_APPLICABLE)
+            return {
+                "device_identifier": NOT_APPLICABLE,
+                "model_number": NOT_APPLICABLE,
+            }
 
         # Replace empty with "" so we can add label columns together
         instrument_info_df = instrument_info_df.fillna("")
@@ -108,11 +107,12 @@ class ThermoSkanItMetadata:
         lookups = {
             "device_identifier": ("Name", NOT_APPLICABLE),
             "model_number": ("Name", NOT_APPLICABLE),
-            "equipment_serial_number": ("Serial number", NOT_APPLICABLE),
+            "equipment_serial_number": ("Serial number", None),
         }
-
         return {
-            key: instrument_info_data.get(str, *lookups[key]) for key in INSTRUMENT_KEYS
+            key: value
+            for key, (label, default) in lookups.items()
+            if (value := instrument_info_data.get(str, label, default)) is not None
         }
 
 
