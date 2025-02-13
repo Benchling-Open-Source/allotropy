@@ -3,13 +3,14 @@ from dataclasses import dataclass
 from typing import Generic, TypeVar
 
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.utils.calculated_data_documents.definition import Referenceable
 from allotropy.parsers.utils.values import assert_not_none
 
 T = TypeVar("T")
 
 
-@dataclass(frozen=True)
-class Element:
+@dataclass
+class Element(Referenceable):
     data: dict[str, float | str | None]
 
     def get_or_none(self, key: str) -> float | str | None:
