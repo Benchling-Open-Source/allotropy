@@ -48,7 +48,7 @@ class ConductivityMeasurement(UnicornMeasurement):
                 cls.filter_curve_or_none(elements, r"^% Cond$"),
                 DataCubeComponent(
                     type_=FieldComponentDatatype.float,
-                    concept="electric conductivity",
+                    concept="percentage electric conductivity",
                     unit="%",
                 ),
             ),
