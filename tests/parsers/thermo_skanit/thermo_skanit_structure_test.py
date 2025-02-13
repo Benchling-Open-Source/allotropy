@@ -1,11 +1,12 @@
 import pandas as pd
-import pytest
 
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
-from allotropy.exceptions import AllotropyParserError
+from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
+    MeasurementType,
+)
 from allotropy.parsers.thermo_skanit.thermo_skanit_structure import (
-    AbsorbanceDataWell,
     DataThermoSkanIt,
+    DataWell,
     ThermoSkanItMeasurementGroups,
     ThermoSkanItMetadata,
 )
@@ -153,21 +154,9 @@ def test_get_sample_role() -> None:
     sample_name_2 = "Un4"
 
     assert (
-        AbsorbanceDataWell.get_sample_role(sample_name_1)
-        == SampleRoleType.standard_sample_role
+        DataWell.get_sample_role(sample_name_1) == SampleRoleType.standard_sample_role
     )
-    assert (
-        AbsorbanceDataWell.get_sample_role(sample_name_2)
-        == SampleRoleType.unknown_sample_role
-    )
-
-
-def test_get_sample_role_failure() -> None:
-    sample_name_error = "Unk4"
-    with pytest.raises(
-        AllotropyParserError, match="Unable to identify sample role from"
-    ):
-        AbsorbanceDataWell.get_sample_role(sample_name_error)
+    assert DataWell.get_sample_role(sample_name_2) == SampleRoleType.unknown_sample_role
 
 
 def test_create_skanit_meas_group() -> None:
@@ -183,9 +172,10 @@ def test_create_skanit_meas_group() -> None:
     )
 
     skanit_meas_group = ThermoSkanItMeasurementGroups.create(
-        absorbance_sheet_df=absorbance_df,
+        sheet_df=absorbance_df,
         layout_definitions_df=layout_definitions_df,
         session_info_df=session_info_df,
+        type_=MeasurementType.ULTRAVIOLET_ABSORBANCE,
     )
     assert len(skanit_meas_group) == 96
     assert skanit_meas_group[0].plate_well_count == 96

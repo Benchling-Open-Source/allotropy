@@ -16,122 +16,211 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
     Metadata,
 )
 from allotropy.exceptions import AllotropyParserError
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.thermo_skanit.constants import DEVICE_TYPE, SAMPLE_ROLE_MAPPINGS
 from allotropy.parsers.utils.pandas import df_to_series_data, parse_header_row
 from allotropy.parsers.utils.uuids import random_uuid_str
+
+MEASUREMENT_TYPES = {
+    MeasurementType.ULTRAVIOLET_ABSORBANCE: "Absorbance",
+    MeasurementType.FLUORESCENCE: "Fluorescence",
+    MeasurementType.LUMINESCENCE: "Luminescence",
+}
+
+SHEET_TABS = [
+    "Session information",
+    "Instrument information",
+    "Layout definitions",
+    "General information",
+]
+
+GENERAL_INFO_KEYS = [
+    "software_name",
+    "software_version",
+]
 
 
 @dataclass(frozen=True)
 class ThermoSkanItMetadata:
     @staticmethod
     def create_metadata(
-        instrument_info_df: pd.DataFrame, general_info_df: pd.DataFrame, file_path: str
+        file_path: str,
+        instrument_info_df: pd.DataFrame | None,
+        general_info_df: pd.DataFrame | None,
     ) -> Metadata:
+        instrument_info_data = ThermoSkanItMetadata._get_instrument_data(
+            instrument_info_df
+        )
+        general_info_data = ThermoSkanItMetadata._get_general_info_data(general_info_df)
+        return Metadata(
+            file_name=Path(file_path).name,
+            unc_path=file_path,
+            device_identifier=instrument_info_data["device_identifier"],
+            model_number=instrument_info_data["model_number"],
+            equipment_serial_number=instrument_info_data.get("equipment_serial_number"),
+            software_name=general_info_data["software_name"],
+            software_version=general_info_data["software_version"],
+        )
 
-        # Replace empty with "" so we can add label columns together.
+    @staticmethod
+    def _get_general_info_data(
+        general_info_df: pd.DataFrame | None,
+    ) -> dict[str, str | None]:
+        if general_info_df is None:
+            return dict.fromkeys(GENERAL_INFO_KEYS, None)
+
+        general_info_data = df_to_series_data(parse_header_row(general_info_df.T))
+        software_info = general_info_data.get(str, "Report generated with SW version")
+        if not software_info:
+            return dict.fromkeys(GENERAL_INFO_KEYS, NOT_APPLICABLE)
+        software_name, software_version_txt = software_info.split(",", 1)
+        match = re.search(r"\d+(?:\.\d+)*", software_version_txt)
+        software_version = match.group() if match else None
+        return {
+            "software_name": software_name,
+            "software_version": software_version,
+        }
+
+    @staticmethod
+    def _get_instrument_data(
+        instrument_info_df: pd.DataFrame | None,
+    ) -> dict[str, str]:
+        if instrument_info_df is None:
+            return {
+                "device_identifier": NOT_APPLICABLE,
+                "model_number": NOT_APPLICABLE,
+            }
+
+        # Replace empty with "" so we can add label columns together
         instrument_info_df = instrument_info_df.fillna("")
+
         # The labels for data is spread across the first two columns for some reason, combine them as index.
         # NOTE: This is an assumption that may not be true for future files
         # Combine the first two columns into a Series
         combined_series = instrument_info_df.iloc[:, 0] + instrument_info_df.iloc[:, 1]
         # Convert the Series to an Index
         instrument_info_df.index = pd.Index(combined_series)
+
         # Read data from the last column, this is where values are found
         instrument_info_data = df_to_series_data(instrument_info_df.T, index=-1)
-        general_info_data = df_to_series_data(parse_header_row(general_info_df.T))
-        software_info = general_info_data.get(str, "Report generated with SW version")
-        # Regular expression to extract software and version
-        pattern = r"(SkanIt Software.*?)(?=,)|(\b\d+\.\d+\.\d+\.\d+\b)"
-        if software_info is not None:
-            matches = re.findall(pattern, software_info)
-            # Process matches to get a cleaner output
-            software_name = matches[0][0].strip() if matches[0][0] else None
-            version_number = (
-                matches[1][1] if len(matches) > 1 and matches[1][1] else None
-            )
-        else:
-            msg = "Unable to identify Software Name or Version from General information tab"
-            raise AllotropyParserError(msg)
 
-        return Metadata(
-            device_identifier=instrument_info_data[str, "Name"],
-            model_number=instrument_info_data[str, "Name"],
-            software_name=software_name,
-            software_version=version_number,
-            file_name=Path(file_path).name,
-            unc_path=file_path,
-            equipment_serial_number=instrument_info_data.get(str, "Serial number"),
-        )
+        lookups = {
+            "device_identifier": ("Name", NOT_APPLICABLE),
+            "model_number": ("Name", NOT_APPLICABLE),
+            "equipment_serial_number": ("Serial number", None),
+        }
+        return {
+            key: value
+            for key, (label, default) in lookups.items()
+            if (value := instrument_info_data.get(str, label, default)) is not None
+        }
 
 
 @dataclass(frozen=True)
-class AbsorbanceDataWell(Measurement):
+class DataWell(Measurement):
     @staticmethod
     def create(
         well_location: str,
-        abs_value: float,
+        value: float,
         sample_name: str,
-        detector_wavelength: float,
+        type_: MeasurementType,
+        detector_wavelength: float | None,
+        well_plate_identifier: str | None,
     ) -> Measurement:
+        measurement_type_str = MEASUREMENT_TYPES[type_]
         return Measurement(
-            type_=MeasurementType.ULTRAVIOLET_ABSORBANCE,
+            type_=type_,
             identifier=random_uuid_str(),
             sample_identifier=sample_name,
             location_identifier=well_location,
-            sample_role_type=AbsorbanceDataWell.get_sample_role(sample_name),
-            absorbance=abs_value,
+            sample_role_type=DataWell.get_sample_role(sample_name),
             detector_wavelength_setting=detector_wavelength,
             device_type=DEVICE_TYPE,
+            detection_type=measurement_type_str,
+            well_plate_identifier=well_plate_identifier,
+            absorbance=value
+            if measurement_type_str
+            == MEASUREMENT_TYPES[MeasurementType.ULTRAVIOLET_ABSORBANCE]
+            else None,
+            fluorescence=value
+            if measurement_type_str == MEASUREMENT_TYPES[MeasurementType.FLUORESCENCE]
+            else None,
+            luminescence=value
+            if measurement_type_str == MEASUREMENT_TYPES[MeasurementType.LUMINESCENCE]
+            else None,
         )
 
     @staticmethod
-    def get_sample_role(sample_name: str) -> SampleRoleType:
+    def get_sample_role(sample_name: str) -> SampleRoleType | None:
         stripped_text = re.sub(r"\d+", "", sample_name)
         try:
             return SAMPLE_ROLE_MAPPINGS[stripped_text]
-        except KeyError as err:
-            msg = f"Unable to identify sample role from {sample_name}"
-            raise AllotropyParserError(msg) from err
+        except KeyError as _:
+            return None
 
 
 @dataclass(frozen=True)
 class ThermoSkanItMeasurementGroups:
     @staticmethod
     def create(
-        absorbance_sheet_df: pd.DataFrame,
-        layout_definitions_df: pd.DataFrame,
-        session_info_df: pd.DataFrame,
+        sheet_df: pd.DataFrame,
+        type_: MeasurementType,
+        layout_definitions_df: pd.DataFrame | None,
+        session_info_df: pd.DataFrame | None,
     ) -> list[MeasurementGroup]:
         (
-            abs_df,
+            data_df,
             name_df,
             wavelength,
-        ) = ThermoSkanItMeasurementGroups.identify_abs_and_sample_dfs(
-            absorbance_sheet_df
-        )
-        plate_well_count = ThermoSkanItMeasurementGroups.get_plate_well_count(
-            layout_definitions_df
-        )
+            well_plate_identifier,
+        ) = ThermoSkanItMeasurementGroups.identify_data_and_sample_dfs(sheet_df)
+        data_df.dropna(how="all", inplace=True)
+        plate_well_count = None
+        if layout_definitions_df is not None:
+            plate_well_count = ThermoSkanItMeasurementGroups.get_plate_well_count(
+                layout_definitions_df
+            )
+        if not plate_well_count:
+            plate_well_count = data_df.size
 
-        session_info_data = df_to_series_data(parse_header_row(session_info_df.T))
-        session_name = session_info_data.get(str, "Session notes")
-        exec_time = session_info_data[str, "Execution time"]
+        session_name = exec_time = None
+        if session_info_df is not None:
+            session_info_data = df_to_series_data(parse_header_row(session_info_df.T))
+            session_name = session_info_data.get(str, "Session notes")
+            exec_time = session_info_data.get(str, "Execution time")
+
+        if not exec_time:
+            exec_time = sheet_df.iloc[1][0]
+
+        if not exec_time:
+            msg = "Execution time not found"
+            raise AllotropyParserError(msg)
+
+        if not session_name:
+            experiment = sheet_df.iloc[0][0]
+            session_name = experiment.replace(".skax", "") if experiment else None
 
         meas_groups = []
         # Stack the DataFrame, creating a MultiIndex
-        stacked = abs_df.stack()
+        stacked = data_df.stack()
 
         # Iterate through the MultiIndex series and unpack it correctly
         for well_letter, well_column in stacked.index:
-            abs_well = AbsorbanceDataWell.create(
+            if not name_df.empty:
+                sample_name = name_df.loc[well_letter, well_column]
+            else:
+                sample_name = f"{well_plate_identifier}_{well_letter}{well_column}"
+            well = DataWell.create(
                 well_location=well_letter + str(well_column),
-                abs_value=stacked.loc[well_letter, well_column],
-                sample_name=str(name_df.loc[well_letter, well_column]),
+                value=stacked.loc[well_letter, well_column],
+                sample_name=sample_name,
                 detector_wavelength=wavelength,
+                type_=type_,
+                well_plate_identifier=well_plate_identifier,
             )
             meas_groups.append(
                 MeasurementGroup(
-                    measurements=[abs_well],
+                    measurements=[well],
                     plate_well_count=plate_well_count,
                     measurement_time=exec_time,
                     experimental_data_identifier=session_name,
@@ -140,32 +229,25 @@ class ThermoSkanItMeasurementGroups:
         return meas_groups
 
     @staticmethod
-    def get_plate_well_count(layout_definitions_df: pd.DataFrame) -> int:
-        # Combine all non-empty values in the row where "Plate template" is found
-        plate_template_row = layout_definitions_df[
+    def get_plate_well_count(layout_definitions_df: pd.DataFrame) -> int | None:
+        # Find row containing "Plate template"
+        plate_row = layout_definitions_df[
             layout_definitions_df.iloc[:, 0].str.contains(
                 "Plate template", case=False, na=False
             )
         ]
-        plate_template_value = (
-            plate_template_row.iloc[0].dropna().str.cat(sep=" ")
-            if not plate_template_row.empty
-            else None
-        )
-        msg = (
-            "Unable to identify plate well count from Layout definitions tab. "
-            "Expected to find in Plate template description."
-        )
-        if plate_template_value is None:
-            raise AllotropyParserError(msg)
-        else:
-            # Extract the integer from the combined string
-            search_string = re.search(r"\d+", plate_template_value)
-            if search_string:
-                plate_template_number = int(search_string.group())
-                return plate_template_number
-            else:
-                raise AllotropyParserError(msg)
+
+        if plate_row.empty:
+            return None
+
+        # Combine all non-empty values in the row
+        combined_value = plate_row.iloc[0].dropna().str.cat(sep=" ")
+
+        # Extract first number found
+        if match := re.search(r"\d+", combined_value):
+            return int(match.group())
+
+        return None
 
     @staticmethod
     def _set_headers(df: pd.DataFrame) -> pd.DataFrame:
@@ -178,45 +260,54 @@ class ThermoSkanItMeasurementGroups:
         return df
 
     @staticmethod
-    def identify_abs_and_sample_dfs(
+    def identify_data_and_sample_dfs(
         absorbance_sheet_df: pd.DataFrame,
-    ) -> tuple[pd.DataFrame, pd.DataFrame, float]:
+    ) -> tuple[pd.DataFrame, pd.DataFrame, float | None, str | None]:
         # Initialize variables
-        start_reading_abs = False
+        start_reading_data = False
         start_reading_sample = False
         data_between_abs_and_blank = []
         data_between_sample_and_blank = []
+        wavelength = None
+        well_plate_identifier = None
 
         # Iterate through each row
         for _, row in absorbance_sheet_df.iterrows():
             if pd.notna(row.iloc[0]) and "Wavelength" in row.iloc[0]:
-                match = re.search(r"Wavelength:\s*(\d{3})\s*nm", row.iloc[0])
+                match = re.search(r"Wavelength:\s*(\d{1,3})\s*nm", row.iloc[0])
+                if match and (val := float(match.group(1))) != 0:
+                    wavelength = val
+            if pd.notna(row.iloc[0]) and "Plate" in row.iloc[0]:
+                match = re.search(r"Plate\s*(\d)", row.iloc[0])
                 if match:
-                    wavelength = float(match.group(1))
-                else:
-                    msg = "Unable to identify Wavelength (nm) from Absorbance tab"
-                    raise AllotropyParserError(msg)
-            if "Abs" in row.values.astype(str):  # Check if 'abs' is in the row
-                start_reading_abs = True
-            if "Sample" in row.values.astype(str):  # Check if 'sample' is in the row
+                    well_plate_identifier = match.group(0)
+            if "Abs" in row.values.astype(str) or "RLU" in row.values.astype(str):
+                start_reading_data = True
+            if "Sample" in row.values.astype(str):
                 start_reading_sample = True
-            if pd.notna(row.iloc[0]) and "Autoloading" in row.iloc[0]:
-                break
 
             if start_reading_sample:
                 data_between_sample_and_blank.append(row)
-            elif start_reading_abs:
+            elif start_reading_data:
                 data_between_abs_and_blank.append(row)
 
         # Create DataFrames with the collected data
         df_between_abs_and_blank = ThermoSkanItMeasurementGroups._set_headers(
             pd.DataFrame(data_between_abs_and_blank)
         )
-        df_between_sample_and_blank = ThermoSkanItMeasurementGroups._set_headers(
-            pd.DataFrame(data_between_sample_and_blank)
-        )
+        if data_between_sample_and_blank:
+            df_between_sample_and_blank = ThermoSkanItMeasurementGroups._set_headers(
+                pd.DataFrame(data_between_sample_and_blank)
+            )
+        else:
+            df_between_sample_and_blank = pd.DataFrame()
 
-        return (df_between_abs_and_blank, df_between_sample_and_blank, wavelength)
+        return (
+            df_between_abs_and_blank,
+            df_between_sample_and_blank,
+            wavelength,
+            well_plate_identifier,
+        )
 
 
 @dataclass(frozen=True)
@@ -232,29 +323,32 @@ class DataThermoSkanIt(Data):
 
     @staticmethod
     def create(sheet_data: dict[str, pd.DataFrame], file_path: str) -> Data:
-        for sheet_name, df in sheet_data.items():
-            clean_df = DataThermoSkanIt._clean_dataframe(df)
-            # NOTE: This assumes a single absorbance plate on a single tab
-            if "Absorbance" in sheet_name:
-                abs_df = clean_df
-            elif "Session information" in sheet_name:
-                session_df = clean_df
-            elif "Instrument information" in sheet_name:
-                inst_info_df = clean_df
-            elif "Layout" in sheet_name:
-                layout_df = clean_df
-            elif "General" in sheet_name:
-                general_df = clean_df
+        measurement_df = _type = None
+        clean_data = {
+            key: DataThermoSkanIt._clean_dataframe(sheet_data[key])
+            for key in sheet_data.keys()
+            if key in SHEET_TABS
+        }
+        for measurement_type, measurement_type_key in MEASUREMENT_TYPES.items():
+            for sheet_name, df in sheet_data.items():
+                if measurement_type_key in sheet_name:
+                    measurement_df = df
+                    _type = measurement_type
+                    break
 
+        if measurement_df is None or measurement_df.empty or _type is None:
+            msg = "Unsupported or missing measurement type"
+            raise AllotropyParserError(msg)
         metadata = ThermoSkanItMetadata.create_metadata(
-            instrument_info_df=inst_info_df,
-            general_info_df=general_df,
+            instrument_info_df=clean_data.get("Instrument information"),
+            general_info_df=clean_data.get("General information"),
             file_path=file_path,
         )
         measurement_groups = ThermoSkanItMeasurementGroups.create(
-            absorbance_sheet_df=abs_df,
-            layout_definitions_df=layout_df,
-            session_info_df=session_df,
+            sheet_df=measurement_df,
+            layout_definitions_df=clean_data.get("Layout definitions"),
+            session_info_df=clean_data.get("Session information"),
+            type_=_type,
         )
 
         return Data(

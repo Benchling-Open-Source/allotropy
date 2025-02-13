@@ -4,7 +4,7 @@
         "plate reader document": [
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -16,33 +16,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Std0001",
+                                "sample identifier": "Plate 1_A1",
                                 "location identifier": "A1",
-                                "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 1.7455,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 105.4,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -54,33 +49,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Std0001",
+                                "sample identifier": "Plate 1_A2",
                                 "location identifier": "A2",
-                                "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 1.6148,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 111.6,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -92,33 +82,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0001",
+                                "sample identifier": "Plate 1_A3",
                                 "location identifier": "A3",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.0805,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 87.6,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -130,33 +115,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0001",
+                                "sample identifier": "Plate 1_A4",
                                 "location identifier": "A4",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.0865,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 218.5,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -168,33 +148,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0002",
+                                "sample identifier": "Plate 1_A5",
                                 "location identifier": "A5",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.0743,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 387.4,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -206,33 +181,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0002",
+                                "sample identifier": "Plate 1_A6",
                                 "location identifier": "A6",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.0774,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 1087.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -244,33 +214,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0003",
+                                "sample identifier": "Plate 1_A7",
                                 "location identifier": "A7",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.1245,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 2368.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -282,33 +247,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0003",
+                                "sample identifier": "Plate 1_A8",
                                 "location identifier": "A8",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.0914,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 3075.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -320,33 +280,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0004",
+                                "sample identifier": "Plate 1_A9",
                                 "location identifier": "A9",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.0761,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 3824.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -358,33 +313,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0004",
+                                "sample identifier": "Plate 1_A10",
                                 "location identifier": "A10",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.0778,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 3880.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -396,33 +346,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0005",
+                                "sample identifier": "Plate 1_A11",
                                 "location identifier": "A11",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.1483,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 2897.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -434,33 +379,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0005",
+                                "sample identifier": "Plate 1_A12",
                                 "location identifier": "A12",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.1768,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 1185.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -472,33 +412,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Std0002",
+                                "sample identifier": "Plate 1_B1",
                                 "location identifier": "B1",
-                                "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 1.3625,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 90.72,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -510,33 +445,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Std0002",
+                                "sample identifier": "Plate 1_B2",
                                 "location identifier": "B2",
-                                "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 1.1336,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 79.45,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -548,33 +478,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0007",
+                                "sample identifier": "Plate 1_B3",
                                 "location identifier": "B3",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.3925,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 128.4,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -586,33 +511,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0007",
+                                "sample identifier": "Plate 1_B4",
                                 "location identifier": "B4",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.461,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 187.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -624,33 +544,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0008",
+                                "sample identifier": "Plate 1_B5",
                                 "location identifier": "B5",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.1506,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 1133.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -662,33 +577,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0008",
+                                "sample identifier": "Plate 1_B6",
                                 "location identifier": "B6",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.1452,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 58370.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -700,33 +610,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0014",
+                                "sample identifier": "Plate 1_B7",
                                 "location identifier": "B7",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.829,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 398100.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -738,33 +643,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0014",
+                                "sample identifier": "Plate 1_B8",
                                 "location identifier": "B8",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.8926,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 585700.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -776,33 +676,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0015",
+                                "sample identifier": "Plate 1_B9",
                                 "location identifier": "B9",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.2635,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 607100.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -814,33 +709,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0015",
+                                "sample identifier": "Plate 1_B10",
                                 "location identifier": "B10",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.2679,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 674100.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -852,33 +742,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0016",
+                                "sample identifier": "Plate 1_B11",
                                 "location identifier": "B11",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.6276,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 629400.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -890,33 +775,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0016",
+                                "sample identifier": "Plate 1_B12",
                                 "location identifier": "B12",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.737,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 2650.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -928,33 +808,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Std0003",
+                                "sample identifier": "Plate 1_C1",
                                 "location identifier": "C1",
-                                "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.9252,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 78.12,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -966,33 +841,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Std0003",
+                                "sample identifier": "Plate 1_C2",
                                 "location identifier": "C2",
-                                "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.953,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 88.4,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -1004,33 +874,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0017",
+                                "sample identifier": "Plate 1_C3",
                                 "location identifier": "C3",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.2837,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 135.8,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -1042,33 +907,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0017",
+                                "sample identifier": "Plate 1_C4",
                                 "location identifier": "C4",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.2678,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 210.8,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -1080,33 +940,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0018",
+                                "sample identifier": "Plate 1_C5",
                                 "location identifier": "C5",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.1058,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 8523.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -1118,33 +973,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0018",
+                                "sample identifier": "Plate 1_C6",
                                 "location identifier": "C6",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.1021,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 71210.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -1156,33 +1006,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0009",
+                                "sample identifier": "Plate 1_C7",
                                 "location identifier": "C7",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.4054,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 351400.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -1194,33 +1039,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0009",
+                                "sample identifier": "Plate 1_C8",
                                 "location identifier": "C8",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.5109,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 504400.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -1232,33 +1072,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0010",
+                                "sample identifier": "Plate 1_C9",
                                 "location identifier": "C9",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.1533,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 634700.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -1270,33 +1105,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0010",
+                                "sample identifier": "Plate 1_C10",
                                 "location identifier": "C10",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.1443,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 555700.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -1308,33 +1138,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0011",
+                                "sample identifier": "Plate 1_C11",
                                 "location identifier": "C11",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.3224,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 674300.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -1346,33 +1171,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0011",
+                                "sample identifier": "Plate 1_C12",
                                 "location identifier": "C12",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.3837,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 3251.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -1384,33 +1204,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Std0004",
+                                "sample identifier": "Plate 1_D1",
                                 "location identifier": "D1",
-                                "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.573,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 66.75,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -1422,33 +1237,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Std0004",
+                                "sample identifier": "Plate 1_D2",
                                 "location identifier": "D2",
-                                "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.5763,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 92.13,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -1460,33 +1270,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0023",
+                                "sample identifier": "Plate 1_D3",
                                 "location identifier": "D3",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.9125,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 142.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -1498,33 +1303,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0023",
+                                "sample identifier": "Plate 1_D4",
                                 "location identifier": "D4",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.9411,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 241.7,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -1536,33 +1336,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0024",
+                                "sample identifier": "Plate 1_D5",
                                 "location identifier": "D5",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.4575,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 354.5,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -1574,33 +1369,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0024",
+                                "sample identifier": "Plate 1_D6",
                                 "location identifier": "D6",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.4357,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 1687.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -1612,33 +1402,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0019",
+                                "sample identifier": "Plate 1_D7",
                                 "location identifier": "D7",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.271,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 58790.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -1650,33 +1435,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0019",
+                                "sample identifier": "Plate 1_D8",
                                 "location identifier": "D8",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.3048,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 341300.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -1688,33 +1468,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0020",
+                                "sample identifier": "Plate 1_D9",
                                 "location identifier": "D9",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.1117,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 519200.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -1726,33 +1501,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0020",
+                                "sample identifier": "Plate 1_D10",
                                 "location identifier": "D10",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.1059,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 576800.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -1764,33 +1534,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0021",
+                                "sample identifier": "Plate 1_D11",
                                 "location identifier": "D11",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.19,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 677000.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -1802,33 +1567,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0021",
+                                "sample identifier": "Plate 1_D12",
                                 "location identifier": "D12",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.262,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 3445.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -1840,33 +1600,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Std0005",
+                                "sample identifier": "Plate 1_E1",
                                 "location identifier": "E1",
-                                "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.3996,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 41.33,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -1878,33 +1633,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Std0005",
+                                "sample identifier": "Plate 1_E2",
                                 "location identifier": "E2",
-                                "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.4006,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 99.06,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -1916,33 +1666,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0030",
+                                "sample identifier": "Plate 1_E3",
                                 "location identifier": "E3",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.5936,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 91.67,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -1954,33 +1699,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0030",
+                                "sample identifier": "Plate 1_E4",
                                 "location identifier": "E4",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.5507,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 137.6,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -1992,33 +1732,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0031",
+                                "sample identifier": "Plate 1_E5",
                                 "location identifier": "E5",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.2488,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 342.6,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -2030,33 +1765,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0031",
+                                "sample identifier": "Plate 1_E6",
                                 "location identifier": "E6",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.284,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 1135.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -2068,33 +1798,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0025",
+                                "sample identifier": "Plate 1_E7",
                                 "location identifier": "E7",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.9017,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 79850.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -2106,33 +1831,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0025",
+                                "sample identifier": "Plate 1_E8",
                                 "location identifier": "E8",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.9641,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 343100.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -2144,33 +1864,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0026",
+                                "sample identifier": "Plate 1_E9",
                                 "location identifier": "E9",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.3821,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 504300.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -2182,33 +1897,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0026",
+                                "sample identifier": "Plate 1_E10",
                                 "location identifier": "E10",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.4055,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 601200.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -2220,33 +1930,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0027",
+                                "sample identifier": "Plate 1_E11",
                                 "location identifier": "E11",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.2567,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 651700.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -2258,33 +1963,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0027",
+                                "sample identifier": "Plate 1_E12",
                                 "location identifier": "E12",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.235,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 3192.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -2296,33 +1996,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Std0006",
+                                "sample identifier": "Plate 1_F1",
                                 "location identifier": "F1",
-                                "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.2403,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 66.91,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -2334,33 +2029,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Std0006",
+                                "sample identifier": "Plate 1_F2",
                                 "location identifier": "F2",
-                                "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.2398,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 236.3,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -2372,33 +2062,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0035",
+                                "sample identifier": "Plate 1_F3",
                                 "location identifier": "F3",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.3468,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 1957.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -2410,33 +2095,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0035",
+                                "sample identifier": "Plate 1_F4",
                                 "location identifier": "F4",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.3336,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 1842.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -2448,33 +2128,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0036",
+                                "sample identifier": "Plate 1_F5",
                                 "location identifier": "F5",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.1641,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 3872.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -2486,33 +2161,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0036",
+                                "sample identifier": "Plate 1_F6",
                                 "location identifier": "F6",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.1712,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 16170.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -2524,33 +2194,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0032",
+                                "sample identifier": "Plate 1_F7",
                                 "location identifier": "F7",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.4684,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 66630.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -2562,33 +2227,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0032",
+                                "sample identifier": "Plate 1_F8",
                                 "location identifier": "F8",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.4533,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 230600.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -2600,33 +2260,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0033",
+                                "sample identifier": "Plate 1_F9",
                                 "location identifier": "F9",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.2035,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 406300.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -2638,33 +2293,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0033",
+                                "sample identifier": "Plate 1_F10",
                                 "location identifier": "F10",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.1862,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 593300.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -2676,33 +2326,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0034",
+                                "sample identifier": "Plate 1_F11",
                                 "location identifier": "F11",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.1577,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 737900.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -2714,33 +2359,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0034",
+                                "sample identifier": "Plate 1_F12",
                                 "location identifier": "F12",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.154,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 3425.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -2752,33 +2392,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Std0007",
+                                "sample identifier": "Plate 1_G1",
                                 "location identifier": "G1",
-                                "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.1677,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 39.2,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -2790,33 +2425,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Std0007",
+                                "sample identifier": "Plate 1_G2",
                                 "location identifier": "G2",
-                                "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.1577,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 101.8,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -2828,33 +2458,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0006",
+                                "sample identifier": "Plate 1_G3",
                                 "location identifier": "G3",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.115,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 67.66,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -2866,33 +2491,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0006",
+                                "sample identifier": "Plate 1_G4",
                                 "location identifier": "G4",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.1239,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 2158.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -2904,33 +2524,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0012",
+                                "sample identifier": "Plate 1_G5",
                                 "location identifier": "G5",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.2031,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 11550.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -2942,33 +2557,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0012",
+                                "sample identifier": "Plate 1_G6",
                                 "location identifier": "G6",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.1964,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 24110.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -2980,33 +2590,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0037",
+                                "sample identifier": "Plate 1_G7",
                                 "location identifier": "G7",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.2585,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 49280.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -3018,33 +2623,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0037",
+                                "sample identifier": "Plate 1_G8",
                                 "location identifier": "G8",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.2894,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 230300.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -3056,33 +2656,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0038",
+                                "sample identifier": "Plate 1_G9",
                                 "location identifier": "G9",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.1536,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 445700.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -3094,33 +2689,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0038",
+                                "sample identifier": "Plate 1_G10",
                                 "location identifier": "G10",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.1317,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 551500.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -3132,33 +2722,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0039",
+                                "sample identifier": "Plate 1_G11",
                                 "location identifier": "G11",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.1065,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 701100.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -3170,33 +2755,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0039",
+                                "sample identifier": "Plate 1_G12",
                                 "location identifier": "G12",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.1264,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 2552.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -3208,33 +2788,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Blank1",
+                                "sample identifier": "Plate 1_H1",
                                 "location identifier": "H1",
-                                "sample role type": "blank role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.0905,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 48.28,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -3246,33 +2821,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Blank1",
+                                "sample identifier": "Plate 1_H2",
                                 "location identifier": "H2",
-                                "sample role type": "blank role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.0916,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 65.38,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -3284,33 +2854,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0013",
+                                "sample identifier": "Plate 1_H3",
                                 "location identifier": "H3",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.4253,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 94.27,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -3322,33 +2887,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0013",
+                                "sample identifier": "Plate 1_H4",
                                 "location identifier": "H4",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.4251,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 138.8,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -3360,33 +2920,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0022",
+                                "sample identifier": "Plate 1_H5",
                                 "location identifier": "H5",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.147,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 201.6,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -3398,33 +2953,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0022",
+                                "sample identifier": "Plate 1_H6",
                                 "location identifier": "H6",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.1505,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 385.8,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -3436,33 +2986,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0028",
+                                "sample identifier": "Plate 1_H7",
                                 "location identifier": "H7",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.1549,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 752.4,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -3474,33 +3019,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0028",
+                                "sample identifier": "Plate 1_H8",
                                 "location identifier": "H8",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.151,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 1608.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -3512,33 +3052,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0029",
+                                "sample identifier": "Plate 1_H9",
                                 "location identifier": "H9",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.1131,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 2491.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -3550,33 +3085,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0029",
+                                "sample identifier": "Plate 1_H10",
                                 "location identifier": "H10",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.1188,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 2786.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -3588,33 +3118,28 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0040",
+                                "sample identifier": "Plate 1_H11",
                                 "location identifier": "H11",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.1001,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 2487.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             },
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
@@ -3626,41 +3151,33 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 450.0,
-                                            "unit": "nm"
-                                        }
+                                        "detection type": "Luminescence"
                                     }
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "Un0040",
+                                "sample identifier": "Plate 1_H12",
                                 "location identifier": "H12",
-                                "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
-                            "absorbance": {
-                                "value": 0.1032,
-                                "unit": "mAU"
+                            "luminescence": {
+                                "value": 1043.0,
+                                "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "experimental data identifier": "experiment",
                     "container type": "well plate"
                 }
             }
         ],
         "device system document": {
-            "device identifier": "Varioskan LUX",
-            "model number": "Varioskan LUX",
-            "equipment serial number": "3020-81776"
+            "device identifier": "N/A",
+            "model number": "N/A"
         },
         "data system document": {
-            "file name": "skanit_data.xlsx",
-            "UNC path": "tests/parsers/thermo_skanit/testdata/skanit_data.xlsx",
-            "software name": "SkanIt Software 7.0 RE for Microplate Readers RE",
-            "software version": "7.0.0.50",
+            "file name": "luciferase_assay_example.xlsx",
+            "UNC path": "tests/parsers/thermo_skanit/testdata/luciferase_assay_example.xlsx",
             "ASM converter name": "allotropy_thermo_fisher_scientific_skanit",
             "ASM converter version": "0.1.74"
         }
