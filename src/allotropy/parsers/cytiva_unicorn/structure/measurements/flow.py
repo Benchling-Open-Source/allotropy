@@ -54,7 +54,7 @@ class FlowMeasurement(UnicornMeasurement):
                     cls.filter_curve_or_none(elements, r"^Sample flow \(CV/h\)$"),
                     DataCubeComponent(
                         type_=FieldComponentDatatype.float,
-                        concept="sample flow",
+                        concept="sample flow CV/h",
                         unit="CV/h",
                     ),
                 ),
@@ -63,7 +63,7 @@ class FlowMeasurement(UnicornMeasurement):
                     cls.filter_curve_or_none(elements, r"^System flow \(CV/h\)$"),
                     DataCubeComponent(
                         type_=FieldComponentDatatype.float,
-                        concept="system flow",
+                        concept="system flow CV/h",
                         unit="CV/h",
                     ),
                 ),
@@ -98,7 +98,7 @@ class FlowMeasurement(UnicornMeasurement):
                     cls.filter_curve_or_none(elements, r"^Sample linear flow$"),
                     DataCubeComponent(
                         type_=FieldComponentDatatype.float,
-                        concept="sample flow",
+                        concept="sample linear flow",
                         unit="cm/s",
                     ),
                 ),

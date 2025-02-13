@@ -639,7 +639,7 @@
                                                 "measures": [
                                                     {
                                                         "@componentDatatype": "float",
-                                                        "concept": "electric conductivity",
+                                                        "concept": "percentage electric conductivity",
                                                         "unit": "%"
                                                     }
                                                 ]
@@ -1107,7 +1107,7 @@
                                                 "measures": [
                                                     {
                                                         "@componentDatatype": "float",
-                                                        "concept": "system flow",
+                                                        "concept": "system flow CV/h",
                                                         "unit": "CV/h"
                                                     }
                                                 ]
@@ -1142,7 +1142,7 @@
                                                 "measures": [
                                                     {
                                                         "@componentDatatype": "float",
-                                                        "concept": "sample flow",
+                                                        "concept": "sample flow CV/h",
                                                         "unit": "CV/h"
                                                     }
                                                 ]
@@ -1255,7 +1255,7 @@
                                                 "measures": [
                                                     {
                                                         "@componentDatatype": "float",
-                                                        "concept": "sample flow",
+                                                        "concept": "sample linear flow",
                                                         "unit": "cm/s"
                                                     }
                                                 ]
@@ -1399,7 +1399,7 @@
         ],
         "data system document": {
             "ASM converter name": "allotropy_cytiva_unicorn",
-            "ASM converter version": "0.1.74",
+            "ASM converter version": "0.1.75",
             "file name": "unicorn_1.zip",
             "UNC path": "tests/parsers/cytiva_unicorn/testdata/unicorn_1.zip"
         },
