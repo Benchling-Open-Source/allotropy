@@ -39,10 +39,13 @@ def create_measurement_groups(
     handler: UnicornZipHandler, results: StrictXmlElement
 ) -> list[MeasurementGroup]:
     chrom_1 = handler.get_chrom_1()
+    analysis_settings = chrom_1.find_or_none("AnalysisSettings")
     curves = chrom_1.find("Curves")
     elements = curves.findall("Curve")
 
-    static_docs = StaticDocs.create(handler, curves.find("Curve"), results)
+    static_docs = StaticDocs.create(
+        handler, curves.find("Curve"), results, analysis_settings
+    )
     measurements = [
         AbsorbanceMeasurement1.create_or_none(handler, elements, static_docs),
         AbsorbanceMeasurement2.create_or_none(handler, elements, static_docs),
