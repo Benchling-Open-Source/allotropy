@@ -1236,12 +1236,6 @@
                   "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
                   "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
                 },
-                "sampler": {
-                  "$asm.property-class": "http://purl.allotrope.org/ontologies/equipment#AFE_0001711",
-                  "$asm.pattern": "value datum",
-                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                  "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
-                },
                 "device document": {
                   "type": "array",
                   "$asm.array-ordered": true,
@@ -1435,12 +1429,6 @@
                                       "$asm.pattern": "value datum",
                                       "$asm.type": "http://www.w3.org/2001/XMLSchema#dateTimeStamp",
                                       "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tDateTimeStampValue"
-                                    },
-                                    "detector": {
-                                      "$asm.property-class": "http://purl.allotrope.org/ontologies/equipment#AFE_0000317",
-                                      "$asm.pattern": "value datum",
-                                      "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                                      "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
                                     }
                                     },
                                   "required": [
@@ -1483,8 +1471,8 @@
                             "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
                             "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
                           },
-                          "well": {
-                            "$asm.property-class": "http://purl.allotrope.org/ontologies/spatial#AFSP_0000009",
+                          "well location identifier": {
+                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002240",
                             "$asm.pattern": "value datum",
                             "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
                             "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
