@@ -103,14 +103,14 @@
                         ]
                     },
                     "custom information document": {
+                        "Protocol template purpose": "Cell Count and Viability with AO and DAPI",
+                        "Event log format": "Plain text",
+                        "Protocol adaptation title": "example cell counting",
                         "Login ID": "admin",
                         "Protocol adaptation purpose": "Cell Count and Viability with AO and DAPI",
-                        "Protocol adaptation title": "example cell counting",
-                        "Event log format": "Plain text",
-                        "Protocol template filename": "Viability and Cell Count Assay - NC-200.cmsx",
-                        "Protocol template title": "Viability and Cell Count Assay",
                         "Protocol adaptation filename": "287764ADc8824786b882bfc202a12044.cmsu",
-                        "Protocol template purpose": "Cell Count and Viability with AO and DAPI"
+                        "Protocol template filename": "Viability and Cell Count Assay - NC-200.cmsx",
+                        "Protocol template title": "Viability and Cell Count Assay"
                     }
                 },
                 "analyst": "DrScientist"

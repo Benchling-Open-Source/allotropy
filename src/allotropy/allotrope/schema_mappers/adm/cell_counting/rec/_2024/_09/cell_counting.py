@@ -96,8 +96,6 @@ class Measurement:
     standard_deviation: float | None = None
     aggregate_rate: float | None = None
     experimental_data_identifier: str | None = None
-    percentage_of_cells_with_five_or_more: float | None = None
-    cell_diameter_standard_deviation: float | None = None
 
     errors: list[Error] | None = None
 
