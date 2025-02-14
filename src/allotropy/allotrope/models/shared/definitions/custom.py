@@ -63,6 +63,7 @@ from allotropy.allotrope.models.shared.definitions.units import (
     RelativeLightUnit,
     RelativeLightUnitTimesMilliliter,
     RelativeLightUnitTimesSecond,
+    ResponseUnits,
     SecondTime,
     SeimensPerMeter,
     SquareCentimetersPerGram,
@@ -714,6 +715,16 @@ class TQuantityValueRelativeLightUnitTimesSecond(
 class TNullableQuantityValueRelativeLightUnitTimesSecond(
     RelativeLightUnitTimesSecond, TNullableQuantityValue
 ):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueResponseUnits(ResponseUnits, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValueResponseUnits(ResponseUnits, TNullableQuantityValue):
     pass
 
 
