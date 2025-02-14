@@ -94,7 +94,12 @@ def create_measurement_groups(
             "csv file version",
         }
     )
-
+    percentage_of_cells_with_five_or_more = data.get(
+        float, "(%) of cells in aggregates with five or more cells"
+    )
+    cell_diameter_standard_deviation = data.get(
+        float, "Cell diameter standard deviation (um)"
+    )
     measurement_group = MeasurementGroup(
         analyst=data.get(str, "Operator", DEFAULT_ANALYST),
         custom_info_doc=data.get_custom_keys(MEASUREMENT_AGG_DOCUMENT_CUSTOM_FIELDS),
@@ -118,27 +123,25 @@ def create_measurement_groups(
                 sample_volume_setting=data.get(float, "Sample Volume (ul)"),
                 experimental_data_identifier=data.get(str, "cm filename"),
                 dilution_volume=data.get(float, "Dilution Volume (ul)"),
-                percentage_of_cells_with_five_or_more=data.get(
-                    float, "(%) of cells in aggregates with five or more cells"
-                ),
-                cell_diameter_standard_deviation=data.get(
-                    float, "Cell diameter standard deviation (um)"
-                ),
                 custom_info=data.get_unread(),
             )
         ],
     )
-    return measurement_group, _get_calculated_data([measurement_group])
+
+    return measurement_group, _get_calculated_data(
+        [measurement_group],
+        cell_diameter_standard_deviation,
+        percentage_of_cells_with_five_or_more,
+    )
 
 
 def _get_calculated_data(
     groups: list[MeasurementGroup],
+    cell_diameter_standard_deviation: float | None,
+    percentage_of_cells_with_five_or_more: float | None,
 ) -> list[CalculatedDataItem] | None:
     result = []
     for group in groups:
-        cell_diameter_standard_deviation = group.measurements[
-            0
-        ].cell_diameter_standard_deviation
         if cell_diameter_standard_deviation:
             result.append(
                 CalculatedDataItem(
@@ -156,9 +159,6 @@ def _get_calculated_data(
                     unit=Microliter.unit,
                 )
             )
-        percentage_of_cells_with_five_or_more = group.measurements[
-            0
-        ].percentage_of_cells_with_five_or_more
         if percentage_of_cells_with_five_or_more:
             result.append(
                 CalculatedDataItem(
