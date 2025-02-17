@@ -200,7 +200,7 @@ class StaticDocs:
             return [
                 Fraction(
                     index=f"Fraction Event {idx}",
-                    identifier=event.get_sub_text_or_none("EventText"),
+                    fraction_role=event.get_sub_text_or_none("EventText"),
                     field_type=event.get_attr_or_none("EventType"),
                     retention_time=(
                         None

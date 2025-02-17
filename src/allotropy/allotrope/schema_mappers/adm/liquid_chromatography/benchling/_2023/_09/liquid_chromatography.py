@@ -100,7 +100,7 @@ class Peak:
 @dataclass(frozen=True)
 class Fraction:
     index: str
-    identifier: str | None = None
+    fraction_role: str | None = None
     field_type: str | None = None
     retention_time: float | None = None
     retention_volume: float | None = None
@@ -401,7 +401,7 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_fraction_document(self, fraction_doc: Fraction) -> FractionDocumentItem:
         return FractionDocumentItem(
             index=fraction_doc.index,
-            identifier=fraction_doc.identifier,
+            fraction_role=fraction_doc.fraction_role,
             field_type=fraction_doc.field_type,
             retention_time=quantity_or_none(
                 TQuantityValueSecondTime, fraction_doc.retention_time

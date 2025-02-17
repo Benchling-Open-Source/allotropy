@@ -1009,8 +1009,8 @@
                                                           }
                                                         ]
                                                       },
-                                                      "identifier": {
-                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000917",
+                                                      "fraction role": {
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/role#AFRL_0000563",
                                                         "$asm.pattern": "value datum",
                                                         "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
                                                         "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
