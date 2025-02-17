@@ -50,3 +50,7 @@ Changes:
 * Removed "Is Required" from "Autosampler Injection Volume Setting" and from "Injection Time"
  * Reasoning: These two fields relate to a peice of hardware, Autosampler, that is not always used for LC runs
  * Proposal: Make "Autosampler Injection Volume Setting" and from "Injection Time" optional fields
+
+* Added fraction aggregate document to BENCHLING/2023/09
+ * Reasoning: Support for fraction events
+ * Proposal: Add fraction aggregate document an element of measurement aggregate document
