@@ -233,11 +233,8 @@ class Mapper(SchemaMapper[Data, Model]):
                     for device_control_doc in measurement.device_control_docs
                 ]
             ),
-            fraction_aggregate_document=FractionAggregateDocument(
-                fraction_document=[
-                    self._get_fraction_document(fraction_doc)
-                    for fraction_doc in measurement.fractions or []
-                ]
+            fraction_aggregate_document=self._get_fraction_aggregate_document(
+                measurement
             ),
             chromatogram_data_cube=(
                 get_data_cube(
@@ -396,6 +393,19 @@ class Mapper(SchemaMapper[Data, Model]):
                 device_control_doc.temperature_profile_data_cube,
                 TemperatureProfileDataCube,
             ),
+        )
+
+    def _get_fraction_aggregate_document(
+        self, measurement: Measurement
+    ) -> FractionAggregateDocument | None:
+        if measurement.fractions is None:
+            return None
+
+        return FractionAggregateDocument(
+            fraction_document=[
+                self._get_fraction_document(fraction_doc)
+                for fraction_doc in measurement.fractions or []
+            ]
         )
 
     def _get_fraction_document(self, fraction_doc: Fraction) -> FractionDocumentItem:
