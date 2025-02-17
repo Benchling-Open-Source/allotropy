@@ -40,11 +40,12 @@ def create_measurement_groups(
 ) -> list[MeasurementGroup]:
     chrom_1 = handler.get_chrom_1()
     analysis_settings = chrom_1.find_or_none("AnalysisSettings")
+    event_curves = chrom_1.find_or_none("EventCurves")
     curves = chrom_1.find("Curves")
     elements = curves.findall("Curve")
 
     static_docs = StaticDocs.create(
-        handler, curves.find("Curve"), results, analysis_settings
+        handler, curves.find("Curve"), results, analysis_settings, event_curves
     )
     measurements = [
         AbsorbanceMeasurement1.create_or_none(handler, elements, static_docs),

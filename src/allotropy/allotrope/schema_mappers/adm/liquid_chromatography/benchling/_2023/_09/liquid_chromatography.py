@@ -10,6 +10,8 @@ from allotropy.allotrope.models.adm.liquid_chromatography.benchling._2023._09.li
     DeviceControlAggregateDocument,
     DeviceControlDocumentItem,
     DeviceSystemDocument,
+    FractionAggregateDocument,
+    FractionDocumentItem,
     InjectionDocument,
     LiquidChromatographyAggregateDocument,
     LiquidChromatographyDocumentItem,
@@ -96,6 +98,15 @@ class Peak:
 
 
 @dataclass(frozen=True)
+class Fraction:
+    index: str
+    fraction_role: str | None = None
+    field_type: str | None = None
+    retention_time: float | None = None
+    retention_volume: float | None = None
+
+
+@dataclass(frozen=True)
 class DeviceControlDoc:
     device_type: str
     start_time: str | None = None
@@ -138,6 +149,7 @@ class Measurement:
     derived_column_pressure_data_cube: DataCube | None = None
 
     peaks: list[Peak] | None = None
+    fractions: list[Fraction] | None = None
 
     sample_custom_info: dict[str, Any] | None = None
 
@@ -220,6 +232,9 @@ class Mapper(SchemaMapper[Data, Model]):
                     self._get_device_control_document(device_control_doc)
                     for device_control_doc in measurement.device_control_docs
                 ]
+            ),
+            fraction_aggregate_document=self._get_fraction_aggregate_document(
+                measurement
             ),
             chromatogram_data_cube=(
                 get_data_cube(
@@ -377,5 +392,31 @@ class Mapper(SchemaMapper[Data, Model]):
             temperature_profile_data_cube=get_data_cube(
                 device_control_doc.temperature_profile_data_cube,
                 TemperatureProfileDataCube,
+            ),
+        )
+
+    def _get_fraction_aggregate_document(
+        self, measurement: Measurement
+    ) -> FractionAggregateDocument | None:
+        if measurement.fractions is None:
+            return None
+
+        return FractionAggregateDocument(
+            fraction_document=[
+                self._get_fraction_document(fraction_doc)
+                for fraction_doc in measurement.fractions or []
+            ]
+        )
+
+    def _get_fraction_document(self, fraction_doc: Fraction) -> FractionDocumentItem:
+        return FractionDocumentItem(
+            index=fraction_doc.index,
+            fraction_role=fraction_doc.fraction_role,
+            field_type=fraction_doc.field_type,
+            retention_time=quantity_or_none(
+                TQuantityValueSecondTime, fraction_doc.retention_time
+            ),
+            retention_volume=quantity_or_none(
+                TQuantityValueMilliliter, fraction_doc.retention_volume
             ),
         )
