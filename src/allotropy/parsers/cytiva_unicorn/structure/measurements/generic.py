@@ -104,6 +104,7 @@ class UnicornMeasurement(Measurement):
                 "sample_volume_3": static_docs.sample_volume_3,
             },
             peaks=peaks,
+            fractions=static_docs.fractions,
         )
 
     @classmethod

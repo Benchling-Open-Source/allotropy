@@ -968,6 +968,68 @@
                                               }
                                             }
                                           ]
+                                        },
+                                        "fraction aggregate document": {
+                                          "type": "object",
+                                          "properties": {
+                                            "fraction document": {
+                                              "type": "array",
+                                              "items": {
+                                                "allOf": [
+                                                  {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "index": {
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000928",
+                                                        "$asm.pattern": "value datum",
+                                                        "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
+                                                      },
+                                                      "retention time": {
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001089",
+                                                        "$asm.pattern": "quantity datum",
+                                                        "allOf": [
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                                          },
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/s"
+                                                          }
+                                                        ]
+                                                      },
+                                                      "retention volume": {
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002521",
+                                                        "$asm.pattern": "quantity datum",
+                                                        "allOf": [
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                                          },
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/mL"
+                                                          }
+                                                        ]
+                                                      },
+                                                      "fraction role": {
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/role#AFRL_0000563",
+                                                        "$asm.pattern": "value datum",
+                                                        "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
+                                                      },
+                                                      "field type": {
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0003109",
+                                                        "$asm.pattern": "value datum",
+                                                        "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
+                                                      }
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          },
+                                          "required": [
+                                            "fraction document"
+                                          ]
                                         }
                                       },
                                       "required": [
