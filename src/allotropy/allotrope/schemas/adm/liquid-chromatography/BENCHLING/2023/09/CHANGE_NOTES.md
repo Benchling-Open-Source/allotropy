@@ -51,6 +51,10 @@ Changes:
  * Reasoning: These two fields relate to a peice of hardware, Autosampler, that is not always used for LC runs
  * Proposal: Make "Autosampler Injection Volume Setting" and from "Injection Time" optional fields
 
+* Added "Injection Volume Setting", Relative Retention Time", "Peak Analyte Amount", "Peak Group", "relative Corrected Peak Area", "Location Identifier", "Well", and "Observation" feilds to schema
+ * Reasoning: all of these additional feild were present in Thermo Fisher Chromeleon data output.
+ * Proposal: Added feilds above to capture more data. Potentional revision of replacing "Autosampler Injection Volume" with "Injection Volume Setting"
+
 * Added fraction aggregate document to BENCHLING/2023/09
  * Reasoning: Support for fraction events
  * Proposal: Add fraction aggregate document an element of measurement aggregate document
