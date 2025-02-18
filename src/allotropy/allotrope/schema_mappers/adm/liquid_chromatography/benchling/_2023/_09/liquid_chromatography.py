@@ -36,8 +36,10 @@ from allotropy.allotrope.models.adm.liquid_chromatography.benchling._2023._09.li
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueCubicMillimeter,
     TQuantityValueHertz,
+    TQuantityValueMicroliter,
     TQuantityValueMicrometer,
     TQuantityValueMilliAbsorbanceUnit,
+    TQuantityValueMilliAbsorbanceUnitTimesSecond,
     TQuantityValueMilliliter,
     TQuantityValueMilliliterPerMinute,
     TQuantityValueMillimeter,
@@ -313,9 +315,9 @@ class Mapper(SchemaMapper[Data, Model]):
                     TQuantityValueCubicMillimeter,
                     measurement.autosampler_injection_volume_setting,
                 ),
-                # injection_volume_setting=quantity_or_none(
-                #     TQuantityValueMilliliter, measurement.injection_volume_setting
-                # ),
+                injection_volume_setting=quantity_or_none(
+                    TQuantityValueMicroliter, measurement.injection_volume_setting
+                ),
             ),
             measurement.injection_custom_info,
         )
@@ -331,9 +333,9 @@ class Mapper(SchemaMapper[Data, Model]):
                 flow_rate=quantity_or_none(
                     TQuantityValueMilliliterPerMinute, measurement.flow_rate
                 ),
-                # location_identifier=measurement.location_identifier,
-                # well_location_identifier=measurement.well_location_identifier,
-                # observation=measurement.observation,
+                location_identifier=measurement.location_identifier,
+                well_location_identifier=measurement.well_location_identifier,
+                observation=measurement.observation,
             ),
             measurement.sample_custom_info,
         )
@@ -370,9 +372,9 @@ class Mapper(SchemaMapper[Data, Model]):
                     peak.width_at_half_height_unit or SecondTime.unit,
                     peak.width_at_half_height,
                 ),
-                # relative_retention_time=quantity_or_none(
-                #     TQuantityValuePercent, peak.relative_retention_time
-                # ),
+                relative_retention_time=quantity_or_none(
+                    TQuantityValuePercent, peak.relative_retention_time
+                ),
                 capacity_factor__chromatography_=quantity_or_none(
                     TQuantityValueUnitless, peak.capacity_factor
                 ),
@@ -393,21 +395,21 @@ class Mapper(SchemaMapper[Data, Model]):
                     TQuantityValueUnitless,
                     peak.asymmetry_factor_measured_at_5_percent_height,
                 ),
-                # peak_analyte_amount=quantity_or_none(
-                #     TQuantityValueUnitless, peak.peak_analyte_amount
-                # ),
-                # relative_corrected_peak_area=quantity_or_none(
-                #     TQuantityValuePercent, peak.relative_corrected_peak_area
-                # ),
-                # peak_group=quantity_or_none(
-                #     TQuantityValueMilliAbsorbanceUnitTimesSecond, peak.peak_group
-                # ),
-                # baseline_value_at_start_of_peak=quantity_or_none(
-                #     TQuantityValueSecondTime, peak.baseline_value_at_start_of_peak
-                # ),
-                # baseline_value_at_end_of_peak=quantity_or_none(
-                #     TQuantityValueSecondTime, peak.baseline_value_at_end_of_peak
-                # ),
+                peak_analyte_amount=quantity_or_none(
+                    TQuantityValueUnitless, peak.peak_analyte_amount
+                ),
+                relative_corrected_peak_area=quantity_or_none(
+                    TQuantityValuePercent, peak.relative_corrected_peak_area
+                ),
+                peak_group=quantity_or_none(
+                    TQuantityValueMilliAbsorbanceUnitTimesSecond, peak.peak_group
+                ),
+                baseline_value_at_start_of_peak=quantity_or_none(
+                    TQuantityValueSecondTime, peak.baseline_value_at_start_of_peak
+                ),
+                baseline_value_at_end_of_peak=quantity_or_none(
+                    TQuantityValueSecondTime, peak.baseline_value_at_end_of_peak
+                ),
             ),
             peak.custom_info,
         )
