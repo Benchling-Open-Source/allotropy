@@ -12197,89 +12197,67 @@
                                 }
                             }
                         },
-                        "sensorgram aggregate document": {
-                            "properties": {
-                                "sensorgram document": {
-                                    "items": {
-                                        "properties": {
-                                            "sensorgram data cube": {
-                                                "$asm.property-class": "TODO",
-                                                "$asm.pattern": "datacube",
-                                                "type": "object",
-                                                "allOf": [
-                                                    {
-                                                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/cube.schema#/$defs/tDatacube"
-                                                    },
-                                                    {
-                                                        "properties": {
-                                                            "cube-structure": {
-                                                                "properties": {
-                                                                    "dimensions": {
-                                                                        "minItems": 1,
-                                                                        "maxItems": 1,
-                                                                        "prefixItems": [
-                                                                            {
-                                                                                "oneOf": [
-                                                                                    {
-                                                                                        "properties": {
-                                                                                            "concept": {
-                                                                                                "const": "elapsed time"
-                                                                                            },
-                                                                                            "unit": {
-                                                                                                "const": "s"
-                                                                                            },
-                                                                                            "@componentDatatype": {
-                                                                                                "const": "double"
-                                                                                            }
-                                                                                        }
-                                                                                    }
-                                                                                ]
-                                                                            }
-                                                                        ]
-                                                                    },
-                                                                    "measures": {
-                                                                        "minItems": 1,
-                                                                        "maxItems": 1,
-                                                                        "contains": {
-                                                                            "oneOf": [
-                                                                                {
-                                                                                    "properties": {
-                                                                                        "concept": {
-                                                                                            "const": "response units"
-                                                                                        },
-                                                                                        "unit": {
-                                                                                            "const": "RU"
-                                                                                        },
-                                                                                        "@componentDatatype": {
-                                                                                            "const": "double"
-                                                                                        }
-                                                                                    }
-                                                                                }
-                                                                            ]
+                        "sensorgram data cube": {
+                            "$asm.property-class": "TODO",
+                            "$asm.pattern": "datacube",
+                            "type": "object",
+                            "allOf": [
+                                {
+                                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/cube.schema#/$defs/tDatacube"
+                                },
+                                {
+                                    "properties": {
+                                        "cube-structure": {
+                                            "properties": {
+                                                "dimensions": {
+                                                    "minItems": 1,
+                                                    "maxItems": 1,
+                                                    "prefixItems": [
+                                                        {
+                                                            "oneOf": [
+                                                                {
+                                                                    "properties": {
+                                                                        "concept": {
+                                                                            "const": "elapsed time"
+                                                                        },
+                                                                        "unit": {
+                                                                            "const": "s"
+                                                                        },
+                                                                        "@componentDatatype": {
+                                                                            "const": "double"
                                                                         }
                                                                     }
                                                                 }
-                                                            }
+                                                            ]
                                                         }
+                                                    ]
+                                                },
+                                                "measures": {
+                                                    "minItems": 1,
+                                                    "maxItems": 1,
+                                                    "contains": {
+                                                        "oneOf": [
+                                                            {
+                                                                "properties": {
+                                                                    "concept": {
+                                                                        "const": "response units"
+                                                                    },
+                                                                    "unit": {
+                                                                        "const": "RU"
+                                                                    },
+                                                                    "@componentDatatype": {
+                                                                        "const": "double"
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
                                                     }
-                                                ]
-                                            },
-                                            "cycle identifier": {
-                                                "$asm.pattern": "value datum",
-                                                "$asm.property-class": "TODO",
-                                                "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
-                                            },
-                                            "flow cell identifier": {
-                                                "$asm.pattern": "value datum",
-                                                "$asm.property-class": "TODO",
-                                                "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+                                                }
                                             }
                                         }
                                     }
                                 }
-                            }
+                            ]
                         },
                         "sensor chip document": {
                             "$asm.property-class": "TODO",
@@ -12356,13 +12334,6 @@
                                                                     "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
                                                                     "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
                                                                 },
-                                                                "data source aggregate document": {
-                                                                    "allOf": [
-                                                                        {
-                                                                            "$ref": "#/$defs/dataSourceAggregateDocument"
-                                                                        }
-                                                                    ]
-                                                                },
                                                                 "relative response": {
                                                                     "$asm.property-class": "TODO",
                                                                     "$asm.pattern": "quantity datum",
@@ -12375,12 +12346,6 @@
                                                                         }
                                                                     ]
                                                                 },
-                                                                "flow cell identifier": {
-                                                                    "$asm.pattern": "value datum",
-                                                                    "$asm.property-class": "TODO",
-                                                                    "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                                                                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
-                                                                },
                                                                 "time setting": {
                                                                     "$asm.pattern": "quantity datum",
                                                                     "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002288",
@@ -12392,12 +12357,6 @@
                                                                             "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/s"
                                                                         }
                                                                     ]
-                                                                },
-                                                                "cycle identifier": {
-                                                                    "$asm.pattern": "value datum",
-                                                                    "$asm.property-class": "TODO",
-                                                                    "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                                                                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
                                                                 }
                                                             }
                                                         }
