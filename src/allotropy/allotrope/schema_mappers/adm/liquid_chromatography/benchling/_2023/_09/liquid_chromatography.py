@@ -172,7 +172,7 @@ class Measurement:
     location_identifier: str | None = None
     well_location_identifier: str | None = None
     observation: str | None = None
-    injection_volume_setting: str | None = None
+    injection_volume_setting: float | None = None
     autosampler_injection_volume_setting: float | None = None
 
     # Measurement data cubes

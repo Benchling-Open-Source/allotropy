@@ -208,7 +208,7 @@ def _create_measurements(injection: dict[str, Any]) -> list[Measurement]:
         signal: dict[str, Any] = signals[0] if isinstance(signals, list) else {}
     except IndexError:
         signal = {}
-    peaks: list[dict[str, Any]] = signal.get("peaks") if signal else None
+    peaks: list[dict[str, Any]] = signal.get("peaks", []) if signal else None
     injection_volume_setting = injection.get("injection volume setting")
     injection_volume_unit = injection.get("injection volume unit")
     if injection_volume_setting and injection_volume_unit:
@@ -241,11 +241,16 @@ def _create_measurements(injection: dict[str, Any]) -> list[Measurement]:
                 DeviceControlDoc(
                     device_type=constants.DEVICE_TYPE,
                     detection_type=signal.get("detection type"),
-                    detector_offset_setting = val if (val := signal.get("detector offset setting")) != "unknown" else None,
+                    detector_offset_setting=val
+                    if (val := signal.get("detector offset setting")) != "unknown"
+                    else None,
                     detector_wavelength_setting=signal.get(
                         "detector wavelength setting"
                     ),
-                    detector_sampling_rate_setting=val if (val := signal.get("detector sampling rate setting")) != "unknown" else None,
+                    detector_sampling_rate_setting=val
+                    if (val := signal.get("detector sampling rate setting"))
+                    != "unknown"
+                    else None,
                     detector_bandwidth_setting=signal.get("detector bandwidth setting"),
                     electronic_absorbance_reference_wavelength_setting=signal.get(
                         "reference wavelength setting"
