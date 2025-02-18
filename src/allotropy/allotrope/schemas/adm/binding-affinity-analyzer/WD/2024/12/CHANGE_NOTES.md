@@ -13,9 +13,9 @@ Changes:
   * Proposal: Add report point aggregate/report point document structure to remove parquet implementation
   * NOTE: proposed for adoption to binding affinity analyzer model in Allotrope
 
-* Added sensorgram aggregate/sensorgram document structure to measurement document of SPR detection schema for sensorgram data
-  * Reasoning: Remove parquet implementation of sensorgram data for representation in ASM, add in aggregate document/document structure for multiple sensorgrams in a single cycle
-  * Proposal: Add sensorgram aggregate/sensorgram document structure to remove parquet implementation
+* Added sensorgram data cube to measurement document of SPR detection schema for sensorgram data
+  * Reasoning: Remove parquet implementation of sensorgram data for representation in ASM
+  * Proposal: Add sensorgram data cube to remove parquet implementation
   * NOTE: proposed for adoption to binding affinity analyzer model in Allotrope
 
 * Added RU (response units) to units.schema for fields including relative response & absolute response
