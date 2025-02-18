@@ -86,11 +86,13 @@ class UnicornMeasurement(Measurement):
             column_inner_diameter=static_docs.column_inner_diameter,
             chromatography_chemistry_type=static_docs.chromatography_chemistry_type,
             chromatography_particle_size=static_docs.chromatography_particle_size,
+            void_volume=static_docs.void_volume,
             injection_identifier=static_docs.injection_identifier,
             injection_time=static_docs.injection_time,
             autosampler_injection_volume_setting=static_docs.autosampler_injection_volume_setting,
             sample_identifier=static_docs.sample_identifier,
             batch_identifier=static_docs.batch_identifier,
+            flow_rate=static_docs.flow_rate,
             chromatogram_data_cube=chromatogram_data_cube,
             device_control_docs=device_control_docs,
             processed_data_chromatogram_data_cube=processed_data_chromatogram_data_cube,
@@ -102,6 +104,7 @@ class UnicornMeasurement(Measurement):
                 "sample_volume_3": static_docs.sample_volume_3,
             },
             peaks=peaks,
+            fractions=static_docs.fractions,
         )
 
     @classmethod

@@ -10,6 +10,8 @@ from allotropy.allotrope.models.adm.liquid_chromatography.benchling._2023._09.li
     DeviceControlAggregateDocument,
     DeviceControlDocumentItem,
     DeviceSystemDocument,
+    FractionAggregateDocument,
+    FractionDocumentItem,
     InjectionDocument,
     LiquidChromatographyAggregateDocument,
     LiquidChromatographyDocumentItem,
@@ -34,6 +36,8 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueCubicMillimeter,
     TQuantityValueMicrometer,
     TQuantityValueMilliAbsorbanceUnit,
+    TQuantityValueMilliliter,
+    TQuantityValueMilliliterPerMinute,
     TQuantityValueMillimeter,
     TQuantityValuePercent,
     TQuantityValueSecondTime,
@@ -94,6 +98,15 @@ class Peak:
 
 
 @dataclass(frozen=True)
+class Fraction:
+    index: str
+    fraction_role: str | None = None
+    field_type: str | None = None
+    retention_time: float | None = None
+    retention_volume: float | None = None
+
+
+@dataclass(frozen=True)
 class DeviceControlDoc:
     device_type: str
     start_time: str | None = None
@@ -126,7 +139,9 @@ class Measurement:
     column_inner_diameter: float | None = None
     chromatography_chemistry_type: str | None = None
     chromatography_particle_size: float | None = None
+    void_volume: float | None = None
     batch_identifier: str | None = None
+    flow_rate: float | None = None
 
     # Measurement data cubes
     chromatogram_data_cube: DataCube | None = None
@@ -134,6 +149,7 @@ class Measurement:
     derived_column_pressure_data_cube: DataCube | None = None
 
     peaks: list[Peak] | None = None
+    fractions: list[Fraction] | None = None
 
     sample_custom_info: dict[str, Any] | None = None
 
@@ -217,6 +233,9 @@ class Mapper(SchemaMapper[Data, Model]):
                     for device_control_doc in measurement.device_control_docs
                 ]
             ),
+            fraction_aggregate_document=self._get_fraction_aggregate_document(
+                measurement
+            ),
             chromatogram_data_cube=(
                 get_data_cube(
                     measurement.chromatogram_data_cube,
@@ -238,6 +257,9 @@ class Mapper(SchemaMapper[Data, Model]):
             chromatography_column_particle_size=quantity_or_none(
                 TQuantityValueMicrometer, measurement.chromatography_particle_size
             ),
+            void_volume=quantity_or_none(
+                TQuantityValueMilliliter, measurement.void_volume
+            ),
         )
 
     def _get_injection_document(self, measurement: Measurement) -> InjectionDocument:
@@ -256,6 +278,9 @@ class Mapper(SchemaMapper[Data, Model]):
                 batch_identifier=measurement.batch_identifier,
                 sample_role_type=measurement.sample_role_type,
                 written_name=measurement.written_name,
+                flow_rate=quantity_or_none(
+                    TQuantityValueMilliliterPerMinute, measurement.flow_rate
+                ),
             ),
             measurement.sample_custom_info,
         )
@@ -367,5 +392,31 @@ class Mapper(SchemaMapper[Data, Model]):
             temperature_profile_data_cube=get_data_cube(
                 device_control_doc.temperature_profile_data_cube,
                 TemperatureProfileDataCube,
+            ),
+        )
+
+    def _get_fraction_aggregate_document(
+        self, measurement: Measurement
+    ) -> FractionAggregateDocument | None:
+        if measurement.fractions is None:
+            return None
+
+        return FractionAggregateDocument(
+            fraction_document=[
+                self._get_fraction_document(fraction_doc)
+                for fraction_doc in measurement.fractions or []
+            ]
+        )
+
+    def _get_fraction_document(self, fraction_doc: Fraction) -> FractionDocumentItem:
+        return FractionDocumentItem(
+            index=fraction_doc.index,
+            fraction_role=fraction_doc.fraction_role,
+            field_type=fraction_doc.field_type,
+            retention_time=quantity_or_none(
+                TQuantityValueSecondTime, fraction_doc.retention_time
+            ),
+            retention_volume=quantity_or_none(
+                TQuantityValueMilliliter, fraction_doc.retention_volume
             ),
         )

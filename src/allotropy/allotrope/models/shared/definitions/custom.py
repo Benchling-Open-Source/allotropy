@@ -30,6 +30,7 @@ from allotropy.allotrope.models.shared.definitions.units import (
     MilligramPerMilliliter,
     Milliliter,
     MilliliterPerLiter,
+    MilliliterPerMinute,
     Millimeter,
     MillimeterOfMercury,
     MillimolePerLiter,
@@ -358,6 +359,18 @@ class TQuantityValueMilliliterPerLiter(MilliliterPerLiter, TQuantityValue):
 @dataclass(frozen=True, kw_only=True)
 class TNullableQuantityValueMilliliterPerLiter(
     MilliliterPerLiter, TNullableQuantityValue
+):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueMilliliterPerMinute(MilliliterPerMinute, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValueMilliliterPerMinute(
+    MilliliterPerMinute, TNullableQuantityValue
 ):
     pass
 
