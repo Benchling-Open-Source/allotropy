@@ -1,4 +1,4 @@
 DISPLAY_NAME = "Thermo Fisher Scientific Chromeleon"
-SOFTWARE_NAME = "Chromeleon"
+SOFTWARE_NAME = "Thermo Fisher Scientific Chromeleon"
 PRODUCT_MANUFACTURER = "Thermo Fisher Scientific"
-DEVICE_TYPE = "Liquid Chromatography"
+DEVICE_TYPE = "HPLC"

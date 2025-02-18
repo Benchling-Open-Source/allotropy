@@ -1,12 +1,29 @@
 from pathlib import Path
 from typing import Any
 
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    FieldComponentDatatype,
+)
+from allotropy.allotrope.models.shared.definitions.units import (
+    Microliter,
+    MilliAbsorbanceUnit,
+    MilliAbsorbanceUnitTimesSecond,
+    Milliliter,
+    SecondTime,
+)
 from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
+    DeviceControlDoc,
+    Measurement,
     MeasurementGroup,
     Metadata,
+    Peak,
 )
+from allotropy.allotrope.schema_mappers.data_cube import DataCube, DataCubeComponent
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.thermo_fisher_chromeleon import constants
+from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.values import try_float, try_float_or_none
 
 
 def create_metadata(
@@ -15,6 +32,20 @@ def create_metadata(
     device_information: dict[str, Any],
     file_path: str,
 ) -> Metadata:
+    pump_model_number = device_information.get("pump model number")
+    detector_model_number = device_information.get("uv model number")
+    sampler_model_number = device_information.get("sampler model number")
+    device_type = None
+    model_number = None
+    if pump_model_number:
+        device_type = "pump"
+        model_number = pump_model_number
+    elif detector_model_number:
+        device_type = "uv"
+        model_number = detector_model_number
+    elif sampler_model_number:
+        device_type = "sampler"
+        model_number = sampler_model_number
     return Metadata(
         asset_management_identifier=first_injection.get(
             "Precondition system instrument name", NOT_APPLICABLE
@@ -25,23 +56,231 @@ def create_metadata(
         unc_path=file_path,
         description=first_injection.get("description"),
         product_manufacturer=constants.PRODUCT_MANUFACTURER,
-        pump_model_number=device_information.get("pump model number"),
-        detector_model_number=device_information.get("uv model number"),
-        sampler_model_number=device_information.get("sampler model number"),
+        device_type=device_type,
+        model_number=model_number,
         lc_agg_custom_info={
             "Sequence Creation Time": sequence.get("sequence creation time"),
             "Sequence Directory": sequence.get("sequence directory"),
             "Sequence Name": sequence.get("sequence name"),
             "Sequence Update operator": sequence.get("sequence update operator"),
             "Sequence Update Time": sequence.get("sequence update time"),
-            "Number of Injections": 0,
+            "Number of Injections": sequence.get("number of injections"),
         },
     )
 
 
+def _validate_injection_volume_unit(injection_volume: float, unit: str) -> float:
+    # if unit is Milliliter, convert to Microliter
+    if unit == Milliliter.unit:
+        return injection_volume * 1000
+    if unit != Microliter.unit:
+        msg = f"Invalid injection volume unit: {unit}"
+        raise AllotropeConversionError(msg)
+    return injection_volume
+
+
+def _get_chromatogram(signal: dict[str, Any]) -> DataCube | None:
+    chrom: dict[str, list[float]] | None = signal.get("chromatogram")
+    if not chrom:
+        return None
+    if len(chrom) != 2:
+        msg = "Expected chrom to have two lists"
+        raise AllotropeConversionError(msg)
+
+    dimensions = chrom["x"]
+    measures = chrom["y"]
+
+    # ASM expected chromatogram dimensions (x axis) to be in seconds, but Chromeleon reports it in minutes,
+    # so convert here.
+    dimensions = [t * 60 for t in dimensions]
+
+    return DataCube(
+        label=signal["signal name"],
+        structure_dimensions=[
+            DataCubeComponent(
+                type_=FieldComponentDatatype.double,
+                concept="retention time",
+                unit=SecondTime.unit,
+            )
+        ],
+        structure_measures=[
+            DataCubeComponent(
+                type_=FieldComponentDatatype.double,
+                concept="absorbance",
+                unit=MilliAbsorbanceUnit.unit,
+            )
+        ],
+        dimensions=[dimensions],
+        measures=[measures],
+    )
+
+
+def _convert_to_seconds(value: float | None) -> float | None:
+    # Assume value is in minutes
+    return value * 60 if value is not None else None
+
+
+def _create_peak(peak: dict[str, Any]) -> Peak:
+    # Area and height are reported in μV, but are reported in ASM as mAU
+    # For Chromeleon software, 1V == 1AU, so we just need to convert μ to m
+    if (area := try_float_or_none(peak.get("area"))) is not None:
+        area /= 1000
+    if (height := try_float_or_none(peak.get("height"))) is not None:
+        height /= 1000
+    # Times are reported in minutes by Chromeleon - convert to seconds
+    retention_time = _convert_to_seconds(try_float_or_none(peak.get("retention time")))
+    width_at_half_height = _convert_to_seconds(
+        try_float_or_none(peak.get("peak width at half height"))
+    )
+    peak_width_at_5_percent_of_height = _convert_to_seconds(
+        try_float_or_none(peak.get("peak width at 5 % of height"))
+    )
+    peak_width_at_10_percent_of_height = _convert_to_seconds(
+        try_float_or_none(peak.get("peak width at 10 % of height"))
+    )
+    peak_width_at_baseline = _convert_to_seconds(
+        try_float_or_none(peak.get("peak width at baseline"))
+    )
+    baseline_value_at_start_of_peak = _convert_to_seconds(
+        try_float_or_none(peak.get("start value baseline"))
+    )
+    baseline_value_at_end_of_peak = _convert_to_seconds(
+        try_float_or_none(peak.get("end value baseline"))
+    )
+    peak_right_width_at_10_percent_height = _convert_to_seconds(
+        try_float_or_none(peak.get("right width at 10% height"))
+    )
+    peak_left_width_at_10_percent_height = _convert_to_seconds(
+        try_float_or_none(peak.get("left width at 10% height"))
+    )
+    peak_group = _convert_to_seconds(try_float_or_none(peak.get("group area")))
+
+    return Peak(
+        identifier=random_uuid_str(),
+        index=peak.get("identifier"),
+        start=try_float(peak.get("start time"), "start time") * 60,
+        start_unit=SecondTime.unit,
+        end=try_float(peak.get("end time"), "end time") * 60,
+        end_unit=SecondTime.unit,
+        retention_time=retention_time,
+        area=area,
+        area_unit=MilliAbsorbanceUnitTimesSecond.unit,
+        relative_area=try_float_or_none(peak.get("relative peak area")),
+        width=try_float_or_none(peak.get("Width")),
+        height=height,
+        relative_height=try_float_or_none(peak.get("relative peak height")),
+        written_name=peak.get("name"),
+        relative_retention_time=try_float_or_none(peak.get("relative retention time")),
+        capacity_factor=try_float_or_none(peak.get("capacity factor")),
+        chromatographic_resolution=try_float_or_none(
+            peak.get("chromatographic peak resolution")
+        ),
+        number_of_theoretical_plates_by_peak_width_at_half_height=try_float_or_none(
+            peak.get("number of theoretical plates by peak width at half height")
+        ),
+        width_at_half_height=width_at_half_height,
+        peak_width_at_5_percent_of_height=peak_width_at_5_percent_of_height,
+        peak_width_at_10_percent_of_height=peak_width_at_10_percent_of_height,
+        peak_width_at_baseline=peak_width_at_baseline,
+        asymmetry_factor_measured_at_5_percent_height=try_float_or_none(
+            peak.get("asymmetry factor measured at 5 % height")
+        ),
+        peak_analyte_amount=try_float_or_none(peak.get("amount")),
+        relative_corrected_peak_area=try_float_or_none(peak.get("rel ce area total")),
+        peak_group=peak_group,
+        baseline_value_at_start_of_peak=baseline_value_at_start_of_peak,
+        baseline_value_at_end_of_peak=baseline_value_at_end_of_peak,  # convert to seconds
+        custom_info={
+            "number of picks": peak.get("number of picks"),
+            "peak right width at 10% height": peak_right_width_at_10_percent_height,  # convert to seconds
+            "peak left width at 10% height": peak_left_width_at_10_percent_height,  # convert to seconds
+            "chromatographic peak resolution (usp)": peak.get(
+                "chromatographic peak resolution (usp)"
+            ),
+            "asymmetry aia": peak.get("asymmetry aia"),
+        },
+    )
+
+
+def _create_measurements(injection: dict[str, Any]) -> list[Measurement]:
+    signals = injection.get("signals")
+    try:
+        signal: dict[str, Any] = signals[0] if isinstance(signals, list) else {}
+    except IndexError:
+        signal = {}
+    peaks: list[dict[str, Any]] = signal.get("peaks") if signal else None
+    injection_volume_setting = injection.get("injection volume setting")
+    injection_volume_unit = injection.get("injection volume unit")
+    if injection_volume_setting and injection_volume_unit:
+        injection_volume_setting = _validate_injection_volume_unit(
+            injection_volume_setting, injection_volume_unit
+        )
+
+    # NOTE: we return a single measurement because we are only have the absorbance data cube measurement at
+    # this time, but if there were other measurements to include, we would create multiple measurements here.
+    return [
+        Measurement(
+            measurement_identifier=random_uuid_str(),
+            description=injection.get("description"),
+            sample_identifier=injection["sample identifier"],
+            location_identifier=injection.get("location identifier"),
+            well_location_identifier=injection.get("custom variables", {}).get("well"),
+            observation=injection.get("custom variables", {}).get("observation"),
+            sample_custom_info={
+                "sample precipitation": injection.get("custom variables", {}).get(
+                    "sample precipitation"
+                ),
+                "rack type": injection.get("custom variables", {}).get("rack type"),
+                "stability": injection.get("custom variables", {}).get("stability"),
+                "req id": injection.get("custom variables", {}).get("req id"),
+                "additional comment": injection.get("custom variables", {}).get(
+                    "additional comment"
+                ),
+            },
+            device_control_docs=[
+                DeviceControlDoc(
+                    device_type=constants.DEVICE_TYPE,
+                    detection_type=signal.get("detection type"),
+                    detector_offset_setting = val if (val := signal.get("detector offset setting")) != "unknown" else None,
+                    detector_wavelength_setting=signal.get(
+                        "detector wavelength setting"
+                    ),
+                    detector_sampling_rate_setting=val if (val := signal.get("detector sampling rate setting")) != "unknown" else None,
+                    detector_bandwidth_setting=signal.get("detector bandwidth setting"),
+                    electronic_absorbance_reference_wavelength_setting=signal.get(
+                        "reference wavelength setting"
+                    ),
+                    electronic_absorbance_reference_bandwidth_setting=signal.get(
+                        "reference bandwidth setting"
+                    ),
+                )
+            ],
+            injection_identifier=injection["injection identifier"],
+            injection_time=injection["injection time"],
+            injection_volume_setting=injection_volume_setting,
+            injection_custom_info={
+                "injection": injection.get("injection number"),
+                "injection name": injection.get("injection name"),
+                "injection position": injection.get("injection position"),
+                "injection status": injection.get("injection status"),
+                "injection type": injection.get("injection type"),
+                "last update user name": injection.get("last update user name"),
+                "creation user name": injection.get("creation user name"),
+                "injection program": injection.get("injection program"),
+                "injection method": injection.get("injection method"),
+            },
+            chromatography_serial_num=NOT_APPLICABLE,
+            chromatogram_data_cube=_get_chromatogram(signal) if signal else None,
+            peaks=[_create_peak(peak) for peak in peaks],
+        )
+    ]
+
+
 def create_measurement_groups(
-    injections: list[dict[str, Any]],
-    sequence: dict[str, Any],
-    device_information: dict[str, Any],
+    injections: list[dict[str, Any]]
 ) -> list[MeasurementGroup]:
-    pass
+
+    return [
+        MeasurementGroup(measurements=_create_measurements(sample_injections))
+        for sample_injections in injections
+    ]
