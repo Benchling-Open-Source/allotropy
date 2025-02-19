@@ -51,7 +51,7 @@
                             "sample document": {
                                 "sample identifier": "cellsABCD",
                                 "custom information document": {
-                                    "Dilution Volume (ul)": {
+                                    "dilution volume": {
                                         "value": 0.0,
                                         "unit": "μL"
                                     }
@@ -111,13 +111,13 @@
                         ]
                     },
                     "custom information document": {
-                        "Protocol template purpose": "Cell Count and Viability with AO and DAPI",
-                        "Protocol template title": "Viability and Cell Count Assay",
                         "Protocol adaptation purpose": "Cell Count and Viability with AO and DAPI",
-                        "Protocol adaptation title": "example cell counting",
                         "Event log format": "Plain text",
-                        "Login ID": "admin",
+                        "Protocol template purpose": "Cell Count and Viability with AO and DAPI",
+                        "Protocol adaptation title": "example cell counting",
                         "Protocol adaptation filename": "287764ADc8824786b882bfc202a12044.cmsu",
+                        "Protocol template title": "Viability and Cell Count Assay",
+                        "Login ID": "admin",
                         "Protocol template filename": "Viability and Cell Count Assay - NC-200.cmsx"
                     }
                 },
@@ -130,11 +130,11 @@
             "file name": "chemometec_nucleoview_example07.csv",
             "UNC path": "tests/parsers/chemometec_nucleoview/testdata/chemometec_nucleoview_example07.csv",
             "ASM converter name": "allotropy_chemometec_nucleoview",
-            "ASM converter version": "0.1.72",
+            "ASM converter version": "0.1.75",
             "software name": "NucleoView",
             "software version": "1.4.0.0",
             "custom information document": {
-                "csv file version": "2",
+                "csv file version": 2.0,
                 " 21 CFR Part 11": "disabled"
             }
         },
