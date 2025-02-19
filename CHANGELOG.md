@@ -5,6 +5,19 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.76] - 2025-02-19
+
+### Added
+
+- Liquid Chromatography - move fraction events to measurement aggregate document (#893)
+- Liquid Chromatography - add new fields to the BENCHLING/2023/09 schema (#891)
+- Thermo Fisher Scientific SkanIt - add support for Luminescence measurement type (#887)
+- add fraction events to unicorn (#892)
+
+### Fixed
+
+- ChemoMetec Nucleoview - handle file with commas at the end of the line (#889)
+
 ## [0.1.75] - 2025-02-11
 
 ### Added
