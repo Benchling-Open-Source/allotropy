@@ -12,6 +12,7 @@ from allotropy.parsers.thermo_fisher_chromeleon.thermo_fisher_chromeleon_reader 
     ThermoFisherChromeleonReader,
 )
 from allotropy.parsers.thermo_fisher_chromeleon.thermo_fisher_chromeleon_structure import (
+    create_device_documents,
     create_measurement_groups,
     create_metadata,
 )
@@ -30,8 +31,8 @@ class ThermoFisherChromeleonParser(VendorParser[Data, Model]):
             create_metadata(
                 reader.injections[0],
                 reader.sequence,
-                reader.device_information,
                 named_file_contents.original_file_path,
             ),
             create_measurement_groups(reader.injections),
+            create_device_documents(reader.device_information),
         )

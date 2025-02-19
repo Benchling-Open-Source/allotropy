@@ -1,6 +1,9 @@
 from pathlib import Path
 from typing import Any
 
+from allotropy.allotrope.models.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
+    DeviceDocumentItem,
+)
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
 )
@@ -29,35 +32,16 @@ from allotropy.parsers.utils.values import try_float, try_float_or_none
 def create_metadata(
     first_injection: dict[str, Any],
     sequence: dict[str, Any],
-    device_information: dict[str, Any],
     file_path: str,
 ) -> Metadata:
-    pump_model_number = device_information.get("pump model number")
-    detector_model_number = device_information.get("uv model number")
-    sampler_model_number = device_information.get("sampler model number")
-    device_type = None
-    model_number = None
-    if pump_model_number:
-        device_type = "pump"
-        model_number = pump_model_number
-    elif detector_model_number:
-        device_type = "uv"
-        model_number = detector_model_number
-    elif sampler_model_number:
-        device_type = "sampler"
-        model_number = sampler_model_number
     return Metadata(
         asset_management_identifier=first_injection.get(
-            "Precondition system instrument name", NOT_APPLICABLE
+            "precondition system instrument name", NOT_APPLICABLE
         ),
         software_name=constants.SOFTWARE_NAME,
-        software_version=NOT_APPLICABLE,
         file_name=Path(file_path).name,
         unc_path=file_path,
         description=first_injection.get("description"),
-        product_manufacturer=constants.PRODUCT_MANUFACTURER,
-        device_type=device_type,
-        model_number=model_number,
         lc_agg_custom_info={
             "Sequence Creation Time": sequence.get("sequence creation time"),
             "Sequence Directory": sequence.get("sequence directory"),
@@ -208,7 +192,7 @@ def _create_measurements(injection: dict[str, Any]) -> list[Measurement]:
         signal: dict[str, Any] = signals[0] if isinstance(signals, list) else {}
     except IndexError:
         signal = {}
-    peaks: list[dict[str, Any]] = signal.get("peaks", []) if signal else None
+    peaks: list[dict[str, Any]] = signal.get("peaks", []) if signal else []
     injection_volume_setting = injection.get("injection volume setting")
     injection_volume_unit = injection.get("injection volume unit")
     if injection_volume_setting and injection_volume_unit:
@@ -218,6 +202,8 @@ def _create_measurements(injection: dict[str, Any]) -> list[Measurement]:
 
     # NOTE: we return a single measurement because we are only have the absorbance data cube measurement at
     # this time, but if there were other measurements to include, we would create multiple measurements here.
+    if not peaks:
+        pass
     return [
         Measurement(
             measurement_identifier=random_uuid_str(),
@@ -289,3 +275,31 @@ def create_measurement_groups(
         MeasurementGroup(measurements=_create_measurements(sample_injections))
         for sample_injections in injections
     ]
+
+
+def create_device_documents(
+    device_information: dict[str, Any],
+) -> list[DeviceDocumentItem] | None:
+    device_documents = []
+    pump_model_number = device_information.get("pump model number")
+    detector_model_number = device_information.get("uv model number")
+    sampler_model_number = device_information.get("sampler model number")
+    device_documents.append(
+        DeviceDocumentItem(
+            device_type="pump",
+            model_number=pump_model_number or NOT_APPLICABLE,
+        )
+    )
+    device_documents.append(
+        DeviceDocumentItem(
+            device_type="uv",
+            model_number=detector_model_number or NOT_APPLICABLE,
+        )
+    )
+    device_documents.append(
+        DeviceDocumentItem(
+            device_type="sampler",
+            model_number=sampler_model_number or NOT_APPLICABLE,
+        )
+    )
+    return device_documents

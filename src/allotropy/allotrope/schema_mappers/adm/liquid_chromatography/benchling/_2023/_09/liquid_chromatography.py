@@ -66,7 +66,6 @@ class Metadata:
     analyst: str | None = None
     detection_type: str | None = None
     model_number: str | None = None
-    device_type: str | None = None
     software_name: str | None = None
     file_name: str | None = None
     unc_path: str | None = None
@@ -196,6 +195,7 @@ class MeasurementGroup:
 class Data:
     metadata: Metadata
     measurement_groups: list[MeasurementGroup]
+    device_documents: list[DeviceDocumentItem] | None = None
 
 
 class Mapper(SchemaMapper[Data, Model]):
@@ -214,20 +214,13 @@ class Mapper(SchemaMapper[Data, Model]):
                         product_manufacturer=data.metadata.product_manufacturer,
                         device_identifier=data.metadata.device_identifier,
                         firmware_version=data.metadata.firmware_version,
-                        device_document=[
-                            DeviceDocumentItem(
-                                device_type=data.metadata.device_type,
-                                model_number=data.metadata.model_number,
-                            )
-                        ]
-                        if data.metadata.device_type
-                        else None,
+                        device_document=data.device_documents,
                     ),
                     data_system_document=DataSystemDocument(
                         file_name=data.metadata.file_name,
                         UNC_path=data.metadata.unc_path,
                         software_name=data.metadata.software_name,
-                        software_version=data.metadata.software_version,
+                        software_version=data.metadata.software_version,  # remove
                         ASM_converter_name=self.converter_name,
                         ASM_converter_version=ASM_CONVERTER_VERSION,
                     ),
@@ -391,7 +384,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 peak_width_at_baseline=quantity_or_none(
                     TQuantityValueSecondTime, peak.peak_width_at_baseline
                 ),
-                asymmetry_factor_squared_measured_at_4_4___height=quantity_or_none(
+                asymmetry_factor_measured_at_5___height=quantity_or_none(
                     TQuantityValueUnitless,
                     peak.asymmetry_factor_measured_at_5_percent_height,
                 ),
