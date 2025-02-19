@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Liquid Chromatography - move fraction events to measurement aggregate document (#893)
 - Liquid Chromatography - add new fields to the BENCHLING/2023/09 schema (#891)
 - Thermo Fisher Scientific SkanIt - add support for Luminescence measurement type (#887)
-- add fraction events to unicorn (#892)
+- Cytiva Unicorn - add fraction events to unicorn (#892)
 
 ### Fixed
 
