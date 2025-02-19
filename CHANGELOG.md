@@ -22,7 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Cytiva Unicorn - add void volume and flow rate to (#880)
+- Cytiva Unicorn - add void volume and flow rate (#880)
 - Bio-Rad CFX Maestro - update release state to recommended (#879)
 - AppBio QuantStudio Design & Analysis - add back reference fields as custom data processing info (#878)
 - Internal - improve calcdoc library implementation (#874)
