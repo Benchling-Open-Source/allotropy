@@ -175,7 +175,7 @@ def _create_peak(peak: dict[str, Any], signal: dict[str, Any]) -> Peak:
         baseline_value_at_start_of_peak=baseline_value_at_start_of_peak,
         baseline_value_at_end_of_peak=baseline_value_at_end_of_peak,
         custom_info={
-            "number of picks": signal.get("number of peaks"),
+            "number of peaks": signal.get("number of peaks"),
             "peak right width at 10% height": peak_right_width_at_10_percent_height,
             "peak left width at 10% height": peak_left_width_at_10_percent_height,
             "chromatographic peak resolution (usp)": peak.get(
