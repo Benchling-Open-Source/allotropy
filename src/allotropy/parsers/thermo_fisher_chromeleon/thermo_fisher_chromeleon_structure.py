@@ -104,7 +104,7 @@ def _convert_to_seconds(value: float | None) -> float | None:
     return value * 60 if value is not None else None
 
 
-def _create_peak(peak: dict[str, Any]) -> Peak:
+def _create_peak(peak: dict[str, Any], signal: dict[str, Any]) -> Peak:
     # Area and height are reported in μV, but are reported in ASM as mAU
     # For Chromeleon software, 1V == 1AU, so we just need to convert μ to m
     if (area := try_float_or_none(peak.get("area"))) is not None:
@@ -129,13 +129,13 @@ def _create_peak(peak: dict[str, Any]) -> Peak:
         try_float_or_none(peak.get("start value baseline"))
     )
     baseline_value_at_end_of_peak = _convert_to_seconds(
-        try_float_or_none(peak.get("end value baseline"))
+        try_float_or_none(peak.get("stop value baseline"))
     )
     peak_right_width_at_10_percent_height = _convert_to_seconds(
-        try_float_or_none(peak.get("right width at 10% height"))
+        try_float_or_none(peak.get("peak right width at 10 % of height"))
     )
     peak_left_width_at_10_percent_height = _convert_to_seconds(
-        try_float_or_none(peak.get("left width at 10% height"))
+        try_float_or_none(peak.get("peak left width at 10 % of height"))
     )
     peak_group = _convert_to_seconds(try_float_or_none(peak.get("group area")))
 
@@ -173,26 +173,20 @@ def _create_peak(peak: dict[str, Any]) -> Peak:
         relative_corrected_peak_area=try_float_or_none(peak.get("rel ce area total")),
         peak_group=peak_group,
         baseline_value_at_start_of_peak=baseline_value_at_start_of_peak,
-        baseline_value_at_end_of_peak=baseline_value_at_end_of_peak,  # convert to seconds
+        baseline_value_at_end_of_peak=baseline_value_at_end_of_peak,
         custom_info={
-            "number of picks": peak.get("number of picks"),
-            "peak right width at 10% height": peak_right_width_at_10_percent_height,  # convert to seconds
-            "peak left width at 10% height": peak_left_width_at_10_percent_height,  # convert to seconds
+            "number of picks": signal.get("number of peaks"),
+            "peak right width at 10% height": peak_right_width_at_10_percent_height,
+            "peak left width at 10% height": peak_left_width_at_10_percent_height,
             "chromatographic peak resolution (usp)": peak.get(
-                "chromatographic peak resolution (usp)"
+                "chromatographic peak resolution (USP)"
             ),
             "asymmetry aia": peak.get("asymmetry aia"),
         },
     )
 
 
-def _create_measurements(injection: dict[str, Any]) -> list[Measurement]:
-    signals = injection.get("signals")
-    try:
-        signal: dict[str, Any] = signals[0] if isinstance(signals, list) else {}
-    except IndexError:
-        signal = {}
-    peaks: list[dict[str, Any]] = signal.get("peaks", []) if signal else []
+def _create_measurements(injection: dict[str, Any]) -> list[Measurement] | None:
     injection_volume_setting = injection.get("injection volume setting")
     injection_volume_unit = injection.get("injection volume unit")
     if injection_volume_setting and injection_volume_unit:
@@ -200,27 +194,26 @@ def _create_measurements(injection: dict[str, Any]) -> list[Measurement]:
             injection_volume_setting, injection_volume_unit
         )
 
-    # NOTE: we return a single measurement because we are only have the absorbance data cube measurement at
-    # this time, but if there were other measurements to include, we would create multiple measurements here.
-    if not peaks:
-        pass
+    signals = injection.get("signals", [])
+    if len(signals) == 0:
+        return None
     return [
         Measurement(
             measurement_identifier=random_uuid_str(),
             description=injection.get("description"),
             sample_identifier=injection["sample identifier"],
             location_identifier=injection.get("location identifier"),
-            well_location_identifier=injection.get("custom variables", {}).get("well"),
-            observation=injection.get("custom variables", {}).get("observation"),
+            well_location_identifier=injection.get("custom variables", {}).get("Well"),
+            observation=injection.get("custom variables", {}).get("Observation"),
             sample_custom_info={
                 "sample precipitation": injection.get("custom variables", {}).get(
-                    "sample precipitation"
+                    "Sample_Precipitation"
                 ),
-                "rack type": injection.get("custom variables", {}).get("rack type"),
-                "stability": injection.get("custom variables", {}).get("stability"),
-                "req id": injection.get("custom variables", {}).get("req id"),
+                "rack type": injection.get("custom variables", {}).get("Rack_Type"),
+                "stability": injection.get("custom variables", {}).get("Stability"),
+                "req id": injection.get("custom variables", {}).get("REQ_ID"),
                 "additional comment": injection.get("custom variables", {}).get(
-                    "additional comment"
+                    "Additional_Comment"
                 ),
             },
             device_control_docs=[
@@ -230,14 +223,12 @@ def _create_measurements(injection: dict[str, Any]) -> list[Measurement]:
                     detector_offset_setting=val
                     if (val := signal.get("detector offset setting")) != "unknown"
                     else None,
-                    detector_wavelength_setting=signal.get(
-                        "detector wavelength setting"
-                    ),
+                    detector_wavelength_setting=signal.get("wavelength setting"),
                     detector_sampling_rate_setting=val
                     if (val := signal.get("detector sampling rate setting"))
                     != "unknown"
                     else None,
-                    detector_bandwidth_setting=signal.get("detector bandwidth setting"),
+                    detector_bandwidth_setting=signal.get("bandwidth setting"),
                     electronic_absorbance_reference_wavelength_setting=signal.get(
                         "reference wavelength setting"
                     ),
@@ -262,18 +253,19 @@ def _create_measurements(injection: dict[str, Any]) -> list[Measurement]:
             },
             chromatography_serial_num=NOT_APPLICABLE,
             chromatogram_data_cube=_get_chromatogram(signal) if signal else None,
-            peaks=[_create_peak(peak) for peak in peaks],
+            peaks=[_create_peak(peak, signal) for peak in signal.get("peaks", [])],
         )
+        for signal in injection.get("signals", [])
     ]
 
 
 def create_measurement_groups(
     injections: list[dict[str, Any]]
 ) -> list[MeasurementGroup]:
-
     return [
-        MeasurementGroup(measurements=_create_measurements(sample_injections))
+        MeasurementGroup(measurements=measurements)
         for sample_injections in injections
+        if (measurements := _create_measurements(sample_injections)) is not None
     ]
 
 
