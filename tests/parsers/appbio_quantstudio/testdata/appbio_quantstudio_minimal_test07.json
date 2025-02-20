@@ -1318,44 +1318,12 @@
                     }
                 },
                 {
-                    "calculated data name": "cq confidence",
-                    "calculated result": {
-                        "value": 0.968,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_10",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
-                                "data source feature": "cycle threshold result"
-                            }
-                        ]
-                    }
-                },
-                {
                     "calculated data name": "amplification score",
                     "calculated result": {
                         "value": 1.242,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_11",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
-                                "data source feature": "cycle threshold result"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "cq confidence",
-                    "calculated result": {
-                        "value": 0.965,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_12",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_10",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -1371,7 +1339,151 @@
                         "value": 1.247,
                         "unit": "(unitless)"
                     },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_11",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_3",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "amplification score",
+                    "calculated result": {
+                        "value": 0.936,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_12",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_5",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "amplification score",
+                    "calculated result": {
+                        "value": 0.947,
+                        "unit": "(unitless)"
+                    },
                     "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_13",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_6",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "amplification score",
+                    "calculated result": {
+                        "value": 1.23,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_14",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_2",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "amplification score",
+                    "calculated result": {
+                        "value": 1.232,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_15",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_4",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "amplification score",
+                    "calculated result": {
+                        "value": 0.945,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_16",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_7",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "amplification score",
+                    "calculated result": {
+                        "value": 0.947,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_17",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_8",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "cq confidence",
+                    "calculated result": {
+                        "value": 0.968,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_18",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "cq confidence",
+                    "calculated result": {
+                        "value": 0.965,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_19",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "cq confidence",
+                    "calculated result": {
+                        "value": 0.966,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_20",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -1384,14 +1496,94 @@
                 {
                     "calculated data name": "cq confidence",
                     "calculated result": {
-                        "value": 0.966,
+                        "value": 0.955,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_14",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_21",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_3",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_5",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "cq confidence",
+                    "calculated result": {
+                        "value": 0.912,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_22",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_6",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "cq confidence",
+                    "calculated result": {
+                        "value": 0.969,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_23",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_2",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "cq confidence",
+                    "calculated result": {
+                        "value": 0.971,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_24",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_4",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "cq confidence",
+                    "calculated result": {
+                        "value": 0.948,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_25",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_7",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "cq confidence",
+                    "calculated result": {
+                        "value": 0.913,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_26",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_8",
                                 "data source feature": "cycle threshold result"
                             }
                         ]
@@ -1403,7 +1595,7 @@
                         "value": 0.051,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_15",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_27",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -1422,20 +1614,80 @@
                     }
                 },
                 {
+                    "calculated data name": "ct sd",
+                    "calculated result": {
+                        "value": 0.259,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_28",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_5",
+                                "data source feature": "cycle threshold result"
+                            },
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_6",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "ct sd",
+                    "calculated result": {
+                        "value": 0.031,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_29",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_2",
+                                "data source feature": "cycle threshold result"
+                            },
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_4",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "ct sd",
+                    "calculated result": {
+                        "value": 0.274,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_30",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_7",
+                                "data source feature": "cycle threshold result"
+                            },
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_8",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    }
+                },
+                {
                     "calculated data name": "delta ct se",
                     "calculated result": {
                         "value": 0.15,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_18",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_33",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_16",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_31",
                                 "data source feature": "ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_17",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_32",
                                 "data source feature": "ct mean"
                             }
                         ]
@@ -1447,7 +1699,7 @@
                         "value": 30.115,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_16",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_31",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -1471,7 +1723,7 @@
                         "value": 32.762,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_17",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_32",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -1486,92 +1738,20 @@
                     }
                 },
                 {
-                    "calculated data name": "rq min",
+                    "calculated data name": "delta ct se",
                     "calculated result": {
-                        "value": 0.639,
+                        "value": 0.158,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_25",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_36",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_24",
-                                "data source feature": "rq"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "rq",
-                    "calculated result": {
-                        "value": 0.8,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_24",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_23",
-                                "data source feature": "delta delta ct"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "delta delta ct",
-                    "calculated result": {
-                        "value": 0.323,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_23",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_19",
-                                "data source feature": "delta ct mean"
-                            },
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_22",
-                                "data source feature": "delta ct mean"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "delta ct mean",
-                    "calculated result": {
-                        "value": -2.647,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_19",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_16",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_34",
                                 "data source feature": "ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_17",
-                                "data source feature": "ct mean"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "delta ct mean",
-                    "calculated result": {
-                        "value": -2.969,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_22",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_20",
-                                "data source feature": "ct mean"
-                            },
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_21",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_35",
                                 "data source feature": "ct mean"
                             }
                         ]
@@ -1583,7 +1763,7 @@
                         "value": 29.799,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_20",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_34",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -1603,7 +1783,7 @@
                         "value": 32.768,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_21",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_35",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -1618,204 +1798,92 @@
                     }
                 },
                 {
-                    "calculated data name": "rq max",
+                    "calculated data name": "rq min",
                     "calculated result": {
-                        "value": 1.002,
+                        "value": 0.639,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_26",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_41",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_24",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_40",
                                 "data source feature": "rq"
                             }
                         ]
                     }
                 },
                 {
-                    "calculated data name": "amplification score",
+                    "calculated data name": "rq",
                     "calculated result": {
-                        "value": 0.936,
+                        "value": 0.8,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_27",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_40",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_5",
-                                "data source feature": "cycle threshold result"
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_39",
+                                "data source feature": "delta delta ct"
                             }
                         ]
                     }
                 },
                 {
-                    "calculated data name": "cq confidence",
+                    "calculated data name": "delta delta ct",
                     "calculated result": {
-                        "value": 0.955,
+                        "value": 0.323,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_28",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_39",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_5",
-                                "data source feature": "cycle threshold result"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "amplification score",
-                    "calculated result": {
-                        "value": 0.947,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_29",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_6",
-                                "data source feature": "cycle threshold result"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "cq confidence",
-                    "calculated result": {
-                        "value": 0.912,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_30",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_6",
-                                "data source feature": "cycle threshold result"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "ct sd",
-                    "calculated result": {
-                        "value": 0.259,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_31",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_5",
-                                "data source feature": "cycle threshold result"
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_37",
+                                "data source feature": "delta ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_6",
-                                "data source feature": "cycle threshold result"
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_38",
+                                "data source feature": "delta ct mean"
                             }
                         ]
                     }
                 },
                 {
-                    "calculated data name": "amplification score",
+                    "calculated data name": "delta ct mean",
                     "calculated result": {
-                        "value": 1.23,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_32",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_2",
-                                "data source feature": "cycle threshold result"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "cq confidence",
-                    "calculated result": {
-                        "value": 0.969,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_33",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_2",
-                                "data source feature": "cycle threshold result"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "amplification score",
-                    "calculated result": {
-                        "value": 1.232,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_34",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_4",
-                                "data source feature": "cycle threshold result"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "cq confidence",
-                    "calculated result": {
-                        "value": 0.971,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_35",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_4",
-                                "data source feature": "cycle threshold result"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "ct sd",
-                    "calculated result": {
-                        "value": 0.031,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_36",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_2",
-                                "data source feature": "cycle threshold result"
-                            },
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_4",
-                                "data source feature": "cycle threshold result"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "delta ct se",
-                    "calculated result": {
-                        "value": 0.158,
+                        "value": -2.647,
                         "unit": "(unitless)"
                     },
                     "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_37",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_20",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_31",
                                 "data source feature": "ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_21",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_32",
+                                "data source feature": "ct mean"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "delta ct mean",
+                    "calculated result": {
+                        "value": -2.969,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_38",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_34",
+                                "data source feature": "ct mean"
+                            },
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_35",
                                 "data source feature": "ct mean"
                             }
                         ]
@@ -1827,11 +1895,11 @@
                         "value": 0.789,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_40",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_44",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_39",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_43",
                                 "data source feature": "rq"
                             }
                         ]
@@ -1843,11 +1911,11 @@
                         "value": 1.0,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_39",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_43",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_38",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_42",
                                 "data source feature": "delta delta ct"
                             }
                         ]
@@ -1859,16 +1927,32 @@
                         "value": 0.0,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_38",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_42",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_22",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_38",
                                 "data source feature": "delta ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_22",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_38",
                                 "data source feature": "delta ct mean"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "rq max",
+                    "calculated result": {
+                        "value": 1.002,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_45",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_40",
+                                "data source feature": "rq"
                             }
                         ]
                     }
@@ -1879,96 +1963,12 @@
                         "value": 1.267,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_41",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_39",
-                                "data source feature": "rq"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "amplification score",
-                    "calculated result": {
-                        "value": 0.945,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_42",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_7",
-                                "data source feature": "cycle threshold result"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "cq confidence",
-                    "calculated result": {
-                        "value": 0.948,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_43",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_7",
-                                "data source feature": "cycle threshold result"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "amplification score",
-                    "calculated result": {
-                        "value": 0.947,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_44",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_8",
-                                "data source feature": "cycle threshold result"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "cq confidence",
-                    "calculated result": {
-                        "value": 0.913,
-                        "unit": "(unitless)"
-                    },
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_45",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_8",
-                                "data source feature": "cycle threshold result"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "ct sd",
-                    "calculated result": {
-                        "value": 0.274,
-                        "unit": "(unitless)"
-                    },
                     "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_46",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_7",
-                                "data source feature": "cycle threshold result"
-                            },
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_8",
-                                "data source feature": "cycle threshold result"
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_43",
+                                "data source feature": "rq"
                             }
                         ]
                     }
@@ -1981,7 +1981,7 @@
             "file name": "appbio_quantstudio_minimal_test07.txt",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_minimal_test07.txt",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.73",
+            "ASM converter version": "0.1.74",
             "software name": "Thermo QuantStudio",
             "software version": "1.0"
         },

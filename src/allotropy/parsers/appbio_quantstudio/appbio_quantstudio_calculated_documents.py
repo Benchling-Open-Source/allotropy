@@ -606,20 +606,37 @@ def iter_comparative_ct_calc_docs(
     for sample, target in view_st_data.iter_keys():
         for well_item in view_st_data.get_leaf_item(sample, target):
             calc_docs.append(build_quantity(view_tr_data, target, well_item))
+
+    for sample, target in view_st_data.iter_keys():
+        for well_item in view_st_data.get_leaf_item(sample, target):
             calc_docs.append(build_amp_score(well_item))
+
+    for sample, target in view_st_data.iter_keys():
+        for well_item in view_st_data.get_leaf_item(sample, target):
             calc_docs.append(build_cq_conf(well_item))
 
+    for sample, target in view_st_data.iter_keys():
         calc_docs.append(
             build_quantity_mean(view_st_data, view_tr_data, sample, target)
         )
+
+    for sample, target in view_st_data.iter_keys():
         calc_docs.append(build_quantity_sd(view_st_data, view_tr_data, sample, target))
+
+    for sample, target in view_st_data.iter_keys():
         calc_docs.append(build_ct_sd(view_st_data, sample, target))
+
+    for sample, target in view_st_data.iter_keys():
         calc_docs.append(build_delta_ct_se(view_st_data, sample, target, r_target))
 
+    for sample, target in view_st_data.iter_keys():
         if target != r_target:
             calc_docs.append(
                 build_rq_min(view_st_data, sample, target, r_sample, r_target)
             )
+
+    for sample, target in view_st_data.iter_keys():
+        if target != r_target:
             calc_docs.append(
                 build_rq_max(view_st_data, sample, target, r_sample, r_target)
             )
