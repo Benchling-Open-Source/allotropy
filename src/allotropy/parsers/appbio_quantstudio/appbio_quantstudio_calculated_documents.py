@@ -624,6 +624,9 @@ def iter_comparative_ct_calc_docs(
         calc_docs.append(build_quantity_sd(view_st_data, view_tr_data, sample, target))
 
     for sample, target in view_st_data.iter_keys():
+        calc_docs.append(build_ct_mean(view_st_data, sample, target))
+
+    for sample, target in view_st_data.iter_keys():
         calc_docs.append(build_ct_sd(view_st_data, sample, target))
 
     for sample, target in view_st_data.iter_keys():
