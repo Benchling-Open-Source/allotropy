@@ -140,6 +140,11 @@ class MilliliterPerLiter(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class MilliliterPerMinute(HasUnit):
+    unit: str = "mL/min"
+
+
+@dataclass(frozen=True, kw_only=True)
 class Millimeter(HasUnit):
     unit: str = "mm"
 
@@ -292,6 +297,11 @@ class RelativeLightUnitTimesSecond(HasUnit):
 @dataclass(frozen=True, kw_only=True)
 class SecondTime(HasUnit):
     unit: str = "s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class SeimensPerMeter(HasUnit):
+    unit: str = "S/m"
 
 
 @dataclass(frozen=True, kw_only=True)

@@ -10,6 +10,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._01.multi_analyte_profiling import (
     Analyte,
     Calibration,
+    Error,
 )
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
@@ -94,17 +95,8 @@ def test_create_header() -> None:
 @pytest.mark.parametrize(
     "required_col",
     [
-        "Program",
-        "Build",
-        "SN",
-        "Batch",
-        "ComputerName",
-        "ProtocolName",
-        "ProtocolVersion",
-        "SampleVolume",
         "BatchStartTime",
         "ProtocolPlate",
-        "ProtocolReporterGain",
     ],
 )
 def test_create_heder_without_required_col(required_col: str) -> None:
@@ -126,8 +118,10 @@ def test_create_heder_without_required_col(required_col: str) -> None:
     ).T
 
     error_msg = f"Expected non-null value for {required_col}."
-    if required_col in ("Program", "ProtocolPlate"):
-        error_msg = f"Unable to find {required_col} data in header block."
+    if required_col == "ProtocolPlate":
+        error_msg = (
+            "Unable to find required value 'ProtocolPlate' data in header block."
+        )
 
     with pytest.raises(AllotropeConversionError, match=error_msg):
         Header.create(
@@ -197,8 +191,8 @@ def test_create_measurement_list() -> None:
                     ),
                 ],
                 errors=[
-                    "Warning msg. (0x4FF010AB)",
-                    "Another Warning.",
+                    Error(error="Warning msg. (0x4FF010AB)"),
+                    Error(error="Another Warning."),
                 ],
             )
         ]
@@ -207,14 +201,14 @@ def test_create_measurement_list() -> None:
 
 @pytest.mark.parametrize(
     "table_name",
-    constants.EXPECTED_SECTIONS,
+    constants.REQUIRED_SECTIONS,
 )
 def test_create_measurement_list_without_required_table_then_raise(
     table_name: str,
 ) -> None:
     results_data = {
         section: pd.DataFrame()
-        for section in constants.EXPECTED_SECTIONS
+        for section in constants.REQUIRED_SECTIONS
         if section != table_name
     }
 

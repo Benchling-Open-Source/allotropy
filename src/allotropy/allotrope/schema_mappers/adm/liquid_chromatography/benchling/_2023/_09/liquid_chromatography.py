@@ -1,5 +1,7 @@
 from dataclasses import dataclass
+from typing import Any
 
+from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     ChromatogramDataCube,
     ChromatographyColumnDocument,
@@ -8,6 +10,8 @@ from allotropy.allotrope.models.adm.liquid_chromatography.benchling._2023._09.li
     DeviceControlAggregateDocument,
     DeviceControlDocumentItem,
     DeviceSystemDocument,
+    FractionAggregateDocument,
+    FractionDocumentItem,
     InjectionDocument,
     LiquidChromatographyAggregateDocument,
     LiquidChromatographyDocumentItem,
@@ -32,9 +36,12 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueCubicMillimeter,
     TQuantityValueMicrometer,
     TQuantityValueMilliAbsorbanceUnit,
+    TQuantityValueMilliliter,
+    TQuantityValueMilliliterPerMinute,
     TQuantityValueMillimeter,
     TQuantityValuePercent,
     TQuantityValueSecondTime,
+    TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TDatacube
 from allotropy.allotrope.schema_mappers.data_cube import (
@@ -50,7 +57,7 @@ from allotropy.parsers.utils.values import quantity_or_none, quantity_or_none_fr
 @dataclass(frozen=True)
 class Metadata:
     asset_management_identifier: str
-    analyst: str
+    analyst: str | None = None
     detection_type: str | None = None
     model_number: str | None = None
     software_name: str | None = None
@@ -68,24 +75,41 @@ class Metadata:
 @dataclass(frozen=True)
 class Peak:
     identifier: str
-    start: float
-    start_unit: str
-    end: float
-    end_unit: str
+    index: str | None = None
+    start: float | None = None
+    start_unit: str | None = None
+    end: float | None = None
+    end_unit: str | None = None
     area: float | None = None
     area_unit: str | None = None
     relative_area: float | None = None
     width: float | None = None
+    width_unit: str | None = None
     relative_width: float | None = None
     height: float | None = None
     relative_height: float | None = None
     retention_time: float | None = None
     written_name: str | None = None
+    chromatographic_resolution: float | None = None
+    chromatographic_asymmetry: float | None = None
+    width_at_half_height: float | None = None
+    width_at_half_height_unit: str | None = None
+    custom_info: dict[str, Any] | None = None
+
+
+@dataclass(frozen=True)
+class Fraction:
+    index: str
+    fraction_role: str | None = None
+    field_type: str | None = None
+    retention_time: float | None = None
+    retention_volume: float | None = None
 
 
 @dataclass(frozen=True)
 class DeviceControlDoc:
     device_type: str
+    start_time: str | None = None
     solvent_conc_data_cube: DataCube | None = None
     pre_column_pressure_data_cube: DataCube | None = None
     sample_pressure_data_cube: DataCube | None = None
@@ -115,7 +139,9 @@ class Measurement:
     column_inner_diameter: float | None = None
     chromatography_chemistry_type: str | None = None
     chromatography_particle_size: float | None = None
+    void_volume: float | None = None
     batch_identifier: str | None = None
+    flow_rate: float | None = None
 
     # Measurement data cubes
     chromatogram_data_cube: DataCube | None = None
@@ -124,10 +150,13 @@ class Measurement:
 
     peaks: list[Peak] | None = None
 
+    sample_custom_info: dict[str, Any] | None = None
+
 
 @dataclass(frozen=True)
 class MeasurementGroup:
     measurements: list[Measurement]
+    fractions: list[Fraction] | None = None
 
 
 @dataclass(frozen=True)
@@ -173,7 +202,10 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement_document=[
                     self._get_measurement_document_item(measurement)
                     for measurement in group.measurements
-                ]
+                ],
+                fraction_aggregate_document=self._get_fraction_aggregate_document(
+                    group.fractions
+                ),
             ),
         )
 
@@ -225,6 +257,9 @@ class Mapper(SchemaMapper[Data, Model]):
             chromatography_column_particle_size=quantity_or_none(
                 TQuantityValueMicrometer, measurement.chromatography_particle_size
             ),
+            void_volume=quantity_or_none(
+                TQuantityValueMilliliter, measurement.void_volume
+            ),
         )
 
     def _get_injection_document(self, measurement: Measurement) -> InjectionDocument:
@@ -237,33 +272,52 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
-        return SampleDocument(
-            sample_identifier=measurement.sample_identifier,
-            batch_identifier=measurement.batch_identifier,
-            sample_role_type=measurement.sample_role_type,
-            written_name=measurement.written_name,
+        return add_custom_information_document(
+            SampleDocument(
+                sample_identifier=measurement.sample_identifier,
+                batch_identifier=measurement.batch_identifier,
+                sample_role_type=measurement.sample_role_type,
+                written_name=measurement.written_name,
+                flow_rate=quantity_or_none(
+                    TQuantityValueMilliliterPerMinute, measurement.flow_rate
+                ),
+            ),
+            measurement.sample_custom_info,
         )
 
     def _get_peak_document(self, peak: Peak) -> PeakDocument:
-        return PeakDocument(
-            identifier=peak.identifier,
-            peak_start=quantity_or_none_from_unit(peak.start_unit, peak.start),  # type: ignore[arg-type]
-            peak_end=quantity_or_none_from_unit(peak.end_unit, peak.end),  # type: ignore[arg-type]
-            peak_area=quantity_or_none_from_unit(peak.area_unit, peak.area),
-            peak_width=quantity_or_none(TQuantityValueSecondTime, peak.width),
-            peak_height=quantity_or_none(
-                TQuantityValueMilliAbsorbanceUnit, peak.height
+        return add_custom_information_document(
+            PeakDocument(
+                identifier=peak.identifier,
+                peak_index=peak.index,
+                peak_start=quantity_or_none_from_unit(peak.start_unit, peak.start),  # type: ignore[arg-type]
+                peak_end=quantity_or_none_from_unit(peak.end_unit, peak.end),  # type: ignore[arg-type]
+                peak_area=quantity_or_none_from_unit(peak.area_unit, peak.area),
+                peak_width=quantity_or_none_from_unit(peak.width_unit, peak.width),  # type: ignore[arg-type]
+                peak_height=quantity_or_none(
+                    TQuantityValueMilliAbsorbanceUnit, peak.height
+                ),
+                relative_peak_area=quantity_or_none(
+                    TQuantityValuePercent, peak.relative_area
+                ),
+                relative_peak_height=quantity_or_none(
+                    TQuantityValuePercent, peak.relative_height
+                ),
+                retention_time=quantity_or_none(
+                    TQuantityValueSecondTime, peak.retention_time
+                ),
+                written_name=peak.written_name,
+                chromatographic_peak_resolution=quantity_or_none(
+                    TQuantityValueUnitless, peak.chromatographic_resolution
+                ),
+                chromatographic_peak_asymmetry_factor=quantity_or_none(
+                    TQuantityValueUnitless, peak.chromatographic_asymmetry
+                ),
+                peak_width_at_half_height=quantity_or_none_from_unit(  # type: ignore[arg-type]
+                    peak.width_at_half_height_unit, peak.width_at_half_height
+                ),
             ),
-            relative_peak_area=quantity_or_none(
-                TQuantityValuePercent, peak.relative_area
-            ),
-            relative_peak_height=quantity_or_none(
-                TQuantityValuePercent, peak.relative_height
-            ),
-            retention_time=quantity_or_none(
-                TQuantityValueSecondTime, peak.retention_time
-            ),
-            written_name=peak.written_name,
+            peak.custom_info,
         )
 
     def _get_processed_data_aggregate_document(
@@ -302,6 +356,11 @@ class Mapper(SchemaMapper[Data, Model]):
     ) -> DeviceControlDocumentItem:
         return DeviceControlDocumentItem(
             device_type=device_control_doc.device_type,
+            start_time_setting=(
+                self.get_date_time(device_control_doc.start_time)
+                if device_control_doc.start_time is not None
+                else None
+            ),
             solvent_concentration_data_cube=get_data_cube(
                 device_control_doc.solvent_conc_data_cube,
                 SolventConcentrationDataCube,
@@ -333,5 +392,31 @@ class Mapper(SchemaMapper[Data, Model]):
             temperature_profile_data_cube=get_data_cube(
                 device_control_doc.temperature_profile_data_cube,
                 TemperatureProfileDataCube,
+            ),
+        )
+
+    def _get_fraction_aggregate_document(
+        self, fractions: list[Fraction] | None
+    ) -> FractionAggregateDocument | None:
+        if fractions is None:
+            return None
+
+        return FractionAggregateDocument(
+            fraction_document=[
+                self._get_fraction_document(fraction_doc)
+                for fraction_doc in fractions or []
+            ]
+        )
+
+    def _get_fraction_document(self, fraction_doc: Fraction) -> FractionDocumentItem:
+        return FractionDocumentItem(
+            index=fraction_doc.index,
+            fraction_role=fraction_doc.fraction_role,
+            field_type=fraction_doc.field_type,
+            retention_time=quantity_or_none(
+                TQuantityValueSecondTime, fraction_doc.retention_time
+            ),
+            retention_volume=quantity_or_none(
+                TQuantityValueMilliliter, fraction_doc.retention_volume
             ),
         )

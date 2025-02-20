@@ -6,7 +6,7 @@ from allotropy.parsers.utils.pandas import read_csv
 
 
 class MSDWorkbenchReader:
-    SUPPORTED_EXTENSIONS = "csv"
+    SUPPORTED_EXTENSIONS = "csv, txt"
     plate_data: pd.DataFrame
     well_plate_id: str
 

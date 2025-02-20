@@ -24,6 +24,7 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     MeltCurveRawData,
     MulticomponentData,
     Result,
+    ResultMetadata,
     Well,
     WellItem,
 )
@@ -70,7 +71,9 @@ def _create_processed_data_cubes(
 
 
 def _create_processed_data(
-    amplification_data: AmplificationData | None, result: Result
+    amplification_data: AmplificationData | None,
+    result: Result,
+    result_metadata: ResultMetadata,
 ) -> ProcessedData:
     (
         normalized_reporter_data_cube,
@@ -89,6 +92,10 @@ def _create_processed_data(
         baseline_corrected_reporter_result=result.baseline_corrected_reporter_result,
         normalized_reporter_data_cube=normalized_reporter_data_cube,
         baseline_corrected_reporter_data_cube=baseline_corrected_reporter_data_cube,
+        data_processing_custom_info={
+            "reference dna description": result_metadata.reference_dna_description,
+            "reference sample description": result_metadata.reference_sample_description,
+        },
         custom_info=result.extra_data,
     )
 
@@ -168,6 +175,7 @@ def _create_measurement(
     melt_curve_raw_data: MeltCurveRawData | None,
     amplification_data: AmplificationData | None,
     result: Result | None,
+    result_metadata: ResultMetadata,
 ) -> Measurement | None:
     if not result:
         return None
@@ -201,7 +209,9 @@ def _create_measurement(
         reporter_dye_setting=well_item.reporter_dye_setting,
         quencher_dye_setting=well_item.quencher_dye_setting,
         passive_reference_dye_setting=header.passive_reference_dye_setting,
-        processed_data=_create_processed_data(amplification_data, result),
+        processed_data=_create_processed_data(
+            amplification_data, result, result_metadata
+        ),
         sample_custom_info=well_item.extra_data,
         reporter_dye_data_cube=reporter_dye_data_cube,
         passive_reference_dye_data_cube=passive_reference_dye_data_cube,
@@ -274,6 +284,7 @@ def _create_measurement_group(
     results_data: dict[int, dict[str, Result]],
     melt_data: dict[int, MeltCurveRawData],
     plate_well_count: int | None,
+    result_metadata: ResultMetadata,
 ) -> MeasurementGroup | None:
     measurements = [
         _create_measurement(
@@ -283,6 +294,7 @@ def _create_measurement_group(
             melt_data.get(well.identifier),
             get_well_item_amp_data(well_item, amp_data),
             get_well_item_results(well_item, results_data),
+            result_metadata,
         )
         for well_item in well.items
         if get_well_item_results(well_item, results_data)
@@ -326,6 +338,7 @@ def create_measurement_groups(
     multi_data: dict[int, MulticomponentData],
     results_data: dict[int, dict[str, Result]],
     melt_data: dict[int, MeltCurveRawData],
+    result_metadata: ResultMetadata,
 ) -> list[MeasurementGroup]:
 
     plate_well_count = _get_plate_well_count(header, wells)
@@ -338,6 +351,7 @@ def create_measurement_groups(
             results_data,
             melt_data,
             plate_well_count,
+            result_metadata,
         )
         for well in wells
     ]

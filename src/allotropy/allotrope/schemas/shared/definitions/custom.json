@@ -519,6 +519,26 @@
       }
     ]
   },
+  "tQuantityValueMilliliterPerMinute": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/MilliliterPerMinute"
+      }
+    ]
+  },
+  "tNullableQuantityValueMilliliterPerMinute": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/MilliliterPerMinute"
+      }
+    ]
+  },
   "tQuantityValueMillimeter": {
     "allOf": [
       {
@@ -1136,6 +1156,26 @@
       },
       {
         "$ref": "#/$defs/SecondTime"
+      }
+    ]
+  },
+  "tQuantityValueSeimensPerMeter": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/SeimensPerMeter"
+      }
+    ]
+  },
+  "tNullableQuantityValueSeimensPerMeter": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/SeimensPerMeter"
       }
     ]
   },

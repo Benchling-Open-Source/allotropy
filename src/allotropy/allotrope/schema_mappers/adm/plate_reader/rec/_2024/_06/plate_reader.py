@@ -19,6 +19,8 @@ from allotropy.allotrope.models.adm.plate_reader.rec._2024._06.plate_reader impo
     Model,
     PlateReaderAggregateDocument,
     PlateReaderDocumentItem,
+    ProcessedDataAggregateDocument,
+    ProcessedDataDocumentItem,
     SampleDocument,
     TQuantityValueModel,
 )
@@ -27,6 +29,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueDegreeCelsius,
     TQuantityValueMilliAbsorbanceUnit,
     TQuantityValueMillimeter,
+    TQuantityValueNanogramPerMicroliter,
     TQuantityValueNanometer,
     TQuantityValueNumber,
     TQuantityValuePicogramPerMilliliter,
@@ -106,6 +109,12 @@ class ErrorDocument:
 
 
 @dataclass(frozen=True)
+class ProcessedDataDocument:
+    identifier: str | None = None
+    concentration_factor: float | None = None
+
+
+@dataclass(frozen=True)
 class Measurement:
     # Measurement metadata
     type_: MeasurementType
@@ -156,6 +165,9 @@ class Measurement:
     # error documents
     error_document: list[ErrorDocument] | None = None
 
+    # processing data
+    processed_data_document: ProcessedDataDocument | None = None
+
 
 @dataclass(frozen=True)
 class MeasurementGroup:
@@ -167,6 +179,7 @@ class MeasurementGroup:
     experimental_data_identifier: str | None = None
     experiment_type: str | None = None
     maximum_wavelength_signal: float | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -181,6 +194,7 @@ class Metadata:
     equipment_serial_number: str | None = None
     product_manufacturer: str | None = None
     file_name: str | None = None
+    custom_info_doc: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -202,15 +216,18 @@ class Mapper(SchemaMapper[Data, Model]):
                     equipment_serial_number=data.metadata.equipment_serial_number,
                     product_manufacturer=data.metadata.product_manufacturer,
                 ),
-                data_system_document=DataSystemDocument(
-                    ASM_file_identifier=data.metadata.asm_file_identifier,
-                    data_system_instance_identifier=data.metadata.data_system_instance_id,
-                    file_name=data.metadata.file_name,
-                    UNC_path=data.metadata.unc_path,
-                    software_name=data.metadata.software_name,
-                    software_version=data.metadata.software_version,
-                    ASM_converter_name=self.converter_name,
-                    ASM_converter_version=ASM_CONVERTER_VERSION,
+                data_system_document=add_custom_information_document(
+                    DataSystemDocument(
+                        ASM_file_identifier=data.metadata.asm_file_identifier,
+                        data_system_instance_identifier=data.metadata.data_system_instance_id,
+                        file_name=data.metadata.file_name,
+                        UNC_path=data.metadata.unc_path,
+                        software_name=data.metadata.software_name,
+                        software_version=data.metadata.software_version,
+                        ASM_converter_name=self.converter_name,
+                        ASM_converter_version=ASM_CONVERTER_VERSION,
+                    ),
+                    data.metadata.custom_info_doc,
                 ),
                 plate_reader_document=[
                     self._get_technique_document(measurement_group)
@@ -226,7 +243,7 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_technique_document(
         self, measurement_group: MeasurementGroup
     ) -> PlateReaderDocumentItem:
-        group_doc = PlateReaderDocumentItem(
+        plate_reader_doc = PlateReaderDocumentItem(
             analyst=measurement_group.analyst,
             measurement_aggregate_document=MeasurementAggregateDocument(
                 analytical_method_identifier=measurement_group.analytical_method_identifier,
@@ -248,7 +265,8 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueNanometer, measurement_group.maximum_wavelength_signal
             )
         }
-        return add_custom_information_document(group_doc, custom_info_doc)
+        custom_info_doc.update(measurement_group.custom_info or {})
+        return add_custom_information_document(plate_reader_doc, custom_info_doc)
 
     def _get_measurement_document(
         self, measurement: Measurement
@@ -317,6 +335,21 @@ class Mapper(SchemaMapper[Data, Model]):
             error_aggregate_document=self._get_error_aggregate_document(
                 measurement.error_document
             ),
+            processed_data_aggregate_document=ProcessedDataAggregateDocument(
+                processed_data_document=[
+                    ProcessedDataDocumentItem(
+                        processed_data_identifier=measurement.processed_data_document.identifier,
+                        data_processing_document={
+                            "concentration factor": quantity_or_none(
+                                TQuantityValueNanogramPerMicroliter,
+                                measurement.processed_data_document.concentration_factor,
+                            )
+                        },
+                    )
+                ]
+            )
+            if measurement.processed_data_document
+            else None,
         )
         return add_custom_information_document(
             measurement_doc, measurement.measurement_custom_info
@@ -376,48 +409,51 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_fluorescence_measurement_document(
         self, measurement: Measurement
     ) -> MeasurementDocument:
-        return MeasurementDocument(
+        measurement_doc = MeasurementDocument(
             measurement_identifier=measurement.identifier,
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
-                    DeviceControlDocumentItem(
-                        device_type=measurement.device_type,
-                        detection_type=measurement.detection_type,
-                        detector_wavelength_setting=quantity_or_none(
-                            TQuantityValueNanometer,
-                            measurement.detector_wavelength_setting,
+                    add_custom_information_document(
+                        DeviceControlDocumentItem(
+                            device_type=measurement.device_type,
+                            detection_type=measurement.detection_type,
+                            detector_wavelength_setting=quantity_or_none(
+                                TQuantityValueNanometer,
+                                measurement.detector_wavelength_setting,
+                            ),
+                            detector_bandwidth_setting=quantity_or_none(
+                                TQuantityValueNanometer,
+                                measurement.detector_bandwidth_setting,
+                            ),
+                            excitation_wavelength_setting=quantity_or_none(
+                                TQuantityValueNanometer,
+                                measurement.excitation_wavelength_setting,
+                            ),
+                            excitation_bandwidth_setting=quantity_or_none(
+                                TQuantityValueNanometer,
+                                measurement.excitation_bandwidth_setting,
+                            ),
+                            wavelength_filter_cutoff_setting=quantity_or_none(
+                                TQuantityValueNanometer,
+                                measurement.wavelength_filter_cutoff_setting,
+                            ),
+                            detector_distance_setting__plate_reader_=quantity_or_none(
+                                TQuantityValueMillimeter,
+                                measurement.detector_distance_setting,
+                            ),
+                            scan_position_setting__plate_reader_=(
+                                measurement.scan_position_setting.value
+                                if measurement.scan_position_setting
+                                else None
+                            ),
+                            detector_gain_setting=measurement.detector_gain_setting,
+                            number_of_averages=quantity_or_none(
+                                TQuantityValueNumber, measurement.number_of_averages
+                            ),
+                            detector_carriage_speed_setting=measurement.detector_carriage_speed,
                         ),
-                        detector_bandwidth_setting=quantity_or_none(
-                            TQuantityValueNanometer,
-                            measurement.detector_bandwidth_setting,
-                        ),
-                        excitation_wavelength_setting=quantity_or_none(
-                            TQuantityValueNanometer,
-                            measurement.excitation_wavelength_setting,
-                        ),
-                        excitation_bandwidth_setting=quantity_or_none(
-                            TQuantityValueNanometer,
-                            measurement.excitation_bandwidth_setting,
-                        ),
-                        wavelength_filter_cutoff_setting=quantity_or_none(
-                            TQuantityValueNanometer,
-                            measurement.wavelength_filter_cutoff_setting,
-                        ),
-                        detector_distance_setting__plate_reader_=quantity_or_none(
-                            TQuantityValueMillimeter,
-                            measurement.detector_distance_setting,
-                        ),
-                        scan_position_setting__plate_reader_=(
-                            measurement.scan_position_setting.value
-                            if measurement.scan_position_setting
-                            else None
-                        ),
-                        detector_gain_setting=measurement.detector_gain_setting,
-                        number_of_averages=quantity_or_none(
-                            TQuantityValueNumber, measurement.number_of_averages
-                        ),
-                        detector_carriage_speed_setting=measurement.detector_carriage_speed,
-                    )
+                        measurement.device_control_custom_info,
+                    ),
                 ]
             ),
             fluorescence=TQuantityValueRelativeFluorescenceUnit(
@@ -433,6 +469,9 @@ class Mapper(SchemaMapper[Data, Model]):
             error_aggregate_document=self._get_error_aggregate_document(
                 measurement.error_document
             ),
+        )
+        return add_custom_information_document(
+            measurement_doc, measurement.measurement_custom_info
         )
 
     def _get_profile_data_cube_measurement_document(

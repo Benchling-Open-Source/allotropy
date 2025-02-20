@@ -311,6 +311,18 @@
       "unit"
     ]
   },
+  "MilliliterPerMinute": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "mL/min",
+        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MilliliterPerMinute"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
   "Millimeter": {
     "properties": {
       "unit": {
@@ -677,6 +689,18 @@
         "type": "string",
         "const": "s",
         "$asm.unit-iri": "http://qudt.org/vocab/unit#SecondTime"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
+  "SeimensPerMeter": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "S/m",
+        "$asm.unit-iri": "http://qudt.org/vocab/unit#SeimensPerMeter"
       }
     },
     "required": [

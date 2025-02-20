@@ -79,6 +79,7 @@ class HeaderData:
     well_plate_identifier: str | None
     model_number: str | None
     equipment_serial_number: str | None
+    additional_data: dict[str, str | float | None]
     plate_well_count: float
     file_name: str
     unc_path: str
@@ -100,6 +101,7 @@ class HeaderData:
             model_number=data.get(str, "Reader Type:"),
             equipment_serial_number=data.get(str, "Reader Serial Number:"),
             plate_well_count=plate_well_count,
+            additional_data=data.get_unread(),
         )
 
     @staticmethod
@@ -969,6 +971,13 @@ def _create_measurement(
             else None
         ),
         error_document=error_documents,
+        device_control_custom_info={
+            "Reading Type": header_data.additional_data.pop("Reading Type", None)
+        },
+        sample_custom_info={
+            "Plate Number": header_data.additional_data.pop("Plate Number", None)
+        },
+        measurement_custom_info=header_data.additional_data,
     )
 
 

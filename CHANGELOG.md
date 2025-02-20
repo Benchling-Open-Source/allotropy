@@ -5,6 +5,88 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.76] - 2025-02-19
+
+### Added
+
+- Liquid Chromatography - move fraction events to measurement aggregate document (#893)
+- Liquid Chromatography - add new fields to the BENCHLING/2023/09 schema (#891)
+- Thermo Fisher Scientific SkanIt - add support for Luminescence measurement type (#887)
+- Cytiva Unicorn - add fraction events (#892)
+
+### Fixed
+
+- ChemoMetec Nucleoview - handle file with commas at the end of the line (#889)
+
+## [0.1.75] - 2025-02-11
+
+### Added
+
+- Cytiva Unicorn - add void volume and flow rate (#880)
+- Bio-Rad CFX Maestro - update release state to recommended (#879)
+- AppBio QuantStudio Design & Analysis - add back reference fields as custom data processing info (#878)
+- Internal - improve calcdoc library implementation (#874)
+- Agilent Gen5 - Add unread data to ASM (#870)
+- Bio-Rad CFX Maestro - Add unread data to ASM (#850)
+- Luminex xPONENT - add descriptive error for Minimum bead count setting (#865)
+
+### Fixed
+
+- Plate Reader REC 2024/06 - add custom data to fluorescence measurement type (#886)
+- Luminex xPONENT - map settings from different source, add error document for Nan values (#868)
+- Agilent TapeStation Analysis - add missing calculated data from RNA tag (#866)
+- Luminex xPONENT - do not throw an error if an optional value is missing in the input file (#867)
+- Unchained Labs Lunatic - handle different cases for column headers (#863)
+
+## [0.1.74] - 2025-01-28
+
+### Added
+
+- AppBio QuantStudio RT-PCR - add back reference fields as custom data processing info (#860)
+
+## [0.1.73] - 2025-01-28
+
+### Added
+
+- Internal - add initial json-to-csv library (#767)
+- Thermo Fisher Qubit Flex - Add unread data to asm (#855)
+- Internal - implement special views for Quantstudio design analysis in calcdoc (#858)
+- Internal - implement calculated data documents library (#838)
+- Bio-Rad CFX Maestro - Use qpcr rec/2024/09 schema mapper (#837)
+- AppBio QuantStudio Design & Analysis - Use qpcr rec/2024/09 schema mapper (#836)
+- Thermo fisher Nanodrop One - Add unread data to customer information document (#852)
+- AppBio QuantStudio RT-PCR - Use qpcr rec/2024/09 schema mapper (#856)
+- Thermo Fisher Qubit4 - Add unread data to asm. (#854)
+
+## [0.1.72] - 2025-01-21
+
+### Added
+
+- BMG Labtech SMART Control - initial implementation (#831)
+- Cytiva Unicorn - add start time to device control doc (#851)
+- Cytiva Unicorn - add peaks (#849)
+
+## [0.1.71] - 2025-01-14
+
+### Added
+
+- Internal: add missing package dependencies
+
+## [0.1.70] - 2025-01-14
+
+### Added
+
+- Beckman coulter biomek - add support for .log files (#840)
+- Unchained Labs Lunatic - Added concentration factor as data processing field in asm (#844)
+- Cytiva Unicorn - Update inner column diameter and analyst fields (#842)
+- Cytiva Unicorn - handle missing sample id and injection volume (#841)
+- Beckman Coulter Adapters - Standardize display name (#834)
+- MSD Workbench - add .txt file support (#835)
+- Revert - "feat:  AppBio QuantStudio RT-PCR - Use qpcr rec/2024/09 schema mapper" (#839)
+- Cytiva Unicorn - improve handling of optional values  (#829)
+- Cytiva Biacore T200 Control - initial implementation (#765)
+-  AppBio QuantStudio RT-PCR - Use qpcr rec/2024/09 schema mapper (#833)
+
 ## [0.1.69] - 2024-12-16
 
 ### Added

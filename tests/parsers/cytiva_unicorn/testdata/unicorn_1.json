@@ -9,27 +9,386 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC"
+                                        "device type": "HPLC",
+                                        "start time setting": "2024-01-02T11:00:00+00:00"
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "Sample 001",
-                                "batch identifier": "f65ef0a9-7240-434e-aac1-44cb8e8faa08"
+                                "batch identifier": "f65ef0a9-7240-434e-aac1-44cb8e8faa08",
+                                "flow rate": {
+                                    "value": 100.0,
+                                    "unit": "mL/min"
+                                }
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "100-1000-100",
                                 "column inner diameter": {
-                                    "value": 100.0,
+                                    "value": 1000.0,
                                     "unit": "mm"
                                 },
                                 "chromatography column chemistry type": "AnionExchange",
                                 "chromatography column particle size": {
                                     "value": 100.0,
                                     "unit": "µm"
+                                },
+                                "void volume": {
+                                    "value": 40.2120018005371,
+                                    "unit": "mL"
                                 }
                             },
-                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_1",
+                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_5",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "peak list": {
+                                            "peak": [
+                                                {
+                                                    "peak end": {
+                                                        "value": -8.610134,
+                                                        "unit": "mL"
+                                                    },
+                                                    "identifier": "CYTIVA_UNICORN_TEST_ID_1",
+                                                    "peak height": {
+                                                        "value": 2.146412,
+                                                        "unit": "mAU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 3.3915,
+                                                        "unit": "mAU.mL"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 81.05229,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak start": {
+                                                        "value": -12.90094,
+                                                        "unit": "mL"
+                                                    },
+                                                    "peak index": "Peak 1",
+                                                    "peak width at half height": {
+                                                        "value": 1.408288,
+                                                        "unit": "mL"
+                                                    },
+                                                    "peak width": {
+                                                        "value": 4.290809,
+                                                        "unit": "mL"
+                                                    },
+                                                    "chromatographic peak asymmetry factor": {
+                                                        "value": 3.616266,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "custom information document": {
+                                                        "max peak retention": {
+                                                            "value": -12.21977,
+                                                            "unit": "mL"
+                                                        },
+                                                        "percent of total area": {
+                                                            "value": 71.98083,
+                                                            "unit": "%"
+                                                        },
+                                                        "start peak end point height": {
+                                                            "value": 0.001034731,
+                                                            "unit": "mAU"
+                                                        },
+                                                        "end peak end point height": {
+                                                            "value": 0.03208642,
+                                                            "unit": "mAU"
+                                                        },
+                                                        "sigma": {
+                                                            "value": 0.9344465,
+                                                            "unit": "(unitless)"
+                                                        },
+                                                        "asymmetry peak start": {
+                                                            "value": -12.82906,
+                                                            "unit": "(unitless)"
+                                                        },
+                                                        "asymmetry peak end": {
+                                                            "value": -10.01644,
+                                                            "unit": "(unitless)"
+                                                        },
+                                                        "start conductivity height": {
+                                                            "value": 1.691198,
+                                                            "unit": "S/m"
+                                                        },
+                                                        "max conductivity height": {
+                                                            "value": 1.6824660000000002,
+                                                            "unit": "S/m"
+                                                        },
+                                                        "end conductivity height": {
+                                                            "value": 1.7007280000000002,
+                                                            "unit": "S/m"
+                                                        },
+                                                        "average conductivity": {
+                                                            "value": 1.691657,
+                                                            "unit": "S/m"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": -8.489393,
+                                                        "unit": "mL"
+                                                    },
+                                                    "identifier": "CYTIVA_UNICORN_TEST_ID_2",
+                                                    "peak height": {
+                                                        "value": 0.03354651,
+                                                        "unit": "mAU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 0.00394271,
+                                                        "unit": "mAU.mL"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 0.09422549,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak start": {
+                                                        "value": -8.610134,
+                                                        "unit": "mL"
+                                                    },
+                                                    "peak index": "Peak 2",
+                                                    "chromatographic peak resolution": {
+                                                        "value": 2.830168,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "peak width at half height": {
+                                                        "value": 0.1207401,
+                                                        "unit": "mL"
+                                                    },
+                                                    "peak width": {
+                                                        "value": 0.1207409,
+                                                        "unit": "mL"
+                                                    },
+                                                    "chromatographic peak asymmetry factor": {
+                                                        "value": 0.8020833,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "custom information document": {
+                                                        "max peak retention": {
+                                                            "value": -8.543133,
+                                                            "unit": "mL"
+                                                        },
+                                                        "percent of total area": {
+                                                            "value": 0.08367967,
+                                                            "unit": "%"
+                                                        },
+                                                        "start peak end point height": {
+                                                            "value": 0.03208642,
+                                                            "unit": "mAU"
+                                                        },
+                                                        "end peak end point height": {
+                                                            "value": 0.03160653,
+                                                            "unit": "mAU"
+                                                        },
+                                                        "sigma": {
+                                                            "value": 0.03527583,
+                                                            "unit": "(unitless)"
+                                                        },
+                                                        "asymmetry peak start": {
+                                                            "value": -8.610134,
+                                                            "unit": "(unitless)"
+                                                        },
+                                                        "asymmetry peak end": {
+                                                            "value": -8.489393,
+                                                            "unit": "(unitless)"
+                                                        },
+                                                        "start conductivity height": {
+                                                            "value": 1.7007280000000002,
+                                                            "unit": "S/m"
+                                                        },
+                                                        "max conductivity height": {
+                                                            "value": 1.700863,
+                                                            "unit": "S/m"
+                                                        },
+                                                        "end conductivity height": {
+                                                            "value": 1.700955,
+                                                            "unit": "S/m"
+                                                        },
+                                                        "average conductivity": {
+                                                            "value": 1.700847,
+                                                            "unit": "S/m"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": -8.077621,
+                                                        "unit": "mL"
+                                                    },
+                                                    "identifier": "CYTIVA_UNICORN_TEST_ID_3",
+                                                    "peak height": {
+                                                        "value": 0.03332733,
+                                                        "unit": "mAU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 0.009767232,
+                                                        "unit": "mAU.mL"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 0.2334238,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak start": {
+                                                        "value": -8.489393,
+                                                        "unit": "mL"
+                                                    },
+                                                    "peak index": "Peak 3",
+                                                    "chromatographic peak resolution": {
+                                                        "value": 0.2936312,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "peak width at half height": {
+                                                        "value": 0.3604393,
+                                                        "unit": "mL"
+                                                    },
+                                                    "peak width": {
+                                                        "value": 0.4117718,
+                                                        "unit": "mL"
+                                                    },
+                                                    "chromatographic peak asymmetry factor": {
+                                                        "value": 5.210526,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "custom information document": {
+                                                        "max peak retention": {
+                                                            "value": -8.423091,
+                                                            "unit": "mL"
+                                                        },
+                                                        "percent of total area": {
+                                                            "value": 0.2072987,
+                                                            "unit": "%"
+                                                        },
+                                                        "start peak end point height": {
+                                                            "value": 0.03160653,
+                                                            "unit": "mAU"
+                                                        },
+                                                        "end peak end point height": {
+                                                            "value": 0.01245654,
+                                                            "unit": "mAU"
+                                                        },
+                                                        "sigma": {
+                                                            "value": 0.1591143,
+                                                            "unit": "(unitless)"
+                                                        },
+                                                        "asymmetry peak start": {
+                                                            "value": -8.489393,
+                                                            "unit": "(unitless)"
+                                                        },
+                                                        "asymmetry peak end": {
+                                                            "value": -8.077621,
+                                                            "unit": "(unitless)"
+                                                        },
+                                                        "start conductivity height": {
+                                                            "value": 1.700955,
+                                                            "unit": "S/m"
+                                                        },
+                                                        "max conductivity height": {
+                                                            "value": 1.70105,
+                                                            "unit": "S/m"
+                                                        },
+                                                        "end conductivity height": {
+                                                            "value": 1.701266,
+                                                            "unit": "S/m"
+                                                        },
+                                                        "average conductivity": {
+                                                            "value": 1.701128,
+                                                            "unit": "S/m"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "peak end": {
+                                                        "value": -7.861964,
+                                                        "unit": "mL"
+                                                    },
+                                                    "identifier": "CYTIVA_UNICORN_TEST_ID_4",
+                                                    "peak height": {
+                                                        "value": 0.01306163,
+                                                        "unit": "mAU"
+                                                    },
+                                                    "peak area": {
+                                                        "value": 0.002231469,
+                                                        "unit": "mAU.mL"
+                                                    },
+                                                    "relative peak area": {
+                                                        "value": 0.05332911,
+                                                        "unit": "%"
+                                                    },
+                                                    "peak start": {
+                                                        "value": -8.077621,
+                                                        "unit": "mL"
+                                                    },
+                                                    "peak index": "Peak 4",
+                                                    "chromatographic peak resolution": {
+                                                        "value": 0.8104106,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "peak width at half height": {
+                                                        "value": 0.200094,
+                                                        "unit": "mL"
+                                                    },
+                                                    "peak width": {
+                                                        "value": 0.2156577,
+                                                        "unit": "mL"
+                                                    },
+                                                    "chromatographic peak asymmetry factor": {
+                                                        "value": 4.327586,
+                                                        "unit": "(unitless)"
+                                                    },
+                                                    "custom information document": {
+                                                        "max peak retention": {
+                                                            "value": -8.037142,
+                                                            "unit": "mL"
+                                                        },
+                                                        "percent of total area": {
+                                                            "value": 0.04736046,
+                                                            "unit": "%"
+                                                        },
+                                                        "start peak end point height": {
+                                                            "value": 0.01245654,
+                                                            "unit": "mAU"
+                                                        },
+                                                        "end peak end point height": {
+                                                            "value": 0.006360978,
+                                                            "unit": "mAU"
+                                                        },
+                                                        "sigma": {
+                                                            "value": 0.08057795,
+                                                            "unit": "(unitless)"
+                                                        },
+                                                        "asymmetry peak start": {
+                                                            "value": -8.077621,
+                                                            "unit": "(unitless)"
+                                                        },
+                                                        "asymmetry peak end": {
+                                                            "value": -7.861964,
+                                                            "unit": "(unitless)"
+                                                        },
+                                                        "start conductivity height": {
+                                                            "value": 1.701266,
+                                                            "unit": "S/m"
+                                                        },
+                                                        "max conductivity height": {
+                                                            "value": 1.701302,
+                                                            "unit": "S/m"
+                                                        },
+                                                        "end conductivity height": {
+                                                            "value": 1.7014880000000001,
+                                                            "unit": "S/m"
+                                                        },
+                                                        "average conductivity": {
+                                                            "value": 1.701361,
+                                                            "unit": "S/m"
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            },
                             "injection document": {
                                 "autosampler injection volume setting (chromatography)": {
                                     "value": 360.0,
@@ -78,27 +437,36 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC"
+                                        "device type": "HPLC",
+                                        "start time setting": "2024-01-02T11:00:00+00:00"
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "Sample 001",
-                                "batch identifier": "f65ef0a9-7240-434e-aac1-44cb8e8faa08"
+                                "batch identifier": "f65ef0a9-7240-434e-aac1-44cb8e8faa08",
+                                "flow rate": {
+                                    "value": 100.0,
+                                    "unit": "mL/min"
+                                }
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "100-1000-100",
                                 "column inner diameter": {
-                                    "value": 100.0,
+                                    "value": 1000.0,
                                     "unit": "mm"
                                 },
                                 "chromatography column chemistry type": "AnionExchange",
                                 "chromatography column particle size": {
                                     "value": 100.0,
                                     "unit": "µm"
+                                },
+                                "void volume": {
+                                    "value": 40.2120018005371,
+                                    "unit": "mL"
                                 }
                             },
-                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_2",
+                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_6",
                             "injection document": {
                                 "autosampler injection volume setting (chromatography)": {
                                     "value": 360.0,
@@ -147,27 +515,36 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC"
+                                        "device type": "HPLC",
+                                        "start time setting": "2024-01-02T11:00:00+00:00"
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "Sample 001",
-                                "batch identifier": "f65ef0a9-7240-434e-aac1-44cb8e8faa08"
+                                "batch identifier": "f65ef0a9-7240-434e-aac1-44cb8e8faa08",
+                                "flow rate": {
+                                    "value": 100.0,
+                                    "unit": "mL/min"
+                                }
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "100-1000-100",
                                 "column inner diameter": {
-                                    "value": 100.0,
+                                    "value": 1000.0,
                                     "unit": "mm"
                                 },
                                 "chromatography column chemistry type": "AnionExchange",
                                 "chromatography column particle size": {
                                     "value": 100.0,
                                     "unit": "µm"
+                                },
+                                "void volume": {
+                                    "value": 40.2120018005371,
+                                    "unit": "mL"
                                 }
                             },
-                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_3",
+                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_7",
                             "injection document": {
                                 "autosampler injection volume setting (chromatography)": {
                                     "value": 360.0,
@@ -216,27 +593,36 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC"
+                                        "device type": "HPLC",
+                                        "start time setting": "2024-01-02T11:00:00+00:00"
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "Sample 001",
-                                "batch identifier": "f65ef0a9-7240-434e-aac1-44cb8e8faa08"
+                                "batch identifier": "f65ef0a9-7240-434e-aac1-44cb8e8faa08",
+                                "flow rate": {
+                                    "value": 100.0,
+                                    "unit": "mL/min"
+                                }
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "100-1000-100",
                                 "column inner diameter": {
-                                    "value": 100.0,
+                                    "value": 1000.0,
                                     "unit": "mm"
                                 },
                                 "chromatography column chemistry type": "AnionExchange",
                                 "chromatography column particle size": {
                                     "value": 100.0,
                                     "unit": "µm"
+                                },
+                                "void volume": {
+                                    "value": 40.2120018005371,
+                                    "unit": "mL"
                                 }
                             },
-                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_4",
+                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_8",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -326,27 +712,36 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC"
+                                        "device type": "HPLC",
+                                        "start time setting": "2024-01-02T11:00:00+00:00"
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "Sample 001",
-                                "batch identifier": "f65ef0a9-7240-434e-aac1-44cb8e8faa08"
+                                "batch identifier": "f65ef0a9-7240-434e-aac1-44cb8e8faa08",
+                                "flow rate": {
+                                    "value": 100.0,
+                                    "unit": "mL/min"
+                                }
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "100-1000-100",
                                 "column inner diameter": {
-                                    "value": 100.0,
+                                    "value": 1000.0,
                                     "unit": "mm"
                                 },
                                 "chromatography column chemistry type": "AnionExchange",
                                 "chromatography column particle size": {
                                     "value": 100.0,
                                     "unit": "µm"
+                                },
+                                "void volume": {
+                                    "value": 40.2120018005371,
+                                    "unit": "mL"
                                 }
                             },
-                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_5",
+                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_9",
                             "injection document": {
                                 "autosampler injection volume setting (chromatography)": {
                                     "value": 360.0,
@@ -396,6 +791,7 @@
                                 "device control document": [
                                     {
                                         "device type": "HPLC",
+                                        "start time setting": "2024-01-02T11:00:00+00:00",
                                         "solvent concentration data cube": {
                                             "label": "Conc B",
                                             "cube-structure": {
@@ -436,21 +832,29 @@
                             },
                             "sample document": {
                                 "sample identifier": "Sample 001",
-                                "batch identifier": "f65ef0a9-7240-434e-aac1-44cb8e8faa08"
+                                "batch identifier": "f65ef0a9-7240-434e-aac1-44cb8e8faa08",
+                                "flow rate": {
+                                    "value": 100.0,
+                                    "unit": "mL/min"
+                                }
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "100-1000-100",
                                 "column inner diameter": {
-                                    "value": 100.0,
+                                    "value": 1000.0,
                                     "unit": "mm"
                                 },
                                 "chromatography column chemistry type": "AnionExchange",
                                 "chromatography column particle size": {
                                     "value": 100.0,
                                     "unit": "µm"
+                                },
+                                "void volume": {
+                                    "value": 40.2120018005371,
+                                    "unit": "mL"
                                 }
                             },
-                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_6",
+                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_10",
                             "injection document": {
                                 "autosampler injection volume setting (chromatography)": {
                                     "value": 360.0,
@@ -465,6 +869,7 @@
                                 "device control document": [
                                     {
                                         "device type": "HPLC",
+                                        "start time setting": "2024-01-02T11:00:00+00:00",
                                         "pre column pressure data cube": {
                                             "label": "PreC pressure",
                                             "cube-structure": {
@@ -610,21 +1015,29 @@
                             },
                             "sample document": {
                                 "sample identifier": "Sample 001",
-                                "batch identifier": "f65ef0a9-7240-434e-aac1-44cb8e8faa08"
+                                "batch identifier": "f65ef0a9-7240-434e-aac1-44cb8e8faa08",
+                                "flow rate": {
+                                    "value": 100.0,
+                                    "unit": "mL/min"
+                                }
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "100-1000-100",
                                 "column inner diameter": {
-                                    "value": 100.0,
+                                    "value": 1000.0,
                                     "unit": "mm"
                                 },
                                 "chromatography column chemistry type": "AnionExchange",
                                 "chromatography column particle size": {
                                     "value": 100.0,
                                     "unit": "µm"
+                                },
+                                "void volume": {
+                                    "value": 40.2120018005371,
+                                    "unit": "mL"
                                 }
                             },
-                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_7",
+                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_11",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -680,6 +1093,7 @@
                                 "device control document": [
                                     {
                                         "device type": "HPLC",
+                                        "start time setting": "2024-01-02T11:00:00+00:00",
                                         "system flow rate data cube": {
                                             "label": "System flow (CV/h)",
                                             "cube-structure": {
@@ -753,6 +1167,7 @@
                                     },
                                     {
                                         "device type": "HPLC",
+                                        "start time setting": "2024-01-02T11:00:00+00:00",
                                         "system flow rate data cube": {
                                             "label": "System flow",
                                             "cube-structure": {
@@ -826,6 +1241,7 @@
                                     },
                                     {
                                         "device type": "HPLC",
+                                        "start time setting": "2024-01-02T11:00:00+00:00",
                                         "sample flow rate data cube": {
                                             "label": "Sample linear flow",
                                             "cube-structure": {
@@ -866,21 +1282,29 @@
                             },
                             "sample document": {
                                 "sample identifier": "Sample 001",
-                                "batch identifier": "f65ef0a9-7240-434e-aac1-44cb8e8faa08"
+                                "batch identifier": "f65ef0a9-7240-434e-aac1-44cb8e8faa08",
+                                "flow rate": {
+                                    "value": 100.0,
+                                    "unit": "mL/min"
+                                }
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "100-1000-100",
                                 "column inner diameter": {
-                                    "value": 100.0,
+                                    "value": 1000.0,
                                     "unit": "mm"
                                 },
                                 "chromatography column chemistry type": "AnionExchange",
                                 "chromatography column particle size": {
                                     "value": 100.0,
                                     "unit": "µm"
+                                },
+                                "void volume": {
+                                    "value": 40.2120018005371,
+                                    "unit": "mL"
                                 }
                             },
-                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_8",
+                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_12",
                             "injection document": {
                                 "autosampler injection volume setting (chromatography)": {
                                     "value": 360.0,
@@ -895,6 +1319,7 @@
                                 "device control document": [
                                     {
                                         "device type": "HPLC",
+                                        "start time setting": "2024-01-02T11:00:00+00:00",
                                         "temperature profile data cube": {
                                             "label": "Cond temp",
                                             "cube-structure": {
@@ -935,21 +1360,29 @@
                             },
                             "sample document": {
                                 "sample identifier": "Sample 001",
-                                "batch identifier": "f65ef0a9-7240-434e-aac1-44cb8e8faa08"
+                                "batch identifier": "f65ef0a9-7240-434e-aac1-44cb8e8faa08",
+                                "flow rate": {
+                                    "value": 100.0,
+                                    "unit": "mL/min"
+                                }
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "100-1000-100",
                                 "column inner diameter": {
-                                    "value": 100.0,
+                                    "value": 1000.0,
                                     "unit": "mm"
                                 },
                                 "chromatography column chemistry type": "AnionExchange",
                                 "chromatography column particle size": {
                                     "value": 100.0,
                                     "unit": "µm"
+                                },
+                                "void volume": {
+                                    "value": 40.2120018005371,
+                                    "unit": "mL"
                                 }
                             },
-                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_9",
+                            "measurement identifier": "CYTIVA_UNICORN_TEST_ID_13",
                             "injection document": {
                                 "autosampler injection volume setting (chromatography)": {
                                     "value": 360.0,
@@ -959,14 +1392,117 @@
                                 "injection time": "2024-01-02T11:00:00+00:00"
                             }
                         }
-                    ]
+                    ],
+                    "fraction aggregate document": {
+                        "fraction document": [
+                            {
+                                "index": "Fraction Event 1",
+                                "retention time": {
+                                    "value": 6.29997,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 0.5256958,
+                                    "unit": "mL"
+                                },
+                                "fraction role": "Out-Waste",
+                                "@type": "Fraction"
+                            },
+                            {
+                                "index": "Fraction Event 2",
+                                "retention time": {
+                                    "value": 464.89997999999997,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 73.47809,
+                                    "unit": "mL"
+                                },
+                                "@type": "Method"
+                            },
+                            {
+                                "index": "Fraction Event 3",
+                                "retention time": {
+                                    "value": 2348.5998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.0173,
+                                    "unit": "mL"
+                                },
+                                "@type": "Method"
+                            },
+                            {
+                                "index": "Fraction Event 4",
+                                "retention time": {
+                                    "value": 2350.3998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.154,
+                                    "unit": "mL"
+                                },
+                                "@type": "Method"
+                            },
+                            {
+                                "index": "Fraction Event 5",
+                                "retention time": {
+                                    "value": 2774.4,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 455.8084,
+                                    "unit": "mL"
+                                },
+                                "@type": "Method"
+                            },
+                            {
+                                "index": "Fraction Event 6",
+                                "retention time": {
+                                    "value": 3556.9998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 586.219,
+                                    "unit": "mL"
+                                },
+                                "@type": "Method"
+                            },
+                            {
+                                "index": "Fraction Event 7",
+                                "retention time": {
+                                    "value": 4532.499599999999,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 828.6274,
+                                    "unit": "mL"
+                                },
+                                "fraction role": "Frac",
+                                "@type": "Fraction"
+                            },
+                            {
+                                "index": "Fraction Event 8",
+                                "retention time": {
+                                    "value": 5133.899399999999,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 908.8346,
+                                    "unit": "mL"
+                                },
+                                "fraction role": "Out-Waste",
+                                "@type": "Fraction"
+                            }
+                        ]
+                    }
                 },
-                "analyst": "System"
+                "analyst": "Default"
             }
         ],
         "data system document": {
             "ASM converter name": "allotropy_cytiva_unicorn",
-            "ASM converter version": "0.1.66",
+            "ASM converter version": "0.1.75",
             "file name": "unicorn_1.zip",
             "UNC path": "tests/parsers/cytiva_unicorn/testdata/unicorn_1.zip"
         },

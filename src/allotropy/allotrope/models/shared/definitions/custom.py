@@ -30,6 +30,7 @@ from allotropy.allotrope.models.shared.definitions.units import (
     MilligramPerMilliliter,
     Milliliter,
     MilliliterPerLiter,
+    MilliliterPerMinute,
     Millimeter,
     MillimeterOfMercury,
     MillimolePerLiter,
@@ -63,6 +64,7 @@ from allotropy.allotrope.models.shared.definitions.units import (
     RelativeLightUnitTimesMilliliter,
     RelativeLightUnitTimesSecond,
     SecondTime,
+    SeimensPerMeter,
     SquareCentimetersPerGram,
     SquareCentimetersPerMole,
     TODO,
@@ -357,6 +359,18 @@ class TQuantityValueMilliliterPerLiter(MilliliterPerLiter, TQuantityValue):
 @dataclass(frozen=True, kw_only=True)
 class TNullableQuantityValueMilliliterPerLiter(
     MilliliterPerLiter, TNullableQuantityValue
+):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueMilliliterPerMinute(MilliliterPerMinute, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValueMilliliterPerMinute(
+    MilliliterPerMinute, TNullableQuantityValue
 ):
     pass
 
@@ -710,6 +724,16 @@ class TQuantityValueSecondTime(SecondTime, TQuantityValue):
 
 @dataclass(frozen=True, kw_only=True)
 class TNullableQuantityValueSecondTime(SecondTime, TNullableQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueSeimensPerMeter(SeimensPerMeter, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValueSeimensPerMeter(SeimensPerMeter, TNullableQuantityValue):
     pass
 
 
