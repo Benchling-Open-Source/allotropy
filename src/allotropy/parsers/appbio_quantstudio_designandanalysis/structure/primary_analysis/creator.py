@@ -6,10 +6,6 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_d
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
     DesignQuantstudioReader,
 )
-from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_views import (
-    SampleView,
-    TargetView,
-)
 from allotropy.parsers.appbio_quantstudio_designandanalysis.constants import (
     ExperimentType,
 )
@@ -44,11 +40,7 @@ class PrimaryAnalysisCreator(Creator):
             header,
             wells,
             experiment_type=ExperimentType.primary_analysis_experiment,
-            calculated_documents=list(
-                iter_primary_analysis_calc_docs(
-                    view_st_data=SampleView(sub_view=TargetView()).apply(well_items),
-                )
-            ),
+            calculated_documents=list(iter_primary_analysis_calc_docs(well_items)),
             reference_target=None,
             reference_sample=None,
         )

@@ -8,6 +8,7 @@ class AppbioQuantstudioDAExtractor(Extractor[WellItem]):
     @classmethod
     def to_element(cls, well_item: WellItem) -> Element:
         return Element(
+            uuid=well_item.uuid,
             data={
                 "uuid": well_item.uuid,
                 "identifier": well_item.identifier,
@@ -50,5 +51,5 @@ class AppbioQuantstudioDAExtractor(Extractor[WellItem]):
                 "efficiency": well_item.result.efficiency,
                 "amp_score": well_item.result.amp_score,
                 "cq_conf": well_item.result.cq_conf,
-            }
+            },
         )
