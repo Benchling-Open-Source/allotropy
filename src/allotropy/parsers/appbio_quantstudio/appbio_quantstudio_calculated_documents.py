@@ -418,7 +418,7 @@ def build_relative_rq(
 
     return CalculatedDocument(
         uuid=random_uuid_str(),
-        name="rq",
+        name="relative rq",
         value=rq,
         data_sources=[
             DataSource(
@@ -446,11 +446,11 @@ def build_relative_rq_min(
 
     return CalculatedDocument(
         uuid=random_uuid_str(),
-        name="rq min",
+        name="relative rq min",
         value=rq_min,
         data_sources=[
             DataSource(
-                feature="rq",
+                feature="relative rq",
                 reference=relative_rq_ref,
             )
         ],
@@ -474,11 +474,11 @@ def build_relative_rq_max(
 
     return CalculatedDocument(
         uuid=random_uuid_str(),
-        name="rq max",
+        name="relative rq max",
         value=rq_max,
         data_sources=[
             DataSource(
-                feature="rq",
+                feature="relative rq",
                 reference=relative_rq_ref,
             ),
         ],
