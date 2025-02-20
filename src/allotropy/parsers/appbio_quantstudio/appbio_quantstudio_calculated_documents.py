@@ -89,7 +89,7 @@ def build_quantity(
         if y_intercept_ref := build_y_intercept(view_tr_data, target):
             data_sources.append(
                 DataSource(
-                    feature="y-intercept",
+                    feature="y intercept",
                     reference=y_intercept_ref,
                 )
             )
