@@ -6,8 +6,6 @@ from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._202
     Mapper,
 )
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.benchling_chromeleon.constants import DISPLAY_NAME
 from allotropy.parsers.benchling_chromeleon.benchling_chromeleon_reader import (
     BenchlingChromeleonReader,
 )
@@ -16,6 +14,8 @@ from allotropy.parsers.benchling_chromeleon.benchling_chromeleon_structure impor
     create_measurement_groups,
     create_metadata,
 )
+from allotropy.parsers.benchling_chromeleon.constants import DISPLAY_NAME
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.vendor_parser import VendorParser
 
 

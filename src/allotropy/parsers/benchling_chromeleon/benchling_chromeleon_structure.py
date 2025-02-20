@@ -23,8 +23,8 @@ from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._202
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, DataCubeComponent
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.benchling_chromeleon import constants
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import try_float, try_float_or_none
 

@@ -5,12 +5,12 @@ import pytest
 from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     Metadata,
 )
-from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.benchling_chromeleon import constants
 from allotropy.parsers.benchling_chromeleon.benchling_chromeleon_structure import (
     create_measurement_groups,
     create_metadata,
 )
+from allotropy.parsers.constants import NOT_APPLICABLE
 
 
 @pytest.fixture
