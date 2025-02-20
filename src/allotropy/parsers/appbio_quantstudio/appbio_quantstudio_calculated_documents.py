@@ -1,6 +1,19 @@
 from collections.abc import Iterator
 from functools import cache
 
+from allotropy.calcdocs.appbio_quantstudio.extractor import AppbioQuantstudioExtractor
+from allotropy.calcdocs.appbio_quantstudio.views import (
+    SampleView as NewSampleView,
+    TargetRoleView as NewTargetRoleView,
+    TargetView as NewTargetView,
+    UuidView,
+)
+from allotropy.calcdocs.config import (
+    CalcDocsConfig,
+    CalculatedDataConfig,
+    MeasurementConfig,
+)
+from allotropy.calcdocs.view import ViewData as NewViewData
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     WellItem,
 )
@@ -586,6 +599,182 @@ def build_efficiency(
     )
 
 
+def ctr() -> MeasurementConfig:
+    return MeasurementConfig(
+        name="cycle threshold result",
+        value="cycle_threshold_result",
+    )
+
+
+def amplification_score(view_data: NewViewData) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="amplification score",
+        value="amp_score",
+        view_data=view_data,
+        source_configs=(ctr(),),
+    )
+
+
+def cq_confidence(view_data: NewViewData) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="cq confidence",
+        value="cq_conf",
+        view_data=view_data,
+        source_configs=(ctr(),),
+    )
+
+
+def y_intercept(view_data: NewViewData) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="y intercept",
+        value="y_intercept",
+        view_data=view_data,
+        source_configs=(ctr(),),
+    )
+
+
+def slope(view_data: NewViewData) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="slope",
+        value="slope",
+        view_data=view_data,
+        source_configs=(ctr(),),
+    )
+
+
+def ct_mean(view_data: NewViewData) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="ct mean",
+        value="ct_mean",
+        view_data=view_data,
+        source_configs=(ctr(),),
+    )
+
+
+def ct_sd(view_data: NewViewData) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="ct sd",
+        value="ct_sd",
+        view_data=view_data,
+        source_configs=(ctr(),),
+    )
+
+
+def quantity(
+    view_data: NewViewData,
+    y_intercept_conf: CalculatedDataConfig | None = None,
+    slope_conf: CalculatedDataConfig | None = None,
+) -> CalculatedDataConfig:
+    ctr_conf = ctr()
+    return CalculatedDataConfig(
+        name="quantity",
+        value="quantity",
+        view_data=view_data,
+        source_configs=tuple(
+            config for config in [ctr_conf, y_intercept_conf, slope_conf] if config
+        ),
+    )
+
+
+def quantity_mean(
+    view_data: NewViewData,
+    quantity_conf: CalculatedDataConfig,
+) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="quantity mean",
+        value="quantity_mean",
+        view_data=view_data,
+        source_configs=(quantity_conf,),
+    )
+
+
+def quantity_sd(
+    view_data: NewViewData,
+    quantity_conf: CalculatedDataConfig,
+) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="quantity sd",
+        value="quantity_sd",
+        view_data=view_data,
+        source_configs=(quantity_conf,),
+    )
+
+
+def delta_ct_se(
+    view_data: NewViewData,
+    ct_sd_conf: CalculatedDataConfig,
+    ref_ct_sd_conf: CalculatedDataConfig,
+) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="delta ct se",
+        value="delta_ct_se",
+        view_data=view_data,
+        source_configs=(ct_sd_conf, ref_ct_sd_conf),
+    )
+
+
+def delta_ct_mean(
+    view_data: NewViewData,
+    adj_eq_ct_mean_conf: CalculatedDataConfig,
+    ref_adj_eq_ct_mean_conf: CalculatedDataConfig,
+) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="delta ct mean",
+        value="delta_ct_mean",
+        view_data=view_data,
+        source_configs=(adj_eq_ct_mean_conf, ref_adj_eq_ct_mean_conf),
+    )
+
+
+def delta_delta_ct(
+    view_data: NewViewData,
+    delta_ct_conf: CalculatedDataConfig,
+    ref_delta_ct_conf: CalculatedDataConfig,
+) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="delta delta ct",
+        value="delta_delta_ct",
+        view_data=view_data,
+        source_configs=(delta_ct_conf, ref_delta_ct_conf),
+    )
+
+
+def rq(
+    view_data: NewViewData,
+    delta_delta_ct_conf: CalculatedDataConfig,
+) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="rq",
+        value="rq",
+        view_data=view_data,
+        source_configs=(delta_delta_ct_conf,),
+    )
+
+
+def rq_min(
+    view_data: NewViewData,
+    rq_conf: CalculatedDataConfig,
+) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="rq min",
+        value="rq_min",
+        view_data=view_data,
+        source_configs=(rq_conf,),
+    )
+
+
+def rq_max(
+    view_data: NewViewData,
+    rq_conf: CalculatedDataConfig,
+) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="rq max",
+        value="rq_max",
+        view_data=view_data,
+        source_configs=(rq_conf,),
+    )
+
+
 def yield_documents(
     calc_docs: list[CalculatedDocument | None],
 ) -> Iterator[CalculatedDocument]:
@@ -595,56 +784,94 @@ def yield_documents(
 
 
 def iter_comparative_ct_calc_docs(
-    view_st_data: ViewData[WellItem],
-    view_tr_data: ViewData[WellItem],
+    well_items: list[WellItem],
     r_sample: str,
     r_target: str,
 ) -> Iterator[CalculatedDocument]:
-    # Quantity, Quantity Mean, Quantity SD, Ct Mean, Ct SD, Delta Ct Mean,
-    # Delta Ct SE, Delta Delta Ct, RQ, RQ min, RQ max, Amplification score, Cq confidence
-    calc_docs: list[CalculatedDocument | None] = []
-    for sample, target in view_st_data.iter_keys():
-        for well_item in view_st_data.get_leaf_item(sample, target):
-            calc_docs.append(build_quantity(view_tr_data, target, well_item))
+    # Y-intercept, Slope, Quantity, Amplification score, Cq confidence
+    # Quantity Mean, Quantity SD, Ct Mean, Ct SD
+    # Delta Ct SE, Delta Ct Mean,
+    # Delta Delta Ct, RQ, RQ min, RQ max
+    elements = AppbioQuantstudioExtractor.get_elements(well_items)
 
-    for sample, target in view_st_data.iter_keys():
-        for well_item in view_st_data.get_leaf_item(sample, target):
-            calc_docs.append(build_amp_score(well_item))
+    sid_tdna_view_data = NewSampleView(sub_view=NewTargetView()).apply(elements)
+    sid_ref_tdna_view_data = NewSampleView(
+        reference=r_sample, sub_view=NewTargetView()
+    ).apply(elements)
+    sid_tdna_ref_view_data = NewSampleView(
+        sub_view=NewTargetView(is_reference=True, reference=r_target)
+    ).apply(elements)
+    sid_tdna_blacklist_view_data = NewSampleView(
+        sub_view=NewTargetView(blacklist=[r_target] if r_target is not None else None)
+    ).apply(elements)
+    sid_tdna_uuid_view_data = NewSampleView(
+        sub_view=NewTargetView(sub_view=UuidView())
+    ).apply(elements)
+    tdna_view_data = NewTargetRoleView().apply(elements)
 
-    for sample, target in view_st_data.iter_keys():
-        for well_item in view_st_data.get_leaf_item(sample, target):
-            calc_docs.append(build_cq_conf(well_item))
+    quantity_conf = quantity(
+        sid_tdna_uuid_view_data,
+        y_intercept(tdna_view_data),
+        slope(tdna_view_data),
+    )
 
-    for sample, target in view_st_data.iter_keys():
-        calc_docs.append(
-            build_quantity_mean(view_st_data, view_tr_data, sample, target)
-        )
+    configs = CalcDocsConfig(
+        [
+            quantity_conf,
+            amplification_score(sid_tdna_uuid_view_data),
+            cq_confidence(sid_tdna_uuid_view_data),
+            quantity_mean(sid_tdna_view_data, quantity_conf),
+            quantity_sd(sid_tdna_view_data, quantity_conf),
+            ct_mean(sid_tdna_view_data),
+            ct_sd(sid_tdna_view_data),
+            delta_ct_se(
+                sid_tdna_view_data,
+                ct_mean(sid_tdna_view_data),
+                ct_mean(sid_tdna_ref_view_data),
+            ),
+            rq_min(
+                sid_tdna_blacklist_view_data,
+                rq(
+                    sid_tdna_view_data,
+                    delta_delta_ct(
+                        sid_tdna_view_data,
+                        delta_ct_mean(
+                            sid_tdna_view_data,
+                            ct_mean(sid_tdna_view_data),
+                            ct_mean(sid_tdna_ref_view_data),
+                        ),
+                        delta_ct_mean(
+                            sid_ref_tdna_view_data,
+                            ct_mean(sid_tdna_view_data),
+                            ct_mean(sid_tdna_ref_view_data),
+                        ),
+                    ),
+                ),
+            ),
+            rq_max(
+                sid_tdna_blacklist_view_data,
+                rq(
+                    sid_tdna_view_data,
+                    delta_delta_ct(
+                        sid_tdna_view_data,
+                        delta_ct_mean(
+                            sid_tdna_view_data,
+                            ct_mean(sid_tdna_view_data),
+                            ct_mean(sid_tdna_ref_view_data),
+                        ),
+                        delta_ct_mean(
+                            sid_ref_tdna_view_data,
+                            ct_mean(sid_tdna_view_data),
+                            ct_mean(sid_tdna_ref_view_data),
+                        ),
+                    ),
+                ),
+            ),
+        ]
+    )
 
-    for sample, target in view_st_data.iter_keys():
-        calc_docs.append(build_quantity_sd(view_st_data, view_tr_data, sample, target))
-
-    for sample, target in view_st_data.iter_keys():
-        calc_docs.append(build_ct_mean(view_st_data, sample, target))
-
-    for sample, target in view_st_data.iter_keys():
-        calc_docs.append(build_ct_sd(view_st_data, sample, target))
-
-    for sample, target in view_st_data.iter_keys():
-        calc_docs.append(build_delta_ct_se(view_st_data, sample, target, r_target))
-
-    for sample, target in view_st_data.iter_keys():
-        if target != r_target:
-            calc_docs.append(
-                build_rq_min(view_st_data, sample, target, r_sample, r_target)
-            )
-
-    for sample, target in view_st_data.iter_keys():
-        if target != r_target:
-            calc_docs.append(
-                build_rq_max(view_st_data, sample, target, r_sample, r_target)
-            )
-
-    yield from yield_documents(calc_docs)
+    for calc_doc in configs.construct():
+        yield from calc_doc.iter_struct()
 
 
 def iter_standard_curve_calc_docs(
@@ -749,8 +976,7 @@ def iter_calculated_data_documents(
         )
     elif experiment_type == ExperimentType.comparative_ct_qpcr_experiment:
         yield from iter_comparative_ct_calc_docs(
-            view_st_data,
-            view_tr_data,
+            well_items,
             assert_not_none(r_sample),
             assert_not_none(r_target),
         )
