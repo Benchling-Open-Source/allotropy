@@ -76,7 +76,7 @@
                                 "calculated data name": "Cell diameter standard deviation (um)",
                                 "calculated result": {
                                     "value": 7.7,
-                                    "unit": "μL"
+                                    "unit": "µm"
                                 },
                                 "calculated data identifier": "CHEMOMETEC_NUCLEOVIEW_TEST_ID_1",
                                 "data source aggregate document": {
@@ -107,14 +107,14 @@
                         ]
                     },
                     "custom information document": {
-                        "Protocol template title": "Viability and Cell Count Assay",
-                        "Protocol adaptation title": "example cell counting",
                         "Protocol template purpose": "Cell Count and Viability with AO and DAPI",
-                        "Event log format": "Plain text",
-                        "Login ID": "admin",
-                        "Protocol adaptation purpose": "Cell Count and Viability with AO and DAPI",
+                        "Protocol template filename": "Viability and Cell Count Assay - NC-200.cmsx",
                         "Protocol adaptation filename": "287764ADc8824786b882bfc202a12044.cmsu",
-                        "Protocol template filename": "Viability and Cell Count Assay - NC-200.cmsx"
+                        "Protocol adaptation title": "example cell counting",
+                        "Event log format": "Plain text",
+                        "Protocol template title": "Viability and Cell Count Assay",
+                        "Login ID": "admin",
+                        "Protocol adaptation purpose": "Cell Count and Viability with AO and DAPI"
                     }
                 },
                 "analyst": "DrScientist"

@@ -69,7 +69,7 @@
                                 "calculated data name": "Cell diameter standard deviation (um)",
                                 "calculated result": {
                                     "value": 6.0,
-                                    "unit": "μL"
+                                    "unit": "µm"
                                 },
                                 "calculated data identifier": "CHEMOMETEC_NUCLEOVIEW_TEST_ID_1",
                                 "data source aggregate document": {
@@ -109,7 +109,7 @@
             "file name": "chemometec_nucleoview_example03.csv",
             "UNC path": "tests/parsers/chemometec_nucleoview/testdata/chemometec_nucleoview_example03.csv",
             "ASM converter name": "allotropy_chemometec_nucleoview",
-            "ASM converter version": "0.1.72",
+            "ASM converter version": "0.1.75",
             "software name": "NucleoView"
         },
         "device system document": {
