@@ -606,6 +606,13 @@ def ctr() -> MeasurementConfig:
     )
 
 
+def norm_reporter_result() -> MeasurementConfig:
+    return MeasurementConfig(
+        name="normalized reporter result",
+        value="normalized_reporter_result",
+    )
+
+
 def amplification_score(view_data: NewViewData) -> CalculatedDataConfig:
     return CalculatedDataConfig(
         name="amplification score",
@@ -657,6 +664,24 @@ def ct_sd(view_data: NewViewData) -> CalculatedDataConfig:
         value="ct_sd",
         view_data=view_data,
         source_configs=(ctr(),),
+    )
+
+
+def rn_mean(view_data: NewViewData) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="rn mean",
+        value="rn_mean",
+        view_data=view_data,
+        source_configs=(norm_reporter_result(),),
+    )
+
+
+def rn_sd(view_data: NewViewData) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="rn sd",
+        value="rn_sd",
+        view_data=view_data,
+        source_configs=(norm_reporter_result(),),
     )
 
 
@@ -940,29 +965,28 @@ def iter_relative_standard_curve_calc_docs(
 
 
 def iter_presence_absence_calc_docs(
-    view_data: ViewData[WellItem],
+    well_items: list[WellItem],
 ) -> Iterator[CalculatedDocument]:
-    # Rn Mean, Rn SD, Amplification score, Cq confidence
-    calc_docs: list[CalculatedDocument | None] = []
-    for sample, target in view_data.iter_keys():
-        for well_item in view_data.get_leaf_item(sample, target):
-            calc_docs.append(build_quantity(None, target, well_item))
+    # Quantity, Amp score, Cq confidence, Rn Mean, Rn SD
+    elements = AppbioQuantstudioExtractor.get_elements(well_items)
 
-    for sample, target in view_data.iter_keys():
-        for well_item in view_data.get_leaf_item(sample, target):
-            calc_docs.append(build_amp_score(well_item))
+    sid_tdna_view_data = NewSampleView(sub_view=NewTargetView()).apply(elements)
+    sid_tdna_uuid_view_data = NewSampleView(
+        sub_view=NewTargetView(sub_view=UuidView())
+    ).apply(elements)
 
-    for sample, target in view_data.iter_keys():
-        for well_item in view_data.get_leaf_item(sample, target):
-            calc_docs.append(build_cq_conf(well_item))
+    configs = CalcDocsConfig(
+        [
+            quantity(sid_tdna_uuid_view_data),
+            amplification_score(sid_tdna_uuid_view_data),
+            cq_confidence(sid_tdna_uuid_view_data),
+            rn_mean(sid_tdna_view_data),
+            rn_sd(sid_tdna_view_data),
+        ]
+    )
 
-    for sample, target in view_data.iter_keys():
-        calc_docs.append(build_rn_mean(view_data, sample, target))
-
-    for sample, target in view_data.iter_keys():
-        calc_docs.append(build_rn_sd(view_data, sample, target))
-
-    yield from yield_documents(calc_docs)
+    for calc_doc in configs.construct():
+        yield from calc_doc.iter_struct()
 
 
 def iter_calculated_data_documents(
@@ -995,6 +1019,4 @@ def iter_calculated_data_documents(
             view_tr_data,
         )
     elif experiment_type == ExperimentType.presence_absence_qpcr_experiment:
-        yield from iter_presence_absence_calc_docs(
-            view_st_data,
-        )
+        yield from iter_presence_absence_calc_docs(well_items)
