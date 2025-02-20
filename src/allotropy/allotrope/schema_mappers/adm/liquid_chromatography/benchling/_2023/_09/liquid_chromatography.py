@@ -149,7 +149,6 @@ class Measurement:
     derived_column_pressure_data_cube: DataCube | None = None
 
     peaks: list[Peak] | None = None
-    fractions: list[Fraction] | None = None
 
     sample_custom_info: dict[str, Any] | None = None
 
@@ -157,6 +156,7 @@ class Measurement:
 @dataclass(frozen=True)
 class MeasurementGroup:
     measurements: list[Measurement]
+    fractions: list[Fraction] | None = None
 
 
 @dataclass(frozen=True)
@@ -202,7 +202,10 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement_document=[
                     self._get_measurement_document_item(measurement)
                     for measurement in group.measurements
-                ]
+                ],
+                fraction_aggregate_document=self._get_fraction_aggregate_document(
+                    group.fractions
+                ),
             ),
         )
 
@@ -232,9 +235,6 @@ class Mapper(SchemaMapper[Data, Model]):
                     self._get_device_control_document(device_control_doc)
                     for device_control_doc in measurement.device_control_docs
                 ]
-            ),
-            fraction_aggregate_document=self._get_fraction_aggregate_document(
-                measurement
             ),
             chromatogram_data_cube=(
                 get_data_cube(
@@ -396,15 +396,15 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_fraction_aggregate_document(
-        self, measurement: Measurement
+        self, fractions: list[Fraction] | None
     ) -> FractionAggregateDocument | None:
-        if measurement.fractions is None:
+        if fractions is None:
             return None
 
         return FractionAggregateDocument(
             fraction_document=[
                 self._get_fraction_document(fraction_doc)
-                for fraction_doc in measurement.fractions or []
+                for fraction_doc in fractions or []
             ]
         )
 

@@ -419,7 +419,6 @@ class MeasurementDocument:
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
     injection_document: InjectionDocument | None = None
     chromatogram_data_cube: ChromatogramDataCube | TDatacube | None = None
-    fraction_aggregate_document: FractionAggregateDocument | None = None
     three_dimensional_ultraviolet_spectrum_data_cube: TDatacube | None = None
     electropherogram_data_cube: TDatacube | None = None
     fluorescence_emission_profile_data_cube: TDatacube | None = None
@@ -433,6 +432,7 @@ class MeasurementAggregateDocument:
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     calculated_data_aggregate_document: CalculatedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
+    fraction_aggregate_document: FractionAggregateDocument | None = None
 
 
 @dataclass(kw_only=True)
