@@ -526,7 +526,7 @@
                     }
                 },
                 {
-                    "calculated data name": "rq min",
+                    "calculated data name": "relative rq min",
                     "calculated result": {
                         "value": 0.658,
                         "unit": "(unitless)"
@@ -536,13 +536,13 @@
                         "data source document": [
                             {
                                 "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_14",
-                                "data source feature": "rq"
+                                "data source feature": "relative rq"
                             }
                         ]
                     }
                 },
                 {
-                    "calculated data name": "rq",
+                    "calculated data name": "relative rq",
                     "calculated result": {
                         "value": 0.798,
                         "unit": "(unitless)"
@@ -558,7 +558,7 @@
                     }
                 },
                 {
-                    "calculated data name": "rq max",
+                    "calculated data name": "relative rq max",
                     "calculated result": {
                         "value": 0.967,
                         "unit": "(unitless)"
@@ -568,7 +568,7 @@
                         "data source document": [
                             {
                                 "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_14",
-                                "data source feature": "rq"
+                                "data source feature": "relative rq"
                             }
                         ]
                     }
