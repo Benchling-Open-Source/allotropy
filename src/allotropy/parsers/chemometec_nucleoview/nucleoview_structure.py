@@ -6,7 +6,7 @@ import pandas as pd
 
 from allotropy.allotrope.models.shared.definitions.units import (
     Microliter,
-    Percent,
+    Percent, Micrometer,
 )
 from allotropy.allotrope.schema_mappers.adm.cell_counting.rec._2024._09.cell_counting import (
     CalculatedDataItem,
@@ -156,7 +156,7 @@ def _get_calculated_data(
                             ),
                         )
                     ],
-                    unit=Microliter.unit,
+                    unit=Micrometer.unit,
                 )
             )
         if percentage_of_cells_with_five_or_more:

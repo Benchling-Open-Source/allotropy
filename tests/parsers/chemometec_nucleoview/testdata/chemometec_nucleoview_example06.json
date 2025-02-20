@@ -72,7 +72,7 @@
                                 "calculated data name": "Cell diameter standard deviation (um)",
                                 "calculated result": {
                                     "value": 7.7,
-                                    "unit": "μL"
+                                    "unit": "µm"
                                 },
                                 "calculated data identifier": "CHEMOMETEC_NUCLEOVIEW_TEST_ID_1",
                                 "data source aggregate document": {
@@ -103,14 +103,14 @@
                         ]
                     },
                     "custom information document": {
-                        "Protocol adaptation purpose": "Cell Count and Viability with AO and DAPI",
-                        "Protocol template purpose": "Cell Count and Viability with AO and DAPI",
                         "Protocol template title": "Viability and Cell Count Assay",
-                        "Protocol template filename": "Viability and Cell Count Assay - NC-200.cmsx",
-                        "Protocol adaptation filename": "287764ADc8824786b882bfc202a12044.cmsu",
-                        "Login ID": "admin",
+                        "Event log format": "Plain text",
+                        "Protocol template purpose": "Cell Count and Viability with AO and DAPI",
+                        "Protocol adaptation purpose": "Cell Count and Viability with AO and DAPI",
                         "Protocol adaptation title": "example cell counting",
-                        "Event log format": "Plain text"
+                        "Login ID": "admin",
+                        "Protocol template filename": "Viability and Cell Count Assay - NC-200.cmsx",
+                        "Protocol adaptation filename": "287764ADc8824786b882bfc202a12044.cmsu"
                     }
                 },
                 "analyst": "DrScientist"
@@ -126,8 +126,8 @@
             "software name": "NucleoView",
             "software version": "1.4.0.0",
             "custom information document": {
-                "csv file version": 2.0,
-                " 21 CFR Part 11": "disabled"
+                " 21 CFR Part 11": "disabled",
+                "csv file version": 2.0
             }
         },
         "device system document": {

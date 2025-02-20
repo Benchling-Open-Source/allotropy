@@ -76,7 +76,7 @@
                                 "calculated data name": "Cell diameter standard deviation (um)",
                                 "calculated result": {
                                     "value": 6.9,
-                                    "unit": "μL"
+                                    "unit": "µm"
                                 },
                                 "calculated data identifier": "CHEMOMETEC_NUCLEOVIEW_TEST_ID_1",
                                 "data source aggregate document": {
@@ -107,14 +107,14 @@
                         ]
                     },
                     "custom information document": {
+                        "Event log format": "Plain text",
+                        "Protocol adaptation title": "example cell counting",
+                        "Protocol template filename": "Viability and Cell Count Assay - NC-200.cmsx",
                         "Protocol adaptation filename": "94A29BE3f39d48cd8eb5cb9472add350.cmsu",
                         "Protocol adaptation purpose": "Cell Count and Viability with AO and DAPI",
-                        "Event log format": "Plain text",
-                        "Protocol template filename": "Viability and Cell Count Assay - NC-200.cmsx",
-                        "Protocol template purpose": "Cell Count and Viability with AO and DAPI",
-                        "Login ID": "admin",
                         "Protocol template title": "Viability and Cell Count Assay",
-                        "Protocol adaptation title": "example cell counting"
+                        "Protocol template purpose": "Cell Count and Viability with AO and DAPI",
+                        "Login ID": "admin"
                     }
                 },
                 "analyst": "DrScientist"
@@ -130,8 +130,8 @@
             "software name": "NucleoView",
             "software version": "1.4.2.0",
             "custom information document": {
-                "csv file version": 2.0,
-                " 21 CFR Part 11": "disabled"
+                " 21 CFR Part 11": "disabled",
+                "csv file version": 2.0
             }
         },
         "device system document": {
