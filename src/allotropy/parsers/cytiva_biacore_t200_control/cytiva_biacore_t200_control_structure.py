@@ -55,8 +55,10 @@ def _create_report_point(data: SeriesData) -> ReportPoint:
 
 
 def _get_sensorgram_datacube(sensorgram_data: pd.DataFrame) -> DataCube:
+    cycle = sensorgram_data.iloc[0]["Cycle Number"]
+    flow_cell = sensorgram_data.iloc[0]["Flow Cell Number"]
     return DataCube(
-        label="sensorgram",
+        label=f"Cycle{cycle}_FlowCell{flow_cell}",
         structure_dimensions=[
             DataCubeComponent(FieldComponentDatatype.double, "elapsed time", "s")
         ],
