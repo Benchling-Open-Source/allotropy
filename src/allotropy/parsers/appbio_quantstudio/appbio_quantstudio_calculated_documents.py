@@ -17,11 +17,6 @@ from allotropy.calcdocs.view import ViewData as NewViewData
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     WellItem,
 )
-from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_views import (
-    SampleView,
-    TargetRoleView,
-    TargetView,
-)
 from allotropy.parsers.appbio_quantstudio.constants import ExperimentType
 from allotropy.parsers.appbio_quantstudio.views import ViewData
 from allotropy.parsers.utils.calculated_data_documents.definition import (
@@ -954,51 +949,43 @@ def iter_comparative_ct_calc_docs(
 
 
 def iter_standard_curve_calc_docs(
-    view_st_data: ViewData[WellItem],
-    view_tr_data: ViewData[WellItem],
+    well_items: list[WellItem],
 ) -> Iterator[CalculatedDocument]:
-    # Quantity, Quantity Mean, Quantity SD, Ct Mean, Ct SD, Y-Intercept,
-    # R(superscript 2), Slope, Efficiency, Amplification score, Cq confidence
-    calc_docs: list[CalculatedDocument | None] = []
-    for sample, target in view_st_data.iter_keys():
-        for well_item in view_st_data.get_leaf_item(sample, target):
-            calc_docs.append(build_quantity(view_tr_data, target, well_item))
+    # Y-Intercept, Slope, Quantity, Amplification score, Cq confidence
+    # Quantity Mean, Quantity SD, Ct Mean, Ct SD,
+    # R(superscript 2), Efficiency
+    elements = AppbioQuantstudioExtractor.get_elements(well_items)
 
-    for sample, target in view_st_data.iter_keys():
-        for well_item in view_st_data.get_leaf_item(sample, target):
-            calc_docs.append(build_amp_score(well_item))
+    sid_tdna_view_data = NewSampleView(sub_view=NewTargetView()).apply(elements)
+    sid_tdna_uuid_view_data = NewSampleView(
+        sub_view=NewTargetView(sub_view=UuidView())
+    ).apply(elements)
+    tdna_view_data = NewTargetRoleView().apply(elements)
 
-    for sample, target in view_st_data.iter_keys():
-        for well_item in view_st_data.get_leaf_item(sample, target):
-            calc_docs.append(build_cq_conf(well_item))
+    quantity_conf = quantity(
+        sid_tdna_uuid_view_data,
+        y_intercept(tdna_view_data),
+        slope(tdna_view_data),
+    )
 
-    for sample, target in view_st_data.iter_keys():
-        calc_docs.append(
-            build_quantity_mean(view_st_data, view_tr_data, sample, target)
-        )
+    configs = CalcDocsConfig(
+        [
+            quantity_conf,
+            amplification_score(sid_tdna_uuid_view_data),
+            cq_confidence(sid_tdna_uuid_view_data),
+            quantity_mean(sid_tdna_view_data, quantity_conf),
+            quantity_sd(sid_tdna_view_data, quantity_conf),
+            ct_mean(sid_tdna_view_data),
+            ct_sd(sid_tdna_view_data),
+            y_intercept(tdna_view_data),
+            r_squared(tdna_view_data),
+            slope(tdna_view_data),
+            efficiency(tdna_view_data),
+        ]
+    )
 
-    for sample, target in view_st_data.iter_keys():
-        calc_docs.append(build_quantity_sd(view_st_data, view_tr_data, sample, target))
-
-    for sample, target in view_st_data.iter_keys():
-        calc_docs.append(build_ct_mean(view_st_data, sample, target))
-
-    for sample, target in view_st_data.iter_keys():
-        calc_docs.append(build_ct_sd(view_st_data, sample, target))
-
-    for target in view_tr_data.data:
-        calc_docs.append(build_y_intercept(view_tr_data, target))
-
-    for target in view_tr_data.data:
-        calc_docs.append(build_r_squared(view_tr_data, target))
-
-    for target in view_tr_data.data:
-        calc_docs.append(build_slope(view_tr_data, target))
-
-    for target in view_tr_data.data:
-        calc_docs.append(build_efficiency(view_tr_data, target))
-
-    yield from yield_documents(calc_docs)
+    for calc_doc in configs.construct():
+        yield from calc_doc.iter_struct()
 
 
 def iter_relative_standard_curve_calc_docs(
@@ -1088,11 +1075,6 @@ def iter_calculated_data_documents(
     r_target: str | None,
 ) -> Iterator[CalculatedDocument]:
     well_items = [well_item for well_item in well_items if well_item.has_result]
-    view_st = SampleView(sub_view=TargetView())
-    view_st_data = view_st.apply(well_items)
-
-    view_tr = TargetRoleView()
-    view_tr_data = view_tr.apply(well_items)
 
     if experiment_type == ExperimentType.relative_standard_curve_qpcr_experiment:
         yield from iter_relative_standard_curve_calc_docs(well_items)
@@ -1103,9 +1085,6 @@ def iter_calculated_data_documents(
             assert_not_none(r_target),
         )
     elif experiment_type == ExperimentType.standard_curve_qpcr_experiment:
-        yield from iter_standard_curve_calc_docs(
-            view_st_data,
-            view_tr_data,
-        )
+        yield from iter_standard_curve_calc_docs(well_items)
     elif experiment_type == ExperimentType.presence_absence_qpcr_experiment:
         yield from iter_presence_absence_calc_docs(well_items)
