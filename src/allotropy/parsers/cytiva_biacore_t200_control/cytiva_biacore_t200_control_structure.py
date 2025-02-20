@@ -64,8 +64,8 @@ def _get_sensorgram_datacube(sensorgram_data: pd.DataFrame) -> DataCube:
             DataCubeComponent(FieldComponentDatatype.double, "response units", "RU")
         ],
         # TODO: Remove the slices! This is so it is easier to review the ASM result
-        dimensions=[sensorgram_data["Time (s)"].astype(float).to_list()[:20]],
-        measures=[sensorgram_data["Sensorgram (RU)"].astype(float).to_list()[:20]],
+        dimensions=[sensorgram_data["Time (s)"].astype(float).to_list()[:4]],
+        measures=[sensorgram_data["Sensorgram (RU)"].astype(float).to_list()[:4]],
     )
 
 
@@ -171,6 +171,9 @@ def create_measurements(
                         if "concentration" in sample_data
                         else None
                     ),
+                    flow_cell_identifier=str(
+                        sensorgram_data.iloc[0]["Flow Cell Number"]
+                    ),
                     device_control_custom_info={
                         "number of flow cells": try_int_or_none(chip_data.get("NoFcs")),
                         "number of spots": try_int_or_none(chip_data.get("NoSpots")),
@@ -210,14 +213,13 @@ def create_measurements(
             )
         return measurements
     else:
+        # Mobilization
         return [
             Measurement(
                 identifier=random_uuid_str(),
                 type_=MeasurementType.SURFACE_PLASMON_RESONANCE,
                 device_type="binding affinity analyzer",
-                sample_identifier=intermediate_structured_data.get(
-                    "sample_data", NOT_APPLICABLE
-                ),
+                sample_identifier=NOT_APPLICABLE,
                 method_name=application_template_details[f"Flowcell {i + 1}"].get(
                     "MethodName"
                 ),
@@ -225,7 +227,9 @@ def create_measurements(
                     "Ligand"
                 ),
                 # TODO: should we use the Flow cell number from the sensorgram instead?
-                flow_cell_identifier=f"Flowcell {i + 1}",
+                flow_cell_identifier=intermediate_structured_data["cycle_data"][i][
+                    "sensorgram_data"
+                ].iloc[0]["Flow Cell Number"],
                 flow_path=application_template_details[f"Flowcell {i + 1}"].get(
                     "DetectionText"
                 ),

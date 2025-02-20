@@ -560,6 +560,9 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
             ]
         ]
         # TODO: Remove
+        # file_path = named_file_contents.original_file_path
+        # base_name = os.path.basename(file_path).split(".blr")[0]
+        # dir_name = os.path.dirname(file_path)
         # sensorgram_parquet_path = os.path.join(
         #     dir_name, base_name + cycle_name + "_sensorgram.csv"
         # )
