@@ -7,11 +7,11 @@ from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._202
 )
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.thermo_fisher_chromeleon.constants import DISPLAY_NAME
-from allotropy.parsers.thermo_fisher_chromeleon.thermo_fisher_chromeleon_reader import (
-    ThermoFisherChromeleonReader,
+from allotropy.parsers.benchling_chromeleon.constants import DISPLAY_NAME
+from allotropy.parsers.benchling_chromeleon.benchling_chromeleon_reader import (
+    BenchlingChromeleonReader,
 )
-from allotropy.parsers.thermo_fisher_chromeleon.thermo_fisher_chromeleon_structure import (
+from allotropy.parsers.benchling_chromeleon.benchling_chromeleon_structure import (
     create_device_documents,
     create_measurement_groups,
     create_metadata,
@@ -19,14 +19,14 @@ from allotropy.parsers.thermo_fisher_chromeleon.thermo_fisher_chromeleon_structu
 from allotropy.parsers.vendor_parser import VendorParser
 
 
-class ThermoFisherChromeleonParser(VendorParser[Data, Model]):
+class BenchlingChromeleonParser(VendorParser[Data, Model]):
     DISPLAY_NAME = DISPLAY_NAME
     RELEASE_STATE = ReleaseState.RECOMMENDED
-    SUPPORTED_EXTENSIONS = ThermoFisherChromeleonReader.SUPPORTED_EXTENSIONS
+    SUPPORTED_EXTENSIONS = BenchlingChromeleonReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
-        reader = ThermoFisherChromeleonReader(named_file_contents)
+        reader = BenchlingChromeleonReader(named_file_contents)
         return Data(
             create_metadata(
                 reader.injections[0],

@@ -5,7 +5,7 @@ from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.utils.values import assert_not_none
 
 
-class ThermoFisherChromeleonReader:
+class BenchlingChromeleonReader:
     SUPPORTED_EXTENSIONS = "json"
     sequence: dict[str, Any]
     injections: list[dict[str, Any]]
