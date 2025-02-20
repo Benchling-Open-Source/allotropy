@@ -64,6 +64,7 @@ NON_UNIQUE_IDENTIFIERS = {
     "well identifier",
     "assay identifier",
     "container identifier",
+    "identifier role",
 }
 
 

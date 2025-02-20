@@ -259,22 +259,22 @@ def decode_application_data(
                                     "dataItems"
                                 ]
                             )
-                            application_template[
-                                "RackTemperature"
-                            ] = measurement_settings["RackTemperature"]
+                            application_template["RackTemperature"] = (
+                                measurement_settings["RackTemperature"]
+                            )
                             application_template["BaselineFlow"] = measurement_settings[
                                 "BaselineFlow"
                             ]
-                            application_template[
-                                "DataCollectionRate"
-                            ] = measurement_settings["DataCollectionRate"]
-                            application_template[
-                                "MoleculeWeightUnit"
-                            ] = measurement_settings["MoleculeWeightUnit"]
+                            application_template["DataCollectionRate"] = (
+                                measurement_settings["DataCollectionRate"]
+                            )
+                            application_template["MoleculeWeightUnit"] = (
+                                measurement_settings["MoleculeWeightUnit"]
+                            )
                 elif xml_name["@name"] == "_SystemPreparations":
-                    application_template[
-                        "system_preparations"
-                    ] = process_and_rearrange_xml_data(xml_name)
+                    application_template["system_preparations"] = (
+                        process_and_rearrange_xml_data(xml_name)
+                    )
                 elif xml_name["@name"] == "_PrepareRun":
                     application_template["prepare_run"] = {
                         key: value
@@ -296,6 +296,7 @@ def decode_application_data(
 def convert_datetime(days_str: str) -> str:
     """
     converts the str to iso datetime format
+    this instrument uses the 30 December 1899 EPOCH
     :param days_str: string of datetime
     :return: datetime
     """
@@ -345,18 +346,18 @@ def get_dip_data(input_data: str) -> dict[str, Any]:
     current_section = None
     max_length = 2
     for line in lines:
-        each_line = line.strip()
-        if each_line.startswith("Count"):
-            result["count"] = int(each_line.split("=")[1])
-        elif each_line.startswith("Timestamp1"):
-            timestamp_value = each_line.split("=")[1]
+        strp_line = line.strip()
+        if strp_line.startswith("Count"):
+            result["count"] = int(strp_line.split("=")[1])
+        elif strp_line.startswith("Timestamp1"):
+            timestamp_value = strp_line.split("=")[1]
             result["timestamp"] = convert_datetime(timestamp_value)
-        elif "Norm" in each_line:
+        elif "Norm" in strp_line:
             current_section = "norm"
-        elif "Raw" in each_line:
+        elif "Raw" in strp_line:
             current_section = "raw"
         else:
-            parts = each_line.split(";")
+            parts = strp_line.split(";")
             if (
                 len(parts) == max_length
                 and len(index_part := parts[0].split("=")) == max_length
@@ -399,11 +400,8 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
     :param named_file_contents: The named file contents containing the input file details
     :return: structured dictionary of decoded data
     """
-    file_path = named_file_contents.original_file_path
-    base_name = os.path.basename(file_path).split(".blr")[0]
-    dir_name = os.path.dirname(file_path)
     intermediate_json: dict[str, Any] = {}
-    content = ole.OleFileIO(file_path)
+    content = ole.OleFileIO(named_file_contents.contents)
     streams = content.listdir()
     cycles: list[dict[str, Any]] = []
     cycle_df_list = []
@@ -435,13 +433,15 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
             for _name, group in report_point_data:
                 cycle_data = {}
                 cycle_number = group["Cycle"].iloc[0]
-                cycle_name = f"_cycle_{cycle_number}"
-                rpoint_parquet_path = os.path.join(
-                    dir_name, base_name + cycle_name + "_rpoint.parquet"
-                )
-                group.to_parquet(rpoint_parquet_path, index=False)
-                cycle_data["r-point_path"] = rpoint_parquet_path
+                # TODO: remove
+                # cycle_name = f"_cycle_{cycle_number}"
+                # rpoint_parquet_path = os.path.join(
+                #     dir_name, base_name + cycle_name + "_rpoint.csv"
+                # )
+                # group.to_csv(rpoint_parquet_path, index=False)
+                # cycle_data["r-point_path"] = rpoint_parquet_path
                 cycle_data["cycle_number"] = cycle_number
+                cycle_data["report_point_data"] = group
                 cycle_details.append(cycle_data)
         cycle_match = cycle_pattern.search(stream[0])
         if not cycle_match:
@@ -559,15 +559,16 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
                 "Sensorgram (RU)",
             ]
         ]
-        sensorgram_parquet_path = os.path.join(
-            dir_name, base_name + cycle_name + "_sensorgram.parquet"
-        )
-        group_data.to_parquet(sensorgram_parquet_path, index=False)
-        cycles_data.append(sensorgram_parquet_path)
+        # TODO: Remove
+        # sensorgram_parquet_path = os.path.join(
+        #     dir_name, base_name + cycle_name + "_sensorgram.csv"
+        # )
+        # group_data.to_csv(sensorgram_parquet_path, index=False)
+        cycles_data.append(group_data)
 
     total_cycles = [
-        {**d, "sensorgram_path": new_value}
-        for d, new_value in zip(cycle_details, cycles_data, strict=True)
+        {**d, "sensorgram_data": cycle_sensorgram_data}
+        for d, cycle_sensorgram_data in zip(cycle_details, cycles_data, strict=True)
     ]
     intermediate_json["cycle_data"] = total_cycles
     intermediate_json["total_cycles"] = cycle_number
