@@ -422,32 +422,32 @@
                     }
                 },
                 {
-                    "calculated data name": "rn sd",
+                    "calculated data name": "rn mean",
                     "calculated result": {
-                        "value": 0.088,
+                        "value": 0.397,
                         "unit": "(unitless)"
                     },
                     "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_3",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
                                 "data source feature": "normalized reporter result"
                             }
                         ]
                     }
                 },
                 {
-                    "calculated data name": "rn mean",
+                    "calculated data name": "rn sd",
                     "calculated result": {
-                        "value": 0.397,
+                        "value": 0.088,
                         "unit": "(unitless)"
                     },
                     "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_4",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
                                 "data source feature": "normalized reporter result"
                             }
                         ]
@@ -477,7 +477,7 @@
             "file name": "appbio_quantstudio_minimal_test01.txt",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_minimal_test01.txt",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.69",
+            "ASM converter version": "0.1.74",
             "software name": "Thermo QuantStudio",
             "software version": "1.0"
         },
