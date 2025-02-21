@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.cell_counting.rec._2024._09.cell_counting import (
@@ -88,12 +89,14 @@ class Measurement:
     # customer information document fields
     debris_index: float | None = None
     cell_aggregation_percentage: float | None = None
+    custom_info_doc: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
 class MeasurementGroup:
     measurements: list[Measurement]
     analyst: str | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass
@@ -113,6 +116,7 @@ class Metadata:
     brand_name: str | None = None
     asset_management_identifier: str | None = None
     description: str | None = None
+    device_system_custom_info: dict[str, Any] | None = None
 
 
 @dataclass
@@ -132,14 +136,17 @@ class Mapper(SchemaMapper[Data, Model]):
         return Model(
             field_asm_manifest=self.MANIFEST,
             cell_counting_aggregate_document=CellCountingAggregateDocument(
-                device_system_document=DeviceSystemDocument(
-                    model_number=data.metadata.model_number,
-                    product_manufacturer=data.metadata.product_manufacturer,
-                    brand_name=data.metadata.brand_name,
-                    asset_management_identifier=data.metadata.asset_management_identifier,
-                    device_identifier=data.metadata.device_identifier,
-                    description=data.metadata.description,
-                    equipment_serial_number=data.metadata.equipment_serial_number,
+                device_system_document=add_custom_information_document(
+                    DeviceSystemDocument(
+                        model_number=data.metadata.model_number,
+                        product_manufacturer=data.metadata.product_manufacturer,
+                        brand_name=data.metadata.brand_name,
+                        asset_management_identifier=data.metadata.asset_management_identifier,
+                        device_identifier=data.metadata.device_identifier,
+                        description=data.metadata.description,
+                        equipment_serial_number=data.metadata.equipment_serial_number,
+                    ),
+                    data.metadata.device_system_custom_info or {},
                 ),
                 data_system_document=DataSystemDocument(
                     data_system_instance_identifier=data.metadata.data_system_instance_id,
@@ -163,18 +170,22 @@ class Mapper(SchemaMapper[Data, Model]):
     ) -> CellCountingDocumentItem:
         return CellCountingDocumentItem(
             analyst=measurement_group.analyst,
-            measurement_aggregate_document=MeasurementAggregateDocument(
-                measurement_document=[
-                    self._get_measurement_document(measurement, metadata)
-                    for measurement in measurement_group.measurements
-                ]
+            measurement_aggregate_document=add_custom_information_document(
+                MeasurementAggregateDocument(
+                    measurement_document=[
+                        self._get_measurement_document(measurement, metadata)
+                        for measurement in measurement_group.measurements
+                    ]
+                ),
+                measurement_group.custom_info or {},
             ),
         )
 
     def _get_measurement_document(
         self, measurement: Measurement, metadata: Metadata
     ) -> MeasurementDocument:
-        return MeasurementDocument(
+        custom_info_doc = measurement.custom_info_doc or {}
+        measurement_doc = MeasurementDocument(
             measurement_time=self.get_date_time(measurement.timestamp),
             measurement_identifier=measurement.measurement_identifier,
             sample_document=self._get_sample_document(measurement),
@@ -196,6 +207,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement.errors
             ),
         )
+        return add_custom_information_document(measurement_doc, custom_info_doc)
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
         # TODO(ASM gaps): we believe these values should be introduced to ASM.
