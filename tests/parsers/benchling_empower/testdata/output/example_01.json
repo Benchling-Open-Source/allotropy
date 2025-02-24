@@ -14,9 +14,9 @@
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "S0102",
+                                "sample identifier": "PQ Std 5.0x",
                                 "sample role type": "standard sample role",
-                                "written name": "PQ Std 5.0x"
+                                "written name": "S0102"
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "N/A"
@@ -1669,9 +1669,9 @@
                                 ]
                             },
                             "sample document": {
-                                "sample identifier": "S0103",
+                                "sample identifier": "PQ Std 10x",
                                 "sample role type": "standard sample role",
-                                "written name": "PQ Std 10x"
+                                "written name": "S0103"
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "N/A"
@@ -3315,7 +3315,7 @@
         ],
         "data system document": {
             "ASM converter name": "allotropy_benchling_waters_empower_adapter",
-            "ASM converter version": "0.1.66",
+            "ASM converter version": "0.1.76",
             "file name": "example_01.json",
             "software name": "Waters Empower",
             "UNC path": "tests/parsers/benchling_empower/testdata/input/example_01.json"
