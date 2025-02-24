@@ -1,10 +1,12 @@
 from __future__ import annotations
+
 from pathlib import Path
 from typing import Any
 
 import pandas as pd
 
 from allotropy.allotrope.models.shared.definitions.custom import (
+    TQuantityValueMilliliter,
     TQuantityValueSecondTime,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
@@ -12,8 +14,8 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.allotrope.schema_mappers.adm.binding_affinity_analyzer.benchling._2024._12.binding_affinity_analyzer import (
     DeviceDocument,
-    MeasurementGroup,
     Measurement,
+    MeasurementGroup,
     MeasurementType,
     Metadata,
     ReportPoint,
@@ -22,10 +24,11 @@ from allotropy.allotrope.schema_mappers.data_cube import DataCube, DataCubeCompo
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.cytiva_biacore_t200_control import constants
-from allotropy.parsers.utils.pandas import SeriesData, map_rows
+from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
+    quantity_or_none,
     try_float_or_none,
     try_int_or_none,
 )
@@ -71,6 +74,31 @@ def _get_sensorgram_datacube(sensorgram_data: pd.DataFrame) -> DataCube:
     )
 
 
+def _get_device_control_custom_info(
+    chip_data: dict, application_template_details: dict[str, dict]
+) -> dict[str, Any]:
+    custom_ifo = {
+        "number of flow cells": try_int_or_none(chip_data.get("NoFcs")),
+        "number of spots": try_int_or_none(chip_data.get("NoSpots")),
+        "buffer volume": quantity_or_none(
+            TQuantityValueMilliliter,
+            try_float_or_none(
+                next(
+                    value
+                    for key, value in application_template_details[
+                        "prepare_run"
+                    ].items()
+                    if key.startswith("Buffer")
+                )
+            ),
+        ),
+    }
+    if detection_setting := application_template_details.get("detection"):
+        detection_key = f"Detection{detection_setting['Detection']}"
+        custom_ifo.update({detection_key.lower(): detection_setting[detection_key]})
+    return custom_ifo
+
+
 def create_metadata(
     intermediate_structured_data: dict[str, Any], named_file_contents: NamedFileContents
 ) -> Metadata:
@@ -79,7 +107,7 @@ def create_metadata(
         "application_template_details"
     ]
     system_information: dict = intermediate_structured_data["system_information"]
-
+    chip_data: dict = intermediate_structured_data["chip"]
     compartment_temperature = (
         application_template_details["RackTemperature"].get("Value")
         if "sample_data" in application_template_details
@@ -107,15 +135,9 @@ def create_metadata(
             if compartment_temperature is not None
             else None
         ),
-        sensor_chip_type=intermediate_structured_data["chip"].get("Name"),
-        lot_number=(
-            None
-            if intermediate_structured_data["chip"].get("LotNo") == ""
-            else intermediate_structured_data["chip"].get("LotNo")
-        ),
-        sensor_chip_identifier=assert_not_none(
-            intermediate_structured_data["chip"].get("Id"), "Chip ID"
-        ),
+        sensor_chip_type=chip_data.get("Name"),
+        lot_number=(str(lot_no) if (lot_no := chip_data.get("LotNo")) else None),
+        sensor_chip_identifier=assert_not_none(chip_data.get("Id"), "Chip ID"),
         device_document=(
             [
                 DeviceDocument(
@@ -128,14 +150,10 @@ def create_metadata(
             else None
         ),
         sensor_chip_custom_info={
-            "ifc identifier": intermediate_structured_data["chip"].get("IFC"),
-            "last modified time": intermediate_structured_data["chip"].get(
-                "LastModTime"
-            ),
-            "last use time": intermediate_structured_data["chip"].get("LastUseTime"),
-            "first dock date": intermediate_structured_data["chip"].get(
-                "FirstDockDate"
-            ),
+            "ifc identifier": chip_data.get("IFC"),
+            "last modified time": chip_data.get("LastModTime"),
+            "last use time": chip_data.get("LastUseTime"),
+            "first dock date": chip_data.get("FirstDockDate"),
         },
     )
 
@@ -143,140 +161,59 @@ def create_metadata(
 def create_measurements(
     intermediate_structured_data: dict[str, Any]
 ) -> list[Measurement]:
-    chip_data: dict = intermediate_structured_data["chip"]
     application_template_details: dict[str, dict] = intermediate_structured_data[
         "application_template_details"
     ]
-    if "sample_data" in intermediate_structured_data:
-        detection_setting = application_template_details["detection"]
-        detection_type = detection_setting["Detection"]
-        detection_key = f"Detection{detection_type}"
-        detection_value = detection_setting[detection_key]
-        measurements = []
-        for idx in range(intermediate_structured_data["total_cycles"]):
-            sample_data: dict = intermediate_structured_data["sample_data"][idx]
-            cycle_data: dict[str, Any] = intermediate_structured_data["cycle_data"][idx]
-            sensorgram_data: pd.DataFrame = cycle_data["sensorgram_data"]
-            report_point_data: pd.DataFrame = cycle_data["report_point_data"]
-            measurements.append(
-                Measurement(
-                    identifier=random_uuid_str(),
-                    type_=MeasurementType.SURFACE_PLASMON_RESONANCE,
-                    device_type=constants.DEVICE_TYPE,
-                    sample_identifier=sample_data.get("sample_name", NOT_APPLICABLE),
-                    location_identifier=sample_data.get("rack"),
-                    sample_role_type=constants.SAMPLE_ROLE_TYPE.get(
-                        sample_data.get("role")
-                    ),
-                    concentration=(
-                        try_float_or_none(sample_data.get("concentration"))
-                        if "concentration" in sample_data
-                        else None
-                    ),
-                    flow_cell_identifier=str(
-                        sensorgram_data.iloc[0]["Flow Cell Number"]
-                    ),
-                    device_control_custom_info={
-                        "number of flow cells": try_int_or_none(chip_data.get("NoFcs")),
-                        "number of spots": try_int_or_none(chip_data.get("NoSpots")),
-                        "buffer volume": {
-                            "value": try_float_or_none(
-                                # TODO: refactor this. This seems unnecessary
-                                next(
-                                    value
-                                    for key, value in application_template_details[
-                                        "prepare_run"
-                                    ].items()
-                                    if key.startswith("Buffer")
-                                )
-                            ),
-                            "unit": "mL",
-                        },
-                        **{detection_key.lower(): detection_value},
-                    },
-                    sample_custom_info={
-                        "molecular weight": {
-                            "value": try_float_or_none(
-                                sample_data.get("molecular_weight")
-                            ),
-                            "unit": "Da",
-                        }
-                    },
-                    # Sensorgram data
-                    # TODO: add flow cell number
-                    # sensorgram_flow_cell_identifier=str(
-                    #     sensorgram_data.iloc[0]["Flow Cell Number"]
-                    # ),
-                    sensorgram_data_cube=_get_sensorgram_datacube(sensorgram_data),
-                    # Report point data
-                    # this is actually a list, one per row in the dataframe.
-                    report_point_data=map_rows(report_point_data, _create_report_point),
-                )
-            )
-        return measurements
-    else:
-        # Mobilization
-        return [
+    device_control_custom_info = _get_device_control_custom_info(
+        intermediate_structured_data["chip"], application_template_details
+    )
+    measurements = []
+    for idx in range(intermediate_structured_data["total_cycles"]):
+        flowcell_cycle_data: dict = application_template_details.get(
+            f"Flowcell {idx + 1}", {}
+        )
+        sample_data: dict = (
+            sd[idx] if (sd := intermediate_structured_data.get("sample_data")) else {}
+        )
+        cycle_data: dict[str, Any] = intermediate_structured_data["cycle_data"][idx]
+        sensorgram_data: pd.DataFrame = cycle_data["sensorgram_data"]
+        report_point_data: pd.DataFrame = cycle_data["report_point_data"]
+        measurements.append(
             Measurement(
                 identifier=random_uuid_str(),
                 type_=MeasurementType.SURFACE_PLASMON_RESONANCE,
-                device_type="binding affinity analyzer",
-                sample_identifier=NOT_APPLICABLE,
-                method_name=application_template_details[f"Flowcell {i + 1}"].get(
-                    "MethodName"
+                device_type=constants.DEVICE_TYPE,
+                sample_identifier=sample_data.get("sample_name", NOT_APPLICABLE),
+                location_identifier=sample_data.get("rack"),
+                sample_role_type=constants.SAMPLE_ROLE_TYPE.get(
+                    sample_data.get("role")
                 ),
-                ligand_identifier=application_template_details[f"Flowcell {i + 1}"].get(
-                    "Ligand"
+                concentration=try_float_or_none(sample_data.get("concentration")),
+                flow_cell_identifier=str(sensorgram_data.iloc[0]["Flow Cell Number"]),
+                device_control_custom_info=device_control_custom_info,
+                sample_custom_info=(
+                    {
+                        "molecular weight": {
+                            "value": try_float_or_none(molecular_weight),
+                            "unit": "Da",
+                        }
+                    }
+                    if (molecular_weight := sample_data.get("molecular_weight"))
+                    is not None
+                    else None
                 ),
-                # TODO: should we use the Flow cell number from the sensorgram instead?
-                flow_cell_identifier=intermediate_structured_data["cycle_data"][i][
-                    "sensorgram_data"
-                ].iloc[0]["Flow Cell Number"],
-                flow_path=application_template_details[f"Flowcell {i + 1}"].get(
-                    "DetectionText"
-                ),
-                flow_rate=application_template_details[f"Flowcell {i + 1}"].get("Flow"),
-                contact_time=application_template_details[f"Flowcell {i + 1}"].get(
-                    "ContactTime"
-                ),
-                dilution=try_int_or_none(
-                    application_template_details[f"Flowcell {i + 1}"].get(
-                        "DilutePercent"
-                    )
-                ),
-                device_control_custom_info={
-                    "number of flow cells": try_int_or_none(chip_data.get("NoFcs")),
-                    "number of spots": try_int_or_none(chip_data.get("NoSpots")),
-                    "buffer volume": {
-                        "value": try_float_or_none(
-                            next(
-                                value
-                                for key, value in application_template_details[
-                                    "prepare_run"
-                                ].items()
-                                if key.startswith("Buffer")
-                            )
-                        ),
-                        "unit": "mL",
-                    },
-                },
-                # Sensorgram data
-                # TODO: add flow cell number
-                # sensorgram_flow_cell_identifier=str(
-                #     sensorgram_data.iloc[0]["Flow Cell Number"]
-                # ),
-                sensorgram_data_cube=_get_sensorgram_datacube(
-                    intermediate_structured_data["cycle_data"][i]["sensorgram_data"]
-                ),
-                # Report point data
-                # this is actually a list, one per row in the dataframe.
-                report_point_data=map_rows(
-                    intermediate_structured_data["cycle_data"][i]["report_point_data"],
-                    _create_report_point,
-                ),
+                sensorgram_data_cube=_get_sensorgram_datacube(sensorgram_data),
+                report_point_data=map_rows(report_point_data, _create_report_point),
+                # for Mobilization experiments
+                method_name=flowcell_cycle_data.get("MethodName"),
+                ligand_identifier=flowcell_cycle_data.get("Ligand"),
+                flow_path=flowcell_cycle_data.get("DetectionText"),
+                flow_rate=flowcell_cycle_data.get("Flow"),
+                contact_time=flowcell_cycle_data.get("ContactTime"),
+                dilution=try_float_or_none(flowcell_cycle_data.get("DilutePercent")),
             )
-            for i in range(intermediate_structured_data["total_cycles"])
-        ]
+        )
+    return measurements
 
 
 def create_measurement_groups(
@@ -285,15 +222,15 @@ def create_measurement_groups(
     application_template_details: dict[str, dict] = intermediate_structured_data[
         "application_template_details"
     ]
+    system_information: dict[str, dict] = intermediate_structured_data[
+        "system_information"
+    ]
     return MeasurementGroup(
         measurement_time=assert_not_none(
-            intermediate_structured_data["system_information"].get("Timestamp"),
-            "Timestamp",
+            system_information.get("Timestamp"), "Timestamp"
         ),
         measurements=create_measurements(intermediate_structured_data),
-        experiment_type=intermediate_structured_data["system_information"].get(
-            "RunTypeId"
-        ),
+        experiment_type=system_information.get("RunTypeId"),
         analytical_method_identifier=intermediate_structured_data[
             "system_information"
         ].get("TemplateFile"),
@@ -319,24 +256,7 @@ def create_measurement_groups(
                 ),
                 "unit": "Hz",
             },
-            # Note: Removed until we get more information on customer usage
-            # "dip details": [
-            #     {
-            #         "datum label": "norm_dip_details",
-            #         "datum value": norm_datum.get("response"),
-            #         "sweep row": norm_datum.get("sweep_row"),
-            #         "flow cell identifier": norm_datum.get("flow_cell"),
-            #     }
-            #     for norm_datum in intermediate_structured_data["dip"]["norm_data"]
-            # ]
-            # + [
-            #     {
-            #         "datum label": "raw_dip_details",
-            #         "datum value": raw_datum.get("response"),
-            #         "sweep_row": raw_datum.get("sweep_row"),
-            #         "flow cell identifier": raw_datum.get("flow_cell"),
-            #     }
-            #     for raw_datum in intermediate_structured_data["dip"]["raw_data"]
-            # ],
+            # Note: dip details Removed until we get more information on customer usage
+            # "dip_details": _get_dip_details(intermediate_structured_data["dip"]),
         },
     )

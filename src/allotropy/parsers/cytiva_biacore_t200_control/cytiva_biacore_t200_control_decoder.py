@@ -1,5 +1,4 @@
 import datetime
-import os
 import re
 import struct
 from typing import Any
@@ -259,22 +258,22 @@ def decode_application_data(
                                     "dataItems"
                                 ]
                             )
-                            application_template["RackTemperature"] = (
-                                measurement_settings["RackTemperature"]
-                            )
+                            application_template[
+                                "RackTemperature"
+                            ] = measurement_settings["RackTemperature"]
                             application_template["BaselineFlow"] = measurement_settings[
                                 "BaselineFlow"
                             ]
-                            application_template["DataCollectionRate"] = (
-                                measurement_settings["DataCollectionRate"]
-                            )
-                            application_template["MoleculeWeightUnit"] = (
-                                measurement_settings["MoleculeWeightUnit"]
-                            )
+                            application_template[
+                                "DataCollectionRate"
+                            ] = measurement_settings["DataCollectionRate"]
+                            application_template[
+                                "MoleculeWeightUnit"
+                            ] = measurement_settings["MoleculeWeightUnit"]
                 elif xml_name["@name"] == "_SystemPreparations":
-                    application_template["system_preparations"] = (
-                        process_and_rearrange_xml_data(xml_name)
-                    )
+                    application_template[
+                        "system_preparations"
+                    ] = process_and_rearrange_xml_data(xml_name)
                 elif xml_name["@name"] == "_PrepareRun":
                     application_template["prepare_run"] = {
                         key: value
@@ -548,7 +547,6 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
         else:
             group["Time (s)"] = group.groupby("Flow Cell Number").cumcount() + 1
         cycle_number = group["Cycle Number"].iloc[0]
-        cycle_name = f"_cycle_{cycle_number}"
         group_data = group[
             [
                 "Flow Cell Number",
