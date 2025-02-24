@@ -342,6 +342,18 @@
                                                                     }
                                                                   ]
                                                                 },
+                                                                "relative peak analyte amount": {
+                                                                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001172",
+                                                                  "$asm.pattern": "quantity datum",
+                                                                  "allOf": [
+                                                                    {
+                                                                      "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                                                    },
+                                                                    {
+                                                                      "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/%"
+                                                                    }
+                                                                  ]
+                                                                },
                                                                 "relative corrected peak area": {
                                                                   "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002775",
                                                                   "$asm.pattern": "quantity datum",

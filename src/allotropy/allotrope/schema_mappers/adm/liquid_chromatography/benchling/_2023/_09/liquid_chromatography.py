@@ -94,6 +94,8 @@ class Peak:
     chromatographic_asymmetry: float | None = None
     width_at_half_height: float | None = None
     width_at_half_height_unit: str | None = None
+    peak_analyte_amount: float | None = None
+    relative_peak_analyte_amount: float | None = None
     custom_info: dict[str, Any] | None = None
 
 
@@ -315,6 +317,12 @@ class Mapper(SchemaMapper[Data, Model]):
                 ),
                 peak_width_at_half_height=quantity_or_none_from_unit(  # type: ignore[arg-type]
                     peak.width_at_half_height_unit, peak.width_at_half_height
+                ),
+                peak_analyte_amount=quantity_or_none(
+                    TQuantityValueUnitless, peak.peak_analyte_amount
+                ),
+                relative_peak_analyte_amount=quantity_or_none(
+                    TQuantityValuePercent, peak.relative_peak_analyte_amount
                 ),
             ),
             peak.custom_info,
