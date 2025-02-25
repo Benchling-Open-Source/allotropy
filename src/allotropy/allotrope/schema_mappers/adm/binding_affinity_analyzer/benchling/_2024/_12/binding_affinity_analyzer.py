@@ -30,7 +30,6 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueSecondTime,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TDatacube
-from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
@@ -106,7 +105,7 @@ class Measurement:
     batch_identifier: str | None = None
     well_plate_identifier: str | None = None
     sample_role_type: str | None = None
-    concentration: JsonFloat | None = None
+    concentration: float | None = None
     method_name: str | None = None
     ligand_identifier: str | None = None
     flow_cell_identifier: str | None = None

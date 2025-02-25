@@ -178,7 +178,7 @@ def create_measurements(
         cycle_data: dict[str, Any] = intermediate_structured_data["cycle_data"][idx]
         sensorgram_data: pd.DataFrame = cycle_data["sensorgram_data"]
         report_point_data: pd.DataFrame = cycle_data["report_point_data"]
-        measurements.append(
+        measurements += [
             Measurement(
                 identifier=random_uuid_str(),
                 type_=MeasurementType.SURFACE_PLASMON_RESONANCE,
@@ -189,7 +189,7 @@ def create_measurements(
                     sample_data.get("role")
                 ),
                 concentration=try_float_or_none(sample_data.get("concentration")),
-                flow_cell_identifier=str(sensorgram_data.iloc[0]["Flow Cell Number"]),
+                flow_cell_identifier=str(flow_cell),
                 device_control_custom_info=device_control_custom_info,
                 sample_custom_info=(
                     {
@@ -202,8 +202,11 @@ def create_measurements(
                     is not None
                     else None
                 ),
-                sensorgram_data_cube=_get_sensorgram_datacube(sensorgram_data),
-                report_point_data=map_rows(report_point_data, _create_report_point),
+                sensorgram_data_cube=_get_sensorgram_datacube(sensorgram_df),
+                report_point_data=map_rows(
+                    report_point_data[report_point_data["Fc"] == flow_cell],
+                    _create_report_point,
+                ),
                 # for Mobilization experiments
                 method_name=flowcell_cycle_data.get("MethodName"),
                 ligand_identifier=flowcell_cycle_data.get("Ligand"),
@@ -212,7 +215,9 @@ def create_measurements(
                 contact_time=flowcell_cycle_data.get("ContactTime"),
                 dilution=try_float_or_none(flowcell_cycle_data.get("DilutePercent")),
             )
-        )
+            # group sensorgram data by Flow Cell Number (Fc in rpoint data)
+            for flow_cell, sensorgram_df in sensorgram_data.groupby("Flow Cell Number")
+        ]
     return measurements
 
 
