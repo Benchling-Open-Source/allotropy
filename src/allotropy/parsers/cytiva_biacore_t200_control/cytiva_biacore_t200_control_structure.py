@@ -1,11 +1,14 @@
 from __future__ import annotations
 
+from collections.abc import Mapping
 from pathlib import Path
 from typing import Any
 
 import pandas as pd
 
 from allotropy.allotrope.models.shared.definitions.custom import (
+    TQuantityValueHertz,
+    TQuantityValueMicroliterPerMinute,
     TQuantityValueMilliliter,
     TQuantityValueSecondTime,
 )
@@ -32,6 +35,8 @@ from allotropy.parsers.utils.values import (
     try_float_or_none,
     try_int_or_none,
 )
+
+DictType = Mapping[str, Any]
 
 
 def _create_report_point(data: SeriesData) -> ReportPoint:
@@ -75,7 +80,7 @@ def _get_sensorgram_datacube(sensorgram_data: pd.DataFrame) -> DataCube:
 
 
 def _get_device_control_custom_info(
-    chip_data: dict, application_template_details: dict[str, dict]
+    chip_data: DictType, application_template_details: dict[str, DictType]
 ) -> dict[str, Any]:
     custom_ifo = {
         "number of flow cells": try_int_or_none(chip_data.get("NoFcs")),
@@ -100,14 +105,14 @@ def _get_device_control_custom_info(
 
 
 def create_metadata(
-    intermediate_structured_data: dict[str, Any], named_file_contents: NamedFileContents
+    intermediate_structured_data: DictType, named_file_contents: NamedFileContents
 ) -> Metadata:
     filepath = Path(named_file_contents.original_file_path)
-    application_template_details: dict[str, dict] = intermediate_structured_data[
+    application_template_details: dict[str, DictType] = intermediate_structured_data[
         "application_template_details"
     ]
-    system_information: dict = intermediate_structured_data["system_information"]
-    chip_data: dict = intermediate_structured_data["chip"]
+    system_information: DictType = intermediate_structured_data["system_information"]
+    chip_data: DictType = intermediate_structured_data["chip"]
     compartment_temperature = (
         application_template_details["RackTemperature"].get("Value")
         if "sample_data" in application_template_details
@@ -158,10 +163,8 @@ def create_metadata(
     )
 
 
-def create_measurements(
-    intermediate_structured_data: dict[str, Any]
-) -> list[Measurement]:
-    application_template_details: dict[str, dict] = intermediate_structured_data[
+def create_measurements(intermediate_structured_data: DictType) -> list[Measurement]:
+    application_template_details: dict[str, DictType] = intermediate_structured_data[
         "application_template_details"
     ]
     device_control_custom_info = _get_device_control_custom_info(
@@ -169,13 +172,13 @@ def create_measurements(
     )
     measurements = []
     for idx in range(intermediate_structured_data["total_cycles"]):
-        flowcell_cycle_data: dict = application_template_details.get(
+        flowcell_cycle_data: DictType = application_template_details.get(
             f"Flowcell {idx + 1}", {}
         )
-        sample_data: dict = (
+        sample_data: DictType = (
             sd[idx] if (sd := intermediate_structured_data.get("sample_data")) else {}
         )
-        cycle_data: dict[str, Any] = intermediate_structured_data["cycle_data"][idx]
+        cycle_data: DictType = intermediate_structured_data["cycle_data"][idx]
         sensorgram_data: pd.DataFrame = cycle_data["sensorgram_data"]
         report_point_data: pd.DataFrame = cycle_data["report_point_data"]
         measurements += [
@@ -186,7 +189,7 @@ def create_measurements(
                 sample_identifier=sample_data.get("sample_name", NOT_APPLICABLE),
                 location_identifier=sample_data.get("rack"),
                 sample_role_type=constants.SAMPLE_ROLE_TYPE.get(
-                    sample_data.get("role")
+                    sample_data.get("role", "__IVALID_KEY__")
                 ),
                 concentration=try_float_or_none(sample_data.get("concentration")),
                 flow_cell_identifier=str(flow_cell),
@@ -222,46 +225,44 @@ def create_measurements(
 
 
 def create_measurement_groups(
-    intermediate_structured_data: dict[str, Any]
+    intermediate_structured_data: DictType,
 ) -> MeasurementGroup:
-    application_template_details: dict[str, dict] = intermediate_structured_data[
+    application_template_details: dict[str, DictType] = intermediate_structured_data[
         "application_template_details"
     ]
-    system_information: dict[str, dict] = intermediate_structured_data[
-        "system_information"
-    ]
+    system_information: DictType = intermediate_structured_data["system_information"]
+    custom_info = _get_measurement_aggregate_custom_info(application_template_details)
+    # TODO: One measurement group by location identifier and sample id
+    # IF we have sample data
+    measurements = create_measurements(intermediate_structured_data)
     return MeasurementGroup(
         measurement_time=assert_not_none(
             system_information.get("Timestamp"), "Timestamp"
         ),
         measurements=create_measurements(intermediate_structured_data),
         experiment_type=system_information.get("RunTypeId"),
-        analytical_method_identifier=intermediate_structured_data[
-            "system_information"
-        ].get("TemplateFile"),
+        analytical_method_identifier=system_information.get("TemplateFile"),
         analyst=application_template_details["properties"].get("User"),
-        measurement_aggregate_custom_info={
-            "baseline flow": {
-                "value": (
-                    try_float_or_none(
-                        application_template_details["BaselineFlow"].get("value")
-                    )
-                    if "BaselineFlow" in application_template_details
-                    else None
-                ),
-                "unit": "μL/min",
-            },
-            "data collection rate": {
-                "value": (
-                    try_float_or_none(
-                        application_template_details["DataCollectionRate"].get("value")
-                    )
-                    if "DataCollectionRate" in application_template_details
-                    else None
-                ),
-                "unit": "Hz",
-            },
-            # Note: dip details Removed until we get more information on customer usage
-            # "dip_details": _get_dip_details(intermediate_structured_data["dip"]),
-        },
+        measurement_aggregate_custom_info=custom_info,
     )
+
+
+def _get_measurement_aggregate_custom_info(
+    application_template_details: dict[str, DictType]
+) -> dict[str, Any]:
+    return {
+        "baseline flow": quantity_or_none(
+            TQuantityValueMicroliterPerMinute,
+            try_float_or_none(
+                application_template_details.get("BaselineFlow", {}).get("value")
+            ),
+        ),
+        "data collection rate": quantity_or_none(
+            TQuantityValueHertz,
+            try_float_or_none(
+                application_template_details.get("DataCollectionRate", {}).get("value")
+            ),
+        ),
+        # Note: dip details Removed until we get more information on customer usage
+        # "dip_details": _get_dip_details(intermediate_structured_data["dip"]),
+    }

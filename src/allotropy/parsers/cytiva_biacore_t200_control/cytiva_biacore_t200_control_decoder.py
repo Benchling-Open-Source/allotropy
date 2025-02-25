@@ -400,7 +400,7 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
     :return: structured dictionary of decoded data
     """
     intermediate_json: dict[str, Any] = {}
-    content = ole.OleFileIO(named_file_contents.contents)
+    content = ole.OleFileIO(named_file_contents.get_bytes_stream())
     streams = content.listdir()
     cycles: list[dict[str, Any]] = []
     cycle_df_list = []
