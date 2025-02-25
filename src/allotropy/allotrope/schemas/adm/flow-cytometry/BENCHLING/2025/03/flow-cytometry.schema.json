@@ -59,7 +59,7 @@
                                                             "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2025/03/core.schema#/$defs/tQuantityValue"
                                                           },
                                                           {
-                                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2025/03/units.schema#/$defs/#"
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2025/03/units.schema#/$defs/(unitless)"
                                                           }
                                                         ]
                                                       }
@@ -147,6 +147,22 @@
                                             "processed data document": {
                                               "items": {
                                                 "properties": {
+                                                  "data processing document": {
+                                                    "properties": {
+                                                      "method version": {
+                                                        "$asm.pattern": "value datum",
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002837",
+                                                        "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2025/03/core.schema#/$defs/tStringValue"
+                                                      },
+                                                      "data processing time": {
+                                                        "$asm.pattern": "value datum",
+                                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002095",
+                                                        "$asm.type": "http://www.w3.org/2001/XMLSchema#dateTimeStamp",
+                                                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2025/03/core.schema#/$defs/tDateTimeStampValue"
+                                                      }
+                                                    }
+                                                  },
                                                   "data region aggregate document": {
                                                     "properties": {
                                                       "data region document": {
@@ -324,6 +340,250 @@
                                                                             "$asm.property-class": "TODO",
                                                                             "$asm.pattern": "value datum",
                                                                             "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2025/03/core.schema#/$defs/tStringValue"
+                                                                          },
+                                                                          "statisticsAggregateDocument": {
+                                                                            "$asm.pattern": "aggregate datum",
+                                                                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002697",
+                                                                            "properties": {
+                                                                              "statistics document": {
+                                                                                "$asm.array-mixed": false,
+                                                                                "$asm.array-ordered": false,
+                                                                                "$asm.pattern": "indexed datum",
+                                                                                "items": {
+                                                                                  "$asm.pattern": "aggregate datum",
+                                                                                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002698",
+                                                                                  "properties": {
+
+                                                                                    "statistical feature": {
+                                                                                      "$asm.pattern": "class datum",
+                                                                                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002699",
+                                                                                      "allOf": [
+                                                                                        {
+                                                                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2025/03/core.schema#/$defs/tClass"
+                                                                                        },
+                                                                                        {
+                                                                                          "$asm.value-sub-class-of": "http://purl.allotrope.org/ontologies/result#AFR_0001583",
+                                                                                          "enum": [
+                                                                                            "BET C constant",
+                                                                                            "Raman intensity",
+                                                                                            "Raman interferogram intensity",
+                                                                                            "Raman wavenumber shift",
+                                                                                            "Young modulus",
+                                                                                            "abrasion weight",
+                                                                                            "absolute intensity",
+                                                                                            "absolute water content",
+                                                                                            "absorbance",
+                                                                                            "acquisition volume",
+                                                                                            "actual P/P0 result",
+                                                                                            "adsorbed volume at STP",
+                                                                                            "ambient humidity",
+                                                                                            "ambient pressure",
+                                                                                            "ambient temperature",
+                                                                                            "amount of substance",
+                                                                                            "angle",
+                                                                                            "angle of optical rotation",
+                                                                                            "angular velocity",
+                                                                                            "area",
+                                                                                            "attenuation coefficient",
+                                                                                            "average dead cell diameter (cell counter)",
+                                                                                            "average particle size",
+                                                                                            "average total cell circularity",
+                                                                                            "average total cell diameter",
+                                                                                            "average viable cell circularity",
+                                                                                            "background corrected turbidity",
+                                                                                            "birefringence",
+                                                                                            "break strain",
+                                                                                            "break stress",
+                                                                                            "cell path length",
+                                                                                            "chemical shift",
+                                                                                            "chromatography column film thickness",
+                                                                                            "chromatography column length",
+                                                                                            "chromatography column particle size",
+                                                                                            "circularity",
+                                                                                            "coating gap height",
+                                                                                            "collision energy",
+                                                                                            "column inner diameter",
+                                                                                            "compartment temperature",
+                                                                                            "concentration",
+                                                                                            "container diameter",
+                                                                                            "container height",
+                                                                                            "count",
+                                                                                            "degassed sample weight",
+                                                                                            "detector view volume",
+                                                                                            "diameter",
+                                                                                            "dielectric polarization",
+                                                                                            "dilution factor",
+                                                                                            "dilution volume",
+                                                                                            "dispensed volume",
+                                                                                            "dry gas flow rate",
+                                                                                            "dry sample weight",
+                                                                                            "eccentricity",
+                                                                                            "electric charge",
+                                                                                            "electric conductance",
+                                                                                            "electric conductivity",
+                                                                                            "electric current",
+                                                                                            "electric impedance",
+                                                                                            "electric resistance",
+                                                                                            "electric resistivity",
+                                                                                            "electron beam working distance",
+                                                                                            "end height",
+                                                                                            "energy (datum)",
+                                                                                            "enthalpy",
+                                                                                            "enthalpy of fusion",
+                                                                                            "enthalpy of sublimation",
+                                                                                            "enthalpy of vaporization",
+                                                                                            "exhaust gas flow rate",
+                                                                                            "extrapolated moisture content",
+                                                                                            "fill depth",
+                                                                                            "flow rate",
+                                                                                            "flow ratio",
+                                                                                            "fluorescence",
+                                                                                            "foam height",
+                                                                                            "force",
+                                                                                            "fracture energy",
+                                                                                            "glass transition temperature",
+                                                                                            "gloss",
+                                                                                            "gross weight",
+                                                                                            "hardness",
+                                                                                            "heat capacity",
+                                                                                            "heat capacity (dsc)",
+                                                                                            "heat flow",
+                                                                                            "heat seal length",
+                                                                                            "heat transfer coefficient",
+                                                                                            "height",
+                                                                                            "hold-up volume",
+                                                                                            "humidity",
+                                                                                            "image height",
+                                                                                            "image width",
+                                                                                            "incident radiation angle",
+                                                                                            "inlet gas pressure",
+                                                                                            "inner diameter",
+                                                                                            "intensity",
+                                                                                            "isocyanate reservoir temperature",
+                                                                                            "length",
+                                                                                            "linear velocity",
+                                                                                            "liquid height",
+                                                                                            "luminescence",
+                                                                                            "m/z",
+                                                                                            "mass",
+                                                                                            "mass attenuation coefficient",
+                                                                                            "mass change",
+                                                                                            "mass concentration",
+                                                                                            "mass fraction",
+                                                                                            "measurement chamber free space volume",
+                                                                                            "molar attenuation coefficient",
+                                                                                            "molar concentration",
+                                                                                            "molar enthalpy of fusion",
+                                                                                            "molar enthalpy of sublimation",
+                                                                                            "molar enthalpy of vaporization",
+                                                                                            "molar mass",
+                                                                                            "molecular mass",
+                                                                                            "monolayer quantity",
+                                                                                            "normalized foam height",
+                                                                                            "number concentration",
+                                                                                            "osmolality",
+                                                                                            "pCO2",
+                                                                                            "pCO2 (bga)",
+                                                                                            "pH",
+                                                                                            "pO2",
+                                                                                            "pO2 (bga)",
+                                                                                            "partial pressure",
+                                                                                            "particle size",
+                                                                                            "peak analyte amount",
+                                                                                            "peak load force",
+                                                                                            "peak onset temperature",
+                                                                                            "peak temperature",
+                                                                                            "plate heater temperature",
+                                                                                            "plate temperature",
+                                                                                            "plate well count",
+                                                                                            "polarity",
+                                                                                            "polyol reservoir temperature",
+                                                                                            "position count",
+                                                                                            "power",
+                                                                                            "pressure",
+                                                                                            "probe volume",
+                                                                                            "protein attenuation coefficient",
+                                                                                            "purity",
+                                                                                            "qNMR purity result",
+                                                                                            "reference material weight",
+                                                                                            "reflectance",
+                                                                                            "refractive index",
+                                                                                            "relative humidity",
+                                                                                            "relative intensity",
+                                                                                            "relative permittivity",
+                                                                                            "relative pressure (BET)",
+                                                                                            "relative response",
+                                                                                            "relative weight loss on drying",
+                                                                                            "reservoir temperature",
+                                                                                            "rotational speed",
+                                                                                            "sample temperature",
+                                                                                            "sample thickness",
+                                                                                            "sample weight",
+                                                                                            "sample weight before drying",
+                                                                                            "sample width",
+                                                                                            "saturated gas flow rate",
+                                                                                            "saturation vapor pressure",
+                                                                                            "seal initiation temperature",
+                                                                                            "size (datum)",
+                                                                                            "solvent reservoir temperature",
+                                                                                            "specific enthalpy of fusion",
+                                                                                            "specific enthalpy of sublimation",
+                                                                                            "specific enthalpy of vaporization",
+                                                                                            "specific heat capacity",
+                                                                                            "specific rotation",
+                                                                                            "specific surface area",
+                                                                                            "start height",
+                                                                                            "stirring rate",
+                                                                                            "strain",
+                                                                                            "stress",
+                                                                                            "tablet thickness",
+                                                                                            "tare weight",
+                                                                                            "temperature",
+                                                                                            "temperature rate",
+                                                                                            "thermal conductance",
+                                                                                            "thermal conductivity",
+                                                                                            "thickness",
+                                                                                            "titer",
+                                                                                            "torque",
+                                                                                            "total cell diameter",
+                                                                                            "total foam height",
+                                                                                            "total gas flow rate",
+                                                                                            "total material height",
+                                                                                            "transition enthalpy",
+                                                                                            "transmittance",
+                                                                                            "turbidity",
+                                                                                            "velocity",
+                                                                                            "viscosity",
+                                                                                            "void volume",
+                                                                                            "voltage",
+                                                                                            "voltage range",
+                                                                                            "volume",
+                                                                                            "volume concentration",
+                                                                                            "volume fraction",
+                                                                                            "water mass concentration",
+                                                                                            "water mass fraction",
+                                                                                            "wavelength",
+                                                                                            "wavenumber",
+                                                                                            "weight loss",
+                                                                                            "well volume",
+                                                                                            "width",
+                                                                                            "yield strain",
+                                                                                            "yield stress"
+                                                                                          ],
+                                                                                          "type": "string"
+                                                                                        }
+                                                                                      ]
+                                                                                    }
+                                                                                  },
+                                                                                  "required": [
+                                                                                    "statistical feature"
+                                                                                  ],
+                                                                                  "type": "object"
+                                                                                },
+                                                                                "type": "array"
+                                                                              }
+                                                                            },
+                                                                            "type": "object"
                                                                           }
                                                                         }
                                                                       }
@@ -347,10 +607,7 @@
                                   ]
                                 }
                               }
-                            },
-                            "required": [
-                              "measurement time"
-                            ]
+                            }
                           }
                         }
                       }
