@@ -16,6 +16,7 @@ from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.methodical_mind import constants
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.values import try_int
 
 WELL_LABELS = ["A", "B", "C", "D", "E", "F", "G", "H"]
 
@@ -56,7 +57,7 @@ class PlateData:
         ]
         well_data = [
             WellData.create(
-                luminescence=value,
+                luminescence=try_int(value, "luminescence"),
                 location_id=str(row_index + 1),
                 well_plate_id=well_plate_id,
                 well_location_id=f"{row_name}{col_name}",
