@@ -74,9 +74,8 @@ def _get_sensorgram_datacube(sensorgram_data: pd.DataFrame) -> DataCube:
         structure_measures=[
             DataCubeComponent(FieldComponentDatatype.double, "response units", "RU")
         ],
-        # TODO: Remove the slices! This is so it is easier to review the ASM result
-        dimensions=[sensorgram_data["Time (s)"].astype(float).to_list()[:4]],
-        measures=[sensorgram_data["Sensorgram (RU)"].astype(float).to_list()[:4]],
+        dimensions=[sensorgram_data["Time (s)"].astype(float).to_list()],
+        measures=[sensorgram_data["Sensorgram (RU)"].astype(float).to_list()],
     )
 
 
