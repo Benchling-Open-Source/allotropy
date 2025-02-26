@@ -154,6 +154,8 @@ def add_custom_information_document(
 
 def _convert_model_key_to_dict_key(key: str) -> str:
     key = SPECIAL_KEYS.get(key, key)
+    if key.startswith("___") and key[3].isdigit():
+        key = key[3:]
     for dict_val, model_val in DICT_KEY_TO_MODEL_KEY_REPLACEMENTS.items():
         key = key.replace(model_val, dict_val)
     return key
@@ -161,6 +163,8 @@ def _convert_model_key_to_dict_key(key: str) -> str:
 
 def _convert_dict_to_model_key(key: str) -> str:
     key = SPECIAL_KEYS_INVERSE.get(key, key)
+    if key[0].isdigit():
+        key = f"___{key}"
     for dict_val, model_val in DICT_KEY_TO_MODEL_KEY_REPLACEMENTS.items():
         key = key.replace(dict_val, model_val)
     return key
