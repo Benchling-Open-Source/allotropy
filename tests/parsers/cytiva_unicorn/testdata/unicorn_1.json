@@ -431,109 +431,6 @@
                                         ]
                                     ]
                                 }
-                            },
-                            "fraction aggregate document": {
-                                "fraction document": [
-                                    {
-                                        "index": "Fraction Event 1",
-                                        "retention time": {
-                                            "value": 6.29997,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 0.5256958,
-                                            "unit": "mL"
-                                        },
-                                        "fraction role": "Out-Waste",
-                                        "@type": "Fraction"
-                                    },
-                                    {
-                                        "index": "Fraction Event 2",
-                                        "retention time": {
-                                            "value": 464.89997999999997,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 73.47809,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 3",
-                                        "retention time": {
-                                            "value": 2348.5998,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 385.0173,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 4",
-                                        "retention time": {
-                                            "value": 2350.3998,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 385.154,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 5",
-                                        "retention time": {
-                                            "value": 2774.4,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 455.8084,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 6",
-                                        "retention time": {
-                                            "value": 3556.9998,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 586.219,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 7",
-                                        "retention time": {
-                                            "value": 4532.499599999999,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 828.6274,
-                                            "unit": "mL"
-                                        },
-                                        "fraction role": "Frac",
-                                        "@type": "Fraction"
-                                    },
-                                    {
-                                        "index": "Fraction Event 8",
-                                        "retention time": {
-                                            "value": 5133.899399999999,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 908.8346,
-                                            "unit": "mL"
-                                        },
-                                        "fraction role": "Out-Waste",
-                                        "@type": "Fraction"
-                                    }
-                                ]
                             }
                         },
                         {
@@ -612,109 +509,6 @@
                                         ]
                                     ]
                                 }
-                            },
-                            "fraction aggregate document": {
-                                "fraction document": [
-                                    {
-                                        "index": "Fraction Event 1",
-                                        "retention time": {
-                                            "value": 6.29997,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 0.5256958,
-                                            "unit": "mL"
-                                        },
-                                        "fraction role": "Out-Waste",
-                                        "@type": "Fraction"
-                                    },
-                                    {
-                                        "index": "Fraction Event 2",
-                                        "retention time": {
-                                            "value": 464.89997999999997,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 73.47809,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 3",
-                                        "retention time": {
-                                            "value": 2348.5998,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 385.0173,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 4",
-                                        "retention time": {
-                                            "value": 2350.3998,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 385.154,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 5",
-                                        "retention time": {
-                                            "value": 2774.4,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 455.8084,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 6",
-                                        "retention time": {
-                                            "value": 3556.9998,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 586.219,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 7",
-                                        "retention time": {
-                                            "value": 4532.499599999999,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 828.6274,
-                                            "unit": "mL"
-                                        },
-                                        "fraction role": "Frac",
-                                        "@type": "Fraction"
-                                    },
-                                    {
-                                        "index": "Fraction Event 8",
-                                        "retention time": {
-                                            "value": 5133.899399999999,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 908.8346,
-                                            "unit": "mL"
-                                        },
-                                        "fraction role": "Out-Waste",
-                                        "@type": "Fraction"
-                                    }
-                                ]
                             }
                         },
                         {
@@ -793,109 +587,6 @@
                                         ]
                                     ]
                                 }
-                            },
-                            "fraction aggregate document": {
-                                "fraction document": [
-                                    {
-                                        "index": "Fraction Event 1",
-                                        "retention time": {
-                                            "value": 6.29997,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 0.5256958,
-                                            "unit": "mL"
-                                        },
-                                        "fraction role": "Out-Waste",
-                                        "@type": "Fraction"
-                                    },
-                                    {
-                                        "index": "Fraction Event 2",
-                                        "retention time": {
-                                            "value": 464.89997999999997,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 73.47809,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 3",
-                                        "retention time": {
-                                            "value": 2348.5998,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 385.0173,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 4",
-                                        "retention time": {
-                                            "value": 2350.3998,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 385.154,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 5",
-                                        "retention time": {
-                                            "value": 2774.4,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 455.8084,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 6",
-                                        "retention time": {
-                                            "value": 3556.9998,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 586.219,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 7",
-                                        "retention time": {
-                                            "value": 4532.499599999999,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 828.6274,
-                                            "unit": "mL"
-                                        },
-                                        "fraction role": "Frac",
-                                        "@type": "Fraction"
-                                    },
-                                    {
-                                        "index": "Fraction Event 8",
-                                        "retention time": {
-                                            "value": 5133.899399999999,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 908.8346,
-                                            "unit": "mL"
-                                        },
-                                        "fraction role": "Out-Waste",
-                                        "@type": "Fraction"
-                                    }
-                                ]
                             }
                         },
                         {
@@ -1015,109 +706,6 @@
                                         ]
                                     ]
                                 }
-                            },
-                            "fraction aggregate document": {
-                                "fraction document": [
-                                    {
-                                        "index": "Fraction Event 1",
-                                        "retention time": {
-                                            "value": 6.29997,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 0.5256958,
-                                            "unit": "mL"
-                                        },
-                                        "fraction role": "Out-Waste",
-                                        "@type": "Fraction"
-                                    },
-                                    {
-                                        "index": "Fraction Event 2",
-                                        "retention time": {
-                                            "value": 464.89997999999997,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 73.47809,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 3",
-                                        "retention time": {
-                                            "value": 2348.5998,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 385.0173,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 4",
-                                        "retention time": {
-                                            "value": 2350.3998,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 385.154,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 5",
-                                        "retention time": {
-                                            "value": 2774.4,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 455.8084,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 6",
-                                        "retention time": {
-                                            "value": 3556.9998,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 586.219,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 7",
-                                        "retention time": {
-                                            "value": 4532.499599999999,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 828.6274,
-                                            "unit": "mL"
-                                        },
-                                        "fraction role": "Frac",
-                                        "@type": "Fraction"
-                                    },
-                                    {
-                                        "index": "Fraction Event 8",
-                                        "retention time": {
-                                            "value": 5133.899399999999,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 908.8346,
-                                            "unit": "mL"
-                                        },
-                                        "fraction role": "Out-Waste",
-                                        "@type": "Fraction"
-                                    }
-                                ]
                             }
                         },
                         {
@@ -1196,109 +784,6 @@
                                         ]
                                     ]
                                 }
-                            },
-                            "fraction aggregate document": {
-                                "fraction document": [
-                                    {
-                                        "index": "Fraction Event 1",
-                                        "retention time": {
-                                            "value": 6.29997,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 0.5256958,
-                                            "unit": "mL"
-                                        },
-                                        "fraction role": "Out-Waste",
-                                        "@type": "Fraction"
-                                    },
-                                    {
-                                        "index": "Fraction Event 2",
-                                        "retention time": {
-                                            "value": 464.89997999999997,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 73.47809,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 3",
-                                        "retention time": {
-                                            "value": 2348.5998,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 385.0173,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 4",
-                                        "retention time": {
-                                            "value": 2350.3998,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 385.154,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 5",
-                                        "retention time": {
-                                            "value": 2774.4,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 455.8084,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 6",
-                                        "retention time": {
-                                            "value": 3556.9998,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 586.219,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 7",
-                                        "retention time": {
-                                            "value": 4532.499599999999,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 828.6274,
-                                            "unit": "mL"
-                                        },
-                                        "fraction role": "Frac",
-                                        "@type": "Fraction"
-                                    },
-                                    {
-                                        "index": "Fraction Event 8",
-                                        "retention time": {
-                                            "value": 5133.899399999999,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 908.8346,
-                                            "unit": "mL"
-                                        },
-                                        "fraction role": "Out-Waste",
-                                        "@type": "Fraction"
-                                    }
-                                ]
                             }
                         },
                         {
@@ -1377,109 +862,6 @@
                                 },
                                 "injection identifier": "CYTIVA_UNICORN_TEST_ID_0",
                                 "injection time": "2024-01-02T11:00:00+00:00"
-                            },
-                            "fraction aggregate document": {
-                                "fraction document": [
-                                    {
-                                        "index": "Fraction Event 1",
-                                        "retention time": {
-                                            "value": 6.29997,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 0.5256958,
-                                            "unit": "mL"
-                                        },
-                                        "fraction role": "Out-Waste",
-                                        "@type": "Fraction"
-                                    },
-                                    {
-                                        "index": "Fraction Event 2",
-                                        "retention time": {
-                                            "value": 464.89997999999997,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 73.47809,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 3",
-                                        "retention time": {
-                                            "value": 2348.5998,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 385.0173,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 4",
-                                        "retention time": {
-                                            "value": 2350.3998,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 385.154,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 5",
-                                        "retention time": {
-                                            "value": 2774.4,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 455.8084,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 6",
-                                        "retention time": {
-                                            "value": 3556.9998,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 586.219,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 7",
-                                        "retention time": {
-                                            "value": 4532.499599999999,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 828.6274,
-                                            "unit": "mL"
-                                        },
-                                        "fraction role": "Frac",
-                                        "@type": "Fraction"
-                                    },
-                                    {
-                                        "index": "Fraction Event 8",
-                                        "retention time": {
-                                            "value": 5133.899399999999,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 908.8346,
-                                            "unit": "mL"
-                                        },
-                                        "fraction role": "Out-Waste",
-                                        "@type": "Fraction"
-                                    }
-                                ]
                             }
                         },
                         {
@@ -1704,109 +1086,6 @@
                                 },
                                 "injection identifier": "CYTIVA_UNICORN_TEST_ID_0",
                                 "injection time": "2024-01-02T11:00:00+00:00"
-                            },
-                            "fraction aggregate document": {
-                                "fraction document": [
-                                    {
-                                        "index": "Fraction Event 1",
-                                        "retention time": {
-                                            "value": 6.29997,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 0.5256958,
-                                            "unit": "mL"
-                                        },
-                                        "fraction role": "Out-Waste",
-                                        "@type": "Fraction"
-                                    },
-                                    {
-                                        "index": "Fraction Event 2",
-                                        "retention time": {
-                                            "value": 464.89997999999997,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 73.47809,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 3",
-                                        "retention time": {
-                                            "value": 2348.5998,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 385.0173,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 4",
-                                        "retention time": {
-                                            "value": 2350.3998,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 385.154,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 5",
-                                        "retention time": {
-                                            "value": 2774.4,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 455.8084,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 6",
-                                        "retention time": {
-                                            "value": 3556.9998,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 586.219,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 7",
-                                        "retention time": {
-                                            "value": 4532.499599999999,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 828.6274,
-                                            "unit": "mL"
-                                        },
-                                        "fraction role": "Frac",
-                                        "@type": "Fraction"
-                                    },
-                                    {
-                                        "index": "Fraction Event 8",
-                                        "retention time": {
-                                            "value": 5133.899399999999,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 908.8346,
-                                            "unit": "mL"
-                                        },
-                                        "fraction role": "Out-Waste",
-                                        "@type": "Fraction"
-                                    }
-                                ]
                             }
                         },
                         {
@@ -2033,109 +1312,6 @@
                                 },
                                 "injection identifier": "CYTIVA_UNICORN_TEST_ID_0",
                                 "injection time": "2024-01-02T11:00:00+00:00"
-                            },
-                            "fraction aggregate document": {
-                                "fraction document": [
-                                    {
-                                        "index": "Fraction Event 1",
-                                        "retention time": {
-                                            "value": 6.29997,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 0.5256958,
-                                            "unit": "mL"
-                                        },
-                                        "fraction role": "Out-Waste",
-                                        "@type": "Fraction"
-                                    },
-                                    {
-                                        "index": "Fraction Event 2",
-                                        "retention time": {
-                                            "value": 464.89997999999997,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 73.47809,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 3",
-                                        "retention time": {
-                                            "value": 2348.5998,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 385.0173,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 4",
-                                        "retention time": {
-                                            "value": 2350.3998,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 385.154,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 5",
-                                        "retention time": {
-                                            "value": 2774.4,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 455.8084,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 6",
-                                        "retention time": {
-                                            "value": 3556.9998,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 586.219,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 7",
-                                        "retention time": {
-                                            "value": 4532.499599999999,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 828.6274,
-                                            "unit": "mL"
-                                        },
-                                        "fraction role": "Frac",
-                                        "@type": "Fraction"
-                                    },
-                                    {
-                                        "index": "Fraction Event 8",
-                                        "retention time": {
-                                            "value": 5133.899399999999,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 908.8346,
-                                            "unit": "mL"
-                                        },
-                                        "fraction role": "Out-Waste",
-                                        "@type": "Fraction"
-                                    }
-                                ]
                             }
                         },
                         {
@@ -2214,112 +1390,112 @@
                                 },
                                 "injection identifier": "CYTIVA_UNICORN_TEST_ID_0",
                                 "injection time": "2024-01-02T11:00:00+00:00"
-                            },
-                            "fraction aggregate document": {
-                                "fraction document": [
-                                    {
-                                        "index": "Fraction Event 1",
-                                        "retention time": {
-                                            "value": 6.29997,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 0.5256958,
-                                            "unit": "mL"
-                                        },
-                                        "fraction role": "Out-Waste",
-                                        "@type": "Fraction"
-                                    },
-                                    {
-                                        "index": "Fraction Event 2",
-                                        "retention time": {
-                                            "value": 464.89997999999997,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 73.47809,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 3",
-                                        "retention time": {
-                                            "value": 2348.5998,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 385.0173,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 4",
-                                        "retention time": {
-                                            "value": 2350.3998,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 385.154,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 5",
-                                        "retention time": {
-                                            "value": 2774.4,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 455.8084,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 6",
-                                        "retention time": {
-                                            "value": 3556.9998,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 586.219,
-                                            "unit": "mL"
-                                        },
-                                        "@type": "Method"
-                                    },
-                                    {
-                                        "index": "Fraction Event 7",
-                                        "retention time": {
-                                            "value": 4532.499599999999,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 828.6274,
-                                            "unit": "mL"
-                                        },
-                                        "fraction role": "Frac",
-                                        "@type": "Fraction"
-                                    },
-                                    {
-                                        "index": "Fraction Event 8",
-                                        "retention time": {
-                                            "value": 5133.899399999999,
-                                            "unit": "s"
-                                        },
-                                        "retention volume": {
-                                            "value": 908.8346,
-                                            "unit": "mL"
-                                        },
-                                        "fraction role": "Out-Waste",
-                                        "@type": "Fraction"
-                                    }
-                                ]
                             }
                         }
-                    ]
+                    ],
+                    "fraction aggregate document": {
+                        "fraction document": [
+                            {
+                                "index": "Fraction Event 1",
+                                "retention time": {
+                                    "value": 6.29997,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 0.5256958,
+                                    "unit": "mL"
+                                },
+                                "fraction role": "Out-Waste",
+                                "@type": "Fraction"
+                            },
+                            {
+                                "index": "Fraction Event 2",
+                                "retention time": {
+                                    "value": 464.89997999999997,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 73.47809,
+                                    "unit": "mL"
+                                },
+                                "@type": "Method"
+                            },
+                            {
+                                "index": "Fraction Event 3",
+                                "retention time": {
+                                    "value": 2348.5998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.0173,
+                                    "unit": "mL"
+                                },
+                                "@type": "Method"
+                            },
+                            {
+                                "index": "Fraction Event 4",
+                                "retention time": {
+                                    "value": 2350.3998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.154,
+                                    "unit": "mL"
+                                },
+                                "@type": "Method"
+                            },
+                            {
+                                "index": "Fraction Event 5",
+                                "retention time": {
+                                    "value": 2774.4,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 455.8084,
+                                    "unit": "mL"
+                                },
+                                "@type": "Method"
+                            },
+                            {
+                                "index": "Fraction Event 6",
+                                "retention time": {
+                                    "value": 3556.9998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 586.219,
+                                    "unit": "mL"
+                                },
+                                "@type": "Method"
+                            },
+                            {
+                                "index": "Fraction Event 7",
+                                "retention time": {
+                                    "value": 4532.499599999999,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 828.6274,
+                                    "unit": "mL"
+                                },
+                                "fraction role": "Frac",
+                                "@type": "Fraction"
+                            },
+                            {
+                                "index": "Fraction Event 8",
+                                "retention time": {
+                                    "value": 5133.899399999999,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 908.8346,
+                                    "unit": "mL"
+                                },
+                                "fraction role": "Out-Waste",
+                                "@type": "Fraction"
+                            }
+                        ]
+                    }
                 },
                 "analyst": "Default"
             }
