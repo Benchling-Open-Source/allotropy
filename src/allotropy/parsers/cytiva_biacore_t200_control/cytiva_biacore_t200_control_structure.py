@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections import defaultdict
 from collections.abc import Mapping
 from pathlib import Path
 from typing import Any
@@ -163,14 +164,16 @@ def create_metadata(
     )
 
 
-def create_measurements(intermediate_structured_data: DictType) -> list[Measurement]:
+def create_measurements(
+    intermediate_structured_data: DictType,
+) -> dict[str, list[Measurement]]:
     application_template_details: dict[str, DictType] = intermediate_structured_data[
         "application_template_details"
     ]
     device_control_custom_info = _get_device_control_custom_info(
         intermediate_structured_data["chip"], application_template_details
     )
-    measurements = []
+    measurements: dict[str, list[Measurement]] = defaultdict(list)
     for idx in range(intermediate_structured_data["total_cycles"]):
         flowcell_cycle_data: DictType = application_template_details.get(
             f"Flowcell {idx + 1}", {}
@@ -181,13 +184,19 @@ def create_measurements(intermediate_structured_data: DictType) -> list[Measurem
         cycle_data: DictType = intermediate_structured_data["cycle_data"][idx]
         sensorgram_data: pd.DataFrame = cycle_data["sensorgram_data"]
         report_point_data: pd.DataFrame = cycle_data["report_point_data"]
-        measurements += [
+
+        sample_identifier = sample_data.get("sample_name", NOT_APPLICABLE)
+        location_identifier = sample_data.get("rack")
+        sample_location_key = f"{location_identifier}_{sample_identifier}"
+
+        # Measurements are grouped by sample and location identifiers
+        measurements[sample_location_key] += [
             Measurement(
                 identifier=random_uuid_str(),
                 type_=MeasurementType.SURFACE_PLASMON_RESONANCE,
                 device_type=constants.DEVICE_TYPE,
-                sample_identifier=sample_data.get("sample_name", NOT_APPLICABLE),
-                location_identifier=sample_data.get("rack"),
+                sample_identifier=sample_identifier,
+                location_identifier=location_identifier,
                 sample_role_type=constants.SAMPLE_ROLE_TYPE.get(
                     sample_data.get("role", "__IVALID_KEY__")
                 ),
@@ -226,25 +235,25 @@ def create_measurements(intermediate_structured_data: DictType) -> list[Measurem
 
 def create_measurement_groups(
     intermediate_structured_data: DictType,
-) -> MeasurementGroup:
+) -> list[MeasurementGroup]:
     application_template_details: dict[str, DictType] = intermediate_structured_data[
         "application_template_details"
     ]
     system_information: DictType = intermediate_structured_data["system_information"]
     custom_info = _get_measurement_aggregate_custom_info(application_template_details)
-    # TODO: One measurement group by location identifier and sample id
-    # IF we have sample data
-    measurements = create_measurements(intermediate_structured_data)
-    return MeasurementGroup(
-        measurement_time=assert_not_none(
-            system_information.get("Timestamp"), "Timestamp"
-        ),
-        measurements=create_measurements(intermediate_structured_data),
-        experiment_type=system_information.get("RunTypeId"),
-        analytical_method_identifier=system_information.get("TemplateFile"),
-        analyst=application_template_details["properties"].get("User"),
-        measurement_aggregate_custom_info=custom_info,
-    )
+    return [
+        MeasurementGroup(
+            measurement_time=assert_not_none(
+                system_information.get("Timestamp"), "Timestamp"
+            ),
+            measurements=measurements,
+            experiment_type=system_information.get("RunTypeId"),
+            analytical_method_identifier=system_information.get("TemplateFile"),
+            analyst=application_template_details["properties"].get("User"),
+            measurement_aggregate_custom_info=custom_info,
+        )
+        for measurements in create_measurements(intermediate_structured_data).values()
+    ]
 
 
 def _get_measurement_aggregate_custom_info(

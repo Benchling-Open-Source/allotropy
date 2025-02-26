@@ -294,7 +294,7 @@ def decode_application_data(
 
 def convert_datetime(days_str: str) -> str:
     """
-    converts the str to iso datetime format
+    converts the str to iso datetime format.
     this instrument uses the 30 December 1899 EPOCH
     :param days_str: string of datetime
     :return: datetime
@@ -557,14 +557,6 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
                 "Sensorgram (RU)",
             ]
         ]
-        # TODO: Remove
-        # file_path = named_file_contents.original_file_path
-        # base_name = os.path.basename(file_path).split(".blr")[0]
-        # dir_name = os.path.dirname(file_path)
-        # sensorgram_parquet_path = os.path.join(
-        #     dir_name, base_name + cycle_name + "_sensorgram.csv"
-        # )
-        # group_data.to_csv(sensorgram_parquet_path, index=False)
         cycles_data.append(group_data)
 
     total_cycles = [
