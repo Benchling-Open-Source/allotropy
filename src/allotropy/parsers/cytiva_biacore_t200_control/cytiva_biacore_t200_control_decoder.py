@@ -429,16 +429,9 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
             r_point_data = get_r_point_data(stream_content.decode("utf-8"))
             r_point_dataframe = pd.DataFrame(r_point_data)
             report_point_data = r_point_dataframe.groupby("Cycle")
-            for _name, group in report_point_data:
+            for _, group in report_point_data:
                 cycle_data = {}
                 cycle_number = group["Cycle"].iloc[0]
-                # TODO: remove
-                # cycle_name = f"_cycle_{cycle_number}"
-                # rpoint_parquet_path = os.path.join(
-                #     dir_name, base_name + cycle_name + "_rpoint.csv"
-                # )
-                # group.to_csv(rpoint_parquet_path, index=False)
-                # cycle_data["r-point_path"] = rpoint_parquet_path
                 cycle_data["cycle_number"] = cycle_number
                 cycle_data["report_point_data"] = group
                 cycle_details.append(cycle_data)
