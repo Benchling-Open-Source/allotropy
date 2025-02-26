@@ -58,3 +58,7 @@ Changes:
 * Added fraction aggregate document to BENCHLING/2023/09
  * Reasoning: Support for fraction events
  * Proposal: Add fraction aggregate document an element of measurement aggregate document
+
+* Added relative peak analyte amount to BENCHLING/2023/09
+ * Reasoning: Added for handling of peak analyte amount data
+ * Proposal: Add relative peak analyte amount to peak document
