@@ -1139,23 +1139,23 @@
       }
     ]
   },
-  "tQuantityValueResponseUnits": {
+  "tQuantityValueResonanceUnits": {
     "allOf": [
       {
         "$ref": "#/$defs/tQuantityValue"
       },
       {
-        "$ref": "#/$defs/ResponseUnits"
+        "$ref": "#/$defs/ResonanceUnits"
       }
     ]
   },
-  "tNullableQuantityValueResponseUnits": {
+  "tNullableQuantityValueResonanceUnits": {
     "allOf": [
       {
         "$ref": "#/$defs/tNullableQuantityValue"
       },
       {
-        "$ref": "#/$defs/ResponseUnits"
+        "$ref": "#/$defs/ResonanceUnits"
       }
     ]
   },

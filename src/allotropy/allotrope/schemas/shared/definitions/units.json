@@ -683,12 +683,12 @@
       "unit"
     ]
   },
-  "ResponseUnits": {
+  "ResonanceUnits": {
     "properties": {
       "unit": {
         "type": "string",
         "const": "RU",
-        "$asm.unit-iri": "http://qudt.org/vocab/unit#ResponseUnits"
+        "$asm.unit-iri": "http://qudt.org/vocab/unit#ResonanceUnits"
       }
     },
     "required": [
