@@ -106,6 +106,8 @@ def _create_peak(peak: dict[str, Any]) -> Peak:
         height=height,
         relative_height=try_float_or_none(peak.get("PctHeight")),
         written_name=peak.get("Name"),
+        relative_peak_analyte_amount=try_float_or_none(peak.get("PctAmount")),
+        peak_analyte_amount=try_float_or_none(peak.get("Amount")),
     )
 
 
