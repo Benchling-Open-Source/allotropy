@@ -89,9 +89,9 @@ class Metadata:
 class ReportPoint:
     identifier: str
     identifier_role: str
-    absolute_response: float
+    absolute_resonance: float
     time_setting: float
-    relative_response: float | None = None
+    relative_resonance: float | None = None
     custom_info: dict[str, Any] | None = None
 
 
@@ -278,12 +278,12 @@ class Mapper(SchemaMapper[Data, Model]):
                                         ReportPointDocumentItem(
                                             report_point_identifier=report_point.identifier,
                                             identifier_role=report_point.identifier_role,
-                                            absolute_response=TQuantityValueResonanceUnits(
-                                                value=report_point.absolute_response
+                                            absolute_resonance=TQuantityValueResonanceUnits(
+                                                value=report_point.absolute_resonance
                                             ),
-                                            relative_response=quantity_or_none(
+                                            relative_resonance=quantity_or_none(
                                                 TQuantityValueResonanceUnits,
-                                                report_point.relative_response,
+                                                report_point.relative_resonance,
                                             ),
                                             time_setting=TQuantityValueSecondTime(
                                                 value=report_point.time_setting
