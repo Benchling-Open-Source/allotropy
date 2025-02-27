@@ -108,7 +108,7 @@ class Measurement:
 @dataclass(frozen=True)
 class MeasurementGroup:
     measurements: list[Measurement]
-    custom_info_doc: dict[str, Any] | None = None
+    custom_info: dict[str, Any] | None = None
     analyst: str | None = None
 
 
@@ -129,7 +129,7 @@ class Metadata:
     brand_name: str | None = None
     asset_management_identifier: str | None = None
     description: str | None = None
-    custom_data_system_info: dict[str, Any] | None = None
+    system_info_custom_data: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -180,7 +180,7 @@ class Mapper(SchemaMapper[Data, Model]):
                         ASM_converter_version=ASM_CONVERTER_VERSION,
                         ASM_file_identifier=data.metadata.asm_file_identifier,
                     ),
-                    data.metadata.custom_data_system_info or {},
+                    data.metadata.system_info_custom_data or {},
                 ),
                 cell_counting_document=[
                     self._get_technique_document(
@@ -209,7 +209,7 @@ class Mapper(SchemaMapper[Data, Model]):
                         calculated_data
                     ),
                 ),
-                measurement_group.custom_info_doc or {},
+                measurement_group.custom_info or {},
             ),
         )
 
