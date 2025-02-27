@@ -683,6 +683,18 @@
       "unit"
     ]
   },
+  "ResonanceUnits": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "RU",
+        "$asm.unit-iri": "http://qudt.org/vocab/unit#ResonanceUnits"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
   "SecondTime": {
     "properties": {
       "unit": {
