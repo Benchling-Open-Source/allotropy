@@ -206,7 +206,11 @@ def _write_actual_to_expected(
     allotrope_dict: DictType, expected_file: Path | str
 ) -> None:
     with tempfile.NamedTemporaryFile(mode="w+", encoding="UTF-8", delete=False) as tmp:
-        tmp.write(_oneline_number_lists(json.dumps(allotrope_dict, indent=4, ensure_ascii=False)))
+        tmp.write(
+            _oneline_number_lists(
+                json.dumps(allotrope_dict, indent=4, ensure_ascii=False)
+            )
+        )
         tmp.write("\n")
         tmp.seek(0)
         # Get path to temp file using Pathlib to ensure Windows symbolic link compatibility.
