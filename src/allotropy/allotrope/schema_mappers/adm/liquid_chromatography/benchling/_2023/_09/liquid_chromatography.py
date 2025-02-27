@@ -101,6 +101,8 @@ class Peak:
     chromatographic_asymmetry: float | None = None
     width_at_half_height: float | None = None
     width_at_half_height_unit: str | None = None
+    peak_analyte_amount: float | None = None
+    relative_peak_analyte_amount: float | None = None
     custom_info: dict[str, Any] | None = None
     relative_retention_time: float | None = None
     capacity_factor: float | None = None
@@ -180,7 +182,6 @@ class Measurement:
     derived_column_pressure_data_cube: DataCube | None = None
 
     peaks: list[Peak] | None = None
-    fractions: list[Fraction] | None = None
 
     sample_custom_info: dict[str, Any] | None = None
     injection_custom_info: dict[str, Any] | None = None
@@ -189,6 +190,7 @@ class Measurement:
 @dataclass(frozen=True)
 class MeasurementGroup:
     measurements: list[Measurement]
+    fractions: list[Fraction] | None = None
 
 
 @dataclass(frozen=True)
@@ -239,7 +241,10 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement_document=[
                     self._get_measurement_document_item(measurement)
                     for measurement in group.measurements
-                ]
+                ],
+                fraction_aggregate_document=self._get_fraction_aggregate_document(
+                    group.fractions
+                ),
             ),
         )
 
@@ -269,9 +274,6 @@ class Mapper(SchemaMapper[Data, Model]):
                     self._get_device_control_document(device_control_doc)
                     for device_control_doc in measurement.device_control_docs
                 ]
-            ),
-            fraction_aggregate_document=self._get_fraction_aggregate_document(
-                measurement
             ),
             chromatogram_data_cube=(
                 get_data_cube(
@@ -403,6 +405,12 @@ class Mapper(SchemaMapper[Data, Model]):
                 baseline_value_at_end_of_peak=quantity_or_none(
                     TQuantityValueSecondTime, peak.baseline_value_at_end_of_peak
                 ),
+                peak_analyte_amount=quantity_or_none(
+                    TQuantityValueUnitless, peak.peak_analyte_amount
+                ),
+                relative_peak_analyte_amount=quantity_or_none(
+                    TQuantityValuePercent, peak.relative_peak_analyte_amount
+                ),
             ),
             peak.custom_info,
         )
@@ -504,15 +512,15 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_fraction_aggregate_document(
-        self, measurement: Measurement
+        self, fractions: list[Fraction] | None
     ) -> FractionAggregateDocument | None:
-        if measurement.fractions is None:
+        if fractions is None:
             return None
 
         return FractionAggregateDocument(
             fraction_document=[
                 self._get_fraction_document(fraction_doc)
-                for fraction_doc in measurement.fractions or []
+                for fraction_doc in fractions or []
             ]
         )
 

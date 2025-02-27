@@ -1,4 +1,5 @@
 from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
+    Fraction,
     MeasurementGroup,
 )
 from allotropy.parsers.cytiva_unicorn.reader.unicorn_zip_handler import (
@@ -45,7 +46,7 @@ def create_measurement_groups(
     elements = curves.findall("Curve")
 
     static_docs = StaticDocs.create(
-        handler, curves.find("Curve"), results, analysis_settings, event_curves
+        handler, curves.find("Curve"), results, analysis_settings
     )
     measurements = [
         AbsorbanceMeasurement1.create_or_none(handler, elements, static_docs),
@@ -62,5 +63,36 @@ def create_measurement_groups(
     return [
         MeasurementGroup(
             measurements=[measurement for measurement in measurements if measurement],
+            fractions=create_fractions(event_curves) if event_curves else None,
         )
     ]
+
+
+def create_fractions(event_curves: StrictXmlElement) -> list[Fraction]:
+    event_curve_fraction = None
+    for event_curve in event_curves.findall("EventCurve"):
+        if event_curve.get_attr_or_none("EventCurveType") == "Fraction":
+            event_curve_fraction = event_curve
+            break
+
+    if event_curve_fraction is None:
+        return []
+
+    if events := event_curve_fraction.find_or_none("Events"):
+        return [
+            Fraction(
+                index=f"Fraction Event {idx}",
+                fraction_role=event.get_sub_text_or_none("EventText"),
+                field_type=event.get_attr_or_none("EventType"),
+                retention_time=(
+                    None
+                    if (t_min := event.get_sub_float_or_none("EventTime")) is None
+                    else t_min * 60
+                ),
+                retention_volume=event.get_sub_float_or_none("EventVolume"),
+            )
+            for idx, event in enumerate(events.findall("Event"), start=1)
+            if event.get_attr_or_none("EventType") in ["Fraction", "Method"]
+        ]
+
+    return []

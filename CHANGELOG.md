@@ -5,11 +5,24 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.76] - 2025-02-19
+
+### Added
+
+- Liquid Chromatography - move fraction events to measurement aggregate document (#893)
+- Liquid Chromatography - add new fields to the BENCHLING/2023/09 schema (#891)
+- Thermo Fisher Scientific SkanIt - add support for Luminescence measurement type (#887)
+- Cytiva Unicorn - add fraction events (#892)
+
+### Fixed
+
+- ChemoMetec Nucleoview - handle file with commas at the end of the line (#889)
+
 ## [0.1.75] - 2025-02-11
 
 ### Added
 
-- Cytiva Unicorn - add void volume and flow rate to (#880)
+- Cytiva Unicorn - add void volume and flow rate (#880)
 - Bio-Rad CFX Maestro - update release state to recommended (#879)
 - AppBio QuantStudio Design & Analysis - add back reference fields as custom data processing info (#878)
 - Internal - improve calcdoc library implementation (#874)
