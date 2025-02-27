@@ -141,9 +141,7 @@ class Data:
 
 
 class Mapper(SchemaMapper[Data, Model]):
-    MANIFEST: str = (
-        "http://purl.allotrope.org/manifests/binding-affinity-analyzer/WD/2024/12/binding-affinity-analyzer.manifest"
-    )
+    MANIFEST: str = "http://purl.allotrope.org/manifests/binding-affinity-analyzer/WD/2024/12/binding-affinity-analyzer.manifest"
 
     def map_model(self, data: Data) -> Model:
         return Model(
