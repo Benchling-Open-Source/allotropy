@@ -4,6 +4,7 @@ from collections.abc import Iterator
 from dataclasses import dataclass
 from itertools import chain
 
+from allotropy.allotrope.models.shared.definitions.units import Unitless
 from allotropy.calcdocs.extractor import Element
 from allotropy.calcdocs.view import Keys, ViewData
 from allotropy.parsers.utils.calculated_data_documents.definition import (
@@ -28,6 +29,7 @@ class CalculatedDataConfig:
     value: str
     view_data: ViewData
     source_configs: tuple[CalculatedDataConfig | MeasurementConfig, ...]
+    unit: str = Unitless.unit
 
     def iter_data_sources(
         self,
@@ -72,6 +74,7 @@ class CalculatedDataConfig:
             name=self.name,
             value=value,
             data_sources=data_sources,
+            unit=self.unit,
         )
 
     def get_calc_doc(
