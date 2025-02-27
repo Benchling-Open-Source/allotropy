@@ -3,6 +3,8 @@ from __future__ import annotations
 from collections.abc import Iterator
 from dataclasses import dataclass
 
+from allotropy.allotrope.models.shared.definitions.units import Unitless
+
 
 @dataclass
 class Referenceable:
@@ -24,6 +26,8 @@ class CalculatedDocument(Referenceable):
     unit: str | None = None
     description: str | None = None
     iterated: bool = False
+    unit: str = Unitless.unit
+    description: str | None = None
 
     def iter_struct(self) -> Iterator[CalculatedDocument]:
         if self.iterated:
