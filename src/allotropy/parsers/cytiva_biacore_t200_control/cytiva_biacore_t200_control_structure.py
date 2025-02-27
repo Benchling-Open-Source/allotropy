@@ -72,7 +72,7 @@ def _get_sensorgram_datacube(sensorgram_data: pd.DataFrame) -> DataCube:
             DataCubeComponent(FieldComponentDatatype.double, "elapsed time", "s")
         ],
         structure_measures=[
-            DataCubeComponent(FieldComponentDatatype.double, "response units", "RU")
+            DataCubeComponent(FieldComponentDatatype.double, "resonance units", "RU")
         ],
         dimensions=[sensorgram_data["Time (s)"].astype(float).to_list()],
         measures=[sensorgram_data["Sensorgram (RU)"].astype(float).to_list()],

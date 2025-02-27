@@ -295,7 +295,7 @@ class RelativeLightUnitTimesSecond(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class ResponseUnits(HasUnit):
+class ResonanceUnits(HasUnit):
     unit: str = "RU"
 
 

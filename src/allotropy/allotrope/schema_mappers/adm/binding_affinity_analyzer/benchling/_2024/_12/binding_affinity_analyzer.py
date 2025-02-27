@@ -26,7 +26,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMicroliterPerMinute,
     TQuantityValueNanomolar,
     TQuantityValuePercent,
-    TQuantityValueResponseUnits,
+    TQuantityValueResonanceUnits,
     TQuantityValueSecondTime,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TDatacube
@@ -278,11 +278,11 @@ class Mapper(SchemaMapper[Data, Model]):
                                         ReportPointDocumentItem(
                                             report_point_identifier=report_point.identifier,
                                             identifier_role=report_point.identifier_role,
-                                            absolute_response=TQuantityValueResponseUnits(
+                                            absolute_response=TQuantityValueResonanceUnits(
                                                 value=report_point.absolute_response
                                             ),
                                             relative_response=quantity_or_none(
-                                                TQuantityValueResponseUnits,
+                                                TQuantityValueResonanceUnits,
                                                 report_point.relative_response,
                                             ),
                                             time_setting=TQuantityValueSecondTime(
