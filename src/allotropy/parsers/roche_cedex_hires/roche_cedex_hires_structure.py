@@ -86,7 +86,7 @@ def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
                 standard_deviation=data.get(float, "Std Dev."),
                 aggregate_rate=data.get(float, "Aggregate Rate"),
                 sample_draw_time=data.get(str, "Sample draw Time"),
-                custom_info_doc=data.get_unread(
+                custom_info=data.get_unread(
                     # These fields are being read from the header metadata, so we can ignore them
                     skip={
                         "System name",

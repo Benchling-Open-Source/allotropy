@@ -89,7 +89,7 @@ class Measurement:
     # customer information document fields
     debris_index: float | None = None
     cell_aggregation_percentage: float | None = None
-    custom_info_doc: dict[str, Any] | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -184,7 +184,7 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_measurement_document(
         self, measurement: Measurement, metadata: Metadata
     ) -> MeasurementDocument:
-        custom_info_doc = measurement.custom_info_doc or {}
+        custom_info_doc = measurement.custom_info or {}
         measurement_doc = MeasurementDocument(
             measurement_time=self.get_date_time(measurement.timestamp),
             measurement_identifier=measurement.measurement_identifier,
