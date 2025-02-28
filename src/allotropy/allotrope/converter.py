@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import builtins
+import re
 from collections.abc import Callable, Mapping, Sequence
 from dataclasses import asdict, field, fields, is_dataclass, make_dataclass, MISSING
 from enum import Enum
@@ -163,6 +164,7 @@ def _convert_dict_to_model_key(key: str) -> str:
     key = SPECIAL_KEYS_INVERSE.get(key, key)
     for dict_val, model_val in DICT_KEY_TO_MODEL_KEY_REPLACEMENTS.items():
         key = key.replace(dict_val, model_val)
+    key = re.sub(r"^(\d)", r"_\1", key)
     return key
 
 
