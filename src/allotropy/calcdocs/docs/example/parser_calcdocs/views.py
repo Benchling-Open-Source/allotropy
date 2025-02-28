@@ -25,6 +25,6 @@ class SumView(View):
     def sort_elements(self, elements: list[Element]) -> dict[str, list[Element]]:
         items = defaultdict(list)
         for element in elements:
-            if summation := element.get_float_or_none("sum"):
-                items[str(summation)].append(element)
+            if sum_ := element.get_float_or_none("sum"):
+                items[str(sum_)].append(element)
         return dict(items)

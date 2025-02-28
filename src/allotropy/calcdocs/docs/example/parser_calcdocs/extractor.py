@@ -11,7 +11,7 @@ class ExampleExtractor(Extractor[Measurement]):
                 "sid": measurement.sid,
                 "tid": measurement.tid,
                 "m": measurement.m,
-                "sum": measurement.sum,
+                "sum": measurement.sum_,
                 "mean": measurement.mean,
             },
         )

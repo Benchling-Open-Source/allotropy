@@ -7,5 +7,5 @@ class Measurement:
     sid: str
     tid: str
     m: float
-    sum: float
+    sum_: float
     mean: float
