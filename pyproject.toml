@@ -117,11 +117,9 @@ dependencies = [
   # black pinned for compatability with datamodel-code-generator
   "black == 22.3.0",
   "datamodel-code-generator == 0.25.2",
-  "fastparquet >= 2024.5.0",
   # Without jsonschema-spec and pydantic, pydantic spews a bunch of errors when parsing schemas
   "jsonschema-specifications == 2023.7.1",
   "olefile >= 0.47",
-  "pyarrow >= 17.0.0",
   "pydantic == 1.10.17",
   "ruff == 0.0.289",
   "semantic-version",
