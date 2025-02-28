@@ -17,4 +17,5 @@ class NucleoviewReader:
         )
         # Drop rows that do not report cell viability.
         df = df.dropna(subset=["Viability (%)"])
+        df = df[df.columns.dropna()]
         return assert_not_empty_df(df, "Unable to parse data from empty dataset.")
