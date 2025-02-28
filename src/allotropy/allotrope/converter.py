@@ -1,10 +1,10 @@
 from __future__ import annotations
 
 import builtins
-import re
 from collections.abc import Callable, Mapping, Sequence
 from dataclasses import asdict, field, fields, is_dataclass, make_dataclass, MISSING
 from enum import Enum
+import re
 from types import GenericAlias, UnionType
 from typing import (
     Any,
