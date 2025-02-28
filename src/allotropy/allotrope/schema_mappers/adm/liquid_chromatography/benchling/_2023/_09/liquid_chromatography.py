@@ -111,7 +111,6 @@ class Peak:
     peak_width_at_10_percent_of_height: float | None = None
     peak_width_at_baseline: float | None = None
     asymmetry_factor_measured_at_5_percent_height: float | None = None
-    peak_analyte_amount: float | None = None
     relative_corrected_peak_area: float | None = None
     peak_group: float | None = None
     baseline_value_at_start_of_peak: float | None = None
