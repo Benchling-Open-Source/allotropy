@@ -405,9 +405,6 @@ class Mapper(SchemaMapper[Data, Model]):
                 baseline_value_at_end_of_peak=quantity_or_none(
                     TQuantityValueSecondTime, peak.baseline_value_at_end_of_peak
                 ),
-                peak_analyte_amount=quantity_or_none(
-                    TQuantityValueUnitless, peak.peak_analyte_amount
-                ),
                 relative_peak_analyte_amount=quantity_or_none(
                     TQuantityValuePercent, peak.relative_peak_analyte_amount
                 ),
