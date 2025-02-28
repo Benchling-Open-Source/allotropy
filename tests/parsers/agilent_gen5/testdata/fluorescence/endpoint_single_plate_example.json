@@ -37,9 +37,6 @@
                                         "excitation wavelength setting": {
                                             "value": 504.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -558,7 +555,7 @@
             "file name": "endpoint_single_plate_example.txt",
             "UNC path": "tests/parsers/agilent_gen5/testdata/fluorescence/endpoint_single_plate_example.txt",
             "ASM converter name": "allotropy_agilent_gen5",
-            "ASM converter version": "0.1.74",
+            "ASM converter version": "0.1.76",
             "software name": "Gen5",
             "software version": "3.15.15"
         },
