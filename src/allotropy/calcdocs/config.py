@@ -28,6 +28,8 @@ class CalculatedDataConfig:
     value: str
     view_data: ViewData
     source_configs: tuple[CalculatedDataConfig | MeasurementConfig, ...]
+    unit: str | None = None
+    description: str | None = None
 
     def iter_data_sources(
         self,
@@ -72,6 +74,8 @@ class CalculatedDataConfig:
             name=self.name,
             value=value,
             data_sources=data_sources,
+            unit=self.unit,
+            description=self.description,
         )
 
     def get_calc_doc(
