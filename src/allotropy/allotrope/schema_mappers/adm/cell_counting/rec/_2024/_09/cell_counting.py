@@ -108,8 +108,8 @@ class Measurement:
 @dataclass(frozen=True)
 class MeasurementGroup:
     measurements: list[Measurement]
-    custom_info: dict[str, Any] | None = None
     analyst: str | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass
@@ -129,7 +129,8 @@ class Metadata:
     brand_name: str | None = None
     asset_management_identifier: str | None = None
     description: str | None = None
-    system_info_custom_info: dict[str, Any] | None = None
+    data_system_custom_info: dict[str, Any] | None = None
+    device_system_custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -160,14 +161,17 @@ class Mapper(SchemaMapper[Data, Model]):
         return Model(
             field_asm_manifest=self.MANIFEST,
             cell_counting_aggregate_document=CellCountingAggregateDocument(
-                device_system_document=DeviceSystemDocument(
-                    model_number=data.metadata.model_number,
-                    product_manufacturer=data.metadata.product_manufacturer,
-                    brand_name=data.metadata.brand_name,
-                    asset_management_identifier=data.metadata.asset_management_identifier,
-                    device_identifier=data.metadata.device_identifier,
-                    description=data.metadata.description,
-                    equipment_serial_number=data.metadata.equipment_serial_number,
+                device_system_document=add_custom_information_document(
+                    DeviceSystemDocument(
+                        model_number=data.metadata.model_number,
+                        product_manufacturer=data.metadata.product_manufacturer,
+                        brand_name=data.metadata.brand_name,
+                        asset_management_identifier=data.metadata.asset_management_identifier,
+                        device_identifier=data.metadata.device_identifier,
+                        description=data.metadata.description,
+                        equipment_serial_number=data.metadata.equipment_serial_number,
+                    ),
+                    data.metadata.device_system_custom_info or {},
                 ),
                 data_system_document=add_custom_information_document(
                     DataSystemDocument(
@@ -180,7 +184,7 @@ class Mapper(SchemaMapper[Data, Model]):
                         ASM_converter_version=ASM_CONVERTER_VERSION,
                         ASM_file_identifier=data.metadata.asm_file_identifier,
                     ),
-                    data.metadata.system_info_custom_info or {},
+                    data.metadata.data_system_custom_info or {},
                 ),
                 cell_counting_document=[
                     self._get_technique_document(
