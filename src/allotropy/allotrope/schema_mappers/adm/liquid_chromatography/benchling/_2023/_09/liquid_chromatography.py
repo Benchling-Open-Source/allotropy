@@ -11,6 +11,8 @@ from allotropy.allotrope.models.adm.liquid_chromatography.benchling._2023._09.li
     DeviceControlDocumentItem,
     DeviceDocumentItem,
     DeviceSystemDocument,
+    FractionAggregateDocument,
+    FractionDocumentItem,
     InjectionDocument,
     LiquidChromatographyAggregateDocument,
     LiquidChromatographyDocumentItem,
@@ -35,6 +37,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueCentimeter,
     TQuantityValueCubicMillimeter,
     TQuantityValueMicrometer,
+    TQuantityValueMilliliter,
     TQuantityValueMillimeter,
     TQuantityValueNanometer,
     TQuantityValuePercent,
@@ -111,7 +114,18 @@ class Peak:
     chromatographic_asymmetry: float | None = None
     width_at_half_height: float | None = None
     width_at_half_height_unit: str | None = None
+    peak_analyte_amount: float | None = None
+    relative_peak_analyte_amount: float | None = None
     custom_info: dict[str, Any] | None = None
+
+
+@dataclass(frozen=True)
+class Fraction:
+    index: str
+    fraction_role: str | None = None
+    field_type: str | None = None
+    retention_time: float | None = None
+    retention_volume: float | None = None
 
 
 @dataclass(frozen=True)
@@ -166,6 +180,9 @@ class Measurement:
     sample_custom_info: dict[str, Any] | None = None
     injection_custom_info: dict[str, Any] | None = None
     column_custom_info: dict[str, Any] | None = None
+    void_volume: float | None = None
+    batch_identifier: str | None = None
+    flow_rate: float | None = None
 
     # Measurement data cubes
     chromatogram_data_cube: DataCube | None = None
@@ -178,6 +195,7 @@ class Measurement:
 @dataclass(frozen=True)
 class MeasurementGroup:
     measurements: list[Measurement]
+    fractions: list[Fraction] | None = None
     measurement_aggregate_custom_info: dict[str, Any] | None = None
 
 
@@ -248,6 +266,9 @@ class Mapper(SchemaMapper[Data, Model]):
                         for measurement in group.measurements
                     ]
                 ),
+                fraction_aggregate_document=self._get_fraction_aggregate_document(
+                    group.fractions
+                ),
                 custom_info_doc=group.measurement_aggregate_custom_info,
             ),
         )
@@ -310,6 +331,9 @@ class Mapper(SchemaMapper[Data, Model]):
                 ),
                 product_manufacturer=measurement.column_product_manufacturer,
             ),
+            void_volume=quantity_or_none(
+                TQuantityValueMilliliter, measurement.void_volume
+            ),
             custom_info_doc=measurement.column_custom_info,
         )
 
@@ -332,6 +356,9 @@ class Mapper(SchemaMapper[Data, Model]):
                 batch_identifier=measurement.batch_identifier,
                 sample_role_type=measurement.sample_role_type,
                 written_name=measurement.written_name,
+                flow_rate=quantity_or_none(
+                    TQuantityValueMilliliterPerMinute, measurement.flow_rate
+                ),
             ),
             measurement.sample_custom_info,
         )
@@ -382,6 +409,12 @@ class Mapper(SchemaMapper[Data, Model]):
                     peak.number_of_theoretical_plates__chromatography_,
                 ),
                 written_name=peak.written_name,
+                peak_analyte_amount=quantity_or_none(
+                    TQuantityValueUnitless, peak.peak_analyte_amount
+                ),
+                relative_peak_analyte_amount=quantity_or_none(
+                    TQuantityValuePercent, peak.relative_peak_analyte_amount
+                ),
             ),
             peak.custom_info,
         )
@@ -481,4 +514,30 @@ class Mapper(SchemaMapper[Data, Model]):
                 ),
             ),
             custom_info_doc=device_control_doc.device_control_custom_info,
+        )
+
+    def _get_fraction_aggregate_document(
+        self, fractions: list[Fraction] | None
+    ) -> FractionAggregateDocument | None:
+        if fractions is None:
+            return None
+
+        return FractionAggregateDocument(
+            fraction_document=[
+                self._get_fraction_document(fraction_doc)
+                for fraction_doc in fractions or []
+            ]
+        )
+
+    def _get_fraction_document(self, fraction_doc: Fraction) -> FractionDocumentItem:
+        return FractionDocumentItem(
+            index=fraction_doc.index,
+            fraction_role=fraction_doc.fraction_role,
+            field_type=fraction_doc.field_type,
+            retention_time=quantity_or_none(
+                TQuantityValueSecondTime, fraction_doc.retention_time
+            ),
+            retention_volume=quantity_or_none(
+                TQuantityValueMilliliter, fraction_doc.retention_volume
+            ),
         )

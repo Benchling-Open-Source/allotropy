@@ -37,6 +37,7 @@ class AgilentGen5Parser(VendorParser[Data, Model]):
         reader = AgilentGen5Reader(named_file_contents)
 
         if (results_section := get_results_section(reader)) is None:
+            reader.header_data.get_unread()
             raise AllotropeConversionError(NO_MEASUREMENTS_ERROR)
 
         header_data = HeaderData.create(

@@ -72,16 +72,10 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        1.0,
-                                                        2.0
-                                                    ]
+                                                    [1.0, 2.0]
                                                 ],
                                                 "measures": [
-                                                    [
-                                                        0.275,
-                                                        0.277
-                                                    ]
+                                                    [0.275, 0.277]
                                                 ]
                                             }
                                         },
@@ -109,10 +103,7 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        1.0,
-                                                        2.0
-                                                    ]
+                                                    [1.0, 2.0]
                                                 ],
                                                 "measures": [
                                                     [
@@ -198,16 +189,10 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        1.0,
-                                                        2.0
-                                                    ]
+                                                    [1.0, 2.0]
                                                 ],
                                                 "measures": [
-                                                    [
-                                                        0.825,
-                                                        0.831
-                                                    ]
+                                                    [0.825, 0.831]
                                                 ]
                                             }
                                         },
@@ -235,10 +220,7 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        1.0,
-                                                        2.0
-                                                    ]
+                                                    [1.0, 2.0]
                                                 ],
                                                 "measures": [
                                                     [
@@ -278,7 +260,7 @@
             "file name": "appbio_quantstudio_minimal_test03.txt",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_minimal_test03.txt",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.69",
+            "ASM converter version": "0.1.76",
             "software name": "Thermo QuantStudio",
             "software version": "1.0"
         },

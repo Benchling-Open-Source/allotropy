@@ -28,5 +28,5 @@ class CytivaBiacoreT200ControlParser(VendorParser[Data, Model]):
         structured_data = decode_data(named_file_contents)
         return Data(
             metadata=create_metadata(structured_data, named_file_contents),
-            measurement_groups=[create_measurement_groups(structured_data)],
+            measurement_groups=create_measurement_groups(structured_data),
         )
