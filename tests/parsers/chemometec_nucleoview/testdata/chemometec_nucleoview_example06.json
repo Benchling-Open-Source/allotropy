@@ -103,14 +103,14 @@
                         ]
                     },
                     "custom information document": {
+                        "Login ID": "admin",
+                        "Protocol template purpose": "Cell Count and Viability with AO and DAPI",
                         "Protocol adaptation title": "example cell counting",
                         "Event log format": "Plain text",
-                        "Protocol template title": "Viability and Cell Count Assay",
                         "Protocol template filename": "Viability and Cell Count Assay - NC-200.cmsx",
-                        "Protocol template purpose": "Cell Count and Viability with AO and DAPI",
-                        "Protocol adaptation filename": "287764ADc8824786b882bfc202a12044.cmsu",
                         "Protocol adaptation purpose": "Cell Count and Viability with AO and DAPI",
-                        "Login ID": "admin"
+                        "Protocol adaptation filename": "287764ADc8824786b882bfc202a12044.cmsu",
+                        "Protocol template title": "Viability and Cell Count Assay"
                     }
                 },
                 "analyst": "DrScientist"
@@ -122,12 +122,12 @@
             "file name": "chemometec_nucleoview_example06.csv",
             "UNC path": "tests/parsers/chemometec_nucleoview/testdata/chemometec_nucleoview_example06.csv",
             "ASM converter name": "allotropy_chemometec_nucleoview",
-            "ASM converter version": "0.1.75",
+            "ASM converter version": "0.1.76",
             "software name": "NucleoView",
             "software version": "1.4.0.0",
             "custom information document": {
-                "csv file version": 2.0,
-                "21 CFR Part 11": "disabled"
+                " 21 CFR Part 11": "disabled",
+                "csv file version": 2.0
             }
         },
         "device system document": {

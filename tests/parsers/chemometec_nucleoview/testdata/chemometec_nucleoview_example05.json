@@ -103,14 +103,14 @@
                         ]
                     },
                     "custom information document": {
-                        "Protocol adaptation filename": "94A29BE3f39d48cd8eb5cb9472add350.cmsu",
-                        "Login ID": "admin",
-                        "Protocol adaptation purpose": "Cell Count and Viability with AO and DAPI",
-                        "Event log format": "Plain text",
-                        "Protocol template filename": "Viability and Cell Count Assay - NC-200.cmsx",
-                        "Protocol adaptation title": "example cell counting",
                         "Protocol template title": "Viability and Cell Count Assay",
-                        "Protocol template purpose": "Cell Count and Viability with AO and DAPI"
+                        "Event log format": "Plain text",
+                        "Protocol adaptation filename": "94A29BE3f39d48cd8eb5cb9472add350.cmsu",
+                        "Protocol template purpose": "Cell Count and Viability with AO and DAPI",
+                        "Protocol adaptation title": "example cell counting",
+                        "Protocol adaptation purpose": "Cell Count and Viability with AO and DAPI",
+                        "Protocol template filename": "Viability and Cell Count Assay - NC-200.cmsx",
+                        "Login ID": "admin"
                     }
                 },
                 "analyst": "DrScientist"
@@ -122,12 +122,12 @@
             "file name": "chemometec_nucleoview_example05.csv",
             "UNC path": "tests/parsers/chemometec_nucleoview/testdata/chemometec_nucleoview_example05.csv",
             "ASM converter name": "allotropy_chemometec_nucleoview",
-            "ASM converter version": "0.1.75",
+            "ASM converter version": "0.1.76",
             "software name": "NucleoView",
             "software version": "1.4.2.0",
             "custom information document": {
-                "csv file version": 2.0,
-                "21 CFR Part 11": "disabled"
+                " 21 CFR Part 11": "disabled",
+                "csv file version": 2.0
             }
         },
         "device system document": {

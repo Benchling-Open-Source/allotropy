@@ -4,6 +4,7 @@ import builtins
 from collections.abc import Callable, Mapping, Sequence
 from dataclasses import asdict, field, fields, is_dataclass, make_dataclass, MISSING
 from enum import Enum
+import re
 from types import GenericAlias, UnionType
 from typing import (
     Any,
@@ -167,6 +168,7 @@ def _convert_dict_to_model_key(key: str) -> str:
         key = f"___{key}"
     for dict_val, model_val in DICT_KEY_TO_MODEL_KEY_REPLACEMENTS.items():
         key = key.replace(dict_val, model_val)
+    key = re.sub(r"^(\d)", r"_\1", key)
     return key
 
 
