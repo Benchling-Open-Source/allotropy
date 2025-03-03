@@ -24,6 +24,8 @@ class CalculatedDocument(Referenceable):
     unit: str | None = None
     description: str | None = None
     iterated: bool = False
+    unit: str | None = None
+    description: str | None = None
 
     def iter_struct(self) -> Iterator[CalculatedDocument]:
         if self.iterated:
