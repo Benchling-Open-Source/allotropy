@@ -16,6 +16,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -26,7 +27,8 @@
                             "sample document": {
                                 "sample identifier": "Std0001",
                                 "location identifier": "A1",
-                                "sample role type": "standard sample role"
+                                "sample role type": "standard sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 1.7455,
@@ -52,6 +54,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -62,7 +65,8 @@
                             "sample document": {
                                 "sample identifier": "Std0001",
                                 "location identifier": "A2",
-                                "sample role type": "standard sample role"
+                                "sample role type": "standard sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 1.6148,
@@ -88,6 +92,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -98,7 +103,8 @@
                             "sample document": {
                                 "sample identifier": "Un0001",
                                 "location identifier": "A3",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.0805,
@@ -124,6 +130,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -134,7 +141,8 @@
                             "sample document": {
                                 "sample identifier": "Un0001",
                                 "location identifier": "A4",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.0865,
@@ -160,6 +168,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -170,7 +179,8 @@
                             "sample document": {
                                 "sample identifier": "Un0002",
                                 "location identifier": "A5",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.0743,
@@ -196,6 +206,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -206,7 +217,8 @@
                             "sample document": {
                                 "sample identifier": "Un0002",
                                 "location identifier": "A6",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.0774,
@@ -232,6 +244,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -242,7 +255,8 @@
                             "sample document": {
                                 "sample identifier": "Un0003",
                                 "location identifier": "A7",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1245,
@@ -268,6 +282,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -278,7 +293,8 @@
                             "sample document": {
                                 "sample identifier": "Un0003",
                                 "location identifier": "A8",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.0914,
@@ -304,6 +320,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -314,7 +331,8 @@
                             "sample document": {
                                 "sample identifier": "Un0004",
                                 "location identifier": "A9",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.0761,
@@ -340,6 +358,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -350,7 +369,8 @@
                             "sample document": {
                                 "sample identifier": "Un0004",
                                 "location identifier": "A10",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.0778,
@@ -376,6 +396,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -386,7 +407,8 @@
                             "sample document": {
                                 "sample identifier": "Un0005",
                                 "location identifier": "A11",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1483,
@@ -412,6 +434,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -422,7 +445,8 @@
                             "sample document": {
                                 "sample identifier": "Un0005",
                                 "location identifier": "A12",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1768,
@@ -448,6 +472,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -458,7 +483,8 @@
                             "sample document": {
                                 "sample identifier": "Std0002",
                                 "location identifier": "B1",
-                                "sample role type": "standard sample role"
+                                "sample role type": "standard sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 1.3625,
@@ -484,6 +510,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -494,7 +521,8 @@
                             "sample document": {
                                 "sample identifier": "Std0002",
                                 "location identifier": "B2",
-                                "sample role type": "standard sample role"
+                                "sample role type": "standard sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 1.1336,
@@ -520,6 +548,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -530,7 +559,8 @@
                             "sample document": {
                                 "sample identifier": "Un0007",
                                 "location identifier": "B3",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.3925,
@@ -556,6 +586,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -566,7 +597,8 @@
                             "sample document": {
                                 "sample identifier": "Un0007",
                                 "location identifier": "B4",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.461,
@@ -592,6 +624,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -602,7 +635,8 @@
                             "sample document": {
                                 "sample identifier": "Un0008",
                                 "location identifier": "B5",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1506,
@@ -628,6 +662,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -638,7 +673,8 @@
                             "sample document": {
                                 "sample identifier": "Un0008",
                                 "location identifier": "B6",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1452,
@@ -664,6 +700,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -674,7 +711,8 @@
                             "sample document": {
                                 "sample identifier": "Un0014",
                                 "location identifier": "B7",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.829,
@@ -700,6 +738,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -710,7 +749,8 @@
                             "sample document": {
                                 "sample identifier": "Un0014",
                                 "location identifier": "B8",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.8926,
@@ -736,6 +776,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -746,7 +787,8 @@
                             "sample document": {
                                 "sample identifier": "Un0015",
                                 "location identifier": "B9",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.2635,
@@ -772,6 +814,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -782,7 +825,8 @@
                             "sample document": {
                                 "sample identifier": "Un0015",
                                 "location identifier": "B10",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.2679,
@@ -808,6 +852,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -818,7 +863,8 @@
                             "sample document": {
                                 "sample identifier": "Un0016",
                                 "location identifier": "B11",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.6276,
@@ -844,6 +890,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -854,7 +901,8 @@
                             "sample document": {
                                 "sample identifier": "Un0016",
                                 "location identifier": "B12",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.737,
@@ -880,6 +928,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -890,7 +939,8 @@
                             "sample document": {
                                 "sample identifier": "Std0003",
                                 "location identifier": "C1",
-                                "sample role type": "standard sample role"
+                                "sample role type": "standard sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.9252,
@@ -916,6 +966,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -926,7 +977,8 @@
                             "sample document": {
                                 "sample identifier": "Std0003",
                                 "location identifier": "C2",
-                                "sample role type": "standard sample role"
+                                "sample role type": "standard sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.953,
@@ -952,6 +1004,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -962,7 +1015,8 @@
                             "sample document": {
                                 "sample identifier": "Un0017",
                                 "location identifier": "C3",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.2837,
@@ -988,6 +1042,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -998,7 +1053,8 @@
                             "sample document": {
                                 "sample identifier": "Un0017",
                                 "location identifier": "C4",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.2678,
@@ -1024,6 +1080,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -1034,7 +1091,8 @@
                             "sample document": {
                                 "sample identifier": "Un0018",
                                 "location identifier": "C5",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1058,
@@ -1060,6 +1118,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -1070,7 +1129,8 @@
                             "sample document": {
                                 "sample identifier": "Un0018",
                                 "location identifier": "C6",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1021,
@@ -1096,6 +1156,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -1106,7 +1167,8 @@
                             "sample document": {
                                 "sample identifier": "Un0009",
                                 "location identifier": "C7",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.4054,
@@ -1132,6 +1194,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -1142,7 +1205,8 @@
                             "sample document": {
                                 "sample identifier": "Un0009",
                                 "location identifier": "C8",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.5109,
@@ -1168,6 +1232,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -1178,7 +1243,8 @@
                             "sample document": {
                                 "sample identifier": "Un0010",
                                 "location identifier": "C9",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1533,
@@ -1204,6 +1270,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -1214,7 +1281,8 @@
                             "sample document": {
                                 "sample identifier": "Un0010",
                                 "location identifier": "C10",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1443,
@@ -1240,6 +1308,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -1250,7 +1319,8 @@
                             "sample document": {
                                 "sample identifier": "Un0011",
                                 "location identifier": "C11",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.3224,
@@ -1276,6 +1346,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -1286,7 +1357,8 @@
                             "sample document": {
                                 "sample identifier": "Un0011",
                                 "location identifier": "C12",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.3837,
@@ -1312,6 +1384,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -1322,7 +1395,8 @@
                             "sample document": {
                                 "sample identifier": "Std0004",
                                 "location identifier": "D1",
-                                "sample role type": "standard sample role"
+                                "sample role type": "standard sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.573,
@@ -1348,6 +1422,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -1358,7 +1433,8 @@
                             "sample document": {
                                 "sample identifier": "Std0004",
                                 "location identifier": "D2",
-                                "sample role type": "standard sample role"
+                                "sample role type": "standard sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.5763,
@@ -1384,6 +1460,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -1394,7 +1471,8 @@
                             "sample document": {
                                 "sample identifier": "Un0023",
                                 "location identifier": "D3",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.9125,
@@ -1420,6 +1498,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -1430,7 +1509,8 @@
                             "sample document": {
                                 "sample identifier": "Un0023",
                                 "location identifier": "D4",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.9411,
@@ -1456,6 +1536,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -1466,7 +1547,8 @@
                             "sample document": {
                                 "sample identifier": "Un0024",
                                 "location identifier": "D5",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.4575,
@@ -1492,6 +1574,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -1502,7 +1585,8 @@
                             "sample document": {
                                 "sample identifier": "Un0024",
                                 "location identifier": "D6",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.4357,
@@ -1528,6 +1612,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -1538,7 +1623,8 @@
                             "sample document": {
                                 "sample identifier": "Un0019",
                                 "location identifier": "D7",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.271,
@@ -1564,6 +1650,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -1574,7 +1661,8 @@
                             "sample document": {
                                 "sample identifier": "Un0019",
                                 "location identifier": "D8",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.3048,
@@ -1600,6 +1688,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -1610,7 +1699,8 @@
                             "sample document": {
                                 "sample identifier": "Un0020",
                                 "location identifier": "D9",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1117,
@@ -1636,6 +1726,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -1646,7 +1737,8 @@
                             "sample document": {
                                 "sample identifier": "Un0020",
                                 "location identifier": "D10",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1059,
@@ -1672,6 +1764,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -1682,7 +1775,8 @@
                             "sample document": {
                                 "sample identifier": "Un0021",
                                 "location identifier": "D11",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.19,
@@ -1708,6 +1802,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -1718,7 +1813,8 @@
                             "sample document": {
                                 "sample identifier": "Un0021",
                                 "location identifier": "D12",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.262,
@@ -1744,6 +1840,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -1754,7 +1851,8 @@
                             "sample document": {
                                 "sample identifier": "Std0005",
                                 "location identifier": "E1",
-                                "sample role type": "standard sample role"
+                                "sample role type": "standard sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.3996,
@@ -1780,6 +1878,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -1790,7 +1889,8 @@
                             "sample document": {
                                 "sample identifier": "Std0005",
                                 "location identifier": "E2",
-                                "sample role type": "standard sample role"
+                                "sample role type": "standard sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.4006,
@@ -1816,6 +1916,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -1826,7 +1927,8 @@
                             "sample document": {
                                 "sample identifier": "Un0030",
                                 "location identifier": "E3",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.5936,
@@ -1852,6 +1954,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -1862,7 +1965,8 @@
                             "sample document": {
                                 "sample identifier": "Un0030",
                                 "location identifier": "E4",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.5507,
@@ -1888,6 +1992,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -1898,7 +2003,8 @@
                             "sample document": {
                                 "sample identifier": "Un0031",
                                 "location identifier": "E5",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.2488,
@@ -1924,6 +2030,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -1934,7 +2041,8 @@
                             "sample document": {
                                 "sample identifier": "Un0031",
                                 "location identifier": "E6",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.284,
@@ -1960,6 +2068,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -1970,7 +2079,8 @@
                             "sample document": {
                                 "sample identifier": "Un0025",
                                 "location identifier": "E7",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.9017,
@@ -1996,6 +2106,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -2006,7 +2117,8 @@
                             "sample document": {
                                 "sample identifier": "Un0025",
                                 "location identifier": "E8",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.9641,
@@ -2032,6 +2144,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -2042,7 +2155,8 @@
                             "sample document": {
                                 "sample identifier": "Un0026",
                                 "location identifier": "E9",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.3821,
@@ -2068,6 +2182,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -2078,7 +2193,8 @@
                             "sample document": {
                                 "sample identifier": "Un0026",
                                 "location identifier": "E10",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.4055,
@@ -2104,6 +2220,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -2114,7 +2231,8 @@
                             "sample document": {
                                 "sample identifier": "Un0027",
                                 "location identifier": "E11",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.2567,
@@ -2140,6 +2258,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -2150,7 +2269,8 @@
                             "sample document": {
                                 "sample identifier": "Un0027",
                                 "location identifier": "E12",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.235,
@@ -2176,6 +2296,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -2186,7 +2307,8 @@
                             "sample document": {
                                 "sample identifier": "Std0006",
                                 "location identifier": "F1",
-                                "sample role type": "standard sample role"
+                                "sample role type": "standard sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.2403,
@@ -2212,6 +2334,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -2222,7 +2345,8 @@
                             "sample document": {
                                 "sample identifier": "Std0006",
                                 "location identifier": "F2",
-                                "sample role type": "standard sample role"
+                                "sample role type": "standard sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.2398,
@@ -2248,6 +2372,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -2258,7 +2383,8 @@
                             "sample document": {
                                 "sample identifier": "Un0035",
                                 "location identifier": "F3",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.3468,
@@ -2284,6 +2410,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -2294,7 +2421,8 @@
                             "sample document": {
                                 "sample identifier": "Un0035",
                                 "location identifier": "F4",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.3336,
@@ -2320,6 +2448,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -2330,7 +2459,8 @@
                             "sample document": {
                                 "sample identifier": "Un0036",
                                 "location identifier": "F5",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1641,
@@ -2356,6 +2486,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -2366,7 +2497,8 @@
                             "sample document": {
                                 "sample identifier": "Un0036",
                                 "location identifier": "F6",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1712,
@@ -2392,6 +2524,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -2402,7 +2535,8 @@
                             "sample document": {
                                 "sample identifier": "Un0032",
                                 "location identifier": "F7",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.4684,
@@ -2428,6 +2562,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -2438,7 +2573,8 @@
                             "sample document": {
                                 "sample identifier": "Un0032",
                                 "location identifier": "F8",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.4533,
@@ -2464,6 +2600,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -2474,7 +2611,8 @@
                             "sample document": {
                                 "sample identifier": "Un0033",
                                 "location identifier": "F9",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.2035,
@@ -2500,6 +2638,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -2510,7 +2649,8 @@
                             "sample document": {
                                 "sample identifier": "Un0033",
                                 "location identifier": "F10",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1862,
@@ -2536,6 +2676,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -2546,7 +2687,8 @@
                             "sample document": {
                                 "sample identifier": "Un0034",
                                 "location identifier": "F11",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1577,
@@ -2572,6 +2714,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -2582,7 +2725,8 @@
                             "sample document": {
                                 "sample identifier": "Un0034",
                                 "location identifier": "F12",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.154,
@@ -2608,6 +2752,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -2618,7 +2763,8 @@
                             "sample document": {
                                 "sample identifier": "Std0007",
                                 "location identifier": "G1",
-                                "sample role type": "standard sample role"
+                                "sample role type": "standard sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1677,
@@ -2644,6 +2790,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -2654,7 +2801,8 @@
                             "sample document": {
                                 "sample identifier": "Std0007",
                                 "location identifier": "G2",
-                                "sample role type": "standard sample role"
+                                "sample role type": "standard sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1577,
@@ -2680,6 +2828,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -2690,7 +2839,8 @@
                             "sample document": {
                                 "sample identifier": "Un0006",
                                 "location identifier": "G3",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.115,
@@ -2716,6 +2866,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -2726,7 +2877,8 @@
                             "sample document": {
                                 "sample identifier": "Un0006",
                                 "location identifier": "G4",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1239,
@@ -2752,6 +2904,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -2762,7 +2915,8 @@
                             "sample document": {
                                 "sample identifier": "Un0012",
                                 "location identifier": "G5",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.2031,
@@ -2788,6 +2942,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -2798,7 +2953,8 @@
                             "sample document": {
                                 "sample identifier": "Un0012",
                                 "location identifier": "G6",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1964,
@@ -2824,6 +2980,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -2834,7 +2991,8 @@
                             "sample document": {
                                 "sample identifier": "Un0037",
                                 "location identifier": "G7",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.2585,
@@ -2860,6 +3018,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -2870,7 +3029,8 @@
                             "sample document": {
                                 "sample identifier": "Un0037",
                                 "location identifier": "G8",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.2894,
@@ -2896,6 +3056,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -2906,7 +3067,8 @@
                             "sample document": {
                                 "sample identifier": "Un0038",
                                 "location identifier": "G9",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1536,
@@ -2932,6 +3094,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -2942,7 +3105,8 @@
                             "sample document": {
                                 "sample identifier": "Un0038",
                                 "location identifier": "G10",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1317,
@@ -2968,6 +3132,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -2978,7 +3143,8 @@
                             "sample document": {
                                 "sample identifier": "Un0039",
                                 "location identifier": "G11",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1065,
@@ -3004,6 +3170,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -3014,7 +3181,8 @@
                             "sample document": {
                                 "sample identifier": "Un0039",
                                 "location identifier": "G12",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1264,
@@ -3040,6 +3208,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -3050,7 +3219,8 @@
                             "sample document": {
                                 "sample identifier": "Blank1",
                                 "location identifier": "H1",
-                                "sample role type": "blank role"
+                                "sample role type": "blank role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.0905,
@@ -3076,6 +3246,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -3086,7 +3257,8 @@
                             "sample document": {
                                 "sample identifier": "Blank1",
                                 "location identifier": "H2",
-                                "sample role type": "blank role"
+                                "sample role type": "blank role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.0916,
@@ -3112,6 +3284,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -3122,7 +3295,8 @@
                             "sample document": {
                                 "sample identifier": "Un0013",
                                 "location identifier": "H3",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.4253,
@@ -3148,6 +3322,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -3158,7 +3333,8 @@
                             "sample document": {
                                 "sample identifier": "Un0013",
                                 "location identifier": "H4",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.4251,
@@ -3184,6 +3360,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -3194,7 +3371,8 @@
                             "sample document": {
                                 "sample identifier": "Un0022",
                                 "location identifier": "H5",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.147,
@@ -3220,6 +3398,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -3230,7 +3409,8 @@
                             "sample document": {
                                 "sample identifier": "Un0022",
                                 "location identifier": "H6",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1505,
@@ -3256,6 +3436,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -3266,7 +3447,8 @@
                             "sample document": {
                                 "sample identifier": "Un0028",
                                 "location identifier": "H7",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1549,
@@ -3292,6 +3474,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -3302,7 +3485,8 @@
                             "sample document": {
                                 "sample identifier": "Un0028",
                                 "location identifier": "H8",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.151,
@@ -3328,6 +3512,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -3338,7 +3523,8 @@
                             "sample document": {
                                 "sample identifier": "Un0029",
                                 "location identifier": "H9",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1131,
@@ -3364,6 +3550,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -3374,7 +3561,8 @@
                             "sample document": {
                                 "sample identifier": "Un0029",
                                 "location identifier": "H10",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1188,
@@ -3400,6 +3588,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -3410,7 +3599,8 @@
                             "sample document": {
                                 "sample identifier": "Un0040",
                                 "location identifier": "H11",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1001,
@@ -3436,6 +3626,7 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
@@ -3446,7 +3637,8 @@
                             "sample document": {
                                 "sample identifier": "Un0040",
                                 "location identifier": "H12",
-                                "sample role type": "unknown sample role"
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1032,
@@ -3470,7 +3662,7 @@
             "software name": "SkanIt Software 7.0 RE for Microplate Readers RE",
             "software version": "7.0.0.50",
             "ASM converter name": "allotropy_thermo_fisher_scientific_skanit",
-            "ASM converter version": "0.1.62"
+            "ASM converter version": "0.1.74"
         }
     }
 }

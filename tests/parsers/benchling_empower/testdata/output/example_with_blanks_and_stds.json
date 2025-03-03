@@ -1,0 +1,441 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/liquid-chromatography/BENCHLING/2023/09/liquid-chromatography.manifest",
+    "liquid chromatography aggregate document": {
+        "liquid chromatography document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "HPLC"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Blank",
+                                "sample role type": "unknown sample role"
+                            },
+                            "chromatography column document": {
+                                "chromatography column serial number": "N/A"
+                            },
+                            "measurement identifier": "BENCHLING_EMPOWER_TEST_ID_0",
+                            "injection document": {
+                                "autosampler injection volume setting (chromatography)": {
+                                    "value": 5.0,
+                                    "unit": "mm^3"
+                                },
+                                "injection identifier": "1151",
+                                "injection time": "2017-01-04T08:13:41+00:00"
+                            },
+                            "chromatogram data cube": {
+                                "label": "absorbance",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "retention time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.291200001, 0.58240002, 0.87360006, 1.164800004]
+                                    ],
+                                    "measures": [
+                                        [0.0023245811500000003, 0.0057816510000000005, 0.009953977000000001, 0.0143051157]
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                },
+                "analyst": "USER_1"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "HPLC"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Std 1",
+                                "sample role type": "standard sample role"
+                            },
+                            "chromatography column document": {
+                                "chromatography column serial number": "N/A"
+                            },
+                            "measurement identifier": "BENCHLING_EMPOWER_TEST_ID_1",
+                            "injection document": {
+                                "autosampler injection volume setting (chromatography)": {
+                                    "value": 5.0,
+                                    "unit": "mm^3"
+                                },
+                                "injection identifier": "1176",
+                                "injection time": "2017-01-04T08:44:56+00:00"
+                            },
+                            "chromatogram data cube": {
+                                "label": "absorbance",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "retention time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.291200001, 0.58240002, 0.87360006, 1.164800004]
+                                    ],
+                                    "measures": [
+                                        [0.136494637, 0.136375427, 0.13589858999999999, 0.13542175299999998]
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                },
+                "analyst": "USER_1"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "HPLC"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Std 2",
+                                "sample role type": "standard sample role"
+                            },
+                            "chromatography column document": {
+                                "chromatography column serial number": "N/A"
+                            },
+                            "measurement identifier": "BENCHLING_EMPOWER_TEST_ID_2",
+                            "injection document": {
+                                "autosampler injection volume setting (chromatography)": {
+                                    "value": 5.0,
+                                    "unit": "mm^3"
+                                },
+                                "injection identifier": "1179",
+                                "injection time": "2017-01-04T09:16:10+00:00"
+                            },
+                            "chromatogram data cube": {
+                                "label": "absorbance",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "retention time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.291200001, 0.58240002, 0.87360006, 1.164800004]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.007688998999999999,
+                                            -0.006437302,
+                                            -0.005304814000000001,
+                                            -0.0038146972699999995
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                },
+                "analyst": "USER_1"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "HPLC"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "S240506-0008#1",
+                                "sample role type": "unknown sample role",
+                                "written name": "U0101"
+                            },
+                            "chromatography column document": {
+                                "chromatography column serial number": "N/A"
+                            },
+                            "measurement identifier": "BENCHLING_EMPOWER_TEST_ID_3",
+                            "injection document": {
+                                "autosampler injection volume setting (chromatography)": {
+                                    "value": 5.0,
+                                    "unit": "mm^3"
+                                },
+                                "injection identifier": "1182",
+                                "injection time": "2017-01-04T09:47:28+00:00"
+                            },
+                            "chromatogram data cube": {
+                                "label": "absorbance",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "retention time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.291200001, 0.58240002, 0.87360006, 1.164800004]
+                                    ],
+                                    "measures": [
+                                        [0.0538826025, 0.0538229979, 0.05334616, 0.0523924864]
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                },
+                "analyst": "USER_1"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "HPLC"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "S240506-0008#2",
+                                "sample role type": "unknown sample role",
+                                "written name": "U0101"
+                            },
+                            "chromatography column document": {
+                                "chromatography column serial number": "N/A"
+                            },
+                            "measurement identifier": "BENCHLING_EMPOWER_TEST_ID_4",
+                            "injection document": {
+                                "autosampler injection volume setting (chromatography)": {
+                                    "value": 5.0,
+                                    "unit": "mm^3"
+                                },
+                                "injection identifier": "1185",
+                                "injection time": "2017-01-04T10:18:46+00:00"
+                            },
+                            "chromatogram data cube": {
+                                "label": "absorbance",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "retention time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.291200001, 0.58240002, 0.87360006, 1.164800004]
+                                    ],
+                                    "measures": [
+                                        [0.0267624873, 0.0298619289, 0.033557415, 0.0373721123]
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                },
+                "analyst": "USER_1"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "HPLC"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "S240506-0008#3",
+                                "sample role type": "unknown sample role",
+                                "written name": "U0101"
+                            },
+                            "chromatography column document": {
+                                "chromatography column serial number": "N/A"
+                            },
+                            "measurement identifier": "BENCHLING_EMPOWER_TEST_ID_5",
+                            "injection document": {
+                                "autosampler injection volume setting (chromatography)": {
+                                    "value": 5.0,
+                                    "unit": "mm^3"
+                                },
+                                "injection identifier": "1188",
+                                "injection time": "2017-01-04T10:50:07+00:00"
+                            },
+                            "chromatogram data cube": {
+                                "label": "absorbance",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "retention time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.291200001, 0.58240002, 0.87360006, 1.164800004]
+                                    ],
+                                    "measures": [
+                                        [0.0265836734, 0.0256896037, 0.024318696900000002, 0.022470952899999997]
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                },
+                "analyst": "USER_1"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "HPLC"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "S170103-0003#2",
+                                "sample role type": "unknown sample role",
+                                "written name": "U0102"
+                            },
+                            "chromatography column document": {
+                                "chromatography column serial number": "N/A"
+                            },
+                            "measurement identifier": "BENCHLING_EMPOWER_TEST_ID_6",
+                            "injection document": {
+                                "autosampler injection volume setting (chromatography)": {
+                                    "value": 5.0,
+                                    "unit": "mm^3"
+                                },
+                                "injection identifier": "1191",
+                                "injection time": "2017-01-04T11:21:26+00:00"
+                            },
+                            "chromatogram data cube": {
+                                "label": "absorbance",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "retention time",
+                                            "unit": "s"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [0.291200001, 0.58240002, 0.87360006, 1.164800004]
+                                    ],
+                                    "measures": [
+                                        [0.0267624873, 0.024616719999999998, 0.0219941157, 0.019133091]
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                },
+                "analyst": "USER_1"
+            }
+        ],
+        "data system document": {
+            "ASM converter name": "allotropy_benchling_waters_empower_adapter",
+            "ASM converter version": "0.1.76",
+            "file name": "example_with_blanks_and_stds.json",
+            "software name": "Waters Empower",
+            "software version": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+            "UNC path": "tests/parsers/benchling_empower/testdata/input/example_with_blanks_and_stds.json"
+        },
+        "device system document": {
+            "asset management identifier": "237",
+            "product manufacturer": "Waters Corporation"
+        }
+    }
+}
