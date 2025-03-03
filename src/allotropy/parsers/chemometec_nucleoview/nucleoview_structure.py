@@ -49,7 +49,7 @@ def create_metadata(data: SeriesData, file_path: str) -> Metadata:
         software_version=data.get(str, "Application SW version"),
         device_type=NUCLEOCOUNTER_DEVICE_TYPE,
         detection_type=NUCLEOCOUNTER_DETECTION_TYPE,
-        system_info_custom_info=data.get_custom_keys(
+        data_system_custom_info=data.get_custom_keys(
             {
                 "csv file version",
                 "21 CFR Part 11",
