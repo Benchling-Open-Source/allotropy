@@ -99,14 +99,14 @@
                         ]
                     },
                     "custom information document": {
-                        "Protocol adaptation title": "example cell counting",
-                        "Protocol adaptation purpose": "Cell Count and Viability with AO and DAPI",
-                        "Protocol template purpose": "Cell Count and Viability with AO and DAPI",
-                        "Login ID": "admin",
                         "Protocol adaptation filename": "94A29BE3f39d48cd8eb5cb9472add350.cmsu",
+                        "Protocol adaptation purpose": "Cell Count and Viability with AO and DAPI",
+                        "Protocol adaptation title": "example cell counting",
+                        "Protocol template filename": "Viability and Cell Count Assay - NC-200.cmsx",
+                        "Login ID": "admin",
+                        "Protocol template purpose": "Cell Count and Viability with AO and DAPI",
                         "Event log format": "Plain text",
-                        "Protocol template title": "Viability and Cell Count Assay",
-                        "Protocol template filename": "Viability and Cell Count Assay - NC-200.cmsx"
+                        "Protocol template title": "Viability and Cell Count Assay"
                     }
                 },
                 "analyst": "DrScientist"
@@ -123,7 +123,7 @@
             "software version": "1.4.2.0",
             "custom information document": {
                 "csv file version": 2.0,
-                " 21 CFR Part 11": "disabled"
+                "21 CFR Part 11": "disabled"
             }
         },
         "device system document": {
