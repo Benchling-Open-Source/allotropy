@@ -38,6 +38,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueCubicMillimeter,
     TQuantityValueMicrometer,
     TQuantityValueMilliliter,
+    TQuantityValueMilliliterPerMinute,
     TQuantityValueMillimeter,
     TQuantityValueNanometer,
     TQuantityValuePercent,
@@ -264,10 +265,10 @@ class Mapper(SchemaMapper[Data, Model]):
                     measurement_document=[
                         self._get_measurement_document_item(measurement)
                         for measurement in group.measurements
-                    ]
-                ),
-                fraction_aggregate_document=self._get_fraction_aggregate_document(
-                    group.fractions
+                    ],
+                    fraction_aggregate_document=self._get_fraction_aggregate_document(
+                        group.fractions
+                    ),
                 ),
                 custom_info_doc=group.measurement_aggregate_custom_info,
             ),
@@ -330,9 +331,9 @@ class Mapper(SchemaMapper[Data, Model]):
                     TQuantityValueCentimeter, measurement.chromatography_length
                 ),
                 product_manufacturer=measurement.column_product_manufacturer,
-            ),
-            void_volume=quantity_or_none(
-                TQuantityValueMilliliter, measurement.void_volume
+                void_volume=quantity_or_none(
+                    TQuantityValueMilliliter, measurement.void_volume
+                ),
             ),
             custom_info_doc=measurement.column_custom_info,
         )
