@@ -182,7 +182,6 @@ class Measurement:
     injection_custom_info: dict[str, Any] | None = None
     column_custom_info: dict[str, Any] | None = None
     void_volume: float | None = None
-    batch_identifier: str | None = None
     flow_rate: float | None = None
 
     # Measurement data cubes
