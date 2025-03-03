@@ -2,16 +2,78 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 from collections.abc import Iterator
+from dataclasses import dataclass, field
 
 from allotropy.calcdocs.extractor import Element
 from allotropy.exceptions import AllotropyParserError
+from allotropy.parsers.utils.values import assert_not_none
 
 
-def head_tail_dict(
-    data: dict[str, str], key: str
-) -> tuple[dict[str, str], dict[str, str]]:
-    new_keys = data.copy()
-    return {key: new_keys.pop(key)}, new_keys
+@dataclass(frozen=True)
+class Key:
+    name: str
+    value: str
+
+
+@dataclass(frozen=True)
+class Keys:
+    entries: tuple[Key, ...] = field(default_factory=tuple)
+
+    def is_empty(self) -> bool:
+        return len(self.entries) == 0
+
+    def add(self, name: str, value: str) -> Keys:
+        return Keys(entries=(*self.entries, Key(name, value)))
+
+    def insert(self, name: str, value: str, index: int = 0) -> Keys:
+        data = list(self.entries)
+        data.insert(index, Key(name, value))
+        return Keys(entries=tuple(data))
+
+    def append(self, keys: Keys) -> Keys:
+        return Keys(self.entries + keys.entries)
+
+    def get_or_none(self, name: str) -> Key | None:
+        for key in self.entries:
+            if key.name == name:
+                return key
+        return None
+
+    def get(self, name: str) -> Key:
+        return assert_not_none(
+            self.get_or_none(name),
+            msg=f"Unable to find key '{name}'",
+        )
+
+    def get_idx_or_none(self, name: str) -> int | None:
+        for idx, key in enumerate(self.entries):
+            if key.name == name:
+                return idx
+        return None
+
+    def get_idx(self, name: str) -> int:
+        return assert_not_none(
+            self.get_idx_or_none(name),
+            msg=f"Unable to find index of key '{name}'",
+        )
+
+    def overwrite(self, name: str, value: str) -> Keys:
+        index = self.get_idx_or_none(name)
+        if index is None:
+            return self.insert(name, value, index=0)
+
+        return Keys(
+            entries=tuple(
+                key if idx != index else Key(name, value)
+                for idx, key in enumerate(self.entries)
+            )
+        )
+
+    def delete(self, name: str) -> Keys:
+        return Keys(entries=tuple(key for key in self.entries if key.name != name))
+
+    def extract(self, name: str) -> tuple[Key, Keys]:
+        return self.get(name), self.delete(name)
 
 
 class ViewData:
@@ -25,37 +87,34 @@ class ViewData:
         self.name = name
         self.data = data
 
-    def filter_keys(self, keys: dict[str, str]) -> dict[str, str]:
+    def filter_keys(self, keys: Keys) -> Keys:
         return self.view.filter_keys(keys)
 
-    def iter_keys(self) -> Iterator[dict[str, str]]:
-        for key, item in self.data.items():
-            full_key = {self.name: key}
+    def iter_keys(self) -> Iterator[Keys]:
+        for data_key, item in self.data.items():
+            keys = Keys().add(self.name, data_key)
             if isinstance(item, ViewData):
                 for sub_keys in item.iter_keys():
-                    yield {
-                        **full_key,
-                        **sub_keys,
-                    }
+                    yield keys.append(sub_keys)
             else:
-                yield full_key
+                yield keys
 
-    def get_item(self, keys: dict[str, str]) -> ViewData | list[Element]:
-        if not keys:
+    def get_item(self, keys: Keys) -> ViewData | list[Element]:
+        if keys.is_empty():
             return self
 
-        head, tail = head_tail_dict(keys, self.name)
-        item = self.data[head[self.name]]
-        return item.get_item(tail) if isinstance(item, ViewData) else item
+        key, new_keys = keys.extract(self.name)
+        item = self.data[key.value]
+        return item.get_item(new_keys) if isinstance(item, ViewData) else item
 
-    def get_sub_view_data(self, keys: dict[str, str]) -> ViewData:
+    def get_sub_view_data(self, keys: Keys) -> ViewData:
         item = self.get_item(keys)
         if isinstance(item, ViewData):
             return item
         msg = f"Unable to find sub view data with keys: {keys}."
         raise AllotropyParserError(msg)
 
-    def get_leaf_items(self, keys: dict[str, str]) -> list[Element]:
+    def get_leaf_items(self, keys: Keys) -> list[Element]:
         item = self.get_item(keys)
         if isinstance(item, ViewData):
             msg = f"Unable to find leaf item of view data with keys: {keys}."
@@ -72,11 +131,10 @@ class View(ABC):
     def sort_elements(self, _: list[Element]) -> dict[str, list[Element]]:
         pass
 
-    def filter_keys(self, keys: dict[str, str]) -> dict[str, str]:
-        filtered_keys = self.sub_view.filter_keys(keys) if self.sub_view else {}
-        key_value = keys.get(self.name)
-        if key_value is not None:
-            filtered_keys[self.name] = key_value
+    def filter_keys(self, keys: Keys) -> Keys:
+        filtered_keys = self.sub_view.filter_keys(keys) if self.sub_view else Keys()
+        if key := keys.get_or_none(self.name):
+            return filtered_keys.overwrite(self.name, key.value)
         return filtered_keys
 
     def apply(self, elements: list[Element]) -> ViewData:

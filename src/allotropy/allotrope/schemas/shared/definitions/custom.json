@@ -519,6 +519,26 @@
       }
     ]
   },
+  "tQuantityValueMilliliterPerMinute": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/MilliliterPerMinute"
+      }
+    ]
+  },
+  "tNullableQuantityValueMilliliterPerMinute": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/MilliliterPerMinute"
+      }
+    ]
+  },
   "tQuantityValueMillimeter": {
     "allOf": [
       {
@@ -1116,6 +1136,26 @@
       },
       {
         "$ref": "#/$defs/RelativeLightUnitTimesSecond"
+      }
+    ]
+  },
+  "tQuantityValueResonanceUnits": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/ResonanceUnits"
+      }
+    ]
+  },
+  "tNullableQuantityValueResonanceUnits": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/ResonanceUnits"
       }
     ]
   },
