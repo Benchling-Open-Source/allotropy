@@ -162,7 +162,7 @@ class WellItem:
     negative_partition_count: float | None = None
     confidence_interval__95__: float | None = None
     passive_reference_dye_setting: str | None = None
-    flourescence_intensity_threshold_setting: float | None = None
+    fluorescence_intensity_threshold_setting: float | None = None
     reporter_dye_data_cube: DataCube | None = None
     passive_reference_dye_data_cube: DataCube | None = None
     errors: list[Error] | None = None
@@ -192,7 +192,7 @@ class WellItem:
             concentration=data[float, CONCENTRATION_COLUMNS],
             positive_partition_count=round(data[float, ("Positives", "Count")]),
             confidence_interval__95__=data.get(float, "95%CI"),
-            flourescence_intensity_threshold_setting=data.get(float, "Threshold"),
+            fluorescence_intensity_threshold_setting=data.get(float, "Threshold"),
             calculated_data=[
                 CalculatedDataItem(
                     identifier=calc_data.identifier,
@@ -266,7 +266,7 @@ class WellItem:
                     total_partition_count=total_partition_count,
                     reporter_dye_setting=dye_setting,
                     passive_reference_dye_setting=passive_dye_settings[0],
-                    flourescence_intensity_threshold_setting=data[
+                    fluorescence_intensity_threshold_setting=data[
                         float, f"{dye_setting}_threshold"
                     ],
                     concentration=concentration,
@@ -373,7 +373,7 @@ def create_measurement_groups(wells: list[Well]) -> list[MeasurementGroup]:
                     confidence_interval__95__=item.confidence_interval__95__,
                     reporter_dye_setting=item.reporter_dye_setting,
                     passive_reference_dye_setting=item.passive_reference_dye_setting,
-                    flourescence_intensity_threshold_setting=item.flourescence_intensity_threshold_setting,
+                    fluorescence_intensity_threshold_setting=item.fluorescence_intensity_threshold_setting,
                     reporter_dye_data_cube=item.reporter_dye_data_cube,
                     passive_reference_dye_data_cube=item.passive_reference_dye_data_cube,
                     errors=item.errors,
