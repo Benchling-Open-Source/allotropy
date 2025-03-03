@@ -4,9 +4,6 @@ import re
 import pandas as pd
 import pytest
 
-from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
-    CalculatedDataItem,
-)
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.unchained_labs_lunatic.constants import (
@@ -23,6 +20,9 @@ from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_structure i
     _create_measurement_group,
     create_measurement_groups,
     create_metadata,
+)
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
 )
 from allotropy.parsers.utils.pandas import SeriesData
 
@@ -87,7 +87,7 @@ def test__create_measurement_with_incorrect_wavelength_column_format() -> None:
 
 
 def test__get_calculated_data_from_measurement_for_unknown_wavelength() -> None:
-    calculated_data: list[CalculatedDataItem] = []
+    calculated_data: list[CalculatedDocument] = []
     well_plate_data = {
         "sample name": "dummy name",
         "plate id": "some plate",
@@ -106,7 +106,7 @@ def test__get_calculated_data_from_measurement_for_unknown_wavelength() -> None:
 
 
 def test__get_calculated_data_from_measurement_for_A260() -> None:  # noqa: N802
-    calculated_data: list[CalculatedDataItem] = []
+    calculated_data: list[CalculatedDocument] = []
     well_plate_data = {
         "sample name": "dummy name",
         "plate id": "some plate",

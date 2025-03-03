@@ -5,11 +5,14 @@ import pandas as pd
 
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
-    CalculatedDataItem,
-    DataSource,
     Measurement,
 )
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+    DataSource,
+    Referenceable,
+)
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
@@ -157,7 +160,7 @@ def _get_data_sources(
     measurements: list[Measurement],
     calculated_data_mapping: CalculatedDataMapping,
     row: SeriesData,
-    calculated_data: list[CalculatedDataItem],
+    calculated_data: list[CalculatedDocument],
 ) -> list[DataSource]:
     well_location_identifier = row[str, "Well"]
     spot_index = row[str, "Spot"]
@@ -189,7 +192,7 @@ def _get_data_sources(
         calc_data_by_feature = list(
             filter(
                 lambda calc: all(
-                    source.identifier in measurements_with_agg_properties_ids
+                    source.reference.uuid in measurements_with_agg_properties_ids
                     for source in calc.data_sources
                 ),
                 calc_data_by_feature,
@@ -197,7 +200,7 @@ def _get_data_sources(
         )
         return [
             DataSource(
-                identifier=calc_data.identifier,
+                reference=Referenceable(calc_data.uuid),
                 feature=calculated_data_mapping.data_source_feature,
             )
             for calc_data in calc_data_by_feature
@@ -205,7 +208,7 @@ def _get_data_sources(
 
     return [
         DataSource(
-            identifier=measurement.identifier,
+            reference=Referenceable(measurement.identifier),
             feature=calculated_data_mapping.data_source_feature,
         )
         for measurement in measurements_with_agg_properties
@@ -213,22 +216,22 @@ def _get_data_sources(
 
 
 def _is_calc_data_created(
-    calculated_data: list[CalculatedDataItem],
+    calculated_data: list[CalculatedDocument],
     data_sources: list[DataSource],
     calc_data_name: str,
 ) -> bool:
     for calc_data in calculated_data:
-        if calc_data.name == calc_data_name and set(calc_data.data_sources) == set(
-            data_sources
-        ):
+        if calc_data.name == calc_data_name and {
+            source.reference.uuid for source in calc_data.data_sources
+        } == {source.reference.uuid for source in data_sources}:
             return True
     return False
 
 
 def create_calculated_data_groups(
     data: pd.DataFrame, measurements: list[Measurement]
-) -> list[CalculatedDataItem]:
-    calculated_data: list[CalculatedDataItem] = []
+) -> list[CalculatedDocument]:
+    calculated_data: list[CalculatedDocument] = []
     for _row_index, row in data.iterrows():
         row_series = SeriesData(row)
         for calc_data_item in calculated_data_mappings:
@@ -248,8 +251,8 @@ def create_calculated_data_groups(
                 continue
 
             calculated_data.append(
-                CalculatedDataItem(
-                    identifier=random_uuid_str(),
+                CalculatedDocument(
+                    uuid=random_uuid_str(),
                     data_sources=data_sources,
                     unit=UNITLESS,
                     name=name,
@@ -264,7 +267,7 @@ def create_calculated_data_groups(
         if not calc_data_mapping.is_data_source_id_measurement
     ]
     for calc_data_mapping in not_data_source_measurement_id_mappings:
-        calc_data: list[CalculatedDataItem] = [
+        calc_data: list[CalculatedDocument] = [
             calc_data_item
             for calc_data_item in calculated_data
             if calc_data_item.name == calc_data_mapping.msd_column.value
@@ -272,17 +275,17 @@ def create_calculated_data_groups(
         if not calc_data:
             continue
         data_sources_identifiers = [
-            source.identifier for calc in calc_data for source in calc.data_sources
+            source.reference.uuid for calc in calc_data for source in calc.data_sources
         ]
         if len(data_sources_identifiers) != len(set(data_sources_identifiers)):
             ordered_sources = list(set(data_sources_identifiers))
             ordered_sources.sort()
             value = calc_data[0].value
-            new_calc_data_item = CalculatedDataItem(
-                identifier=random_uuid_str(),
+            new_calc_data_item = CalculatedDocument(
+                uuid=random_uuid_str(),
                 data_sources=[
                     DataSource(
-                        identifier=identifier,
+                        reference=Referenceable(identifier),
                         feature=calc_data_mapping.data_source_feature,
                     )
                     for identifier in ordered_sources
