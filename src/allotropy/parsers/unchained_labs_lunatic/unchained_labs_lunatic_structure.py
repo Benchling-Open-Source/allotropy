@@ -5,8 +5,6 @@ from pathlib import Path
 import pandas as pd
 
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
-    CalculatedDataItem,
-    DataSource,
     ErrorDocument,
     Measurement,
     MeasurementGroup,
@@ -30,6 +28,11 @@ from allotropy.parsers.unchained_labs_lunatic.constants import (
     SOFTWARE_NAME,
     WAVELENGTH_COLUMNS_RE,
 )
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+    DataSource,
+    Referenceable,
+)
 from allotropy.parsers.utils.pandas import (
     map_rows,
     SeriesData,
@@ -44,7 +47,7 @@ def _create_measurement(
     well_plate_data: SeriesData,
     header: SeriesData,
     wavelength_column: str,
-    calculated_data: list[CalculatedDataItem],
+    calculated_data: list[CalculatedDocument],
 ) -> Measurement:
     if wavelength_column not in well_plate_data.series:
         msg = NO_MEASUREMENT_IN_PLATE_ERROR_MSG.format(wavelength_column)
@@ -121,7 +124,7 @@ def _get_calculated_data(
     wavelength_column: str,
     measurement_identifier: str,
     error_documents: list[ErrorDocument],
-) -> list[CalculatedDataItem]:
+) -> list[CalculatedDocument]:
     calculated_data = []
     for item in CALCULATED_DATA_LOOKUP.get(wavelength_column, []):
         value = well_plate_data.get(float, item["column"])
@@ -135,14 +138,14 @@ def _get_calculated_data(
             continue
 
         calculated_data.append(
-            CalculatedDataItem(
-                identifier=random_uuid_str(),
+            CalculatedDocument(
+                uuid=random_uuid_str(),
                 name=item["name"],
                 value=value,
                 unit=item["unit"],
                 data_sources=[
                     DataSource(
-                        identifier=measurement_identifier,
+                        reference=Referenceable(uuid=measurement_identifier),
                         feature=item["feature"],
                     )
                 ],
@@ -154,7 +157,7 @@ def _get_calculated_data(
 def _create_measurement_group(
     data: SeriesData,
     wavelength_columns: list[str],
-    calculated_data: list[CalculatedDataItem],
+    calculated_data: list[CalculatedDocument],
     header: SeriesData,
 ) -> MeasurementGroup:
     timestamp = header.get(str, "date")
@@ -199,7 +202,7 @@ def create_metadata(header: SeriesData, file_path: str) -> Metadata:
 
 def create_measurement_groups(
     header: SeriesData, data: pd.DataFrame
-) -> tuple[list[MeasurementGroup], list[CalculatedDataItem]]:
+) -> tuple[list[MeasurementGroup], list[CalculatedDocument]]:
     wavelength_columns = list(filter(WAVELENGTH_COLUMNS_RE.match, data.columns))
     if not wavelength_columns:
         raise AllotropeConversionError(NO_WAVELENGTH_COLUMN_ERROR_MSG)
@@ -207,7 +210,7 @@ def create_measurement_groups(
     # TODO: we are reporting calculated data for measurements globally instead of in the measurement doc,
     # which is why we have to pass this list to collect them. Why are we reporting globally when data is
     # pertains to the individual measurements?
-    calculated_data: list[CalculatedDataItem] = []
+    calculated_data: list[CalculatedDocument] = []
 
     def make_group(data: SeriesData) -> MeasurementGroup:
         return _create_measurement_group(
