@@ -216,42 +216,39 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_measurement_document(
         self, measurement: Measurement, metadata: Metadata
     ) -> MeasurementDocument:
-        custom_info = measurement.custom_info or {}
-        return add_custom_information_document(
-            MeasurementDocument(
-                measurement_time=self.get_date_time(measurement.timestamp),
-                measurement_identifier=measurement.measurement_identifier,
-                sample_document=self._get_sample_document(measurement),
-                device_control_aggregate_document=DeviceControlAggregateDocument(
-                    device_control_document=[
-                        DeviceControlDocumentItem(
-                            device_type=metadata.device_type,
-                            detection_type=metadata.detection_type,
-                            sample_volume_setting=quantity_or_none(
-                                TQuantityValueMicroliter,
-                                measurement.sample_volume_setting,
-                            ),
-                        )
-                    ]
-                ),
-                processed_data_aggregate_document=self._get_processed_data_aggregate_document(
-                    measurement
-                ),
-                error_aggregate_document=self._get_error_aggregate_document(
-                    measurement.errors
-                ),
-                image_aggregate_document=ImageAggregateDocument(
-                    image_document=[
-                        ImageDocumentItem(
-                            experimental_data_identifier=measurement.experimental_data_identifier
-                        )
-                    ],
-                )
-                if measurement.experimental_data_identifier
-                else None,
+        measurement_document = MeasurementDocument(
+            measurement_time=self.get_date_time(measurement.timestamp),
+            measurement_identifier=measurement.measurement_identifier,
+            sample_document=self._get_sample_document(measurement),
+            device_control_aggregate_document=DeviceControlAggregateDocument(
+                device_control_document=[
+                    DeviceControlDocumentItem(
+                        device_type=metadata.device_type,
+                        detection_type=metadata.detection_type,
+                        sample_volume_setting=quantity_or_none(
+                            TQuantityValueMicroliter,
+                            measurement.sample_volume_setting,
+                        ),
+                    )
+                ]
             ),
-            custom_info,
+            processed_data_aggregate_document=self._get_processed_data_aggregate_document(
+                measurement
+            ),
+            error_aggregate_document=self._get_error_aggregate_document(
+                measurement.errors
+            ),
+            image_aggregate_document=ImageAggregateDocument(
+                image_document=[
+                    ImageDocumentItem(
+                        experimental_data_identifier=measurement.experimental_data_identifier
+                    )
+                ],
+            )
+            if measurement.experimental_data_identifier
+            else None,
         )
+        return add_custom_information_document(measurement_document, measurement.custom_info or {})
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
         # TODO(ASM gaps): we believe these values should be introduced to ASM.
