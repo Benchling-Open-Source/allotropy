@@ -2,9 +2,6 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
-    Fraction,
-)
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.constants import NEGATIVE_ZERO, NOT_APPLICABLE
 from allotropy.parsers.cytiva_unicorn.reader.unicorn_zip_handler import (
@@ -34,7 +31,6 @@ class StaticDocs:
     start_time: str | None
     void_volume: float | None
     flow_rate: float | None
-    fractions: list[Fraction] | None
 
     @classmethod
     def create(
@@ -43,7 +39,6 @@ class StaticDocs:
         curve: StrictXmlElement,
         results: StrictXmlElement,
         analysis_settings: StrictXmlElement | None,
-        event_curves: StrictXmlElement | None,
     ) -> StaticDocs:
         column_type_data = handler.get_column_type_data()
         autosampler_injection_volume_setting = NEGATIVE_ZERO
@@ -170,7 +165,6 @@ class StaticDocs:
                 void_volume.get_float_or_none() if void_volume is not None else None
             ),
             flow_rate=flow_rate,
-            fractions=cls.__get_fractions(event_curves) if event_curves else None,
         )
 
     @classmethod
@@ -184,33 +178,3 @@ class StaticDocs:
                 return result_criteria
         msg = f"Unable to find result criteria with keyword 1 '{keyword}'"
         raise AllotropeConversionError(msg)
-
-    @classmethod
-    def __get_fractions(cls, event_curves: StrictXmlElement) -> list[Fraction]:
-        event_curve_fraction = None
-        for event_curve in event_curves.findall("EventCurve"):
-            if event_curve.get_attr_or_none("EventCurveType") == "Fraction":
-                event_curve_fraction = event_curve
-                break
-
-        if event_curve_fraction is None:
-            return []
-
-        if events := event_curve_fraction.find_or_none("Events"):
-            return [
-                Fraction(
-                    index=f"Fraction Event {idx}",
-                    fraction_role=event.get_sub_text_or_none("EventText"),
-                    field_type=event.get_attr_or_none("EventType"),
-                    retention_time=(
-                        None
-                        if (t_min := event.get_sub_float_or_none("EventTime")) is None
-                        else t_min * 60
-                    ),
-                    retention_volume=event.get_sub_float_or_none("EventVolume"),
-                )
-                for idx, event in enumerate(events.findall("Event"), start=1)
-                if event.get_attr_or_none("EventType") in ["Fraction", "Method"]
-            ]
-
-        return []
