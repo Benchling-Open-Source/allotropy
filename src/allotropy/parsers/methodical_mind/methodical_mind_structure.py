@@ -16,7 +16,7 @@ from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.methodical_mind import constants
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import try_float
+from allotropy.parsers.utils.values import try_float, try_float_or_none
 
 WELL_LABELS = ["A", "B", "C", "D", "E", "F", "G", "H"]
 
@@ -57,7 +57,7 @@ class PlateData:
         ]
         well_data = [
             WellData.create(
-                luminescence=try_float(value, "luminescence"),
+                luminescence=float(value),
                 location_id=str(row_index + 1),
                 well_plate_id=well_plate_id,
                 well_location_id=f"{row_name}{col_name}",
@@ -67,6 +67,7 @@ class PlateData:
             for row_index, (_, row) in enumerate(data.loc[[row_name]].iterrows())
             for col_name, value in row.items()
             if row_name in WELL_LABELS
+            if try_float_or_none(value)
         ]
         return PlateData(
             measurement_time=header[str, "Read Time"],
