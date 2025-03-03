@@ -197,6 +197,7 @@ def from_file(
 
 
 def _oneline_number_lists(contents: str) -> str:
+    contents = re.sub(r"\[\s+(\d+\.?\d*)\s+\]", r"[\1]", contents)
     contents = re.sub(r"\[\s+(\d+\.?\d*),", r"[\1,", contents)
     contents = re.sub(r"\s+(\d+\.?\d*),", r" \1,", contents)
     return re.sub(r"\s+(\d+\.?\d*)\s+\]", r" \1]", contents)
