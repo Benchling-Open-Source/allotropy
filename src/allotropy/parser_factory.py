@@ -27,6 +27,9 @@ from allotropy.parsers.beckman_coulter_biomek.beckman_coulter_biomek_parser impo
 from allotropy.parsers.beckman_pharmspec.beckman_pharmspec_parser import PharmSpecParser
 from allotropy.parsers.beckman_vi_cell_blu.vi_cell_blu_parser import ViCellBluParser
 from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_parser import ViCellXRParser
+from allotropy.parsers.benchling_chromeleon.benchling_chromeleon_parser import (
+    BenchlingChromeleonParser,
+)
 from allotropy.parsers.benchling_empower.benchling_empower_parser import (
     BenchlingEmpowerParser,
 )
@@ -145,6 +148,7 @@ class Vendor(Enum):
     ROCHE_CEDEX_BIOHT = "ROCHE_CEDEX_BIOHT"
     ROCHE_CEDEX_HIRES = "ROCHE_CEDEX_HIRES"
     TECAN_MAGELLAN = "TECAN_MAGELLAN"
+    BENCHLING_CHROMELEON = "BENCHLING_CHROMELEON"
     THERMO_FISHER_GENESYS30 = "THERMO_FISHER_GENESYS30"
     THERMO_FISHER_GENESYS_ON_BOARD = "THERMO_FISHER_GENESYS_ON_BOARD"
     THERMO_FISHER_NANODROP_8000 = "THERMO_FISHER_NANODROP_8000"
@@ -235,6 +239,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser[Any, Any]]] = {
     Vendor.ROCHE_CEDEX_BIOHT: RocheCedexBiohtParser,
     Vendor.ROCHE_CEDEX_HIRES: RocheCedexHiResParser,
     Vendor.TECAN_MAGELLAN: TecanMagellanParser,
+    Vendor.BENCHLING_CHROMELEON: BenchlingChromeleonParser,
     Vendor.THERMO_FISHER_GENESYS30: ThermoFisherGenesys30Parser,
     Vendor.THERMO_FISHER_GENESYS_ON_BOARD: ThermoFisherGenesysOnBoardParser,
     Vendor.THERMO_FISHER_NANODROP_8000: Nanodrop8000Parser,
