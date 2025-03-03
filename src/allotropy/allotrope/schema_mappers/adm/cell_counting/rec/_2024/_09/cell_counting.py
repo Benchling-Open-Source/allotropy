@@ -248,7 +248,9 @@ class Mapper(SchemaMapper[Data, Model]):
             if measurement.experimental_data_identifier
             else None,
         )
-        return add_custom_information_document(measurement_document, measurement.custom_info or {})
+        return add_custom_information_document(
+            measurement_document, measurement.custom_info or {}
+        )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
         # TODO(ASM gaps): we believe these values should be introduced to ASM.
