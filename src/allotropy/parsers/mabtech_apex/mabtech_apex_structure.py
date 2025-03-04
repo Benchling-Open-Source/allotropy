@@ -168,6 +168,6 @@ def create_measurement_group(
         measurements=measurements,
         plate_well_count=96,
         measurement_time=well_data[0][str, "Read Date"],
-        analyst=plate_info.get(str, "Saved By:"),
+        analyst=plate_info.get(str, "Saved By"),
         custom_info=well_data[0].get_custom_keys(custom_info_keys),
     )
