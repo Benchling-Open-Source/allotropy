@@ -27,10 +27,7 @@ import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
-from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
-    CalculatedDataItem,
-    DataSource,
     Measurement,
     MeasurementGroup,
     MeasurementType,
@@ -777,30 +774,5 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
         for well_location in sorted(
             well_loc_measurements.keys(),
             key=lambda key: (key[0], key[1][0], int(key[1][1:])),
-        )
-    ]
-
-
-def create_calculated_data(
-    plate_list: PlateList, read_type: ReadType
-) -> list[CalculatedDataItem]:
-    return [
-        CalculatedDataItem(
-            identifier=calculated_result.uuid,
-            name=calculated_plate.plate_info.name,
-            description=calculated_plate.plate_info.formula,
-            value=calculated_result.value,
-            unit=UNITLESS,
-            data_sources=[
-                DataSource(
-                    identifier=source_result.uuid,
-                    feature=read_type.value,
-                )
-                for source_result in source_results
-            ],
-        )
-        for calculated_plate in plate_list.calculated
-        for calculated_result, source_results in calculated_plate.get_result_and_sources(
-            plate_list
         )
     ]
