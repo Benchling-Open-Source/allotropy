@@ -278,23 +278,6 @@ class SeriesData:
     def mark_read(self, key_or_keys: str | set[str]) -> None:
         self.read_keys |= self._get_matching_keys(key_or_keys)
 
-    def _sanitize_dict_keys(
-        self, data: dict[str, float | str | None]
-    ) -> dict[str, float | str | None]:
-        # Converts the keys of a dictionary into valid Python identifiers.
-        def make_valid_identifier(field_name: str) -> str:
-            # Add an underscore if the field name starts with a digit
-            if field_name[0].isdigit():
-                field_name = f"_{field_name}"
-
-            # Replace invalid characters
-            field_name = field_name.replace("#", "Number")
-            field_name = re.sub(r"[^\w\s.]", "_", field_name)
-            field_name = field_name.strip("_")
-            return field_name
-
-        return {make_valid_identifier(key): value for key, value in data.items()}
-
     def get_unread(
         self, regex: str | None = None, skip: set[str] | None = None
     ) -> dict[str, float | str | None]:
