@@ -98,6 +98,8 @@ DICT_KEY_TO_MODEL_KEY_REPLACEMENTS = {
     "%": "_PERCENT_",
     ":": "_COLON_",
     "#": "_NUMBER_",
+    "[": "_OBRACKET_",
+    "]": "_CBRACKET_",
     # NOTE: this MUST be at the end, or it will break other key replacements.
     " ": "_",
 }
