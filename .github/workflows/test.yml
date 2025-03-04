@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   test_py_310:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     name: Tests (python 3.10)
 
     steps:
@@ -27,7 +27,7 @@ jobs:
       run: hatch run test_all.py3.10:test
 
   test_py_311:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     name: Tests (python 3.11)
 
     steps:
@@ -41,7 +41,7 @@ jobs:
       run: hatch run test_all.py3.11:test
 
   test_py_312:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     name: Tests (python 3.12)
 
     steps:
@@ -55,7 +55,7 @@ jobs:
       run: hatch run test_all.py3.12:test
 
   lint:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     name: Quality Checks
 
     steps:
@@ -69,7 +69,7 @@ jobs:
       run: hatch run lint
 
   pr-title-check:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     name: Check PR Title
 
     steps:
