@@ -266,7 +266,7 @@ class SeriesData:
     ) -> dict[str, float | str | None]:
         return {
             key: value
-            for key in self._get_matching_keys(key_or_keys)
+            for key in sorted(self._get_matching_keys(key_or_keys))
             if (
                 value := self._validate_raw(
                     self._get_custom_key(key), SeriesData.NOT_NAN
