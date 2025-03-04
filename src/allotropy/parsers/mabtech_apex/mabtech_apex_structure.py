@@ -25,7 +25,7 @@ def create_metadata(plate_info: SeriesData, file_path: str) -> Metadata:
     machine_id = assert_not_none(
         re.match(
             "([A-Z]+[a-z]*) ([0-9]+)",
-            plate_info[str, "Machine ID:"],
+            plate_info[str, "Machine ID"],
         ),
         msg="Unable to interpret Machine ID",
     )
@@ -33,11 +33,11 @@ def create_metadata(plate_info: SeriesData, file_path: str) -> Metadata:
     return Metadata(
         device_identifier=NOT_APPLICABLE,
         software_name=constants.SOFTWARE_NAME,
-        software_version=plate_info.get(str, "Software Version:"),
+        software_version=plate_info.get(str, "Software Version"),
         model_number=machine_id.group(1),
         equipment_serial_number=machine_id.group(2),
         file_name=Path(file_path).name,
-        unc_path=plate_info.get(str, "Path:", file_path),
+        unc_path=plate_info.get(str, "Path", file_path),
         custom_info=plate_info.get_unread(),
     )
 
