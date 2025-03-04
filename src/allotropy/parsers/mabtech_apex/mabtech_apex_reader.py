@@ -41,6 +41,7 @@ class MabtechApexReader:
             .dropna(axis=1, how="all")
             .T
         )
+        sheet.iloc[0] = sheet.iloc[0].apply(lambda x: x.replace(":", "", 1))
         return df_to_series_data(parse_header_row(sheet))
 
     def _get_data(self, contents: dict[str, pd.DataFrame]) -> pd.DataFrame:

@@ -3,6 +3,7 @@ from __future__ import annotations
 from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Any
 
 import pandas as pd
 
@@ -16,6 +17,7 @@ from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.methodical_mind import constants
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.values import try_float
 
 WELL_LABELS = ["A", "B", "C", "D", "E", "F", "G", "H"]
 
@@ -44,6 +46,9 @@ class PlateData:
     analyst: str | None
     well_plate_id: str
     well_data: list[WellData]
+    measurement_custom_info: dict[str, Any]
+    sample_custom_info: dict[str, Any]
+    device_custom_info: dict[str, Any]
 
     @staticmethod
     def create(
@@ -56,7 +61,7 @@ class PlateData:
         ]
         well_data = [
             WellData.create(
-                luminescence=value,
+                luminescence=try_float(value, "luminescence"),
                 location_id=str(row_index + 1),
                 well_plate_id=well_plate_id,
                 well_location_id=f"{row_name}{col_name}",
@@ -74,19 +79,33 @@ class PlateData:
             # The well count is (# of unique row labels) * (# of columns)
             plate_well_count=len(unique_well_labels) * data.shape[1],
             well_data=well_data,
+            sample_custom_info=header.get_custom_keys(
+                {"Barcode2", "Barcode3", "Plate #", "Stack ID"}
+            ),
+            device_custom_info=header.get_custom_keys(
+                {"Orient", "Spots Per Well", "Det Param"}
+            ),
+            measurement_custom_info=header.get_unread(
+                # fields already mapped
+                skip={
+                    "Type",
+                    "Wells Per Col",
+                    "Wells Per Row",
+                }
+            ),
         )
 
 
 @dataclass(frozen=True)
 class WellData:
-    luminescence: int
+    luminescence: float
     location_identifier: str
     sample_identifier: str
     well_location_identifier: str
 
     @staticmethod
     def create(
-        luminescence: int, location_id: str, well_plate_id: str, well_location_id: str
+        luminescence: float, location_id: str, well_plate_id: str, well_location_id: str
     ) -> WellData:
         sample_id = well_plate_id + "_" + well_location_id
         return WellData(
@@ -135,6 +154,9 @@ def create_measurement_groups(plates: list[PlateData]) -> list[MeasurementGroup]
                             well_plate_identifier=plate.well_plate_id,
                             device_type=constants.LUMINESCENCE_DETECTOR,
                             detection_type=constants.LUMINESCENCE,
+                            measurement_custom_info=plate.measurement_custom_info,
+                            sample_custom_info=plate.sample_custom_info,
+                            device_control_custom_info=plate.device_custom_info,
                         )
                         for well in well_group
                     ],

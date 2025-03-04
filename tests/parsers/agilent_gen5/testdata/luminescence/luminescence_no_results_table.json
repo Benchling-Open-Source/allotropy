@@ -17,7 +17,10 @@
                                         },
                                         "detector gain setting": "135",
                                         "scan position setting (plate reader)": "top scan position (plate reader)",
-                                        "detector carriage speed setting": "Normal"
+                                        "detector carriage speed setting": "Normal",
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
+                                        }
                                     }
                                 ]
                             },
@@ -16905,7 +16908,7 @@
             "file name": "luminescence_no_results_table.txt",
             "UNC path": "tests/parsers/agilent_gen5/testdata/luminescence/luminescence_no_results_table.txt",
             "ASM converter name": "allotropy_agilent_gen5",
-            "ASM converter version": "0.1.74",
+            "ASM converter version": "0.1.76",
             "software name": "Gen5",
             "software version": "3.10.06"
         },
