@@ -1139,6 +1139,26 @@
       }
     ]
   },
+  "tQuantityValueResonanceUnits": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/ResonanceUnits"
+      }
+    ]
+  },
+  "tNullableQuantityValueResonanceUnits": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/ResonanceUnits"
+      }
+    ]
+  },
   "tQuantityValueSecondTime": {
     "allOf": [
       {
