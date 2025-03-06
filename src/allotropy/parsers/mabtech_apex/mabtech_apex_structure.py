@@ -25,7 +25,7 @@ def create_metadata(plate_info: SeriesData, file_path: str) -> Metadata:
     machine_id = assert_not_none(
         re.match(
             "([A-Z]+[a-z]*) ([0-9]+)",
-            plate_info[str, "Machine ID:"],
+            plate_info[str, "Machine ID"],
         ),
         msg="Unable to interpret Machine ID",
     )
@@ -33,11 +33,11 @@ def create_metadata(plate_info: SeriesData, file_path: str) -> Metadata:
     return Metadata(
         device_identifier=NOT_APPLICABLE,
         software_name=constants.SOFTWARE_NAME,
-        software_version=plate_info.get(str, "Software Version:"),
+        software_version=plate_info.get(str, "Software Version"),
         model_number=machine_id.group(1),
         equipment_serial_number=machine_id.group(2),
         file_name=Path(file_path).name,
-        unc_path=plate_info.get(str, "Path:", file_path),
+        unc_path=plate_info.get(str, "Path", file_path),
         custom_info=plate_info.get_unread(),
     )
 
@@ -105,7 +105,7 @@ def _create_measurement(plate_data: SeriesData) -> Measurement:
                 "Analyte Secreting Population",
             }
         ),
-        # Machine ID is read in metadata. The second value filters any remaning columns with 3
+        # Machine ID is read in metadata. The second value filters any remaining columns with 3
         # digit numbers, which filters columns for other LED filters not part of this measurement.
         custom_info=(
             plate_data.get_unread(regex=filter_number_regex)
@@ -168,6 +168,6 @@ def create_measurement_group(
         measurements=measurements,
         plate_well_count=96,
         measurement_time=well_data[0][str, "Read Date"],
-        analyst=plate_info.get(str, "Saved By:"),
+        analyst=plate_info.get(str, "Saved By"),
         custom_info=well_data[0].get_custom_keys(custom_info_keys),
     )

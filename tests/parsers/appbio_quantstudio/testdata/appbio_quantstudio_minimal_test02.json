@@ -81,14 +81,10 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        1.0
-                                                    ]
+                                                    [1.0]
                                                 ],
                                                 "measures": [
-                                                    [
-                                                        0.612
-                                                    ]
+                                                    [0.612]
                                                 ]
                                             }
                                         },
@@ -112,9 +108,7 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        1.0
-                                                    ]
+                                                    [1.0]
                                                 ],
                                                 "measures": [
                                                     [
@@ -150,14 +144,10 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [
-                                            1.0
-                                        ]
+                                        [1.0]
                                     ],
                                     "measures": [
-                                        [
-                                            34014.32
-                                        ]
+                                        [34014.32]
                                     ]
                                 }
                             },
@@ -181,14 +171,10 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [
-                                            1.0
-                                        ]
+                                        [1.0]
                                     ],
                                     "measures": [
-                                        [
-                                            55573.94
-                                        ]
+                                        [55573.94]
                                     ]
                                 }
                             },
@@ -217,17 +203,11 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [
-                                            1.0
-                                        ]
+                                        [1.0]
                                     ],
                                     "measures": [
-                                        [
-                                            3.478
-                                        ],
-                                        [
-                                            0.093
-                                        ]
+                                        [3.478],
+                                        [0.093]
                                     ]
                                 }
                             }
@@ -273,7 +253,7 @@
             "file name": "appbio_quantstudio_minimal_test02.txt",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_minimal_test02.txt",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.74",
+            "ASM converter version": "0.1.76",
             "software name": "Thermo QuantStudio",
             "software version": "1.0"
         },

@@ -78,14 +78,10 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        1.0
-                                                    ]
+                                                    [1.0]
                                                 ],
                                                 "measures": [
-                                                    [
-                                                        0.522
-                                                    ]
+                                                    [0.522]
                                                 ]
                                             }
                                         },
@@ -109,14 +105,10 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        1.0
-                                                    ]
+                                                    [1.0]
                                                 ],
                                                 "measures": [
-                                                    [
-                                                        0.008
-                                                    ]
+                                                    [0.008]
                                                 ]
                                             }
                                         },
@@ -201,14 +193,10 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        2.0
-                                                    ]
+                                                    [2.0]
                                                 ],
                                                 "measures": [
-                                                    [
-                                                        0.521
-                                                    ]
+                                                    [0.521]
                                                 ]
                                             }
                                         },
@@ -232,14 +220,10 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        2.0
-                                                    ]
+                                                    [2.0]
                                                 ],
                                                 "measures": [
-                                                    [
-                                                        0.007
-                                                    ]
+                                                    [0.007]
                                                 ]
                                             }
                                         },
@@ -341,14 +325,10 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        1.0
-                                                    ]
+                                                    [1.0]
                                                 ],
                                                 "measures": [
-                                                    [
-                                                        0.507
-                                                    ]
+                                                    [0.507]
                                                 ]
                                             }
                                         },
@@ -372,14 +352,10 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        1.0
-                                                    ]
+                                                    [1.0]
                                                 ],
                                                 "measures": [
-                                                    [
-                                                        0.007
-                                                    ]
+                                                    [0.007]
                                                 ]
                                             }
                                         },
@@ -464,14 +440,10 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        2.0
-                                                    ]
+                                                    [2.0]
                                                 ],
                                                 "measures": [
-                                                    [
-                                                        0.507
-                                                    ]
+                                                    [0.507]
                                                 ]
                                             }
                                         },
@@ -495,14 +467,10 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        2.0
-                                                    ]
+                                                    [2.0]
                                                 ],
                                                 "measures": [
-                                                    [
-                                                        0.007
-                                                    ]
+                                                    [0.007]
                                                 ]
                                             }
                                         },
@@ -1083,7 +1051,7 @@
             "file name": "appbio_quantstudio_multiple_cal_doc_wells.txt",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_multiple_cal_doc_wells.txt",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.74",
+            "ASM converter version": "0.1.76",
             "software name": "Thermo QuantStudio",
             "software version": "1.0"
         },

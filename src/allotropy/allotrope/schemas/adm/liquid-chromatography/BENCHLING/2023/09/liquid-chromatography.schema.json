@@ -117,6 +117,18 @@
                                               "$asm.pattern": "value datum",
                                               "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
                                               "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
+                                            },
+                                            "void volume": {
+                                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002812",
+                                              "$asm.pattern": "quantity datum",
+                                              "allOf": [
+                                                {
+                                                  "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                                },
+                                                {
+                                                  "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/mL"
+                                                }
+                                              ]
                                             }
                                           }
                                         },
@@ -191,6 +203,18 @@
                                               "$asm.pattern": "value datum",
                                               "$asm.type": "http://www.w3.org/2001/XMLSchema#dateTime",
                                               "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tDateTimeValue"
+                                            },
+                                            "injection volume setting": {
+                                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001577",
+                                              "$asm.pattern": "quantity datum",
+                                              "allOf": [
+                                                {
+                                                  "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                                },
+                                                {
+                                                  "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/μL"
+                                                }
+                                              ]
                                             }
                                           }
                                         },
@@ -282,6 +306,66 @@
                                                                     }
                                                                   ]
                                                                 },
+                                                                "baseline value at start of peak": {
+                                                                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001184",
+                                                                  "$asm.pattern": "quantity datum",
+                                                                  "allOf": [
+                                                                    {
+                                                                      "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                                                    },
+                                                                    {
+                                                                      "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/s"
+                                                                    }
+                                                                  ]
+                                                                },
+                                                                "baseline value at end of peak": {
+                                                                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001185",
+                                                                  "$asm.pattern": "quantity datum",
+                                                                  "allOf": [
+                                                                    {
+                                                                      "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                                                    },
+                                                                    {
+                                                                      "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/s"
+                                                                    }
+                                                                  ]
+                                                                },
+                                                                "peak group": {
+                                                                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000231",
+                                                                  "$asm.pattern": "quantity datum",
+                                                                  "allOf": [
+                                                                    {
+                                                                      "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                                                    },
+                                                                    {
+                                                                      "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/mAU.s"
+                                                                    }
+                                                                  ]
+                                                                },
+                                                                "relative peak analyte amount": {
+                                                                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001172",
+                                                                  "$asm.pattern": "quantity datum",
+                                                                  "allOf": [
+                                                                    {
+                                                                      "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                                                    },
+                                                                    {
+                                                                      "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/%"
+                                                                    }
+                                                                  ]
+                                                                },
+                                                                "relative corrected peak area": {
+                                                                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002775",
+                                                                  "$asm.pattern": "quantity datum",
+                                                                  "allOf": [
+                                                                    {
+                                                                      "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                                                    },
+                                                                    {
+                                                                      "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/%"
+                                                                    }
+                                                                  ]
+                                                                },
                                                                 "peak area": {
                                                                   "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001073",
                                                                   "$asm.pattern": "quantity datum",
@@ -312,6 +396,18 @@
                                                                     },
                                                                     {
                                                                       "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/s"
+                                                                    }
+                                                                  ]
+                                                                },
+                                                                "relative retention time": {
+                                                                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001174",
+                                                                  "$asm.pattern": "quantity datum",
+                                                                  "allOf": [
+                                                                    {
+                                                                      "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                                                    },
+                                                                    {
+                                                                      "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/%"
                                                                     }
                                                                   ]
                                                                 },
@@ -348,6 +444,18 @@
                                                                 },
                                                                 "peak selectivity (chromatography)": {
                                                                   "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001235",
+                                                                  "$asm.pattern": "quantity datum",
+                                                                  "allOf": [
+                                                                    {
+                                                                      "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                                                    },
+                                                                    {
+                                                                      "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/(unitless)"
+                                                                    }
+                                                                  ]
+                                                                },
+                                                                "peak analyte amount": {
+                                                                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001171",
                                                                   "$asm.pattern": "quantity datum",
                                                                   "allOf": [
                                                                     {
@@ -1008,6 +1116,68 @@
                                   ]
                                 },
                                 "minItems": 1
+                              },
+                              "fraction aggregate document": {
+                                "type": "object",
+                                "properties": {
+                                  "fraction document": {
+                                    "type": "array",
+                                    "items": {
+                                      "allOf": [
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "index": {
+                                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000928",
+                                              "$asm.pattern": "value datum",
+                                              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
+                                            },
+                                            "retention time": {
+                                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001089",
+                                              "$asm.pattern": "quantity datum",
+                                              "allOf": [
+                                                {
+                                                  "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                                },
+                                                {
+                                                  "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/s"
+                                                }
+                                              ]
+                                            },
+                                            "retention volume": {
+                                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002521",
+                                              "$asm.pattern": "quantity datum",
+                                              "allOf": [
+                                                {
+                                                  "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                                },
+                                                {
+                                                  "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/mL"
+                                                }
+                                              ]
+                                            },
+                                            "fraction role": {
+                                              "$asm.property-class": "http://purl.allotrope.org/ontologies/role#AFRL_0000563",
+                                              "$asm.pattern": "value datum",
+                                              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
+                                            },
+                                            "field type": {
+                                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0003109",
+                                              "$asm.pattern": "value datum",
+                                              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                },
+                                "required": [
+                                  "fraction document"
+                                ]
                               }
                             }
                           }
@@ -1375,6 +1545,24 @@
                             "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
                             "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
                           },
+                          "location identifier": {
+                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002844",
+                            "$asm.pattern": "value datum",
+                            "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
+                          },
+                          "well location identifier": {
+                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002240",
+                            "$asm.pattern": "value datum",
+                            "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
+                          },
+                          "observation": {
+                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000955",
+                            "$asm.pattern": "value datum",
+                            "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
+                          },
                           "sample role type": {
                             "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002242",
                             "$asm.pattern": "class datum",
@@ -1408,6 +1596,18 @@
                             "$asm.pattern": "value datum",
                             "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
                             "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
+                          },
+                          "flow rate": {
+                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001881",
+                            "$asm.pattern": "quantity datum",
+                            "allOf": [
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                              },
+                              {
+                                "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/mL~1min"
+                              }
+                            ]
                           }
                         },
                         "required": [

@@ -67,6 +67,7 @@ class BmgLabtechSmartControlReader:
 
         # Combine headers and settings into a single Series
         combined_series = pd.concat([headers["Value"], settings_series])
+        combined_series.index = combined_series.index.str.rstrip(":")
         return SeriesData(combined_series)
 
     def _get_data(self, data: pd.DataFrame) -> pd.DataFrame:

@@ -24,9 +24,15 @@ class ChemometecNucleoviewParser(VendorParser[Data, Model]):
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         df = NucleoviewReader.read(named_file_contents.contents)
+        data_groups = map_rows(df, create_measurement_groups)
+        calculated_data = [
+            item for group in data_groups if group[1] is not None for item in group[1]
+        ]
+        measurement_groups = [group[0] for group in data_groups]
         return Data(
             create_metadata(
                 df_to_series_data(df.head(1)), named_file_contents.original_file_path
             ),
-            map_rows(df, create_measurement_groups),
+            measurement_groups,
+            calculated_data,
         )
