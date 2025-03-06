@@ -3,6 +3,11 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_rea
     CalculatedDataItem,
     DataSource,
 )
+from allotropy.calcdocs.config import (
+    CalcDocsConfig,
+    CalculatedDataConfig,
+    MeasurementConfig,
+)
 from allotropy.calcdocs.perkin_elmer_envision.extractor import (
     PerkinElmerEnvisionExtractor,
 )
@@ -16,6 +21,35 @@ def create_calculated_data(
     plate_list: PlateList, read_type: ReadType
 ) -> list[CalculatedDataItem]:
     PerkinElmerEnvisionExtractor.get_elements_from_plate_list(plate_list)
+
+    result_conf = MeasurementConfig(
+        name="result",
+        value="value",
+    )
+
+    calc_result = CalculatedDataConfig(
+        # identifier=calculated_result.uuid,
+        # name=calculated_plate.plate_info.name,
+        # description=calculated_plate.plate_info.formula,
+        # value=calculated_result.value,
+        # unit=UNITLESS,
+        name="sum mean",
+        value="mean",
+        view_data=mean_view_data,
+        source_configs=(result_conf,),
+    )
+
+    configs = CalcDocsConfig(
+        [
+            calc_result,
+        ]
+    )
+
+    [
+        calc_doc
+        for parent_calc_doc in configs.construct()
+        for calc_doc in parent_calc_doc.iter_struct()
+    ]
 
     return [
         CalculatedDataItem(
