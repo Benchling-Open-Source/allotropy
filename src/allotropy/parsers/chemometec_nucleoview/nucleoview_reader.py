@@ -17,7 +17,6 @@ class NucleoviewReader:
             {"Estimated cell diameter [um]": "Estimated cell diameter (um)"},
             axis="columns",
         )
-        # Drop rows that do not report cell viability.
         df = df.dropna()
         df = df[df.columns.dropna()]
         return assert_not_empty_df(df, "Unable to parse data from empty dataset.")
