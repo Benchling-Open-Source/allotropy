@@ -34,7 +34,7 @@ class BmgLabtechSmartControlParser(VendorParser[Data, Model]):
             reader.data, partial(map_measurement_group, headers=reader.header)
         )
         return Data(
-            create_metadata(named_file_contents.original_file_path),
+            create_metadata(named_file_contents.original_file_path, reader.header),
             measurement_groups,
             create_calculated_data_documents(measurement_groups, reader),
         )

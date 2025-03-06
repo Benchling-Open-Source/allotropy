@@ -16,7 +16,7 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 
 def create_metadata(data: SeriesData, file_path: str) -> Metadata:
     path = Path(file_path)
-    return Metadata(
+    metadata = Metadata(
         asm_file_identifier=path.with_suffix(".json").name,
         data_system_instance_id=NOT_APPLICABLE,
         file_name=path.name,
@@ -30,7 +30,17 @@ def create_metadata(data: SeriesData, file_path: str) -> Metadata:
         description=data[str, "System description"],
         device_identifier=data[str, "Cedex ID"],
         brand_name=constants.BRAND_NAME,
+        device_system_custom_info=data.get_custom_keys(
+            {
+                "Default system",
+                "Default system (processed)",
+                "System description (processed)",
+            }
+        ),
     )
+    # We read the metadata from first row in data, so we do not need the extra info here
+    data.get_unread()
+    return metadata
 
 
 def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
@@ -47,6 +57,7 @@ def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
 
     return MeasurementGroup(
         analyst=data.get(str, "Username"),
+        custom_info=data.get_custom_keys({"Workarea name", "Comment"}),
         measurements=[
             Measurement(
                 measurement_identifier=random_uuid_str(),
@@ -75,6 +86,19 @@ def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
                 standard_deviation=data.get(float, "Std Dev."),
                 aggregate_rate=data.get(float, "Aggregate Rate"),
                 sample_draw_time=data.get(str, "Sample draw Time"),
+                custom_info=data.get_unread(
+                    # These fields are being read from the header metadata, so we can ignore them
+                    skip={
+                        "System name",
+                        "System description",
+                        "Cedex ID",
+                        "Cedex ID (processed)",
+                        "System name (processed)",
+                        "Default system",
+                        "Default system (processed)",
+                        "System description (processed)",
+                    }
+                ),
             )
         ],
     )

@@ -5,6 +5,62 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.78] - 2025-03-04
+
+### Fixed
+
+- Mabtech Apex - fix typo that prevents getting analyst field (#913)
+
+## [0.1.77] - 2025-03-04
+
+### Added
+
+- BMG Labtech SMART Control - add unread data to ASM (#881)
+- Thermo Fisher Scientific Chromeleon - initial implementation (#894)
+- Roche Cedex HiRes - add unread data to ASM (#872)
+- ChemoMetec Nucleoview - Add unread data to ASM. (#857)
+- MSD Methodical Mind - add unread data to ASM (#873)
+- Cytiva Biacore T200 Control - Add sensorgram and report point data to the ASM  (#899)
+- Benchling Waters Empower Adapter - add peak analyte amount and relative peak analyte amount (#898)
+
+### Fixed
+
+- MSD Methodical Mind - add type verification for luminescence (#900)
+- Benchling Empower - use SampleName for sample identifier (#897)
+
+## [0.1.76] - 2025-02-19
+
+### Added
+
+- Liquid Chromatography - move fraction events to measurement aggregate document (#893)
+- Liquid Chromatography - add new fields to the BENCHLING/2023/09 schema (#891)
+- Thermo Fisher Scientific SkanIt - add support for Luminescence measurement type (#887)
+- Cytiva Unicorn - add fraction events (#892)
+
+### Fixed
+
+- ChemoMetec Nucleoview - handle file with commas at the end of the line (#889)
+
+## [0.1.75] - 2025-02-11
+
+### Added
+
+- Cytiva Unicorn - add void volume and flow rate (#880)
+- Bio-Rad CFX Maestro - update release state to recommended (#879)
+- AppBio QuantStudio Design & Analysis - add back reference fields as custom data processing info (#878)
+- Internal - improve calcdoc library implementation (#874)
+- Agilent Gen5 - Add unread data to ASM (#870)
+- Bio-Rad CFX Maestro - Add unread data to ASM (#850)
+- Luminex xPONENT - add descriptive error for Minimum bead count setting (#865)
+
+### Fixed
+
+- Plate Reader REC 2024/06 - add custom data to fluorescence measurement type (#886)
+- Luminex xPONENT - map settings from different source, add error document for Nan values (#868)
+- Agilent TapeStation Analysis - add missing calculated data from RNA tag (#866)
+- Luminex xPONENT - do not throw an error if an optional value is missing in the input file (#867)
+- Unchained Labs Lunatic - handle different cases for column headers (#863)
+
 ## [0.1.74] - 2025-01-28
 
 ### Added
