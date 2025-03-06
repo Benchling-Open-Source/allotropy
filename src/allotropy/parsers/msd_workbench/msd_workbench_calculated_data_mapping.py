@@ -7,6 +7,21 @@ from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
     Measurement,
 )
+from allotropy.calcdocs.config import (
+    CalcDocsConfig,
+    CalculatedDataConfig,
+    MeasurementConfig,
+)
+from allotropy.calcdocs.msd_workbench.calculdated_data_structure import (
+    CalculatedDataMeasurementStructure,
+)
+from allotropy.calcdocs.msd_workbench.extractor import MsdWorkbenchExtractor
+from allotropy.calcdocs.msd_workbench.views import (
+    AssayIdentifierView,
+    LocationIdentifierView,
+    SampleIdentifierView,
+    WellPlateIdentifierView,
+)
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
@@ -23,7 +38,6 @@ class AggregatingProperty(Enum):
     WELL_PLATE_IDENTIFIER = "well_plate_identifier"
     LOCATION_IDENTIFIER = "location_identifier"
     WELL_PLATE_ID = "well_plate_identifier"
-    LOCATION_ID = "location_identifier"
 
 
 class CalculatedDataColumns(Enum):
@@ -232,14 +246,15 @@ def create_calculated_data_groups(
     data: pd.DataFrame, measurements: list[Measurement]
 ) -> list[CalculatedDocument]:
     calculated_data: list[CalculatedDocument] = []
-    for _row_index, row in data.iterrows():
+    for _, row in data.iterrows():
         row_series = SeriesData(row)
         for calc_data_item in calculated_data_mappings:
             value = row_series.get(float, calc_data_item.msd_column.value)
+            name = calc_data_item.msd_column.value
             data_sources = _get_data_sources(
                 measurements, calc_data_item, row_series, calculated_data
             )
-            name = calc_data_item.msd_column.value
+
             # handle special case for Fit Statistic: RSquared
             if name == CalculatedDataColumns.FIT_STATISTIC_RSQUARED.value:
                 name = _format_r_squared_name(name)
@@ -298,3 +313,117 @@ def create_calculated_data_groups(
                 calculated_data.remove(item)
             calculated_data.append(new_calc_data_item)
     return calculated_data
+
+
+def create_calculated_data_groups_2(
+    data: pd.DataFrame, measurements: list[Measurement]
+) -> list[CalculatedDocument]:
+    calc_data_measurements: list[CalculatedDataMeasurementStructure] = []
+    for measurement in measurements:
+        for _, row in data.iterrows():
+            row_series = SeriesData(row)
+            if measurement.well_location_identifier != row_series.get(
+                str, "Well"
+            ) or measurement.location_identifier != row_series.get(str, "Spot"):
+                continue
+            calc_data_measurements.append(
+                CalculatedDataMeasurementStructure(
+                    measurement=measurement,
+                    adjusted_signal=row_series.get(float, "Adjusted Signal"),
+                    mean=row_series.get(float, "Mean"),
+                    adj_sig_mean=row_series.get(float, "Adj. Sig. Mean"),
+                    fit_statistic_rsquared=row_series.get(
+                        float, "Fit Statistic: RSquared"
+                    ),
+                    cv=row_series.get(float, "CV"),
+                    percent_recovery=row_series.get(float, "% Recovery"),
+                    percent_recovery_mean=row_series.get(float, "% Recovery Mean"),
+                    calc_concentration=row_series.get(float, "Calc. Concentration"),
+                    calc_conc_mean=row_series.get(float, "Calc. Conc. Mean"),
+                )
+            )
+    elements = MsdWorkbenchExtractor.get_elements(calc_data_measurements)
+    sample_assay_view = SampleIdentifierView(sub_view=AssayIdentifierView()).apply(
+        elements
+    )
+    assay_view = AssayIdentifierView().apply(elements)
+    sample_well_plate_location_id_view = SampleIdentifierView(
+        sub_view=WellPlateIdentifierView(sub_view=LocationIdentifierView())
+    ).apply(elements)
+    measurement_conf = MeasurementConfig(
+        name="luminescence",
+        value="luminescence",
+    )
+    CalculatedDataConfig(
+        name="Adjusted Signal",
+        value="adjusted_signal",
+        view_data=sample_assay_view,
+        source_configs=(measurement_conf,),
+    )
+    mean_config = CalculatedDataConfig(
+        name="Mean",
+        value="mean",
+        view_data=assay_view,
+        source_configs=(measurement_conf,),
+    )
+    CalculatedDataConfig(
+        name="Adj. Sig. Mean",
+        value="adj_sig_mean",
+        view_data=assay_view,
+        source_configs=(mean_config,),
+    )
+    CalculatedDataConfig(
+        name="RSquared",
+        value="fit_statistic_rsquared",
+        view_data=assay_view,
+        source_configs=(measurement_conf,),
+    )
+    CalculatedDataConfig(
+        name="CV",
+        value="cv",
+        view_data=assay_view,
+        source_configs=(measurement_conf,),
+    )
+    percent_recovery_config = CalculatedDataConfig(
+        name="% Recovery",
+        value="percent_recovery",
+        view_data=sample_well_plate_location_id_view,
+        source_configs=(measurement_conf,),
+    )
+    percent_recovery_mean_config = CalculatedDataConfig(
+        name="% Recovery Mean",
+        value="percent_recovery_mean",
+        view_data=assay_view,
+        source_configs=(percent_recovery_config,),
+    )
+    calc_concentration_config = CalculatedDataConfig(
+        name="Calc. Concentration",
+        value="calc_concentration",
+        view_data=sample_well_plate_location_id_view,
+        source_configs=(measurement_conf,),
+    )
+    CalculatedDataConfig(
+        name="Calc. Conc. Mean",
+        value="calc_conc_mean",
+        view_data=assay_view,
+        source_configs=(calc_concentration_config,),
+    )
+    configs = CalcDocsConfig(
+        [
+            # mean_config,
+            # adjusted_signal_config,
+            # adj_signal_mean,
+            # rsquared_config,
+            # cv_config,
+            percent_recovery_config,
+            percent_recovery_mean_config,
+            # calc_concentration_config,
+            # calc_conc_mean_config,
+        ]
+    )
+    calc_docs = [
+        calc_doc
+        for parent_calc_doc in configs.construct()
+        for calc_doc in parent_calc_doc.iter_struct()
+    ]
+    return calc_docs

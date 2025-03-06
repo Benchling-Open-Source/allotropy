@@ -18,7 +18,7 @@ from allotropy.parsers.methodical_mind.methodical_mind_structure import (
     PlateData,
 )
 from allotropy.parsers.msd_workbench.msd_workbench_calculated_data_mapping import (
-    create_calculated_data_groups,
+    create_calculated_data_groups_2,
 )
 from allotropy.parsers.msd_workbench.msd_workbench_reader import (
     MSDWorkbenchReader,
@@ -62,7 +62,7 @@ class MSDWorkbenchParser(VendorParser[Data, Model]):
             for group in measurement_groups
             for measurement in group.measurements
         ]
-        calculated_data_groups = create_calculated_data_groups(
+        calculated_data_groups = create_calculated_data_groups_2(
             reader.plate_data, measurements
         )
         metadata = create_msd_metadata(named_file_contents.original_file_path)
