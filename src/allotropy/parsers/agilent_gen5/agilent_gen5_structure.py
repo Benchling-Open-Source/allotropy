@@ -14,8 +14,6 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
-    CalculatedDataItem,
-    DataSource,
     ErrorDocument,
     Measurement,
     MeasurementGroup,
@@ -61,6 +59,11 @@ from allotropy.parsers.constants import (
     POSSIBLE_WELL_COUNTS,
 )
 from allotropy.parsers.lines_reader import SectionLinesReader
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+    DataSource,
+    Referenceable,
+)
 from allotropy.parsers.utils.pandas import read_csv, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
@@ -606,7 +609,7 @@ def create_results(
     read_data: list[ReadData],
     sample_identifiers: dict[str, str],
     actual_temperature: float | None,
-) -> tuple[list[MeasurementGroup], list[CalculatedDataItem]]:
+) -> tuple[list[MeasurementGroup], list[CalculatedDocument]]:
     if result_lines[0].strip() != "Results":
         msg = f"Expected the first line of the results section '{result_lines[0]}' to be 'Results'."
         raise AllotropeConversionError(msg)
@@ -684,11 +687,11 @@ def create_results(
     ]
 
     calculated_data_items = [
-        CalculatedDataItem(
-            identifier=random_uuid_str(),
+        CalculatedDocument(
+            uuid=random_uuid_str(),
             data_sources=[
                 DataSource(
-                    identifier=measurement.identifier,
+                    reference=Referenceable(measurement.identifier),
                     feature=item.read_mode.value.lower(),
                 )
                 for measurement in _get_sources(
@@ -716,7 +719,7 @@ def create_kinetic_results(
     kinetic_data: KineticData,
     kinetic_measurements: dict[str, list[float | None]],
     kinetic_elapsed_time: list[float],
-) -> tuple[list[MeasurementGroup], list[CalculatedDataItem]]:
+) -> tuple[list[MeasurementGroup], list[CalculatedDocument]]:
     if result_lines[0].strip() != "Results":
         msg = f"Expected the first line of the results section '{result_lines[0]}' to be 'Results'."
         raise AllotropeConversionError(msg)
@@ -772,13 +775,15 @@ def create_kinetic_results(
     }
 
     calculated_data_items = [
-        CalculatedDataItem(
-            identifier=random_uuid_str(),
+        CalculatedDocument(
+            uuid=random_uuid_str(),
             data_sources=[
                 DataSource(
-                    identifier=groups_by_well_position[well_position]
-                    .measurements[0]
-                    .identifier,
+                    reference=Referenceable(
+                        groups_by_well_position[well_position]
+                        .measurements[0]
+                        .identifier
+                    ),
                     # TODO: Add support for multiple kinetic sections
                     feature=DATA_SOURCE_FEATURE_VALUES[read_data[0].read_mode],
                 )
