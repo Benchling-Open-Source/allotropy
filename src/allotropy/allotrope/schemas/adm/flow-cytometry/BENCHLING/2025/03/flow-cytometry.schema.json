@@ -321,14 +321,8 @@
                                                                       "$asm.pattern": "aggregate datum",
                                                                       "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002698",
                                                                       "properties": {
-                                                                        "x-coordinate dimension identifier": {
-                                                                          "$asm.property-class": "TODO",
-                                                                          "$asm.pattern": "value datum",
-                                                                          "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                                                                          "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2025/03/core.schema#/$defs/tStringValue"
-                                                                        },
-                                                                        "y-coordinate dimension identifier": {
-                                                                          "$asm.property-class": "TODO",
+                                                                        "dimension identifier": {
+                                                                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0003003",
                                                                           "$asm.pattern": "value datum",
                                                                           "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
                                                                           "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2025/03/core.schema#/$defs/tStringValue"
@@ -614,14 +608,8 @@
                                                                                   "$asm.pattern": "aggregate datum",
                                                                                   "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002698",
                                                                                   "properties": {
-                                                                                    "x-coordinate dimension identifier": {
-                                                                                      "$asm.property-class": "TODO",
-                                                                                      "$asm.pattern": "value datum",
-                                                                                      "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                                                                                      "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2025/03/core.schema#/$defs/tStringValue"
-                                                                                    },
-                                                                                    "y-coordinate dimension identifier": {
-                                                                                      "$asm.property-class": "TODO",
+                                                                                    "dimension identifier": {
+                                                                                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0003003",
                                                                                       "$asm.pattern": "value datum",
                                                                                       "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
                                                                                       "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2025/03/core.schema#/$defs/tStringValue"
