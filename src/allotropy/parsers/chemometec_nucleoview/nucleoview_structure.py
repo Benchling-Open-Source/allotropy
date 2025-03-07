@@ -34,7 +34,6 @@ from allotropy.parsers.utils.calculated_data_documents.definition import (
 )
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import assert_not_none
 
 
 def create_metadata(data: SeriesData, file_path: str) -> Metadata:
@@ -101,10 +100,6 @@ def create_measurement_groups(
     cell_diameter_standard_deviation = data.get(
         float, "Cell diameter standard deviation (um)"
     )
-    viability = assert_not_none(
-        data.get(float, "Viability (%)"),
-        msg="Value for Cell Viability was expected, but was not found in the input file",
-    )
     measurement_group = MeasurementGroup(
         analyst=data.get(str, "Operator", DEFAULT_ANALYST),
         custom_info=data.get_custom_keys(MEASUREMENT_AGG_DOCUMENT_CUSTOM_FIELDS),
@@ -114,7 +109,7 @@ def create_measurement_groups(
                 timestamp=timestamp or DEFAULT_EPOCH_TIMESTAMP,
                 sample_identifier=data[str, "Image"].split("-")[3],
                 cell_density_dilution_factor=data.get(float, "Multiplication factor"),
-                viability=viability,
+                viability=data[float, "Viability (%)"],
                 # Cell counts are measured in cells/mL, but reported in millions of cells/mL
                 viable_cell_density=(viable_cell_density / 1e6)
                 if viable_cell_density
