@@ -36,7 +36,10 @@ from allotropy.allotrope.models.adm.liquid_chromatography.benchling._2023._09.li
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueCentimeter,
     TQuantityValueCubicMillimeter,
+    TQuantityValueHertz,
+    TQuantityValueMicroliter,
     TQuantityValueMicrometer,
+    TQuantityValueMilliAbsorbanceUnitTimesSecond,
     TQuantityValueMilliliter,
     TQuantityValueMilliliterPerMinute,
     TQuantityValueMillimeter,
@@ -46,6 +49,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TDatacube
+from allotropy.allotrope.models.shared.definitions.units import SecondTime
 from allotropy.allotrope.schema_mappers.data_cube import (
     DataCube,
     get_data_cube,
@@ -85,6 +89,7 @@ class Metadata:
     firmware_version: str | None = None
     description: str | None = None
     device_document: list[DeviceDocument] | None = None
+    lc_agg_custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -118,6 +123,17 @@ class Peak:
     peak_analyte_amount: float | None = None
     relative_peak_analyte_amount: float | None = None
     custom_info: dict[str, Any] | None = None
+    relative_retention_time: float | None = None
+    capacity_factor: float | None = None
+    number_of_theoretical_plates_by_peak_width_at_half_height: float | None = None
+    peak_width_at_5_percent_of_height: float | None = None
+    peak_width_at_10_percent_of_height: float | None = None
+    peak_width_at_baseline: float | None = None
+    asymmetry_factor_measured_at_5_percent_height: float | None = None
+    relative_corrected_peak_area: float | None = None
+    peak_group: float | None = None
+    baseline_value_at_start_of_peak: float | None = None
+    baseline_value_at_end_of_peak: float | None = None
 
 
 @dataclass(frozen=True)
@@ -151,6 +167,11 @@ class DeviceControlDoc:
     sample_flow_data_cube: DataCube | None = None
     system_flow_data_cube: DataCube | None = None
     temperature_profile_data_cube: DataCube | None = None
+    detector_offset_setting: float | None = None
+    detector_sampling_rate_setting: float | None = None
+    detection_type: str | None = None
+    electronic_absorbance_reference_bandwidth_setting: float | None = None
+    electronic_absorbance_reference_wavelength_setting: float | None = None
 
 
 @dataclass(frozen=True)
@@ -161,7 +182,6 @@ class Measurement:
     # Injection metadata
     injection_identifier: str
     injection_time: str
-    autosampler_injection_volume_setting: float
 
     device_control_docs: list[DeviceControlDoc]
 
@@ -183,6 +203,12 @@ class Measurement:
     column_custom_info: dict[str, Any] | None = None
     void_volume: float | None = None
     flow_rate: float | None = None
+    description: str | None = None
+    location_identifier: str | None = None
+    well_location_identifier: str | None = None
+    observation: str | None = None
+    injection_volume_setting: float | None = None
+    autosampler_injection_volume_setting: float | None = None
 
     # Measurement data cubes
     chromatogram_data_cube: DataCube | None = None
@@ -190,6 +216,9 @@ class Measurement:
     derived_column_pressure_data_cube: DataCube | None = None
 
     peaks: list[Peak] | None = None
+
+    sample_custom_info: dict[str, Any] | None = None
+    injection_custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -203,6 +232,7 @@ class MeasurementGroup:
 class Data:
     metadata: Metadata
     measurement_groups: list[MeasurementGroup]
+    device_documents: list[DeviceDocumentItem] | None = None
 
 
 class Mapper(SchemaMapper[Data, Model]):
@@ -210,46 +240,49 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def map_model(self, data: Data) -> Model:
         return Model(
-            liquid_chromatography_aggregate_document=LiquidChromatographyAggregateDocument(
-                liquid_chromatography_document=[
-                    self._get_technique_document(group, data.metadata)
-                    for group in data.measurement_groups
-                ],
-                device_system_document=DeviceSystemDocument(
-                    asset_management_identifier=data.metadata.asset_management_identifier,
-                    product_manufacturer=data.metadata.product_manufacturer,
-                    device_identifier=data.metadata.device_identifier,
-                    firmware_version=data.metadata.firmware_version,
-                    brand_name=data.metadata.brand_name,
-                    model_number=data.metadata.model_number,
-                    device_document=(
-                        [
-                            add_custom_information_document(
-                                DeviceDocumentItem(
-                                    device_type=device_document_item.device_type,
-                                    device_identifier=device_document_item.device_identifier,
-                                    product_manufacturer=device_document_item.product_manufacturer,
-                                    model_number=device_document_item.model_number,
-                                    equipment_serial_number=device_document_item.equipment_serial_number,
-                                    firmware_version=device_document_item.firmware_version,
-                                ),
-                                custom_info_doc=device_document_item.device_custom_info,
-                            )
-                            for device_document_item in data.metadata.device_document
-                        ]
-                        if data.metadata.device_document is not None
-                        else None
+            liquid_chromatography_aggregate_document=add_custom_information_document(
+                LiquidChromatographyAggregateDocument(
+                    liquid_chromatography_document=[
+                        self._get_technique_document(group, data.metadata)
+                        for group in data.measurement_groups
+                    ],
+                    device_system_document=DeviceSystemDocument(
+                        asset_management_identifier=data.metadata.asset_management_identifier,
+                        product_manufacturer=data.metadata.product_manufacturer,
+                        device_identifier=data.metadata.device_identifier,
+                        firmware_version=data.metadata.firmware_version,
+                        brand_name=data.metadata.brand_name,
+                        model_number=data.metadata.model_number,
+                        device_document=(
+                            [
+                                add_custom_information_document(
+                                    DeviceDocumentItem(
+                                        device_type=device_document_item.device_type,
+                                        device_identifier=device_document_item.device_identifier,
+                                        product_manufacturer=device_document_item.product_manufacturer,
+                                        model_number=device_document_item.model_number,
+                                        equipment_serial_number=device_document_item.equipment_serial_number,
+                                        firmware_version=device_document_item.firmware_version,
+                                    ),
+                                    custom_info_doc=device_document_item.device_custom_info,
+                                )
+                                for device_document_item in data.metadata.device_document
+                            ]
+                            if data.metadata.device_document is not None
+                            else None
+                        ),
+                    ),
+                    data_system_document=DataSystemDocument(
+                        file_name=data.metadata.file_name,
+                        data_system_instance_identifier=data.metadata.data_system_instance_identifier,
+                        UNC_path=data.metadata.unc_path,
+                        software_name=data.metadata.software_name,
+                        software_version=data.metadata.software_version,
+                        ASM_converter_name=self.converter_name,
+                        ASM_converter_version=ASM_CONVERTER_VERSION,
                     ),
                 ),
-                data_system_document=DataSystemDocument(
-                    file_name=data.metadata.file_name,
-                    data_system_instance_identifier=data.metadata.data_system_instance_identifier,
-                    UNC_path=data.metadata.unc_path,
-                    software_name=data.metadata.software_name,
-                    software_version=data.metadata.software_version,
-                    ASM_converter_name=self.converter_name,
-                    ASM_converter_version=ASM_CONVERTER_VERSION,
-                ),
+                data.metadata.lc_agg_custom_info,
             ),
             field_asm_manifest=self.MANIFEST,
         )
@@ -342,11 +375,15 @@ class Mapper(SchemaMapper[Data, Model]):
             InjectionDocument(
                 injection_identifier=measurement.injection_identifier,
                 injection_time=self.get_date_time(measurement.injection_time),
-                autosampler_injection_volume_setting__chromatography_=TQuantityValueCubicMillimeter(
-                    value=measurement.autosampler_injection_volume_setting,
+                autosampler_injection_volume_setting__chromatography_=quantity_or_none(
+                    TQuantityValueCubicMillimeter,
+                    measurement.autosampler_injection_volume_setting,
+                ),
+                injection_volume_setting=quantity_or_none(
+                    TQuantityValueMicroliter, measurement.injection_volume_setting
                 ),
             ),
-            custom_info_doc=measurement.injection_custom_info,
+            measurement.injection_custom_info,
         )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
@@ -354,11 +391,15 @@ class Mapper(SchemaMapper[Data, Model]):
             SampleDocument(
                 sample_identifier=measurement.sample_identifier,
                 batch_identifier=measurement.batch_identifier,
+                description=measurement.description,
                 sample_role_type=measurement.sample_role_type,
                 written_name=measurement.written_name,
                 flow_rate=quantity_or_none(
                     TQuantityValueMilliliterPerMinute, measurement.flow_rate
                 ),
+                location_identifier=measurement.location_identifier,
+                well_location_identifier=measurement.well_location_identifier,
+                observation=measurement.observation,
             ),
             measurement.sample_custom_info,
         )
@@ -389,20 +430,35 @@ class Mapper(SchemaMapper[Data, Model]):
                     TQuantityValueUnitless, peak.chromatographic_asymmetry
                 ),
                 peak_width_at_half_height=quantity_or_none_from_unit(  # type: ignore[arg-type]
-                    peak.width_at_half_height_unit, peak.width_at_half_height
+                    peak.width_at_half_height_unit or SecondTime.unit,
+                    peak.width_at_half_height,
+                ),
+                relative_retention_time=quantity_or_none(
+                    TQuantityValuePercent, peak.relative_retention_time
+                ),
+                capacity_factor__chromatography_=quantity_or_none(
+                    TQuantityValueUnitless, peak.capacity_factor
+                ),
+                number_of_theoretical_plates_by_peak_width_at_half_height=quantity_or_none(
+                    TQuantityValueUnitless,
+                    peak.number_of_theoretical_plates_by_peak_width_at_half_height,
+                ),
+                peak_width_at_5___of_height=quantity_or_none(
+                    TQuantityValueSecondTime, peak.peak_width_at_5_percent_of_height
+                ),
+                peak_width_at_10___of_height=quantity_or_none(
+                    TQuantityValueSecondTime, peak.peak_width_at_10_percent_of_height
+                ),
+                peak_width_at_baseline=quantity_or_none(
+                    TQuantityValueSecondTime, peak.peak_width_at_baseline
+                ),
+                asymmetry_factor_measured_at_5___height=quantity_or_none(
+                    TQuantityValueUnitless,
+                    peak.asymmetry_factor_measured_at_5_percent_height,
                 ),
                 asymmetry_factor_measured_at_10___height=quantity_or_none(
                     TQuantityValueUnitless,
                     peak.asymmetry_factor_measured_at_10___height,
-                ),
-                peak_width_at_5___of_height=quantity_or_none(
-                    TQuantityValueSecondTime, peak.peak_width_at_5___of_height
-                ),
-                peak_width_at_10___of_height=quantity_or_none(
-                    TQuantityValueSecondTime, peak.peak_width_at_10___of_height
-                ),
-                peak_width_at_baseline=quantity_or_none(
-                    TQuantityValueSecondTime, peak.peak_width_at_baseline
                 ),
                 number_of_theoretical_plates__chromatography_=quantity_or_none(
                     TQuantityValueUnitless,
@@ -411,6 +467,18 @@ class Mapper(SchemaMapper[Data, Model]):
                 written_name=peak.written_name,
                 peak_analyte_amount=quantity_or_none(
                     TQuantityValueUnitless, peak.peak_analyte_amount
+                ),
+                relative_corrected_peak_area=quantity_or_none(
+                    TQuantityValuePercent, peak.relative_corrected_peak_area
+                ),
+                peak_group=quantity_or_none(
+                    TQuantityValueMilliAbsorbanceUnitTimesSecond, peak.peak_group
+                ),
+                baseline_value_at_start_of_peak=quantity_or_none(
+                    TQuantityValueSecondTime, peak.baseline_value_at_start_of_peak
+                ),
+                baseline_value_at_end_of_peak=quantity_or_none(
+                    TQuantityValueSecondTime, peak.baseline_value_at_end_of_peak
                 ),
                 relative_peak_analyte_amount=quantity_or_none(
                     TQuantityValuePercent, peak.relative_peak_analyte_amount
@@ -511,6 +579,21 @@ class Mapper(SchemaMapper[Data, Model]):
                 temperature_profile_data_cube=get_data_cube(
                     device_control_doc.temperature_profile_data_cube,
                     TemperatureProfileDataCube,
+                ),
+                detector_offset_setting=quantity_or_none(
+                    TQuantityValueUnitless, device_control_doc.detector_offset_setting
+                ),
+                detector_sampling_rate_setting=quantity_or_none(
+                    TQuantityValueHertz,
+                    device_control_doc.detector_sampling_rate_setting,
+                ),
+                electronic_absorbance_reference_bandwidth_setting=quantity_or_none(
+                    TQuantityValueNanometer,
+                    device_control_doc.electronic_absorbance_reference_bandwidth_setting,
+                ),
+                electronic_absorbance_reference_wavelength_setting=quantity_or_none(
+                    TQuantityValueNanometer,
+                    device_control_doc.electronic_absorbance_reference_wavelength_setting,
                 ),
             ),
             custom_info_doc=device_control_doc.device_control_custom_info,
