@@ -142,7 +142,7 @@ def drop_rows_while(
 ) -> pd.DataFrame:
     for idx, row in df.iterrows():
         if not condition(row):
-            return df.loc[idx:]
+            return df.loc[idx:]  # type: ignore[misc]
     return df
 
 

@@ -60,7 +60,7 @@ class AppBioQuantStudioXLSXReader(AppBioQuantStudioReader):
                 data = data.reset_index(drop=True)
                 data, metadata = split_dataframe(
                     data,
-                    lambda row: row[0] != "Well" and try_int_or_none(row[0]) is None
+                    lambda row: row[0] != "Well" and try_int_or_none(row[0]) is None,
                 )
                 if metadata is not None:
                     sections["Results Metadata"] = parse_header_row(metadata.T)
