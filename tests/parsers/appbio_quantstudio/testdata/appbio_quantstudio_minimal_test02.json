@@ -227,6 +227,26 @@
                 }
             }
         ],
+        "calculated data aggregate document": {
+            "calculated data document": [
+                {
+                    "calculated data name": "ct mean",
+                    "calculated result": {
+                        "value": 18.717,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
         "data system document": {
             "ASM file identifier": "appbio_quantstudio_minimal_test02.json",
             "data system instance identifier": "localhost",
