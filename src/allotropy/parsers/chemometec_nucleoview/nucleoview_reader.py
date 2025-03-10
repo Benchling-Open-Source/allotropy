@@ -21,6 +21,6 @@ class NucleoviewReader:
         if "Viability (%)" not in df.columns:
             msg = "Value for Cell Viability was expected, but was not found in the input file"
             raise AllotropeConversionError(msg)
-        df = df.dropna()
+        df = df.dropna(subset=["Viability (%)"])
         df = df[df.columns.dropna()]
         return assert_not_empty_df(df, "Unable to parse data from empty dataset.")
