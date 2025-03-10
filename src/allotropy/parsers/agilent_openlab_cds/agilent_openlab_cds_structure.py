@@ -79,7 +79,7 @@ def create_metadata(
         device_identifier=intermediate_structured_data["Metadata"]["Instrument"].get(
             "@id"
         ),
-        device_document=[
+        device_documents=[
             DeviceDocument(
                 device_type=assert_not_none(module.get("Type")),
                 device_identifier=module.get("@id"),

@@ -3,6 +3,7 @@ from typing import Any
 import pytest
 
 from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
+    DeviceDocument,
     Metadata,
 )
 from allotropy.parsers.benchling_chromeleon import constants
@@ -112,6 +113,7 @@ def test_create_metadata(mock_data: dict[str, Any]) -> None:
         first_injection=mock_data["injections"][0],
         sequence=mock_data["sequence"],
         file_path="/data/test_file.json",
+        device_information=mock_data["device information"],
     )
 
     assert isinstance(metadata, Metadata)
@@ -120,6 +122,20 @@ def test_create_metadata(mock_data: dict[str, Any]) -> None:
     assert metadata.file_name == "test_file.json"
     assert metadata.unc_path == "/data/test_file.json"
     assert metadata.description == "Test injection description"
+    assert metadata.device_documents == [
+        DeviceDocument(
+            device_type="pump",
+            model_number=mock_data["device information"]["pump model number"],
+        ),
+        DeviceDocument(
+            device_type="uv",
+            model_number=mock_data["device information"]["uv model number"],
+        ),
+        DeviceDocument(
+            device_type="sampler",
+            model_number=mock_data["device information"]["sampler model number"],
+        ),
+    ]
     assert metadata.lc_agg_custom_info == {
         "Sequence Creation Time": "2024-02-17 12:00:00",
         "Sequence Directory": "/path/to/sequence",

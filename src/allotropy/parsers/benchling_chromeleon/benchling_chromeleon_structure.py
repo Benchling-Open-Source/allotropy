@@ -1,9 +1,6 @@
 from pathlib import Path
 from typing import Any
 
-from allotropy.allotrope.models.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
-    DeviceDocumentItem,
-)
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
 )
@@ -16,6 +13,7 @@ from allotropy.allotrope.models.shared.definitions.units import (
 )
 from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     DeviceControlDoc,
+    DeviceDocument,
     Measurement,
     MeasurementGroup,
     Metadata,
@@ -29,10 +27,31 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import try_float, try_float_or_none
 
 
+def _create_device_documents(
+    device_information: dict[str, Any]
+) -> list[DeviceDocument] | None:
+    return [
+        DeviceDocument(
+            device_type="pump",
+            model_number=device_information.get("pump model number") or NOT_APPLICABLE,
+        ),
+        DeviceDocument(
+            device_type="uv",
+            model_number=device_information.get("uv model number") or NOT_APPLICABLE,
+        ),
+        DeviceDocument(
+            device_type="sampler",
+            model_number=device_information.get("sampler model number")
+            or NOT_APPLICABLE,
+        ),
+    ]
+
+
 def create_metadata(
     first_injection: dict[str, Any],
     sequence: dict[str, Any],
     file_path: str,
+    device_information: dict[str, Any],
 ) -> Metadata:
     return Metadata(
         asset_management_identifier=first_injection.get(
@@ -42,6 +61,7 @@ def create_metadata(
         file_name=Path(file_path).name,
         unc_path=file_path,
         description=first_injection.get("description"),
+        device_documents=_create_device_documents(device_information),
         lc_agg_custom_info={
             "Sequence Creation Time": sequence.get("sequence creation time"),
             "Sequence Directory": sequence.get("sequence directory"),
@@ -268,31 +288,3 @@ def create_measurement_groups(
         for sample_injections in injections
         if (measurements := _create_measurements(sample_injections)) is not None
     ]
-
-
-def create_device_documents(
-    device_information: dict[str, Any],
-) -> list[DeviceDocumentItem] | None:
-    device_documents = []
-    pump_model_number = device_information.get("pump model number")
-    detector_model_number = device_information.get("uv model number")
-    sampler_model_number = device_information.get("sampler model number")
-    device_documents.append(
-        DeviceDocumentItem(
-            device_type="pump",
-            model_number=pump_model_number or NOT_APPLICABLE,
-        )
-    )
-    device_documents.append(
-        DeviceDocumentItem(
-            device_type="uv",
-            model_number=detector_model_number or NOT_APPLICABLE,
-        )
-    )
-    device_documents.append(
-        DeviceDocumentItem(
-            device_type="sampler",
-            model_number=sampler_model_number or NOT_APPLICABLE,
-        )
-    )
-    return device_documents

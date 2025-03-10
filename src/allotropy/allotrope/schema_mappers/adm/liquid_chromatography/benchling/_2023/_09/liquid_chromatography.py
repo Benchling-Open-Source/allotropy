@@ -88,7 +88,7 @@ class Metadata:
     device_identifier: str | None = None
     firmware_version: str | None = None
     description: str | None = None
-    device_document: list[DeviceDocument] | None = None
+    device_documents: list[DeviceDocument] | None = None
     lc_agg_custom_info: dict[str, Any] | None = None
 
 
@@ -232,7 +232,6 @@ class MeasurementGroup:
 class Data:
     metadata: Metadata
     measurement_groups: list[MeasurementGroup]
-    device_documents: list[DeviceDocumentItem] | None = None
 
 
 class Mapper(SchemaMapper[Data, Model]):
@@ -257,18 +256,18 @@ class Mapper(SchemaMapper[Data, Model]):
                             [
                                 add_custom_information_document(
                                     DeviceDocumentItem(
-                                        device_type=device_document_item.device_type,
-                                        device_identifier=device_document_item.device_identifier,
-                                        product_manufacturer=device_document_item.product_manufacturer,
-                                        model_number=device_document_item.model_number,
-                                        equipment_serial_number=device_document_item.equipment_serial_number,
-                                        firmware_version=device_document_item.firmware_version,
+                                        device_type=doc.device_type,
+                                        device_identifier=doc.device_identifier,
+                                        product_manufacturer=doc.product_manufacturer,
+                                        model_number=doc.model_number,
+                                        equipment_serial_number=doc.equipment_serial_number,
+                                        firmware_version=doc.firmware_version,
                                     ),
-                                    custom_info_doc=device_document_item.device_custom_info,
+                                    custom_info_doc=doc.device_custom_info,
                                 )
-                                for device_document_item in data.metadata.device_document
+                                for doc in data.metadata.device_documents
                             ]
-                            if data.metadata.device_document is not None
+                            if data.metadata.device_documents
                             else None
                         ),
                     ),
