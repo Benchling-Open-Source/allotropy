@@ -113,6 +113,8 @@ def split_header_and_data(
     df: pd.DataFrame, should_split_on_row: Callable[[pd.Series[Any]], bool]
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     header, data = split_dataframe(df, should_split_on_row)
+    if data is not None:
+        data = drop_rows_while(data, should_split_on_row)
     if data is None:
         msg = f"Unable to split header and data from dataframe: {df}"
         raise AllotropeConversionError(msg)
@@ -131,8 +133,17 @@ def split_dataframe(
             head_end = int(str(idx))
             tail_start = head_end if include_split_row else head_end + 1
             return df[:head_end], df[tail_start:]
-
     return df, None
+
+
+def drop_rows_while(
+    df: pd.DataFrame,
+    condition: Callable[[pd.Series[Any]], bool],
+) -> pd.DataFrame:
+    for idx, row in df.iterrows():
+        if not condition(row):
+            return df.loc[idx:]
+    return df
 
 
 def _normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
