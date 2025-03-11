@@ -7,10 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.79] - 2025-03-11
 
-### Added
-
-- add unit and description attributes to calcdocs (#923)
-
 ### Fixed
 
 - ChemoMetec Nucleoview - add validation for cell viability field. (#918)
