@@ -8,8 +8,6 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
-    CalculatedDataItem,
-    DataSource,
     Measurement,
     MeasurementGroup,
     MeasurementType,
@@ -26,6 +24,11 @@ from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
     PlateBlock,
     SpectrumRawPlateData,
     StructureData,
+)
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+    DataSource,
+    Referenceable,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
 
@@ -164,7 +167,7 @@ def create_measurement_groups(data: StructureData) -> list[MeasurementGroup]:
     return measurement_groups
 
 
-def create_calculated_data(data: StructureData) -> list[CalculatedDataItem]:
+def create_calculated_data(data: StructureData) -> list[CalculatedDocument]:
     return _get_reduced_calc_docs(data) + _get_group_calc_docs(data)
 
 
@@ -173,7 +176,7 @@ def _get_calc_docs_data_sources(
 ) -> list[DataSource]:
     return [
         DataSource(
-            identifier=data_source.uuid,
+            reference=Referenceable(data_source.uuid),
             feature=plate_block.header.read_mode,
         )
         for data_source in plate_block.iter_data_elements(position)
@@ -185,9 +188,9 @@ def _build_calc_doc(
     value: float,
     data_sources: list[DataSource],
     description: str | None = None,
-) -> CalculatedDataItem:
-    return CalculatedDataItem(
-        identifier=random_uuid_str(),
+) -> CalculatedDocument:
+    return CalculatedDocument(
+        uuid=random_uuid_str(),
         name=name,
         value=value,
         unit=UNITLESS,
@@ -196,7 +199,7 @@ def _build_calc_doc(
     )
 
 
-def _get_reduced_calc_docs(data: StructureData) -> list[CalculatedDataItem]:
+def _get_reduced_calc_docs(data: StructureData) -> list[CalculatedDocument]:
     return [
         _build_calc_doc(
             name="Reduced",
@@ -215,7 +218,7 @@ def _get_group_simple_calc_docs(
     data: StructureData,
     group_block: GroupBlock,
     group_sample_data: GroupSampleData,
-) -> list[CalculatedDataItem]:
+) -> list[CalculatedDocument]:
     calculated_documents = []
     for group_data_element in group_sample_data.data_elements:
         data_sources = list(
@@ -239,7 +242,7 @@ def _get_group_simple_calc_docs(
     return calculated_documents
 
 
-def _get_group_calc_docs(data: StructureData) -> list[CalculatedDataItem]:
+def _get_group_calc_docs(data: StructureData) -> list[CalculatedDocument]:
     calculated_documents = []
     for group_block in data.block_list.group_blocks:
         for group_sample_data in group_block.group_data.sample_data:
