@@ -20,7 +20,6 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_rea
 )
 from allotropy.calcdocs.bmg_labtech_smart_control.extractor import (
     BmgLabtechSmartControlExtractor,
-    CalculatedDataMeasurementStructure,
 )
 from allotropy.calcdocs.bmg_labtech_smart_control.views import (
     BlankRoleTypeView,
@@ -33,6 +32,9 @@ from allotropy.calcdocs.config import (
 )
 from allotropy.parsers.bmg_labtech_smart_control.bmg_labtech_smart_control_reader import (
     BmgLabtechSmartControlReader,
+)
+from allotropy.parsers.bmg_labtech_smart_control.calculated_data_structure import (
+    CalculatedDataStructure,
 )
 from allotropy.parsers.bmg_labtech_smart_control.constants import (
     DEVICE_TYPE,
@@ -186,7 +188,7 @@ def create_calculated_data_documents(
             float, "Blank corrected based on Raw Data (480-14/520-30)"
         )
         calc_data_measurements.append(
-            CalculatedDataMeasurementStructure(
+            CalculatedDataStructure(
                 measurement=measurement,
                 corrected_value=corrected_value,
                 average_of_blank_used=reader.average_of_blank_used,
