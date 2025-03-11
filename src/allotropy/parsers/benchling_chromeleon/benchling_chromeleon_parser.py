@@ -10,7 +10,6 @@ from allotropy.parsers.benchling_chromeleon.benchling_chromeleon_reader import (
     BenchlingChromeleonReader,
 )
 from allotropy.parsers.benchling_chromeleon.benchling_chromeleon_structure import (
-    create_device_documents,
     create_measurement_groups,
     create_metadata,
 )
@@ -32,7 +31,7 @@ class BenchlingChromeleonParser(VendorParser[Data, Model]):
                 reader.injections[0],
                 reader.sequence,
                 named_file_contents.original_file_path,
+                reader.device_information,
             ),
             create_measurement_groups(reader.injections),
-            create_device_documents(reader.device_information),
         )
