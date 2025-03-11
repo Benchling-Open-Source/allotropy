@@ -136,15 +136,19 @@ def create_peak(peak_structure: list[dict[str, Any]]) -> list[Peak]:
             width_at_half_height=float(peak.get("Width_50Perc", {}).get("@val")) * 60
             if peak.get("Width_50Perc") and peak["Width_50Perc"].get("@val") is not None
             else None,
-            asymmetry_factor_measured_at_10___height=try_float_or_none(
+            asymmetry_factor_measured_at_10_percent_height=try_float_or_none(
                 peak.get("Width_50Perc", {}).get("@val")
             ),
             width_at_half_height_unit="s",
-            peak_width_at_5___of_height=float(peak.get("Width_5Perc", {}).get("@val"))
+            peak_width_at_5_percent_of_height=float(
+                peak.get("Width_5Perc", {}).get("@val")
+            )
             * 60
             if peak.get("Width_5Perc") and peak["Width_5Perc"].get("@val") is not None
             else None,
-            peak_width_at_10___of_height=float(peak.get("Width_10Perc", {}).get("@val"))
+            peak_width_at_10_percent_of_height=float(
+                peak.get("Width_10Perc", {}).get("@val")
+            )
             * 60
             if peak.get("Width_10Perc") and peak["Width_10Perc"].get("@val") is not None
             else None,

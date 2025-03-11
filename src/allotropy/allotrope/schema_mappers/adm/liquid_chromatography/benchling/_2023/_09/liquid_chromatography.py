@@ -110,10 +110,11 @@ class Peak:
     height_unit: str | None = None
     relative_height: float | None = None
     retention_time: float | None = None
-    peak_width_at_5___of_height: float | None = None
-    peak_width_at_10___of_height: float | None = None
+    peak_width_at_5_percent_of_height: float | None = None
+    peak_width_at_10_percent_of_height: float | None = None
     peak_width_at_baseline: float | None = None
-    asymmetry_factor_measured_at_10___height: float | None = None
+    asymmetry_factor_measured_at_5_percent_height: float | None = None
+    asymmetry_factor_measured_at_10_percent_height: float | None = None
     number_of_theoretical_plates__chromatography_: float | None = None
     written_name: str | None = None
     chromatographic_resolution: float | None = None
@@ -126,10 +127,7 @@ class Peak:
     relative_retention_time: float | None = None
     capacity_factor: float | None = None
     number_of_theoretical_plates_by_peak_width_at_half_height: float | None = None
-    peak_width_at_5_percent_of_height: float | None = None
-    peak_width_at_10_percent_of_height: float | None = None
-    peak_width_at_baseline: float | None = None
-    asymmetry_factor_measured_at_5_percent_height: float | None = None
+
     relative_corrected_peak_area: float | None = None
     peak_group: float | None = None
     baseline_value_at_start_of_peak: float | None = None
@@ -169,7 +167,6 @@ class DeviceControlDoc:
     temperature_profile_data_cube: DataCube | None = None
     detector_offset_setting: float | None = None
     detector_sampling_rate_setting: float | None = None
-    detection_type: str | None = None
     electronic_absorbance_reference_bandwidth_setting: float | None = None
     electronic_absorbance_reference_wavelength_setting: float | None = None
 
@@ -198,9 +195,6 @@ class Measurement:
     column_product_manufacturer: str | None = None
     chromatography_length: float | None = None
     batch_identifier: str | None = None
-    sample_custom_info: dict[str, Any] | None = None
-    injection_custom_info: dict[str, Any] | None = None
-    column_custom_info: dict[str, Any] | None = None
     void_volume: float | None = None
     flow_rate: float | None = None
     description: str | None = None
@@ -219,6 +213,7 @@ class Measurement:
 
     sample_custom_info: dict[str, Any] | None = None
     injection_custom_info: dict[str, Any] | None = None
+    column_custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -457,7 +452,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 ),
                 asymmetry_factor_measured_at_10___height=quantity_or_none(
                     TQuantityValueUnitless,
-                    peak.asymmetry_factor_measured_at_10___height,
+                    peak.asymmetry_factor_measured_at_10_percent_height,
                 ),
                 number_of_theoretical_plates__chromatography_=quantity_or_none(
                     TQuantityValueUnitless,

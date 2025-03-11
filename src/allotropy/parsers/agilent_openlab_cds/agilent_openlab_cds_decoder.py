@@ -1,9 +1,9 @@
-""" Decodes the .rslt folder file converted it to intermediate json"""
+""" Decodes a zipped .rslt folder file into intermediate json"""
 import os
 from pathlib import Path
 import re
 import tempfile
-from typing import Any
+from typing import Any, IO
 import zipfile
 
 import rainbow.agilent.chemstation as rb  # type: ignore
@@ -36,7 +36,7 @@ def merge_peak_with_signal_name(
 
 
 def decode_data_cubes(
-    datacube_file: zipfile.ZipExtFile, datacube_file_name: str
+    datacube_file: IO[bytes], datacube_file_name: str
 ) -> dict[str, Any]:
     """
     decodes the detection data to datacubes
@@ -66,7 +66,7 @@ def decode_data_cubes(
     return datacubes
 
 
-def extract_rx_file(rx_file: zipfile.ZipExtFile) -> list[dict[str, Any]]:
+def extract_rx_file(rx_file: IO[bytes]) -> list[dict[str, Any]]:
     """
     Extracts the peak and its associated metadata from the rx file for each injection.
     :param temporary_input_path: rx file to be extracted
@@ -144,7 +144,7 @@ def extract_rx_file(rx_file: zipfile.ZipExtFile) -> list[dict[str, Any]]:
 
 
 def extract_dx_file(
-    dx_file: zipfile.ZipExtFile,
+    dx_file: IO[bytes],
     injection_metadata_data: dict[str, Any],
     dx_file_name: str,
 ) -> list[dict[str, Any]]:
@@ -196,7 +196,7 @@ def extract_dx_file(
     return chromatogram_data
 
 
-def extract_sqx_file(sqx_file: zipfile.ZipExtFile) -> dict[str, Any]:
+def extract_sqx_file(sqx_file: IO[bytes]) -> dict[str, Any]:
     """
     unzips the sqx file and retrieves analysis method path
     :param temporary_input_path: temporary unzip file path
