@@ -50,9 +50,9 @@ class Vertex:
 
 @dataclass(frozen=True)
 class DataRegion:
-    identifier: str | None
-    _type: str | None
-    parent_identifier: str | None = None
+    region_data_identifier: str | None
+    region_data_type: str | None
+    parent_data_region_identifier: str | None = None
     x_coordinate_dimension_identifier: str | None = None
     y_coordinate_dimension_identifier: str | None = None
     vertices: list[Vertex] | None = None
@@ -246,9 +246,9 @@ class Mapper(SchemaMapper[Data, Model]):
         self, data_region: DataRegion
     ) -> DataRegionDocumentItem:
         return DataRegionDocumentItem(
-            data_region_identifier=data_region.identifier,
-            region_type=data_region._type,
-            parent_data_region_identifier=data_region.parent_identifier,
+            data_region_identifier=data_region.region_data_identifier,
+            region_type=data_region.region_data_type,
+            parent_data_region_identifier=data_region.parent_data_region_identifier,
             x_coordinate_dimension_identifier=data_region.x_coordinate_dimension_identifier,
             y_coordinate_dimension_identifier=data_region.y_coordinate_dimension_identifier,
             vertex_aggregate_document=VertexAggregateDocument(
