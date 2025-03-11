@@ -114,7 +114,7 @@ def split_header_and_data(
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     header, data = split_dataframe(df, should_split_on_row)
     if data is not None:
-        data = drop_rows_while(data, should_split_on_row)
+        data = drop_df_rows_while(data, should_split_on_row)
     if data is None:
         msg = f"Unable to split header and data from dataframe: {df}"
         raise AllotropeConversionError(msg)
@@ -136,7 +136,7 @@ def split_dataframe(
     return df, None
 
 
-def drop_rows_while(
+def drop_df_rows_while(
     df: pd.DataFrame,
     condition: Callable[[pd.Series[Any]], bool],
 ) -> pd.DataFrame:
