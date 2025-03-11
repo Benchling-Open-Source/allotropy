@@ -5,6 +5,22 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.79] - 2025-03-11
+
+### Added
+
+- add unit and description attributes to calcdocs (#923)
+
+### Fixed
+
+- ChemoMetec Nucleoview - add validation for cell viability field. (#918)
+
+### Changed
+
+- Benchling Thermo Fisher Scientific Chromeleon - update DeviceDocument to follow schema mapper pattern (#920)
+- AppBio QuantStudio RT-PCR - use calcdocs library (#917)
+- AppBio QuantStudio Design & Analysis - use calcdocs library (#883)
+
 ## [0.1.78] - 2025-03-04
 
 ### Fixed
