@@ -3,8 +3,6 @@ from __future__ import annotations
 from collections.abc import Iterator
 from dataclasses import dataclass
 
-from allotropy.allotrope.models.shared.definitions.units import Unitless
-
 
 @dataclass
 class Referenceable:
