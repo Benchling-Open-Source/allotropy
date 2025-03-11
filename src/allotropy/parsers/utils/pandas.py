@@ -143,7 +143,9 @@ def drop_df_rows_while(
     for idx, row in df.iterrows():
         if not condition(row):
             return df.loc[idx:]  # type: ignore[misc]
-    return df
+
+    # if condition was never false return empty dataframe
+    return df.drop(df.index)
 
 
 def _normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
