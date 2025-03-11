@@ -46,6 +46,7 @@ def create_measurement_groups(
                 else None
             )
 
+        # FIX THIS 
         measurements.append(
             Measurement(
                 identifier=random_uuid_str(),
