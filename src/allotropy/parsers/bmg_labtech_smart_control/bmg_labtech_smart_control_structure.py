@@ -5,7 +5,10 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueSecondTime,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models.shared.definitions.units import RelativeFluorescenceUnit
+from allotropy.allotrope.models.shared.definitions.units import (
+    RelativeFluorescenceUnit,
+    Unitless,
+)
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
     CalculatedDataItem,
     DataSource,
@@ -237,7 +240,7 @@ def _map_calc_docs_to_calculated_data_items(
                 DataSource(feature=source.feature, identifier=source.reference.uuid)
                 for source in calc_doc.data_sources
             ],
-            unit=calc_doc.unit
+            unit=calc_doc.unit or Unitless.unit,
         )
         for calc_doc in calc_docs
     ]
