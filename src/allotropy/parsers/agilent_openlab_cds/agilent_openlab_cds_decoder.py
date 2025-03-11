@@ -311,7 +311,9 @@ def decode_data(input_path: str) -> dict[str, Any]:
         for dx_file_name in dx_files:
             name_without_ext = Path(dx_file_name).with_suffix("").name
             if name_without_ext in injection_data["total_pressure_files"]:
-                injection_data["pump_pressure_filename"] = injection_data["total_pressure_files"][name_without_ext]
+                injection_data["pump_pressure_filename"] = injection_data[
+                    "total_pressure_files"
+                ][name_without_ext]
             with zip_ref.open(dx_file_name) as dx_file:
                 total_injection_chromatogram_details.extend(
                     extract_dx_file(dx_file, injection_data, dx_file_name)
