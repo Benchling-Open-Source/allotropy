@@ -237,6 +237,7 @@ def _map_calc_docs_to_calculated_data_items(
                 DataSource(feature=source.feature, identifier=source.reference.uuid)
                 for source in calc_doc.data_sources
             ],
-            unit=calc_doc.unit,
+            unit=calc_doc.unit
+        )
         for calc_doc in calc_docs
     ]
