@@ -66,8 +66,8 @@ class CompensationMatrix:
 
 @dataclass(frozen=True)
 class CompensationMatrixGroup:
-    dimension_identifier: str
-    compensation_matrices: list[CompensationMatrix]
+    dimension_identifier: str | None
+    compensation_matrices: list[CompensationMatrix] | None = None
 
 
 @dataclass(frozen=True)
@@ -318,6 +318,8 @@ class Mapper(SchemaMapper[Data, Model]):
                     )
                     for compensation in compensation_matrix_group.compensation_matrices
                 ]
+                if compensation_matrix_group.compensation_matrices
+                else None,
             ),
         )
 
