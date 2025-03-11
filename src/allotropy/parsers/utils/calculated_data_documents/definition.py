@@ -21,6 +21,8 @@ class CalculatedDocument(Referenceable):
     name: str
     value: float
     data_sources: list[DataSource]
+    unit: str | None = None
+    description: str | None = None
     iterated: bool = False
 
     def iter_struct(self) -> Iterator[CalculatedDocument]:
