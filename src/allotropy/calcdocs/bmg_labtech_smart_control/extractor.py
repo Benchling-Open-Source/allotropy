@@ -1,23 +1,12 @@
-from dataclasses import dataclass
-
-from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
-    Measurement,
-)
 from allotropy.calcdocs.extractor import Element, Extractor
+from allotropy.parsers.bmg_labtech_smart_control.calculated_data_structure import (
+    CalculatedDataStructure,
+)
 
 
-@dataclass
-class CalculatedDataMeasurementStructure:
-    measurement: Measurement
-    average_of_blank_used: float | None
-    corrected_value: float | None
-
-
-class BmgLabtechSmartControlExtractor(Extractor[CalculatedDataMeasurementStructure]):
+class BmgLabtechSmartControlExtractor(Extractor[CalculatedDataStructure]):
     @classmethod
-    def to_element(
-        cls, calc_data_struct: CalculatedDataMeasurementStructure
-    ) -> Element:
+    def to_element(cls, calc_data_struct: CalculatedDataStructure) -> Element:
         measurement = calc_data_struct.measurement
         return Element(
             uuid=calc_data_struct.measurement.identifier,
