@@ -5,7 +5,12 @@ import pytest
 
 from allotropy.allotrope.models.shared.definitions.definitions import NaN
 from allotropy.exceptions import AllotropeConversionError, AllotropeParsingError
-from allotropy.parsers.utils.pandas import read_csv, read_excel, SeriesData
+from allotropy.parsers.utils.pandas import (
+    drop_df_rows_while,
+    read_csv,
+    read_excel,
+    SeriesData,
+)
 
 EXPECTED_DATA_FRAME = pd.DataFrame({"Hello": ["World"]})
 TESTDATA = "tests/parsers/utils/testdata"
@@ -290,3 +295,25 @@ def test_get_unread_regex() -> None:
         "unread_float_as_str": 5.0,
         "unread_str": "hello!",
     }
+
+
+def test_drop_df_rows_while() -> None:
+    df = pd.DataFrame(
+        {"a": ["c", "c", "a", "a", "a"], "b": ["b", "b", "b", "b", "b"]},
+    )
+
+    actual_df = drop_df_rows_while(df, lambda row: row["a"] == "c")
+    expected_df = pd.DataFrame(
+        {"a": ["a", "a", "a"], "b": ["b", "b", "b"]}, index=[2, 3, 4]
+    )
+    pd.testing.assert_frame_equal(expected_df, actual_df)
+
+    actual_df = drop_df_rows_while(
+        pd.DataFrame(columns=["a", "b"]), lambda row: row["a"] == "c"
+    )
+    expected_df = pd.DataFrame(columns=["a", "b"])
+    pd.testing.assert_frame_equal(expected_df, actual_df)
+
+    actual_df = drop_df_rows_while(df, lambda row: row["b"] == "b")
+    expected_df = pd.DataFrame(columns=["a", "b"])
+    pd.testing.assert_frame_equal(expected_df, actual_df)
