@@ -101,8 +101,8 @@ class Measurement:
     populations: list[Population] | None = None
     data_regions: list[DataRegion] | None = None
 
-    sample_custom_doc: dict[str, Any] | None = None
-    processed_data_custom_doc: dict[str, Any] | None = None
+    sample_custom_info: dict[str, Any] | None = None
+    processed_data_custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -236,7 +236,7 @@ class Mapper(SchemaMapper[Data, Model]):
                                 else None
                             ),
                         ),
-                        measurement.processed_data_custom_doc,
+                        measurement.processed_data_custom_info,
                     )
                 ]
             ),
@@ -337,5 +337,5 @@ class Mapper(SchemaMapper[Data, Model]):
                 well_plate_identifier=measurement.well_plate_identifier,
                 written_name=measurement.written_name,
             ),
-            measurement.sample_custom_doc,
+            measurement.sample_custom_info,
         )
