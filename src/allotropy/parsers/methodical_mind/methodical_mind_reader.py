@@ -22,15 +22,15 @@ class MethodicalMindReader:
         self.plate_data = []
         while reader.current_line_exists():
             lines = list(reader.pop_until("Data"))
-            lines = [line for line in lines if "Digital_Signature" not in line]
-            header_df = read_csv(
-                StringIO("\n".join(lines)),
-                sep=r":\t",
-                engine="python",
-                header=None,
-                index_col=0,
-            ).T
-            self.plate_headers.append(df_to_series_data(header_df))
+            key_values = {}
+            for line in lines:
+                if ":" not in line:
+                    continue
+                (key, value) = line.split(":", maxsplit=1)
+                if not value.strip():
+                    continue
+                key_values[key.strip()] = value.strip()
+            self.plate_headers.append(SeriesData(pd.Series(key_values)))
 
             # Pop data title line
             reader.pop()
