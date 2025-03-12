@@ -61,6 +61,17 @@ from allotropy.parsers.utils.values import quantity_or_none, quantity_or_none_fr
 
 
 @dataclass(frozen=True)
+class DeviceDocument:
+    device_type: str
+    device_identifier: str | None = None
+    product_manufacturer: str | None = None
+    model_number: str | None = None
+    equipment_serial_number: str | None = None
+    firmware_version: str | None = None
+    device_custom_info: dict[str, Any] | None = None
+
+
+@dataclass(frozen=True)
 class Metadata:
     asset_management_identifier: str
     analyst: str | None = None
@@ -76,6 +87,7 @@ class Metadata:
     device_identifier: str | None = None
     firmware_version: str | None = None
     description: str | None = None
+    device_documents: list[DeviceDocument] | None = None
     lc_agg_custom_info: dict[str, Any] | None = None
 
 
@@ -196,7 +208,6 @@ class MeasurementGroup:
 class Data:
     metadata: Metadata
     measurement_groups: list[MeasurementGroup]
-    device_documents: list[DeviceDocumentItem] | None = None
 
 
 class Mapper(SchemaMapper[Data, Model]):
@@ -215,7 +226,24 @@ class Mapper(SchemaMapper[Data, Model]):
                         product_manufacturer=data.metadata.product_manufacturer,
                         device_identifier=data.metadata.device_identifier,
                         firmware_version=data.metadata.firmware_version,
-                        device_document=data.device_documents,
+                        device_document=(
+                            [
+                                add_custom_information_document(
+                                    DeviceDocumentItem(
+                                        device_type=doc.device_type,
+                                        device_identifier=doc.device_identifier,
+                                        product_manufacturer=doc.product_manufacturer,
+                                        model_number=doc.model_number,
+                                        equipment_serial_number=doc.equipment_serial_number,
+                                        firmware_version=doc.firmware_version,
+                                    ),
+                                    custom_info_doc=doc.device_custom_info,
+                                )
+                                for doc in data.metadata.device_documents
+                            ]
+                            if data.metadata.device_documents
+                            else None
+                        ),
                     ),
                     data_system_document=DataSystemDocument(
                         file_name=data.metadata.file_name,
