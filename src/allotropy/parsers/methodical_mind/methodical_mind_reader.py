@@ -21,7 +21,7 @@ class MethodicalMindReader:
         self.plate_headers = []
         self.plate_data = []
         while reader.current_line_exists():
-            lines = list(reader.pop_until("Data"))
+            lines = list(reader.pop_until(r"Data|Spot\s+:"))
             lines = [line for line in lines if "Digital_Signature" not in line]
             header_df = read_csv(
                 StringIO("\n".join(lines)),
@@ -31,6 +31,10 @@ class MethodicalMindReader:
                 index_col=0,
             ).T
             self.plate_headers.append(df_to_series_data(header_df))
+
+            if "Data" not in reader.get():
+                # TODO get visible spots and pass them to create location ids
+                reader.drop_until("Data")
 
             # Pop data title line
             reader.pop()
