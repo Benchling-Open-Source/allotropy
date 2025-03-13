@@ -21,7 +21,11 @@ class MethodicalMindReader:
         self.plate_data = []
         while reader.current_line_exists():
             lines = list(reader.pop_until("Data"))
-            lines = [line.replace("\\t", "\t") for line in lines if "Digital_Signature" not in line]
+            lines = [
+                line.replace("\\t", "\t")
+                for line in lines
+                if "Digital_Signature" not in line
+            ]
             kv_pairs = [line.split(":", 1) for line in lines if ":" in line]
             key_values = {
                 key.strip(): value.strip() for key, value in kv_pairs if value.strip()
