@@ -18,7 +18,7 @@ from allotropy.parsers.utils.pandas import (
     split_dataframe,
     split_header_and_data,
 )
-from allotropy.parsers.utils.values import assert_not_none
+from allotropy.parsers.utils.values import assert_not_none, try_int_or_none
 
 
 class AppBioQuantStudioReader:
@@ -58,7 +58,10 @@ class AppBioQuantStudioXLSXReader(AppBioQuantStudioReader):
             _, data = split_header_and_data(sheet, lambda row: row[0] is None)
             if name == "Results":
                 data = data.reset_index(drop=True)
-                data, metadata = split_dataframe(data, lambda row: row[0] is None)
+                data, metadata = split_dataframe(
+                    data,
+                    lambda row: row[0] != "Well" and try_int_or_none(row[0]) is None,
+                )
                 if metadata is not None:
                     sections["Results Metadata"] = parse_header_row(metadata.T)
 

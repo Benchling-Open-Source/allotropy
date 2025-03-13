@@ -7,8 +7,6 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
-    CalculatedDataItem,
-    DataSource,
     Measurement,
     MeasurementGroup,
     MeasurementType,
@@ -26,6 +24,11 @@ from allotropy.parsers.bmg_labtech_smart_control.constants import (
     TARGET_TEMPERATURE,
 )
 from allotropy.parsers.constants import NOT_APPLICABLE
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+    DataSource,
+    Referenceable,
+)
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import quantity_or_none, try_float
@@ -152,7 +155,7 @@ def map_measurement_group(row: SeriesData, headers: SeriesData) -> MeasurementGr
 
 def create_calculated_data_documents(
     measurement_groups: list[MeasurementGroup], reader: BmgLabtechSmartControlReader
-) -> list[CalculatedDataItem] | None:
+) -> list[CalculatedDocument] | None:
     blank_measurements = [
         group.measurements[0]
         for group in measurement_groups
@@ -175,36 +178,36 @@ def create_calculated_data_documents(
     ]
 
     blank_average = reader.average_of_blank_used
-    average_calc_document = CalculatedDataItem(
-        identifier=random_uuid_str(),
+    average_calc_document = CalculatedDocument(
+        uuid=random_uuid_str(),
         name="Average of all blanks used",
         value=blank_average,
         data_sources=[
             DataSource(
-                identifier=measurement.identifier,
+                reference=Referenceable(measurement.identifier),
                 feature="fluorescence",
             )
             for measurement in blank_measurements
         ],
         unit="RFU",
     )
-    blank_corrected_calc_documents: list[CalculatedDataItem] = []
+    blank_corrected_calc_documents: list[CalculatedDocument] = []
     for idx, measurement in enumerate(non_blank_measurements):
         corrected_value_sd = SeriesData(reader.data.iloc[idx])
         blank_corrected_calc_documents.append(
-            CalculatedDataItem(
-                identifier=random_uuid_str(),
+            CalculatedDocument(
+                uuid=random_uuid_str(),
                 name="Blank corrected based on Raw Data (480-14/520-30)",
                 value=corrected_value_sd[
                     float, "Blank corrected based on Raw Data (480-14/520-30)"
                 ],
                 data_sources=[
                     DataSource(
-                        identifier=measurement.identifier,
+                        reference=Referenceable(measurement.identifier),
                         feature="fluorescence",
                     ),
                     DataSource(
-                        identifier=average_calc_document.identifier,
+                        reference=Referenceable(average_calc_document.uuid),
                         feature="Average of all blanks used",
                     ),
                 ],
