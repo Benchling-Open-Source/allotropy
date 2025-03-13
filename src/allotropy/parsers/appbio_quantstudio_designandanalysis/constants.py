@@ -24,4 +24,4 @@ DATA_SYSTEM_INSTANCE_IDENTIFIER = "localhost"
 CONTAINER_TYPE = ContainerType.PCR_reaction_block
 
 RT_PCR_SOFTWARE_NAME = "Design & Analysis Software"
-RT_PCR_SOFTWARE_VERSION = "1.5.2"
+RT_PCR_SOFTWARE_VERSION = "1.x"
