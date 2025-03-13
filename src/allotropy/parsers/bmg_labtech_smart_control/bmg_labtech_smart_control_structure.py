@@ -1,10 +1,12 @@
 import logging
 from pathlib import Path
 
-from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueSecondTime,
     TQuantityValueUnitless,
+)
+from allotropy.allotrope.models.shared.definitions.units import (
+    RelativeFluorescenceUnit,
 )
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
     Measurement,
@@ -13,8 +15,23 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_rea
     Metadata,
     ScanPositionSettingPlateReader,
 )
+from allotropy.calcdocs.bmg_labtech_smart_control.extractor import (
+    BmgLabtechSmartControlExtractor,
+)
+from allotropy.calcdocs.bmg_labtech_smart_control.views import (
+    BlankRoleTypeView,
+    CorrectedView,
+)
+from allotropy.calcdocs.config import (
+    CalcDocsConfig,
+    CalculatedDataConfig,
+    MeasurementConfig,
+)
 from allotropy.parsers.bmg_labtech_smart_control.bmg_labtech_smart_control_reader import (
     BmgLabtechSmartControlReader,
+)
+from allotropy.parsers.bmg_labtech_smart_control.calculated_data_structure import (
+    CalculatedDataStructure,
 )
 from allotropy.parsers.bmg_labtech_smart_control.constants import (
     DEVICE_TYPE,
@@ -26,8 +43,6 @@ from allotropy.parsers.bmg_labtech_smart_control.constants import (
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
-    DataSource,
-    Referenceable,
 )
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
@@ -156,64 +171,56 @@ def map_measurement_group(row: SeriesData, headers: SeriesData) -> MeasurementGr
 def create_calculated_data_documents(
     measurement_groups: list[MeasurementGroup], reader: BmgLabtechSmartControlReader
 ) -> list[CalculatedDocument] | None:
-    blank_measurements = [
-        group.measurements[0]
-        for group in measurement_groups
-        if group.measurements[0].sample_role_type == SampleRoleType.blank_role
-    ]
-
-    if not blank_measurements:
-        return []
-
     if not reader.average_of_blank_used:
         logging.warning(
             "Microplate endpoint sheet does not contain average of blanks used value but blank measurements are present."
         )
         return []
-    non_blank_measurements = [
-        measurement
-        for group in measurement_groups
-        for measurement in group.measurements
-        if measurement.sample_role_type != SampleRoleType.blank_role
-    ]
 
-    blank_average = reader.average_of_blank_used
-    average_calc_document = CalculatedDocument(
-        uuid=random_uuid_str(),
-        name="Average of all blanks used",
-        value=blank_average,
-        data_sources=[
-            DataSource(
-                reference=Referenceable(measurement.identifier),
-                feature="fluorescence",
-            )
-            for measurement in blank_measurements
-        ],
-        unit="RFU",
-    )
-    blank_corrected_calc_documents: list[CalculatedDocument] = []
-    for idx, measurement in enumerate(non_blank_measurements):
-        corrected_value_sd = SeriesData(reader.data.iloc[idx])
-        blank_corrected_calc_documents.append(
-            CalculatedDocument(
-                uuid=random_uuid_str(),
-                name="Blank corrected based on Raw Data (480-14/520-30)",
-                value=corrected_value_sd[
-                    float, "Blank corrected based on Raw Data (480-14/520-30)"
-                ],
-                data_sources=[
-                    DataSource(
-                        reference=Referenceable(measurement.identifier),
-                        feature="fluorescence",
-                    ),
-                    DataSource(
-                        reference=Referenceable(average_calc_document.uuid),
-                        feature="Average of all blanks used",
-                    ),
-                ],
-                unit="RFU",
+    # adapter only supports one measurement per group
+    measurements = [group.measurements[0] for group in measurement_groups]
+    calc_data_measurements = []
+    for idx, measurement in enumerate(measurements):
+        corrected_value = SeriesData(reader.data.iloc[idx]).get(
+            float, "Blank corrected based on Raw Data (480-14/520-30)"
+        )
+        calc_data_measurements.append(
+            CalculatedDataStructure(
+                measurement=measurement,
+                corrected_value=corrected_value,
+                average_of_blank_used=reader.average_of_blank_used,
             )
         )
-        # We do not need the rest of the info in this series data for creating the calculated data item
-        corrected_value_sd.get_unread()
-    return [average_calc_document, *blank_corrected_calc_documents]
+
+    elements = BmgLabtechSmartControlExtractor.get_elements(calc_data_measurements)
+    corrected_view_data = CorrectedView().apply(elements=elements)
+    role_type_view_data = BlankRoleTypeView().apply(elements=elements)
+
+    measurement_conf = MeasurementConfig(
+        name="fluorescence",
+        value="fluorescence",
+    )
+    average_of_blank_used_conf = CalculatedDataConfig(
+        name="Average of all blanks used",
+        value="average_of_blank_used",
+        view_data=role_type_view_data,
+        source_configs=(measurement_conf,),
+        unit=RelativeFluorescenceUnit.unit,
+    )
+
+    corrected_conf = CalculatedDataConfig(
+        name="Blank corrected based on Raw Data (480-14/520-30)",
+        value="corrected_value",
+        view_data=corrected_view_data,
+        source_configs=(measurement_conf, average_of_blank_used_conf),
+        unit=RelativeFluorescenceUnit.unit,
+    )
+
+    configs = CalcDocsConfig([average_of_blank_used_conf, corrected_conf])
+
+    calc_docs = [
+        calc_doc
+        for parent_calc_doc in configs.construct()
+        for calc_doc in parent_calc_doc.iter_struct()
+    ]
+    return calc_docs
