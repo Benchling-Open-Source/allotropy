@@ -24,18 +24,18 @@ class DesignQuantstudioReader:
 
     @staticmethod
     def create(named_file_contents: NamedFileContents) -> DesignQuantstudioReader:
-        return DesignQuantstudioReader(
-            read_multisheet_excel(
-                named_file_contents.contents,
-                header=None,
-                engine="calamine",
-            )
+        raw_contents = read_multisheet_excel(
+            named_file_contents.contents,
+            header=None,
+            engine="calamine",
         )
-
-    def __init__(self, raw_contents: dict[str, pd.DataFrame]) -> None:
         contents = {
             str(name): df.replace(np.nan, None) for name, df in raw_contents.items()
         }
+        return DesignQuantstudioReader(contents)
+
+    def __init__(self, contents: dict[str, pd.DataFrame]) -> None:
+        self.contents = contents
         self.header = self._get_header(contents)
         self.data = self._get_data(contents)
 

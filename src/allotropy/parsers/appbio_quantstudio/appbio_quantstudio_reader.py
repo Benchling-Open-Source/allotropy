@@ -29,21 +29,29 @@ class AppBioQuantStudioReader:
     @staticmethod
     def create(named_file_contents: NamedFileContents) -> AppBioQuantStudioReader:
         if named_file_contents.extension == "xlsx":
-            return AppBioQuantStudioXLSXReader(named_file_contents)
+            raw_contents = read_multisheet_excel(
+                named_file_contents.contents,
+                header=None,
+                engine="calamine",
+            )
+            contents = {
+                name: df.replace(np.nan, None) for name, df in raw_contents.items()
+            }
+            return AppBioQuantStudioXLSXReader(contents)
         else:
             return AppBioQuantStudioTXTReader(named_file_contents)
 
 
 class AppBioQuantStudioXLSXReader(AppBioQuantStudioReader):
-    def __init__(self, named_file_contents: NamedFileContents) -> None:
-        raw_contents = read_multisheet_excel(
-            named_file_contents.contents,
-            header=None,
-            engine="calamine",
-        )
-        contents = {name: df.replace(np.nan, None) for name, df in raw_contents.items()}
-        self.header = self.get_header(contents)
-        self.sections = self.get_sections(contents)
+    def __init__(
+        self,
+        contents: dict[str, pd.DataFrame],
+        header: SeriesData | None = None,
+        sections: dict[str, pd.DataFrame] | None = None,
+    ) -> None:
+        self.contents = contents
+        self.header = header or self.get_header(contents)
+        self.sections = sections or self.get_sections(contents)
 
     def get_header(self, contents: dict[str, pd.DataFrame]) -> SeriesData:
         sheet = next(iter(contents.values()))
