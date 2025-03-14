@@ -1,11 +1,10 @@
 from collections.abc import Iterator
-from io import StringIO
 
 import pandas as pd
 
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
-from allotropy.parsers.utils.pandas import df_to_series_data, read_csv, SeriesData
+from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.values import assert_not_none
 
 
@@ -22,15 +21,16 @@ class MethodicalMindReader:
         self.plate_data = []
         while reader.current_line_exists():
             lines = list(reader.pop_until("Data"))
-            lines = [line for line in lines if "Digital_Signature" not in line]
-            header_df = read_csv(
-                StringIO("\n".join(lines)),
-                sep=r":\t",
-                engine="python",
-                header=None,
-                index_col=0,
-            ).T
-            self.plate_headers.append(df_to_series_data(header_df))
+            lines = [
+                line.replace("\\t", "\t")
+                for line in lines
+                if "Digital_Signature" not in line
+            ]
+            kv_pairs = [line.split(":", 1) for line in lines if ":" in line]
+            key_values = {
+                key.strip(): value.strip() for key, value in kv_pairs if value.strip()
+            }
+            self.plate_headers.append(SeriesData(pd.Series(key_values)))
 
             # Pop data title line
             reader.pop()
