@@ -121,6 +121,7 @@ dependencies = [
   "jsonschema-specifications == 2023.7.1",
   "olefile >= 0.47",
   "pydantic == 1.10.17",
+  "rainbow-api == 1.0.10",
   "ruff == 0.0.289",
   "semantic-version",
   "xmltodict >= 0.13.0",
