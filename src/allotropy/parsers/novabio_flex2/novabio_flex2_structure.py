@@ -143,6 +143,17 @@ class SampleList:
         )
 
 
+@dataclass(frozen=True)
+class SampleData:
+    sample_list: SampleList
+
+    @staticmethod
+    def create(data: pd.DataFrame) -> SampleData:
+        return SampleData(
+            sample_list=SampleList.create(data),
+        )
+
+
 def _create_measurement(sample: Sample, **kwargs: Any) -> Measurement:
     return Measurement(
         identifier=random_uuid_str(),

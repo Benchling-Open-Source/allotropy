@@ -9,7 +9,7 @@ from allotropy.allotrope.schema_mappers.adm.solution_analyzer.benchling._2024._0
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.novabio_flex2.novabio_flex2_structure import (
     Sample,
-    SampleList,
+    SampleData,
     Title,
 )
 
@@ -78,7 +78,7 @@ def test_create_sample() -> None:
 
 
 def test_create_sample_list() -> None:
-    sample_list = SampleList.create(
+    sample_data = SampleData.create(
         pd.DataFrame(
             {
                 "Sample ID": ["SAMPLE_1", "SAMPLE_2"],
@@ -92,16 +92,16 @@ def test_create_sample_list() -> None:
         )
     )
 
-    assert sample_list.analyst == "Kermit"
-    assert len(sample_list.samples) == 2
-    assert sample_list.samples[0].identifier == "SAMPLE_1"
-    assert sample_list.samples[1].identifier == "SAMPLE_2"
+    assert sample_data.sample_list.analyst == "Kermit"
+    assert len(sample_data.sample_list.samples) == 2
+    assert sample_data.sample_list.samples[0].identifier == "SAMPLE_1"
+    assert sample_data.sample_list.samples[1].identifier == "SAMPLE_2"
 
 
 def test_create_sample_list_invalid_no_samples() -> None:
     df = pd.DataFrame()
     with pytest.raises(AllotropeConversionError, match="Unable to find any sample."):
-        SampleList.create(df)
+        SampleData.create(df)
 
 
 def test_create_sample_list_invalid_no_analyst() -> None:
@@ -116,4 +116,4 @@ def test_create_sample_list_invalid_no_analyst() -> None:
         }
     )
     with pytest.raises(AllotropeConversionError, match="Unable to find the Operator."):
-        SampleList.create(df)
+        SampleData.create(df)
