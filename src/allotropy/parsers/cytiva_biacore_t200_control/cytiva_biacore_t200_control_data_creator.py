@@ -13,6 +13,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
 )
+from allotropy.allotrope.models.shared.definitions.units import ResonanceUnits, Unitless
 from allotropy.allotrope.schema_mappers.adm.binding_affinity_analyzer.benchling._2024._12.binding_affinity_analyzer import (
     DeviceDocument,
     Measurement,
@@ -28,6 +29,12 @@ from allotropy.parsers.cytiva_biacore_t200_control.cytiva_biacore_t200_control_s
     Data,
     MeasurementData,
 )
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+    DataSource,
+    Referenceable,
+)
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import quantity_or_none, try_float_or_none
 from allotropy.types import DictType
 
@@ -164,3 +171,85 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
         )
         for measurements_data in data.sample_data.measurements.values()
     ]
+
+
+def create_calculated_data(data: Data) -> list[CalculatedDocument]:
+    calculated_data = []
+    for measurements_data in data.sample_data.measurements.values():
+        for measurement in measurements_data:
+            for report_point in measurement.report_point_data:
+                calculated_data.extend(
+                    [
+                        CalculatedDocument(
+                            uuid=random_uuid_str(),
+                            name="Min Resonance",
+                            value=report_point.min_resonance,
+                            data_sources=[
+                                DataSource(
+                                    feature="Absolute Resonance",
+                                    reference=Referenceable(
+                                        uuid=report_point.identifier
+                                    ),
+                                )
+                            ],
+                            unit=ResonanceUnits.unit,
+                        ),
+                        CalculatedDocument(
+                            uuid=random_uuid_str(),
+                            name="Max Resonance",
+                            value=report_point.max_resonance,
+                            data_sources=[
+                                DataSource(
+                                    feature="Absolute Resonance",
+                                    reference=Referenceable(
+                                        uuid=report_point.identifier
+                                    ),
+                                )
+                            ],
+                            unit=ResonanceUnits.unit,
+                        ),
+                        CalculatedDocument(
+                            uuid=random_uuid_str(),
+                            name="LRSD",
+                            value=report_point.lrsd,
+                            data_sources=[
+                                DataSource(
+                                    feature="Absolute Resonance",
+                                    reference=Referenceable(
+                                        uuid=report_point.identifier
+                                    ),
+                                )
+                            ],
+                            unit=Unitless.unit,
+                        ),
+                        CalculatedDocument(
+                            uuid=random_uuid_str(),
+                            name="Slope",
+                            value=report_point.slope,
+                            data_sources=[
+                                DataSource(
+                                    feature="Absolute Resonance",
+                                    reference=Referenceable(
+                                        uuid=report_point.identifier
+                                    ),
+                                )
+                            ],
+                            unit=Unitless.unit,
+                        ),
+                        CalculatedDocument(
+                            uuid=random_uuid_str(),
+                            name="SD",
+                            value=report_point.sd,
+                            data_sources=[
+                                DataSource(
+                                    feature="Absolute Resonance",
+                                    reference=Referenceable(
+                                        uuid=report_point.identifier
+                                    ),
+                                )
+                            ],
+                            unit=Unitless.unit,
+                        ),
+                    ]
+                )
+    return calculated_data

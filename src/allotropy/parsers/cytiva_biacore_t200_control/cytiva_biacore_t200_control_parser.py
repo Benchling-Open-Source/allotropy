@@ -8,6 +8,7 @@ from allotropy.allotrope.schema_mappers.adm.binding_affinity_analyzer.benchling.
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.cytiva_biacore_t200_control import constants
 from allotropy.parsers.cytiva_biacore_t200_control.cytiva_biacore_t200_control_data_creator import (
+    create_calculated_data,
     create_measurement_groups,
     create_metadata,
 )
@@ -32,4 +33,5 @@ class CytivaBiacoreT200ControlParser(VendorParser[MapperData, Model]):
         return MapperData(
             metadata=create_metadata(data, named_file_contents),
             measurement_groups=create_measurement_groups(data),
+            calculated_data=create_calculated_data(data),
         )
