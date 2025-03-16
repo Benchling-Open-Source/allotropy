@@ -10,6 +10,26 @@ from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.values import assert_not_none
 
 
+def _extract_spot_legend_spots(lines: list[str]) -> tuple[list[str], list[int]]:
+    # Find spot legend if it exists
+    for i, line in enumerate(lines):
+        if (
+            line.startswith("Spot")
+            and i + 1 < len(lines)
+            and lines[i + 1].startswith("Legend")
+        ):
+            end = i + 2
+            while end < len(lines):
+                if not lines[end].startswith(""):
+                    break
+                end += 1
+            spot_legend = "\n".join(lines[i : end - 1])
+            lines = lines[:i] + lines[end - 1 :]
+            spots = [int(spot) for spot in re.findall(r"(\d+)", spot_legend)]
+            return lines, sorted(spots)
+    return lines, []
+
+
 class MethodicalMindReader:
     SUPPORTED_EXTENSIONS = "txt"
     plate_headers: list[SeriesData]
@@ -26,24 +46,7 @@ class MethodicalMindReader:
         while reader.current_line_exists():
             lines = list(reader.pop_until("Data"))
 
-            # Find spot legend if it exists
-            for i, line in enumerate(lines):
-                if (
-                    line.startswith("Spot")
-                    and i + 1 < len(lines)
-                    and lines[i + 1].startswith("Legend")
-                ):
-                    end = i + 2
-                    while end < len(lines):
-                        if not lines[end].startswith(""):
-                            break
-                        end += 1
-                    spot_legend = "\n".join(lines[i : end - 1])
-                    lines = lines[:i] + lines[end - 1 :]
-                    self.spots = [
-                        int(spot) for spot in re.findall(r"(\d+)", spot_legend)
-                    ]
-                    break
+            lines, self.spots = _extract_spot_legend_spots(lines)
 
             lines = [
                 line.replace("\\t", "\t")
