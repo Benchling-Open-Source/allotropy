@@ -82,8 +82,8 @@ class MethodicalMindReader:
             and len(self.plate_data) > 1
             and len(self.plate_data) != len(self.spots)
         ):
-            msg = f"Unrecognized file format for MSD parser: spot legend reports {len(self.spots)} spots, but found {len(self.data)} data tables."
+            msg = f"Unrecognized file format for MSD parser: spot legend reports {len(self.spots)} spots, but found {len(self.plate_data)} data tables."
             raise AllotropeConversionError(msg)
 
-    def __iter__(self) -> Iterator[tuple[SeriesData, pd.DataFrame, int | None]]:
+    def __iter__(self) -> Iterator[tuple[SeriesData, pd.DataFrame]]:
         yield from zip(self.plate_headers, self.plate_data, strict=True)
