@@ -45,9 +45,7 @@ class MethodicalMindReader:
         self.spots = []
         while reader.current_line_exists():
             lines = list(reader.pop_until("Data"))
-
             lines, self.spots = _extract_spot_legend_spots(lines)
-
             lines = [
                 line.replace("\\t", "\t")
                 for line in lines
