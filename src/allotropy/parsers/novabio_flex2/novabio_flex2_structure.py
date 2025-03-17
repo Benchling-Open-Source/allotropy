@@ -76,8 +76,7 @@ class Sample:
     cell_density_dilution_factor: float | None = None
 
     @classmethod
-    def create(cls, series: pd.Series[Any]) -> Sample:
-        data = SeriesData(series)
+    def create(cls, _: SeriesData | None, data: SeriesData) -> Sample:
         cell_density_dilution = data.get(str, "Cell Density Dilution", "")
         if cell_density_dilution:
             cell_density_dilution = cell_density_dilution.split(":")[0]
@@ -124,22 +123,17 @@ class SampleList:
     samples: list[Sample]
 
     @staticmethod
-    def create(data: pd.DataFrame) -> SampleList:
-        sample_data_rows = [row for _, row in data.iterrows()]
+    def get_analyst(sample: SeriesData) -> str:
+        if analyst := sample.get(str, "Operator"):
+            return analyst
+        msg = "Unable to find the Operator."
+        raise AllotropeConversionError(msg)
 
-        if not sample_data_rows:
-            msg = "Unable to find any sample."
-            raise AllotropeConversionError(msg)
-
-        analyst = sample_data_rows[0].get("Operator")
-
-        if analyst is None:
-            msg = "Unable to find the Operator."
-            raise AllotropeConversionError(msg)
-
+    @staticmethod
+    def create(units: SeriesData | None, sample_data: list[SeriesData]) -> SampleList:
         return SampleList(
-            analyst=str(analyst),
-            samples=[Sample.create(sample_data) for sample_data in sample_data_rows],
+            analyst=SampleList.get_analyst(sample_data[0]),
+            samples=[Sample.create(units, data) for data in sample_data],
         )
 
 
@@ -148,9 +142,29 @@ class SampleData:
     sample_list: SampleList
 
     @staticmethod
-    def create(data: pd.DataFrame) -> SampleData:
+    def parse_data(
+        raw_data: pd.DataFrame,
+    ) -> tuple[SeriesData | None, list[SeriesData]]:
+        sample_data = [SeriesData(row) for _, row in raw_data.iterrows()]
+
+        if len(sample_data) == 0:
+            msg = "Unable to find any sample."
+            raise AllotropeConversionError(msg)
+
+        if len(sample_data) == 1:
+            return None, sample_data
+
+        first_row = sample_data[0]
+        date_time_regex = r"\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}"
+        if re.match(date_time_regex, first_row[str, "Date & Time"]) is None:
+            return first_row, sample_data[1:]
+
+        return None, sample_data
+
+    @staticmethod
+    def create(raw_data: pd.DataFrame) -> SampleData:
         return SampleData(
-            sample_list=SampleList.create(data),
+            sample_list=SampleList.create(*SampleData.parse_data(raw_data)),
         )
 
 
