@@ -23,6 +23,15 @@ from allotropy.allotrope.schema_mappers.adm.binding_affinity_analyzer.benchling.
     ReportPoint,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, DataCubeComponent
+from allotropy.calcdocs.config import (
+    CalcDocsConfig,
+    CalculatedDataConfig,
+    MeasurementConfig,
+)
+from allotropy.calcdocs.cytiva_biacore_t200_control.extractor import (
+    CytivaBiacoreExtractor,
+)
+from allotropy.calcdocs.cytiva_biacore_t200_control.views import ReportPointDataView
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.cytiva_biacore_t200_control import constants
@@ -32,10 +41,7 @@ from allotropy.parsers.cytiva_biacore_t200_control.cytiva_biacore_t200_control_s
 )
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
-    DataSource,
-    Referenceable,
 )
-from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import quantity_or_none, try_float_or_none
 from allotropy.types import DictType
 
@@ -169,82 +175,56 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
 
 
 def create_calculated_data(data: Data) -> list[CalculatedDocument]:
-    calculated_data = []
-    for measurements_data in data.sample_data.measurements.values():
-        for measurement in measurements_data:
-            for report_point in measurement.report_point_data:
-                calculated_data.extend(
-                    [
-                        CalculatedDocument(
-                            uuid=random_uuid_str(),
-                            name="Min Resonance",
-                            value=report_point.min_resonance,
-                            data_sources=[
-                                DataSource(
-                                    feature="Absolute Resonance",
-                                    reference=Referenceable(
-                                        uuid=report_point.identifier
-                                    ),
-                                )
-                            ],
-                            unit=ResonanceUnits.unit,
-                        ),
-                        CalculatedDocument(
-                            uuid=random_uuid_str(),
-                            name="Max Resonance",
-                            value=report_point.max_resonance,
-                            data_sources=[
-                                DataSource(
-                                    feature="Absolute Resonance",
-                                    reference=Referenceable(
-                                        uuid=report_point.identifier
-                                    ),
-                                )
-                            ],
-                            unit=ResonanceUnits.unit,
-                        ),
-                        CalculatedDocument(
-                            uuid=random_uuid_str(),
-                            name="LRSD",
-                            value=report_point.lrsd,
-                            data_sources=[
-                                DataSource(
-                                    feature="Absolute Resonance",
-                                    reference=Referenceable(
-                                        uuid=report_point.identifier
-                                    ),
-                                )
-                            ],
-                            unit=Unitless.unit,
-                        ),
-                        CalculatedDocument(
-                            uuid=random_uuid_str(),
-                            name="Slope",
-                            value=report_point.slope,
-                            data_sources=[
-                                DataSource(
-                                    feature="Absolute Resonance",
-                                    reference=Referenceable(
-                                        uuid=report_point.identifier
-                                    ),
-                                )
-                            ],
-                            unit=Unitless.unit,
-                        ),
-                        CalculatedDocument(
-                            uuid=random_uuid_str(),
-                            name="SD",
-                            value=report_point.sd,
-                            data_sources=[
-                                DataSource(
-                                    feature="Absolute Resonance",
-                                    reference=Referenceable(
-                                        uuid=report_point.identifier
-                                    ),
-                                )
-                            ],
-                            unit=Unitless.unit,
-                        ),
-                    ]
-                )
-    return calculated_data
+    report_point_data_view = ReportPointDataView().apply(
+        CytivaBiacoreExtractor.sample_data_to_elements(data.sample_data)
+    )
+    absolute_resonance_conf = MeasurementConfig(
+        name="Absolute Resonance",
+        value="absolute_resonance",
+    )
+
+    configs = CalcDocsConfig(
+        [
+            CalculatedDataConfig(
+                name="Min Resonance",
+                value="min_resonance",
+                view_data=report_point_data_view,
+                source_configs=(absolute_resonance_conf,),
+                unit=ResonanceUnits.unit,
+            ),
+            CalculatedDataConfig(
+                name="Max Resonance",
+                value="max_resonance",
+                view_data=report_point_data_view,
+                source_configs=(absolute_resonance_conf,),
+                unit=ResonanceUnits.unit,
+            ),
+            CalculatedDataConfig(
+                name="LRSD",
+                value="lrsd",
+                view_data=report_point_data_view,
+                source_configs=(absolute_resonance_conf,),
+                unit=Unitless.unit,
+            ),
+            CalculatedDataConfig(
+                name="Slope",
+                value="slope",
+                view_data=report_point_data_view,
+                source_configs=(absolute_resonance_conf,),
+                unit=Unitless.unit,
+            ),
+            CalculatedDataConfig(
+                name="SD",
+                value="sd",
+                view_data=report_point_data_view,
+                source_configs=(absolute_resonance_conf,),
+                unit=Unitless.unit,
+            ),
+        ]
+    )
+
+    return [
+        calc_doc
+        for parent_calc_doc in configs.construct()
+        for calc_doc in parent_calc_doc.iter_struct()
+    ]
