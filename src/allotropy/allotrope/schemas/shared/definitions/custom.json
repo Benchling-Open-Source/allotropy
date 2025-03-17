@@ -159,6 +159,26 @@
       }
     ]
   },
+  "tQuantityValueDalton": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/Dalton"
+      }
+    ]
+  },
+  "tNullableQuantityValueDalton": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/Dalton"
+      }
+    ]
+  },
   "tQuantityValueDegreeCelsius": {
     "allOf": [
       {
