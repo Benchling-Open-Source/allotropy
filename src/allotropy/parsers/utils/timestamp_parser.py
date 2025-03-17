@@ -14,6 +14,10 @@ TIMEZONE_CODES_MAP = {
         "MDT": timezone(timedelta(hours=-6), "MDT"),
         "PDT": timezone(timedelta(hours=-7), "PDT"),
     },
+    # Add Japan Standard Time
+    "JST": timezone(timedelta(hours=9), "JST"),
+    # Add Central European Summer Time
+    "CEST": timezone(timedelta(hours=2), "CEST"),
 }
 
 

@@ -32,20 +32,18 @@ from allotropy.allotrope.models.adm.flow_cytometry.benchling._2025._03.flow_cyto
     VertexDocumentItem,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
+    TQuantityValueCounts,
     TQuantityValueMilliAbsorbanceUnit,
-    TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
-from allotropy.exceptions import AllotropeConversionError
 
 
 @dataclass(frozen=True)
 class Vertex:
     x_coordinate: float
     y_coordinate: float
-    unit: TQuantityValueMilliAbsorbanceUnit | (TQuantityValueRelativeFluorescenceUnit)
 
 
 @dataclass(frozen=True)
@@ -81,6 +79,7 @@ class Population:
     population_identifier: str
     written_name: str | None = None
     data_region_identifier: str | None = None
+    count: int | None = None
     parent_population_identifier: str | None = None
     sub_populations: list[Population] | None = None
     statistics: list[Statistic] | None = None
@@ -133,7 +132,6 @@ class Metadata:
 class Data:
     metadata: Metadata
     measurement_groups: list[MeasurementGroup]
-    compensation_matrix_groups: list[CompensationMatrixGroup] | None = None
 
 
 class Mapper(SchemaMapper[Data, Model]):
@@ -261,16 +259,9 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_vertex_document(self, vertex: Vertex) -> VertexDocumentItem:
-        unit_type = type(vertex.unit)
-        if unit_type not in (
-            TQuantityValueMilliAbsorbanceUnit,
-            TQuantityValueRelativeFluorescenceUnit,
-        ):
-            msg = f"Unsupported unit type: {unit_type}"
-            raise AllotropeConversionError(msg)
         return VertexDocumentItem(
-            x_coordinate=unit_type(value=vertex.x_coordinate),
-            y_coordinate=unit_type(value=vertex.y_coordinate),
+            x_coordinate=TQuantityValueMilliAbsorbanceUnit(value=vertex.x_coordinate),
+            y_coordinate=TQuantityValueMilliAbsorbanceUnit(value=vertex.y_coordinate),
         )
 
     def _get_population_document(
@@ -280,6 +271,9 @@ class Mapper(SchemaMapper[Data, Model]):
             population_identifier=population.population_identifier,
             written_name=population.written_name,
             data_region_identifier=population.data_region_identifier,
+            count=TQuantityValueCounts(value=population.count)
+            if population.count
+            else None,
             parent_population_identifier=population.parent_population_identifier,
             population_aggregate_document=[
                 PopulationAggregateDocumentItem(
