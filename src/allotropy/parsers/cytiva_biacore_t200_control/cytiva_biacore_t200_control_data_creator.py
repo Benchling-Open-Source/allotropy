@@ -6,6 +6,7 @@ from typing import Any
 import pandas as pd
 
 from allotropy.allotrope.models.shared.definitions.custom import (
+    TQuantityValueDalton,
     TQuantityValueHertz,
     TQuantityValueMicroliterPerMinute,
     TQuantityValueMilliliter,
@@ -112,17 +113,11 @@ def create_measurements(
             concentration=measurement.concentration,
             flow_cell_identifier=measurement.flow_cell_identifier,
             device_control_custom_info=device_control_custom_info,
-            # TODO: use quantity or none
-            sample_custom_info=(
-                {
-                    "molecular weight": {
-                        "value": try_float_or_none(molecular_weight),
-                        "unit": "Da",
-                    }
-                }
-                if (molecular_weight := measurement.molecular_weight) is not None
-                else None
-            ),
+            sample_custom_info={
+                "molecular weight": quantity_or_none(
+                    TQuantityValueDalton, measurement.molecular_weight
+                )
+            },
             sensorgram_data_cube=_get_sensorgram_datacube(measurement.sensorgram_data),
             report_point_data=[
                 ReportPoint(

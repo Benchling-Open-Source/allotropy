@@ -155,11 +155,11 @@ class ReportPointData:
     relative_resonance: float | None
     time_setting: float
     custom_info: DictType
-    min_resonance: float | None
-    max_resonance: float | None
-    lrsd: float | None
-    slope: float | None
-    sd: float | None
+    min_resonance: float
+    max_resonance: float
+    lrsd: float
+    slope: float
+    sd: float
 
     @staticmethod
     def create(data: SeriesData) -> ReportPointData:
@@ -169,11 +169,11 @@ class ReportPointData:
             absolute_resonance=data[float, "AbsResp"],
             relative_resonance=data.get(float, "RelResp"),
             time_setting=data[float, "Time"],
-            min_resonance=data.get(float, "Min"),
-            max_resonance=data.get(float, "Max"),
-            lrsd=data.get(float, "LRSD"),
-            slope=data.get(float, "Slope"),
-            sd=data.get(float, "SD"),
+            min_resonance=data[float, "Min"],
+            max_resonance=data[float, "Max"],
+            lrsd=data[float, "LRSD"],
+            slope=data[float, "Slope"],
+            sd=data[float, "SD"],
             custom_info={
                 "diode_row": data.get(str, "DiodeRow"),
                 "window": (
@@ -218,9 +218,9 @@ class SampleData:
 
     @staticmethod
     def create(intermediate_structured_data: DictType) -> SampleData:
-        application_template_details: dict[str, DictType] = (
-            intermediate_structured_data["application_template_details"]
-        )
+        application_template_details: dict[
+            str, DictType
+        ] = intermediate_structured_data["application_template_details"]
         measurements: dict[str, list[MeasurementData]] = defaultdict(list)
         for idx in range(intermediate_structured_data["total_cycles"]):
             flowcell_cycle_data: DictType = application_template_details.get(
@@ -289,9 +289,9 @@ class Data:
 
     @staticmethod
     def create(intermediate_structured_data: DictType) -> Data:
-        application_template_details: dict[str, DictType] = (
-            intermediate_structured_data["application_template_details"]
-        )
+        application_template_details: dict[
+            str, DictType
+        ] = intermediate_structured_data["application_template_details"]
         chip_data: DictType = intermediate_structured_data["chip"]
         system_information: DictType = intermediate_structured_data[
             "system_information"
