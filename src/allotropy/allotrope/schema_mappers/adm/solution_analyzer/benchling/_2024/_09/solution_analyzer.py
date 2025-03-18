@@ -199,12 +199,12 @@ def get_cell_density_quantity_value(
 ) -> float | None:
     if value is None:
         return None
-    elif unit is None or unit == "10^6cells/mL":
+    elif unit is None or unit == "x10^6Cells/mL":
         return value
-    elif unit == "10^5cells/mL":
+    elif unit == "x10^5Cells/mL":
         return value / 10
 
-    msg = f"Invalid unit for {name}: {unit}, expected 10^5 cells/mL or 10^6 cells/mL"
+    msg = f"Invalid unit for {name}: {unit}, expected x10^5Cells/mL or 10^6Cells/mL"
     raise AllotropeConversionError(msg)
 
 
