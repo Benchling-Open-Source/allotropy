@@ -296,7 +296,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 population_identifier=population.population_identifier,
                 written_name=population.written_name,
                 data_region_identifier=population.data_region_identifier,
-                count=TQuantityValueCounts(value=population.count)
+                count=quantity_or_none(TQuantityValueCounts, value=population.count)
                 if population.count
                 else None,
                 parent_population_identifier=population.parent_population_identifier,
