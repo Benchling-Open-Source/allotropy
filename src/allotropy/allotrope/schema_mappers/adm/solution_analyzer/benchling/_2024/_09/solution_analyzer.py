@@ -33,6 +33,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueCountsPerMilliliter,
     TQuantityValueDegreeCelsius,
     TQuantityValueGramPerLiter,
+    TQuantityValueKiloPascal,
     TQuantityValueMicrometer,
     TQuantityValueMilliAbsorbanceUnit,
     TQuantityValueMilliliter,
@@ -181,6 +182,32 @@ class Data:
     calculated_data: list[CalculatedDataItem] | None = None
 
 
+def get_ml_hg_or_kpa_quantity_value(
+    name: str, unit: str | None
+) -> type[TQuantityValueMillimeterOfMercury] | type[TQuantityValueKiloPascal]:
+    if unit is None or unit == "mmHg":
+        return TQuantityValueMillimeterOfMercury
+    elif unit == "kPa":
+        return TQuantityValueKiloPascal
+
+    msg = f"Invalid unit for {name}: {unit}, expected mmHg or kPa"
+    raise AllotropeConversionError(msg)
+
+
+def get_cell_density_quantity_value(
+    name: str, unit: str | None, value: float | None
+) -> float | None:
+    if value is None:
+        return None
+    elif unit is None or unit == "10^6cells/mL":
+        return value
+    elif unit == "10^5cells/mL":
+        return value / 10
+
+    msg = f"Invalid unit for {name}: {unit}, expected 10^5 cells/mL or 10^6 cells/mL"
+    raise AllotropeConversionError(msg)
+
+
 class Mapper(SchemaMapper[Data, Model]):
     MANIFEST = "http://purl.allotrope.org/manifests/solution-analyzer/BENCHLING/2024/09/solution-analyzer.manifest"
 
@@ -297,10 +324,12 @@ class Mapper(SchemaMapper[Data, Model]):
                     TQuantityValueMilliAbsorbanceUnit, measurement.absorbance
                 ),
                 pO2=quantity_or_none(
-                    TQuantityValueMillimeterOfMercury, measurement.po2
+                    get_ml_hg_or_kpa_quantity_value("pO2", measurement.po2_unit),  # type: ignore[arg-type]
+                    measurement.po2,
                 ),
                 pCO2=quantity_or_none(
-                    TQuantityValueMillimeterOfMercury, measurement.pco2
+                    get_ml_hg_or_kpa_quantity_value("pCO2", measurement.pco2_unit),  # type: ignore[arg-type]
+                    measurement.pco2,
                 ),
                 carbon_dioxide_saturation=quantity_or_none(
                     TQuantityValuePercent, measurement.carbon_dioxide_saturation
@@ -376,11 +405,19 @@ class Mapper(SchemaMapper[Data, Model]):
                 ),
                 total_cell_density__cell_counter_=quantity_or_none(
                     TQuantityValueMillionCellsPerMilliliter,
-                    measurement.total_cell_density,
+                    get_cell_density_quantity_value(
+                        "total cell density",
+                        measurement.total_cell_density_unit,
+                        measurement.total_cell_density,
+                    ),
                 ),
                 viable_cell_density__cell_counter_=quantity_or_none(
                     TQuantityValueMillionCellsPerMilliliter,
-                    measurement.viable_cell_density,
+                    get_cell_density_quantity_value(
+                        "viable cell density",
+                        measurement.viable_cell_density_unit,
+                        measurement.viable_cell_density,
+                    ),
                 ),
                 average_live_cell_diameter__cell_counter_=quantity_or_none(
                     TQuantityValueMicrometer, measurement.average_live_cell_diameter
