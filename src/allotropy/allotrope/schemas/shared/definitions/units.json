@@ -143,6 +143,18 @@
       "unit"
     ]
   },
+  "KiloPascal": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "kPa",
+        "$asm.unit-iri": "http://qudt.org/vocab/unit#KiloPascal"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
   "MicrogramPerMicroliter": {
     "properties": {
       "unit": {

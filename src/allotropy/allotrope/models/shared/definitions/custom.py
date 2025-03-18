@@ -18,6 +18,7 @@ from allotropy.allotrope.models.shared.definitions.units import (
     GramPerLiter,
     Hertz,
     KiloDalton,
+    KiloPascal,
     MicrogramPerMicroliter,
     MicrogramPerMilliliter,
     Microliter,
@@ -197,6 +198,16 @@ class TQuantityValueKiloDalton(KiloDalton, TQuantityValue):
 
 @dataclass(frozen=True, kw_only=True)
 class TNullableQuantityValueKiloDalton(KiloDalton, TNullableQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueKiloPascal(KiloPascal, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValueKiloPascal(KiloPascal, TNullableQuantityValue):
     pass
 
 

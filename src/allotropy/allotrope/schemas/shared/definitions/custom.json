@@ -239,6 +239,26 @@
       }
     ]
   },
+  "tQuantityValueKiloPascal": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/KiloPascal"
+      }
+    ]
+  },
+  "tNullableQuantityValueKiloPascal": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/KiloPascal"
+      }
+    ]
+  },
   "tQuantityValueMicrogramPerMicroliter": {
     "allOf": [
       {
