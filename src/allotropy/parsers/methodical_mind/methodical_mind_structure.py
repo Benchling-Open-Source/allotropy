@@ -17,7 +17,6 @@ from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.methodical_mind import constants
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import try_float
 
 WELL_LABELS = ["A", "B", "C", "D", "E", "F", "G", "H"]
 
@@ -59,10 +58,11 @@ class PlateData:
         unique_well_labels = [
             label for label in data.index.unique() if label in WELL_LABELS
         ]
+        spot_id = header.get(int, "SpotID")
         well_data = [
             WellData.create(
-                luminescence=try_float(value, "luminescence"),
-                location_id=str(row_index + 1),
+                luminescence=float(value),
+                location_id=str(spot_id or row_index + 1),
                 well_plate_id=well_plate_id,
                 well_location_id=f"{row_name}{col_name}",
             )
@@ -71,6 +71,9 @@ class PlateData:
             for row_index, (_, row) in enumerate(data.loc[[row_name]].iterrows())
             for col_name, value in row.items()
             if row_name in WELL_LABELS
+            # Only include if the measurement is not an empty string, this skips blank entries for non-visible
+            # measurements.
+            if str(value).strip()
         ]
         return PlateData(
             measurement_time=header[str, "Read Time"],
@@ -133,10 +136,15 @@ def create_metadata(header: Header, file_name: str) -> Metadata:
 
 def create_measurement_groups(plates: list[PlateData]) -> list[MeasurementGroup]:
     plates_data = []
+    plates_by_id: defaultdict[str, list[PlateData]] = defaultdict(list)
     for plate in plates:
-        grouped_wells = defaultdict(list)
-        for well in plate.well_data:
-            grouped_wells[well.well_location_identifier].append(well)
+        plates_by_id[plate.well_plate_id].append(plate)
+
+    for plates in plates_by_id.values():
+        grouped_wells: defaultdict[str, list[WellData]] = defaultdict(list)
+        for plate in plates:
+            for well in plate.well_data:
+                grouped_wells[well.well_location_identifier].append(well)
         plates_data.extend(
             [
                 MeasurementGroup(
