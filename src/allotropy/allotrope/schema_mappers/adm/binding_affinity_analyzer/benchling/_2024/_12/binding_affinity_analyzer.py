@@ -1,11 +1,14 @@
 from dataclasses import dataclass
 from enum import Enum
-from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.binding_affinity_analyzer.wd._2024._12.binding_affinity_analyzer import (
     BindingAffinityAnalyzerAggregateDocument,
     BindingAffinityAnalyzerDocumentItem,
+    CalculatedDataAggregateDocument,
+    CalculatedDataDocumentItem,
+    DataSourceAggregateDocument,
+    DataSourceDocumentItem,
     DataSystemDocument,
     DeviceControlAggregateDocument,
     DeviceControlDocumentItem,
@@ -20,6 +23,7 @@ from allotropy.allotrope.models.adm.binding_affinity_analyzer.wd._2024._12.bindi
     ReportPointDocumentItem,
     SampleDocument,
     SensorChipDocument,
+    TQuantityValueModel,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueDegreeCelsius,
@@ -34,27 +38,15 @@ from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropyParserError
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+)
 from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
+from allotropy.types import DictType
 
 
 class MeasurementType(Enum):
     SURFACE_PLASMON_RESONANCE = "SURFACE_PLASMON_RESONANCE"
-
-
-@dataclass(frozen=True)
-class DataSource:
-    identifier: str
-    feature: str
-
-
-@dataclass(frozen=True)
-class CalculatedDataItem:
-    identifier: str
-    name: str
-    value: float
-    unit: str
-    data_sources: list[DataSource]
-    description: str | None = None
 
 
 @dataclass(frozen=True)
@@ -82,7 +74,7 @@ class Metadata:
     compartment_temperature: float | None = None
     sensor_chip_type: str | None = None
     lot_number: str | None = None
-    sensor_chip_custom_info: dict[str, Any] | None = None
+    sensor_chip_custom_info: DictType | None = None
 
 
 @dataclass(frozen=True)
@@ -92,7 +84,7 @@ class ReportPoint:
     absolute_resonance: float
     time_setting: float
     relative_resonance: float | None = None
-    custom_info: dict[str, Any] | None = None
+    custom_info: DictType | None = None
 
 
 @dataclass(frozen=True)
@@ -113,8 +105,8 @@ class Measurement:
     flow_rate: float | None = None
     contact_time: float | None = None
     dilution: float | None = None
-    device_control_custom_info: dict[str, Any] | None = None
-    sample_custom_info: dict[str, Any] | None = None
+    device_control_custom_info: DictType | None = None
+    sample_custom_info: DictType | None = None
 
     # Sensorgram
     sensorgram_data_cube: DataCube | None = None
@@ -130,14 +122,14 @@ class MeasurementGroup:
     experiment_type: str | None = None
     analytical_method_identifier: str | None = None
     analyst: str | None = None
-    measurement_aggregate_custom_info: dict[str, Any] | None = None
+    measurement_aggregate_custom_info: DictType | None = None
 
 
 @dataclass(frozen=True)
 class Data:
     metadata: Metadata
     measurement_groups: list[MeasurementGroup]
-    calculated_data: list[CalculatedDataItem] | None = None
+    calculated_data: list[CalculatedDocument] | None = None
 
 
 class Mapper(SchemaMapper[Data, Model]):
@@ -169,7 +161,7 @@ class Mapper(SchemaMapper[Data, Model]):
                             )
                             for device_document_item in data.metadata.device_document
                         ]
-                        if data.metadata.device_document is not None
+                        if data.metadata.device_document
                         else None
                     ),
                 ),
@@ -177,6 +169,9 @@ class Mapper(SchemaMapper[Data, Model]):
                     self._get_technique_document(measurement_group, data.metadata)
                     for measurement_group in data.measurement_groups
                 ],
+                calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
+                    data.calculated_data
+                ),
             )
         )
 
@@ -301,4 +296,34 @@ class Mapper(SchemaMapper[Data, Model]):
                 if measurement.report_point_data
                 else None
             ),
+        )
+
+    def _get_calculated_data_aggregate_document(
+        self, calculated_data_items: list[CalculatedDocument] | None
+    ) -> CalculatedDataAggregateDocument | None:
+        if not calculated_data_items:
+            return None
+
+        return CalculatedDataAggregateDocument(
+            calculated_data_document=[
+                CalculatedDataDocumentItem(
+                    calculated_data_identifier=calculated_data_item.uuid,
+                    calculated_data_name=calculated_data_item.name,
+                    calculation_description=calculated_data_item.description,
+                    calculated_result=TQuantityValueModel(
+                        value=calculated_data_item.value,
+                        unit=assert_not_none(calculated_data_item.unit),
+                    ),
+                    data_source_aggregate_document=DataSourceAggregateDocument(
+                        data_source_document=[
+                            DataSourceDocumentItem(
+                                data_source_identifier=item.reference.uuid,
+                                data_source_feature=item.feature,
+                            )
+                            for item in calculated_data_item.data_sources
+                        ]
+                    ),
+                )
+                for calculated_data_item in calculated_data_items
+            ]
         )

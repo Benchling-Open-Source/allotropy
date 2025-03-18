@@ -50,6 +50,11 @@ class CubicMillimeter(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class Dalton(HasUnit):
+    unit: str = "Da"
+
+
+@dataclass(frozen=True, kw_only=True)
 class DegreeCelsius(HasUnit):
     unit: str = "degC"
 
