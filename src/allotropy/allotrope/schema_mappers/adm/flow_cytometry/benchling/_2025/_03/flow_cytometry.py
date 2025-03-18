@@ -33,11 +33,13 @@ from allotropy.allotrope.models.adm.flow_cytometry.benchling._2025._03.flow_cyto
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueCounts,
-    TQuantityValueMilliAbsorbanceUnit,
+    TQuantityValueRelativeFluorescenceUnit,
+    TQuantityValueSecondTime,
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
+from allotropy.parsers.utils.values import quantity_or_none
 
 
 @dataclass(frozen=True)
@@ -83,6 +85,7 @@ class Population:
     parent_population_identifier: str | None = None
     sub_populations: list[Population] | None = None
     statistics: list[Statistic] | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -251,48 +254,72 @@ class Mapper(SchemaMapper[Data, Model]):
             y_coordinate_dimension_identifier=data_region.y_coordinate_dimension_identifier,
             vertex_aggregate_document=VertexAggregateDocument(
                 vertex_document=[
-                    self._get_vertex_document(vertex) for vertex in data_region.vertices
+                    self._get_vertex_document(
+                        vertex,
+                        data_region.x_coordinate_dimension_identifier,
+                        data_region.y_coordinate_dimension_identifier,
+                    )
+                    for vertex in data_region.vertices
                 ]
                 if data_region.vertices
                 else None
             ),
         )
 
-    def _get_vertex_document(self, vertex: Vertex) -> VertexDocumentItem:
+    def _get_vertex_document(
+        self, vertex: Vertex, x_dim: str | None, y_dim: str | None
+    ) -> VertexDocumentItem:
+        x_val: TQuantityValueSecondTime | TQuantityValueRelativeFluorescenceUnit | None = quantity_or_none(
+            TQuantityValueRelativeFluorescenceUnit, value=vertex.x_coordinate
+        )
+        y_val: TQuantityValueSecondTime | TQuantityValueRelativeFluorescenceUnit | None = quantity_or_none(
+            TQuantityValueRelativeFluorescenceUnit, value=vertex.y_coordinate
+        )
+        if x_dim is not None and x_dim.lower() == "time":
+            x_val = quantity_or_none(
+                TQuantityValueSecondTime, value=vertex.x_coordinate
+            )
+        if y_dim is not None and y_dim.lower() == "time":
+            y_val = quantity_or_none(
+                TQuantityValueSecondTime, value=vertex.y_coordinate
+            )
         return VertexDocumentItem(
-            x_coordinate=TQuantityValueMilliAbsorbanceUnit(value=vertex.x_coordinate),
-            y_coordinate=TQuantityValueMilliAbsorbanceUnit(value=vertex.y_coordinate),
+            x_coordinate=x_val,
+            y_coordinate=y_val,
         )
 
     def _get_population_document(
         self, population: Population
     ) -> PopulationDocumentItem:
-        return PopulationDocumentItem(
-            population_identifier=population.population_identifier,
-            written_name=population.written_name,
-            data_region_identifier=population.data_region_identifier,
-            count=TQuantityValueCounts(value=population.count)
-            if population.count
-            else None,
-            parent_population_identifier=population.parent_population_identifier,
-            population_aggregate_document=[
-                PopulationAggregateDocumentItem(
-                    population_document=[
-                        self._get_population_document(sub_population)
-                        for sub_population in population.sub_populations
-                    ]
-                )
-            ]
-            if population.sub_populations
-            else None,
-            statisticsAggregateDocument=StatisticsAggregateDocument(
-                statistics_document=[
-                    self._get_statistics_document(statistic)
-                    for statistic in population.statistics
-                ]
-                if population.statistics
+        return add_custom_information_document(
+            PopulationDocumentItem(
+                population_identifier=population.population_identifier,
+                written_name=population.written_name,
+                data_region_identifier=population.data_region_identifier,
+                count=TQuantityValueCounts(value=population.count)
+                if population.count
                 else None,
+                parent_population_identifier=population.parent_population_identifier,
+                population_aggregate_document=[
+                    PopulationAggregateDocumentItem(
+                        population_document=[
+                            self._get_population_document(sub_population)
+                            for sub_population in population.sub_populations
+                        ]
+                    )
+                ]
+                if population.sub_populations
+                else None,
+                statisticsAggregateDocument=StatisticsAggregateDocument(
+                    statistics_document=[
+                        self._get_statistics_document(statistic)
+                        for statistic in population.statistics
+                    ]
+                    if population.statistics
+                    else None,
+                ),
             ),
+            population.custom_info,
         )
 
     def _get_compensation_matrix_document(

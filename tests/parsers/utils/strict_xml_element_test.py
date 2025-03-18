@@ -178,3 +178,73 @@ def test_get_sub_text_or_none(strict_xml_element: StrictXmlElement) -> None:
     assert strict_xml_element.get_sub_text_or_none("Child1") == "abc"
 
     assert strict_xml_element.get_sub_text_or_none("missing") is None
+
+
+@pytest.fixture
+def xml_element_with_namespaces_bytes() -> bytes:
+    return b"""
+    <Root xmlns:ns1="http://example.com/ns1" xmlns:ns2="http://example.com/ns2">
+        <Element ns1:attr1="value1" ns2:attr2="value2" attr3="value3"/>
+        <ns1:Element>ns1 element content</ns1:Element>
+        <ns2:Element>ns2 element content</ns2:Element>
+    </Root>
+    """
+
+
+@pytest.fixture
+def xml_element_with_namespaces(xml_element_with_namespaces_bytes: bytes) -> Element:
+    return fromstring(xml_element_with_namespaces_bytes)
+
+
+@pytest.fixture
+def strict_xml_element_with_namespaces(
+    xml_element_with_namespaces: Element,
+) -> StrictXmlElement:
+    namespaces = {"ns1": "http://example.com/ns1", "ns2": "http://example.com/ns2"}
+    return StrictXmlElement(xml_element_with_namespaces, namespaces)
+
+
+def test_get_namespaced_attr_or_none(
+    strict_xml_element_with_namespaces: StrictXmlElement,
+) -> None:
+    element = strict_xml_element_with_namespaces.find("Element")
+
+    assert element.get_namespaced_attr_or_none("ns1", "attr1") == "value1"
+    assert element.get_namespaced_attr_or_none("ns2", "attr2") == "value2"
+
+    assert element.get_namespaced_attr_or_none("ns1", "missing") is None
+
+    assert element.get_namespaced_attr_or_none("missing_ns", "attr1") is None
+
+
+def test_get_namespaced_attr(
+    strict_xml_element_with_namespaces: StrictXmlElement,
+) -> None:
+    element = strict_xml_element_with_namespaces.find("Element")
+
+    assert element.get_namespaced_attr("ns1", "attr1") == "value1"
+    assert element.get_namespaced_attr("ns2", "attr2") == "value2"
+
+    # Test getting non-existent attribute raises exception
+    with pytest.raises(
+        AllotropeConversionError,
+        match="Unable to find 'ns1:missing' in xml file contents",
+    ):
+        element.get_namespaced_attr("ns1", "missing")
+
+    # Test getting attribute with non-existent namespace raises exception
+    with pytest.raises(
+        AllotropeConversionError,
+        match="Unable to find 'missing_ns:attr1' in xml file contents",
+    ):
+        element.get_namespaced_attr("missing_ns", "attr1")
+
+
+def test_find_with_namespaces(
+    strict_xml_element_with_namespaces: StrictXmlElement,
+) -> None:
+    ns1_element = strict_xml_element_with_namespaces.find("ns1:Element")
+    assert ns1_element.get_text_or_none() == "ns1 element content"
+
+    ns2_element = strict_xml_element_with_namespaces.find("ns2:Element")
+    assert ns2_element.get_text_or_none() == "ns2 element content"

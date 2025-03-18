@@ -125,15 +125,17 @@ def _create_populations(
         count = population.get_attr_or_none("count")
         current_id = random_uuid_str()
         gate = population.find_or_none("Gate")
+        group_identifier = population.get_attr_or_none("owningGroup")
         data_region_identifier = None
         if gate is not None:
             data_region_identifier = gate.get_namespaced_attr_or_none("gating", "id")
 
-        # Recursively get subpopulations
-        sub_populations = []
         subpops_element = population.find_or_none("Subpopulations")
         if subpops_element is not None:
+            # Recursively get subpopulations
             sub_populations = _create_populations(subpops_element, current_id)
+        else:
+            sub_populations = []
 
         pop = Population(
             population_identifier=current_id,
@@ -142,6 +144,8 @@ def _create_populations(
             data_region_identifier=data_region_identifier,
             count=int(count) if count else None,
             sub_populations=sub_populations,
+            custom_info={"group_identifier": group_identifier},
+            statistics=None,  # TODO add support for statistics documents
         )
         populations.append(pop)
 
@@ -241,7 +245,6 @@ def _create_data_regions(sample: StrictXmlElement) -> list[DataRegion]:
                 return
 
             x_dim, y_dim = _extract_dimension_identifiers(gate_element)
-
             vertices = _extract_vertices(gate_element)
 
             data_regions.append(
