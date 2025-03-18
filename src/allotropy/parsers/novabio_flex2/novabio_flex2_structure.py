@@ -7,7 +7,7 @@ from typing import Any
 
 import pandas as pd
 
-from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
+from allotropy.allotrope.schema_mappers.adm.solution_analyzer.benchling._2024._09.solution_analyzer import (
     Analyte,
     DataProcessing,
     Measurement,
