@@ -62,7 +62,7 @@ def test_create_sample() -> None:
         "CO2 Saturation": 0,  # zero here makes sure we allow falsey values
         "Unmapped column": 5,
     }
-    sample = Sample.create(None, SeriesData(pd.Series(data=data)))
+    sample = Sample.create(SeriesData(), SeriesData(pd.Series(data=data)))
 
     assert sample.identifier == "BP_R10_KP_008_D0"
     assert sample.sample_type == "Spent Media"
