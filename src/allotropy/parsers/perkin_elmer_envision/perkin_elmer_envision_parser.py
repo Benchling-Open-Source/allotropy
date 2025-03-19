@@ -7,8 +7,10 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_rea
 )
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
-from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure import (
+from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_calcdocs import (
     create_calculated_data,
+)
+from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure import (
     create_measurement_groups,
     create_metadata,
     Data as StructureData,
