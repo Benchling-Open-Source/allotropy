@@ -30,6 +30,7 @@ class CalculatedDataConfig:
     source_configs: tuple[CalculatedDataConfig | MeasurementConfig, ...]
     unit: str | None = None
     description: str | None = None
+    required: bool = False
 
     def iter_data_sources(
         self,
@@ -60,11 +61,12 @@ class CalculatedDataConfig:
         if value is None:
             return None
 
-        data_sources = [
-            data_source
-            for source_config in self.source_configs
-            for data_source in source_config.iter_data_sources(keys, elements, cache)
-        ]
+        data_sources = []
+        for s_config in self.source_configs:
+            if sources := list(s_config.iter_data_sources(keys, elements, cache)):
+                data_sources.extend(sources)
+            elif s_config.required:
+                return None
 
         if not data_sources:
             return None
@@ -104,6 +106,7 @@ class CalculatedDataConfig:
 class MeasurementConfig:
     name: str
     value: str
+    required: bool = False
 
     def iter_data_sources(
         self,
