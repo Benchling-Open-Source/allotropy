@@ -24,7 +24,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 class CytivaBiacoreT200ControlParser(VendorParser[MapperData, Model]):
     DISPLAY_NAME = constants.DISPLAY_NAME
-    RELEASE_STATE = ReleaseState.WORKING_DRAFT
+    RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "blr"
     SCHEMA_MAPPER = Mapper
 
