@@ -15,75 +15,117 @@
                                 ]
                             },
                             "measurement identifier": "NOVABIO_FLEX2_TEST_ID_0",
-                            "measurement time": "2022-06-24T14:34:52+00:00",
+                            "measurement time": "2020-01-01T16:20:00+00:00",
                             "sample document": {
-                                "sample identifier": "SMPL_1234",
-                                "batch identifier": "BATCH_123",
-                                "description": "Spent Media"
+                                "sample identifier": "Test1",
+                                "batch identifier": "1.0",
+                                "description": "Default"
                             },
                             "analyte aggregate document": {
                                 "analyte document": [
                                     {
                                         "analyte name": "ammonium",
                                         "molar concentration": {
-                                            "value": 0.48,
+                                            "value": 1.0,
                                             "unit": "mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "bicarbonate",
                                         "molar concentration": {
-                                            "value": 29.3,
+                                            "value": 1.0,
                                             "unit": "mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "calcium",
                                         "molar concentration": {
-                                            "value": 0.82,
+                                            "value": 1.0,
                                             "unit": "mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glucose",
                                         "mass concentration": {
-                                            "value": 2.65,
+                                            "value": 1.0,
                                             "unit": "g/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glutamate",
                                         "molar concentration": {
-                                            "value": 0.33,
+                                            "value": 1.0,
                                             "unit": "mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glutamine",
                                         "molar concentration": {
-                                            "value": 1.83,
+                                            "value": 1.0,
                                             "unit": "mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "lactate",
                                         "mass concentration": {
-                                            "value": 0.18,
+                                            "value": 1.0,
                                             "unit": "g/L"
                                         }
                                     },
                                     {
                                         "analyte name": "potassium",
                                         "molar concentration": {
-                                            "value": 4.22,
+                                            "value": 1.0,
                                             "unit": "mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "sodium",
                                         "molar concentration": {
-                                            "value": 151.6,
+                                            "value": 1.0,
                                             "unit": "mmol/L"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer",
+                                        "detection type": "cell-counting"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_1",
+                            "measurement time": "2020-01-01T16:20:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Test1",
+                                "batch identifier": "1.0",
+                                "description": "Default"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 1.0,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 1.0,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {
+                                            "cell type processing method": "1.0",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 1.0,
+                                            "unit": "10^6 cells/mL"
                                         }
                                     }
                                 ]
@@ -98,28 +140,49 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_1",
-                            "measurement time": "2022-06-24T14:34:52+00:00",
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_2",
+                            "measurement time": "2020-01-01T16:20:00+00:00",
                             "sample document": {
-                                "sample identifier": "SMPL_1234",
-                                "batch identifier": "BATCH_123",
-                                "description": "Spent Media"
+                                "sample identifier": "Test1",
+                                "batch identifier": "1.0",
+                                "description": "Default"
                             },
                             "pO2": {
-                                "value": 191.6,
+                                "value": 1.0,
                                 "unit": "mmHg"
                             },
                             "pCO2": {
-                                "value": 46.8,
+                                "value": 1.0,
                                 "unit": "mmHg"
                             },
                             "carbon dioxide saturation": {
-                                "value": 6.6,
+                                "value": 1.0,
                                 "unit": "%"
                             },
                             "oxygen saturation": {
-                                "value": 100.0,
+                                "value": 1.0,
                                 "unit": "%"
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer",
+                                        "detection type": "osmolality-detection"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_3",
+                            "measurement time": "2020-01-01T16:20:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Test1",
+                                "batch identifier": "1.0",
+                                "description": "Default"
+                            },
+                            "osmolality": {
+                                "value": 1.0,
+                                "unit": "mosm/kg"
                             }
                         },
                         {
@@ -131,38 +194,39 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_2",
-                            "measurement time": "2022-06-24T14:34:52+00:00",
+                            "measurement identifier": "NOVABIO_FLEX2_TEST_ID_4",
+                            "measurement time": "2020-01-01T16:20:00+00:00",
                             "sample document": {
-                                "sample identifier": "SMPL_1234",
-                                "batch identifier": "BATCH_123",
-                                "description": "Spent Media"
+                                "sample identifier": "Test1",
+                                "batch identifier": "1.0",
+                                "description": "Default"
                             },
                             "pH": {
-                                "value": 7.4,
+                                "value": 1.0,
                                 "unit": "pH"
                             },
                             "temperature": {
-                                "value": 37.0,
+                                "value": 1.0,
                                 "unit": "degC"
                             }
                         }
                     ],
-                    "data processing time": "2022-06-28T14:25:58+00:00"
+                    "data processing time": "2020-01-01T16:26:47+00:00"
                 },
-                "analyst": "ANALYST1"
+                "analyst": "user"
             }
         ],
         "data system document": {
-            "ASM file identifier": "SampleResults2022-06-28_142558.json",
+            "ASM file identifier": "SampleResultsT123456789C2020-01-01_162647.json",
             "data system instance identifier": "N/A",
-            "file name": "SampleResults2022-06-28_142558.csv",
-            "UNC path": "tests/parsers/novabio_flex2/testdata/SampleResults2022-06-28_142558.csv",
+            "file name": "SampleResultsT123456789C2020-01-01_162647.csv",
+            "UNC path": "tests/parsers/novabio_flex2/testdata/SampleResultsT123456789C2020-01-01_162647.csv",
             "ASM converter name": "allotropy_novabio_flex2",
             "ASM converter version": "0.1.79",
             "software name": "NovaBio Flex"
         },
         "device system document": {
+            "device identifier": "T123456789C",
             "model number": "Flex2",
             "product manufacturer": "Nova Biomedical"
         }
