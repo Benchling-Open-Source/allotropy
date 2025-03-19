@@ -14,6 +14,7 @@ from allotropy.allotrope.models.shared.definitions.units import (
     CountsPerSecond,
     CountsTimesSecond,
     CubicMillimeter,
+    Dalton,
     DegreeCelsius,
     GramPerLiter,
     Hertz,
@@ -158,6 +159,16 @@ class TQuantityValueCubicMillimeter(CubicMillimeter, TQuantityValue):
 
 @dataclass(frozen=True, kw_only=True)
 class TNullableQuantityValueCubicMillimeter(CubicMillimeter, TNullableQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueDalton(Dalton, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValueDalton(Dalton, TNullableQuantityValue):
     pass
 
 

@@ -12,11 +12,11 @@
                                         "device type": "binding affinity analyzer",
                                         "flow cell identifier": "1",
                                         "flow rate": {
-                                            "value": 10,
+                                            "value": 10.0,
                                             "unit": "µL/min"
                                         },
                                         "contact time": {
-                                            "value": 420,
+                                            "value": 420.0,
                                             "unit": "s"
                                         },
                                         "dilution factor": {
@@ -169,11 +169,11 @@
                                         "device type": "binding affinity analyzer",
                                         "flow cell identifier": "2",
                                         "flow rate": {
-                                            "value": 5,
+                                            "value": 5.0,
                                             "unit": "µL/min"
                                         },
                                         "contact time": {
-                                            "value": 600,
+                                            "value": 600.0,
                                             "unit": "s"
                                         },
                                         "dilution factor": {
@@ -351,11 +351,11 @@
                                         "device type": "binding affinity analyzer",
                                         "flow cell identifier": "3",
                                         "flow rate": {
-                                            "value": 5,
+                                            "value": 5.0,
                                             "unit": "µL/min"
                                         },
                                         "contact time": {
-                                            "value": 600,
+                                            "value": 600.0,
                                             "unit": "s"
                                         },
                                         "dilution factor": {
@@ -533,11 +533,11 @@
                                         "device type": "binding affinity analyzer",
                                         "flow cell identifier": "4",
                                         "flow rate": {
-                                            "value": 5,
+                                            "value": 5.0,
                                             "unit": "µL/min"
                                         },
                                         "contact time": {
-                                            "value": 600,
+                                            "value": 600.0,
                                             "unit": "s"
                                         },
                                         "dilution factor": {
@@ -720,13 +720,1217 @@
                 "analyst": "Administrator"
             }
         ],
+        "calculated data aggregate document": {
+            "calculated data document": [
+                {
+                    "calculated data name": "Min Resonance",
+                    "calculated result": {
+                        "value": 25827.41015625,
+                        "unit": "RU"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_19",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_1",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Min Resonance",
+                    "calculated result": {
+                        "value": 25962.01953125,
+                        "unit": "RU"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_20",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_2",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Min Resonance",
+                    "calculated result": {
+                        "value": 25996.630859375,
+                        "unit": "RU"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_21",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_3",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Min Resonance",
+                    "calculated result": {
+                        "value": 25571.9609375,
+                        "unit": "RU"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_22",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_5",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Min Resonance",
+                    "calculated result": {
+                        "value": 25704.470703125,
+                        "unit": "RU"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_23",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_6",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Min Resonance",
+                    "calculated result": {
+                        "value": 38434.078125,
+                        "unit": "RU"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_24",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_7",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Min Resonance",
+                    "calculated result": {
+                        "value": 31725.619140625,
+                        "unit": "RU"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_25",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_8",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Min Resonance",
+                    "calculated result": {
+                        "value": 25323.779296875,
+                        "unit": "RU"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_26",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_10",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Min Resonance",
+                    "calculated result": {
+                        "value": 25454.009765625,
+                        "unit": "RU"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_27",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_11",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Min Resonance",
+                    "calculated result": {
+                        "value": 38082.51171875,
+                        "unit": "RU"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_28",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_12",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Min Resonance",
+                    "calculated result": {
+                        "value": 31379.330078125,
+                        "unit": "RU"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_29",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_13",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Min Resonance",
+                    "calculated result": {
+                        "value": 25574.720703125,
+                        "unit": "RU"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_30",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_15",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Min Resonance",
+                    "calculated result": {
+                        "value": 25703.140625,
+                        "unit": "RU"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_31",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_16",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Min Resonance",
+                    "calculated result": {
+                        "value": 38232.578125,
+                        "unit": "RU"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_32",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_17",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Min Resonance",
+                    "calculated result": {
+                        "value": 31539.609375,
+                        "unit": "RU"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_33",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_18",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max Resonance",
+                    "calculated result": {
+                        "value": 25827.4609375,
+                        "unit": "RU"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_34",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_1",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max Resonance",
+                    "calculated result": {
+                        "value": 25962.130859375,
+                        "unit": "RU"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_35",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_2",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max Resonance",
+                    "calculated result": {
+                        "value": 25996.91015625,
+                        "unit": "RU"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_36",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_3",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max Resonance",
+                    "calculated result": {
+                        "value": 25571.970703125,
+                        "unit": "RU"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_37",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_5",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max Resonance",
+                    "calculated result": {
+                        "value": 25704.69921875,
+                        "unit": "RU"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_38",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_6",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max Resonance",
+                    "calculated result": {
+                        "value": 38449.98046875,
+                        "unit": "RU"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_39",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_7",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max Resonance",
+                    "calculated result": {
+                        "value": 31726.2109375,
+                        "unit": "RU"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_40",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_8",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max Resonance",
+                    "calculated result": {
+                        "value": 25323.8203125,
+                        "unit": "RU"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_41",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_10",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max Resonance",
+                    "calculated result": {
+                        "value": 25454.130859375,
+                        "unit": "RU"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_42",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_11",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max Resonance",
+                    "calculated result": {
+                        "value": 38098.2890625,
+                        "unit": "RU"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_43",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_12",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max Resonance",
+                    "calculated result": {
+                        "value": 31379.859375,
+                        "unit": "RU"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_44",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_13",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max Resonance",
+                    "calculated result": {
+                        "value": 25574.73046875,
+                        "unit": "RU"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_45",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_15",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max Resonance",
+                    "calculated result": {
+                        "value": 25703.310546875,
+                        "unit": "RU"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_46",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_16",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max Resonance",
+                    "calculated result": {
+                        "value": 38248.01953125,
+                        "unit": "RU"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_47",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_17",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Max Resonance",
+                    "calculated result": {
+                        "value": 31540.099609375,
+                        "unit": "RU"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_48",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_18",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "LRSD",
+                    "calculated result": {
+                        "value": 0.00252866364383182,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_49",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_1",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "LRSD",
+                    "calculated result": {
+                        "value": 0.00660001441861069,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_50",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_2",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "LRSD",
+                    "calculated result": {
+                        "value": 0.00269556499220632,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_51",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_3",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "LRSD",
+                    "calculated result": {
+                        "value": 0.00356589934652251,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_52",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_5",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "LRSD",
+                    "calculated result": {
+                        "value": 0.0133641488142341,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_53",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_6",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "LRSD",
+                    "calculated result": {
+                        "value": 0.0344115476917282,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_54",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_7",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "LRSD",
+                    "calculated result": {
+                        "value": 0.00375933290797638,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_55",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_8",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "LRSD",
+                    "calculated result": {
+                        "value": 0.00584074418971865,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_56",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_10",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "LRSD",
+                    "calculated result": {
+                        "value": 0.00799975427963724,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_57",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_11",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "LRSD",
+                    "calculated result": {
+                        "value": 0.00847283257735179,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_58",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_12",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "LRSD",
+                    "calculated result": {
+                        "value": 0.0071318068547487,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_59",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_13",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "LRSD",
+                    "calculated result": {
+                        "value": 0.00316083128122476,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_60",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_15",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "LRSD",
+                    "calculated result": {
+                        "value": 0.00603048598343489,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_61",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_16",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "LRSD",
+                    "calculated result": {
+                        "value": 0.0466590378930711,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_62",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_17",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "LRSD",
+                    "calculated result": {
+                        "value": 0.00508777414308328,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_63",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_18",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Slope",
+                    "calculated result": {
+                        "value": 0.0177455357142857,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_64",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_1",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Slope",
+                    "calculated result": {
+                        "value": -0.0346540178571429,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_65",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_2",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Slope",
+                    "calculated result": {
+                        "value": 0.0926339285714286,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_66",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_3",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Slope",
+                    "calculated result": {
+                        "value": 0.00390625,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_67",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_5",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Slope",
+                    "calculated result": {
+                        "value": -0.0729352678571429,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_68",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_6",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Slope",
+                    "calculated result": {
+                        "value": -5.29988839285714,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_69",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_7",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Slope",
+                    "calculated result": {
+                        "value": -0.199274553571429,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_70",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_8",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Slope",
+                    "calculated result": {
+                        "value": 0.0111049107142857,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_71",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_10",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Slope",
+                    "calculated result": {
+                        "value": -0.0416294642857143,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_72",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_11",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Slope",
+                    "calculated result": {
+                        "value": -5.25792410714286,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_73",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_12",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Slope",
+                    "calculated result": {
+                        "value": -0.171875,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_74",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_13",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Slope",
+                    "calculated result": {
+                        "value": 0.00223214285714286,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_75",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_15",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Slope",
+                    "calculated result": {
+                        "value": -0.055078125,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_76",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_16",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Slope",
+                    "calculated result": {
+                        "value": -5.14095982142857,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_77",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_17",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Slope",
+                    "calculated result": {
+                        "value": -0.163783482142857,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_78",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_18",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "SD",
+                    "calculated result": {
+                        "value": 0.033275808692102,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_79",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_1",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "SD",
+                    "calculated result": {
+                        "value": 0.0650999346390748,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_80",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_2",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "SD",
+                    "calculated result": {
+                        "value": 0.173318981607669,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_81",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_3",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "SD",
+                    "calculated result": {
+                        "value": 0.00797359844978249,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_82",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_5",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "SD",
+                    "calculated result": {
+                        "value": 0.136971956690774,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_83",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_6",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "SD",
+                    "calculated result": {
+                        "value": 9.91523104835627,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_84",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_7",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "SD",
+                    "calculated result": {
+                        "value": 0.372823715743718,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_85",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_8",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "SD",
+                    "calculated result": {
+                        "value": 0.0214221399737442,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_86",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_10",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "SD",
+                    "calculated result": {
+                        "value": 0.0782095895228464,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_87",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_11",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "SD",
+                    "calculated result": {
+                        "value": 9.83667820652747,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_88",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_12",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "SD",
+                    "calculated result": {
+                        "value": 0.321611947574574,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_89",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_13",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "SD",
+                    "calculated result": {
+                        "value": 0.0050429455263887,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_90",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_15",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "SD",
+                    "calculated result": {
+                        "value": 0.103182812988704,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_91",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_16",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "SD",
+                    "calculated result": {
+                        "value": 9.61794568772635,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_92",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_17",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "SD",
+                    "calculated result": {
+                        "value": 0.306444627847387,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_93",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_18",
+                                "data source feature": "Absolute Resonance"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
         "data system document": {
             "ASM file identifier": "Fig.5a_HD_immobilization Her2-Her3.json",
             "data system instance identifier": "N/A",
             "file name": "Fig.5a_HD_immobilization Her2-Her3.blr",
             "UNC path": "tests/parsers/cytiva_biacore_t200_control/testdata/Fig.5a_HD_immobilization Her2-Her3.blr",
             "ASM converter name": "allotropy_cytiva_biacore_t200_control",
-            "ASM converter version": "0.1.76",
+            "ASM converter version": "0.1.79",
             "software name": "Biacore T200 Control Software",
             "software version": "2.0.1"
         },

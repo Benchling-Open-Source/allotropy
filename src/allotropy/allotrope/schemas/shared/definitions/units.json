@@ -95,6 +95,18 @@
       "unit"
     ]
   },
+  "Dalton": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "Da",
+        "$asm.unit-iri": "http://qudt.org/vocab/unit#Dalton"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
   "DegreeCelsius": {
     "properties": {
       "unit": {
