@@ -18,6 +18,7 @@ from allotropy.exceptions import (
     AllotropeConversionError,
     AllotropeParsingError,
 )
+from allotropy.parsers.utils.encoding import determine_encoding
 from allotropy.parsers.utils.iterables import get_first_not_none
 from allotropy.parsers.utils.values import (
     assert_is_type,
@@ -159,24 +160,39 @@ def _normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
 def read_csv(
     # types for filepath_or_buffer match those in pd.read_csv()
     filepath_or_buffer: FilePath | ReadCsvBuffer[bytes] | ReadCsvBuffer[str],
+    encoding: str | None = None,
     **kwargs: Any,
 ) -> pd.DataFrame:
     """Wrap pd.read_csv() and raise AllotropeParsingError for failures.
 
     pd.read_csv() can return a DataFrame or TextFileReader. The latter is intentionally not supported.
     """
-    try:
-        df_or_reader = pd.read_csv(filepath_or_buffer, **kwargs)
-    except Exception as e:
-        msg = f"Error calling pd.read_csv(): {e}"
-        raise AllotropeParsingError(msg) from e
-    return _normalize_columns(
-        assert_is_type(
-            df_or_reader,
-            pd.DataFrame,
-            "pd.read_csv() returned a TextFileReader, which is not supported.",
+    encodings = [None]
+    if encoding:
+        contents = filepath_or_buffer.read()
+        encodings = (
+            determine_encoding(contents, encoding)
+            if isinstance(contents, bytes)
+            else None
         )
-    )
+        filepath_or_buffer.seek(0)
+    for encoding in encodings:
+        if encoding is not None:
+            kwargs["encoding"] = encoding
+        try:
+            df_or_reader = pd.read_csv(filepath_or_buffer, **kwargs)
+        except Exception as e:
+            if encoding != encodings[-1]:
+                continue
+            msg = f"Error calling pd.read_csv(): {e}"
+            raise AllotropeParsingError(msg) from e
+        return _normalize_columns(
+            assert_is_type(
+                df_or_reader,
+                pd.DataFrame,
+                "pd.read_csv() returned a TextFileReader, which is not supported.",
+            )
+        )
 
 
 def read_excel(
