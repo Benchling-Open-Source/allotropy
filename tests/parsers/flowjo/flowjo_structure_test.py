@@ -366,10 +366,13 @@ def test_extract_vertices() -> None:
     gate = population.find_or_none("Gate")
     assert gate is not None
 
+    gate_type = _get_gate_type(gate)
+    assert gate_type == RegionType.POLYGON.value
+
     polygon_gate = gate.find_or_none(f"gating:{RegionType.POLYGON.value}Gate")
     assert polygon_gate is not None
 
-    vertices = _extract_vertices(polygon_gate)
+    vertices = _extract_vertices(polygon_gate, gate_type)
 
     assert vertices is not None
     assert len(vertices) == 3
@@ -382,6 +385,39 @@ def test_extract_vertices() -> None:
 
     assert vertices[2].x_coordinate == 500.0
     assert vertices[2].y_coordinate == 600.0
+
+
+def test_extract_vertices_rectangle() -> None:
+    root_element = load_sample_xml()
+
+    sample = root_element.recursive_find_or_none(["SampleList", "Sample"])
+    assert sample is not None
+
+    t_cell_population = sample.recursive_find_or_none(
+        ["SampleNode", "Subpopulations", "Population", "Subpopulations", "Population"]
+    )
+    assert t_cell_population is not None
+
+    gate = t_cell_population.find_or_none("Gate")
+    assert gate is not None
+
+    gate_type = _get_gate_type(gate)
+    assert gate_type == RegionType.RECTANGLE.value
+
+    rectangle_gate = gate.find_or_none(f"gating:{RegionType.RECTANGLE.value}Gate")
+    assert rectangle_gate is not None
+
+    vertices = _extract_vertices(rectangle_gate, gate_type)
+
+    assert vertices is not None
+    assert len(vertices) == 4  # Rectangle should have 4 vertices
+
+    # Check for corners of the rectangle (0,0) to (1000,1000)
+    corners = [(0.0, 0.0), (0.0, 1000.0), (1000.0, 1000.0), (1000.0, 0.0)]
+
+    for i, (expected_x, expected_y) in enumerate(corners):
+        assert vertices[i].x_coordinate == expected_x
+        assert vertices[i].y_coordinate == expected_y
 
 
 def test_create_measurement_groups() -> None:

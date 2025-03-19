@@ -23,6 +23,7 @@ class RegionType(Enum):
     RECTANGLE = "Rectangle"
     POLYGON = "Polygon"
     ELLIPSOID = "Ellipsoid"
+    CURLY_QUAD = "CurlyQuad"
 
 
 def create_metadata(root_element: StrictXmlElement, file_path: str) -> Metadata:
@@ -201,32 +202,145 @@ def _get_gate_type(gate_element: StrictXmlElement) -> str | None:
     return None
 
 
-def _extract_vertices(gate_element: StrictXmlElement) -> list[Vertex] | None:
+def _extract_vertices(
+    gate_element: StrictXmlElement, gate_type: str | None
+) -> list[Vertex] | None:
+    """
+    Extract vertex coordinates from a gate element.
+
+    Handles different gate types:
+    - Polygon: Extract vertices from gating:vertex elements
+    - Rectangle: Extract min/max coordinates to create 4 vertices
+    - CurlyQuad: Extract min/max coordinates to create a vertex
+    - Ellipsoid: Not supported yet (TODO)
+
+    Returns:
+        list[Vertex] | None: List of vertices if found, None otherwise
+    """
     vertices = []
-    vertex_pairs = []
 
-    vertex_elements = gate_element.findall("gating:vertex")
+    # For Polygon gates, extract vertices from vertex elements
+    if gate_type == RegionType.POLYGON.value:
+        vertex_elements = gate_element.findall("gating:vertex")
 
-    if not vertex_elements:
+        if not vertex_elements:
+            return None
+
+        for vertex in vertex_elements:
+            coordinates = vertex.findall("gating:coordinate")
+            if len(coordinates) >= 2:
+                x_coord = coordinates[0].get_namespaced_attr_or_none(
+                    "data-type", "value"
+                )
+                y_coord = coordinates[1].get_namespaced_attr_or_none(
+                    "data-type", "value"
+                )
+                if x_coord and y_coord:
+                    vertices.append(
+                        Vertex(
+                            x_coordinate=float(x_coord),
+                            y_coordinate=float(y_coord),
+                        )
+                    )
+
+        return vertices if vertices else None
+
+    # For Rectangle and CurlyQuad gates, extract min/max coordinates
+    elif gate_type in [RegionType.RECTANGLE.value, RegionType.CURLY_QUAD.value]:
+        x_min = None
+        x_max = None
+        y_min = None
+        y_max = None
+
+        dimension_elements = gate_element.findall("gating:dimension")
+
+        if len(dimension_elements) > 0:
+            # First dimension (X)
+            x_dimension = dimension_elements[0]
+
+            x_min_element = x_dimension.find_or_none("gating:min")
+            if x_min_element is not None:
+                x_min_value = x_min_element.get_namespaced_attr_or_none(
+                    "data-type", "value"
+                )
+                if x_min_value is not None:
+                    x_min = float(x_min_value)
+            else:
+                x_min_value = x_dimension.get_namespaced_attr_or_none("gating", "min")
+                if x_min_value is not None:
+                    x_min = float(x_min_value)
+
+            x_max_element = x_dimension.find_or_none("gating:max")
+            if x_max_element is not None:
+                x_max_value = x_max_element.get_namespaced_attr_or_none(
+                    "data-type", "value"
+                )
+                if x_max_value is not None:
+                    x_max = float(x_max_value)
+            else:
+                x_max_value = x_dimension.get_namespaced_attr_or_none("gating", "max")
+                if x_max_value is not None:
+                    x_max = float(x_max_value)
+
+        if len(dimension_elements) > 1:
+            # Second dimension (Y)
+            y_dimension = dimension_elements[1]
+
+            y_min_element = y_dimension.find_or_none("gating:min")
+            if y_min_element is not None:
+                y_min_value = y_min_element.get_namespaced_attr_or_none(
+                    "data-type", "value"
+                )
+                if y_min_value is not None:
+                    y_min = float(y_min_value)
+            else:
+                y_min_value = y_dimension.get_namespaced_attr_or_none("gating", "min")
+                if y_min_value is not None:
+                    y_min = float(y_min_value)
+
+            y_max_element = y_dimension.find_or_none("gating:max")
+            if y_max_element is not None:
+                y_max_value = y_max_element.get_namespaced_attr_or_none(
+                    "data-type", "value"
+                )
+                if y_max_value is not None:
+                    y_max = float(y_max_value)
+            else:
+                y_max_value = y_dimension.get_namespaced_attr_or_none("gating", "max")
+                if y_max_value is not None:
+                    y_max = float(y_max_value)
+
+        if (
+            x_min is not None
+            and y_min is not None
+            and x_max is not None
+            and y_max is not None
+        ):
+            # Full rectangle with all corners
+            vertices = [
+                Vertex(x_coordinate=x_min, y_coordinate=y_min),
+                Vertex(x_coordinate=x_min, y_coordinate=y_max),
+                Vertex(x_coordinate=x_max, y_coordinate=y_max),
+                Vertex(x_coordinate=x_max, y_coordinate=y_min),
+            ]
+        elif x_min is not None and y_min is not None:
+            vertices = [Vertex(x_coordinate=x_min, y_coordinate=y_min)]
+        elif x_min is not None and y_max is not None:
+            vertices = [Vertex(x_coordinate=x_min, y_coordinate=y_max)]
+        elif x_max is not None and y_min is not None:
+            vertices = [Vertex(x_coordinate=x_max, y_coordinate=y_min)]
+        elif x_max is not None and y_max is not None:
+            vertices = [Vertex(x_coordinate=x_max, y_coordinate=y_max)]
+        else:
+            return None
+
+        return vertices if vertices else None
+
+    # TODO: Add support for Ellipsoid gates
+    elif gate_type == RegionType.ELLIPSOID.value:
         return None
 
-    for vertex in vertex_elements:
-        coordinates = vertex.findall("gating:coordinate")
-        if len(coordinates) >= 2:
-            x_coord = coordinates[0].get_namespaced_attr_or_none("data-type", "value")
-            y_coord = coordinates[1].get_namespaced_attr_or_none("data-type", "value")
-            if x_coord and y_coord:
-                vertex_pairs.append((float(x_coord), float(y_coord)))
-
-    for x, y in vertex_pairs:
-        vertices.append(
-            Vertex(
-                x_coordinate=x,
-                y_coordinate=y,
-            )
-        )
-
-    return vertices
+    return None
 
 
 def _create_data_regions(sample: StrictXmlElement) -> list[DataRegion]:
@@ -245,7 +359,7 @@ def _create_data_regions(sample: StrictXmlElement) -> list[DataRegion]:
                 return
 
             x_dim, y_dim = _extract_dimension_identifiers(gate_element)
-            vertices = _extract_vertices(gate_element)
+            vertices = _extract_vertices(gate_element, gate_type)
 
             data_regions.append(
                 DataRegion(
