@@ -27,7 +27,6 @@ import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
-from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
     Measurement,
     MeasurementGroup,
@@ -39,11 +38,6 @@ from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.perkin_elmer_envision import constants
-from allotropy.parsers.utils.calculated_data_documents.definition import (
-    CalculatedDocument,
-    DataSource,
-    Referenceable,
-)
 from allotropy.parsers.utils.pandas import (
     df_to_series_data,
     map_rows,
@@ -784,30 +778,5 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
         for well_location in sorted(
             well_loc_measurements.keys(),
             key=lambda key: (key[0], key[1][0], int(key[1][1:])),
-        )
-    ]
-
-
-def create_calculated_data(
-    plate_list: PlateList, read_type: ReadType
-) -> list[CalculatedDocument]:
-    return [
-        CalculatedDocument(
-            uuid=calculated_result.uuid,
-            name=calculated_plate.plate_info.name,
-            description=calculated_plate.plate_info.formula,
-            value=calculated_result.value,
-            unit=UNITLESS,
-            data_sources=[
-                DataSource(
-                    reference=Referenceable(source_result.uuid),
-                    feature=read_type.value,
-                )
-                for source_result in source_results
-            ],
-        )
-        for calculated_plate in plate_list.calculated
-        for calculated_result, source_results in calculated_plate.get_result_and_sources(
-            plate_list
         )
     ]
