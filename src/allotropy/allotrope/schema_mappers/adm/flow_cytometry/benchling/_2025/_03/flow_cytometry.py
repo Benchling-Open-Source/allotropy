@@ -179,7 +179,9 @@ class Mapper(SchemaMapper[Data, Model]):
                     for measurement in measurement_group.measurements
                 ],
                 analyst=measurement_group.analyst,
-                measurement_time=self.get_date_time(measurement_group.measurement_time),
+                measurement_time=self.get_date_time(measurement_group.measurement_time)
+                if measurement_group.measurement_time
+                else None,
                 experimental_data_identifier=measurement_group.experimental_data_identifier,
             ),
             compensation_matrix_aggregate_document=CompensationMatrixAggregateDocument(

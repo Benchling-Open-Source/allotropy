@@ -344,7 +344,7 @@ def _extract_vertices(
 
 
 def _create_data_regions(sample: StrictXmlElement) -> list[DataRegion]:
-    data_regions = []
+    data_regions: list[DataRegion] = []
     sample_node = sample.find_or_none("SampleNode")
     if sample_node is None:
         return data_regions
