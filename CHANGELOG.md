@@ -5,6 +5,34 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.80] - 2025-03-19
+
+### Added
+
+- Cytiva Biacore T200 Control - Update release status to recommended (#933)
+- Cytiva Biacore T200 Control: add calculated data (#931)
+- MSD Methodical Mind - handle export formats with missing spots and spot legend (#909)
+- AppBio QuantStudio Design & Analysis - implement RT-PCR parsing (#928)
+- MSD Methodical Mind - handle oddly parsed whitespace characters in header with more robust header parsing (#929)
+- AppBio QuantStudio RT-PCR - improve logic handling splitting header and data in reader (#921)
+
+### Changed
+
+- BMG Labtech SMART Control - migrate calc data docs to use lib (#927)
+- MSD Discovery Workbench - migrate to calculated data lib (#919)
+
+## [0.1.79] - 2025-03-11
+
+### Fixed
+
+- ChemoMetec Nucleoview - add validation for cell viability field. (#918)
+
+### Changed
+
+- Benchling Thermo Fisher Scientific Chromeleon - update DeviceDocument to follow schema mapper pattern (#920)
+- AppBio QuantStudio RT-PCR - use calcdocs library (#917)
+- AppBio QuantStudio Design & Analysis - use calcdocs library (#883)
+
 ## [0.1.78] - 2025-03-04
 
 ### Fixed

@@ -79,7 +79,7 @@ def create_measurement_groups(plate_data: PlateData) -> list[MeasurementGroup]:
         return Measurement(
             type_=MeasurementType.LUMINESCENCE,
             identifier=random_uuid_str(),
-            luminescence=row[int, "Signal"],
+            luminescence=row[float, "Signal"],
             sample_identifier=sample_id,
             location_identifier=row[str, "Spot"],
             well_location_identifier=row[str, "Well"],

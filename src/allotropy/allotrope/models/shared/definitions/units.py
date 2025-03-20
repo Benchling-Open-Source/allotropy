@@ -50,6 +50,11 @@ class CubicMillimeter(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class Dalton(HasUnit):
+    unit: str = "Da"
+
+
+@dataclass(frozen=True, kw_only=True)
 class DegreeCelsius(HasUnit):
     unit: str = "degC"
 
@@ -67,6 +72,11 @@ class Hertz(HasUnit):
 @dataclass(frozen=True, kw_only=True)
 class KiloDalton(HasUnit):
     unit: str = "kDa"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KiloPascal(HasUnit):
+    unit: str = "kPa"
 
 
 @dataclass(frozen=True, kw_only=True)

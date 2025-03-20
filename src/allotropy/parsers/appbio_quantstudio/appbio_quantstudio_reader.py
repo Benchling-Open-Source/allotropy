@@ -18,7 +18,7 @@ from allotropy.parsers.utils.pandas import (
     split_dataframe,
     split_header_and_data,
 )
-from allotropy.parsers.utils.values import assert_not_none
+from allotropy.parsers.utils.values import assert_not_none, try_int_or_none
 
 
 class AppBioQuantStudioReader:
@@ -29,21 +29,29 @@ class AppBioQuantStudioReader:
     @staticmethod
     def create(named_file_contents: NamedFileContents) -> AppBioQuantStudioReader:
         if named_file_contents.extension == "xlsx":
-            return AppBioQuantStudioXLSXReader(named_file_contents)
+            raw_contents = read_multisheet_excel(
+                named_file_contents.contents,
+                header=None,
+                engine="calamine",
+            )
+            contents = {
+                name: df.replace(np.nan, None) for name, df in raw_contents.items()
+            }
+            return AppBioQuantStudioXLSXReader(contents)
         else:
             return AppBioQuantStudioTXTReader(named_file_contents)
 
 
 class AppBioQuantStudioXLSXReader(AppBioQuantStudioReader):
-    def __init__(self, named_file_contents: NamedFileContents) -> None:
-        raw_contents = read_multisheet_excel(
-            named_file_contents.contents,
-            header=None,
-            engine="calamine",
-        )
-        contents = {name: df.replace(np.nan, None) for name, df in raw_contents.items()}
-        self.header = self.get_header(contents)
-        self.sections = self.get_sections(contents)
+    def __init__(
+        self,
+        contents: dict[str, pd.DataFrame],
+        header: SeriesData | None = None,
+        sections: dict[str, pd.DataFrame] | None = None,
+    ) -> None:
+        self.contents = contents
+        self.header = header or self.get_header(contents)
+        self.sections = sections or self.get_sections(contents)
 
     def get_header(self, contents: dict[str, pd.DataFrame]) -> SeriesData:
         sheet = next(iter(contents.values()))
@@ -58,7 +66,10 @@ class AppBioQuantStudioXLSXReader(AppBioQuantStudioReader):
             _, data = split_header_and_data(sheet, lambda row: row[0] is None)
             if name == "Results":
                 data = data.reset_index(drop=True)
-                data, metadata = split_dataframe(data, lambda row: row[0] is None)
+                data, metadata = split_dataframe(
+                    data,
+                    lambda row: row[0] != "Well" and try_int_or_none(row[0]) is None,
+                )
                 if metadata is not None:
                     sections["Results Metadata"] = parse_header_row(metadata.T)
 

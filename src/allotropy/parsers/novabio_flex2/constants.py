@@ -53,7 +53,9 @@ DETECTION_PROPERTY_MAPPING = {
     "metabolite-detection": ["analytes"],
     "blood-gas-detection": [
         "po2",
+        "po2_unit",
         "pco2",
+        "pco2_unit",
         "carbon_dioxide_saturation",
         "oxygen_saturation",
     ],
@@ -65,7 +67,9 @@ DETECTION_PROPERTY_MAPPING = {
     "cell-counting": [
         "viability",
         "total_cell_density",
+        "total_cell_density_unit",
         "viable_cell_density",
+        "viable_cell_density_unit",
         "average_live_cell_diameter",
         "total_cell_count",
         "viable_cell_count",

@@ -95,6 +95,18 @@
       "unit"
     ]
   },
+  "Dalton": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "Da",
+        "$asm.unit-iri": "http://qudt.org/vocab/unit#Dalton"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
   "DegreeCelsius": {
     "properties": {
       "unit": {
@@ -137,6 +149,18 @@
         "type": "string",
         "const": "kDa",
         "$asm.unit-iri": "TODO"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
+  "KiloPascal": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "kPa",
+        "$asm.unit-iri": "http://qudt.org/vocab/unit#KiloPascal"
       }
     },
     "required": [
