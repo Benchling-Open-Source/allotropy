@@ -345,11 +345,13 @@ def _extract_vertices(
 
 def _create_data_regions(sample: StrictXmlElement) -> list[DataRegion]:
     data_regions = []
+    sample_node = sample.find_or_none("SampleNode")
+    if sample_node is None:
+        return data_regions
 
     def process_population(population: StrictXmlElement) -> None:
         gate = population.find_or_none("Gate")
         if gate is not None:
-
             gate_type = _get_gate_type(gate)
             if gate_type is None:
                 return
@@ -376,14 +378,15 @@ def _create_data_regions(sample: StrictXmlElement) -> list[DataRegion]:
                 )
             )
 
-        # Process subpopulations recursively
-        for subpop in population.findall(".//Population"):
-            process_population(subpop)
+        subpops_element = population.find_or_none("Subpopulations")
+        if subpops_element is not None:
+            for subpop in subpops_element.findall("Population"):
+                process_population(subpop)
 
-    # Start processing from all populations in the sample
-    populations = sample.findall(".//Population")
-    for population in populations:
-        process_population(population)
+    subpops_element = sample_node.find_or_none("Subpopulations")
+    if subpops_element is not None:
+        for population in subpops_element.findall("Population"):
+            process_population(population)
 
     return data_regions
 

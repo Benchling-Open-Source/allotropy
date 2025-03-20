@@ -179,7 +179,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     for measurement in measurement_group.measurements
                 ],
                 analyst=measurement_group.analyst,
-                measurement_time=measurement_group.measurement_time,
+                measurement_time=self.get_date_time(measurement_group.measurement_time),
                 experimental_data_identifier=measurement_group.experimental_data_identifier,
             ),
             compensation_matrix_aggregate_document=CompensationMatrixAggregateDocument(
@@ -297,7 +297,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 written_name=population.written_name,
                 data_region_identifier=population.data_region_identifier,
                 count=quantity_or_none(TQuantityValueCounts, value=population.count)
-                if population.count
+                if population.count is not None
                 else None,
                 parent_population_identifier=population.parent_population_identifier,
                 population_aggregate_document=[
@@ -334,7 +334,7 @@ class Mapper(SchemaMapper[Data, Model]):
                         compensation_value=TQuantityValueUnitless(
                             value=compensation.compensation_value
                         )
-                        if compensation.compensation_value
+                        if compensation.compensation_value is not None
                         else None,
                     )
                     for compensation in compensation_matrix_group.compensation_matrices

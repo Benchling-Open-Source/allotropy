@@ -230,7 +230,7 @@ def test_create_data_regions() -> None:
     data_regions = _create_data_regions(sample)
 
     assert data_regions is not None
-    assert len(data_regions) == 3
+    assert len(data_regions) == 2
 
     lymphocyte_region = next(
         (r for r in data_regions if r.region_data_identifier == "ID123"), None
@@ -451,4 +451,4 @@ def test_create_measurement_groups() -> None:
     assert root_population.count == 10000
 
     assert measurement.data_regions is not None
-    assert len(measurement.data_regions) == 3
+    assert len(measurement.data_regions) == 2
