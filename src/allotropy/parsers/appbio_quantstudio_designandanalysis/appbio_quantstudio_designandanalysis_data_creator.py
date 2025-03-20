@@ -161,6 +161,7 @@ def _create_measurement(well: Well, well_item: WellItem, data: Data) -> Measurem
         reporter_dye_data_cube=reporter_dye_data_cube,
         passive_reference_dye_data_cube=passive_reference_dye_data_cube,
         melting_curve_data_cube=_create_melt_curve_data_cube(well_item.melt_curve_data),
+        sample_custom_info=well_item.sample_custom_info,
     )
 
 
