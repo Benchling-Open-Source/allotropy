@@ -39,6 +39,7 @@ def _replace_asm_converter_version(allotrope_dict: DictType) -> DictType:
 # Currently, only "measurement identifier" and "calculated data document" identifier should be unique.
 # However, it is better to have positive exceptions, so we don't accidentally miss a newly added unique identifier.
 NON_UNIQUE_IDENTIFIERS = {
+    "acquisition method identifier",
     "analytical method identifier",
     "assay bead identifier",
     "batch identifier",

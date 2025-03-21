@@ -9,6 +9,9 @@ from allotropy.parsers.agilent_gen5.agilent_gen5_parser import AgilentGen5Parser
 from allotropy.parsers.agilent_gen5_image.agilent_gen5_image_parser import (
     AgilentGen5ImageParser,
 )
+from allotropy.parsers.agilent_openlab_cds.agilent_openlab_cds_parser import (
+    AgilentOpenLabCDSParser,
+)
 from allotropy.parsers.agilent_tapestation_analysis.agilent_tapestation_analysis_parser import (
     AgilentTapestationAnalysisParser,
 )
@@ -116,6 +119,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 class Vendor(Enum):
     AGILENT_GEN5 = "AGILENT_GEN5"
     AGILENT_GEN5_IMAGE = "AGILENT_GEN5_IMAGE"
+    AGILENT_OPENLAB_CDS = "AGILENT_OPENLAB_CDS"
     AGILENT_TAPESTATION_ANALYSIS = "AGILENT_TAPESTATION_ANALYSIS"
     APPBIO_ABSOLUTE_Q = "APPBIO_ABSOLUTE_Q"
     APPBIO_QUANTSTUDIO = "APPBIO_QUANTSTUDIO"
@@ -207,6 +211,7 @@ class Vendor(Enum):
 _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser[Any, Any]]] = {
     Vendor.AGILENT_GEN5: AgilentGen5Parser,
     Vendor.AGILENT_GEN5_IMAGE: AgilentGen5ImageParser,
+    Vendor.AGILENT_OPENLAB_CDS: AgilentOpenLabCDSParser,
     Vendor.AGILENT_TAPESTATION_ANALYSIS: AgilentTapestationAnalysisParser,
     Vendor.APPBIO_ABSOLUTE_Q: AppbioAbsoluteQParser,
     Vendor.APPBIO_QUANTSTUDIO: AppBioQuantStudioParser,
