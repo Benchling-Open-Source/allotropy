@@ -39,13 +39,13 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
-from allotropy.parsers.utils.values import quantity_or_none
+from allotropy.parsers.utils.values import quantity_or_none, quantity_or_none_from_unit
 
 
 @dataclass(frozen=True)
 class Vertex:
-    x_coordinate: float
-    y_coordinate: float
+    x_coordinate: TQuantityValueRelativeFluorescenceUnit | TQuantityValueSecondTime | None
+    y_coordinate: TQuantityValueRelativeFluorescenceUnit | TQuantityValueSecondTime | None
 
 
 @dataclass(frozen=True)
@@ -258,8 +258,6 @@ class Mapper(SchemaMapper[Data, Model]):
                 vertex_document=[
                     self._get_vertex_document(
                         vertex,
-                        data_region.x_coordinate_dimension_identifier,
-                        data_region.y_coordinate_dimension_identifier,
                     )
                     for vertex in data_region.vertices
                 ]
@@ -269,25 +267,11 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_vertex_document(
-        self, vertex: Vertex, x_dim: str | None, y_dim: str | None
+        self, vertex: Vertex
     ) -> VertexDocumentItem:
-        x_val: TQuantityValueSecondTime | TQuantityValueRelativeFluorescenceUnit | None = quantity_or_none(
-            TQuantityValueRelativeFluorescenceUnit, value=vertex.x_coordinate
-        )
-        y_val: TQuantityValueSecondTime | TQuantityValueRelativeFluorescenceUnit | None = quantity_or_none(
-            TQuantityValueRelativeFluorescenceUnit, value=vertex.y_coordinate
-        )
-        if x_dim is not None and x_dim.lower() == "time":
-            x_val = quantity_or_none(
-                TQuantityValueSecondTime, value=vertex.x_coordinate
-            )
-        if y_dim is not None and y_dim.lower() == "time":
-            y_val = quantity_or_none(
-                TQuantityValueSecondTime, value=vertex.y_coordinate
-            )
         return VertexDocumentItem(
-            x_coordinate=x_val,
-            y_coordinate=y_val,
+            x_coordinate=vertex.x_coordinate,
+            y_coordinate=vertex.y_coordinate,
         )
 
     def _get_population_document(
@@ -298,9 +282,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 population_identifier=population.population_identifier,
                 written_name=population.written_name,
                 data_region_identifier=population.data_region_identifier,
-                count=quantity_or_none(TQuantityValueCounts, value=population.count)
-                if population.count is not None
-                else None,
+                count=quantity_or_none(TQuantityValueCounts, value=population.count),
                 parent_population_identifier=population.parent_population_identifier,
                 population_aggregate_document=[
                     PopulationAggregateDocumentItem(
@@ -333,11 +315,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 matrix_document=[
                     MatrixDocumentItem(
                         dimension_identifier=compensation.dimension_identifier,
-                        compensation_value=TQuantityValueUnitless(
-                            value=compensation.compensation_value
-                        )
-                        if compensation.compensation_value is not None
-                        else None,
+                        compensation_value=quantity_or_none(TQuantityValueUnitless, compensation.compensation_value)
                     )
                     for compensation in compensation_matrix_group.compensation_matrices
                 ]

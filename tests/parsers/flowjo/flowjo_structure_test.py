@@ -377,14 +377,14 @@ def test_extract_vertices() -> None:
     assert vertices is not None
     assert len(vertices) == 3
 
-    assert vertices[0].x_coordinate == 100.0
-    assert vertices[0].y_coordinate == 200.0
+    assert vertices[0].x_coordinate.value == 100.0
+    assert vertices[0].y_coordinate.value == 200.0
 
-    assert vertices[1].x_coordinate == 300.0
-    assert vertices[1].y_coordinate == 400.0
+    assert vertices[1].x_coordinate.value == 300.0
+    assert vertices[1].y_coordinate.value == 400.0
 
-    assert vertices[2].x_coordinate == 500.0
-    assert vertices[2].y_coordinate == 600.0
+    assert vertices[2].x_coordinate.value == 500.0
+    assert vertices[2].y_coordinate.value == 600.0
 
 
 def test_extract_vertices_rectangle() -> None:
@@ -416,8 +416,8 @@ def test_extract_vertices_rectangle() -> None:
     corners = [(0.0, 0.0), (0.0, 1000.0), (1000.0, 1000.0), (1000.0, 0.0)]
 
     for i, (expected_x, expected_y) in enumerate(corners):
-        assert vertices[i].x_coordinate == expected_x
-        assert vertices[i].y_coordinate == expected_y
+        assert vertices[i].x_coordinate.value == expected_x
+        assert vertices[i].y_coordinate.value == expected_y
 
 
 def test_create_measurement_groups() -> None:

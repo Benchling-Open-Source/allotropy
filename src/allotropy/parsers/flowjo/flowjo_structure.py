@@ -1,6 +1,8 @@
 from enum import Enum
 from pathlib import Path
 
+from allotropy.allotrope.models.shared.definitions.custom import TQuantityValueRelativeFluorescenceUnit, \
+    TQuantityValueSecondTime
 from allotropy.allotrope.schema_mappers.adm.flow_cytometry.benchling._2025._03.flow_cytometry import (
     CompensationMatrix,
     CompensationMatrixGroup,
@@ -16,7 +18,7 @@ from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.flowjo import constants
 from allotropy.parsers.utils.strict_xml_element import StrictXmlElement
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import try_float_or_none
+from allotropy.parsers.utils.values import try_float_or_none, quantity_or_none_from_unit
 
 
 class RegionType(Enum):
@@ -181,17 +183,34 @@ def _process_sample(sample: StrictXmlElement) -> list[Population]:
 def _extract_dimension_identifiers(
     gate_element: StrictXmlElement,
 ) -> tuple[str | None, str | None]:
-    dimensions = gate_element.findall(".//data-type:fcs-dimension")
-    x_dim = (
-        dimensions[0].get_namespaced_attr_or_none("data-type", "name")
-        if len(dimensions) > 0
-        else None
-    )
-    y_dim = (
-        dimensions[1].get_namespaced_attr_or_none("data-type", "name")
-        if len(dimensions) > 1
-        else None
-    )
+    """
+    Extract dimension identifiers from a gate element.
+
+    Args:
+        gate_element: The gate element to extract dimensions from
+
+    Returns:
+        tuple[str | None, str | None]: A tuple containing the x and y dimension identifiers
+    """
+    x_dim = None
+    y_dim = None
+
+    dimensions = gate_element.findall("gating:dimension")
+
+    # Extract x dimension (first dimension)
+    if len(dimensions) > 0:
+        x_dimension = dimensions[0]
+        fcs_dimension = x_dimension.find_or_none("data-type:fcs-dimension")
+        if fcs_dimension is not None:
+            x_dim = fcs_dimension.get_namespaced_attr_or_none("data-type", "name")
+
+    # Extract y dimension (second dimension)
+    if len(dimensions) > 1:
+        y_dimension = dimensions[1]
+        fcs_dimension = y_dimension.find_or_none("data-type:fcs-dimension")
+        if fcs_dimension is not None:
+            y_dim = fcs_dimension.get_namespaced_attr_or_none("data-type", "name")
+
     return x_dim, y_dim
 
 
@@ -203,7 +222,7 @@ def _get_gate_type(gate_element: StrictXmlElement) -> str | None:
 
 
 def _extract_vertices(
-    gate_element: StrictXmlElement, gate_type: str | None
+    gate_element: StrictXmlElement, gate_type: str | None, x_dim: str | None = None, y_dim: str | None = None
 ) -> list[Vertex] | None:
     """
     Extract vertex coordinates from a gate element.
@@ -218,6 +237,10 @@ def _extract_vertices(
         list[Vertex] | None: List of vertices if found, None otherwise
     """
     vertices = []
+
+    # Determine units based on dimension identifiers
+    x_unit = TQuantityValueSecondTime.unit if x_dim is not None and x_dim.lower() == "time" else TQuantityValueRelativeFluorescenceUnit.unit
+    y_unit = TQuantityValueSecondTime.unit if y_dim is not None and y_dim.lower() == "time" else TQuantityValueRelativeFluorescenceUnit.unit
 
     # For Polygon gates, extract vertices from vertex elements
     if gate_type == RegionType.POLYGON.value:
@@ -238,8 +261,8 @@ def _extract_vertices(
                 if x_coord and y_coord:
                     vertices.append(
                         Vertex(
-                            x_coordinate=float(x_coord),
-                            y_coordinate=float(y_coord),
+                            x_coordinate=quantity_or_none_from_unit(x_unit, float(x_coord)),
+                            y_coordinate=quantity_or_none_from_unit(y_unit, float(y_coord)),
                         )
                     )
 
@@ -316,21 +339,20 @@ def _extract_vertices(
             and x_max is not None
             and y_max is not None
         ):
-            # Full rectangle with all corners
             vertices = [
-                Vertex(x_coordinate=x_min, y_coordinate=y_min),
-                Vertex(x_coordinate=x_min, y_coordinate=y_max),
-                Vertex(x_coordinate=x_max, y_coordinate=y_max),
-                Vertex(x_coordinate=x_max, y_coordinate=y_min),
+                Vertex(x_coordinate=quantity_or_none_from_unit(x_unit, x_min), y_coordinate=quantity_or_none_from_unit(y_unit, y_min)),
+                Vertex(x_coordinate=quantity_or_none_from_unit(x_unit, x_min), y_coordinate=quantity_or_none_from_unit(y_unit, y_max)),
+                Vertex(x_coordinate=quantity_or_none_from_unit(x_unit, x_max), y_coordinate=quantity_or_none_from_unit(y_unit, y_max)),
+                Vertex(x_coordinate=quantity_or_none_from_unit(x_unit, x_max), y_coordinate=quantity_or_none_from_unit(y_unit, y_min)),
             ]
         elif x_min is not None and y_min is not None:
-            vertices = [Vertex(x_coordinate=x_min, y_coordinate=y_min)]
+            vertices = [Vertex(x_coordinate=quantity_or_none_from_unit(x_unit, x_min), y_coordinate=quantity_or_none_from_unit(y_unit, y_min))]
         elif x_min is not None and y_max is not None:
-            vertices = [Vertex(x_coordinate=x_min, y_coordinate=y_max)]
+            vertices = [Vertex(x_coordinate=quantity_or_none_from_unit(x_unit, x_min), y_coordinate=quantity_or_none_from_unit(y_unit, y_max))]
         elif x_max is not None and y_min is not None:
-            vertices = [Vertex(x_coordinate=x_max, y_coordinate=y_min)]
+            vertices = [Vertex(x_coordinate=quantity_or_none_from_unit(x_unit, x_max), y_coordinate=quantity_or_none_from_unit(y_unit, y_min))]
         elif x_max is not None and y_max is not None:
-            vertices = [Vertex(x_coordinate=x_max, y_coordinate=y_max)]
+            vertices = [Vertex(x_coordinate=quantity_or_none_from_unit(x_unit, x_max), y_coordinate=quantity_or_none_from_unit(y_unit, y_max))]
         else:
             return None
 
@@ -361,7 +383,7 @@ def _create_data_regions(sample: StrictXmlElement) -> list[DataRegion]:
                 return
 
             x_dim, y_dim = _extract_dimension_identifiers(gate_element)
-            vertices = _extract_vertices(gate_element, gate_type)
+            vertices = _extract_vertices(gate_element, gate_type, x_dim, y_dim)
 
             data_regions.append(
                 DataRegion(
