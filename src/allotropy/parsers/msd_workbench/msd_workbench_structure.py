@@ -127,5 +127,5 @@ def _filter_calculated_data_fields(unread_data: dict[str, Any]) -> dict[str, Any
     return {
         key: value
         for key, value in unread_data.items()
-        if key not in CalculatedDataColumns
+        if key not in {col.value for col in CalculatedDataColumns}
     }
