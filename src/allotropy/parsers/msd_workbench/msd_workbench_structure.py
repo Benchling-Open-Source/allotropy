@@ -25,7 +25,9 @@ from allotropy.parsers.msd_workbench.constants import (
     SAMPLE_ROLE_TYPE_MAPPING,
     SOFTWARE_NAME,
 )
-from allotropy.parsers.msd_workbench.msd_workbench_calculated_data_mapping import CalculatedDataColumns
+from allotropy.parsers.msd_workbench.msd_workbench_calculated_data_mapping import (
+    CalculatedDataColumns,
+)
 from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
@@ -79,9 +81,9 @@ def create_measurement_groups(plate_data: PlateData) -> list[MeasurementGroup]:
     def map_measurement(row: SeriesData) -> Measurement:
         sample_id = f"{row[str, 'Sample']}_{row[str, 'Well']}"
         custom_info = {
-                "detection range": row.get(str, "Detection Range"),
-                "assay identifier": row.get(str, "Assay"),
-            }
+            "detection range": row.get(str, "Detection Range"),
+            "assay identifier": row.get(str, "Assay"),
+        }
         return Measurement(
             type_=MeasurementType.LUMINESCENCE,
             identifier=random_uuid_str(),
@@ -99,7 +101,10 @@ def create_measurement_groups(plate_data: PlateData) -> list[MeasurementGroup]:
             sample_custom_info={
                 "dilution factor setting": row.get(int, "Dilution Factor"),
             },
-            measurement_custom_info={**custom_info, **_filter_calculated_data_fields(row.get_unread())},
+            measurement_custom_info={
+                **custom_info,
+                **_filter_calculated_data_fields(row.get_unread()),
+            },
         )
 
     measurements = map_rows(plate_data.well_data, map_measurement)
@@ -116,6 +121,7 @@ def create_measurement_groups(plate_data: PlateData) -> list[MeasurementGroup]:
         )
         for group in grouped_measurements.values()
     ]
+
 
 def _filter_calculated_data_fields(unread_data: dict[str, Any]) -> dict[str, Any]:
     return {
