@@ -1,8 +1,10 @@
 from enum import Enum
 from pathlib import Path
 
-from allotropy.allotrope.models.shared.definitions.custom import TQuantityValueRelativeFluorescenceUnit, \
-    TQuantityValueSecondTime
+from allotropy.allotrope.models.shared.definitions.custom import (
+    TQuantityValueRelativeFluorescenceUnit,
+    TQuantityValueSecondTime,
+)
 from allotropy.allotrope.schema_mappers.adm.flow_cytometry.benchling._2025._03.flow_cytometry import (
     CompensationMatrix,
     CompensationMatrixGroup,
@@ -18,7 +20,7 @@ from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.flowjo import constants
 from allotropy.parsers.utils.strict_xml_element import StrictXmlElement
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import try_float_or_none, quantity_or_none_from_unit
+from allotropy.parsers.utils.values import quantity_or_none_from_unit, try_float_or_none
 
 
 class RegionType(Enum):
@@ -222,7 +224,10 @@ def _get_gate_type(gate_element: StrictXmlElement) -> str | None:
 
 
 def _extract_vertices(
-    gate_element: StrictXmlElement, gate_type: str | None, x_dim: str | None = None, y_dim: str | None = None
+    gate_element: StrictXmlElement,
+    gate_type: str | None,
+    x_dim: str | None = None,
+    y_dim: str | None = None,
 ) -> list[Vertex] | None:
     """
     Extract vertex coordinates from a gate element.
@@ -239,8 +244,16 @@ def _extract_vertices(
     vertices = []
 
     # Determine units based on dimension identifiers
-    x_unit = TQuantityValueSecondTime.unit if x_dim is not None and x_dim.lower() == "time" else TQuantityValueRelativeFluorescenceUnit.unit
-    y_unit = TQuantityValueSecondTime.unit if y_dim is not None and y_dim.lower() == "time" else TQuantityValueRelativeFluorescenceUnit.unit
+    x_unit = (
+        TQuantityValueSecondTime.unit
+        if x_dim is not None and x_dim.lower() == "time"
+        else TQuantityValueRelativeFluorescenceUnit.unit
+    )
+    y_unit = (
+        TQuantityValueSecondTime.unit
+        if y_dim is not None and y_dim.lower() == "time"
+        else TQuantityValueRelativeFluorescenceUnit.unit
+    )
 
     # For Polygon gates, extract vertices from vertex elements
     if gate_type == RegionType.POLYGON.value:
@@ -261,8 +274,12 @@ def _extract_vertices(
                 if x_coord and y_coord:
                     vertices.append(
                         Vertex(
-                            x_coordinate=quantity_or_none_from_unit(x_unit, float(x_coord)),
-                            y_coordinate=quantity_or_none_from_unit(y_unit, float(y_coord)),
+                            x_coordinate=quantity_or_none_from_unit(
+                                x_unit, float(x_coord)
+                            ),  # type: ignore[arg-type]
+                            y_coordinate=quantity_or_none_from_unit(
+                                y_unit, float(y_coord)
+                            ),  # type: ignore[arg-type]
                         )
                     )
 
@@ -340,19 +357,51 @@ def _extract_vertices(
             and y_max is not None
         ):
             vertices = [
-                Vertex(x_coordinate=quantity_or_none_from_unit(x_unit, x_min), y_coordinate=quantity_or_none_from_unit(y_unit, y_min)),
-                Vertex(x_coordinate=quantity_or_none_from_unit(x_unit, x_min), y_coordinate=quantity_or_none_from_unit(y_unit, y_max)),
-                Vertex(x_coordinate=quantity_or_none_from_unit(x_unit, x_max), y_coordinate=quantity_or_none_from_unit(y_unit, y_max)),
-                Vertex(x_coordinate=quantity_or_none_from_unit(x_unit, x_max), y_coordinate=quantity_or_none_from_unit(y_unit, y_min)),
+                Vertex(
+                    x_coordinate=quantity_or_none_from_unit(x_unit, x_min),  # type: ignore[arg-type]
+                    y_coordinate=quantity_or_none_from_unit(y_unit, y_min),  # type: ignore[arg-type]
+                ),
+                Vertex(
+                    x_coordinate=quantity_or_none_from_unit(x_unit, x_min),  # type: ignore[arg-type]
+                    y_coordinate=quantity_or_none_from_unit(y_unit, y_max),  # type: ignore[arg-type]
+                ),
+                Vertex(
+                    x_coordinate=quantity_or_none_from_unit(x_unit, x_max),  # type: ignore[arg-type]
+                    y_coordinate=quantity_or_none_from_unit(y_unit, y_max),  # type: ignore[arg-type]
+                ),
+                Vertex(
+                    x_coordinate=quantity_or_none_from_unit(x_unit, x_max),  # type: ignore[arg-type]
+                    y_coordinate=quantity_or_none_from_unit(y_unit, y_min),  # type: ignore[arg-type]
+                ),
             ]
         elif x_min is not None and y_min is not None:
-            vertices = [Vertex(x_coordinate=quantity_or_none_from_unit(x_unit, x_min), y_coordinate=quantity_or_none_from_unit(y_unit, y_min))]
+            vertices = [
+                Vertex(
+                    x_coordinate=quantity_or_none_from_unit(x_unit, x_min),  # type: ignore[arg-type]
+                    y_coordinate=quantity_or_none_from_unit(y_unit, y_min),  # type: ignore[arg-type]
+                )
+            ]
         elif x_min is not None and y_max is not None:
-            vertices = [Vertex(x_coordinate=quantity_or_none_from_unit(x_unit, x_min), y_coordinate=quantity_or_none_from_unit(y_unit, y_max))]
+            vertices = [
+                Vertex(
+                    x_coordinate=quantity_or_none_from_unit(x_unit, x_min),  # type: ignore[arg-type]
+                    y_coordinate=quantity_or_none_from_unit(y_unit, y_max),  # type: ignore[arg-type]
+                )
+            ]
         elif x_max is not None and y_min is not None:
-            vertices = [Vertex(x_coordinate=quantity_or_none_from_unit(x_unit, x_max), y_coordinate=quantity_or_none_from_unit(y_unit, y_min))]
+            vertices = [
+                Vertex(
+                    x_coordinate=quantity_or_none_from_unit(x_unit, x_max),  # type: ignore[arg-type]
+                    y_coordinate=quantity_or_none_from_unit(y_unit, y_min),  # type: ignore[arg-type]
+                )
+            ]
         elif x_max is not None and y_max is not None:
-            vertices = [Vertex(x_coordinate=quantity_or_none_from_unit(x_unit, x_max), y_coordinate=quantity_or_none_from_unit(y_unit, y_max))]
+            vertices = [
+                Vertex(
+                    x_coordinate=quantity_or_none_from_unit(x_unit, x_max),  # type: ignore[arg-type]
+                    y_coordinate=quantity_or_none_from_unit(y_unit, y_max),  # type: ignore[arg-type]
+                )
+            ]
         else:
             return None
 

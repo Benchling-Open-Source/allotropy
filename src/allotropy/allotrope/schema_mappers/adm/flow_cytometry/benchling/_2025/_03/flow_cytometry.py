@@ -39,7 +39,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
-from allotropy.parsers.utils.values import quantity_or_none, quantity_or_none_from_unit
+from allotropy.parsers.utils.values import quantity_or_none
 
 
 @dataclass(frozen=True)
@@ -266,9 +266,7 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
         )
 
-    def _get_vertex_document(
-        self, vertex: Vertex
-    ) -> VertexDocumentItem:
+    def _get_vertex_document(self, vertex: Vertex) -> VertexDocumentItem:
         return VertexDocumentItem(
             x_coordinate=vertex.x_coordinate,
             y_coordinate=vertex.y_coordinate,
@@ -315,7 +313,9 @@ class Mapper(SchemaMapper[Data, Model]):
                 matrix_document=[
                     MatrixDocumentItem(
                         dimension_identifier=compensation.dimension_identifier,
-                        compensation_value=quantity_or_none(TQuantityValueUnitless, compensation.compensation_value)
+                        compensation_value=quantity_or_none(
+                            TQuantityValueUnitless, compensation.compensation_value
+                        ),
                     )
                     for compensation in compensation_matrix_group.compensation_matrices
                 ]
