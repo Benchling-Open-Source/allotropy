@@ -20,7 +20,7 @@ from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.flowjo import constants
 from allotropy.parsers.utils.strict_xml_element import StrictXmlElement
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import quantity_or_none_from_unit, try_float_or_none
+from allotropy.parsers.utils.values import try_float_or_none
 
 
 class RegionType(Enum):
@@ -255,6 +255,15 @@ def _extract_vertices(
         else TQuantityValueRelativeFluorescenceUnit.unit
     )
 
+    def add_vertex(x: str | None, y: str | None, vertices: list[Vertex]) -> None:
+        if x is not None and y is not None:
+            vertices.append(Vertex(
+                x_coordinate=float(x),
+                y_coordinate=float(y),
+                x_unit=x_unit,
+                y_unit=y_unit,
+            ))
+
     # For Polygon gates, extract vertices from vertex elements
     if gate_type == RegionType.POLYGON.value:
         vertex_elements = gate_element.findall("gating:vertex")
@@ -264,146 +273,32 @@ def _extract_vertices(
 
         for vertex in vertex_elements:
             coordinates = vertex.findall("gating:coordinate")
-            if len(coordinates) >= 2:
-                x_coord = coordinates[0].get_namespaced_attr_or_none(
-                    "data-type", "value"
-                )
-                y_coord = coordinates[1].get_namespaced_attr_or_none(
-                    "data-type", "value"
-                )
-                if x_coord and y_coord:
-                    vertices.append(
-                        Vertex(
-                            x_coordinate=quantity_or_none_from_unit(
-                                x_unit, float(x_coord)
-                            ),  # type: ignore[arg-type]
-                            y_coordinate=quantity_or_none_from_unit(
-                                y_unit, float(y_coord)
-                            ),  # type: ignore[arg-type]
-                        )
-                    )
+            if len(coordinates) < 2:
+                return None
+            x_coord = coordinates[0].get_namespaced_attr_or_none("data-type", "value")
+            y_coord = coordinates[1].get_namespaced_attr_or_none("data-type", "value")
+            add_vertex(x_coord, y_coord, vertices)
 
         return vertices if vertices else None
 
     # For Rectangle and CurlyQuad gates, extract min/max coordinates
     elif gate_type in [RegionType.RECTANGLE.value, RegionType.CURLY_QUAD.value]:
-        x_min = None
-        x_max = None
-        y_min = None
-        y_max = None
-
         dimension_elements = gate_element.findall("gating:dimension")
-
-        if len(dimension_elements) > 0:
-            # First dimension (X)
-            x_dimension = dimension_elements[0]
-
-            x_min_element = x_dimension.find_or_none("gating:min")
-            if x_min_element is not None:
-                x_min_value = x_min_element.get_namespaced_attr_or_none(
-                    "data-type", "value"
-                )
-                if x_min_value is not None:
-                    x_min = float(x_min_value)
-            else:
-                x_min_value = x_dimension.get_namespaced_attr_or_none("gating", "min")
-                if x_min_value is not None:
-                    x_min = float(x_min_value)
-
-            x_max_element = x_dimension.find_or_none("gating:max")
-            if x_max_element is not None:
-                x_max_value = x_max_element.get_namespaced_attr_or_none(
-                    "data-type", "value"
-                )
-                if x_max_value is not None:
-                    x_max = float(x_max_value)
-            else:
-                x_max_value = x_dimension.get_namespaced_attr_or_none("gating", "max")
-                if x_max_value is not None:
-                    x_max = float(x_max_value)
-
-        if len(dimension_elements) > 1:
-            # Second dimension (Y)
-            y_dimension = dimension_elements[1]
-
-            y_min_element = y_dimension.find_or_none("gating:min")
-            if y_min_element is not None:
-                y_min_value = y_min_element.get_namespaced_attr_or_none(
-                    "data-type", "value"
-                )
-                if y_min_value is not None:
-                    y_min = float(y_min_value)
-            else:
-                y_min_value = y_dimension.get_namespaced_attr_or_none("gating", "min")
-                if y_min_value is not None:
-                    y_min = float(y_min_value)
-
-            y_max_element = y_dimension.find_or_none("gating:max")
-            if y_max_element is not None:
-                y_max_value = y_max_element.get_namespaced_attr_or_none(
-                    "data-type", "value"
-                )
-                if y_max_value is not None:
-                    y_max = float(y_max_value)
-            else:
-                y_max_value = y_dimension.get_namespaced_attr_or_none("gating", "max")
-                if y_max_value is not None:
-                    y_max = float(y_max_value)
-
-        if (
-            x_min is not None
-            and y_min is not None
-            and x_max is not None
-            and y_max is not None
-        ):
-            vertices = [
-                Vertex(
-                    x_coordinate=quantity_or_none_from_unit(x_unit, x_min),  # type: ignore[arg-type]
-                    y_coordinate=quantity_or_none_from_unit(y_unit, y_min),  # type: ignore[arg-type]
-                ),
-                Vertex(
-                    x_coordinate=quantity_or_none_from_unit(x_unit, x_min),  # type: ignore[arg-type]
-                    y_coordinate=quantity_or_none_from_unit(y_unit, y_max),  # type: ignore[arg-type]
-                ),
-                Vertex(
-                    x_coordinate=quantity_or_none_from_unit(x_unit, x_max),  # type: ignore[arg-type]
-                    y_coordinate=quantity_or_none_from_unit(y_unit, y_max),  # type: ignore[arg-type]
-                ),
-                Vertex(
-                    x_coordinate=quantity_or_none_from_unit(x_unit, x_max),  # type: ignore[arg-type]
-                    y_coordinate=quantity_or_none_from_unit(y_unit, y_min),  # type: ignore[arg-type]
-                ),
-            ]
-        elif x_min is not None and y_min is not None:
-            vertices = [
-                Vertex(
-                    x_coordinate=quantity_or_none_from_unit(x_unit, x_min),  # type: ignore[arg-type]
-                    y_coordinate=quantity_or_none_from_unit(y_unit, y_min),  # type: ignore[arg-type]
-                )
-            ]
-        elif x_min is not None and y_max is not None:
-            vertices = [
-                Vertex(
-                    x_coordinate=quantity_or_none_from_unit(x_unit, x_min),  # type: ignore[arg-type]
-                    y_coordinate=quantity_or_none_from_unit(y_unit, y_max),  # type: ignore[arg-type]
-                )
-            ]
-        elif x_max is not None and y_min is not None:
-            vertices = [
-                Vertex(
-                    x_coordinate=quantity_or_none_from_unit(x_unit, x_max),  # type: ignore[arg-type]
-                    y_coordinate=quantity_or_none_from_unit(y_unit, y_min),  # type: ignore[arg-type]
-                )
-            ]
-        elif x_max is not None and y_max is not None:
-            vertices = [
-                Vertex(
-                    x_coordinate=quantity_or_none_from_unit(x_unit, x_max),  # type: ignore[arg-type]
-                    y_coordinate=quantity_or_none_from_unit(y_unit, y_max),  # type: ignore[arg-type]
-                )
-            ]
-        else:
+        if len(dimension_elements) < 2:
             return None
+
+        def _get_gate_value_from_dimension(dimension: StrictXmlElement, gate_type: str) -> str | None:
+            element = dimension.find_or_none(f"gating:{gate_type}")
+            return element.get_namespaced_attr_or_none("data-type", "value") if element else dimension.get_namespaced_attr_or_none("gating", gate_type)
+
+        x_min = _get_gate_value_from_dimension(dimension_elements[0], "min")
+        x_max = _get_gate_value_from_dimension(dimension_elements[0], "max")
+        y_min = _get_gate_value_from_dimension(dimension_elements[1], "min")
+        y_max = _get_gate_value_from_dimension(dimension_elements[1], "max")
+
+        vertices: list[Vertex] = []
+        for x, y in ((x_min, y_min), (x_min, y_max), (x_max, y_max), (x_max, y_min)):
+            add_vertex(x, y, vertices)
 
         return vertices if vertices else None
 
