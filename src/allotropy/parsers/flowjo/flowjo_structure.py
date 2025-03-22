@@ -317,47 +317,40 @@ def _extract_vertices(
 def _create_data_regions(sample: StrictXmlElement) -> list[DataRegion]:
     data_regions: list[DataRegion] = []
     sample_node = sample.find_or_none("SampleNode")
-    if sample_node is None:
-        return data_regions
 
-    def process_population(population: StrictXmlElement) -> None:
-        gate = population.find_or_none("Gate")
-        if gate is not None:
-            gate_type = _get_gate_type(gate)
-            if gate_type is None:
-                return
+    def _process_population(population: StrictXmlElement | None) -> None:
+        if not population:
+            return
+        if not (gate := population.find_or_none("Gate")):
+            return None
+        if not (gate_type := _get_gate_type(gate)):
+            return
+        if not (gate_element := gate.find_or_none(f"gating:{gate_type}Gate")):
+            return
 
-            gate_element = gate.find_or_none(f"gating:{gate_type}Gate")
-            if gate_element is None:
-                return
-
-            x_dim, y_dim = _extract_dimension_identifiers(gate_element)
-            vertices = _extract_vertices(gate_element, gate_type, x_dim, y_dim)
-
-            data_regions.append(
-                DataRegion(
-                    region_data_identifier=gate.get_namespaced_attr_or_none(
-                        "gating", "id"
-                    ),
-                    region_data_type=gate_type,
-                    parent_data_region_identifier=gate.get_namespaced_attr_or_none(
-                        "gating", "parent_id"
-                    ),
-                    x_coordinate_dimension_identifier=x_dim,
-                    y_coordinate_dimension_identifier=y_dim,
-                    vertices=vertices,
-                )
+        x_dim, y_dim = _extract_dimension_identifiers(gate_element)
+        vertices = _extract_vertices(gate_element, gate_type, x_dim, y_dim)
+        data_regions.append(
+            DataRegion(
+                region_data_identifier=gate.get_namespaced_attr_or_none("gating", "id"),
+                region_data_type=gate_type,
+                parent_data_region_identifier=gate.get_namespaced_attr_or_none(
+                    "gating", "parent_id"
+                ),
+                x_coordinate_dimension_identifier=x_dim,
+                y_coordinate_dimension_identifier=y_dim,
+                vertices=vertices,
             )
+        )
 
-        subpops_element = population.find_or_none("Subpopulations")
-        if subpops_element is not None:
-            for subpop in subpops_element.findall("Population"):
-                process_population(subpop)
+    def process_population(population: StrictXmlElement | None) -> None:
+        _process_population(population)
+        if not (subpops_element := population.find_or_none("Subpopulations")):
+            return
+        for subpop in subpops_element.findall("Population"):
+            process_population(subpop)
 
-    subpops_element = sample_node.find_or_none("Subpopulations")
-    if subpops_element is not None:
-        for population in subpops_element.findall("Population"):
-            process_population(population)
+    process_population(sample_node)
 
     return data_regions
 
