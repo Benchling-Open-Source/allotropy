@@ -48,9 +48,7 @@ def create_metadata(root_element: StrictXmlElement, file_path: str) -> Metadata:
         or Path(file_path).name,
         unc_path=file_path,
         device_identifier=constants.DEVICE_IDENTIFIER,
-        model_number=cytometer.get_attr_or_none("cyt")
-        if cytometer is not None
-        else None,
+        model_number=cytometer.get_attr_or_none("cyt") if cytometer else None,
         equipment_serial_number=equipment_serial_number,
         data_system_instance_identifier=NOT_APPLICABLE,
         software_name=constants.SOFTWARE_NAME,
