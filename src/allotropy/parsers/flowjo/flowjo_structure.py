@@ -316,10 +316,9 @@ def _create_data_regions(sample: StrictXmlElement) -> list[DataRegion]:
     data_regions: list[DataRegion] = []
     sample_node = sample.find_or_none("SampleNode")
 
-    def _process_population(population: StrictXmlElement | None) -> None:
+    def _process_population(population: StrictXmlElement) -> None:
         if (
-            not population
-            or not (gate := population.find_or_none("Gate"))
+            not (gate := population.find_or_none("Gate"))
             or not (gate_type := _get_gate_type(gate))
             or not (gate_element := gate.find_or_none(f"gating:{gate_type}Gate"))
         ):
@@ -341,6 +340,8 @@ def _create_data_regions(sample: StrictXmlElement) -> list[DataRegion]:
         )
 
     def process_population(population: StrictXmlElement | None) -> None:
+        if not population:
+            return
         _process_population(population)
         if not (subpops_element := population.find_or_none("Subpopulations")):
             return
