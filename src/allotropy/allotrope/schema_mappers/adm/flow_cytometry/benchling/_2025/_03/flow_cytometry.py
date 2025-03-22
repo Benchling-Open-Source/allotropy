@@ -292,14 +292,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 ]
                 if population.sub_populations
                 else None,
-                statisticsAggregateDocument=StatisticsAggregateDocument(
-                    statistics_document=[
-                        self._get_statistics_document(statistic)
-                        for statistic in population.statistics
-                    ]
-                    if population.statistics
-                    else None,
-                ),
+                statisticsAggregateDocument=self._get_statistics_aggregate_document(population.statistics),
             ),
             population.custom_info,
         )
@@ -324,10 +317,16 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
         )
 
-    def _get_statistics_document(self, statistic: Statistic) -> StatisticsDocumentItem:
-        return StatisticsDocumentItem(
-            dimension_identifier=statistic.dimension_identifier,
-            statistical_feature=statistic.statistical_feature,
+    def _get_statistics_aggregate_document(self, statistics: list[Statistic] | None) -> StatisticsAggregateDocument | None:
+        if not statistics:
+            return None
+        return StatisticsAggregateDocument(
+            statistics_document=[
+                StatisticsDocumentItem(
+                    statistical_feature=statistic.statistical_feature,
+                )
+                for statistic in statistics
+            ]
         )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
