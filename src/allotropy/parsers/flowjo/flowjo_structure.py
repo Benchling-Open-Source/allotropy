@@ -319,13 +319,12 @@ def _create_data_regions(sample: StrictXmlElement) -> list[DataRegion]:
     sample_node = sample.find_or_none("SampleNode")
 
     def _process_population(population: StrictXmlElement | None) -> None:
-        if not population:
-            return
-        if not (gate := population.find_or_none("Gate")):
-            return None
-        if not (gate_type := _get_gate_type(gate)):
-            return
-        if not (gate_element := gate.find_or_none(f"gating:{gate_type}Gate")):
+        if (
+            not population
+            or not (gate := population.find_or_none("Gate"))
+            or not (gate_type := _get_gate_type(gate))
+            or not (gate_element := gate.find_or_none(f"gating:{gate_type}Gate"))
+        ):
             return
 
         x_dim, y_dim = _extract_dimension_identifiers(gate_element)
