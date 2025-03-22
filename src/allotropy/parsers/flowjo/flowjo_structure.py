@@ -277,9 +277,11 @@ def _extract_vertices(
             coordinates = vertex.findall("gating:coordinate")
             if len(coordinates) < 2:
                 return None
-            x_coord = coordinates[0].get_namespaced_attr_or_none("data-type", "value")
-            y_coord = coordinates[1].get_namespaced_attr_or_none("data-type", "value")
-            add_vertex(x_coord, y_coord, vertices)
+            add_vertex(
+                coordinates[0].get_namespaced_attr_or_none("data-type", "value"),
+                coordinates[1].get_namespaced_attr_or_none("data-type", "value"),
+                vertices,
+            )
 
     # For Rectangle and CurlyQuad gates, extract min/max coordinates
     elif gate_type in [RegionType.RECTANGLE.value, RegionType.CURLY_QUAD.value]:
