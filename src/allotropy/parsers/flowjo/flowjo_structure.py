@@ -241,7 +241,7 @@ def _extract_vertices(
     Returns:
         list[Vertex] | None: List of vertices if found, None otherwise
     """
-    vertices = []
+    vertices: list[Vertex] = []
 
     # Determine units based on dimension identifiers
     x_unit = (
@@ -281,8 +281,6 @@ def _extract_vertices(
             y_coord = coordinates[1].get_namespaced_attr_or_none("data-type", "value")
             add_vertex(x_coord, y_coord, vertices)
 
-        return vertices if vertices else None
-
     # For Rectangle and CurlyQuad gates, extract min/max coordinates
     elif gate_type in [RegionType.RECTANGLE.value, RegionType.CURLY_QUAD.value]:
         dimension_elements = gate_element.findall("gating:dimension")
@@ -304,17 +302,14 @@ def _extract_vertices(
         y_min = _get_gate_value_from_dimension(dimension_elements[1], "min")
         y_max = _get_gate_value_from_dimension(dimension_elements[1], "max")
 
-        vertices: list[Vertex] = []
         for x, y in ((x_min, y_min), (x_min, y_max), (x_max, y_max), (x_max, y_min)):
             add_vertex(x, y, vertices)
-
-        return vertices if vertices else None
 
     # TODO: Add support for Ellipsoid gates
     elif gate_type == RegionType.ELLIPSOID.value:
         return None
 
-    return None
+    return vertices if vertices else None
 
 
 def _create_data_regions(sample: StrictXmlElement) -> list[DataRegion]:

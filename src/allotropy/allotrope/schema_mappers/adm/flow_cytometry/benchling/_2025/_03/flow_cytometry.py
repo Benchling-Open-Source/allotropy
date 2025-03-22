@@ -33,8 +33,6 @@ from allotropy.allotrope.models.adm.flow_cytometry.benchling._2025._03.flow_cyto
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueCounts,
-    TQuantityValueRelativeFluorescenceUnit,
-    TQuantityValueSecondTime,
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
@@ -44,8 +42,8 @@ from allotropy.parsers.utils.values import quantity_or_none, quantity_or_none_fr
 
 @dataclass(frozen=True)
 class Vertex:
-    x_coordinate: TQuantityValueRelativeFluorescenceUnit | TQuantityValueSecondTime | None
-    y_coordinate: TQuantityValueRelativeFluorescenceUnit | TQuantityValueSecondTime | None
+    x_coordinate: float
+    y_coordinate: float
     x_unit: str
     y_unit: str
 
@@ -263,7 +261,7 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def _get_vertex_aggregate_document(
         self, vertices: list[Vertex] | None
-    ) -> VertexAggregateDocument:
+    ) -> VertexAggregateDocument | None:
         if not vertices:
             return None
         return VertexAggregateDocument(
