@@ -32,20 +32,20 @@ from allotropy.allotrope.models.adm.flow_cytometry.benchling._2025._03.flow_cyto
     VertexDocumentItem,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueMilliAbsorbanceUnit,
+    TQuantityValueCounts,
     TQuantityValueRelativeFluorescenceUnit,
+    TQuantityValueSecondTime,
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.utils.values import quantity_or_none
 
 
 @dataclass(frozen=True)
 class Vertex:
-    x_coordinate: float
-    y_coordinate: float
-    unit: TQuantityValueMilliAbsorbanceUnit | (TQuantityValueRelativeFluorescenceUnit)
+    x_coordinate: TQuantityValueRelativeFluorescenceUnit | TQuantityValueSecondTime | None
+    y_coordinate: TQuantityValueRelativeFluorescenceUnit | TQuantityValueSecondTime | None
 
 
 @dataclass(frozen=True)
@@ -81,9 +81,11 @@ class Population:
     population_identifier: str
     written_name: str | None = None
     data_region_identifier: str | None = None
+    count: int | None = None
     parent_population_identifier: str | None = None
     sub_populations: list[Population] | None = None
     statistics: list[Statistic] | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -133,7 +135,6 @@ class Metadata:
 class Data:
     metadata: Metadata
     measurement_groups: list[MeasurementGroup]
-    compensation_matrix_groups: list[CompensationMatrixGroup] | None = None
 
 
 class Mapper(SchemaMapper[Data, Model]):
@@ -178,7 +179,9 @@ class Mapper(SchemaMapper[Data, Model]):
                     for measurement in measurement_group.measurements
                 ],
                 analyst=measurement_group.analyst,
-                measurement_time=measurement_group.measurement_time,
+                measurement_time=self.get_date_time(measurement_group.measurement_time)
+                if measurement_group.measurement_time
+                else None,
                 experimental_data_identifier=measurement_group.experimental_data_identifier,
             ),
             compensation_matrix_aggregate_document=CompensationMatrixAggregateDocument(
@@ -253,7 +256,10 @@ class Mapper(SchemaMapper[Data, Model]):
             y_coordinate_dimension_identifier=data_region.y_coordinate_dimension_identifier,
             vertex_aggregate_document=VertexAggregateDocument(
                 vertex_document=[
-                    self._get_vertex_document(vertex) for vertex in data_region.vertices
+                    self._get_vertex_document(
+                        vertex,
+                    )
+                    for vertex in data_region.vertices
                 ]
                 if data_region.vertices
                 else None
@@ -261,44 +267,41 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_vertex_document(self, vertex: Vertex) -> VertexDocumentItem:
-        unit_type = type(vertex.unit)
-        if unit_type not in (
-            TQuantityValueMilliAbsorbanceUnit,
-            TQuantityValueRelativeFluorescenceUnit,
-        ):
-            msg = f"Unsupported unit type: {unit_type}"
-            raise AllotropeConversionError(msg)
         return VertexDocumentItem(
-            x_coordinate=unit_type(value=vertex.x_coordinate),
-            y_coordinate=unit_type(value=vertex.y_coordinate),
+            x_coordinate=vertex.x_coordinate,
+            y_coordinate=vertex.y_coordinate,
         )
 
     def _get_population_document(
         self, population: Population
     ) -> PopulationDocumentItem:
-        return PopulationDocumentItem(
-            population_identifier=population.population_identifier,
-            written_name=population.written_name,
-            data_region_identifier=population.data_region_identifier,
-            parent_population_identifier=population.parent_population_identifier,
-            population_aggregate_document=[
-                PopulationAggregateDocumentItem(
-                    population_document=[
-                        self._get_population_document(sub_population)
-                        for sub_population in population.sub_populations
-                    ]
-                )
-            ]
-            if population.sub_populations
-            else None,
-            statisticsAggregateDocument=StatisticsAggregateDocument(
-                statistics_document=[
-                    self._get_statistics_document(statistic)
-                    for statistic in population.statistics
+        return add_custom_information_document(
+            PopulationDocumentItem(
+                population_identifier=population.population_identifier,
+                written_name=population.written_name,
+                data_region_identifier=population.data_region_identifier,
+                count=quantity_or_none(TQuantityValueCounts, value=population.count),
+                parent_population_identifier=population.parent_population_identifier,
+                population_aggregate_document=[
+                    PopulationAggregateDocumentItem(
+                        population_document=[
+                            self._get_population_document(sub_population)
+                            for sub_population in population.sub_populations
+                        ]
+                    )
                 ]
-                if population.statistics
+                if population.sub_populations
                 else None,
+                statisticsAggregateDocument=StatisticsAggregateDocument(
+                    statistics_document=[
+                        self._get_statistics_document(statistic)
+                        for statistic in population.statistics
+                    ]
+                    if population.statistics
+                    else None,
+                ),
             ),
+            population.custom_info,
         )
 
     def _get_compensation_matrix_document(
@@ -310,11 +313,9 @@ class Mapper(SchemaMapper[Data, Model]):
                 matrix_document=[
                     MatrixDocumentItem(
                         dimension_identifier=compensation.dimension_identifier,
-                        compensation_value=TQuantityValueUnitless(
-                            value=compensation.compensation_value
-                        )
-                        if compensation.compensation_value
-                        else None,
+                        compensation_value=quantity_or_none(
+                            TQuantityValueUnitless, compensation.compensation_value
+                        ),
                     )
                     for compensation in compensation_matrix_group.compensation_matrices
                 ]
