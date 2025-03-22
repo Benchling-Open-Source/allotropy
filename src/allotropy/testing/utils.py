@@ -67,6 +67,12 @@ NON_UNIQUE_IDENTIFIERS = {
     "assay identifier",
     "container identifier",
     "identifier role",
+    "data region identifier",
+    "x coordinate dimension identifier",
+    "y coordinate dimension identifier",
+    "parent data region identifier",
+    "parent population identifier",
+    "dimension identifier",
 }
 
 

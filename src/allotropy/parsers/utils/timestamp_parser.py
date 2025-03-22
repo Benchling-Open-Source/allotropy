@@ -14,6 +14,9 @@ TIMEZONE_CODES_MAP = {
         "MDT": timezone(timedelta(hours=-6), "MDT"),
         "PDT": timezone(timedelta(hours=-7), "PDT"),
     },
+    "JST": timezone(timedelta(hours=9), "JST"),
+    "CEST": timezone(timedelta(hours=2), "CEST"),
+    "PST": timezone(timedelta(hours=-8), "PST"),
 }
 
 
