@@ -256,10 +256,14 @@ class Mapper(SchemaMapper[Data, Model]):
             parent_data_region_identifier=data_region.parent_data_region_identifier,
             x_coordinate_dimension_identifier=data_region.x_coordinate_dimension_identifier,
             y_coordinate_dimension_identifier=data_region.y_coordinate_dimension_identifier,
-            vertex_aggregate_document=self._get_vertex_aggregate_document(data_region.vertices),
+            vertex_aggregate_document=self._get_vertex_aggregate_document(
+                data_region.vertices
+            ),
         )
 
-    def _get_vertex_aggregate_document(self, vertices: list[Vertex] | None) -> VertexAggregateDocument:
+    def _get_vertex_aggregate_document(
+        self, vertices: list[Vertex] | None
+    ) -> VertexAggregateDocument:
         if not vertices:
             return None
         return VertexAggregateDocument(
@@ -292,7 +296,9 @@ class Mapper(SchemaMapper[Data, Model]):
                 ]
                 if population.sub_populations
                 else None,
-                statisticsAggregateDocument=self._get_statistics_aggregate_document(population.statistics),
+                statisticsAggregateDocument=self._get_statistics_aggregate_document(
+                    population.statistics
+                ),
             ),
             population.custom_info,
         )
@@ -317,7 +323,9 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
         )
 
-    def _get_statistics_aggregate_document(self, statistics: list[Statistic] | None) -> StatisticsAggregateDocument | None:
+    def _get_statistics_aggregate_document(
+        self, statistics: list[Statistic] | None
+    ) -> StatisticsAggregateDocument | None:
         if not statistics:
             return None
         return StatisticsAggregateDocument(

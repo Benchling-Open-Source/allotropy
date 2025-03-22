@@ -257,12 +257,14 @@ def _extract_vertices(
 
     def add_vertex(x: str | None, y: str | None, vertices: list[Vertex]) -> None:
         if x is not None and y is not None:
-            vertices.append(Vertex(
-                x_coordinate=float(x),
-                y_coordinate=float(y),
-                x_unit=x_unit,
-                y_unit=y_unit,
-            ))
+            vertices.append(
+                Vertex(
+                    x_coordinate=float(x),
+                    y_coordinate=float(y),
+                    x_unit=x_unit,
+                    y_unit=y_unit,
+                )
+            )
 
     # For Polygon gates, extract vertices from vertex elements
     if gate_type == RegionType.POLYGON.value:
@@ -287,9 +289,15 @@ def _extract_vertices(
         if len(dimension_elements) < 2:
             return None
 
-        def _get_gate_value_from_dimension(dimension: StrictXmlElement, gate_type: str) -> str | None:
+        def _get_gate_value_from_dimension(
+            dimension: StrictXmlElement, gate_type: str
+        ) -> str | None:
             element = dimension.find_or_none(f"gating:{gate_type}")
-            return element.get_namespaced_attr_or_none("data-type", "value") if element else dimension.get_namespaced_attr_or_none("gating", gate_type)
+            return (
+                element.get_namespaced_attr_or_none("data-type", "value")
+                if element
+                else dimension.get_namespaced_attr_or_none("gating", gate_type)
+            )
 
         x_min = _get_gate_value_from_dimension(dimension_elements[0], "min")
         x_max = _get_gate_value_from_dimension(dimension_elements[0], "max")
