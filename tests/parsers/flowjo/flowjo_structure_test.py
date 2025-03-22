@@ -377,26 +377,14 @@ def test_extract_vertices() -> None:
     assert vertices is not None
     assert len(vertices) == 3
 
-    assert (
-        vertices[0].x_coordinate is not None and vertices[0].x_coordinate.value == 100.0
-    )
-    assert (
-        vertices[0].y_coordinate is not None and vertices[0].y_coordinate.value == 200.0
-    )
+    assert vertices[0].x_coordinate == 100.0
+    assert vertices[0].y_coordinate == 200.0
 
-    assert (
-        vertices[1].x_coordinate is not None and vertices[1].x_coordinate.value == 300.0
-    )
-    assert (
-        vertices[1].y_coordinate is not None and vertices[1].y_coordinate.value == 400.0
-    )
+    assert vertices[1].x_coordinate == 300.0
+    assert vertices[1].y_coordinate == 400.0
 
-    assert (
-        vertices[2].x_coordinate is not None and vertices[2].x_coordinate.value == 500.0
-    )
-    assert (
-        vertices[2].y_coordinate is not None and vertices[2].y_coordinate.value == 600.0
-    )
+    assert vertices[2].x_coordinate == 500.0
+    assert vertices[2].y_coordinate == 600.0
 
 
 def test_extract_vertices_rectangle() -> None:
@@ -430,10 +418,8 @@ def test_extract_vertices_rectangle() -> None:
     for i, (expected_x, expected_y) in enumerate(corners):
         x_coordinate = vertices[i].x_coordinate
         y_coordinate = vertices[i].y_coordinate
-        assert x_coordinate is not None
-        assert x_coordinate.value == expected_x
-        assert y_coordinate is not None
-        assert y_coordinate.value == expected_y
+        assert x_coordinate == expected_x
+        assert y_coordinate == expected_y
 
 
 def test_create_measurement_groups() -> None:
