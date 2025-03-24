@@ -41,7 +41,7 @@ def extract_flowjo_namespaces(root_element: ET.Element) -> dict[str, str]:
 
 class FlowjoParser(VendorParser[Data, Model]):
     DISPLAY_NAME = DISPLAY_NAME
-    RELEASE_STATE = ReleaseState.RECOMMENDED
+    RELEASE_STATE = ReleaseState.WORKING_DRAFT
     SUPPORTED_EXTENSIONS = "wsp"
     SCHEMA_MAPPER = Mapper
 

@@ -33,19 +33,19 @@ from allotropy.allotrope.models.adm.flow_cytometry.benchling._2025._03.flow_cyto
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueCounts,
-    TQuantityValueRelativeFluorescenceUnit,
-    TQuantityValueSecondTime,
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
-from allotropy.parsers.utils.values import quantity_or_none
+from allotropy.parsers.utils.values import quantity_or_none, quantity_or_none_from_unit
 
 
 @dataclass(frozen=True)
 class Vertex:
-    x_coordinate: TQuantityValueRelativeFluorescenceUnit | TQuantityValueSecondTime | None
-    y_coordinate: TQuantityValueRelativeFluorescenceUnit | TQuantityValueSecondTime | None
+    x_coordinate: float
+    y_coordinate: float
+    x_unit: str
+    y_unit: str
 
 
 @dataclass(frozen=True)
@@ -254,22 +254,24 @@ class Mapper(SchemaMapper[Data, Model]):
             parent_data_region_identifier=data_region.parent_data_region_identifier,
             x_coordinate_dimension_identifier=data_region.x_coordinate_dimension_identifier,
             y_coordinate_dimension_identifier=data_region.y_coordinate_dimension_identifier,
-            vertex_aggregate_document=VertexAggregateDocument(
-                vertex_document=[
-                    self._get_vertex_document(
-                        vertex,
-                    )
-                    for vertex in data_region.vertices
-                ]
-                if data_region.vertices
-                else None
+            vertex_aggregate_document=self._get_vertex_aggregate_document(
+                data_region.vertices
             ),
         )
 
-    def _get_vertex_document(self, vertex: Vertex) -> VertexDocumentItem:
-        return VertexDocumentItem(
-            x_coordinate=vertex.x_coordinate,
-            y_coordinate=vertex.y_coordinate,
+    def _get_vertex_aggregate_document(
+        self, vertices: list[Vertex] | None
+    ) -> VertexAggregateDocument | None:
+        if not vertices:
+            return None
+        return VertexAggregateDocument(
+            vertex_document=[
+                VertexDocumentItem(
+                    x_coordinate=quantity_or_none_from_unit(vertex.x_unit, vertex.x_coordinate),  # type: ignore[arg-type]
+                    y_coordinate=quantity_or_none_from_unit(vertex.y_unit, vertex.y_coordinate),  # type: ignore[arg-type]
+                )
+                for vertex in vertices
+            ]
         )
 
     def _get_population_document(
@@ -292,13 +294,8 @@ class Mapper(SchemaMapper[Data, Model]):
                 ]
                 if population.sub_populations
                 else None,
-                statisticsAggregateDocument=StatisticsAggregateDocument(
-                    statistics_document=[
-                        self._get_statistics_document(statistic)
-                        for statistic in population.statistics
-                    ]
-                    if population.statistics
-                    else None,
+                statisticsAggregateDocument=self._get_statistics_aggregate_document(
+                    population.statistics
                 ),
             ),
             population.custom_info,
@@ -324,10 +321,18 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
         )
 
-    def _get_statistics_document(self, statistic: Statistic) -> StatisticsDocumentItem:
-        return StatisticsDocumentItem(
-            dimension_identifier=statistic.dimension_identifier,
-            statistical_feature=statistic.statistical_feature,
+    def _get_statistics_aggregate_document(
+        self, statistics: list[Statistic] | None
+    ) -> StatisticsAggregateDocument | None:
+        if not statistics:
+            return None
+        return StatisticsAggregateDocument(
+            statistics_document=[
+                StatisticsDocumentItem(
+                    statistical_feature=statistic.statistical_feature,
+                )
+                for statistic in statistics
+            ]
         )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
