@@ -1,5 +1,5 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/solution-analyzer/REC/2024/09/solution-analyzer.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/solution-analyzer/BENCHLING/2024/09/solution-analyzer.manifest",
     "solution analyzer aggregate document": {
         "solution analyzer document": [
             {
@@ -159,7 +159,7 @@
             "file name": "SampleResults2022-06-28_142558.csv",
             "UNC path": "tests/parsers/novabio_flex2/testdata/SampleResults2022-06-28_142558.csv",
             "ASM converter name": "allotropy_novabio_flex2",
-            "ASM converter version": "0.1.61",
+            "ASM converter version": "0.1.79",
             "software name": "NovaBio Flex"
         },
         "device system document": {

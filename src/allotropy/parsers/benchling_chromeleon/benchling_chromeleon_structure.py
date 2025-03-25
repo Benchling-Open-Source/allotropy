@@ -172,6 +172,7 @@ def _create_peak(peak: dict[str, Any], signal: dict[str, Any]) -> Peak:
         relative_area=try_float_or_none(peak.get("relative peak area")),
         width=try_float_or_none(peak.get("Width")),
         height=height,
+        height_unit="mAU",
         relative_height=try_float_or_none(peak.get("relative peak height")),
         written_name=peak.get("name"),
         relative_retention_time=try_float_or_none(peak.get("relative retention time")),

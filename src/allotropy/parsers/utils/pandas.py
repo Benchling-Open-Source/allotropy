@@ -240,8 +240,8 @@ class SeriesData:
             return None if (v is None or pd.isna(v)) else v
         return v
 
-    def __init__(self, series: pd.Series[Any]) -> None:
-        self.series = series
+    def __init__(self, series: pd.Series[Any] | None = None) -> None:
+        self.series = pd.Series() if series is None else series
         self.read_keys: set[str] = set()
         self.errored = False
 

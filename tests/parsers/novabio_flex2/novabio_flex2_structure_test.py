@@ -3,15 +3,16 @@ import re
 import pandas as pd
 import pytest
 
-from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
+from allotropy.allotrope.schema_mappers.adm.solution_analyzer.benchling._2024._09.solution_analyzer import (
     Analyte,
 )
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.novabio_flex2.novabio_flex2_structure import (
     Sample,
-    SampleList,
+    SampleData,
     Title,
 )
+from allotropy.parsers.utils.pandas import SeriesData
 
 
 @pytest.mark.parametrize(
@@ -61,7 +62,7 @@ def test_create_sample() -> None:
         "CO2 Saturation": 0,  # zero here makes sure we allow falsey values
         "Unmapped column": 5,
     }
-    sample = Sample.create(pd.Series(data=data))
+    sample = Sample.create(SeriesData(), SeriesData(pd.Series(data=data)))
 
     assert sample.identifier == "BP_R10_KP_008_D0"
     assert sample.sample_type == "Spent Media"
@@ -78,7 +79,7 @@ def test_create_sample() -> None:
 
 
 def test_create_sample_list() -> None:
-    sample_list = SampleList.create(
+    sample_data = SampleData.create(
         pd.DataFrame(
             {
                 "Sample ID": ["SAMPLE_1", "SAMPLE_2"],
@@ -92,16 +93,16 @@ def test_create_sample_list() -> None:
         )
     )
 
-    assert sample_list.analyst == "Kermit"
-    assert len(sample_list.samples) == 2
-    assert sample_list.samples[0].identifier == "SAMPLE_1"
-    assert sample_list.samples[1].identifier == "SAMPLE_2"
+    assert sample_data.sample_list.analyst == "Kermit"
+    assert len(sample_data.sample_list.samples) == 2
+    assert sample_data.sample_list.samples[0].identifier == "SAMPLE_1"
+    assert sample_data.sample_list.samples[1].identifier == "SAMPLE_2"
 
 
 def test_create_sample_list_invalid_no_samples() -> None:
     df = pd.DataFrame()
     with pytest.raises(AllotropeConversionError, match="Unable to find any sample."):
-        SampleList.create(df)
+        SampleData.create(df)
 
 
 def test_create_sample_list_invalid_no_analyst() -> None:
@@ -116,4 +117,4 @@ def test_create_sample_list_invalid_no_analyst() -> None:
         }
     )
     with pytest.raises(AllotropeConversionError, match="Unable to find the Operator."):
-        SampleList.create(df)
+        SampleData.create(df)

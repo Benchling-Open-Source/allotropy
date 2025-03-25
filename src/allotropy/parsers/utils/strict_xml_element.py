@@ -13,12 +13,17 @@ class StrictXmlElement:
     def create_from_bytes(cls, data: bytes) -> StrictXmlElement:
         return StrictXmlElement(fromstring(data))
 
-    def __init__(self, element: ElementTree.Element):
+    def __init__(
+        self, element: ElementTree.Element, namespaces: dict[str, str] | None = None
+    ):
         self.element = element
+        self.namespaces = namespaces or {}
 
     def find_or_none(self, name: str) -> StrictXmlElement | None:
-        element = self.element.find(name)
-        return StrictXmlElement(element) if element is not None else None
+        element = self.element.find(name, self.namespaces)
+        return (
+            StrictXmlElement(element, self.namespaces) if element is not None else None
+        )
 
     def find(self, name: str) -> StrictXmlElement:
         return assert_not_none(
@@ -41,7 +46,10 @@ class StrictXmlElement:
         return self.find(name).recursive_find(sub_names)
 
     def findall(self, name: str) -> list[StrictXmlElement]:
-        return [StrictXmlElement(element) for element in self.element.findall(name)]
+        return [
+            StrictXmlElement(element, self.namespaces)
+            for element in self.element.findall(name, self.namespaces)
+        ]
 
     def get_attr_or_none(self, name: str) -> str | None:
         value = self.element.get(name)
@@ -57,7 +65,7 @@ class StrictXmlElement:
         if (text := self.get_text_or_none()) is None:
             return None
         try:
-            return StrictXmlElement(fromstring(text))
+            return StrictXmlElement(fromstring(text), self.namespaces)
         except ElementTree.ParseError:
             return None
 
@@ -91,3 +99,15 @@ class StrictXmlElement:
         if element := self.find_or_none(name):
             return element.get_text_or_none()
         return None
+
+    # namespace-specific methods
+    def get_namespaced_attr_or_none(self, namespace_key: str, field: str) -> str | None:
+        if namespace_key not in self.namespaces:
+            return None
+        return self.element.get(f"{{{self.namespaces.get(namespace_key)}}}{field}")
+
+    def get_namespaced_attr(self, namespace_key: str, field: str) -> str:
+        return assert_not_none(
+            self.get_namespaced_attr_or_none(namespace_key, field),
+            msg=f"Unable to find '{namespace_key}:{field}' in xml file contents",
+        )

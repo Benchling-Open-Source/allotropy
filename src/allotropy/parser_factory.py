@@ -9,6 +9,9 @@ from allotropy.parsers.agilent_gen5.agilent_gen5_parser import AgilentGen5Parser
 from allotropy.parsers.agilent_gen5_image.agilent_gen5_image_parser import (
     AgilentGen5ImageParser,
 )
+from allotropy.parsers.agilent_openlab_cds.agilent_openlab_cds_parser import (
+    AgilentOpenLabCDSParser,
+)
 from allotropy.parsers.agilent_tapestation_analysis.agilent_tapestation_analysis_parser import (
     AgilentTapestationAnalysisParser,
 )
@@ -55,6 +58,7 @@ from allotropy.parsers.cytiva_unicorn.cytiva_unicorn_parser import CytivaUnicorn
 from allotropy.parsers.example_weyland_yutani.example_weyland_yutani_parser import (
     ExampleWeylandYutaniParser,
 )
+from allotropy.parsers.flowjo.flowjo_parser import FlowjoParser
 from allotropy.parsers.luminex_xponent.luminex_xponent_parser import (
     LuminexXponentParser,
 )
@@ -116,6 +120,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 class Vendor(Enum):
     AGILENT_GEN5 = "AGILENT_GEN5"
     AGILENT_GEN5_IMAGE = "AGILENT_GEN5_IMAGE"
+    AGILENT_OPENLAB_CDS = "AGILENT_OPENLAB_CDS"
     AGILENT_TAPESTATION_ANALYSIS = "AGILENT_TAPESTATION_ANALYSIS"
     APPBIO_ABSOLUTE_Q = "APPBIO_ABSOLUTE_Q"
     APPBIO_QUANTSTUDIO = "APPBIO_QUANTSTUDIO"
@@ -135,6 +140,7 @@ class Vendor(Enum):
     CYTIVA_BIACORE_T200_CONTROL = "CYTIVA_BIACORE_T200_CONTROL"
     CYTIVA_UNICORN = "CYTIVA_UNICORN"
     EXAMPLE_WEYLAND_YUTANI = "EXAMPLE_WEYLAND_YUTANI"
+    FLOWJO = "FLOWJO"
     LUMINEX_XPONENT = "LUMINEX_XPONENT"
     MABTECH_APEX = "MABTECH_APEX"
     METHODICAL_MIND = "METHODICAL_MIND"
@@ -207,6 +213,7 @@ class Vendor(Enum):
 _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser[Any, Any]]] = {
     Vendor.AGILENT_GEN5: AgilentGen5Parser,
     Vendor.AGILENT_GEN5_IMAGE: AgilentGen5ImageParser,
+    Vendor.AGILENT_OPENLAB_CDS: AgilentOpenLabCDSParser,
     Vendor.AGILENT_TAPESTATION_ANALYSIS: AgilentTapestationAnalysisParser,
     Vendor.APPBIO_ABSOLUTE_Q: AppbioAbsoluteQParser,
     Vendor.APPBIO_QUANTSTUDIO: AppBioQuantStudioParser,
@@ -226,6 +233,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser[Any, Any]]] = {
     Vendor.CYTIVA_BIACORE_T200_CONTROL: CytivaBiacoreT200ControlParser,
     Vendor.CYTIVA_UNICORN: CytivaUnicornParser,
     Vendor.EXAMPLE_WEYLAND_YUTANI: ExampleWeylandYutaniParser,
+    Vendor.FLOWJO: FlowjoParser,
     Vendor.LUMINEX_XPONENT: LuminexXponentParser,
     Vendor.MABTECH_APEX: MabtechApexParser,
     Vendor.METHODICAL_MIND: MethodicalMindParser,

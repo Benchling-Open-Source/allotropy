@@ -7,7 +7,7 @@ from typing import Any
 
 import pandas as pd
 
-from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
+from allotropy.allotrope.schema_mappers.adm.solution_analyzer.benchling._2024._09.solution_analyzer import (
     Analyte,
     DataProcessing,
     Measurement,
@@ -60,7 +60,9 @@ class Sample:
     batch_identifier: str | None
     analytes: list[Analyte]
     po2: float | None = None
+    po2_unit: str | None = None
     pco2: float | None = None
+    pco2_unit: str | None = None
     carbon_dioxide_saturation: float | None = None
     oxygen_saturation: float | None = None
     ph: float | None = None
@@ -68,7 +70,9 @@ class Sample:
     osmolality: float | None = None
     viability: float | None = None
     total_cell_density: float | None = None
+    total_cell_density_unit: str | None = None
     viable_cell_density: float | None = None
+    viable_cell_density_unit: str | None = None
     average_live_cell_diameter: float | None = None
     total_cell_count: float | None = None
     viable_cell_count: float | None = None
@@ -76,8 +80,7 @@ class Sample:
     cell_density_dilution_factor: float | None = None
 
     @classmethod
-    def create(cls, series: pd.Series[Any]) -> Sample:
-        data = SeriesData(series)
+    def create(cls, units: SeriesData, data: SeriesData) -> Sample:
         cell_density_dilution = data.get(str, "Cell Density Dilution", "")
         if cell_density_dilution:
             cell_density_dilution = cell_density_dilution.split(":")[0]
@@ -92,7 +95,7 @@ class Sample:
                     Analyte(
                         ANALYTE_MAPPINGS[raw_name]["name"],
                         data[float, raw_name],
-                        ANALYTE_MAPPINGS[raw_name]["unit"],
+                        units.get(str, raw_name, ANALYTE_MAPPINGS[raw_name]["unit"]),
                     )
                     for raw_name in ANALYTE_MAPPINGS
                     if data.get(float, raw_name) is not None
@@ -100,7 +103,9 @@ class Sample:
             ),
             viability=data.get(float, "Viability"),
             total_cell_density=data.get(float, "Total Density"),
+            total_cell_density_unit=units.get(str, "Total Density"),
             viable_cell_density=data.get(float, "Viable Density"),
+            viable_cell_density_unit=units.get(str, "Viable Density"),
             average_live_cell_diameter=data.get(float, "Average Live Cell Diameter"),
             total_cell_count=data.get(float, "Total Cell Count"),
             viable_cell_count=data.get(float, "Total Live Count"),
@@ -108,7 +113,9 @@ class Sample:
             ph=data.get(float, "pH"),
             temperature=data.get(float, "Vessel Temperature (°C)"),
             po2=data.get(float, "PO2"),
+            po2_unit=units.get(str, "PO2"),
             pco2=data.get(float, "PCO2"),
+            pco2_unit=units.get(str, "PCO2"),
             carbon_dioxide_saturation=data.get(float, "CO2 Saturation"),
             oxygen_saturation=data.get(float, "O2 Saturation"),
             cell_type_processing_method=data.get(str, "Cell Type")
@@ -124,22 +131,63 @@ class SampleList:
     samples: list[Sample]
 
     @staticmethod
-    def create(data: pd.DataFrame) -> SampleList:
-        sample_data_rows = [row for _, row in data.iterrows()]
+    def get_analyst(sample: SeriesData) -> str:
+        if analyst := sample.get(str, "Operator"):
+            return analyst
+        msg = "Unable to find the Operator."
+        raise AllotropeConversionError(msg)
 
-        if not sample_data_rows:
+    @staticmethod
+    def create(units: SeriesData, sample_data: list[SeriesData]) -> SampleList:
+        return SampleList(
+            analyst=SampleList.get_analyst(sample_data[0]),
+            samples=[Sample.create(units, data) for data in sample_data],
+        )
+
+
+@dataclass(frozen=True)
+class SampleData:
+    sample_list: SampleList
+
+    @staticmethod
+    def parse_units(units: SeriesData) -> SeriesData:
+        data: dict[str, str | None] = {}
+        for key, value in units.series.items():
+            if value is None:
+                data[str(key)] = None
+                continue
+
+            value_str = str(value).strip()
+            data[str(key)] = (
+                None if value_str in ("-", "NaT") else value_str.replace(" ", "")
+            )
+
+        return SeriesData(pd.Series(data))
+
+    @staticmethod
+    def parse_data(
+        raw_data: pd.DataFrame,
+    ) -> tuple[SeriesData, list[SeriesData]]:
+        sample_data = [SeriesData(row) for _, row in raw_data.iterrows()]
+
+        if len(sample_data) == 0:
             msg = "Unable to find any sample."
             raise AllotropeConversionError(msg)
 
-        analyst = sample_data_rows[0].get("Operator")
+        if len(sample_data) == 1:
+            return SeriesData(), sample_data
 
-        if analyst is None:
-            msg = "Unable to find the Operator."
-            raise AllotropeConversionError(msg)
+        first_row = sample_data[0]
+        date_time_regex = r"\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}"
+        if re.match(date_time_regex, first_row[str, "Date & Time"]) is None:
+            return SampleData.parse_units(first_row), sample_data[1:]
 
-        return SampleList(
-            analyst=str(analyst),
-            samples=[Sample.create(sample_data) for sample_data in sample_data_rows],
+        return SeriesData(), sample_data
+
+    @staticmethod
+    def create(raw_data: pd.DataFrame) -> SampleData:
+        return SampleData(
+            sample_list=SampleList.create(*SampleData.parse_data(raw_data)),
         )
 
 
