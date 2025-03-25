@@ -46,6 +46,7 @@ class Vertex:
     y_coordinate: float
     x_unit: str
     y_unit: str
+    vertex_role: str | None = None
 
 
 @dataclass(frozen=True)
@@ -269,6 +270,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 VertexDocumentItem(
                     x_coordinate=quantity_or_none_from_unit(vertex.x_unit, vertex.x_coordinate),  # type: ignore[arg-type]
                     y_coordinate=quantity_or_none_from_unit(vertex.y_unit, vertex.y_coordinate),  # type: ignore[arg-type]
+                    vertex_role=vertex.vertex_role,
                 )
                 for vertex in vertices
             ]

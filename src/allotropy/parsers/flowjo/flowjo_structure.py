@@ -30,6 +30,11 @@ class RegionType(Enum):
     CURLY_QUAD = "CurlyQuad"
 
 
+class VertexRole(Enum):
+    FOCI = "foci"
+    EDGE = "edge"
+
+
 def create_metadata(root_element: StrictXmlElement, file_path: str) -> Metadata:
     cytometer = root_element.recursive_find_or_none(["Cytometers", "Cytometer"])
     keywords = root_element.recursive_find_or_none(["SampleList", "Sample", "Keywords"])
@@ -215,6 +220,10 @@ def _extract_dimension_identifiers(
 
 
 def _get_gate_type(gate_element: StrictXmlElement) -> str | None:
+    # Handle special case for CurlyQuad
+    if gate_element.find_or_none("gating:CurlyQuad") is not None:
+        return RegionType.CURLY_QUAD.value
+
     for region_type in RegionType:
         if gate_element.find_or_none(f"gating:{region_type.value}Gate") is not None:
             return region_type.value
@@ -234,7 +243,7 @@ def _extract_vertices(
     - Polygon: Extract vertices from gating:vertex elements
     - Rectangle: Extract min/max coordinates to create 4 vertices
     - CurlyQuad: Extract min/max coordinates to create a vertex
-    - Ellipsoid: Not supported yet (TODO)
+    - Ellipsoid: Extract foci (2 vertices) and edge (4 vertices) coordinates
 
     Returns:
         list[Vertex] | None: List of vertices if found, None otherwise
@@ -305,9 +314,46 @@ def _extract_vertices(
         for x, y in ((x_min, y_min), (x_min, y_max), (x_max, y_max), (x_max, y_min)):
             add_vertex(x, y, vertices)
 
-    # TODO: Add support for Ellipsoid gates
     elif gate_type == RegionType.ELLIPSOID.value:
-        return None
+        vertices = []
+
+        def _extract_coordinate_values(
+            coords: list[StrictXmlElement],
+        ) -> tuple[str | None, str | None]:
+            x_value = (
+                coords[0].get_namespaced_attr_or_none("data-type", "value")
+                if coords
+                else None
+            )
+            y_value = (
+                coords[1].get_namespaced_attr_or_none("data-type", "value")
+                if len(coords) > 1
+                else None
+            )
+            return x_value, y_value
+
+        def _add_vertex_with_role(vertex_element: StrictXmlElement, role: str) -> None:
+            coords = vertex_element.findall("gating:coordinate")
+            x_value, y_value = _extract_coordinate_values(coords)
+
+            if x_value is not None and y_value is not None:
+                vertices.append(
+                    Vertex(
+                        x_coordinate=float(x_value),
+                        y_coordinate=float(y_value),
+                        x_unit=x_unit,
+                        y_unit=y_unit,
+                        vertex_role=role,
+                    )
+                )
+
+        foci_vertices = gate_element.findall("gating:foci/gating:vertex")
+        for vertex in foci_vertices:
+            _add_vertex_with_role(vertex, VertexRole.FOCI.value)
+
+        edge_vertices = gate_element.findall("gating:edge/gating:vertex")
+        for vertex in edge_vertices:
+            _add_vertex_with_role(vertex, VertexRole.EDGE.value)
 
     return vertices if vertices else None
 
@@ -317,11 +363,16 @@ def _create_data_regions(sample: StrictXmlElement) -> list[DataRegion]:
     sample_node = sample.find_or_none("SampleNode")
 
     def _process_population(population: StrictXmlElement) -> None:
-        if (
-            not (gate := population.find_or_none("Gate"))
-            or not (gate_type := _get_gate_type(gate))
-            or not (gate_element := gate.find_or_none(f"gating:{gate_type}Gate"))
+        if not (gate := population.find_or_none("Gate")) or not (
+            gate_type := _get_gate_type(gate)
         ):
+            return
+        if gate_type == RegionType.CURLY_QUAD.value:
+            gate_element = gate.find_or_none("gating:CurlyQuad")
+        else:
+            gate_element = gate.find_or_none(f"gating:{gate_type}Gate")
+
+        if not gate_element:
             return
 
         x_dim, y_dim = _extract_dimension_identifiers(gate_element)
