@@ -34,13 +34,13 @@ FLOWJO_STATISTIC_MAP = {
     "Mean": {"role": "arithmetic mean role", "unit": "RFU"},
     "Geometric Mean": {"role": "geometric mean role", "unit": "RFU"},
     "Percentile": {"role": "percentile role", "unit": "RFU"},
-    "SD": {"role": "standard deviation role", "unit": "unitless"},
+    "SD": {"role": "standard deviation role", "unit": "(unitless)"},
     "MADExact": {
         "role": "median absolute deviation percentile role",
-        "unit": "unitless",
+        "unit": "(unitless)",
     },
-    "Robust SD": {"role": "robust standard deviation role", "unit": "unitless"},
-    "Median Abs Dev": {"role": "median absolute deviation role", "unit": "unitless"},
+    "Robust SD": {"role": "robust standard deviation role", "unit": "(unitless)"},
+    "Median Abs Dev": {"role": "median absolute deviation role", "unit": "(unitless)"},
     # Count statistics
     "fj.stat.freqofparent": {"role": "frequency of parent role", "unit": "%"},
     "fj.stat.freqofgrandparent": {"role": "frequency of grandparent role", "unit": "%"},
