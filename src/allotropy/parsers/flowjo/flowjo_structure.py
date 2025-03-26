@@ -6,6 +6,9 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueSecondTime,
 )
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    TStatisticDatumRole,
+)
 from allotropy.allotrope.schema_mappers.adm.flow_cytometry.benchling._2025._03.flow_cytometry import (
     CompensationMatrix,
     CompensationMatrixGroup,
@@ -28,23 +31,23 @@ from allotropy.parsers.utils.values import try_float_or_none
 # Map of FlowJo field names to statistic datum roles and units
 FLOWJO_STATISTIC_MAP = {
     # Fluorescence statistics
-    "Median": {"role": "median role", "unit": "RFU"},
-    "CV": {"role": "coefficient of variation role", "unit": "%"},
-    "Robust CV": {"role": "robust coefficient of variation role", "unit": "%"},
-    "Mean": {"role": "arithmetic mean role", "unit": "RFU"},
-    "Geometric Mean": {"role": "geometric mean role", "unit": "RFU"},
-    "Percentile": {"role": "percentile role", "unit": "RFU"},
-    "SD": {"role": "standard deviation role", "unit": "(unitless)"},
+    "Median": {"role": TStatisticDatumRole.median_role.value, "unit": "RFU"},
+    "CV": {"role": TStatisticDatumRole.coefficient_of_variation_role.value, "unit": "%"},
+    "Robust CV": {"role": TStatisticDatumRole.robust_coefficient_of_variation_role.value, "unit": "%"},
+    "Mean": {"role": TStatisticDatumRole.arithmetic_mean_role.value, "unit": "RFU"},
+    "Geometric Mean": {"role": TStatisticDatumRole.geometric_mean_role.value, "unit": "RFU"},
+    "Percentile": {"role": TStatisticDatumRole.percentile_role.value, "unit": "RFU"},
+    "SD": {"role": TStatisticDatumRole.standard_deviation_role.value, "unit": "(unitless)"},
     "MADExact": {
-        "role": "median absolute deviation percentile role",
+        "role": TStatisticDatumRole.median_absolute_deviation_percentile_role.value,
         "unit": "(unitless)",
     },
-    "Robust SD": {"role": "robust standard deviation role", "unit": "(unitless)"},
-    "Median Abs Dev": {"role": "median absolute deviation role", "unit": "(unitless)"},
+    "Robust SD": {"role": TStatisticDatumRole.robust_standard_deviation_role.value, "unit": "(unitless)"},
+    "Median Abs Dev": {"role": TStatisticDatumRole.median_absolute_deviation_role.value, "unit": "(unitless)"},
     # Count statistics
-    "fj.stat.freqofparent": {"role": "frequency of parent role", "unit": "%"},
-    "fj.stat.freqofgrandparent": {"role": "frequency of grandparent role", "unit": "%"},
-    "fj.stat.freqoftotal": {"role": "frequency of total role", "unit": "%"},
+    "fj.stat.freqofparent": {"role": TStatisticDatumRole.frequency_of_parent_role.value, "unit": "%"},
+    "fj.stat.freqofgrandparent": {"role": TStatisticDatumRole.frequency_of_grandparent_role.value, "unit": "%"},
+    "fj.stat.freqoftotal": {"role": TStatisticDatumRole.frequency_of_total_role.value, "unit": "%"},
 }
 
 # Identify statistics that belong to the "Count" feature
