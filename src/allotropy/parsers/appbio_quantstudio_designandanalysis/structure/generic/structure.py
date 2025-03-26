@@ -4,6 +4,7 @@ from collections.abc import Iterator
 from dataclasses import dataclass
 from pathlib import PureWindowsPath
 import re
+from typing import Any
 
 import pandas as pd
 
@@ -156,6 +157,7 @@ class WellItem(Referenceable):
     amplification_data: AmplificationData | None
     result: Result
     melt_curve_data: MeltCurveData | None = None
+    sample_custom_info: dict[str, Any] | None = None
 
     @classmethod
     def get_result_class(cls) -> type[Result]:
@@ -205,6 +207,8 @@ class WellItem(Referenceable):
         )
 
         result_class = cls.get_result_class()
+        result = result_class.create(data, identifier)
+
         return WellItem(
             uuid=random_uuid_str(),
             identifier=identifier,
@@ -219,7 +223,12 @@ class WellItem(Referenceable):
             ),
             amplification_data=amplification_data,
             melt_curve_data=melt_curve_data,
-            result=result_class.create(data, identifier),
+            result=result,
+            sample_custom_info=(
+                {"quantity": result.quantity}
+                if result.cycle_threshold_result is None and result.quantity is not None
+                else None
+            ),
         )
 
 
