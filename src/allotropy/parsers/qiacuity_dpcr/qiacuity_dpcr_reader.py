@@ -2,7 +2,6 @@ import numpy as np
 import pandas as pd
 
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.lines_reader import determine_encoding
 from allotropy.parsers.utils.pandas import read_csv
 
 
@@ -12,15 +11,10 @@ class QiacuitydPCRReader:
 
     def __init__(self, named_file_contents: NamedFileContents):
         # Read in the file, skip first row since it does not have data in it.
-        contents = named_file_contents.contents.read()
-        encoding = (
-            determine_encoding(contents, named_file_contents.encoding)
-            if isinstance(contents, bytes)
-            else None
-        )
-        named_file_contents.contents.seek(0)
         qiacuity_dpcr_data = read_csv(
-            filepath_or_buffer=named_file_contents.contents, header=1, encoding=encoding
+            filepath_or_buffer=named_file_contents.contents,
+            header=1,
+            encoding=named_file_contents.encoding,
         ).replace(np.nan, None)
         qiacuity_dpcr_data.columns = qiacuity_dpcr_data.columns.str.replace("�", "μ")
         qiacuity_dpcr_data.columns = qiacuity_dpcr_data.columns.str.replace("Âμ", "μ")

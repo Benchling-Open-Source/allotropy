@@ -5,12 +5,10 @@ from io import StringIO
 from re import search
 from typing import Any, Literal
 
-import chardet
 import pandas as pd
 
-from allotropy.constants import CHARDET_ENCODING, DEFAULT_ENCODING
-from allotropy.exceptions import AllotropeConversionError, AllotropeParsingError
 from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.utils.encoding import decode
 from allotropy.parsers.utils.pandas import read_csv
 from allotropy.parsers.utils.values import assert_not_none
 
@@ -25,44 +23,12 @@ def read_to_lines(named_file_contents: NamedFileContents) -> list[str]:
     stream_contents = named_file_contents.contents.read()
     encoding = named_file_contents.encoding
     raw_contents = (
-        _decode(stream_contents, encoding)
+        decode(stream_contents, encoding)
         if isinstance(stream_contents, bytes)
         else stream_contents
     )
     contents = raw_contents.replace("\r\n", "\n")
     return contents.split("\n")
-
-
-def determine_encoding(bytes_content: bytes, encoding: str | None) -> str:
-    if not encoding:
-        return DEFAULT_ENCODING
-    if encoding != CHARDET_ENCODING:
-        return encoding
-
-    if not bytes_content:
-        msg = "Unable to detect encoding for empty bytes string, file may be empty."
-        raise AllotropeConversionError(msg)
-
-    detected = chardet.detect(bytes_content)["encoding"]
-    if not detected:
-        msg = f"Unable to detect text encoding for file with content: {bytes_content!r}"
-        raise AllotropeParsingError(msg)
-    # Windows-1252 is a subset of UTF-8, and may lead to missing some data.
-    if detected == "Windows-1252":
-        detected = "utf-8"
-    return detected
-
-
-def _decode(bytes_content: bytes, encoding: str | None) -> str:
-    encoding_to_use = determine_encoding(bytes_content, encoding)
-    try:
-        return bytes_content.decode(encoding_to_use)
-    except UnicodeDecodeError as e:
-        msg = f"Unable to decode bytes with encoding '{encoding_to_use}' with error: {e}, bytes: {bytes_content!r}"
-        raise AllotropeParsingError(msg) from e
-    except LookupError as e:
-        msg = f"Invalid encoding: '{encoding}'."
-        raise AllotropeConversionError(msg) from e
 
 
 class LinesReader:
