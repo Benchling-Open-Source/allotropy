@@ -32,22 +32,49 @@ from allotropy.parsers.utils.values import try_float_or_none
 FLOWJO_STATISTIC_MAP = {
     # Fluorescence statistics
     "Median": {"role": TStatisticDatumRole.median_role.value, "unit": "RFU"},
-    "CV": {"role": TStatisticDatumRole.coefficient_of_variation_role.value, "unit": "%"},
-    "Robust CV": {"role": TStatisticDatumRole.robust_coefficient_of_variation_role.value, "unit": "%"},
+    "CV": {
+        "role": TStatisticDatumRole.coefficient_of_variation_role.value,
+        "unit": "%",
+    },
+    "Robust CV": {
+        "role": TStatisticDatumRole.robust_coefficient_of_variation_role.value,
+        "unit": "%",
+    },
     "Mean": {"role": TStatisticDatumRole.arithmetic_mean_role.value, "unit": "RFU"},
-    "Geometric Mean": {"role": TStatisticDatumRole.geometric_mean_role.value, "unit": "RFU"},
+    "Geometric Mean": {
+        "role": TStatisticDatumRole.geometric_mean_role.value,
+        "unit": "RFU",
+    },
     "Percentile": {"role": TStatisticDatumRole.percentile_role.value, "unit": "RFU"},
-    "SD": {"role": TStatisticDatumRole.standard_deviation_role.value, "unit": "(unitless)"},
+    "SD": {
+        "role": TStatisticDatumRole.standard_deviation_role.value,
+        "unit": "(unitless)",
+    },
     "MADExact": {
         "role": TStatisticDatumRole.median_absolute_deviation_percentile_role.value,
         "unit": "(unitless)",
     },
-    "Robust SD": {"role": TStatisticDatumRole.robust_standard_deviation_role.value, "unit": "(unitless)"},
-    "Median Abs Dev": {"role": TStatisticDatumRole.median_absolute_deviation_role.value, "unit": "(unitless)"},
+    "Robust SD": {
+        "role": TStatisticDatumRole.robust_standard_deviation_role.value,
+        "unit": "(unitless)",
+    },
+    "Median Abs Dev": {
+        "role": TStatisticDatumRole.median_absolute_deviation_role.value,
+        "unit": "(unitless)",
+    },
     # Count statistics
-    "fj.stat.freqofparent": {"role": TStatisticDatumRole.frequency_of_parent_role.value, "unit": "%"},
-    "fj.stat.freqofgrandparent": {"role": TStatisticDatumRole.frequency_of_grandparent_role.value, "unit": "%"},
-    "fj.stat.freqoftotal": {"role": TStatisticDatumRole.frequency_of_total_role.value, "unit": "%"},
+    "fj.stat.freqofparent": {
+        "role": TStatisticDatumRole.frequency_of_parent_role.value,
+        "unit": "%",
+    },
+    "fj.stat.freqofgrandparent": {
+        "role": TStatisticDatumRole.frequency_of_grandparent_role.value,
+        "unit": "%",
+    },
+    "fj.stat.freqoftotal": {
+        "role": TStatisticDatumRole.frequency_of_total_role.value,
+        "unit": "%",
+    },
 }
 
 # Identify statistics that belong to the "Count" feature
