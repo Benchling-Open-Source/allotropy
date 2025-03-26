@@ -31,77 +31,66 @@ def create_metadata(header_footer_data: SeriesData, file_path: str) -> Metadata:
     )
 
 
+def _create_measurement(row_data: SeriesData) -> None:
+    def convert_echo_nl_to_ul(value: float | None) -> float:
+        return (
+            (value * constants.PLATE_REFORMAT_REPORT_VOLUME_CONVERSION_TO_UL)
+            if value
+            else None
+        )
+
+    return Measurement(
+        identifier=random_uuid_str(),
+        measurement_time=row_data[str, "Date Time Point"],
+        sample_identifier=row_data.get(str, "Sample ID", NOT_APPLICABLE),
+        source_plate=row_data[str, "Source Plate Barcode"],
+        source_well=row_data[str, "Source Well"],
+        source_location=row_data[str, "Source Plate Name"],
+        destination_plate=row_data[str, "Destination Plate Barcode"],
+        destination_well=row_data[str, "Destination Well"],
+        destination_location=row_data[str, "Destination Plate Name"],
+        aspiration_volume=convert_echo_nl_to_ul(row_data.get(float, "Actual Volume")),
+        transfer_volume=convert_echo_nl_to_ul(row_data.get(float, "Actual Volume")),
+        injection_volume_setting=convert_echo_nl_to_ul(
+            row_data.get(float, "Transfer Volume")
+        ),
+        device_control_custom_info={
+            "sample name": row_data.get(str, "Sample Name"),
+            "survey fluid volume": convert_echo_nl_to_ul(
+                row_data.get(float, "Survey Fluid Volume")
+            ),
+            "current fluid volume": convert_echo_nl_to_ul(
+                row_data.get(float, "Current Fluid Volume")
+            ),
+            "intended transfer volume": convert_echo_nl_to_ul(
+                row_data.get(float, "Transfer Volume")
+            ),
+            "source labware name": row_data.get(str, "Source Plate Type"),
+            "destination labware name": row_data.get(str, "Destination Plate Type"),
+            "fluid composition": row_data.get(str, "Fluid Composition"),
+            "fluid units": row_data.get(str, "Fluid Units"),
+            "fluid type": row_data.get(str, "Fluid Type"),
+            "transfer status": row_data.get(str, "Transfer Status", NOT_APPLICABLE),
+        },
+        errors=[
+            Error(
+                error=row_data[str, "Transfer Status"],
+                feature=row_data[str, "Transfer Status"].split(": ")[0],
+            )
+        ]
+        if row_data.get(str, "Transfer Status")
+        else [],
+    )
+
+
 def create_measurement_groups(
     data: pd.DataFrame, header: SeriesData
 ) -> list[MeasurementGroup]:
-    # This function will be called for every row in the dataset, use it to create
-    # a corresponding measurement group.
-    measurements: list[Measurement] = []
-
-    def map_to_measurements(row_data: SeriesData) -> None:
-        def file_nl_to_ul(value: float | None) -> float:
-            return (
-                (value * constants.PLATE_REFORMAT_REPORT_VOLUME_CONVERSION_TO_UL)
-                if value
-                else None
-            )
-
-        # FIX THIS 
-        measurements.append(
-            Measurement(
-                identifier=random_uuid_str(),
-                measurement_time=row_data[str, "Date Time Point"],
-                sample_identifier=row_data.get(str, "Sample ID", NOT_APPLICABLE),
-                source_plate=row_data[str, "Source Plate Barcode"],
-                source_well=row_data[str, "Source Well"],
-                source_location=row_data[str, "Source Plate Name"],
-                destination_plate=row_data[str, "Destination Plate Barcode"],
-                destination_well=row_data[str, "Destination Well"],
-                destination_location=row_data[str, "Destination Plate Name"],
-                aspiration_volume=file_nl_to_ul(row_data.get(float, "Actual Volume")),
-                transfer_volume=file_nl_to_ul(row_data.get(float, "Actual Volume")),
-                injection_volume_setting=file_nl_to_ul(
-                    row_data.get(float, "Transfer Volume")
-                ),
-                device_control_custom_info={
-                    "sample name": row_data.get(str, "Sample Name"),
-                    "survey fluid volume": file_nl_to_ul(
-                        row_data.get(float, "Survey Fluid Volume")
-                    ),
-                    "current fluid volume": file_nl_to_ul(
-                        row_data.get(float, "Current Fluid Volume")
-                    ),
-                    "intended transfer volume": file_nl_to_ul(
-                        row_data.get(float, "Transfer Volume")
-                    ),
-                    "source labware name": row_data.get(str, "Source Plate Type"),
-                    "destination labware name": row_data.get(
-                        str, "Destination Plate Type"
-                    ),
-                    "fluid composition": row_data.get(str, "Fluid Composition"),
-                    "fluid units": row_data.get(str, "Fluid Units"),
-                    "fluid type": row_data.get(str, "Fluid Type"),
-                    "transfer status": row_data.get(
-                        str, "Transfer Status", NOT_APPLICABLE
-                    ),
-                },
-                errors=[
-                    Error(
-                        error=row_data[str, "Transfer Status"],
-                        feature=row_data[str, "Transfer Status"].split(": ")[0],
-                    )
-                ]
-                if row_data.get(str, "Transfer Status")
-                else [],
-            )
-        )
-
-    map_rows(data, map_to_measurements)
 
     return [
         MeasurementGroup(
             analyst=header[str, "User Name"],
             analytical_method_identifier=header.get(str, "Protocol Name"),
-            measurements=measurements,
+            measurements=map_rows(data, _create_measurement),
         )
     ]

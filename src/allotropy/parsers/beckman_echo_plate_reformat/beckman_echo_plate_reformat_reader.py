@@ -26,7 +26,9 @@ class BeckmanEchoPlateReformatReader:
         reader = LinesReader.create(named_file_contents)
 
         # read header section, up to the '[Exceptions]' section delimiter
-        header_lines = [line.strip() for line in reader.pop_until(r"^\[.+\]") if line.strip()]
+        header_lines = [
+            line.strip() for line in reader.pop_until(r"^\[.+\]") if line.strip()
+        ]
         if not header_lines:
             msg = "Cannot parse data from empty header."
             raise AllotropeConversionError(msg)
@@ -34,7 +36,7 @@ class BeckmanEchoPlateReformatReader:
         # now read multiple sections, each starting with a section title: '[Section Title]', with header row and multiple data rows.
         sections = {}
 
-        # we expect to have at least one section, and that the current line of the reader is at the title 
+        # we expect to have at least one section, and that the current line of the reader is at the title
         # (due to reader.pop_until(r"^\[.+\]") above)
         while not reader.is_empty():
             match = re.match(
@@ -47,14 +49,16 @@ class BeckmanEchoPlateReformatReader:
                         match, f"Cannot read title section: {reader.get()}"
                     ).groups()[0]
                 )
-                data_lines = list(reader.pop_until_empty()) # read all lines of section, including header line
-                reader.drop_empty() # sections are separated by empty lines
+                data_lines = list(
+                    reader.pop_until_empty()
+                )  # read all lines of section, including header line
+                reader.drop_empty()  # sections are separated by empty lines
 
                 sections[title] = read_csv(
                     StringIO("\n".join(data_lines)), sep=","
                 ).replace(np.nan, None)
             else:
-                break 
+                break
 
         # read footer section, after last tabular data section
         footer_lines = list(reader.pop_until_empty())
