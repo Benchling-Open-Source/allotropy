@@ -1,4 +1,5 @@
 from enum import Enum
+import math
 from pathlib import Path
 
 from allotropy.allotrope.models.shared.definitions.custom import (
@@ -13,6 +14,8 @@ from allotropy.allotrope.schema_mappers.adm.flow_cytometry.benchling._2025._03.f
     MeasurementGroup,
     Metadata,
     Population,
+    Statistic,
+    StatisticDimension,
     Vertex,
 )
 from allotropy.exceptions import AllotropeParsingError
@@ -21,6 +24,48 @@ from allotropy.parsers.flowjo import constants
 from allotropy.parsers.utils.strict_xml_element import StrictXmlElement
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import try_float_or_none
+
+# Map of FlowJo field names to statistic datum roles and units
+FLOWJO_STATISTIC_MAP = {
+    # Fluorescence statistics
+    "Median": {"role": "median role", "unit": "RFU"},
+    "CV": {"role": "coefficient of variation role", "unit": "%"},
+    "Robust CV": {"role": "robust coefficient of variation role", "unit": "%"},
+    "Mean": {"role": "arithmetic mean role", "unit": "RFU"},
+    "Geometric Mean": {"role": "geometric mean role", "unit": "RFU"},
+    "Percentile": {"role": "percentile role", "unit": "RFU"},
+    "SD": {"role": "standard deviation role", "unit": "unitless"},
+    "MADExact": {
+        "role": "median absolute deviation percentile role",
+        "unit": "unitless",
+    },
+    "Robust SD": {"role": "robust standard deviation role", "unit": "unitless"},
+    "Median Abs Dev": {"role": "median absolute deviation role", "unit": "unitless"},
+    # Count statistics
+    "fj.stat.freqofparent": {"role": "frequency of parent role", "unit": "%"},
+    "fj.stat.freqofgrandparent": {"role": "frequency of grandparent role", "unit": "%"},
+    "fj.stat.freqoftotal": {"role": "frequency of total role", "unit": "%"},
+}
+
+# Identify statistics that belong to the "Count" feature
+COUNT_FIELDS = [
+    "fj.stat.freqofparent",
+    "fj.stat.freqofgrandparent",
+    "fj.stat.freqoftotal",
+    "fj.stat.freqof",
+]
+FLUORESCENCE_FIELDS = [
+    "Median",
+    "CV",
+    "Robust CV",
+    "Mean",
+    "Geometric Mean",
+    "Percentile",
+    "SD",
+    "MADExact",
+    "Robust SD",
+    "Median Abs Dev",
+]
 
 
 class RegionType(Enum):
@@ -123,6 +168,69 @@ def _create_compensation_matrix_groups(
     return result
 
 
+def _extract_statistics(population: StrictXmlElement) -> list[Statistic] | None:
+    """
+    Extract statistics from a population element.
+
+    Args:
+        population: The population element to extract statistics from
+
+    Returns:
+        list[Statistic] | None: List of statistics if found, None otherwise
+    """
+    fluorescence_dimensions = []
+    count_dimensions = []
+
+    statistic_elements = population.findall("Statistic")
+    if not statistic_elements:
+        return None
+
+    for statistic in statistic_elements:
+        name = statistic.get_attr_or_none("name")
+        dimension_id = statistic.get_attr_or_none("id")
+        value_str = statistic.get_attr_or_none("value")
+
+        if not (name and value_str):
+            continue
+
+        value = try_float_or_none(value_str)
+        if value is None or math.isnan(value):
+            continue
+
+        stat_info = FLOWJO_STATISTIC_MAP.get(name)
+        if stat_info is None:
+            continue
+
+        dimension = StatisticDimension(
+            dimension_identifier=dimension_id,
+            value=value * 100 if name in COUNT_FIELDS else value,
+            unit=stat_info["unit"],
+            has_statistic_datum_role=stat_info["role"],
+        )
+
+        if name in FLUORESCENCE_FIELDS:
+            fluorescence_dimensions.append(dimension)
+        elif name in COUNT_FIELDS:
+            count_dimensions.append(dimension)
+
+    statistics = []
+
+    if fluorescence_dimensions:
+        statistics.append(
+            Statistic(
+                statistical_feature="fluorescence",
+                statistic_dimension=fluorescence_dimensions,
+            )
+        )
+
+    if count_dimensions:
+        statistics.append(
+            Statistic(statistical_feature="count", statistic_dimension=count_dimensions)
+        )
+
+    return statistics if statistics else None
+
+
 def _create_populations(
     node: StrictXmlElement, parent_id: str | None = None
 ) -> list[Population]:
@@ -138,9 +246,10 @@ def _create_populations(
         if gate is not None:
             data_region_identifier = gate.get_namespaced_attr_or_none("gating", "id")
 
+        statistics = None
         subpops_element = population.find_or_none("Subpopulations")
         if subpops_element is not None:
-            # Recursively get subpopulations
+            statistics = _extract_statistics(subpops_element)
             sub_populations = _create_populations(subpops_element, current_id)
         else:
             sub_populations = []
@@ -153,7 +262,7 @@ def _create_populations(
             count=int(count) if count else None,
             sub_populations=sub_populations,
             custom_info={"group_identifier": group_identifier},
-            statistics=None,  # TODO add support for statistics documents
+            statistics=statistics,
         )
         populations.append(pop)
 

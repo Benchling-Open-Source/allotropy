@@ -1524,7 +1524,17 @@
             "maximum value role",
             "minimum value role",
             "initial value role",
-            "final value role"
+            "final value role",
+            "coefficient of variation role",
+            "robust coefficient of variation role",
+            "geometric mean role",
+            "percentile role",
+            "median absolute deviation percentile role",
+            "robust standard deviation role",
+            "median absolute deviation role",
+            "frequency of parent role",
+            "frequency of grandparent role",
+            "frequency of total role"
           ],
           "type": "string"
         },
