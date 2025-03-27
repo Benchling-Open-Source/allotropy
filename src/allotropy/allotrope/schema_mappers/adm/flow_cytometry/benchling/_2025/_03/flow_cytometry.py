@@ -310,7 +310,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 ]
                 if population.sub_populations
                 else None,
-                statisticsAggregateDocument=self._get_statistics_aggregate_document(
+                statistics_aggregate_document=self._get_statistics_aggregate_document(
                     population.statistics
                 ),
             ),
