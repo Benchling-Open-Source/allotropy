@@ -37,5 +37,13 @@ class Extractor(Generic[T]):
         pass
 
     @classmethod
+    def to_element_with_extra_data(
+        cls, obj: T, extra_data: dict[str, float | str | None]
+    ) -> Element:
+        element = cls.to_element(obj)
+        element.data |= extra_data
+        return element
+
+    @classmethod
     def get_elements(cls, objects: list[T]) -> list[Element]:
         return [cls.to_element(obj) for obj in objects]
